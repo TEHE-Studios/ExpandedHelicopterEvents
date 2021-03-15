@@ -1,0 +1,64 @@
+IG_UI_EN = {
+    IGUI_VehicleName85vicsed = "Franklin Crest Andarta LTD",
+    IGUI_VehicleName85vicwag = "Franklin Crest Andarta Wagon",
+    IGUI_VehicleName85vicwag2 = "Franklin Crest Andarta Wagon",
+    IGUI_VehicleName79brougham = "Laumet Davis Hogg",
+    IGUI_VehicleNamevolvo244 = "Bohag 244",
+    IGUI_VehicleName71impala = "Chevalier Nyala",
+	
+    IGUI_VehicleName91crx = "Tokai Renaissance",
+    IGUI_VehicleName86yugo = "Slavski Nogo",
+	
+    IGUI_VehicleName87c10utility = "Chevalier D20",
+    IGUI_VehicleName87c10fire = "Chevalier D20",
+    IGUI_VehicleName87c10mccoy = "Chevalier D20",
+    IGUI_VehicleName87c10lb = "Chevalier D20",
+    IGUI_VehicleName87c10sb = "Chevalier D20",
+    IGUI_VehicleName90ramlb = "Dash Buck",
+    IGUI_VehicleName90ramsb = "Dash Buck",
+    IGUI_VehicleName87blazer = "Chevalier Kobold",
+    IGUI_VehicleName87suburban = "Chevalier Carnifex",
+    IGUI_VehicleNameastrovan = "Chevalier Cosmo",
+	
+    IGUI_VehicleName65gto = "Roanoke Goat",
+    IGUI_VehicleName69charger = "Dash Blitzer",
+    IGUI_VehicleName69chargerdaytona = "Dash Blitzer R/P Edition",
+    IGUI_VehicleName73falcon = "Franklin Thundercougar",
+    IGUI_VehicleName77transam = "Roanoke Grand Slam",
+    IGUI_VehicleName70chevelle = "Chevalier Bulette",
+    IGUI_VehicleName70elcamino = "Chevalier El Chimera",
+    IGUI_VehicleName68elcamino = "Chevalier El Chimera",
+    IGUI_VehicleName68wildcat = "Utana Lynx",
+    IGUI_VehicleName68wildcatconvert = "Utana Lynx",
+    IGUI_VehicleName73pinto = "Franklin Jalapeno",
+	
+    IGUI_VehicleNamemoveurself = "Move Urself Box Truck",
+	IGUI_VehicleNameisuzubox = "Pazuzu N5",
+	IGUI_VehicleNameisuzuboxelec = "Pazuzu N5",
+	IGUI_VehicleNameisuzuboxfood = "Pazuzu N5",
+	IGUI_VehicleNameisuzuboxmccoy = "Pazuzu N5",
+    IGUI_VehicleNamehmmwvtr = "M1069",
+    IGUI_VehicleNamehmmwvht = "M1025",
+
+    IGUI_VehicleNamem35a2bed = "M35A2",
+    IGUI_VehicleNamem35a2covered = "M35A2",
+	IGUI_VehicleNamem151canvas = "M151A2",
+	
+    IGUI_VehicleNamefirepumper = "Fire Engine",
+	
+    IGUI_VehicleName86bounder = "Franklin Trip",
+	
+	IGUI_VehicleName91blazerpd = "Chevalier Kobold",
+	IGUI_VehicleName85vicsheriff = "Franklin Crest Andarta LTD",
+	
+	IGUI_VehicleName85vicranger = "Franklin Crest Andarta LTD",
+	
+    IGUI_VehicleNamepursuitspecial = "Pursuit Special",
+	IGUI_VehicleNamegenerallee = "The General Lee",
+	IGUI_VehicleNamegeneralmeh = "The General Meh",
+	IGUI_VehicleNameschoolbus = "Franklin BE70 School Bus",
+	IGUI_VehicleNameschoolbusshort = "Franklin BE70 School Bus",
+	IGUI_VehicleNamef700dump = "Franklin EF70 Dump Truck",
+	IGUI_VehicleNamef700flatbed = "Franklin EF70 Flatbed",
+	IGUI_VehicleNamef700box = "Franklin EF70 Box Truck",
+}
