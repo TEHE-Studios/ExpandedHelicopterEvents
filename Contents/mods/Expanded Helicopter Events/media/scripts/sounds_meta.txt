@@ -1,0 +1,12 @@
+module Base
+{
+	sound Helicopter
+	{
+		category = Meta,
+		clip
+		{
+			event = Meta/Helicopter/Helicopter,
+			distanceMax = 125,
+		}
+	}
+}
