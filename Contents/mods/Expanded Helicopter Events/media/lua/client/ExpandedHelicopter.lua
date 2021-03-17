@@ -47,6 +47,8 @@ function eHelicopter:initPos()
 	self.currentPosition = Vector3.new(initX, initY, initZ)
 	print("initPos: currentPosition: "..tostring(self.currentPosition))
 
+	print("initPos: currentPosition: xyz"..tostring(self.currentPosition.x)..","..tostring(self.currentPosition.y)..","..tostring(self.currentPosition.z))
+
 end
 
 
@@ -62,6 +64,13 @@ function eHelicopter:isInBounds()
 end
 
 
+function eHelicopter:unlaunch()
+
+	Events.OnTick.Remove(self.update)
+	self.emitter.stopAll()
+end
+
+
 function eHelicopter:update()
 
 	self:moveToPosition(self.targetPos, true)
@@ -72,11 +81,6 @@ function eHelicopter:update()
 end
 
 
-function eHelicopter:unlaunch()
-
-	Events.OnTick.Remove(self.update)
-	self.emitter.stopAll()
-end
 
 
 ---Rewriting Vector3.aimAt to use Vector3 rather than Vector2
