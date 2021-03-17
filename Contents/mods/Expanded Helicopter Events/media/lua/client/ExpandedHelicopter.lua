@@ -1,22 +1,33 @@
 ---@class eHelicopter
----@field emitter FMODSoundEmitter
-eHelicopter = {}
-eHelicopter.MAX_XY = 15000
-eHelicopter.MIN_XY = 0
-
 ---@field targetPos Vector3
 ---@field movement Vector3 consider this as a kind of velocity (direction and speed)
-eHelicopter.targetPos = Vector3.new()
-eHelicopter.movement = Vector3.new()
-eHelicopter.currentPosition = Vector3.new()
+---@field currentPosition Vector3
+---@field speed number
+---@field emitter FMODSoundEmitter
 
+eHelicopter = {}
+eHelicopter.targetPos = {}--Vector3.new()
+eHelicopter.movement = {}--Vector3.new()
+eHelicopter.currentPosition = {}--Vector3.new()
 eHelicopter.speed = 20
 
+function eHelicopter:new()
 
-function eHelicopter.initPos()
+	local o = {}
+	setmetatable(o, self)
+	return o
+end
 
+MAX_XY = 15000
+MIN_XY = 0
+
+
+function eHelicopter:initPos()
+	---@type float
 	local initX = 0
+	---@type float
 	local initY = 0
+	---@type float
 	local initZ = 20
 
 	if ZombRand(101) > 50 then --50/50
@@ -33,14 +44,130 @@ function eHelicopter.initPos()
 		end
 	end
 
-	eHelicopter.currentPosition:set(initX, initY, initZ)
+	self.currentPosition = Vector3.new(initX, initY, initZ)
+	print("initPos: currentPosition: "..tostring(self.currentPosition))
+
 end
 
 
----@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter @ random player if blank
-function eHelicopter.launch(targetedPlayer)
+function eHelicopter:isInBounds()
 
-	eHelicopter.initPos()
+	if ( self.currentPosition.x <= MAX_XY and
+			self.currentPosition.x >= MIN_XY and
+			self.currentPosition.y <= MAX_XY and
+			self.currentPosition.y >= MIN_XY ) then
+		return true
+	end
+	return false
+end
+
+
+function eHelicopter:update()
+
+	self:moveToPosition(self.targetPos, true)
+
+	if not self:isInBounds() then
+		self:unlaunch()
+	end
+end
+
+
+function eHelicopter:unlaunch()
+
+	Events.OnTick.Remove(self.update)
+	self.emitter.stopAll()
+end
+
+
+---Rewriting Vector3.aimAt to use Vector3 rather than Vector2
+---@param targetPosition Vector3
+---@return Vector3
+function eHelicopter:ehe_aimAt(targetPosition)
+
+	print("applyMovement: currentPosition: "..tostring(self.currentPosition))
+	print("applyMovement: movement: "..tostring(self.movement))
+	print("applyMovement: targetPosition: "..tostring(targetPosition))
+	print("applyMovement: targetPos: "..tostring(self.targetPos))
+
+	---@type Vector3 movementVector3
+	local movementVector3 = Vector3.new()
+	---@type float
+	local direction = math.atan(targetPosition.y - self.currentPosition.y, targetPosition.x - self.currentPosition.x)
+	---@type float
+	local length = math.sqrt(self.currentPosition.x * self.currentPosition.x + self.currentPosition.y * self.currentPosition.y)
+
+	movementVector3:setLengthAndDirection(direction, length)
+	movementVector3.z = self.currentPosition.z
+
+	return movementVector3
+end
+
+
+function eHelicopter:aimAtTarget()
+
+	---@type Vector3 aimedVector3
+	local aimedVector3 = self:ehe_aimAt(self.targetPos)
+
+	print("aimAtTarget: aimedVector3: "..tostring(aimedVector3))
+
+	self.movement = Vector3.new(aimedVector3)
+
+	print("aimAtTarget: currentPosition: "..tostring(self.currentPosition))
+	print("aimAtTarget: targetPos: "..tostring(self.targetPos))
+	print("aimAtTarget: movement: "..tostring(self.movement))
+
+	self.movement:normalize()
+	self.movement:setLength(self.speed)
+end
+
+
+---@param dampen boolean
+function eHelicopter:applyMovement(dampen)
+
+	---@type Vector3 movement
+	local movementVector3 = self.movement:clone()
+
+	if dampen then
+		self:dampenMovement(movementVector3)
+	end
+
+	self.currentPosition.x = self.currentPosition.x + movementVector3.x
+	self.currentPosition.y = self.currentPosition.y + movementVector3.y
+
+	print("applyMovement: currentPosition: "..tostring(self.currentPosition))
+	print("applyMovement: movement: "..tostring(self.movement))
+	print("applyMovement: targetPos: "..tostring(self.targetPos))
+
+	self.emitter:setPos(self.currentPosition.x,self.currentPosition.y,self.currentPosition.z)
+end
+
+
+function eHelicopter:dampenMovement()
+
+	self.movement:set(
+	--[[x]](movement.x * math.max(0.1,((self.targetPos.x - self.currentPosition.x) / self.targetPos.x))),
+	--[[y]](movement.y * math.max(0.1,((self.targetPos.y - self.currentPosition.y) / self.targetPos.y))),
+	--[[z]](self.currentPosition.z)
+	)
+end
+
+
+---@param destination Vector3
+---@param dampen boolean
+function eHelicopter:moveToPosition(destination, dampen)
+
+	if destination then
+		self:aimAtTarget(destination)
+	end
+
+	self:applyMovement(dampen)
+end
+
+
+---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
+function eHelicopter:launch(targetedPlayer)
+
+	self:initPos()
 
 	if not targetedPlayer then
 		--the -1 is to offset playerIDs starting at 0
@@ -55,126 +182,34 @@ function eHelicopter.launch(targetedPlayer)
 		print("no targetedPlayer")
 		return
 	end
+	
+	print("launch: currentPosition: "..tostring(self.currentPosition))
 
-	eHelicopter.aimAtTarget()
+	print("launch: target:"..targetedPlayer:getDescriptor():getSurname().."  (x: "..targetedPlayer:getX().." y: "..targetedPlayer:getY()..")")
 
-	print("targetedPlayer: "..targetedPlayer:getDescriptor():getForename().." "..targetedPlayer:getDescriptor()
-			:getSurname().." (pos:"..targetedPlayer:getX()..","..targetedPlayer:getY())
+	self.targetPos = Vector3.new(targetedPlayer:getX(),targetedPlayer:getY(),self.currentPosition.z)
 
-	eHelicopter.targetPos:set(targetedPlayer:getX(),targetedPlayer:getY(),eHelicopter.currentPosition.z)
+	self:aimAtTarget()
 
-	eHelicopter.emitter = getWorld():getFreeEmitter(eHelicopter.currentPosition.x, eHelicopter.currentPosition.y, eHelicopter.currentPosition.z)
-	if not eHelicopter.emitter then print("no emitter found") end
-	--eHelicopter.emitter:playSound("Helicopter", getSquare(eHelicopter.currentPosition.x, eHelicopter.currentPosition.y, eHelicopter.currentPosition.z))
+	print("launch: targetPos: "..tostring(self.targetPos))
 
-	Events.OnTick.Add(eHelicopter.update)
-end
+	self.emitter = getWorld():getFreeEmitter(self.currentPosition.x, self.currentPosition.y, self.currentPosition.z)
+	if not self.emitter then print("no emitter found") end
+	--self.emitter:playSound("Helicopter", getSquare(self.currentPosition.x, self.currentPosition.y, self.currentPosition.z))
 
-
-function eHelicopter.isInBounds()
-
-	if ( eHelicopter.currentPosition.x <= MAX_XY and
-			eHelicopter.currentPosition.x >= MIN_XY and
-			eHelicopter.currentPosition.y <= MAX_XY and
-			eHelicopter.currentPosition.y >= MIN_XY ) then
-		return true
-	end
-	return false
-end
-
-
-function eHelicopter.update()
-
-	eHelicopter.moveToPosition(eHelicopter.targetPos, true)
-
-	if not eHelicopter.isInBounds() then
-		eHelicopter.unlaunch()
-	end
-end
-
-
-function eHelicopter.unlaunch()
-
-	Events.OnTick.Remove(eHelicopter.update)
-	eHelicopter.emitter.stopAll()
-end
-
-
----Rewriting Vector3.aimAt to use Vector3
----@param currentPos Vector3
----@param target Vector3
----@return Vector3
-function eHelicopter.ehe_aimAt(currentPos,target)
-
-	---@type Vector3 movement
-	local movementVector3 = Vector3.new()
-
-	local direction = Math:atan2((target.y - currentPos.y), (target.x - currentPos.x))
-	local length = Math:sqrt(currentPos.x * currentPos.x + currentPos.y * currentPos.y)
-
-	movementVector3:setLengthAndDirection(direction, length)
-	movementVector3.z = eHelicopter.currentPosition.z
-
-	return movementVector3
-end
-
-
-function eHelicopter.aimAtTarget()
-
-	print("eHelicopter.currentPosition: "..tostring(eHelicopter.currentPosition))
-	print("eHelicopter.targetPos: "..tostring(eHelicopter.targetPos))
-
-	eHelicopter.movement:set(eHelicopter.ehe_aimAt(eHelicopter.currentPosition,eHelicopter.targetPos))
-
-	print("eHelicopter.movement: "..tostring(eHelicopter.movement))
-
-	eHelicopter.movement:normalize()
-	eHelicopter.movement:setLength(eHelicopter.speed)
-end
-
-
----@param dampen boolean
-function eHelicopter.applyMovement(dampen)
-
-	---@type Vector3 movement
-	local movementVector3 = eHelicopter.movement:clone()
-
-	if dampen then
-		eHelicopter.dampenMovement(movementVector3)
-	end
-
-	eHelicopter.currentPosition:add(movementVector3)
-
-	print("HELI: X:"..eHelicopter.currentPosition.x .."  Y:"..eHelicopter.currentPosition.y)
-
-	eHelicopter.emitter:setPos(eHelicopter.currentPosition.x,eHelicopter.currentPosition.y,eHelicopter.currentPosition.z)
-end
-
-
----@param movement Vector3
-function eHelicopter.dampenMovement(movement)
-
-	--movement:set((movement.x * math.max(0.1,((eHelicopter.targetPos.x - eHelicopter.currentPosition.x) / eHelicopter.targetPos.x))), (movement.y * math.max(0.1,((eHelicopter.targetPos.y - eHelicopter.currentPosition.y) / eHelicopter.targetPos.y))), (eHelicopter.currentPosition.z))
-end
-
-
----@param destination Vector3
----@param dampen boolean
-function eHelicopter.moveToPosition(destination, dampen)
-
-	if destination then
-		eHelicopter.aimAtTarget(destination)
-	end
-
-	eHelicopter.applyMovement(dampen)
+	Events.OnTick.Add(self.update)
 end
 
 
 --- Used only for testing purposes
 Events.OnCustomUIKey.Add(function(key)
 if key == Keyboard.KEY_0 then
-	print("0 key pressed :')")
-	eHelicopter.launch()
+	print("0 key pressed")
+
+	---@type eHelicopter heli
+	local heli = eHelicopter:new()
+	heli:launch()
+
 	--elseif key == Keyboard.KEY_9 then---add different behaviors + send away
 	--	if eHelicopter.emitter then
 	--		eHelicopter.emitter.stopAll()
