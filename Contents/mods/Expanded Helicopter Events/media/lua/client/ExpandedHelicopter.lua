@@ -72,8 +72,6 @@ function eHelicopter:initPos()
 	end
 
 	self.currentPosition:set(initX, initY, self.height)
-	print("initPos: currentPosition: xy +z  "..Vector3GetX(self.currentPosition)..","..Vector3GetX(self.currentPosition)..","..self.height)
-
 end
 
 
@@ -92,16 +90,8 @@ end
 ---@return Vector3
 function eHelicopter:ehe_aimAt(newTargetPos)
 
-	print("applyMovement: currentPosition: "..tostring(self.currentPosition))
-	print("applyMovement: movement: "..tostring(self.movement))
-	print("applyMovement: targetPos: "..tostring(self.targetPos))
-	print("applyMovement: newTargetPos: "..tostring(newTargetPos))
-
-	---@type float
 	local direction = math.atan(Vector3GetY(newTargetPos) - Vector3GetY(self.currentPosition), Vector3GetX(newTargetPos) - Vector3GetX(self.currentPosition))
-	---@type float
 	local length = math.sqrt(Vector3GetX(self.currentPosition) * Vector3GetX(self.currentPosition) + Vector3GetY(self.currentPosition) * Vector3GetY(self.currentPosition))
-
 	local new_x = math.cos(direction) * length
 	local new_y = math.sin(direction) * length
 
@@ -110,18 +100,10 @@ end
 
 
 function eHelicopter:aimAtTarget()
-
 	---@type Vector3 aimedVector3
 	local aimedVector3 = self:ehe_aimAt(self.targetPos)
 
-	print("aimAtTarget: aimedVector3: "..tostring(aimedVector3))
-
 	self.movement:set(aimedVector3)
-
-	print("aimAtTarget: currentPosition: "..tostring(self.currentPosition))
-	print("aimAtTarget: targetPos: "..tostring(self.targetPos))
-	print("aimAtTarget: movement: "..tostring(self.movement))
-
 	self.movement:normalize()
 	self.movement:setLength(self.speed)
 end
@@ -129,7 +111,6 @@ end
 
 ---@param dampen boolean
 function eHelicopter:applyMovement(dampen)
-
 	---@type Vector3 movement
 	local movementVector3 = self.movement:clone()
 
@@ -138,11 +119,6 @@ function eHelicopter:applyMovement(dampen)
 	end
 
 	self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(movementVector3), Vector3GetY(self.currentPosition) + Vector3GetY(movementVector3), self.height)
-
-	print("applyMovement: currentPosition: "..tostring(self.currentPosition))
-	print("applyMovement: movement: "..tostring(self.movement))
-	print("applyMovement: targetPos: "..tostring(self.targetPos))
-
 	self.emitter:setPos(Vector3GetX(self.currentPosition),Vector3GetY(self.currentPosition),self.height)
 end
 
@@ -212,6 +188,10 @@ end
 function eHelicopter:update()
 
 	self:moveToPosition(self.targetPos, true)
+
+	print("applyMovement: currentPosition: "..tostring(self.currentPosition))
+	print("applyMovement: movement: "..tostring(self.movement))
+	print("applyMovement: targetPos: "..tostring(self.targetPos))
 
 	if not self:isInBounds() then
 		self:unlaunch()
