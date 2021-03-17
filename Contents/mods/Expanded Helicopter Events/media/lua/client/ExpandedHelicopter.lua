@@ -1,5 +1,5 @@
 ---@class eHelicopter
----@field targetPos Vector3
+---@field target IsoMovingObject | IsoPlayer | IsoGameCharacter
 ---@field movement Vector3 consider this as a kind of velocity (direction and speed)
 ---@field currentPosition Vector3
 ---@field speed number
@@ -7,10 +7,9 @@
 ---@field ID number
 
 eHelicopter = {}
-eHelicopter.targetPos = Vector3.new()
 eHelicopter.movement = Vector3.new()
 eHelicopter.currentPosition = Vector3.new()
-eHelicopter.speed = 20
+eHelicopter.speed = 10
 eHelicopter.height = 20
 eHelicopter.ID = 0
 
@@ -23,31 +22,21 @@ end
 
 MAX_XY = 15000
 MIN_XY = 0
+ALL_HELICOPTERS = {}
 
 
---- This is the equivalent of a getter for Vector3---
-function smashShmector(pointToString)
-	--example: java.awt.Point[x=12345,y=12345]
-	pointToString = string.gsub(pointToString, "java.awt.Point%[x=", "")
-	pointToString = string.gsub(pointToString, "y=", "")
-	pointToString = string.gsub(pointToString, "%]", "")
-	return pointToString
-end
-
+--- These is the equivalent of getters for Vector3---
+--"Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
 ---@param ShmectorTree Vector3
----@return number x of ShmectorTree
+---@return float x of ShmectorTree
 function Vector3GetX(ShmectorTree)
-	local point = smashShmector(tostring(ShmectorTree:toAwtPoint()))
-	local x,_ = point:match("^(.+),(.+)$")
-	return tonumber(x)
+	return string.match(tostring(ShmectorTree), "%(X%: (.-)%, Y%: ")
 end
 
 ---@param ShmectorTree Vector3
----@return number y of ShmectorTree
+---@return float y of ShmectorTree
 function Vector3GetY(ShmectorTree)
-	local point = smashShmector(tostring(ShmectorTree:toAwtPoint()))
-	local _,y = point:match("^(.+),(.+)$")
-	return tonumber(y)
+	return string.match(tostring(ShmectorTree), "%, Y%: (.-)%) %(")
 end
 
 
@@ -77,72 +66,93 @@ end
 
 function eHelicopter:isInBounds()
 
-	if Vector3GetX(self.currentPosition) <= MAX_XY and Vector3GetX(self.currentPosition) >= MIN_XY and Vector3GetY(self.currentPosition) <= MAX_XY and Vector3GetY(self.currentPosition) >= MIN_XY then
+	local h_x = tonumber(Vector3GetX(self.currentPosition))
+	local h_y = tonumber(Vector3GetY(self.currentPosition))
+
+	if h_x <= MAX_XY and h_x >= MIN_XY and h_y <= MAX_XY and h_y >= MIN_XY then
 		return true
 	end
 
 	return false
 end
 
+function eHelicopter:getDistanceToTarget()
 
----Rewriting Vector3.aimAt to use Vector3 rather than Vector2
----@param newTargetPos Vector3
----@return Vector3
-function eHelicopter:ehe_aimAt(newTargetPos)
+	local a = (self.target:getX() - Vector3GetX(self.currentPosition))*(self.target:getX() - Vector3GetX(self.currentPosition))
+	local b = (self.target:getY() - Vector3GetY(self.currentPosition))*(self.target:getY() - Vector3GetY(self.currentPosition))
 
-	local direction = math.atan(Vector3GetY(newTargetPos) - Vector3GetY(self.currentPosition), Vector3GetX(newTargetPos) - Vector3GetX(self.currentPosition))
-	local length = math.sqrt(Vector3GetX(self.currentPosition) * Vector3GetX(self.currentPosition) + Vector3GetY(self.currentPosition) * Vector3GetY(self.currentPosition))
-	local new_x = math.cos(direction) * length
-	local new_y = math.sin(direction) * length
-
-	return Vector3.new(new_x, new_y, self.height)
-end
-
-
-function eHelicopter:aimAtTarget()
-	---@type Vector3 aimedVector3
-	local aimedVector3 = self:ehe_aimAt(self.targetPos)
-
-	self.movement:set(aimedVector3)
-	self.movement:normalize()
-	self.movement:setLength(self.speed)
-end
-
-
----@param dampen boolean
-function eHelicopter:applyMovement(dampen)
-	---@type Vector3 movement
-	local movementVector3 = self.movement:clone()
-
-	if dampen then
-		self:dampenMovement(movementVector3)
-	end
-
-	self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(movementVector3), Vector3GetY(self.currentPosition) + Vector3GetY(movementVector3), self.height)
-	self.emitter:setPos(Vector3GetX(self.currentPosition),Vector3GetY(self.currentPosition),self.height)
+	return math.sqrt(a+b)
 end
 
 
 function eHelicopter:dampenMovement()
-
-	self.movement:set(
-	--[[x]](Vector3GetX(self.movement) * math.max(0.1,((Vector3GetX(self.targetPos) - Vector3GetX(self.currentPosition)) / Vector3GetX(self.targetPos)))),
-	--[[y]](Vector3GetY(self.movement) * math.max(0.1,((Vector3GetY(self.targetPos) - Vector3GetY(self.currentPosition)) / Vector3GetY(self.targetPos)))),
-	--[[z]](self.height)
+	return Vector3.new(
+			(Vector3GetX(self.movement) * math.max(0.1,((self.target:getX() - Vector3GetX(self.currentPosition)) / self.target:getX()))),
+			(Vector3GetY(self.movement) * math.max(0.1,((self.target:getY() - Vector3GetY(self.currentPosition)) / self.target:getY()))),
+			(self.height)
 	)
 end
 
+--[[
+public Vector3 aimAt(Vector2 var1) {
+	this.setLengthAndDirection(this.angleTo(var1), this.getLength());
+	return this;
+}
 
----@param destination Vector3
----@param dampen boolean
-function eHelicopter:moveToPosition(destination, dampen)
+public float angleTo(Vector2 var1) {
+	return (float)Math.atan2((double)(var1.y - this.y), (double)(var1.x - this.x));
+}
 
-	if destination then
-		self:aimAtTarget(destination)
-	end
+public float getLength() {
+	float var1 = this.getLengthSq();
+	return (float)Math.sqrt((double)var1);
+}
 
-	self:applyMovement(dampen)
+public float getLengthSq() {
+	return this.x * this.x + this.y * this.y + this.z * this.z;
+}
+
+public Vector3 setLengthAndDirection(float var1, float var2) {
+	this.x = (float)(Math.cos((double)var1) * (double)var2);
+	this.y = (float)(Math.sin((double)var1) * (double)var2);
+	return this;
+}
+
+]]
+
+function eHelicopter:aimAtTarget()
+
+	local angleTo = math.atan(self.target:getY() - Vector3GetY(self.currentPosition), self.target:getX() - Vector3GetX(self.currentPosition))
+	local getLength = math.sqrt(Vector3GetX(self.currentPosition) * Vector3GetX(self.currentPosition) + Vector3GetY(self.currentPosition) * Vector3GetY(self.currentPosition))
+
+	--setLengthAndDirection()
+	local new_x = math.cos(angleTo) * getLength
+	local new_y = math.sin(angleTo) * getLength
+
+	local local_movement = Vector3.new(new_x, new_y, self.height)
+
+	local_movement:normalize()
+	local_movement:setLength(self.speed)
+
+	return local_movement
 end
+
+
+---@param Aim boolean
+---@param dampen boolean
+function eHelicopter:moveToPosition(Aim, dampen)
+
+	if Aim then self.movement:set(self:aimAtTarget()) end
+
+	---@type Vector3
+	local velocity = self.movement:clone()
+
+	if dampen then velocity:set(self:dampenMovement()) end
+
+	self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(velocity), Vector3GetY(self.currentPosition) + Vector3GetY(velocity), self.height)
+	self.emitter:setPos(tonumber(Vector3GetX(self.currentPosition)),tonumber(Vector3GetY(self.currentPosition)),self.height)
+end
+
 
 
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
@@ -157,18 +167,28 @@ function eHelicopter:launch(targetedPlayer)
 		targetedPlayer = getSpecificPlayer(randNumFromActivePlayers)
 	end
 
-	self.targetPos:set(targetedPlayer:getX(),targetedPlayer:getY(),self.height)
-	self:aimAtTarget()
+	self.target = targetedPlayer
 
-	self.emitter = getWorld():getFreeEmitter(Vector3GetX(self.currentPosition), Vector3GetY(self.currentPosition), self.height)
-	self.emitter:playSound("Helicopter", getSquare(Vector3GetX(self.currentPosition), Vector3GetY(self.currentPosition), self.height))
+	local e_x = tonumber(Vector3GetX(self.currentPosition))
+	local e_y = tonumber(Vector3GetY(self.currentPosition))
+
+	self.emitter = getWorld():getFreeEmitter(e_x, e_y, self.height)
+	self.emitter:playSoundImpl("Helicopter", getSquare(e_x, e_y, self.height))
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
 end
 
 
-ALL_HELICOPTERS = {}
+function eHelicopter:update()
+
+	self:moveToPosition(true, true)
+
+	if not self:isInBounds() then
+		self:unlaunch()
+	end
+end
+
 
 function updateAllHelicopters()
 	for key,_ in ipairs(ALL_HELICOPTERS) do
@@ -178,28 +198,25 @@ function updateAllHelicopters()
 	end
 end
 
-
-function eHelicopter:unlaunch()
-	ALL_HELICOPTERS[self.ID] = nil
-	self.emitter.stopAll()
-end
-
-
-function eHelicopter:update()
-
-	self:moveToPosition(self.targetPos, true)
-
-	print("applyMovement: currentPosition: "..tostring(self.currentPosition))
-	print("applyMovement: movement: "..tostring(self.movement))
-	print("applyMovement: targetPos: "..tostring(self.targetPos))
-
-	if not self:isInBounds() then
-		self:unlaunch()
+--- debug purposes
+function helicopterReport()
+	for key,_ in ipairs(ALL_HELICOPTERS) do
+		---@type eHelicopter heli
+		local heli = ALL_HELICOPTERS[key]
+		print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition).."), ".."(dist: "..heli:getDistanceToTarget()..")")
+		print("TARGET: (x:"..heli.target:getX()..", y:"..heli.target:getY()..")")
 	end
 end
 
-Events.OnTick.Add(updateAllHelicopters)
 
+function eHelicopter:unlaunch()
+	ALL_HELICOPTERS[self.ID] = nil
+	self.emitter:stopAll()
+end
+
+
+Events.OnTick.Add(updateAllHelicopters)
+Events.EveryTenMinutes.Add(helicopterReport)
 
 --- Used only for testing purposes
 Events.OnCustomUIKey.Add(function(key)

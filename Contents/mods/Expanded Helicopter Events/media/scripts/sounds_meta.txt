@@ -6,7 +6,7 @@ module Base
 		clip
 		{
 			event = Meta/Helicopter/Helicopter,
-			distanceMax = 125,
+			distanceMax = 500,
 		}
 	}
 }
