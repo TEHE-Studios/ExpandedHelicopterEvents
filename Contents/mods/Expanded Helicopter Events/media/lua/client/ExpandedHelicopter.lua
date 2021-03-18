@@ -1,7 +1,7 @@
 ---@class eHelicopter
 ---@field target IsoMovingObject | IsoPlayer | IsoGameCharacter
----@field movement Vector3 consider this as a kind of velocity (direction and speed)
----@field currentPosition Vector3
+---@field movement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
+---@field currentPosition Vector3 @consider this a pair of coordinates
 ---@field speed number
 ---@field emitter FMODSoundEmitter
 ---@field ID number
@@ -20,13 +20,14 @@ function eHelicopter:new()
 	return o
 end
 
+--Global Vars
 MAX_XY = 15000
 MIN_XY = 0
 ALL_HELICOPTERS = {}
 
 
---- These is the equivalent of getters for Vector3---
---"Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
+---These is the equivalent of getters for Vector3
+--tostring output of a Vector3: "Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
 ---@param ShmectorTree Vector3
 ---@return float x of ShmectorTree
 function Vector3GetX(ShmectorTree)
@@ -39,13 +40,14 @@ function Vector3GetY(ShmectorTree)
 	return string.match(tostring(ShmectorTree), "%, Y%: (.-)%) %(")
 end
 
-
+---Initialize Position
 function eHelicopter:initPos()
 	---@type float
 	local initX = 0
 	---@type float
 	local initY = 0
-
+	
+	--Very scuffed way to grab a point along the "egde"
 	if ZombRand(101) > 50 then --50/50
 		initX = MAX_XY
 		initY = ZombRand(MIN_XY,MAX_XY)
@@ -93,6 +95,7 @@ function eHelicopter:dampenMovement()
 	)
 end
 
+---These are the currently broken methods for Vector3 due to references to Vector2 which is not properly exposed.
 --[[
 public Vector3 aimAt(Vector2 var1) {
 	this.setLengthAndDirection(this.angleTo(var1), this.getLength());
@@ -120,6 +123,8 @@ public Vector3 setLengthAndDirection(float var1, float var2) {
 
 ]]
 
+---Aim eHelicopter at it's defined target
+---@return Vector3
 function eHelicopter:aimAtTarget()
 
 	local angleTo = math.atan(self.target:getY() - Vector3GetY(self.currentPosition), self.target:getX() - Vector3GetX(self.currentPosition))
@@ -128,8 +133,8 @@ function eHelicopter:aimAtTarget()
 	--setLengthAndDirection()
 	local new_x = math.cos(angleTo) * getLength
 	local new_y = math.sin(angleTo) * getLength
-
-	local local_movement = Vector3.new(new_x, new_y, self.height)
+	
+	local local_movement = Vector3.new(new_x, new_y, 0)
 
 	local_movement:normalize()
 	local_movement:setLength(self.speed)
@@ -148,8 +153,13 @@ function eHelicopter:moveToPosition(Aim, dampen)
 	local velocity = self.movement:clone()
 
 	if dampen then velocity:set(self:dampenMovement()) end
-
-	self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(velocity), Vector3GetY(self.currentPosition) + Vector3GetY(velocity), self.height)
+	
+	--The actual movement occurs here when `velocity` is added to `self.currentPosition`
+	self.currentPosition:add(velocity)
+	--del this later
+	--self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(velocity), Vector3GetY(self.currentPosition) + Vector3GetY(velocity), self.height)
+	
+	--Move emitter to postion - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.emitter:setPos(tonumber(Vector3GetX(self.currentPosition)),tonumber(Vector3GetY(self.currentPosition)),self.height)
 end
 
@@ -168,10 +178,12 @@ function eHelicopter:launch(targetedPlayer)
 	end
 
 	self.target = targetedPlayer
-
+	
+	-- emitters do not work with lua's psuedo floats - tonumber() is needed
 	local e_x = tonumber(Vector3GetX(self.currentPosition))
 	local e_y = tonumber(Vector3GetY(self.currentPosition))
-
+	
+	--note: look into why getfreeemitter and playsound need a location
 	self.emitter = getWorld():getFreeEmitter(e_x, e_y, self.height)
 	self.emitter:playSoundImpl("Helicopter", getSquare(e_x, e_y, self.height))
 
@@ -181,7 +193,7 @@ end
 
 
 function eHelicopter:update()
-
+	
 	self:moveToPosition(true, true)
 
 	if not self:isInBounds() then
