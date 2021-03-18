@@ -155,9 +155,9 @@ function eHelicopter:moveToPosition(Aim, dampen)
 	if dampen then velocity:set(self:dampenMovement()) end
 	
 	--The actual movement occurs here when `velocity` is added to `self.currentPosition`
-	self.currentPosition:add(velocity)
-	--del this later
-	--self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(velocity), Vector3GetY(self.currentPosition) + Vector3GetY(velocity), self.height)
+	-- Can't use Vector3:add() since it returns a Vector2
+	---self.currentPosition:add(velocity)
+	self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(velocity), Vector3GetY(self.currentPosition) + Vector3GetY(velocity), self.height)
 	
 	--Move emitter to postion - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.emitter:setPos(tonumber(Vector3GetX(self.currentPosition)),tonumber(Vector3GetY(self.currentPosition)),self.height)
@@ -229,6 +229,7 @@ end
 
 Events.OnTick.Add(updateAllHelicopters)
 Events.EveryTenMinutes.Add(helicopterReport)
+
 
 --- Used only for testing purposes
 Events.OnCustomUIKey.Add(function(key)
