@@ -129,9 +129,9 @@ function eHelicopter:aimAtTarget()
 	local movement_y = Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)
 	
 	--difference between target's and current's x/y
-	local local_movement = Vector3.new(movement_x,movement_y)
+	local local_movement = Vector3.new(movement_x,movement_y,0)
 	
-	local report = "aimAtTarget: ".."x:"..movement_arg0.." y:"..movement_arg1
+	local report = "aimAtTarget: ".."x:"..movement_x.." y:"..movement_y
 	
 	--normalize (shrink) the difference
 	local_movement:normalize()
