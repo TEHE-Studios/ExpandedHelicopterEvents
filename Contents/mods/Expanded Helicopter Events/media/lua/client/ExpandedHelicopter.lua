@@ -120,47 +120,20 @@ end
 ---Aim eHelicopter at it's defined target
 ---@return Vector3
 function eHelicopter:aimAtTarget()
-	
-	---source: https://gamedev.stackexchange.com/questions/23447/moving-from-ax-y-to-bx1-y1-with-constant-speed
-	
+
 	self:setTargetPos()
 
 	local movement_x = Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)
 	local movement_y = Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)
-	
+
 	--difference between target's and current's x/y
 	local local_movement = Vector3.new(movement_x,movement_y,0)
-	
-	local report = "aimAtTarget: ".."x:"..movement_x.." y:"..movement_y
-	
 	--normalize (shrink) the difference
 	local_movement:normalize()
-	
-	report = report.."   ".." n:x:"..Vector3GetX(local_movement).." n:y:"..Vector3GetY(local_movement)
-	
 	--multiply the difference based on speed
 	local_movement:setLength(self.speed)
-	
-	report = report.."   ".." sl:x:"..Vector3GetX(local_movement).." sl:y:"..Vector3GetY(local_movement)
-	
-	print(report)
-	
+
 	return local_movement
-	
-	--[[
-	self:setTargetPos()
-
-	local local_movement = Vector3.new()
-
-	local atan_arg0 = Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)
-	local atan_arg1 = Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)
-	local angleTo = math.atan(atan_arg0, atan_arg1)
-
-	local_movement:setLengthAndDirection(angleTo,self.currentPosition:getLength())
-	local_movement:normalize()
-	local_movement:setLength(self.speed)
-
-	return local_movement]]
 end
 
 
