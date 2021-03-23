@@ -12,7 +12,7 @@ eHelicopter.target = nil
 eHelicopter.targetPosition = Vector3.new()
 eHelicopter.lastMovement = Vector3.new()
 eHelicopter.currentPosition = Vector3.new()
-eHelicopter.speed = 25
+eHelicopter.speed = 3
 eHelicopter.height = 20
 eHelicopter.ID = 0
 
@@ -36,6 +36,7 @@ ALL_HELICOPTERS = {}
 function Vector3GetX(ShmectorTree)
 	return string.match(tostring(ShmectorTree), "%(X%: (.-)%, Y%: ")
 end
+
 
 ---@param ShmectorTree Vector3
 ---@return float y of ShmectorTree
@@ -90,7 +91,6 @@ function eHelicopter:isInBounds()
 	return false
 end
 
-
 function eHelicopter:getDistanceToTarget()
 
 	local a = Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)
@@ -103,8 +103,8 @@ end
 ---@param movement Vector3
 function eHelicopter:dampen(movement)
 	return movement:set(
-		(Vector3GetX(movement) * math.min(0.25, math.abs((Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)) / Vector3GetX(self.targetPosition)))),
-		(Vector3GetY(movement) * math.min(0.25, math.abs((Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)) / Vector3GetY(self.targetPosition)))),
+		(Vector3GetX(movement) * math.min(0.5, math.abs((Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)) / Vector3GetX(self.targetPosition)))),
+		(Vector3GetY(movement) * math.min(0.5, math.abs((Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)) / Vector3GetY(self.targetPosition)))),
 		(self.height)
 	)
 end
@@ -140,33 +140,34 @@ end
 ---@param aim boolean
 ---@param dampen boolean
 function eHelicopter:moveToPosition(aim, dampen)
-	
 
 	---@type Vector3
 	local velocity
 
-	if aim then
+	if aim and self.target then
 		velocity = self:aimAtTarget()
 		self.lastMovement:set(velocity)
+		if dampen then
+			velocity = self:dampen(velocity)
+		end
 	else
 		velocity = self.lastMovement:clone()
 	end
 
-	if dampen then
-		velocity = self:dampen(velocity)
-	end
-	
-	--The actual movement occurs here when `velocity` is added to `self.currentPosition`
-	-- Can't use Vector3:add() since it returns a Vector2
-	---self.currentPosition:add(velocity)
-	self.currentPosition:set(Vector3GetX(self.currentPosition) + Vector3GetX(velocity), Vector3GetY(self.currentPosition) + Vector3GetY(velocity), self.height)
+	--account for sped up time
+	local timeSpeed = getGameSpeed()
+	local v_x = Vector3GetX(velocity)*timeSpeed
+	local v_y = Vector3GetY(velocity)*timeSpeed
 
+	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
+	self.currentPosition:set(Vector3GetX(self.currentPosition) + v_x, Vector3GetY(self.currentPosition) + v_y, self.height)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.emitter:setPos(tonumber(Vector3GetX(self.currentPosition)),tonumber(Vector3GetY(self.currentPosition)),self.height)
+	--virtual sound event to attract zombies
+	addSound(nil, e_x, e_y, 0, 500, 500)
 
 	self:Report(aim, dampen)
 end
-
 
 
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
@@ -186,7 +187,7 @@ function eHelicopter:launch(targetedPlayer)
 	-- emitters do not work with lua's pseudo floats - tonumber() is needed
 	local e_x = tonumber(Vector3GetX(self.currentPosition))
 	local e_y = tonumber(Vector3GetY(self.currentPosition))
-	
+
 	--note: look into why getFreeEmitter and playSoundImpl even need a location
 	self.emitter = getWorld():getFreeEmitter(e_x, e_y, self.height)
 	self.emitter:playSoundImpl("Helicopter", getSquare(e_x, e_y, self.height))
@@ -198,11 +199,13 @@ end
 
 function eHelicopter:update()
 
-	if self:getDistanceToTarget() <= 1 then
+	--threshold for reaching player should be eHelicopter.speed * getGameSpeed
+	if self:getDistanceToTarget() <= (self.speed*getGameSpeed()) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-	else
-		self:moveToPosition(true, true)
+		self.target = nil
 	end
+
+	self:moveToPosition(true, false)
 
 	if not self:isInBounds() then
 		self:unlaunch()
@@ -217,6 +220,7 @@ function updateAllHelicopters()
 		heli:update()
 	end
 end
+
 
 --- debug purposes -- this will flood your output
 function eHelicopter:Report(aim, dampen)
