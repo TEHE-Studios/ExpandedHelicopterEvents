@@ -4,7 +4,7 @@
 ---@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
 ---@field currentPosition Vector3 @consider this a pair of coordinates
 ---@field speed number
----@field emitter FMODSoundEmitter
+---@field emitter FMODSoundEmitter | BaseSoundEmitter
 ---@field ID number
 
 eHelicopter = {}
@@ -164,7 +164,7 @@ function eHelicopter:moveToPosition(aim, dampen)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.emitter:setPos(tonumber(Vector3GetX(self.currentPosition)),tonumber(Vector3GetY(self.currentPosition)),self.height)
 	--virtual sound event to attract zombies
-	addSound(nil, e_x, e_y, 0, 500, 500)
+	addSound(nil, v_x, v_y, 0, 500, 500)
 
 	self:Report(aim, dampen)
 end
