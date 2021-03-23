@@ -156,13 +156,13 @@ function eHelicopter:moveToPosition(aim, dampen)
 
 	--account for sped up time
 	local timeSpeed = getGameSpeed()
-	local v_x = Vector3GetX(velocity)*timeSpeed
-	local v_y = Vector3GetY(velocity)*timeSpeed
+	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
+	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
 
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-	self.currentPosition:set(Vector3GetX(self.currentPosition) + v_x, Vector3GetY(self.currentPosition) + v_y, self.height)
+	self.currentPosition:set(v_x, v_y, self.height)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
-	self.emitter:setPos(tonumber(Vector3GetX(self.currentPosition)),tonumber(Vector3GetY(self.currentPosition)),self.height)
+	self.emitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 500, 500)
 
@@ -190,7 +190,7 @@ function eHelicopter:launch(targetedPlayer)
 
 	--note: look into why getFreeEmitter and playSoundImpl even need a location
 	self.emitter = getWorld():getFreeEmitter(e_x, e_y, self.height)
-	self.emitter:playSoundImpl("Helicopter", getSquare(e_x, e_y, self.height))
+	self.emitter:playSound("Helicopter", e_x, e_y, self.height)
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
