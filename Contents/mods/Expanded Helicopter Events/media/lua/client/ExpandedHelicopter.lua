@@ -12,7 +12,7 @@ eHelicopter.target = nil
 eHelicopter.targetPosition = Vector3.new()
 eHelicopter.lastMovement = Vector3.new()
 eHelicopter.currentPosition = Vector3.new()
-eHelicopter.speed = 3
+eHelicopter.speed = 2
 eHelicopter.height = 20
 eHelicopter.ID = 0
 
@@ -103,8 +103,8 @@ end
 ---@param movement Vector3
 function eHelicopter:dampen(movement)
 	return movement:set(
-		(Vector3GetX(movement) * math.min(0.5, math.abs((Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)) / Vector3GetX(self.targetPosition)))),
-		(Vector3GetY(movement) * math.min(0.5, math.abs((Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)) / Vector3GetY(self.targetPosition)))),
+		(Vector3GetX(movement) * math.min(0.25, math.abs((Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)) / Vector3GetX(self.targetPosition)))),
+		(Vector3GetY(movement) * math.min(0.25, math.abs((Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)) / Vector3GetY(self.targetPosition)))),
 		(self.height)
 	)
 end
@@ -166,7 +166,7 @@ function eHelicopter:moveToPosition(aim, dampen)
 
 	local heliVolume = 50
 	--slight delay between randomly picked announcements
-	if not self.lastAnnouncedTime or self.lastAnnouncedTime+2 <= getTimestamp() then
+	if not self.lastAnnouncedTime or self.lastAnnouncedTime+4 <= getTimestamp() then
 		self.lastAnnouncedTime = getTimestamp()
 		heliVolume = heliVolume+20
 		self:announce("PleaseReturnToYourHomes")
@@ -207,8 +207,10 @@ end
 
 eHelicopter.lastAnnouncedTime = nil
 eHelicopter.announcements = {
+	--["lineID"] = {"soundScript1", "soundScript2"},
 	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1c", "eHeli_lineM_1d"}
 }
+
 
 ---@param specificLine string
 function eHelicopter:announce(specificLine)
