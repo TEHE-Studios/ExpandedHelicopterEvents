@@ -164,7 +164,7 @@ function eHelicopter:moveToPosition(aim, dampen)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.emitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
 	--virtual sound event to attract zombies
-	addSound(nil, v_x, v_y, 0, 500, 500)
+	addSound(nil, v_x, v_y, 0, 250, 50)
 
 	self:Report(aim, dampen)
 end
@@ -190,7 +190,7 @@ function eHelicopter:launch(targetedPlayer)
 
 	--note: look into why getFreeEmitter and playSoundImpl even need a location
 	self.emitter = getWorld():getFreeEmitter(e_x, e_y, self.height)
-	self.emitter:playSound("Helicopter", e_x, e_y, self.height)
+	self.emitter:playSound("eHelicopter", e_x, e_y, self.height)
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS

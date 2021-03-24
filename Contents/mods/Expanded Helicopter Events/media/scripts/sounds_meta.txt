@@ -1,12 +1,16 @@
 module Base
 {
-	sound Helicopter
+	sound eHelicopter
 	{
-		category = Meta,
+		category = World,
+		loop = true,
+		is3D = true,
 		clip
 		{
-			event = Meta/Helicopter/Helicopter,
+			file = media/sound/heli_loop.wav,
+			distanceMin = 10,
 			distanceMax = 1500,
+			volume = 3.0,
 		}
 	}
 }
