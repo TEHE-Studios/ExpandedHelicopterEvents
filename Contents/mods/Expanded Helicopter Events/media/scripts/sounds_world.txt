@@ -1,0 +1,65 @@
+module Base
+{
+	sound eHelicopter
+	{
+		category = World,
+		loop = true,
+		is3D = true,
+		clip
+		{
+			file = media/sound/heli_loop.ogg,
+			distanceMax = 1500,
+		}
+	}
+
+
+	sound eHeli_lineM_1a
+	{
+		category = World,
+		loop = false,
+		is3D = true,
+		clip
+		{
+			file = media/sound/heli_lineM_1a.ogg,
+			distanceMax = 1500,
+		}
+	}
+	
+	sound eHeli_lineM_1b
+	{
+		category = World,
+		loop = false,
+		is3D = true,
+		clip
+		{
+			file = media/sound/heli_lineM_1b.ogg,
+			distanceMax = 1500,
+		}
+	}
+
+	sound eHeli_lineM_1c
+	{
+		category = World,
+		loop = false,
+		is3D = true,
+		clip
+		{
+			file = media/sound/heli_lineM_1c.ogg,
+			distanceMax = 1500,
+		}
+	}
+
+	sound eHeli_lineM_1d
+	{
+		category = World,
+		loop = false,
+		is3D = true,
+		clip
+		{
+			file = media/sound/heli_lineM_1d.ogg,
+			distanceMax = 1500,
+		}
+	}
+
+
+}

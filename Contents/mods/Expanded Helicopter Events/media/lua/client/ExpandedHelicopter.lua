@@ -163,8 +163,17 @@ function eHelicopter:moveToPosition(aim, dampen)
 	self.currentPosition:set(v_x, v_y, self.height)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.emitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
+
+	local heliVolume = 50
+	--slight delay between randomly picked announcements
+	if not self.lastAnnouncedTime or self.lastAnnouncedTime+2 <= getTimestamp() then
+		self.lastAnnouncedTime = getTimestamp()
+		heliVolume = heliVolume+20
+		self:announce("PleaseReturnToYourHomes")
+	end
+
 	--virtual sound event to attract zombies
-	addSound(nil, v_x, v_y, 0, 250, 50)
+	addSound(nil, v_x, v_y, 0, 250, heliVolume)
 
 	self:Report(aim, dampen)
 end
@@ -194,6 +203,24 @@ function eHelicopter:launch(targetedPlayer)
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
+end
+
+eHelicopter.lastAnnouncedTime = nil
+eHelicopter.announcements = {
+	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1c", "eHeli_lineM_1d"}
+}
+
+---@param specificLine string
+function eHelicopter:announce(specificLine)
+
+	local line = eHelicopter.announcements[specificLine]
+
+	--if not line or #line <= 0 then return end
+
+	local announcePick = line[ZombRand(#line)+1]
+	--if not announcePick return end
+
+	self.emitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
 end
 
 
