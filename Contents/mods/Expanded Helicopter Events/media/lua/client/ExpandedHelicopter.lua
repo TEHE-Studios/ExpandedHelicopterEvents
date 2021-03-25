@@ -75,36 +75,53 @@ end
 
 
 ---Initialize Position
-function eHelicopter:initPos()
+---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter
+function eHelicopter:initPos(targetedPlayer)
 
-	--Very scuffed way to grab a point along the 'edge' of the map.
-	--initX/initY starts off as anything within map's range of MIN_XY and MAX_XY
-	--50/50 chance to clamp initX -OR- initY to edge, then another 50/50 as to if that edge is MIN_XY -OR- MAX_XY
-	
+	--player's location
+	local tpX = targetedPlayer:getX()
+	local tpY = targetedPlayer:getY()
+
+	--assign a random spawn point for the helicopter within a radius of 500 from the player
+	--one of these values will be set to the MIN_XY/MAX_XY depending on which is closer to an "edge" (MIN_XY/MAX_XY)
+	--these values are being clamped to not go passed these edges
 	---@type float
-	local initX = ZombRand(MIN_XY,MAX_XY)
+	local initX = ZombRand(math.max(MIN_XY, tpX-500), math.min(MAX_XY, tpX+500))
 	---@type float
-	local initY = ZombRand(MIN_XY,MAX_XY)
-	
-	if ZombRand(101) > 50 then 
-		if ZombRand(101) > 50 then 
-			initX = MIN_XY 
-		else 
-			initX = MAX_XY 
-		end
-	else 
-		if ZombRand(101) > 50 then 
-			initY = MIN_XY 
-		else 
-			initY = MAX_XY 
-		end
+	local initY = ZombRand(math.max(MIN_XY, tpY-500), math.min(MAX_XY, tpY+500))
+
+	--X/YDiff is a list of the following:
+	-- [1]=diff between initX/Y and MIN_XY,
+	-- [2]=diff between initX/Y and MAX_XY,
+	-- [3]=0, the smaller of [1] and [2]
+	-- [4]=0, stores the MIN_XY/MAX_XY based on [3]
+	local XDiff = {math.abs(initX-MIN_XY), math.abs(initX-MAX_XY), 0, 0}
+	local YDiff = {math.abs(initY-MIN_XY), math.abs(initY-MAX_XY), 0, 0}
+
+	if XDiff[1] < XDiff[2] then
+		XDiff[3] = XDiff[1]
+		XDiff[4] = MIN_XY
+	else
+		XDiff[3] = XDiff[2]
+		XDiff[4] = MAX_XY
 	end
 
-	--clamp
-	initX = math.max(MIN_XY, math.min(MAX_XY, initX))
-	initY = math.max(MIN_XY, math.min(MAX_XY, initY))
+	if YDiff[1] < YDiff[2] then
+		YDiff[3] = YDiff[1]
+		YDiff[4] = MIN_XY
+	else
+		YDiff[3] = YDiff[2]
+		YDiff[4] = MAX_XY
+	end
+
+	if XDiff[3] < YDiff[3] then
+		initX = XDiff[4]
+	else
+		initY = YDiff[4]
+	end
 
 	self.currentPosition:set(initX, initY, self.height)
+	
 end
 
 
@@ -210,8 +227,6 @@ end
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedPlayer)
 
-	self:initPos()
-
 	if not targetedPlayer then
 		--the -1 is to offset playerIDs starting at 0
 		local numActivePlayers = getNumActivePlayers()-1
@@ -220,6 +235,7 @@ function eHelicopter:launch(targetedPlayer)
 	end
 
 	self.target = targetedPlayer
+	self:initPos(self.target)
 	
 	-- emitters do not work with lua's pseudo floats - tonumber() is needed
 	local e_x = tonumber(Vector3GetX(self.currentPosition))
