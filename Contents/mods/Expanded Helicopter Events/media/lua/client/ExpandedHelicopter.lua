@@ -16,6 +16,22 @@ eHelicopter.speed = 2
 eHelicopter.height = 20
 eHelicopter.ID = 0
 
+eHelicopter.lastAnnouncedTime = nil
+eHelicopter.announcements = {
+	--["lineID"] = {"soundScript1", "soundScript2"},
+	--- "LineID" has to be the written out audio for the delay in between lines to be properly calculated
+	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
+	["TheSituationIsUnderControl"] = {"eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
+	["ThisAreaIsNowInQuarantine"] = {"eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
+	["ACurfewIsNowInEffect"] = {"eHeli_lineM_4a", "eHeli_lineM_4b", "eHeli_lineM_4c", "eHeli_lineM_4d"},
+	["DoNotTryToLeaveTheArea"] = {"eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
+	["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {"eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
+	["LockAllEntrancesAndRemainInDoors"] = {"eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
+	["AvoidContactWithOthers"] = {"eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
+	["DoNotTryToReachOutToFamilyOrRelatives"] = {"eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
+	["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {"eHeli_lineM_10a", "eHeli_lineM_10b"}
+}
+
 function eHelicopter:new()
 
 	local o = {}
@@ -27,6 +43,7 @@ end
 MAX_XY = 15000
 MIN_XY = 1
 ALL_HELICOPTERS = {}
+
 
 
 ---These is the equivalent of getters for Vector3
@@ -166,8 +183,7 @@ function eHelicopter:moveToPosition(aim, dampen)
 
 	local heliVolume = 50
 	--slight delay between randomly picked announcements
-	if not self.lastAnnouncedTime or self.lastAnnouncedTime+4 <= getTimestamp() then
-		self.lastAnnouncedTime = getTimestamp()
+	if not self.lastAnnouncedTime or self.lastAnnouncedTime <= getTimestamp() then
 		heliVolume = heliVolume+20
 		self:announce()--"PleaseReturnToYourHomes")
 	end
@@ -206,39 +222,35 @@ function eHelicopter:launch(targetedPlayer)
 end
 
 
-eHelicopter.lastAnnouncedTime = nil
-eHelicopter.announcements = {
-	--["lineID"] = {"soundScript1", "soundScript2"},
-	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
-	["TheSituationIsUnderControl"] = {"eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
-	["ThisAreaIsNowInQuarantine"] = {"eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
-	["ACurfewIsNowInEffect"] = {"eHeli_lineM_4a", "eHeli_lineM_4b", "eHeli_lineM_4c", "eHeli_lineM_4d"},
-	["DoNotTryToLeaveTheArea"] = {"eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
-	["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {"eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
-	["LockAllEntrancesAndRemainInDoors"] = {"eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
-	["AvoidContactWithOthers"] = {"eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
-	["DoNotTryToReachOutToFamilyOrRelatives"] = {"eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
-	["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {"eHeli_lineM_10a", "eHeli_lineM_10b"}
-}
-
 ---@param specificLine string
 function eHelicopter:announce(specificLine)
 
-	if #eHelicopter.announcements <= 0 then return end
+	if not specificLine then
+		local ann_length = 0
 
-	local line
+		for _,_ in pairs(eHelicopter.announcements) do
+			ann_length = ann_length+1
+		end
 
-	if specificLine then
-		line = eHelicopter.announcements[specificLine]
-	else
-		line = eHelicopter.announcements[ZombRand(#eHelicopter.announcements)+1]
+		local ann_num = ZombRand(ann_length)+1
+
+		for k,_ in pairs(eHelicopter.announcements) do
+			print("announce: ann_num:"..ann_num.." #eHelicopter.announcements:"..#eHelicopter.announcements)
+			ann_num = ann_num-1
+			if ann_num <= 0 then
+				specificLine = k
+				break
+			end
+		end
 	end
 
-	if not line or #line <= 0 then return end
-
+	local line = eHelicopter.announcements[specificLine]
 	local announcePick = line[ZombRand(#line)+1]
-	if not announcePick then return end
+	local lineDelay = math.floor(string.len(specificLine)/10)*2
 
+	print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
+
+	self.lastAnnouncedTime = getTimestamp()+lineDelay
 	self.emitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
 end
 
