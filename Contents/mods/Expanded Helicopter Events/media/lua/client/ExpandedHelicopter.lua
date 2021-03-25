@@ -53,7 +53,7 @@ end
 
 --Global Vars
 MAX_XY = 15000
-MIN_XY = 1
+MIN_XY = 2500
 ALL_HELICOPTERS = {}
 
 
