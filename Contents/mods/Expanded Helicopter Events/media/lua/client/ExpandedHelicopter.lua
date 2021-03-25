@@ -32,6 +32,18 @@ eHelicopter.announcements = {
 	["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {"eHeli_lineM_10a", "eHeli_lineM_10b"}
 }
 
+
+eHelicopter.announcementLength = -1
+function eHelicopter.setAnnouncementLength()
+	local ann_length = 0
+
+	for _,_ in pairs(eHelicopter.announcements) do
+		ann_length = ann_length+1
+	end
+
+	eHelicopter.announcementLength = ann_length
+end
+
 function eHelicopter:new()
 
 	local o = {}
@@ -226,16 +238,15 @@ end
 function eHelicopter:announce(specificLine)
 
 	if not specificLine then
-		local ann_length = 0
 
-		for _,_ in pairs(eHelicopter.announcements) do
-			ann_length = ann_length+1
+		if eHelicopter.announcementLength == -1 then
+			eHelicopter.setAnnouncementLength()
 		end
 
-		local ann_num = ZombRand(ann_length)+1
+		local ann_num = ZombRand(eHelicopter.announcementLength)+1
 
 		for k,_ in pairs(eHelicopter.announcements) do
-			print("announce: ann_num:"..ann_num.." #eHelicopter.announcements:"..#eHelicopter.announcements)
+			--print("announce: ann_num:"..ann_num.." #eHelicopter.announcements:"..#eHelicopter.announcements)
 			ann_num = ann_num-1
 			if ann_num <= 0 then
 				specificLine = k
@@ -248,8 +259,7 @@ function eHelicopter:announce(specificLine)
 	local announcePick = line[ZombRand(#line)+1]
 	local lineDelay = math.floor(string.len(specificLine)/10)*2
 
-	print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
-
+	--print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
 	self.lastAnnouncedTime = getTimestamp()+lineDelay
 	self.emitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
 end
