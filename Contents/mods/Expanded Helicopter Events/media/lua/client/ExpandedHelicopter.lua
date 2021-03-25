@@ -169,7 +169,7 @@ function eHelicopter:moveToPosition(aim, dampen)
 	if not self.lastAnnouncedTime or self.lastAnnouncedTime+4 <= getTimestamp() then
 		self.lastAnnouncedTime = getTimestamp()
 		heliVolume = heliVolume+20
-		self:announce("PleaseReturnToYourHomes")
+		self:announce()--"PleaseReturnToYourHomes")
 	end
 
 	--virtual sound event to attract zombies
@@ -221,16 +221,23 @@ eHelicopter.announcements = {
 	["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {"eHeli_lineM_10a", "eHeli_lineM_10b"}
 }
 
-
 ---@param specificLine string
 function eHelicopter:announce(specificLine)
 
-	local line = eHelicopter.announcements[specificLine]
+	if #eHelicopter.announcements <= 0 then return end
 
-	--if not line or #line <= 0 then return end
+	local line
+
+	if specificLine then
+		line = eHelicopter.announcements[specificLine]
+	else
+		line = eHelicopter.announcements[ZombRand(#eHelicopter.announcements)+1]
+	end
+
+	if not line or #line <= 0 then return end
 
 	local announcePick = line[ZombRand(#line)+1]
-	--if not announcePick return end
+	if not announcePick then return end
 
 	self.emitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
 end
