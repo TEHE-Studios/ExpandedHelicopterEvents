@@ -205,10 +205,20 @@ function eHelicopter:launch(targetedPlayer)
 	self.ID = #ALL_HELICOPTERS
 end
 
+
 eHelicopter.lastAnnouncedTime = nil
 eHelicopter.announcements = {
 	--["lineID"] = {"soundScript1", "soundScript2"},
-	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1c", "eHeli_lineM_1d"}
+	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
+	["TheSituationIsUnderControl"] = {"eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
+	["ThisAreaIsNowInQuarantine"] = {"eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
+	["ACurfewIsNowInEffect"] = {"eHeli_lineM_4a", "eHeli_lineM_4b", "eHeli_lineM_4c", "eHeli_lineM_4d"},
+	["DoNotTryToLeaveTheArea"] = {"eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
+	["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {"eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
+	["LockAllEntrancesAndRemainInDoors"] = {"eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
+	["AvoidContactWithOthers"] = {"eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
+	["DoNotTryToReachOutToFamilyOrRelatives"] = {"eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
+	["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {"eHeli_lineM_10a", "eHeli_lineM_10b"}
 }
 
 
