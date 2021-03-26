@@ -15,34 +15,8 @@ eHelicopter.currentPosition = Vector3.new()
 eHelicopter.speed = 2
 eHelicopter.height = 20
 eHelicopter.ID = 0
-
 eHelicopter.lastAnnouncedTime = nil
-eHelicopter.announcements = {
-	--["lineID"] = {"soundScript1", "soundScript2"},
-	--- "LineID" has to be the written out audio for the delay in between lines to be properly calculated
-	["PleaseReturnToYourHomes"] = {"eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
-	["TheSituationIsUnderControl"] = {"eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
-	["ThisAreaIsNowInQuarantine"] = {"eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
-	["ACurfewIsNowInEffect"] = {"eHeli_lineM_4a", "eHeli_lineM_4b", "eHeli_lineM_4c", "eHeli_lineM_4d"},
-	["DoNotTryToLeaveTheArea"] = {"eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
-	["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {"eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
-	["LockAllEntrancesAndRemainInDoors"] = {"eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
-	["AvoidContactWithOthers"] = {"eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
-	["DoNotTryToReachOutToFamilyOrRelatives"] = {"eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
-	["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {"eHeli_lineM_10a", "eHeli_lineM_10b"}
-}
-
-
-eHelicopter.announcementLength = -1
-function eHelicopter.setAnnouncementLength()
-	local ann_length = 0
-
-	for _,_ in pairs(eHelicopter.announcements) do
-		ann_length = ann_length+1
-	end
-
-	eHelicopter.announcementLength = ann_length
-end
+eHelicopter.announcerVoice = nil
 
 function eHelicopter:new()
 
@@ -55,7 +29,6 @@ end
 MAX_XY = 15000
 MIN_XY = 2500
 ALL_HELICOPTERS = {}
-
 
 
 ---These is the equivalent of getters for Vector3
@@ -121,7 +94,7 @@ function eHelicopter:initPos(targetedPlayer)
 	end
 
 	self.currentPosition:set(initX, initY, self.height)
-	
+
 end
 
 
@@ -247,6 +220,25 @@ function eHelicopter:launch(targetedPlayer)
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
+
+	self:chooseVoice()
+end
+
+
+---@param specificVoice string
+function eHelicopter:chooseVoice(specificVoice)
+
+	if not specificVoice then
+		local randAnn = ZombRand(eHelicopter_announcerCount)+1
+		for k,_ in pairs(eHelicopter_announcers) do
+			randAnn = randAnn-1
+			if randAnn <= 0 then
+				specificVoice = k
+			end
+		end
+	end
+
+	self.announcerVoice = eHelicopter_announcers[specificVoice]
 end
 
 
@@ -255,13 +247,9 @@ function eHelicopter:announce(specificLine)
 
 	if not specificLine then
 
-		if eHelicopter.announcementLength == -1 then
-			eHelicopter.setAnnouncementLength()
-		end
+		local ann_num = ZombRand(self.announcerVoice["LineCount"])+1
 
-		local ann_num = ZombRand(eHelicopter.announcementLength)+1
-
-		for k,_ in pairs(eHelicopter.announcements) do
+		for k,_ in pairs(self.announcerVoice["Lines"]) do
 			--print("announce: ann_num:"..ann_num.." #eHelicopter.announcements:"..#eHelicopter.announcements)
 			ann_num = ann_num-1
 			if ann_num <= 0 then
@@ -271,7 +259,7 @@ function eHelicopter:announce(specificLine)
 		end
 	end
 
-	local line = eHelicopter.announcements[specificLine]
+	local line = self.announcerVoice["Lines"][specificLine]
 	local announcePick = line[ZombRand(#line)+1]
 	local lineDelay = math.floor(string.len(specificLine)/10)*2
 

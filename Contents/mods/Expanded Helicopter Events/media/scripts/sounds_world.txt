@@ -37,4 +37,15 @@ module Base {
     sound eHeli_lineM_10a { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineM_10a.ogg, distanceMax = 1500, } }
     sound eHeli_lineM_10b { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineM_10b.ogg, distanceMax = 1500, } }
 
+    sound eHeli_lineF_1 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_1.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_2 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_2.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_3 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_3.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_4 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_4.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_5 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_5.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_6 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_6.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_7 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_7.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_8 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_8.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_9 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_9.ogg, distanceMax = 1500, } }
+    sound eHeli_lineF_10 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_10.ogg, distanceMax = 1500, } }
+
  }
