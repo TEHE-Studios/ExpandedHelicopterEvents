@@ -197,6 +197,12 @@ function eHelicopter:moveToPosition(aim, dampen)
 end
 
 
+function eHelicopter:getIsoCoords()
+	local ehX, ehY, ehZ = tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height
+	return ehX, ehY, ehZ
+end
+
+
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedPlayer)
 
@@ -209,14 +215,12 @@ function eHelicopter:launch(targetedPlayer)
 
 	self.target = targetedPlayer
 	self:initPos(self.target)
-	
-	-- emitters do not work with lua's pseudo floats - tonumber() is needed
-	local e_x = tonumber(Vector3GetX(self.currentPosition))
-	local e_y = tonumber(Vector3GetY(self.currentPosition))
+
+	local e_x, e_y, e_z = self:getIsoCoords()
 
 	--note: look into why getFreeEmitter and playSoundImpl even need a location
-	self.emitter = getWorld():getFreeEmitter(e_x, e_y, self.height)
-	self.emitter:playSound("eHelicopter", e_x, e_y, self.height)
+	self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
+	self.emitter:playSound("eHelicopter", e_x, e_y, e_z)
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
@@ -234,6 +238,7 @@ function eHelicopter:chooseVoice(specificVoice)
 			randAnn = randAnn-1
 			if randAnn <= 0 then
 				specificVoice = k
+				break
 			end
 		end
 	end
