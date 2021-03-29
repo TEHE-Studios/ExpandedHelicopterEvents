@@ -1,6 +1,7 @@
 ---@class eHelicopter
----@field target IsoMovingObject | IsoPlayer | IsoGameCharacter
+---@field target IsoObject
 ---@field targetPosition Vector3 @Vector3 "position" of target
+---@field lockedOn boolean
 ---@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
 ---@field currentPosition Vector3 @consider this a pair of coordinates
 ---@field speed number
@@ -8,8 +9,10 @@
 ---@field ID number
 
 eHelicopter = {}
+eHelicopter.preflightDistance = nil
 eHelicopter.target = nil
 eHelicopter.targetPosition = Vector3.new()
+eHelicopter.lockedOn = true
 eHelicopter.lastMovement = Vector3.new()
 eHelicopter.currentPosition = Vector3.new()
 eHelicopter.speed = 2
@@ -55,13 +58,13 @@ function eHelicopter:initPos(targetedPlayer)
 	local tpX = targetedPlayer:getX()
 	local tpY = targetedPlayer:getY()
 
-	--assign a random spawn point for the helicopter within a radius of 500 from the player
+	--assign a random spawn point for the helicopter within a radius of 300 from the player
 	--one of these values will be set to the MIN_XY/MAX_XY depending on which is closer to an "edge" (MIN_XY/MAX_XY)
 	--these values are being clamped to not go passed these edges
 	---@type float
-	local initX = ZombRand(math.max(MIN_XY, tpX-500), math.min(MAX_XY, tpX+500))
+	local initX = ZombRand(math.max(MIN_XY, tpX-300), math.min(MAX_XY, tpX+300))
 	---@type float
-	local initY = ZombRand(math.max(MIN_XY, tpY-500), math.min(MAX_XY, tpY+500))
+	local initY = ZombRand(math.max(MIN_XY, tpY-300), math.min(MAX_XY, tpY+300))
 
 	--X/YDiff is a list of the following:
 	-- [1]=diff between initX/Y and MIN_XY,
@@ -121,11 +124,12 @@ end
 
 ---@param movement Vector3
 function eHelicopter:dampen(movement)
-	return movement:set(
-		(Vector3GetX(movement) * math.min(0.25, math.abs((Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)) / Vector3GetX(self.targetPosition)))),
-		(Vector3GetY(movement) * math.min(0.25, math.abs((Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)) / Vector3GetY(self.targetPosition)))),
-		(self.height)
-	)
+
+	local dampenFactor = math.max(3.0, math.min(0.1, self:getDistanceToTarget() / self.preflightDistance))
+	local x_movement = Vector3GetX(movement) * dampenFactor
+	local y_movement = Vector3GetY(movement) * dampenFactor
+
+	return movement:set(x_movement,y_movement,self.height)
 end
 
 
@@ -156,21 +160,22 @@ function eHelicopter:aimAtTarget()
 end
 
 
----@param aim boolean
+---@param re_aim boolean
 ---@param dampen boolean
-function eHelicopter:moveToPosition(aim, dampen)
+function eHelicopter:move(re_aim, dampen)
 
 	---@type Vector3
 	local velocity
 
-	if aim and self.target then
+	if re_aim then
 		velocity = self:aimAtTarget()
 		self.lastMovement:set(velocity)
-		if dampen then
-			velocity = self:dampen(velocity)
-		end
 	else
 		velocity = self.lastMovement:clone()
+	end
+
+	if dampen then
+		velocity = self:dampen(velocity)
 	end
 
 	--account for sped up time
@@ -193,7 +198,7 @@ function eHelicopter:moveToPosition(aim, dampen)
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
 
-	self:Report(aim, dampen)
+	self:Report(re_aim, dampen)
 end
 
 
@@ -214,7 +219,10 @@ function eHelicopter:launch(targetedPlayer)
 	end
 
 	self.target = targetedPlayer
+	self:setTargetPos()
 	self:initPos(self.target)
+
+	self.preflightDistance = self:getDistanceToTarget()
 
 	local e_x, e_y, e_z = self:getIsoCoords()
 
@@ -279,10 +287,12 @@ function eHelicopter:update()
 	--threshold for reaching player should be eHelicopter.speed * getGameSpeed
 	if self:getDistanceToTarget() <= (self.speed*getGameSpeed()) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-		self.target = nil
+		self.lockedOn = false
+		self.target = getSquare(self.target:getX(),self.target:getY(),self.target:getZ())
+		self:setTargetPos()
 	end
 
-	self:moveToPosition(true, false)
+	self:move(self.lockedOn, true)
 
 	if not self:isInBounds() then
 		self:unlaunch()
@@ -300,10 +310,10 @@ end
 
 
 --- debug purposes -- this will flood your output
-function eHelicopter:Report(aim, dampen)
+function eHelicopter:Report(aiming, dampen)
 	---@type eHelicopter heli
 	local heli = self
-	local report = " a:"..tostring(aim).." d:"..tostring(dampen).." "
+	local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." "
 	print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	print("(dist: "..heli:getDistanceToTarget()..")"..report)
 	print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
