@@ -1,4 +1,5 @@
 ---@class eHelicopter
+---@field preflightDistance number
 ---@field target IsoObject
 ---@field targetPosition Vector3 @Vector3 "position" of target
 ---@field lockedOn boolean
@@ -7,6 +8,8 @@
 ---@field speed number
 ---@field emitter FMODSoundEmitter | BaseSoundEmitter
 ---@field ID number
+---@field lastAnnouncedTime number
+---@field announcerVoice string
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -52,48 +55,52 @@ end
 
 ---Initialize Position
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter
-function eHelicopter:initPos(targetedPlayer)
+---@param ignoreEdgePriority boolean Do not select the closer edge for flight paths.
+function eHelicopter:initPos(targetedPlayer,ignoreEdgePriority)
 
 	--player's location
 	local tpX = targetedPlayer:getX()
 	local tpY = targetedPlayer:getY()
 
 	--assign a random spawn point for the helicopter within a radius of 300 from the player
-	--one of these values will be set to the MIN_XY/MAX_XY depending on which is closer to an "edge" (MIN_XY/MAX_XY)
-	--these values are being clamped to not go passed these edges
-	---@type float
-	local initX = ZombRand(math.max(MIN_XY, tpX-300), math.min(MAX_XY, tpX+300))
-	---@type float
-	local initY = ZombRand(math.max(MIN_XY, tpY-300), math.min(MAX_XY, tpY+300))
+	--these values are being clamped to not go passed MIN_XY/MAX edges
+	local offset = 300
+	local initX = ZombRand(math.max(MIN_XY, tpX-offset), math.min(MAX_XY, tpX+offset))
+	local initY = ZombRand(math.max(MIN_XY, tpY-offset), math.min(MAX_XY, tpY+offset))
 
-	--X/YDiff is a list of the following:
-	-- [1]=diff between initX/Y and MIN_XY,
-	-- [2]=diff between initX/Y and MAX_XY,
-	-- [3]=0, the smaller of [1] and [2]
-	-- [4]=0, stores the MIN_XY/MAX_XY based on [3]
-	local XDiff = {math.abs(initX-MIN_XY), math.abs(initX-MAX_XY), 0, 0}
-	local YDiff = {math.abs(initY-MIN_XY), math.abs(initY-MAX_XY), 0, 0}
-
-	if XDiff[1] < XDiff[2] then
-		XDiff[3] = XDiff[1]
-		XDiff[4] = MIN_XY
-	else
-		XDiff[3] = XDiff[2]
-		XDiff[4] = MAX_XY
+	if ignoreEdgePriority then
+		--this takes either initX/initY and makes it either MIN_XY/MAX
+		local initPosXY = {initX, initY}
+		local randEdge = {MIN_XY, MAX_XY}
+		
+		--randEdge stops being a list and becomes a random part of itself
+		randEdge = randEdge[ZombRand(#randEdge)+1]
+		
+		--a random part of initPosXY is set to randEdge
+		initPosXY[ZombRand(#initPosXY)+1] = randEdge
+		
+		self.currentPosition:set(initPosXY[1], initPosXY[2], self.height)
+		
+		return
 	end
-
-	if YDiff[1] < YDiff[2] then
-		YDiff[3] = YDiff[1]
-		YDiff[4] = MIN_XY
+	
+	--Looks for the closest edge to initX and initY to modify it to be along either MIN_XY/MAX_XY
+	--differences between initX and MIN_XY/MAX_XY edge values
+	local X_diffToMin = math.abs(initX-MIN_XY)
+	local X_diffToMax = math.abs(initX-MAX_XY)
+	local Y_diffToMin = math.abs(initY-MIN_XY)
+	local Y_diffToMax = math.abs(initY-MAX_XY)
+	--this list uses X/Y _diff's values as keys storing respective corresponding edges
+	local XY_diffCoresspondingEdges = {[X_diffToMin]=MIN_XY, [X_diffToMax]=MAX_XY, [Y_diffToMin]=MIN_XY, [Y_diffToMax]=MAX_XY}
+	--get the smallest of the four differences
+	local smallestDiff = math.min(X_diffToMin,X_diffToMax,Y_diffToMin,Y_diffToMax)
+	
+	--if the smallest is a X local var then set initX
+	if (smallestDiff = X_diffToMin) or (smallestDiff = X_diffToMax) then
+		initX = XY_diffCoresspondingEdges[smallestDiff]
 	else
-		YDiff[3] = YDiff[2]
-		YDiff[4] = MAX_XY
-	end
-
-	if XDiff[3] < YDiff[3] then
-		initX = XDiff[4]
-	else
-		initY = YDiff[4]
+		--otherwise, set initY
+		initY = XY_diffCoresspondingEdges[smallestDiff]
 	end
 
 	self.currentPosition:set(initX, initY, self.height)
@@ -288,7 +295,7 @@ function eHelicopter:update()
 	if self.lockedOn and self:getDistanceToTarget() <= (self.speed*getGameSpeed()) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 		self.lockedOn = false
-		self.target = getSquare(self.target:getX(),self.target:getY(),self.target:getZ())
+		self.target = getSquare(self.target:getX(),self.target:getY(),0)
 		self:setTargetPos()
 	end
 
