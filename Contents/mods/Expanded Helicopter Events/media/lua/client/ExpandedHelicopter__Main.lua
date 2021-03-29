@@ -18,7 +18,7 @@ eHelicopter.targetPosition = Vector3.new()
 eHelicopter.lockedOn = true
 eHelicopter.lastMovement = Vector3.new()
 eHelicopter.currentPosition = Vector3.new()
-eHelicopter.speed = 2
+eHelicopter.speed = 0.75
 eHelicopter.height = 20
 eHelicopter.ID = 0
 eHelicopter.lastAnnouncedTime = nil
@@ -62,9 +62,9 @@ function eHelicopter:initPos(targetedPlayer,ignoreEdgePriority)
 	local tpX = targetedPlayer:getX()
 	local tpY = targetedPlayer:getY()
 
-	--assign a random spawn point for the helicopter within a radius of 300 from the player
+	--assign a random spawn point for the helicopter within a radius from the player
 	--these values are being clamped to not go passed MIN_XY/MAX edges
-	local offset = 300
+	local offset = 500
 	local initX = ZombRand(math.max(MIN_XY, tpX-offset), math.min(MAX_XY, tpX+offset))
 	local initY = ZombRand(math.max(MIN_XY, tpY-offset), math.min(MAX_XY, tpY+offset))
 
@@ -90,17 +90,17 @@ function eHelicopter:initPos(targetedPlayer,ignoreEdgePriority)
 	local xDiffToMax = math.abs(initX-MAX_XY)
 	local yDiffToMin = math.abs(initY-MIN_XY)
 	local yDiffToMax = math.abs(initY-MAX_XY)
-	--this list uses X/Y _diff's values as keys storing respective corresponding edges
-	local xyDiffCoresspondingEdge = {[xDiffToMin]=MIN_XY, [xDiffToMax]=MAX_XY, [yDiffToMin]=MIN_XY, [yDiffToMax]=MAX_XY}
+	--this list uses xyDiff's values as keys storing respective corresponding edges
+	local xyDiffCorrespondingEdge = {[xDiffToMin]=MIN_XY, [xDiffToMax]=MAX_XY, [yDiffToMin]=MIN_XY, [yDiffToMax]=MAX_XY}
 	--get the smallest of the four differences
 	local smallestDiff = math.min(xDiffToMin,xDiffToMax,yDiffToMin,yDiffToMax)
 	
 	--if the smallest is a X local var then set initX
-	if (smallestDiff = xDiffToMin) or (smallestDiff = xDiffToMax) then
-		initX = xyDiffCoresspondingEdge[smallestDiff]
+	if (smallestDiff == xDiffToMin) or (smallestDiff == xDiffToMax) then
+		initX = xyDiffCorrespondingEdge[smallestDiff]
 	else
 		--otherwise, set initY
-		initY = xyDiffCoresspondingEdge[smallestDiff]
+		initY = xyDiffCorrespondingEdge[smallestDiff]
 	end
 
 	self.currentPosition:set(initX, initY, self.height)
@@ -132,7 +132,7 @@ end
 ---@param movement Vector3
 function eHelicopter:dampen(movement)
 
-	local dampenFactor = math.max(3.0, math.min(0.1, self:getDistanceToTarget() / self.preflightDistance))
+	local dampenFactor = math.max(2.0, math.min(0.1, self:getDistanceToTarget() / self.preflightDistance))
 	local x_movement = Vector3GetX(movement) * dampenFactor
 	local y_movement = Vector3GetY(movement) * dampenFactor
 
@@ -142,7 +142,7 @@ end
 
 function eHelicopter:setTargetPos()
 	if self.target then
-		eHelicopter.targetPosition:set(self.target:getX(), self.target:getY(), self.height)
+		self.targetPosition:set(self.target:getX(), self.target:getY(), self.height)
 	end
 end
 
@@ -237,10 +237,10 @@ function eHelicopter:launch(targetedPlayer)
 	self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
 	self.emitter:playSound("eHelicopter", e_x, e_y, e_z)
 
+	self:chooseVoice()
+
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
-
-	self:chooseVoice()
 end
 
 
@@ -291,8 +291,8 @@ end
 
 function eHelicopter:update()
 
-	--threshold for reaching player should be eHelicopter.speed * getGameSpeed
-	if self.lockedOn and self:getDistanceToTarget() <= (self.speed*getGameSpeed()) then
+	--threshold for reaching player should be self.speed * getGameSpeed
+	if self.lockedOn and (self:getDistanceToTarget() <= ((2*self.speed)*getGameSpeed())) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 		self.lockedOn = false
 		self.target = getSquare(self.target:getX(),self.target:getY(),0)
@@ -316,18 +316,6 @@ function updateAllHelicopters()
 end
 
 
---- debug purposes -- this will flood your output
-function eHelicopter:Report(aiming, dampen)
-	---@type eHelicopter heli
-	local heli = self
-	local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." "
-	print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-	print("(dist: "..heli:getDistanceToTarget()..")"..report)
-	print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
-	print("-----------------------------------------------------------------")
-end
-
-
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 	ALL_HELICOPTERS[self.ID] = nil
@@ -337,6 +325,18 @@ end
 
 Events.OnTick.Add(updateAllHelicopters)
 
+
+
+--- debug purposes -- this will flood your output
+function eHelicopter:Report(aiming, dampen)
+	---@type eHelicopter heli
+	local heli = self
+	local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." s:"..heli.speed.." t:"..getGameSpeed().." "
+	print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	print("(dist: "..heli:getDistanceToTarget().."  "..report)
+	print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
+	print("-----------------------------------------------------------------")
+end
 
 --- Used only for testing purposes
 Events.OnCustomUIKey.Add(function(key)
