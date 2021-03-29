@@ -70,18 +70,28 @@ eHelicopter_announcers = {
 
 }
 
+--Automatically sets announcer count and respective announcer's line count to use in randomized selection
+--This is needed to avoid constant length checks due to the fact Lua does not recognize #length of non-numerated lists
+--TODO: check table.getn(list)
 function setAnnouncementLength()
 	if eHelicopter_announcerCount > 0 then return end
-
+	
+	--total announcers
 	local annCount = 0
+	
+	--for each entry found in announcer list
 	for k,_ in pairs(eHelicopter_announcers) do
 		annCount = annCount+1
 		local line_length = 0
+		
+		--for each entry in announcer's lines list
 		for _,_ in pairs(eHelicopter_announcers[k]["Lines"]) do
 			line_length = line_length+1
 		end
+		--line count is stored
 		eHelicopter_announcers[k]["LineCount"]=line_length
 	end
+	--total announcercount is stored
 	eHelicopter_announcerCount = annCount
 end
 
