@@ -1,7 +1,7 @@
 eHelicopter_announcerCount = 0--calculated automatically
 eHelicopter_announcers = {
 	--name of announcer
-	["Male1"] = {
+	["Raven_Male1"] = {
 		-- ["LineCount"] is calculated automatically
 		["LineCount"] = 0,
 		["Lines"] = {
@@ -21,7 +21,38 @@ eHelicopter_announcers = {
 		}
 	},
 
-	["Female1"] = {
+
+	["Jade_Male_a"] = {
+		["LineCount"] = 0,
+		["Lines"] = {
+			["ThisAreaIsUnderInQuarantineIRepeatThisAreaInUnderQuarantine"] = {"eHeli_Jade_1a"},
+			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {"eHeli_Jade_2a"},
+			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {"eHeli_Jade_3a"},
+		}
+	},
+
+
+	["Jade_Male_b"] = {
+		["LineCount"] = 0,
+		["Lines"] = {
+			["ThisAreaIsUnderInQuarantineIRepeatThisAreaInUnderQuarantine"] = {"eHeli_Jade_1b"},
+			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {"eHeli_Jade_2b"},
+			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {"eHeli_Jade_3b"},
+		}
+	},
+
+
+	["Jade_Male_c"] = {
+		["LineCount"] = 0,
+		["Lines"] = {
+			["ThisAreaIsUnderInQuarantineIRepeatThisAreaInUnderQuarantine"] = {"eHeli_Jade_1c"},
+			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {"eHeli_Jade_2c"},
+			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {"eHeli_Jade_3c"},
+		}
+	},
+
+
+	["Jade_Female1"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
 			["PleaseReturnToYourHomes"] = {"eHeli_lineF_1"},

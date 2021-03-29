@@ -48,4 +48,15 @@ module Base {
     sound eHeli_lineF_9 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_9.ogg, distanceMax = 1500, } }
     sound eHeli_lineF_10 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineF_10.ogg, distanceMax = 1500, } }
 
+    sound eHeli_Jade_1a { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_1a.ogg, distanceMax = 1500, } }
+    sound eHeli_Jade_1b { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_1b.ogg, distanceMax = 1500, } }
+    sound eHeli_Jade_1c { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_1c.ogg, distanceMax = 1500, } }
+
+    sound eHeli_Jade_2a { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_2a.ogg, distanceMax = 1500, } }
+    sound eHeli_Jade_2b { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_2b.ogg, distanceMax = 1500, } }
+    sound eHeli_Jade_2c { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_2c.ogg, distanceMax = 1500, } }
+
+    sound eHeli_Jade_3a { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_3a.ogg, distanceMax = 1500, } }
+    sound eHeli_Jade_3b { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_3b.ogg, distanceMax = 1500, } }
+    sound eHeli_Jade_3c { category = World, loop = false, is3D = true, clip { file = media/sound/Jade_3c.ogg, distanceMax = 1500, } }
  }
