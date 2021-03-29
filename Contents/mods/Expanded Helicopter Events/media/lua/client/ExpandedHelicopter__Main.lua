@@ -86,21 +86,21 @@ function eHelicopter:initPos(targetedPlayer,ignoreEdgePriority)
 	
 	--Looks for the closest edge to initX and initY to modify it to be along either MIN_XY/MAX_XY
 	--differences between initX and MIN_XY/MAX_XY edge values
-	local X_diffToMin = math.abs(initX-MIN_XY)
-	local X_diffToMax = math.abs(initX-MAX_XY)
-	local Y_diffToMin = math.abs(initY-MIN_XY)
-	local Y_diffToMax = math.abs(initY-MAX_XY)
+	local xDiffToMin = math.abs(initX-MIN_XY)
+	local xDiffToMax = math.abs(initX-MAX_XY)
+	local yDiffToMin = math.abs(initY-MIN_XY)
+	local yDiffToMax = math.abs(initY-MAX_XY)
 	--this list uses X/Y _diff's values as keys storing respective corresponding edges
-	local XY_diffCoresspondingEdges = {[X_diffToMin]=MIN_XY, [X_diffToMax]=MAX_XY, [Y_diffToMin]=MIN_XY, [Y_diffToMax]=MAX_XY}
+	local xyDiffCoresspondingEdge = {[xDiffToMin]=MIN_XY, [xDiffToMax]=MAX_XY, [yDiffToMin]=MIN_XY, [yDiffToMax]=MAX_XY}
 	--get the smallest of the four differences
-	local smallestDiff = math.min(X_diffToMin,X_diffToMax,Y_diffToMin,Y_diffToMax)
+	local smallestDiff = math.min(xDiffToMin,xDiffToMax,yDiffToMin,yDiffToMax)
 	
 	--if the smallest is a X local var then set initX
-	if (smallestDiff = X_diffToMin) or (smallestDiff = X_diffToMax) then
-		initX = XY_diffCoresspondingEdges[smallestDiff]
+	if (smallestDiff = xDiffToMin) or (smallestDiff = xDiffToMax) then
+		initX = xyDiffCoresspondingEdge[smallestDiff]
 	else
 		--otherwise, set initY
-		initY = XY_diffCoresspondingEdges[smallestDiff]
+		initY = xyDiffCoresspondingEdge[smallestDiff]
 	end
 
 	self.currentPosition:set(initX, initY, self.height)
