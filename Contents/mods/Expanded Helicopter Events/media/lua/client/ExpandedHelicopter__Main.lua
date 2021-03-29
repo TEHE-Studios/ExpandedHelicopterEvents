@@ -285,7 +285,7 @@ end
 function eHelicopter:update()
 
 	--threshold for reaching player should be eHelicopter.speed * getGameSpeed
-	if self:getDistanceToTarget() <= (self.speed*getGameSpeed()) then
+	if self.lockedOn and self:getDistanceToTarget() <= (self.speed*getGameSpeed()) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 		self.lockedOn = false
 		self.target = getSquare(self.target:getX(),self.target:getY(),self.target:getZ())
