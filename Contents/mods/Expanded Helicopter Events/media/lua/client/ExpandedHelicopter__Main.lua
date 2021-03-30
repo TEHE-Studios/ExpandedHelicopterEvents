@@ -345,7 +345,9 @@ end
 
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-	ALL_HELICOPTERS[self.ID] = nil
+	--ALL_HELICOPTERS[self.ID] = nil
+	--table.remove(self)
+	self.state = "unlaunched"
 	self.emitter:stopAll()
 end
 
