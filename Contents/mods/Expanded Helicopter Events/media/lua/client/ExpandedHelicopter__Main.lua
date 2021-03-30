@@ -56,8 +56,8 @@ end
 
 ---Initialize Position
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter
----@param ignoreEdgePriority boolean Do not select the closer edge for flight paths.
-function eHelicopter:initPos(targetedPlayer,ignoreEdgePriority)
+---@param randomEdge boolean Do not select the closer edge for flight paths.
+function eHelicopter:initPos(targetedPlayer, randomEdge)
 
 	--player's location
 	local tpX = targetedPlayer:getX()
@@ -69,7 +69,7 @@ function eHelicopter:initPos(targetedPlayer,ignoreEdgePriority)
 	local initX = ZombRand(math.max(MIN_XY, tpX-offset), math.min(MAX_XY, tpX+offset))
 	local initY = ZombRand(math.max(MIN_XY, tpY-offset), math.min(MAX_XY, tpY+offset))
 
-	if ignoreEdgePriority then
+	if randomEdge then
 		--this takes either initX/initY and makes it either MIN_XY/MAX
 		local initPosXY = {initX, initY}
 		local randEdge = {MIN_XY, MAX_XY}
