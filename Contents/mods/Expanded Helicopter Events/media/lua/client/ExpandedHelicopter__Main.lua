@@ -380,3 +380,48 @@ Events.OnCustomUIKey.Add(function(key)
 		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 end)
+
+
+--- Used to test all announcements
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_9 then--- test all announcements
+	testAllLines()
+	end
+end)
+
+testAllLines__ALL_LINES = {}
+testAllLines__DELAYS = {}
+testAllLines__lastDemoTime = 0
+function testAllLines()
+	if #testAllLines__ALL_LINES > 0 then return end
+
+	for k,_ in pairs(eHelicopter_announcers) do
+		for _,v2 in pairs(eHelicopter_announcers[k]["Lines"]) do
+			for k3,_ in pairs(v2) do
+				if k3 ~= 1 then
+					table.insert(testAllLines__ALL_LINES, v2[k3])
+					table.insert(testAllLines__DELAYS, v2[1])
+				end
+			end
+		end
+	end
+	table.insert(testAllLines__ALL_LINES, "heli_fire_single")
+	table.insert(testAllLines__DELAYS, 1)
+end
+
+function testAllLinesLOOP()
+	if #testAllLines__ALL_LINES > 0 then
+		if (testAllLines__lastDemoTime <= getTimestamp()) then
+			local line = testAllLines__ALL_LINES[1]
+			local delay = testAllLines__DELAYS[1]+2
+			testAllLines__lastDemoTime = getTimestamp()+delay
+			---@type IsoPlayer | IsoGameCharacter player
+			local player = getSpecificPlayer(0)
+			player:playSound(line)
+			table.remove(testAllLines__ALL_LINES, 1)
+			table.remove(testAllLines__DELAYS, 1)
+		end
+	end
+end
+
+Events.OnTick.Add(testAllLinesLOOP)
