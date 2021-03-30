@@ -30,7 +30,7 @@ eHelicopter.announcerVoice = nil
 eHelicopter.emitter = nil
 eHelicopter.ID = 0
 eHelicopter.height = 20
-eHelicopter.speed = 0.5
+eHelicopter.speed = 0.25
 eHelicopter.topSpeedFactor = 3
 
 
