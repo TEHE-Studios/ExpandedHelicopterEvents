@@ -14,10 +14,10 @@
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
 eHelicopter.target = nil
-eHelicopter.targetPosition = Vector3.new()
-eHelicopter.lastMovement = Vector3.new()
-eHelicopter.currentPosition = Vector3.new()
+eHelicopter.targetPosition = nil
 eHelicopter.state = nil
+eHelicopter.lastMovement = nil
+eHelicopter.currentPosition = nil
 eHelicopter.speed = 0.75
 eHelicopter.height = 20
 eHelicopter.ID = 0
@@ -68,6 +68,8 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	local offset = 500
 	local initX = ZombRand(math.max(MIN_XY, tpX-offset), math.min(MAX_XY, tpX+offset))
 	local initY = ZombRand(math.max(MIN_XY, tpY-offset), math.min(MAX_XY, tpY+offset))
+
+	self.currentPosition = Vector3.new()
 
 	if randomEdge then
 		--this takes either initX/initY and makes it either MIN_XY/MAX
@@ -143,7 +145,14 @@ end
 
 function eHelicopter:setTargetPos()
 	if self.target then
-		self.targetPosition:set(self.target:getX(), self.target:getY(), self.height)
+
+		local tx, ty, tz = self.target:getX(), self.target:getY(), self.height
+
+		if not self.targetPosition then
+			self.targetPosition = Vector3.new(tx, ty, tz)
+		else
+			self.targetPosition:set(tx, ty, tz)
+		end
 	end
 end
 
@@ -158,6 +167,7 @@ function eHelicopter:aimAtTarget()
 	local movement_y = Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)
 
 	--difference between target's and current's x/y
+	---@type Vector3 local_movement
 	local local_movement = Vector3.new(movement_x,movement_y,0)
 	--normalize (shrink) the difference
 	local_movement:normalize()
@@ -177,7 +187,13 @@ function eHelicopter:move(re_aim, dampen)
 
 	if re_aim then
 		velocity = self:aimAtTarget()
-		self.lastMovement:set(velocity)
+
+		if not self.lastMovement then
+			self.lastMovement = Vector3.new(velocity)
+		else
+			self.lastMovement:set(velocity)
+		end
+
 	else
 		velocity = self.lastMovement:clone()
 	end
