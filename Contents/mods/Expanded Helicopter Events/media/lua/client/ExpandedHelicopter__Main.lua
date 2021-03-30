@@ -16,6 +16,7 @@ ALL_HELICOPTERS = {}
 ---@field ID number
 ---@field height number
 ---@field speed number
+---@field topSpeedFactor number speed x this = top "speed"
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -29,11 +30,12 @@ eHelicopter.announcerVoice = nil
 eHelicopter.emitter = nil
 eHelicopter.ID = 0
 eHelicopter.height = 20
-eHelicopter.speed = 0.75
+eHelicopter.speed = 0.5
+eHelicopter.topSpeedFactor = 3
 
 
 ---Do not call this function directly for new helicopters
----@see: function getFreeHelicopter() instead
+---@see getFreeHelicopter instead
 function eHelicopter:new(recycled)
 
 	local o = recycled or {}
@@ -58,7 +60,6 @@ function getFreeHelicopter()
 			---TODO: Check if "recycling" (hard) is necessary
 			---hard recycling would not make use of exsisting Vector3's
 			return heli --eHelicopter:new(heli)
-			break
 		end
 	end
 	return eHelicopter:new()
@@ -164,7 +165,7 @@ end
 ---@param movement Vector3
 function eHelicopter:dampen(movement)
 
-	local dampenFactor = math.max(2.0, math.min(0.1, self:getDistanceToTarget() / self.preflightDistance))
+	local dampenFactor = math.max(self.topSpeedFactor, math.min(0.1, self:getDistanceToTarget() / self.preflightDistance))
 	local x_movement = Vector3GetX(movement) * dampenFactor
 	local y_movement = Vector3GetY(movement) * dampenFactor
 
@@ -339,7 +340,7 @@ end
 function eHelicopter:update()
 
 	--threshold for reaching player should be self.speed * getGameSpeed
-	if (self.state == "passTarget") and (self:getDistanceToTarget() <= ((2*self.speed)*tonumber(getGameSpeed()))) then
+	if (self.state == "passTarget") and (self:getDistanceToTarget() <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 		self.state = "goHome"
 		self.target = getSquare(self.target:getX(),self.target:getY(),0)
