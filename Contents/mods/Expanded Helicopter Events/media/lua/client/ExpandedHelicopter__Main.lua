@@ -36,16 +36,13 @@ eHelicopter.topSpeedFactor = 3
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
-function eHelicopter:new(recycled)
+function eHelicopter:new()
 
-	local o = recycled or {}
+	local o = {}
 	setmetatable(o, self)
 	self.__index = self
-	--if brand new don't reassign into ALL_HELICOPTERS
-	if not recycled then
-		table.insert(ALL_HELICOPTERS, o)
-		o.ID = #ALL_HELICOPTERS
-	end
+	table.insert(ALL_HELICOPTERS, o)
+	o.ID = #ALL_HELICOPTERS
 	
 	return o
 end
@@ -57,9 +54,7 @@ function getFreeHelicopter()
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
 		if heli.state == "unlaunched" then
-			---TODO: Check if "recycling" (hard) is necessary
-			---hard recycling would not make use of exsisting Vector3's
-			return heli --eHelicopter:new(heli)
+			return heli
 		end
 	end
 	return eHelicopter:new()
@@ -280,11 +275,7 @@ function eHelicopter:launch(targetedPlayer)
 
 	local e_x, e_y, e_z = self:getIsoCoords()
 
-	---TODO: look into why getFreeEmitter and playSound even need a location
-	if not self.emitter then
-		self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
-	end
-	
+	self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
 	self.emitter:playSound("eHelicopter", e_x, e_y, e_z)
 	self:chooseVoice()
 	self.state = "passTarget"
