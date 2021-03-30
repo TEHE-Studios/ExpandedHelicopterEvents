@@ -362,8 +362,9 @@ function eHelicopter:Report(aiming, dampen)
 	local heli = self
 	local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." s:"..heli.speed.." t:"..getGameSpeed().." "
 	print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-	print("(dist: "..heli:getDistanceToTarget().."  "..report)
 	print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
+	print("(dist: "..heli:getDistanceToTarget().."  "..report)
+	print("threshold: "..2*heli.speed.." "..2*heli.speed*getGameSpeed())
 	print("-----------------------------------------------------------------")
 end
 
