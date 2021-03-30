@@ -298,8 +298,9 @@ function eHelicopter:announce(specificLine)
 	end
 
 	local line = self.announcerVoice["Lines"][specificLine]
-	local announcePick = line[ZombRand(#line)+1]
-	local lineDelay = math.floor(string.len(specificLine)/10)*2
+	-- +2 because: +1 to offset ZombRand starting on 0, and +1 to account for the first entry being delay
+	local announcePick = line[ZombRand(#line)+2]
+	local lineDelay = line[1]+1
 
 	--print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
 	self.lastAnnouncedTime = getTimestamp()+lineDelay
@@ -356,6 +357,7 @@ Events.OnTick.Add(updateAllHelicopters)
 
 
 
+
 --- debug purposes -- this will flood your output
 function eHelicopter:Report(aiming, dampen)
 	---@type eHelicopter heli
@@ -368,12 +370,13 @@ function eHelicopter:Report(aiming, dampen)
 	print("-----------------------------------------------------------------")
 end
 
---- Used only for testing purposes
+
+--- Used only for testing heli launches
 Events.OnCustomUIKey.Add(function(key)
-if key == Keyboard.KEY_0 then
-	---@type eHelicopter heli
-	local heli = eHelicopter:new()
-	heli:launch()
-	print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	if key == Keyboard.KEY_0 then
+		---@type eHelicopter heli
+		local heli = eHelicopter:new()
+		heli:launch()
+		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 end)
