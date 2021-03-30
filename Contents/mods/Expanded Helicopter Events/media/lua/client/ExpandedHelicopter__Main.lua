@@ -1,3 +1,8 @@
+--GLOBAL_VARIABLES
+MAX_XY = 15000
+MIN_XY = 2500
+ALL_HELICOPTERS = {}
+
 ---@class eHelicopter
 ---@field preflightDistance number
 ---@field target IsoObject
@@ -5,11 +10,12 @@
 ---@field state boolean
 ---@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
 ---@field currentPosition Vector3 @consider this a pair of coordinates
----@field speed number
----@field emitter FMODSoundEmitter | BaseSoundEmitter
----@field ID number
 ---@field lastAnnouncedTime number
 ---@field announcerVoice string
+---@field emitter FMODSoundEmitter | BaseSoundEmitter
+---@field ID number
+---@field height number
+---@field speed number
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -18,24 +24,45 @@ eHelicopter.targetPosition = nil
 eHelicopter.state = nil
 eHelicopter.lastMovement = nil
 eHelicopter.currentPosition = nil
-eHelicopter.speed = 0.75
-eHelicopter.height = 20
-eHelicopter.ID = 0
 eHelicopter.lastAnnouncedTime = nil
 eHelicopter.announcerVoice = nil
+eHelicopter.emitter = nil
+eHelicopter.ID = 0
+eHelicopter.height = 20
+eHelicopter.speed = 0.75
 
-function eHelicopter:new()
 
-	local o = {}
+---Do not call this function directly for new helicopters
+---@see: function getFreeHelicopter() instead
+function eHelicopter:new(recycled)
+
+	local o = recycled or {}
 	setmetatable(o, self)
 	self.__index = self
+	--if brand new don't reassign into ALL_HELICOPTERS
+	if not recycled then
+		table.insert(ALL_HELICOPTERS, o)
+		o.ID = #ALL_HELICOPTERS
+	end
+	
 	return o
 end
 
---Global Vars
-MAX_XY = 15000
-MIN_XY = 2500
-ALL_HELICOPTERS = {}
+
+---returns first "unlaunched" helicopter found in ALL_HELICOPTERS -OR- creates a new instance
+function getFreeHelicopter()
+	for key,_ in ipairs(ALL_HELICOPTERS) do
+		---@type eHelicopter heli
+		local heli = ALL_HELICOPTERS[key]
+		if heli.state == "unlaunched" then
+			---TODO: Check if "recycling" (hard) is necessary
+			---hard recycling would not make use of exsisting Vector3's
+			return heli --eHelicopter:new(heli)
+			break
+		end
+	end
+	return eHelicopter:new()
+end
 
 
 ---These is the equivalent of getters for Vector3
@@ -69,7 +96,9 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	local initX = ZombRand(math.max(MIN_XY, tpX-offset), math.min(MAX_XY, tpX+offset))
 	local initY = ZombRand(math.max(MIN_XY, tpY-offset), math.min(MAX_XY, tpY+offset))
 
-	self.currentPosition = Vector3.new()
+	if not self.currentPosition then
+		self.currentPosition = Vector3.new()
+	end
 
 	if randomEdge then
 		--this takes either initX/initY and makes it either MIN_XY/MAX
@@ -142,18 +171,19 @@ function eHelicopter:dampen(movement)
 	return movement:set(x_movement,y_movement,self.height)
 end
 
-
+---Sets targetPosition (Vector3) to match target (IsoObject)
 function eHelicopter:setTargetPos()
-	if self.target then
-
-		local tx, ty, tz = self.target:getX(), self.target:getY(), self.height
-
-		if not self.targetPosition then
-			self.targetPosition = Vector3.new(tx, ty, tz)
-		else
-			self.targetPosition:set(tx, ty, tz)
-		end
+	if not self.target then
+		return
 	end
+	local tx, ty, tz = self.target:getX(), self.target:getY(), self.height
+
+	if not self.targetPosition then
+		self.targetPosition = Vector3.new(tx, ty, tz)
+	else
+		self.targetPosition:set(tx, ty, tz)
+	end
+	
 end
 
 
@@ -221,7 +251,7 @@ function eHelicopter:move(re_aim, dampen)
 
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
-
+	
 	self:Report(re_aim, dampen)
 end
 
@@ -245,19 +275,17 @@ function eHelicopter:launch(targetedPlayer)
 	self.target = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target)
-
 	self.preflightDistance = self:getDistanceToTarget()
 
 	local e_x, e_y, e_z = self:getIsoCoords()
 
-	--note: look into why getFreeEmitter and playSoundImpl even need a location
-	self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
+	---TODO: look into why getFreeEmitter and playSound even need a location
+	if not self.emitter then
+		self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
+	end
+	
 	self.emitter:playSound("eHelicopter", e_x, e_y, e_z)
-
 	self:chooseVoice()
-
-	table.insert(ALL_HELICOPTERS, self)
-	self.ID = #ALL_HELICOPTERS
 	self.state = "passTarget"
 end
 
@@ -334,7 +362,6 @@ end
 function updateAllHelicopters()
 	for key,_ in ipairs(ALL_HELICOPTERS) do
 		---@type eHelicopter heli
-
 		local heli = ALL_HELICOPTERS[key]
 
 		if heli.state ~= "unlaunched" then
@@ -346,19 +373,16 @@ end
 
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-	--ALL_HELICOPTERS[self.ID] = nil
-	--table.remove(self)
 	self.state = "unlaunched"
 	self.emitter:stopAll()
 end
-
 
 Events.OnTick.Add(updateAllHelicopters)
 
 
 
 
---- debug purposes -- this will flood your output
+--- Debug: Reports helicopter's useful variables -- note: this will flood your output
 function eHelicopter:Report(aiming, dampen)
 	---@type eHelicopter heli
 	local heli = self
@@ -366,7 +390,6 @@ function eHelicopter:Report(aiming, dampen)
 	print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
 	print("(dist: "..heli:getDistanceToTarget().."  "..report)
-	print("threshold: "..2*heli.speed.." "..2*heli.speed*getGameSpeed())
 	print("-----------------------------------------------------------------")
 end
 
@@ -375,7 +398,7 @@ end
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_0 then
 		---@type eHelicopter heli
-		local heli = eHelicopter:new()
+		local heli = getFreeHelicopter()
 		heli:launch()
 		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
@@ -389,9 +412,11 @@ Events.OnCustomUIKey.Add(function(key)
 	end
 end)
 
+--GLOBAL DEBUG VARS
 testAllLines__ALL_LINES = {}
 testAllLines__DELAYS = {}
 testAllLines__lastDemoTime = 0
+
 function testAllLines()
 	if #testAllLines__ALL_LINES > 0 then return end
 
