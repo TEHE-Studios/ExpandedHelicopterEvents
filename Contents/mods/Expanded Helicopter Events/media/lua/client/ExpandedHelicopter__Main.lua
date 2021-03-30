@@ -2,7 +2,7 @@
 ---@field preflightDistance number
 ---@field target IsoObject
 ---@field targetPosition Vector3 @Vector3 "position" of target
----@field lockedOn boolean
+---@field state boolean
 ---@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
 ---@field currentPosition Vector3 @consider this a pair of coordinates
 ---@field speed number
@@ -15,9 +15,9 @@ eHelicopter = {}
 eHelicopter.preflightDistance = nil
 eHelicopter.target = nil
 eHelicopter.targetPosition = Vector3.new()
-eHelicopter.lockedOn = true
 eHelicopter.lastMovement = Vector3.new()
 eHelicopter.currentPosition = Vector3.new()
+eHelicopter.state = nil
 eHelicopter.speed = 0.75
 eHelicopter.height = 20
 eHelicopter.ID = 0
@@ -241,6 +241,7 @@ function eHelicopter:launch(targetedPlayer)
 
 	table.insert(ALL_HELICOPTERS, self)
 	self.ID = #ALL_HELICOPTERS
+	self.state = "passTarget"
 end
 
 
@@ -292,14 +293,19 @@ end
 function eHelicopter:update()
 
 	--threshold for reaching player should be self.speed * getGameSpeed
-	if self.lockedOn and (self:getDistanceToTarget() <= ((2*self.speed)*getGameSpeed())) then
+	if (self.state == "passTarget") and (self:getDistanceToTarget() <= ((2*self.speed)*tonumber(getGameSpeed()))) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-		self.lockedOn = false
+		self.state = "goHome"
 		self.target = getSquare(self.target:getX(),self.target:getY(),0)
 		self:setTargetPos()
 	end
 
-	self:move(self.lockedOn, true)
+	local lockOn = true
+	if self.state == "goHome" then
+		lockOn = false
+	end
+
+	self:move(lockOn, true)
 
 	if not self:isInBounds() then
 		self:unlaunch()
@@ -310,8 +316,12 @@ end
 function updateAllHelicopters()
 	for key,_ in ipairs(ALL_HELICOPTERS) do
 		---@type eHelicopter heli
+
 		local heli = ALL_HELICOPTERS[key]
-		heli:update()
+
+		if heli.state ~= "unlaunched" then
+			heli:update()
+		end
 	end
 end
 
