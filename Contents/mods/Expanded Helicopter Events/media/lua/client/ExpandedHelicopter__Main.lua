@@ -321,7 +321,6 @@ function eHelicopter:announce(specificLine)
 	local announcePick = line[ZombRand(2,#line)]
 	local lineDelay = line[1]
 
-	--print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
 	self.lastAnnouncedTime = getTimestamp()+lineDelay
 	self.emitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
 end
@@ -409,7 +408,12 @@ testAllLines__DELAYS = {}
 testAllLines__lastDemoTime = 0
 
 function testAllLines()
-	if #testAllLines__ALL_LINES > 0 then return end
+	if #testAllLines__ALL_LINES > 0 then
+		testAllLines__ALL_LINES = {}
+		testAllLines__DELAYS = {}
+		testAllLines__lastDemoTime = 0
+		return
+	end
 
 	for k,_ in pairs(eHelicopter_announcers) do
 		for _,v2 in pairs(eHelicopter_announcers[k]["Lines"]) do
