@@ -102,10 +102,10 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 		local randEdge = {MIN_XY, MAX_XY}
 		
 		--randEdge stops being a list and becomes a random part of itself
-		randEdge = randEdge[ZombRand(#randEdge)+1]
+		randEdge = randEdge[ZombRand(1,#randEdge)]
 		
 		--a random part of initPosXY is set to randEdge
-		initPosXY[ZombRand(#initPosXY)+1] = randEdge
+		initPosXY[ZombRand(1, #initPosXY)] = randEdge
 		
 		self.currentPosition:set(initPosXY[1], initPosXY[2], self.height)
 		
@@ -286,7 +286,7 @@ end
 function eHelicopter:chooseVoice(specificVoice)
 
 	if not specificVoice then
-		local randAnn = ZombRand(eHelicopter_announcerCount)+1
+		local randAnn = ZombRand(1, eHelicopter_announcerCount)
 		for k,_ in pairs(eHelicopter_announcers) do
 			randAnn = randAnn-1
 			if randAnn <= 0 then
@@ -305,7 +305,7 @@ function eHelicopter:announce(specificLine)
 
 	if not specificLine then
 
-		local ann_num = ZombRand(self.announcerVoice["LineCount"])+1
+		local ann_num = ZombRand(1,self.announcerVoice["LineCount"])
 
 		for k,_ in pairs(self.announcerVoice["Lines"]) do
 			--print("announce: ann_num:"..ann_num.." #eHelicopter.announcements:"..#eHelicopter.announcements)
@@ -318,8 +318,7 @@ function eHelicopter:announce(specificLine)
 	end
 
 	local line = self.announcerVoice["Lines"][specificLine]
-	-- +2 because: +1 to offset ZombRand starting on 0, and +1 to account for the first entry being delay
-	local announcePick = line[ZombRand(#line)+2]
+	local announcePick = line[ZombRand(2,#line)]
 	local lineDelay = line[1]
 
 	--print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
