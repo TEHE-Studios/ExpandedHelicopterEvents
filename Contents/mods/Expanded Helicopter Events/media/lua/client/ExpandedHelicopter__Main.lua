@@ -79,7 +79,7 @@ end
 
 ---Initialize Position
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter
----@param randomEdge boolean Do not select the closer edge for flight paths.
+---@param randomEdge boolean true = uses random edge, false = prefers closer edge
 function eHelicopter:initPos(targetedPlayer, randomEdge)
 
 	--player's location
@@ -97,14 +97,14 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	end
 
 	if randomEdge then
-		--this takes either initX/initY and makes it either MIN_XY/MAX
+		
 		local initPosXY = {initX, initY}
 		local randEdge = {MIN_XY, MAX_XY}
 		
 		--randEdge stops being a list and becomes a random part of itself
 		randEdge = randEdge[ZombRand(1,#randEdge)]
 		
-		--a random part of initPosXY is set to randEdge
+		--this takes either initX/initY (within initPosXY) and makes it either MIN_XY/MAX (randEdge)
 		initPosXY[ZombRand(1, #initPosXY)] = randEdge
 		
 		self.currentPosition:set(initPosXY[1], initPosXY[2], self.height)
@@ -118,16 +118,16 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	local xDiffToMax = math.abs(initX-MAX_XY)
 	local yDiffToMin = math.abs(initY-MIN_XY)
 	local yDiffToMax = math.abs(initY-MAX_XY)
-	--this list uses xyDiff's values as keys storing respective corresponding edges
+	--this list uses x/yDifftoMin/Max's values as keys storing their respective corresponding edges
 	local xyDiffCorrespondingEdge = {[xDiffToMin]=MIN_XY, [xDiffToMax]=MAX_XY, [yDiffToMin]=MIN_XY, [yDiffToMax]=MAX_XY}
 	--get the smallest of the four differences
 	local smallestDiff = math.min(xDiffToMin,xDiffToMax,yDiffToMin,yDiffToMax)
 	
-	--if the smallest is a X local var then set initX
+	--if the smallest is a X local var then set initX to the closer edge
 	if (smallestDiff == xDiffToMin) or (smallestDiff == xDiffToMax) then
 		initX = xyDiffCorrespondingEdge[smallestDiff]
 	else
-		--otherwise, set initY
+		--otherwise, set initY to the closer edge
 		initY = xyDiffCorrespondingEdge[smallestDiff]
 	end
 
@@ -159,8 +159,11 @@ end
 
 ---@param movement Vector3
 function eHelicopter:dampen(movement)
-
-	local dampenFactor = math.max(self.topSpeedFactor, math.min(0.1, self:getDistanceToTarget() / self.preflightDistance))
+	--finds the fraction of distance to target and preflight distance to target
+	local distanceCompare = self:getDistanceToTarget() / self.preflightDistance
+	--clamp with a max of self.topSpeedFactor and min of 0.1 (10%) is applied to the fraction 
+	local dampenFactor = math.max(self.topSpeedFactor, math.min(0.1, distanceCompare))
+	--this will slow-down/speed-up eHelicopter the closer/farther it is to the target
 	local x_movement = Vector3GetX(movement) * dampenFactor
 	local y_movement = Vector3GetY(movement) * dampenFactor
 
@@ -204,13 +207,13 @@ function eHelicopter:aimAtTarget()
 end
 
 
----@param re_aim boolean
----@param dampen boolean
+---@param re_aim boolean recalculate angle to target
+---@param dampen boolean adjust speed based on distance to target
 function eHelicopter:move(re_aim, dampen)
 
 	---@type Vector3
 	local velocity
-
+	
 	if re_aim then
 		velocity = self:aimAtTarget()
 
@@ -239,7 +242,7 @@ function eHelicopter:move(re_aim, dampen)
 	self.emitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
 
 	local heliVolume = 50
-	--slight delay between randomly picked announcements
+
 	if not self.lastAnnouncedTime or self.lastAnnouncedTime <= getTimestamp() then
 		heliVolume = heliVolume+20
 		self:announce()--"PleaseReturnToYourHomes")
@@ -251,7 +254,7 @@ function eHelicopter:move(re_aim, dampen)
 	self:Report(re_aim, dampen)
 end
 
-
+---@return x, y, z of eHelicopter
 function eHelicopter:getIsoCoords()
 	local ehX, ehY, ehZ = tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height
 	return ehX, ehY, ehZ
@@ -267,7 +270,7 @@ function eHelicopter:launch(targetedPlayer)
 		local randNumFromActivePlayers = ZombRand(numActivePlayers)
 		targetedPlayer = getSpecificPlayer(randNumFromActivePlayers)
 	end
-
+	
 	self.target = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target)
@@ -278,10 +281,11 @@ function eHelicopter:launch(targetedPlayer)
 	self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
 	self.emitter:playSound("eHelicopter", e_x, e_y, e_z)
 	self:chooseVoice()
-	self.state = "passTarget"
+	self.state = "gotoTarget"
 end
 
 
+---Sets eHelicopter's announcer voice
 ---@param specificVoice string
 function eHelicopter:chooseVoice(specificVoice)
 
@@ -299,7 +303,7 @@ function eHelicopter:chooseVoice(specificVoice)
 	self.announcerVoice = eHelicopter_announcers[specificVoice]
 end
 
-
+---Announces random line if none is provided
 ---@param specificLine string
 function eHelicopter:announce(specificLine)
 
@@ -308,7 +312,6 @@ function eHelicopter:announce(specificLine)
 		local ann_num = ZombRand(1,self.announcerVoice["LineCount"])
 
 		for k,_ in pairs(self.announcerVoice["Lines"]) do
-			--print("announce: ann_num:"..ann_num.." #eHelicopter.announcements:"..#eHelicopter.announcements)
 			ann_num = ann_num-1
 			if ann_num <= 0 then
 				specificLine = k
@@ -329,7 +332,7 @@ end
 function eHelicopter:update()
 
 	--threshold for reaching player should be self.speed * getGameSpeed
-	if (self.state == "passTarget") and (self:getDistanceToTarget() <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
+	if (self.state == "gotoTarget") and (self:getDistanceToTarget() <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
 		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 		self.state = "goHome"
 		self.target = getSquare(self.target:getX(),self.target:getY(),0)
