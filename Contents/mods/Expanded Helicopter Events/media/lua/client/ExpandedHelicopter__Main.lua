@@ -320,7 +320,7 @@ function eHelicopter:announce(specificLine)
 	local line = self.announcerVoice["Lines"][specificLine]
 	-- +2 because: +1 to offset ZombRand starting on 0, and +1 to account for the first entry being delay
 	local announcePick = line[ZombRand(#line)+2]
-	local lineDelay = line[1]+1
+	local lineDelay = line[1]
 
 	--print("announce:"..tostring(specificLine)..":"..tostring(line)..":"..announcePick..":"..lineDelay)
 	self.lastAnnouncedTime = getTimestamp()+lineDelay
@@ -430,7 +430,7 @@ function testAllLinesLOOP()
 	if #testAllLines__ALL_LINES > 0 then
 		if (testAllLines__lastDemoTime <= getTimestamp()) then
 			local line = testAllLines__ALL_LINES[1]
-			local delay = testAllLines__DELAYS[1]+2
+			local delay = testAllLines__DELAYS[1]
 			testAllLines__lastDemoTime = getTimestamp()+delay
 			---@type IsoPlayer | IsoGameCharacter player
 			local player = getSpecificPlayer(0)
