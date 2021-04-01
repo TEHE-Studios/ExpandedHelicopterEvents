@@ -254,7 +254,7 @@ function eHelicopter:move(re_aim, dampen)
 	self:Report(re_aim, dampen)
 end
 
----@return x, y, z of eHelicopter
+---@return number, number, number x, y, z of eHelicopter
 function eHelicopter:getIsoCoords()
 	local ehX, ehY, ehZ = tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height
 	return ehX, ehY, ehZ
