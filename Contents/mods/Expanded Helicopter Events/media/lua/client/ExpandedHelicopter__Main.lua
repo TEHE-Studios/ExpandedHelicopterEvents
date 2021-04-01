@@ -387,6 +387,50 @@ function eHelicopter:Report(aiming, dampen)
 end
 
 
+
+
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_7 then
+		--int var3 = this.getCell().getObjectList().size(); --contents of cell
+
+		---@type IsoObject
+		local player = getSpecificPlayer(0)
+		local ehX, ehY, ehZ = player:getX(), player:getY(), 20
+
+		--local ehX, ehY, ehZ = self:getIsoCoords()
+		local ehSquare = getSquare(ehX, ehY, 0)
+		local ehCell = ehSquare:getCell()
+		---@type ArrayList
+		local Arraylist_zombies = ehCell:getZombieList()
+
+		print("Zombies found: "..Arraylist_zombies:size())
+
+		local zombies = {}
+		local indexCheck = 0
+		while indexCheck <= Arraylist_zombies:size() do
+			indexCheck = indexCheck+1
+			table.insert(zombies, zombies:get(indexCheck))
+		end
+
+		for k,v in pairs(zombies) do
+			---@type IsoObject | IsoZombie z
+			local z = v
+			print("zombies found: #"..k.."  ("..z:getX()..","..z:getY()..")")
+		end
+
+		--TODO:
+		--gather list of zombies
+		---identify zombie leaders
+		---create vector from leader to farthest zombie within members?
+		---identify members with in a range of 1 along the vector
+		---This will be the firing trajectory
+
+		--look into creating dust-ups from bullet impacts
+
+		--getCore():
+	end
+end)
+
 --- Used only for testing heli launches
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_0 then
