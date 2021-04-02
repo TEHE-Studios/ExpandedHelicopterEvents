@@ -261,6 +261,7 @@ function eHelicopter:getIsoCoords()
 end
 
 
+
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedPlayer)
 
@@ -388,48 +389,45 @@ end
 
 
 
+--TODO:
+--gather list of zombies
+---identify zombie leaders
+---create vector from leader to farthest zombie within members?
+---identify members with in a range of 1 along the vector
+---This will be the firing trajectory
+--look into creating dust-ups from bullet impacts
 
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
-		--int var3 = this.getCell().getObjectList().size(); --contents of cell
 
-		---@type IsoObject
 		local player = getSpecificPlayer(0)
-		local ehX, ehY, ehZ = player:getX(), player:getY(), 20
 
-		--local ehX, ehY, ehZ = self:getIsoCoords()
-		local ehSquare = getSquare(ehX, ehY, 0)
-		local ehCell = ehSquare:getCell()
-		---@type ArrayList
-		local Arraylist_zombies = ehCell:getZombieList()
+		local squares = IsoRange(player, 2)
 
-		print("Zombies found: "..Arraylist_zombies:size())
-
-		local zombies = {}
-		local indexCheck = 0
-		while indexCheck <= Arraylist_zombies:size() do
-			indexCheck = indexCheck+1
-			table.insert(zombies, zombies:get(indexCheck))
-		end
-
-		for k,v in pairs(zombies) do
-			---@type IsoObject | IsoZombie z
-			local z = v
-			print("zombies found: #"..k.."  ("..z:getX()..","..z:getY()..")")
-		end
-
-		--TODO:
-		--gather list of zombies
-		---identify zombie leaders
-		---create vector from leader to farthest zombie within members?
-		---identify members with in a range of 1 along the vector
-		---This will be the firing trajectory
-
-		--look into creating dust-ups from bullet impacts
-
-		--getCore():
 	end
 end)
+
+function eHelicopter:attack()
+end
+
+---@param center IsoObject
+---@param range number tiles from center, not including center, to scan. ex: range of 1 = 3x3
+function IsoRange(center, range)
+
+	local squares = {center:getCell()}
+	local expected_count = ((range*2)+1)^2
+	local ringChecked = 0
+
+	--IsoObject:getType()
+
+	while ringChecked < range do
+		local square = getSquare(ehX, ehY, ehZ)
+	end
+
+	return squares
+end
+
+
 
 --- Used only for testing heli launches
 Events.OnCustomUIKey.Add(function(key)

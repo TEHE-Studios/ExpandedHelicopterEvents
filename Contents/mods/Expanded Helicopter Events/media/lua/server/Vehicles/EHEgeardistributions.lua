@@ -50,7 +50,7 @@ VehicleDistributions.HelicopterCrashCabin = {
 VehicleDistributions.Helicopter = {
     TruckBed = VehicleDistributions.HelicopterCrashCabin;
     TruckbedOpen = VehicleDistributions.HelicopterCrashCabin;
-
+}
 
 -- now setup the cars. we can just use tables for already existing cars for them:
 -- dont use the corvette table for the muscle cars, as it only encludes doctors stuff
