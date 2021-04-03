@@ -399,32 +399,64 @@ end
 
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
-
 		local player = getSpecificPlayer(0)
-
 		local squares = IsoRange(player, 2)
-
 	end
 end)
 
-function eHelicopter:attack()
-end
 
 ---@param center IsoObject
 ---@param range number tiles from center, not including center, to scan. ex: range of 1 = 3x3
 function IsoRange(center, range)
 
-	local squares = {center:getCell()}
+	local centerX, centerY = center:getX(), center:getY()
+	local squares = {}--getSquare(centerX, centerY, 0)}
 	local expected_count = ((range*2)+1)^2
-	local ringChecked = 0
 
-	--IsoObject:getType()
+	--create a ring of IsoGridSquare around center
+	for i=0, range do
+		local currentX = centerX-i --left
+		local currentY = centerY+i --top
+		local expectedRingLength = 8*i or 1
+		for _=0, expectedRingLength do
+			--if on top-row and not at the upper-right
+			if (currentY == centerY+i) and (currentX < centerX+i) then
+				--move-right
+				currentX = currentX+1
+			--if on right-column and not the bottom-right
+			elseif (currentX == centerX+i) and (currentY > centerY-i) then
+				--move down
+				currentY = currentY-1
+			--if on bottom-row and not on far-left
+			elseif (currentY == centerY-i) and (currentX > centerX-i) then
+				--move left
+				currentX = currentX-1
+			--if on left-column and not on top-left
+			elseif (currentX == centerX-i) and (currentY < centerY+i) then
+				--move up
+				currentY = currentY+1
+			else
+				print("IsoRange: ERROR:"..i.."Where the fuck is this thing??")
+			end
 
-	while ringChecked < range do
-		local square = getSquare(ehX, ehY, ehZ)
+			---@type IsoGridSquare square
+			local square = getSquare(currentX, currentY, 0)
+			table.insert(squares, square)
+		end
+	end
+
+	print("IsoRange: total"..#squares.."/"..expected_count)
+	for k,v in pairs(squares) do
+		---@type IsoGridSquare vSquare
+		local vSquare = v
+		print(k.." "..vSquare:getX()..", "..vSquare:getY())
 	end
 
 	return squares
+end
+
+
+function eHelicopter:attack()
 end
 
 
