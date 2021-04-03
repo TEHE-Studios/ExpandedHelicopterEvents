@@ -400,24 +400,42 @@ end
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
-		local squares = IsoRange(player, 2)
+
+		print("test 0")
+		local squares = getIsoRange(player, 0)
+		print("=-=-=-=-=-=-=-=-=-=-=-=")
+		print("test 1")
+		squares = getIsoRange(player, 1)
+		print("=-=-=-=-=-=-=-=-=-=-=-=")
+		print("test 2")
+		squares = getIsoRange(player, 2)
+		print("=-=-=-=-=-=-=-=-=-=-=-=")
 	end
 end)
 
 
 ---@param center IsoObject
 ---@param range number tiles from center, not including center, to scan. ex: range of 1 = 3x3
-function IsoRange(center, range)
+function getIsoRange(center, range)
 
+	center = center:getSquare()
 	local centerX, centerY = center:getX(), center:getY()
-	local squares = {}--getSquare(centerX, centerY, 0)}
+	--add center to squares at the start
+	local squares = {getSquare(centerX, centerY, 0)}
+
+	--no point in running everything below, return squares
+	if range < 1 then return squares end
+
 	local expected_count = ((range*2)+1)^2
 
-	--create a ring of IsoGridSquare around center
-	for i=0, range do
-		local currentX = centerX-i --left
-		local currentY = centerY+i --top
-		local expectedRingLength = 8*i or 1
+	--create a ring of IsoGridSquare around center, i=1 skips center
+	for i=1, range do
+
+		--currentX and currentY have to pushed off center for the logic below to kick in
+		local currentX, currentY = centerX+i, centerY+i
+		-- ring refers to the path going around center, -1 to skip center
+		local expectedRingLength = (8*i)-1
+
 		for _=0, expectedRingLength do
 			--if on top-row and not at the upper-right
 			if (currentY == centerY+i) and (currentX < centerX+i) then
@@ -445,11 +463,11 @@ function IsoRange(center, range)
 		end
 	end
 
-	print("IsoRange: total"..#squares.."/"..expected_count)
+	print("IsoRange: total "..#squares.."/"..expected_count)
 	for k,v in pairs(squares) do
 		---@type IsoGridSquare vSquare
 		local vSquare = v
-		print(k.." "..vSquare:getX()..", "..vSquare:getY())
+		print(k..": "..centerX-vSquare:getX()..", "..centerY-vSquare:getY())
 	end
 
 	return squares
