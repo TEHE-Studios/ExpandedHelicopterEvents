@@ -401,21 +401,33 @@ Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
 
-		print("test 0")
-		local squares = getIsoRange(player, 0)
-		print("=-=-=-=-=-=-=-=-=-=-=-=")
-		print("test 1")
-		squares = getIsoRange(player, 1)
-		print("=-=-=-=-=-=-=-=-=-=-=-=")
-		print("test 2")
-		squares = getIsoRange(player, 2)
-		print("=-=-=-=-=-=-=-=-=-=-=-=")
+		squaresInRange = getIsoRange(player, 2)
+
+		for k,v in pairs(squaresInRange) do
+			---@type IsoGridSquare
+			local square = v
+			if not square:isOutside() then
+				---@type PZArrayList contents
+				local contents = square:getObjects()
+
+				for i=0, contents:size() do
+					local foundObject = contents:get(i)
+					if foundObject then
+						print(k..":"..i.." "..tostring(foundObject))
+					else
+						print(k..":"..i.." ERROR")
+					end
+				end
+
+			end
+		end
+
 	end
 end)
 
 
 ---@param center IsoObject
----@param range number tiles from center, not including center, to scan. ex: range of 1 = 3x3
+---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 function getIsoRange(center, range)
 
 	center = center:getSquare()
@@ -463,12 +475,14 @@ function getIsoRange(center, range)
 		end
 	end
 
+	--[---DEBUG
 	print("IsoRange: total "..#squares.."/"..expected_count)
 	for k,v in pairs(squares) do
 		---@type IsoGridSquare vSquare
 		local vSquare = v
 		print(k..": "..centerX-vSquare:getX()..", "..centerY-vSquare:getY())
 	end
+	--]]
 
 	return squares
 end
