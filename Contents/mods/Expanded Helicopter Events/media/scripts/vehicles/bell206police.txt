@@ -4,7 +4,7 @@ module Base
 
 	{
 
-		mesh = vehicles/Vehicle_Bell206Police,
+		mesh = vehicles/Vehicle_Bell206,
 		shader = vehicle,
 		static = TRUE,
 		scale = 0.01,
@@ -14,7 +14,7 @@ module Base
 	{
 		model
 		{
-			file = Vehicle_Bell206Police,
+			file = Vehicle_Bell206,
 			scale = 2.9500,
 			offset = -0.0183 -0.0403 -0.7363,
 		}
@@ -32,11 +32,11 @@ module Base
 		physicsChassisShape = 0.8425 1.2454 3.5531,
 		textureMask = Vehicles/Vehicle_Bell206Police_mask,
 	}
-	model Vehicle_Bell206Police
+	model Vehicle_Bell206
 	
 	{
 
-		mesh = vehicles/Vehicle_Bell206Police,
+		mesh = vehicles/Vehicle_Bell206,
 		shader = vehicle,
 		static = TRUE,
 		scale = 0.01,
