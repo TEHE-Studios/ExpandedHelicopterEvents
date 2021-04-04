@@ -403,8 +403,6 @@ Events.OnCustomUIKey.Add(function(key)
 		local player = getSpecificPlayer(0)
 		local squaresInRange = getIsoRange(player, 2)
 
-		--local checkFor = "IsoGameCharacter"
-
 		for sq=1, #squaresInRange do
 
 			---@type IsoGridSquare
@@ -415,11 +413,11 @@ Events.OnCustomUIKey.Add(function(key)
 				---@type PZArrayList contents
 				local contents = square:getLuaMovingObjectList()
 
-				for i=0, #contents do
+				for i=1, #contents do
 					---@type IsoMovingObject foundObject
-					local foundObject = contents[i]
+					local foundObj = contents[i]
 
-					print(sq..":"..i..": "..tostring(foundObject))
+					print(sq..":"..i..": "..foundObj:getObjectName())
 
 				end
 			end
