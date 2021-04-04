@@ -403,23 +403,93 @@ end
 function eHelicopter:attack()
 end
 
+
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
-		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
+		local objectsFoundInFractal = getHumanoidsInFractalRange(player, 1, "IsoZombie")
+		---debug: list type found
+		print("-----------------------------------------")
+		for fractalIndex=1, #objectsFoundInFractal do
+			local fractal = objectsFoundInFractal[fractalIndex]
+			print("fractalIndex: "..fractalIndex.." count:"..#fractal)
+			--for i=1, #fractal do
+			--	---@type IsoMovingObject foundObj
+			--	local foundObj = fractal[i]
+			--	print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
+			--end
+		end
+		print("-----------------------------------------")
+	end
+end)
 
+
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_6 then
+		local player = getSpecificPlayer(0)
+		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
+		---debug: list type found
+		print("-----------------------------------------")
+		print("objectsFound: ".." count: "..#objectsFound)
 		for i=1, #objectsFound do
 			---@type IsoMovingObject foundObj
 			local foundObj = objectsFound[i]
-			print(i..": "..foundObj:getObjectName()) -- "IsoZombie" or "IsoPlayer"
+			print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
 		end
+		print("-----------------------------------------")
 	end
 end)
 
 
 ---@param center IsoObject
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
----@param lookForType table strings, compared to IsoObject:getObjectName()
+---@param lookForType table strings, compared to getClass():getSimpleName()
+function getHumanoidsInFractalRange(center, range, lookForType)
+
+	--FractalRange = 3*3 made up of (9) range*range
+	--example: range of 1, e is center
+	--[a][b][c]  --[a] = [-1, 1][0, 1][1, 1]
+	--[d][e][f]          [-1, 0][0, 0][1, 0]
+	--[g][h][i]          [-1,-1][0,-1][1,-1]
+
+	--get distance from 1 center to the next using range*2 + 1 for the other center
+	local fractalFactor = (range*2)+1
+	--list of center's
+	local fractalIsoRangeIndex = {
+		--a's center
+		getSquare(center:getX()-fractalFactor,center:getY()+fractalFactor,0),
+		--b's center
+		getSquare(center:getX(),center:getY()+fractalFactor,0),
+		--c's center
+		getSquare(center:getX()+fractalFactor,center:getY()+fractalFactor,0),
+		--d's center
+		getSquare(center:getX()-fractalFactor,center:getY(),0),
+		--e's center, true center
+		getSquare(center:getX(),center:getY(),0),
+		--f's center
+		getSquare(center:getX()+fractalFactor,center:getY(),0),
+		--g's center
+		getSquare(center:getX()-fractalFactor,center:getY()-fractalFactor,0),
+		--h's center
+		getSquare(center:getX(),center:getY()-fractalFactor,0),
+		--i's center
+		getSquare(center:getX()+fractalFactor,center:getY()-fractalFactor,0),
+	}
+
+	local fractalObjectsFound = {}
+
+	for fractalIndex=1, #fractalIsoRangeIndex do
+		local objectsFound = getHumanoidsInRange(fractalIsoRangeIndex[fractalIndex], range, lookForType)
+		table.insert(fractalObjectsFound, objectsFound)
+	end
+
+	return fractalObjectsFound
+end
+
+
+---@param center IsoObject
+---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
+---@param lookForType table strings, compared to getClass():getSimpleName()
 function getHumanoidsInRange(center, range, lookForType)
 
 	local squaresInRange = getIsoRange(center, range)
@@ -429,11 +499,11 @@ function getHumanoidsInRange(center, range, lookForType)
 
 		---@type IsoGridSquare
 		local square = squaresInRange[sq]
-		local contents = square:getLuaMovingObjectList()
+		local squareContents = square:getLuaMovingObjectList()
 
-		for i=1, #contents do
+		for i=1, #squareContents do
 			---@type IsoMovingObject foundObject
-			local foundObj = contents[i]
+			local foundObj = squareContents[i]
 
 			if (not lookForType) or (lookForType==foundObj:getClass():getSimpleName()) then
 				table.insert(objectsFound, foundObj)
@@ -451,13 +521,14 @@ end
 function getIsoRange(center, range)
 
 	--if center is not an IsoGridSquare then call center's getSquare
-	if not center:getClass():getSimpleName()=="IsoGridSquare" then
+
+	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
 		center = center:getSquare()
 	end
 
 	local centerX, centerY = center:getX(), center:getY()
 	--add center to squares at the start
-	local squares = {getSquare(centerX, centerY, 0)}
+	local squares = {center}
 
 	--no point in running everything below, return squares
 	if range < 1 then return squares end
