@@ -486,8 +486,6 @@ function getIsoRange(center, range)
 			elseif (currentX == centerX-i) and (currentY < centerY+i) then
 				--move up
 				currentY = currentY+1
-			else
-				print("IsoRange: ERROR:"..i.."Where the fuck is this thing??")
 			end
 
 			---@type IsoGridSquare square
