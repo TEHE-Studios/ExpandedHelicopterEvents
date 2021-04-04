@@ -400,6 +400,9 @@ end
 ------ OR implement option a at this point?
 --- look into creating dust-ups from bullet impacts
 
+function eHelicopter:attack()
+end
+
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
@@ -504,9 +507,6 @@ function getIsoRange(center, range)
 	return squares
 end
 
-
-function eHelicopter:attack()
-end
 
 
 
