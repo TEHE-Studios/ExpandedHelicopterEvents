@@ -442,12 +442,16 @@ function getHumanoidsInRange(center, range, lookForType)
 end
 
 
----@param center IsoObject
+---@param center IsoObject | IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@return table of IsoGridSquare
 function getIsoRange(center, range)
 
-	center = center:getSquare()
+	--if center is not an IsoGridSquare then call center's getSquare
+	if not center:getClass():getSimpleName()=="IsoGridSquare" then
+		center = center:getSquare()
+	end
+
 	local centerX, centerY = center:getX(), center:getY()
 	--add center to squares at the start
 	local squares = {getSquare(centerX, centerY, 0)}
