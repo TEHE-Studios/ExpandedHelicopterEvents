@@ -431,12 +431,13 @@ end)
 
 ---@param center IsoObject
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
+---@return table of IsoGridSquare
 function getIsoRange(center, range)
 
 	center = center:getSquare()
-	local centerX, centerY, centerZ = center:getX(), center:getY(), center:getZ()
+	local centerX, centerY = center:getX(), center:getY()
 	--add center to squares at the start
-	local squares = {getSquare(centerX, centerY, centerZ)}
+	local squares = {getSquare(centerX, centerY, 0)}
 
 	--no point in running everything below, return squares
 	if range < 1 then return squares end
