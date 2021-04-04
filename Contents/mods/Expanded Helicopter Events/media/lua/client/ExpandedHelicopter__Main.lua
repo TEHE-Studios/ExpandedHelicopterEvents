@@ -402,31 +402,46 @@ end
 
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
-
 		local player = getSpecificPlayer(0)
-		local squaresInRange = getIsoRange(player, 2)
+		local objectsFound = getHumanoidsInRange(player, 2, "Zombie")
 
-		for sq=1, #squaresInRange do
-
-			---@type IsoGridSquare
-			local square = squaresInRange[sq]
-
-			if not square:isOutside() then
-
-				---@type PZArrayList contents
-				local contents = square:getLuaMovingObjectList()
-
-				for i=1, #contents do
-					---@type IsoMovingObject foundObject
-					local foundObj = contents[i]
-
-					print(sq..":"..i..": "..foundObj:getObjectName())
-
-				end
-			end
+		for i=1, #objectsFound do
+			---@type IsoMovingObject foundObj
+			local foundObj = objectsFound[i]
+			print(i..": "..foundObj:getObjectName()) -- "Zombie" or "Player"
 		end
 	end
 end)
+
+
+---@param center IsoObject
+---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
+---@param lookForType table strings, compared to IsoObject:getObjectName()
+function getHumanoidsInRange(center, range, lookForType)
+
+	local squaresInRange = getIsoRange(center, range)
+	local objectsFound = {}
+
+	for sq=1, #squaresInRange do
+
+		---@type IsoGridSquare
+		local square = squaresInRange[sq]
+
+		---@type PZArrayList contents
+		local contents = square:getLuaMovingObjectList()
+
+		for i=1, #contents do
+			---@type IsoMovingObject foundObject
+			local foundObj = contents[i]
+
+			if (not lookForType) or (lookForType==foundObj:getObjectName()) then
+				table.insert(objectsFound, foundObj)
+			end
+		end
+	end
+
+	return objectsFound
+end
 
 
 ---@param center IsoObject
