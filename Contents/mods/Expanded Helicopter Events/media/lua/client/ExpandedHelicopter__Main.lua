@@ -399,39 +399,31 @@ end
 
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
-		local player = getSpecificPlayer(0)
-		squaresInRange = getIsoRange(player, 2)
 
-		local squareNum = 0
-		for k,v in pairs(squaresInRange) do
+		local player = getSpecificPlayer(0)
+		local squaresInRange = getIsoRange(player, 2)
+
+		--local checkFor = "IsoGameCharacter"
+
+		for sq=1, #squaresInRange do
 
 			---@type IsoGridSquare
-			local square = v
-			squareNum = squareNum+1
+			local square = squaresInRange[sq]
 
 			if not square:isOutside() then
 
 				---@type PZArrayList contents
-				local contents = square:getMovingObjects()
+				local contents = square:getLuaMovingObjectList()
 
-				print(contents:size())
+				for i=0, #contents do
+					---@type IsoMovingObject foundObject
+					local foundObject = contents[i]
 
-				for i=0, contents:size() do
+					print(sq..":"..i..": "..tostring(foundObject))
 
-					---@type IsoObject foundObject
-					local foundObject = contents:get(i)
-					if foundObject then
-						--print(squareNum)
-						--print(tostring(i))
-						--print(foundObject:getName())
-					else
-						--print(squareNum..":"..tostring(i).." ERROR")
-					end
 				end
-
 			end
 		end
-
 	end
 end)
 
@@ -441,9 +433,9 @@ end)
 function getIsoRange(center, range)
 
 	center = center:getSquare()
-	local centerX, centerY = center:getX(), center:getY()
+	local centerX, centerY, centerZ = center:getX(), center:getY(), center:getZ()
 	--add center to squares at the start
-	local squares = {getSquare(centerX, centerY, 0)}
+	local squares = {getSquare(centerX, centerY, centerZ)}
 
 	--no point in running everything below, return squares
 	if range < 1 then return squares end
@@ -485,7 +477,7 @@ function getIsoRange(center, range)
 		end
 	end
 
-	--[---DEBUG
+	--[[---DEBUG
 	print("IsoRange: total "..#squares.."/"..expected_count)
 	for k,v in pairs(squares) do
 		---@type IsoGridSquare vSquare
