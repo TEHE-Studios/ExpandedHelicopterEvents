@@ -407,11 +407,11 @@ end
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
-		local objectsFoundInFractal = getHumanoidsInFractalRange(player, 1, "IsoZombie")
+		local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, "IsoZombie")
 		---debug: list type found
 		print("-----------------------------------------")
-		for fractalIndex=1, #objectsFoundInFractal do
-			local fractal = objectsFoundInFractal[fractalIndex]
+		for fractalIndex=1, #fractalObjectsFound do
+			local fractal = fractalObjectsFound[fractalIndex]
 			print("fractalIndex: "..fractalIndex.." count:"..#fractal)
 			--for i=1, #fractal do
 			--	---@type IsoMovingObject foundObj
