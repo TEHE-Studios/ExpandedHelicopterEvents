@@ -403,12 +403,12 @@ end
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
-		local objectsFound = getHumanoidsInRange(player, 2, "Zombie")
+		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
 
 		for i=1, #objectsFound do
 			---@type IsoMovingObject foundObj
 			local foundObj = objectsFound[i]
-			print(i..": "..foundObj:getObjectName()) -- "Zombie" or "Player"
+			print(i..": "..foundObj:getObjectName()) -- "IsoZombie" or "IsoPlayer"
 		end
 	end
 end)
@@ -426,15 +426,13 @@ function getHumanoidsInRange(center, range, lookForType)
 
 		---@type IsoGridSquare
 		local square = squaresInRange[sq]
-
-		---@type PZArrayList contents
 		local contents = square:getLuaMovingObjectList()
 
 		for i=1, #contents do
 			---@type IsoMovingObject foundObject
 			local foundObj = contents[i]
 
-			if (not lookForType) or (lookForType==foundObj:getObjectName()) then
+			if (not lookForType) or (lookForType==foundObj:getClass():getSimpleName()) then
 				table.insert(objectsFound, foundObj)
 			end
 		end
