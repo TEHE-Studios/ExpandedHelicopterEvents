@@ -395,7 +395,7 @@ end
 --- option a: create vector from leader to farthest zombie within members?
 ------ identify members with in a range of 1 along the vector
 ------ This will be the firing trajectory
---- option b: create a macroIsoRange (ex: 3x3 of 3x3 (81 squares))
+-- option b: create a fractalIsoRange (ex: 3x3 of 3x3 (81 squares))
 ------ kill zombies with in the most populated square?
 ------ OR implement option a at this point?
 --- look into creating dust-ups from bullet impacts
