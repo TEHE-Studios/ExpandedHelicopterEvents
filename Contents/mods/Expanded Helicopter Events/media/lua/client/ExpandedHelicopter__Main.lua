@@ -400,22 +400,32 @@ end
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
-
 		squaresInRange = getIsoRange(player, 2)
 
+		local squareNum = 0
 		for k,v in pairs(squaresInRange) do
+
 			---@type IsoGridSquare
 			local square = v
+			squareNum = squareNum+1
+
 			if not square:isOutside() then
+
 				---@type PZArrayList contents
-				local contents = square:getObjects()
+				local contents = square:getMovingObjects()
+
+				print(contents:size())
 
 				for i=0, contents:size() do
+
+					---@type IsoObject foundObject
 					local foundObject = contents:get(i)
 					if foundObject then
-						print(k..":"..i.." "..tostring(foundObject))
+						--print(squareNum)
+						--print(tostring(i))
+						--print(foundObject:getName())
 					else
-						print(k..":"..i.." ERROR")
+						--print(squareNum..":"..tostring(i).." ERROR")
 					end
 				end
 
