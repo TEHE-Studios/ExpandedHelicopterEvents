@@ -459,8 +459,6 @@ function getIsoRange(center, range)
 	--no point in running everything below, return squares
 	if range < 1 then return squares end
 
-	local expected_count = ((range*2)+1)^2
-
 	--create a ring of IsoGridSquare around center, i=1 skips center
 	for i=1, range do
 
@@ -495,7 +493,7 @@ function getIsoRange(center, range)
 	end
 
 	--[[---DEBUG
-	print("IsoRange: total "..#squares.."/"..expected_count)
+	print("IsoRange: total "..#squares.."/"..((range*2)+1)^2)
 	for k,v in pairs(squares) do
 		---@type IsoGridSquare vSquare
 		local vSquare = v
