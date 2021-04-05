@@ -412,7 +412,7 @@ end
 --- look into creating dust-ups from bullet impacts
 
 
----@param targetType IsoZombie|IsoPlayer
+---@param targetType string IsoZombie or IsoPlayer
 ---@return table
 function eHelicopter:attackScan(targetType)
 
@@ -424,7 +424,6 @@ function eHelicopter:attackScan(targetType)
 	end
 
 	local fractalObjectsFound = getHumanoidsInFractalRange(location, 1, targetType)
-
 	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do
@@ -525,6 +524,10 @@ function getHumanoidsInRange(center, range, lookForType)
 		center = center:getSquare()
 	end
 
+	if (lookForType~="IsoZombie") and (lookForType~="IsoPlayer") then
+		lookForType = nil
+	end
+
 	local squaresInRange = getIsoRange(center, range)
 	local objectsFound = {}
 
@@ -539,11 +542,9 @@ function getHumanoidsInRange(center, range, lookForType)
 			local foundObj = squareContents[i]
 			local foName = foundObj:getClass():getSimpleName()
 
-			if (foName=="IsoPlayer" or foName=="IsoZombie") then
-				if (not lookForType) or (lookForType==foName) then
-					if foundObj:isOutside() then
-						table.insert(objectsFound, foundObj)
-					end
+			if (not lookForType) or (lookForType==foName) then
+				if foundObj:isOutside() then
+					table.insert(objectsFound, foundObj)
 				end
 			end
 		end
