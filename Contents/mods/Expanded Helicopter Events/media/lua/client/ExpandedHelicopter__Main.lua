@@ -252,8 +252,10 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()--"PleaseReturnToYourHomes")
 	end
 
-	local potentialTargets = self:attackScan()
-	self:fireOn(potentialTargets)
+	local potentialTargets = self:attackScan("IsoZombie")
+	if #potentialTargets > 0 then
+		self:fireOn(potentialTargets)
+	end
 
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
@@ -413,9 +415,14 @@ function eHelicopter:attackScan(targetType)
 
 	local eX, eY, _ = self:getIsoCoords()
 	local location = getSquare(eX,eY,0)
+
+	if not location then
+		return {}
+	end
+
 	local fractalObjectsFound = getHumanoidsInFractalRange(location, 1, targetType)
 
-	local objectsToFireOn
+	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do
 		local objectsArray = fractalObjectsFound[fractalIndex]
@@ -436,16 +443,18 @@ function eHelicopter:fireOn(targetList)
 	for i=1, #targetList do
 		---@type IsoMovingObject|IsoGameCharacter foundObj
 		local foundObj = targetList[i]
-		local foX, foY, foZ = foundObj:getX(), foundObj:getY(), foundObj:getZ()
-		--firesound
-		self.emitter:playSound(self.firesound[1], foX, foY, foZ)
+
+		--fireSound
+		local fireNoise = self.fireSound[1]
+		self.emitter:playSound(fireNoise, foundObj:getSquare())
 
 		--set damage OR kill
 		foundObj:setHealth(0)
 
 		--fireImpacts
-		self.emitter:playSound(self.fireImpacts[ZombRand(1,#fireImpacts)], foX, foY, foZ)
-		foundObj:splatBloodFloorBig()
+		local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
+		self.emitter:playSound(impactNoise, foundObj:getSquare())
+		foundObj:splatBlood(2,50)
 	end
 end
 
@@ -502,7 +511,9 @@ function getHumanoidsInFractalRange(center, range, lookForType)
 	--[d][e][f]          [-1, 0][0, 0][1, 0]
 	--[g][h][i]          [-1,-1][0,-1][1,-1]
 
-	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
+	if not center then
+		return {}
+	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
 		center = center:getSquare()
 	end
 
@@ -546,7 +557,9 @@ end
 ---@param lookForType table strings, compared to getClass():getSimpleName()
 function getHumanoidsInRange(center, range, lookForType)
 
-	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
+	if not center then
+		return {}
+	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
 		center = center:getSquare()
 	end
 
