@@ -562,10 +562,13 @@ function getHumanoidsInRange(center, range, lookForType)
 		for i=1, #squareContents do
 			---@type IsoMovingObject|IsoGameCharacter foundObject
 			local foundObj = squareContents[i]
+			local foName = foundObj:getClass():getSimpleName()
 
-			if (not lookForType) or (lookForType==foundObj:getClass():getSimpleName()) then
-				if foundObj:isOutside() then
-					table.insert(objectsFound, foundObj)
+			if (foName=="IsoPlayer" or foName=="IsoZombie") then
+				if (not lookForType) or (lookForType==foName) then
+					if foundObj:isOutside() then
+						table.insert(objectsFound, foundObj)
+					end
 				end
 			end
 		end
