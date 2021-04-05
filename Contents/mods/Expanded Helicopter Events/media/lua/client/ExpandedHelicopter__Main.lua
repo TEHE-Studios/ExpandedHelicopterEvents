@@ -436,15 +436,15 @@ function eHelicopter:fireOn(targetList)
 	for i=1, #targetList do
 		---@type IsoMovingObject|IsoGameCharacter foundObj
 		local foundObj = targetList[i]
-
+		local foX, foY, foZ = foundObj:getX(), foundObj:getY(), foundObj:getZ()
 		--firesound
-		self.emitter:playSound(self.firesound[1], foundObj:getX(), foundObj:getY(), foundObj:getZ())
+		self.emitter:playSound(self.firesound[1], foX, foY, foZ)
 
 		--set damage OR kill
 		foundObj:setHealth(0)
 
 		--fireImpacts
-		self.emitter:playSound(self.fireImpacts[ZombRand(1,#fireImpacts)], foundObj:getX(), foundObj:getY(), foundObj:getZ())
+		self.emitter:playSound(self.fireImpacts[ZombRand(1,#fireImpacts)], foX, foY, foZ)
 		foundObj:splatBloodFloorBig()
 	end
 end
