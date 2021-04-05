@@ -17,6 +17,8 @@ ALL_HELICOPTERS = {}
 ---@field height number
 ---@field speed number
 ---@field topSpeedFactor number speed x this = top "speed"
+---@field fireSound table sounds for firing
+---@field fireImpacts table sounds for fire impact
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -32,6 +34,8 @@ eHelicopter.ID = 0
 eHelicopter.height = 20
 eHelicopter.speed = 0.25
 eHelicopter.topSpeedFactor = 3
+eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
+eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 
 
 ---Do not call this function directly for new helicopters
