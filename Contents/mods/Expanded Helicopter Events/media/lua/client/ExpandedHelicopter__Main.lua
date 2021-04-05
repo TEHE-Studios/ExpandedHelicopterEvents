@@ -12,7 +12,8 @@ ALL_HELICOPTERS = {}
 ---@field currentPosition Vector3 @consider this a pair of coordinates
 ---@field lastAnnouncedTime number
 ---@field announcerVoice string
----@field emitter FMODSoundEmitter | BaseSoundEmitter
+---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
+---@field gunEmitter FMODSoundEmitter | BaseSoundEmitter
 ---@field ID number
 ---@field height number
 ---@field speed number
@@ -29,7 +30,8 @@ eHelicopter.lastMovement = nil
 eHelicopter.currentPosition = nil
 eHelicopter.lastAnnouncedTime = nil
 eHelicopter.announcerVoice = nil
-eHelicopter.emitter = nil
+eHelicopter.rotorEmitter = nil
+eHelicopter.gunEmitter = nil
 eHelicopter.ID = 0
 eHelicopter.height = 20
 eHelicopter.speed = 0.25
@@ -243,7 +245,8 @@ function eHelicopter:move(re_aim, dampen)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(v_x, v_y, self.height)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
-	self.emitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
+	self.rotorEmitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
+	self.gunEmitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
 
 	local heliVolume = 50
 
@@ -288,8 +291,9 @@ function eHelicopter:launch(targetedPlayer)
 
 	local e_x, e_y, e_z = self:getIsoCoords()
 
-	self.emitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
-	self.emitter:playSound("eHelicopter", e_x, e_y, e_z)
+	self.gunEmitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
+	self.rotorEmitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
+	self.rotorEmitter:playSound("eHelicopter", e_x, e_y, e_z)
 	self:chooseVoice()
 	self.state = "gotoTarget"
 end
@@ -335,7 +339,7 @@ function eHelicopter:announce(specificLine)
 	local lineDelay = line[1]
 
 	self.lastAnnouncedTime = getTimestamp()+lineDelay
-	self.emitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
+	self.rotorEmitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
 end
 
 
@@ -377,7 +381,8 @@ end
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 	self.state = "unlaunched"
-	self.emitter:stopAll()
+	self.gunEmitter:stopAll()
+	self.rotorEmitter:stopAll()
 end
 
 Events.OnTick.Add(updateAllHelicopters)
@@ -446,14 +451,14 @@ function eHelicopter:fireOn(targetList)
 
 		--fireSound
 		local fireNoise = self.fireSound[1]
-		self.emitter:playSound(fireNoise, foundObj:getSquare())
+		self.gunEmitter:playSound(fireNoise, foundObj:getSquare())
 
 		--set damage OR kill
 		foundObj:setHealth(0)
 
 		--fireImpacts
 		local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
-		self.emitter:playSound(impactNoise, foundObj:getSquare())
+		self.gunEmitter:playSound(impactNoise, foundObj:getSquare())
 		foundObj:splatBlood(2,50)
 	end
 end
