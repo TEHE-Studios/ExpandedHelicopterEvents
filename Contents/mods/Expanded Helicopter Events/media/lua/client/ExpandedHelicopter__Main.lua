@@ -252,6 +252,8 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()--"PleaseReturnToYourHomes")
 	end
 
+	local potentialTargets = self:attackScan()
+	self:fireOn(potentialTargets)
 
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
@@ -427,6 +429,24 @@ function eHelicopter:attackScan(targetType)
 end
 
 
+---@param targetList table
+function eHelicopter:fireOn(targetList)
+
+	for i=1, #targetList do
+		---@type IsoMovingObject|IsoGameCharacter foundObj
+		local foundObj = targetList[i]
+
+		--firesound
+		self.emitter:playSound(self.firesound[1], foundObj:getX(), foundObj:getY(), foundObj:getZ())
+
+		--set damage OR kill
+		foundObj:setHealth(0)
+
+		--fireImpacts
+		self.emitter:playSound(self.fireImpacts[ZombRand(1,#fireImpacts)], foundObj:getX(), foundObj:getY(), foundObj:getZ())
+		foundObj:splatBloodFloorBig()
+	end
+end
 
 
 
