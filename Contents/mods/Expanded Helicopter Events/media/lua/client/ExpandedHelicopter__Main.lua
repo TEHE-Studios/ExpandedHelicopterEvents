@@ -411,7 +411,8 @@ end
 ---@return table
 function eHelicopter:attackScan(targetType)
 
-	local location = getSquare(Vector3GetX(heli.currentPosition),Vector3GetY(heli.currentPosition),0)
+	local eX, eY, _ = self:getIsoCoords()
+	local location = getSquare(eX,eY,0)
 	local fractalObjectsFound = getHumanoidsInFractalRange(location, 1, targetType)
 
 	local objectsToFireOn
