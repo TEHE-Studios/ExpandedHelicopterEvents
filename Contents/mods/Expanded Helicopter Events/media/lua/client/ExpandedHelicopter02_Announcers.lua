@@ -104,3 +104,48 @@ function setAnnouncementLength()
 end
 
 Events.OnGameStart.Add(setAnnouncementLength)
+
+
+---Sets eHelicopter's announcer voice
+---@param specificVoice string
+function eHelicopter:chooseVoice(specificVoice)
+
+	if not specificVoice then
+		local randAnn = ZombRand(1, eHelicopter_announcerCount)
+		for k,_ in pairs(eHelicopter_announcers) do
+			randAnn = randAnn-1
+			if randAnn <= 0 then
+				specificVoice = k
+				break
+			end
+		end
+	end
+
+	self.announcerVoice = eHelicopter_announcers[specificVoice]
+end
+
+
+---Announces random line if none is provided
+---@param specificLine string
+function eHelicopter:announce(specificLine)
+
+	if not specificLine then
+
+		local ann_num = ZombRand(1,self.announcerVoice["LineCount"])
+
+		for k,_ in pairs(self.announcerVoice["Lines"]) do
+			ann_num = ann_num-1
+			if ann_num <= 0 then
+				specificLine = k
+				break
+			end
+		end
+	end
+
+	local line = self.announcerVoice["Lines"][specificLine]
+	local announcePick = line[ZombRand(2,#line)]
+	local lineDelay = line[1]
+
+	self.lastAnnouncedTime = getTimestamp()+lineDelay
+	self.rotorEmitter:playSound(announcePick, tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height)
+end
