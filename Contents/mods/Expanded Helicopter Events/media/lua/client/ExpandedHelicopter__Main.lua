@@ -490,7 +490,7 @@ Events.OnCustomUIKey.Add(function(key)
 end)
 
 
----@param center IsoObject
+---@param center IsoGridSquare|IsoGameCharacter
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param lookForType table strings, compared to getClass():getSimpleName()
 function getHumanoidsInFractalRange(center, range, lookForType)
@@ -500,6 +500,10 @@ function getHumanoidsInFractalRange(center, range, lookForType)
 	--[a][b][c]  --[a] = [-1, 1][0, 1][1, 1]
 	--[d][e][f]          [-1, 0][0, 0][1, 0]
 	--[g][h][i]          [-1,-1][0,-1][1,-1]
+
+	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
+		center = center:getSquare()
+	end
 
 	--get distance from 1 center to the next using range*2 + 1 for the other center
 	local fractalFactor = (range*2)+1
@@ -514,7 +518,7 @@ function getHumanoidsInFractalRange(center, range, lookForType)
 		--d's center
 		getSquare(center:getX()-fractalFactor,center:getY(),0),
 		--e's center, true center
-		getSquare(center:getX(),center:getY(),0),
+		center,
 		--f's center
 		getSquare(center:getX()+fractalFactor,center:getY(),0),
 		--g's center
@@ -540,6 +544,10 @@ end
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param lookForType table strings, compared to getClass():getSimpleName()
 function getHumanoidsInRange(center, range, lookForType)
+
+	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
+		center = center:getSquare()
+	end
 
 	local squaresInRange = getIsoRange(center, range)
 	local objectsFound = {}
