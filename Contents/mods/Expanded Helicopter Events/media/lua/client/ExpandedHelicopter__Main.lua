@@ -252,18 +252,19 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()--"PleaseReturnToYourHomes")
 	end
 
+
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
 	
 	self:Report(re_aim, dampen)
 end
 
+
 ---@return number, number, number x, y, z of eHelicopter
 function eHelicopter:getIsoCoords()
 	local ehX, ehY, ehZ = tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height
 	return ehX, ehY, ehZ
 end
-
 
 
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
@@ -392,7 +393,6 @@ function eHelicopter:Report(aiming, dampen)
 end
 
 
-
 --TODO:
 -- gather range of squares
 -- gather list of zombies OR players in squares
@@ -406,6 +406,9 @@ end
 
 function eHelicopter:attack()
 end
+
+
+
 
 
 Events.OnCustomUIKey.Add(function(key)
@@ -422,6 +425,7 @@ Events.OnCustomUIKey.Add(function(key)
 			--	local foundObj = fractal[i]
 			--	print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
 			--end
+
 		end
 		print("-----------------------------------------")
 	end
