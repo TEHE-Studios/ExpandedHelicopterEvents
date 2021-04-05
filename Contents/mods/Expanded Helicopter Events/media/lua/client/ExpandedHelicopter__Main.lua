@@ -418,13 +418,15 @@ Events.OnCustomUIKey.Add(function(key)
 		---debug: list type found
 		print("-----------------------------------------")
 		for fractalIndex=1, #fractalObjectsFound do
-			local fractal = fractalObjectsFound[fractalIndex]
-			print("fractalIndex: "..fractalIndex.." count:"..#fractal)
-			--for i=1, #fractal do
-			--	---@type IsoMovingObject foundObj
-			--	local foundObj = fractal[i]
-			--	print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
-			--end
+			local objectsArray = fractalObjectsFound[fractalIndex]
+			print("fractalIndex: "..fractalIndex.." count:"..#objectsArray)
+
+			--[[
+			for i=1, #objects do
+				---@type IsoGameCharacter foundObj
+				local foundObj = objects[i]
+				print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
+			end]]
 
 		end
 		print("-----------------------------------------")
@@ -440,7 +442,7 @@ Events.OnCustomUIKey.Add(function(key)
 		print("-----------------------------------------")
 		print("objectsFound: ".." count: "..#objectsFound)
 		for i=1, #objectsFound do
-			---@type IsoMovingObject foundObj
+			---@type IsoMovingObject|IsoGameCharacter foundObj
 			local foundObj = objectsFound[i]
 			print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
 		end
@@ -510,11 +512,13 @@ function getHumanoidsInRange(center, range, lookForType)
 		local squareContents = square:getLuaMovingObjectList()
 
 		for i=1, #squareContents do
-			---@type IsoMovingObject foundObject
+			---@type IsoMovingObject|IsoGameCharacter foundObject
 			local foundObj = squareContents[i]
 
 			if (not lookForType) or (lookForType==foundObj:getClass():getSimpleName()) then
-				table.insert(objectsFound, foundObj)
+				if foundObj:isOutside() then
+					table.insert(objectsFound, foundObj)
+				end
 			end
 		end
 	end
