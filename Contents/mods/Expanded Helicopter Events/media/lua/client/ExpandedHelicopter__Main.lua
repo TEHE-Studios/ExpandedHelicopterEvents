@@ -404,7 +404,26 @@ end
 ----- OR implement option a at this point?
 --- look into creating dust-ups from bullet impacts
 
-function eHelicopter:attack()
+
+---@param targetType IsoZombie|IsoPlayer
+---@return table
+function eHelicopter:attackScan(targetType)
+
+	local location = getSquare(Vector3GetX(heli.currentPosition),Vector3GetY(heli.currentPosition),0)
+	local fractalObjectsFound = getHumanoidsInFractalRange(location, 1, targetType)
+
+	local objectsToFireOn
+
+	for fractalIndex=1, #fractalObjectsFound do
+		local objectsArray = fractalObjectsFound[fractalIndex]
+		print("fractalIndex: "..fractalIndex.." count:"..#objectsArray)
+
+		if (not objectsToFireOn) or (#objectsArray > #objectsToFireOn) then
+			objectsToFireOn = objectsArray
+		end
+	end
+
+	return objectsToFireOn
 end
 
 
