@@ -459,47 +459,6 @@ function eHelicopter:fireOn(targetList)
 end
 
 
-
-Events.OnCustomUIKey.Add(function(key)
-	if key == Keyboard.KEY_7 then
-		local player = getSpecificPlayer(0)
-		local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, "IsoZombie")
-		---debug: list type found
-		print("-----------------------------------------")
-		for fractalIndex=1, #fractalObjectsFound do
-			local objectsArray = fractalObjectsFound[fractalIndex]
-			print("fractalIndex: "..fractalIndex.." count:"..#objectsArray)
-
-			--[[
-			for i=1, #objects do
-				---@type IsoGameCharacter foundObj
-				local foundObj = objects[i]
-				print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
-			end]]
-
-		end
-		print("-----------------------------------------")
-	end
-end)
-
-
-Events.OnCustomUIKey.Add(function(key)
-	if key == Keyboard.KEY_6 then
-		local player = getSpecificPlayer(0)
-		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
-		---debug: list type found
-		print("-----------------------------------------")
-		print("objectsFound: ".." count: "..#objectsFound)
-		for i=1, #objectsFound do
-			---@type IsoMovingObject|IsoGameCharacter foundObj
-			local foundObj = objectsFound[i]
-			print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
-		end
-		print("-----------------------------------------")
-	end
-end)
-
-
 ---@param center IsoGridSquare|IsoGameCharacter
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param lookForType table strings, compared to getClass():getSimpleName()
@@ -657,6 +616,7 @@ end
 
 
 
+
 --- Used only for testing heli launches
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_0 then
@@ -664,6 +624,46 @@ Events.OnCustomUIKey.Add(function(key)
 		local heli = getFreeHelicopter()
 		heli:launch()
 		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
+end)
+
+
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_7 then
+		local player = getSpecificPlayer(0)
+		local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, "IsoZombie")
+		---debug: list type found
+		print("-----------------------------------------")
+		for fractalIndex=1, #fractalObjectsFound do
+			local objectsArray = fractalObjectsFound[fractalIndex]
+			print("fractalIndex: "..fractalIndex.." count:"..#objectsArray)
+
+			--[[
+			for i=1, #objects do
+				---@type IsoGameCharacter foundObj
+				local foundObj = objects[i]
+				print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
+			end]]
+
+		end
+		print("-----------------------------------------")
+	end
+end)
+
+
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_6 then
+		local player = getSpecificPlayer(0)
+		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
+		---debug: list type found
+		print("-----------------------------------------")
+		print("objectsFound: ".." count: "..#objectsFound)
+		for i=1, #objectsFound do
+			---@type IsoMovingObject|IsoGameCharacter foundObj
+			local foundObj = objectsFound[i]
+			print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
+		end
+		print("-----------------------------------------")
 	end
 end)
 
