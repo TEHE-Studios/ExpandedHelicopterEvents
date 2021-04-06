@@ -22,6 +22,25 @@ Events.OnCustomUIKey.Add(function(key)
 end)
 
 
+--- Test launch close heli
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_8 then
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter()
+		heli:launch()
+
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(1000)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
+end)
+
+
+--- Test getHumanoidsInFractalRange
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
