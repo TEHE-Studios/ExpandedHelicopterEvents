@@ -13,7 +13,6 @@ ALL_HELICOPTERS = {}
 ---@field lastAnnouncedTime number
 ---@field announcerVoice string
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
----@field gunEmitter FMODSoundEmitter | BaseSoundEmitter
 ---@field ID number
 ---@field height number
 ---@field speed number
@@ -34,7 +33,6 @@ eHelicopter.currentPosition = nil
 eHelicopter.lastAnnouncedTime = nil
 eHelicopter.announcerVoice = nil
 eHelicopter.rotorEmitter = nil
-eHelicopter.gunEmitter = nil
 eHelicopter.ID = 0
 eHelicopter.height = 20
 eHelicopter.speed = 0.25
@@ -251,7 +249,6 @@ function eHelicopter:move(re_aim, dampen)
 	self.currentPosition:set(v_x, v_y, self.height)
 	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
 	self.rotorEmitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
-	self.gunEmitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
 
 	local heliVolume = 50
 
@@ -291,7 +288,6 @@ function eHelicopter:launch(targetedPlayer)
 
 	local e_x, e_y, e_z = self:getIsoCoords()
 
-	self.gunEmitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
 	self.rotorEmitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
 	self.rotorEmitter:playSound("eHelicopter", e_x, e_y, e_z)
 	self:chooseVoice()
@@ -342,7 +338,6 @@ end
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 	self.state = "unlaunched"
-	self.gunEmitter:stopAll()
 	self.rotorEmitter:stopAll()
 end
 
