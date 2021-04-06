@@ -20,6 +20,9 @@ ALL_HELICOPTERS = {}
 ---@field topSpeedFactor number speed x this = top "speed"
 ---@field fireSound table sounds for firing
 ---@field fireImpacts table sounds for fire impact
+---@field hostileCenter IsoGridSquare
+---@field hostiles table
+---@field attackRange number
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -38,7 +41,9 @@ eHelicopter.speed = 0.25
 eHelicopter.topSpeedFactor = 3
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
-
+eHelicopter.hostileCenter = nil
+eHelicopter.hostiles = {}
+eHelicopter.attackRange = 20
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
