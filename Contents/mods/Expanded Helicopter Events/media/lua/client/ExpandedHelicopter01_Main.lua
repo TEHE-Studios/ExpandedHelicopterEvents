@@ -245,6 +245,10 @@ function eHelicopter:move(re_aim, dampen)
 
 	---@type Vector3
 	local velocity
+
+	if not self.lastMovement then
+		re_aim = true
+	end
 	
 	if re_aim then
 		velocity = self:aimAtTarget()
