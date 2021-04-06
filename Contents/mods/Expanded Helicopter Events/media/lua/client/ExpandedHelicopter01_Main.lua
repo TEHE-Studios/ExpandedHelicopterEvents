@@ -32,7 +32,7 @@ eHelicopter.targetPosition = nil
 eHelicopter.state = nil
 eHelicopter.lastMovement = nil
 eHelicopter.currentPosition = nil
-eHelicopter.lastAnnouncedTime = nil
+eHelicopter.lastAnnouncedTime = 0
 eHelicopter.announcerVoice = nil
 eHelicopter.rotorEmitter = nil
 eHelicopter.ID = 0
@@ -256,7 +256,7 @@ function eHelicopter:move(re_aim, dampen)
 
 	local heliVolume = 50
 
-	if not self.lastAnnouncedTime or self.lastAnnouncedTime <= getTimestamp() then
+	if self.lastAnnouncedTime <= getTimestamp() then
 		heliVolume = heliVolume+20
 		self:announce()
 	end
