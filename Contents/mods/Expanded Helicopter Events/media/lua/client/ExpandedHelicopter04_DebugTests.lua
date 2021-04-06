@@ -11,7 +11,7 @@ function eHelicopter:Report(aiming, dampen)
 end
 
 
---- Used only for testing heli launches
+--- Test launch heli
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_0 then
 		---@type eHelicopter heli
@@ -44,7 +44,7 @@ Events.OnCustomUIKey.Add(function(key)
 	end
 end)
 
-
+--- Test getHumanoidsInRange
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_6 then
 		local player = getSpecificPlayer(0)
@@ -62,7 +62,7 @@ Events.OnCustomUIKey.Add(function(key)
 end)
 
 
---- Used to test all announcements
+--- Test all announcements
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_9 then--- test all announcements
 	testAllLines()
