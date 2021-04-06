@@ -266,13 +266,6 @@ function eHelicopter:move(re_aim, dampen)
 end
 
 
----@return number, number, number x, y, z of eHelicopter
-function eHelicopter:getIsoCoords()
-	local ehX, ehY, ehZ = tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height
-	return ehX, ehY, ehZ
-end
-
-
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedPlayer)
 
@@ -287,9 +280,6 @@ function eHelicopter:launch(targetedPlayer)
 	self:setTargetPos()
 	self:initPos(self.target)
 	self.preflightDistance = self:getDistanceToTarget()
-
-	local e_x, e_y, e_z = self:getIsoCoords()
-
 	self.rotorEmitter = getWorld():getFreeEmitter()
 	self.rotorEmitter:playSound("eHelicopter")
 	self:chooseVoice()

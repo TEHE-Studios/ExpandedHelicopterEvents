@@ -7,6 +7,14 @@
 --- --- target movement creates chance for a miss
 --- look into creating dust-ups from bullet impacts
 
+
+---@return number, number, number x, y, z of eHelicopter
+function eHelicopter:getIsoGridSquareCoords()
+	local ehX, ehY = math.floor(tonumber(Vector3GetX(self.currentPosition))), math.floor(tonumber(Vector3GetY(self.currentPosition)))
+	return ehX, ehY
+end
+
+
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:enterAttackMode(targetType)
 
