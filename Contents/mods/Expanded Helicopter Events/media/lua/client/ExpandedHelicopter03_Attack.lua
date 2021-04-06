@@ -7,49 +7,52 @@
 --- --- target movement creates chance for a miss
 --- look into creating dust-ups from bullet impacts
 
+--[[eHelicopter.hostileCenter = nil
+eHelicopter.hostilesToFireOn = {}]]
 
 ---@param targetType string IsoZombie or IsoPlayer
-function eHelicopter:enterAttackMode(targetType)
+function eHelicopter:lookForHostiles(targetType)
 
 	if self.lastAttackTime >= getTimestamp() then
 		return
 	end
 
-	local heliLocation = self:getIsoGridSquare()
-
-	print("-- enterAttackMode: a ")
-
-	if not heliLocation then
-		print("--enterAttackMode: ERROR  --  heliLocation: nil ")
-		return
+	--find new targets
+	if #self.hostilesToFireOn <=0 then
+		--current IsoGridSquare
+		self.hostileCenter = self:getIsoGridSquare()
+		--return if no square found - this happens when the chunk/square is not loaded
+		if not self.hostileCenter then
+			return
+		end
+		--set targets
+		self.hostilesToFireOn = self:attackScan(targetType, self.hostileCenter)
 	end
 
-	self.lastAttackTime = getTimestamp()+self.attackDelay
+	print("----- heliLocation: x"..self.hostileCenter:getX()..", y"..self.hostileCenter:getY()..", z"..self.hostileCenter:getZ())
+	print("----- heliLocation: "..tostring(self.hostileCenter))
+	print("----- hostiles:"..#self.hostilesToFireOn)
 
-	--find new targets
-	local hostiles = self:attackScan(targetType, heliLocation)
-
-	print("----- heliLocation: x"..heliLocation:getX()..", y"..heliLocation:getY()..", z"..heliLocation:getZ())
-	print("----- heliLocation: "..tostring(heliLocation))
-
-	print("----- hostiles:"..#hostiles)
-
-	--if hostiles are still around and close enough fire on them
-	if #hostiles > 0 then
+	--if hostiles are still around and close enough: fire on them
+	if #self.hostilesToFireOn > 0 then
 
 		---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
-		local hostile = hostiles[1]
+		local hostile = self.hostilesToFireOn[1]
 
-		print("-- enterAttackMode: b ")
+		print("-- enterAttackMode: hostiles > 0 ")
 
-		local distanceTo = tonumber(hostile:getSquare():DistTo(heliLocation))
+		local distanceTo = tonumber(hostile:getSquare():DistTo(self.hostileCenter))
 
 		print("----- hostile:getSquare():DistTo(heliLocation) < self.attackRange :"..tostring(distanceTo < self.attackRange))
 
+		--if close enough still
 		if distanceTo < self.attackRange then
-			print("-- enterAttackMode: c ".." FIRING")
+			print("-- enterAttackMode: FIRING")
 			self:fireOn(hostile)
 		end
+
+		--remove regardless
+		table.remove(self.hostilesToFireOn,1)
 	end
 end
 
@@ -62,7 +65,7 @@ function eHelicopter:attackScan(targetType, location)
 		return {}
 	end
 
-	local fractalObjectsFound = getHumanoidsInFractalRange(location, 1, targetType)
+	local fractalObjectsFound = getHumanoidsInFractalRange(location, 2, targetType)
 	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do
@@ -79,6 +82,8 @@ end
 
 ---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter
 function eHelicopter:fireOn(targetHostile)
+
+	self.lastAttackTime = getTimestamp()+self.attackDelay
 
 	--fireSound
 	local fireNoise = self.fireSound[1]

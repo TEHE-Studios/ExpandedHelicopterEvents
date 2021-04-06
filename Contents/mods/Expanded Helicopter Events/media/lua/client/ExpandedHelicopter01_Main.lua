@@ -23,6 +23,9 @@ ALL_HELICOPTERS = {}
 ---@field lastAttackTime number
 ---@field attackDelay number
 
+---@field hostileCenter IsoGridSquare
+---@field hostilesToFireOn table
+
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
 eHelicopter.target = nil
@@ -39,9 +42,12 @@ eHelicopter.speed = 0.25
 eHelicopter.topSpeedFactor = 3
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
-eHelicopter.attackRange = 20
+eHelicopter.attackRange = 50
 eHelicopter.lastAttackTime = 0
-eHelicopter.attackDelay = 1
+eHelicopter.attackDelay = 0.1
+
+eHelicopter.hostileCenter = nil
+eHelicopter.hostilesToFireOn = {}
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
@@ -274,8 +280,6 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()
 	end
 
-	self:enterAttackMode("IsoZombie")
-
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
 
@@ -323,6 +327,7 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
+	self:lookForHostiles("IsoZombie")
 
 	if not self:isInBounds() then
 		self:unlaunch()
