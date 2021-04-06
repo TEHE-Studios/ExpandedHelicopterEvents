@@ -24,7 +24,6 @@ function eHelicopter:attackScan(targetType)
 
 	for fractalIndex=1, #fractalObjectsFound do
 		local objectsArray = fractalObjectsFound[fractalIndex]
-		print("fractalIndex: "..fractalIndex.." count:"..#objectsArray)
 
 		if (not objectsToFireOn) or (#objectsArray > #objectsToFireOn) then
 			objectsToFireOn = objectsArray
@@ -39,15 +38,23 @@ end
 function eHelicopter:fireOn(targetList)
 
 	for i=1, #targetList do
-		---@type IsoMovingObject|IsoGameCharacter foundObj
+		---@type IsoObject|IsoMovingObject|IsoGameCharacter foundObj
 		local foundObj = targetList[i]
-
 		--fireSound
 		local fireNoise = self.fireSound[1]
-		self.gunEmitter:playSound(fireNoise, foundObj:getSquare())
+		--determine location of helicopter
+		local ehX = Vector3GetX(self.currentPosition)
+		local ehY = Vector3GetY(self.currentPosition)
+		--play sound file
+		self.gunEmitter:playSound(fireNoise, tonumber(ehX), tonumber(ehY), self.height)
+		--virtual sound event to attract zombies
+		--addSound(nil, ehX, ehY, 0, 250, 75)
+		--set damage to kill
+		print("hostile: "..foundObj:getClass():getSimpleName().." movementspeed:"..foundObj:getMoveSpeed())
 
-		--set damage OR kill
-		foundObj:setHealth(0)
+		if ZombRand(0, 100) < 100-foundObj:getMoveSpeed() then
+			foundObj:setHealth(0)
+		end
 
 		--fireImpacts
 		local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
