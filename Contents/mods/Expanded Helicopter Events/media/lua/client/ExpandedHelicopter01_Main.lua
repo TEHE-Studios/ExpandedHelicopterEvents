@@ -44,7 +44,7 @@ eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fi
 eHelicopter.attackRangeDistance = 50
 eHelicopter.attackRangeScope = 3
 eHelicopter.lastAttackTime = 0
-eHelicopter.attackDelay = 0.00001
+eHelicopter.attackDelay = 90
 eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 
