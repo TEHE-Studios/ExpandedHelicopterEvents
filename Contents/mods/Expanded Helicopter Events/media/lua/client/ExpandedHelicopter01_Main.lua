@@ -19,11 +19,10 @@ ALL_HELICOPTERS = {}
 ---@field topSpeedFactor number speed x this = top "speed"
 ---@field fireSound table sounds for firing
 ---@field fireImpacts table sounds for fire impact
----@field attackRange number
+---@field attackRangeDistance number
+---@field attackRangeScope number
 ---@field lastAttackTime number
 ---@field attackDelay number
-
----@field hostileCenter IsoGridSquare
 ---@field hostilesToFireOn table
 
 eHelicopter = {}
@@ -42,11 +41,11 @@ eHelicopter.speed = 0.25
 eHelicopter.topSpeedFactor = 3
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
-eHelicopter.attackRange = 50
+eHelicopter.attackRangeDistance = 50
+eHelicopter.attackRangeScope = 3
 eHelicopter.lastAttackTime = 0
-eHelicopter.attackDelay = 0.1
-
-eHelicopter.hostileCenter = nil
+eHelicopter.attackDelay = 0.00001
+eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 
 ---Do not call this function directly for new helicopters
@@ -249,7 +248,7 @@ function eHelicopter:move(re_aim, dampen)
 	if not self.lastMovement then
 		re_aim = true
 	end
-	
+
 	if re_aim then
 		velocity = self:aimAtTarget()
 
