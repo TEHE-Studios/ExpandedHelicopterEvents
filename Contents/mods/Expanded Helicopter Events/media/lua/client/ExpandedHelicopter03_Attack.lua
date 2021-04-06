@@ -7,51 +7,60 @@
 --- --- target movement creates chance for a miss
 --- look into creating dust-ups from bullet impacts
 
---[[eHelicopter.hostileCenter = nil
-eHelicopter.hostilesToFireOn = {}]]
 
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:lookForHostiles(targetType)
 
-	if self.lastAttackTime >= getTimestamp() then
+	local selfSquare = self:getIsoGridSquare()
+
+	--too soon to attack again OR
+	--return if no square found - chunk/square is not loaded
+	if (self.lastAttackTime >= getTimestamp()) or (not selfSquare) then
 		return
 	end
 
-	--find new targets
-	if #self.hostilesToFireOn <=0 then
-		--current IsoGridSquare
-		self.hostileCenter = self:getIsoGridSquare()
-		--return if no square found - this happens when the chunk/square is not loaded
-		if not self.hostileCenter then
-			return
+	--store numeration (length) of self.hostilesToFireOn
+	local n = #self.hostilesToFireOn
+
+	--clear entries that are too far
+	for i=1, n do
+		local hostile = self.hostilesToFireOn[i]
+		local distanceTo = tonumber(hostile:getSquare():DistTo(selfSquare))
+		--if hostile is too far set to nil
+		if distanceTo > self.attackRangeDistance then
+			self.hostilesToFireOn[i] = nil
 		end
-		--set targets
-		self.hostilesToFireOn = self:attackScan(targetType, self.hostileCenter)
+	end
+	--prepare new index for self.hostilesToFireOn
+	local newIndex = 0
+	--iterate through and overwrite nil entries
+	for i=1, n do
+		if self.hostilesToFireOn[i]~=nil then
+			newIndex = newIndex+1
+			self.hostilesToFireOn[newIndex]=self.hostilesToFireOn[i]
+		end
+	end
+	--cut off end of list based on newIndex
+	for i=newIndex+1, n do
+		self.hostilesToFireOn[i]=nil
 	end
 
-	print("----- heliLocation: x"..self.hostileCenter:getX()..", y"..self.hostileCenter:getY()..", z"..self.hostileCenter:getZ())
-	print("----- heliLocation: "..tostring(self.hostileCenter))
-	print("----- hostiles:"..#self.hostilesToFireOn)
+	--keep an eye out for new targets
+	local scanningForTargets = self:attackScan(targetType, selfSquare)
+	--if no more targets or newly scanned targets are greater size change target
+	if (#self.hostilesToFireOn <=0) or (#scanningForTargets > self.hostilesToFireOnIndex) then
+		--set targets
+		self.hostilesToFireOn = scanningForTargets
+		self.hostilesToFireOnIndex = #self.hostilesToFireOn
+	end
 
-	--if hostiles are still around and close enough: fire on them
+	--if there are hostiles identified
 	if #self.hostilesToFireOn > 0 then
-
+		--just grab the first target
 		---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
 		local hostile = self.hostilesToFireOn[1]
-
-		print("-- enterAttackMode: hostiles > 0 ")
-
-		local distanceTo = tonumber(hostile:getSquare():DistTo(self.hostileCenter))
-
-		print("----- hostile:getSquare():DistTo(heliLocation) < self.attackRange :"..tostring(distanceTo < self.attackRange))
-
-		--if close enough still
-		if distanceTo < self.attackRange then
-			print("-- enterAttackMode: FIRING")
-			self:fireOn(hostile)
-		end
-
-		--remove regardless
+		self:fireOn(hostile)
+		--remove target
 		table.remove(self.hostilesToFireOn,1)
 	end
 end
@@ -65,7 +74,7 @@ function eHelicopter:attackScan(targetType, location)
 		return {}
 	end
 
-	local fractalObjectsFound = getHumanoidsInFractalRange(location, 2, targetType)
+	local fractalObjectsFound = getHumanoidsInFractalRange(location, self.attackRangeScope, targetType)
 	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do
@@ -87,8 +96,14 @@ function eHelicopter:fireOn(targetHostile)
 
 	--fireSound
 	local fireNoise = self.fireSound[1]
-	--determine location of helicopter
 
+	--[[ test later
+	if self.hostilesToFireOnIndex > 1 and #self.hostilesToFireOn <= 1 then
+		fireNoise = self.fireSound[2]
+	end
+	]]
+
+	--determine location of helicopter
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
 	--play sound file
@@ -100,9 +115,11 @@ function eHelicopter:fireOn(targetHostile)
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	--set damage to kill
-	print("hostile: ".. targetHostile:getClass():getSimpleName().." 100*movementspeed:".. 100*targetHostile:getMoveSpeed())
+	local movementThrowOffAim = 10*targetHostile:getMoveSpeed()
 
-	if ZombRand(0, 100) < 100-(targetHostile:getMoveSpeed()*100) then
+	print("hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim)
+
+	if ZombRand(0, 100) < 100-movementThrowOffAim then
 		targetHostile:setHealth(0)
 	end
 
