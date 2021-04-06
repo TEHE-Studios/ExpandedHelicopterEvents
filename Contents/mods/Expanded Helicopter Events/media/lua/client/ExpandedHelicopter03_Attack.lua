@@ -84,25 +84,27 @@ function getHumanoidsInFractalRange(center, range, lookForType)
 	--get distance from 1 center to the next using range*2 + 1 for the other center
 	local fractalFactor = (range*2)+1
 	--list of center's
+	local cX, cY = center:getX(), center:getY()
+
 	local fractalIsoRangeIndex = {
 		--a's center
-		getSquare(center:getX()-fractalFactor,center:getY()+fractalFactor,0),
+		getSquare(cX-fractalFactor,cY+fractalFactor,0),
 		--b's center
-		getSquare(center:getX(),center:getY()+fractalFactor,0),
+		getSquare(cX,cY+fractalFactor,0),
 		--c's center
-		getSquare(center:getX()+fractalFactor,center:getY()+fractalFactor,0),
+		getSquare(cX+fractalFactor,cY+fractalFactor,0),
 		--d's center
-		getSquare(center:getX()-fractalFactor,center:getY(),0),
+		getSquare(cX-fractalFactor,cY,0),
 		--e's center, true center
 		center,
 		--f's center
-		getSquare(center:getX()+fractalFactor,center:getY(),0),
+		getSquare(cX+fractalFactor,cY,0),
 		--g's center
-		getSquare(center:getX()-fractalFactor,center:getY()-fractalFactor,0),
+		getSquare(cX-fractalFactor,cY-fractalFactor,0),
 		--h's center
-		getSquare(center:getX(),center:getY()-fractalFactor,0),
+		getSquare(cX,cY-fractalFactor,0),
 		--i's center
-		getSquare(center:getX()+fractalFactor,center:getY()-fractalFactor,0),
+		getSquare(cX+fractalFactor,cY-fractalFactor,0),
 	}
 
 	local fractalObjectsFound = {}
