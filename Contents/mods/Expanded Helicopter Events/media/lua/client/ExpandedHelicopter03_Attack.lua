@@ -15,7 +15,7 @@ function eHelicopter:lookForHostiles(targetType)
 
 	--too soon to attack again OR
 	--return if no square found - chunk/square is not loaded
-	if (self.lastAttackTime >= getTimestamp()) or (not selfSquare) then
+	if (self.lastAttackTime >= getTimestampMs()) or (not selfSquare) then
 		return
 	end
 
@@ -92,7 +92,7 @@ end
 ---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter
 function eHelicopter:fireOn(targetHostile)
 
-	self.lastAttackTime = getTimestamp()+self.attackDelay
+	self.lastAttackTime = getTimestampMs()+self.attackDelay
 
 	--fireSound
 	local fireNoise = self.fireSound[1]
