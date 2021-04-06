@@ -1,0 +1,34 @@
+module EHE
+{
+	imports
+	{
+		Base
+	}
+
+    item EvacuationFlyer
+	{
+		Weight = 0.1,
+		Type = Normal,
+		DisplayName = Evacuation Flyer,
+		Icon = item_paper,
+		Map = media/ui/content/EvacuationFlyer.png
+	}
+
+	item EmergencyFlyer
+	{
+		Weight = 0.1,
+		Type = Normal,
+		DisplayName = Emergency Flyer,
+		Icon = item_paper,
+		Map = media/ui/content/EmergencyFlyer.png
+	}
+
+		item CurfewFlyer
+	{
+		Weight = 0.1,
+		Type = Normal,
+		DisplayName = Curfew Flyer,
+		Icon = item_paper,
+		Map = media/ui/content/CurfewFlyer.png
+	}
+}
