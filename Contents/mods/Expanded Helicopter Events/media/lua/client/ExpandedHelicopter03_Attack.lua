@@ -145,7 +145,7 @@ function getHumanoidsInRange(center, range, lookForType)
 			local foundObj = squareContents[i]
 			local foName = foundObj:getClass():getSimpleName()
 
-			if (not lookForType) or (lookForType==foName) then
+			if (not lookForType and ((foName=="IsoZombie") or (foName=="IsoPlayer"))) or (lookForType==foName) then
 				if foundObj:isOutside() then
 					table.insert(objectsFound, foundObj)
 				end
