@@ -7,6 +7,38 @@
 --- --- target movement creates chance for a miss
 --- look into creating dust-ups from bullet impacts
 
+---@param targetType string IsoZombie or IsoPlayer
+function eHelicopter:enterAttackMode(targetType)
+
+	if self.lastAttackTime >= getTimestamp() then
+		return
+	end
+
+	print("-- enterAttackMode: a")
+
+	self.lastAttackTime = getTimestamp()+self.attackDelay
+
+	local ehX, ehY, ehZ = self:getIsoCoords()
+	local heliLocation = getSquare(ehX, ehY, ehZ)
+
+	--find new targets
+	local hostiles = self:attackScan(targetType, heliLocation)
+
+	--if hostiles are still around and close enough fire on them
+	if #hostiles > 0 then
+
+		print("-- enterAttackMode: b")
+
+		---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
+		local hostile = hostiles[1]
+
+		if hostile:getSquare():DistTo(heliLocation) < self.attackRange then
+			print("-- enterAttackMode: c")
+			self:fireOn(hostile)
+		end
+	end
+end
+
 
 ---@param targetType string IsoZombie or IsoPlayer
 ---@return table

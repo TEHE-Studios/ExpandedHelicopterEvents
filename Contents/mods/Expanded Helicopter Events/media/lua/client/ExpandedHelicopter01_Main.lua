@@ -257,7 +257,7 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()
 	end
 
-	self:enterAttackMode()
+	self:enterAttackMode("IsoZombie")
 
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
