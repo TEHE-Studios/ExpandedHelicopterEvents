@@ -10,10 +10,7 @@
 
 ---@param targetType string IsoZombie or IsoPlayer
 ---@return table
-function eHelicopter:attackScan(targetType)
-
-	local eX, eY, _ = self:getIsoCoords()
-	local location = getSquare(eX,eY,0)
+function eHelicopter:attackScan(targetType, location)
 
 	if not location then
 		return {}
@@ -34,33 +31,34 @@ function eHelicopter:attackScan(targetType)
 end
 
 
----@param targetList table
-function eHelicopter:fireOn(targetList)
+---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter
+function eHelicopter:fireOn(targetHostile)
 
-	for i=1, #targetList do
-		---@type IsoObject|IsoMovingObject|IsoGameCharacter foundObj
-		local foundObj = targetList[i]
-		--fireSound
-		local fireNoise = self.fireSound[1]
-		--determine location of helicopter
-		local ehX = Vector3GetX(self.currentPosition)
-		local ehY = Vector3GetY(self.currentPosition)
-		--play sound file
-		self.gunEmitter:playSound(fireNoise, tonumber(ehX), tonumber(ehY), self.height)
-		--virtual sound event to attract zombies
-		--addSound(nil, ehX, ehY, 0, 250, 75)
-		--set damage to kill
-		print("hostile: "..foundObj:getClass():getSimpleName().." movementspeed:"..foundObj:getMoveSpeed())
+	--fireSound
+	local fireNoise = self.fireSound[1]
+	--determine location of helicopter
 
-		if ZombRand(0, 100) < 100-foundObj:getMoveSpeed() then
-			foundObj:setHealth(0)
-		end
+	local ehX, ehY, ehZ = self:getIsoCoords()
 
-		--fireImpacts
-		local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
-		self.gunEmitter:playSound(impactNoise, foundObj:getSquare())
-		foundObj:splatBlood(2,50)
+	--play sound file
+	local gunEmitter = getWorld():getFreeEmitter()
+	gunEmitter:playSound(fireNoise, ehX, ehY, ehZ)
+
+	--virtual sound event to attract zombies
+	--addSound(nil, ehX, ehY, 0, 250, 75)
+
+	--set damage to kill
+	print("hostile: ".. targetHostile:getClass():getSimpleName().." 100*movementspeed:".. 100*targetHostile:getMoveSpeed())
+
+	if ZombRand(0, 100) < 100-(targetHostile:getMoveSpeed()*100) then
+		targetHostile:setHealth(0)
 	end
+
+	--fireImpacts
+	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
+	gunEmitter:playSound(impactNoise, targetHostile:getSquare())
+	targetHostile:splatBlood(2,50)
+
 end
 
 
