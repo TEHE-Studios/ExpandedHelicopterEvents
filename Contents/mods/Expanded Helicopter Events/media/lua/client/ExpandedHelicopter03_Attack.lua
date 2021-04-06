@@ -8,15 +8,6 @@
 --- look into creating dust-ups from bullet impacts
 
 
----@return number, number, number x, y, z of eHelicopter
-function eHelicopter:getIsoGridSquareCoords()
-	local ehX = math.floor(tonumber(Vector3GetX(self.currentPosition)))
-	local ehY = math.floor(tonumber(Vector3GetY(self.currentPosition)))
-	local ehZ = self.height
-	return ehX, ehY, ehZ
-end
-
-
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:enterAttackMode(targetType)
 
@@ -24,30 +15,39 @@ function eHelicopter:enterAttackMode(targetType)
 		return
 	end
 
-	print("-- enterAttackMode: a")
+	local heliLocation = self:getIsoGridSquare()
+
+	print("-- enterAttackMode: a ")
+
+	if not heliLocation then
+		print("--enterAttackMode: ERROR  --  heliLocation: nil ")
+		return
+	end
 
 	self.lastAttackTime = getTimestamp()+self.attackDelay
-
-	local ehX, ehY, ehZ = self:getIsoCoords()
-	local heliLocation = getSquare(ehX, ehY, ehZ)
 
 	--find new targets
 	local hostiles = self:attackScan(targetType, heliLocation)
 
+	print("----- heliLocation: x"..heliLocation:getX()..", y"..heliLocation:getY()..", z"..heliLocation:getZ())
+	print("----- heliLocation: "..tostring(heliLocation))
+
+	print("----- hostiles:"..#hostiles)
+
 	--if hostiles are still around and close enough fire on them
 	if #hostiles > 0 then
 
-		print("-- enterAttackMode: b")
-
-		---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
-		local hostile = hostiles[1]
-
-		if hostile:getSquare():DistTo(heliLocation) < self.attackRange then
-			print("-- enterAttackMode: c")
-			self:fireOn(hostile)
-		end
+	---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
+	local hostile = hostiles[1]
+	print("-- enterAttackMode: b ")
+	local distanceTo = tonumber(hostile:getSquare():DistTo(heliLocation))
+	print("----- hostile:getSquare():DistTo(heliLocation) < self.attackRange :"..tostring(distanceTo < self.attackRange))
+	if distanceTo < self.attackRange then
+	print("-- enterAttackMode: c ".." FIRING")
+	self:fireOn(hostile)
 	end
-end
+	end
+	end
 
 
 ---@param targetType string IsoZombie or IsoPlayer
@@ -80,14 +80,15 @@ function eHelicopter:fireOn(targetHostile)
 	local fireNoise = self.fireSound[1]
 	--determine location of helicopter
 
-	local ehX, ehY, ehZ = self:getIsoCoords()
+	local ehX, ehY, ehZ = self:getXYZAsInt()
 
 	--play sound file
 	local gunEmitter = getWorld():getFreeEmitter()
 	gunEmitter:playSound(fireNoise, ehX, ehY, ehZ)
 
 	--virtual sound event to attract zombies
-	--addSound(nil, ehX, ehY, 0, 250, 75)
+
+	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	--set damage to kill
 	print("hostile: ".. targetHostile:getClass():getSimpleName().." 100*movementspeed:".. 100*targetHostile:getMoveSpeed())
