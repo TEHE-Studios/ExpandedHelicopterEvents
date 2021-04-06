@@ -254,13 +254,14 @@ function eHelicopter:move(re_aim, dampen)
 
 	if not self.lastAnnouncedTime or self.lastAnnouncedTime <= getTimestamp() then
 		heliVolume = heliVolume+20
-		self:announce()--"PleaseReturnToYourHomes")
+		self:announce()
 	end
 
 	self:enterAttackMode()
+
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
-	
+
 	self:Report(re_aim, dampen)
 end
 
@@ -289,8 +290,8 @@ function eHelicopter:launch(targetedPlayer)
 
 	local e_x, e_y, e_z = self:getIsoCoords()
 
-	self.rotorEmitter = getWorld():getFreeEmitter(e_x, e_y, e_z)
-	self.rotorEmitter:playSound("eHelicopter", e_x, e_y, e_z)
+	self.rotorEmitter = getWorld():getFreeEmitter()
+	self.rotorEmitter:playSound("eHelicopter")
 	self:chooseVoice()
 	self.state = "gotoTarget"
 end
