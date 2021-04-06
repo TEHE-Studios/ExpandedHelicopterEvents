@@ -145,10 +145,26 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 end
 
 
-function eHelicopter:isInBounds()
+---@return int, int, int XYZ of eHelicopter
+function eHelicopter:getXYZAsInt()
+	local ehX = math.floor(Vector3GetX(self.currentPosition) + 0.5)
+	local ehY = math.floor(Vector3GetY(self.currentPosition) + 0.5)
+	local ehZ = self.height
 
-	local h_x = tonumber(Vector3GetX(self.currentPosition))
-	local h_y = tonumber(Vector3GetY(self.currentPosition))
+	return ehX, ehY, ehZ
+end
+
+
+---@return IsoGridSquare of eHelicopter
+function eHelicopter:getIsoGridSquare()
+	local ehX, ehY, _ = self:getXYZAsInt()
+
+	return getSquare(ehX, ehY, 0)
+end
+
+
+function eHelicopter:isInBounds()
+	local h_x, h_y, _ = self:getXYZAsInt()
 
 	if h_x <= MAX_XY and h_x >= MIN_XY and h_y <= MAX_XY and h_y >= MIN_XY then
 		return true
@@ -156,6 +172,7 @@ function eHelicopter:isInBounds()
 
 	return false
 end
+
 
 function eHelicopter:getDistanceToTarget()
 
@@ -247,8 +264,8 @@ function eHelicopter:move(re_aim, dampen)
 
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(v_x, v_y, self.height)
-	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
-	self.rotorEmitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
+	--Move emitter to position
+	self.rotorEmitter:setPos(v_x,v_y,self.height)
 
 	local heliVolume = 50
 
@@ -275,13 +292,16 @@ function eHelicopter:launch(targetedPlayer)
 		local randNumFromActivePlayers = ZombRand(numActivePlayers)
 		targetedPlayer = getSpecificPlayer(randNumFromActivePlayers)
 	end
-	
+
 	self.target = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target)
 	self.preflightDistance = self:getDistanceToTarget()
 	self.rotorEmitter = getWorld():getFreeEmitter()
-	self.rotorEmitter:playSound("eHelicopter")
+
+	local ehX, ehY, ehZ = self:getXYZAsInt()
+
+	self.rotorEmitter:playSound("eHelicopter", ehX, ehY, ehZ)
 	self:chooseVoice()
 	self.state = "gotoTarget"
 end
