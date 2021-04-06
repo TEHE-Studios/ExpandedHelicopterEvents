@@ -257,6 +257,7 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()--"PleaseReturnToYourHomes")
 	end
 
+	self:enterAttackMode()
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
 	
@@ -311,11 +312,6 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
-
-	local potentialHostiles = self:attackScan("IsoZombie")
-	if #potentialHostiles > 0 then
-		self:fireOn(potentialHostiles)
-	end
 
 	if not self:isInBounds() then
 		self:unlaunch()
