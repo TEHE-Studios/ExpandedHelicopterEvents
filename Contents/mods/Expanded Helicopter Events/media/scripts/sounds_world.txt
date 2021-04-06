@@ -2,8 +2,8 @@ module Base {
 
     sound eHelicopter { category = World, loop = true, is3D = true, clip { file = media/sound/heli_loop.ogg, distanceMax = 1500, volume = 2.0, } }
 
-    sound eHeli_fire_single { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_single.ogg, distanceMax = 1500, volume = 2.0, } }
-    sound eHeli_fire_loop { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_loop.ogg, distanceMax = 1500, volume = 2.0, } }
+    sound eHeli_fire_single { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_single.ogg, distanceMax = 1500, volume = 3.0, } }
+    sound eHeli_fire_loop { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_loop.ogg, distanceMax = 1500, volume = 3.0, } }
 
     sound eHeli_fire_impact1 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact1.ogg, distanceMax = 1500, volume = 2.0, } }
     sound eHeli_fire_impact2 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact2.ogg, distanceMax = 1500, volume = 2.0, } }

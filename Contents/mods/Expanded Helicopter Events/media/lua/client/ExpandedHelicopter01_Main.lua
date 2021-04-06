@@ -19,9 +19,11 @@ ALL_HELICOPTERS = {}
 ---@field topSpeedFactor number speed x this = top "speed"
 ---@field fireSound table sounds for firing
 ---@field fireImpacts table sounds for fire impact
----@field attackRange number
+---@field attackRangeDistance number
+---@field attackRangeScope number
 ---@field lastAttackTime number
 ---@field attackDelay number
+---@field hostilesToFireOn table
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -39,9 +41,12 @@ eHelicopter.speed = 0.25
 eHelicopter.topSpeedFactor = 3
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
-eHelicopter.attackRange = 20
+eHelicopter.attackRangeDistance = 50
+eHelicopter.attackRangeScope = 3
 eHelicopter.lastAttackTime = 0
-eHelicopter.attackDelay = 1
+eHelicopter.attackDelay = 0.00001
+eHelicopter.hostilesToFireOnIndex = 0
+eHelicopter.hostilesToFireOn = {}
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
@@ -145,10 +150,26 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 end
 
 
-function eHelicopter:isInBounds()
+---@return int, int, int XYZ of eHelicopter
+function eHelicopter:getXYZAsInt()
+	local ehX = math.floor(Vector3GetX(self.currentPosition) + 0.5)
+	local ehY = math.floor(Vector3GetY(self.currentPosition) + 0.5)
+	local ehZ = self.height
 
-	local h_x = tonumber(Vector3GetX(self.currentPosition))
-	local h_y = tonumber(Vector3GetY(self.currentPosition))
+	return ehX, ehY, ehZ
+end
+
+
+---@return IsoGridSquare of eHelicopter
+function eHelicopter:getIsoGridSquare()
+	local ehX, ehY, _ = self:getXYZAsInt()
+
+	return getSquare(ehX, ehY, 0)
+end
+
+
+function eHelicopter:isInBounds()
+	local h_x, h_y, _ = self:getXYZAsInt()
 
 	if h_x <= MAX_XY and h_x >= MIN_XY and h_y <= MAX_XY and h_y >= MIN_XY then
 		return true
@@ -156,6 +177,7 @@ function eHelicopter:isInBounds()
 
 	return false
 end
+
 
 function eHelicopter:getDistanceToTarget()
 
@@ -222,7 +244,11 @@ function eHelicopter:move(re_aim, dampen)
 
 	---@type Vector3
 	local velocity
-	
+
+	if not self.lastMovement then
+		re_aim = true
+	end
+
 	if re_aim then
 		velocity = self:aimAtTarget()
 
@@ -247,8 +273,8 @@ function eHelicopter:move(re_aim, dampen)
 
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(v_x, v_y, self.height)
-	--Move emitter to position - note toNumber is needed for Vector3GetX/Y due to setPos not behaving with lua's pseudo "float"
-	self.rotorEmitter:setPos(tonumber(v_x),tonumber(v_y),self.height)
+	--Move emitter to position
+	self.rotorEmitter:setPos(v_x,v_y,self.height)
 
 	local heliVolume = 50
 
@@ -257,19 +283,10 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()
 	end
 
-	self:enterAttackMode("IsoZombie")
-
 	--virtual sound event to attract zombies
 	addSound(nil, v_x, v_y, 0, 250, heliVolume)
 
 	--self:Report(re_aim, dampen)
-end
-
-
----@return number, number, number x, y, z of eHelicopter
-function eHelicopter:getIsoCoords()
-	local ehX, ehY, ehZ = tonumber(Vector3GetX(self.currentPosition)), tonumber(Vector3GetY(self.currentPosition)), self.height
-	return ehX, ehY, ehZ
 end
 
 
@@ -282,16 +299,16 @@ function eHelicopter:launch(targetedPlayer)
 		local randNumFromActivePlayers = ZombRand(numActivePlayers)
 		targetedPlayer = getSpecificPlayer(randNumFromActivePlayers)
 	end
-	
+
 	self.target = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target)
 	self.preflightDistance = self:getDistanceToTarget()
-
-	local e_x, e_y, e_z = self:getIsoCoords()
-
 	self.rotorEmitter = getWorld():getFreeEmitter()
-	self.rotorEmitter:playSound("eHelicopter")
+
+	local ehX, ehY, ehZ = self:getXYZAsInt()
+
+	self.rotorEmitter:playSound("eHelicopter", ehX, ehY, ehZ)
 	self:chooseVoice()
 	self.state = "gotoTarget"
 end
@@ -313,6 +330,7 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
+	self:lookForHostiles("IsoZombie")
 
 	if not self:isInBounds() then
 		self:unlaunch()
