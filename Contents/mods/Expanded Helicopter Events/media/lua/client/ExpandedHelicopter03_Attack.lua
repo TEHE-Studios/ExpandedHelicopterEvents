@@ -10,8 +10,10 @@
 
 ---@return number, number, number x, y, z of eHelicopter
 function eHelicopter:getIsoGridSquareCoords()
-	local ehX, ehY = math.floor(tonumber(Vector3GetX(self.currentPosition))), math.floor(tonumber(Vector3GetY(self.currentPosition)))
-	return ehX, ehY
+	local ehX = math.floor(tonumber(Vector3GetX(self.currentPosition)))
+	local ehY = math.floor(tonumber(Vector3GetY(self.currentPosition)))
+	local ehZ = self.height
+	return ehX, ehY, ehZ
 end
 
 
