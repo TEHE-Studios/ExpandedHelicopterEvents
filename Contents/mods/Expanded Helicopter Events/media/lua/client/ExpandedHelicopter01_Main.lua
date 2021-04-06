@@ -22,6 +22,8 @@ ALL_HELICOPTERS = {}
 ---@field hostileCenter IsoGridSquare
 ---@field hostiles table
 ---@field attackRange number
+---@field lastAttackTime number
+---@field attackDelay number
 
 eHelicopter = {}
 eHelicopter.preflightDistance = nil
@@ -42,6 +44,8 @@ eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fi
 eHelicopter.hostileCenter = nil
 eHelicopter.hostiles = {}
 eHelicopter.attackRange = 20
+eHelicopter.lastAttackTime = 0
+eHelicopter.attackDelay = 2
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
