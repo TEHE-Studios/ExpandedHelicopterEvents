@@ -32,7 +32,7 @@ Events.OnCustomUIKey.Add(function(key)
 		--move closer
 		local tpX = heli.target:getX()
 		local tpY = heli.target:getY()
-		local offset = ZombRand(1000)
+		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
 		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
