@@ -5,28 +5,7 @@ ALL_HELICOPTERS = {}
 
 ---@class eHelicopter
 eHelicopter = {}
----@field preflightDistance number
-eHelicopter.preflightDistance = nil
----@field target IsoObject
-eHelicopter.target = nil
----@field targetPosition Vector3 "position" of target
-eHelicopter.targetPosition = nil
----@field state string
-eHelicopter.state = nil
----@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
-eHelicopter.lastMovement = nil
----@field currentPosition Vector3 @consider this a pair of coordinates
-eHelicopter.currentPosition = nil
----@field lastAnnouncedTime number
-eHelicopter.lastAnnouncedTime = 0
----@field announcerVoice string
-eHelicopter.announcerVoice = nil
----@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
-eHelicopter.rotorEmitter = nil
----@field ID number
-eHelicopter.ID = 0
----@field height number
-eHelicopter.height = 20
+
 ---@field speed number
 eHelicopter.speed = 0.25
 ---@field topSpeedFactor number speed x this = top "speed"
@@ -41,6 +20,32 @@ eHelicopter.attackDistance = 50
 eHelicopter.attackScope = 1
 ---@field attackSpread number number of scopes from center-scope which are scanned
 eHelicopter.attackSpread = 3
+---@field hostilePreference string
+eHelicopter.hostilePreference = "IsoZombie"
+
+--UNDER THE HOOD STUFF
+---@field ID number
+eHelicopter.ID = 0
+---@field height number
+eHelicopter.height = 20
+---@field state string
+eHelicopter.state = nil
+---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
+eHelicopter.rotorEmitter = nil
+---@field lastAnnouncedTime number
+eHelicopter.lastAnnouncedTime = 0
+---@field announcerVoice string
+eHelicopter.announcerVoice = nil
+---@field preflightDistance number
+eHelicopter.preflightDistance = nil
+---@field target IsoObject
+eHelicopter.target = nil
+---@field targetPosition Vector3 "position" of target
+eHelicopter.targetPosition = nil
+---@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/step-size)
+eHelicopter.lastMovement = nil
+---@field currentPosition Vector3 @consider this a pair of coordinates which can utilize Vector3 math
+eHelicopter.currentPosition = nil
 ---@field lastAttackTime number
 eHelicopter.lastAttackTime = 0
 ---@field attackDelay number delay in centi-seconds between attacks
@@ -49,8 +54,7 @@ eHelicopter.attackDelay = 100
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
----@field hostilePreference string
-eHelicopter.hostilePreference = "IsoZombie"
+
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
