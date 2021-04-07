@@ -94,13 +94,15 @@ function eHelicopter:fireOn(targetHostile)
 
 	--hit
 	local hitReport = "fireNoise: "..fireNoise.."  hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim
-	targetHostile:knockDown(true)
+
 	--kill
 	if ZombRand(0, 100) < 100-movementThrowOffAim then
 		targetHostile:setHealth(0)
-		targetHostile:splatBlood(2,200)
 		hitReport = hitReport .. "  [HIT]"
+	else
+		targetHostile:knockDown(true)
 	end
+	targetHostile:splatBlood(2,200)
 	print(hitReport)
 
 	--fireImpacts
@@ -177,7 +179,7 @@ end
 
 ---@param center IsoGridSquare|IsoGameCharacter
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
----@param fractalRange number
+---@param fractalRange number number of rows, made up of `range`, from the center range
 ---@param lookForType table strings, compared to getClass():getSimpleName()
 function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
 
@@ -206,7 +208,7 @@ end
 
 ---@param center IsoObject | IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
----@param fractalOffset number fractal offset - if true: spreads out squares by this number
+---@param fractalOffset number fractal offset - spreads out squares by this number
 ---@return table of IsoGridSquare
 function getIsoRange(center, range, fractalOffset)
 
