@@ -4,49 +4,50 @@ MIN_XY = 2500
 ALL_HELICOPTERS = {}
 
 ---@class eHelicopter
----@field preflightDistance number
----@field target IsoObject
----@field targetPosition Vector3 @Vector3 "position" of target
----@field state boolean
----@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
----@field currentPosition Vector3 @consider this a pair of coordinates
----@field lastAnnouncedTime number
----@field announcerVoice string
----@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
----@field ID number
----@field height number
----@field speed number
----@field topSpeedFactor number speed x this = top "speed"
----@field fireSound table sounds for firing
----@field fireImpacts table sounds for fire impact
----@field attackRangeDistance number
----@field attackRangeScope number
----@field lastAttackTime number
----@field attackDelay number
----@field hostilesToFireOn table
-
 eHelicopter = {}
+---@field preflightDistance number
 eHelicopter.preflightDistance = nil
+---@field target IsoObject
 eHelicopter.target = nil
+---@field targetPosition Vector3 "position" of target
 eHelicopter.targetPosition = nil
+---@field state string
 eHelicopter.state = nil
+---@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/stepsize)
 eHelicopter.lastMovement = nil
+---@field currentPosition Vector3 @consider this a pair of coordinates
 eHelicopter.currentPosition = nil
+---@field lastAnnouncedTime number
 eHelicopter.lastAnnouncedTime = 0
+---@field announcerVoice string
 eHelicopter.announcerVoice = nil
+---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.rotorEmitter = nil
+---@field ID number
 eHelicopter.ID = 0
+---@field height number
 eHelicopter.height = 20
+---@field speed number
 eHelicopter.speed = 0.25
+---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
+---@field fireSound table sounds for firing
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
+---@field fireImpacts table sounds for fire impact
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
+---@field attackRangeDistance number distance at which helicopter can still attack from
 eHelicopter.attackRangeDistance = 50
+---@field attackRangeScope number number of rows from target-center in which are targeted
 eHelicopter.attackRangeScope = 3
+---@field lastAttackTime number
 eHelicopter.lastAttackTime = 0
+---@field attackDelay number delay in centi-seconds between attacks
 eHelicopter.attackDelay = 90
+---@field hostilesToFireOnIndex number
 eHelicopter.hostilesToFireOnIndex = 0
+---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
+
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
