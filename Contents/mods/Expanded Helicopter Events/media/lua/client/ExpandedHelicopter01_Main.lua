@@ -18,6 +18,10 @@ eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 ---@field fireImpacts table sounds for fire impact
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 
+---@field hostilePreference string
+---leave as 'nil' for *any*, otherwise has to be 'IsoPlayer' or 'IsoZombie'
+eHelicopter.hostilePreference = "IsoZombie"
+
 ---@field attackDistance number distance at which helicopter can still attack from
 eHelicopter.attackDistance = 50
 
@@ -48,8 +52,6 @@ eHelicopter.attackScope = 1
 --- -----------------------------------
 eHelicopter.attackSpread = 3
 
----@field hostilePreference string
-eHelicopter.hostilePreference = "IsoZombie"
 
 --UNDER THE HOOD STUFF
 ---@field ID number
