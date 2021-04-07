@@ -8,18 +8,46 @@ eHelicopter = {}
 
 ---@field speed number
 eHelicopter.speed = 0.25
+
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
+
 ---@field fireSound table sounds for firing
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
+
 ---@field fireImpacts table sounds for fire impact
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
+
 ---@field attackDistance number distance at which helicopter can still attack from
 eHelicopter.attackDistance = 50
----@field attackScope number number of rows from "center" which are targeted - scope of 1 = 3x3, 2 = 5x5
+
+---@field attackScope number number of rows from "center" IsoGridSquare out
+--- **area formula:** ((Scope*2)+1) ^2
+---
+--- scope:⠀0=1x1;⠀1=3x3;⠀2=5x5;⠀3=7x7;⠀4=9x9
 eHelicopter.attackScope = 1
----@field attackSpread number number of scopes from center-scope which are scanned
+
+---@field attackSpread number number of rows made of "scopes" from center-scope out
+---**formula for ScopeSpread area:**
+---
+---((Scope * 2)+1) * ((Spread * 2)+1) ^2
+---
+--- **Examples:**
+---
+---⠀  ⠀*scope* 🡇
+--- -----------------------------------
+--- *spread*⠀🡆 ⠀ | 00 | 01 | 02 | 03 |
+--- -----------------------------------
+--- ⠀  ⠀⠀⠀ ⠀| 00 | 01 | 09 | 25 | 49 |
+--- -----------------------------------
+--- ⠀  ⠀⠀⠀ ⠀| 01 | 09 | 81 | 225 | 441 |
+--- -----------------------------------
+--- ⠀  ⠀⠀⠀⠀  | 02 | 25 | 225 | 625 | 1225 |
+--- -----------------------------------
+--- ⠀  ⠀⠀⠀  ⠀| 03 | 49 | 441 | 1225 | 2401 |
+--- -----------------------------------
 eHelicopter.attackSpread = 3
+
 ---@field hostilePreference string
 eHelicopter.hostilePreference = "IsoZombie"
 
