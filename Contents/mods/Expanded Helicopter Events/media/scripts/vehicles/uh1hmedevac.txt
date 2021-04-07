@@ -1,0 +1,45 @@
+module Base
+{
+	model Vehicle_UH1H
+
+	{
+
+		mesh = vehicles/Vehicle_UH1H,
+		shader = vehicle,
+		static = TRUE,
+		scale = 0.01,
+
+	}
+	vehicle UH1Hmedevac
+	{
+		model
+		{
+			file = Vehicle_UH1H,
+			scale = 1.7000,
+			offset = -0.0065 0.0065 -1.3613,
+		}
+
+		spawnOffsetY = 0.24999994,
+
+		skin
+		{
+			texture = Vehicles/Vehicle_UH1Hmedevac,
+		}
+
+		extents = 1.4452 2.3871 6.1548,
+		mass = 500,
+		centerOfMassOffset = 0.1290 1.0968 0.0000,
+		physicsChassisShape = 1.4839 2.3226 6.1548,
+		textureMask = Vehicles/Vehicle_UH1Hmedevac_mask,
+	}
+	model Vehicle_UH1H
+	
+	{
+
+		mesh = vehicles/Vehicle_UH1H,
+		shader = vehicle,
+		static = TRUE,
+		scale = 0.01,
+
+	}
+}
