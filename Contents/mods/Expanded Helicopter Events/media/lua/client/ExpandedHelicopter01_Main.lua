@@ -77,7 +77,7 @@ eHelicopter.currentPosition = nil
 ---@field lastAttackTime number
 eHelicopter.lastAttackTime = 0
 ---@field attackDelay number delay in centi-seconds between attacks
-eHelicopter.attackDelay = 100
+eHelicopter.attackDelay = 90
 ---@field hostilesToFireOnIndex number
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
