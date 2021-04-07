@@ -1,4 +1,33 @@
 
+--- Raise the dead
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_5 then
+
+		local player = getSpecificPlayer(0)
+		local squaresInRange = getIsoRange(player, 30)
+		local reanimated=0
+
+		for sq=1, #squaresInRange do
+			---@type IsoGridSquare
+			local square = squaresInRange[sq]
+			local squareContents = square:getStaticMovingObjects()
+
+			for i=1, squareContents:size() do
+				---@type IsoDeadBody
+				local foundObj = squareContents:get(i-1)
+
+				if foundObj:getClass():getSimpleName() == "IsoDeadBody" then
+					reanimated = reanimated+1
+					foundObj:reanimateNow()
+				end
+			end
+		end
+		print("-- Reanimated: "..reanimated)
+	end
+end)
+
+
+
 --- Debug: Reports helicopter's useful variables -- note: this will flood your output
 function eHelicopter:Report(aiming, dampen)
 	---@type eHelicopter heli
