@@ -35,19 +35,22 @@ eHelicopter.topSpeedFactor = 3
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 ---@field fireImpacts table sounds for fire impact
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
----@field attackRangeDistance number distance at which helicopter can still attack from
-eHelicopter.attackRangeDistance = 50
----@field attackRangeScope number number of rows from target-center in which are targeted
-eHelicopter.attackRangeScope = 3
+---@field attackDistance number distance at which helicopter can still attack from
+eHelicopter.attackDistance = 50
+---@field attackScope number number of rows from "center" which are targeted - scope of 1 = 3x3, 2 = 5x5
+eHelicopter.attackScope = 1
+---@field attackSpread number number of scopes from center-scope which are scanned
+eHelicopter.attackSpread = 3
 ---@field lastAttackTime number
 eHelicopter.lastAttackTime = 0
 ---@field attackDelay number delay in centi-seconds between attacks
-eHelicopter.attackDelay = 90
+eHelicopter.attackDelay = 100
 ---@field hostilesToFireOnIndex number
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
-
+---@field hostilePreference string
+eHelicopter.hostilePreference = "IsoZombie"
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
@@ -331,7 +334,7 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
-	self:lookForHostiles("IsoZombie")
+	self:lookForHostiles(self.hostilePreference)
 
 	if not self:isInBounds() then
 		self:unlaunch()

@@ -3,8 +3,9 @@
 -- gather list of zombies OR players in squares
 -- create a fractalIsoRange (ex: 3x3 of 3x3 (81 squares))
 -- -- kill zombies with in the most populated square?
---- --- delay in-between shots
---- --- target movement creates chance for a miss
+-- -- delay in-between shots
+-- -- target movement creates chance for a miss
+-------- improve miss chance
 --- look into creating dust-ups from bullet impacts
 
 
@@ -27,7 +28,7 @@ function eHelicopter:lookForHostiles(targetType)
 		local hostile = self.hostilesToFireOn[i]
 		local distanceTo = tonumber(hostile:getSquare():DistTo(selfSquare))
 		--if hostile is too far set to nil
-		if distanceTo > self.attackRangeDistance then
+		if distanceTo > self.attackDistance then
 			self.hostilesToFireOn[i] = nil
 		end
 	end
@@ -46,7 +47,7 @@ function eHelicopter:lookForHostiles(targetType)
 	end
 
 	--keep an eye out for new targets
-	local scanningForTargets = self:attackScan(targetType, selfSquare)
+	local scanningForTargets = self:attackScan(selfSquare, targetType)
 	--if no more targets or newly scanned targets are greater size change target
 	if (#self.hostilesToFireOn <=0) or (#scanningForTargets > self.hostilesToFireOnIndex) then
 		--set targets
@@ -63,29 +64,6 @@ function eHelicopter:lookForHostiles(targetType)
 		--remove target
 		table.remove(self.hostilesToFireOn,1)
 	end
-end
-
-
----@param targetType string IsoZombie or IsoPlayer
----@return table
-function eHelicopter:attackScan(targetType, location)
-
-	if not location then
-		return {}
-	end
-
-	local fractalObjectsFound = getHumanoidsInFractalRange(location, self.attackRangeScope, targetType)
-	local objectsToFireOn = {}
-
-	for fractalIndex=1, #fractalObjectsFound do
-		local objectsArray = fractalObjectsFound[fractalIndex]
-
-		if (not objectsToFireOn) or (#objectsArray > #objectsToFireOn) then
-			objectsToFireOn = objectsArray
-		end
-	end
-
-	return objectsToFireOn
 end
 
 
@@ -111,14 +89,12 @@ function eHelicopter:fireOn(targetHostile)
 	gunEmitter:playSound(fireNoise, ehX, ehY, ehZ)
 
 	--virtual sound event to attract zombies
-
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	--set damage to kill
 	local movementThrowOffAim = 10*targetHostile:getMoveSpeed()
 
 	print("hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim)
-
 	if ZombRand(0, 100) < 100-movementThrowOffAim then
 		targetHostile:setHealth(0)
 	end
@@ -131,57 +107,26 @@ function eHelicopter:fireOn(targetHostile)
 end
 
 
----@param center IsoGridSquare|IsoGameCharacter
----@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
----@param lookForType table strings, compared to getClass():getSimpleName()
-function getHumanoidsInFractalRange(center, range, lookForType)
+---@param targetType string IsoZombie or IsoPlayer
+---@return table
+function eHelicopter:attackScan(location, targetType)
 
-	--FractalRange = 3*3 made up of (9) range*range
-	--example: range of 1, e is center
-	--[a][b][c]  --[a] = [-1, 1][0, 1][1, 1]
-	--[d][e][f]          [-1, 0][0, 0][1, 0]
-	--[g][h][i]          [-1,-1][0,-1][1,-1]
-
-	if not center then
+	if not location then
 		return {}
-	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
-		center = center:getSquare()
 	end
 
-	--get distance from 1 center to the next using range*2 + 1 for the other center
-	local fractalFactor = (range*2)+1
-	--list of center's
-	local cX, cY = center:getX(), center:getY()
+	local fractalObjectsFound = getHumanoidsInFractalRange(location, self.attackScope, self.attackSpread, targetType)
+	local objectsToFireOn = {}
 
-	local fractalIsoRangeIndex = {
-		--a's center
-		getSquare(cX-fractalFactor,cY+fractalFactor,0),
-		--b's center
-		getSquare(cX,cY+fractalFactor,0),
-		--c's center
-		getSquare(cX+fractalFactor,cY+fractalFactor,0),
-		--d's center
-		getSquare(cX-fractalFactor,cY,0),
-		--e's center, true center
-		center,
-		--f's center
-		getSquare(cX+fractalFactor,cY,0),
-		--g's center
-		getSquare(cX-fractalFactor,cY-fractalFactor,0),
-		--h's center
-		getSquare(cX,cY-fractalFactor,0),
-		--i's center
-		getSquare(cX+fractalFactor,cY-fractalFactor,0),
-	}
+	for fractalIndex=1, #fractalObjectsFound do
+		local objectsArray = fractalObjectsFound[fractalIndex]
 
-	local fractalObjectsFound = {}
-
-	for fractalIndex=1, #fractalIsoRangeIndex do
-		local objectsFound = getHumanoidsInRange(fractalIsoRangeIndex[fractalIndex], range, lookForType)
-		table.insert(fractalObjectsFound, objectsFound)
+		if (not objectsToFireOn) or (#objectsArray > #objectsToFireOn) then
+			objectsToFireOn = objectsArray
+		end
 	end
 
-	return fractalObjectsFound
+	return objectsToFireOn
 end
 
 
@@ -226,17 +171,59 @@ function getHumanoidsInRange(center, range, lookForType)
 end
 
 
+---@param center IsoGridSquare|IsoGameCharacter
+---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
+---@param fractalRange number
+---@param lookForType table strings, compared to getClass():getSimpleName()
+function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
+
+	--FractalRange = 3*3 made up of (9) range*range
+	--example: range of 1, e is center
+	--[a][b][c]  --[a] = [-1, 1][0, 1][1, 1]
+	--[d][e][f]          [-1, 0][0, 0][1, 0]
+	--[g][h][i]          [-1,-1][0,-1][1,-1]
+
+	if not center then
+		return {}
+	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
+		center = center:getSquare()
+	end
+
+	--range and fractalRange are flipped in the parameters here because:
+	--it will be finding squares at a range of "fractalRange" with an offset of "range"
+	local fractalCenters = getIsoRange(center, fractalRange, range)
+	local fractalObjectsFound = {}
+
+	print("getHumanoidsInFractalRange: centers found: "..#fractalCenters)
+
+	for i=1, #fractalCenters do
+		local objectsFound = getHumanoidsInRange(fractalCenters[i], range, lookForType)
+		--print(" fractal center "..i..":  "..#objectsFound)
+		table.insert(fractalObjectsFound, objectsFound)
+	end
+
+	return fractalObjectsFound
+end
+
+
 ---@param center IsoObject | IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
+---@param fractalOffset number fractal offset - if true: spreads out squares by this number
 ---@return table of IsoGridSquare
-function getIsoRange(center, range)
+function getIsoRange(center, range, fractalOffset)
 
 	--if center is not an IsoGridSquare then call center's getSquare
-
 	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
 		center = center:getSquare()
 	end
 
+	if not fractalOffset then
+		fractalOffset = 1
+	else
+		fractalOffset = (fractalOffset*2)+1
+	end
+
+	--true center
 	local centerX, centerY = center:getX(), center:getY()
 	--add center to squares at the start
 	local squares = {center}
@@ -247,28 +234,29 @@ function getIsoRange(center, range)
 	--create a ring of IsoGridSquare around center, i=1 skips center
 	for i=1, range do
 
+		local fractalFactor = i*fractalOffset
 		--currentX and currentY have to pushed off center for the logic below to kick in
-		local currentX, currentY = centerX+i, centerY+i
+		local currentX, currentY = centerX+fractalFactor, centerY+fractalFactor
 		-- ring refers to the path going around center, -1 to skip center
 		local expectedRingLength = (8*i)-1
 
 		for _=0, expectedRingLength do
 			--if on top-row and not at the upper-right
-			if (currentY == centerY+i) and (currentX < centerX+i) then
+			if (currentY == centerY+fractalFactor) and (currentX < centerX+fractalFactor) then
 				--move-right
-				currentX = currentX+1
+				currentX = currentX+fractalFactor
 				--if on right-column and not the bottom-right
-			elseif (currentX == centerX+i) and (currentY > centerY-i) then
+			elseif (currentX == centerX+fractalFactor) and (currentY > centerY-fractalFactor) then
 				--move down
-				currentY = currentY-1
+				currentY = currentY-fractalFactor
 				--if on bottom-row and not on far-left
-			elseif (currentY == centerY-i) and (currentX > centerX-i) then
+			elseif (currentY == centerY-fractalFactor) and (currentX > centerX-fractalFactor) then
 				--move left
-				currentX = currentX-1
+				currentX = currentX-fractalFactor
 				--if on left-column and not on top-left
-			elseif (currentX == centerX-i) and (currentY < centerY+i) then
+			elseif (currentX == centerX-fractalFactor) and (currentY < centerY+fractalFactor) then
 				--move up
-				currentY = currentY+1
+				currentY = currentY+fractalFactor
 			end
 
 			---@type IsoGridSquare square
@@ -276,15 +264,15 @@ function getIsoRange(center, range)
 			table.insert(squares, square)
 		end
 	end
-
-	--[[---DEBUG
-	print("IsoRange: total "..#squares.."/"..((range*2)+1)^2)
+	--[[
+	---DEBUG
+	print("---[ IsoRange ]---")
+	print(" total "..#squares.."/"..((range*2)+1)^2)
 	for k,v in pairs(squares) do
 		---@type IsoGridSquare vSquare
 		local vSquare = v
-		print(k..": "..centerX-vSquare:getX()..", "..centerY-vSquare:getY())
+		print(" "..k..": "..centerX-vSquare:getX()..", "..centerY-vSquare:getY())
 	end
-	--]]
-
+	]]
 	return squares
 end

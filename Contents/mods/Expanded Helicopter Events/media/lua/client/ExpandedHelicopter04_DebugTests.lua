@@ -44,22 +44,15 @@ end)
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_7 then
 		local player = getSpecificPlayer(0)
-		local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, "IsoZombie")
+		local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
+
 		---debug: list type found
 		print("-----[ getHumanoidsInFractalRange ]-----")
 		for fractalIndex=1, #fractalObjectsFound do
 			local objectsArray = fractalObjectsFound[fractalIndex]
-			print("fractalIndex: "..fractalIndex.." count:"..#objectsArray)
-
-			--[[
-			for i=1, #objects do
-				---@type IsoGameCharacter foundObj
-				local foundObj = objects[i]
-				print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
-			end]]
-
+			print(" "..fractalIndex..":  hostile count:"..#objectsArray)
 		end
-		print("- - - - - - - - - - - - - - - - - - - - -")
+
 	end
 end)
 
@@ -69,15 +62,16 @@ Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_6 then
 		local player = getSpecificPlayer(0)
 		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
+
 		---debug: list type found
-		print("---------[ getHumanoidsInRange ]---------")
-		print("objectsFound: ".." count: "..#objectsFound)
+		print("-----[ getHumanoidsInRange ]-----")
+		print(" objectsFound: ".." count: "..#objectsFound)
 		for i=1, #objectsFound do
 			---@type IsoMovingObject|IsoGameCharacter foundObj
 			local foundObj = objectsFound[i]
-			print(i..": "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
+			print(" "..i..":  "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
 		end
-		print("- - - - - - - - - - - - - - - - - - - - -")
+
 	end
 end)
 
