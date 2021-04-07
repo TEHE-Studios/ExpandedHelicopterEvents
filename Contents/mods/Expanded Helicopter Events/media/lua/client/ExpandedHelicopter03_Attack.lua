@@ -177,12 +177,6 @@ end
 ---@param lookForType table strings, compared to getClass():getSimpleName()
 function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
 
-	--FractalRange = 3*3 made up of (9) range*range
-	--example: range of 1, e is center
-	--[a][b][c]  --[a] = [-1, 1][0, 1][1, 1]
-	--[d][e][f]          [-1, 0][0, 0][1, 0]
-	--[g][h][i]          [-1,-1][0,-1][1,-1]
-
 	if not center then
 		return {}
 	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
@@ -190,15 +184,15 @@ function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
 	end
 
 	--range and fractalRange are flipped in the parameters here because:
-	--it will be finding squares at a range of "fractalRange" with an offset of "range"
+	-- "fractalRange" represents the number of rows from center out but with an offset of "range" instead
 	local fractalCenters = getIsoRange(center, fractalRange, range)
 	local fractalObjectsFound = {}
-
-	print("getHumanoidsInFractalRange: centers found: "..#fractalCenters)
-
+	---print("getHumanoidsInFractalRange: centers found: "..#fractalCenters)
+	--pass through each "center square" found
 	for i=1, #fractalCenters do
 		local objectsFound = getHumanoidsInRange(fractalCenters[i], range, lookForType)
-		--print(" fractal center "..i..":  "..#objectsFound)
+		---print(" fractal center "..i..":  "..#objectsFound)
+		--store a list of objectsFound within the fractalObjectsFound list
 		table.insert(fractalObjectsFound, objectsFound)
 	end
 
