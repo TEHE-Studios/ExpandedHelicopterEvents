@@ -75,11 +75,9 @@ function eHelicopter:fireOn(targetHostile)
 	--fireSound
 	local fireNoise = self.fireSound[1]
 
-	--[[ test later
-	if self.hostilesToFireOnIndex > 1 and #self.hostilesToFireOn <= 1 then
+	if self.hostilesToFireOnIndex > 1 then
 		fireNoise = self.fireSound[2]
 	end
-	]]
 
 	--determine location of helicopter
 	local ehX, ehY, ehZ = self:getXYZAsInt()
@@ -92,17 +90,19 @@ function eHelicopter:fireOn(targetHostile)
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	--set damage to kill
-	local movementThrowOffAim = 10*targetHostile:getMoveSpeed()
+	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
 
-	print("hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim)
+	--hit
+	print("fireNoise: "..fireNoise.."  hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim)
 	if ZombRand(0, 100) < 100-movementThrowOffAim then
 		targetHostile:setHealth(0)
+		targetHostile:splatBlood(2,200)
 	end
 
 	--fireImpacts
 	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
 	gunEmitter:playSound(impactNoise, targetHostile:getSquare())
-	targetHostile:splatBlood(2,50)
+
 
 end
 

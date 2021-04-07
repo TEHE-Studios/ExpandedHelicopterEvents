@@ -22,6 +22,9 @@ eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fi
 ---leave as 'nil' for *any*, otherwise has to be 'IsoPlayer' or 'IsoZombie'
 eHelicopter.hostilePreference = "IsoZombie"
 
+---@field attackDelay number delay in milliseconds between attacks
+eHelicopter.attackDelay = 95
+
 ---@field attackDistance number distance at which helicopter can still attack from
 eHelicopter.attackDistance = 50
 
@@ -78,8 +81,6 @@ eHelicopter.lastMovement = nil
 eHelicopter.currentPosition = nil
 ---@field lastAttackTime number
 eHelicopter.lastAttackTime = 0
----@field attackDelay number delay in centi-seconds between attacks
-eHelicopter.attackDelay = 90
 ---@field hostilesToFireOnIndex number
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
