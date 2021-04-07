@@ -53,7 +53,7 @@ eHelicopter.attackScope = 1
 --- -----------------------------------
 --- ⠀  ⠀⠀⠀  ⠀| 03 | 49 | 441 | 1225 | 2401 |
 --- -----------------------------------
-eHelicopter.attackSpread = 3
+eHelicopter.attackSpread = 2
 
 
 --UNDER THE HOOD STUFF

@@ -67,7 +67,7 @@ function eHelicopter:lookForHostiles(targetType)
 end
 
 
----@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter
+---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie
 function eHelicopter:fireOn(targetHostile)
 
 	self.lastAttackTime = getTimestampMs()+self.attackDelay
@@ -90,14 +90,18 @@ function eHelicopter:fireOn(targetHostile)
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	--set damage to kill
-	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
+	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
 
 	--hit
-	print("fireNoise: "..fireNoise.."  hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim)
+	local hitReport = "fireNoise: "..fireNoise.."  hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim
+	targetHostile:knockDown(true)
+	--kill
 	if ZombRand(0, 100) < 100-movementThrowOffAim then
 		targetHostile:setHealth(0)
 		targetHostile:splatBlood(2,200)
+		hitReport = hitReport .. "  [HIT]"
 	end
+	print(hitReport)
 
 	--fireImpacts
 	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
