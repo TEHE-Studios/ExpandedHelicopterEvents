@@ -72,19 +72,19 @@ eHelicopter.height = 20
 eHelicopter.state = nil
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.rotorEmitter = nil
----@field lastAnnouncedTime number
-eHelicopter.lastAnnouncedTime = 0
+---@field timeUntilCanAnnounce number
+eHelicopter.timeUntilCanAnnounce = 0
 ---@field announcerVoice string
 eHelicopter.announcerVoice = nil
 ---@field preflightDistance number
 eHelicopter.preflightDistance = nil
 ---@field target IsoObject
 eHelicopter.target = nil
----@field targetPosition Vector3 "position" of target
+---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
 eHelicopter.targetPosition = nil
----@field lastMovement Vector3 @consider this to be velocity (direction/angle and speed/step-size)
+---@field lastMovement Vector3 consider this to be velocity (direction/angle and speed/step-size)
 eHelicopter.lastMovement = nil
----@field currentPosition Vector3 @consider this a pair of coordinates which can utilize Vector3 math
+---@field currentPosition Vector3 consider this a pair of coordinates which can utilize Vector3 math
 eHelicopter.currentPosition = nil
 ---@field lastAttackTime number
 eHelicopter.lastAttackTime = 0
@@ -108,12 +108,12 @@ function eHelicopter:new()
 end
 
 
----returns first "unlaunched" helicopter found in ALL_HELICOPTERS -OR- creates a new instance
+---returns first "unLaunched" helicopter found in ALL_HELICOPTERS -OR- creates a new instance
 function getFreeHelicopter()
 	for key,_ in ipairs(ALL_HELICOPTERS) do
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
-		if heli.state == "unlaunched" then
+		if heli.state == "unLaunched" then
 			return heli
 		end
 	end
@@ -389,7 +389,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
 
-		if heli.state ~= "unlaunched" then
+		if heli.state ~= "unLaunched" then
 			heli:update()
 		end
 	end
@@ -398,7 +398,7 @@ end
 
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-	self.state = "unlaunched"
+	self.state = "unLaunched"
 	self.rotorEmitter:stopAll()
 end
 
