@@ -3,9 +3,8 @@ function eHelicopter:lookForHostiles(targetType)
 
 	local selfSquare = self:getIsoGridSquare()
 
-	--too soon to attack again OR
-	--return if no square found - chunk/square is not loaded
-	if (self.lastAttackTime >= getTimestampMs()) or (not selfSquare) then
+	--too soon to attack again OR will overlap with an announcement OR return if no square found - chunk/square is not loaded
+	if (self.lastAttackTime+self.attackDelay >= getTimestampMs()) or (self.timeUntilCanAnnounce <= getTimestamp()) or (not selfSquare) then
 		return
 	end
 
@@ -59,7 +58,7 @@ end
 ---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie
 function eHelicopter:fireOn(targetHostile)
 
-	self.lastAttackTime = getTimestampMs()+self.attackDelay
+	self.lastAttackTime = getTimestampMs()
 
 	--fireSound
 	local fireNoise = self.fireSound[1]

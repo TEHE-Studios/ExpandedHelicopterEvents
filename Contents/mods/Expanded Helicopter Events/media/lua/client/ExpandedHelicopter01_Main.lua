@@ -324,7 +324,7 @@ function eHelicopter:move(re_aim, dampen)
 
 	local heliVolume = 50
 
-	if self.lastAnnouncedTime <= getTimestamp() then
+	if (self.timeUntilCanAnnounce <= getTimestamp()) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
 		heliVolume = heliVolume+20
 		self:announce()
 	end

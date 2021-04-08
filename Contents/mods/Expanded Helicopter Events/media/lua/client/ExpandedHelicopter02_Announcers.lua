@@ -148,6 +148,6 @@ function eHelicopter:announce(specificLine)
 	local announce_emitter = getWorld():getFreeEmitter()
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
-	self.lastAnnouncedTime = getTimestamp()+lineDelay
+	self.timeUntilCanAnnounce = getTimestamp()+lineDelay
 	announce_emitter:playSound(announcePick, ehX, ehY, ehZ)
 end
