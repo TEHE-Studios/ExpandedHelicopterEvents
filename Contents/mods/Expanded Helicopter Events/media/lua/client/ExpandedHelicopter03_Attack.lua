@@ -1,14 +1,3 @@
---TODO:
--- gather range of squares
--- gather list of zombies OR players in squares
--- create a fractalIsoRange (ex: 3x3 of 3x3 (81 squares))
--- -- kill zombies with in the most populated square?
--- -- delay in-between shots
--- -- target movement creates chance for a miss
--------- improve miss chance
---- look into creating dust-ups from bullet impacts
-
-
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:lookForHostiles(targetType)
 

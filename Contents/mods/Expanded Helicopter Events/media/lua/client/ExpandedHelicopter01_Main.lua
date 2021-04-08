@@ -3,6 +3,21 @@ MAX_XY = 15000
 MIN_XY = 2500
 ALL_HELICOPTERS = {}
 
+--TODO:
+-- gather range of squares
+-- gather list of zombies OR players in squares
+-- create a fractalIsoRange (ex: 3x3 of 3x3 (81 squares))
+-- -- kill zombies with in the most populated square?
+-- -- delay in-between shots
+-- -- target movement creates chance for a miss
+-------- improve miss chance
+--- look into creating dust-ups from bullet impacts
+--- compact certain fields into tables
+--- make a state matrix
+--- create a vehicle/heli that can't be repaired or driven to act as the crash-site
+--- work out crash events + crash site placement
+
+
 ---@class eHelicopter
 eHelicopter = {}
 
