@@ -1,45 +1,82 @@
 module Base
 {
 	model Vehicle_UH1H
-
 	{
-
 		mesh = vehicles/Vehicle_UH1H,
-		shader = vehicle,
-		static = TRUE,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
 		scale = 0.01,
-
 	}
 	vehicle UH1Hmedevac
 	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
 		model
 		{
 			file = Vehicle_UH1H,
-			scale = 1.7000,
-			offset = -0.0065 0.0065 -1.3613,
+			scale = 1.8200,
+			offset = 0.0000 0.0055 -1.4890,
 		}
 
-		spawnOffsetY = 0.24999994,
+		spawnOffsetY = 0.19392952,
 
 		skin
 		{
 			texture = Vehicles/Vehicle_UH1Hmedevac,
 		}
 
-		extents = 1.4452 2.3871 6.1548,
-		mass = 500,
-		centerOfMassOffset = 0.1290 1.0968 0.0000,
-		physicsChassisShape = 1.4839 2.3226 6.1548,
-		textureMask = Vehicles/Vehicle_UH1Hmedevac_mask,
-	}
-	model Vehicle_UH1H
-	
-	{
+		textureMask = Vehicle_UH1Hmedevac_mask,
+		extents = 1.3077 2.0220 5.8791,
+		mass = 200,
+		physicsChassisShape = 1.3846 2.0330 5.8791,
+		centerOfMassOffset = 0.1319 0.9890 0.1044,
+		engineForce = 3600,
+		engineQuality = 60,
+		engineLoudness = 55,
+		maxSpeed = 70f,
+		brakingForce = 1,
+		stoppingMovementForce = 2.0f,
+		rollInfluence = 1.0f,
+		steeringIncrement = 0.03,
+		steeringClamp = 0.3,
+		suspensionStiffness = 40,
+		suspensionCompression = 2.83,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2,
+		wheelFriction = 4.0f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 2,
 
-		mesh = vehicles/Vehicle_UH1H,
-		shader = vehicle,
-		static = TRUE,
-		scale = 0.01,
+		physics box
+		{
+			offset = 0.1099 0.0989 0.5385,
+			extents = 0.0549 0.0549 0.5385,
+			rotate = 0.0000 -20.0000 0.0000,
+		}
 
+		physics box
+		{
+			offset = -0.1099 0.0989 0.5385,
+			extents = 0.0549 0.0549 0.5385,
+			rotate = 0.0000 20.0000 0.0000,
+		}
+
+		physics sphere
+		{
+			offset = 0.0000 0.0989 0.7582,
+			radius = 0.0549,
+		}
+
+		area TruckBed
+		{
+			xywh = 0.1264 -1.2418 2.3516 1.7143,
+		}
+
+		template = Trunk/part/TrailerTrunk,
 	}
 }
