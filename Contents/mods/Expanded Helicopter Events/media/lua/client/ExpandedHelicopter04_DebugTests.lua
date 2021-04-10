@@ -16,7 +16,7 @@ Events.OnCustomUIKey.Add(function(key)
 				---@type IsoDeadBody
 				local foundObj = squareContents:get(i-1)
 
-				if foundObj:getClass():getSimpleName() == "IsoDeadBody" then
+				if instanceof(foundObj, "IsoDeadBody") then
 					reanimated = reanimated+1
 					foundObj:reanimateNow()
 				end
@@ -98,7 +98,7 @@ Events.OnCustomUIKey.Add(function(key)
 		for i=1, #objectsFound do
 			---@type IsoMovingObject|IsoGameCharacter foundObj
 			local foundObj = objectsFound[i]
-			print(" "..i..":  "..foundObj:getClass():getSimpleName()) -- "IsoZombie" or "IsoPlayer"
+			print(" "..i..":  "..tostring(foundObj:getClass())) -- "IsoZombie" or "IsoPlayer"
 		end
 
 	end

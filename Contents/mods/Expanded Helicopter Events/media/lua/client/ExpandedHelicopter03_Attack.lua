@@ -81,7 +81,7 @@ function eHelicopter:fireOn(targetHostile)
 	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
 
 	--hit
-	local hitReport = "fireNoise: "..fireNoise.."  hostile: ".. targetHostile:getClass():getSimpleName().." movementThrowOffAim:"..movementThrowOffAim
+	local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
 
 	--kill
 	if ZombRand(0, 100) < 100-movementThrowOffAim then
@@ -124,15 +124,25 @@ function eHelicopter:attackScan(location, targetType)
 end
 
 
----@param center IsoObject
+function recursiveGetSquare(center)
+	if not center then
+		return nil
+	elseif not instanceof(center, "IsoGridSquare") then
+		center = center:getSquare()
+	end
+	return center
+end
+
+
+---@param center IsoObject|IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
----@param lookForType table strings, compared to getClass():getSimpleName()
+---@param lookForType string
 function getHumanoidsInRange(center, range, lookForType)
 
-	if not center then
+	if center then
+		center = recursiveGetSquare(center)
+	else
 		return {}
-	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
-		center = center:getSquare()
 	end
 
 	if (lookForType~="IsoZombie") and (lookForType~="IsoPlayer") then
@@ -151,9 +161,8 @@ function getHumanoidsInRange(center, range, lookForType)
 		for i=1, #squareContents do
 			---@type IsoMovingObject|IsoGameCharacter foundObject
 			local foundObj = squareContents[i]
-			local foName = foundObj:getClass():getSimpleName()
 
-			if (not lookForType and ((foName=="IsoZombie") or (foName=="IsoPlayer"))) or (lookForType==foName) then
+			if (not lookForType and (instanceof(foundObj, "IsoZombie") or instanceof(foundObj, "IsoPlayer"))) or (instanceof(foundObj, lookForType)) then
 				if foundObj:isOutside() then
 					table.insert(objectsFound, foundObj)
 				end
@@ -165,16 +174,16 @@ function getHumanoidsInRange(center, range, lookForType)
 end
 
 
----@param center IsoGridSquare|IsoGameCharacter
+---@param center
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param fractalRange number number of rows, made up of `range`, from the center range
----@param lookForType table strings, compared to getClass():getSimpleName()
+---@param lookForType string
 function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
 
-	if not center then
+	if center then
+		center = recursiveGetSquare(center)
+	else
 		return {}
-	elseif center:getClass():getSimpleName() ~= "IsoGridSquare" then
-		center = center:getSquare()
 	end
 
 	--range and fractalRange are flipped in the parameters here because:
@@ -200,9 +209,10 @@ end
 ---@return table of IsoGridSquare
 function getIsoRange(center, range, fractalOffset)
 
-	--if center is not an IsoGridSquare then call center's getSquare
-	if center:getClass():getSimpleName() ~= "IsoGridSquare" then
-		center = center:getSquare()
+	if center then
+		center = recursiveGetSquare(center)
+	else
+		return {}
 	end
 
 	if not fractalOffset then
