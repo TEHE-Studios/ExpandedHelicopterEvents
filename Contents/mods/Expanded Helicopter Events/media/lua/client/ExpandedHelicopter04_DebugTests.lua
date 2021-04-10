@@ -1,3 +1,21 @@
+--- Sandbox Options discovery
+function eHelicopterOverride()
+	---@type SandboxOptions.EnumSandboxOption|SandboxOptions.SandboxOption
+	local sandboxHeliOption = getSandboxOptions():getOptionByName("Helicopter")
+
+	print("VANILLA HELICOPTER SANDBOX OPTION:")
+	print(":getTranslatedName(): <"..sandboxHeliOption:getTranslatedName().."> ".."value:"..sandboxHeliOption:getValue())
+	sandboxHeliOption:setValue(1) --1 = Never
+	print("AFTER::getTranslatedName(): <"..sandboxHeliOption:getTranslatedName().."> ".."value:"..sandboxHeliOption:getValue())
+	print("----------------------------------------------------------------------")
+end
+
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_4 then
+		eHelicopterOverride()
+	end
+end)
+
 
 --- Raise the dead
 Events.OnCustomUIKey.Add(function(key)
