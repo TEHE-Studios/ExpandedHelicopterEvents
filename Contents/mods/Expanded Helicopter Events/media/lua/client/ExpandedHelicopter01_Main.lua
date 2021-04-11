@@ -78,6 +78,8 @@ eHelicopter.timeUntilCanAnnounce = 0
 eHelicopter.announcerVoice = nil
 ---@field preflightDistance number
 eHelicopter.preflightDistance = nil
+---@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
+eHelicopter.announceEmitter = nil
 ---@field target IsoObject
 eHelicopter.target = nil
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math

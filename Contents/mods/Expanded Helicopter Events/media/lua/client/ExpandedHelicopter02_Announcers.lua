@@ -145,9 +145,15 @@ function eHelicopter:announce(specificLine)
 	local line = self.announcerVoice["Lines"][specificLine]
 	local announcePick = line[ZombRand(2,#line)]
 	local lineDelay = line[1]
-	local announce_emitter = getWorld():getFreeEmitter()
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
 	self.timeUntilCanAnnounce = getTimestamp()+lineDelay
-	announce_emitter:playSound(announcePick, ehX, ehY, ehZ)
+
+	--stop old emitter to prevent occasional "phantom" announcements
+	if self.announceEmitter then
+		self.announceEmitter:stopAll()
+	end
+	--store new emitter to use
+	self.announceEmitter = getWorld():getFreeEmitter()
+	self.announceEmitter:playSound(announcePick, ehX, ehY, ehZ)
 end
