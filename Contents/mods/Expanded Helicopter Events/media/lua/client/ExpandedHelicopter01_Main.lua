@@ -8,7 +8,7 @@ ALL_HELICOPTERS = {}
 ------ look into creating dust-ups from bullet impacts
 --- create a vehicle/heli that can't be repaired or driven to act as the crash-site
 --- work out crash events + crash site placement
-
+--- add different fly-patterns
 
 ---@class eHelicopter
 eHelicopter = {}
