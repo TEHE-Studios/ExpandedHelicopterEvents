@@ -3,7 +3,7 @@ module Base
 	model Vehicle_UH1H
 	{
 		mesh = vehicles/Vehicle_UH1H,
-		shader = vehicle_multiuv,
+		shader = vehicle_norandom_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
 	}
