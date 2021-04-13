@@ -103,7 +103,7 @@ function setAnnouncementLength()
 	eHelicopter_announcerCount = annCount
 end
 
-Events.OnGameStart.Add(setAnnouncementLength)
+setAnnouncementLength()
 
 
 ---Sets eHelicopter's announcer voice
