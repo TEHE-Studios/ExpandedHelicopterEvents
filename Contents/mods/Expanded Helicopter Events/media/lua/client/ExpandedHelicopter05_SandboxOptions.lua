@@ -31,8 +31,8 @@ eHelicopterSandbox.config = {
 	--attackSpread = 2,
 	--speed = 0.25,
 	--topSpeedFactor = 3
+	---voices added automatically
 }
-
 
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
@@ -79,9 +79,6 @@ eHelicopterSandbox.menu = {
 		}
 ]]
 
---[[
-eHelicopter_announcerCount = 0 -- calculated automatically
-eHelicopter_announcers = {]]
 
 function loadAnnouncersToConfig()
 	if eHelicopter_announcerCount <= 0 then return end
