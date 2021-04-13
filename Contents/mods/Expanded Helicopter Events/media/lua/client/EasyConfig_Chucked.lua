@@ -318,16 +318,19 @@ EasyConfig_Chucked.loadConfig = function()
 				if not line then break end
 				for gameOptionName,label in string.gmatch(line, "([^=]*)=([^=]*),") do
 					local menuEntry = configMenu[gameOptionName]
-					if menuEntry.options then
-						menuEntry.selectedIndex = menuEntry.optionsKeys[label][1]
-						menuEntry.selectedValue = menuEntry.optionsKeys[label][2]
-						menuEntry.selectedLabel = label
-					else
-						if label == "true" then menuEntry.selectedValue = true
-						elseif label == "false" then menuEntry.selectedValue = false
-						else menuEntry.selectedValue = tonumber(label) end
+					if menuEntry then
+
+						if menuEntry.options then
+							menuEntry.selectedIndex = menuEntry.optionsKeys[label][1]
+							menuEntry.selectedValue = menuEntry.optionsKeys[label][2]
+							menuEntry.selectedLabel = label
+						else
+							if label == "true" then menuEntry.selectedValue = true
+							elseif label == "false" then menuEntry.selectedValue = false
+							else menuEntry.selectedValue = tonumber(label) end
+						end
+						config[gameOptionName] = menuEntry.selectedValue
 					end
-					config[gameOptionName] = menuEntry.selectedValue
 				end
 			end
 			fileReader:close()
