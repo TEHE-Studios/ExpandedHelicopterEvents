@@ -117,6 +117,11 @@ testAllLines__DELAYS = {}
 testAllLines__lastDemoTime = 0
 
 function testAllLines()
+	if #eHelicopter_announcersLoaded <= 0 then
+		print("ERROR: NO VOICES LOADED")
+		return
+	end
+
 	if #testAllLines__ALL_LINES > 0 then
 		testAllLines__ALL_LINES = {}
 		testAllLines__DELAYS = {}
@@ -124,8 +129,8 @@ function testAllLines()
 		return
 	end
 
-	for k,_ in pairs(eHelicopter_announcers) do
-		for _,v2 in pairs(eHelicopter_announcers[k]["Lines"]) do
+	for _,v in pairs(eHelicopter_announcersLoaded) do
+		for _,v2 in pairs(eHelicopter_announcers[v]["Lines"]) do
 			for k3,_ in pairs(v2) do
 				if k3 ~= 1 then
 					table.insert(testAllLines__ALL_LINES, v2[k3])
