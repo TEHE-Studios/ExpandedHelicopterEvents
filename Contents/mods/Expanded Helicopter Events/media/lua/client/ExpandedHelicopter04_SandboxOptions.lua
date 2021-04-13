@@ -1,4 +1,4 @@
-require "EasyConfig_Chucked"
+require "_EasyConfig_Chucked"
 require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
@@ -40,14 +40,14 @@ eHelicopterSandbox.name = "Expanded Helicopter Events" -- the name that will be 
 
 eHelicopterSandbox.menu = {
 
-	generalTitle = {type = "Text",text = "General Settings",},
+	generalTitle = {type = "Text", text = "General Settings"},
 	frequency = {
 		type = "Combobox",
 		title = "Frequency",
 		tooltip = "This will supplant the vanilla helicopter event frequency.",
 		options = {{"Never", 0}, {"Once", 1}, {"Sometimes", 2}, {"Often", 3}}
 		},
-	generalSpace = {type = "Space",},
+	generalSpace = {type = "Space"},
 
 	--voiceTitle = {type = "Text", text = "Voice Packs"},
 	--voice1 = { type = "Tickbox", title = "Voice 1", tooltip = "", },
