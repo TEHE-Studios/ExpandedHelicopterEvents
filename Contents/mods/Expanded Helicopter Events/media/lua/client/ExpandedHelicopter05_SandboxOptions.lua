@@ -49,12 +49,9 @@ eHelicopterSandbox.menu = {
 		},
 	generalSpace = {type = "Space",},
 
-	voiceTitle = {type = "Text",text = "Voice Packs",},
-	voice1 = { type = "Tickbox", title = "Voice 1", tooltip = "", },
-	voice2 = { type = "Tickbox", title = "Voice 2", tooltip = "", },
-	voice3 = { type = "Tickbox", title = "Voice 3", tooltip = "", },
-	voice4 = { type = "Tickbox", title = "Voice 4", tooltip = "", },
-	voiceSpace = {type = "Space",},
+	--voiceTitle = {type = "Text", text = "Voice Packs"},
+	--voice1 = { type = "Tickbox", title = "Voice 1", tooltip = "", },
+	--voiceSpace = {type = "Space"},
 }
 
 --[[
@@ -80,8 +77,27 @@ eHelicopterSandbox.menu = {
 		tooltip = "Makes days pass faster on the clock. This speeds up seasons & weather simulation, but has no effects on day length or gameplay.",
 		options = {{"1x", 0},{"2x", 1},{"3x", 2},{"4x", 3},}
 		}
-
 ]]
+
+--[[
+eHelicopter_announcerCount = 0 -- calculated automatically
+eHelicopter_announcers = {]]
+
+function loadAnnouncersToConfig()
+	if eHelicopter_announcerCount <= 0 then return end
+
+	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs"}
+
+	for k,_ in pairs(eHelicopter_announcers) do
+		eHelicopterSandbox.menu[k] = { type = "Tickbox", title = k, tooltip = "", }
+		eHelicopterSandbox.config[k] = true
+	end
+
+	eHelicopterSandbox.menu["voiceSpace"] = {type = "Space"}
+end
+--run on Lua load
+loadAnnouncersToConfig()
+
 
 EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
 
@@ -95,14 +111,14 @@ function HelicopterSandboxOptionOverride()
 	print("VANILLA HELICOPTER SANDBOX OPTION: ".."<"..sandboxHeliFreq:getValueTranslationByIndex(sandboxHeliFreq:getValue()).."> ".."(".. sandboxHeliFreq:getValue()..")")
 
 	if sandboxHeliFreq:getValue() ~= 1 then
-		print("sandboxHeliFreq not <".. sandboxHeliFreq:getValueTranslationByIndex(1).."> (1)")
+		print("sandboxHeliFreq not \"never\"")
 		sandboxHeliFreq:setValue(1) --1 = Never
-		print("setting now: <"..sandboxHeliFreq:getValueTranslationByIndex(sandboxHeliFreq:getValue()).."> ".."(".. sandboxHeliFreq:getValue()..")")
+		print("setting now to: <"..sandboxHeliFreq:getValueTranslationByIndex(sandboxHeliFreq:getValue()).."> ".."(".. sandboxHeliFreq:getValue()..")")
 	end
 end
 
 
-Events.OnGameStart.Add(HelicopterSandboxOptionOverride)
+Events.OnGameBoot.Add(HelicopterSandboxOptionOverride)
 
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_4 then
