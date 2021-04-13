@@ -4,7 +4,7 @@ function eHelicopter:lookForHostiles(targetType)
 	local selfSquare = self:getIsoGridSquare()
 
 	--too soon to attack again OR will overlap with an announcement OR return if no square found - chunk/square is not loaded
-	if (self.lastAttackTime+self.attackDelay >= getTimestampMs()) or (self.timeUntilCanAnnounce <= getTimestamp()) or (not selfSquare) then
+	if (self.lastAttackTime+self.attackDelay >= getTimestampMs()) or (self.timeUntilCanAnnounce and (self.timeUntilCanAnnounce <= getTimestamp())) or (not selfSquare) then
 		return
 	end
 

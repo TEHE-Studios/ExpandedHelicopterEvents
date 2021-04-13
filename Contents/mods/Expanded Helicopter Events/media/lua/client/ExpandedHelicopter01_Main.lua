@@ -73,7 +73,7 @@ eHelicopter.state = nil
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.rotorEmitter = nil
 ---@field timeUntilCanAnnounce number
-eHelicopter.timeUntilCanAnnounce = 0
+eHelicopter.timeUntilCanAnnounce = nil
 ---@field announcerVoice string
 eHelicopter.announcerVoice = nil
 ---@field preflightDistance number
@@ -326,7 +326,7 @@ function eHelicopter:move(re_aim, dampen)
 
 	local heliVolume = 50
 
-	if (self.timeUntilCanAnnounce <= getTimestamp()) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
+	if ((not self.timeUntilCanAnnounce) or (self.timeUntilCanAnnounce <= getTimestamp())) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
 		heliVolume = heliVolume+20
 		self:announce()
 	end
