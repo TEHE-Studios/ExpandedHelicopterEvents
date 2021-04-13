@@ -12,7 +12,7 @@ eHelicopter_announcers = {
 	-- },
 
 
-	["Raven_Male1"] = {
+	["Raven Male"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
 			["PleaseReturnToYourHomes"] = {5.5, "eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
@@ -29,7 +29,7 @@ eHelicopter_announcers = {
 	},
 
 
-	["Jade_Female1"] = {
+	["Gabby Female"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
 			["PleaseReturnToYourHomes"] = {4.75, "eHeli_lineF_1"},
@@ -46,7 +46,7 @@ eHelicopter_announcers = {
 	},
 
 
-	["Jade_Male_A"] = {
+	["Jade Male A"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
 			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7.5, "eHeli_Jade_1a"},
@@ -56,7 +56,7 @@ eHelicopter_announcers = {
 	},
 
 
-	["Jade_Male_B"] = {
+	["Jade Male B"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
 			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7.5, "eHeli_Jade_1b"},
@@ -66,7 +66,7 @@ eHelicopter_announcers = {
 	},
 
 
-	["Jade_Male_C"] = {
+	["Jade Male C"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
 			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7.5, "eHeli_Jade_1c"},
