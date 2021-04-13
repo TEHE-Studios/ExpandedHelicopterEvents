@@ -4,8 +4,13 @@ EasyConfig_Chucked = EasyConfig_Chucked or {}
 EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 
 EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName)
-	if not config then return end
-	if not configMenu then return end
+	if not config then
+		return
+	end
+
+	if not configMenu then
+		return
+	end
 
 	EasyConfig_Chucked.mods[modId] = {}
 	EasyConfig_Chucked.mods[modId].name = name
