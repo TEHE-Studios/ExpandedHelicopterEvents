@@ -1,21 +1,20 @@
-EasyConfig = EasyConfig or {}
 
 
-EasyConfig.mods = EasyConfig.mods or {}
+EasyConfig_Chucked = EasyConfig_Chucked or {}
+EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 
-
-EasyConfig.addMod = function(modId, name, config, configMenu, tabName)
+EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName)
 	if not config then return end
 	if not configMenu then return end
 
-	EasyConfig.mods[modId] = {}
-	EasyConfig.mods[modId].name = name
-	EasyConfig.mods[modId].config = config
-	EasyConfig.mods[modId].configMenu = configMenu
+	EasyConfig_Chucked.mods[modId] = {}
+	EasyConfig_Chucked.mods[modId].name = name
+	EasyConfig_Chucked.mods[modId].config = config
+	EasyConfig_Chucked.mods[modId].configMenu = configMenu
 	if tabName ~= nil then
-		EasyConfig.mods[modId].tabName = tabName
+		EasyConfig_Chucked.mods[modId].tabName = tabName
 	else
-		EasyConfig.mods[modId].tabName = "MODS"
+		EasyConfig_Chucked.mods[modId].tabName = "MODS"
 	end
 
 	--link all the things!
@@ -44,7 +43,7 @@ EasyConfig.addMod = function(modId, name, config, configMenu, tabName)
 		menuEntry.selectedValue = value
 	end
 
-	EasyConfig.loadConfig(modId)
+	EasyConfig_Chucked.loadConfig(modId)
 end
 
 
@@ -99,8 +98,8 @@ function MainOptions:create() -- override
 			if option then option:apply() end
 		end
 		if not getPlayer() then
-			EasyConfig.saveConfig()
-			EasyConfig.loadConfig()
+			EasyConfig_Chucked.saveConfig()
+			EasyConfig_Chucked.loadConfig()
 		end
 		self.changed = false
 	end
@@ -250,7 +249,7 @@ function MainOptions:create() -- override
 
 	self.addY = 0
 	local modPageAdded = false
-	for modId,mod in pairs(EasyConfig.mods) do
+	for modId,mod in pairs(EasyConfig_Chucked.mods) do
 		if mod.tabName == "MODS" then
 			if not modPageAdded then
 				self:addPage("MODS")
@@ -267,7 +266,7 @@ function MainOptions:create() -- override
 	self.addY = self.addY + MainOptions.translatorPane:getHeight() + 22
 	self.mainPanel:setScrollHeight(self.addY + 20)
 
-	for modId,mod in pairs(EasyConfig.mods) do
+	for modId,mod in pairs(EasyConfig_Chucked.mods) do
 		if mod.tabName ~= "MODS" then
 			self:addPage(mod.tabName)
 			self.addY = 0
@@ -286,8 +285,8 @@ end
 
 
 
-EasyConfig.saveConfig = function()
-	for modId,mod in pairs(EasyConfig.mods) do
+EasyConfig_Chucked.saveConfig = function()
+	for modId,mod in pairs(EasyConfig_Chucked.mods) do
 		local config = mod.config
 		local configMenu = mod.configMenu
 		local configFile = "media/config/"..modId..".config"
@@ -306,10 +305,10 @@ EasyConfig.saveConfig = function()
 		end
 	end
 end
-EasyConfig.loadConfig = function()
-	for modId,mod in pairs(EasyConfig.mods) do
-		local config = EasyConfig.mods[modId].config
-		local configMenu = EasyConfig.mods[modId].configMenu
+EasyConfig_Chucked.loadConfig = function()
+	for modId,mod in pairs(EasyConfig_Chucked.mods) do
+		local config = EasyConfig_Chucked.mods[modId].config
+		local configMenu = EasyConfig_Chucked.mods[modId].configMenu
 		local configFile = "media/config/"..modId..".config"
 		local fileReader = getModFileReader(modId, configFile, false)
 		if fileReader then

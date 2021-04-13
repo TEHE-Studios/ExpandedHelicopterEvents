@@ -83,7 +83,7 @@ eHelicopterSandbox.menu = {
 
 ]]
 
-EasyConfig.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "Expanded Helicopter Events")
+EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
 
 
 function HelicopterSandboxOptionOverride()
