@@ -52,32 +52,39 @@ eHelicopterSandbox.menu = {
 	--voiceTitle = {type = "Text", text = "Voice Packs"},
 	--voice1 = { type = "Tickbox", title = "Voice 1", tooltip = "", },
 	--voiceSpace = {type = "Space"},
+
+	--[[
+	testTitle = {type = "Text", text = "test",},
+
+	testSpinBox = {
+		type = "Spinbox",
+		title = "testSpinBox",
+		tooltip = "testSpinBox.",
+		options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}}
+	},
+
+	testNumberbox = {
+		type = "Numberbox",
+		title = "testNumberbox",
+		tooltip = "testNumberbox.",
+	},
+
+	testSpace = {type = "Space",},
+
+	testTickbox = {
+		type = "Tickbox",
+		title = "testTickbox",
+		tooltip = "testTickbox.",
+	},
+
+	testCombobox = {
+		type = "Combobox",
+		title = "testCombobox",
+		tooltip = "testCombobox.",
+		options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}}
+	}]]
 }
 
---[[
-	zombieTitle = {type = "Text",text = "Other Zombie Settings",},
-
-	openDoorChance = {
-		type = "Numberbox",
-		title = "Thumps open doors (%)",
-		tooltip = "The chance that a zombie will open an unlocked door by accident.",
-		},
-
-	zombieSpace = {type = "Space",},
-
-	combatEnabled = {
-		type = "Tickbox",
-		title = "Alternative combat",
-		tooltip = "The chance to hit several targets with a weapon depends on skills & current condition. Pushing does not interrupt movement. Turn speed is doubled.",
-		},
-
-	fasterSeasons = {
-		type = "Combobox",
-		title = "Season speed",
-		tooltip = "Makes days pass faster on the clock. This speeds up seasons & weather simulation, but has no effects on day length or gameplay.",
-		options = {{"1x", 0},{"2x", 1},{"3x", 2},{"4x", 3},}
-		}
-]]
 
 
 function loadAnnouncersToConfig()
