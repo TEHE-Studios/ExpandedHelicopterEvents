@@ -88,8 +88,8 @@ eHelicopterSandbox.menu = {
 
 
 function loadAnnouncersToConfig()
-	if eHelicopter_announcerCount <= 0 then return end
 
+	eHelicopterSandbox.menu["voiceSpaceA"] = {type = "Space"}
 	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs"}
 
 	for k,_ in pairs(eHelicopter_announcers) do
@@ -97,7 +97,7 @@ function loadAnnouncersToConfig()
 		eHelicopterSandbox.config[k] = true
 	end
 
-	eHelicopterSandbox.menu["voiceSpace"] = {type = "Space"}
+	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
 end
 --run on Lua load
 loadAnnouncersToConfig()
