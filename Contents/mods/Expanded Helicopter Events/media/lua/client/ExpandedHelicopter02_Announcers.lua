@@ -1,4 +1,4 @@
-eHelicopter_announcerCount = 0 -- calculated automatically
+eHelicopter_announcersLoaded = {}
 eHelicopter_announcers = {
 
 	-- ["name of announcer"] = {
@@ -79,17 +79,11 @@ eHelicopter_announcers = {
 }
 
 
---Automatically sets announcer count and respective announcer's line count to use in randomized selection
+--Automatically sets respective announcer's line count to use in randomized selection
 --This is needed to avoid constant length checks due to the fact Lua does not recognize #length of non-numerated lists
 function setAnnouncementLength()
-	if eHelicopter_announcerCount > 0 then return end
-	
-	--total announcers
-	local annCount = 0
-	
 	--for each entry found in announcer list
 	for k,_ in pairs(eHelicopter_announcers) do
-		annCount = annCount+1
 		local line_length = 0
 		
 		--for each entry in announcer's lines list
@@ -99,26 +93,21 @@ function setAnnouncementLength()
 		--line count is stored
 		eHelicopter_announcers[k]["LineCount"]=line_length
 	end
-	--total announcercount is stored
-	eHelicopter_announcerCount = annCount
 end
-
+--run at Lua loading
 setAnnouncementLength()
 
 
 ---Sets eHelicopter's announcer voice
 ---@param specificVoice string
 function eHelicopter:chooseVoice(specificVoice)
+	if #eHelicopter_announcersLoaded < 1 then
+		return
+	end
 
 	if not specificVoice then
-		local randAnn = ZombRand(1, eHelicopter_announcerCount)
-		for k,_ in pairs(eHelicopter_announcers) do
-			randAnn = randAnn-1
-			if randAnn <= 0 then
-				specificVoice = k
-				break
-			end
-		end
+		local randAnn = ZombRand(1, #eHelicopter_announcersLoaded)
+		specificVoice = eHelicopter_announcersLoaded[randAnn]
 	end
 
 	self.announcerVoice = eHelicopter_announcers[specificVoice]
@@ -128,6 +117,10 @@ end
 ---Announces random line if none is provided
 ---@param specificLine string
 function eHelicopter:announce(specificLine)
+
+	if not self.announcerVoice then
+		return
+	end
 
 	if not specificLine then
 
