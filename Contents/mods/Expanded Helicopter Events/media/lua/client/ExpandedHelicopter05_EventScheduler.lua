@@ -2,25 +2,22 @@ eHeliEvent = {}
 eHeliEvent.startDay = 0
 eHeliEvent.startTime = 0
 eHeliEvent.endTime = 0
-eHeliEvent.params = {}
+eHeliEvent.renew = false
+eHeliEvent.expired = false
 
 eHeliEventsOnSchedule = {}
 
 
-function eHeliEvent:new(startDay,startTime,endTime,params)
+function eHeliEvent:new(startDay,startTime,endTime,renew)
 
-	if (not startDay) or (not startTime) or (not endTime) or (not params) then
+	if (not startDay) or (not startTime) or (not endTime) then
 		return
 	end
 
 	local o = {}
 	setmetatable(o, self)
 	self.__index = self
-
-	self.startDay = startDay
-	self.startTime = startTime
-	self.endTime = endTime
-	self.params = params
+	self:set(startDay,startTime,endTime,renew)
 
 	table.insert(eHeliEventsOnSchedule, o)
 
@@ -28,42 +25,86 @@ function eHeliEvent:new(startDay,startTime,endTime,params)
 end
 
 
-function eHeliEvents_OnGameStart()
-
+function eHeliEvent:set(startDay,startTime,endTime,renew)
+	self.startDay = startDay
+	self.startTime = startTime
+	self.endTime = endTime
+	self.renew = renew
 end
 
---Events.OnGameStart.Add(eHeliEvents_OnGameStart)
---Events.EveryDays.Add()
---Events.EveryHours.Add()
 
---GameTime:getNightsSurvived()
---GameTime:getTimeOfDay()
+function eHeliEvent:engage()
 
---[[
+	if eHelicopterSandbox.config.frequency == 0 then
+		return
+	end
 
-		---@type eHelicopter heli
-		local heli = getFreeHelicopter()
-		heli:launch()
+	local heli = getFreeHelicopter()
 
---heli start -- if config isn't 1 = never
-	this.HelicopterDay1 = Rand.Next(6, 10);
-	this.HelicopterTime1Start = Rand.Next(9, 19);
-	this.HelicopterTime1End = this.HelicopterTime1Start + Rand.Next(4) + 1;
+	heli:launch()
+	if self.renew then
+		setNextHeli(self)
+	else
+		self.expired = true
+	end
+end
 
 
-start time is 9-19
-end is 1-5 after start
+function setNextHeliFrom(lastHeli)
+	print("--- setNextHeliFrom:")
+	if eHelicopterSandbox.config.frequency == 0 then
+		return
+	end
+	print("------ freq checks out")
+	local heliDay = 0
+	if lastHeli then
+		heliDay = lastHeli.startDay
+	else
+		heliDay = getGameTime():getDay() or 0
+	end
+	-- if frequency is 2 / sometimes
+	if eHelicopterSandbox.config.frequency <= 2 then
+		heliDay = heliDay+ZombRand(6,10)
+	-- if frequency is 3 / often
+	elseif eHelicopterSandbox.config.frequency == 3 then
+		heliDay = heliDay+ZombRand(9,19)
+	end
 
-if it is "sometimes" helis get sent out 10-16 days later
-if it is often they're sent 6-10 days later
+	--start time is random from hour 9 to 19
+	local heliStart = ZombRand(9, 19)
+	--end time is start time + 1 to 5 hours
+	local heliEnd = heliStart+ZombRand(1,5)
 
---Events.OnInitWorld.Add()
---Events.OnNewGame.Add()
+	if lastHeli then
+		print("------ eHeliEvent:set")
+		lastHeli:set(heliDay, heliStart, heliEnd, lastHeli.renew)
+	else
+		print("------ eHeliEvent:new")
+		eHeliEvent:new(heliDay, heliStart, heliEnd, true)
+	end
+end
 
---Events.Ontick.Add()
---Events.EveryOneMinute.Add()
---Events.EveryTenMinutes.Add()
---Events.EveryHours.Add()
---Events.EveryDays.Add()
+function eHeliEvents_OnGameStart()
+	print("--- eHeliEvents_OnGameStart:")
+	if #eHeliEventsOnSchedule < 1 then
+		setNextHeliFrom()
+	end
+end
 
-]]
+Events.OnGameStart.Add(eHeliEvents_OnGameStart)
+
+
+function eHeliEvent_Loop()
+	print("--- eHeliEvent_Loop: "..#eHeliEventsOnSchedule)
+	local DAY = getGameTime():getDay()
+	local HOUR = getGameTime():getHour()
+	for _,v in pairs(eHeliEventsOnSchedule) do
+		if not v.expired then
+			if (v.startDay == DAY) and (v.startTime == HOUR) then
+				v:engage()
+			end
+		end
+	end
+end
+
+Events.EveryHours.Add(eHeliEvent_Loop)
