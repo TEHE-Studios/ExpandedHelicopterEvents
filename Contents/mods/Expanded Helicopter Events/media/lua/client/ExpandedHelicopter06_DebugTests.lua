@@ -1,3 +1,21 @@
+--- Check eHeliEvent within eHeliEventsOnSchedule
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_3 then
+		print("eHeliEventsOnSchedule: ")
+		for k,v in pairs(eHeliEventsOnSchedule) do
+			print(
+					k..
+					" startDay:"..tostring(v.startDay)..
+					" startTime:"..tostring(v.startTime)..
+					" endTime:"..tostring(v.endTime)..
+					" params:"..tostring(v.renew)..
+					" expired:"..tostring(v.expired)
+			)
+		end
+	end
+end)
+
+
 --- Check sandboxoverride
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_4 then
