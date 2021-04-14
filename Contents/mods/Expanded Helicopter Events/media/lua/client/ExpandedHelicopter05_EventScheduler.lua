@@ -34,7 +34,7 @@ end
 
 
 function eHeliEvent:engage()
-
+	print("--- eHeliEvent:engage:")
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
 	end
@@ -50,40 +50,49 @@ function eHeliEvent:engage()
 end
 
 
-function setNextHeliFrom(lastHeli)
+function setNextHeliFrom(lastHeli, heliDay, heliStart, heliEnd)
 	print("--- setNextHeliFrom:")
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
 	end
 	print("------ freq checks out")
-	local heliDay = 0
-	if lastHeli then
-		heliDay = lastHeli.startDay
-	else
-		heliDay = getGameTime():getDay()
-	end
-	-- options = Never=0, Once=1, Sometimes=2, Often=3
-	if eHelicopterSandbox.config.frequency <= 2 then
-		heliDay = heliDay+ZombRand(10, 16)
-	-- if frequency is 3 / often
-	elseif eHelicopterSandbox.config.frequency == 3 then
-		heliDay = heliDay+ZombRand(6, 10)
+
+	if not heliDay then
+		if lastHeli then
+			heliDay = lastHeli.startDay
+		else
+			heliDay = getGameTime():getDay()
+		end
+		-- options = Never=0, Once=1, Sometimes=2, Often=3
+		if eHelicopterSandbox.config.frequency <= 2 then
+			heliDay = heliDay+ZombRand(10, 16)
+			-- if frequency is 3 / often
+		elseif eHelicopterSandbox.config.frequency == 3 then
+			heliDay = heliDay+ZombRand(6, 10)
+		end
 	end
 
-	--start time is random from hour 9 to 19
-	local heliStart = ZombRand(9, 19)
-	--end time is start time + 1 to 5 hours
-	local heliEnd = heliStart+ZombRand(1,5)
+	if not heliStart then
+		--start time is random from hour 9 to 19
+		heliStart = ZombRand(9, 19)
+	end
+
+	if not heliEnd then
+		--end time is start time + 1 to 5 hours
+		heliEnd = heliStart+ZombRand(1,5)
+	end
 
 	if lastHeli then
 		print("------ eHeliEvent:set")
 		lastHeli:set(heliDay, heliStart, heliEnd, lastHeli.renew)
+		lastHeli.expired = false
 	else
 		print("------ eHeliEvent:new")
 		local renewHeli = true
 		if eHelicopterSandbox.config.frequency == 1 then
 			renewHeli = false
 		end
+
 		eHeliEvent:new(heliDay, heliStart, heliEnd, renewHeli)
 	end
 end
@@ -91,7 +100,7 @@ end
 function eHeliEvents_OnGameStart()
 	print("--- eHeliEvents_OnGameStart:")
 	if #eHeliEventsOnSchedule < 1 then
-		setNextHeliFrom()
+		setNextHeliFrom(nil, 1)
 	end
 end
 
