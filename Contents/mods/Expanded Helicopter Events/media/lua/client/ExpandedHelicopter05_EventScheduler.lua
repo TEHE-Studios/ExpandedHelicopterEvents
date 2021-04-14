@@ -60,7 +60,7 @@ function setNextHeliFrom(lastHeli)
 	if lastHeli then
 		heliDay = lastHeli.startDay
 	else
-		heliDay = getGameTime():getDay() or 0
+		heliDay = getGameTime():getDay()
 	end
 	-- options = Never=0, Once=1, Sometimes=2, Often=3
 	if eHelicopterSandbox.config.frequency <= 2 then
