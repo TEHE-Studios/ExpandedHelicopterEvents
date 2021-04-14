@@ -80,7 +80,11 @@ function setNextHeliFrom(lastHeli)
 		lastHeli:set(heliDay, heliStart, heliEnd, lastHeli.renew)
 	else
 		print("------ eHeliEvent:new")
-		eHeliEvent:new(heliDay, heliStart, heliEnd, true)
+		local renewHeli = true
+		if eHelicopterSandbox.config.frequency == 1 then
+			renewHeli = false
+		end
+		eHeliEvent:new(heliDay, heliStart, heliEnd, renewHeli)
 	end
 end
 
