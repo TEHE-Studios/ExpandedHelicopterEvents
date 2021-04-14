@@ -134,10 +134,3 @@ end
 
 Events.OnGameBoot.Add(HelicopterSandboxOptionOverride)
 
-Events.OnCustomUIKey.Add(function(key)
-	if key == Keyboard.KEY_4 then
-		HelicopterSandboxOptionOverride()
-	end
-end)
-
-

@@ -1,3 +1,11 @@
+--- Check sandboxoverride
+Events.OnCustomUIKey.Add(function(key)
+	if key == Keyboard.KEY_4 then
+		HelicopterSandboxOptionOverride()
+	end
+end)
+
+
 --- Raise the dead
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_5 then
