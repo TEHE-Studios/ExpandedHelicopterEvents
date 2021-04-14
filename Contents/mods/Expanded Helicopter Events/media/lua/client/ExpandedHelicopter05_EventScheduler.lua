@@ -62,12 +62,12 @@ function setNextHeliFrom(lastHeli)
 	else
 		heliDay = getGameTime():getDay() or 0
 	end
-	-- if frequency is 2 / sometimes
+	-- options = Never=0, Once=1, Sometimes=2, Often=3
 	if eHelicopterSandbox.config.frequency <= 2 then
-		heliDay = heliDay+ZombRand(6,10)
+		heliDay = heliDay+ZombRand(10, 16)
 	-- if frequency is 3 / often
 	elseif eHelicopterSandbox.config.frequency == 3 then
-		heliDay = heliDay+ZombRand(9,19)
+		heliDay = heliDay+ZombRand(6, 10)
 	end
 
 	--start time is random from hour 9 to 19
