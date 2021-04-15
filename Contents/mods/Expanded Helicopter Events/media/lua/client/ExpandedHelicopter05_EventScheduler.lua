@@ -34,23 +34,19 @@ end
 
 
 function eHeliEvent:engage()
-	print("--- eHeliEvent:engage:")
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
 	end
-
-	local heli = getFreeHelicopter()
-
-	heli:launch()
+	print("--- eHeliEvent:engage:")
+	getFreeHelicopter():launch()
+	self.expired = true
 	if self.renew then
-		setNextHeli(self)
-	else
-		self.expired = true
+		setNextHeliFrom(self)
 	end
 end
 
 
-function setNextHeliFrom(lastHeli, heliDay, heliStart, heliEnd)
+function setNextHeliFrom(lastHeliEvent, heliDay, heliStart, heliEnd)
 	print("--- setNextHeliFrom:")
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
@@ -58,8 +54,8 @@ function setNextHeliFrom(lastHeli, heliDay, heliStart, heliEnd)
 	print("------ freq checks out")
 
 	if not heliDay then
-		if lastHeli then
-			heliDay = lastHeli.startDay
+		if lastHeliEvent then
+			heliDay = lastHeliEvent.startDay
 		else
 			heliDay = getGameTime():getDay()
 		end
@@ -82,12 +78,12 @@ function setNextHeliFrom(lastHeli, heliDay, heliStart, heliEnd)
 		heliEnd = heliStart+ZombRand(1,5)
 	end
 
-	if lastHeli then
-		print("------ eHeliEvent:set")
-		lastHeli:set(heliDay, heliStart, heliEnd, lastHeli.renew)
-		lastHeli.expired = false
+	if lastHeliEvent then
+		print("--------- eHeliEvent:set")
+		lastHeliEvent:set(heliDay, heliStart, heliEnd, lastHeliEvent.renew)
+		lastHeliEvent.expired = false
 	else
-		print("------ eHeliEvent:new")
+		print("--------- eHeliEvent:new")
 		local renewHeli = true
 		if eHelicopterSandbox.config.frequency == 1 then
 			renewHeli = false
@@ -100,7 +96,7 @@ end
 function eHeliEvents_OnGameStart()
 	print("--- eHeliEvents_OnGameStart:")
 	if #eHeliEventsOnSchedule < 1 then
-		setNextHeliFrom(nil, 1)
+		setNextHeliFrom()
 	end
 end
 
@@ -111,9 +107,11 @@ function eHeliEvent_Loop()
 	print("--- eHeliEvent_Loop: "..#eHeliEventsOnSchedule)
 	local DAY = getGameTime():getDay()
 	local HOUR = getGameTime():getHour()
-	for _,v in pairs(eHeliEventsOnSchedule) do
+	for k,v in pairs(eHeliEventsOnSchedule) do
+		print("------ "..k.." startDay:"..tostring(v.startDay).." startTime:"..tostring(v.startTime)..
+				" endTime:"..tostring(v.endTime).." renew:"..tostring(v.renew).." expired:"..tostring(v.expired))
 		if not v.expired then
-			if (v.startDay == DAY) and (v.startTime == HOUR) then
+			if (v.startDay >= DAY) and (v.startTime >= HOUR) then
 				v:engage()
 			end
 		end
