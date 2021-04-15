@@ -1,7 +1,7 @@
 --- Check eHeliEvent within eHeliEventsOnSchedule
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_3 then
-		print("eHeliEventsOnSchedule: ")
+		print("eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getDay()).."hr: "..tostring(getGameTime():getHour()))
 		for k,v in pairs(eHeliEventsOnSchedule) do
 			print(
 					k..
