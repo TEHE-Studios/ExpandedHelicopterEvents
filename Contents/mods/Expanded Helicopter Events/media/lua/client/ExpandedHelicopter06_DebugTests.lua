@@ -1,16 +1,10 @@
 --- Check eHeliEvent within eHeliEventsOnSchedule
 Events.OnCustomUIKey.Add(function(key)
 	if key == Keyboard.KEY_3 then
-		print("eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getDay()).."hr: "..tostring(getGameTime():getHour()))
+		print("--- eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getDay()).."hr: "..tostring(getGameTime():getHour()))
 		for k,v in pairs(eHeliEventsOnSchedule) do
-			print(
-					k..
-					" startDay:"..tostring(v.startDay)..
-					" startTime:"..tostring(v.startTime)..
-					" endTime:"..tostring(v.endTime)..
-					" params:"..tostring(v.renew)..
-					" expired:"..tostring(v.expired)
-			)
+			print("------ "..k.." startDay:"..tostring(v.startDay).." startTime:"..tostring(v.startTime)..
+					" endTime:"..tostring(v.endTime).." renew:"..tostring(v.renew).." expired:"..tostring(v.expired))
 		end
 	end
 end)
