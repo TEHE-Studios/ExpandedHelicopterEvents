@@ -112,9 +112,9 @@ end
 
 ---returns first "unLaunched" helicopter found in ALL_HELICOPTERS -OR- creates a new instance
 function getFreeHelicopter()
-	for key,_ in ipairs(ALL_HELICOPTERS) do
+	for _,v in ipairs(ALL_HELICOPTERS) do
 		---@type eHelicopter heli
-		local heli = ALL_HELICOPTERS[key]
+		local heli = v
 		if heli.state == "unLaunched" then
 			return heli
 		end
