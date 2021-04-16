@@ -1,63 +1,48 @@
-eHeliEvent = {}
-eHeliEvent.startDay = 0
-eHeliEvent.startTime = 0
-eHeliEvent.endTime = 0
-eHeliEvent.renew = false
-eHeliEvent.triggered = false
-
-eHeliEventsOnSchedule = {}
-
-
-function eHeliEvent:new(startDay,startTime,endTime,renew)
+function eHeliEvent_new(replacePos, startDay, startTime, endTime, renew)
 
 	if (not startDay) or (not startTime) or (not endTime) then
 		return
 	end
 
-	local o = {}
-	setmetatable(o, self)
-	self.__index = self
-	self:set(startDay,startTime,endTime,renew)
+	local o = {["startDay"] = startDay, ["startTime"] = startTime, ["endTime"] = endTime, ["renew"] = renew, ["triggered"] = false}
 
-	table.insert(eHeliEventsOnSchedule, o)
-
-	return o
+	if replacePos then
+		table.insert(getGameTime():getModData()["EventsSchedule"], replacePos, o)
+	else
+		table.insert(getGameTime():getModData()["EventsSchedule"], o)
+	end
 end
 
 
-function eHeliEvent:set(startDay,startTime,endTime,renew)
-	self.startDay = startDay
-	self.startTime = startTime
-	self.endTime = endTime
-	self.renew = renew
-end
-
-
-function eHeliEvent:engage()
+function eHeliEvent_engage(ID)
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
 	end
-	print("--- eHeliEvent:engage:")
+
+	local eHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
+	eHeliEvent.triggered = true
+
 	getFreeHelicopter():launch()
-	self.triggered = true
-	if self.renew then
-		setNextHeliFrom(self)
+
+	if eHeliEvent.renew then
+		setNextHeliFrom(ID)
 	end
 end
 
 
-function setNextHeliFrom(lastHeliEvent, heliDay, heliStart, heliEnd)
-	print("--- setNextHeliFrom:")
+function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
+
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
 	end
-	print("------ freq checks out")
+
+	local lastHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
 
 	if not heliDay then
 		if lastHeliEvent then
 			heliDay = lastHeliEvent.startDay
 		else
-			heliDay = getGameTime():getDay()
+			heliDay = getGameTime():getNightsSurvived()
 		end
 		-- options = Never=0, Once=1, Sometimes=2, Often=3
 		if eHelicopterSandbox.config.frequency <= 2 then
@@ -78,25 +63,25 @@ function setNextHeliFrom(lastHeliEvent, heliDay, heliStart, heliEnd)
 		heliEnd = heliStart+ZombRand(1,5)
 	end
 
-	if lastHeliEvent then
-		print("--------- eHeliEvent:set")
-		lastHeliEvent:set(heliDay, heliStart, heliEnd, lastHeliEvent.renew)
-		lastHeliEvent.triggered = false
-	else
-		print("--------- eHeliEvent:new")
-		local renewHeli = true
-		if eHelicopterSandbox.config.frequency == 1 then
-			renewHeli = false
-		end
-
-		eHeliEvent:new(heliDay, heliStart, heliEnd, renewHeli)
+	local renewHeli = true
+	if eHelicopterSandbox.config.frequency == 1 then
+		renewHeli = false
 	end
+
+	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, renewHeli)
 end
 
+
 function eHeliEvents_OnGameStart()
-	print("--- eHeliEvents_OnGameStart:")
-	if #eHeliEventsOnSchedule < 1 then
-		setNextHeliFrom()
+
+	--if no ModData found make it an empty list
+	if not getGameTime():getModData()["EventsSchedule"] then
+		getGameTime():getModData()["EventsSchedule"] = {}
+	end
+
+	--if the list is empty call new heli event
+	if #getGameTime():getModData()["EventsSchedule"] < 1 then
+		setNextHeliFrom(nil, getGameTime():getNightsSurvived())
 	end
 end
 
@@ -104,16 +89,12 @@ Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 
 
 function eHeliEvent_Loop()
-	print("--- eHeliEvent_Loop: "..#eHeliEventsOnSchedule)
-	local DAY = getGameTime():getDay()
+	local DAY = getGameTime():getNightsSurvived()
 	local HOUR = getGameTime():getHour()
-	for k,v in pairs(eHeliEventsOnSchedule) do
-		print("------ "..k.." startDay:"..tostring(v.startDay).." startTime:"..tostring(v.startTime)..
-				" endTime:"..tostring(v.endTime).." renew:"..tostring(v.renew).." triggered:"..tostring(v.triggered))
-		if not v.triggered then
-			if (v.startDay >= DAY) and (v.startTime >= HOUR) then
-				v:engage()
-			end
+
+	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
+		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime >= HOUR) then
+			eHeliEvent_engage(k)
 		end
 	end
 end
