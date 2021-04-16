@@ -3,7 +3,7 @@ eHeliEvent.startDay = 0
 eHeliEvent.startTime = 0
 eHeliEvent.endTime = 0
 eHeliEvent.renew = false
-eHeliEvent.expired = false
+eHeliEvent.triggered = false
 
 eHeliEventsOnSchedule = {}
 
@@ -39,7 +39,7 @@ function eHeliEvent:engage()
 	end
 	print("--- eHeliEvent:engage:")
 	getFreeHelicopter():launch()
-	self.expired = true
+	self.triggered = true
 	if self.renew then
 		setNextHeliFrom(self)
 	end
@@ -81,7 +81,7 @@ function setNextHeliFrom(lastHeliEvent, heliDay, heliStart, heliEnd)
 	if lastHeliEvent then
 		print("--------- eHeliEvent:set")
 		lastHeliEvent:set(heliDay, heliStart, heliEnd, lastHeliEvent.renew)
-		lastHeliEvent.expired = false
+		lastHeliEvent.triggered = false
 	else
 		print("--------- eHeliEvent:new")
 		local renewHeli = true
@@ -109,8 +109,8 @@ function eHeliEvent_Loop()
 	local HOUR = getGameTime():getHour()
 	for k,v in pairs(eHeliEventsOnSchedule) do
 		print("------ "..k.." startDay:"..tostring(v.startDay).." startTime:"..tostring(v.startTime)..
-				" endTime:"..tostring(v.endTime).." renew:"..tostring(v.renew).." expired:"..tostring(v.expired))
-		if not v.expired then
+				" endTime:"..tostring(v.endTime).." renew:"..tostring(v.renew).." triggered:"..tostring(v.triggered))
+		if not v.triggered then
 			if (v.startDay >= DAY) and (v.startTime >= HOUR) then
 				v:engage()
 			end
