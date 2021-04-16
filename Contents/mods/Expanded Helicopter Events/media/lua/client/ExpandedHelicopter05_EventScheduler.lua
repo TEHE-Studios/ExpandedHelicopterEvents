@@ -7,7 +7,7 @@ function eHeliEvent_new(replacePos, startDay, startTime, endTime, renew)
 	local o = {["startDay"] = startDay, ["startTime"] = startTime, ["endTime"] = endTime, ["renew"] = renew, ["triggered"] = false}
 
 	if replacePos then
-		table.insert(getGameTime():getModData()["EventsSchedule"], replacePos, o)
+		getGameTime():getModData()["EventsSchedule"][replacePos] = o
 	else
 		table.insert(getGameTime():getModData()["EventsSchedule"], o)
 	end
