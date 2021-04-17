@@ -77,22 +77,22 @@ function eHelicopter:fireOn(targetHostile)
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
-	--set damage to kill
-	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
+	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
 
-	--hit
-	local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
+	--[[debug]] local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
 
-	--kill
 	if ZombRand(0, 100) < 100-movementThrowOffAim then
+		--kill zombie
 		targetHostile:setHealth(0)
-		hitReport = hitReport .. "  [HIT]"
+		--[[debug]] hitReport = hitReport .. "  [HIT]"
 	else
+		--toss down
 		targetHostile:knockDown(true)
 	end
-	targetHostile:splatBlood(2,200)
-	print(hitReport)
 
+	targetHostile:splatBlood(2,200)
+	--[[debug]] print(hitReport)
+	
 	--fireImpacts
 	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
 	gunEmitter:playSound(impactNoise, targetHostile:getSquare())
