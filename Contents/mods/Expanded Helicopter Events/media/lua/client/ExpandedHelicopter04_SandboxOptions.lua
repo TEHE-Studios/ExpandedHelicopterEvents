@@ -48,13 +48,6 @@ eHelicopterSandbox.menu = {
 		tooltip = "This will supplant the vanilla helicopter event frequency.",
 		options = {{"Never", 0}, {"Once", 1}, {"Sometimes", 2}, {"Often", 3}}
 		},
-
-	resetEvents = {
-		type = "Tickbox",
-		title = "Reset Events",
-		tooltip = "Reset scheduled events in case of emergency.",
-		},
-
 	generalSpace = {type = "Space"},
 
 	--voiceTitle = {type = "Text", text = "Voice Packs"},
@@ -101,7 +94,7 @@ function loadAnnouncersToConfig()
 	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs"}
 
 	for k,_ in pairs(eHelicopter_announcers) do
-		eHelicopterSandbox.menu[k] = { type = "Tickbox", title = k, tooltip = "", }
+		eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
 		eHelicopterSandbox.config[k] = true
 	end
 
@@ -121,6 +114,13 @@ end
 Events.OnGameStart.Add(setAnnouncersLoaded)
 
 
+--add buffer space for reset feature
+eHelicopterSandbox.menu["resetEventsA"] = {type = "Space", iteration=4}
+eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
+eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
+
+
+--load mod into EasyConfig
 EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
 
 
