@@ -24,6 +24,7 @@ eHelicopterSandbox = eHelicopterSandbox or {}
 
 eHelicopterSandbox.config = {
 	frequency = 2,
+	resetEvents = false,
 	--hostilePreference = "Zombie",
 	--attackDelay = 95,
 	--attackDistance = 50,
@@ -47,6 +48,13 @@ eHelicopterSandbox.menu = {
 		tooltip = "This will supplant the vanilla helicopter event frequency.",
 		options = {{"Never", 0}, {"Once", 1}, {"Sometimes", 2}, {"Often", 3}}
 		},
+
+	resetEvents = {
+		type = "Tickbox",
+		title = "Reset Events",
+		tooltip = "Reset scheduled events in case of emergency.",
+		},
+
 	generalSpace = {type = "Space"},
 
 	--voiceTitle = {type = "Text", text = "Voice Packs"},

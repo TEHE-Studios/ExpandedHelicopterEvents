@@ -79,6 +79,17 @@ function eHeliEvents_OnGameStart()
 		getGameTime():getModData()["EventsSchedule"] = {}
 	end
 
+	--if eHelicopterSandbox.config.resetEvents == true, reset
+	if eHelicopterSandbox.config.resetEvents == true then
+		getGameTime():getModData()["EventsSchedule"] = {}
+		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
+		local resetEvents = EHE.configMenu["resetEvents"]
+		resetEvents.selectedValue = "false"
+		resetEvents.selectedLabel = "false"
+		EHE.config.resetEvents = false
+		EasyConfig_Chucked.saveConfig()
+	end
+
 	--if the list is empty call new heli event
 	if #getGameTime():getModData()["EventsSchedule"] < 1 then
 		setNextHeliFrom(nil, getGameTime():getNightsSurvived())
