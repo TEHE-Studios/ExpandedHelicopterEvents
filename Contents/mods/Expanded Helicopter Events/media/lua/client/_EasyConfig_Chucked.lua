@@ -115,8 +115,8 @@ function MainOptions:create() -- override
 	local height = 20
 
 	--new addText because MainOptions doesn't have it
-	function addText(text, font, r,g,b,a)
-		local label = ISLabel:new(x+20,y+self.addY,height, text, r or 1, g or 1, b or 1, a or 1, font, true)
+	function addText(text, font, r, g, b, a, customX)
+		local label = ISLabel:new(x+(customX or 20),y+self.addY,height, text, r or 1, g or 1, b or 1, a or 1, font, true)
 		label:initialise()
 		self.mainPanel:addChild(label)
 		self.addY = self.addY + height +5
@@ -166,12 +166,15 @@ function MainOptions:create() -- override
 
 			--- TEXT ---
 			if menuEntry.type == "Text" then
-				addText(menuEntry.text, UIFont.Small)
+				addText(menuEntry.text, UIFont.Small, menuEntry.r, menuEntry.g, menuEntry.b, menuEntry.a, menuEntry.customX)
 			end
 
 			--- SPACE ---
 			if menuEntry.type == "Space" then
-				addSpace()
+				local iteration = menuEntry.iteration or 1
+				for i=1, iteration do
+					addSpace()
+				end
 			end
 
 			--- TICK BOX ---
