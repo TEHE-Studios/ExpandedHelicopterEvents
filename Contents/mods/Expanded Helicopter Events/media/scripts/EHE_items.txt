@@ -5,7 +5,7 @@ module EHE
 		Base
 	}
 
-    item EvacuationFlyer
+        item EvacuationFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
@@ -13,8 +13,7 @@ module EHE
 		Icon = item_paper,
 		Map = media/ui/content/EvacuationFlyer.png
 	}
-
-	item EmergencyFlyer
+	    item EmergencyFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
@@ -22,7 +21,6 @@ module EHE
 		Icon = item_paper,
 		Map = media/ui/content/EmergencyFlyer.png
 	}
-
 		item CurfewFlyer
 	{
 		Weight = 0.1,
@@ -30,5 +28,13 @@ module EHE
 		DisplayName = Curfew Flyer,
 		Icon = item_paper,
 		Map = media/ui/content/CurfewFlyer.png
+	}
+		item PAVFlyer
+	{
+		Weight = 0.1,
+		Type = Normal,
+		DisplayName = PAV Flyer,
+		Icon = item_paper,
+		Map = media/ui/content/PAVflyer.png
 	}
 }
