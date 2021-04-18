@@ -53,6 +53,8 @@ function eHeliEvent_engage(ID)
 	end
 end
 
+---@field cutOffDay number Number of days since start of game helicopter stops returning
+eHelicopter.cutOffDay = 30
 
 function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 
@@ -88,11 +90,48 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 	end
 
 	local renewHeli = true
-	if eHelicopterSandbox.config.frequency == 1 then
+	if (eHelicopterSandbox.config.frequency == 1) or (eHeli_getDaysBeforeApoc+heliDay > eHelicopter.cutOffDay) then
 		renewHeli = false
 	end
 
 	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, renewHeli)
+end
+
+
+---Check how many days it has been since the start of the apocalypse
+function eHeli_getDaysBeforeApoc()
+
+	local monthsAfterApo = getSandboxOptions():getTimeSinceApo()-1
+	--no months to count, go away
+	if monthsAfterApo <= 0 then
+		return 0
+	end
+
+	local gameTime = getGameTime()
+	local startYear = gameTime:getStartYear()
+	--months of the year start at 0
+	local apocStartMonth = (gameTime:getStartMonth()+1)-monthsAfterApo
+	--roll the year back
+	if apocStartMonth <= 0 then
+		apocStartMonth = 12+apocStartMonth
+		startYear = startYear-1
+	end
+	--days of the month start at 0
+	local apocDays = gameTime:getStartDay()+1
+	--count each month at a time to get correct day count
+	for _=1, monthsAfterApo do
+		apocStartMonth = apocStartMonth+1
+		--roll year forward if needed, reset month
+		if apocStartMonth > 12 then
+			apocStartMonth = 1
+			startYear = startYear+1
+		end
+		--months of the year start at 0
+		local daysInM = gameTime:daysInMonth(startYear, apocStartMonth-1)
+		apocDays = apocDays+daysInM
+	end
+
+	return apocDays
 end
 
 
