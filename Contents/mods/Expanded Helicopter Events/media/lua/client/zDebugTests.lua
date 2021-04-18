@@ -1,5 +1,21 @@
 if getDebug() then
 
+	--- Check weather
+
+	Events.OnCustomUIKey.Add(function(key)
+		if key == Keyboard.KEY_2 then
+
+			local CM = getClimateManager()
+			print("forecast:")
+			print("--- CM:getWindIntensity: "..CM:getWindIntensity())
+			print("--- CM:getFogIntensity: "..CM:getFogIntensity())
+			print("--- CM:getSnowIntensity: "..CM:getSnowIntensity())
+			print("--- CM:getRainIntensity: "..CM:getRainIntensity())
+			print("--- CM:getIsThunderStorming: "..CM:getIsThunderStorming())
+		end
+	end)
+
+
 	--- Check eHeliEvent within eHeliEventsOnSchedule
 	Events.OnCustomUIKey.Add(function(key)
 
