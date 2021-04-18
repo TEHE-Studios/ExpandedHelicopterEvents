@@ -11,7 +11,7 @@ if getDebug() then
 			print("--- CM:getFogIntensity: "..CM:getFogIntensity())
 			print("--- CM:getSnowIntensity: "..CM:getSnowIntensity())
 			print("--- CM:getRainIntensity: "..CM:getRainIntensity())
-			print("--- CM:getIsThunderStorming: "..CM:getIsThunderStorming())
+			print("--- CM:getIsThunderStorming:(b) "..tostring(CM:getIsThunderStorming()))
 		end
 	end)
 
