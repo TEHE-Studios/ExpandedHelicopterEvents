@@ -72,10 +72,10 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 		end
 		-- options = Never=0, Once=1, Sometimes=2, Often=3
 		if eHelicopterSandbox.config.frequency <= 2 then
-			heliDay = heliDay+ZombRand(10, 16)
+			heliDay = heliDay+ZombRand(4, 7)
 			-- if frequency is 3 / often
 		elseif eHelicopterSandbox.config.frequency == 3 then
-			heliDay = heliDay+ZombRand(6, 10)
+			heliDay = heliDay+ZombRand(1, 3)
 		end
 	end
 
