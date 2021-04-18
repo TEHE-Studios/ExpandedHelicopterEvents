@@ -64,18 +64,24 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 	local lastHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
 
 	if not heliDay then
+
+		local nightsSurvived = getGameTime():getNightsSurvived()
+
 		if lastHeliEvent then
 			heliDay = lastHeliEvent.startDay
 		else
-			heliDay = getGameTime():getNightsSurvived()
+			heliDay = nightsSurvived
 		end
+
 		-- options = Never=0, Once=1, Sometimes=2, Often=3
 		if eHelicopterSandbox.config.frequency <= 2 then
-			heliDay = heliDay+ZombRand(4, 7)
+			heliDay = heliDay+ZombRand(3, 6)
 			-- if frequency is 3 / often
 		elseif eHelicopterSandbox.config.frequency == 3 then
-			heliDay = heliDay+ZombRand(1, 3)
+			heliDay = heliDay+ZombRand(1, 2)
 		end
+		
+		heliDay = heliDay+math.floor(7*(nightsSurvived/eHeliEvent_cutOffDay))
 	end
 
 	if not heliStart then
