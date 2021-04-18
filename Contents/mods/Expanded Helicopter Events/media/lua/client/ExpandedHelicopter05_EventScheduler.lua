@@ -14,6 +14,26 @@ function eHeliEvent_new(replacePos, startDay, startTime, endTime, renew)
 end
 
 
+function eHeliEvent_weatherImpact()
+	local CM = getClimateManager()
+	local willFly = true
+	local impactOnFlightSafety = 0
+	local wind = CM:getWindIntensity()
+	local fog = CM:getFogIntensity()
+	local rain = CM:getRainIntensity()/2
+	local snow = CM:getSnowIntensity()/2
+	local thunder = CM:getIsThunderStorming()
+
+	if (wind+rain+snow > 0.90) or (fog > 0.33) or (thunder == true) then
+		willFly = false
+	end
+
+	impactOnFlightSafety = (wind+rain+snow+(fog*3))/6
+
+	return willFly, impactOnFlightSafety
+end
+
+
 function eHeliEvent_engage(ID)
 	if eHelicopterSandbox.config.frequency == 0 then
 		return
@@ -22,7 +42,11 @@ function eHeliEvent_engage(ID)
 	local eHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
 	eHeliEvent.triggered = true
 
-	getFreeHelicopter():launch()
+	local willFly,_ = eHeliEvent_weatherImpact()
+
+	if willFly then
+		getFreeHelicopter():launch()
+	end
 
 	if eHeliEvent.renew then
 		setNextHeliFrom(ID)
