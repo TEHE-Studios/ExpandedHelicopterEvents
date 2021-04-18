@@ -53,9 +53,8 @@ function eHeliEvent_engage(ID)
 	end
 end
 
----@field cutOffDay number Number of days since start of game helicopter stops returning
-eHelicopter.cutOffDay = 30
 
+eHeliEvent_cutOffDay = 30
 function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 
 	if eHelicopterSandbox.config.frequency == 0 then
@@ -90,7 +89,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 	end
 
 	local renewHeli = true
-	if (eHelicopterSandbox.config.frequency == 1) or (eHeli_getDaysBeforeApoc+heliDay > eHelicopter.cutOffDay) then
+	if (eHelicopterSandbox.config.frequency == 1) or (eHeli_getDaysBeforeApoc+heliDay > eHeliEvent_cutOffDay) then
 		renewHeli = false
 	end
 
