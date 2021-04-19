@@ -10,31 +10,30 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Evacuation Flyer,
-		Icon = item_paper,
-		Map = media/ui/content/EvacuationFlyer.png
+		Icon = Paper,
+		Map = media/ui/content/EvacuationFlyer.png,
 	}
 	    item EmergencyFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Emergency Flyer,
-		Icon = item_paper,
-		Map = media/ui/content/EmergencyFlyer.png
+		Icon = Paper,
+		Map = media/ui/content/EmergencyFlyer.png,
 	}
 		item CurfewFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Curfew Flyer,
-		Icon = item_paper,
-		Map = media/ui/content/CurfewFlyer.png
+		Icon = Paper,
+		Map = media/ui/content/CurfewFlyer.png,
 	}
 		item PAVFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
-		DisplayName = PAV Flyer,
-		Icon = item_paper,
-		Map = media/ui/content/PAVflyer.png
+		DisplayName = Disease Flyer,
+		Icon = Paper,
 	}
 }
