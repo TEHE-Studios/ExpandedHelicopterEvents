@@ -157,7 +157,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 
 	local renewHeli = true
 	--if freq is once OR new heliDay is beyond cutOffDay don't renew further
-	if (freq == 1) or (eHeli_getDaysBeforeApoc+heliDay > eHeliEvent_cutOffDay) then
+	if (freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > eHeliEvent_cutOffDay) then
 		renewHeli = false
 	end
 
