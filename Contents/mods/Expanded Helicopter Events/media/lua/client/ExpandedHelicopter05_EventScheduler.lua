@@ -20,6 +20,7 @@ function eHeliEvent_new(replacePos, startDay, startTime, endTime, renew)
 	end
 end
 
+
 ---Calculates if a flight should go out and the weather impact on flight safety
 ---@return boolean, number returns two values: willFly, impactOnFlightSafety
 function eHeliEvent_weatherImpact()
@@ -43,6 +44,7 @@ function eHeliEvent_weatherImpact()
 	return willFly, impactOnFlightSafety
 end
 
+
 --Engages specific eHeliEvent based on ID
 ---@param ID number position in "EventsSchedule"
 function eHeliEvent_engage(ID)
@@ -64,6 +66,7 @@ function eHeliEvent_engage(ID)
 		setNextHeliFrom(ID)
 	end
 end
+
 
 ---General events cut-off day after apocalypse, NOT game start
 eHeliEvent_cutOffDay = 30
@@ -103,6 +106,7 @@ function eHeli_getDaysBeforeApoc()
 
 	return apocDays
 end
+
 
 ---Generates a schedule time for an event, either from scratch or a previous event.
 ---@param ID number Position in schedule
@@ -159,6 +163,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 
 	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, renewHeli)
 end
+
 
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
