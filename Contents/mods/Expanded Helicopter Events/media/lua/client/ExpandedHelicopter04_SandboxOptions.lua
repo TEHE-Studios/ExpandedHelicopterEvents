@@ -2,36 +2,18 @@ require "_EasyConfig_Chucked"
 require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
---[[
-eHelicopterSandboxOptions = {}
-eHelicopterSandboxOptions.freq = {["value"]=2, ["default"]=2, ["type"]="dropdown",
-	["options"]={[1]="Sandbox_HelicopterFreq_option1",[2]="Sandbox_HelicopterFreq_option2",[3]="Sandbox_HelicopterFreq_option3",[4]="Sandbox_HelicopterFreq_option4"}
-	}
-
-eHelicopterSandboxOptions.hostilePreference = {["value"]="IsoZombie", ["default"]="IsoZombie", ["type"]="multi-choice",
-	["options"]={[1]="IsoZombie",[2]="IsoPlayer",[3]="All"}
-	}
-
-eHelicopterSandboxOptions.attackDelay = {["value"]=95, ["default"]=95, ["type"]="number", ["min"]=0.01, ["max"]=1000}
-eHelicopterSandboxOptions.attackDistance = {["value"]=50, ["default"]=50, ["type"]="number", ["min"]=1, ["max"]=300}
-eHelicopterSandboxOptions.attackScope = {["value"]=1, ["default"]=1, ["type"]="number", ["min"]=0, ["max"]=3}
-eHelicopterSandboxOptions.attackSpread = {["value"]=2, ["default"]=2, ["type"]="number", ["min"]=0, ["max"]=3}
-eHelicopterSandboxOptions.speed = {["value"]=0.25, ["default"]=0.25, ["type"]="number", ["min"]=0.01, ["max"]=50}
-eHelicopterSandboxOptions.topSpeedFactor = {["value"]=3, ["default"]=3, ["type"]="number", ["min"]=1, ["max"]=10}
-]]
-
 eHelicopterSandbox = eHelicopterSandbox or {}
 
 eHelicopterSandbox.config = {
 	frequency = 2,
 	resetEvents = false,
-	--hostilePreference = "Zombie",
-	--attackDelay = 95,
-	--attackDistance = 50,
-	--attackScope = 1,
-	--attackSpread = 2,
-	--speed = 0.25,
-	--topSpeedFactor = 3
+	--hostilePreference = "Zombie", --"Player", "All"
+	--attackDelay = 95, --min:0.01, max:1000
+	--attackDistance = 50, --min:1, max:300
+	--attackScope = 1, --min=0, max=3
+	--attackSpread = 2, --min=0, max=3
+	--speed = 0.25, --min=0.01, max=50
+	--topSpeedFactor = 3 --min=1, max=10
 	---voices added automatically
 }
 
@@ -124,21 +106,17 @@ eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Event
 EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
 
 
+--Overrides vanilla helicopter frequency on game boot
 function HelicopterSandboxOptionOverride()
 	---@type SandboxOptions
 	local SANDBOX_OPTIONS = getSandboxOptions()
 	---@type SandboxOptions.EnumSandboxOption | SandboxOptions.SandboxOption
 	local sandboxHeliFreq = SANDBOX_OPTIONS:getOptionByName("Helicopter")
-
-	print("VANILLA HELICOPTER SANDBOX OPTION: ".."<"..sandboxHeliFreq:getValueTranslationByIndex(sandboxHeliFreq:getValue()).."> ".."(".. sandboxHeliFreq:getValue()..")")
-
+	--if vanilla helicopter freq is not never then set to never	
 	if sandboxHeliFreq:getValue() ~= 1 then
-		print("sandboxHeliFreq not \"never\"")
-		sandboxHeliFreq:setValue(1) --1 = Never
-		print("setting now to: <"..sandboxHeliFreq:getValueTranslationByIndex(sandboxHeliFreq:getValue()).."> ".."(".. sandboxHeliFreq:getValue()..")")
+		sandboxHeliFreq:setValue(1) -- 1 = Never
 	end
 end
-
 
 Events.OnGameBoot.Add(HelicopterSandboxOptionOverride)
 
