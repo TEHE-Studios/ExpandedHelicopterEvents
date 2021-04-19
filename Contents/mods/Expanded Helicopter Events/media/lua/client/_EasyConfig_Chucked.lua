@@ -1,4 +1,4 @@
-
+---Original EasyConfig found in Sandbox+ (author: derLoko)
 
 EasyConfig_Chucked = EasyConfig_Chucked or {}
 EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
