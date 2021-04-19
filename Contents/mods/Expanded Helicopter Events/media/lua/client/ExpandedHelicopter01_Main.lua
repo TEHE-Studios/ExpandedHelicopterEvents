@@ -3,13 +3,6 @@ MAX_XY = 15000
 MIN_XY = 2500
 ALL_HELICOPTERS = {}
 
---TODO:
---- improve miss/hit events
------- look into creating dust-ups from bullet impacts
---- create a vehicle/heli that can't be repaired or driven to act as the crash-site
---- work out crash events + crash site placement
---- add different fly-patterns
-
 ---@class eHelicopter
 eHelicopter = {}
 
