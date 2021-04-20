@@ -134,15 +134,25 @@ end
 
 
 ---returns first "unLaunched" helicopter found in ALL_HELICOPTERS -OR- creates a new instance
-function getFreeHelicopter()
-	for _,v in ipairs(ALL_HELICOPTERS) do
-		---@type eHelicopter heli
-		local heli = v
-		if heli.state == "unLaunched" then
-			return heli
+function getFreeHelicopter(preset)
+	---@type eHelicopter heli
+	local heli
+	for _,h in ipairs(ALL_HELICOPTERS) do
+		---@type eHelicopter h
+		if h.state == "unLaunched" then
+			heli = h
+			break
 		end
 	end
-	return eHelicopter:new()
+	if not heli then
+		heli = eHelicopter:new()
+	end
+	
+	if preset then
+		heli:loadPreset(preset)
+	end
+	
+	return heli
 end
 
 
