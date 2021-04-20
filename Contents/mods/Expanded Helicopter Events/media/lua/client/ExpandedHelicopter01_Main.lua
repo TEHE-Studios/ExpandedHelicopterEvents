@@ -15,6 +15,9 @@ eHelicopter.topSpeedFactor = 3
 ---@field flightSound string sound to loop during flight
 eHelicopter.flightSound = "eHelicopter"
 
+---@field flightVolume number
+eHelicopter.flightVolume = 50
+
 ---@field fireSound table sounds for firing
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 
@@ -320,7 +323,7 @@ function eHelicopter:move(re_aim, dampen)
 	--Move emitter to position
 	self.rotorEmitter:setPos(v_x,v_y,self.height)
 
-	local heliVolume = 50
+	local heliVolume = self.flightVolume
 
 	if ((not self.timeUntilCanAnnounce) or (self.timeUntilCanAnnounce <= getTimestamp())) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
 		heliVolume = heliVolume+20
@@ -328,7 +331,7 @@ function eHelicopter:move(re_aim, dampen)
 	end
 
 	--virtual sound event to attract zombies
-	addSound(nil, v_x, v_y, 0, 250, heliVolume)
+	addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
 
 	--self:Report(re_aim, dampen)
 end
