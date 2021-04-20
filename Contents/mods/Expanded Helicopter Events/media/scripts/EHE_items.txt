@@ -12,6 +12,8 @@ module EHE
 		DisplayName = Evacuation Flyer,
 		Icon = Paper,
 		Map = media/ui/content/EvacuationFlyer.png,
+		StaticModel = Item_EvacFlyer,
+		WeaponSprite = Item_EvacFlyer,
 	}
 	    item EmergencyFlyer
 	{

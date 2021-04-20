@@ -31,13 +31,14 @@ if getDebug() then
 	end)
 
 
+--[[
 	--- Check sandboxoverride
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_4 then
 			HelicopterSandboxOptionOverride()
 		end
 	end)
-
+]]
 
 	--- Raise the dead
 	Events.OnCustomUIKey.Add(function(key)
@@ -108,7 +109,7 @@ if getDebug() then
 		end
 	end)
 
-
+--[[
 	--- Test getHumanoidsInFractalRange
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_7 then
@@ -143,7 +144,7 @@ if getDebug() then
 
 		end
 	end)
-
+]]
 
 	--- Test all announcements
 	Events.OnCustomUIKey.Add(function(key)

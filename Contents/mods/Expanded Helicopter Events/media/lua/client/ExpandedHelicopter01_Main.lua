@@ -12,6 +12,12 @@ eHelicopter.speed = 0.25
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
 
+---@field flightSound string sound to loop during flight
+eHelicopter.flightSound = "eHelicopter"
+
+---@field flightVolume number
+eHelicopter.flightVolume = 50
+
 ---@field fireSound table sounds for firing
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 
@@ -88,17 +94,45 @@ eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
 
+---Preset list, only include variables being changed.
+eHelicopter_PRESETS = {
+	--["default"] = {},
+	["jet"] = {speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
+}
+
+---@param ID string
+function eHelicopter:loadPreset(ID)
+	if not ID then
+		return
+	end
+
+	local preset = eHelicopter_PRESETS[ID]
+
+	if not preset then
+		return
+	end
+
+	print("loading preset: "..ID)
+	for var,value in pairs(preset) do
+		print(" --"..var.." = "..tostring(value))
+		eHelicopter[var] = value
+	end
+end
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
-function eHelicopter:new()
+function eHelicopter:new(presetID)
 
 	local o = {}
 	setmetatable(o, self)
 	self.__index = self
 	table.insert(ALL_HELICOPTERS, o)
 	o.ID = #ALL_HELICOPTERS
-	
+
+	if presetID then
+		eHelicopter:loadPreset(presetID)
+	end
+
 	return o
 end
 
@@ -317,7 +351,7 @@ function eHelicopter:move(re_aim, dampen)
 	--Move emitter to position
 	self.rotorEmitter:setPos(v_x,v_y,self.height)
 
-	local heliVolume = 50
+	local heliVolume = self.flightVolume
 
 	if ((not self.timeUntilCanAnnounce) or (self.timeUntilCanAnnounce <= getTimestamp())) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
 		heliVolume = heliVolume+20
@@ -325,7 +359,7 @@ function eHelicopter:move(re_aim, dampen)
 	end
 
 	--virtual sound event to attract zombies
-	addSound(nil, v_x, v_y, 0, 250, heliVolume)
+	addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
 
 	--self:Report(re_aim, dampen)
 end
@@ -349,8 +383,11 @@ function eHelicopter:launch(targetedPlayer)
 
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
-	self.rotorEmitter:playSound("eHelicopter", ehX, ehY, ehZ)
-	self:chooseVoice()
+	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
+
+	if self.announcerVoice ~= false then
+		self:chooseVoice()
+	end
 	self.state = "gotoTarget"
 end
 
@@ -371,7 +408,9 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
-	self:lookForHostiles(self.hostilePreference)
+	if self.hostilePreference then
+		self:lookForHostiles(self.hostilePreference)
+	end
 
 	if not self:isInBounds() then
 		self:unlaunch()

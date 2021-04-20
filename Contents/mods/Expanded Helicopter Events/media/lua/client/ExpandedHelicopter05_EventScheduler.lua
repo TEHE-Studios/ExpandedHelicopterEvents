@@ -20,6 +20,7 @@ function eHeliEvent_new(replacePos, startDay, startTime, endTime, renew)
 	end
 end
 
+
 ---Calculates if a flight should go out and the weather impact on flight safety
 ---@return boolean, number returns two values: willFly, impactOnFlightSafety
 function eHeliEvent_weatherImpact()
@@ -43,6 +44,7 @@ function eHeliEvent_weatherImpact()
 	return willFly, impactOnFlightSafety
 end
 
+
 --Engages specific eHeliEvent based on ID
 ---@param ID number position in "EventsSchedule"
 function eHeliEvent_engage(ID)
@@ -64,6 +66,7 @@ function eHeliEvent_engage(ID)
 		setNextHeliFrom(ID)
 	end
 end
+
 
 ---General events cut-off day after apocalypse, NOT game start
 eHeliEvent_cutOffDay = 30
@@ -103,6 +106,7 @@ function eHeli_getDaysBeforeApoc()
 
 	return apocDays
 end
+
 
 ---Generates a schedule time for an event, either from scratch or a previous event.
 ---@param ID number Position in schedule
@@ -153,12 +157,13 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 
 	local renewHeli = true
 	--if freq is once OR new heliDay is beyond cutOffDay don't renew further
-	if (freq == 1) or (eHeli_getDaysBeforeApoc+heliDay > eHeliEvent_cutOffDay) then
+	if (freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > eHeliEvent_cutOffDay) then
 		renewHeli = false
 	end
 
 	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, renewHeli)
 end
+
 
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
@@ -193,7 +198,7 @@ function eHeliEvent_Loop()
 	local HOUR = getGameTime():getHour()
 
 	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime >= HOUR) then
+		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime == HOUR) then
 			eHeliEvent_engage(k)
 		end
 	end
