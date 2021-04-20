@@ -98,6 +98,10 @@ eHelicopter.hostilesToFireOn = {}
 eHelicopter_PRESETS = {
 	--["default"] = {},
 	["jet"] = {speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
+	["patrol_only"] = {speed = 0.2, hostilePreference = false},
+	["news_chopper"] = {speed = 0.1, hostilePreference = false, announcerVoice = false}
+	["attack_undead"] = {announcerVoice = false},
+	["attack_all"] = {announcerVoice = false, hostilePreference = nil},
 }
 
 ---@param ID string
@@ -392,7 +396,7 @@ function eHelicopter:launch(targetedPlayer)
 	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
 
 	if self.announcerVoice ~= false then
-		self:chooseVoice()
+		self:chooseVoice(self.announcerVoice)
 	end
 	self.state = "gotoTarget"
 end
