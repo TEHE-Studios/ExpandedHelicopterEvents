@@ -95,6 +95,33 @@ eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 
 
+--hostilePreference = "Zombie", --"Player", "All"
+--attackDelay = 95, --min:0.01, max:1000
+--attackDistance = 50, --min:1, max:300
+--attackScope = 1, --min=0, max=3
+--attackSpread = 2, --min=0, max=3
+--speed = 0.25, --min=0.01, max=50
+--topSpeedFactor = 3 --min=1, max=10
+eHelicopter_PRESETS = {
+	["default"] = {},
+	["jet"] = {speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
+}
+
+---@param ID string
+function eHelicopter:loadPreset(ID)
+	if not ID then
+		return
+	end
+
+	local preset = eHelicopter_PRESETS[ID]
+
+	print("loading preset: "..ID)
+	for var,value in pairs(preset) do
+		print(" --"..var.." = "..tostring(value))
+		eHelicopter[var] = value
+	end
+end
+
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
 function eHelicopter:new()
