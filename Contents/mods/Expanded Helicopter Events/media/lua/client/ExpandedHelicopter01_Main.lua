@@ -12,6 +12,9 @@ eHelicopter.speed = 0.25
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
 
+---@field flightSound string sound to loop during flight
+eHelicopter.flightSound = "eHelicopter"
+
 ---@field fireSound table sounds for firing
 eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 
@@ -349,8 +352,11 @@ function eHelicopter:launch(targetedPlayer)
 
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
-	self.rotorEmitter:playSound("eHelicopter", ehX, ehY, ehZ)
-	self:chooseVoice()
+	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
+
+	if self.announcerVoice ~= false then
+		self:chooseVoice()
+	end
 	self.state = "gotoTarget"
 end
 
@@ -371,7 +377,9 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
-	self:lookForHostiles(self.hostilePreference)
+	if self.hostilePreference then
+		self:lookForHostiles(self.hostilePreference)
+	end
 
 	if not self:isInBounds() then
 		self:unlaunch()
