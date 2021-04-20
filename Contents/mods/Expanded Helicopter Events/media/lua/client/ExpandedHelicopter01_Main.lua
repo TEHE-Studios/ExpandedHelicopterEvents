@@ -99,7 +99,7 @@ eHelicopter_PRESETS = {
 	--["default"] = {},
 	["jet"] = {speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
 	["patrol_only"] = {speed = 0.2, hostilePreference = false},
-	["news_chopper"] = {speed = 0.1, hostilePreference = false, announcerVoice = false}
+	["news_chopper"] = {speed = 0.1, hostilePreference = false, announcerVoice = false},
 	["attack_undead"] = {announcerVoice = false},
 	["attack_all"] = {announcerVoice = false, hostilePreference = nil},
 }
@@ -125,7 +125,7 @@ end
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
-function eHelicopter:new(presetID)
+function eHelicopter:new()
 
 	local o = {}
 	setmetatable(o, self)
