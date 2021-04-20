@@ -163,8 +163,10 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd, preset)
 	end
 	
 	--override preset with lastHeliEvent's if preset is nil
-	preset = preset or lastHeliEvent.preset
-	
+	if not preset and lastHeliEvent then
+		preset = lastHeliEvent.preset
+	end
+
 	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, preset, renewHeli)
 end
 
