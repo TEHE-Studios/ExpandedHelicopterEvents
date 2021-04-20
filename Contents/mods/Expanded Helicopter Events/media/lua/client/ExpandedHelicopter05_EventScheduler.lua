@@ -198,7 +198,7 @@ function eHeliEvent_Loop()
 	local HOUR = getGameTime():getHour()
 
 	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime >= HOUR) then
+		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime == HOUR) then
 			eHeliEvent_engage(k)
 		end
 	end
