@@ -1,0 +1,20 @@
+module Base
+{		
+
+		item Hat_SPHPolice
+	{
+		Type = Clothing,
+		DisplayName = Police Helicopter Helmet,
+		ClothingItem = Hat_SPHPolice,
+		BodyLocation = Hat,
+		IconsForTexture = Hat_ScrapHelmet;Hat_ScrapHelmet2,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+}
