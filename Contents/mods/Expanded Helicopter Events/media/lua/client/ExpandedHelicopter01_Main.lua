@@ -94,16 +94,9 @@ eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
 
-
---hostilePreference = "Zombie", --"Player", "All"
---attackDelay = 95, --min:0.01, max:1000
---attackDistance = 50, --min:1, max:300
---attackScope = 1, --min=0, max=3
---attackSpread = 2, --min=0, max=3
---speed = 0.25, --min=0.01, max=50
---topSpeedFactor = 3 --min=1, max=10
+---Preset list, only include variables being changed.
 eHelicopter_PRESETS = {
-	["default"] = {},
+	--["default"] = {},
 	["jet"] = {speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
 }
 
@@ -115,6 +108,10 @@ function eHelicopter:loadPreset(ID)
 
 	local preset = eHelicopter_PRESETS[ID]
 
+	if not preset then
+		return
+	end
+
 	print("loading preset: "..ID)
 	for var,value in pairs(preset) do
 		print(" --"..var.." = "..tostring(value))
@@ -124,14 +121,18 @@ end
 
 ---Do not call this function directly for new helicopters
 ---@see getFreeHelicopter instead
-function eHelicopter:new()
+function eHelicopter:new(presetID)
 
 	local o = {}
 	setmetatable(o, self)
 	self.__index = self
 	table.insert(ALL_HELICOPTERS, o)
 	o.ID = #ALL_HELICOPTERS
-	
+
+	if presetID then
+		eHelicopter:loadPreset(presetID)
+	end
+
 	return o
 end
 
