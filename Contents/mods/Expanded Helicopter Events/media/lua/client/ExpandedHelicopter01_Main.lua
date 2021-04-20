@@ -25,7 +25,7 @@ eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 
 ---@field hostilePreference string
----leave as 'nil' for *any*, otherwise has to be 'IsoPlayer' or 'IsoZombie'
+---set to 'nil' for *any*, 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie'
 eHelicopter.hostilePreference = "IsoZombie"
 
 ---@field attackDelay number delay in milliseconds between attacks
@@ -128,10 +128,6 @@ function eHelicopter:new(presetID)
 	self.__index = self
 	table.insert(ALL_HELICOPTERS, o)
 	o.ID = #ALL_HELICOPTERS
-
-	if presetID then
-		eHelicopter:loadPreset(presetID)
-	end
 
 	return o
 end
