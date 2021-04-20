@@ -3,15 +3,16 @@
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
 ---@param endTime number Hour scheduled for the end of this event
+---@param preset string Name of preset found in PRESETS
 ---@param renew boolean If the event reschedules after completion
 ---Events are handled as tables because ModData does not save Lua "classes" properly, even though they are really tables.
-function eHeliEvent_new(replacePos, startDay, startTime, endTime, renew)
+function eHeliEvent_new(replacePos, startDay, startTime, endTime, preset, renew)
 	
 	if (not startDay) or (not startTime) or (not endTime) then
 		return
 	end
 
-	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["endTime"] = endTime, ["renew"] = renew, ["triggered"] = false}
+	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["endTime"] = endTime, ["preset"] = preset, ["renew"] = renew, ["triggered"] = false}
 
 	if replacePos then
 		getGameTime():getModData()["EventsSchedule"][replacePos] = newEvent
@@ -59,7 +60,7 @@ function eHeliEvent_engage(ID)
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
 	if willFly then
-		getFreeHelicopter():launch()
+		getFreeHelicopter(eHeliEvent.preset):launch()
 	end
 	--replace event in schedule with newly generated values
 	if eHeliEvent.renew then
@@ -113,7 +114,7 @@ end
 ---@param heliDay number Day to start event
 ---@param heliStart number Hour to start event
 ---@param heliEnd number Hour to end event
-function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
+function setNextHeliFrom(ID, heliDay, heliStart, heliEnd, preset)
 	
 	local freq = eHelicopterSandbox.config.frequency
 	--if freq is never
@@ -160,8 +161,11 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd)
 	if (freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > eHeliEvent_cutOffDay) then
 		renewHeli = false
 	end
-
-	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, renewHeli)
+	
+	--override preset with lastHeliEvent's if preset is nil
+	preset = preset or lastHeliEvent.preset
+	
+	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, preset, renewHeli)
 end
 
 
