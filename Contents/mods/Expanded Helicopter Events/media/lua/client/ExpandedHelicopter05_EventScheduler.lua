@@ -2,17 +2,16 @@
 ---@param replacePos number If not nil, replace specific entry in "EventsSchedule", otherwise insert as normal (at end)
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
----@param endTime number Hour scheduled for the end of this event
 ---@param preset string Name of preset found in PRESETS
 ---@param renew boolean If the event reschedules after completion
 ---Events are handled as tables because ModData does not save Lua "classes" properly, even though they are really tables.
-function eHeliEvent_new(replacePos, startDay, startTime, endTime, preset, renew)
+function eHeliEvent_new(replacePos, startDay, startTime, preset, renew)
 	
-	if (not startDay) or (not startTime) or (not endTime) then
+	if (not startDay) or (not startTime) then
 		return
 	end
 
-	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["endTime"] = endTime, ["preset"] = preset, ["renew"] = renew, ["triggered"] = false}
+	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["renew"] = renew, ["triggered"] = false}
 
 	if replacePos then
 		getGameTime():getModData()["EventsSchedule"][replacePos] = newEvent
@@ -69,8 +68,6 @@ function eHeliEvent_engage(ID)
 end
 
 
----General events cut-off day after apocalypse, NOT game start
-eHeliEvent_cutOffDay = 30
 ---Check how many days it has been since the start of the apocalypse; corrects for sandbox option "Months since Apoc"
 ---@return number Days since start of in-game apocalypse
 function eHeli_getDaysBeforeApoc()
@@ -113,8 +110,7 @@ end
 ---@param ID number Position in schedule
 ---@param heliDay number Day to start event
 ---@param heliStart number Hour to start event
----@param heliEnd number Hour to end event
-function setNextHeliFrom(ID, heliDay, heliStart, heliEnd, preset)
+function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	
 	local freq = eHelicopterSandbox.config.frequency
 	--if freq is never
@@ -123,6 +119,21 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd, preset)
 	end
 	--grab old event based on ID
 	local lastHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
+
+	--override preset with lastHeliEvent's if preset is nil
+	if not presetID and lastHeliEvent then
+		presetID = lastHeliEvent.preset
+	end
+
+	local loadedPreset
+	if presetID then
+		loadedPreset = eHelicopter_PRESETS[presetID]
+	end
+
+	local cutOff = eHelicopter.cutOffDay
+	if loadedPreset and loadedPreset.cutOffDay then
+		cutOff = loadedPreset.cutOffDay
+	end
 
 	if not heliDay then
 	
@@ -143,7 +154,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd, preset)
 			heliDay = heliDay+ZombRand(1, 2)
 		end
 		--as days get closer to the cutoff the time between new events gets longer
-		heliDay = heliDay+math.floor((7-freq)*(nightsSurvived/eHeliEvent_cutOffDay))
+		heliDay = heliDay+math.floor((7-freq)*(nightsSurvived/cutOff))
 	end
 
 	if not heliStart then
@@ -161,13 +172,8 @@ function setNextHeliFrom(ID, heliDay, heliStart, heliEnd, preset)
 	if (freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > eHeliEvent_cutOffDay) then
 		renewHeli = false
 	end
-	
-	--override preset with lastHeliEvent's if preset is nil
-	if not preset and lastHeliEvent then
-		preset = lastHeliEvent.preset
-	end
 
-	eHeliEvent_new(ID, heliDay, heliStart, heliEnd, preset, renewHeli)
+	eHeliEvent_new(ID, heliDay, heliStart, presetID, renewHeli)
 end
 
 
@@ -190,9 +196,12 @@ function eHeliEvents_OnGameStart()
 		EasyConfig_Chucked.saveConfig()
 	end
 
-	--if the list is empty call new heli event
+	--if the list is empty call new heli events
 	if #getGameTime():getModData()["EventsSchedule"] < 1 then
-		setNextHeliFrom(nil, getGameTime():getNightsSurvived())
+		--default heli
+		setNextHeliFrom(nil, nil, nil, nil)
+		--Jets
+		setNextHeliFrom(nil, nil, nil, "Jet")
 	end
 end
 
