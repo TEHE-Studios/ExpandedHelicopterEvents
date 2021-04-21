@@ -410,7 +410,7 @@ function eHelicopter:move(re_aim, dampen)
 		addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
 	end
 
-	self:Report(re_aim, dampen)
+	--self:Report(re_aim, dampen)
 end
 
 
