@@ -155,8 +155,8 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	end
 
 	if not heliStart then
-		--start time is random from hour 9 to 19
-		heliStart = ZombRand(9, 19)
+		--start time is random from hour 6 to 20
+		heliStart = ZombRand(6, 20)
 	end
 
 	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"]
