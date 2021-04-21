@@ -6,7 +6,13 @@ ALL_HELICOPTERS = {}
 ---@class eHelicopter
 eHelicopter = {}
 
----@field startDayMinMax table two numbers: min and max start day
+---@field presetProgression table Table of presetIDs and corresponding % preset is switched to (compared to Days/CuttOffDay)
+eHelicopter.presetProgression = nil
+
+---@field frequencyFactor number This is multiplied against the min/max day range; less than 1 results in higher frequency, more than 1 results in less frequency
+eHelicopter.frequencyFactor = 1
+
+---@field startDayMinMax table two numbers: min and max start day can be
 eHelicopter.startDayMinMax = {0,1}
 
 ---@field cutOffDay number event cut-off day after apocalypse start, NOT game start
@@ -102,11 +108,12 @@ eHelicopter.hostilesToFireOn = {}
 
 ---Preset list, only include variables being changed.
 eHelicopter_PRESETS = {
-	["jet"] = {speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
-	["patrol_only"] = {speed = 0.2, hostilePreference = false},
-	["news_chopper"] = {speed = 0.1, hostilePreference = false, announcerVoice = false},
-	["attack_undead"] = {announcerVoice = false},
-	["attack_all"] = {announcerVoice = false, hostilePreference = nil},
+	["increasingly_hostile"] = {presetProgression = {["patrol_only"] = 0, ["attack_only_undead"] = 0.15, ["attack_only_all"] = 0.75}},
+	["jet"] = {frequencyAdjust = 0.80, speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
+	["news_chopper"] = {frequencyAdjust = 2, speed = 0.2, topSpeedFactor = 5, hostilePreference = false, announcerVoice = false, cutOffDay = 15},
+	["patrol_only"] = {hostilePreference = false},
+	["attack_only_undead"] = {announcerVoice = false},
+	["attack_only_all"] = {announcerVoice = false, hostilePreference = nil},
 }
 
 
@@ -120,6 +127,27 @@ function eHelicopter:loadPreset(ID)
 
 	if not preset then
 		return
+	end
+
+	local pp = preset.presetProgression
+	if pp then
+		local DaysSinceApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
+		local DaysOverCutOff = DaysSinceApoc/(preset.cutOffDay or eHelicopter.cutOffDay)
+		local presetIDTmp
+		--run through presetProgression list
+		for pID,pCutOff in pairs(pp) do
+			--if progression % hasn't been met
+			if pCutOff <= DaysOverCutOff then
+				--if there is no stored % or progression % > stored %
+				if (not presetIDTmp) or (presetIDTmp and (pCutOff > pp[presetIDTmp])) then
+					--store qualifying choice
+					presetIDTmp = pID
+				end
+			end
+		end
+		if presetIDTmp then
+			preset = eHelicopter_PRESETS[presetIDTmp]
+		end
 	end
 
 	print("loading preset: "..ID)

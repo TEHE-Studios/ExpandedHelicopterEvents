@@ -129,26 +129,28 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
 	local cutOff = presetSettings.cutOffDay or eHelicopter.cutOffDay
 	local startMinMax = presetSettings.startDayMinMax or eHelicopter.startDayMinMax
+	local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 
 	if cutOff and nightsSurvived > cutOff then
 		return
 	end
 
 	if not heliDay then
+		heliDay = nightsSurvived
 		--use old event's start day for reschedule, otherwise get new day
 		if lastHeliEvent then
 			heliDay = lastHeliEvent.startDay
 			--options = Never=0, Once=1, Sometimes=2, Often=3
 			if freq <= 2 then
-				heliDay = heliDay+ZombRand(3, 6)
-				--if frequency is often
+				startMinMax = {3*freqFactor, 6*freqFactor}
 			elseif freq == 3 then
-				heliDay = heliDay+ZombRand(1, 2)
+				startMinMax = {1*freqFactor, 2*freqFactor}
 			end
+			heliDay = heliDay+ZombRand(startMinMax[1],startMinMax[2])
 			--as days get closer to the cutoff the time between new events gets longer
-			heliDay = heliDay+math.floor((7-freq)*(nightsSurvived/cutOff))
-		else
-			heliDay = ZombRand(startMinMax[1],startMinMax[2])
+			heliDay = heliDay+((7-freq)*(nightsSurvived/cutOff))
+			--trim non integer
+			heliDay = math.floor(heliDay)
 		end
 	end
 
@@ -157,7 +159,8 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		heliStart = ZombRand(9, 19)
 	end
 
-	local renewHeli = (not ((freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > cutOff)))
+	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"]
+	local renewHeli = (not ((freq == 1) or (daysBefore+heliDay > cutOff)))
 
 	eHeliEvent_new(ID, heliDay, heliStart, presetID, renewHeli)
 end
@@ -165,15 +168,16 @@ end
 
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
-
-	--if no ModData found make it an empty list
-	if not getGameTime():getModData()["EventsSchedule"] then
-		getGameTime():getModData()["EventsSchedule"] = {}
+	local GMMData = getGameTime():getModData()
+	--if no EventsSchedule found make it an empty list
+	if not GMMData["EventsSchedule"] then
+		GMMData["EventsSchedule"] = {}
 	end
 
 	--if eHelicopterSandbox.config.resetEvents == true, reset
 	if eHelicopterSandbox.config.resetEvents == true then
-		getGameTime():getModData()["EventsSchedule"] = {}
+		EasyConfig_Chucked.loadConfig()
+		GMMData["EventsSchedule"] = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
 		local resetEvents = EHE.configMenu["resetEvents"]
 		resetEvents.selectedValue = "false"
@@ -183,11 +187,11 @@ function eHeliEvents_OnGameStart()
 	end
 
 	--if the list is empty call new heli events
-	if #getGameTime():getModData()["EventsSchedule"] < 1 then
-		--default heli
-		setNextHeliFrom(nil, nil, nil, nil)
-		--Jets
+	if #GMMData["EventsSchedule"] < 1 then
+		GMMData["DaysBeforeApoc"] = eHeli_getDaysBeforeApoc()
+		setNextHeliFrom(nil, nil, nil, "increasingly_hostile")
 		setNextHeliFrom(nil, nil, nil, "jet")
+		setNextHeliFrom(nil, nil, nil, "news_chopper")
 	end
 end
 
