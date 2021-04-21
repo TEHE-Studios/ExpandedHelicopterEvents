@@ -385,16 +385,6 @@ function eHelicopter:move(re_aim, dampen)
 		velocity = self:dampen(velocity)
 	end
 
-	--account for sped up time
-	local timeSpeed = getGameSpeed()
-	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
-	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
-
-	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-	self.currentPosition:set(v_x, v_y, self.height)
-	--Move emitter to position
-	self.rotorEmitter:setPos(v_x,v_y,self.height)
-
 	local heliVolume = self.flightVolume
 
 	if ((not self.timeUntilCanAnnounce) or (self.timeUntilCanAnnounce <= getTimestamp())) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
@@ -402,10 +392,26 @@ function eHelicopter:move(re_aim, dampen)
 		self:announce()
 	end
 
-	--virtual sound event to attract zombies
-	addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
+	if self.hostilePreference then
+		self:lookForHostiles(self.hostilePreference)
+	end
 
-	--self:Report(re_aim, dampen)
+	--if there's not that many targets
+	if #self.hostilesToFireOn < 5 then
+		--account for sped up time
+		local timeSpeed = getGameSpeed()
+		local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
+		local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
+
+		--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
+		self.currentPosition:set(v_x, v_y, self.height)
+		--Move emitter to position
+		self.rotorEmitter:setPos(v_x,v_y,self.height)
+		--virtual sound event to attract zombies
+		addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
+	end
+
+	self:Report(re_aim, dampen)
 end
 
 
@@ -452,9 +458,6 @@ function eHelicopter:update()
 	end
 
 	self:move(lockOn, true)
-	if self.hostilePreference then
-		self:lookForHostiles(self.hostilePreference)
-	end
 
 	if not self:isInBounds() then
 		self:unlaunch()
