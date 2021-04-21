@@ -127,13 +127,20 @@ function eHelicopter:attackScan(location, targetType)
 	return objectsToFireOn
 end
 
-
+---@param center IsoGameCharacter
 function recursiveGetSquare(center)
 	if not center then
 		return nil
-	elseif not instanceof(center, "IsoGridSquare") then
+	end
+
+	if instanceof(center, "IsoGameCharacter") and center:getVehicle() then
+		center = center:getVehicle()
+	end
+
+	if not instanceof(center, "IsoGridSquare") then
 		center = center:getSquare()
 	end
+
 	return center
 end
 
