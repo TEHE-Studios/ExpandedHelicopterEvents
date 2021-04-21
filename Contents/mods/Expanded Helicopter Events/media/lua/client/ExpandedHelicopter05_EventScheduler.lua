@@ -125,36 +125,31 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		presetID = lastHeliEvent.preset
 	end
 
-	local loadedPreset
-	if presetID then
-		loadedPreset = eHelicopter_PRESETS[presetID]
-	end
+	local nightsSurvived = getGameTime():getNightsSurvived()
+	local presetSettings = eHelicopter_PRESETS[presetID] or {}
+	local cutOff = presetSettings.cutOffDay or eHelicopter.cutOffDay
+	local startMinMax = presetSettings.startDayMinMax or eHelicopter.startDayMinMax
 
-	local cutOff = eHelicopter.cutOffDay
-	if loadedPreset and loadedPreset.cutOffDay then
-		cutOff = loadedPreset.cutOffDay
+	if cutOff and nightsSurvived > cutOff then
+		return
 	end
 
 	if not heliDay then
-	
-		local nightsSurvived = getGameTime():getNightsSurvived()
-		--if there is an old event use it's start day for calculating the next start day
+		--use old event's start day for reschedule, otherwise get new day
 		if lastHeliEvent then
 			heliDay = lastHeliEvent.startDay
-		--otherwise use nightsSurvived / current day
+			--options = Never=0, Once=1, Sometimes=2, Often=3
+			if freq <= 2 then
+				heliDay = heliDay+ZombRand(3, 6)
+				--if frequency is often
+			elseif freq == 3 then
+				heliDay = heliDay+ZombRand(1, 2)
+			end
+			--as days get closer to the cutoff the time between new events gets longer
+			heliDay = heliDay+math.floor((7-freq)*(nightsSurvived/cutOff))
 		else
-			heliDay = nightsSurvived
+			heliDay = ZombRand(startMinMax[1],startMinMax[2])
 		end
-
-		--options = Never=0, Once=1, Sometimes=2, Often=3
-		if freq <= 2 then
-			heliDay = heliDay+ZombRand(3, 6)
-		--if frequency is often
-		elseif freq == 3 then
-			heliDay = heliDay+ZombRand(1, 2)
-		end
-		--as days get closer to the cutoff the time between new events gets longer
-		heliDay = heliDay+math.floor((7-freq)*(nightsSurvived/cutOff))
 	end
 
 	if not heliStart then
@@ -162,16 +157,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		heliStart = ZombRand(9, 19)
 	end
 
-	if not heliEnd then
-		--end time is start time + 1 to 5 hours
-		heliEnd = heliStart+ZombRand(1,5)
-	end
-
-	local renewHeli = true
-	--if freq is once OR new heliDay is beyond cutOffDay don't renew further
-	if (freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > eHeliEvent_cutOffDay) then
-		renewHeli = false
-	end
+	local renewHeli = (not ((freq == 1) or (eHeli_getDaysBeforeApoc()+heliDay > cutOff)))
 
 	eHeliEvent_new(ID, heliDay, heliStart, presetID, renewHeli)
 end
@@ -201,7 +187,7 @@ function eHeliEvents_OnGameStart()
 		--default heli
 		setNextHeliFrom(nil, nil, nil, nil)
 		--Jets
-		setNextHeliFrom(nil, nil, nil, "Jet")
+		setNextHeliFrom(nil, nil, nil, "jet")
 	end
 end
 
