@@ -41,10 +41,7 @@ eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fi
 eHelicopter.hostilePreference = "IsoZombie"
 
 ---@field attackDelay number delay in milliseconds between attacks
-eHelicopter.attackDelay = 95
-
----@field attackDistance number distance at which helicopter can still attack from
-eHelicopter.attackDistance = 50
+eHelicopter.attackDelay = 105
 
 ---@field attackScope number number of rows from "center" IsoGridSquare out
 --- **area formula:** ((Scope*2)+1) ^2
@@ -92,6 +89,8 @@ eHelicopter.preflightDistance = nil
 eHelicopter.announceEmitter = nil
 ---@field target IsoObject
 eHelicopter.target = nil
+---@field attackDistance number
+eHelicopter.attackDistance = nil
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
 eHelicopter.targetPosition = nil
 ---@field lastMovement Vector3 consider this to be velocity (direction/angle and speed/step-size)

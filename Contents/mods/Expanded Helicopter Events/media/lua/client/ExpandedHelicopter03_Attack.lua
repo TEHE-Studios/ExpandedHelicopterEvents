@@ -11,6 +11,10 @@ function eHelicopter:lookForHostiles(targetType)
 	--store numeration (length) of self.hostilesToFireOn
 	local n = #self.hostilesToFireOn
 
+	if not self.attackDistance then
+		self.attackDistance = (((self.attackScope*2)+1)*((self.attackSpread*2)+1)^2)/2
+	end
+
 	--clear entries that are too far
 	for i=1, n do
 		local hostile = self.hostilesToFireOn[i]
