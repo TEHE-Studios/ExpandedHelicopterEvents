@@ -108,8 +108,8 @@ eHelicopter.hostilesToFireOn = {}
 ---Preset list, only include variables being changed.
 eHelicopter_PRESETS = {
 	["increasingly_hostile"] = {presetProgression = {["patrol_only"] = 0, ["attack_only_undead"] = 0.15, ["attack_only_all"] = 0.75}},
-	["jet"] = {frequencyAdjust = 0.80, speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
-	["news_chopper"] = {frequencyAdjust = 2, speed = 0.2, topSpeedFactor = 5, hostilePreference = false, announcerVoice = false, cutOffDay = 15},
+	["jet"] = {frequencyFactor = 0.33, speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
+	["news_chopper"] = {frequencyFactor = 2, speed = 0.2, topSpeedFactor = 5, hostilePreference = false, announcerVoice = false, cutOffDay = 15},
 	["patrol_only"] = {hostilePreference = false},
 	["attack_only_undead"] = {announcerVoice = false},
 	["attack_only_all"] = {announcerVoice = false, hostilePreference = nil},
