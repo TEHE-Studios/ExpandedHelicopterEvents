@@ -92,11 +92,45 @@ if getDebug() then
 	end)
 
 
-	--- Test launch close heli
+	--- Test launch close "attack_only_undead" heli
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_8 then
 			---@type eHelicopter heli
-			local heli = getFreeHelicopter()
+			local heli = getFreeHelicopter("attack_only_undead")
+			heli:launch()
+
+			--move closer
+			local tpX = heli.target:getX()
+			local tpY = heli.target:getY()
+			local offset = ZombRand(300)
+			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+			print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		end
+	end)
+
+	--- Test launch close "attack_only_all" heli
+	Events.OnCustomUIKey.Add(function(key)
+		if key == Keyboard.KEY_7 then
+			---@type eHelicopter heli
+			local heli = getFreeHelicopter("attack_only_all")
+			heli:launch()
+
+			--move closer
+			local tpX = heli.target:getX()
+			local tpY = heli.target:getY()
+			local offset = ZombRand(300)
+			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+			print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		end
+	end)
+
+	--- Test launch close "patrol_only" heli
+	Events.OnCustomUIKey.Add(function(key)
+		if key == Keyboard.KEY_6 then
+			---@type eHelicopter heli
+			local heli = getFreeHelicopter("patrol_only")
 			heli:launch()
 
 			--move closer
