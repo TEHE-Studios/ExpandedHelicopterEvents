@@ -24,8 +24,8 @@ if getDebug() then
 		if key == Keyboard.KEY_3 then
 			print("--- eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getNightsSurvived()).." hr: "..tostring(getGameTime():getHour()))
 			for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-				print("------ \["..k.."\]  startDay:"..tostring(v.startDay).." startTime:"..tostring(v.startTime).." preset:"..tostring(v.preset)..
-						" renew:"..tostring(v.renew).." triggered:"..tostring(v.triggered))
+				print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." p:"..tostring(v.preset)..
+						" r:"..tostring(v.renew).." t:"..tostring(v.triggered))
 			end
 		end
 	end)
