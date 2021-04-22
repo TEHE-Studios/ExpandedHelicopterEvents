@@ -419,9 +419,30 @@ function eHelicopter:launch(targetedPlayer)
 
 	if not targetedPlayer then
 		--the -1 is to offset playerIDs starting at 0
+		local weightPlayersList = {}
 		local numActivePlayers = getNumActivePlayers()-1
-		local randNumFromActivePlayers = ZombRand(numActivePlayers)
-		targetedPlayer = getSpecificPlayer(randNumFromActivePlayers)
+
+		for i=0, numActivePlayers do
+			---@type IsoGameCharacter p
+			local p = getSpecificPlayer(i)
+
+			table.insert(weightPlayersList, p)
+
+			local zone = p:getCurrentZone():getType()
+			if zone and (zone ~= "Forest" and zone ~= "DeepForest") then
+				table.insert(weightPlayersList, p)
+				table.insert(weightPlayersList, p)
+			end
+		end
+
+		print("=-=-=-=-=- Players: ")
+		for k,v in pairs(weightPlayersList) do
+			---@type IsoGameCharacter
+			local p = v
+			print(k..p:getDescriptor():getForename())
+		end
+
+		targetedPlayer = weightPlayersList[ZombRand(1, #weightPlayersList)]
 	end
 
 	self.target = targetedPlayer
