@@ -82,10 +82,16 @@ function eHelicopter:fireOn(targetHostile)
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
+	local chance = 100-movementThrowOffAim
+
+	local zone = targetHostile:getCurrentZone():getType()
+	if zone and (zone == "Forest" or zone == "DeepForest") then
+		chance = math.floor(chance/2)
+	end
 
 	--[[debug]] local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
 
-	if ZombRand(0, 100) < 100-movementThrowOffAim then
+	if ZombRand(0, 100) < chance then
 		--kill zombie
 		targetHostile:setHealth(0)
 		--[[debug]] hitReport = hitReport .. "  [HIT]"
