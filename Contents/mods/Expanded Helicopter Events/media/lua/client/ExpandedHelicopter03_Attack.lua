@@ -12,7 +12,7 @@ function eHelicopter:lookForHostiles(targetType)
 	local n = #self.hostilesToFireOn
 
 	if not self.attackDistance then
-		self.attackDistance = (((self.attackScope*2)+1)*((self.attackSpread*2)+1)^2)/2
+		self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1)
 	end
 
 	--clear entries that are too far
