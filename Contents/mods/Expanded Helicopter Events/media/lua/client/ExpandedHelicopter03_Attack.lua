@@ -67,7 +67,7 @@ end
 function eHelicopter:fireOn(targetHostile)
 
 	self.lastAttackTime = getTimestampMs()
-	self.timeUntilCanAnnounce = getTimestampMs()+500
+	self.timeUntilCanAnnounce = getTimestampMs()+self.attackDelay-1
 
 	--fireSound
 	local fireNoise = self.fireSound[1]
