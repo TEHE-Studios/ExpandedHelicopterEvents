@@ -80,6 +80,6 @@ eHelicopter_PRESETS = {
 
 	["attack_only_all"] = {
 		announcerVoice = false,
-		hostilePreference = nil
+		hostilePreference = "IsoGameCharacter"
 		},
 }

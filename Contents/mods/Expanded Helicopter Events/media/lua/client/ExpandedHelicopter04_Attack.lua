@@ -119,7 +119,7 @@ function eHelicopter:fireOn(targetHostile)
 end
 
 
----@param targetType string IsoZombie or IsoPlayer
+---@param targetType string IsoZombie or IsoPlayer or IsoGameCharacter
 ---@return table
 function eHelicopter:attackScan(location, targetType)
 
@@ -170,10 +170,6 @@ function getHumanoidsInRange(center, range, lookForType)
 		return {}
 	end
 
-	if (lookForType~="IsoZombie") and (lookForType~="IsoPlayer") then
-		lookForType = nil
-	end
-
 	local squaresInRange = getIsoRange(center, range)
 	local objectsFound = {}
 
@@ -187,7 +183,7 @@ function getHumanoidsInRange(center, range, lookForType)
 			---@type IsoMovingObject|IsoGameCharacter foundObject
 			local foundObj = squareContents[i]
 
-			if (not lookForType and (instanceof(foundObj, "IsoZombie") or instanceof(foundObj, "IsoPlayer"))) or (instanceof(foundObj, lookForType)) then
+			if instanceof(foundObj, lookForType) and instanceof(foundObj, "IsoGameCharacter") then
 				if foundObj:isOutside() then
 					table.insert(objectsFound, foundObj)
 				end
