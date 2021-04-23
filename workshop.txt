@@ -1,6 +1,7 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events
-description=First public test build.
+description= This mod replaces the vanilla helicopter event with something more dynamic and engaging. Options can be found in the main menu and to the right.
+description= Note: the default vanilla sandbox option for "Helicopter Frequency" does nothing.
 tags=
 visibility=private
