@@ -382,7 +382,7 @@ function eHelicopter:move(re_aim, dampen)
 	--if there's more than 5 targets
 	if #self.hostilesToFireOn > 5 then
 		--slow speed down while shooting
-		self.speed = self.speed/4
+		self.speed = self.speed/2
 	end
 
 	if re_aim then
