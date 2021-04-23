@@ -108,6 +108,7 @@ eHelicopter.hostilesToFireOn = {}
 ---Preset list, only include variables being changed.
 eHelicopter_PRESETS = {
 	["increasingly_hostile"] = {presetProgression = {["patrol_only"] = 0, ["attack_only_undead"] = 0.15, ["attack_only_all"] = 0.75}},
+
 	["jet"] = {frequencyFactor = 0.33, speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
 	["news_chopper"] = {frequencyFactor = 2, speed = 0.2, topSpeedFactor = 5, hostilePreference = false, announcerVoice = false, cutOffDay = 15},
 	["patrol_only"] = {hostilePreference = false},
@@ -118,6 +119,7 @@ eHelicopter_PRESETS = {
 
 ---@param ID string
 function eHelicopter:loadPreset(ID)
+
 	if not ID then
 		return
 	end
@@ -135,7 +137,7 @@ function eHelicopter:loadPreset(ID)
 		local presetIDTmp
 		--run through presetProgression list
 		for pID,pCutOff in pairs(pp) do
-			--if progression % hasn't been met
+			--if progression % is less than DaysOverCutOff
 			if pCutOff <= DaysOverCutOff then
 				--if there is no stored % or progression % > stored %
 				if (not presetIDTmp) or (presetIDTmp and (pCutOff > pp[presetIDTmp])) then
@@ -145,19 +147,21 @@ function eHelicopter:loadPreset(ID)
 			end
 		end
 		if presetIDTmp then
+			--replace original preset with qualifying preset
 			preset = eHelicopter_PRESETS[presetIDTmp]
 		end
 	end
 
-	print("loading preset: "..ID)
+	--local reportPreset = "loading preset: "..ID.."  vars:"
 	for var,value in pairs(preset) do
-		print(" --"..var.." = "..tostring(value))
+		--reportPreset = reportPreset.." -"..var.." = "..tostring(value)
 		self[var] = value
 	end
+	--print(reportPreset)
 end
 
----Do not call this function directly for new helicopters
----@see getFreeHelicopter instead
+
+---Do not call this function directly for new helicopters; use: getFreeHelicopter instead
 function eHelicopter:new()
 
 	local o = {}
@@ -264,7 +268,6 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	end
 
 	self.currentPosition:set(initX, initY, self.height)
-
 end
 
 
@@ -286,6 +289,7 @@ function eHelicopter:getIsoGridSquare()
 end
 
 
+---@return boolean
 function eHelicopter:isInBounds()
 	local h_x, h_y, _ = self:getXYZAsInt()
 
@@ -297,6 +301,7 @@ function eHelicopter:isInBounds()
 end
 
 
+---@return number
 function eHelicopter:getDistanceToTarget()
 
 	local a = Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)
@@ -307,6 +312,7 @@ end
 
 
 ---@param movement Vector3
+---@return Vector3
 function eHelicopter:dampen(movement)
 	--finds the fraction of distance to target and preflight distance to target
 	local distanceCompare = self:getDistanceToTarget() / self.preflightDistance
@@ -318,6 +324,7 @@ function eHelicopter:dampen(movement)
 
 	return movement:set(x_movement,y_movement,self.height)
 end
+
 
 ---Sets targetPosition (Vector3) to match target (IsoObject)
 function eHelicopter:setTargetPos()
@@ -433,13 +440,6 @@ function eHelicopter:launch(targetedPlayer)
 				table.insert(weightPlayersList, p)
 				table.insert(weightPlayersList, p)
 			end
-		end
-
-		print("=-=-=-=-=- Players: ")
-		for k,v in pairs(weightPlayersList) do
-			---@type IsoGameCharacter
-			local p = v
-			print(k..p:getDescriptor():getForename())
 		end
 
 		targetedPlayer = weightPlayersList[ZombRand(1, #weightPlayersList)]
