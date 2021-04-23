@@ -61,7 +61,7 @@ eHelicopter_PRESETS = {
 		},
 
 	["news_chopper"] = {
-		hoverOnTargetDuration = ZombRand(15,20),
+		hoverOnTargetDuration = ZombRand(25,30),
 		frequencyFactor = 2,
 		speed = 0.2,
 		topSpeedFactor = 5,
