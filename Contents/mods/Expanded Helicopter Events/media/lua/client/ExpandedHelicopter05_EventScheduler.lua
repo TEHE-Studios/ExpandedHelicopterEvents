@@ -82,15 +82,14 @@ function eHeli_getDaysBeforeApoc()
 	local startYear = gameTime:getStartYear()
 	--months of the year start at 0
 	local apocStartMonth = (gameTime:getStartMonth()+1)-monthsAfterApo
-	--roll the year back
+	--roll the year back if apocStartMonth is negative
 	if apocStartMonth <= 0 then
 		apocStartMonth = 12+apocStartMonth
 		startYear = startYear-1
 	end
-	--days of the month start at 0
-	local apocDays = gameTime:getStartDay()+1
+	local apocDays = 0
 	--count each month at a time to get correct day count
-	for _=1, monthsAfterApo do
+	for month=0, monthsAfterApo do
 		apocStartMonth = apocStartMonth+1
 		--roll year forward if needed, reset month
 		if apocStartMonth > 12 then
@@ -99,6 +98,10 @@ function eHeli_getDaysBeforeApoc()
 		end
 		--months of the year start at 0
 		local daysInM = gameTime:daysInMonth(startYear, apocStartMonth-1)
+		--if this is the first month being counted subtract starting day date
+		if month==0 then
+			daysInM = daysInM-gameTime:getStartDay()+1
+		end
 		apocDays = apocDays+daysInM
 	end
 
