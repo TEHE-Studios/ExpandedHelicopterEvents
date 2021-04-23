@@ -105,7 +105,7 @@ if getDebug() then
 			local offset = ZombRand(300)
 			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-			print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+			print("\"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 		end
 	end)
 
@@ -122,15 +122,15 @@ if getDebug() then
 			local offset = ZombRand(300)
 			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-			print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+			print("\"attack_only_all\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 		end
 	end)
 
-	--- Test launch close "patrol_only" heli
+	--- Test launch close "default" heli
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_6 then
 			---@type eHelicopter heli
-			local heli = getFreeHelicopter("patrol_only")
+			local heli = getFreeHelicopter()
 			heli:launch()
 
 			--move closer
@@ -139,7 +139,7 @@ if getDebug() then
 			local offset = ZombRand(300)
 			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-			print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+			print("\"default\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 		end
 	end)
 
