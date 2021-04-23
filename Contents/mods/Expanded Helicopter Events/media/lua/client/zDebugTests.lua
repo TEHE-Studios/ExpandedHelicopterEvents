@@ -126,11 +126,11 @@ if getDebug() then
 		end
 	end)
 
-	--- Test launch close "default" heli
+	--- Test launch close "increasingly_hostile" heli
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_6 then
 			---@type eHelicopter heli
-			local heli = getFreeHelicopter()
+			local heli = getFreeHelicopter("increasingly_hostile")
 			heli:launch()
 
 			--move closer
@@ -139,7 +139,7 @@ if getDebug() then
 			local offset = ZombRand(300)
 			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-			print("\"default\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+			print("\"increasingly_hostile\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 		end
 	end)
 
