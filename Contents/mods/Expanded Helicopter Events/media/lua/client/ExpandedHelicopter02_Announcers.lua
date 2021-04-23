@@ -122,6 +122,11 @@ function eHelicopter:announce(specificLine)
 		return
 	end
 
+	local timeStamp = getTimestampMs()
+	if (self.timeUntilCanAnnounce > timeStamp) or (self.lastAttackTime > timeStamp) or (#self.hostilesToFireOn > 0) then
+		return
+	end
+
 	if not specificLine then
 
 		local ann_num = ZombRand(1,self.announcerVoice["LineCount"])
