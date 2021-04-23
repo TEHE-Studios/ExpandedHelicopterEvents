@@ -133,7 +133,8 @@ function eHelicopter:loadPreset(ID)
 	local pp = preset.presetProgression
 	if pp then
 		local DaysSinceApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-		local DaysOverCutOff = DaysSinceApoc/(preset.cutOffDay or eHelicopter.cutOffDay)
+		local CutOff = preset.cutOffDay or eHelicopter.cutOffDay
+		local DaysOverCutOff = DaysSinceApoc/CutOff
 		local presetIDTmp
 		--run through presetProgression list
 		for pID,pCutOff in pairs(pp) do
@@ -374,6 +375,13 @@ function eHelicopter:move(re_aim, dampen)
 		re_aim = true
 	end
 
+	local storedSpeed = self.speed
+	--if there's more than 5 targets
+	if #self.hostilesToFireOn > 5 then
+		--slow speed down while shooting
+		self.speed = self.speed/4
+	end
+
 	if re_aim then
 		velocity = self:aimAtTarget()
 
@@ -391,6 +399,9 @@ function eHelicopter:move(re_aim, dampen)
 		velocity = self:dampen(velocity)
 	end
 
+	--restore speed
+	self.speed = storedSpeed
+
 	local heliVolume = self.flightVolume
 	local timeStamp = getTimestampMs()
 
@@ -403,20 +414,17 @@ function eHelicopter:move(re_aim, dampen)
 		self:lookForHostiles(self.hostilePreference)
 	end
 
-	--if there's not that many targets
-	if #self.hostilesToFireOn < 5 then
-		--account for sped up time
-		local timeSpeed = getGameSpeed()
-		local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
-		local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
+	--account for sped up time
+	local timeSpeed = getGameSpeed()
+	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
+	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
 
-		--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-		self.currentPosition:set(v_x, v_y, self.height)
-		--Move emitter to position
-		self.rotorEmitter:setPos(v_x,v_y,self.height)
-		--virtual sound event to attract zombies
-		addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
-	end
+	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
+	self.currentPosition:set(v_x, v_y, self.height)
+	--Move emitter to position
+	self.rotorEmitter:setPos(v_x,v_y,self.height)
+	--virtual sound event to attract zombies
+	addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
 
 	--self:Report(re_aim, dampen)
 end
