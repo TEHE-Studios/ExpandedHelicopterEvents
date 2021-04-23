@@ -89,9 +89,12 @@ function eHelicopter:fireOn(targetHostile)
 	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
 	local chance = 100-movementThrowOffAim
 
-	local zone = targetHostile:getCurrentZone():getType()
-	if zone and (zone == "Forest" or zone == "DeepForest") then
-		chance = math.floor(chance/2)
+	local zone = targetHostile:getCurrentZone()
+	if zone then
+		local zoneType = zone:getType()
+		if zoneType and (zoneType == "Forest") or (zoneType == "DeepForest") then
+			chance = math.floor(chance/2)
+		end
 	end
 
 	--[[debug]] local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
