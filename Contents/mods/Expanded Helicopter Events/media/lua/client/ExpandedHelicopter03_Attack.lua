@@ -2,9 +2,7 @@
 function eHelicopter:lookForHostiles(targetType)
 
 	local selfSquare = self:getIsoGridSquare()
-
-	--too soon to attack again OR will overlap with an announcement OR return if no square found - chunk/square is not loaded
-	if (self.lastAttackTime+self.attackDelay >= getTimestampMs()) or (self.timeUntilCanAnnounce and (self.timeUntilCanAnnounce <= getTimestamp())) or (not selfSquare) then
+	if not selfSquare then
 		return
 	end
 
@@ -47,6 +45,12 @@ function eHelicopter:lookForHostiles(targetType)
 		self.hostilesToFireOnIndex = #self.hostilesToFireOn
 	end
 
+	local timeStamp = getTimestampMs()
+	--too soon to attack again OR will overlap with an announcement THEN return
+	if (self.lastAttackTime+self.attackDelay >= timeStamp) or (self.timeUntilCanAnnounce >= timeStamp) then
+		return
+	end
+
 	--if there are hostiles identified
 	if #self.hostilesToFireOn > 0 then
 		--just grab the first target
@@ -63,6 +67,7 @@ end
 function eHelicopter:fireOn(targetHostile)
 
 	self.lastAttackTime = getTimestampMs()
+	self.timeUntilCanAnnounce = getTimestampMs()+101
 
 	--fireSound
 	local fireNoise = self.fireSound[1]

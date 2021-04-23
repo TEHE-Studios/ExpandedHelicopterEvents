@@ -15,16 +15,16 @@ eHelicopter_announcers = {
 	["Raven Male"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
-			["PleaseReturnToYourHomes"] = {5.5, "eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
-			["TheSituationIsUnderControl"] = {5.5, "eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
-			["ACurfewIsNowInEffect"] = {6, "eHeli_lineM_4a", "eHeli_lineM_4b", "eHeli_lineM_4c", "eHeli_lineM_4d"},
-			["ThisAreaIsNowInQuarantine"] = {6, "eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
-			["DoNotTryToLeaveTheArea"] = {5.5, "eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
-			["LockAllEntrancesAndRemainInDoors"] = {6, "eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
-			["AvoidContactWithOthers"] = {5.5, "eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
-			["DoNotTryToReachOutToFamilyOrRelatives"] = {6, "eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
-			["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {7.5, "eHeli_lineM_10a", "eHeli_lineM_10b"},
-			["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {7.5, "eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
+			["PleaseReturnToYourHomes"] = {5500, "eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
+			["TheSituationIsUnderControl"] = {5500, "eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
+			["ACurfewIsNowInEffect"] = {6000, "eHeli_lineM_4a", "eHeli_lineM_4b", "eHeli_lineM_4c", "eHeli_lineM_4d"},
+			["ThisAreaIsNowInQuarantine"] = {6000, "eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
+			["DoNotTryToLeaveTheArea"] = {5500, "eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
+			["LockAllEntrancesAndRemainInDoors"] = {6000, "eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
+			["AvoidContactWithOthers"] = {5500, "eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
+			["DoNotTryToReachOutToFamilyOrRelatives"] = {6000, "eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
+			["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {7500, "eHeli_lineM_10a", "eHeli_lineM_10b"},
+			["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {7500, "eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
 		}
 	},
 
@@ -32,16 +32,16 @@ eHelicopter_announcers = {
 	["Gabby Female"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
-			["PleaseReturnToYourHomes"] = {4.75, "eHeli_lineF_1"},
-			["TheSituationIsUnderControl"] = {5.2, "eHeli_lineF_2"},
-			["ACurfewIsNowInEffect"] = {5.5, "eHeli_lineF_4"},
-			["ThisAreaIsNowInQuarantine"] = {5.5, "eHeli_lineF_3"},
-			["DoNotTryToLeaveTheArea"] = {5, "eHeli_lineF_5"},
-			["LockAllEntrancesAndRemainInDoors"] = {5.5, "eHeli_lineF_7"},
-			["AvoidContactWithOthers"] = {4.75, "eHeli_lineF_8"},
-			["DoNotTryToReachOutToFamilyOrRelatives"] = {5.75, "eHeli_lineF_9"},
-			["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {7.75, "eHeli_lineF_10"},
-			["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {6.5, "eHeli_lineF_6"},
+			["PleaseReturnToYourHomes"] = {4750, "eHeli_lineF_1"},
+			["TheSituationIsUnderControl"] = {5200, "eHeli_lineF_2"},
+			["ACurfewIsNowInEffect"] = {5500, "eHeli_lineF_4"},
+			["ThisAreaIsNowInQuarantine"] = {5500, "eHeli_lineF_3"},
+			["DoNotTryToLeaveTheArea"] = {5500, "eHeli_lineF_5"},
+			["LockAllEntrancesAndRemainInDoors"] = {5500, "eHeli_lineF_7"},
+			["AvoidContactWithOthers"] = {4750, "eHeli_lineF_8"},
+			["DoNotTryToReachOutToFamilyOrRelatives"] = {5750, "eHeli_lineF_9"},
+			["AnyCriminalActivityOrLootingWillBePunishedToTheFullestExtentOfTheLaw"] = {7750, "eHeli_lineF_10"},
+			["AnyPersonsTryingToLeaveTheDesignatedAreaWillBeShot"] = {6500, "eHeli_lineF_6"},
 		}
 	},
 
@@ -49,9 +49,9 @@ eHelicopter_announcers = {
 	["Jade Male A"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
-			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7.5, "eHeli_Jade_1a"},
-			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {8.5, "eHeli_Jade_2a"},
-			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {6.25, "eHeli_Jade_3a"},
+			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7500, "eHeli_Jade_1a"},
+			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {8500, "eHeli_Jade_2a"},
+			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {6250, "eHeli_Jade_3a"},
 		}
 	},
 
@@ -59,9 +59,9 @@ eHelicopter_announcers = {
 	["Jade Male B"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
-			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7.5, "eHeli_Jade_1b"},
-			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {8.5, "eHeli_Jade_2b"},
-			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {6.25, "eHeli_Jade_3b"},
+			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7500, "eHeli_Jade_1b"},
+			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {8500, "eHeli_Jade_2b"},
+			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {6250, "eHeli_Jade_3b"},
 		}
 	},
 
@@ -69,9 +69,9 @@ eHelicopter_announcers = {
 	["Jade Male C"] = {
 		["LineCount"] = 0,
 		["Lines"] = {
-			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7.5, "eHeli_Jade_1c"},
-			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {8.5, "eHeli_Jade_2c"},
-			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {6.25, "eHeli_Jade_3c"},
+			["ThisAreaIsUnderQuarantineIRepeatThisAreaIsUnderQuarantine"] = {7500, "eHeli_Jade_1c"},
+			["ForTheSafetyOfYourSelfAndYourLovedOnesYouAreAdvisedToRemainInsideAtAllTimesUnlessAbsolutelyNecessary"] = {8500, "eHeli_Jade_2c"},
+			["RepeatedAttemptsAtBreachingTheQuarantineZoneMayBeMetWithHostileResponse"] = {6250, "eHeli_Jade_3c"},
 		}
 	},
 
@@ -140,7 +140,7 @@ function eHelicopter:announce(specificLine)
 	local lineDelay = line[1]
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
-	self.timeUntilCanAnnounce = getTimestamp()+lineDelay
+	self.timeUntilCanAnnounce = getTimestampMs()+lineDelay
 
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter then

@@ -221,10 +221,10 @@ if getDebug() then
 
 	function testAllLinesLOOP()
 		if #testAllLines__ALL_LINES > 0 then
-			if (testAllLines__lastDemoTime <= getTimestamp()) then
+			if (testAllLines__lastDemoTime < getTimestampMs()) then
 				local line = testAllLines__ALL_LINES[1]
 				local delay = testAllLines__DELAYS[1]
-				testAllLines__lastDemoTime = getTimestamp()+delay
+				testAllLines__lastDemoTime = getTimestampMs()+delay
 				---@type IsoPlayer | IsoGameCharacter player
 				local player = getSpecificPlayer(0)
 				player:playSound(line)

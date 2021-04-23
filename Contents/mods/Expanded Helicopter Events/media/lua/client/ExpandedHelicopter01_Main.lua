@@ -80,7 +80,7 @@ eHelicopter.state = nil
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.rotorEmitter = nil
 ---@field timeUntilCanAnnounce number
-eHelicopter.timeUntilCanAnnounce = nil
+eHelicopter.timeUntilCanAnnounce = -1
 ---@field announcerVoice string
 eHelicopter.announcerVoice = nil
 ---@field preflightDistance number
@@ -98,7 +98,7 @@ eHelicopter.lastMovement = nil
 ---@field currentPosition Vector3 consider this a pair of coordinates which can utilize Vector3 math
 eHelicopter.currentPosition = nil
 ---@field lastAttackTime number
-eHelicopter.lastAttackTime = 0
+eHelicopter.lastAttackTime = -1
 ---@field hostilesToFireOnIndex number
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
@@ -392,8 +392,9 @@ function eHelicopter:move(re_aim, dampen)
 	end
 
 	local heliVolume = self.flightVolume
+	local timeStamp = getTimestampMs()
 
-	if ((not self.timeUntilCanAnnounce) or (self.timeUntilCanAnnounce <= getTimestamp())) and (self.lastAttackTime <= getTimestampMs()) and (#self.hostilesToFireOn <= 0) then
+	if (self.timeUntilCanAnnounce < timeStamp) and (self.lastAttackTime < timeStamp) and (#self.hostilesToFireOn <= 0) then
 		heliVolume = heliVolume+20
 		self:announce()
 	end
