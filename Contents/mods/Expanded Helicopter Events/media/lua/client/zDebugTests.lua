@@ -45,7 +45,7 @@ if getDebug() then
 		if key == Keyboard.KEY_5 then
 
 			local player = getSpecificPlayer(0)
-			local squaresInRange = getIsoRange(player, 30)
+			local squaresInRange = getIsoRange(player, 6)
 			local reanimated=0
 
 			for sq=1, #squaresInRange do
