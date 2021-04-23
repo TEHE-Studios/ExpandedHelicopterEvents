@@ -1,15 +1,3 @@
----Preset list, only include variables being changed.
-eHelicopter_PRESETS = {
-	["increasingly_hostile"] = {presetProgression = {["patrol_only"] = 0, ["attack_only_undead"] = 0.15, ["attack_only_all"] = 0.75}},
-
-	["jet"] = {randomEdgeStart = true, frequencyFactor = 0.33, speed = 3, flightVolume = 25, flightSound = "eJetFlight", hostilePreference = false, announcerVoice = false},
-	["news_chopper"] = {subEvents = {["reachedTarget"]=}, frequencyFactor = 2, speed = 0.2, topSpeedFactor = 5, hostilePreference = false, announcerVoice = false, cutOffDay = 15},
-	["patrol_only"] = {hostilePreference = false},
-	["attack_only_undead"] = {announcerVoice = false},
-	["attack_only_all"] = {announcerVoice = false, hostilePreference = nil},
-}
-
-
 ---@param ID string
 function eHelicopter:loadPreset(ID)
 
@@ -53,3 +41,45 @@ function eHelicopter:loadPreset(ID)
 	end
 	--print(reportPreset)
 end
+
+
+---Preset list, only include variables being changed.
+eHelicopter_PRESETS = {
+	["increasingly_hostile"] = {
+		presetProgression = {["patrol_only"] = 0, ["attack_only_undead"] = 0.15, ["attack_only_all"] = 0.75}
+		},
+
+	["jet"] = {
+		randomEdgeStart = true,
+		frequencyFactor = 0.33,
+		speed = 3,
+		topSpeedFactor = 2,
+		flightVolume = 25,
+		flightSound = "eJetFlight",
+		hostilePreference = false,
+		announcerVoice = false
+		},
+
+	["news_chopper"] = {
+		hoverOnTargetDuration = ZombRand(15,20),
+		frequencyFactor = 2,
+		speed = 0.2,
+		topSpeedFactor = 5,
+		hostilePreference = false,
+		announcerVoice = false,
+		cutOffDay = 15
+		},
+
+	["patrol_only"] = {
+		hostilePreference = false
+		},
+
+	["attack_only_undead"] = {
+		announcerVoice = false
+		},
+
+	["attack_only_all"] = {
+		announcerVoice = false,
+		hostilePreference = nil
+		},
+}

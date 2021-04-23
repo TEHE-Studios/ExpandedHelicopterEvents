@@ -6,8 +6,8 @@ ALL_HELICOPTERS = {}
 ---@class eHelicopter
 eHelicopter = {}
 
----@field subEvents table
-eHelicopter.subEvents = {}
+---@field hoverOnTargetDuration number
+eHelicopter.hoverOnTargetDuration = nil
 
 ---@field randomEdgeStart boolean
 eHelicopter.randomEdgeStart = false
@@ -419,14 +419,29 @@ function eHelicopter:launch(targetedPlayer)
 end
 
 
+---Heli goes home
+function eHelicopter:goHome()
+	self.state = "goHome"
+	self.target = getSquare(self.target:getX(),self.target:getY(),0)
+	self:setTargetPos()
+	return true
+end
+
+
 function eHelicopter:update()
 
-	--threshold for reaching player should be self.speed * getGameSpeed
 	if (self.state == "gotoTarget") and (self:getDistanceToTarget() <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
-		print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-		self.state = "goHome"
-		self.target = getSquare(self.target:getX(),self.target:getY(),0)
-		self:setTargetPos()
+
+		if self.hoverOnTargetDuration then
+			print("HELI: "..self.ID.." HOVERING OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+			self.hoverOnTargetDuration = self.hoverOnTargetDuration-1
+			if self.hoverOnTargetDuration == 0 then
+				self.hoverOnTargetDuration = nil
+			end
+		else
+			print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+			self:goHome()
+		end
 	end
 
 	local lockOn = true
