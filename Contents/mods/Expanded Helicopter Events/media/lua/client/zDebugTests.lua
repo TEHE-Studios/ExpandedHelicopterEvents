@@ -1,72 +1,80 @@
 if getDebug() then
 
-	--- Check weather
 	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_2 then
-			local CM = getClimateManager()
-			print("--- CM:getWindIntensity: "..CM:getWindIntensity())
-			print("--- CM:getFogIntensity: "..CM:getFogIntensity())
-			print("--- CM:getRainIntensity: "..CM:getRainIntensity())
-			print("--- CM:getSnowIntensity: "..CM:getSnowIntensity())
-			print("--- CM:getIsThunderStorming:(b) "..tostring(CM:getIsThunderStorming()))
-
-			local willFly, impactOnFlightSafety = eHeliEvent_weatherImpact()
-			local willFlyCall = "--- willFly: "..tostring(willFly)
-			if willFly then willFlyCall = willFlyCall.."   % to crash: "..impactOnFlightSafety*100 end
-			print(willFlyCall)
+		if key == Keyboard.KEY_1 then
+			DEBUG_TESTS.testAllLines()
+		elseif key == Keyboard.KEY_2 then
+			DEBUG_TESTS.raiseTheDead()
+		elseif key == Keyboard.KEY_3 then
+			DEBUG_TESTS.eHeliEventsOnSchedule()
+		elseif key == Keyboard.KEY_4 then
+			DEBUG_TESTS.CheckWeather()
+		elseif key == Keyboard.KEY_5 then
+			DEBUG_TESTS.launch_jet()
+		elseif key == Keyboard.KEY_6 then
+			DEBUG_TESTS.launch_news_chopper()
+		elseif key == Keyboard.KEY_7 then
+			DEBUG_TESTS.launch_attack_only_all()
+		elseif key == Keyboard.KEY_8 then
+			DEBUG_TESTS.launch_attack_only_undead()
+		elseif key == Keyboard.KEY_9 then
+			DEBUG_TESTS.launch_increasingly_hostile()
+		elseif key == Keyboard.KEY_0 then
+			DEBUG_TESTS.launchBaseHeli()
 		end
 	end)
+
+	DEBUG_TESTS = {}
+
+	--- Check weather
+	function DEBUG_TESTS.CheckWeather()
+		local CM = getClimateManager()
+		print("--- CM:getWindIntensity: "..CM:getWindIntensity())
+		print("--- CM:getFogIntensity: "..CM:getFogIntensity())
+		print("--- CM:getRainIntensity: "..CM:getRainIntensity())
+		print("--- CM:getSnowIntensity: "..CM:getSnowIntensity())
+		print("--- CM:getIsThunderStorming:(b) "..tostring(CM:getIsThunderStorming()))
+
+		local willFly, impactOnFlightSafety = eHeliEvent_weatherImpact()
+		local willFlyCall = "--- willFly: "..tostring(willFly)
+		if willFly then willFlyCall = willFlyCall.."   % to crash: "..impactOnFlightSafety*100 end
+		print(willFlyCall)
+	end
 
 
 	--- Check eHeliEvent within eHeliEventsOnSchedule
-	Events.OnCustomUIKey.Add(function(key)
-
-		if key == Keyboard.KEY_3 then
-			print("--- eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getNightsSurvived()).." hr: "..tostring(getGameTime():getHour()))
-			for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-				print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." p:"..tostring(v.preset)..
-						" r:"..tostring(v.renew).." t:"..tostring(v.triggered))
-			end
+	function DEBUG_TESTS.eHeliEventsOnSchedule()
+		print("--- eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getNightsSurvived()).." hr: "..tostring(getGameTime():getHour()))
+		for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
+			print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." p:"..tostring(v.preset)..
+					" r:"..tostring(v.renew).." t:"..tostring(v.triggered))
 		end
-	end)
+	end
 
-
---[[
-	--- Check sandboxoverride
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_4 then
-			HelicopterSandboxOptionOverride()
-		end
-	end)
-]]
 
 	--- Raise the dead
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_4 then
+	function DEBUG_TESTS.raiseTheDead()
+		local player = getSpecificPlayer(0)
+		local squaresInRange = getIsoRange(player, 6)
+		local reanimated=0
 
-			local player = getSpecificPlayer(0)
-			local squaresInRange = getIsoRange(player, 6)
-			local reanimated=0
+		for sq=1, #squaresInRange do
+			---@type IsoGridSquare
+			local square = squaresInRange[sq]
+			local squareContents = square:getStaticMovingObjects()
 
-			for sq=1, #squaresInRange do
-				---@type IsoGridSquare
-				local square = squaresInRange[sq]
-				local squareContents = square:getStaticMovingObjects()
+			for i=1, squareContents:size() do
+				---@type IsoDeadBody
+				local foundObj = squareContents:get(i-1)
 
-				for i=1, squareContents:size() do
-					---@type IsoDeadBody
-					local foundObj = squareContents:get(i-1)
-
-					if instanceof(foundObj, "IsoDeadBody") then
-						reanimated = reanimated+1
-						foundObj:reanimateNow()
-					end
+				if instanceof(foundObj, "IsoDeadBody") then
+					reanimated = reanimated+1
+					foundObj:reanimateNow()
 				end
 			end
-			print("-- Reanimated: "..reanimated)
 		end
-	end)
-
+		print("-- Reanimated: "..reanimated)
+	end
 
 
 	--- Debug: Reports helicopter's useful variables -- note: this will flood your output
@@ -82,134 +90,116 @@ if getDebug() then
 
 
 	--- Test launch heli
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_0 then
-			---@type eHelicopter heli
-			local heli = getFreeHelicopter()
-			heli:launch()
-			print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-		end
-	end)
+	function DEBUG_TESTS.launchBaseHeli()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter()
+		heli:launch()
+		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
 
-
+	--- Test launch heli
+	function DEBUG_TESTS.launchBaseHeli()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("jet")
+		heli:launch()
+		print("\"jet\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
+	
 	--- Test launch close "attack_only_undead" heli
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_8 then
-			---@type eHelicopter heli
-			local heli = getFreeHelicopter("attack_only_undead")
-			heli:launch()
+	function DEBUG_TESTS.launch_attack_only_undead()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("attack_only_undead")
+		heli:launch()
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+		print("\"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
 
-			--move closer
-			local tpX = heli.target:getX()
-			local tpY = heli.target:getY()
-			local offset = ZombRand(300)
-			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-
-			print("\"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-		end
-	end)
 
 	--- Test launch close "attack_only_all" heli
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_7 then
-			---@type eHelicopter heli
-			local heli = getFreeHelicopter("attack_only_all")
-			heli:launch()
+	function DEBUG_TESTS.launch_attack_only_all()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("attack_only_all")
+		heli:launch()
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+		print("\"attack_only_all\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
 
-			--move closer
-			local tpX = heli.target:getX()
-			local tpY = heli.target:getY()
-			local offset = ZombRand(300)
-			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-
-			print("\"attack_only_all\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-		end
-	end)
 
 	--- Test launch close "increasingly_hostile" heli
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_6 then
-			---@type eHelicopter heli
-			local heli = getFreeHelicopter("increasingly_hostile")
-			heli:launch()
+	function DEBUG_TESTS.launch_increasingly_hostile()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("increasingly_hostile")
+		heli:launch()
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+		print("\"increasingly_hostile\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
 
-			--move closer
-			local tpX = heli.target:getX()
-			local tpY = heli.target:getY()
-			local offset = ZombRand(300)
-			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-
-			print("\"increasingly_hostile\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-		end
-	end)
 
 	--- Test launch close "news_chopper" heli
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_5 then
-			---@type eHelicopter heli
-			local heli = getFreeHelicopter("news_chopper")
-			heli:launch()
+	function DEBUG_TESTS.launch_news_chopper()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("news_chopper")
+		heli:launch()
 
-			--move closer
-			local tpX = heli.target:getX()
-			local tpY = heli.target:getY()
-			local offset = ZombRand(300)
-			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-			print("\"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-		end
-	end)
-	
---[[
+		print("\"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
+
+
 	--- Test getHumanoidsInFractalRange
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_7 then
-			local player = getSpecificPlayer(0)
-			local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
+	function DEBUG_TESTS.getHumanoidsInFractalRange()
+		local player = getSpecificPlayer(0)
+		local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
 
-			---debug: list type found
-			print("-----[ getHumanoidsInFractalRange ]-----")
-			for fractalIndex=1, #fractalObjectsFound do
-				local objectsArray = fractalObjectsFound[fractalIndex]
-				print(" "..fractalIndex..":  hostile count:"..#objectsArray)
-			end
-
+		---debug: list type found
+		print("-----[ getHumanoidsInFractalRange ]-----")
+		for fractalIndex=1, #fractalObjectsFound do
+			local objectsArray = fractalObjectsFound[fractalIndex]
+			print(" "..fractalIndex..":  hostile count:"..#objectsArray)
 		end
-	end)
+	end
 
 
 	--- Test getHumanoidsInRange
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_6 then
-			local player = getSpecificPlayer(0)
-			local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
+	function DEBUG_TESTS.getHumanoidsInRange()
+		local player = getSpecificPlayer(0)
+		local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
 
-			---debug: list type found
-			print("-----[ getHumanoidsInRange ]-----")
-			print(" objectsFound: ".." count: "..#objectsFound)
-			for i=1, #objectsFound do
-				---@type IsoMovingObject|IsoGameCharacter foundObj
-				local foundObj = objectsFound[i]
-				print(" "..i..":  "..tostring(foundObj:getClass())) -- "IsoZombie" or "IsoPlayer"
-			end
-
+		---debug: list type found
+		print("-----[ getHumanoidsInRange ]-----")
+		print(" objectsFound: ".." count: "..#objectsFound)
+		for i=1, #objectsFound do
+			---@type IsoMovingObject|IsoGameCharacter foundObj
+			local foundObj = objectsFound[i]
+			print(" "..i..":  "..tostring(foundObj:getClass())) -- "IsoZombie" or "IsoPlayer"
 		end
-	end)
-]]
+	end
+
 
 	--- Test all announcements
-	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_1 then
-			testAllLines()
-		end
-	end)
-
 	--GLOBAL DEBUG VARS
 	testAllLines__ALL_LINES = {}
 	testAllLines__DELAYS = {}
 	testAllLines__lastDemoTime = 0
 
-	function testAllLines()
+	function DEBUG_TESTS.testAllLines()
 		if #eHelicopter_announcersLoaded <= 0 then
 			print("ERROR: NO VOICES LOADED")
 			return
@@ -236,7 +226,7 @@ if getDebug() then
 		table.insert(testAllLines__DELAYS, 1)
 	end
 
-	function testAllLinesLOOP()
+	function DEBUG_TESTS.testAllLinesLOOP()
 		if #testAllLines__ALL_LINES > 0 then
 			if (testAllLines__lastDemoTime < getTimestampMs()) then
 				local line = testAllLines__ALL_LINES[1]
@@ -251,6 +241,6 @@ if getDebug() then
 		end
 	end
 
-	Events.OnTick.Add(testAllLinesLOOP)
+	Events.OnTick.Add(DEBUG_TESTS.testAllLinesLOOP)
 
 end
