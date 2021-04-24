@@ -484,13 +484,7 @@ function eHelicopter:update()
 	if self.hostilePreference then
 		self:lookForHostiles(self.hostilePreference)
 	end
-
-	--account for sped up time
-	local v_x = Vector3GetX(self.currentPosition)
-	local v_y = Vector3GetY(self.currentPosition)
-
-
-
+	
 	if not self:isInBounds() then
 		self:unlaunch()
 	end
