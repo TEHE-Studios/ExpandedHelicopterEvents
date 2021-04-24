@@ -385,29 +385,16 @@ function eHelicopter:move(re_aim, dampen)
 	--restore speed
 	self.speed = storedSpeed
 
-	local heliVolume = self.flightVolume
-
-	if self.announcerVoice then
-		heliVolume = heliVolume+20
-		self:announce()
-	end
-
-	if self.hostilePreference then
-		self:lookForHostiles(self.hostilePreference)
-	end
-
 	--account for sped up time
 	local timeSpeed = getGameSpeed()
 	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
 	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
-
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(v_x, v_y, self.height)
 	--Move emitter to position
 	self.rotorEmitter:setPos(v_x,v_y,self.height)
-	--virtual sound event to attract zombies
-	addSound(nil, v_x, v_y, 0, heliVolume*5, heliVolume)
 
+	addSound(nil, v_x, v_y, 0, (self.flightVolume*5), self.flightVolume)
 	--self:Report(re_aim, dampen)
 end
 
@@ -458,14 +445,13 @@ function eHelicopter:goHome()
 	self.state = "goHome"
 	self.target = getSquare(self.target:getX(),self.target:getY(),0)
 	self:setTargetPos()
-	return true
 end
 
 
 function eHelicopter:update()
 
+	local preventMovement = false
 	if (self.state == "gotoTarget") and (self:getDistanceToTarget() <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
-
 		if self.hoverOnTargetDuration then
 			print("HELI: "..self.ID.." HOVERING OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 			self:playEventSound("hoverOverTarget")
@@ -473,6 +459,7 @@ function eHelicopter:update()
 			if self.hoverOnTargetDuration == 0 then
 				self.hoverOnTargetDuration = nil
 			end
+			preventMovement=true
 		else
 			self:playEventSound("hoverOverTarget",true)
 			self:playEventSound("flyOverTarget")
@@ -486,7 +473,23 @@ function eHelicopter:update()
 		lockOn = false
 	end
 
-	self:move(lockOn, true)
+	if not preventMovement then
+		self:move(lockOn, true)
+	end
+
+	if self.announcerVoice then
+		self:announce()
+	end
+
+	if self.hostilePreference then
+		self:lookForHostiles(self.hostilePreference)
+	end
+
+	--account for sped up time
+	local v_x = Vector3GetX(self.currentPosition)
+	local v_y = Vector3GetY(self.currentPosition)
+
+
 
 	if not self:isInBounds() then
 		self:unlaunch()
