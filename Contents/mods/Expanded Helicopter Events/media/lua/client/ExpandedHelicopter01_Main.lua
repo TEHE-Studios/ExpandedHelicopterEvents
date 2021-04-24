@@ -7,19 +7,22 @@ ALL_HELICOPTERS = {}
 eHelicopter = {}
 
 ---@field hoverOnTargetDuration number How long the helicopter will hover over the player, this is subtracted from every tick
-eHelicopter.hoverOnTargetDuration = nil
+eHelicopter.hoverOnTargetDuration = false
 
 ---@field eventSoundEffects table
-eHelicopter.eventSoundEffects = {["hoverOverTarget"]=nil,["flyOverTarget"]=nil,["attackLooped"]=nil,["attackSingle"]=nil}
+eHelicopter.eventSoundEffects = {}--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil,["attackLooped"]=nil,["attackSingle"]=nil}
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffectEmitters = {}
+
+---@field announcerVoice string
+eHelicopter.announcerVoice = true
 
 ---@field randomEdgeStart boolean
 eHelicopter.randomEdgeStart = false
 
 ---@field presetProgression table Table of presetIDs and corresponding % preset is switched to (compared to Days/CuttOffDay)
-eHelicopter.presetProgression = nil
+eHelicopter.presetProgression = false
 
 ---@field frequencyFactor number This is multiplied against the min/max day range; less than 1 results in higher frequency, more than 1 results in less frequency
 eHelicopter.frequencyFactor = 1
@@ -82,7 +85,20 @@ eHelicopter.attackScope = 1
 --- -----------------------------------
 eHelicopter.attackSpread = 2
 
---UNDER THE HOOD STUFF
+
+-- UNDER THE HOOD STUFF
+--This stores the above variables for reference later
+---NOTE: Any variable which is by default `nil` can't be loaded over
+local presetSensitiveVariables = {}
+for k,v in pairs(eHelicopter) do
+	print("pSV: "..tostring(k).." = "..tostring(v))
+	presetSensitiveVariables[k] = v
+end
+---@field initial table
+eHelicopter.initial = presetSensitiveVariables or {}
+
+
+--the below variables are to be considered "temporary"
 ---@field ID number
 eHelicopter.ID = 0
 ---@field height number
@@ -93,8 +109,6 @@ eHelicopter.state = nil
 eHelicopter.rotorEmitter = nil
 ---@field timeUntilCanAnnounce number
 eHelicopter.timeUntilCanAnnounce = -1
----@field announcerVoice string
-eHelicopter.announcerVoice = nil
 ---@field preflightDistance number
 eHelicopter.preflightDistance = nil
 ---@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
@@ -433,7 +447,7 @@ function eHelicopter:launch(targetedPlayer)
 
 	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
 
-	if self.announcerVoice ~= false then
+	if self.announcerVoice then
 		self:chooseVoice(self.announcerVoice)
 	end
 	self.state = "gotoTarget"
@@ -457,7 +471,7 @@ function eHelicopter:update()
 			self:playEventSound("hoverOverTarget")
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-1
 			if self.hoverOnTargetDuration == 0 then
-				self.hoverOnTargetDuration = nil
+				self.hoverOnTargetDuration = false
 			end
 			preventMovement=true
 		else
@@ -484,7 +498,7 @@ function eHelicopter:update()
 	if self.hostilePreference then
 		self:lookForHostiles(self.hostilePreference)
 	end
-	
+
 	if not self:isInBounds() then
 		self:unlaunch()
 	end

@@ -12,7 +12,7 @@ module Base {
     sound eHeli_fire_impact4 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact4.ogg, distanceMax = 1500, volume = 3.0, } }
     sound eHeli_fire_impact5 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact5.ogg, distanceMax = 1500, volume = 3.0, } }
 
-    sound eHeli_newscaster { category = World, loop = true, is3D = true, clip { file = media/sound/Newscaster.ogg, distanceMax = 250, volume = 0.5, } }
+    sound eHeli_newscaster { category = World, loop = false, is3D = true, clip { file = media/sound/Newscaster.ogg, distanceMax = 250, volume = 0.5, } }
 
     sound eHeli_lineM_1a { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineM_1a.ogg, distanceMax = 1500, volume = 3.0, } }
     sound eHeli_lineM_1b { category = World, loop = false, is3D = true, clip { file = media/sound/heli_lineM_1b.ogg, distanceMax = 1500, volume = 3.0, } }
