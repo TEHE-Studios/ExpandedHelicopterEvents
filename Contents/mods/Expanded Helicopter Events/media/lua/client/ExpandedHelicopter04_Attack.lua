@@ -71,10 +71,14 @@ function eHelicopter:fireOn(targetHostile)
 
 	--fireSound
 	local fireNoise = self.fireSound[1]
+	local eventSound = "attackSingle"
 
 	if self.hostilesToFireOnIndex > 1 then
 		fireNoise = self.fireSound[2]
+		eventSound = "attackLooped"
 	end
+
+	self:playEventSound(eventSound)
 
 	--determine location of helicopter
 	local ehX, ehY, ehZ = self:getXYZAsInt()

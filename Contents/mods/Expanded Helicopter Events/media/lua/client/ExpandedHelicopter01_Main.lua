@@ -9,6 +9,12 @@ eHelicopter = {}
 ---@field hoverOnTargetDuration number How long the helicopter will hover over the player, this is subtracted from every tick
 eHelicopter.hoverOnTargetDuration = nil
 
+---@field eventSoundEffects table
+eHelicopter.eventSoundEffects = {["hoverOverTarget"]=nil,["flyOverTarget"]=nil,["attackLooped"]=nil,["attackSingle"]=nil}
+
+---@field eventSoundEffects table
+eHelicopter.eventSoundEffectEmitters = {}
+
 ---@field randomEdgeStart boolean
 eHelicopter.randomEdgeStart = false
 
@@ -109,6 +115,34 @@ eHelicopter.lastAttackTime = -1
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
+
+
+---@param event string
+---@param stopSound boolean
+function eHelicopter:playEventSound(event, stopSound)
+
+	local soundEffect = self.eventSoundEffects[event]
+
+	if not soundEffect then
+		return
+	end
+	---@type FMODSoundEmitter | BaseSoundEmitter emitter
+	local soundEmitter = self.eventSoundEffectEmitters[event]
+	if stopSound and soundEmitter then
+		soundEmitter:stopSoundByName(soundEffect)
+		return
+	end
+	--determine location of helicopter
+	local ehX, ehY, ehZ = self:getXYZAsInt()
+
+	if not soundEmitter then
+		soundEmitter = getWorld():getFreeEmitter()
+		self.eventSoundEffectEmitters[event] = soundEmitter
+	elseif soundEmitter:isPlaying(soundEffect) then
+		return
+	end
+	soundEmitter:playSound(soundEffect, ehX, ehY, ehZ)
+end
 
 
 ---Do not call this function directly for new helicopters; use: getFreeHelicopter instead
@@ -434,11 +468,13 @@ function eHelicopter:update()
 
 		if self.hoverOnTargetDuration then
 			print("HELI: "..self.ID.." HOVERING OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+			self:playEventSound("hoverOverTarget")
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-1
 			if self.hoverOnTargetDuration == 0 then
 				self.hoverOnTargetDuration = nil
 			end
 		else
+			self:playEventSound("flyOverTarget")
 			print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 			self:goHome()
 		end
