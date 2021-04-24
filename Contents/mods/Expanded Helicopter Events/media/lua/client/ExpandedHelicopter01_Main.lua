@@ -474,6 +474,7 @@ function eHelicopter:update()
 				self.hoverOnTargetDuration = nil
 			end
 		else
+			self:playEventSound("hoverOverTarget",true)
 			self:playEventSound("flyOverTarget")
 			print("HELI: "..self.ID.." FLEW OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 			self:goHome()

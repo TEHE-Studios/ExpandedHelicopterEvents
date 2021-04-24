@@ -61,7 +61,7 @@ eHelicopter_PRESETS = {
 		},
 
 	["news_chopper"] = {
-		hoverOnTargetDuration = ZombRand(600,800),
+		hoverOnTargetDuration = ZombRand(1500,2250),
 		eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 		frequencyFactor = 2,
 		speed = 0.2,
