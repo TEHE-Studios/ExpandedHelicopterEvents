@@ -98,13 +98,13 @@ if getDebug() then
 	end
 
 	--- Test launch heli
-	function DEBUG_TESTS.launchBaseHeli()
+	function DEBUG_TESTS.launch_jet()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("jet")
 		heli:launch()
 		print("\"jet\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
-	
+
 	--- Test launch close "attack_only_undead" heli
 	function DEBUG_TESTS.launch_attack_only_undead()
 		---@type eHelicopter heli
