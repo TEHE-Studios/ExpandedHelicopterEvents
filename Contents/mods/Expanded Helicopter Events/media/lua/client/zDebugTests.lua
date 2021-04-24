@@ -42,7 +42,7 @@ if getDebug() then
 
 	--- Raise the dead
 	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_5 then
+		if key == Keyboard.KEY_4 then
 
 			local player = getSpecificPlayer(0)
 			local squaresInRange = getIsoRange(player, 6)
@@ -143,6 +143,23 @@ if getDebug() then
 		end
 	end)
 
+	--- Test launch close "news_chopper" heli
+	Events.OnCustomUIKey.Add(function(key)
+		if key == Keyboard.KEY_5 then
+			---@type eHelicopter heli
+			local heli = getFreeHelicopter("news_chopper")
+			heli:launch()
+
+			--move closer
+			local tpX = heli.target:getX()
+			local tpY = heli.target:getY()
+			local offset = ZombRand(300)
+			heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+			print("\"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		end
+	end)
+	
 --[[
 	--- Test getHumanoidsInFractalRange
 	Events.OnCustomUIKey.Add(function(key)
@@ -182,7 +199,7 @@ if getDebug() then
 
 	--- Test all announcements
 	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_9 then
+		if key == Keyboard.KEY_1 then
 			testAllLines()
 		end
 	end)
