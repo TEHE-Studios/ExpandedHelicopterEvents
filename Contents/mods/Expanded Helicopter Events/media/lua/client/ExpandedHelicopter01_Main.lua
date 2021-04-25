@@ -115,6 +115,8 @@ eHelicopter.preflightDistance = nil
 eHelicopter.announceEmitter = nil
 ---@field target IsoObject
 eHelicopter.target = nil
+---@field bufferTarget IsoGameCharacter
+eHelicopter.bufferTarget = nil
 ---@field attackDistance number
 eHelicopter.attackDistance = nil
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
@@ -348,7 +350,6 @@ function eHelicopter:setTargetPos()
 	else
 		self.targetPosition:set(tx, ty, tz)
 	end
-	
 end
 
 
@@ -449,7 +450,8 @@ function eHelicopter:launch(targetedPlayer)
 		targetedPlayer = weightPlayersList[ZombRand(1, #weightPlayersList)]
 	end
 
-	self.target = targetedPlayer
+	self.target = targetedPlayer:getSquare()
+	self.bufferTarget = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target,self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
@@ -469,12 +471,24 @@ end
 ---Heli goes home
 function eHelicopter:goHome()
 	self.state = "goHome"
-	self.target = getSquare(self.target:getX(),self.target:getY(),0)
+	self.bufferTarget = getSquare(self.target:getX(),self.target:getY(),0)
+	self.target = self.bufferTarget
 	self:setTargetPos()
 end
 
 
 function eHelicopter:update()
+
+	if instanceof(self.bufferTarget, "IsoGameCharacter") and (self:getDistanceToIsoObject(self.bufferTarget) <= (self.attackDistance^2)) then
+		if self.bufferTarget:isOutside() then
+			self.target = self.bufferTarget
+		else
+			local offset = math.floor(self.attackDistance*0.75)
+			local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
+			local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
+			self.target = getSquare(tx,ty,0)
+		end
+	end
 
 	local preventMovement = false
 	if (self.state == "gotoTarget") and (self:getDistanceToVector(self.targetPosition) <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
