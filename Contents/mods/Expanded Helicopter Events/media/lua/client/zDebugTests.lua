@@ -55,13 +55,13 @@ if getDebug() then
 	--- Raise the dead
 	function DEBUG_TESTS.raiseTheDead()
 		local player = getSpecificPlayer(0)
-		local squaresInRange = getIsoRange(player, 6)
+		local squaresInRange = getIsoRange(player, 15)
 		local reanimated=0
 
 		for sq=1, #squaresInRange do
 			---@type IsoGridSquare
 			local square = squaresInRange[sq]
-			local squareContents = square:getStaticMovingObjects()
+			local squareContents = square:getDeadBodys()
 
 			for i=1, squareContents:size() do
 				---@type IsoDeadBody
