@@ -299,11 +299,23 @@ function eHelicopter:isInBounds()
 end
 
 
+---@param vector Vector3
 ---@return number
-function eHelicopter:getDistanceToTarget()
+function eHelicopter:getDistanceToVector(vector)
 
-	local a = Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)
-	local b = Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)
+	local a = Vector3GetX(vector) - Vector3GetX(self.currentPosition)
+	local b = Vector3GetY(vector) - Vector3GetY(self.currentPosition)
+
+	return math.sqrt((a*a)+(b*b))
+end
+
+
+---@param object IsoObject
+---@return number
+function eHelicopter:getDistanceToIsoObject(object)
+
+	local a = object:getX() - Vector3GetX(self.currentPosition)
+	local b = object:getY() - Vector3GetY(self.currentPosition)
 
 	return math.sqrt((a*a)+(b*b))
 end
@@ -313,7 +325,7 @@ end
 ---@return Vector3
 function eHelicopter:dampen(movement)
 	--finds the fraction of distance to target and preflight distance to target
-	local distanceCompare = self:getDistanceToTarget() / self.preflightDistance
+	local distanceCompare = self:getDistanceToVector(self.targetPosition) / self.preflightDistance
 	--clamp with a max of self.topSpeedFactor and min of 0.1 (10%) is applied to the fraction 
 	local dampenFactor = math.max(self.topSpeedFactor, math.min(0.1, distanceCompare))
 	--this will slow-down/speed-up eHelicopter the closer/farther it is to the target
@@ -440,7 +452,7 @@ function eHelicopter:launch(targetedPlayer)
 	self.target = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target,self.randomEdgeStart)
-	self.preflightDistance = self:getDistanceToTarget()
+	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 	self.rotorEmitter = getWorld():getFreeEmitter()
 
 	local ehX, ehY, ehZ = self:getXYZAsInt()
@@ -465,7 +477,7 @@ end
 function eHelicopter:update()
 
 	local preventMovement = false
-	if (self.state == "gotoTarget") and (self:getDistanceToTarget() <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
+	if (self.state == "gotoTarget") and (self:getDistanceToVector(self.targetPosition) <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
 		if self.hoverOnTargetDuration then
 			print("HELI: "..self.ID.." HOVERING OVER TARGET".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 			self:playEventSound("hoverOverTarget")

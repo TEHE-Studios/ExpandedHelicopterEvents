@@ -84,7 +84,7 @@ if getDebug() then
 		local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." "
 		print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 		print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
-		print("(dist: "..heli:getDistanceToTarget().."  "..report)
+		print("(dist: "..heli:getDistanceToVector(self.target).."  "..report)
 		print("-----------------------------------------------------------------")
 	end
 
