@@ -242,6 +242,7 @@ function getIsoRange(center, range, fractalOffset)
 		fractalOffset = (fractalOffset*2)+1
 	end
 
+	local centerCell = center:getCell()
 	--true center
 	local centerX, centerY = center:getX(), center:getY()
 	--add center to squares at the start
@@ -279,7 +280,7 @@ function getIsoRange(center, range, fractalOffset)
 			end
 
 			---@type IsoGridSquare square
-			local square = getSquare(currentX, currentY, 0)
+			local square = centerCell:getOrCreateGridSquare(currentX, currentY, 0)
 			table.insert(squares, square)
 		end
 	end
