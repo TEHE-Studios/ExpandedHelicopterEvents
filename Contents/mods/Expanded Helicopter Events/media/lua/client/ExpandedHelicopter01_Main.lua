@@ -461,6 +461,10 @@ function eHelicopter:launch(targetedPlayer)
 
 	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
 
+	if not self.attackDistance then
+		self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1)
+	end
+
 	if self.announcerVoice then
 		self:chooseVoice(self.announcerVoice)
 	end
