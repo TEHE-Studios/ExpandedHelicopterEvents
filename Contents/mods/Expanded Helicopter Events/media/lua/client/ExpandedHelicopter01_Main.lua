@@ -483,14 +483,25 @@ end
 
 function eHelicopter:update()
 
-	if instanceof(self.bufferTarget, "IsoGameCharacter") and (self:getDistanceToIsoObject(self.bufferTarget) <= (self.attackDistance^2)) then
-		if self.bufferTarget:isOutside() then
-			self.target = self.bufferTarget
+	if instanceof(self.bufferTarget, "IsoGameCharacter") then
+
+		if (self:getDistanceToIsoObject(self.bufferTarget) <= (self.attackDistance*2)) then
+			if self.bufferTarget:isOutside() then
+				self.target = self.bufferTarget
+			else
+				local offset = math.floor(self.attackDistance*0.75)
+				local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
+				local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
+				self.target = getSquare(tx,ty,0)
+			end
 		else
-			local offset = math.floor(self.attackDistance*0.75)
-			local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
-			local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
-			self.target = getSquare(tx,ty,0)
+			if not instanceof(self.target, "IsoGridSquare") then
+				local offset = math.floor(self.attackDistance*0.75)
+				local tx = Vector3GetX(self.currentPosition)+ZombRand(-offset,offset)
+				local ty = Vector3GetY(self.currentPosition)+ZombRand(-offset,offset)
+				self.target = getSquare(tx,ty,0)
+			end
+			self.bufferTarget = self.target
 		end
 	end
 
