@@ -107,7 +107,8 @@ EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHe
 
 
 --Overrides vanilla helicopter frequency on game boot
-function HelicopterSandboxOptionOverride()
+---@param hookEvent string optional
+function HelicopterSandboxOptionOverride(hookEvent)
 	---@type SandboxOptions
 	local SANDBOX_OPTIONS = getSandboxOptions()
 	---@type SandboxOptions.EnumSandboxOption | SandboxOptions.SandboxOption
@@ -115,8 +116,10 @@ function HelicopterSandboxOptionOverride()
 	--if vanilla helicopter freq is not never then set to never	
 	if sandboxHeliFreq:getValue() ~= 1 then
 		sandboxHeliFreq:setValue(1) -- 1 = Never
+		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
 	end
 end
 
-Events.OnGameBoot.Add(HelicopterSandboxOptionOverride)
+Events.OnGameBoot.Add(HelicopterSandboxOptionOverride("OnGameBoot: "))
+Events.OnGameStart.Add(HelicopterSandboxOptionOverride("OnGameStart: "))
 
