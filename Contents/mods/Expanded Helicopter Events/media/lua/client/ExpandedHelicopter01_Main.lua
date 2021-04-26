@@ -91,7 +91,7 @@ eHelicopter.attackSpread = 2
 ---NOTE: Any variable which is by default `nil` can't be loaded over
 local presetSensitiveVariables = {}
 for k,v in pairs(eHelicopter) do
-	print("pSV: "..tostring(k).." = "..tostring(v))
+	--print("EHE: presetSensitiveVar.: "..tostring(k).." = "..tostring(v))
 	presetSensitiveVariables[k] = v
 end
 ---@field initial table
@@ -115,8 +115,8 @@ eHelicopter.preflightDistance = nil
 eHelicopter.announceEmitter = nil
 ---@field target IsoObject
 eHelicopter.target = nil
----@field bufferTarget IsoGameCharacter
-eHelicopter.bufferTarget = nil
+---@field trueTarget IsoGameCharacter
+eHelicopter.trueTarget = nil
 ---@field attackDistance number
 eHelicopter.attackDistance = nil
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
@@ -451,7 +451,7 @@ function eHelicopter:launch(targetedPlayer)
 	end
 
 	self.target = targetedPlayer:getSquare()
-	self.bufferTarget = targetedPlayer
+	self.trueTarget = targetedPlayer
 	self:setTargetPos()
 	self:initPos(self.target,self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
@@ -475,19 +475,20 @@ end
 ---Heli goes home
 function eHelicopter:goHome()
 	self.state = "goHome"
-	self.bufferTarget = getSquare(self.target:getX(),self.target:getY(),0)
-	self.target = self.bufferTarget
+	self.trueTarget = getSquare(self.target:getX(),self.target:getY(),0)
+	self.target = self.trueTarget
 	self:setTargetPos()
 end
 
 
 function eHelicopter:update()
-
-	if instanceof(self.bufferTarget, "IsoGameCharacter") then
-
-		if (self:getDistanceToIsoObject(self.bufferTarget) <= (self.attackDistance*2)) then
-			if self.bufferTarget:isOutside() then
-				self.target = self.bufferTarget
+	--check if trueTarget is a player/zombie
+	if instanceof(self.trueTarget, "IsoGameCharacter") then
+		--if trueTarget is within range
+		if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*2)) then
+			--if trueTarget is outside then match target to trueTarget otherwise scramble target to random nearby square
+			if self.trueTarget:isOutside() then
+				self.target = self.trueTarget
 			else
 				local offset = math.floor(self.attackDistance*0.75)
 				local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
@@ -495,13 +496,14 @@ function eHelicopter:update()
 				self.target = getSquare(tx,ty,0)
 			end
 		else
+		--if target is out of range, confirm target is a near by square, then set trueTarget to current target - loss of target
 			if not instanceof(self.target, "IsoGridSquare") then
 				local offset = math.floor(self.attackDistance*0.75)
 				local tx = Vector3GetX(self.currentPosition)+ZombRand(-offset,offset)
 				local ty = Vector3GetY(self.currentPosition)+ZombRand(-offset,offset)
 				self.target = getSquare(tx,ty,0)
 			end
-			self.bufferTarget = self.target
+			self.trueTarget = self.target
 		end
 	end
 
@@ -509,7 +511,7 @@ function eHelicopter:update()
 	if (self.state == "gotoTarget") and (self:getDistanceToVector(self.targetPosition) <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
 		if self.hoverOnTargetDuration then
 			print("HELI: "..self.ID.." HOVERING OVER TARGET "
-					..(self.bufferTarget:getClass():getSimpleName()).." "
+					..(self.trueTarget:getClass():getSimpleName()).." "
 					..(self.target:getClass():getSimpleName())..
 					" (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 			self:playEventSound("hoverOverTarget")
@@ -522,7 +524,7 @@ function eHelicopter:update()
 			self:playEventSound("hoverOverTarget",true)
 			self:playEventSound("flyOverTarget")
 			print("HELI: "..self.ID.." FLEW OVER TARGET "
-					..(self.bufferTarget:getClass():getSimpleName()).." "
+					..(self.trueTarget:getClass():getSimpleName()).." "
 					..(self.target:getClass():getSimpleName())..
 					" (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 			self:goHome()
