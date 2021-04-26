@@ -8,7 +8,40 @@ if getDebug() then
 		elseif key == Keyboard.KEY_3 then
 			DEBUG_TESTS.eHeliEventsOnSchedule()
 		elseif key == Keyboard.KEY_4 then
-			DEBUG_TESTS.CheckWeather()
+			--DEBUG_TESTS.CheckWeather()
+
+			print("impactEnvironment: ")
+			if not getCore():getOptionDoWindSpriteEffects() then
+				print("-- Core:getOptionDoWindSpriteEffects == false; No effects for you. ")
+				return
+			end
+
+			---@type IsoObject | IsoGameCharacter
+			local player = getSpecificPlayer(0)
+			local centerSquare = player:getSquare()--self:getIsoGridSquare()
+			print("-- square:"..tostring(centerSquare:getClass():getSimpleName()))
+			--local cell = (not square) or square:getCell()
+			--print("-- cell:"..tostring(cell))
+			local squaresInRange = (not centerSquare) or getIsoRange(centerSquare, 2)
+			print("-- squaresInRange: "..tostring(squaresInRange))
+
+			if squaresInRange then
+				for _,v in pairs(squaresInRange) do
+					---@type IsoGridSquare
+					local square = v
+					--print("--- square: "..tostring(square))
+					---@type IsoTree | IsoObject
+					local tree = (not square) or square:getTree()
+					if tree then
+						print("--- tree: "..tostring(tree:getClass():getSimpleName()))
+
+
+
+						tree:setRenderEffect(effect)
+					end
+				end
+			end
+
 		elseif key == Keyboard.KEY_5 then
 			DEBUG_TESTS.launch_jet()
 		elseif key == Keyboard.KEY_6 then
@@ -57,15 +90,15 @@ if getDebug() then
 		local player = getSpecificPlayer(0)
 		local squaresInRange = getIsoRange(player, 15)
 		local reanimated=0
-
+		print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
 		for sq=1, #squaresInRange do
 			---@type IsoGridSquare
 			local square = squaresInRange[sq]
 			local squareContents = square:getDeadBodys()
 
-			for i=1, squareContents:size() do
+			for i=0, squareContents:size()-1 do
 				---@type IsoDeadBody
-				local foundObj = squareContents:get(i-1)
+				local foundObj = squareContents:get(i)
 
 				if instanceof(foundObj, "IsoDeadBody") then
 					reanimated = reanimated+1
@@ -75,7 +108,6 @@ if getDebug() then
 		end
 		print("-- Reanimated: "..reanimated)
 	end
-
 
 	--- Debug: Reports helicopter's useful variables -- note: this will flood your output
 	function eHelicopter:Report(aiming, dampen)
