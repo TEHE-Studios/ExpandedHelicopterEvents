@@ -40,20 +40,6 @@ eHelicopter_PRESETS = {
 	},
 }
 
---This loads the above presets and creates a table:
---keys are equal to the preset's ID
---respective values are a list of strings matching the variable being changed by the preset
---For example: eHelicopter_PRESETS_VARS_CHANGED = {["attack_only_all"]={"announcerVoice","hostilePreference"}}
---This is to avoid for-looping to find matches between initial vars and preset vars while also avoiding issues caused when vars are "false"
-eHelicopter_PRESETS_VARS_CHANGED = {}
-for preset,varsChanged  in pairs(eHelicopter_PRESETS) do
-	local varIDs = {}
-	for var,_ in pairs(varsChanged) do
-		varIDs[var] = true
-	end
-	eHelicopter_PRESETS_VARS_CHANGED[preset] = varIDs
-end
-
 
 ---@param ID string
 function eHelicopter:loadPreset(ID)
@@ -92,20 +78,18 @@ function eHelicopter:loadPreset(ID)
 		end
 	end
 
-	local presetVariables = eHelicopter_PRESETS_VARS_CHANGED[ID]
 	local reportPreset = "loading preset: "..ID.."  vars:"
 	
 	--use initial list of variables to reset the helicopter object to standard
 	for var, value in pairs(self.initial) do
 		local newValue
-		---TODO: Check if preset[var] ~= nil can work here to ditch `eHelicopter_PRESETS_VARS_CHANGED`
-		--if loaded preset has a variable to change do so, otherwise apply initial value
-		if presetVariables[var] then
+
+		if preset[var] ~= nil then
 			newValue = preset[var]
 		else
 			newValue = value
 		end
-		reportPreset = reportPreset.." -"..var.." = "..tostring(newValue)
+		reportPreset = reportPreset.." -"..var.." = "..tostring(newValue).."\n"
 		self[var] = newValue
 	end
 	print(reportPreset)
