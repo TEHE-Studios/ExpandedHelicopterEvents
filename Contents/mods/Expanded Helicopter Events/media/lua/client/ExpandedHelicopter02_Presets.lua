@@ -78,8 +78,7 @@ function eHelicopter:loadPreset(ID)
 		end
 	end
 
-	local reportPreset = "loading preset: "..ID.."  vars:"
-	
+	--local reportPreset = "loading preset: "..ID.."  vars:"
 	--use initial list of variables to reset the helicopter object to standard
 	for var, value in pairs(self.initial) do
 		local newValue
@@ -89,8 +88,8 @@ function eHelicopter:loadPreset(ID)
 		else
 			newValue = value
 		end
-		reportPreset = reportPreset.." -"..var.." = "..tostring(newValue).."\n"
+		--reportPreset = reportPreset.." -"..var.." = "..tostring(newValue).."\n"
 		self[var] = newValue
 	end
-	print(reportPreset)
+	--print(reportPreset)
 end
