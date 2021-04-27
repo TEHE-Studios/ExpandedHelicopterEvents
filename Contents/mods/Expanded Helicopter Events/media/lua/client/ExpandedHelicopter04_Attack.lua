@@ -256,7 +256,7 @@ function getIsoRange(center, range, fractalOffset)
 
 		local fractalFactor = i*fractalOffset
 		--currentX and currentY have to pushed off center for the logic below to kick in
-		local currentX, currentY = centerX+fractalFactor, centerY+fractalFactor
+		local currentX, currentY = centerX-fractalFactor, centerY+fractalFactor
 		-- ring refers to the path going around center, -1 to skip center
 		local expectedRingLength = (8*i)-1
 
@@ -264,23 +264,24 @@ function getIsoRange(center, range, fractalOffset)
 			--if on top-row and not at the upper-right
 			if (currentY == centerY+fractalFactor) and (currentX < centerX+fractalFactor) then
 				--move-right
-				currentX = currentX+fractalFactor
+				currentX = currentX+fractalOffset
 				--if on right-column and not the bottom-right
 			elseif (currentX == centerX+fractalFactor) and (currentY > centerY-fractalFactor) then
 				--move down
-				currentY = currentY-fractalFactor
+				currentY = currentY-fractalOffset
 				--if on bottom-row and not on far-left
 			elseif (currentY == centerY-fractalFactor) and (currentX > centerX-fractalFactor) then
 				--move left
-				currentX = currentX-fractalFactor
+				currentX = currentX-fractalOffset
 				--if on left-column and not on top-left
 			elseif (currentX == centerX-fractalFactor) and (currentY < centerY+fractalFactor) then
 				--move up
-				currentY = currentY+fractalFactor
+				currentY = currentY+fractalOffset
 			end
 
 			---@type IsoGridSquare square
 			local square = centerCell:getOrCreateGridSquare(currentX, currentY, 0)
+			--[DEBUG]] getWorldMarkers():addGridSquareMarker(square, 0.8, fractalOffset-1, 0, false, 0.5)
 			table.insert(squares, square)
 		end
 	end
