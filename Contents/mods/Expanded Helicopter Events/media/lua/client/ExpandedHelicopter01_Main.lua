@@ -438,11 +438,17 @@ function eHelicopter:launch(targetedPlayer)
 			---@type IsoGameCharacter p
 			local p = getSpecificPlayer(i)
 
-			table.insert(weightPlayersList, p)
+			local iterations = 3
 
-			local zone = p:getCurrentZone():getType()
-			if zone and (zone ~= "Forest" and zone ~= "DeepForest") then
-				table.insert(weightPlayersList, p)
+			local zone = p:getCurrentZone()
+			if zone then
+				local zoneType = zone:getType()
+				if zoneType and (zoneType == "Forest") or (zoneType == "DeepForest") then
+					iterations = 1
+				end
+			end
+
+			for _=1, iterations do
 				table.insert(weightPlayersList, p)
 			end
 		end
