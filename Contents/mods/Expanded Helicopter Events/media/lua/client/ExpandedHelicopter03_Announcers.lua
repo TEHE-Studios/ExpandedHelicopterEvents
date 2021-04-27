@@ -118,7 +118,7 @@ end
 ---@param specificLine string
 function eHelicopter:announce(specificLine)
 
-	if not self.announcerVoice then
+	if type(self.announcerVoice)=="boolean" then
 		return
 	end
 

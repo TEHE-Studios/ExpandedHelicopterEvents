@@ -465,7 +465,7 @@ function eHelicopter:launch(targetedPlayer)
 		self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1)
 	end
 
-	if self.announcerVoice then
+	if self.announcerVoice ~= false then
 		self:chooseVoice(self.announcerVoice)
 	end
 	self.state = "gotoTarget"
