@@ -113,7 +113,7 @@ function eHelicopter:fireOn(targetHostile)
 		end
 	end
 
-	targetHostile:splatBlood(2,200)
+	targetHostile:splatBloodFloor(0.3)
 	--[[debug]] print(hitReport)
 	
 	--fireImpacts
