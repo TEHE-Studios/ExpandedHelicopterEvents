@@ -100,9 +100,9 @@ function eHelicopter:fireOn(targetHostile)
 		end
 	end
 
-	--[[debug]] local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
 
 	if ZombRand(0, 100) < chance then
+	--[[debug]] local hitReport = "- "..fireNoise.." Hit%:"..chance.." "..targetHostile:getClass():getSimpleName()
 		--kill zombie
 		targetHostile:setHealth(0)
 		--[[debug]] hitReport = hitReport .. "  [HIT]"
