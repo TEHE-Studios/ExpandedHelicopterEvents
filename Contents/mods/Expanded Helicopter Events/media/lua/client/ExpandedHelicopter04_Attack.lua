@@ -74,14 +74,14 @@ function eHelicopter:fireOn(targetHostile)
 		eventSound = "attackLooped"
 	end
 
-	self:playEventSound(eventSound)
-
 	--determine location of helicopter
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
 	--play sound file
 	local gunEmitter = getWorld():getFreeEmitter()
 	gunEmitter:playSound(fireNoise, ehX, ehY, ehZ)
+
+	self:playEventSound(eventSound)
 
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
@@ -118,9 +118,8 @@ function eHelicopter:fireOn(targetHostile)
 	
 	--fireImpacts
 	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
-	gunEmitter:playSound(impactNoise, targetHostile:getSquare())
-
-
+	local impactEmitter = getWorld():getFreeEmitter()
+	impactEmitter:playSound(impactNoise, targetHostile:getSquare())
 end
 
 

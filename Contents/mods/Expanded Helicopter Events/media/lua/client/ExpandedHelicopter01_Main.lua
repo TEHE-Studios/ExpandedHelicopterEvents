@@ -56,7 +56,7 @@ eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fi
 eHelicopter.hostilePreference = "IsoZombie"
 
 ---@field attackDelay number delay in milliseconds between attacks
-eHelicopter.attackDelay = 105
+eHelicopter.attackDelay = 55
 
 ---@field attackScope number number of rows from "center" IsoGridSquare out
 --- **area formula:** ((Scope*2)+1) ^2
