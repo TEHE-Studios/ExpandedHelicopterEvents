@@ -87,6 +87,9 @@ function eHelicopter:fireOn(targetHostile)
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
+	if instanceof(targetHostile, "IsoPlayer") then
+		movementThrowOffAim = movementThrowOffAim*1.5
+	end
 	local chance = 100-movementThrowOffAim
 
 	local zone = targetHostile:getCurrentZone()
