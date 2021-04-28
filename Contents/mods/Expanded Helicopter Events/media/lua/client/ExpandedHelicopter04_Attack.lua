@@ -74,8 +74,6 @@ function eHelicopter:fireOn(targetHostile)
 		eventSound = "attackLooped"
 	end
 
-	self:playEventSound(eventSound)
-
 	--determine location of helicopter
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
@@ -83,10 +81,15 @@ function eHelicopter:fireOn(targetHostile)
 	local gunEmitter = getWorld():getFreeEmitter()
 	gunEmitter:playSound(fireNoise, ehX, ehY, ehZ)
 
+	self:playEventSound(eventSound)
+
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
-	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
+	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
+	if instanceof(targetHostile, "IsoPlayer") then
+		movementThrowOffAim = movementThrowOffAim*1.5
+	end
 	local chance = 100-movementThrowOffAim
 
 	local zone = targetHostile:getCurrentZone()
@@ -97,25 +100,26 @@ function eHelicopter:fireOn(targetHostile)
 		end
 	end
 
-	--[[debug]] local hitReport = "fireNoise: "..fireNoise.." movementThrowOffAim:"..movementThrowOffAim
-
-	if ZombRand(0, 100) < chance then
+	--[[debug]] local hitReport = "- "..fireNoise.." Hit%:"..chance.." "..targetHostile:getClass():getSimpleName()
+	if ZombRand(0, 100) <= chance then
 		--kill zombie
 		targetHostile:setHealth(0)
 		--[[debug]] hitReport = hitReport .. "  [HIT]"
 	else
 		--toss down
 		targetHostile:knockDown(true)
+		if ZombRand(0, 100) <= 10 then
+			targetHostile:setFakeDead(true)
+		end
 	end
 
-	targetHostile:splatBlood(2,200)
+	targetHostile:splatBloodFloor(0.3)
 	--[[debug]] print(hitReport)
 	
 	--fireImpacts
 	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
-	gunEmitter:playSound(impactNoise, targetHostile:getSquare())
-
-
+	local impactEmitter = getWorld():getFreeEmitter()
+	impactEmitter:playSound(impactNoise, targetHostile:getSquare())
 end
 
 
