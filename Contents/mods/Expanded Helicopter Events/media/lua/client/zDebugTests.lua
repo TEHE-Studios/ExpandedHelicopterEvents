@@ -67,6 +67,11 @@ if getDebug() then
 		local player = getSpecificPlayer(0)
 		local squaresInRange = getIsoRange(player, 15)
 		local reanimated=0
+
+		if not squaresInRange then
+			print("- Scanning for bodies: ERROR: found no squares to scan")
+		end
+
 		print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
 		for sq=1, #squaresInRange do
 			---@type IsoGridSquare
