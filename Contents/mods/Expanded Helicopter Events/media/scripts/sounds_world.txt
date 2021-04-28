@@ -6,11 +6,11 @@ module Base {
     sound eHeli_fire_single { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_single.ogg, distanceMax = 1500, volume = 4.0, } }
     sound eHeli_fire_loop { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_loop.ogg, distanceMax = 1500, volume = 4.0, } }
 
-    sound eHeli_fire_impact1 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact1.ogg, distanceMax = 1500, volume = 3.0, } }
-    sound eHeli_fire_impact2 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact2.ogg, distanceMax = 1500, volume = 3.0, } }
-    sound eHeli_fire_impact3 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact3.ogg, distanceMax = 1500, volume = 3.0, } }
-    sound eHeli_fire_impact4 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact4.ogg, distanceMax = 1500, volume = 3.0, } }
-    sound eHeli_fire_impact5 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact5.ogg, distanceMax = 1500, volume = 3.0, } }
+    sound eHeli_fire_impact1 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact1.ogg, distanceMax = 1500, volume = 1.0, } }
+    sound eHeli_fire_impact2 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact2.ogg, distanceMax = 1500, volume = 1.0, } }
+    sound eHeli_fire_impact3 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact3.ogg, distanceMax = 1500, volume = 1.0, } }
+    sound eHeli_fire_impact4 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact4.ogg, distanceMax = 1500, volume = 1.0, } }
+    sound eHeli_fire_impact5 { category = World, loop = false, is3D = true, clip { file = media/sound/heli_fire_impact5.ogg, distanceMax = 1500, volume = 1.0, } }
 
     sound eHeli_newscaster { category = World, loop = false, is3D = true, clip { file = media/sound/Newscaster.ogg, distanceMax = 250, volume = 0.5, } }
 
