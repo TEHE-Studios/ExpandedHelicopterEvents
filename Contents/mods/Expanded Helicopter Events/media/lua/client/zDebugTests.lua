@@ -3,55 +3,32 @@ if getDebug() then
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then
 			DEBUG_TESTS.testAllLines()
+
 		elseif key == Keyboard.KEY_2 then
 			DEBUG_TESTS.raiseTheDead()
+
 		elseif key == Keyboard.KEY_3 then
 			DEBUG_TESTS.eHeliEventsOnSchedule()
+
 		elseif key == Keyboard.KEY_4 then
 			--DEBUG_TESTS.CheckWeather()
-
-			print("impactEnvironment: ")
-			if not getCore():getOptionDoWindSpriteEffects() then
-				print("-- Core:getOptionDoWindSpriteEffects == false; No effects for you. ")
-				return
-			end
-
-			---@type IsoObject | IsoGameCharacter
-			local player = getSpecificPlayer(0)
-			local centerSquare = player:getSquare()--self:getIsoGridSquare()
-			print("-- square:"..tostring(centerSquare:getClass():getSimpleName()))
-			--local cell = (not square) or square:getCell()
-			--print("-- cell:"..tostring(cell))
-			local squaresInRange = (not centerSquare) or getIsoRange(centerSquare, 2)
-			print("-- squaresInRange: "..tostring(squaresInRange))
-
-			if squaresInRange then
-				for _,v in pairs(squaresInRange) do
-					---@type IsoGridSquare
-					local square = v
-					--print("--- square: "..tostring(square))
-					---@type IsoTree | IsoObject
-					local tree = (not square) or square:getTree()
-					if tree then
-						print("--- tree: "..tostring(tree:getClass():getSimpleName()))
-
-
-
-						tree:setRenderEffect(effect)
-					end
-				end
-			end
+			DEBUG_TESTS.shakeTrees()
 
 		elseif key == Keyboard.KEY_5 then
 			DEBUG_TESTS.launch_jet()
+
 		elseif key == Keyboard.KEY_6 then
 			DEBUG_TESTS.launch_news_chopper()
+
 		elseif key == Keyboard.KEY_7 then
 			DEBUG_TESTS.launch_attack_only_all()
+
 		elseif key == Keyboard.KEY_8 then
 			DEBUG_TESTS.launch_attack_only_undead()
+
 		elseif key == Keyboard.KEY_9 then
 			DEBUG_TESTS.launch_increasingly_hostile()
+
 		elseif key == Keyboard.KEY_0 then
 			DEBUG_TESTS.launchBaseHeli()
 		end
@@ -274,5 +251,59 @@ if getDebug() then
 	end
 
 	Events.OnTick.Add(DEBUG_TESTS.testAllLinesLOOP)
+
+
+	---Try to shake trees near by
+	function DEBUG_TESTS.shakeTrees()
+		print("impactEnvironment: ")
+		if not getCore():getOptionDoWindSpriteEffects() then
+			print("-- Core:getOptionDoWindSpriteEffects == false; No effects for you. ")
+			return
+		end
+
+		---@type IsoObject | IsoGameCharacter |IsoMovingObject
+		local player = getSpecificPlayer(0)
+		local centerSquare = player:getSquare()--self:getIsoGridSquare()
+		print("-- square:"..tostring(centerSquare:getClass():getSimpleName()))
+		--local cell = (not square) or square:getCell()
+		--print("-- cell:"..tostring(cell))
+		local squaresInRange = (not centerSquare) or getIsoRange(centerSquare, 5)
+		print("-- squaresInRange: "..tostring(squaresInRange))
+
+		if squaresInRange then
+			for _,v in pairs(squaresInRange) do
+				---@type IsoGridSquare
+				local square = v
+				--print("--- square: "..tostring(square))
+				---@type IsoTree | IsoObject
+				local tree = (not square) or square:getTree()
+				if tree then
+					print("--- tree: "..tostring(tree:getClass():getSimpleName()))
+
+					--local CM = getClimateManager()
+					--local windTick = CM:getWindTickFinal()
+					--local windAngle = CM:getWindAngleIntensity()
+					--print("windTick: "..windTick.."   windAngle: "..windAngle)
+
+					tree:setRenderEffect(RenderEffectType, true)
+
+					local renderEffect = tree:getWindRenderEffects()
+
+					if renderEffect then
+						print("--- --- Render Effect getNextWindEffect")
+						---HANGS HERE
+						--renderEffect:getNextWindEffect(1,true)
+						print("--- --- Render Effect update")
+						renderEffect:update()--0.1,0.5)
+					else
+						print("--- --- No Render Effect")
+					end
+					--renderEffect:getNextWindEffect(1,true)
+					--renderEffect:getNew(tree, RenderEffectType.Vegetation_Rustle, false, false) ---RenderEffectType is private
+				end
+			end
+		end
+	end
+
 
 end
