@@ -86,7 +86,7 @@ function eHelicopter:fireOn(targetHostile)
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
-	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
+	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
 	local chance = 100-movementThrowOffAim
 
 	local zone = targetHostile:getCurrentZone()
