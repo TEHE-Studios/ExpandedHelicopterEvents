@@ -86,7 +86,7 @@ function eHelicopter:fireOn(targetHostile)
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
-	local movementThrowOffAim = math.floor((75*targetHostile:getMoveSpeed())+0.5)
+	local movementThrowOffAim = math.floor((100*targetHostile:getMoveSpeed())+0.5)
 	if instanceof(targetHostile, "IsoPlayer") then
 		movementThrowOffAim = movementThrowOffAim*1.5
 	end
@@ -113,9 +113,9 @@ function eHelicopter:fireOn(targetHostile)
 		end
 	end
 
-	targetHostile:splatBloodFloor(0.3)
+	targetHostile:splatBloodFloor(0.9)
 	--[[debug]] print(hitReport)
-	
+
 	--fireImpacts
 	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
 	local impactEmitter = getWorld():getFreeEmitter()
@@ -144,6 +144,7 @@ function eHelicopter:attackScan(location, targetType)
 
 	return objectsToFireOn
 end
+
 
 ---@param center IsoGameCharacter
 function recursiveGetSquare(center)
