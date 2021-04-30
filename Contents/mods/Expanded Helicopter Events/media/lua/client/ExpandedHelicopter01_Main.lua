@@ -52,7 +52,7 @@ eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
 eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 
 ---@field hostilePreference string
----set to 'nil' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
+---set to 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
 eHelicopter.hostilePreference = "IsoZombie"
 
 ---@field attackDelay number delay in milliseconds between attacks
