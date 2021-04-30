@@ -96,9 +96,11 @@ function eHelicopter:fireOn(targetHostile)
 	if zone then
 		local zoneType = zone:getType()
 		if zoneType and (zoneType == "Forest") or (zoneType == "DeepForest") then
-			chance = math.floor(chance/2)
+			chance = (chance/2)
 		end
 	end
+
+	chance = math.floor(chance)
 
 	--[[debug]] local hitReport = "- "..fireNoise.." Hit%:"..chance.." "..targetHostile:getClass():getSimpleName()
 	if ZombRand(0, 100) <= chance then
