@@ -102,18 +102,49 @@ function eHelicopter:fireOn(targetHostile)
 
 	--[[debug]] local hitReport = "- "..fireNoise.." Hit%:"..chance.." "..targetHostile:getClass():getSimpleName()
 	if ZombRand(0, 100) <= chance then
-		--kill zombie
-		targetHostile:setHealth(0)
-		--[[debug]] hitReport = hitReport .. "  [HIT]"
-	else
-		--toss down
-		targetHostile:knockDown(true)
-		if ZombRand(0, 100) <= 10 then
-			targetHostile:setFakeDead(true)
+		--knock down player
+		if instanceof(targetHostile, "IsoPlayer") then
+			targetHostile:clearVariable("BumpFallType")
+			targetHostile:setBumpType("stagger")
+			targetHostile:setBumpDone(false)
+			targetHostile:setBumpFall(true)
+			local bumpFallType = {"pushedBehind","pushedFront"}
+			bumpFallType = bumpFallType[ZombRand(1,2)]
+			targetHostile:setBumpFallType(bumpFallType)
 		end
+		--knock down zombie
+		if instanceof(targetHostile, "IsoZombie") then
+			targetHostile:knockDown(true)
+			if ZombRand(0, 100) <= 10 then
+				targetHostile:setFakeDead(true)
+			end
+		end
+		--apply swiss-cheesification (holes and blood)
+		--bodyparts list has a length of 18 (0-17)
+		local bpIndexNum = ZombRand(18)
+		--apply hole and blood
+		local clothingBP = BloodBodyPartType.FromIndex(bpIndexNum)
+		targetHostile:addHole(clothingBP)
+		targetHostile:addBlood(clothingBP, true, true, true)
+		--apply damage to body part
+		local damage = ZombRand(1,1.5) * 15
+		local bodyDMG = targetHostile:getBodyDamage()
+		if bodyDMG then
+			local bodyParts = bodyDMG:getBodyParts()
+			if bodyParts then
+				local actualBP = bodyParts:get(bpIndexNum)
+				if actualBP then
+					actualBP:damageFromFirearm(damage)
+				end
+			end
+		end
+		--splatter a few times
+		local splatIterations = ZombRand(1,3)
+		for i=1, splatIterations do
+			targetHostile:splatBloodFloor(0.9)
+		end
+		--[[debug]] hitReport = hitReport .. "  [HIT]"
 	end
-
-	targetHostile:splatBloodFloor(0.9)
 	--[[debug]] print(hitReport)
 
 	--fireImpacts
