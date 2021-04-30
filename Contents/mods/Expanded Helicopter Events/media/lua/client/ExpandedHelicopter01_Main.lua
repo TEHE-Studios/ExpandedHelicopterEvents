@@ -137,8 +137,8 @@ eHelicopter.hostilesAlreadyFiredOn = {}
 eHelicopter_temporaryVariables = {}
 for k,v in pairs(eHelicopter) do
 	if (eHelicopter_initialVars[k] == nil) then
-		--print("EHE: temporaryVariables.: "..tostring(k).." = "..tostring(v))
-		eHelicopter_temporaryVariables[k] = v
+		--print("EHE: temporaryVariables.: "..k)
+		table.insert(eHelicopter_temporaryVariables,k)
 	end
 end
 ---@field initial table

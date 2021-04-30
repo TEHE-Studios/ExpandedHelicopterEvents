@@ -92,9 +92,9 @@ function eHelicopter:loadPreset(ID)
 		self[var] = newValue
 	end
 	--reset temporary variables
-	for var, value in pairs(eHelicopter_temporaryVariables) do
+	for _, value in pairs(eHelicopter_temporaryVariables) do
 		--reportPreset = reportPreset.." -tmp: "..var.." = "..tostring(value).."\n"
-		self[var] = value
+		self[value] = eHelicopter[value]
 	end
 	--print(reportPreset)
 end
