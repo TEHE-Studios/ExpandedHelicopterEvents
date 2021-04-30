@@ -87,16 +87,14 @@ eHelicopter.attackSpread = 3
 
 
 -- UNDER THE HOOD STUFF
---This stores the above variables for reference later
----NOTE: Any variable which is by default `nil` can't be loaded over
-local presetSensitiveVariables = {}
-for k,v in pairs(eHelicopter) do
-	--print("EHE: presetSensitiveVar.: "..tostring(k).." = "..tostring(v))
-	presetSensitiveVariables[k] = v
-end
----@field initial table
-eHelicopter.initial = presetSensitiveVariables or {}
 
+--This stores the above variables for reference later
+---NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
+eHelicopter_initialVars = {}
+for k,v in pairs(eHelicopter) do
+	print("EHE: presetSensitiveVar.: "..tostring(k).." = "..tostring(v))
+	eHelicopter_initialVars[k] = v
+end
 
 --the below variables are to be considered "temporary"
 ---@field ID number
@@ -104,33 +102,46 @@ eHelicopter.ID = 0
 ---@field height number
 eHelicopter.height = 20
 ---@field state string
-eHelicopter.state = nil
+eHelicopter.state = false
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
-eHelicopter.rotorEmitter = nil
+eHelicopter.rotorEmitter = false
 ---@field timeUntilCanAnnounce number
 eHelicopter.timeUntilCanAnnounce = -1
 ---@field preflightDistance number
-eHelicopter.preflightDistance = nil
+eHelicopter.preflightDistance = false
 ---@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
-eHelicopter.announceEmitter = nil
+eHelicopter.announceEmitter = false
 ---@field target IsoObject
-eHelicopter.target = nil
+eHelicopter.target = false
 ---@field trueTarget IsoGameCharacter
-eHelicopter.trueTarget = nil
+eHelicopter.trueTarget = false
 ---@field attackDistance number
-eHelicopter.attackDistance = nil
+eHelicopter.attackDistance = false
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
-eHelicopter.targetPosition = nil
+eHelicopter.targetPosition = false
 ---@field lastMovement Vector3 consider this to be velocity (direction/angle and speed/step-size)
-eHelicopter.lastMovement = nil
+eHelicopter.lastMovement = false
 ---@field currentPosition Vector3 consider this a pair of coordinates which can utilize Vector3 math
-eHelicopter.currentPosition = nil
+eHelicopter.currentPosition = false
 ---@field lastAttackTime number
 eHelicopter.lastAttackTime = -1
 ---@field hostilesToFireOnIndex number
 eHelicopter.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table
 eHelicopter.hostilesToFireOn = {}
+---@field hostilesAlreadyFiredOn table
+eHelicopter.hostilesAlreadyFiredOn = {}
+
+--This stores the above "temporary" variables for resetting eHelicopters later
+---NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
+eHelicopter_temporaryVariables = {}
+for k,v in pairs(eHelicopter) do
+	if (eHelicopter_initialVars[k] == nil) then
+		print("EHE: temporaryVariables.: "..tostring(k).." = "..tostring(v))
+		eHelicopter_temporaryVariables[k] = v
+	end
+end
+---@field initial table
 
 
 ---@param event string
