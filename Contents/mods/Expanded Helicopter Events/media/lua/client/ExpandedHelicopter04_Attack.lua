@@ -102,6 +102,10 @@ function eHelicopter:fireOn(targetHostile)
 
 	chance = (chance/timesFiredOnSpecificHostile)
 
+	if targetHostile:getSquare():getTree() then
+		chance = (chance*0.8)
+	end
+	
 	local zone = targetHostile:getCurrentZone()
 	if zone then
 		local zoneType = zone:getType()
