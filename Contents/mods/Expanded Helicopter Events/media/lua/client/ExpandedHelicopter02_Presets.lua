@@ -79,7 +79,7 @@ function eHelicopter:loadPreset(ID)
 	end
 
 	--use initial list of variables to reset the helicopter object to standard
-	local reportPreset = "loading preset: "..ID.."  vars:"
+	--local reportPreset = "loading preset: "..ID.."  vars:"
 	for var, value in pairs(eHelicopter_initialVars) do
 		local newValue
 
@@ -88,13 +88,13 @@ function eHelicopter:loadPreset(ID)
 		else
 			newValue = value
 		end
-		reportPreset = reportPreset.." -preset: "..var.." = "..tostring(newValue).."\n"
+		--reportPreset = reportPreset.." -preset: "..var.." = "..tostring(newValue).."\n"
 		self[var] = newValue
 	end
 	--reset temporary variables
 	for var, value in pairs(eHelicopter_temporaryVariables) do
-		reportPreset = reportPreset.." -tmp: "..var.." = "..tostring(value).."\n"
+		--reportPreset = reportPreset.." -tmp: "..var.." = "..tostring(value).."\n"
 		self[var] = value
 	end
-	print(reportPreset)
+	--print(reportPreset)
 end

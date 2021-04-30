@@ -92,7 +92,7 @@ eHelicopter.attackSpread = 3
 ---NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
 eHelicopter_initialVars = {}
 for k,v in pairs(eHelicopter) do
-	print("EHE: presetSensitiveVar.: "..tostring(k).." = "..tostring(v))
+	--print("EHE: presetSensitiveVar.: "..tostring(k).." = "..tostring(v))
 	eHelicopter_initialVars[k] = v
 end
 
@@ -137,7 +137,7 @@ eHelicopter.hostilesAlreadyFiredOn = {}
 eHelicopter_temporaryVariables = {}
 for k,v in pairs(eHelicopter) do
 	if (eHelicopter_initialVars[k] == nil) then
-		print("EHE: temporaryVariables.: "..tostring(k).." = "..tostring(v))
+		--print("EHE: temporaryVariables.: "..tostring(k).." = "..tostring(v))
 		eHelicopter_temporaryVariables[k] = v
 	end
 end
