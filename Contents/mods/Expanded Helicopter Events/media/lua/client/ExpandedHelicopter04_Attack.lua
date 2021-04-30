@@ -65,6 +65,14 @@ function eHelicopter:fireOn(targetHostile)
 	self.lastAttackTime = getTimestampMs()
 	self.timeUntilCanAnnounce = getTimestampMs()+self.attackDelay-1
 
+	local timesFiredOnSpecificHostile = 0
+	table.insert(self.hostilesAlreadyFiredOn, targetHostile)
+	for _,v in pairs(self.hostilesAlreadyFiredOn) do
+		if v == targetHostile then
+			timesFiredOnSpecificHostile = timesFiredOnSpecificHostile+1
+		end
+	end
+
 	--fireSound
 	local fireNoise = self.fireSound[1]
 	local eventSound = "attackSingle"
@@ -91,6 +99,8 @@ function eHelicopter:fireOn(targetHostile)
 		movementThrowOffAim = movementThrowOffAim*1.5
 	end
 	local chance = 100-movementThrowOffAim
+
+	chance = (chance/timesFiredOnSpecificHostile)
 
 	local zone = targetHostile:getCurrentZone()
 	if zone then
