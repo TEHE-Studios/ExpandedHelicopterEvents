@@ -97,8 +97,6 @@ for k,v in pairs(eHelicopter) do
 end
 
 --the below variables are to be considered "temporary"
----@field ID number
-eHelicopter.ID = 0
 ---@field height number
 eHelicopter.height = 20
 ---@field state string
@@ -141,7 +139,9 @@ for k,v in pairs(eHelicopter) do
 		table.insert(eHelicopter_temporaryVariables,k)
 	end
 end
----@field initial table
+--ID must not be reset
+---@field ID number
+eHelicopter.ID = 0
 
 
 ---@param event string
