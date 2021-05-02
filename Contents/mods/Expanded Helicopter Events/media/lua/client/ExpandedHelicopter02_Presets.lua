@@ -41,6 +41,34 @@ eHelicopter_PRESETS = {
 }
 
 
+---@param tableToLoadFrom table
+---@param alternateTable table
+function eHelicopter:loadVarsFrom(tableToLoadFrom, alternateTable, debugID)
+	for var, value in pairs(tableToLoadFrom) do
+		local newValue
+
+		if (alternateTable and (alternateTable[var] ~= nil)) then
+			newValue = alternateTable[var]
+		else
+			newValue = value
+		end
+		print(" -"..debugID..": "..var.." =  ("..type(newValue)..")"..tostring(newValue))
+		--tables needs to be copied piece by piece to avoid direct references links
+		if type(newValue) == "table" then
+			print("--- "..var.." is a table (#"..#newValue.."); generating copy:")
+			local tmpTable = {}
+			for k,v in pairs(newValue) do
+				tmpTable[k] = v
+				print( "------ "..k.." = ".."("..type(v)..") "..tostring(v))
+			end
+			self[var] = tmpTable
+		else
+			self[var] = newValue
+		end
+	end
+end
+
+
 ---@param ID string
 function eHelicopter:loadPreset(ID)
 
@@ -79,22 +107,9 @@ function eHelicopter:loadPreset(ID)
 	end
 
 	--use initial list of variables to reset the helicopter object to standard
-	local reportPreset = "loading preset: "..ID.."  vars:"
-	for var, value in pairs(eHelicopter_initialVars) do
-		local newValue
-
-		if preset[var] ~= nil then
-			newValue = preset[var]
-		else
-			newValue = value
-		end
-		reportPreset = reportPreset.." -preset: "..var.." = "..tostring(newValue).."\n"
-		self[var] = newValue
-	end
-	--reset temporary variables
-	for _, var in pairs(eHelicopter_temporaryVariables) do
-		reportPreset = reportPreset.." -tmp: "..var.." = "..tostring(eHelicopter[var]).."\n"
-		self[var] = eHelicopter[var]
-	end
-	print(reportPreset)
+	print("loading preset: "..ID.."  vars:")
+	--compare vars against initialVars and loaded preset
+	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
+	--reset other vars not included with initialVars
+	self:loadVarsFrom(eHelicopter_temporaryVariables, nil, "temporaryVariables")
 end

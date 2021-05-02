@@ -86,15 +86,36 @@ eHelicopter.attackScope = 1
 eHelicopter.attackSpread = 3
 
 
--- UNDER THE HOOD STUFF
+---// UNDER THE HOOD STUFF //---
 
---This stores the above variables for reference later
+---This function, when called stores the above listed variables, on game load, for reference later
+---
 ---NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
-eHelicopter_initialVars = {}
-for k,v in pairs(eHelicopter) do
-	--print("EHE: presetSensitiveVar.: "..tostring(k).." = "..tostring(v))
-	eHelicopter_initialVars[k] = v
+---@param listToSaveTo table
+---@param checkIfNotIn table
+function eHelicopter_variableBackUp(listToSaveTo, checkIfNotIn, debugID)
+	for k,v in pairs(eHelicopter) do
+		if ((not checkIfNotIn) or (checkIfNotIn[k] == nil)) then
+			print("EHE: "..debugID..": "..k.." = ".."("..type(v)..") "..tostring(v))
+			--tables have to be copied piece by piece or risk creating a direct reference link
+			if type(v) == "table" then
+				print("--- "..k.." is a table (#"..#v.."); generating copy:")
+				local tmpTable = {}
+				for kk,vv in pairs(v) do
+					print( "------ "..kk.." = ".."("..type(vv)..") "..tostring(vv))
+					tmpTable[kk] = vv
+				end
+				listToSaveTo[k]=tmpTable
+			else
+				listToSaveTo[k]=v
+			end
+		end
+	end
 end
+
+--store "initial" vars to reference when loading presets
+eHelicopter_initialVars = {}
+eHelicopter_variableBackUp(eHelicopter_initialVars, nil, "initialVars")
 
 --the below variables are to be considered "temporary"
 ---@field height number
@@ -131,15 +152,10 @@ eHelicopter.hostilesToFireOn = {}
 eHelicopter.hostilesAlreadyFiredOn = {}
 
 --This stores the above "temporary" variables for resetting eHelicopters later
----NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
 eHelicopter_temporaryVariables = {}
-for k,v in pairs(eHelicopter) do
-	if (eHelicopter_initialVars[k] == nil) then
-		--print("EHE: temporaryVariables.: "..k)
-		table.insert(eHelicopter_temporaryVariables,k)
-	end
-end
---ID must not be reset
+eHelicopter_variableBackUp(eHelicopter_temporaryVariables, eHelicopter_initialVars, "temporaryVariables")
+
+--ID must not be reset ever
 ---@field ID number
 eHelicopter.ID = 0
 
