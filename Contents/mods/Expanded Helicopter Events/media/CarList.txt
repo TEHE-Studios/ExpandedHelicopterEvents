@@ -1,7 +1,9 @@
-uh1h
-uh1hmedevac
-uh1hsurvivalist
-uh1hcrash
+UH1h
+UH1hmedevac
+UH1hsurvivalist
+UH1hcrash
+UH1medevaccrash
+UH1survivalistcrash
 Bell206Police
 Bell206LBMW
 Bell206PoliceCrashed

@@ -28,7 +28,7 @@ module Base
 			texture = Vehicles/Vehicle_UH1HSurvivalist,
 		}
 
-		textureMask = Vehicle_UH1HSurvivalist_mask,
+		textureMask = Vehicle_UH1H_mask,
 		extents = 1.3077 2.0220 5.8791,
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 5.8791,
