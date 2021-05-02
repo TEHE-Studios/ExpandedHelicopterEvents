@@ -96,7 +96,15 @@ function eHelicopter:fireOn(targetHostile)
 
 	local chance = 100
 
-	local movementThrowOffAim = math.floor((50*targetHostile:getMoveSpeed())+0.5)
+	--IsoGameCharacter:getMoveSpeed() doesn't seem to work on IsoPlayers (works on IsoZombie)
+	local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLx())
+	local getysubly = math.abs(targetHostile:getY()-targetHostile:getLy())
+	local eheMoveSpeed = math.sqrt((getxsublx * getxsublx + getysubly * getysubly))
+	--floors float to 1000ths place decimal
+	eheMoveSpeed = math.floor(eheMoveSpeed * 1000) / 1000
+
+	--convert eheMoveSpeed to a %
+	local movementThrowOffAim = math.floor((100*eheMoveSpeed)+0.5)
 	if instanceof(targetHostile, "IsoPlayer") then
 		movementThrowOffAim = movementThrowOffAim*1.5
 	end
@@ -115,9 +123,12 @@ function eHelicopter:fireOn(targetHostile)
 		end
 	end
 
+	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	--[[debug]] local hitReport = "- "..fireNoise.." Hit%:"..chance.." "..targetHostile:getClass():getSimpleName()
+	--[[debug]] local hitReport = "-"..self.ID.." n:"..fireNoise.." /t:"..timesFiredOnSpecificHostile..
+	--[[debug]]	"  eMS:"..eheMoveSpeed.." %:"..chance.." "..targetHostile:getClass():getSimpleName()
+
 	if ZombRand(0, 100) <= chance then
 		--knock down player
 		if instanceof(targetHostile, "IsoPlayer") then
@@ -138,7 +149,7 @@ function eHelicopter:fireOn(targetHostile)
 		end
 		--apply swiss-cheesification (holes and blood)
 		--bodyparts list has a length of 18 (0-17)
-		local bpIndexNum = ZombRand(18)
+		local bpIndexNum = ZombRand(0, 17)
 		--apply hole and blood
 		local clothingBP = BloodBodyPartType.FromIndex(bpIndexNum)
 		targetHostile:addHole(clothingBP)
