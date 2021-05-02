@@ -111,7 +111,7 @@ function eHelicopter:fireOn(targetHostile)
 	chance = chance-movementThrowOffAim
 	chance = (chance/timesFiredOnSpecificHostile)
 
-	if targetHostile:getSquare():getTree() then
+	if (targetHostile:getSquare():getTree()) or (targetHostile:checkIsNearWall()>0) then
 		chance = (chance*0.8)
 	end
 	
