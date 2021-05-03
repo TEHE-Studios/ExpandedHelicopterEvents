@@ -28,7 +28,7 @@ module Base
 			texture = Vehicles/Vehicle_UH1HSurvivalist,
 		}
 
-		textureMask = Vehicle_UH1H_mask,
+						textureMask = Vehicle_UH1H_mask,
 		extents = 1.3077 2.0220 5.8791,
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 5.8791,
@@ -51,32 +51,146 @@ module Base
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 2,
+		template = PassengerSeat2,
 
-		physics box
+		passenger FrontLeft
 		{
-			offset = 0.1099 0.0989 0.5385,
-			extents = 0.0549 0.0549 0.5385,
-			rotate = 0.0000 -20.0000 0.0000,
+			door2 = DoorRear,
+
+			position inside
+			{
+				offset = -0.2253 0.5495 -0.6593,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 0.6044 -0.4725 0.4670,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontLeft,
+			}
+
+			position outside2
+			{
+				offset = 0.0000 -0.4725 -1.5989,
+				rotate = 0.0000 0.0000 0.0000,
+			}
 		}
 
-		physics box
+		passenger FrontRight
 		{
-			offset = -0.1099 0.0989 0.5385,
-			extents = 0.0549 0.0549 0.5385,
-			rotate = 0.0000 20.0000 0.0000,
-		}
+			door2 = DoorRear,
 
-		physics sphere
-		{
-			offset = 0.0000 0.0989 0.7582,
-			radius = 0.0549,
+			position inside
+			{
+				offset = 0.4505 0.5440 -0.6593,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -0.6044 -0.4725 0.4670,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontRight,
+			}
+
+			position outside2
+			{
+				offset = 0.0000 -0.4725 -1.5989,
+				rotate = 0.0000 0.0000 0.0000,
+			}
 		}
 
 		area TruckBed
 		{
-			xywh = 0.1264 -1.2418 2.3516 1.7143,
+			xywh = 0.1264 -1.2363 2.0220 0.9890,
 		}
 
-		template = Trunk/part/TrailerTrunk,
+		area SeatFrontLeft
+		{
+			xywh = -0.6319 -2.2637 0.4725 0.7363,
+		}
+
+		area SeatFrontRight
+		{
+			xywh = 0.8901 -2.2418 0.4725 0.8022,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			container
+			{
+				capacity = 300,
+			}
+		}
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+
+		part SeatRear*
+		{
+			door =,
+		}
+
+		part Seat*
+		{
+			table install
+			{
+				skills = Mechanics:2,
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:2,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+
+			lua
+			{
+				update = Vehicles.Update.PassengerCompartment,
+			}
+		}
+
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRear,
+
+		part DoorRear
+		{
+			table uninstall
+			{
+				requireUninstalled = WindshieldRear,
+			}
+
+			hasLightsRear = true,
+
+			lua
+			{
+				create = Vehicles.Create.TrunkDoor,
+				update = Vehicles.Update.TrunkDoor,
+				use = Vehicles.Use.TrunkDoor,
+			}
+		}
+
+		part Door*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
 	}
 }
