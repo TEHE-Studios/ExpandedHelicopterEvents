@@ -543,10 +543,9 @@ function eHelicopter:update()
 	local preventMovement = false
 	if (self.state == "gotoTarget") and (self:getDistanceToVector(self.targetPosition) <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
 		if self.hoverOnTargetDuration then
-			print("HELI: "..self.ID.." HOVERING OVER TARGET "
-					..(self.trueTarget:getClass():getSimpleName()).." "
-					..(self.target:getClass():getSimpleName())..
-					" (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+
+			--[DEBUG]] self:hoverAndFlyOverReport("HOVERING OVER TARGET")
+
 			self:playEventSound("hoverOverTarget")
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-1
 			if self.hoverOnTargetDuration == 0 then
@@ -556,10 +555,9 @@ function eHelicopter:update()
 		else
 			self:playEventSound("hoverOverTarget",true)
 			self:playEventSound("flyOverTarget")
-			print("HELI: "..self.ID.." FLEW OVER TARGET "
-					..(self.trueTarget:getClass():getSimpleName()).." "
-					..(self.target:getClass():getSimpleName())..
-					" (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+
+			--[DEBUG]] self:hoverAndFlyOverReport("FLEW OVER TARGET")
+
 			self:goHome()
 		end
 	end

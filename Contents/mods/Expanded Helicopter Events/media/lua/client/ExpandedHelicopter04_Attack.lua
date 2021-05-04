@@ -126,8 +126,8 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	--[[debug]] local hitReport = "-"..self.ID.." n:"..fireNoise.." /t:"..timesFiredOnSpecificHostile..
-	--[[debug]]	"  eMS:"..eheMoveSpeed.." %:"..chance.." "..targetHostile:getClass():getSimpleName()
+	local hitReport = "-"..self.ID.." n:"..fireNoise.." /t:"..timesFiredOnSpecificHostile..
+			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..targetHostile:getClass()
 
 	if ZombRand(0, 100) <= chance then
 		--knock down player

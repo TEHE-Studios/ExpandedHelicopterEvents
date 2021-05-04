@@ -91,6 +91,15 @@ if getDebug() then
 		print("-- Reanimated: "..reanimated)
 	end
 
+	function eHelicopter:hoverAndFlyOverReport(STATE)
+		if self.trueTarget and self.trueTarget:getClass() and self.target and self.target:getClass() then
+			print("HELI: "..self.ID.." "..STATE
+					..(self.trueTarget:getClass():getSimpleName()).." "
+					..(self.target:getClass():getSimpleName())..
+					" (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+		end
+	end
+
 	--- Debug: Reports helicopter's useful variables -- note: this will flood your output
 	function eHelicopter:Report(aiming, dampen)
 		---@type eHelicopter heli
