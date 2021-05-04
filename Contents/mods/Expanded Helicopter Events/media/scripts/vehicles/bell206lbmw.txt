@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_Bell206,
 			scale = 3.1100,
-			offset = 0.0868 -0.0450 -0.7395,
+			offset = 0.0000 0.0064 -0.8328,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -29,10 +29,10 @@ module Base
 		}
 
 		textureMask = Vehicle_Bell206LBMW_mask,
-		extents = 0.7395 1.1704 3.4855,
+		extents = 0.7524 2.0257 3.4534,
 		mass = 200,
-		physicsChassisShape = 0.7460 1.1897 3.4727,
-		centerOfMassOffset = 0.1318 0.5531 0.1029,
+		physicsChassisShape = 0.7524 2.0322 3.4469,
+		centerOfMassOffset = 0.0418 0.9904 0.0032,
 		engineForce = 3600,
 		engineQuality = 60,
 		engineLoudness = 55,
@@ -51,32 +51,146 @@ module Base
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 2,
+		template = PassengerSeat2,
 
-		physics box
+		passenger FrontLeft
 		{
-			offset = 0.1099 0.0989 0.5385,
-			extents = 0.0549 0.0549 0.5385,
-			rotate = 0.0000 -20.0000 0.0000,
+			door2 = DoorRear,
+
+			position inside
+			{
+				offset = -0.0997 0.4212 -0.3151,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 0.6045 -0.4727 0.4662,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontLeft,
+			}
+
+			position outside2
+			{
+				offset = 0.0000 -0.4727 -1.5981,
+				rotate = 0.0000 0.0000 0.0000,
+			}
 		}
 
-		physics box
+		passenger FrontRight
 		{
-			offset = -0.1099 0.0989 0.5385,
-			extents = 0.0549 0.0549 0.5385,
-			rotate = 0.0000 20.0000 0.0000,
-		}
+			door2 = DoorRear,
 
-		physics sphere
-		{
-			offset = 0.0000 0.0989 0.7582,
-			radius = 0.0549,
+			position inside
+			{
+				offset = 0.1865 0.4212 -0.3183,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -0.6045 -0.4727 0.4662,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontRight,
+			}
+
+			position outside2
+			{
+				offset = 0.0000 -0.4727 -1.5981,
+				rotate = 0.0000 0.0000 0.0000,
+			}
 		}
 
 		area TruckBed
 		{
-			xywh = 0.1254 -1.2412 2.3537 1.7170,
+			xywh = 0.0161 -0.7942 0.9196 0.3730,
 		}
 
-		template = Trunk/part/TrailerTrunk,
+		area SeatFrontLeft
+		{
+			xywh = -0.2058 -1.0997 0.4759 0.3408,
+		}
+
+		area SeatFrontRight
+		{
+			xywh = 0.2958 -1.0965 0.4759 0.3408,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			container
+			{
+				capacity = 300,
+			}
+		}
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+
+		part SeatRear*
+		{
+			door =,
+		}
+
+		part Seat*
+		{
+			table install
+			{
+				skills = Mechanics:2,
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:2,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+
+			lua
+			{
+				update = Vehicles.Update.PassengerCompartment,
+			}
+		}
+
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRear,
+
+		part DoorRear
+		{
+			table uninstall
+			{
+				requireUninstalled = WindshieldRear,
+			}
+
+			hasLightsRear = true,
+
+			lua
+			{
+				create = Vehicles.Create.TrunkDoor,
+				update = Vehicles.Update.TrunkDoor,
+				use = Vehicles.Use.TrunkDoor,
+			}
+		}
+
+		part Door*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
 	}
 }
