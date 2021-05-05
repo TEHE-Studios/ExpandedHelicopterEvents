@@ -23,19 +23,20 @@ module EHE
 		Icon = Paper,
 		Map = media/ui/content/EmergencyFlyer.png,
 	}
-		item CurfewFlyer
+		item QuarantineFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
-		DisplayName = Curfew Flyer,
+		DisplayName = Quarantine Flyer,
 		Icon = Paper,
 		Map = media/ui/content/CurfewFlyer.png,
 	}
-		item PAVFlyer
+		item PreventionFlyer
 	{
 		Weight = 0.1,
 		Type = Normal,
-		DisplayName = Disease Flyer,
+		DisplayName = Prevention Flyer,
 		Icon = Paper,
+		Map = media/ui/content/PAVFlyer.png,
 	}
 }
