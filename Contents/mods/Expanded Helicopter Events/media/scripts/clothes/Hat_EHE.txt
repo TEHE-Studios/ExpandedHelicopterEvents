@@ -7,7 +7,24 @@ module Base
 		DisplayName = Police Helicopter Helmet,
 		ClothingItem = Hat_SPHPolice,
 		BodyLocation = Hat,
-		IconsForTexture = Hat_ScrapHelmet;Hat_ScrapHelmet2,
+		Icon = HelicopterHelmetPolice,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHSurvivalist
+	{
+		Type = Clothing,
+		DisplayName = Survivalist Helicopter Helmet,
+		ClothingItem = Hat_SPHSurvivalist,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetSurvivalist,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,
