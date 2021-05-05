@@ -96,13 +96,13 @@ eHelicopter.attackSpread = 3
 function eHelicopter_variableBackUp(listToSaveTo, checkIfNotIn, debugID)
 	for k,v in pairs(eHelicopter) do
 		if ((not checkIfNotIn) or (checkIfNotIn[k] == nil)) then
-			print("EHE: "..debugID..": "..k.." = ".."("..type(v)..") "..tostring(v))
+			--[DEBUG]] print("EHE: "..debugID..": "..k.." = ".."("..type(v)..") "..tostring(v))
 			--tables have to be copied piece by piece or risk creating a direct reference link
 			if type(v) == "table" then
-				print("--- "..k.." is a table (#"..#v.."); generating copy:")
+				--[DEBUG]] print("--- "..k.." is a table (#"..#v.."); generating copy:")
 				local tmpTable = {}
 				for kk,vv in pairs(v) do
-					print( "------ "..kk.." = ".."("..type(vv)..") "..tostring(vv))
+					--[DEBUG]] print( "------ "..kk.." = ".."("..type(vv)..") "..tostring(vv))
 					tmpTable[kk] = vv
 				end
 				listToSaveTo[k]=tmpTable

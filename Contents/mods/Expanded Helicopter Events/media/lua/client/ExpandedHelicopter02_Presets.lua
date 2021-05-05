@@ -52,14 +52,14 @@ function eHelicopter:loadVarsFrom(tableToLoadFrom, alternateTable, debugID)
 		else
 			newValue = value
 		end
-		print(" -"..debugID..": "..var.." =  ("..type(newValue)..")"..tostring(newValue))
+		--[DEBUG]] print(" -"..debugID..": "..var.." =  ("..type(newValue)..")"..tostring(newValue))
 		--tables needs to be copied piece by piece to avoid direct references links
 		if type(newValue) == "table" then
-			print("--- "..var.." is a table (#"..#newValue.."); generating copy:")
+			--[DEBUG]] print("--- "..var.." is a table (#"..#newValue.."); generating copy:")
 			local tmpTable = {}
 			for k,v in pairs(newValue) do
 				tmpTable[k] = v
-				print( "------ "..k.." = ".."("..type(v)..") "..tostring(v))
+				--[DEBUG]] print( "------ "..k.." = ".."("..type(v)..") "..tostring(v))
 			end
 			self[var] = tmpTable
 		else
@@ -107,7 +107,7 @@ function eHelicopter:loadPreset(ID)
 	end
 
 	--use initial list of variables to reset the helicopter object to standard
-	print("loading preset: "..ID.."  vars:")
+	--[DEBUG]] print("loading preset: "..ID.."  vars:")
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars
