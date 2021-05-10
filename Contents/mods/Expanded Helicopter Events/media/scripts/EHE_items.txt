@@ -12,8 +12,6 @@ module EHE
 		DisplayName = Evacuation Flyer,
 		Icon = Paper,
 		Map = media/ui/content/EvacuationFlyer.png,
-		StaticModel = Item_EvacFlyer,
-		WeaponSprite = Item_EvacFlyer,
 	}
 	    item EmergencyFlyer
 	{
@@ -29,7 +27,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Quarantine Flyer,
 		Icon = Paper,
-		Map = media/ui/content/CurfewFlyer.png,
+		Map = media/ui/content/QuarantineFlyer.png,
 	}
 		item PreventionFlyer
 	{
@@ -38,5 +36,13 @@ module EHE
 		DisplayName = Prevention Flyer,
 		Icon = Paper,
 		Map = media/ui/content/PAVFlyer.png,
+	}
+		item NoticeFlyer
+	{
+		Weight = 0.1,
+		Type = Normal,
+		DisplayName = Notice Flyer,
+		Icon = Paper,
+		Map = media/ui/content/NoticeFlyer.png,
 	}
 }
