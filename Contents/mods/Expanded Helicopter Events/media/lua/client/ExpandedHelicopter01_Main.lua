@@ -119,7 +119,7 @@ eHelicopter_variableBackUp(eHelicopter_initialVars, nil, "initialVars")
 
 --the below variables are to be considered "temporary"
 ---@field height number
-eHelicopter.height = 20
+eHelicopter.height = 7
 ---@field state string
 eHelicopter.state = false
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
