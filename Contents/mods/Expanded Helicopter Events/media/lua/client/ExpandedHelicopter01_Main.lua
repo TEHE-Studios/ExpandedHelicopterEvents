@@ -309,10 +309,19 @@ end
 
 
 ---@return IsoGridSquare of eHelicopter
-function eHelicopter:getIsoGridSquare()
+function eHelicopter:getIsoGridSquare(zLevel)
 	local ehX, ehY, _ = self:getXYZAsInt()
+	local square = getSquare(ehX, ehY, zLevel or 0)
+	--squares on non-zero z levels may not be loaded
+	if not square and zLevel then
+		--grab cell on floor if cell is loaded
+		square = getSquare(ehX, ehY, 0)
+		if square then
+			return square:getCell():getOrCreateGridSquare(ehX, ehY, zLevel)
+		end
+	end
 
-	return getSquare(ehX, ehY, 0)
+	return square
 end
 
 
