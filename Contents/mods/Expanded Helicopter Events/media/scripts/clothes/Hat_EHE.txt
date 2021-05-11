@@ -34,4 +34,21 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
+
+		item Hat_SPHCivilian
+	{
+		Type = Clothing,
+		DisplayName = Civilian Helicopter Helmet,
+		ClothingItem = Hat_SPHCivilian,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetCivilian,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
 }

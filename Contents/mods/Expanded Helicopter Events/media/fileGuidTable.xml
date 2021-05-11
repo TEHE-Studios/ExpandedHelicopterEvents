@@ -5,5 +5,15 @@
 	<path>media/clothing/clothingItems/Hat_SPHPolice.xml</path>
 	<guid>dd389eac-faf3-4876-9464-b5d6dcb4704c</guid>
 	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_SPHCivilian.xml</path>
+	<guid>e06b8111-1f8a-486e-b269-7bcd9541b35b</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_SPHSurvivalist.xml</path>
+	<guid>04b6c0a5-d5b5-45bf-927d-8dbd6b6d031a</guid>
+	</files>
 	
 </fileGuidTable>
