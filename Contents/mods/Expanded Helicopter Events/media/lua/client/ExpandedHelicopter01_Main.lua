@@ -9,6 +9,9 @@ eHelicopter = {}
 ---@field hoverOnTargetDuration number How long the helicopter will hover over the player, this is subtracted from every tick
 eHelicopter.hoverOnTargetDuration = false
 
+---@field canCrash boolean
+eHelicopter.canCrash = "Base.UH1HCrash"
+
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {}--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil,["attackLooped"]=nil,["attackSingle"]=nil}
 

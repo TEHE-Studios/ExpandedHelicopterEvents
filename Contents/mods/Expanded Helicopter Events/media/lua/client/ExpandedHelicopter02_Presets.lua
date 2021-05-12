@@ -12,7 +12,8 @@ eHelicopter_PRESETS = {
 		flightVolume = 25,
 		flightSound = "eJetFlight",
 		hostilePreference = false,
-		announcerVoice = false
+		announcerVoice = false,
+		canCrash = false
 	},
 
 	["news_chopper"] = {
@@ -23,7 +24,8 @@ eHelicopter_PRESETS = {
 		topSpeedFactor = 5,
 		hostilePreference = false,
 		announcerVoice = false,
-		cutOffDay = 15
+		cutOffDay = 15,
+		canCrash = "Base.Bell206LBMWCrashed"
 	},
 
 	["patrol_only"] = {
@@ -36,7 +38,8 @@ eHelicopter_PRESETS = {
 
 	["attack_only_all"] = {
 		announcerVoice = false,
-		hostilePreference = "IsoGameCharacter"
+		hostilePreference = "IsoGameCharacter",
+		canCrash = "Base.UH1Hsurvivalistcrash"
 	},
 }
 
