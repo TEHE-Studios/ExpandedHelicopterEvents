@@ -94,7 +94,7 @@ function eHelicopter:fireOn(targetHostile)
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
-	local chance = 100
+	local chance = 85
 
 	--IsoGameCharacter:getMoveSpeed() doesn't seem to work on IsoPlayers (works on IsoZombie)
 	local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLx())
