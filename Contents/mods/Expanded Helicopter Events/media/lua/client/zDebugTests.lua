@@ -11,8 +11,8 @@ if getDebug() then
 			DEBUG_TESTS.eHeliEventsOnSchedule()
 
 		elseif key == Keyboard.KEY_4 then
-			--DEBUG_TESTS.CheckWeather()
-			DEBUG_TESTS.shakeTrees()
+			DEBUG_TESTS.CheckWeather()
+			--DEBUG_TESTS.shakeTrees()
 
 		elseif key == Keyboard.KEY_5 then
 			DEBUG_TESTS.launch_jet()

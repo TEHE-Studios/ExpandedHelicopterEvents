@@ -125,6 +125,8 @@ eHelicopter_variableBackUp(eHelicopter_initialVars, nil, "initialVars")
 eHelicopter.height = 7
 ---@field state string
 eHelicopter.state = false
+---@field crashing
+eHelicopter.crashing = false
 ---@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.rotorEmitter = false
 ---@field timeUntilCanAnnounce number
@@ -513,6 +515,11 @@ function eHelicopter:launch(targetedPlayer)
 		self:chooseVoice(self.announcerVoice)
 	end
 	self.state = "gotoTarget"
+
+	local _, weatherImpact = eHeliEvent_weatherImpact()
+	if (not self.crashing) and ZombRand(0,100) <= weatherImpact*100 then
+		self.crashing = true
+	end
 end
 
 
@@ -522,6 +529,29 @@ function eHelicopter:goHome()
 	self.trueTarget = getSquare(self.target:getX(),self.target:getY(),0)
 	self.target = self.trueTarget
 	self:setTargetPos()
+end
+
+
+---Heli goes down
+function eHelicopter:crash()
+
+	if self.canCrash then
+		---@type IsoGridSquare
+		local square = self:getIsoGridSquare(self.height)
+		local vehicleType = self.canCrash
+
+		print("EHE: CRASH EVENT: "..square:getX()..", "..square:getY())
+
+		---@type BaseVehicle
+		local heli = addVehicleDebug(vehicleType, IsoDirections.S, nil, square)
+		heli:playSound("VehicleTireExplode")
+		heli:playSound("VehicleCrash")
+		heli:playSound("VehicleCrash1")
+		heli:playSound("VehicleCrash2")
+		heli:playSound("VehicleHitObject")
+		addSound(nil, square:getX(), square:getY(), 0, 100, 100)
+	end
+	self:unlaunch()
 end
 
 
@@ -551,8 +581,18 @@ function eHelicopter:update()
 		end
 	end
 
+	local distToTarget = self:getDistanceToVector(self.targetPosition)
+	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
+	local crashMin = thatIsCloseEnough*33
+	local crashMax = thatIsCloseEnough*ZombRand(crashMin,100)
+
+	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
+		self:crash()
+		return
+	end
+
 	local preventMovement = false
-	if (self.state == "gotoTarget") and (self:getDistanceToVector(self.targetPosition) <= ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))) then
+	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
 		if self.hoverOnTargetDuration then
 
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("HOVERING OVER TARGET") end
@@ -580,14 +620,15 @@ function eHelicopter:update()
 		self:move(lockOn, true)
 	end
 
-	if self.announcerVoice then
 	local v_x = tonumber(Vector3GetX(self.currentPosition))
 	local v_y = tonumber(Vector3GetY(self.currentPosition))
 	addSound(nil, v_x, v_y, 0, (self.flightVolume*5), self.flightVolume)
+
+	if self.announcerVoice and (not self.crashing) then
 		self:announce()
 	end
 
-	if self.hostilePreference then
+	if self.hostilePreference and (not self.crashing) then
 		self:lookForHostiles(self.hostilePreference)
 	end
 
