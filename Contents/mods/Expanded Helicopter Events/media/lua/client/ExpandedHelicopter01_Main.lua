@@ -19,9 +19,6 @@ eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=ni
 	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 	}
 
----@field eventSoundEffects table
-eHelicopter.eventSoundEffectEmitters = {}
-
 ---@field announcerVoice string
 eHelicopter.announcerVoice = true
 
@@ -133,6 +130,8 @@ eHelicopter.timeUntilCanAnnounce = -1
 eHelicopter.preflightDistance = false
 ---@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.announceEmitter = false
+---@field eventSoundEffectEmitters table
+eHelicopter.eventSoundEffectEmitters = {}
 ---@field target IsoObject
 eHelicopter.target = false
 ---@field trueTarget IsoGameCharacter
@@ -660,8 +659,12 @@ end
 
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-	self.state = "unLaunched"
 	self.rotorEmitter:stopAll()
+	for event,emitter in pairs(self.eventSoundEffectEmitters) do
+		emitter:stopSoundByName(event)
+	end
+	self.state = "unLaunched"
 end
+
 
 Events.OnTick.Add(updateAllHelicopters)
