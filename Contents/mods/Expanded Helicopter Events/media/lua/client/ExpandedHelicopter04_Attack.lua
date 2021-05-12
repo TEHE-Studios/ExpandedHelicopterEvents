@@ -74,23 +74,14 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	--fireSound
-	local fireNoise = self.fireSound[1]
 	local eventSound = "attackSingle"
-
 	if self.hostilesToFireOnIndex > 1 then
-		fireNoise = self.fireSound[2]
 		eventSound = "attackLooped"
 	end
-
 	--determine location of helicopter
-	local ehX, ehY, ehZ = self:getXYZAsInt()
-
-	--play sound file
-	local gunEmitter = getWorld():getFreeEmitter()
-	gunEmitter:playSound(fireNoise, ehX, ehY, ehZ)
-
 	self:playEventSound(eventSound)
 
+	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
@@ -126,7 +117,7 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	local hitReport = "-"..self.ID.." n:"..fireNoise.." /t:"..timesFiredOnSpecificHostile..
+	local hitReport = "-"..self.ID.." n:"..eventSound.." /t:"..timesFiredOnSpecificHostile..
 			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass())
 
 	if ZombRand(0, 100) <= chance then
@@ -176,9 +167,7 @@ function eHelicopter:fireOn(targetHostile)
 	--[[debug]] print(hitReport)
 
 	--fireImpacts
-	local impactNoise = self.fireImpacts[ZombRand(1,#self.fireImpacts)]
-	local impactEmitter = getWorld():getFreeEmitter()
-	impactEmitter:playSound(impactNoise, targetHostile:getSquare())
+	self:playEventSound("attackImpacts", targetHostile:getSquare())
 end
 
 

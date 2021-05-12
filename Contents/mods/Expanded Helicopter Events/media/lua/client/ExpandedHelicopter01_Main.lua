@@ -13,7 +13,11 @@ eHelicopter.hoverOnTargetDuration = false
 eHelicopter.canCrash = "Base.UH1HCrash"
 
 ---@field eventSoundEffects table
-eHelicopter.eventSoundEffects = {}--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil,["attackLooped"]=nil,["attackSingle"]=nil}
+eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
+	["attackSingle"] = "eHeli_fire_single",
+	["attackLooped"] = "eHeli_fire_loop",
+	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
+	}
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffectEmitters = {}
@@ -47,12 +51,6 @@ eHelicopter.flightSound = "eHelicopter"
 
 ---@field flightVolume number
 eHelicopter.flightVolume = 50
-
----@field fireSound table sounds for firing
-eHelicopter.fireSound = {"eHeli_fire_single","eHeli_fire_loop"}
-
----@field fireImpacts table sounds for fire impact
-eHelicopter.fireImpacts = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 
 ---@field hostilePreference string
 ---set to 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
@@ -166,30 +164,40 @@ eHelicopter.ID = 0
 
 
 ---@param event string
+---@param otherLocation IsoGridSquare
+---@param saveEmitter boolean
 ---@param stopSound boolean
-function eHelicopter:playEventSound(event, stopSound)
+function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound)
 
 	local soundEffect = self.eventSoundEffects[event]
 
 	if not soundEffect then
 		return
 	end
+
+	if type(soundEffect)=="table" then
+		soundEffect = soundEffect[ZombRand(1,#soundEffect)]
+	end
+
 	---@type FMODSoundEmitter | BaseSoundEmitter emitter
 	local soundEmitter = self.eventSoundEffectEmitters[event]
+
 	if stopSound and soundEmitter then
 		soundEmitter:stopSoundByName(soundEffect)
 		return
 	end
-	--determine location of helicopter
-	local ehX, ehY, ehZ = self:getXYZAsInt()
+
+	otherLocation = otherLocation or self:getIsoGridSquare()
 
 	if not soundEmitter then
 		soundEmitter = getWorld():getFreeEmitter()
-		self.eventSoundEffectEmitters[event] = soundEmitter
+		if saveEmitter then
+			self.eventSoundEffectEmitters[event] = soundEmitter
+		end
 	elseif soundEmitter:isPlaying(soundEffect) then
 		return
 	end
-	soundEmitter:playSound(soundEffect, ehX, ehY, ehZ)
+	soundEmitter:playSound(soundEffect, otherLocation)
 end
 
 
@@ -597,7 +605,7 @@ function eHelicopter:update()
 
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("HOVERING OVER TARGET") end
 
-			self:playEventSound("hoverOverTarget")
+			self:playEventSound("hoverOverTarget", nil, true)
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-1
 			if self.hoverOnTargetDuration == 0 then
 				self.hoverOnTargetDuration = false
@@ -605,7 +613,7 @@ function eHelicopter:update()
 			preventMovement=true
 		else
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET") end
-			self:playEventSound("hoverOverTarget",true)
+			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
 			self:goHome()
 		end
