@@ -551,11 +551,7 @@ function eHelicopter:crash()
 
 		---@type BaseVehicle
 		local heli = addVehicleDebug(vehicleType, IsoDirections.S, nil, square)
-		heli:playSound("VehicleTireExplode")
 		heli:playSound("VehicleCrash")
-		heli:playSound("VehicleCrash1")
-		heli:playSound("VehicleCrash2")
-		heli:playSound("VehicleHitObject")
 		addSound(nil, square:getX(), square:getY(), 0, 100, 100)
 	end
 	self:unlaunch()
