@@ -460,7 +460,6 @@ function eHelicopter:move(re_aim, dampen)
 	--Move emitter to position
 	self.rotorEmitter:setPos(v_x,v_y,self.height)
 
-	addSound(nil, v_x, v_y, 0, (self.flightVolume*5), self.flightVolume)
 	--self:Report(re_aim, dampen)
 end
 
@@ -582,6 +581,9 @@ function eHelicopter:update()
 	end
 
 	if self.announcerVoice then
+	local v_x = tonumber(Vector3GetX(self.currentPosition))
+	local v_y = tonumber(Vector3GetY(self.currentPosition))
+	addSound(nil, v_x, v_y, 0, (self.flightVolume*5), self.flightVolume)
 		self:announce()
 	end
 
