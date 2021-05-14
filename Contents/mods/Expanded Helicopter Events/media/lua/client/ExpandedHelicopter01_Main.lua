@@ -152,6 +152,8 @@ eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 ---@field hostilesAlreadyFiredOn table
 eHelicopter.hostilesAlreadyFiredOn = {}
+---@field shadow WorldMarkers.GridSquareMarker
+eHelicopter.shadow = nil
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}
@@ -619,13 +621,21 @@ function eHelicopter:update()
 		lockOn = false
 	end
 
-	if not preventMovement then
-		self:move(lockOn, true)
-	end
-
 	local v_x = tonumber(Vector3GetX(self.currentPosition))
 	local v_y = tonumber(Vector3GetY(self.currentPosition))
-	addSound(nil, v_x, v_y, 0, (self.flightVolume*5), self.flightVolume)
+
+	if not preventMovement then
+		self:move(lockOn, true)
+
+		local currentSquare = self:getIsoGridSquare(0)
+		if currentSquare then
+			---@type WorldMarkers.GridSquareMarker
+			self.shadow = self.shadow or getWorldMarkers():addGridSquareMarker("circle_shadow",nil,currentSquare,0.2,0.2,0.2,false,4)
+			self.shadow:setPos(v_x,v_y,0)
+		end
+	end
+
+	addSound(nil, v_x,v_y, 0, (self.flightVolume*5), self.flightVolume)
 
 	if self.announcerVoice and (not self.crashing) then
 		self:announce()
