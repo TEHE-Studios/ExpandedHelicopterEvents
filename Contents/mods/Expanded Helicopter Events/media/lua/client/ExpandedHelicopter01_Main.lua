@@ -637,7 +637,7 @@ function eHelicopter:update()
 
 	addSound(nil, v_x,v_y, 0, (self.flightVolume*5), self.flightVolume)
 
-	if self.announcerVoice and (not self.crashing) then
+	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
 		self:announce()
 	end
 
