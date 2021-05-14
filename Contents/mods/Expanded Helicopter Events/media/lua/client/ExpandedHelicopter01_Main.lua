@@ -38,7 +38,7 @@ eHelicopter.startDayMinMax = {0,1}
 eHelicopter.cutOffDay = 30
 
 ---@field speed number
-eHelicopter.speed = 0.25
+eHelicopter.speed = 0.15
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
