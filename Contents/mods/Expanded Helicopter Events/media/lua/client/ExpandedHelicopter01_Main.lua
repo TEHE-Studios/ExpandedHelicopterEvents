@@ -630,7 +630,7 @@ function eHelicopter:update()
 		local currentSquare = self:getIsoGridSquare(0)
 		if currentSquare then
 			---@type WorldMarkers.GridSquareMarker
-			self.shadow = self.shadow or getWorldMarkers():addGridSquareMarker("circle_shadow",nil,currentSquare,0.2,0.2,0.2,false,4)
+			self.shadow = self.shadow or getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
 			self.shadow:setPos(v_x,v_y,0)
 		end
 	end
