@@ -521,7 +521,7 @@ function eHelicopter:launch(targetedPlayer)
 	end
 
 	if self.announcerVoice ~= false then
-		self:chooseVoice(self.announcerVoice)
+		self:chooseVoice()
 	end
 	self.state = "gotoTarget"
 
