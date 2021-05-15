@@ -553,7 +553,7 @@ function eHelicopter:crash()
 		print("EHE: CRASH EVENT: "..square:getX()..", "..square:getY())
 
 		---@type BaseVehicle
-		local heli = addVehicleDebug(vehicleType, IsoDirections.S, nil, square)
+		local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, square)
 		heli:playSound("VehicleCrash")
 		addSound(nil, square:getX(), square:getY(), 0, 100, 100)
 	end
