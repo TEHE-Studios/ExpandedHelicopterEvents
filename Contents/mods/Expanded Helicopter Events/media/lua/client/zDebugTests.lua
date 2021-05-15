@@ -95,8 +95,8 @@ if getDebug() then
 		if self.trueTarget and self.trueTarget:getClass() and self.target and self.target:getClass() then
 			print("HELI: "..self.ID.." "..STATE
 					..(self.trueTarget:getClass():getSimpleName()).." "
-					..(self.target:getClass():getSimpleName())..
-					" (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+					..(self.target:getClass():getSimpleName()).." "
+					.." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 		end
 	end
 
