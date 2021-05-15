@@ -6,7 +6,7 @@ ALL_HELICOPTERS = {}
 ---@class eHelicopter
 eHelicopter = {}
 
----@field hoverOnTargetDuration number How long the helicopter will hover over the player, this is subtracted from every tick
+---@field hoverOnTargetDuration number|boolean How long the helicopter will hover over the player, this is subtracted from every tick
 eHelicopter.hoverOnTargetDuration = false
 
 ---@field shadow boolean | WorldMarkers.GridSquareMarker
