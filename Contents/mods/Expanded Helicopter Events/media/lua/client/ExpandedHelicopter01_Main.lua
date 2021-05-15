@@ -10,7 +10,7 @@ eHelicopter = {}
 eHelicopter.hoverOnTargetDuration = false
 
 ---@field searchForTargetDurationMS number How long the helicopter will search for last seen targets
-eHelicopter.searchForTargetDuration = 1000
+eHelicopter.searchForTargetDuration = 30000
 
 ---@field shadow boolean | WorldMarkers.GridSquareMarker
 eHelicopter.shadow = true
@@ -604,7 +604,7 @@ function eHelicopter:update()
 			self:setTargetPos()
 			self.timeSinceLastSeenTarget = getTimestampMs()
 		else
-			local offset = math.floor(self.attackDistance*0.75)
+			local offset = math.floor(self.attackDistance*0.25)
 			local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
 			local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
 			self.target = getSquare(tx,ty,0)
