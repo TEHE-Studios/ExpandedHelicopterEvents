@@ -13,7 +13,8 @@ eHelicopter_PRESETS = {
 		flightSound = "eJetFlight",
 		hostilePreference = false,
 		announcerVoice = false,
-		canCrash = false
+		canCrash = false,
+		shadow = false
 	},
 
 	["news_chopper"] = {

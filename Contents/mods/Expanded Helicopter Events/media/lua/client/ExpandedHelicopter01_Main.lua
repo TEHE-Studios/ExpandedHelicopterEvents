@@ -9,6 +9,9 @@ eHelicopter = {}
 ---@field hoverOnTargetDuration number How long the helicopter will hover over the player, this is subtracted from every tick
 eHelicopter.hoverOnTargetDuration = false
 
+---@field shadow boolean | WorldMarkers.GridSquareMarker
+eHelicopter.shadow = true
+
 ---@field canCrash boolean
 eHelicopter.canCrash = "Base.UH1HCrash"
 
@@ -152,8 +155,6 @@ eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 ---@field hostilesAlreadyFiredOn table
 eHelicopter.hostilesAlreadyFiredOn = {}
----@field shadow WorldMarkers.GridSquareMarker
-eHelicopter.shadow = nil
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}
