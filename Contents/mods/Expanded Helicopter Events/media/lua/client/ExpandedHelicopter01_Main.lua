@@ -597,23 +597,26 @@ function eHelicopter:update()
 
 	--if trueTarget is within range
 	if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*2)) then
-		--if trueTarget is outside then match target to trueTarget otherwise scramble target to random nearby square
+		--heli copter hovers around by default
+		local offset = math.floor(self.attackDistance*0.25)
+		--if trueTarget is outside then make the offset 4 tiles
 		if self.trueTarget:isOutside() then
-			--see trueTarget
 			self.target = self.trueTarget
-			self:setTargetPos()
 			self.timeSinceLastSeenTarget = getTimestampMs()
-		else
-			local offset = math.floor(self.attackDistance*0.25)
-			local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
-			local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
-			self.target = getSquare(tx,ty,0)
-			self:setTargetPos()
-			--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration clear target
-			if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < getTimestampMs()) then
-				self.trueTarget = self.target
-			end
+			offset = 0
 		end
+
+		local tx = self.trueTarget:getX()+ZombRand(-offset,offset)
+		local ty = self.trueTarget:getY()+ZombRand(-offset,offset)
+
+		self.target = getSquare(tx,ty,0)
+		self:setTargetPos()
+
+		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration clear target
+		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < getTimestampMs()) then
+			self.trueTarget = self.target
+		end
+
 	end
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
