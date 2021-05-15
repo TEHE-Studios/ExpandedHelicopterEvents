@@ -574,6 +574,18 @@ function eHelicopter:dropItem(path)
 end
 
 
+---Heli drop carePackage
+---@param carePackage string
+function eHelicopter:dropCarePackage(carePackage)
+	local currentSquare = self:getIsoGridSquare(0)
+	carePackage = carePackage or "Base.FEMASupplyDrop"
+	if currentSquare then
+		---@type BaseVehicle airDrop
+		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
+	end
+end
+
+
 function eHelicopter:update()
 	--check if trueTarget is a player/zombie
 	if instanceof(self.trueTarget, "IsoGameCharacter") then
