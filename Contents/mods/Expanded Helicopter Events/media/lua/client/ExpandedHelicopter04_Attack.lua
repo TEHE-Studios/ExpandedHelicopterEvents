@@ -38,13 +38,16 @@ function eHelicopter:lookForHostiles(targetType)
 		self.hostilesToFireOn[i]=nil
 	end
 
-	--keep an eye out for new targets
-	local scanningForTargets = self:attackScan(selfSquare, targetType)
-	--if no more targets or newly scanned targets are greater size change target
-	if (#self.hostilesToFireOn <=0) or (#scanningForTargets > self.hostilesToFireOnIndex) then
-		--set targets
-		self.hostilesToFireOn = scanningForTargets
-		self.hostilesToFireOnIndex = #self.hostilesToFireOn
+	if self.lastScanTime <= timeStamp then
+		self.lastScanTime = timeStamp+(self.attackDelay*2)
+		--keep an eye out for new targets
+		local scanningForTargets = self:attackScan(selfSquare, targetType)
+		--if no more targets or newly scanned targets are greater size change target
+		if (#self.hostilesToFireOn <=0) or (#scanningForTargets > self.hostilesToFireOnIndex) then
+			--set targets
+			self.hostilesToFireOn = scanningForTargets
+			self.hostilesToFireOnIndex = #self.hostilesToFireOn
+		end
 	end
 
 	--if there are hostiles identified

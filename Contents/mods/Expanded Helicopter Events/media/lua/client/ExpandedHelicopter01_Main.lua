@@ -155,6 +155,8 @@ eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 ---@field hostilesAlreadyFiredOn table
 eHelicopter.hostilesAlreadyFiredOn = {}
+---@field lastScanTime number
+eHelicopter.lastScanTime = -1
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}
