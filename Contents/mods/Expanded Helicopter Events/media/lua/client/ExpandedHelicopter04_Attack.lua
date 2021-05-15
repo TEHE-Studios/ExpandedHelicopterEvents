@@ -6,6 +6,12 @@ function eHelicopter:lookForHostiles(targetType)
 		return
 	end
 
+	local timeStamp = getTimestampMs()
+	--too soon to attack again OR will overlap with an announcement
+	if (self.lastAttackTime+self.attackDelay >= timeStamp) or (self.timeUntilCanAnnounce >= timeStamp) then
+		return
+	end
+
 	--store numeration (length) of self.hostilesToFireOn
 	local n = #self.hostilesToFireOn
 
@@ -39,12 +45,6 @@ function eHelicopter:lookForHostiles(targetType)
 		--set targets
 		self.hostilesToFireOn = scanningForTargets
 		self.hostilesToFireOnIndex = #self.hostilesToFireOn
-	end
-
-	local timeStamp = getTimestampMs()
-	--too soon to attack again OR will overlap with an announcement THEN return
-	if (self.lastAttackTime+self.attackDelay >= timeStamp) or (self.timeUntilCanAnnounce >= timeStamp) then
-		return
 	end
 
 	--if there are hostiles identified

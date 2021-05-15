@@ -38,7 +38,7 @@ eHelicopter.startDayMinMax = {0,1}
 eHelicopter.cutOffDay = 30
 
 ---@field speed number
-eHelicopter.speed = 0.25
+eHelicopter.speed = 0.15
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
@@ -152,6 +152,8 @@ eHelicopter.hostilesToFireOnIndex = 0
 eHelicopter.hostilesToFireOn = {}
 ---@field hostilesAlreadyFiredOn table
 eHelicopter.hostilesAlreadyFiredOn = {}
+---@field shadow WorldMarkers.GridSquareMarker
+eHelicopter.shadow = nil
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}
@@ -519,7 +521,7 @@ function eHelicopter:launch(targetedPlayer)
 	end
 
 	if self.announcerVoice ~= false then
-		self:chooseVoice(self.announcerVoice)
+		self:chooseVoice()
 	end
 	self.state = "gotoTarget"
 
@@ -601,8 +603,8 @@ function eHelicopter:update()
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("HOVERING OVER TARGET") end
 
 			self:playEventSound("hoverOverTarget", nil, true)
-			self.hoverOnTargetDuration = self.hoverOnTargetDuration-1
-			if self.hoverOnTargetDuration == 0 then
+			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
+			if self.hoverOnTargetDuration <= 0 then
 				self.hoverOnTargetDuration = false
 			end
 			preventMovement=true
@@ -619,15 +621,23 @@ function eHelicopter:update()
 		lockOn = false
 	end
 
-	if not preventMovement then
-		self:move(lockOn, true)
-	end
-
 	local v_x = tonumber(Vector3GetX(self.currentPosition))
 	local v_y = tonumber(Vector3GetY(self.currentPosition))
-	addSound(nil, v_x, v_y, 0, (self.flightVolume*5), self.flightVolume)
 
-	if self.announcerVoice and (not self.crashing) then
+	if not preventMovement then
+		self:move(lockOn, true)
+
+		local currentSquare = self:getIsoGridSquare(0)
+		if currentSquare then
+			---@type WorldMarkers.GridSquareMarker
+			self.shadow = self.shadow or getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
+			self.shadow:setPos(v_x,v_y,0)
+		end
+	end
+
+	addSound(nil, v_x,v_y, 0, (self.flightVolume*5), self.flightVolume)
+
+	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
 		self:announce()
 	end
 
