@@ -615,7 +615,7 @@ function eHelicopter:update()
 	end
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
-	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
+	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())+4
 	local crashMin = thatIsCloseEnough*33
 	local crashMax = thatIsCloseEnough*ZombRand(crashMin,100)
 
