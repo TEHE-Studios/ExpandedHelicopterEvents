@@ -9,6 +9,9 @@ eHelicopter = {}
 ---@field hoverOnTargetDuration number|boolean How long the helicopter will hover over the player, this is subtracted from every tick
 eHelicopter.hoverOnTargetDuration = false
 
+---@field searchForTargetDurationMS number How long the helicopter will search for last seen targets
+eHelicopter.searchForTargetDuration = 1000
+
 ---@field shadow boolean | WorldMarkers.GridSquareMarker
 eHelicopter.shadow = true
 
@@ -139,6 +142,8 @@ eHelicopter.eventSoundEffectEmitters = {}
 eHelicopter.target = false
 ---@field trueTarget IsoGameCharacter
 eHelicopter.trueTarget = false
+---@field timeSinceLastSeenTarget number
+eHelicopter.timeSinceLastSeenTarget = -1
 ---@field attackDistance number
 eHelicopter.attackDistance = false
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
@@ -589,28 +594,25 @@ end
 
 
 function eHelicopter:update()
-	--check if trueTarget is a player/zombie
-	if instanceof(self.trueTarget, "IsoGameCharacter") then
-		--if trueTarget is within range
-		if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*2)) then
-			--if trueTarget is outside then match target to trueTarget otherwise scramble target to random nearby square
-			if self.trueTarget:isOutside() then
-				self.target = self.trueTarget
-			else
-				local offset = math.floor(self.attackDistance*0.75)
-				local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
-				local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
-				self.target = getSquare(tx,ty,0)
-			end
+
+	--if trueTarget is within range
+	if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*2)) then
+		--if trueTarget is outside then match target to trueTarget otherwise scramble target to random nearby square
+		if self.trueTarget:isOutside() then
+			--see trueTarget
+			self.target = self.trueTarget
+			self:setTargetPos()
+			self.timeSinceLastSeenTarget = getTimestampMs()
 		else
-		--if target is out of range, confirm target is a near by square, then set trueTarget to current target - loss of target
-			if not instanceof(self.target, "IsoGridSquare") then
-				local offset = math.floor(self.attackDistance*0.75)
-				local tx = Vector3GetX(self.currentPosition)+ZombRand(-offset,offset)
-				local ty = Vector3GetY(self.currentPosition)+ZombRand(-offset,offset)
-				self.target = getSquare(tx,ty,0)
+			local offset = math.floor(self.attackDistance*0.75)
+			local tx = Vector3GetX(self.targetPosition)+ZombRand(-offset,offset)
+			local ty = Vector3GetY(self.targetPosition)+ZombRand(-offset,offset)
+			self.target = getSquare(tx,ty,0)
+			self:setTargetPos()
+			--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration clear target
+			if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < getTimestampMs()) then
+				self.trueTarget = self.target
 			end
-			self.trueTarget = self.target
 		end
 	end
 
