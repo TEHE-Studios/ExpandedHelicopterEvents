@@ -560,6 +560,19 @@ function eHelicopter:crash()
 	self:unlaunch()
 end
 
+--EHE.NoticeFlyer EHE.PreventionFlyer EHE.QuarantineFlyer EHE.EmergencyFlyer EHE.EvacuationFlyer
+---Heli drop item
+---@param path string
+function eHelicopter:dropItem(path)
+	if not path then
+		return
+	end
+	local currentSquare = self:getIsoGridSquare(0)
+	if currentSquare then
+		currentSquare:AddWorldInventoryItem(path,0,0,0)
+	end
+end
+
 
 function eHelicopter:update()
 	--check if trueTarget is a player/zombie
