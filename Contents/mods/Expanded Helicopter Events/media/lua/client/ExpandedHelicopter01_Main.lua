@@ -655,9 +655,12 @@ function eHelicopter:update()
 
 		local currentSquare = self:getIsoGridSquare(0)
 		if currentSquare then
-			---@type WorldMarkers.GridSquareMarker
-			self.shadow = self.shadow or getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
-			self.shadow:setPos(v_x,v_y,0)
+			if self.shadow ~= false then
+				if self.shadow == true then
+					self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
+				end
+				self.shadow:setPos(v_x,v_y,0)
+			end
 		end
 	end
 
@@ -694,6 +697,9 @@ function eHelicopter:unlaunch()
 	self.rotorEmitter:stopAll()
 	for event,emitter in pairs(self.eventSoundEffectEmitters) do
 		emitter:stopSoundByName(event)
+	end
+	if self.shadow and type(self.shadow)~="boolean" then
+		self.shadow:remove()
 	end
 	self.state = "unLaunched"
 end
