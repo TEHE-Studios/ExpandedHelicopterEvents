@@ -380,7 +380,7 @@ function eHelicopter:dampen(movement)
 	--finds the fraction of distance to target and preflight distance to target
 	local distanceCompare = self:getDistanceToVector(self.targetPosition) / self.preflightDistance
 	--clamp with a max of self.topSpeedFactor and min of 0.1 (10%) is applied to the fraction 
-	local dampenFactor = math.max(self.topSpeedFactor, math.min(0.1, distanceCompare))
+	local dampenFactor = math.max(self.topSpeedFactor, math.min(0.025, distanceCompare))
 	--this will slow-down/speed-up eHelicopter the closer/farther it is to the target
 	local x_movement = Vector3GetX(movement) * dampenFactor
 	local y_movement = Vector3GetY(movement) * dampenFactor
