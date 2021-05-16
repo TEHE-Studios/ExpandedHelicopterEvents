@@ -603,12 +603,15 @@ function eHelicopter:update()
 
 	local timeStampMS = getTimestampMs()
 	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
+	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
 	--if trueTarget is within range
-	if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*4)) then
+	if distanceToTrueTarget <= (self.attackDistance*4) then
 		--if trueTarget is outside then sync targets
 		if self.trueTarget:isOutside() then
-			self.target = self.trueTarget
+			if distanceToTrueTarget > self.attackDistance then
+				self.target = self.trueTarget
+			end
 			self.timeSinceLastSeenTarget = timeStampMS
 		else
 			--prevent constantly changing targets during roaming
