@@ -611,10 +611,10 @@ function eHelicopter:update()
 		else
 			--prevent constantly changing targets during roaming
 			if (self.timeSinceLastRoamed < timeStampMS) then
-				self.timeSinceLastRoamed = timeStampMS+5000--5000 should be 5 seconds
+				self.timeSinceLastRoamed = timeStampMS+10000 --10 seconds
 
 				--random offset used for roaming
-				local offset = self.attackDistance*2
+				local offset = self.attackDistance
 				local randOffset = {-offset,offset}
 
 				local tx = self.target:getX()
