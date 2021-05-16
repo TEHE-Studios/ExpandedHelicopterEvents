@@ -679,11 +679,10 @@ function eHelicopter:update()
 
 	local v_x = tonumber(Vector3GetX(self.currentPosition))
 	local v_y = tonumber(Vector3GetY(self.currentPosition))
+	local currentSquare = self:getIsoGridSquare(0)
 
 	if not preventMovement then
 		self:move(lockOn, true)
-
-		local currentSquare = self:getIsoGridSquare(0)
 		if currentSquare then
 			if self.shadow ~= false then
 				if self.shadow == true then
@@ -706,7 +705,13 @@ function eHelicopter:update()
 		self.shadow:setSize(shadowSize)
 	end
 
-	addSound(nil, v_x,v_y, 0, (self.flightVolume*5), self.flightVolume)
+	local volumeFactor = 1
+	local zoneType = currentSquare:getZoneType()
+	if (zoneType == "Forest") or (zoneType == "DeepForest") then
+		volumeFactor = 0.25
+	end
+
+	addSound(nil, v_x,v_y, 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
 
 	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
 		self:announce()
