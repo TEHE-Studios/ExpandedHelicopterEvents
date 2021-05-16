@@ -710,9 +710,11 @@ function eHelicopter:update()
 	end
 
 	local volumeFactor = 1
-	local zoneType = currentSquare:getZoneType()
-	if (zoneType == "Forest") or (zoneType == "DeepForest") then
-		volumeFactor = 0.25
+	if currentSquare then
+		local zoneType = currentSquare:getZoneType()
+		if (zoneType == "Forest") or (zoneType == "DeepForest") then
+			volumeFactor = 0.25
+		end
 	end
 
 	addSound(nil, v_x,v_y, 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
