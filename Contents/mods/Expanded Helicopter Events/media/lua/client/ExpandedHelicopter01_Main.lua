@@ -16,7 +16,13 @@ eHelicopter.searchForTargetDuration = 30000
 eHelicopter.shadow = true
 
 ---@field canCrash boolean
-eHelicopter.canCrash = "Base.UH1HCrash"
+eHelicopter.canCrash = {"UH1HCrash"}
+
+---@field dropItems table
+eHelicopter.dropItems = {"NoticeFlyer"} --EHE.NoticeFlyer EHE.PreventionFlyer EHE.QuarantineFlyer EHE.EmergencyFlyer EHE.EvacuationFlyer
+
+---@field dropPackages table
+eHelicopter.dropPackages = {"FEMASupplyDrop"}
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
@@ -561,40 +567,42 @@ function eHelicopter:crash()
 	if self.canCrash then
 		---@type IsoGridSquare
 		local square = self:getIsoGridSquare(self.height)
-		local vehicleType = self.canCrash
+		local vehicleType = self.canCrash[ZombRand(1,#self.canCrash+1)]
 
 		print("EHE: CRASH EVENT: "..square:getX()..", "..square:getY())
 
 		---@type BaseVehicle
-		local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, square)
+		local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, square)
 		heli:playSound("VehicleCrash")
 		addSound(nil, square:getX(), square:getY(), 0, 100, 100)
 	end
 	self:unlaunch()
 end
 
---EHE.NoticeFlyer EHE.PreventionFlyer EHE.QuarantineFlyer EHE.EmergencyFlyer EHE.EvacuationFlyer
+
 ---Heli drop item
----@param path string
-function eHelicopter:dropItem(path)
-	if not path then
-		return
-	end
+function eHelicopter:dropItem()
+
+	local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
 	local currentSquare = self:getIsoGridSquare(0)
+
 	if currentSquare then
-		currentSquare:AddWorldInventoryItem(path,0,0,0)
+		local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
 	end
 end
 
 
 ---Heli drop carePackage
----@param carePackage string
-function eHelicopter:dropCarePackage(carePackage)
+function eHelicopter:dropCarePackage()
+
+	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
 	local currentSquare = self:getIsoGridSquare(0)
-	carePackage = carePackage or "Base.FEMASupplyDrop"
+
 	if currentSquare then
+		print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
 		---@type BaseVehicle airDrop
-		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
+		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
+		return airDrop
 	end
 end
 
@@ -679,6 +687,20 @@ function eHelicopter:update()
 			self:playEventSound("flyOverTarget")
 			self:goHome()
 		end
+	end
+
+	local packageDropRange = thatIsCloseEnough*100
+	local packageDropRateTaper = ZombRand(100) <= (distToTarget/ packageDropRange)*100
+	if self.dropPackages and packageDropRateTaper and (distToTarget <= packageDropRange) then
+		if self:dropCarePackage() then
+			self.dropPackages = false
+		end
+	end
+
+	local itemDropRange = thatIsCloseEnough*500
+	local itemDropRateTaper = ZombRand(100) <= (distToTarget/ itemDropRange)*100
+	if self.dropItems and itemDropRateTaper and (distToTarget <= itemDropRange) then
+		self:dropItem()
 	end
 
 	local lockOn = true
