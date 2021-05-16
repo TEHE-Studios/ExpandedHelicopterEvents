@@ -652,6 +652,10 @@ function eHelicopter:update()
 		return
 	end
 
+	if self.hoverOnTargetDuration then
+		thatIsCloseEnough = thatIsCloseEnough*ZombRand(2,4)
+	end
+
 	local preventMovement = false
 	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
 		if self.hoverOnTargetDuration then
