@@ -144,6 +144,8 @@ eHelicopter.target = false
 eHelicopter.trueTarget = false
 ---@field timeSinceLastSeenTarget number
 eHelicopter.timeSinceLastSeenTarget = -1
+---@field timeSinceLastRoamed number
+eHelicopter.timeSinceLastRoamed = -1
 ---@field attackDistance number
 eHelicopter.attackDistance = false
 ---@field targetPosition Vector3 "position" of target, pair of coordinates which can utilize Vector3 math
@@ -595,32 +597,51 @@ end
 
 function eHelicopter:update()
 
+	local timeStampMS = getTimestampMs()
+	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
+
 	--if trueTarget is within range
-	if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*2)) then
-		--heli copter hovers around by default
-		local offset = math.floor(self.attackDistance*0.25)
-		--if trueTarget is outside then make the offset 4 tiles
+	if (self:getDistanceToIsoObject(self.trueTarget) <= (self.attackDistance*4)) then
+		--if trueTarget is outside then sync targets
 		if self.trueTarget:isOutside() then
 			self.target = self.trueTarget
-			self.timeSinceLastSeenTarget = getTimestampMs()
-			offset = 0
+			self.timeSinceLastSeenTarget = timeStampMS
+		else
+			--prevent constantly changing targets during roaming
+			if (self.timeSinceLastRoamed < timeStampMS) then
+				self.timeSinceLastRoamed = timeStampMS+5000--5000 should be 5 seconds
+
+				--random offset used for roaming
+				local offset = self.attackDistance*2
+				local randOffset = {-offset,offset}
+
+				local tx = self.target:getX()
+				--50% chance to offset x
+				if ZombRand(1,100) <= 50 then
+					--pick from randOffset, 50% negative or positive
+					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
+				end
+				local ty = self.target:getY()
+				--50% chance to offset y
+				if ZombRand(1,100) <= 50 then
+					--pick from randOffset, 50% negative or positive
+					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
+				end
+				--set target to square from calculated offset
+				self.target = getSquare(tx,ty,0)
+			end
 		end
 
-		local tx = self.trueTarget:getX()+ZombRand(-offset,offset)
-		local ty = self.trueTarget:getY()+ZombRand(-offset,offset)
-
-		self.target = getSquare(tx,ty,0)
 		self:setTargetPos()
-
-		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration clear target
-		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < getTimestampMs()) then
+		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
+		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 		end
 
 	end
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
-	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())+4
+	thatIsCloseEnough = thatIsCloseEnough+4
 	local crashMin = thatIsCloseEnough*33
 	local crashMax = thatIsCloseEnough*ZombRand(crashMin,100)
 
