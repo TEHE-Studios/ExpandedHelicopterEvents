@@ -164,6 +164,8 @@ eHelicopter.hostilesToFireOn = {}
 eHelicopter.hostilesAlreadyFiredOn = {}
 ---@field lastScanTime number
 eHelicopter.lastScanTime = -1
+---@field shadowFlickerRate number
+eHelicopter.shadowFlickerRate = 0.05
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}
@@ -690,6 +692,16 @@ function eHelicopter:update()
 				self.shadow:setPos(v_x,v_y,0)
 			end
 		end
+	end
+
+	--shadowBob
+	if self.shadow and (self.shadow ~= true) then
+		local shadowSize = self.shadow:getSize()
+		shadowSize = shadowSize+self.shadowFlickerRate
+		if shadowSize >= 7 or shadowSize <= 6 then
+			self.shadowFlickerRate = 0-self.shadowFlickerRate
+		end
+		self.shadow:setSize(shadowSize)
 	end
 
 	addSound(nil, v_x,v_y, 0, (self.flightVolume*5), self.flightVolume)
