@@ -698,7 +698,6 @@ function eHelicopter:update()
 	if self.shadow and (self.shadow ~= true) then
 		local shadowSize = self.shadow:getSize()
 		shadowSize = shadowSize+self.shadowFlickerRate
-		print("shadowSize:"..shadowSize.."  +"..self.shadowFlickerRate)
 		if shadowSize >= 7 then
 			self.shadowFlickerRate = 0-math.abs(self.shadowFlickerRate)
 		elseif shadowSize <= 6 then
