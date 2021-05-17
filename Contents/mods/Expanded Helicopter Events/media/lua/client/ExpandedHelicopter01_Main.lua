@@ -19,10 +19,10 @@ eHelicopter.shadow = true
 eHelicopter.canCrash = {"UH1HCrash"}
 
 ---@field dropItems table
-eHelicopter.dropItems = {"NoticeFlyer"} --EHE.NoticeFlyer EHE.PreventionFlyer EHE.QuarantineFlyer EHE.EmergencyFlyer EHE.EvacuationFlyer
+eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
 
 ---@field dropPackages table
-eHelicopter.dropPackages = {"FEMASupplyDrop"}
+eHelicopter.dropPackages = false --{"FEMASupplyDrop"}
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
