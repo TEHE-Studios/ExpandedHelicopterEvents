@@ -42,6 +42,12 @@ eHelicopter_PRESETS = {
 		hostilePreference = "IsoGameCharacter",
 		canCrash = {"UH1Hsurvivalistcrash"}
 	},
+
+	["aid_helicopter"] = {
+		canCrash = {"UH1Hmedevaccrash"},
+		dropPackages = {"FEMASupplyDrop"},
+		cutOffDay = 20,
+	}
 }
 
 
