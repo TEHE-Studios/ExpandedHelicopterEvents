@@ -26,7 +26,7 @@ eHelicopter_PRESETS = {
 		hostilePreference = false,
 		announcerVoice = false,
 		cutOffDay = 15,
-		canCrash = "Base.Bell206LBMWCrashed"
+		canCrash = {"Bell206LBMWCrashed"}
 	},
 
 	["patrol_only"] = {
@@ -40,7 +40,7 @@ eHelicopter_PRESETS = {
 	["attack_only_all"] = {
 		announcerVoice = false,
 		hostilePreference = "IsoGameCharacter",
-		canCrash = "Base.UH1Hsurvivalistcrash"
+		canCrash = {"UH1Hsurvivalistcrash"}
 	},
 }
 
