@@ -485,18 +485,17 @@ function eHelicopter:move(re_aim, dampen)
 end
 
 
----@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:launch(targetedPlayer)
+---@param range number
+function eHelicopter:findTarget(range)
+	--the -1 is to offset playerIDs starting at 0
+	local weightPlayersList = {}
+	local numActivePlayers = getNumActivePlayers()-1
 
-	if not targetedPlayer then
-		--the -1 is to offset playerIDs starting at 0
-		local weightPlayersList = {}
-		local numActivePlayers = getNumActivePlayers()-1
+	for i=0, numActivePlayers do
+		---@type IsoGameCharacter p
+		local p = getSpecificPlayer(i)
 
-		for i=0, numActivePlayers do
-			---@type IsoGameCharacter p
-			local p = getSpecificPlayer(i)
-
+		if (not range) or (self:getDistanceToIsoObject(p) <= range) then
 			local iterations = 3
 
 			local zone = p:getCurrentZone()
@@ -511,8 +510,23 @@ function eHelicopter:launch(targetedPlayer)
 				table.insert(weightPlayersList, p)
 			end
 		end
+	end
 
-		targetedPlayer = weightPlayersList[ZombRand(1, #weightPlayersList)]
+	local target
+
+	if #weightPlayersList then
+		target = weightPlayersList[ZombRand(1, #weightPlayersList)]
+	end
+
+	return target
+end
+
+
+---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
+function eHelicopter:launch(targetedPlayer)
+
+	if not targetedPlayer then
+		targetedPlayer = self:findTarget()
 	end
 
 	self.target = targetedPlayer:getSquare()
@@ -556,6 +570,10 @@ end
 function getOutsideSquare(square)
 	if not square then
 		return
+	end
+
+	if square:isOutside() then
+		return square
 	end
 
 	local x, y = square:getX(), square:getY()
@@ -665,7 +683,10 @@ function eHelicopter:update()
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 		end
+	end
 
+	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration then
+		self:findTarget(self.attackDistance*4)
 	end
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
@@ -733,7 +754,9 @@ function eHelicopter:update()
 				end
 
 				local shadowSquare = getOutsideSquare(currentSquare)
-				self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
+				if shadowSquare then
+					self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
+				end
 			end
 		end
 	end
@@ -757,9 +780,8 @@ function eHelicopter:update()
 		if (zoneType == "Forest") or (zoneType == "DeepForest") then
 			volumeFactor = 0.25
 		end
+		addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
 	end
-
-	addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
 
 	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
 		self:announce()
