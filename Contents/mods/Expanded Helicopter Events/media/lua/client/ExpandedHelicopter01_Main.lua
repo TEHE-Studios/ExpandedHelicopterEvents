@@ -575,17 +575,21 @@ function eHelicopter:crash()
 
 	if self.canCrash then
 		---@type IsoGridSquare
-		local square = self:getIsoGridSquare(self.height)
+		local currentSquare = getOutsideSquare(self:getIsoGridSquare())
 		local vehicleType = self.canCrash[ZombRand(1,#self.canCrash+1)]
 
-		print("EHE: CRASH EVENT: "..square:getX()..", "..square:getY())
+		if currentSquare then
 
-		---@type BaseVehicle
-		local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, square)
-		heli:playSound("VehicleCrash")
-		addSound(nil, square:getX(), square:getY(), 0, 100, 100)
+			print("EHE: CRASH EVENT: "..currentSquare:getX()..", "..currentSquare:getY())
+
+			---@type BaseVehicle
+			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, square)
+			heli:playSound("VehicleCrash")
+			addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
+			self:unlaunch()
+			return true
+		end
 	end
-	self:unlaunch()
 end
 
 
@@ -670,8 +674,9 @@ function eHelicopter:update()
 	local crashMax = thatIsCloseEnough*ZombRand(crashMin,100)
 
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
-		self:crash()
-		return
+		if self:crash() then
+			return
+		end
 	end
 
 	if self.hoverOnTargetDuration then
