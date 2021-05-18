@@ -551,6 +551,25 @@ function eHelicopter:goHome()
 end
 
 
+---@param square IsoGridSquare
+---@return IsoGridSquare
+function getOutsideSquare(square)
+	if not square then
+		return
+	end
+
+	local x, y = square:getX(), square:getY()
+	local cell = square:getCell()
+
+	for i=0, 7 do
+		local sq = cell:getOrCreateGridSquare(x, y, i)
+		if sq and (sq:isOutside() and sq:isSolid()) then
+			return sq
+		end
+	end
+end
+
+
 ---Heli goes down
 function eHelicopter:crash()
 
@@ -574,7 +593,7 @@ end
 function eHelicopter:dropItem()
 
 	local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
-	local currentSquare = self:getIsoGridSquare(0)
+	local currentSquare = getOutsideSquare(self:getIsoGridSquare())
 
 	if currentSquare then
 		local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
@@ -586,7 +605,7 @@ end
 function eHelicopter:dropCarePackage()
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
-	local currentSquare = self:getIsoGridSquare(0)
+	local currentSquare = getOutsideSquare(self:getIsoGridSquare())
 
 	if currentSquare then
 		print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
