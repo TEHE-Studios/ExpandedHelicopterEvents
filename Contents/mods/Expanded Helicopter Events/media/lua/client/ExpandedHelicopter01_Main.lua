@@ -722,8 +722,6 @@ function eHelicopter:update()
 		lockOn = false
 	end
 
-	local v_x = tonumber(Vector3GetX(self.currentPosition))
-	local v_y = tonumber(Vector3GetY(self.currentPosition))
 	local currentSquare = self:getIsoGridSquare()
 
 	if not preventMovement then
@@ -733,7 +731,9 @@ function eHelicopter:update()
 				if self.shadow == true then
 					self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
 				end
-				self.shadow:setPos(v_x,v_y,0)
+
+				local shadowSquare = getOutsideSquare(currentSquare)
+				self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
 			end
 		end
 	end
@@ -759,7 +759,7 @@ function eHelicopter:update()
 		end
 	end
 
-	addSound(nil, v_x,v_y, 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
+	addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
 
 	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
 		self:announce()
