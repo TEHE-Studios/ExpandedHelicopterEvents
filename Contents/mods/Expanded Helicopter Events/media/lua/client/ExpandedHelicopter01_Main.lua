@@ -343,19 +343,9 @@ end
 
 
 ---@return IsoGridSquare of eHelicopter
-function eHelicopter:getIsoGridSquare(zLevel)
+function eHelicopter:getIsoGridSquare()
 	local ehX, ehY, _ = self:getXYZAsInt()
-	local square = getSquare(ehX, ehY, zLevel or 0)
-	--squares on non-zero z levels may not be loaded
-	if not square and zLevel then
-		--grab cell on floor if cell is loaded
-		square = getSquare(ehX, ehY, 0)
-		if square then
-			return square:getCell():getOrCreateGridSquare(ehX, ehY, zLevel)
-		end
-	end
-
-	return square
+	return getSquare(ehX, ehY, 0)
 end
 
 
@@ -710,7 +700,7 @@ function eHelicopter:update()
 
 	local v_x = tonumber(Vector3GetX(self.currentPosition))
 	local v_y = tonumber(Vector3GetY(self.currentPosition))
-	local currentSquare = self:getIsoGridSquare(0)
+	local currentSquare = self:getIsoGridSquare()
 
 	if not preventMovement then
 		self:move(lockOn, true)
