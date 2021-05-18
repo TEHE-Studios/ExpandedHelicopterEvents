@@ -15,7 +15,7 @@ if getDebug() then
 			--DEBUG_TESTS.shakeTrees()
 
 		elseif key == Keyboard.KEY_5 then
-			DEBUG_TESTS.launch_jet()
+			DEBUG_TESTS.launch_aid_chopper()
 
 		elseif key == Keyboard.KEY_6 then
 			DEBUG_TESTS.launch_news_chopper()
@@ -185,6 +185,20 @@ if getDebug() then
 		print("\"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
+	--- Test launch close "news_chopper" heli
+	function DEBUG_TESTS.launch_aid_chopper()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("aid_helicopter")
+		heli:launch()
+
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+		print("\"aid_helicopter\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
 
 	--- Test getHumanoidsInFractalRange
 	function DEBUG_TESTS.getHumanoidsInFractalRange()
