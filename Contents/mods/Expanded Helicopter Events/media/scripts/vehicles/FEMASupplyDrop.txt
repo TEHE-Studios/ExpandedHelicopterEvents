@@ -7,9 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-
 	vehicle FEMASupplyDrop
-	
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -53,9 +51,9 @@ module Base
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 
-        area TruckBed
+		area TruckBed
 		{
-			xywh = 0.1282 -1.2308 2.0256 1.0000,
+			xywh = -0.0000 0.0000 2.4872 2.4872,
 		}
 
 		area TruckBed
@@ -71,16 +69,6 @@ module Base
 			{
 				capacity = 300,
 			}
-		}
-		template = Trunk/part/TruckBed,
-
-		part TruckBed
-		{
-			container
-			{
-				capacity = 300,
-			}
-		}
 		}
 	}
 }
