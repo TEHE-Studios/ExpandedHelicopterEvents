@@ -13,7 +13,7 @@ eHelicopter_PRESETS = {
 		flightSound = "eJetFlight",
 		hostilePreference = false,
 		announcerVoice = false,
-		canCrash = false,
+		crashType = false,
 		shadow = false
 	},
 
@@ -26,7 +26,7 @@ eHelicopter_PRESETS = {
 		hostilePreference = false,
 		announcerVoice = false,
 		cutOffDay = 15,
-		canCrash = {"Bell206LBMWCrashed"}
+		crashType = {"Bell206LBMWCrashed"}
 	},
 
 	["patrol_only"] = {
@@ -40,11 +40,11 @@ eHelicopter_PRESETS = {
 	["attack_only_all"] = {
 		announcerVoice = false,
 		hostilePreference = "IsoGameCharacter",
-		canCrash = {"UH1Hsurvivalistcrash"}
+		crashType = {"UH1Hsurvivalistcrash"}
 	},
 
 	["aid_helicopter"] = {
-		canCrash = {"UH1Hmedevaccrash"},
+		crashType = {"UH1Hmedevaccrash"},
 		dropPackages = {"FEMASupplyDrop"},
 		cutOffDay = 20,
 	}

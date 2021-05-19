@@ -15,8 +15,8 @@ eHelicopter.searchForTargetDuration = 30000
 ---@field shadow boolean | WorldMarkers.GridSquareMarker
 eHelicopter.shadow = true
 
----@field canCrash boolean
-eHelicopter.canCrash = {"UH1HCrash"}
+---@field crashType boolean
+eHelicopter.crashType = { "UH1HCrash"}
 
 ---@field dropItems table
 eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
@@ -591,7 +591,7 @@ end
 ---Heli goes down
 function eHelicopter:crash()
 
-	if self.canCrash then
+	if self.crashType then
 		---@type IsoGridSquare
 		local currentSquare = getOutsideSquare(self:getIsoGridSquare())
 		local vehicleType = self.canCrash[ZombRand(1,#self.canCrash+1)]
