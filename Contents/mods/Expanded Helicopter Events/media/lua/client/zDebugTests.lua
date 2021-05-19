@@ -46,8 +46,7 @@ if getDebug() then
 		print("--- CM:getIsThunderStorming:(b) "..tostring(CM:getIsThunderStorming()))
 
 		local willFly, impactOnFlightSafety = eHeliEvent_weatherImpact()
-		local willFlyCall = "--- willFly: "..tostring(willFly)
-		if willFly then willFlyCall = willFlyCall.."   % to crash: "..impactOnFlightSafety*100 end
+		local willFlyCall = "--- willFly: "..tostring(willFly).."   % to crash: "..impactOnFlightSafety*100
 		print(willFlyCall)
 	end
 
