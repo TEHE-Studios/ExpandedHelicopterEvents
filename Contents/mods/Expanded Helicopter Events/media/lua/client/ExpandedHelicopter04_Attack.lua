@@ -120,8 +120,8 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	local hitReport = "-"..self.ID.." n:"..eventSound.." /t:"..timesFiredOnSpecificHostile..
-			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass())
+	--[[debug] local hitReport = "-"..self.ID.." n:"..eventSound.." /t:"..timesFiredOnSpecificHostile..
+			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
 	if ZombRand(0, 100) <= chance then
 		--knock down player
@@ -165,9 +165,9 @@ function eHelicopter:fireOn(targetHostile)
 		for _=1, splatIterations do
 			targetHostile:splatBloodFloor(0.9)
 		end
-		--[[debug]] hitReport = hitReport .. "  [HIT]"
+		--[debug]] hitReport = hitReport .. "  [HIT]"
 	end
-	--[[debug]] print(hitReport)
+	--[debug]] print(hitReport)
 
 	--fireImpacts
 	self:playEventSound("attackImpacts", targetHostile:getSquare())
