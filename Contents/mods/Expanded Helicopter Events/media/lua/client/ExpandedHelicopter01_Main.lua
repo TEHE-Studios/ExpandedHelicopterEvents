@@ -552,7 +552,7 @@ function eHelicopter:launch(targetedPlayer)
 	self.state = "gotoTarget"
 
 	local _, weatherImpact = eHeliEvent_weatherImpact()
-	if (not self.crashing) and ZombRand(0,100) <= weatherImpact*100 then
+	if self.crashType and (not self.crashing) and ZombRand(0,100) <= weatherImpact*100 then
 		self.crashing = true
 	end
 end
