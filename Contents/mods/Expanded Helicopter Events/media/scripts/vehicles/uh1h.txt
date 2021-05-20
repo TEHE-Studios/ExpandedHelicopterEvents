@@ -50,102 +50,108 @@ module Base
 		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
-		seats = 2,
-		template = PassengerSeat2,
+		seats = 4,
+		template = PassengerSeat4,
 
 		passenger FrontLeft
 		{
-			door2 = DoorRear,
-
 			position inside
 			{
-				offset = -0.2253 0.5495 -0.6593,
+				offset = 0.4396 0.4341 -0.7582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.6044 -0.4725 0.4670,
+				offset = 0.6209 -0.4341 0.1758,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
-			}
-
-			position outside2
-			{
-				offset = 0.0000 -0.4725 -1.5989,
-				rotate = 0.0000 0.0000 0.0000,
 			}
 		}
 
 		passenger FrontRight
 		{
-			door2 = DoorRear,
-
 			position inside
 			{
-				offset = 0.4505 0.5440 -0.6593,
+				offset = -0.1758 0.4341 -0.6813,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.6044 -0.4725 0.4670,
+				offset = -0.6209 -0.4341 0.1758,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
+		}
 
-			position outside2
+		passenger RearLeft
+		{
+			position inside
 			{
-				offset = 0.0000 -0.4725 -1.5989,
+				offset = 0.5055 0.4341 0.3571,
 				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 0.6209 -0.4341 -0.2802,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatRearLeft,
 			}
 		}
 
-		area TruckBed
+		passenger RearRight
 		{
-			xywh = 0.1264 -1.2363 2.0220 0.9890,
+			position inside
+			{
+				offset = -0.2253 0.4341 0.3846,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -0.6209 -0.4341 -0.2802,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatRearRight,
+			}
 		}
 
 		area SeatFrontLeft
 		{
-			xywh = -0.6319 -2.2637 0.4725 0.7363,
+			xywh = 0.8791 -2.1264 0.4835 0.4835,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = 0.8901 -2.2418 0.4725 0.8022,
+			xywh = -0.6099 -2.1264 0.4835 0.4835,
 		}
 
-		template = Trunk/part/TruckBed,
-
-		part TruckBed
+		area SeatRearLeft
 		{
-			container
-			{
-				capacity = 300,
-			}
+			xywh = 0.7967 -1.2198 0.4835 1.0440,
+		}
+
+		area SeatRearRight
+		{
+			xywh = -0.5714 -1.2198 0.4835 1.0440,
 		}
 
 		template = Seat/part/SeatFrontLeft,
 		template = Seat/part/SeatFrontRight,
-
-		part SeatRear*
-		{
-			door =,
-		}
+		template = Seat/part/SeatRearLeft,
+		template = Seat/part/SeatRearRight,
 
 		part Seat*
 		{
 			table install
 			{
 				skills = Mechanics:2,
-				recipes = Intermediate Mechanics,
 			}
 
 			table uninstall
 			{
 				skills = Mechanics:2,
-				recipes = Intermediate Mechanics,
 			}
 		}
 
@@ -159,38 +165,14 @@ module Base
 			}
 		}
 
+		template = Windshield/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
 		template = Door/part/DoorFrontLeft,
 		template = Door/part/DoorFrontRight,
-		template = Door/part/DoorRear,
-
-		part DoorRear
-		{
-			table uninstall
-			{
-				requireUninstalled = WindshieldRear,
-			}
-
-			hasLightsRear = true,
-
-			lua
-			{
-				create = Vehicles.Create.TrunkDoor,
-				update = Vehicles.Update.TrunkDoor,
-				use = Vehicles.Use.TrunkDoor,
-			}
-		}
-
-		part Door*
-		{
-			table install
-			{
-				recipes = Intermediate Mechanics,
-			}
-
-			table uninstall
-			{
-				recipes = Intermediate Mechanics,
-			}
-		}
+		template = Door/part/DoorRearLeft,
+		template = Door/part/DoorRearRight,
 	}
 }
