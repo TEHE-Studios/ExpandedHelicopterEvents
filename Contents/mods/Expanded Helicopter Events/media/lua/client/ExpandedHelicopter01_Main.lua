@@ -387,6 +387,7 @@ end
 ---@param movement Vector3
 ---@return Vector3
 function eHelicopter:dampen(movement)
+	self:setTargetPos()
 	--finds the fraction of distance to target and preflight distance to target
 	local distanceCompare = self:getDistanceToVector(self.targetPosition) / self.preflightDistance
 	--clamp with a max of self.topSpeedFactor and min of 0.1 (10%) is applied to the fraction 
