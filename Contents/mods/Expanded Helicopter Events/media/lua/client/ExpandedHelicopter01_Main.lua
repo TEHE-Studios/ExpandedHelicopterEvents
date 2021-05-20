@@ -345,7 +345,8 @@ end
 ---@return IsoGridSquare of eHelicopter
 function eHelicopter:getIsoGridSquare()
 	local ehX, ehY, _ = self:getXYZAsInt()
-	return getSquare(ehX, ehY, 0)
+	local square = getCell():getOrCreateGridSquare(ehX, ehY, 0)
+	return square
 end
 
 
