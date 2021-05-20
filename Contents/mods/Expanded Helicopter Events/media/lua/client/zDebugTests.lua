@@ -27,7 +27,7 @@ if getDebug() then
 			DEBUG_TESTS.launch_attack_only_undead()
 
 		elseif key == Keyboard.KEY_9 then
-			DEBUG_TESTS.launch_increasingly_hostile()
+			DEBUG_TESTS.launch_police_heli()
 
 		elseif key == Keyboard.KEY_0 then
 			DEBUG_TESTS.launchBaseHeli()
@@ -140,6 +140,18 @@ if getDebug() then
 		print("\"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
+	--- Test launch close "police_heli" heli
+	function DEBUG_TESTS.launch_police_heli()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("police_heli")
+		heli:launch()
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+		print("\"police_heli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
 
 	--- Test launch close "attack_only_all" heli
 	function DEBUG_TESTS.launch_attack_only_all()
