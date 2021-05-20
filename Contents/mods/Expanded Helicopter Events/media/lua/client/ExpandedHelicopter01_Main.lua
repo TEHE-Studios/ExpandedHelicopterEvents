@@ -819,6 +819,10 @@ end
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 	self.rotorEmitter:stopAll()
+	--stop old emitter to prevent occasional "phantom" announcements
+	if self.announceEmitter then
+		self.announceEmitter:stopAll()
+	end
 	for event,emitter in pairs(self.eventSoundEffectEmitters) do
 		emitter:stopSoundByName(event)
 	end
