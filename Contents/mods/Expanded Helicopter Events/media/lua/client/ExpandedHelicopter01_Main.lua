@@ -638,7 +638,9 @@ function eHelicopter:dropCarePackage()
 		print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
 		---@type BaseVehicle airDrop
 		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
-		return airDrop
+		if airDrop then
+			return airDrop
+		end
 	end
 end
 
