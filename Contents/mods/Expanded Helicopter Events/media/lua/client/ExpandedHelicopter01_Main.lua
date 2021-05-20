@@ -26,8 +26,8 @@ eHelicopter.dropPackages = false --{"FEMASupplyDrop"}
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
-	["attackSingle"] = "eHeli_fire_single",
-	["attackLooped"] = "eHeli_fire_loop",
+	["attackSingle"] = "eHeli_machine_gun_fire_singleshot",
+	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
 	}
 
