@@ -53,7 +53,7 @@ module Base
 
 		area TruckBed
 		{
-			xywh = 0.0000 0.0000 2.2564 2.2821,
+			xywh = 0.0000 0.0000 2.4615 2.5385,
 		}
 
 		template = Trunk/part/TruckBed,
