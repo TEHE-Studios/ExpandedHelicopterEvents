@@ -581,12 +581,14 @@ function getOutsideSquare(square)
 	local x, y = square:getX(), square:getY()
 	local cell = square:getCell()
 
-	for i=0, 7 do
+	for i=1, 7 do
 		local sq = cell:getOrCreateGridSquare(x, y, i)
-		if sq and (sq:isOutside() and sq:isSolid()) then
+		if sq and sq:isOutside() and sq:isSolidFloor() then
 			return sq
 		end
 	end
+
+	return square
 end
 
 
