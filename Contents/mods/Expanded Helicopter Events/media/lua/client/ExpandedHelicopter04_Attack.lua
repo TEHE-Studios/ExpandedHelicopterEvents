@@ -8,7 +8,7 @@ function eHelicopter:lookForHostiles(targetType)
 
 	local timeStamp = getTimestampMs()
 	--too soon to attack again OR will overlap with an announcement
-	if (self.lastAttackTime+self.attackDelay >= timeStamp) or (self.timeUntilCanAnnounce >= timeStamp) then
+	if (self.lastAttackTime+self.attackDelay >= timeStamp) then
 		return
 	end
 
@@ -66,7 +66,6 @@ end
 function eHelicopter:fireOn(targetHostile)
 
 	self.lastAttackTime = getTimestampMs()
-	self.timeUntilCanAnnounce = getTimestampMs()+self.attackDelay-1
 
 	local timesFiredOnSpecificHostile = 0
 	table.insert(self.hostilesAlreadyFiredOn, targetHostile)
