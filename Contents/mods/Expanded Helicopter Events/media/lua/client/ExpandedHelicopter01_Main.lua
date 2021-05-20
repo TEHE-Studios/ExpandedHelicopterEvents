@@ -731,6 +731,13 @@ function eHelicopter:update()
 		end
 	end
 
+	local lockOn = true
+	if self.state == "goHome" then
+		lockOn = false
+	end
+
+	local currentSquare = self:getIsoGridSquare()
+
 	local packageDropRange = thatIsCloseEnough*100
 	local packageDropRateTaper = ZombRand(100) <= (distToTarget/ packageDropRange)*100
 	if self.dropPackages and packageDropRateTaper and (distToTarget <= packageDropRange) then
@@ -744,13 +751,6 @@ function eHelicopter:update()
 	if self.dropItems and itemDropRateTaper and (distToTarget <= itemDropRange) then
 		self:dropItem()
 	end
-
-	local lockOn = true
-	if self.state == "goHome" then
-		lockOn = false
-	end
-
-	local currentSquare = self:getIsoGridSquare()
 
 	if not preventMovement then
 		self:move(lockOn, true)
