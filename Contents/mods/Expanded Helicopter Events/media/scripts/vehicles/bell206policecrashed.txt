@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_Bell206Crashed,
 			scale = 3.1100,
-			offset = 0.0000 0.0064 -0.8328,
+			offset = 0.0772 0.0064 -0.8328,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -50,102 +50,108 @@ module Base
 		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
-		seats = 2,
+		seats = 4,
 		template = PassengerSeat2,
 
 		passenger FrontLeft
 		{
-			door2 = DoorRear,
-
 			position inside
 			{
-				offset = -0.0997 0.4212 -0.3151,
+				offset = 0.1768 0.4341 -0.3215,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.6045 -0.4727 0.4662,
+				offset = 0.6206 -0.4341 0.1768,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
-			}
-
-			position outside2
-			{
-				offset = 0.0000 -0.4727 -1.5981,
-				rotate = 0.0000 0.0000 0.0000,
 			}
 		}
 
 		passenger FrontRight
 		{
-			door2 = DoorRear,
-
 			position inside
 			{
-				offset = 0.1865 0.4212 -0.3183,
+				offset = -0.1768 0.4341 -0.3215,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.6045 -0.4727 0.4662,
+				offset = -0.6206 -0.4341 0.1768,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
+		}
 
-			position outside2
+		passenger RearLeft
+		{
+			position inside
 			{
-				offset = 0.0000 -0.4727 -1.5981,
+				offset = 0.1768 0.4341 -0.0611,
 				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 0.6206 -0.4341 -0.2797,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatRearLeft,
 			}
 		}
 
-		area TruckBed
+		passenger RearRight
 		{
-			xywh = 0.0161 -0.7942 0.9196 0.3730,
+			position inside
+			{
+				offset = -0.0997 0.4341 -0.0611,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -0.6206 -0.4341 -0.2797,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatRearRight,
+			}
 		}
 
 		area SeatFrontLeft
 		{
-			xywh = -0.2058 -1.0997 0.4759 0.3408,
+			xywh = 0.5370 -1.0322 0.4759 0.4759,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = 0.2958 -1.0965 0.4759 0.3408,
+			xywh = -0.4437 -1.0322 0.4759 0.4759,
 		}
 
-		template = Trunk/part/TruckBed,
-
-		part TruckBed
+		area SeatRearLeft
 		{
-			container
-			{
-				capacity = 300,
-			}
+			xywh = 0.5370 -0.5531 0.4759 0.4759,
+		}
+
+		area SeatRearRight
+		{
+			xywh = -0.4437 -0.5531 0.4759 0.4759,
 		}
 
 		template = Seat/part/SeatFrontLeft,
 		template = Seat/part/SeatFrontRight,
-
-		part SeatRear*
-		{
-			door =,
-		}
+		template = Seat/part/SeatRearLeft,
+		template = Seat/part/SeatRearRight,
 
 		part Seat*
 		{
 			table install
 			{
 				skills = Mechanics:2,
-				recipes = Intermediate Mechanics,
 			}
 
 			table uninstall
 			{
 				skills = Mechanics:2,
-				recipes = Intermediate Mechanics,
 			}
 		}
 
@@ -159,38 +165,14 @@ module Base
 			}
 		}
 
+		template = Windshield/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
 		template = Door/part/DoorFrontLeft,
 		template = Door/part/DoorFrontRight,
-		template = Door/part/DoorRear,
-
-		part DoorRear
-		{
-			table uninstall
-			{
-				requireUninstalled = WindshieldRear,
-			}
-
-			hasLightsRear = true,
-
-			lua
-			{
-				create = Vehicles.Create.TrunkDoor,
-				update = Vehicles.Update.TrunkDoor,
-				use = Vehicles.Use.TrunkDoor,
-			}
-		}
-
-		part Door*
-		{
-			table install
-			{
-				recipes = Intermediate Mechanics,
-			}
-
-			table uninstall
-			{
-				recipes = Intermediate Mechanics,
-			}
-		}
+		template = Door/part/DoorRearLeft,
+		template = Door/part/DoorRearRight,
 	}
 }
