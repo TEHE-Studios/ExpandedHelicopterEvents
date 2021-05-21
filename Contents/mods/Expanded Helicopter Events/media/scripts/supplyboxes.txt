@@ -1,0 +1,25 @@
+module EHE
+{
+
+	item EmergencyFoodSupplyBox
+	{
+		Weight			=	40,
+		Icon			=	MREbox,
+		DisplayName		=	Emergency Food Supply Box,
+	}
+
+		item EmergencyMedicalSupplyBox
+	{
+		Weight			=	10,
+		Icon			=	MREbox,
+		DisplayName		=	Emergency Medical Supply Box,
+	}
+
+		item EmergencyMiscSupplyBox
+	{
+		Weight			=	10,
+		Icon			=	MREbox,
+		DisplayName		=	Emergency Survival Supply Box,
+	}
+
+}

@@ -1,0 +1,29 @@
+module EHE
+{
+
+    recipe Unbox Food Supplies
+    {
+	    FoodSupplies,
+
+	    Result:MRE=12,
+	    Time:20.0,
+	    Category:Cooking,
+    }
+
+	    recipe Unbox Medical Supplies
+    {
+	    MedicalSupplies,
+
+	    Result:MRE=12,
+	    Time:20.0,
+	    Category:Cooking,
+    }
+	   recipe Unbox Miscelleneous Supplies
+    {
+	    Miscupplies,
+
+	    Result:MRE=12,
+	    Time:20.0,
+	    Category:Cooking,
+    }
+}
