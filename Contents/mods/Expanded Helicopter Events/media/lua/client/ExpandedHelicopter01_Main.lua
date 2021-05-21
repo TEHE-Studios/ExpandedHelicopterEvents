@@ -574,7 +574,7 @@ function getOutsideSquare(square)
 		return
 	end
 
-	if square:isOutside() then
+	if square:isOutside() and square:isSolidFloor() then
 		return square
 	end
 
@@ -587,8 +587,6 @@ function getOutsideSquare(square)
 			return sq
 		end
 	end
-
-	return square
 end
 
 
