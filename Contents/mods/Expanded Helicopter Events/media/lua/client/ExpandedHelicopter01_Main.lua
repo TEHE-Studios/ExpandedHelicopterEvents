@@ -774,7 +774,7 @@ function eHelicopter:update()
 					self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
 				end
 
-				local shadowSquare = getOutsideSquare(currentSquare)
+				local shadowSquare = getOutsideSquare(currentSquare) or currentSquare
 				if shadowSquare then
 					self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
 				end
