@@ -621,11 +621,18 @@ end
 ---Heli drop item
 function eHelicopter:dropItem()
 
-	local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
-	local currentSquare = getOutsideSquare(self:getIsoGridSquare())
+	if self.dropItems then
+		local path = self.dropItems[ZombRand(1,#self.dropItems)]
+		local selfSquare = self:getIsoGridSquare()
+		local currentSquare = getOutsideSquare(selfSquare)
 
-	if currentSquare then
-		local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
+		if currentSquare and currentSquare:isSolidTrans() then
+			currentSquare = nil
+		end
+		--[DEBUG]] print ("EHE: dropping: "..path.."   "..tostring(ZombRand(1,#self.dropItems)))
+		if currentSquare then
+			local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
+		end
 	end
 end
 
@@ -633,11 +640,16 @@ end
 ---Heli drop carePackage
 function eHelicopter:dropCarePackage()
 
-	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
-	local currentSquare = getOutsideSquare(self:getIsoGridSquare())
+	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages)]
+	local selfSquare = self:getIsoGridSquare()
+	local currentSquare = getOutsideSquare(selfSquare)
+
+	if currentSquare and currentSquare:isSolidTrans() then
+		currentSquare = nil
+	end
 
 	if currentSquare then
-		print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
+		--[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
 		---@type BaseVehicle airDrop
 		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
