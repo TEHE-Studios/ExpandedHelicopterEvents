@@ -597,13 +597,17 @@ function eHelicopter:crash()
 		---@type IsoGridSquare
 		local selfSquare = self:getIsoGridSquare()
 		local currentSquare = getOutsideSquare(selfSquare)
-		print("-- EHE: squares for crashing:  "..tostring(selfSquare).."  "..tostring(currentSquare))
+
+		if currentSquare and currentSquare:isSolidTrans() then
+			currentSquare = nil
+		end
+		--[DEBUG]] print("-- EHE: squares for crashing:  "..tostring(selfSquare).."  "..tostring(currentSquare))
 		if currentSquare then
-			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
+			local vehicleType = self.crashType[ZombRand(1,#self.crashType)]
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
-				print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
+				--[DEBUG]] print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
 				heli:playSound("VehicleCrash")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
