@@ -22,7 +22,7 @@ eHelicopter.crashType = { "UH1HCrash"}
 eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
 
 ---@field dropPackages table
-eHelicopter.dropPackages = false --{"FEMASupplyDrop"}
+eHelicopter.dropPackages = false
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
@@ -197,7 +197,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	end
 
 	if type(soundEffect)=="table" then
-		soundEffect = soundEffect[ZombRand(1,#soundEffect)]
+		soundEffect = soundEffect[ZombRand(1,#soundEffect+1)]
 	end
 
 	---@type FMODSoundEmitter | BaseSoundEmitter emitter
@@ -299,10 +299,10 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 		local randEdge = {MIN_XY, MAX_XY}
 		
 		--randEdge stops being a list and becomes a random part of itself
-		randEdge = randEdge[ZombRand(1,#randEdge)]
+		randEdge = randEdge[ZombRand(1,#randEdge+1)]
 		
 		--this takes either initX/initY (within initPosXY) and makes it either MIN_XY/MAX (randEdge)
-		initPosXY[ZombRand(1, #initPosXY)] = randEdge
+		initPosXY[ZombRand(1, #initPosXY+1)] = randEdge
 		
 		self.currentPosition:set(initPosXY[1], initPosXY[2], self.height)
 		
@@ -517,7 +517,7 @@ function eHelicopter:findTarget(range)
 	local target
 
 	if #weightPlayersList then
-		target = weightPlayersList[ZombRand(1, #weightPlayersList)]
+		target = weightPlayersList[ZombRand(1, #weightPlayersList+1)]
 	end
 
 	return target
@@ -574,7 +574,7 @@ function getOutsideSquare(square)
 		return
 	end
 
-	if square:isOutside() then
+	if square:isOutside() and square:isSolidFloor() then
 		return square
 	end
 
@@ -587,8 +587,6 @@ function getOutsideSquare(square)
 			return sq
 		end
 	end
-
-	return square
 end
 
 
@@ -599,13 +597,17 @@ function eHelicopter:crash()
 		---@type IsoGridSquare
 		local selfSquare = self:getIsoGridSquare()
 		local currentSquare = getOutsideSquare(selfSquare)
-		print("-- EHE: squares for crashing:  "..tostring(selfSquare).."  "..tostring(currentSquare))
+
+		if currentSquare and currentSquare:isSolidTrans() then
+			currentSquare = nil
+		end
+		--[DEBUG]] print("-- EHE: squares for crashing:  "..tostring(selfSquare).."  "..tostring(currentSquare))
 		if currentSquare then
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
-				print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
+				--[DEBUG]] print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
 				heli:playSound("VehicleCrash")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
@@ -619,11 +621,18 @@ end
 ---Heli drop item
 function eHelicopter:dropItem()
 
-	local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
-	local currentSquare = getOutsideSquare(self:getIsoGridSquare())
+	if self.dropItems then
+		local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
+		local selfSquare = self:getIsoGridSquare()
+		local currentSquare = getOutsideSquare(selfSquare)
 
-	if currentSquare then
-		local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
+		if currentSquare and currentSquare:isSolidTrans() then
+			currentSquare = nil
+		end
+		--[DEBUG]] print ("EHE: dropping: "..path.."   "..tostring(ZombRand(1,#self.dropItems)))
+		if currentSquare then
+			local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
+		end
 	end
 end
 
@@ -632,10 +641,15 @@ end
 function eHelicopter:dropCarePackage()
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
-	local currentSquare = getOutsideSquare(self:getIsoGridSquare())
+	local selfSquare = self:getIsoGridSquare()
+	local currentSquare = getOutsideSquare(selfSquare)
+
+	if currentSquare and currentSquare:isSolidTrans() then
+		currentSquare = nil
+	end
 
 	if currentSquare then
-		print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
+		--[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
 		---@type BaseVehicle airDrop
 		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
@@ -760,7 +774,7 @@ function eHelicopter:update()
 					self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
 				end
 
-				local shadowSquare = getOutsideSquare(currentSquare)
+				local shadowSquare = getOutsideSquare(currentSquare) or currentSquare
 				if shadowSquare then
 					self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
 				end

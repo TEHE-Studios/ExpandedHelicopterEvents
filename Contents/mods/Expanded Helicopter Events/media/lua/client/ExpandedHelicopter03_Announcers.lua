@@ -106,7 +106,7 @@ function eHelicopter:chooseVoice(specificVoice)
 	end
 
 	if not specificVoice then
-		local randAnn = ZombRand(1, #eHelicopter_announcersLoaded)
+		local randAnn = ZombRand(1, #eHelicopter_announcersLoaded+1)
 		specificVoice = eHelicopter_announcersLoaded[randAnn]
 	end
 
@@ -141,7 +141,7 @@ function eHelicopter:announce(specificLine)
 	end
 
 	local line = self.announcerVoice["Lines"][specificLine]
-	local announcePick = line[ZombRand(2,#line)]
+	local announcePick = line[ZombRand(2,#line+1)]
 	local lineDelay = line[1]
 	local ehX, ehY, ehZ = self:getXYZAsInt()
 
