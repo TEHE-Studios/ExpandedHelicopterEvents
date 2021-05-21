@@ -22,7 +22,7 @@ eHelicopter.crashType = { "UH1HCrash"}
 eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
 
 ---@field dropPackages table
-eHelicopter.dropPackages = false --{"FEMASupplyDrop"}
+eHelicopter.dropPackages = false
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
