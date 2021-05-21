@@ -17,7 +17,7 @@ module EHE
 
 		item EmergencyMiscSupplyBox
 	{
-		Weight			=	10,
+		Weight			=	20,
 		Icon			=	MREbox,
 		DisplayName		=	Emergency Survival Supply Box,
 	}
