@@ -197,7 +197,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	end
 
 	if type(soundEffect)=="table" then
-		soundEffect = soundEffect[ZombRand(1,#soundEffect)]
+		soundEffect = soundEffect[ZombRand(1,#soundEffect+1)]
 	end
 
 	---@type FMODSoundEmitter | BaseSoundEmitter emitter
@@ -299,10 +299,10 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 		local randEdge = {MIN_XY, MAX_XY}
 		
 		--randEdge stops being a list and becomes a random part of itself
-		randEdge = randEdge[ZombRand(1,#randEdge)]
+		randEdge = randEdge[ZombRand(1,#randEdge+1)]
 		
 		--this takes either initX/initY (within initPosXY) and makes it either MIN_XY/MAX (randEdge)
-		initPosXY[ZombRand(1, #initPosXY)] = randEdge
+		initPosXY[ZombRand(1, #initPosXY+1)] = randEdge
 		
 		self.currentPosition:set(initPosXY[1], initPosXY[2], self.height)
 		
@@ -517,7 +517,7 @@ function eHelicopter:findTarget(range)
 	local target
 
 	if #weightPlayersList then
-		target = weightPlayersList[ZombRand(1, #weightPlayersList)]
+		target = weightPlayersList[ZombRand(1, #weightPlayersList+1)]
 	end
 
 	return target
@@ -603,7 +603,7 @@ function eHelicopter:crash()
 		end
 		--[DEBUG]] print("-- EHE: squares for crashing:  "..tostring(selfSquare).."  "..tostring(currentSquare))
 		if currentSquare then
-			local vehicleType = self.crashType[ZombRand(1,#self.crashType)]
+			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
@@ -622,7 +622,7 @@ end
 function eHelicopter:dropItem()
 
 	if self.dropItems then
-		local path = self.dropItems[ZombRand(1,#self.dropItems)]
+		local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
 		local selfSquare = self:getIsoGridSquare()
 		local currentSquare = getOutsideSquare(selfSquare)
 
@@ -640,7 +640,7 @@ end
 ---Heli drop carePackage
 function eHelicopter:dropCarePackage()
 
-	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages)]
+	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
 	local selfSquare = self:getIsoGridSquare()
 	local currentSquare = getOutsideSquare(selfSquare)
 

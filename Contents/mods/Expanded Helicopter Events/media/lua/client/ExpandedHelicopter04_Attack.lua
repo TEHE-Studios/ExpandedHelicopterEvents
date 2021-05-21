@@ -130,7 +130,7 @@ function eHelicopter:fireOn(targetHostile)
 			targetHostile:setBumpDone(false)
 			targetHostile:setBumpFall(true)
 			local bumpFallType = {"pushedBehind","pushedFront"}
-			bumpFallType = bumpFallType[ZombRand(1,2)]
+			bumpFallType = bumpFallType[ZombRand(1,3)]
 			targetHostile:setBumpFallType(bumpFallType)
 		end
 		--knock down zombie
