@@ -34,7 +34,7 @@ eHelicopter_PRESETS = {
 	},
 
 	["police_heli"] = {
-		attackDelay = 1550,
+		attackDelay = 1100,
 		cutOffDay = 20,
 		speed = 0.12,
 		crashType = {"Bell206PoliceCrashed"},
