@@ -57,10 +57,10 @@ VehicleDistributions.UH1Seat = {
 -- add a new m113 distributions table
 VehicleDistributions.UH1H = {
 	
-	SeatRearFrontLeft = VehicleDistributions.UH1Seat;
-	SeatRearFrontRight = VehicleDistributions.UH1Seat;
-	SeatRearMiddleLeft = VehicleDistributions.UH1Seat;
-	SeatRearMiddleRight = VehicleDistributions.UH1Seat;
+	SeatFrontLeft = VehicleDistributions.UH1Seat;
+	SeatFrontRight = VehicleDistributions.UH1Seat;
+	SeatRearLeft = VehicleDistributions.UH1Seat;
+	SeatRearRight = VehicleDistributions.UH1Seat;
 }
 
 
