@@ -1,29 +1,30 @@
 module EHE
 {
 
-    recipe Unbox Food Supplies
+    recipe Unbox Supplies
     {
-	    FoodSupplies,
+	    EmergencyFoodSupplyBox=1,
 
-	    Result:Rice=12,
-	    Time:20.0,
+	    Result:Rice=10,
+		Sound: 
+	    Time:40.0,
 	    Category:Cooking,
     }
 
-	    recipe Unbox Medical Supplies
+	    recipe Unbox Supplies
     {
-	    MedicalSupplies,
+	    EmergencyMedicalSupplyBox=1,
 
-	    Result:MRE=12,
-	    Time:20.0,
+	    Result:DustMask=8,
+	    Time:10.0,
 	    Category:Cooking,
     }
-	   recipe Unbox Miscelleneous Supplies
+	    recipe Unbox Supplies
     {
-	    Miscupplies,
+	    EmergencySurvivalSupplyBox=1,
 
-	    Result:MRE=12,
-	    Time:20.0,
+	    Result:Flashlight=3,
+	    Time:40.0,
 	    Category:Cooking,
     }
 }
