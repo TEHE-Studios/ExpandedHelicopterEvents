@@ -619,19 +619,18 @@ end
 
 
 ---Heli drop item
-function eHelicopter:dropItem()
+function eHelicopter:dropItem(type)
 
 	if self.dropItems then
-		local path = self.dropItems[ZombRand(1,#self.dropItems+1)]
 		local selfSquare = self:getIsoGridSquare()
 		local currentSquare = getOutsideSquare(selfSquare)
 
 		if currentSquare and currentSquare:isSolidTrans() then
 			currentSquare = nil
 		end
-		--[DEBUG]] print ("EHE: dropping: "..path.."   "..tostring(ZombRand(1,#self.dropItems)))
+
 		if currentSquare then
-			local item = currentSquare:AddWorldInventoryItem("EHE."..path,0,0,0)
+			local _ = currentSquare:AddWorldInventoryItem("EHE."..type, 0, 0, 0)
 		end
 	end
 end
@@ -753,17 +752,25 @@ function eHelicopter:update()
 	local currentSquare = self:getIsoGridSquare()
 
 	local packageDropRange = thatIsCloseEnough*100
-	local packageDropRateTaper = ZombRand(100) <= (distToTarget/ packageDropRange)*100
-	if self.dropPackages and packageDropRateTaper and (distToTarget <= packageDropRange) then
+	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
+	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		if self:dropCarePackage() then
 			self.dropPackages = false
 		end
 	end
 
-	local itemDropRange = thatIsCloseEnough*500
-	local itemDropRateTaper = ZombRand(100) <= (distToTarget/ itemDropRange)*100
-	if self.dropItems and itemDropRateTaper and (distToTarget <= itemDropRange) then
-		self:dropItem()
+	local itemDropRange = thatIsCloseEnough*250
+	if self.dropItems and (distToTarget <= itemDropRange) then
+		for k,_ in pairs(self.dropItems) do
+			local dropChance = ZombRand(100) <= ((itemDropRange-distToTarget)/itemDropRange)*10
+			if (self.dropItems[k] > 0) and dropChance then
+				self.dropItems[k] = self.dropItems[k]-1
+				self:dropItem(k)
+			end
+			if (self.dropItems[k] <= 0) then
+				self.dropItems[k] = nil
+			end
+		end
 	end
 
 	if not preventMovement then
