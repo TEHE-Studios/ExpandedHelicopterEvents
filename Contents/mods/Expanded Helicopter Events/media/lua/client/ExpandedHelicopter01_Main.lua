@@ -103,7 +103,7 @@ eHelicopter.attackSpread = 3
 ---NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
 ---@param listToSaveTo table
 ---@param checkIfNotIn table
-function eHelicopter_variableBackUp(listToSaveTo, checkIfNotIn, debugID)
+function eHelicopter_variableBackUp(listToSaveTo, checkIfNotIn)--, debugID)
 	for k,v in pairs(eHelicopter) do
 		if ((not checkIfNotIn) or (checkIfNotIn[k] == nil)) then
 			--[DEBUG]] print("EHE: "..debugID..": "..k.." = ".."("..type(v)..") "..tostring(v))
