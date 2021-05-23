@@ -160,6 +160,9 @@ VehicleDistributions.Bell206PoliceSeat = {
         "556Box", 3,
         "556Box", 3,
         "556Box", 3,
+        "RiotHelmet", 9,
+        "RiotHelmet", 9,
+        "RiotHelmet", 9,
         "AssaultRifle", 7,
         "AssaultRifle", 7,
         "Pistol", 5,
@@ -174,11 +177,10 @@ VehicleDistributions.Bell206PoliceSeat = {
         "Bullets9mm", 3,
         "Bullets9mm", 3,
 		"HolsterSimple", 3,
-        "Radio.WalkieTalkie5", 3,
+        "Radio.WalkieTalkie3", 3,
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
-        "Corpse", 10,
 	
     }
 }
@@ -197,9 +199,11 @@ VehicleDistributions.Bell206NewsSeat = {
         "Bullets9mm", 3,
         "Bullets9mm", 3,
         "Bullets9mm", 3,
+        "Vest_BulletCivilian", 4,
+        "Vest_BulletCivilian", 4,
+        "Vest_BulletCivilian", 4,
         "Radio.WalkieTalkie5", 3,
         "FirstAidKit", 5,
-        "Corpse", 10,
     }
 }
 
@@ -235,8 +239,6 @@ VehicleDistributions.FEMASupplyDrop = {
         "Rice", 10,
         "Rice", 10, 
         "Rice", 10,
-        "PreventionFlyer", 30,
-        "EmergencyFlyer", 30,
     }
 }
 
