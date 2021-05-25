@@ -500,7 +500,7 @@ function eHelicopter:findTarget(range)
 		---@type IsoGameCharacter p
 		local p = getSpecificPlayer(i)
 
-		if (not range) or (self:getDistanceToIsoObject(p) <= range) then
+		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
 			local iterations = 3
 
 			local zone = p:getCurrentZone()
