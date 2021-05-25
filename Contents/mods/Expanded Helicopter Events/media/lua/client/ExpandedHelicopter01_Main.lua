@@ -16,10 +16,10 @@ eHelicopter.searchForTargetDuration = 30000
 eHelicopter.shadow = true
 
 ---@field crashType boolean
-eHelicopter.crashType = { "UH1HCrash"}
+eHelicopter.crashType = {"UH1HCrash"}
 
 ---@field dropItems table
-eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
+eHelicopter.dropItems = false
 
 ---@field dropPackages table
 eHelicopter.dropPackages = false
@@ -32,7 +32,7 @@ eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=ni
 	}
 
 ---@field announcerVoice string
-eHelicopter.announcerVoice = true
+eHelicopter.announcerVoice = false
 
 ---@field randomEdgeStart boolean
 eHelicopter.randomEdgeStart = false
@@ -63,7 +63,7 @@ eHelicopter.flightVolume = 50
 
 ---@field hostilePreference string
 ---set to 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
-eHelicopter.hostilePreference = "IsoZombie"
+eHelicopter.hostilePreference = false
 
 ---@field attackDelay number delay in milliseconds between attacks
 eHelicopter.attackDelay = 55

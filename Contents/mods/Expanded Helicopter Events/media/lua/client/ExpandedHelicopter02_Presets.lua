@@ -1,7 +1,14 @@
 ---Preset list, only include variables being changed.
 eHelicopter_PRESETS = {
 	["increasingly_hostile"] = {
-		presetProgression = {["patrol_only"] = 0, ["attack_only_undead"] = 0.15, ["attack_only_all"] = 0.75}
+		presetProgression = {
+			["patrol_only"] = 0,
+			["patrol_only_emergency"] = 0.02,
+			["patrol_only_quarantine"] = 0.05,
+			["attack_only_undead_evac"] = 0.1,
+			["attack_only_undead"] = 0.15,
+			["attack_only_all"] = 0.75,
+		}
 	},
 
 	["jet"] = {
@@ -11,10 +18,8 @@ eHelicopter_PRESETS = {
 		topSpeedFactor = 2,
 		flightVolume = 25,
 		flightSound = "eJetFlight",
-		hostilePreference = false,
-		announcerVoice = false,
 		crashType = false,
-		shadow = false
+		shadow = false,
 	},
 
 	["news_chopper"] = {
@@ -23,21 +28,46 @@ eHelicopter_PRESETS = {
 		frequencyFactor = 2,
 		speed = 0.1,
 		topSpeedFactor = 5,
-		hostilePreference = false,
-		announcerVoice = false,
 		cutOffDay = 15,
 		crashType = {"Bell206LBMWCrashed"}
 	},
 
 	["patrol_only"] = {
-		hostilePreference = false
+		announcerVoice = true,
+	},
+
+	-- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
+	["patrol_only_emergency"] = {
+		announcerVoice = true,
+		dropItems = {["EmergencyFlyer"]=250},
+	},
+
+	["patrol_only_quarantine"] = {
+		announcerVoice = true,
+		dropItems = {["QuarantineFlyer"]=250},
+	},
+
+	["attack_only_undead_evac"] = {
+		hostilePreference = "IsoZombie",
+		dropItems = {["EvacuationFlyer"]=250},
+	},
+
+	["attack_only_undead"] = {
+		hostilePreference = "IsoZombie",
+	},
+
+	["attack_only_all"] = {
+		hostilePreference = "IsoGameCharacter",
+		crashType = {"UH1Hsurvivalistcrash"}
 	},
 
 	["police_heli"] = {
+		announcerVoice = true,
 		attackDelay = 1100,
 		cutOffDay = 20,
 		speed = 0.12,
 		crashType = {"Bell206PoliceCrashed"},
+		hostilePreference = "IsoZombie",
 		eventSoundEffects = {
 			["attackSingle"] = "eHeli_bolt_action_fire_singleshot",
 			["attackLooped"] = "eHeli_bolt_action_fire_singleshot",
@@ -45,17 +75,8 @@ eHelicopter_PRESETS = {
 		}
 	},
 
-	["attack_only_undead"] = {
-		announcerVoice = false
-	},
-
-	["attack_only_all"] = {
-		announcerVoice = false,
-		hostilePreference = "IsoGameCharacter",
-		crashType = {"UH1Hsurvivalistcrash"}
-	},
-
 	["aid_helicopter"] = {
+		announcerVoice = true,
 		crashType = {"UH1Hmedevaccrash"},
 		dropPackages = {"FEMASupplyDrop"},
 		cutOffDay = 20,
