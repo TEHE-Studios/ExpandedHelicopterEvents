@@ -833,7 +833,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
 
-		if heli.state ~= "unLaunched" then
+		if heli.state and heli.state ~= "unLaunched" then
 			heli:update()
 		end
 	end
