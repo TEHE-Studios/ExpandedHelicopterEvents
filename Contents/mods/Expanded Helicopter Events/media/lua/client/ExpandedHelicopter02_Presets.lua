@@ -79,6 +79,7 @@ eHelicopter_PRESETS = {
 		announcerVoice = true,
 		crashType = {"UH1Hmedevaccrash"},
 		dropPackages = {"FEMASupplyDrop"},
+		dropItems = {["NoticeFlyer"]=250},
 		cutOffDay = 20,
 	}
 }
