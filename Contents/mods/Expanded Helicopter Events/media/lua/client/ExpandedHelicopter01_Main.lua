@@ -16,7 +16,7 @@ eHelicopter.searchForTargetDuration = 30000
 eHelicopter.shadow = true
 
 ---@field crashType boolean
-eHelicopter.crashType = { "UH1HCrash"}
+eHelicopter.crashType = {"UH1HCrash"}
 
 ---@field dropItems table
 eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
