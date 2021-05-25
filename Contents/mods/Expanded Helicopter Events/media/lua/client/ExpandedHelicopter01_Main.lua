@@ -376,6 +376,9 @@ end
 ---@param object IsoObject
 ---@return number
 function eHelicopter:getDistanceToIsoObject(object)
+	if not object then
+		return
+	end
 
 	local a = object:getX() - Vector3GetX(self.currentPosition)
 	local b = object:getY() - Vector3GetY(self.currentPosition)
