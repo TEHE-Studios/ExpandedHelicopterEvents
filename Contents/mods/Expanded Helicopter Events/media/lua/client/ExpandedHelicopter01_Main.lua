@@ -19,7 +19,7 @@ eHelicopter.shadow = true
 eHelicopter.crashType = {"UH1HCrash"}
 
 ---@field dropItems table
-eHelicopter.dropItems = false --{"NoticeFlyer"} --NoticeFlyer PreventionFlyer QuarantineFlyer EmergencyFlyer EvacuationFlyer
+eHelicopter.dropItems = false
 
 ---@field dropPackages table
 eHelicopter.dropPackages = false
