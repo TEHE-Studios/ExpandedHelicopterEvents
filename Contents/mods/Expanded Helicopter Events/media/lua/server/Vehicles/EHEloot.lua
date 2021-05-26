@@ -16,9 +16,6 @@ VehicleDistributions.UH1Seat = {
         "556Box", 3,
         "556Box", 3,
         "Hat_Army", 3,
-        "Hat_GasMask", 3,
-        "Hat_GasMask", 3,
-        "Hat_GasMask", 3,
         "AssaultRifle", 7,
         "AssaultRifle", 7,
         "Pistol", 5,
@@ -44,8 +41,6 @@ VehicleDistributions.UH1Seat = {
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
-        "Corpse", 10,
-        "Corpse", 10,
 	
     }
 }
@@ -63,9 +58,6 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "556Box", 3,
         "556Box", 3,
         "556Box", 3,
-        "Hat_GasMask", 3,
-        "Hat_GasMask", 3,
-        "Hat_GasMask", 3,
         "AssaultRifle", 7,
         "AssaultRifle", 7,
         "Pistol", 5,
@@ -83,16 +75,15 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "Trousers_CamoGreen", 1,
         "Shirt_CamoGreen", 1,
         "Jacket_ArmyCamoGreen", 1,
-        "Hat_BonnieHat_CamoGreen", 1,
-        "Hat_BeretArmy", 3,
         "Shoes_ArmyBoots", 1,
         "Shirt_CamoGreen", 1,
         "Radio.WalkieTalkie5", 3,
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
-        "Corpse", 10,
-        "Corpse", 10,
+        "HottieZ", 10,
+        "HottieZ", 10,
+        "Hat_SPHSurvivalist", 10,
 	
     }
 }
@@ -139,9 +130,6 @@ VehicleDistributions.UH1HMedevacSeat = {
         "FirstAidKit", 10,
         "FirstAidKit", 10,
         "FirstAidKit", 10,
-        "Corpse", 10,
-        "Corpse", 10,
-        "Corpse", 10,
 		"x2Scope", 0.7,
 	
     }
@@ -181,7 +169,7 @@ VehicleDistributions.Bell206PoliceSeat = {
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
-	
+        "Hat_SPHPolice", 10,
     }
 }
 
@@ -204,6 +192,7 @@ VehicleDistributions.Bell206NewsSeat = {
         "Vest_BulletCivilian", 4,
         "Radio.WalkieTalkie5", 3,
         "FirstAidKit", 5,
+        "Hat_SPHCivilian", 10,
     }
 }
 
