@@ -1,30 +1,36 @@
 module EHE
 {
 
-    recipe Unbox Supplies
+    recipe Unbox Food Supplies
     {
-	    EmergencyFoodSupplyBox=1,
+       EmergencyFoodSupplyBox=1,
+       keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Key1/Key2/Key3/Key4/Key5/CarKey,
 
-	    Result:Rice=10,
-		Sound: 
-	    Time:40.0,
-	    Category:Cooking,
+       Result: NoticeFlyer=1,
+       OnCreate:EHE_OpenBox.FOOD,
+       Time:70.0,
+       Category:Cooking,
     }
 
-	    recipe Unbox Supplies
+	recipe Unbox Medical Supplies
     {
-	    EmergencyMedicalSupplyBox=1,
+       EmergencyMedicalSupplyBox=1,
+       keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Key1/Key2/Key3/Key4/Key5/CarKey,
 
-	    Result:DustMask=8,
-	    Time:10.0,
-	    Category:Cooking,
+       Result:PreventionFlyer=1,
+       OnCreate:EHE_OpenBox.MEDICAL,
+       Time:70.0,
+       Category:Cooking,
     }
-	    recipe Unbox Supplies
-    {
-	    EmergencySurvivalSupplyBox=1,
 
-	    Result:Flashlight=3,
-	    Time:40.0,
-	    Category:Cooking,
+	recipe Unbox Survival Supplies
+    {
+       EmergencyFoodSupplyBox=1,
+       keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Key1/Key2/Key3/Key4/Key5/CarKey,
+
+       Result:EmergencyFlyer=1,
+       OnCreate:EHE_OpenBox.SURVIVAL,
+       Time:70.0,
+       Category:Cooking,
     }
 }
