@@ -6,7 +6,7 @@ module EHE
        EmergencyFoodSupplyBox=1,
        keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Key1/Key2/Key3/Key4/Key5/CarKey,
 
-       Result: NoticeFlyer=1,
+       Result:NoticeFlyer=1,
        OnCreate:EHE_OpenBox.FOOD,
        Time:70.0,
        Category:Cooking,
@@ -25,7 +25,7 @@ module EHE
 
 	recipe Unbox Survival Supplies
     {
-       EmergencyFoodSupplyBox=1,
+       EmergencySurvivalSupplyBox=1,
        keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Key1/Key2/Key3/Key4/Key5/CarKey,
 
        Result:EmergencyFlyer=1,
