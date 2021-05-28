@@ -13,9 +13,18 @@ end
 
 
 function EHE_OpenBox.MEDICAL(recipe, result, player)
-	player:getInventory():AddItems("Base.FirstAidKit", 4)
 	player:getInventory():AddItems("Hat_DustMask", 6)
 	player:getInventory():AddItems("Gloves_Surgical", 12)
+	local items = player:getInventory():AddItems("Base.FirstAidKit", 4)
+
+	for i=0, items:size()-1 do
+		---@type InventoryContainer | InventoryItem
+		local item = items:get(i)
+		local itemType = item:getType()
+		local distributions = ItemPickerJava.containers
+		local specificDistro = distributions:get(itemType)
+		ItemPickerJava.rollContainerItem(item, player, specificDistro)
+	end
 end
 
 
@@ -38,7 +47,8 @@ end
 
 ---Sub-mod authors will have to use the following function to add more types
 EHE_OpenBox.addCanOpenBoxTypes(
-		{"Base.Fork","Base.ButterKnife","Base.HuntingKnife","Base.KitchenKnife","Base.MeatCleaver","Base.FlintKnife","Base.Machete","Base.Katana",
+		{"Base.Fork","Base.ButterKnife","Base.HuntingKnife","Base.KitchenKnife",
+		 "Base.Scissors","Base.Scalpel","Base.MeatCleaver","Base.FlintKnife","Base.Machete","Base.Katana",
 		 "Base.KeyPadlock","Base.CarKey","Base.Key1","Base.Key2","Base.Key3","Base.Key4","Base.Key5"})
 
 
