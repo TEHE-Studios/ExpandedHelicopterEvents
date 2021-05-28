@@ -9,6 +9,7 @@ module EHE
        Result:NoticeFlyer=1,
        OnCreate:EHE_OpenBox.FOOD,
        Time:70.0,
+       Sound:OpenBox,
        Category:Cooking,
     }
 
@@ -20,6 +21,7 @@ module EHE
        Result:PreventionFlyer=1,
        OnCreate:EHE_OpenBox.MEDICAL,
        Time:70.0,
+       Sound:OpenBox,
        Category:Cooking,
     }
 
@@ -31,6 +33,7 @@ module EHE
        Result:EmergencyFlyer=1,
        OnCreate:EHE_OpenBox.SURVIVAL,
        Time:70.0,
+       Sound:OpenBox,
        Category:Cooking,
     }
 }
