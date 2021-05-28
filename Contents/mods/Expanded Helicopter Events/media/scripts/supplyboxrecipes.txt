@@ -4,7 +4,7 @@ module EHE
     recipe Unbox Food Supplies
     {
        EmergencyFoodSupplyBox=1,
-       keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Katana/Key1/Key2/Key3/Key4/Key5/CarKey,
+       keep [EHE_OpenBox.CanOpenBoxes],
 
        Result:NoticeFlyer=1,
        OnCreate:EHE_OpenBox.FOOD,
@@ -15,7 +15,7 @@ module EHE
 	recipe Unbox Medical Supplies
     {
        EmergencyMedicalSupplyBox=1,
-       keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Katana/Key1/Key2/Key3/Key4/Key5/CarKey,
+       keep [EHE_OpenBox.CanOpenBoxes],
 
        Result:PreventionFlyer=1,
        OnCreate:EHE_OpenBox.MEDICAL,
@@ -26,7 +26,7 @@ module EHE
 	recipe Unbox Survival Supplies
     {
        EmergencySurvivalSupplyBox=1,
-       keep HuntingKnife/KitchenKnife/MeatCleaver/FlintKnife/Machete/Katana/Key1/Key2/Key3/Key4/Key5/CarKey,
+       keep [EHE_OpenBox.CanOpenBoxes],
 
        Result:EmergencyFlyer=1,
        OnCreate:EHE_OpenBox.SURVIVAL,
