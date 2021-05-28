@@ -38,7 +38,7 @@ end
 
 ---Sub-mod authors will have to use the following function to add more types
 EHE_OpenBox.addCanOpenBoxTypes(
-		{"Base.HuntingKnife","Base.KitchenKnife","Base.MeatCleaver","Base.FlintKnife","Base.Machete","Base.Katana",
+		{"Base.Fork","Base.ButterKnife","Base.HuntingKnife","Base.KitchenKnife","Base.MeatCleaver","Base.FlintKnife","Base.Machete","Base.Katana",
 		 "Base.KeyPadlock","Base.CarKey","Base.Key1","Base.Key2","Base.Key3","Base.Key4","Base.Key5"})
 
 
