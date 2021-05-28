@@ -27,14 +27,23 @@ function EHE_OpenBox.SURVIVAL(recipe, result, player)
 end
 
 
-EHE_OpenBox.typesThatCanOpenBoxes = {
-	"HuntingKnife","KitchenKnife","MeatCleaver","FlintKnife","Machete","Katana",
-	"KeyPadlock","CarKey","Key1","Key2","Key3","Key4","Key5"
-	}
+EHE_OpenBox.typesThatCanOpenBoxes = EHE_OpenBox.typesThatCanOpenBoxes or {}
 
-function EHE_OpenBox.addCanOpenBoxesTag(type, module)
-	module = module or "Base."
-	local item = ScriptManager.instance:getItem(module..type);
+---@param list table of type paths
+function EHE_OpenBox.addCanOpenBoxTypes(list)
+	for _,type in pairs(list) do
+		table.insert(EHE_OpenBox.typesThatCanOpenBoxes, type)
+	end
+end
+
+---Sub-mod authors will have to use the following function to add more types
+EHE_OpenBox.addCanOpenBoxTypes(
+		{"Base.HuntingKnife","Base.KitchenKnife","Base.MeatCleaver","Base.FlintKnife","Base.Machete","Base.Katana",
+		 "Base.KeyPadlock","Base.CarKey","Base.Key1","Base.Key2","Base.Key3","Base.Key4","Base.Key5"})
+
+
+function EHE_OpenBox.addCanOpenBoxesTag(type)
+	local item = ScriptManager.instance:getItem(type);
 	if item then
 		local tags = item:getTags()
 		local tagString = "CanOpenBoxes"
