@@ -18,7 +18,7 @@ function EHE_OpenBox.MEDICAL(recipe, result, player)
 	local items = player:getInventory():AddItems("Base.FirstAidKit", 4)
 
 	for i=0, items:size()-1 do
-		fillInventoryContainer(items:get(i), player)
+		rollInventoryContainer(items:get(i), player)
 	end
 end
 

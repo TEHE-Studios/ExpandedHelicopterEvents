@@ -1,3 +1,11 @@
+--- This is a LUA translation of the function `rollContainerItem` (found in: \zombie\inventory\ItemPickerJava.java)
+--- The function `rollContainerItem` fills an `InventoryContainer` object with items taken from a THashMap version of `Distributions`.
+---
+--- Reason this was written:
+--- Once the game loads up LUA it converts the distribution lists into a THashMap. Trying to utilize THashMap.get() resulted in an error.
+--- The function written here uses all of the same variables and logic but instead reads from `Distributions` directly.
+
+
 ---@type string string
 function stringIsNullOrEmpty(text)
 	return (text==nil or string.len(text)==0)
@@ -6,7 +14,7 @@ end
 
 ---@param inventoryContainer InventoryContainer | InventoryItem
 ---@param player IsoGameCharacter | IsoMovingObject
-function fillInventoryContainer(inventoryContainer, player)
+function rollInventoryContainer(inventoryContainer, player)
 	local itemType = inventoryContainer:getType()
 	local itemContainer = inventoryContainer:getInventory()
 	local itemContainerDistribution = Distributions[1][itemType]
