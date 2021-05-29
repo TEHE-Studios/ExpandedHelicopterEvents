@@ -28,7 +28,7 @@ module Base
 			texture = Vehicles/Vehicle_UH1HSurvivalist,
 		}
 
-						textureMask = Vehicle_UH1H_mask,
+		textureMask = Vehicle_UH1H_mask,
 		extents = 1.3077 2.0220 5.8791,
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 5.8791,
@@ -50,14 +50,14 @@ module Base
 		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
-	seats = 4,
+		seats = 4,
 		template = PassengerSeat4,
 
 		passenger FrontLeft
 		{
 			position inside
 			{
-				offset = 0.4396 0.4341 -0.7582,
+				offset = 0.3407 0.4341 -0.6813,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -73,7 +73,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1758 0.4341 -0.6813,
+				offset = -0.3132 0.4341 -0.6648,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -89,7 +89,7 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.5055 0.4341 0.3571,
+				offset = 0.3626 0.4341 0.3901,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -105,7 +105,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.2253 0.4341 0.3846,
+				offset = -0.3352 0.4341 0.3736,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 

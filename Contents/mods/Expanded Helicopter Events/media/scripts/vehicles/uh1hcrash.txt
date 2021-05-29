@@ -53,11 +53,12 @@ module Base
 		seats = 4,
 		template = PassengerSeat4,
 
+		
 		passenger FrontLeft
 		{
 			position inside
 			{
-				offset = 0.4396 0.4341 -0.7582,
+				offset = 0.3407 0.4341 -0.6813,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -73,7 +74,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1758 0.4341 -0.6813,
+				offset = -0.3132 0.4341 -0.6648,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -89,7 +90,7 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.5055 0.4341 0.3571,
+				offset = 0.3626 0.4341 0.3901,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -105,7 +106,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.2253 0.4341 0.3846,
+				offset = -0.3352 0.4341 0.3736,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
