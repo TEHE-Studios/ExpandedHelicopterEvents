@@ -40,7 +40,11 @@ function fillInventoryContainer(inventoryContainer, player)
 		bUnlucky = player:HasTrait("Unlucky")
 	end
 
-	for _=0, itemContainerDistribution.rolls do
+	if itemContainerDistribution.rolls <= 0 then
+		return
+	end
+
+	for _=1, itemContainerDistribution.rolls do
 		for k,v in pairs(itemContainerDistribution.items) do
 			if type(v) == "string" then
 				local type = v
