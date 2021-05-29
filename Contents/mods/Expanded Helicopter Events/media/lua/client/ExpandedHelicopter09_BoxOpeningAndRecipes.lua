@@ -11,19 +11,14 @@ function EHE_OpenBox.FOOD(recipe, result, player)
 	player:getInventory():AddItems("Base.TinnedBeans", 10)
 end
 
-
+---@param player IsoGameCharacter | IsoMovingObject
 function EHE_OpenBox.MEDICAL(recipe, result, player)
 	player:getInventory():AddItems("Hat_DustMask", 6)
 	player:getInventory():AddItems("Gloves_Surgical", 12)
 	local items = player:getInventory():AddItems("Base.FirstAidKit", 4)
 
 	for i=0, items:size()-1 do
-		---@type InventoryContainer | InventoryItem
-		local item = items:get(i)
-		local itemType = item:getType()
-		local distributions = ItemPickerJava.containers
-		local specificDistro = distributions:get(itemType)
-		ItemPickerJava.rollContainerItem(item, player, specificDistro)
+		fillInventoryContainer(items:get(i), player)
 	end
 end
 
