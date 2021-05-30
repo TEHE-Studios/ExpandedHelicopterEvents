@@ -18,6 +18,10 @@ eHelicopter.shadow = true
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HCrash"}
 
+---@field crew table list of IDs and chances similar to loot distributions
+---example: crew = {"pilot", 100, "crew", 75, "crew", 50}
+eHelicopter.crew = {"AirCrew", 100}
+
 ---@field dropItems table
 eHelicopter.dropItems = false
 
@@ -593,6 +597,40 @@ function getOutsideSquare(square)
 end
 
 
+---Heli spawn crew
+function eHelicopter:spawnCrew()
+	if not self.crew then
+		return
+	end
+
+	for key,outfitID in pairs(self.crew) do
+		local chance = self.crew[key+1]
+		if (type(outfitID) == "string") and (type(chance) == "number") and (ZombRand(100) <= chance) then
+			local heliX, heliY, _ = self:getXYZAsInt()
+
+			if heliX and heliY then
+				heliX = heliX+ZombRand(-2,2)
+				heliY = heliY+ZombRand(-2,2)
+			end
+
+			local bodyLoc = getOutsideSquare(getSquare(heliX, heliY, 0))
+			if bodyLoc then
+				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
+				for i=0, spawnedZombies:size()-1 do
+					local zombie = spawnedZombies:get(i)
+					if ZombRand(100) <= 50 then
+						print("spawned: "..outfitID.." IsoDeadBody")
+						IsoDeadBody.new(zombie, true)
+					else
+						print("spawned: "..outfitID.." IsoZombie")
+					end
+				end
+			end
+		end
+	end
+end
+
+
 ---Heli goes down
 function eHelicopter:crash()
 
@@ -614,6 +652,7 @@ function eHelicopter:crash()
 				heli:playSound("VehicleCrash")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
+				self:spawnCrew()
 				return true
 			end
 		end
@@ -731,8 +770,7 @@ function eHelicopter:update()
 	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
 		if self.hoverOnTargetDuration then
 
-			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("HOVERING OVER TARGET") end
-
+			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
 			if self.hoverOnTargetDuration <= 0 then
@@ -740,10 +778,11 @@ function eHelicopter:update()
 			end
 			preventMovement=true
 		else
-			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET") end
+			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET") end
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
-			self:goHome()
+			self:crash()
+			--self:goHome()
 		end
 	end
 
