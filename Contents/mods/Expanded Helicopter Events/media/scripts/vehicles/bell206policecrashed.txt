@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_Bell206Crashed,
 			scale = 3.1100,
-			offset = 0.0772 0.0064 -0.8328,
+			offset = -0.0868 0.0064 1.0193,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -53,11 +53,12 @@ module Base
 		seats = 4,
 		template = PassengerSeat4,
 
-			passenger FrontLeft
+	
+		passenger FrontLeft
 		{
 			position inside
 			{
-				offset = 0.1768 0.4341 -0.4502,
+				offset = 0.1768 0.4341 0.1994,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -73,7 +74,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1768 0.4341 -0.4502,
+				offset = -0.1768 0.4341 0.1994,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -89,7 +90,7 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.1768 0.4341 0.1158,
+				offset = 0.1768 0.4341 -0.2894,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -105,7 +106,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1672 0.4341 0.1158,
+				offset = -0.1672 0.4341 -0.2894,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -119,22 +120,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.5370 -1.0322 0.4759 0.4759,
+			xywh = 0.5209 1.2251 0.4759 0.4759,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.4437 -1.0322 0.4759 0.4759,
+			xywh = -0.4598 1.2251 0.4759 0.4759,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.5370 -0.5531 0.4759 0.4759,
+			xywh = 0.5209 0.7492 0.4759 0.4759,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.4437 -0.5531 0.4759 0.4759,
+			xywh = -0.4598 0.7492 0.4759 0.4759,
 		}
 
 		template = Seat/part/SeatFrontLeft,
