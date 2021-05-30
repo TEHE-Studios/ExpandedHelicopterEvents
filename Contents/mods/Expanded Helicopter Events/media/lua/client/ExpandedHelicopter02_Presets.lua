@@ -34,31 +34,37 @@ eHelicopter_PRESETS = {
 
 	["patrol_only"] = {
 		announcerVoice = true,
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 	},
 
 	-- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 	["patrol_only_emergency"] = {
 		announcerVoice = true,
 		dropItems = {["EmergencyFlyer"]=250},
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 	},
 
 	["patrol_only_quarantine"] = {
 		announcerVoice = true,
 		dropItems = {["QuarantineFlyer"]=250},
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 	},
 
 	["attack_only_undead_evac"] = {
 		hostilePreference = "IsoZombie",
 		dropItems = {["EvacuationFlyer"]=250},
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 	},
 
 	["attack_only_undead"] = {
 		hostilePreference = "IsoZombie",
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 	},
 
 	["attack_only_all"] = {
 		hostilePreference = "IsoGameCharacter",
-		crashType = {"UH1Hsurvivalistcrash"}
+		crashType = {"UH1Hsurvivalistcrash"},
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 	},
 
 	["police_heli"] = {
@@ -67,6 +73,7 @@ eHelicopter_PRESETS = {
 		cutOffDay = 20,
 		speed = 0.12,
 		crashType = {"Bell206PoliceCrashed"},
+		crew = {"AirCrew", 100, "Police", 100, "Police", 50},
 		hostilePreference = "IsoZombie",
 		eventSoundEffects = {
 			["attackSingle"] = "eHeli_bolt_action_fire_singleshot",
@@ -78,6 +85,7 @@ eHelicopter_PRESETS = {
 	["aid_helicopter"] = {
 		announcerVoice = true,
 		crashType = {"UH1Hmedevaccrash"},
+		crew = {"AirCrew", 100, "AirCrew", 75, "AirCrew", 50},
 		dropPackages = {"FEMASupplyDrop"},
 		dropItems = {["NoticeFlyer"]=250},
 		cutOffDay = 20,
