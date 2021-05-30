@@ -3,7 +3,7 @@ local distributionTable = VehicleDistributions[1]
 
 
 VehicleDistributions.UH1Seat = {
-    rolls = 7,
+    rolls = 2,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -46,7 +46,7 @@ VehicleDistributions.UH1Seat = {
 }
 
 VehicleDistributions.UH1HSurvivalistSeat = {
-    rolls = 7,
+    rolls = 2,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -84,12 +84,14 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "HottieZ", 10,
         "HottieZ", 10,
         "Hat_SPHSurvivalist", 10,
+        "AmmoStraps", 10,
+        "AmmoStrap_Bullets", 10,
 	
     }
 }
 
 VehicleDistributions.UH1HMedevacSeat = {
-    rolls = 7,
+    rolls = 2,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -136,7 +138,7 @@ VehicleDistributions.UH1HMedevacSeat = {
 }
 
 VehicleDistributions.Bell206PoliceSeat = {
-    rolls = 7,
+    rolls = 2,
     items ={
         "Bag_BigHikingBag", 9,
         "Vest_BulletPolice", 9,
@@ -148,9 +150,9 @@ VehicleDistributions.Bell206PoliceSeat = {
         "556Box", 3,
         "556Box", 3,
         "556Box", 3,
-        "RiotHelmet", 9,
-        "RiotHelmet", 9,
-        "RiotHelmet", 9,
+        "Hat_RiotHelmet", 7,
+        "Hat_RiotHelmet", 7,
+        "Hat_RiotHelmet", 7,
         "AssaultRifle", 7,
         "AssaultRifle", 7,
         "Pistol", 5,
@@ -170,11 +172,13 @@ VehicleDistributions.Bell206PoliceSeat = {
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
         "Hat_SPHPolice", 10,
+        "AmmoStraps", 10,
+        "AmmoStrap_Bullets", 10,
     }
 }
 
 VehicleDistributions.Bell206NewsSeat = {
-    rolls = 7,
+    rolls = 2,
     items ={
         "Pistol", 5,
         "Pistol", 5,
@@ -197,37 +201,11 @@ VehicleDistributions.Bell206NewsSeat = {
 }
 
 VehicleDistributions.FEMASupplyDrop = {
-    rolls = 20,
+    rolls = 2,
     items ={
-        "FirstAidKit", 10,
-        "WaterBottleFull", 10,
-        "WaterBottleFull", 10,
-        "WaterBottleFull", 10,
-        "WaterBottleFull", 10,
-        "WaterBottleFull", 10,
-        "WaterBottleFull", 10,
-        "TinnedBeans", 10,
-        "TinnedBeans", 10,
-        "TinnedBeans", 10,
-        "TinnedBeans", 10,
-        "TinnedBeans", 10,
-        "TinnedBeans", 10,
-        "CannedCornBeef", 10,
-        "CannedCornBeef", 10,
-        "CannedCornBeef", 10,
-        "CannedCornBeef", 10,
-        "CannedCornBeef", 10,
-        "CannedCornBeef", 10,
-        "CannedCornBeef", 10,
-        "Rice", 10,
-        "Rice", 10, 
-        "Rice", 10,
-        "Rice", 10,
-        "Rice", 10, 
-        "Rice", 10,
-        "Rice", 10,
-        "Rice", 10, 
-        "Rice", 10,
+        "EHE.EmergencyFoodSupplyBox", 10,
+        "EHE.EmergencyMedicalSupplyBox", 10,
+        "EHE.EmergencySurvivalSupplyBox", 10,
     }
 }
 
