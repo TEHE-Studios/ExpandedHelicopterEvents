@@ -617,12 +617,13 @@ function eHelicopter:spawnCrew()
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
 				for i=0, spawnedZombies:size()-1 do
+					---@type IsoGameCharacter | IsoZombie
 					local zombie = spawnedZombies:get(i)
 					if ZombRand(100) <= 50 then
-						print("spawned: "..outfitID.." IsoDeadBody")
-						IsoDeadBody.new(zombie, true)
+						print("spawned: "..outfitID.." killed")
+						zombie:setHealth(0)
 					else
-						print("spawned: "..outfitID.." IsoZombie")
+						print("spawned: "..outfitID)
 					end
 				end
 			end
@@ -781,8 +782,8 @@ function eHelicopter:update()
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET") end
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
-			self:crash()
-			--self:goHome()
+			--self:crash()
+			self:goHome()
 		end
 	end
 
