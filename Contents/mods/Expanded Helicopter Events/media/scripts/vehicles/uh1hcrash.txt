@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_UH1Hcrash,
 			scale = 1.8200,
-			offset = 0.0604 0.0055 1.3462,
+			offset = 0.0714 0.0055 1.3462,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -52,7 +52,6 @@ module Base
 		rearEndHealth = 150,
 		seats = 4,
 		template = PassengerSeat4,
-
 
 		passenger FrontLeft
 		{
