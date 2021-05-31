@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_UH1Hcrash,
 			scale = 1.8200,
-			offset = -0.0604 -0.0165 1.3462,
+			offset = 0.0000 -0.0220 1.3462,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -73,13 +73,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.2527 0.4341 0.9615,
+				offset = -0.3681 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -1.1703 0.0000 1.0385,
+				offset = -1.3022 0.0000 1.0385,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
@@ -105,13 +105,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.2473 0.4341 -0.2582,
+				offset = -0.3626 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -1.1758 0.0000 -0.2802,
+				offset = -1.2912 0.0000 -0.2802,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearRight,
 			}
@@ -119,22 +119,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 1.0165 2.3462 0.6484 0.7253,
+			xywh = 1.0165 2.3462 0.6484 0.6484,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0165 2.3462 0.6484 0.7253,
+			xywh = -1.0165 2.3462 0.6484 0.6484,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 1.0165 1.3571 0.6484 1.2418,
+			xywh = 1.0165 1.6538 0.6484 0.6484,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -1.0165 1.3571 0.6484 1.2418,
+			xywh = -1.0165 1.6538 0.6484 0.6484,
 		}
 
 		template = Seat/part/SeatFrontLeft,
