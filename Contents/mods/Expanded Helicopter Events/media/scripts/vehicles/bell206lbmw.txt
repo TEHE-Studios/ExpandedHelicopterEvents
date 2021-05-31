@@ -58,13 +58,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.1190 0.3859 0.1029,
+				offset = 0.1608 0.3859 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.4823 0.0000 0.1029,
+				offset = 0.7235 0.0000 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
 			}
@@ -74,13 +74,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1190 0.3859 0.1029,
+				offset = -0.1608 0.3859 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.4823 0.0000 0.1029,
+				offset = -0.7235 0.0000 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
@@ -90,13 +90,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.1190 0.3859 -0.2572,
+				offset = 0.1608 0.3859 -0.3215,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.4823 0.0000 -0.2572,
+				offset = 0.7235 0.0000 -0.2572,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearLeft,
 			}
@@ -106,13 +106,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1190 0.3859 -0.2572,
+				offset = -0.1608 0.3859 -0.3215,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.4823 0.0000 -0.2572,
+				offset = -0.7235 0.0000 -0.2572,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearRight,
 			}
