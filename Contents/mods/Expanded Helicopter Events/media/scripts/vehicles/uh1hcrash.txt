@@ -51,6 +51,7 @@ module Base
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 4,
+
 		template = PassengerSeat4,
 
 		passenger FrontLeft
