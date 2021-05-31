@@ -57,7 +57,7 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.3022 0.4341 0.9615,
+				offset = 0.3681 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -73,7 +73,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1868 0.4341 0.9615,
+				offset = -0.2527 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -89,7 +89,7 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.3022 0.4341 -0.2582,
+				offset = 0.3626 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -105,7 +105,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1868 0.4341 -0.2582,
+				offset = -0.2473 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -119,22 +119,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.9341 2.3462 0.4835 0.7253,
+			xywh = 1.0165 2.3462 0.6484 0.7253,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.9341 2.3462 0.4835 0.7253,
+			xywh = -1.0165 2.3462 0.6484 0.7253,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.9341 1.4615 0.4835 1.0440,
+			xywh = 1.0165 1.3571 0.6484 1.2418,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.9341 1.4615 0.4835 1.0440,
+			xywh = -1.0165 1.3571 0.6484 1.2418,
 		}
 
 		template = Seat/part/SeatFrontLeft,
