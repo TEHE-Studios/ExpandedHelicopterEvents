@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_UH1H,
 			scale = 1.8200,
-			offset = 0.0714 0.0055 1.3242,
+			offset = 0.0879 0.0055 1.3242,
 		}
 
 		spawnOffsetY = 0.19392952,
