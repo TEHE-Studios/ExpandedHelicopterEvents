@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_UH1Hcrash,
 			scale = 1.8200,
-			offset = 0.0604 0.0055 1.3462,
+			offset = -0.0604 -0.0165 1.3462,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -29,10 +29,10 @@ module Base
 		}
 
 		textureMask = Vehicle_UH1H_mask,
-		extents = 1.3077 2.0220 5.8791,
+		extents = 1.3846 1.8791 5.8791,
 		mass = 200,
-		physicsChassisShape = 1.3846 2.0330 5.8791,
-		centerOfMassOffset = 0.1319 0.9890 0.1044,
+		physicsChassisShape = 1.3846 1.8791 5.8791,
+		centerOfMassOffset = 0.0000 0.9505 0.0714,
 		engineForce = 3600,
 		engineQuality = 60,
 		engineLoudness = 55,
@@ -53,18 +53,17 @@ module Base
 		seats = 4,
 		template = PassengerSeat4,
 
-
 		passenger FrontLeft
 		{
 			position inside
 			{
-				offset = 0.3407 0.4341 0.8956,
+				offset = 0.3022 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.8626 -0.4341 0.1758,
+				offset = 1.3022 0.0000 1.0385,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
 			}
@@ -74,13 +73,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.3132 0.4341 0.9121,
+				offset = -0.1868 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.7802 -0.4341 0.1758,
+				offset = -1.1703 0.0000 1.0385,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
@@ -90,13 +89,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.3626 0.4341 -0.2637,
+				offset = 0.3022 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.6209 -0.4341 -0.2802,
+				offset = 1.2912 0.0000 -0.2802,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearLeft,
 			}
@@ -106,13 +105,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.3352 0.4341 -0.2802,
+				offset = -0.1868 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.6209 -0.4341 -0.2802,
+				offset = -1.1758 0.0000 -0.2802,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearRight,
 			}
@@ -120,22 +119,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.8791 2.3462 0.4835 0.4835,
+			xywh = 0.9341 2.3462 0.4835 0.7253,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.6099 2.3462 0.4835 0.4835,
+			xywh = -0.9341 2.3462 0.4835 0.7253,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.7967 1.4615 0.4835 1.0440,
+			xywh = 0.9341 1.4615 0.4835 1.0440,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.5714 1.4615 0.4835 1.0440,
+			xywh = -0.9341 1.4615 0.4835 1.0440,
 		}
 
 		template = Seat/part/SeatFrontLeft,
