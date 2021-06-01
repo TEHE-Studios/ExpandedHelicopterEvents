@@ -18,8 +18,9 @@ eHelicopter.shadow = true
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HCrash"}
 
----@field crew table list of IDs and chances similar to loot distributions
----example: crew = {"pilot", 100, "crew", 75, "crew", 50}
+---@field crew table list of IDs and chances (similar to how loot distribution is handled)
+---Example: crew = {"pilot", 100, "crew", 75, "crew", 50}
+---If there is no number following a string a chance of 100% will be applied.
 eHelicopter.crew = {"AirCrew", 100}
 
 ---@field dropItems table
@@ -605,7 +606,12 @@ function eHelicopter:spawnCrew()
 
 	for key,outfitID in pairs(self.crew) do
 		local chance = self.crew[key+1]
-		if (type(outfitID) == "string") and (type(chance) == "number") and (ZombRand(100) <= chance) then
+		
+		if type(chance) ~= "number" then
+			chance = 100
+		end
+		
+		if (type(outfitID) == "string") and (ZombRand(100) <= chance) then
 			local heliX, heliY, _ = self:getXYZAsInt()
 
 			if heliX and heliY then
