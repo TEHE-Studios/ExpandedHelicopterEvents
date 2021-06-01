@@ -201,7 +201,7 @@ VehicleDistributions.Bell206NewsSeat = {
 }
 
 VehicleDistributions.FEMASupplyDrop = {
-    rolls = 2,
+    rolls = 50,
     items ={
         "EHE.EmergencyFoodSupplyBox", 10,
         "EHE.EmergencyMedicalSupplyBox", 10,
