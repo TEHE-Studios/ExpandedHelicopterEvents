@@ -97,17 +97,30 @@ setAnnouncementLength()
 
 
 ---Sets eHelicopter's announcer voice
----@param specificVoice string
+---@param specificVoice string|table can be string for specific voice or table to be picked from
 function eHelicopter:chooseVoice(specificVoice)
 	if #eHelicopter_announcersLoaded < 1 then
 		return
 	end
-
-	if not specificVoice then
-		local randAnn = ZombRand(1, #eHelicopter_announcersLoaded+1)
-		specificVoice = eHelicopter_announcersLoaded[randAnn]
+	
+	local voiceSelectionMaxIndex = #eHelicopter_announcersLoaded
+	local voiceSelectionOptions = eHelicopter_announcersLoaded
+	
+	if type(specificVoice) == "table" then
+		voiceSelectionMaxIndex = #specificVoice
+		voiceSelectionOptions = specificVoice
+		specificVoice = false
 	end
-
+	
+	if not specificVoice then
+		local randAnn = ZombRand(1, voiceSelectionMaxIndex+1)
+		specificVoice = voiceSelectionOptions[randAnn]
+	end
+	
+	if not specificVoice then
+		print("EHE: ERR: Unable to initiate voice: "..specificVoice)
+		return
+	end
 	self.announcerVoice = eHelicopter_announcers[specificVoice]
 end
 
