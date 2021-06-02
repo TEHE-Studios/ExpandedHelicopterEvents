@@ -10,7 +10,6 @@ module EHE
        OnCreate:EHE_OpenBox.FOOD,
        Time:70.0,
        Sound:OpenBox,
-       Category:Cooking,
     }
 
 	recipe Unbox Medical Supplies
@@ -22,7 +21,6 @@ module EHE
        OnCreate:EHE_OpenBox.MEDICAL,
        Time:70.0,
        Sound:OpenBox,
-       Category:Cooking,
     }
 
 	recipe Unbox Survival Supplies
@@ -34,6 +32,5 @@ module EHE
        OnCreate:EHE_OpenBox.SURVIVAL,
        Time:70.0,
        Sound:OpenBox,
-       Category:Cooking,
     }
 }
