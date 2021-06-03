@@ -13,14 +13,7 @@ if getDebug() then
 		elseif key == Keyboard.KEY_4 then
 			--DEBUG_TESTS.CheckWeather()
 			--DEBUG_TESTS.shakeTrees()
-
-			---@type IsoGameCharacter | IsoMovingObject | IsoObject
-			local playerSQ = getSpecificPlayer(0)
-			local square = playerSQ:getSquare()
-
-			print("square:isSolid(): "..tostring(square:isSolid()))
-			print("square:isSolidTrans(): "..tostring(square:isSolidTrans()))
-			print("square:isSolidFloor(): "..tostring(square:isSolidFloor()))
+			DEBUG_TESTS.launch_jet()
 
 		elseif key == Keyboard.KEY_5 then
 			DEBUG_TESTS.launch_aid_chopper()
