@@ -15,5 +15,20 @@
 	<path>media/clothing/clothingItems/Hat_SPHSurvivalist.xml</path>
 	<guid>04b6c0a5-d5b5-45bf-927d-8dbd6b6d031a</guid>
 	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Suit_PoliceFlying.xml</path>
+	<guid>5e9a6a86-68ed-4197-99ec-eea5df29b96e</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Vest_BulletPress.xml</path>
+	<guid>efc9fca0-d052-4ef4-b67c-589c619a3ad6</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_PressHelmet.xml</path>
+	<guid>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</guid>
+	</files>
 	
 </fileGuidTable>

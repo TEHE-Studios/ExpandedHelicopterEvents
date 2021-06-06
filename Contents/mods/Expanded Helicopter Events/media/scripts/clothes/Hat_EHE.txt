@@ -51,4 +51,51 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
+
+	  item Boilersuit_PoliceFlying
+    {
+        Type = Clothing,
+        DisplayName = Police Pilot Flying Suit,
+        ClothingItem = Suit_PoliceFlying,
+        BodyLocation = FullSuit,
+        Icon = BoilerSuitGreen,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 10,
+        Insulation = 0.75,
+        WindResistance = 0.55,
+        FabricType = Cotton
+    }
+	   
+	    item Vest_BulletPress
+    {
+        Type = Clothing,
+        DisplayName = Press Bulletproof Vest,
+        ClothingItem = Vest_BulletPress,
+        BodyLocation = TorsoExtra,
+        Icon = BulletVestPolice,
+        BloodLocation = ShirtNoSleeves,
+        Insulation = 0.65,
+        WindResistance = 0.30,
+        BiteDefense = 30,
+        ScratchDefense = 55,
+    }
+
+		item Hat_PressHelmet
+	{
+		Type = Clothing,
+		DisplayName = Press Helmet,
+		ClothingItem = Hat_PressHelmet,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetCivilian,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+	
 }
