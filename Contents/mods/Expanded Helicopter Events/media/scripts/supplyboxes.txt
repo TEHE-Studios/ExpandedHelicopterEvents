@@ -22,4 +22,11 @@ module EHE
 		DisplayName		=	Emergency Survival Supply Box,
 	}
 
+		item BanditStashBox
+	{
+		Weight			=	9,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Bandit's Stash Box,
+	}
+
 }

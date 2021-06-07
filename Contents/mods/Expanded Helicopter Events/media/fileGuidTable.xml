@@ -30,5 +30,12 @@
 	<path>media/clothing/clothingItems/Hat_PressHelmet.xml</path>
 	<guid>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</guid>
 	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_DeserterHelmet.xml</path>
+	<guid>902faa82-fe7b-44b8-9932-cff053b7a9f0</guid>
+	</files>
+
+	
 	
 </fileGuidTable>
