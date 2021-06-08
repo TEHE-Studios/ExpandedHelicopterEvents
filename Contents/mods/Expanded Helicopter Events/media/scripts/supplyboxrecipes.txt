@@ -33,4 +33,16 @@ module EHE
        Time:70.0,
        Sound:OpenBox,
     }
+
+    recipe Unbox Stash Box
+    {
+        BanditStashBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+
+       Result:EmergencyFlyer=1,
+       OnCreate:EHE_OpenBox.STASHBOX,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+}
 }
