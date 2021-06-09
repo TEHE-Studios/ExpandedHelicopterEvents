@@ -559,8 +559,16 @@ function eHelicopter:launch(targetedPlayer)
 	end
 	self.state = "gotoTarget"
 
+	--weatherImpact is a float, 0 to 1
 	local _, weatherImpact = eHeliEvent_weatherImpact()
-	if self.crashType and (not self.crashing) and ZombRand(0,100) <= weatherImpact*100 then
+
+	local cutOff = self.cutOffDay or eHelicopter.cutOffDay
+	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
+	local daysInOverCutOff = (daysIntoApoc/cutOff)
+
+	local crashChance = (weatherImpact+(daysInOverCutOff/4))*100
+
+	if self.crashType and (not self.crashing) and ZombRand(0,100) <= crashChance then
 		self.crashing = true
 	end
 end

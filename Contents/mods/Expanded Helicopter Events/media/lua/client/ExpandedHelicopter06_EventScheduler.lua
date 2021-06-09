@@ -39,7 +39,7 @@ function eHeliEvent_weatherImpact()
 		willFly = false
 	end
 
-	impactOnFlightSafety = (wind+rain+snow+(fog*3))/6
+	impactOnFlightSafety = math.floor(((wind+rain+snow+(fog*3))/6)+0.5)
 
 	return willFly, impactOnFlightSafety
 end
