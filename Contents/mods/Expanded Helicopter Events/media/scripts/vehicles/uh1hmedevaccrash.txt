@@ -32,7 +32,7 @@ module Base
 		extents = 1.3077 2.0220 5.8791,
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 5.8791,
-		centerOfMassOffset = 0.1319 0.9890 0.1044,
+		centerOfMassOffset = 0.0000 0.9890 0.1044,
 		engineForce = 3600,
 		engineQuality = 60,
 		engineLoudness = 55,
@@ -51,7 +51,6 @@ module Base
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 4,
-
 		template = PassengerSeat4,
 
 		passenger FrontLeft
@@ -120,22 +119,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 1.0165 2.3462 0.6484 0.6484,
+			xywh = 1.0659 2.3462 0.8242 0.8242,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0165 2.3462 0.6484 0.6484,
+			xywh = -0.9780 2.3462 0.8242 0.8242,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 1.0165 1.6538 0.6484 0.6484,
+			xywh = 1.0659 1.5220 0.8242 0.8242,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -1.0165 1.6538 0.6484 0.6484,
+			xywh = -0.9780 1.5220 0.8242 0.8242,
 		}
 
 		template = Seat/part/SeatFrontLeft,
