@@ -1,14 +1,9 @@
 ---Original EasyConfig found in Sandbox+ (author: derLoko)
-
 EasyConfig_Chucked = EasyConfig_Chucked or {}
-EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
+EasyConfig_Chucked.mods = {}
 
-EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName)
-	if not config then
-		return
-	end
-
-	if not configMenu then
+EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName, menuSpecificAccess)
+	if not config or not configMenu then
 		return
 	end
 
@@ -16,11 +11,8 @@ EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName)
 	EasyConfig_Chucked.mods[modId].name = name
 	EasyConfig_Chucked.mods[modId].config = config
 	EasyConfig_Chucked.mods[modId].configMenu = configMenu
-	if tabName ~= nil then
-		EasyConfig_Chucked.mods[modId].tabName = tabName
-	else
-		EasyConfig_Chucked.mods[modId].tabName = "MODS"
-	end
+	EasyConfig_Chucked.mods[modId].tabName = tabName or "MODS"
+	EasyConfig_Chucked.mods[modId].menuSpecificAccess = menuSpecificAccess
 
 	--link all the things!
 	for gameOptionName,menuEntry in pairs(configMenu) do
@@ -88,10 +80,6 @@ function MainOptions:create() -- override
 
 	MainOptions_create(self) -- call original
 
-	if getPlayer() then
-		return
-	end
-
 	function self.gameOptions:toUI()
 		for _,option in ipairs(self.options) do
 			if option then option:toUI() end
@@ -102,10 +90,8 @@ function MainOptions:create() -- override
 		for _,option in ipairs(self.options) do
 			if option then option:apply() end
 		end
-		if not getPlayer() then
-			EasyConfig_Chucked.saveConfig()
-			EasyConfig_Chucked.loadConfig()
-		end
+		EasyConfig_Chucked.saveConfig()
+		EasyConfig_Chucked.loadConfig()
 		self.changed = false
 	end
 
@@ -258,15 +244,12 @@ function MainOptions:create() -- override
 	self.addY = 0
 	local modPageAdded = false
 	for modId,mod in pairs(EasyConfig_Chucked.mods) do
-		if mod.tabName == "MODS" then
-			if not modPageAdded then
-				self:addPage("MODS")
-				modPageAdded = true
-			end
-			if getPlayer() then
-				addText("Please return to the main menu", UIFont.Medium)
-				addText("to change your settings!", UIFont.Medium)
-			else
+		if (not mod.menuSpecificAccess) or (getPlayer() and mod.menuSpecificAccess=="ingame") or (not getPlayer() and mod.menuSpecificAccess=="mainmenu") then
+			if mod.tabName == "MODS" then
+				if not modPageAdded then
+					self:addPage("MODS")
+					modPageAdded = true
+				end
 				createElements(mod)
 			end
 		end
@@ -275,20 +258,16 @@ function MainOptions:create() -- override
 	self.mainPanel:setScrollHeight(self.addY + 20)
 
 	for modId,mod in pairs(EasyConfig_Chucked.mods) do
-		if mod.tabName ~= "MODS" then
-			self:addPage(mod.tabName)
-			self.addY = 0
-			if getPlayer() then
-				addText("Please return to the main menu", UIFont.Medium)
-				addText("to change your settings!", UIFont.Medium)
-			else
+		if (not mod.menuSpecificAccess) or (getPlayer() and mod.menuSpecificAccess=="ingame") or (not getPlayer() and mod.menuSpecificAccess=="mainmenu") then
+			if mod.tabName ~= "MODS" then
+				self:addPage(mod.tabName)
+				self.addY = 0
 				createElements(mod)
 				self.addY = self.addY + MainOptions.translatorPane:getHeight() + 22
 				self.mainPanel:setScrollHeight(self.addY + 20)
 			end
 		end
 	end
-
 end
 
 
