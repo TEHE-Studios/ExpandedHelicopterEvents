@@ -3,7 +3,7 @@
 if not EasyConfig_Chucked then
 
 	EasyConfig_Chucked = {}
-	EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
+	EasyConfig_Chucked.mods = {}
 
 	EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName)
 		if not config then

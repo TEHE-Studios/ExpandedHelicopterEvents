@@ -103,8 +103,10 @@ eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Event
 
 
 --load mod into EasyConfig
-EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
-
+if EasyConfig_Chucked then
+	EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
+end
+	
 
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
