@@ -1,71 +1,477 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <outfitManager>
-<m_FemaleOutfits>
-		<m_Name>AirCrew</m_Name>
-		<m_Guid>9b25cc65-021d-458e-9d7a-395026ce2371</m_Guid>
+<m_MaleOutfits>
+		<m_Name>1PolicePilot</m_Name>
+		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
+		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
-		<m_items>
-			<itemGUID>25b7d5d3-c92f-4aaa-8fe7-a8563871621c</itemGUID>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Police Helicopter Helmet -->
+			<itemGUID>dd389eac-faf3-4876-9464-b5d6dcb4704c</itemGUID>
 		</m_items>
-		<m_items>
-			<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
 		</m_items>
-		<m_items>
-			<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		<m_items> <!-- Police T-Shirt -->
+			<itemGUID>1a355b1d-3b97-4a11-a244-2b80aad8c009</itemGUID>
 		</m_items>
-		<m_items>
-			<probability>0.8</probability>
-			<itemGUID>28c04952-0f67-45fa-a325-2288b032fe5d</itemGUID>
+		<m_items> <!-- Flying Suit -->
+			<itemGUID>5e9a6a86-68ed-4197-99ec-eea5df29b96e</itemGUID>
 		</m_items>
-		<m_items>
-			<probability>0.8</probability>
-			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
-		</m_items>
-		<m_items>
-			<probability>0.1</probability>
-			<itemGUID>5fc22466-2942-4ba1-8c33-2a8528b73021</itemGUID>
-			<subItems>
-				<itemGUID>ce1a8520-7120-432e-8a3a-aa7b3094f0bb</itemGUID>
-			</subItems>
-			<subItems>
-				<itemGUID>c7cc655b-284a-4087-85a6-d7c116385fb0</itemGUID>
-			</subItems>
-			<subItems>
-				<itemGUID>0383956a-3fbd-4001-9749-69e2ba70b134</itemGUID>
-			</subItems>
-		</m_items>
-	</m_FemaleOutfits>
-    	<m_MaleOutfits>
-		<m_Name>AirCrew</m_Name>
-		<m_Guid>9b25cc65-021d-458e-9d7a-395026ce2371</m_Guid>
-		<m_Pants>false</m_Pants>
-		<m_items>
-			<itemGUID>25b7d5d3-c92f-4aaa-8fe7-a8563871621c</itemGUID>
-		</m_items>
-		<m_items>
-			<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
-		</m_items>
-		<m_items>
-			<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
-		</m_items>
-		<m_items>
-			<probability>0.8</probability>
-			<itemGUID>28c04952-0f67-45fa-a325-2288b032fe5d</itemGUID>
-		</m_items>
-		<m_items>
-			<probability>0.1</probability>
-			<itemGUID>6d702d88-4ca0-4bcb-9aee-d88f2be29e69</itemGUID>
-		</m_items>
-		<m_items>
-			<probability>0.3</probability>
-			<itemGUID>4cbb081e-0e9a-4248-bec1-0aa226e082e1</itemGUID>
-			<subItems>
-				<itemGUID>e4b3135f-a541-4870-a7b9-2ba6f730bc5c</itemGUID>
-			</subItems>
-		</m_items>
-		<m_items>
-			<probability>0.8</probability>
-			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
-		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
 	</m_MaleOutfits>
-    </outfitManager>
+
+	<m_MaleOutfits>
+		<m_Name>1MilitaryPilot</m_Name>
+		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Military Helicopter Helmet -->
+			<itemGUID>dd389eac-faf3-4876-9464-b5d6dcb4704c</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+		</m_items>
+		<m_items> <!-- Army T-Shirt -->
+			<itemGUID>0cc9f034-1d90-4f4c-9b17-e1dcf008b356</itemGUID>
+		</m_items>
+		<m_items> <!-- Flying Suit -->
+			<itemGUID>25b7d5d3-c92f-4aaa-8fe7-a8563871621c</itemGUID>
+		</m_items>
+		<m_items> <!-- Flying Suit -->
+			<itemGUID>25b7d5d3-c92f-4aaa-8fe7-a8563871621c</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+		<m_MaleOutfits>
+		<m_Name>1CivilianPilot</m_Name>
+		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Civilian Helicopter Helmet -->
+			<itemGUID>e06b8111-1f8a-486e-b269-7bcd9541b35b</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Random Shoes -->
+			<itemGUID>7741404b-9689-4608-a0f5-4e06597776f9</itemGUID>
+		</m_items>
+		<m_items> <!-- Lumberjack Shirt -->
+			<itemGUID>88b27ecc-8a00-4d1a-882e-1ab4f4a46350</itemGUID>
+		</m_items>
+		<m_items> <!-- Press Vest -->
+			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
+		</m_items>
+		<m_items> <!-- Jeans -->
+			<itemGUID>8973893f-f324-4cdb-a32b-43cd0378174f</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+	<m_MaleOutfits>
+		<m_Name>1SurvivalistPilot</m_Name>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Military Helicopter Helmet -->
+			<itemGUID>04b6c0a5-d5b5-45bf-927d-8dbd6b6d031a</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+		</m_items>
+		<m_items> <!-- Hawaiian Shirt -->
+			<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
+		</m_items>
+		<m_items> <!-- Hunting Vest -->
+			<itemGUID>2f44ec3e-5711-492e-ba8f-e75cca3a4dc6</itemGUID>
+		</m_items>
+		<m_items> <!-- Woodland Camo Pants -->
+			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
+		</m_items>
+		<m_items> <!-- Aviators -->
+			<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		</m_items>
+		<m_items> <!-- Gold Watch (Right) -->
+			<itemGUID>68786117-452e-4d34-a5ed-d7f54b83bcf7</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+	<m_MaleOutfits>
+		<m_Name>1NewsReporterArmored</m_Name>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Press Helmet -->
+			<itemGUID>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</itemGUID>
+			<probability>0.5</probability>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Trainers -->
+			<itemGUID>6fed6e2b-3a72-4bac-aac5-09585984493d</itemGUID>
+		</m_items>
+		<m_items> <!-- Sport Shirt -->
+			<itemGUID>c23a5490-4c9c-4338-8c9b-50d85ae4460c</itemGUID>
+		</m_items>
+		<m_items> <!-- Press Vest -->
+			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
+		</m_items>
+		<m_items> <!-- Denim Jeans -->
+			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
+		</m_items>
+		<m_items> <!-- Black Digital Watch (Right) -->
+		<probability>0.2</probability>
+			<itemGUID>fb68aaa4-c93f-4fb4-b101-9ba30c9cb9dc</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+	<m_FemaleOutfits>
+		<m_Name>1NewsReporterArmored</m_Name>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Press Helmet -->
+			<itemGUID>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</itemGUID>
+			<probability>0.4</probability>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Trainers -->
+			<itemGUID>6fed6e2b-3a72-4bac-aac5-09585984493d</itemGUID>
+		</m_items>
+		<m_items> <!-- Sport Shirt -->
+			<itemGUID>c23a5490-4c9c-4338-8c9b-50d85ae4460c</itemGUID>
+		</m_items>
+		<m_items> <!-- Press Vest -->
+			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
+		</m_items>
+		<m_items> <!-- Denim Jeans -->
+			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
+		</m_items>
+		<m_items> <!-- Black Digital Watch (Right) -->
+			<itemGUID>fb68aaa4-c93f-4fb4-b101-9ba30c9cb9dc</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_FemaleOutfits>
+
+	<m_MaleOutfits>
+		<m_Name>1PoliceOfficer</m_Name>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Police Crash Helmet -->
+		<probability>0.4</probability>
+			<itemGUID>793a533e-dab0-4aa6-9285-78fe2398ca4b</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Black Shoes -->
+			<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		</m_items>
+		<m_items> <!-- Police T-Shirt -->
+			<itemGUID>1a355b1d-3b97-4a11-a244-2b80aad8c009</itemGUID>
+		</m_items>
+		<m_items> <!-- Police Bulletproof Vest -->
+			<itemGUID>d234e3b1-4e68-41b9-a48c-5669a8a52629</itemGUID>
+		</m_items>
+		<m_items> <!-- Bandoleer (Bullets) -->
+			<itemGUID>15514b21-1567-4a0b-a171-9740ee9b7b3a</itemGUID>
+		</m_items>
+		<m_items> <!-- Police Pants -->
+			<itemGUID>01cfabba-f1eb-4d18-8259-2dca4d0af8e5</itemGUID>
+		</m_items>
+		<m_items> <!-- Aviators -->
+		    <probability>0.2</probability>
+			<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		</m_items>
+			<m_items> <!-- Leather Gloves -->
+			<probability>0.5</probability>
+			<itemGUID>2b0756ac-57f3-415e-bfed-24b28d1ca4d6</itemGUID>
+		</m_items>
+		<m_items> <!-- Gold Watch (Right) -->
+		<probability>0.1</probability>
+			<itemGUID>68786117-452e-4d34-a5ed-d7f54b83bcf7</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+		<m_FemaleOutfits>
+		<m_Name>1PoliceOfficer</m_Name>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Police Crash Helmet -->
+		<probability>0.4</probability>
+			<itemGUID>793a533e-dab0-4aa6-9285-78fe2398ca4b</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Black Shoes -->
+			<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		</m_items>
+		<m_items> <!-- Police T-Shirt -->
+			<itemGUID>1a355b1d-3b97-4a11-a244-2b80aad8c009</itemGUID>
+		</m_items>
+		<m_items> <!-- Police Bulletproof Vest -->
+			<itemGUID>d234e3b1-4e68-41b9-a48c-5669a8a52629</itemGUID>
+		</m_items>
+		<m_items> <!-- Bandoleer (Bullets) -->
+			<itemGUID>15514b21-1567-4a0b-a171-9740ee9b7b3a</itemGUID>
+		</m_items>
+		<m_items> <!-- Police Pants -->
+			<itemGUID>01cfabba-f1eb-4d18-8259-2dca4d0af8e5</itemGUID>
+		</m_items>
+		<m_items> <!-- Aviators -->
+		    <probability>0.2</probability>
+			<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		</m_items>
+			<m_items> <!-- Leather Gloves -->
+			<probability>0.5</probability>
+			<itemGUID>2b0756ac-57f3-415e-bfed-24b28d1ca4d6</itemGUID>
+		</m_items>
+		<m_items> <!-- Gold Watch (Right) -->
+		<probability>0.1</probability>
+			<itemGUID>68786117-452e-4d34-a5ed-d7f54b83bcf7</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_FemaleOutfits>
+
+	<m_MaleOutfits>
+		<m_Name>1Survivalist</m_Name>
+		<m_Guid>dee6938d-840e-4cc3-81ab-c071f57ca908</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Deserter Helmet -->
+		<probability>0.5</probability>
+			<itemGUID>902faa82-fe7b-44b8-9932-cff053b7a9f0</itemGUID>
+		</m_items>
+			<m_items> <!-- Beret -->
+			<probability>0.5</probability>
+			<itemGUID>f2467000-e675-458c-9f63-5cc2f0ed0f3f</itemGUID>
+		</m_items>
+		<m_items> <!-- Tied Bandana -->
+			<probability>0.5</probability>
+		<itemGUID>131b62ae-646d-41c2-afb6-2935fb3ea494</itemGUID>
+		</m_items>
+		<m_items> <!-- ALICE pack -->
+			<probability>0.2</probability>
+		<itemGUID>8b3f943c-e903-431b-bf8d-8f2eb86c9ef3</itemGUID>
+		</m_items>
+		<m_items> <!-- ALICE pack -->
+			<probability>0.5</probability>
+		<itemGUID>8b3f943c-e903-431b-bf8d-8f2eb86c9ef3</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+		</m_items>
+		<m_items> <!-- Hawaiian Shirt -->
+		    <probability>0.5</probability>
+			<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
+		</m_items>
+		<m_items> <!-- Desert Camo Jacket -->
+		    <probability>0.5</probability>
+			<itemGUID>eb8d1f35-8d0b-4c9c-a308-aba2aa040f90</itemGUID>
+		</m_items>
+		<m_items> <!-- Bandoleer (Bullets) -->
+			<itemGUID>15514b21-1567-4a0b-a171-9740ee9b7b3a</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Bulletproof Vest -->
+			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
+		</m_items>
+		<m_items> <!-- Woodland Camo Pants -->
+			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
+		</m_items>
+		<m_items> <!-- Denim Jeans -->
+		<probability>0.5</probability>
+			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
+		</m_items>
+		<m_items> <!-- Tattoo on Arm -->
+		<probability>0.5</probability>
+			<itemGUID>ec2b8d6a-323b-4264-abe6-7499fa1cf01e</itemGUID>
+		</m_items>
+		<m_items> <!-- Aviators -->
+		<probability>0.1</probability>
+			<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		</m_items>
+		<m_items> <!-- Fingerless Gloves -->
+			<itemGUID>cf0b766a-c273-49b0-bee4-5a0bb6496491</itemGUID>
+		</m_items>
+		<m_items> <!-- Black Digital Watch (Right) -->
+			<itemGUID>fb68aaa4-c93f-4fb4-b101-9ba30c9cb9dc</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+		<m_MaleOutfits>
+		<m_Name>1Soldier</m_Name>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Military Helmet-->
+		<probability>0.6</probability>
+			<itemGUID>9709be80-dbd9-4f98-90a6-aaab8e87cd28</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+		</m_items>
+		<m_items> <!-- Army T-Shirt -->
+			<itemGUID>0cc9f034-1d90-4f4c-9b17-e1dcf008b356</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Bulletproof Vest -->
+			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
+		</m_items>
+		<m_items> <!-- Woodland Camo Pants -->
+			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
+		</m_items>
+		<m_items> <!-- Woodland Camo Jacket -->
+			<itemGUID>b0d642f6-eb11-456c-aeb0-1b190b29a364</itemGUID>
+		</m_items>
+			<m_items> <!-- Dog-Tags -->
+			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Watch (Right) -->
+		<probability>0.5</probability>
+			<itemGUID>807fade7-aa54-432d-b038-4bf584c79723</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+	<m_FemaleOutfits>
+		<m_Name>1Soldier</m_Name>
+		<m_Guid>3087a4d8-7a67-458e-b259-50df9bfa11a1</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Military Helmet-->
+		<probability>0.6</probability>
+			<itemGUID>9709be80-dbd9-4f98-90a6-aaab8e87cd28</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+		</m_items>
+		<m_items> <!-- Army T-Shirt -->
+			<itemGUID>0cc9f034-1d90-4f4c-9b17-e1dcf008b356</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Bulletproof Vest -->
+			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
+		</m_items>
+		<m_items> <!-- Woodland Camo Pants -->
+			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
+		</m_items>
+		<m_items> <!-- Woodland Camo Jacket -->
+			<itemGUID>b0d642f6-eb11-456c-aeb0-1b190b29a364</itemGUID>
+		</m_items>
+			<m_items> <!-- Dog-Tags -->
+			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Watch (Right) -->
+		<probability>0.5</probability>
+			<itemGUID>807fade7-aa54-432d-b038-4bf584c79723</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_FemaleOutfits>
+
+		<m_MaleOutfits>
+		<m_Name>1General</m_Name>
+		<m_Guid>fda0f648-befc-4dd4-adf3-0e0ed87034fd</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Peaked Hat-->
+		<probability>0.5</probability>
+			<itemGUID>a15cb525-06cf-4fe4-bde9-719fbd7ab549</itemGUID>
+		</m_items>
+		<m_items> <!-- Army Beret-->
+			<itemGUID>88fa54ef-801d-45f0-87c7-57e9fdf1ad13</itemGUID>
+		</m_items>
+		<m_items> <!-- Long Socks -->
+			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>	
+		<m_items> <!-- Army Boots -->
+			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+		</m_items>
+		<m_items> <!-- Formal Shirt -->
+			<itemGUID>ac7976de-2c73-44ea-9392-5d24ac1fb649</itemGUID>
+		</m_items>
+		<m_items> <!-- Army Service Pants -->
+			<itemGUID>decb1435-3232-4cb7-be7f-3daf4556c759</itemGUID>
+		</m_items>
+		<m_items> <!-- Army Service Jacket -->
+			<itemGUID>b3c4c9cf-4eac-4b4b-b13d-30efd77b3626</itemGUID>
+		</m_items>
+		<m_items> <!-- Tie -->
+			<itemGUID>d53c3cb1-4c67-4627-b9d9-0da2cc024980</itemGUID>
+		</m_items>
+			<m_items> <!-- Dog-Tags -->
+			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Watch (Right) -->
+		<probability>0.5</probability>
+			<itemGUID>807fade7-aa54-432d-b038-4bf584c79723</itemGUID>
+		</m_items>
+		<m_items> <!-- Holster -->
+			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
+		</m_items>	
+	</m_MaleOutfits>
+
+
+
+</outfitManager>
+
