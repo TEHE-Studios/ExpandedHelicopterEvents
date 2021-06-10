@@ -1,5 +1,5 @@
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
-local WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast
+EHE_WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast
 
 --local function from ISWeatherChannel.lua
 local function comp(_str)
@@ -10,18 +10,36 @@ end
 
 function WeatherChannel.FillBroadcast(_gametime, _bc)
 	--call stored version from above using the same arguments
-	WeatherChannel_FillBroadcast(_gametime, _bc)
+	EHE_WeatherChannel_FillBroadcast(_gametime, _bc)
 	
 	local c = { r=1.0, g=1.0, b=1.0 };
 	--check if flights would be prevented due to weather
 	local willFly,_ = eHeliEvent_weatherImpact()
 	if willFly then
-		for _,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-			if (not v.triggered) and (v.startDay <= getGameTime():getNightsSurvived()) then
-				WeatherChannel.AddFuzz(c, _bc, 6);
-				_bc:AddRadioLine( RadioLine.new(comp(getRadioText("AEBS_Choppah")), c.r, c.g, c.b) );
-				break
+
+		local linesGoingOut = {}
+		WeatherChannel.AddFuzz(c, _bc, 6);
+
+		for _,event in pairs(getGameTime():getModData()["EventsSchedule"]) do
+			if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
+
+				linesGoingOut["airActivity"] = getRadioText("AEBS_Choppah")
+
+				local presetID = event["preset"]
+				local eventPreset = eHelicopter_PRESETS[presetID]
+
+				if eventPreset then
+					local presetDropPackages = eventPreset.dropPackages
+					if presetDropPackages then
+						linesGoingOut["aidDrop"] = "Supply package inbound."
+					end
+				end
+
 			end
+		end
+
+		for _,line in pairs(linesGoingOut) do
+			_bc:AddRadioLine(RadioLine.new(comp(line), c.r, c.g, c.b) )
 		end
 		WeatherChannel.AddFuzz(c, _bc);
 	end
