@@ -688,9 +688,14 @@ end
 function eHelicopter:dropItem(type)
 
 	if self.dropItems then
-		local selfSquare = self:getIsoGridSquare()
-		local currentSquare = getOutsideSquare(selfSquare)
 
+		local heliX, heliY, _ = self:getXYZAsInt()
+		if heliX and heliY then
+			heliX = heliX+ZombRand(-3,3)
+			heliY = heliY+ZombRand(-3,3)
+		end
+		local currentSquare = getOutsideSquare(getSquare(heliX, heliY, 0))
+		
 		if currentSquare and currentSquare:isSolidTrans() then
 			currentSquare = nil
 		end
