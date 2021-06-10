@@ -630,14 +630,23 @@ function eHelicopter:spawnCrew()
 			local bodyLoc = getOutsideSquare(getSquare(heliX, heliY, 0))
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
-				for i=0, spawnedZombies:size()-1 do
-					---@type IsoGameCharacter | IsoZombie
-					local zombie = spawnedZombies:get(i)
-					if ZombRand(100) <= 50 then
-						print("spawned: "..outfitID.." killed")
+				---@type IsoGameCharacter | IsoZombie
+				local zombie = spawnedZombies:get(0)
+				if zombie then
+					if ZombRand(100) <= 33 then
+						print("crash spawned: "..outfitID.." killed")
 						zombie:setHealth(0)
 					else
-						print("spawned: "..outfitID)
+						local typeChange = ZombRand(6)
+						if typeChange == 6 then
+							print("crash spawned: "..outfitID.." fakeDead")
+							zombie:setFakeDead(true)
+						elseif typeChange >= 4 then
+							print("crash spawned: "..outfitID.." crawler")
+							zombie:setBecomeCrawler(true)
+						else
+							print("crash spawned: "..outfitID)
+						end
 					end
 				end
 			end
