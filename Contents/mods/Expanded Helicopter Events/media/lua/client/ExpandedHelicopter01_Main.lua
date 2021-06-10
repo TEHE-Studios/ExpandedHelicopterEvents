@@ -623,8 +623,8 @@ function eHelicopter:spawnCrew()
 			local heliX, heliY, _ = self:getXYZAsInt()
 
 			if heliX and heliY then
-				heliX = heliX+ZombRand(-2,2)
-				heliY = heliY+ZombRand(-2,2)
+				heliX = heliX+ZombRand(-3,3)
+				heliY = heliY+ZombRand(-3,3)
 			end
 
 			local bodyLoc = getOutsideSquare(getSquare(heliX, heliY, 0))
