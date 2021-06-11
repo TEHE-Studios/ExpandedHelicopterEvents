@@ -122,4 +122,5 @@ end
 
 Events.OnGameBoot.Add(HelicopterSandboxOptionOverride("OnGameBoot: "))
 Events.OnGameStart.Add(HelicopterSandboxOptionOverride("OnGameStart: "))
+Events.OnNewGame.Add(HelicopterSandboxOptionOverride("OnNewGame :"))
 
