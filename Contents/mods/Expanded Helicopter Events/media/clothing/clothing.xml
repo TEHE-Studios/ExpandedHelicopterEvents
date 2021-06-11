@@ -50,6 +50,10 @@
 		<m_items> <!-- Flying Suit -->
 			<itemGUID>25b7d5d3-c92f-4aaa-8fe7-a8563871621c</itemGUID>
 		</m_items>
+		</m_items>
+			<m_items> <!-- Dog-Tags -->
+			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
+		</m_items>
 		<m_items> <!-- Holster -->
 			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
 		</m_items>	
