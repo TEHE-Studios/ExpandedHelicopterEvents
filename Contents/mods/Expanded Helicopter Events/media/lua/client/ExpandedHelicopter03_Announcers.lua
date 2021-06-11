@@ -4,8 +4,8 @@ eHelicopter_announcers = {
 	-- ["name of announcer"] = {
 		-- ["Lines"] = {
 			-- ["lineID1"] = {0, "variation1", "variation2"},
-		   --- The first entry within each line is the delay added it is spoken, every variation shares the same delay
 			-- For the sake of organization It is recommended you write out some of the spoken audio for "LineID"
+		   	-- The first entry within each line is the delay added as it is spoken, every entry after is a file variation and shares the same delay
 			-- File names have to match scripted sounds found in sounds_world.txt for those scripts to be loaded
 		-- }
 	-- },
