@@ -1,4 +1,5 @@
 ---Preset list, only include variables being changed.
+---variables can be found in Main file, at the top, fields = variables
 eHelicopter_PRESETS = {
 	["increasingly_hostile"] = {
 		presetProgression = {
@@ -92,6 +93,8 @@ eHelicopter_PRESETS = {
 	}
 }
 
+
+--- Under The Hood ---
 
 ---@param tableToLoadFrom table
 ---@param alternateTable table
