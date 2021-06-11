@@ -735,6 +735,11 @@ function eHelicopter:update()
 	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
+	--- __le operation stacktrace tmp test
+	if not self.trueTarget then print("EHE: ERR: self.trueTarget") end
+	if not distanceToTrueTarget then print("EHE: ERR: distanceToTrueTarget") end
+	if not self.attackDistance then print("EHE: ERR: self.attackDistance") end
+
 	--if trueTarget is within range
 	if distanceToTrueTarget <= (self.attackDistance*4) then
 		--if trueTarget is outside then sync targets
