@@ -58,6 +58,8 @@ EHE_OpenBox.addCanOpenBoxTypes(
 		 "Base.KeyPadlock","Base.CarKey","Base.Key1","Base.Key2","Base.Key3","Base.Key4","Base.Key5"})
 
 
+---Adds "CanOpenBoxes" tag to scripts for type
+---@param type string
 function EHE_OpenBox.addCanOpenBoxesTag(type)
 	local item = ScriptManager.instance:getItem(type);
 	if item then
@@ -75,6 +77,7 @@ function EHE_OpenBox.addCanOpenBoxesTag(type)
 	end
 end
 
+---For each type in EHE_OpenBox.addCanOpenBoxTypes process EHE_OpenBox.addCanOpenBoxesTag(type)
 function EHE_OpenBox.addCanOpenBoxesTagToTypesThatCan()
 	for _,type in pairs(EHE_OpenBox.typesThatCanOpenBoxes) do
 		EHE_OpenBox.addCanOpenBoxesTag(type)
