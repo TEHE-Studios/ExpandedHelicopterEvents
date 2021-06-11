@@ -212,7 +212,8 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 		soundEmitter:stopSoundByName(soundEffect)
 		return
 	end
-
+	
+	--if otherlocation provided use it; if not use self
 	otherLocation = otherLocation or self:getIsoGridSquare()
 
 	if not soundEmitter then
@@ -538,10 +539,13 @@ function eHelicopter:launch(targetedPlayer)
 	if not targetedPlayer then
 		targetedPlayer = self:findTarget()
 	end
-
+	--sets target to targetedPlayer's square so that the heli doesn't necessarily head straight for the player 
 	self.target = targetedPlayer:getSquare()
+	--maintain trueTarget
 	self.trueTarget = targetedPlayer
+	--setTargetPos is a vector format of self.target
 	self:setTargetPos()
+	
 	self:initPos(self.target,self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 	self.rotorEmitter = getWorld():getFreeEmitter()
@@ -557,16 +561,19 @@ function eHelicopter:launch(targetedPlayer)
 	if self.announcerVoice ~= false then
 		self:chooseVoice()
 	end
+	
 	self.state = "gotoTarget"
 
 	--weatherImpact is a float, 0 to 1
 	local _, weatherImpact = eHeliEvent_weatherImpact()
-
+	
+	--increase crash chance as the apocalypse goes on
 	local cutOff = self.cutOffDay or eHelicopter.cutOffDay
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-	local daysInOverCutOff = (daysIntoApoc/cutOff)
+	--fraction of days over cutoff divided by 4 = max +25% added crashChance
+	local apocImpact = (daysIntoApoc/cutOff)/4
 
-	local crashChance = (weatherImpact+(daysInOverCutOff/4))*100
+	local crashChance = (weatherImpact+apocImpact)*100
 
 	if self.crashType and (not self.crashing) and ZombRand(0,100) <= crashChance then
 		self.crashing = true
@@ -577,12 +584,14 @@ end
 ---Heli goes home
 function eHelicopter:goHome()
 	self.state = "goHome"
+	--set truTarget to target's current location -- this prevents changing course while flying away
 	self.trueTarget = getSquare(self.target:getX(),self.target:getY(),0)
 	self.target = self.trueTarget
 	self:setTargetPos()
 end
 
 
+--This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
 ---@param square IsoGridSquare
 ---@return IsoGridSquare
 function getOutsideSquare(square)
@@ -613,37 +622,45 @@ function eHelicopter:spawnCrew()
 	end
 
 	for key,outfitID in pairs(self.crew) do
-		local chance = self.crew[key+1]
 		
+		local chance = self.crew[key+1]
+		--if the next entry in the list is a number consider it to be a chance, otherwise use 100%
 		if type(chance) ~= "number" then
 			chance = 100
 		end
-		
+		--assume all strings to be outfidID and roll chance/100
 		if (type(outfitID) == "string") and (ZombRand(100) <= chance) then
 			local heliX, heliY, _ = self:getXYZAsInt()
-
+			--fuzz up the location
 			if heliX and heliY then
 				heliX = heliX+ZombRand(-3,3)
 				heliY = heliY+ZombRand(-3,3)
 			end
-
+			
 			local bodyLoc = getOutsideSquare(getSquare(heliX, heliY, 0))
+			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
 				---@type IsoGameCharacter | IsoZombie
 				local zombie = spawnedZombies:get(0)
+				--if there's an actual zombie
 				if zombie then
+					--33% to be dead on arrival
 					if ZombRand(100) <= 33 then
 						print("crash spawned: "..outfitID.." killed")
 						zombie:setHealth(0)
 					else
-						local typeChange = ZombRand(6)
+						--+1 because zombRand starts at 0
+						local typeChange = ZombRand(6)+1
+						--1/6 chance to be fake dead
 						if typeChange == 6 then
 							print("crash spawned: "..outfitID.." fakeDead")
 							zombie:setFakeDead(true)
+						--2/6 chance to be a crawler
 						elseif typeChange >= 4 then
 							print("crash spawned: "..outfitID.." crawler")
 							zombie:setBecomeCrawler(true)
+						--3/6 chance for normaltype zombie
 						else
 							print("crash spawned: "..outfitID)
 						end
@@ -826,15 +843,17 @@ function eHelicopter:update()
 	end
 
 	local currentSquare = self:getIsoGridSquare()
-
+	--drop carpackage
 	local packageDropRange = thatIsCloseEnough*100
 	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
+		--returns true if dropped
 		if self:dropCarePackage() then
+			--clears droppackges to prevent more than 1
 			self.dropPackages = false
 		end
 	end
-
+	--drop items
 	local itemDropRange = thatIsCloseEnough*250
 	if self.dropItems and (distToTarget <= itemDropRange) then
 		for k,_ in pairs(self.dropItems) do
@@ -848,7 +867,7 @@ function eHelicopter:update()
 			end
 		end
 	end
-
+	--if it's ok to move do so, and update the shadow's position
 	if not preventMovement then
 		self:move(lockOn, true)
 		if currentSquare then
