@@ -131,7 +131,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local nightsSurvived = getGameTime():getNightsSurvived()
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+nightsSurvived
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
-	local cutOff = presetSettings.cutOffDay or eHelicopter.cutOffDay
+	local cutOff = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
 	local cutOffDay = cutOff*eHelicopterSandbox.config.cutOffDay
 	local startMinMax = presetSettings.startDayMinMax or eHelicopter.startDayMinMax
 	local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
