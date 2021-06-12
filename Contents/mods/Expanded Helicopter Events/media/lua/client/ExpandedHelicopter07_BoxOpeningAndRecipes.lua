@@ -27,7 +27,6 @@ function EHE_OpenBox.SURVIVAL(recipe, result, player)
 	player:getInventory():AddItems("Base.Torch", 2)
 	player:getInventory():AddItems("Base.Battery", 10)
 	player:getInventory():AddItems("Radio.RadioBlack", 2)
-
 end
 
 function EHE_OpenBox.STASHBOX(recipe, result, player)
@@ -39,7 +38,6 @@ function EHE_OpenBox.STASHBOX(recipe, result, player)
 	player:getInventory():AddItems("Pistol2", 1)
 	player:getInventory():AddItems("45Clip", 4)
 	player:getInventory():AddItems("Bullets45Box", 4)
-
 end
 
 EHE_OpenBox.typesThatCanOpenBoxes = EHE_OpenBox.typesThatCanOpenBoxes or {}
