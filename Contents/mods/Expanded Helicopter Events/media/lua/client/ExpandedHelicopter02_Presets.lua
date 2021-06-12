@@ -75,7 +75,7 @@ eHelicopter_PRESETS = {
 		cutOffFactor = 0.67,
 		speed = 0.12,
 		crashType = {"Bell206PoliceCrashed"},
-		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 50},
+		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 		hostilePreference = "IsoZombie",
 		eventSoundEffects = {
 			["attackSingle"] = "eHeli_bolt_action_fire_singleshot",
@@ -87,7 +87,7 @@ eHelicopter_PRESETS = {
 	["aid_helicopter"] = {
 		announcerVoice = false,
 		crashType = {"UH1Hmedevaccrash"},
-		crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
+		crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 		dropPackages = {"FEMASupplyDrop"},
 		dropItems = {["NoticeFlyer"]=250},
 		cutOffFactor = 0.43,
