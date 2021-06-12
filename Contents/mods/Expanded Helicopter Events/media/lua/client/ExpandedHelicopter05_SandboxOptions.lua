@@ -32,10 +32,6 @@ eHelicopterSandbox.menu = {
 		},
 	generalSpace = {type = "Space"},
 
-	--voiceTitle = {type = "Text", text = "Voice Packs"},
-	--voice1 = { type = "Tickbox", title = "Voice 1", tooltip = "", },
-	--voiceSpace = {type = "Space"},
-
 	--[[
 	testTitle = {type = "Text", text = "test",},
 
@@ -103,7 +99,7 @@ eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Event
 
 
 --load mod into EasyConfig
-EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS")
+EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS", "mainmenu")
 
 
 --Overrides vanilla helicopter frequency on game boot
