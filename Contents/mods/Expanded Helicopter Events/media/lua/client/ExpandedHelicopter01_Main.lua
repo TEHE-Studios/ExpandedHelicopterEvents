@@ -690,7 +690,7 @@ function eHelicopter:crash()
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
 				--[DEBUG]] print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
-				heli:playSound("HeliCrash")
+				heli:playSound("VehicleCrash")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
 				self:spawnCrew()
