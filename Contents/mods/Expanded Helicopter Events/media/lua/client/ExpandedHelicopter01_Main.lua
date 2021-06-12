@@ -554,6 +554,14 @@ function eHelicopter:launch(targetedPlayer)
 
 	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
 
+	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
+		if #self.hoverOnTargetDuration >= 2 then
+			self.hoverOnTargetDuration = ZombRand(self.hoverOnTargetDuration[1],self.hoverOnTargetDuration[2])
+		else
+			self.hoverOnTargetDuration = false
+		end
+	end
+
 	if not self.attackDistance then
 		self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1)
 	end
