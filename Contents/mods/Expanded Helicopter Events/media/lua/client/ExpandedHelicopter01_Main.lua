@@ -51,8 +51,8 @@ eHelicopter.frequencyFactor = 1
 ---@field startDayMinMax table two numbers: min and max start day can be
 eHelicopter.startDayMinMax = {0,1}
 
----@field cutOffDay number event cut-off day after apocalypse start, NOT game start
-eHelicopter.cutOffDay = 30
+---@field cutOffFactor number This is multiplied against eHelicopterSandbox.config.cutOffDay
+eHelicopter.cutOffFactor = 1
 
 ---@field speed number
 eHelicopter.speed = 0.15
@@ -554,6 +554,14 @@ function eHelicopter:launch(targetedPlayer)
 
 	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
 
+	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
+		if #self.hoverOnTargetDuration >= 2 then
+			self.hoverOnTargetDuration = ZombRand(self.hoverOnTargetDuration[1],self.hoverOnTargetDuration[2])
+		else
+			self.hoverOnTargetDuration = false
+		end
+	end
+
 	if not self.attackDistance then
 		self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1)
 	end
@@ -568,10 +576,10 @@ function eHelicopter:launch(targetedPlayer)
 	local _, weatherImpact = eHeliEvent_weatherImpact()
 	
 	--increase crash chance as the apocalypse goes on
-	local cutOff = self.cutOffDay or eHelicopter.cutOffDay
+	local cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	--fraction of days over cutoff divided by 4 = max +25% added crashChance
-	local apocImpact = (daysIntoApoc/cutOff)/4
+	local apocImpact = (daysIntoApoc/cutOffDay)/4
 
 	local crashChance = (weatherImpact+apocImpact)*100
 
@@ -594,7 +602,7 @@ end
 --This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
 ---@param square IsoGridSquare
 ---@return IsoGridSquare
-function getOutsideSquare(square)
+function getOutsideSquareFromAbove(square)
 	if not square then
 		return
 	end
@@ -637,7 +645,7 @@ function eHelicopter:spawnCrew()
 				heliY = heliY+ZombRand(-3,3)
 			end
 			
-			local bodyLoc = getOutsideSquare(getSquare(heliX, heliY, 0))
+			local bodyLoc = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
 			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
@@ -678,7 +686,7 @@ function eHelicopter:crash()
 	if self.crashType then
 		---@type IsoGridSquare
 		local selfSquare = self:getIsoGridSquare()
-		local currentSquare = getOutsideSquare(selfSquare)
+		local currentSquare = getOutsideSquareFromAbove(selfSquare)
 
 		if currentSquare and currentSquare:isSolidTrans() then
 			currentSquare = nil
@@ -711,7 +719,7 @@ function eHelicopter:dropItem(type)
 			heliX = heliX+ZombRand(-3,3)
 			heliY = heliY+ZombRand(-3,3)
 		end
-		local currentSquare = getOutsideSquare(getSquare(heliX, heliY, 0))
+		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
 		
 		if currentSquare and currentSquare:isSolidTrans() then
 			currentSquare = nil
@@ -729,7 +737,7 @@ function eHelicopter:dropCarePackage()
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
 	local selfSquare = self:getIsoGridSquare()
-	local currentSquare = getOutsideSquare(selfSquare)
+	local currentSquare = getOutsideSquareFromAbove(selfSquare)
 
 	if currentSquare and currentSquare:isSolidTrans() then
 		currentSquare = nil
@@ -876,7 +884,7 @@ function eHelicopter:update()
 					self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
 				end
 
-				local shadowSquare = getOutsideSquare(currentSquare) or currentSquare
+				local shadowSquare = getOutsideSquareFromAbove(currentSquare) or currentSquare
 				if shadowSquare then
 					self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
 				end

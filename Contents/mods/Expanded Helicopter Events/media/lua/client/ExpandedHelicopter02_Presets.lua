@@ -24,12 +24,12 @@ eHelicopter_PRESETS = {
 	},
 
 	["news_chopper"] = {
-		hoverOnTargetDuration = ZombRand(1500,2250),
+		hoverOnTargetDuration = {1500,2250},
 		--eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 		frequencyFactor = 2,
 		speed = 0.1,
 		topSpeedFactor = 5,
-		cutOffDay = 15,
+		cutOffFactor = 0.5,
 		crashType = {"Bell206LBMWCrashed"}
 	},
 
@@ -66,13 +66,13 @@ eHelicopter_PRESETS = {
 		hostilePreference = "IsoGameCharacter",
 		crashType = {"UH1Hsurvivalistcrash"},
 		crew = {"1SurvivalistPilot", "1Survivalist", 75, "1Survivalist", 50},
-		cutOffDay = 45,
+		cutOffFactor = 1.5,
 	},
 
 	["police_heli"] = {
 		announcerVoice = false,
 		attackDelay = 1100,
-		cutOffDay = 20,
+		cutOffFactor = 0.67,
 		speed = 0.12,
 		crashType = {"Bell206PoliceCrashed"},
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
@@ -90,7 +90,7 @@ eHelicopter_PRESETS = {
 		crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 		dropPackages = {"FEMASupplyDrop"},
 		dropItems = {["NoticeFlyer"]=250},
-		cutOffDay = 13,
+		cutOffFactor = 0.43,
 	}
 }
 
@@ -141,8 +141,9 @@ function eHelicopter:loadPreset(ID)
 	local pp = preset.presetProgression
 	if pp then
 		local DaysSinceApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-		local CutOff = preset.cutOffDay or eHelicopter.cutOffDay
-		local DaysOverCutOff = DaysSinceApoc/CutOff
+		local cutOff = preset.cutOffFactor or eHelicopter.cutOffFactor
+		local CutOffDay = cutOff*eHelicopterSandbox.config.cutOffDay
+		local DaysOverCutOff = DaysSinceApoc/CutOffDay
 		local presetIDTmp
 		--run through presetProgression list
 		for pID,pCutOff in pairs(pp) do
