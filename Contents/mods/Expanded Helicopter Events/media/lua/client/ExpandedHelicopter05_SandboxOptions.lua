@@ -91,6 +91,36 @@ function setAnnouncersLoaded()
 end
 Events.OnGameStart.Add(setAnnouncersLoaded)
 
+--[[
+function loadPresetToConfig()
+	eHelicopterSandbox.menu["presetsSpaceA"] = {type = "Space", iteration=2}
+	eHelicopterSandbox.menu["presetsTitle"] = {type = "Text", text = "Events"}
+
+	eHelicopterSandbox.menu["presetsSpaceB"] = {type = "Space"}
+	eHelicopterSandbox.menu["presetsDefault"] = {type = "Text", text = "Default Values"}
+	for var,value in pairs(eHelicopter_initialVars) do
+		local varMenuID = "varForDefault"..var
+		eHelicopterSandbox.menu[varMenuID] = {type = "Text", text = var.." = "..tostring(value),}
+		--eHelicopterSandbox.config[var] = variableValue
+	end
+	eHelicopterSandbox.menu["presetsSpaceForpresetsDefault"] = {type = "Space", iteration=2}
+
+	eHelicopterSandbox.menu["presetsSpaceC"] = {type = "Space"}
+	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
+		eHelicopterSandbox.menu[presetID] = {type = "Text", text = presetID}
+		for var,value in pairs(presetVars) do
+			local varMenuID = "varFor"..presetID..var
+			eHelicopterSandbox.menu[varMenuID] = {type = "Text", text = tostring(value),}
+			--eHelicopterSandbox.config[var] = variableValue
+		end
+		local spaceID = "presetsSpaceFor"..presetID
+		eHelicopterSandbox.menu[spaceID] = {type = "Space", iteration=2}
+	end
+	eHelicopterSandbox.menu["presetsSpaceD"] = {type = "Space"}
+end
+--run on Lua load
+loadPresetToConfig()]]
+
 
 --add buffer space for reset feature
 eHelicopterSandbox.menu["resetEventsA"] = {type = "Space", iteration=4}
