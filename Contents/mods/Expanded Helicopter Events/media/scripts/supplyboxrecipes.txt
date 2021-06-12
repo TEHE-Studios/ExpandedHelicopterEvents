@@ -1,7 +1,7 @@
 module EHE
 {
 
-    recipe Unbox Food Supplies
+    recipe Unbox Supplies
     {
        EmergencyFoodSupplyBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
@@ -12,7 +12,7 @@ module EHE
        Sound:OpenBox,
     }
 
-	recipe Unbox Medical Supplies
+	recipe Unbox Supplies
     {
        EmergencyMedicalSupplyBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
@@ -23,7 +23,7 @@ module EHE
        Sound:OpenBox,
     }
 
-	recipe Unbox Survival Supplies
+	recipe Unbox Supplies
     {
        EmergencySurvivalSupplyBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
@@ -34,7 +34,7 @@ module EHE
        Sound:OpenBox,
     }
 
-    recipe Unbox Stash Box
+    recipe Unbox Supplies
     {
         BanditStashBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
