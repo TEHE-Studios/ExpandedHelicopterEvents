@@ -214,7 +214,8 @@ function eHeliEvent_Loop()
 
 	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
 		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime == HOUR) then
-			if eHelicopter_PRESETS[k] then
+			print("Events Scheduled: "..v.preset)
+			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)
 			end
 		end
