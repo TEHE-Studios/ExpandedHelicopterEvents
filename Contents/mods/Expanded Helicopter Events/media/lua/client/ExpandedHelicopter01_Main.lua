@@ -51,8 +51,8 @@ eHelicopter.frequencyFactor = 1
 ---@field startDayMinMax table two numbers: min and max start day can be
 eHelicopter.startDayMinMax = {0,1}
 
----@field cutOffDay number event cut-off day after apocalypse start, NOT game start
-eHelicopter.cutOffDay = 30
+---@field cutOffDay number This is multiplied against eHelicopterSandbox.config.cutOffDay
+eHelicopter.cutOffDay = 1
 
 ---@field speed number
 eHelicopter.speed = 0.15
@@ -577,9 +577,10 @@ function eHelicopter:launch(targetedPlayer)
 	
 	--increase crash chance as the apocalypse goes on
 	local cutOff = self.cutOffDay or eHelicopter.cutOffDay
+	local cutOffDay = cutOff*eHelicopterSandbox.config.cutOffDay
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	--fraction of days over cutoff divided by 4 = max +25% added crashChance
-	local apocImpact = (daysIntoApoc/cutOff)/4
+	local apocImpact = (daysIntoApoc/cutOffDay)/4
 
 	local crashChance = (weatherImpact+apocImpact)*100
 

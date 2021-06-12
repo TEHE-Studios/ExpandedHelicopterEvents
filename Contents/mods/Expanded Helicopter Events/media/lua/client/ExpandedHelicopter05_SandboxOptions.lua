@@ -7,6 +7,7 @@ eHelicopterSandbox = eHelicopterSandbox or {}
 eHelicopterSandbox.config = {
 	frequency = 2,
 	resetEvents = false,
+	cutOffDay = 30,
 	--hostilePreference = "Zombie", --"Player", "All"
 	--attackDelay = 95, --min:0.01, max:1000
 	--attackDistance = 50, --min:1, max:300
@@ -32,6 +33,15 @@ eHelicopterSandbox.menu = {
 		},
 	generalSpace = {type = "Space"},
 
+	cutOffDaySpaceA = {type = "Space"},
+	cutOffDay = {
+		type = "Numberbox",
+		title = "Events Cutoff Day",
+		tooltip = "",
+	},
+	cutOffDaySpaceB = {type = "Space"},
+
+	--eHelicopterSandbox.config.cutOffDay
 	--[[
 	testTitle = {type = "Text", text = "test",},
 
