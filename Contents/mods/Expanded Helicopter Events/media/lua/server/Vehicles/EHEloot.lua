@@ -203,9 +203,25 @@ VehicleDistributions.Bell206NewsSeat = {
 VehicleDistributions.FEMASupplyDrop = {
     rolls = 50,
     items ={
-        "EHE.EmergencyFoodSupplyBox", 10,
-        "EHE.EmergencyMedicalSupplyBox", 10,
-        "EHE.EmergencySurvivalSupplyBox", 10,
+        "EHE.EmergencyMedicalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencyFoodSupplyBox", 2,
+
+        "EHE.EmergencyMedicalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencyFoodSupplyBox", 2,
+
+        "EHE.EmergencyMedicalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencyFoodSupplyBox", 2,
+
+        "EHE.EmergencyMedicalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencyFoodSupplyBox", 2,
+
+        "EHE.EmergencyMedicalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencyFoodSupplyBox", 2,
     }
 }
 
