@@ -28,7 +28,6 @@ eHelicopter_PRESETS = {
 		--eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 		frequencyFactor = 2,
 		speed = 0.1,
-		topSpeedFactor = 5,
 		cutOffFactor = 0.5,
 		crashType = {"Bell206LBMWCrashed"}
 	},
