@@ -630,12 +630,21 @@ function eHelicopter:spawnCrew()
 	end
 
 	for key,outfitID in pairs(self.crew) do
-		
+
+		--The chance this type of zombie is spawned
 		local chance = self.crew[key+1]
-		--if the next entry in the list is a number consider it to be a chance, otherwise use 100%
+		--If the next entry in the list is a number consider it to be a chance, otherwise use 100%
 		if type(chance) ~= "number" then
 			chance = 100
 		end
+
+		--NOTE: This is the chance the zombie will be male - 100% = male, 0% = female
+		local genderChance = self.crew[key+2]
+		--If the next entry in the list is a number consider it to be a chance, otherwise use 50%
+		if type(genderChance) ~= "number" then
+			genderChance = 50
+		end
+
 		--assume all strings to be outfidID and roll chance/100
 		if (type(outfitID) == "string") and (ZombRand(100) <= chance) then
 			local heliX, heliY, _ = self:getXYZAsInt()
@@ -649,7 +658,7 @@ function eHelicopter:spawnCrew()
 			local bodyLoc = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
 			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 			if bodyLoc then
-				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
+				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, genderChance)
 				---@type IsoGameCharacter | IsoZombie
 				local zombie = spawnedZombies:get(0)
 				--if there's an actual zombie
