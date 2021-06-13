@@ -7,7 +7,7 @@ end
 
 function EHE_OpenBox.FOOD(recipe, result, player)
 	player:getInventory():AddItems("Base.WaterBottleFull", 20)
-	player:getInventory():AddItems("Base.Rice", 10)
+	player:getInventory():AddItems("Base.Rice", 5)
 	player:getInventory():AddItems("Base.TinnedBeans", 10)
 end
 
