@@ -200,7 +200,7 @@ function eHeliEvents_OnGameStart()
 		setNextHeliFrom(nil, nil, nil, "increasingly_hostile")
 		setNextHeliFrom(nil, nil, nil, "jet")
 		setNextHeliFrom(nil, nil, nil, "news_chopper")
-		setNextHeliFrom(nil, nil, nil, "aid_helicopter")
+		setNextHeliFrom(nil, nil, nil, "increasingly_helpful")
 		setNextHeliFrom(nil, nil, nil, "police_heli")
 	end
 end
