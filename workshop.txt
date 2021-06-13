@@ -50,4 +50,4 @@ description=
 description= Workshop ID: 2458631365
 description= Mod ID: ExpandedHelicopterEvents
 tags= heli, helicopters, aid, military aid, events, expanded helicopter events, jets
-visibility=private
+visibility=public
