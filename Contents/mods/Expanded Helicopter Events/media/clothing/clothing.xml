@@ -488,6 +488,10 @@
 		<m_items> <!-- Military Bulletproof Vest -->
 			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
 		</m_items>
+		<m_items> <!-- ALICE Pack (Woodland) -->
+		<probability>0.6</probability>
+			<itemGUID>e5e131ff-bc65-4b94-9bc1-b70e8f99e68d</itemGUID>
+		</m_items>
 		<m_items> <!-- Woodland Camo Pants -->
 			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
 		</m_items>
@@ -508,7 +512,7 @@
 
 	<m_FemaleOutfits>
 		<m_Name>1Soldier</m_Name>
-		<m_Guid>3087a4d8-7a67-458e-b259-50df9bfa11a1</m_Guid>
+		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
@@ -527,6 +531,10 @@
 		</m_items>
 		<m_items> <!-- Military Bulletproof Vest -->
 			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
+		</m_items>
+		<m_items> <!-- ALICE Pack (Woodland) -->
+		<probability>0.6</probability>
+			<itemGUID>e5e131ff-bc65-4b94-9bc1-b70e8f99e68d</itemGUID>
 		</m_items>
 		<m_items> <!-- Woodland Camo Pants -->
 			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
