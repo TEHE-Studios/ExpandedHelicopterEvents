@@ -3,7 +3,7 @@ module EHE
 
 	item EmergencyFoodSupplyBox
 	{
-		Weight			=	44,
+		Weight			=	34,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
 	}

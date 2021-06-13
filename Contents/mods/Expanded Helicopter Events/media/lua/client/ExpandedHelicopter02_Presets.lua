@@ -91,7 +91,14 @@ eHelicopter_PRESETS = {
 		dropPackages = {"FEMASupplyDrop"},
 		dropItems = {["NoticeFlyer"]=250},
 		cutOffFactor = 0.43,
-	}
+	},
+
+	["increasingly_helpful"] = {
+		presetProgression = {
+			["patrol_only"] = 0,
+			["aid_helicopter"] = 0.25,
+		}
+	},
 }
 
 
