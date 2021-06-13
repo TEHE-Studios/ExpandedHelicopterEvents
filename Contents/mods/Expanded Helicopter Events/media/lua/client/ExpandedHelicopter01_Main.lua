@@ -640,9 +640,10 @@ function eHelicopter:spawnCrew()
 		if (type(outfitID) == "string") and (ZombRand(100) <= chance) then
 			local heliX, heliY, _ = self:getXYZAsInt()
 			--fuzz up the location
+			local fuzzNums = {-5,-4,-3,-3,3,3,4,5}
 			if heliX and heliY then
-				heliX = heliX+ZombRand(-3,3)
-				heliY = heliY+ZombRand(-3,3)
+				heliX = heliX+fuzzNums[ZombRand(#fuzzNums)+1]
+				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 			
 			local bodyLoc = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
