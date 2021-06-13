@@ -58,7 +58,7 @@ module Base
         DisplayName = Police Pilot Flying Suit,
         ClothingItem = Suit_PoliceFlying,
         BodyLocation = FullSuit,
-        Icon = BoilerSuitGreen,
+        Icon = PoliceFlying,
         BloodLocation = Trousers;Jumper,
         RunSpeedModifier = 0.9,
         ScratchDefense = 10,
