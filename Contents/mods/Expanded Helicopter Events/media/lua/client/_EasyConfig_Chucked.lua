@@ -282,8 +282,13 @@ EasyConfig_Chucked.saveConfig = function()
 			print("modId: "..modId.." saving")
 			for gameOptionName,_ in pairs(config) do
 				local menuEntry = configMenu[gameOptionName]
+
 				if menuEntry.selectedLabel then
-					fileWriter:write(gameOptionName.."="..menuEntry.selectedLabel..",\r")
+					local menuEntry_selectedLabel = menuEntry.selectedLabel
+					if type(menuEntry.selectedLabel) == "boolean" then
+						menuEntry_selectedLabel = tostring(menuEntry_selectedLabel)
+					end
+					fileWriter:write(gameOptionName.."="..menuEntry_selectedLabel..",\r")
 				else
 					fileWriter:write(gameOptionName.."="..menuEntry.selectedValue..",\r")
 				end
