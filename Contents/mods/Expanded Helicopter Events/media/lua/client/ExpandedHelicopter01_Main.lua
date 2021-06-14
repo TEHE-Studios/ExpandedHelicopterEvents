@@ -582,6 +582,11 @@ function eHelicopter:launch(targetedPlayer)
 	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/4
 	local crashChance = (weatherImpact+apocImpact)*100
 
+	print("LAUNCH INFO: ")
+	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
+	print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
+	print("  crashChance:"..crashChance)
+
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		self.crashing = true
 	end
@@ -706,7 +711,7 @@ function eHelicopter:crash()
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
-				--[DEBUG]] print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
+				--[[DEBUG]] print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
 				heli:playSound("HeliCrash")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
