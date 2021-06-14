@@ -579,11 +579,10 @@ function eHelicopter:launch(targetedPlayer)
 	local cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	--fraction of days over cutoff divided by 4 = max +25% added crashChance
-	local apocImpact = (daysIntoApoc/cutOffDay)/4
-
+	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/4
 	local crashChance = (weatherImpact+apocImpact)*100
 
-	if self.crashType and (not self.crashing) and ZombRand(0,100) <= crashChance then
+	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		self.crashing = true
 	end
 end
