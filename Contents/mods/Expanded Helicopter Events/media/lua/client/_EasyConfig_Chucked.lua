@@ -74,11 +74,11 @@ end
 -- -- -- -- -- >
 
 
-local MainOptions_create = MainOptions.create
+EHE_MainOptions_create = MainOptions.create
 
 function MainOptions:create() -- override
 
-	MainOptions_create(self) -- call original
+	EHE_MainOptions_create(self) -- call original
 
 	function self.gameOptions:toUI()
 		for _,option in ipairs(self.options) do
