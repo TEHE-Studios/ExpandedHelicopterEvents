@@ -372,6 +372,11 @@ end
 ---@return number
 function eHelicopter:getDistanceToVector(vector)
 
+	if (not vector) or (not self.currentPosition) then
+		print("ERR: getDistanceToVector: no vector or no currentPosition")
+		return
+	end
+
 	local a = Vector3GetX(vector) - Vector3GetX(self.currentPosition)
 	local b = Vector3GetY(vector) - Vector3GetY(self.currentPosition)
 
@@ -382,7 +387,8 @@ end
 ---@param object IsoObject
 ---@return number
 function eHelicopter:getDistanceToIsoObject(object)
-	if not object then
+	if (not object) or (not self.currentPosition) then
+		print("ERR: getDistanceToIsoObject: no object or no currentPosition")
 		return
 	end
 
@@ -773,11 +779,11 @@ function eHelicopter:update()
 	if not self.trueTarget then
 		return
 	end
-	
+
 	local timeStampMS = getTimestampMs()
 	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
-	
+
 	--if trueTarget is within range
 	if distanceToTrueTarget and (distanceToTrueTarget <= (self.attackDistance*4)) then
 		--if trueTarget is outside then sync targets
