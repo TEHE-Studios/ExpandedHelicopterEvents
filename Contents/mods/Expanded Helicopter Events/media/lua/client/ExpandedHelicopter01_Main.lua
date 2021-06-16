@@ -42,6 +42,7 @@ eHelicopter.announcerVoice = false
 ---@field randomEdgeStart boolean
 eHelicopter.randomEdgeStart = false
 
+---example: {"preset1",0,"preset2",25,"preset3",50} = at 0% days out of cutoff day preset1 is chosen, at 25% preset2 is chosen, etc.
 ---@field presetProgression table Table of presetIDs and corresponding % preset is switched to (compared to Days/CuttOffDay)
 eHelicopter.presetProgression = false
 
