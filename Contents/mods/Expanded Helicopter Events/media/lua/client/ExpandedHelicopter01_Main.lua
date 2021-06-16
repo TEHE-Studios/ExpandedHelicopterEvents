@@ -45,6 +45,10 @@ eHelicopter.randomEdgeStart = false
 ---@field presetProgression table Table of presetIDs and corresponding % preset is switched to (compared to Days/CuttOffDay)
 eHelicopter.presetProgression = false
 
+---Example: {"preset1",2,"preset2","preset3",4} = a list equal to {"preset1","preset1","preset2","preset3","preset3","preset3","preset3"}
+---@field presetRandomSelection table Table of presetIDs and corresponding weight in list to be chosen from.
+eHelicopter.presetRandomSelection = false
+
 ---@field frequencyFactor number This is multiplied against the min/max day range; less than 1 results in higher frequency, more than 1 results in less frequency
 eHelicopter.frequencyFactor = 1
 
