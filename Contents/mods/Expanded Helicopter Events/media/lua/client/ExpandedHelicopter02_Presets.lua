@@ -131,19 +131,35 @@ function eHelicopter:loadVarsFrom(tableToLoadFrom, alternateTable, debugID)
 end
 
 
----@param ID string
-function eHelicopter:loadPreset(ID)
+function eHelicopter:randomSelectPreset(preset)
+	local selection = preset.presetRandomSelection
+	local pool = {}
 
-	if not ID then
-		return
+	for key,entry in pairs(selection) do
+		if type(entry) == "string" then
+			local id = entry
+			local iterations = 1
+			local next = selection[key+1]
+			if type(next) == "number" then
+				iterations = next
+			end
+
+			for i=1, iterations do
+				table.insert(pool, id)
+			end
+		end
 	end
 
-	local preset = eHelicopter_PRESETS[ID]
+	local randomNum = ZombRand(#pool)+1
+	local choice = pool[randomNum]
 
-	if not preset then
-		return
-	end
+	print("randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
 
+	return eHelicopter_PRESETS[choice]
+end
+
+
+function eHelicopter:progressionSelectPreset(preset)
 	local pp = preset.presetProgression
 	if pp then
 		local DaysSinceApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
@@ -163,11 +179,48 @@ function eHelicopter:loadPreset(ID)
 			end
 		end
 		if presetIDTmp then
-			--replace original preset with qualifying preset
-			ID = presetIDTmp
-			preset = eHelicopter_PRESETS[ID]
+			return eHelicopter_PRESETS[presetIDTmp]
 		end
 	end
+end
+
+
+function eHelicopter:recursivePresetCheck(preset, iteration)
+	iteration = iteration or 0
+	print("EHE: recursivePresetCheck: ")
+	if preset.presetRandomSelection then
+		print("  EHE: presetRandomSelection: found")
+		preset = self:randomSelectPreset(preset)
+	end
+
+	if preset.presetProgression then
+		print("  EHE: presetProgression: found")
+		preset = self:progressionSelectPreset(preset)
+	end
+
+	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
+		print("  EHE: progression/selection: found; recursive: "..iteration)
+		self:recursivePresetCheck(preset,iteration+1)
+	end
+
+	return preset
+end
+
+
+---@param ID string
+function eHelicopter:loadPreset(ID)
+
+	if not ID then
+		return
+	end
+
+	local preset = eHelicopter_PRESETS[ID]
+
+	if not preset then
+		return
+	end
+
+	preset = self:recursivePresetCheck(preset)
 
 	--use initial list of variables to reset the helicopter object to standard
 	--[DEBUG]] print("loading preset: "..ID.."  vars:")
