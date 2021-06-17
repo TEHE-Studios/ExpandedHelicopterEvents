@@ -42,12 +42,12 @@ eHelicopter.announcerVoice = false
 ---@field randomEdgeStart boolean
 eHelicopter.randomEdgeStart = false
 
----example: {"preset1",0,"preset2",25,"preset3",50} = at 0% days out of cutoff day preset1 is chosen, at 25% preset2 is chosen, etc.
----@field presetProgression table Table of presetIDs and corresponding % preset is switched to (compared to Days/CuttOffDay)
+---example: {["preset1"]=0,["preset2"]=25,["preset3"]=50} = at 0% (days out of cutoff day) preset1 is chosen, at 25% preset2 is chosen, etc.
+---@field presetProgression table Table of presetIDs and corresponding % preset is compared to Days/CuttOffDay
 eHelicopter.presetProgression = false
 
 ---Example: {"preset1",2,"preset2","preset3",4} = a list equal to {"preset1","preset1","preset2","preset3","preset3","preset3","preset3"}
----@field presetRandomSelection table Table of presetIDs and corresponding weight in list to be chosen from.
+---@field presetRandomSelection table Table of presetIDs and optional corresponding weight (weight is 1 if none found) in list to be chosen from.
 eHelicopter.presetRandomSelection = false
 
 ---@field frequencyFactor number This is multiplied against the min/max day range; less than 1 results in higher frequency, more than 1 results in less frequency
@@ -823,11 +823,11 @@ function eHelicopter:update()
 			end
 		end
 
-		self:setTargetPos()
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 		end
+		self:setTargetPos()
 	end
 
 	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration then
