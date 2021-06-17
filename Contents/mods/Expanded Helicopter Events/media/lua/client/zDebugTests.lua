@@ -13,7 +13,7 @@ if getDebug() then
 		elseif key == Keyboard.KEY_4 then
 			--DEBUG_TESTS.CheckWeather()
 			--DEBUG_TESTS.shakeTrees()
-			DEBUG_TESTS.launch_jet()
+			DEBUG_TESTS.launch_testHeli()
 
 		elseif key == Keyboard.KEY_5 then
 			DEBUG_TESTS.launch_aid_chopper()
@@ -120,12 +120,25 @@ if getDebug() then
 		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
-	--- Test launch heli
+	--- Test launch jet
 	function DEBUG_TESTS.launch_jet()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("jet")
 		heli:launch()
 		print("\"jet\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+	end
+
+	--- Test launch test heli
+	function DEBUG_TESTS.launch_testHeli()
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter("TestHeli")
+		heli:launch()
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+		print("\"TestHeli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch close "attack_only_undead" heli
