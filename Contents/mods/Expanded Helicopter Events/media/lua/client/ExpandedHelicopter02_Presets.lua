@@ -98,6 +98,10 @@ eHelicopter_PRESETS = {
 			["aid_helicopter"] = 0.25,
 		}
 	},
+
+	["TestHeli"] = {
+		presetRandomSelection = {"news_chopper",1,"increasingly_helpful",3}
+	},
 }
 
 
@@ -153,7 +157,12 @@ function eHelicopter:randomSelectPreset(preset)
 	local randomNum = ZombRand(#pool)+1
 	local choice = pool[randomNum]
 
-	print("randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
+	if not choice then
+		print("    ERR: No choice selected in randomSelectPreset")
+		return preset
+	end
+
+	print("    randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
 
 	return eHelicopter_PRESETS[choice]
 end
@@ -179,6 +188,7 @@ function eHelicopter:progressionSelectPreset(preset)
 			end
 		end
 		if presetIDTmp then
+			print("    progressionSelectPreset:  selection: "..presetIDTmp)
 			return eHelicopter_PRESETS[presetIDTmp]
 		end
 	end
@@ -223,7 +233,7 @@ function eHelicopter:loadPreset(ID)
 	preset = self:recursivePresetCheck(preset)
 
 	--use initial list of variables to reset the helicopter object to standard
-	--[DEBUG]] print("loading preset: "..ID.."  vars:")
+	--[[DEBUG]] print("loading preset: "..ID.."  vars:")
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars
