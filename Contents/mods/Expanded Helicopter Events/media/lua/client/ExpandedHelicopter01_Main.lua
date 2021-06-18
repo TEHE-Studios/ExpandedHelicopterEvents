@@ -279,7 +279,7 @@ function Vector3GetX(ShmectorTree)
 	local tostring = tostring(ShmectorTree)
 	local coordinate = string.match(tostring, "%(X%: (.-)%, Y%: ")
 	coordinate = string.gsub(coordinate, ",",".")
-	print("EHE: Vector3-GetX-Workaround:  "..tostring.."  =  "..coordinate)
+	--[debug]] print("EHE: Vector3-GetX-Workaround:  "..tostring.."  =  "..coordinate)
 	return coordinate
 end
 
@@ -290,7 +290,7 @@ function Vector3GetY(ShmectorTree)
 	local tostring = tostring(ShmectorTree)
 	local coordinate = string.match(tostring, "%, Y%: (.-)%) %(")
 	coordinate = string.gsub(coordinate, ",",".")
-	print("EHE: Vector3-GetY-Workaround:  "..tostring.."  =  "..coordinate)
+	--[debug]] print("EHE: Vector3-GetY-Workaround:  "..tostring.."  =  "..coordinate)
 	return coordinate
 end
 
