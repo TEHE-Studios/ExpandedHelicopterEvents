@@ -276,6 +276,7 @@ end
 ---@param ShmectorTree Vector3
 ---@return float x of ShmectorTree
 function Vector3GetX(ShmectorTree)
+	print("EHE: Vector3-GetX-Workaround: "..tostring(ShmectorTree))
 	return string.match(tostring(ShmectorTree), "%(X%: (.-)%, Y%: ")
 end
 
@@ -283,6 +284,7 @@ end
 ---@param ShmectorTree Vector3
 ---@return float y of ShmectorTree
 function Vector3GetY(ShmectorTree)
+	print("EHE: Vector3-GetY-Workaround: "..tostring(ShmectorTree))
 	return string.match(tostring(ShmectorTree), "%, Y%: (.-)%) %(")
 end
 
@@ -549,6 +551,8 @@ end
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedPlayer)
 
+	print("LAUNCH INFO: ")
+
 	if not targetedPlayer then
 		targetedPlayer = self:findTarget()
 	end
@@ -558,7 +562,13 @@ function eHelicopter:launch(targetedPlayer)
 	self.trueTarget = targetedPlayer
 	--setTargetPos is a vector format of self.target
 	self:setTargetPos()
-	
+
+	if targetedPlayer then
+		print("  "..targetedPlayer:getFullName())
+	else
+		print("  ERR: no target set")
+	end
+
 	self:initPos(self.target,self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 	self.rotorEmitter = getWorld():getFreeEmitter()
@@ -595,7 +605,6 @@ function eHelicopter:launch(targetedPlayer)
 	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/2
 	local crashChance = (weatherImpact+apocImpact)*100
 
-	print("LAUNCH INFO: ")
 	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
 	print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
 	print("  crashChance:"..crashChance)
