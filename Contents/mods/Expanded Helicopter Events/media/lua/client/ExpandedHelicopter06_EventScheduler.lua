@@ -199,9 +199,8 @@ function eHeliEvents_OnGameStart()
 		GMMData["DaysBeforeApoc"] = eHeli_getDaysBeforeApoc()
 		setNextHeliFrom(nil, nil, nil, "increasingly_hostile")
 		setNextHeliFrom(nil, nil, nil, "jet")
-		setNextHeliFrom(nil, nil, nil, "news_chopper")
+		setNextHeliFrom(nil, nil, nil, "civilian")
 		setNextHeliFrom(nil, nil, nil, "increasingly_helpful")
-		setNextHeliFrom(nil, nil, nil, "police_heli")
 	end
 end
 

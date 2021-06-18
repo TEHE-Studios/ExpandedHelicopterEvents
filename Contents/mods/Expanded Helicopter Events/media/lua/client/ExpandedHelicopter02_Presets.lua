@@ -12,6 +12,10 @@ eHelicopter_PRESETS = {
 		}
 	},
 
+	["civilian"] = {
+		presetRandomSelection = {"news_chopper",1,"police_heli",3}
+	},
+
 	["jet"] = {
 		randomEdgeStart = true,
 		frequencyFactor = 0.66,
