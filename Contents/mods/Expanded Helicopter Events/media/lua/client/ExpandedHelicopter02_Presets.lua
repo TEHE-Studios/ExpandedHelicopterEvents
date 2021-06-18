@@ -210,9 +210,13 @@ function eHelicopter:recursivePresetCheck(preset, iteration)
 
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
 		print("  EHE: progression/selection: found; recursive: "..iteration)
-		self:recursivePresetCheck(preset,iteration+1)
+		return self:recursivePresetCheck(preset,iteration+1)
 	end
 
+	if iteration >= 4 then
+		print("  EHE: ERR: progression/selection: high recursive iteration: "..iteration)
+	end
+	
 	return preset
 end
 
