@@ -276,16 +276,22 @@ end
 ---@param ShmectorTree Vector3
 ---@return float x of ShmectorTree
 function Vector3GetX(ShmectorTree)
-	print("EHE: Vector3-GetX-Workaround: "..tostring(ShmectorTree))
-	return string.match(tostring(ShmectorTree), "%(X%: (.-)%, Y%: ")
+	local tostring = tostring(ShmectorTree)
+	local coordinate = string.match(tostring, "%(X%: (.-)%, Y%: ")
+	coordinate = string.gsub(coordinate, ",",".")
+	print("EHE: Vector3-GetX-Workaround:  "..tostring.."  =  "..coordinate)
+	return coordinate
 end
 
 
 ---@param ShmectorTree Vector3
 ---@return float y of ShmectorTree
 function Vector3GetY(ShmectorTree)
-	print("EHE: Vector3-GetY-Workaround: "..tostring(ShmectorTree))
-	return string.match(tostring(ShmectorTree), "%, Y%: (.-)%) %(")
+	local tostring = tostring(ShmectorTree)
+	local coordinate = string.match(tostring, "%, Y%: (.-)%) %(")
+	coordinate = string.gsub(coordinate, ",",".")
+	print("EHE: Vector3-GetY-Workaround:  "..tostring.."  =  "..coordinate)
+	return coordinate
 end
 
 
