@@ -969,7 +969,16 @@ function eHelicopter:update()
 end
 
 
+lastUpdateAllHelicopters = -1
 function updateAllHelicopters()
+
+	local timeStamp = getTimestampMs()
+	if (lastUpdateAllHelicopters+5 >= timeStamp) then
+		return
+	else
+		lastUpdateAllHelicopters = timeStamp
+	end
+
 	for key,_ in ipairs(ALL_HELICOPTERS) do
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
