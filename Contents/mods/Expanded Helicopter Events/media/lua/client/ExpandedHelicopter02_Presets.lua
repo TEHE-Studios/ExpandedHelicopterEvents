@@ -14,7 +14,7 @@ eHelicopter_PRESETS = {
 
 	["jet"] = {
 		randomEdgeStart = true,
-		frequencyFactor = 0.33,
+		frequencyFactor = 0.66,
 		speed = 3,
 		topSpeedFactor = 2,
 		flightVolume = 25,
