@@ -3,6 +3,8 @@ MAX_XY = 15000
 MIN_XY = 2500
 ALL_HELICOPTERS = {}
 
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9"))
+
 ---@class eHelicopter
 eHelicopter = {}
 
