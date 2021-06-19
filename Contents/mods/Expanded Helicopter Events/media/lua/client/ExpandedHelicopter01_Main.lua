@@ -1,4 +1,8 @@
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9.2"))
+
 --GLOBAL_VARIABLES
+ALL_HELICOPTERS = {}
+
 eheBounds = {}
 eheBounds.MAX_X = false
 eheBounds.MIN_X = false
@@ -52,10 +56,6 @@ function setDynamicGlobalXY()
 	print("EHE: Setting global XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
 end
 
-
-ALL_HELICOPTERS = {}
-
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9"))
 
 ---@class eHelicopter
 eHelicopter = {}
