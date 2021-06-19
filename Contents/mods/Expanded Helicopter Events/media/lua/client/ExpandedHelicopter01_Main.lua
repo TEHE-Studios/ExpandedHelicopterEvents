@@ -612,22 +612,19 @@ function eHelicopter:launch(targetedPlayer)
 
 	--weatherImpact is a float, 0 to 1
 	local _, weatherImpact = eHeliEvent_weatherImpact()
-
-	local
+	local GTMData = getGameTime():getModData()
 
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
-	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
+	local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	--fraction of days over cutoff divided by 2 = max +50% added crashChance
 	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/2
-
-	local daysSinceCrashImpact = getGameTime():getModData()["DaysSinceCrash"]
-
+	local daysSinceCrashImpact = (getGameTime():getDaysSurvived()-GTMData["DayOfLastCrash"])/(5*apocImpact)
 	local crashChance = (weatherImpact+apocImpact)*100
 
 	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
 	print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
-	print("  crashChance:"..crashChance)
+	print("  daysSinceCrashImpact:"..daysSinceCrashImpact.."  crashChance:"..crashChance)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		self.crashing = true
@@ -758,6 +755,9 @@ function eHelicopter:crash()
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
 				self:spawnCrew()
+
+				getGameTime():getModData()["DayOfLastCrash"] = getGameTime():getDaysSurvived()
+				
 				return true
 			end
 		end

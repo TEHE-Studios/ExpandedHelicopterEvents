@@ -195,6 +195,8 @@ function eHeliEvents_OnGameStart()
 	end
 
 	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
+	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or 0
+
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
 		setNextHeliFrom(nil, nil, nil, "increasingly_hostile")
