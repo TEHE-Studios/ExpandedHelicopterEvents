@@ -194,9 +194,9 @@ function eHeliEvents_OnGameStart()
 		EasyConfig_Chucked.saveConfig()
 	end
 
+	GMMData["DaysBeforeApoc"] = GMMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
 	--if the list is empty call new heli events
 	if #GMMData["EventsSchedule"] < 1 then
-		GMMData["DaysBeforeApoc"] = eHeli_getDaysBeforeApoc()
 		setNextHeliFrom(nil, nil, nil, "increasingly_hostile")
 		setNextHeliFrom(nil, nil, nil, "jet")
 		setNextHeliFrom(nil, nil, nil, "civilian")
