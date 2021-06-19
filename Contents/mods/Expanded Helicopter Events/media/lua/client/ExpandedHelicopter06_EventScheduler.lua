@@ -176,16 +176,16 @@ end
 
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
-	local GMMData = getGameTime():getModData()
+	local GTMData = getGameTime():getModData()
 	--if no EventsSchedule found make it an empty list
-	if not GMMData["EventsSchedule"] then
-		GMMData["EventsSchedule"] = {}
+	if not GTMData["EventsSchedule"] then
+		GTMData["EventsSchedule"] = {}
 	end
 
 	--if eHelicopterSandbox.config.resetEvents == true, reset
 	if eHelicopterSandbox.config.resetEvents == true then
 		EasyConfig_Chucked.loadConfig()
-		GMMData["EventsSchedule"] = {}
+		GTMData["EventsSchedule"] = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
 		local resetEvents = EHE.configMenu["resetEvents"]
 		resetEvents.selectedValue = "false"
@@ -194,9 +194,9 @@ function eHeliEvents_OnGameStart()
 		EasyConfig_Chucked.saveConfig()
 	end
 
-	GMMData["DaysBeforeApoc"] = GMMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
+	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
 	--if the list is empty call new heli events
-	if #GMMData["EventsSchedule"] < 1 then
+	if #GTMData["EventsSchedule"] < 1 then
 		setNextHeliFrom(nil, nil, nil, "increasingly_hostile")
 		setNextHeliFrom(nil, nil, nil, "jet")
 		setNextHeliFrom(nil, nil, nil, "civilian")

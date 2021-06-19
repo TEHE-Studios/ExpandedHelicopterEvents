@@ -612,12 +612,17 @@ function eHelicopter:launch(targetedPlayer)
 
 	--weatherImpact is a float, 0 to 1
 	local _, weatherImpact = eHeliEvent_weatherImpact()
-	
+
+	local
+
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	--fraction of days over cutoff divided by 2 = max +50% added crashChance
 	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/2
+
+	local daysSinceCrashImpact = getGameTime():getModData()["DaysSinceCrash"]
+
 	local crashChance = (weatherImpact+apocImpact)*100
 
 	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
