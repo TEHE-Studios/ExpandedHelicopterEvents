@@ -859,7 +859,7 @@ end
 
 function eHelicopter:update()
 
-	if not self.trueTarget then
+	if (not self.target) or (not self.trueTarget) then
 		return
 	end
 
