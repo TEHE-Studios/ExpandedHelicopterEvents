@@ -159,6 +159,9 @@ eHelicopter.attackScope = 1
 --- -----------------------------------
 eHelicopter.attackSpread = 3
 
+---@field attackAccuracyFactor number multiplied against chance to hit in attacking
+eHelicopter.attackHitChance = 85
+
 
 ---// UNDER THE HOOD STUFF //---
 

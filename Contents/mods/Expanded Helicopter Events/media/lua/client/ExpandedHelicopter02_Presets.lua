@@ -79,6 +79,7 @@ eHelicopter_PRESETS = {
 		attackSpread = 4,
 		flightSound = "eHeliPoliceSiren",
 		speed = 0.09,
+		attackHitChance = 100,
 		crashType = {"Bell206PoliceCrashed"},
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 		hostilePreference = "IsoZombie",
