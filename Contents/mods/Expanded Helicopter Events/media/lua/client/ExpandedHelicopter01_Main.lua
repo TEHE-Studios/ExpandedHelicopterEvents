@@ -1,6 +1,58 @@
 --GLOBAL_VARIABLES
-MAX_XY = 15000
-MIN_XY = 2500
+eheBounds = {}
+eheBounds.MAX_X = false
+eheBounds.MIN_X = false
+eheBounds.MAX_Y = false
+eheBounds.MIN_Y = false
+eheBounds.threshold = 5000
+
+function setDynamicGlobalXY()
+	local numActivePlayers = getNumActivePlayers()-1
+
+	eheBounds.MAX_X = false
+	eheBounds.MIN_X = false
+	eheBounds.MAX_Y = false
+	eheBounds.MIN_Y = false
+
+	for i=0, numActivePlayers do
+		---@type IsoGameCharacter p
+		local p = getSpecificPlayer(i)
+		local pX = p:getX()
+		local pY = p:getY()
+
+		if not eheBounds.MIN_X then
+			eheBounds.MIN_X = pX-eheBounds.threshold
+		else
+			eheBounds.MIN_X = math.min(eheBounds.MIN_X, pX-eheBounds.threshold)
+		end
+
+		if not eheBounds.MAX_X then
+			eheBounds.MAX_X = pX+eheBounds.threshold
+		else
+			eheBounds.MAX_X = math.max(eheBounds.MAX_X, pX+eheBounds.threshold)
+		end
+
+		if not eheBounds.MIN_Y then
+			eheBounds.MIN_Y = pY-eheBounds.threshold
+		else
+			eheBounds.MIN_Y = math.min(eheBounds.MIN_Y, pY-eheBounds.threshold)
+		end
+
+		if not eheBounds.MAX_Y then
+			eheBounds.MAX_Y = pY+eheBounds.threshold
+		else
+			eheBounds.MAX_Y = math.max(eheBounds.MAX_Y, pY+eheBounds.threshold)
+		end
+	end
+
+	eheBounds.MAX_X = math.floor(eheBounds.MAX_X)
+	eheBounds.MIN_X = math.floor(eheBounds.MIN_X)
+	eheBounds.MAX_Y = math.floor(eheBounds.MAX_Y)
+	eheBounds.MIN_Y = math.floor(eheBounds.MIN_Y)
+	print("EHE: Setting global XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
+end
+
+
 ALL_HELICOPTERS = {}
 
 Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9"))
@@ -300,6 +352,8 @@ end
 ---@param randomEdge boolean true = uses random edge, false = prefers closer edge
 function eHelicopter:initPos(targetedPlayer, randomEdge)
 
+	setDynamicGlobalXY()
+
 	--player's location
 	local tpX = targetedPlayer:getX()
 	local tpY = targetedPlayer:getY()
@@ -307,37 +361,44 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	--assign a random spawn point for the helicopter within a radius from the player
 	--these values are being clamped to not go passed MIN_XY/MAX edges
 	local offset = 500
-	local initX = ZombRand(math.max(MIN_XY, tpX-offset), math.min(MAX_XY, tpX+offset))
-	local initY = ZombRand(math.max(MIN_XY, tpY-offset), math.min(MAX_XY, tpY+offset))
+	local initX = ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset))
+	local initY = ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset))
 
 	if not self.currentPosition then
 		self.currentPosition = Vector3.new()
 	end
 
 	if randomEdge then
-		
+		print(" EHE: randomEdge")
 		local initPosXY = {initX, initY}
-		local randEdge = {MIN_XY, MAX_XY}
-		
-		--randEdge stops being a list and becomes a random part of itself
-		randEdge = randEdge[ZombRand(1,#randEdge+1)]
-		
-		--this takes either initX/initY (within initPosXY) and makes it either MIN_XY/MAX (randEdge)
-		initPosXY[ZombRand(1, #initPosXY+1)] = randEdge
+		local minMax = {eheBounds.MIN_X, eheBounds.MIN_Y, eheBounds.MAX_X, eheBounds.MAX_Y}
+
+		--pick X=1 or Y=2 position
+		local randXYEdge = ZombRand(1, #initPosXY+1)
+
+		--pick min=1,2 or max=3,4 (50% to be max)
+		local randXYMinMax = ZombRand(1, #initPosXY+1)
+		if ZombRand(1,3) <= 1 then
+			randXYMinMax = randXYMinMax+2
+		end
+
+		print("    randXYEdge: "..randXYEdge.."   randXYMinMax: "..randXYMinMax)
+
+		--this sets either [1] or [2] of initPosXY as [1] through [4] of minMax
+		initPosXY[randXYEdge] = minMax[randXYMinMax]
 		
 		self.currentPosition:set(initPosXY[1], initPosXY[2], self.height)
-		
 		return
 	end
 	
-	--Looks for the closest edge to initX and initY to modify it to be along either MIN_XY/MAX_XY
-	--differences between initX and MIN_XY/MAX_XY edge values
-	local xDiffToMin = math.abs(initX-MIN_XY)
-	local xDiffToMax = math.abs(initX-MAX_XY)
-	local yDiffToMin = math.abs(initY-MIN_XY)
-	local yDiffToMax = math.abs(initY-MAX_XY)
+	--Looks for the closest edge to initX and initY to modify it to be along either eheBounds.MIN_X/Y/MAX_X/Y
+	--differences between initX and eheBounds.MIN_X/Y/MAX_X/Y edge values
+	local xDiffToMin = math.abs(initX-eheBounds.MIN_X)
+	local xDiffToMax = math.abs(initX-eheBounds.MAX_X)
+	local yDiffToMin = math.abs(initY-eheBounds.MIN_Y)
+	local yDiffToMax = math.abs(initY-eheBounds.MAX_Y)
 	--this list uses x/yDifftoMin/Max's values as keys storing their respective corresponding edges
-	local xyDiffCorrespondingEdge = {[xDiffToMin]=MIN_XY, [xDiffToMax]=MAX_XY, [yDiffToMin]=MIN_XY, [yDiffToMax]=MAX_XY}
+	local xyDiffCorrespondingEdge = {[xDiffToMin]=eheBounds.MIN_X, [xDiffToMax]=eheBounds.MAX_X, [yDiffToMin]=eheBounds.MIN_Y, [yDiffToMax]=eheBounds.MAX_Y}
 	--get the smallest of the four differences
 	local smallestDiff = math.min(xDiffToMin,xDiffToMax,yDiffToMin,yDiffToMax)
 	
@@ -375,7 +436,7 @@ end
 function eHelicopter:isInBounds()
 	local h_x, h_y, _ = self:getXYZAsInt()
 
-	if h_x <= MAX_XY and h_x >= MIN_XY and h_y <= MAX_XY and h_y >= MIN_XY then
+	if h_x <= eheBounds.MAX_X and h_x >= eheBounds.MIN_X and h_y <= eheBounds.MAX_X and h_y >= eheBounds.MIN_Y then
 		return true
 	end
 
