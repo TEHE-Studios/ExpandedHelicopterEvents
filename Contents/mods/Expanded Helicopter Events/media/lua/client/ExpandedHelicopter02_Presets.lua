@@ -77,6 +77,7 @@ eHelicopter_PRESETS = {
 		attackDelay = 1100,
 		cutOffFactor = 0.67,
 		attackSpread = 4,
+		flightSound = "eHeliPoliceSiren",
 		speed = 0.07,
 		crashType = {"Bell206PoliceCrashed"},
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
