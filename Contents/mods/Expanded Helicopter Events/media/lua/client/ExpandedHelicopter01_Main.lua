@@ -159,6 +159,11 @@ eHelicopter.attackScope = 1
 --- -----------------------------------
 eHelicopter.attackSpread = 3
 
+---@field attackHitChance number multiplied against chance to hit in attacking
+eHelicopter.attackHitChance = 85
+
+---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5))
+eHelicopter.attackDamage = 15
 
 ---// UNDER THE HOOD STUFF //---
 
@@ -859,7 +864,7 @@ end
 
 function eHelicopter:update()
 
-	if not self.trueTarget then
+	if (not self.target) or (not self.trueTarget) then
 		return
 	end
 

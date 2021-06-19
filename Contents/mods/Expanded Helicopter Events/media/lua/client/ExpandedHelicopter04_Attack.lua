@@ -87,7 +87,7 @@ function eHelicopter:fireOn(targetHostile)
 	--virtual sound event to attract zombies
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
-	local chance = 85
+	local chance = self.attackHitChance
 
 	--IsoGameCharacter:getMoveSpeed() doesn't seem to work on IsoPlayers (works on IsoZombie)
 	local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLx())
@@ -148,7 +148,7 @@ function eHelicopter:fireOn(targetHostile)
 		targetHostile:addHole(clothingBP)
 		targetHostile:addBlood(clothingBP, true, true, true)
 		--apply damage to body part
-		local damage = ZombRand(1,1.5) * 15
+		local damage = ZombRand(1,1.5) * self.attackDamage
 		local bodyDMG = targetHostile:getBodyDamage()
 		if bodyDMG then
 			local bodyParts = bodyDMG:getBodyParts()
