@@ -620,7 +620,7 @@ function eHelicopter:launch(targetedPlayer)
 	--fraction of days over cutoff divided by 2 = max +50% added crashChance
 	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/2
 	local daysSinceCrashImpact = (getGameTime():getDaysSurvived()-GTMData["DayOfLastCrash"])/(5*apocImpact)
-	local crashChance = (weatherImpact+apocImpact)*100
+	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
 	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
 	print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
@@ -757,7 +757,7 @@ function eHelicopter:crash()
 				self:spawnCrew()
 
 				getGameTime():getModData()["DayOfLastCrash"] = getGameTime():getDaysSurvived()
-				
+
 				return true
 			end
 		end
