@@ -441,10 +441,10 @@ end
 function eHelicopter:isInBounds()
 	local h_x, h_y, _ = self:getXYZAsInt()
 
-	if h_x <= eheBounds.MAX_X and h_x >= eheBounds.MIN_X and h_y <= eheBounds.MAX_X and h_y >= eheBounds.MIN_Y then
+	if h_x <= eheBounds.MAX_X and h_x >= eheBounds.MIN_X and h_y <= eheBounds.MAX_Y and h_y >= eheBounds.MIN_Y then
 		return true
 	end
-
+	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self.ID..": "..h_x..", "..h_y)
 	return false
 end
 
@@ -805,7 +805,7 @@ function eHelicopter:crash()
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
-				--[[DEBUG]] print("---- EHE: CRASH EVENT: "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
+				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self.ID..": "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
 				heli:playSound("HeliCrash")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
