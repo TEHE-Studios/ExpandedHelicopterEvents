@@ -148,7 +148,7 @@ function eHelicopter:fireOn(targetHostile)
 		targetHostile:addHole(clothingBP)
 		targetHostile:addBlood(clothingBP, true, true, true)
 		--apply damage to body part
-		local damage = ZombRand(1,1.5) * 15
+		local damage = ZombRand(1,1.5) * self.attackDamage
 		local bodyDMG = targetHostile:getBodyDamage()
 		if bodyDMG then
 			local bodyParts = bodyDMG:getBodyParts()
