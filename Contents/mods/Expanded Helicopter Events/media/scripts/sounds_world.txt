@@ -1,6 +1,6 @@
 module Base {
 
-    sound eHelicopter { category = World, loop = true, is3D = true, clip { file = media/sound/heli_loop.ogg, distanceMax = 1500, volume = 5.0, } }
+    sound eHelicopter { category = World, loop = true, is3D = true, clip { file = media/sound/heli_loop.ogg, distanceMax = 1500, volume = 2.0, } }
     sound eJetFlight { category = World, loop = true, is3D = true, clip { file = media/sound/jet_loop.ogg, distanceMax = 2500, volume = 2.0, } }
     sound eHeliPoliceSiren { category = World, loop = true, is3D = true, clip { file = media/sound/policehelicopteracknowledgement.ogg, distanceMax = 1500, volume = 2.0, } }
 
