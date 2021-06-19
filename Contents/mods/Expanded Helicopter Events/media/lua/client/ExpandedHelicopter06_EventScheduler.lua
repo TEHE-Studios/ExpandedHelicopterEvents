@@ -58,7 +58,7 @@ function eHeliEvent_engage(ID)
 	
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
-	if willFly then
+	if willFly and (getNumActivePlayers() > 0) then
 		getFreeHelicopter(eHeliEvent.preset):launch()
 	end
 	--replace event in schedule with newly generated values
