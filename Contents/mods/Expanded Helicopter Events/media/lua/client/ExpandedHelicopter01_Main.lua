@@ -899,7 +899,7 @@ function eHelicopter:update()
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
 
-			--if self.crashType then self:crash() else self:goHome() end
+			--if self.crashType then self:crash() return else self:goHome() end
 			self:goHome()
 		end
 	end
