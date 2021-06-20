@@ -142,20 +142,20 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			local startDayMax = startMinMax[2]
 
 			if freq == 0 then
-				startDayMin = startDayMin+7*freqFactor
-				startDayMax = startDayMax+14*freqFactor
+				startDayMin = (startDayMin+7)*freqFactor
+				startDayMax = (startDayMax+14)*freqFactor
 
 			elseif freq == 1 then
-				startDayMin = startDayMin+5*freqFactor
-				startDayMax = startDayMax+10*freqFactor
+				startDayMin = (startDayMin+5)*freqFactor
+				startDayMax = (startDayMax+10)*freqFactor
 
 			elseif freq == 2 then
-				startDayMin = startDayMin+3*freqFactor
-				startDayMax = startDayMax+6*freqFactor
+				startDayMin = (startDayMin+3)*freqFactor
+				startDayMax = (startDayMax+6)*freqFactor
 
 			elseif freq == 3 then
-				startDayMin = startDayMin+1*freqFactor
-				startDayMax = startDayMax+2*freqFactor
+				startDayMin = (startDayMin+1)*freqFactor
+				startDayMax = (startDayMax+2)*freqFactor
 			end
 
 			local randomizedStart = ZombRand(startDayMin,startDayMax)
