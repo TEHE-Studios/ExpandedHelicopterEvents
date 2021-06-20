@@ -22,7 +22,7 @@ eHelicopter_PRESETS = {
 		speed = 3,
 		topSpeedFactor = 2,
 		flightVolume = 25,
-		flightSound = "eJetFlight",
+		eventSoundEffects = {["flightSound"] = "eJetFlight"},
 		crashType = false,
 		shadow = false,
 	},
@@ -76,7 +76,6 @@ eHelicopter_PRESETS = {
 		attackDelay = 1100,
 		cutOffFactor = 0.67,
 		attackSpread = 4,
-		flightSound = "eHeliPoliceSiren",
 		speed = 0.09,
 		attackHitChance = 100,
 		attackDamage = 22,
@@ -84,9 +83,9 @@ eHelicopter_PRESETS = {
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 		hostilePreference = "IsoZombie",
 		eventSoundEffects = {
-			["attackSingle"] = "eHeli_bolt_action_fire_singleshot",
-			["attackLooped"] = "eHeli_bolt_action_fire_singleshot",
-			["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
+			["attackSingle"] = "eHeli_bolt_action_fire_singleshot",["attackLooped"] = "eHeli_bolt_action_fire_singleshot",
+			["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"},
+			["flightSound"] = "eHeliPoliceSiren",
 		}
 	},
 
@@ -243,7 +242,7 @@ function eHelicopter:loadPreset(ID)
 	preset = self:recursivePresetCheck(preset)
 
 	--use initial list of variables to reset the helicopter object to standard
-	--[[DEBUG]] print("loading preset: "..ID.."  vars:")
+	--[[DEBUG]] print("loading preset: "..ID)
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars

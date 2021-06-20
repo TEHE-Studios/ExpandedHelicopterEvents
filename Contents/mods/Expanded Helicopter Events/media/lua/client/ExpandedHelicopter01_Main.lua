@@ -31,7 +31,7 @@ eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=ni
 	["attackSingle"] = "eHeli_machine_gun_fire_singleshot",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"},
-	["crashEvent"] = "eHelicopterCrash"
+	["flightSound"] = "eHelicopter", ["crashEvent"] = "eHelicopterCrash"
 	}
 
 ---@field announcerVoice string
@@ -62,9 +62,6 @@ eHelicopter.speed = 0.15
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
-
----@field flightSound string sound to loop during flight
-eHelicopter.flightSound = "eHelicopter"
 
 ---@field flightVolume number
 eHelicopter.flightVolume = 50
@@ -147,16 +144,14 @@ eHelicopter.height = 7
 eHelicopter.state = false
 ---@field crashing
 eHelicopter.crashing = false
----@field rotorEmitter FMODSoundEmitter | BaseSoundEmitter
-eHelicopter.rotorEmitter = false
 ---@field timeUntilCanAnnounce number
 eHelicopter.timeUntilCanAnnounce = -1
 ---@field preflightDistance number
 eHelicopter.preflightDistance = false
 ---@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.announceEmitter = false
----@field eventSoundEffectEmitters table
-eHelicopter.eventSoundEffectEmitters = {}
+---@field heldEventSoundEffectEmitters table
+eHelicopter.heldEventSoundEffectEmitters = {}
 ---@field target IsoObject
 eHelicopter.target = false
 ---@field trueTarget IsoGameCharacter
@@ -214,7 +209,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	end
 
 	---@type FMODSoundEmitter | BaseSoundEmitter emitter
-	local soundEmitter = self.eventSoundEffectEmitters[event]
+	local soundEmitter = self.heldEventSoundEffectEmitters[event]
 
 	if stopSound and soundEmitter then
 		soundEmitter:stopSoundByName(soundEffect)
@@ -227,7 +222,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	if not soundEmitter then
 		soundEmitter = getWorld():getFreeEmitter()
 		if saveEmitter then
-			self.eventSoundEffectEmitters[event] = soundEmitter
+			self.heldEventSoundEffectEmitters[event] = soundEmitter
 		end
 	elseif soundEmitter:isPlaying(soundEffect) then
 		return
@@ -520,9 +515,10 @@ function eHelicopter:move(re_aim, dampen)
 	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(v_x, v_y, self.height)
-	--Move emitter to position
-	self.rotorEmitter:setPos(v_x,v_y,self.height)
-
+	--Move held emitters to position
+	for id,emitter in pairs(self.heldEventSoundEffectEmitters) do
+		emitter:setPos(v_x,v_y,self.height)
+	end
 	--self:Report(re_aim, dampen)
 end
 
@@ -587,11 +583,8 @@ function eHelicopter:launch(targetedPlayer)
 
 	self:initPos(self.target,self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
-	self.rotorEmitter = getWorld():getFreeEmitter()
 
-	local ehX, ehY, ehZ = self:getXYZAsInt()
-
-	self.rotorEmitter:playSound(self.flightSound, ehX, ehY, ehZ)
+	self:playEventSound("flightSound", nil, true)
 
 	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
 		if #self.hoverOnTargetDuration >= 2 then
@@ -1012,12 +1005,12 @@ end
 
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
-	self.rotorEmitter:stopAll()
+
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter then
 		self.announceEmitter:stopAll()
 	end
-	for event,emitter in pairs(self.eventSoundEffectEmitters) do
+	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		emitter:stopSoundByName(event)
 	end
 	if self.shadow and type(self.shadow)~="boolean" then
