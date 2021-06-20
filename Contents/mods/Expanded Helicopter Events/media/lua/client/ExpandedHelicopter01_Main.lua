@@ -30,7 +30,8 @@ eHelicopter.dropPackages = false
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
 	["attackSingle"] = "eHeli_machine_gun_fire_singleshot",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
-	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"}
+	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"},
+	["crashEvent"] = "eHelicopterCrash"
 	}
 
 ---@field announcerVoice string
@@ -754,9 +755,9 @@ function eHelicopter:crash()
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self.ID..": "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
-				heli:playSound("HeliCrash")
-				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 100, 100)
 				self:unlaunch()
+				self:playEventSound("crashEvent")
+				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 200, 100)
 				self:spawnCrew()
 
 				getGameTime():getModData()["DayOfLastCrash"] = getGameTime():getDaysSurvived()
