@@ -320,9 +320,11 @@ EasyConfig_Chucked.loadConfig = function()
 					if menuEntry then
 
 						if menuEntry.options then
-							menuEntry.selectedIndex = menuEntry.optionsKeys[label][1]
-							menuEntry.selectedValue = menuEntry.optionsKeys[label][2]
-							menuEntry.selectedLabel = label
+							if menuEntry.optionsKeys[label] then
+								menuEntry.selectedIndex = menuEntry.optionsKeys[label][1]
+								menuEntry.selectedValue = menuEntry.optionsKeys[label][2]
+								menuEntry.selectedLabel = label
+							end
 						else
 							if label == "true" then menuEntry.selectedValue = true
 							elseif label == "false" then menuEntry.selectedValue = false
