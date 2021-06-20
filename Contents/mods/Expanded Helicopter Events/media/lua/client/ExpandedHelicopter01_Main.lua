@@ -624,13 +624,13 @@ function eHelicopter:launch(targetedPlayer)
 	local daysSinceCrashImpact = (getGameTime():getNightsSurvived()-dayOfLastCrash)/math.max(1,(7*apocImpact))
 	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
-	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
-	print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
-	print("  dayOfLastCrash:"..dayOfLastCrash.."  daysSinceCrashImpact:"..daysSinceCrashImpact)
+	--[DEBUG]] print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
+	--[DEBUG]] print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
+	--[DEBUG]] print("  dayOfLastCrash:"..dayOfLastCrash.."  daysSinceCrashImpact:"..daysSinceCrashImpact)
 	print("  crashChance:"..crashChance)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
-		print ("  - HELI: "..self.ID.." : crashing set to true.")
+		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")
 		self.crashing = true
 	end
 end
@@ -747,13 +747,12 @@ function eHelicopter:crash()
 		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
 
 		if currentSquare and currentSquare:isSolidTrans() then
-			--[[DEBUG]] print("--- EHE: currentSquare is solid-trans")
+			--[DEBUG]] print("--- EHE: currentSquare is solid-trans")
 			currentSquare = nil
 		end
-		--[[DEBUG]] print("-- EHE: squares for crashing: "..tostring(currentSquare))
+		--[DEBUG]] print("-- EHE: squares for crashing: "..tostring(currentSquare))
 		if currentSquare then
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
-			print("EHE: vehicleType:"..vehicleType)
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
@@ -765,8 +764,6 @@ function eHelicopter:crash()
 				getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
 				return true
 			end
-		else
-			print(" --EHE: No currentSquare")
 		end
 	end
 	return false
@@ -881,7 +878,7 @@ function eHelicopter:update()
 	local crashMax = math.min(250, math.floor(ZombRand(crashMin,crashMin*2)))
 
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
-		print("EHE: crashing parameters met. ("..crashMin.." to "..crashMax..")")
+		--[DEBUG]] print("EHE: crashing parameters met. ("..crashMin.." to "..crashMax..")")
 		if self:crash() then
 			return
 		end
