@@ -841,13 +841,13 @@ function eHelicopter:update()
 				local offset = self.attackDistance
 				local randOffset = {-offset,offset}
 
-				local tx = self.target:getX()
+				local tx = self.trueTarget:getX()
 				--50% chance to offset x
 				if ZombRand(1,100) <= 50 then
 					--pick from randOffset, 50% negative or positive
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
-				local ty = self.target:getY()
+				local ty = self.trueTarget:getY()
 				--50% chance to offset y
 				if ZombRand(1,100) <= 50 then
 					--pick from randOffset, 50% negative or positive
