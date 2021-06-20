@@ -73,7 +73,6 @@ eHelicopter_PRESETS = {
 	},
 
 	["police_heli"] = {
-		announcerVoice = false,
 		attackDelay = 1100,
 		cutOffFactor = 0.67,
 		attackSpread = 4,
@@ -92,7 +91,6 @@ eHelicopter_PRESETS = {
 	},
 
 	["aid_helicopter"] = {
-		announcerVoice = false,
 		crashType = {"UH1Hmedevaccrash"},
 		crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 		dropPackages = {"FEMASupplyDrop"},
