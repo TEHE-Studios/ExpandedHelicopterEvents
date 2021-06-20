@@ -136,9 +136,6 @@ function eHelicopter:fireOn(targetHostile)
 		--knock down zombie
 		if instanceof(targetHostile, "IsoZombie") then
 			targetHostile:knockDown(true)
-			if ZombRand(0, 100) <= 10 then
-				targetHostile:setFakeDead(true)
-			end
 		end
 		--apply swiss-cheesification (holes and blood)
 		--bodyparts list has a length of 18 (0-17)
