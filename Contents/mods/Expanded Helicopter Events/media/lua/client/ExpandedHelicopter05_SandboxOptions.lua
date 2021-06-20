@@ -37,7 +37,7 @@ eHelicopterSandbox.menu = {
 	cutOffDay = {
 		type = "Numberbox",
 		title = "Events Cutoff Day",
-		tooltip = "",
+		tooltip = "The day events will be tapered to end on. Note: some events are scaled to go beyond this day.",
 	},
 	cutOffDaySpaceB = {type = "Space"},
 
