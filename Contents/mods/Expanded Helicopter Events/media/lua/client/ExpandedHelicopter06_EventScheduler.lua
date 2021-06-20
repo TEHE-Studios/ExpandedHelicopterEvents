@@ -186,6 +186,8 @@ function eHeliEvents_OnGameStart()
 	if eHelicopterSandbox.config.resetEvents == true then
 		EasyConfig_Chucked.loadConfig()
 		GTMData["EventsSchedule"] = {}
+		GTMData["DaysBeforeApoc"] = nil
+		GTMData["DayOfLastCrash"] = nil
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
 		local resetEvents = EHE.configMenu["resetEvents"]
 		resetEvents.selectedValue = "false"
@@ -195,7 +197,7 @@ function eHeliEvents_OnGameStart()
 	end
 
 	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
-	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or getGameTime():getDaysSurvived()
+	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or getGameTime():getNightsSurvived()
 
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
