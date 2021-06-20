@@ -743,14 +743,15 @@ function eHelicopter:crash()
 	if self.crashType then
 		---@type IsoGridSquare
 		local selfSquare = self:getIsoGridSquare()
-		local currentSquare = getOutsideSquareFromAbove(selfSquare)
-
+		local currentSquare = getOutsideSquareFromAbove(selfSquare) or selfSquare
 		if currentSquare and currentSquare:isSolidTrans() then
+			--[[DEBUG]] print("--- EHE: currentSquare is solid-trans")
 			currentSquare = nil
 		end
-		--[DEBUG]] print("-- EHE: squares for crashing:  "..tostring(selfSquare).."  "..tostring(currentSquare))
+		--[[DEBUG]] print("-- EHE: squares for crashing: s:"..tostring(selfSquare).." c:"..tostring(currentSquare))
 		if currentSquare then
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
+			print("EHE: vehicleType:"..vehicleType)
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
@@ -764,6 +765,8 @@ function eHelicopter:crash()
 
 				return true
 			end
+		else
+			print(" --EHE: No currentSquare")
 		end
 	end
 end
