@@ -619,14 +619,17 @@ function eHelicopter:launch(targetedPlayer)
 	local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	--fraction of days over cutoff divided by 2 = max +50% added crashChance
 	local apocImpact = math.min(1,daysIntoApoc/cutOffDay)/2
-	local daysSinceCrashImpact = (getGameTime():getDaysSurvived()-GTMData["DayOfLastCrash"])/(5*apocImpact)
+	local dayOfLastCrash = GTMData["DayOfLastCrash"]
+	local daysSinceCrashImpact = (getGameTime():getNightsSurvived()-dayOfLastCrash)/math.max(1,(7*apocImpact))
 	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
 	print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
 	print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
-	print("  daysSinceCrashImpact:"..daysSinceCrashImpact.."  crashChance:"..crashChance)
+	print("  dayOfLastCrash:"..dayOfLastCrash.."  daysSinceCrashImpact:"..daysSinceCrashImpact)
+	print("  crashChance:"..crashChance)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
+		print ("  - HELI: "..self.ID.." : crashing set to true.")
 		self.crashing = true
 	end
 end
