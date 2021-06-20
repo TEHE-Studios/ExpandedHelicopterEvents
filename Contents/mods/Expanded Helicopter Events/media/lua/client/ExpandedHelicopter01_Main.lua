@@ -717,15 +717,13 @@ function eHelicopter:spawnCrew()
 					else
 						--+1 because zombRand starts at 0
 						local typeChange = ZombRand(6)+1
-						--1/6 chance to be fake dead
-						if typeChange == 6 then
-							print("crash spawned: "..outfitID.." fakeDead")
-							zombie:setFakeDead(true)
 						--2/6 chance to be a crawler
-						elseif typeChange >= 4 then
+						if typeChange >= 5 then
 							print("crash spawned: "..outfitID.." crawler")
+							zombie:setCanWalk(false)
 							zombie:setBecomeCrawler(true)
-						--3/6 chance for normaltype zombie
+							zombie:knockDown(true)
+						--4/6 chance for normaltype zombie
 						else
 							print("crash spawned: "..outfitID)
 						end
