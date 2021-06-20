@@ -28,9 +28,9 @@ eHelicopter.dropPackages = false
 
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
-	["attackSingle"] = "eHeli_machine_gun_fire_singleshot",
+	["attackSingle"] = "eHeli_machine_gun_fire_single",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
-	["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"},
+	["attackImpacts"] = "eHeli_fire_impact",
 	["flightSound"] = "eHelicopter", ["crashEvent"] = "eHelicopterCrash"
 	}
 

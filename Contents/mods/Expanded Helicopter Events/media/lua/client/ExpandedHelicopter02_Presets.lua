@@ -83,8 +83,8 @@ eHelicopter_PRESETS = {
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 		hostilePreference = "IsoZombie",
 		eventSoundEffects = {
-			["attackSingle"] = "eHeli_bolt_action_fire_singleshot",["attackLooped"] = "eHeli_bolt_action_fire_singleshot",
-			["attackImpacts"] = {"eHeli_fire_impact1", "eHeli_fire_impact2", "eHeli_fire_impact3",  "eHeli_fire_impact4", "eHeli_fire_impact5"},
+			["attackSingle"] = "eHeli_bolt_action_fire_single",["attackLooped"] = "eHeli_bolt_action_fire_single",
+			["attackImpacts"] = "eHeli_fire_impact",
 			["flightSound"] = "eHeliPoliceSiren",
 		}
 	},
