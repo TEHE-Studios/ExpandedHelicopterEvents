@@ -276,31 +276,28 @@ EasyConfig_Chucked.saveConfig = function()
 	for modId,mod in pairs(EasyConfig_Chucked.mods) do
 		local config = mod.config
 		local configMenu = mod.configMenu
+		local configFile = "media/config/"..modId..".config"
+		local fileWriter = getModFileWriter(modId, configFile, true, false)
+		if fileWriter then
+			print("modId: "..modId.." saving")
+			for gameOptionName,_ in pairs(config) do
+				local menuEntry = configMenu[gameOptionName]
 
-		if (not mod.menuSpecificAccess) or (getPlayer() and mod.menuSpecificAccess=="ingame") or (not getPlayer() and mod.menuSpecificAccess=="mainmenu") then
-			local configFile = "media/config/"..modId..".config"
-			local fileWriter = getModFileWriter(modId, configFile, true, false)
-			if fileWriter then
-				print("modId: "..modId.." saving")
-				for gameOptionName,_ in pairs(config) do
-					local menuEntry = configMenu[gameOptionName]
-
-					if menuEntry.selectedLabel then
-						local menuEntry_selectedLabel = menuEntry.selectedLabel
-						if type(menuEntry.selectedLabel) == "boolean" then
-							menuEntry_selectedLabel = tostring(menuEntry_selectedLabel)
-						end
-						fileWriter:write(gameOptionName.."="..menuEntry_selectedLabel..",\r")
-					else
-						local menuEntry_selectedValue = menuEntry.selectedValue
-						if type(menuEntry.selectedValue) == "boolean" then
-							menuEntry_selectedValue = tostring(menuEntry_selectedValue)
-						end
-						fileWriter:write(gameOptionName.."="..menuEntry.selectedValue..",\r")
+				if menuEntry.selectedLabel then
+					local menuEntry_selectedLabel = menuEntry.selectedLabel
+					if type(menuEntry.selectedLabel) == "boolean" then
+						menuEntry_selectedLabel = tostring(menuEntry_selectedLabel)
 					end
+					fileWriter:write(gameOptionName.."="..menuEntry_selectedLabel..",\r")
+				else
+					local menuEntry_selectedValue = menuEntry.selectedValue
+					if type(menuEntry.selectedValue) == "boolean" then
+						menuEntry_selectedValue = tostring(menuEntry_selectedValue)
+					end
+					fileWriter:write(gameOptionName.."="..menuEntry_selectedValue..",\r")
 				end
-				fileWriter:close()
 			end
+			fileWriter:close()
 		end
 	end
 end
