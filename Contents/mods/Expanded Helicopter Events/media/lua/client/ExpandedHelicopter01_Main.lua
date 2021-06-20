@@ -742,13 +742,15 @@ function eHelicopter:crash()
 
 	if self.crashType then
 		---@type IsoGridSquare
-		local selfSquare = self:getIsoGridSquare()
-		local currentSquare = getOutsideSquareFromAbove(selfSquare) or selfSquare
+
+		local heliX, heliY, _ = self:getXYZAsInt()
+		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
+
 		if currentSquare and currentSquare:isSolidTrans() then
 			--[[DEBUG]] print("--- EHE: currentSquare is solid-trans")
 			currentSquare = nil
 		end
-		--[[DEBUG]] print("-- EHE: squares for crashing: s:"..tostring(selfSquare).." c:"..tostring(currentSquare))
+		--[[DEBUG]] print("-- EHE: squares for crashing: "..tostring(currentSquare))
 		if currentSquare then
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			print("EHE: vehicleType:"..vehicleType)
