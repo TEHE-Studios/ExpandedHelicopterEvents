@@ -191,6 +191,8 @@ VehicleDistributions.Bell206NewsSeat = {
         "Bullets9mm", 3,
         "Bullets9mm", 3,
         "Bullets9mm", 3,
+        "Hat_PressHelmet", 4,
+        "Hat_PressHelmet", 4,
         "Vest_BulletPress", 4,
         "Vest_BulletPress", 4,
         "Vest_BulletPress", 4,
