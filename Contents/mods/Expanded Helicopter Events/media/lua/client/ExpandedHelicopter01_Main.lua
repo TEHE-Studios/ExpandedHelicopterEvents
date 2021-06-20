@@ -756,19 +756,18 @@ function eHelicopter:crash()
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self.ID..": "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
-				self:unlaunch()
 				self:playEventSound("crashEvent")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 200, 100)
 				self:spawnCrew()
-
-				getGameTime():getModData()["DayOfLastCrash"] = getGameTime():getDaysSurvived()
-
+				self:unlaunch()
+				getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
 				return true
 			end
 		else
 			print(" --EHE: No currentSquare")
 		end
 	end
+	return false
 end
 
 
