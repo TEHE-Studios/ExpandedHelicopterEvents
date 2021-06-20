@@ -818,6 +818,8 @@ function eHelicopter:update()
 
 	if (not self.target) or (not self.trueTarget) then
 		print("EHE: ERR: HELI: "..self.ID.." no target/trueTarget in update()")
+		self:unlaunch()
+		return
 	end
 
 	local timeStampMS = getTimestampMs()
