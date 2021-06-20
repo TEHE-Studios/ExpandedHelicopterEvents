@@ -122,8 +122,8 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local nightsSurvived = getGameTime():getNightsSurvived()
 	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+nightsSurvived
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
-	local cutOff = presetSettings.cutOffFactor
-	local cutOffDay = cutOff*eHelicopterSandbox.config.cutOffDay
+	local COF = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
+	local cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
 
 	if cutOffDay and nightsSurvived > cutOffDay then
 		return
@@ -136,10 +136,10 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			heliDay = lastHeliEvent.startDay
 
 			local freq = eHelicopterSandbox.config.frequency
-			local freqFactor = presetSettings.frequencyFactor
-			local startMinMax = presetSettings.startDayMinMax
-			local startDayMin = startMinMax[1]
-			local startDayMax = startMinMax[2]
+			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
+			local minMax = presetSettings.startDayMinMax or eHelicopter.startDayMinMax
+			local startDayMin = minMax[1]
+			local startDayMax = minMax[2]
 
 			if freq == 0 then
 				startDayMin = (startDayMin+7)*freqFactor
