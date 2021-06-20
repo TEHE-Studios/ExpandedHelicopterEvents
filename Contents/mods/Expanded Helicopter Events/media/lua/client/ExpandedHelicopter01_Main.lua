@@ -875,8 +875,6 @@ function eHelicopter:update()
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
 	thatIsCloseEnough = thatIsCloseEnough+4
-	local crashMin = thatIsCloseEnough*33
-	local crashMax = thatIsCloseEnough*ZombRand(crashMin,100)
 
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
 		if self:crash() then
@@ -908,6 +906,8 @@ function eHelicopter:update()
 		end
 	end
 
+	local crashMin = math.floor(thatIsCloseEnough*20)
+	local crashMax = math.floor(ZombRand(crashMin,crashMin*2))
 	local lockOn = true
 	if self.state == "goHome" then
 		lockOn = false
