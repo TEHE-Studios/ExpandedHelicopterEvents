@@ -37,9 +37,7 @@ module Base {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/heli_fire_impact1.ogg, distanceMax = 1500, volume = 1.0, }
         clip { file = media/sound/heli_fire_impact2.ogg, distanceMax = 1500, volume = 1.0, }
-        clip { file = media/sound/heli_fire_impact3.ogg, distanceMax = 1500, volume = 1.0, }
-        clip { file = media/sound/heli_fire_impact4.ogg, distanceMax = 1500, volume = 1.0, }
-        clip { file = media/sound/heli_fire_impact5.ogg, distanceMax = 1500, volume = 1.0, } }
+        clip { file = media/sound/heli_fire_impact3.ogg, distanceMax = 1500, volume = 1.0, } }
 
 
     sound eHeli_lineM_1a {
