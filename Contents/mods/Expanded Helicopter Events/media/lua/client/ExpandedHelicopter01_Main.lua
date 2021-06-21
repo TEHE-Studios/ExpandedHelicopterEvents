@@ -230,6 +230,13 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	soundEmitter:playSound(soundEffect, otherLocation)
 end
 
+function eHelicopter:stopAllHeldEventSounds()
+	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
+		local soundEffect = self.eventSoundEffects[event]
+		print(" -- sound stoppage:"..event.." = "..soundEffect)
+		emitter:stopSoundByName(soundEffect)
+	end
+end
 
 ---Do not call this function directly for new helicopters; use: getFreeHelicopter instead
 function eHelicopter:new()
@@ -724,10 +731,10 @@ function eHelicopter:crash()
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self.ID..": "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
-				self:playEventSound("crashEvent")
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 200, 100)
 				self:spawnCrew()
 				self:unlaunch()
+				self:playEventSound("crashEvent")
 				getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
 				return true
 			end
@@ -985,11 +992,7 @@ function eHelicopter:unlaunch()
 	if self.announceEmitter then
 		self.announceEmitter:stopAll()
 	end
-	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
-		local soundEffect = self.eventSoundEffects[event]
-		print(" -- sound stoppage:"..event.." = "..soundEffect)
-		emitter:stopSoundByName(soundEffect)
-	end
+	self:stopAllHeldEventSounds()
 	if self.shadow and type(self.shadow)~="boolean" then
 		self.shadow:remove()
 	end

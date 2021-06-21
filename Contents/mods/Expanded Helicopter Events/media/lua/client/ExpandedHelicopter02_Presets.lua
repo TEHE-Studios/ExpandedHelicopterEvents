@@ -239,6 +239,7 @@ function eHelicopter:loadPreset(ID)
 		return
 	end
 
+	self:stopAllHeldEventSounds()
 	preset = self:recursivePresetCheck(preset)
 
 	--use initial list of variables to reset the helicopter object to standard
