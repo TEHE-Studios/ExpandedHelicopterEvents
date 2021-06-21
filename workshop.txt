@@ -10,7 +10,7 @@ description= [img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=
 description= [h2]Credits:[/h2]
 description= [h3]Consider supporting your favorite modders![/h3]
-description= [url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art, Ideas
+description= [url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art
 description= [url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
 description= Raven & Gabby - Sound, Voiceover
 description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
@@ -32,7 +32,7 @@ description=   [*] Select "Custom Sandbox" Playstyle.
 description=   [*] Under "Sadistic AI Director", set Helicopter to "Never".
 description= [/olist]
 description= [/list]
-description= 
+description=
 description= 
 description= [h2]Features:[/h2]
 description= [list]
