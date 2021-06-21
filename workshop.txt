@@ -4,7 +4,7 @@ title=Expanded Helicopter Events
 description= 
 description= [H1]This mod replaces the vanilla helicopter event with a more dynamic suite of events which is both challenging and fair.[/H1]
 description= [H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
-For more customizability an options menu can be accessed from the title screen's options.
+description= For more customizability an options menu can be accessed from the title screen's options.
 description= 
 description= [img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description= 
@@ -66,12 +66,13 @@ description=
 description= [*] Jets: While not strictly a "helicopter" the jet events whizz near by the player to keep things interesting and move horde of undead early on.
 description= [/list]
 description=
+description=
 description= [h2]Credits:[/h2]
-description= [url=https://ko-fi.com/sharkmods]Shark[img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art, Ideas
-description= [url=https://ko-fi.com/chuckleberryfinn]Chuck[img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
+description= [h3]Consider supporting your favorite modders![/h3]
+description= [url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art, Ideas
+description= [url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
 description= Raven & Gabby - Sound, Voiceover
 description= Jade - Voiceover
 description=
 description=
-tags= heli, helicopters, aid, military aid, events, expanded helicopter events, jets
 visibility=public
