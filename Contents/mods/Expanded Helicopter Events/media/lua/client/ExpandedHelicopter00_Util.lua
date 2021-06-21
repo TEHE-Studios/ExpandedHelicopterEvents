@@ -7,6 +7,7 @@ eheBounds.MAX_Y = false
 eheBounds.MIN_Y = false
 eheBounds.threshold = 5000
 
+---Sets a min/max X/Y around all the players
 function setDynamicGlobalXY()
 	local numActivePlayers = getNumActivePlayers()-1
 
@@ -51,4 +52,28 @@ function setDynamicGlobalXY()
 	eheBounds.MAX_Y = math.floor(eheBounds.MAX_Y)
 	eheBounds.MIN_Y = math.floor(eheBounds.MIN_Y)
 	print("EHE: Setting global XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
+end
+
+
+---These is the equivalent of getters for Vector3
+--tostring output of a Vector3: "Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
+---@param ShmectorTree Vector3
+---@return float x of ShmectorTree
+function Vector3GetX(ShmectorTree)
+	local tostring = tostring(ShmectorTree)
+	local coordinate = string.match(tostring, "%(X%: (.-)%, Y%: ")
+	coordinate = string.gsub(coordinate, ",",".")
+	--[debug]] print("EHE: Vector3-GetX-Workaround:  "..tostring.."  =  "..coordinate)
+	return coordinate
+end
+
+
+---@param ShmectorTree Vector3
+---@return float y of ShmectorTree
+function Vector3GetY(ShmectorTree)
+	local tostring = tostring(ShmectorTree)
+	local coordinate = string.match(tostring, "%, Y%: (.-)%) %(")
+	coordinate = string.gsub(coordinate, ",",".")
+	--[debug]] print("EHE: Vector3-GetY-Workaround:  "..tostring.."  =  "..coordinate)
+	return coordinate
 end

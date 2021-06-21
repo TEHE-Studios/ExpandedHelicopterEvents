@@ -267,30 +267,6 @@ function getFreeHelicopter(preset)
 end
 
 
----These is the equivalent of getters for Vector3
---tostring output of a Vector3: "Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
----@param ShmectorTree Vector3
----@return float x of ShmectorTree
-function Vector3GetX(ShmectorTree)
-	local tostring = tostring(ShmectorTree)
-	local coordinate = string.match(tostring, "%(X%: (.-)%, Y%: ")
-	coordinate = string.gsub(coordinate, ",",".")
-	--[debug]] print("EHE: Vector3-GetX-Workaround:  "..tostring.."  =  "..coordinate)
-	return coordinate
-end
-
-
----@param ShmectorTree Vector3
----@return float y of ShmectorTree
-function Vector3GetY(ShmectorTree)
-	local tostring = tostring(ShmectorTree)
-	local coordinate = string.match(tostring, "%, Y%: (.-)%) %(")
-	coordinate = string.gsub(coordinate, ",",".")
-	--[debug]] print("EHE: Vector3-GetY-Workaround:  "..tostring.."  =  "..coordinate)
-	return coordinate
-end
-
-
 ---Initialize Position
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter
 ---@param randomEdge boolean true = uses random edge, false = prefers closer edge
