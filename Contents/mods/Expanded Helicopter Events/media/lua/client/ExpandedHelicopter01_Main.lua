@@ -71,7 +71,7 @@ eHelicopter.flightVolume = 50
 eHelicopter.hostilePreference = false
 
 ---@field attackDelay number delay in milliseconds between attacks
-eHelicopter.attackDelay = 55
+eHelicopter.attackDelay = 80
 
 ---@field attackScope number number of rows from "center" IsoGridSquare out
 --- **area formula:** ((Scope*2)+1) ^2
