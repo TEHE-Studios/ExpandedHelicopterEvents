@@ -150,6 +150,8 @@ eHelicopter.timeUntilCanAnnounce = -1
 eHelicopter.preflightDistance = false
 ---@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
 eHelicopter.announceEmitter = false
+---@field lastAnnouncedLine string
+eHelicopter.lastAnnouncedLine = false
 ---@field heldEventSoundEffectEmitters table
 eHelicopter.heldEventSoundEffectEmitters = {}
 ---@field target IsoObject
@@ -309,7 +311,7 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 			randXYMinMax = randXYMinMax+2
 		end
 
-		print("    randXYEdge: "..randXYEdge.."   randXYMinMax: "..randXYMinMax)
+		print("  EHE: randXYEdge: "..randXYEdge.."   randXYMinMax: "..randXYMinMax)
 
 		--this sets either [1] or [2] of initPosXY as [1] through [4] of minMax
 		initPosXY[randXYEdge] = minMax[randXYMinMax]
@@ -498,8 +500,12 @@ function eHelicopter:move(re_aim, dampen)
 	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(v_x, v_y, self.height)
+	--move announcer emitter
+	if self.announceEmitter then
+		self.announceEmitter:setPos(v_x,v_y,self.height)
+	end
 	--Move held emitters to position
-	for id,emitter in pairs(self.heldEventSoundEffectEmitters) do
+	for _,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		emitter:setPos(v_x,v_y,self.height)
 	end
 	--self:Report(re_aim, dampen)
@@ -517,8 +523,7 @@ function eHelicopter:findTarget(range)
 	for character,value in pairs(EHEIsoPlayers) do
 		---@type IsoPlayer | IsoGameCharacter p
 		local p = character
-		print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
-
+		--[DEBUG]] print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
 		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
 			playersFound = playersFound+1
 			local iterations = 7
@@ -588,7 +593,7 @@ function eHelicopter:launch(targetedPlayer)
 	self:setTargetPos()
 
 	if targetedPlayer then
-		print("  "..targetedPlayer:getFullName())
+		print("  target set: "..targetedPlayer:getFullName())
 	else
 		print("  ERR: no target set")
 		self:unlaunch()
@@ -1022,8 +1027,8 @@ end
 function eHelicopter:unlaunch()
 	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 	--stop old emitter to prevent occasional "phantom" announcements
-	if self.announceEmitter then
-		self.announceEmitter:stopAll()
+	if self.announceEmitter and self.lastAnnouncedLine then
+		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)
 	end
 	self:stopAllHeldEventSounds()
 	if self.shadow and type(self.shadow)~="boolean" then
