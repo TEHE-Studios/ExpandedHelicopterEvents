@@ -552,7 +552,7 @@ function eHelicopter:launch(targetedPlayer)
 		targetedPlayer = self:findTarget()
 	end
 	--sets target to targetedPlayer's square so that the heli doesn't necessarily head straight for the player 
-	self.target = targetedPlayer:getSquare()
+	self.target = getCell():getOrCreateGridSquare(targetedPlayer:getX(), targetedPlayer:getY(), 0)
 	--maintain trueTarget
 	self.trueTarget = targetedPlayer
 	--setTargetPos is a vector format of self.target
