@@ -1,5 +1,25 @@
 Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9.2"))
 
+
+---IsoPlayer are player entities but also NPCs (from mods)
+EHEIsoPlayers = {}
+
+---@param playerObject IsoPlayer | IsoGameCharacter
+function addToEIP(playerObject)
+	print("EHE: IsoPlayers adding:"..playerObject:getFullName())
+	EHEIsoPlayers[playerObject] = true
+end
+
+---@param playerObject IsoPlayer | IsoGameCharacter
+function removeFromEIP(playerObject)
+	print("EHE: IsoPlayers removing:"..playerObject:getFullName())
+	EHEIsoPlayers[playerObject] = nil
+end
+
+Events.OnCreateLivingCharacter.Add(addToEIP)
+Events.OnCharacterDeath.Add(removeFromEIP)
+
+
 eheBounds = {}
 eheBounds.MAX_X = false
 eheBounds.MIN_X = false
@@ -9,16 +29,16 @@ eheBounds.threshold = 5000
 
 ---Sets a min/max X/Y around all the players
 function setDynamicGlobalXY()
-	local numActivePlayers = getNumActivePlayers()-1
 
 	eheBounds.MAX_X = false
 	eheBounds.MIN_X = false
 	eheBounds.MAX_Y = false
 	eheBounds.MIN_Y = false
 
-	for i=0, numActivePlayers do
+	for character,value in pairs(EHEIsoPlayers) do
 		---@type IsoGameCharacter p
-		local p = getSpecificPlayer(i)
+		local p = character
+
 		local pX = p:getX()
 		local pY = p:getY()
 

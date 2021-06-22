@@ -215,7 +215,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 		soundEmitter:stopSoundByName(soundEffect)
 		return
 	end
-	
+
 	--if otherlocation provided use it; if not use self
 	otherLocation = otherLocation or self:getIsoGridSquare()
 
@@ -510,26 +510,55 @@ end
 function eHelicopter:findTarget(range)
 	--the -1 is to offset playerIDs starting at 0
 	local weightPlayersList = {}
-	local numActivePlayers = getNumActivePlayers()-1
+	local maxWeight = 10
+	local playersFound = 0
+	local blankWeights = 0
 
-	for i=0, numActivePlayers do
-		---@type IsoGameCharacter p
-		local p = getSpecificPlayer(i)
+	for character,value in pairs(EHEIsoPlayers) do
+		---@type IsoPlayer | IsoGameCharacter p
+		local p = character
+		print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
 
 		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
-			local iterations = 3
-
+			playersFound = playersFound+1
+			local iterations = 7
 			local zone = p:getCurrentZone()
 			if zone then
 				local zoneType = zone:getType()
-				if zoneType and (zoneType == "Forest") or (zoneType == "DeepForest") then
-					iterations = 1
+				if zoneType then
+					if (zoneType == "DeepForest") then
+						iterations = 0
+						playersFound = playersFound-1
+					elseif (zoneType == "Forest") then
+						iterations = 1
+					elseif (zoneType == "FarmLand") then
+						iterations = 2
+					elseif (zoneType == "Farm") then
+						iterations = 4
+					elseif (zoneType == "TrailerPark") then
+						iterations = 8
+					elseif (zoneType == "TownZone") then
+						iterations = 10
+					end
 				end
 			end
 
-			for _=1, iterations do
-				table.insert(weightPlayersList, p)
+			for _=1, maxWeight do
+				if iterations > 0 then
+					iterations = iterations-1
+					table.insert(weightPlayersList, p)
+				else
+					blankWeights = blankWeights+1
+				end
 			end
+
+		end
+	end
+
+	--load blanks if there is only 1 potential player target
+	if playersFound == 1 then
+		for _=1, blankWeights do
+			table.insert(weightPlayersList, false)
 		end
 	end
 
@@ -562,9 +591,11 @@ function eHelicopter:launch(targetedPlayer)
 		print("  "..targetedPlayer:getFullName())
 	else
 		print("  ERR: no target set")
+		self:unlaunch()
+		return
 	end
 
-	self:initPos(self.target,self.randomEdgeStart)
+	self:initPos(self.target, self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
 	self:playEventSound("flightSound", nil, true)
@@ -873,7 +904,9 @@ function eHelicopter:update()
 			end
 			preventMovement=true
 		else
-			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET") end
+			local debugTargetText = " (square)"
+			--[[DEBUG]] if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
+			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET"..debugTargetText) end
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
 
