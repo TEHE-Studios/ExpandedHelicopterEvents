@@ -10,7 +10,7 @@ description= [img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=
 description= [h2]Credits:[/h2]
 description= [h3]Consider supporting your favorite modders![/h3]
-description= [url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art
+description= Shark - Models, Art
 description= [url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
 description= Raven & Gabby - Sound, Voiceover
 description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
@@ -52,7 +52,7 @@ description= [*] Helicopters can fire on targets. This does not instantly kill b
 description= 
 description= [*] Fully voiced announcements, which can be easily expanded upon by others in the future.
 description= 
-description= [*] MP/CO-OP: When selecting targets helicopters will prefer players not in forested areas.
+description= [*] CO-OP/NPC/Eventual MP Support: The helicopters will target people depending on their location; prefer targets in the cities over those in the forest.
 description= 
 description= [*] Helicopters can drop items or care packages for the player.
 description= 
