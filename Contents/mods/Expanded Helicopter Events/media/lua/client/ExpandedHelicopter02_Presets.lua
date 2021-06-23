@@ -78,7 +78,7 @@ eHelicopter_PRESETS = {
 		attackSpread = 4,
 		speed = 0.09,
 		attackHitChance = 100,
-		attackDamage = 22,
+		attackDamage = 35,
 		crashType = {"Bell206PoliceCrashed"},
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 		hostilePreference = "IsoZombie",
@@ -86,7 +86,8 @@ eHelicopter_PRESETS = {
 			["attackSingle"] = "eHeli_bolt_action_fire_single",["attackLooped"] = "eHeli_bolt_action_fire_single",
 			["attackImpacts"] = "eHeli_fire_impact",
 			["flightSound"] = "eHeliPoliceSiren",
-		}
+		},
+		hoverOnTargetDuration = {750,1150},
 	},
 
 	["aid_helicopter"] = {
@@ -241,9 +242,7 @@ function eHelicopter:loadPreset(ID)
 
 	self:stopAllHeldEventSounds()
 	preset = self:recursivePresetCheck(preset)
-
-	--use initial list of variables to reset the helicopter object to standard
-	--[[DEBUG]] print("loading preset: "..ID)
+	--[[DEBUG]] for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print("loading preset: "..ID)
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars

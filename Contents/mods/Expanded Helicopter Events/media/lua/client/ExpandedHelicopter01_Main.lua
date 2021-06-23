@@ -104,7 +104,7 @@ eHelicopter.attackSpread = 3
 eHelicopter.attackHitChance = 85
 
 ---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5))
-eHelicopter.attackDamage = 15
+eHelicopter.attackDamage = 20
 
 ---// UNDER THE HOOD STUFF //---
 
@@ -652,7 +652,7 @@ end
 function eHelicopter:goHome()
 	self.state = "goHome"
 	--set truTarget to target's current location -- this prevents changing course while flying away
-	self.trueTarget = getSquare(self.target:getX(),self.target:getY(),0)
+	self.trueTarget = getCell():getOrCreateGridSquare(self.target:getX(),self.target:getY(),0)
 	self.target = self.trueTarget
 	self:setTargetPos()
 end
