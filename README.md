@@ -1,8 +1,8 @@
 ### Contributing:
 - Feel free to offer advice/suggestions using the [Issues feature](https://github.com/sharkster91/ExpandedHelicopterEvents/issues).
 - The mod's files are located in the [media folder](https://github.com/sharkster91/ExpandedHelicopterEvents/tree/main/Contents/mods/Expanded%20Helicopter%20Events/media).
-- For adding new voice packs see [Announcers](https://github.com/sharkster91/ExpandedHelicopterEvents/blob/main/Contents/mods/Expanded%20Helicopter%20Events/media/lua/client/ExpandedHelicopter03_Announcers.lua)
-- For adding more helicopter events see [Presets](https://github.com/sharkster91/ExpandedHelicopterEvents/blob/main/Contents/mods/Expanded%20Helicopter%20Events/media/lua/client/ExpandedHelicopter02_Presets.lua)
+- For adding new voice packs see [Announcers](https://github.com/sharkster91/ExpandedHelicopterEvents/blob/main/Contents/mods/Expanded%20Helicopter%20Events/media/lua/client/ExpandedHelicopter03a_Announcers.lua)
+- For adding more helicopter events see [Presets](https://github.com/sharkster91/ExpandedHelicopterEvents/blob/main/Contents/mods/Expanded%20Helicopter%20Events/media/lua/client/ExpandedHelicopter02a_Presets.lua)
 
 
 ### Installation:
