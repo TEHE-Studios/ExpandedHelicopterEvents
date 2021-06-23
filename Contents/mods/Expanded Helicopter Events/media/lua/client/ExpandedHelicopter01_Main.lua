@@ -652,7 +652,7 @@ end
 function eHelicopter:goHome()
 	self.state = "goHome"
 	--set truTarget to target's current location -- this prevents changing course while flying away
-	self.trueTarget = getSquare(self.target:getX(),self.target:getY(),0)
+	self.trueTarget = getCell():getOrCreateGridSquare(self.target:getX(),self.target:getY(),0)
 	self.target = self.trueTarget
 	self:setTargetPos()
 end
