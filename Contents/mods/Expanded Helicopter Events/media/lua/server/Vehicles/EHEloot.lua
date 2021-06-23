@@ -270,6 +270,23 @@ VehicleDistributions.Bell206News = {
     SeatRearRight =  VehicleDistributions.Bell206NewsSeat;
 }    
 
+VehicleDistributions.Bell206PoliceFuselage = {
+	
+	SeatFrontLeft = VehicleDistributions.Bell206PoliceSeat;
+	SeatFrontRight =  VehicleDistributions.Bell206PoliceSeat;
+	SeatRearLeft =  VehicleDistributions.Bell206PoliceSeat;
+	SeatRearRight =  VehicleDistributions.Bell206PoliceSeat;
+}
+
+VehicleDistributions.Bell206WBLNFuselage = {
+	
+    SeatFrontLeft = VehicleDistributions.Bell206NewsSeat;
+    SeatFrontRight =  VehicleDistributions.Bell206NewsSeat;
+    SeatRearLeft =  VehicleDistributions.Bell206NewsSeat;
+    SeatRearRight =  VehicleDistributions.Bell206NewsSeat;
+
+
+
 --Supply Drop
 
 VehicleDistributions.FEMASupplyDrop = {
