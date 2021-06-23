@@ -8,5 +8,9 @@ Bell206Police
 Bell206LBMW
 Bell206PoliceCrashed
 Bell206LBMWCrashed
-FEMASupplyDrop
+Bell206LBMWFuselage
+Bell206PoliceFuselage
+Bell206LBMWTail
+Bell206PoliceTail
 OH58Rescue
+FEMASupplyDrop
