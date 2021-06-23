@@ -532,16 +532,15 @@ function eHelicopter:findTarget(range)
 				local zoneType = zone:getType()
 				if zoneType then
 					if (zoneType == "DeepForest") then
-						iterations = 0
-						playersFound = playersFound-1
+						iterations = 3
 					elseif (zoneType == "Forest") then
-						iterations = 1
-					elseif (zoneType == "FarmLand") then
-						iterations = 2
-					elseif (zoneType == "Farm") then
 						iterations = 4
+					elseif (zoneType == "FarmLand") then
+						iterations = 6
+					elseif (zoneType == "Farm") then
+						iterations = 7
 					elseif (zoneType == "TrailerPark") then
-						iterations = 8
+						iterations = 9
 					elseif (zoneType == "TownZone") then
 						iterations = 10
 					end
