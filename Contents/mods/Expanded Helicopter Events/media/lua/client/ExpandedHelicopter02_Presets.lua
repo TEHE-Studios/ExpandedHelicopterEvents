@@ -86,7 +86,8 @@ eHelicopter_PRESETS = {
 			["attackSingle"] = "eHeli_bolt_action_fire_single",["attackLooped"] = "eHeli_bolt_action_fire_single",
 			["attackImpacts"] = "eHeli_fire_impact",
 			["flightSound"] = "eHeliPoliceSiren",
-		}
+		},
+		hoverOnTargetDuration = {750,1150},
 	},
 
 	["aid_helicopter"] = {
