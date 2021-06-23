@@ -9,6 +9,9 @@ IG_UI_EN = {
     IGUI_VehicleNameBell206LBMWCrashed = "Bell 206 News (Crashed)",
     IGUI_VehicleNameBell206Police = "Bell 206 Police",
     IGUI_VehicleNameBell206PoliceCrashed = "Bell 206 Police (Crashed)",
-
+    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 News (Fuselage)",    
+    IGUI_VehicleNameBell206LBMWTail = "Bell 206 News (Tail)",
+    IGUI_VehicleNameBell206Police = "Bell 206 Police",
+    IGUI_VehicleNameBell206PoliceCrashed = "Bell 206 Police (Crashed)",
     IGUI_VehicleNameFEMASupplyDrop = "Emergency Supply Drop",
 }
