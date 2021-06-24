@@ -1,0 +1,3 @@
+Recipe_RU = {
+Recipe_Unbox_Supplies = "Распаковать припасы",
+}
