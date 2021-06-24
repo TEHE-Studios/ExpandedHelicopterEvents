@@ -33,11 +33,8 @@ function EHE_OpenBox.STASHBOX(recipe, result, player)
 	player:getInventory():AddItems("WhiskeyFull", 4)
 	player:getInventory():AddItems("Cigarettes", 4)
 	player:getInventory():AddItems("Lighter", 2)
-	player:getInventory():AddItems("Pills", 4)
-	player:getInventory():AddItems("HottieZ", 10)
-	player:getInventory():AddItems("Pistol2", 1)
-	player:getInventory():AddItems("45Clip", 4)
-	player:getInventory():AddItems("Bullets45Box", 4)
+	player:getInventory():AddItems("HottieZ", 30)
+	player:getInventory():AddItems("Spiffo", 1)
 end
 
 EHE_OpenBox.typesThatCanOpenBoxes = EHE_OpenBox.typesThatCanOpenBoxes or {}
