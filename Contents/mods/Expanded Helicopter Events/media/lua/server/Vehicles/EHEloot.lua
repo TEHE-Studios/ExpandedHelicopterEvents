@@ -279,16 +279,14 @@ VehicleDistributions.Bell206PoliceFuselage = {
 }
 
 VehicleDistributions.Bell206WBLNFuselage = {
-	
+
     SeatFrontLeft = VehicleDistributions.Bell206NewsSeat;
-    SeatFrontRight =  VehicleDistributions.Bell206NewsSeat;
-    SeatRearLeft =  VehicleDistributions.Bell206NewsSeat;
-    SeatRearRight =  VehicleDistributions.Bell206NewsSeat;
-
-
+    SeatFrontRight = VehicleDistributions.Bell206NewsSeat;
+    SeatRearLeft = VehicleDistributions.Bell206NewsSeat;
+    SeatRearRight = VehicleDistributions.Bell206NewsSeat;
+}
 
 --Supply Drop
-
 VehicleDistributions.FEMASupplyDrop = {
 	
     TruckBed = VehicleDistributions.FEMASupplyDrop;
