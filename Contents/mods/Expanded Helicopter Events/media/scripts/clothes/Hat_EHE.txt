@@ -73,7 +73,7 @@ module Base
         DisplayName = Press Bulletproof Vest,
         ClothingItem = Vest_BulletPress,
         BodyLocation = TorsoExtra,
-        Icon = BulletVestPolice,
+        Icon = BulletVestPress,
         BloodLocation = ShirtNoSleeves,
         Insulation = 0.65,
         WindResistance = 0.30,
