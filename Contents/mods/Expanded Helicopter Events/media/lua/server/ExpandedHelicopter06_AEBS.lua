@@ -31,7 +31,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 				if eventPreset then
 					local presetDropPackages = eventPreset.dropPackages
 					if presetDropPackages then
-						linesGoingOut["aidDrop"] = "Supply package inbound."
+						linesGoingOut["aidDrop"] = getRadioText("AEBS_SupplyDrop")
 					end
 				end
 
