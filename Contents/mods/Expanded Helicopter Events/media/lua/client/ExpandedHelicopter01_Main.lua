@@ -712,8 +712,8 @@ function eHelicopter:spawnCrew()
 				heliX = heliX+fuzzNums[ZombRand(#fuzzNums)+1]
 				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
-			
-			local bodyLoc = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
+
+			local bodyLoc = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
 			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, femaleChance)
@@ -753,7 +753,7 @@ function eHelicopter:crash()
 		---@type IsoGridSquare
 
 		local heliX, heliY, _ = self:getXYZAsInt()
-		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
+		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
 
 		if currentSquare and currentSquare:isSolidTrans() then
 			--[DEBUG]] print("--- EHE: currentSquare is solid-trans")
@@ -786,10 +786,11 @@ function eHelicopter:dropItem(type)
 
 		local heliX, heliY, _ = self:getXYZAsInt()
 		if heliX and heliY then
-			heliX = heliX+ZombRand(-3,3)
-			heliY = heliY+ZombRand(-3,3)
+			local range = 3+fuzz
+			heliX = heliX+ZombRand(0-range,range)
+			heliY = heliY+ZombRand(0-range,range)
 		end
-		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
+		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
 		
 		if currentSquare and currentSquare:isSolidTrans() then
 			currentSquare = nil
@@ -806,8 +807,14 @@ end
 function eHelicopter:dropCarePackage()
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
-	local selfSquare = self:getIsoGridSquare()
-	local currentSquare = getOutsideSquareFromAbove(selfSquare)
+
+	local heliX, heliY, _ = self:getXYZAsInt()
+	if heliX and heliY then
+		local range = 3+fuzz
+		heliX = heliX+ZombRand(0-range,range)
+		heliY = heliY+ZombRand(0-range,range)
+	end
+	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
 
 	if currentSquare and currentSquare:isSolidTrans() then
 		currentSquare = nil
