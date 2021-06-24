@@ -34,7 +34,6 @@ eHelicopter_PRESETS = {
 		speed = 0.1,
 		cutOffFactor = 0.5,
 		crashType = {"Bell206LBMWCrashed"}
-		crew = {"1CivilianPilot", "1CivilianPilot", 100, "1NewsReporterArmored", 100},
 	},
 
 	["patrol_only"] = {
@@ -93,7 +92,7 @@ eHelicopter_PRESETS = {
 
 	["aid_helicopter"] = {
 		crashType = {"UH1Hmedevaccrash"},
-		crew = {"1MilitaryPilot", 100, "1Soldier", 100, "1Soldier", 100},
+		crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 		dropPackages = {"FEMASupplyDrop"},
 		dropItems = {["NoticeFlyer"]=250},
 		cutOffFactor = 0.43,
