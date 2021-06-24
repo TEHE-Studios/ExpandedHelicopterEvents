@@ -765,23 +765,71 @@ function eHelicopter:crash()
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
+				--drop package on crash
+				if self.dropPackages then
+					self:dropCarePackage(2)
+				end
+				--drop all items
+				if self.dropItems then
+					self:dropAllItems(3)
+				end
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self.ID..": "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
-				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
 				self:spawnCrew()
-				self:unlaunch()
+				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
 				self:playEventSound("crashEvent")
+				self:unlaunch()
 				getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
 				return true
-			end
+				end
 		end
 	end
 	return false
 end
 
 
----Heli drop item
-function eHelicopter:dropItem(type)
+---Heli drops all items
+function eHelicopter:dropAllItems(fuzz)
+	fuzz = fuzz or 0
+	for itemType,quantity in pairs(self.dropItems) do
 
+		local fuzzyWeight = {}
+		if fuzz == 0 then
+			fuzzyWeight = {0}
+		else
+			for i=1, fuzz do
+				for ii=i, (fuzz+1)-i do
+					table.insert(fuzzyWeight, i)
+				end
+			end
+		end
+
+		for i=1, self.dropItems[itemType] do
+			self:dropItem(itemType,fuzz*fuzzyWeight[ZombRand(#fuzzyWeight)+1])
+		end
+		self.dropItems[itemType] = nil
+	end
+end
+
+
+---Heli drop items with chance
+function eHelicopter:tryToDropItem(chance, fuzz)
+	fuzz = fuzz or 0
+	chance = (ZombRand(100) <= chance)
+	for itemType,quantity in pairs(self.dropItems) do
+		if (self.dropItems[itemType] > 0) and chance then
+			self.dropItems[itemType] = self.dropItems[itemType]-1
+			self:dropItem(itemType,fuzz)
+		end
+		if (self.dropItems[itemType] <= 0) then
+			self.dropItems[itemType] = nil
+		end
+	end
+end
+
+
+---Heli drop item
+function eHelicopter:dropItem(type, fuzz)
+	fuzz = fuzz or 0
 	if self.dropItems then
 
 		local heliX, heliY, _ = self:getXYZAsInt()
@@ -804,8 +852,8 @@ end
 
 
 ---Heli drop carePackage
-function eHelicopter:dropCarePackage()
-
+function eHelicopter:dropCarePackage(fuzz)
+	fuzz = fuzz or 0
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
 
 	local heliX, heliY, _ = self:getXYZAsInt()
@@ -825,6 +873,7 @@ function eHelicopter:dropCarePackage()
 		---@type BaseVehicle airDrop
 		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
+			self.dropPackages = false
 			return airDrop
 		end
 	end
@@ -936,25 +985,13 @@ function eHelicopter:update()
 	local packageDropRange = thatIsCloseEnough*100
 	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
-		--returns true if dropped
-		if self:dropCarePackage() then
-			--clears droppackges to prevent more than 1
-			self.dropPackages = false
-		end
+		self:dropCarePackage()
 	end
 	--drop items
 	local itemDropRange = thatIsCloseEnough*250
 	if self.dropItems and (distToTarget <= itemDropRange) then
-		for k,_ in pairs(self.dropItems) do
-			local dropChance = ZombRand(100) <= ((itemDropRange-distToTarget)/itemDropRange)*10
-			if (self.dropItems[k] > 0) and dropChance then
-				self.dropItems[k] = self.dropItems[k]-1
-				self:dropItem(k)
-			end
-			if (self.dropItems[k] <= 0) then
-				self.dropItems[k] = nil
-			end
-		end
+		local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
+		self:tryToDropItem(dropChance)
 	end
 	--if it's ok to move do so, and update the shadow's position
 	if not preventMovement then
