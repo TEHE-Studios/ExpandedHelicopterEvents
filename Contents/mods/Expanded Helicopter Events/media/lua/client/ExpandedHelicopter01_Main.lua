@@ -771,7 +771,7 @@ function eHelicopter:crash()
 				end
 				--drop all items
 				if self.dropItems then
-					self:dropAllItems(3)
+					self:dropAllItems(4)
 				end
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self.ID..": "..vehicleType.."  "..currentSquare:getX()..", "..currentSquare:getY()..", "..currentSquare:getZ())
 				self:spawnCrew()
