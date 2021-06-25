@@ -58,13 +58,13 @@ eHelicopter.startDayMinMax = {0,1}
 eHelicopter.cutOffFactor = 1
 
 ---@field speed number
-eHelicopter.speed = 0.15
+eHelicopter.speed = 0.10
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
 
 ---@field flightVolume number
-eHelicopter.flightVolume = 50
+eHelicopter.flightVolume = 75
 
 ---@field hostilePreference string
 ---set to 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
