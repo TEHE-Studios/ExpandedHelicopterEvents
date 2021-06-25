@@ -68,5 +68,12 @@ eHelicopter_announcers = {
 		}
 	},
 
+	["Jade News Reporter"] = {
+		["Lines"] = {
+			["Incoherent"] = {8500, "eHeli_News_1a"},
+
+		}
+	},
+
 	
 }
