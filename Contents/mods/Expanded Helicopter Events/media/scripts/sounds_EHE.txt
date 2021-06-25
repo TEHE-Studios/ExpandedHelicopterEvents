@@ -209,9 +209,4 @@ module Base {
         clip { file = media/sound/Jade_3c.ogg, distanceMax = 1500, volume = 3.0, } }
 
 
-    sound eHeli_Helicopter_News {
-        category = EHE: Voices, loop = false, is3D = true,
-        clip { file = media/sound/eHeli_Helicopter_News.ogg, distanceMax = 1500, volume = 3.0, } }
-
-
  }
