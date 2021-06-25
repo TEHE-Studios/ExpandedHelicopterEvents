@@ -29,7 +29,7 @@ eHelicopter_PRESETS = {
 
 	["news_chopper"] = {
 		hoverOnTargetDuration = {1500,2250},
-		--eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
+		eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 		frequencyFactor = 2,
 		speed = 0.1,
 		cutOffFactor = 0.5,
