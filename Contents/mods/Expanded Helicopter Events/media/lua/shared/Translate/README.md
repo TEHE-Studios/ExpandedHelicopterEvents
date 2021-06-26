@@ -11,4 +11,4 @@ If you are new to translating in project Zomboid take a moment to note that ever
 
 
 ### Still confused?
-Visit the (official Project Zomboid discord server)[https://discord.gg/hkeG4RC5] and join the (#Translations channel)[https://discord.gg/hkeG4RC5].
+Visit the [official Project Zomboid discord server](https://discord.gg/hkeG4RC5) and join the [#Translations channel](https://discord.gg/hkeG4RC5).
