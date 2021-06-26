@@ -1,6 +1,11 @@
 ---Preset list, only include variables being changed.
 ---variables can be found in Main file, at the top, fields = variables
 eHelicopter_PRESETS = {
+
+	["military"] = {
+		presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1}
+	},
+
 	["increasingly_hostile"] = {
 		presetProgression = {
 			["patrol_only"] = 0,
