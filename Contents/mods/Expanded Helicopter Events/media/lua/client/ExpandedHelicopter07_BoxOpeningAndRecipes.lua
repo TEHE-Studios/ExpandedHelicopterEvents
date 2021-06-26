@@ -48,8 +48,10 @@ end
 
 ---Sub-mod authors will have to use the following function to add more types
 EHE_OpenBox.addCanOpenBoxTypes(
-		{"Base.Fork","Base.ButterKnife","Base.HuntingKnife","Base.KitchenKnife",
-		 "Base.Scissors","Base.Scalpel","Base.MeatCleaver","Base.FlintKnife","Base.Machete","Base.Katana",})
+		{"Base.Fork","Base.ButterKnife","Base.HuntingKnife","Base.KitchenKnife","Base.Scissors",
+		 "Base.RedPen","Base.BluePen","Base.Pen","Base.Pencil","Base.Screwdriver","Base.GardenFork",
+		 "Base.Scalpel","Base.LetterOpener","Base.IcePick","Base.BreadKnife","Base.MeatCleaver","Base.FlintKnife",
+		 "Base.Machete","Base.Katana","Base.HandAxe","Base.Axe","Base.WoodAxe","Base.HandScythe",})
 
 
 ---Adds "CanOpenBoxes" tag to scripts for type
