@@ -107,6 +107,7 @@ eHelicopter_PRESETS = {
 		presetProgression = {
 			["patrol_only"] = 0,
 			["aid_helicopter"] = 0.25,
+			["attack_only_all"] = 0.75,
 		}
 	},
 
