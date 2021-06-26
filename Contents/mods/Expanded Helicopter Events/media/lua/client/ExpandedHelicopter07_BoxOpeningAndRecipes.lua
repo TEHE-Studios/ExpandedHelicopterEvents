@@ -6,16 +6,19 @@ end
 
 
 function EHE_OpenBox.FOOD(recipe, result, player)
-	player:getInventory():AddItems("Base.WaterBottleFull", 4)
-	player:getInventory():AddItems("Base.Rice", 4)
-	player:getInventory():AddItems("Base.TinnedBeans", 8)
+	player:getInventory():AddItems("Base.WaterBottleFull", 2)
+	player:getInventory():AddItems("Base.TinnedBeans", 1)
+	player:getInventory():AddItems("Base.CannedPeas", 1)
+	player:getInventory():AddItems("Base.CannedCorn", 1)
+	player:getInventory():AddItems("Base.Chocolate", 2)
+	player:getInventory():AddItems("Base.Rice", 1)
 end
 
 ---@param player IsoGameCharacter | IsoMovingObject
 function EHE_OpenBox.MEDICAL(recipe, result, player)
-	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 12)
-	player:getInventory():AddItems("Gloves_Surgical", 12)
-	local items = player:getInventory():AddItems("Base.FirstAidKit", 4)
+	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 6)
+	player:getInventory():AddItems("Gloves_Surgical", 6)
+	local items = player:getInventory():AddItems("Base.FirstAidKit", 1)
 
 	for i=0, items:size()-1 do
 		rollInventoryContainer(items:get(i), player)
@@ -33,7 +36,7 @@ function EHE_OpenBox.STASHBOX(recipe, result, player)
 	player:getInventory():AddItems("WhiskeyFull", 4)
 	player:getInventory():AddItems("Cigarettes", 4)
 	player:getInventory():AddItems("Lighter", 2)
-	player:getInventory():AddItems("HottieZ", 30)
+	player:getInventory():AddItems("HottieZ", 13)
 	player:getInventory():AddItems("Spiffo", 1)
 end
 

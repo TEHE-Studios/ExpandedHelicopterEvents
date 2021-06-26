@@ -3,28 +3,28 @@ module EHE
 
 	item EmergencyFoodSupplyBox
 	{
-		Weight			=	34,
+		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
 	}
 
 		item EmergencyMedicalSupplyBox
 	{
-		Weight			=	6,
+		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
 	}
 
 		item EmergencySurvivalSupplyBox
 	{
-		Weight			=	9,
+		Weight			=	6.3,
 		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
 	}
 
 		item BanditStashBox
 	{
-		Weight			=	9,
+		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
 	}
