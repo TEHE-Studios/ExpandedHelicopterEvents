@@ -234,7 +234,7 @@ end
 
 function eHelicopter:stopAllHeldEventSounds()
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
-		local soundEffect = self.eventSoundEffects[event]
+		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		print(" -- sound stoppage:"..event.." = "..soundEffect)
 		emitter:stopSoundByName(soundEffect)
 	end
