@@ -233,10 +233,15 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 end
 
 function eHelicopter:stopAllHeldEventSounds()
+	print("EHE: stopAllHeldEventSounds for "..self.ID)
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
-		print(" -- sound stoppage:"..event.." = "..soundEffect)
-		emitter:stopSoundByName(soundEffect)
+		if soundEffect then
+			print(" -- sound stoppage:"..event.." = "..soundEffect)
+			emitter:stopSoundByName(soundEffect)
+		else
+			print(" -- sound stoppage: ERR: soundEffect = null")
+		end
 	end
 end
 
