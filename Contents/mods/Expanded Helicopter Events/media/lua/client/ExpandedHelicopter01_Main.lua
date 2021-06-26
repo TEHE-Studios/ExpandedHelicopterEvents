@@ -200,7 +200,7 @@ eHelicopter.ID = 0
 ---@param stopSound boolean
 function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound)
 
-	local soundEffect = self.eventSoundEffects[event]
+	local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 
 	if not soundEffect then
 		return
