@@ -256,8 +256,7 @@ function MainOptions:create() -- override
 				addText("This mod's options can only be", UIFont.Medium)
 				addText("accessed from the main menu options menu.", UIFont.Medium)
 				addText(" ", UIFont.Medium)
-				addText("Note: Make sure to enable this mod", UIFont.Medium)
-				addText("from the main menu to view the options.", UIFont.Medium)
+				addText("Note: Make sure to enable this mod from the main menu to view the options.", UIFont.Medium)
 			end
 		end
 
