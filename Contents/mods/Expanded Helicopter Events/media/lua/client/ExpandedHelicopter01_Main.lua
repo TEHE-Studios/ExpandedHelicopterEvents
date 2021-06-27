@@ -584,7 +584,7 @@ end
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedPlayer)
 
-	print("LAUNCH INFO: ")
+	print(" - EHE: HELI:"..self.ID.." launched.")
 
 	if not targetedPlayer then
 		targetedPlayer = self:findTarget()
@@ -597,9 +597,15 @@ function eHelicopter:launch(targetedPlayer)
 	self:setTargetPos()
 
 	if targetedPlayer then
-		print("  target set: "..targetedPlayer:getFullName())
+		print(" - target set: "..targetedPlayer:getFullName())
 	else
-		print("  ERR: no target set")
+		print(" - ERR: no targetedPlayer set")
+		self:unlaunch()
+		return
+	end
+
+	if not self.target then
+		print(" - ERR: no self.target set")
 		self:unlaunch()
 		return
 	end
@@ -649,6 +655,7 @@ function eHelicopter:launch(targetedPlayer)
 		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")
 		self.crashing = true
 	end
+	print(" ------ \n")
 end
 
 
@@ -656,7 +663,7 @@ end
 function eHelicopter:goHome()
 	self.state = "goHome"
 	--set truTarget to target's current location -- this prevents changing course while flying away
-	self.trueTarget = getCell():getOrCreateGridSquare(self.target:getX(),self.target:getY(),0)
+	self.trueTarget = self:getIsoGridSquare()
 	self.target = self.trueTarget
 	self:setTargetPos()
 end
@@ -888,7 +895,7 @@ end
 function eHelicopter:update()
 
 	if (not self.target) or (not self.trueTarget) then
-		print("EHE: ERR: HELI: "..self.ID.." no target/trueTarget in update()")
+		print(" - EHE: ERR: HELI: "..self.ID.." no target/trueTarget in update()")
 		self:unlaunch()
 		return
 	end
@@ -961,7 +968,7 @@ function eHelicopter:update()
 	local preventMovement = false
 	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
 		if self.hoverOnTargetDuration then
-			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("HOVERING OVER TARGET") end
+			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
 			if self.hoverOnTargetDuration <= 0 then
@@ -971,7 +978,7 @@ function eHelicopter:update()
 		else
 			local debugTargetText = " (square)"
 			--[[DEBUG]] if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
-			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport("FLEW OVER TARGET"..debugTargetText) end
+			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText) end
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
 
@@ -1065,7 +1072,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
 
-		if heli.state and (heli.state ~= "unLaunched") and (heli.state ~= false) then
+		if heli.state and (heli.state ~= "unLaunched") then
 			heli:update()
 		end
 	end

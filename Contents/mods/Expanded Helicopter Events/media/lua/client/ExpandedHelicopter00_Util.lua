@@ -6,13 +6,13 @@ EHEIsoPlayers = {}
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function addToEIP(playerObject)
-	print("EHE: IsoPlayers adding:"..playerObject:getFullName())
+	print(" - EHE: IsoPlayers adding:"..playerObject:getFullName())
 	EHEIsoPlayers[playerObject] = true
 end
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function removeFromEIP(playerObject)
-	print("EHE: IsoPlayers removing:"..playerObject:getFullName())
+	print(" - EHE: IsoPlayers removing:"..playerObject:getFullName())
 	EHEIsoPlayers[playerObject] = nil
 end
 
@@ -71,7 +71,7 @@ function setDynamicGlobalXY()
 	eheBounds.MIN_X = math.floor(eheBounds.MIN_X)
 	eheBounds.MAX_Y = math.floor(eheBounds.MAX_Y)
 	eheBounds.MIN_Y = math.floor(eheBounds.MIN_Y)
-	print(" - EHE: Setting global XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
+	print(" - EHE:XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
 end
 
 

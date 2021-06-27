@@ -223,10 +223,9 @@ Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 function eHeliEvent_Loop()
 	local DAY = getGameTime():getNightsSurvived()
 	local HOUR = getGameTime():getHour()
-
 	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
 		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime == HOUR) then
-			print("Events Scheduled: "..v.preset)
+			print("EHE: LAUNCH INFO:  HELI ID:"..k.." - "..v.preset)
 			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)
 			end
