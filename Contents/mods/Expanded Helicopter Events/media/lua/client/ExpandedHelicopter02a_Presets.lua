@@ -18,6 +18,7 @@ eHelicopter_PRESETS = {
 	},
 
 	["civilian"] = {
+		startDayMinMax = {6,8},
 		presetRandomSelection = {"news_chopper",1,"police_heli",3}
 	},
 
