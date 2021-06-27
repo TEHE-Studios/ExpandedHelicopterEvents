@@ -16,13 +16,10 @@ description= Raven & Gabby - Sound, Voiceover
 description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
 description=
 description=
+description= [b]If you're having an issue or encountering errors, please supply a error log:
+description= The file can be found in: `C:\Users\<username>\Zomboid\console.txt`[/b]
 description= [H3][b]Known Issues:[/b][/H3]
 description= [list]
-description= [*] If you're having an issue or encountering errors, please supply a error log:
-description= The file can be found in: `C:\Users\<username>\Zomboid\console.txt`
-description= 
-description= [*] There is an issue with sounds not performing as normal. If you're unable to hear ambient noises (like flies) this is why.
-description= 
 description= [*] This mod disables vanilla helicopters, but occasionally the game may turn them back on.
 description= Just to be safe, it is recommended that you [b]DISABLE VANILLA HELICOPTERS[/b].
 description= 
