@@ -179,8 +179,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	end
 
 	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"]
-	local renewHeli = (daysBefore+heliDay > cutOffDay)
-
+	local renewHeli = (daysBefore+heliDay <= cutOffDay)
 	eHeliEvent_new(ID, heliDay, heliStart, presetID, renewHeli)
 end
 
