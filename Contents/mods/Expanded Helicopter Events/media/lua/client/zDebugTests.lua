@@ -117,7 +117,7 @@ if getDebug() then
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter()
 		heli:launch()
-		print("HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch jet
@@ -125,7 +125,7 @@ if getDebug() then
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("jet")
 		heli:launch()
-		print("\"jet\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"jet\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch test heli
@@ -138,7 +138,7 @@ if getDebug() then
 		local tpY = heli.target:getY()
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print("\"TestHeli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"TestHeli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch close "attack_only_undead" heli
@@ -151,7 +151,7 @@ if getDebug() then
 		local tpY = heli.target:getY()
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print("\"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch close "police_heli" heli
@@ -164,7 +164,7 @@ if getDebug() then
 		local tpY = heli.target:getY()
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print("\"police_heli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"police_heli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch close "attack_only_all" heli
@@ -177,7 +177,7 @@ if getDebug() then
 		local tpY = heli.target:getY()
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print("\"attack_only_all\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"attack_only_all\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 
@@ -191,7 +191,7 @@ if getDebug() then
 		local tpY = heli.target:getY()
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print("\"increasingly_hostile\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"increasingly_hostile\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 
@@ -207,7 +207,7 @@ if getDebug() then
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-		print("\"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test launch close "news_chopper" heli
@@ -222,7 +222,7 @@ if getDebug() then
 		local offset = ZombRand(300)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 
-		print("\"aid_helicopter\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		print(" -- \"aid_helicopter\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
 
 	--- Test getHumanoidsInFractalRange

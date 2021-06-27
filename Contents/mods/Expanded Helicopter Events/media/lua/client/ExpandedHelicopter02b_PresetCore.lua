@@ -127,7 +127,7 @@ function eHelicopter:loadPreset(ID)
 
 	self:stopAllHeldEventSounds()
 	preset = self:recursivePresetCheck(preset)
-	--[[DEBUG]] for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print(" loading preset: "..ID)
+	--[[DEBUG]] for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print(" -- loading preset: "..ID)
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars
