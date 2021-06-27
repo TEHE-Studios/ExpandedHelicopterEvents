@@ -11,7 +11,7 @@ EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName, m
 	EasyConfig_Chucked.mods[modId].name = name
 	EasyConfig_Chucked.mods[modId].config = config
 	EasyConfig_Chucked.mods[modId].configMenu = configMenu
-	EasyConfig_Chucked.mods[modId].tabName = tabName or "MODS"
+	EasyConfig_Chucked.mods[modId].tabName = tabName
 	EasyConfig_Chucked.mods[modId].menuSpecificAccess = menuSpecificAccess
 
 	--link all the things!
@@ -240,33 +240,30 @@ function MainOptions:create() -- override
 		self.addY = self.addY + 30
 	end
 
-
-	self.addY = 0
-	local modPageAdded = false
 	for modId,mod in pairs(EasyConfig_Chucked.mods) do
+
+		self.addY = 0
+		self:addPage(mod.tabName)
+
 		if (not mod.menuSpecificAccess) or (getPlayer() and mod.menuSpecificAccess=="ingame") or (not getPlayer() and mod.menuSpecificAccess=="mainmenu") then
-			if mod.tabName == "MODS" then
-				if not modPageAdded then
-					self:addPage("MODS")
-					modPageAdded = true
-				end
-				createElements(mod)
+			createElements(mod)
+		else
+			if (not getPlayer() and mod.menuSpecificAccess=="ingame") then
+				addText("This mod's options can only be accessed", UIFont.Medium)
+				addText("from the in-game options menu.", UIFont.Medium)
+			end
+			if (getPlayer() and mod.menuSpecificAccess=="mainmenu") then
+				addText("This mod's options can only be", UIFont.Medium)
+				addText("accessed from the main menu options menu.", UIFont.Medium)
+				addText(" ", UIFont.Medium)
+				addText("Note: Make sure to enable this mod", UIFont.Medium)
+				addText("from the main menu to view the options.", UIFont.Medium)
 			end
 		end
-	end
-	self.addY = self.addY + MainOptions.translatorPane:getHeight() + 22
-	self.mainPanel:setScrollHeight(self.addY + 20)
 
-	for modId,mod in pairs(EasyConfig_Chucked.mods) do
-		if (not mod.menuSpecificAccess) or (getPlayer() and mod.menuSpecificAccess=="ingame") or (not getPlayer() and mod.menuSpecificAccess=="mainmenu") then
-			if mod.tabName ~= "MODS" then
-				self:addPage(mod.tabName)
-				self.addY = 0
-				createElements(mod)
-				self.addY = self.addY + MainOptions.translatorPane:getHeight() + 22
-				self.mainPanel:setScrollHeight(self.addY + 20)
-			end
-		end
+		self.addY = self.addY + MainOptions.translatorPane:getHeight() + 22
+		self.mainPanel:setScrollHeight(self.addY + 20)
+
 	end
 end
 
