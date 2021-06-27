@@ -10,7 +10,7 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Evacuation Flyer,
-		Icon = Paper,
+		Icon = Flyer,
 		Map = media/ui/content/EvacuationFlyer.png,
 	}
 	    item EmergencyFlyer
@@ -18,7 +18,7 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Emergency Flyer,
-		Icon = Paper,
+		Icon = Flyer,
 		Map = media/ui/content/EmergencyFlyer.png,
 	}
 		item QuarantineFlyer
@@ -26,7 +26,7 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Quarantine Flyer,
-		Icon = Paper,
+		Icon = Flyer,
 		Map = media/ui/content/QuarantineFlyer.png,
 	}
 		item PreventionFlyer
@@ -34,7 +34,7 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Prevention Flyer,
-		Icon = Paper,
+		Icon = Flyer,
 		Map = media/ui/content/PAVFlyer.png,
 	}
 		item NoticeFlyer
@@ -42,7 +42,7 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Notice Flyer,
-		Icon = Paper,
+		Icon = Flyer,
 		Map = media/ui/content/NoticeFlyer.png,
 	}
 }
