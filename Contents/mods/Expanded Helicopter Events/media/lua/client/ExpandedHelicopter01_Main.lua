@@ -233,7 +233,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 end
 
 function eHelicopter:stopAllHeldEventSounds()
-	print("EHE: stopAllHeldEventSounds for "..self.ID)
+	print(" - EHE: stopAllHeldEventSounds for HELI:"..self.ID)
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		if soundEffect then
@@ -643,7 +643,7 @@ function eHelicopter:launch(targetedPlayer)
 	--[DEBUG]] print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
 	--[DEBUG]] print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
 	--[DEBUG]] print("  dayOfLastCrash:"..dayOfLastCrash.."  daysSinceCrashImpact:"..daysSinceCrashImpact)
-	print("  crashChance:"..crashChance)
+	print(" -- crashChance:"..crashChance)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")

@@ -49,11 +49,11 @@ function eHelicopter:randomSelectPreset(preset)
 	local choice = pool[randomNum]
 
 	if not choice then
-		print("    ERR: No choice selected in randomSelectPreset")
+		print(" -- ERR: No choice selected in randomSelectPreset")
 		return preset
 	end
 
-	print("    randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
+	print(" -- randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
 
 	return eHelicopter_PRESETS[choice]
 end
@@ -79,7 +79,7 @@ function eHelicopter:progressionSelectPreset(preset)
 			end
 		end
 		if presetIDTmp then
-			print("    progressionSelectPreset:  selection: "..presetIDTmp)
+			print(" -- progressionSelectPreset:  selection: "..presetIDTmp)
 			return eHelicopter_PRESETS[presetIDTmp]
 		end
 	end
@@ -88,24 +88,24 @@ end
 
 function eHelicopter:recursivePresetCheck(preset, iteration)
 	iteration = iteration or 0
-	print("EHE: recursivePresetCheck: ")
+	print(" - EHE: recursivePresetCheck: ")
 	if preset.presetRandomSelection then
-		print("  EHE: presetRandomSelection: found")
+		print(" -- EHE: presetRandomSelection: found")
 		preset = self:randomSelectPreset(preset)
 	end
 
 	if preset.presetProgression then
-		print("  EHE: presetProgression: found")
+		print(" -- EHE: presetProgression: found")
 		preset = self:progressionSelectPreset(preset)
 	end
 
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
-		print("  EHE: progression/selection: found; recursive: "..iteration)
+		print(" -- EHE: progression/selection: found; recursive: "..iteration)
 		return self:recursivePresetCheck(preset,iteration+1)
 	end
 
 	if iteration >= 4 then
-		print("  EHE: ERR: progression/selection: high recursive iteration: "..iteration)
+		print(" -- EHE: ERR: progression/selection: high recursive iteration: "..iteration)
 	end
 
 	return preset
@@ -127,7 +127,7 @@ function eHelicopter:loadPreset(ID)
 
 	self:stopAllHeldEventSounds()
 	preset = self:recursivePresetCheck(preset)
-	--[[DEBUG]] for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print("loading preset: "..ID)
+	--[[DEBUG]] for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print(" loading preset: "..ID)
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars
