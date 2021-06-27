@@ -1,6 +1,6 @@
 ---Original EasyConfig found in Sandbox+ (author: derLoko)
 EasyConfig_Chucked = EasyConfig_Chucked or {}
-EasyConfig_Chucked.mods = {}
+EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 
 EasyConfig_Chucked.addMod = function(modId, name, config, configMenu, tabName, menuSpecificAccess)
 	if not config or not configMenu then
