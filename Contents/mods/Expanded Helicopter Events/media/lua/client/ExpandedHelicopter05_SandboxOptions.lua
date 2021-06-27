@@ -29,7 +29,7 @@ eHelicopterSandbox.menu = {
 		type = "Combobox",
 		title = "Frequency",
 		tooltip = "This will supplant the vanilla helicopter event frequency.",
-		options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane"}, 6}
+		options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}}
 		},
 	generalSpace = {type = "Space"},
 

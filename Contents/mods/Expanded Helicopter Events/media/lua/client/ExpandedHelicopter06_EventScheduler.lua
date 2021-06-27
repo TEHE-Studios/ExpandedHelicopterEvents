@@ -136,10 +136,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		if lastHeliEvent then
 			heliDay = lastHeliEvent.startDay
 
-			local freq = eHelicopterSandbox.config.frequency or 2
-			if not eHelicopterSandbox.config.frequency then
-				print("EHE: ERROR: config.frequency = null")
-			end
+			local freq = eHelicopterSandbox.config.frequency
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 			local minMax = presetSettings.startDayMinMax or eHelicopter.startDayMinMax
 			local startDayMin = minMax[1]
