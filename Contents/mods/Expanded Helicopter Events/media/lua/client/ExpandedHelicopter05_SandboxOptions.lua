@@ -1,3 +1,4 @@
+require "_EasyConfig_Chucked"
 require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
