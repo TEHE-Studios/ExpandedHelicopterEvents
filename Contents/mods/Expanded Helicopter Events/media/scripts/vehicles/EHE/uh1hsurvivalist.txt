@@ -1,13 +1,13 @@
 module Base
 {
-	model Vehicle_Bell206Crashed
+	model Vehicle_UH1H
 	{
-		mesh = vehicles/Vehicle_Bell206Crashed,
-		shader = vehicle_norandom_multiuv,
+		mesh = vehicles/Vehicle_UH1H,
+		shader = vehicle_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle Bell206PoliceCrashed
+	vehicle UH1HSurvivalist
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -16,23 +16,23 @@ module Base
 
 		model
 		{
-			file = Vehicle_Bell206Crashed,
-			scale = 3.1100,
-			offset = 0.0000 0.0064 1.0193,
+			file = Vehicle_UH1H,
+			scale = 1.8200,
+			offset = 0.0000 -0.0220 1.3462,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/Vehicle_Bell206PoliceCrashed,
+			texture = Vehicles/EHE/Vehicle_UH1HSurvivalist,
 		}
 
-		textureMask = Vehicle_Bell206Police_mask,
-		extents = 0.7524 2.0257 3.4534,
+		textureMask = Vehicle_UH1H_mask,
+		extents = 1.3077 2.0220 5.8791,
 		mass = 200,
-		physicsChassisShape = 0.7524 0.9646 3.4469,
-		centerOfMassOffset = 0.0000 0.5016 0.0032,
+		physicsChassisShape = 1.3846 2.0330 5.8791,
+		centerOfMassOffset = 0.0000 0.9890 0.1044,
 		engineForce = 3600,
 		engineQuality = 60,
 		engineLoudness = 55,
@@ -50,21 +50,21 @@ module Base
 		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
-
 		seats = 4,
-        template = PassengerSeat4,
+
+		template = PassengerSeat4,
 
 		passenger FrontLeft
 		{
 			position inside
 			{
-				offset = 0.1608 0.3859 0.1029,
+				offset = 0.3681 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.7235 0.0000 0.1029,
+				offset = 1.3022 0.0000 1.0385,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
 			}
@@ -74,13 +74,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1608 0.3859 0.1029,
+				offset = -0.3681 0.4341 0.9615,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.7235 0.0000 0.1029,
+				offset = -1.3022 0.0000 1.0385,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
@@ -90,13 +90,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.1608 0.3859 -0.3215,
+				offset = 0.3626 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 0.7235 0.0000 -0.2572,
+				offset = 1.2912 0.0000 -0.2802,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearLeft,
 			}
@@ -106,13 +106,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1608 0.3859 -0.3215,
+				offset = -0.3626 0.4341 -0.2582,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -0.7235 0.0000 -0.2572,
+				offset = -1.2912 0.0000 -0.2802,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearRight,
 			}
@@ -120,22 +120,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.6174 1.2444 0.4823 0.4823,
+			xywh = 1.0659 2.3462 0.8242 0.8242,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.6174 1.2444 0.4823 0.4823,
+			xywh = -1.0659 2.3462 0.8242 0.8242,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.6174 0.7621 0.4823 0.4823,
+			xywh = 1.0659 1.5220 0.8242 0.8242,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.6174 0.7621 0.4823 0.4823,
+			xywh = -1.0659 1.5220 0.8242 0.8242,
 		}
 
 		template = Seat/part/SeatFrontLeft,
