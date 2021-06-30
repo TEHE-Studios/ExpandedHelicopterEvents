@@ -12,8 +12,20 @@ eHelicopter_PRESETS = {
 			["patrol_only_emergency"] = 0.02,
 			["patrol_only_quarantine"] = 0.05,
 			["attack_only_undead_evac"] = 0.1,
-			["attack_only_undead"] = 0.15,
-			["attack_only_all"] = 0.75,
+			["attack_only_undead"] = 0.2,
+			["attack_only_all"] = 0.65,
+		}
+	},
+
+
+	["increasingly_helpful"] = {
+		presetProgression = {
+			["patrol_only"] = 0,
+			["patrol_only_emergency"] = 0.02,
+			["patrol_only_quarantine"] = 0.05,
+			["attack_only_undead_evac"] = 0.1,
+			["aid_helicopter"] = 0.2,
+			["attack_only_all"] = 0.65,
 		}
 	},
 
@@ -104,15 +116,4 @@ eHelicopter_PRESETS = {
 		cutOffFactor = 0.43,
 	},
 
-	["increasingly_helpful"] = {
-		presetProgression = {
-			["patrol_only"] = 0,
-			["aid_helicopter"] = 0.25,
-			["attack_only_all"] = 0.75,
-		}
-	},
-
-	["TestHeli"] = {
-		presetRandomSelection = {"news_chopper",1,"increasingly_helpful",3}
-	},
 }
