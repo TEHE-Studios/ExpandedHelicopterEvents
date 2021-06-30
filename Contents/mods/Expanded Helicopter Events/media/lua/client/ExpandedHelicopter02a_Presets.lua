@@ -37,7 +37,7 @@ eHelicopter_PRESETS = {
 	["jet"] = {
 		randomEdgeStart = true,
 		frequencyFactor = 0.66,
-		speed = 3,
+		speed = 2.8,
 		topSpeedFactor = 2,
 		flightVolume = 25,
 		eventSoundEffects = {["flightSound"] = "eJetFlight"},
@@ -49,7 +49,7 @@ eHelicopter_PRESETS = {
 		hoverOnTargetDuration = {1500,2250},
 		eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 		frequencyFactor = 2,
-		speed = 0.1,
+		speed = 0.06,
 		cutOffFactor = 0.5,
 		crashType = {"Bell206LBMWCrashed"}
 	},
@@ -94,7 +94,7 @@ eHelicopter_PRESETS = {
 		attackDelay = 1100,
 		cutOffFactor = 0.67,
 		attackSpread = 4,
-		speed = 0.09,
+		speed = 0.06,
 		attackHitChance = 100,
 		attackDamage = 35,
 		crashType = {"Bell206PoliceCrashed"},
@@ -114,6 +114,7 @@ eHelicopter_PRESETS = {
 		dropPackages = {"FEMASupplyDrop"},
 		dropItems = {["NoticeFlyer"]=250},
 		cutOffFactor = 0.43,
+		speed = 0.06,
 	},
 
 }
