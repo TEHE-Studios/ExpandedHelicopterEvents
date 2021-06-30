@@ -7,7 +7,9 @@ EHEIsoPlayers = {}
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function addToEIP(playerObject)
 	print(" - EHE: IsoPlayers adding:"..playerObject:getFullName())
-	EHEIsoPlayers[playerObject] = true
+	if not playerObject:isDead() then
+		EHEIsoPlayers[playerObject] = true
+	end
 end
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
