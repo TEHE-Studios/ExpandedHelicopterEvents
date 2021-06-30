@@ -6,7 +6,14 @@ EHEIsoPlayers = {}
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function addToEIP(playerObject)
+
+	if playerObject:getX() < 1 or playerObject:getY() < 1 then
+		print(" - EHE: ERR: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getFullName())
+		return
+	end
+
 	print(" - EHE: IsoPlayers adding:"..playerObject:getFullName())
+
 	if not playerObject:isDead() then
 		EHEIsoPlayers[playerObject] = true
 	end
