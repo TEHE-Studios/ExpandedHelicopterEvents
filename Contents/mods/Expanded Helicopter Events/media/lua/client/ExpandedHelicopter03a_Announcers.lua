@@ -68,5 +68,11 @@ eHelicopter_announcers = {
 		}
 	},
 
+	["Jade Airdrop"] = {
+		["Lines"] = {
+			["AttentionSurvivors"] = {8500, "eHeli_AirDrop_1a"},
+			["StandbyForDrop"] = {9500, "eHeli_AirDrop_1b"},
+		}
+	},
 	
 }

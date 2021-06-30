@@ -209,4 +209,12 @@ module Base {
         clip { file = media/sound/Jade_3c.ogg, distanceMax = 1500, volume = 3.0, } }
 
 
+    sound eHeli_AidDrop_1a {
+        category = EHE: Voices, loop = false, is3D = true,
+        clip { file = media/sound/heli_aid_1.ogg, distanceMax = 1500, volume = 3.0, } }
+    sound eHeli_AidDrop_1b {
+        category = EHE: Voices, loop = false, is3D = true,
+        clip { file = media/sound/heli_aid_2.ogg, distanceMax = 1500, volume = 3.0, } }
+
+
  }
