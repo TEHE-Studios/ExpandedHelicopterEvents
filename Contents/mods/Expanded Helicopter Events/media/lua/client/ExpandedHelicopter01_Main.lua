@@ -585,7 +585,7 @@ end
 
 
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:lauch(targetedPlayer)
+function eHelicopter:launch(targetedPlayer)
 
 	print(" - EHE: HELI:"..self.ID.." launched.")
 
