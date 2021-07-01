@@ -35,8 +35,10 @@ function eHelicopter:chooseVoice(specificVoice)
 	end
 
 	if (not specificVoice) or (specificVoice==true) then
-		local randAnn = ZombRand(1, #voiceSelectionOptions+1)
-		specificVoice = voiceSelectionOptions[randAnn]
+		if #voiceSelectionOptions > 0 then
+			local randAnn = ZombRand(1, #voiceSelectionOptions+1)
+			specificVoice = voiceSelectionOptions[randAnn]
+		end
 	end
 
 	if not specificVoice then
