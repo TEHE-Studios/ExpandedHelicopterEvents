@@ -22,7 +22,7 @@ if getDebug() then
 			DEBUG_TESTS.launch_news_chopper()
 
 		elseif key == Keyboard.KEY_7 then
-			DEBUG_TESTS.launch_attack_only_all()
+			DEBUG_TESTS.launch_increasingly_hostile()
 
 		elseif key == Keyboard.KEY_8 then
 			DEBUG_TESTS.launch_attack_only_undead()
