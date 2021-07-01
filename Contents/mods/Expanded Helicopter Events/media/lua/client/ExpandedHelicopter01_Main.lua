@@ -585,7 +585,7 @@ end
 
 
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:launch(targetedPlayer)
+function eHelicopter:lauch(targetedPlayer)
 
 	print(" - EHE: HELI:"..self.ID.." launched.")
 
@@ -651,10 +651,10 @@ function eHelicopter:launch(targetedPlayer)
 	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/3
 	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
-	--[DEBUG]] print("  cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc)
-	--[DEBUG]] print("  apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
-	--[DEBUG]] print("  dayOfLastCrash:"..dayOfLastCrash.."  daysSinceCrashImpact:"..daysSinceCrashImpact)
 	print(" -- crashChance:"..crashChance)
+	--[[DEBUG]] print(" --- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
+	--[[DEBUG]] print(" --- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
+	--[[DEBUG]] print(" --- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")
