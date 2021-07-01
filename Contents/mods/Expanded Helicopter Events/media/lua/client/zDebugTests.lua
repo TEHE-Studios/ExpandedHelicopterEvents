@@ -262,11 +262,6 @@ if getDebug() then
 	testAllLines__lastDemoTime = 0
 
 	function DEBUG_TESTS.testAllLines()
-		if #eHelicopter_announcersLoaded <= 0 then
-			print("ERROR: NO VOICES LOADED")
-			return
-		end
-
 		if #testAllLines__ALL_LINES > 0 then
 			testAllLines__ALL_LINES = {}
 			testAllLines__DELAYS = {}
@@ -274,17 +269,15 @@ if getDebug() then
 			return
 		end
 
-		for _,v in pairs(eHelicopter_announcersLoaded) do
-			for _,v2 in pairs(eHelicopter_announcers[v]["Lines"]) do
-				for k3,_ in pairs(v2) do
-					if k3 ~= 1 then
-						table.insert(testAllLines__ALL_LINES, v2[k3])
-						table.insert(testAllLines__DELAYS, v2[1])
-					end
+		for voiceID,voiceData in pairs(eHelicopter_announcers) do
+			if eHelicopterSandbox.config[voiceID] == true then
+				for lineID,lineData in pairs(voiceData["Lines"]) do
+					table.insert(testAllLines__ALL_LINES, lineData[2])
+					table.insert(testAllLines__DELAYS, lineData[1])
 				end
 			end
 		end
-		table.insert(testAllLines__ALL_LINES, "heli_fire_single")
+		table.insert(testAllLines__ALL_LINES, "eHeli_machine_gun_fire_single")
 		table.insert(testAllLines__DELAYS, 1)
 	end
 

@@ -3,9 +3,9 @@ eHelicopter_announcers = {
 
 	-- ["name of announcer"] = {
 		-- ["Lines"] = {
-			-- ["lineID1"] = {0, "variation1", "variation2"},
+			-- ["lineID1"] = {0, "variation1"},
 			-- For the sake of organization It is recommended you write out some of the spoken audio for "LineID"
-		   	-- The first entry within each line is the delay added as it is spoken, every entry after is a file variation and shares the same delay
+		   	-- The first entry within each line is the delay added as it is spoken, the second is the sound file
 			-- File names have to match scripted sounds found in sounds_EHE.txt for those scripts to be loaded
 		-- }
 	-- },
@@ -13,15 +13,15 @@ eHelicopter_announcers = {
 
 	["Raven Male"] = {
 		["Lines"] = {
-			["PleaseReturnToYourHomes"] = {6500, "eHeli_lineM_1a", "eHeli_lineM_1b", "eHeli_lineM_1d"},
-			["TheSituationIsUnderControl"] = {6500, "eHeli_lineM_2b", "eHeli_lineM_2c", "eHeli_lineM_2d"},
-			["ThisAreaIsNowInQuarantine"] = {7000, "eHeli_lineM_3a", "eHeli_lineM_3b", "eHeli_lineM_3c", "eHeli_lineM_3d"},
-			["DoNotTryToLeaveTheArea"] = {6500, "eHeli_lineM_5a", "eHeli_lineM_5b", "eHeli_lineM_5c", "eHeli_lineM_5d"},
-			["LockAllEntrances"] = {7000, "eHeli_lineM_7b", "eHeli_lineM_7c", "eHeli_lineM_7d"},
-			["AvoidContact"] = {6500, "eHeli_lineM_8b", "eHeli_lineM_8c", "eHeli_lineM_8d"},
-			["DoNotTryToReachOut"] = {7000, "eHeli_lineM_9a", "eHeli_lineM_9b", "eHeli_lineM_9c", "eHeli_lineM_9d"},
-			["AnyCriminalActivity"] = {8500, "eHeli_lineM_10a", "eHeli_lineM_10b"},
-			["AnyPersonsTryingToLeave"] = {8500, "eHeli_lineM_6a", "eHeli_lineM_6b", "eHeli_lineM_6c", "eHeli_lineM_6d"},
+			["PleaseReturnToYourHomes"] = {6500, "eHeli_lineM_1"},
+			["TheSituationIsUnderControl"] = {6500, "eHeli_lineM_2"},
+			["ThisAreaIsNowInQuarantine"] = {7000, "eHeli_lineM_3"},
+			["DoNotTryToLeaveTheArea"] = {6500, "eHeli_lineM_5"},
+			["LockAllEntrances"] = {7000, "eHeli_lineM_7"},
+			["AvoidContact"] = {6500, "eHeli_lineM_8"},
+			["DoNotTryToReachOut"] = {7000, "eHeli_lineM_9"},
+			["AnyCriminalActivity"] = {8500, "eHeli_lineM_10"},
+			["AnyPersonsTryingToLeave"] = {8500, "eHeli_lineM_6"},
 		}
 	},
 
@@ -69,6 +69,7 @@ eHelicopter_announcers = {
 	},
 
 	["Jade Airdrop"] = {
+		["LeaveOutOfRandomSelection"] = true,
 		["Lines"] = {
 			["AttentionSurvivors"] = {8500, "eHeli_AirDrop_1a"},
 			["StandbyForDrop"] = {9500, "eHeli_AirDrop_1b"},
