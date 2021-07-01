@@ -115,6 +115,7 @@ eHelicopter_PRESETS = {
 		dropItems = {["NoticeFlyer"]=250},
 		cutOffFactor = 0.43,
 		speed = 0.06,
+		announcerVoice = "Jade Airdrop",
 	},
 
 }
