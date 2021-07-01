@@ -592,12 +592,6 @@ function eHelicopter:launch(targetedPlayer)
 	if not targetedPlayer then
 		targetedPlayer = self:findTarget()
 	end
-	--sets target to targetedPlayer's square so that the heli doesn't necessarily head straight for the player 
-	self.target = getCell():getOrCreateGridSquare(targetedPlayer:getX(), targetedPlayer:getY(), 0)
-	--maintain trueTarget
-	self.trueTarget = targetedPlayer
-	--setTargetPos is a vector format of self.target
-	self:setTargetPos()
 
 	if targetedPlayer then
 		print(" - target set: "..targetedPlayer:getFullName())
@@ -606,6 +600,13 @@ function eHelicopter:launch(targetedPlayer)
 		self:unlaunch()
 		return
 	end
+
+	--sets target to targetedPlayer's square so that the heli doesn't necessarily head straight for the player 
+	self.target = getCell():getOrCreateGridSquare(targetedPlayer:getX(), targetedPlayer:getY(), 0)
+	--maintain trueTarget
+	self.trueTarget = targetedPlayer
+	--setTargetPos is a vector format of self.target
+	self:setTargetPos()
 
 	if not self.target then
 		print(" - ERR: no self.target set")
