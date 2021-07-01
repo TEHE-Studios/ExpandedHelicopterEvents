@@ -1,4 +1,3 @@
-eHelicopter_announcersLoaded = {}
 eHelicopter_announcers = {
 
 	-- ["name of announcer"] = {

@@ -20,21 +20,22 @@ setAnnouncementLength()
 ---Sets eHelicopter's announcer voice
 ---@param specificVoice string|table can be string for specific voice or table to be picked from
 function eHelicopter:chooseVoice(specificVoice)
-	if #eHelicopter_announcersLoaded < 1 then
-		return
-	end
 
-	local voiceSelectionMaxIndex = #eHelicopter_announcersLoaded
-	local voiceSelectionOptions = eHelicopter_announcersLoaded
+	local voiceSelectionOptions = {}
 
 	if type(specificVoice) == "table" then
-		voiceSelectionMaxIndex = #specificVoice
 		voiceSelectionOptions = specificVoice
 		specificVoice = false
+	else
+		for voiceID,voiceData in pairs(eHelicopter_announcers) do
+			if (not voiceData["LeaveOutOfRandomSelection"]) and (eHelicopterSandbox.config[voiceID] == true) then
+				table.insert(voiceSelectionOptions,voiceID)
+			end
+		end
 	end
 
-	if not specificVoice then
-		local randAnn = ZombRand(1, voiceSelectionMaxIndex+1)
+	if (not specificVoice) or (specificVoice==true) then
+		local randAnn = ZombRand(1, #voiceSelectionOptions+1)
 		specificVoice = voiceSelectionOptions[randAnn]
 	end
 

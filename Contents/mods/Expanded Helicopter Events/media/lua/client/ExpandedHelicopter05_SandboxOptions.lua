@@ -75,7 +75,6 @@ eHelicopterSandbox.menu = {
 }
 
 
-
 function loadAnnouncersToConfig()
 
 	eHelicopterSandbox.menu["voiceSpaceA"] = {type = "Space"}
@@ -91,15 +90,6 @@ end
 --run on Lua load
 loadAnnouncersToConfig()
 
-function setAnnouncersLoaded()
-	eHelicopter_announcersLoaded = {}
-	for k,v in pairs(eHelicopterSandbox.config) do
-		if (eHelicopter_announcers[k]) and (v == true) then
-			table.insert(eHelicopter_announcersLoaded,k)
-		end
-	end
-end
-Events.OnGameStart.Add(setAnnouncersLoaded)
 
 --[[
 function loadPresetToConfig()
