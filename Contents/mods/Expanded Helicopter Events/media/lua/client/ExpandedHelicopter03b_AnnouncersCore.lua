@@ -41,6 +41,7 @@ function eHelicopter:chooseVoice(specificVoice)
 
 	if not specificVoice then
 		print("EHE: ERR: Unable to initiate voice: "..specificVoice)
+		self.announcerVoice = false
 		return
 	end
 	self.announcerVoice = eHelicopter_announcers[specificVoice]
