@@ -27,7 +27,10 @@ eHelicopter.dropItems = false
 eHelicopter.dropPackages = false
 
 ---@field eventSoundEffects table
-eHelicopter.eventSoundEffects = {--{["hoverOverTarget"]=nil,["flyOverTarget"]=nil}
+eHelicopter.eventSoundEffects = {
+	--{"hoverOverTarget"]=nil,["flyOverTarget"]=nil}
+	--["lostTarget"]=nil, ["foundTarget"]=nil, ["droppingPackage"]=nil,
+	--["additionalAttackingSound"]=nil, ["additionalFlightSound"]=nil,
 	["attackSingle"] = "eHeli_machine_gun_fire_single",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = "eHeli_fire_impact",
@@ -614,6 +617,7 @@ function eHelicopter:launch(targetedPlayer)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
 	self:playEventSound("flightSound", nil, true)
+	self:playEventSound("additionalFlightSound", nil, true)
 
 	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
 		if #self.hoverOnTargetDuration >= 2 then
@@ -885,6 +889,7 @@ function eHelicopter:dropCarePackage(fuzz)
 		---@type BaseVehicle airDrop
 		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
+			self:playEventSound("droppingPackage")
 			self.dropPackages = false
 			return airDrop
 		end
@@ -910,6 +915,7 @@ function eHelicopter:update()
 		if self.trueTarget:isOutside() then
 			if distanceToTrueTarget > self.attackDistance then
 				self.target = self.trueTarget
+				self:playEventSound("foundTarget")
 			end
 			self.timeSinceLastSeenTarget = timeStampMS
 		else
@@ -941,6 +947,7 @@ function eHelicopter:update()
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
+			self:playEventSound("lostTarget")
 		end
 		self:setTargetPos()
 	end
