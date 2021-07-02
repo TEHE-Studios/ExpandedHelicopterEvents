@@ -567,8 +567,11 @@ function eHelicopter:findTarget(range)
 		end
 	end
 
+	print(" -- HELI "..self.ID..": seeking target from pool of "..#weightPlayersList)
+
 	--load blanks if there is only 1 potential player target
 	if playersFound == 1 then
+		print(" --- adding blanks to pool")
 		for _=1, blankWeights do
 			table.insert(weightPlayersList, false)
 		end
@@ -578,6 +581,10 @@ function eHelicopter:findTarget(range)
 
 	if #weightPlayersList then
 		target = weightPlayersList[ZombRand(1, #weightPlayersList+1)]
+	end
+
+	if not target then
+		print(" --- HELI "..self.ID..": unable to find target.")
 	end
 
 	return target
@@ -596,7 +603,7 @@ function eHelicopter:launch(targetedPlayer)
 	if targetedPlayer then
 		print(" - target set: "..targetedPlayer:getFullName())
 	else
-		print(" - ERR: no targetedPlayer set")
+		print(" -- ERR: no targetedPlayer set")
 		self:unlaunch()
 		return
 	end
@@ -609,7 +616,7 @@ function eHelicopter:launch(targetedPlayer)
 	self:setTargetPos()
 
 	if not self.target then
-		print(" - ERR: no self.target set")
+		print(" -- ERR: no self.target set")
 		self:unlaunch()
 		return
 	end
@@ -1088,7 +1095,7 @@ end
 
 
 function eHelicopter:unlaunch()
-	print("HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+	print(" ---- HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter and self.lastAnnouncedLine then
 		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)
