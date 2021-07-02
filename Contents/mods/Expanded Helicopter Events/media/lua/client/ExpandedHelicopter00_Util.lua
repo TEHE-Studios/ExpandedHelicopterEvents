@@ -29,6 +29,15 @@ function removeFromEIP(playerObject)
 	EHEIsoPlayers[playerObject] = nil
 end
 
+function addActualPlayersToEIP()
+	for playerIndex=0, getNumActivePlayers()-1 do
+		---@type IsoLivingCharacter | IsoGameCharacter
+		addToEIP(getSpecificPlayer(playerIndex))
+	end
+end
+
+
+Events.OnGameStart.Add(addActualPlayersToEIP)
 Events.OnCreateLivingCharacter.Add(addToEIP)
 Events.OnCharacterDeath.Add(removeFromEIP)
 
