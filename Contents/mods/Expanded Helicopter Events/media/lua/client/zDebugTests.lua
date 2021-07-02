@@ -111,73 +111,67 @@ if getDebug() then
 		print("-----------------------------------------------------------------")
 	end
 
+	function DEBUG_TESTS.moveHeliCloser(heli)
+		if not heli.target then
+			return
+		end
+		--move closer
+		local tpX = heli.target:getX()
+		local tpY = heli.target:getY()
+		local offset = ZombRand(300)
+		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+	end
+
 
 	--- Test launch heli
 	function DEBUG_TESTS.launchBaseHeli()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter()
 		heli:launch()
-		print(" -- HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
+
 
 	--- Test launch jet
 	function DEBUG_TESTS.launch_jet()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("jet")
 		heli:launch()
-		print(" -- \"jet\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
 	end
+
 
 	--- Test launch test heli
 	function DEBUG_TESTS.launch_testHeli()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("TestHeli")
 		heli:launch()
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print(" -- \"TestHeli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
+
 
 	--- Test launch close "attack_only_undead" heli
 	function DEBUG_TESTS.launch_attack_only_undead()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("attack_only_undead")
 		heli:launch()
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print(" -- \"attack_only_undead\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
+
 
 	--- Test launch close "police_heli" heli
 	function DEBUG_TESTS.launch_police_heli()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("police_heli")
 		heli:launch()
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print(" -- \"police_heli\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
+
 
 	--- Test launch close "attack_only_all" heli
 	function DEBUG_TESTS.launch_attack_only_all()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("attack_only_all")
 		heli:launch()
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print(" -- \"attack_only_all\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
 
 
@@ -186,12 +180,7 @@ if getDebug() then
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("increasingly_hostile")
 		heli:launch()
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-		print(" -- \"increasingly_hostile\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
 
 
@@ -200,30 +189,18 @@ if getDebug() then
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("news_chopper")
 		heli:launch()
-
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-
-		print(" -- \"news_chopper\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
+
 
 	--- Test launch close "news_chopper" heli
 	function DEBUG_TESTS.launch_aid_chopper()
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("aid_helicopter")
 		heli:launch()
-
-		--move closer
-		local tpX = heli.target:getX()
-		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
-		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-
-		print(" -- \"aid_helicopter\" HELI: "..heli.ID.." LAUNCHED".." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
+		DEBUG_TESTS.moveHeliCloser(heli)
 	end
+
 
 	--- Test getHumanoidsInFractalRange
 	function DEBUG_TESTS.getHumanoidsInFractalRange()
