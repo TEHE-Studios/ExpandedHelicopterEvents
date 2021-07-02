@@ -93,6 +93,9 @@ end
 ---@param ShmectorTree Vector3
 ---@return float x of ShmectorTree
 function Vector3GetX(ShmectorTree)
+	if not ShmectorTree then
+		return ""
+	end
 	local tostring = tostring(ShmectorTree)
 	local coordinate = string.match(tostring, "%(X%: (.-)%, Y%: ")
 	coordinate = string.gsub(coordinate, ",",".")
@@ -104,6 +107,9 @@ end
 ---@param ShmectorTree Vector3
 ---@return float y of ShmectorTree
 function Vector3GetY(ShmectorTree)
+	if not ShmectorTree then
+		return ""
+	end
 	local tostring = tostring(ShmectorTree)
 	local coordinate = string.match(tostring, "%, Y%: (.-)%) %(")
 	coordinate = string.gsub(coordinate, ",",".")
