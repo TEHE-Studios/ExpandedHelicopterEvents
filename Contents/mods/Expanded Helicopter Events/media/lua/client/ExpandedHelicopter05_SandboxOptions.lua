@@ -8,6 +8,8 @@ eHelicopterSandbox.config = {
 	frequency = 2,
 	resetEvents = false,
 	cutOffDay = 30,
+	startDay = 0,
+	neverEndingEvents = false,
 	--hostilePreference = "Zombie", --"Player", "All"
 	--attackDelay = 95, --min:0.01, max:1000
 	--attackDistance = 50, --min:1, max:300
@@ -30,16 +32,27 @@ eHelicopterSandbox.menu = {
 		title = "Frequency",
 		tooltip = "This will supplant the vanilla helicopter event frequency.",
 		options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}}
-		},
-	generalSpace = {type = "Space"},
+	},
 
-	cutOffDaySpaceA = {type = "Space"},
+	startDay = {
+		type = "Numberbox",
+		title = "Events Start Day",
+		tooltip = "The day events will start on. Note: Some events are slated to start later in events.",
+	},
+
 	cutOffDay = {
 		type = "Numberbox",
-		title = "Events Cutoff Day",
+		title = "Events CutOff Day",
 		tooltip = "The day events will be tapered to end on. Note: some events are scaled to go beyond this day.",
 	},
-	cutOffDaySpaceB = {type = "Space"},
+
+	neverEndingEvents = {
+		type = "Tickbox",
+		title = "Never Ending Events",
+		tooltip = "Check this off so that events never end.",
+	},
+
+	generalSpace = {type = "Space"},
 
 	--eHelicopterSandbox.config.cutOffDay
 	--[[

@@ -170,7 +170,12 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		heliStart = ZombRand(6, 20)
 	end
 
+	local neverEnd = eHelicopterSandbox.config.neverEndingEvents
 	local renewHeli = (daysBefore+heliDay < cutOffDay)
+
+	if neverEnd then
+		renewHeli = true
+	end
 
 	if (not renewHeli) and (not lastHeliEvent) then
 		return
@@ -205,13 +210,16 @@ function eHeliEvents_OnGameStart()
 	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
 	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or getGameTime():getNightsSurvived()
 
+	local configStart = eHelicopterSandbox.config.startDay+ZombRand(0,3)
+
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
-		setNextHeliFrom(nil, nil, nil, "jet")
-		setNextHeliFrom(nil, ZombRand(6,8), nil, "civilian")
-		setNextHeliFrom(nil, nil, nil, "military")
+		setNextHeliFrom(nil, configStart, nil, "jet")
+		setNextHeliFrom(nil, configStart+ZombRand(6,8), nil, "civilian")
+		setNextHeliFrom(nil, configStart, nil, "military")
 	end
 end
+
 
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 
