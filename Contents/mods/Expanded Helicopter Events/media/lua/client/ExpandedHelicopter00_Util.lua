@@ -25,8 +25,10 @@ end
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function removeFromEIP(playerObject)
-	print(" - EHE: IsoPlayers removing:"..playerObject:getFullName())
-	EHEIsoPlayers[playerObject] = nil
+	if EHEIsoPlayers[playerObject] then
+		print(" - EHE: IsoPlayers removing:"..playerObject:getFullName())
+		EHEIsoPlayers[playerObject] = nil
+	end
 end
 
 function addActualPlayersToEIP()
