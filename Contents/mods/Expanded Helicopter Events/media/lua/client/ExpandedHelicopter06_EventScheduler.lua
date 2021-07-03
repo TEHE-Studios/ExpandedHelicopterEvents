@@ -35,7 +35,7 @@ function eHeliEvent_weatherImpact()
 	local snow = CM:getSnowIntensity()/2
 	local thunder = CM:getIsThunderStorming()
 
-	if (wind+rain+snow > 0.90) or (fog > 0.33) or (thunder == true) then
+	if (wind+rain+snow > 1.1) or (fog > 0.33) or (thunder == true) then
 		willFly = false
 	end
 
