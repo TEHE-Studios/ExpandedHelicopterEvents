@@ -208,7 +208,7 @@ function eHeliEvents_OnGameStart()
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
 		setNextHeliFrom(nil, nil, nil, "jet")
-		setNextHeliFrom(nil, nil, nil, "civilian")
+		setNextHeliFrom(nil, ZombRand(6,8), nil, "civilian")
 		setNextHeliFrom(nil, nil, nil, "military")
 	end
 end
