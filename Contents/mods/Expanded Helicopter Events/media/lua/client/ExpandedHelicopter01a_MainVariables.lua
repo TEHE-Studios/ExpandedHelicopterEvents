@@ -52,9 +52,6 @@ eHelicopter.presetRandomSelection = false
 ---@field frequencyFactor number This is multiplied against the min/max day range; less than 1 results in higher frequency, more than 1 results in less frequency
 eHelicopter.frequencyFactor = 1
 
----@field startDayMinMax table two numbers: min and max start day can be
-eHelicopter.startDayMinMax = {0,1}
-
 ---@field cutOffFactor number This is multiplied against eHelicopterSandbox.config.cutOffDay
 eHelicopter.cutOffFactor = 1
 

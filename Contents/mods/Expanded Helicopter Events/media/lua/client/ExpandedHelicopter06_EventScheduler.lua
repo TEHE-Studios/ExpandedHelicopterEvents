@@ -121,55 +121,47 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	end
 
 	local nightsSurvived = getGameTime():getNightsSurvived()
-	local daysIntoApoc = getGameTime():getModData()["DaysBeforeApoc"]+nightsSurvived
+	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"] or 0
+	local daysIntoApoc = daysBefore+nightsSurvived
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
 	local COF = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
 	local cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
-
-	if cutOffDay and nightsSurvived > cutOffDay then
-		return
-	end
+	local freq = eHelicopterSandbox.config.frequency
 
 	if not heliDay then
-		heliDay = nightsSurvived
-		--use old event's start day for reschedule, otherwise get new day
-		if lastHeliEvent then
+		if not lastHeliEvent then
+			heliDay = nightsSurvived+ZombRand(0,3)
+			--use old event's start day for reschedule, otherwise get new day
+		else
 			heliDay = lastHeliEvent.startDay
 
-			local freq = eHelicopterSandbox.config.frequency
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
-			local minMax = presetSettings.startDayMinMax or eHelicopter.startDayMinMax
-			local startDayMin = minMax[1]
-			local startDayMax = minMax[2]
+			local dayOffset
 
 			if freq == 0 then
-				startDayMin = (startDayMin+7)*freqFactor
-				startDayMax = (startDayMax+14)*freqFactor
+				dayOffset = {7,14}
 
 			elseif freq == 1 then
-				startDayMin = (startDayMin+5)*freqFactor
-				startDayMax = (startDayMax+10)*freqFactor
+				dayOffset = {5,10}
 
 			elseif freq == 2 then
-				startDayMin = (startDayMin+3)*freqFactor
-				startDayMax = (startDayMax+6)*freqFactor
+				dayOffset = {3,6}
 
 			elseif freq == 3 then
-				startDayMin = (startDayMin+1)*freqFactor
-				startDayMax = (startDayMax+2)*freqFactor
+				dayOffset = {1,2}
 
 			elseif freq == 6 then
-				startDayMin = (startDayMin+0)*freqFactor
-				startDayMax = (startDayMax+0)*freqFactor
+				dayOffset = {0,0}
+
 			end
 
-			local randomizedStart = ZombRand(startDayMin,startDayMax)
+			local randomizedOffset = (ZombRand(dayOffset[1],dayOffset[2])+1)*freqFactor
 			--as days get closer to the cutoff the time between new events gets longer
 			local lessFreqOverTime = ((7-freq)*(daysIntoApoc/cutOffDay))
 
-			heliDay = heliDay+randomizedStart+lessFreqOverTime
+			heliDay = heliDay+randomizedOffset+lessFreqOverTime
 			--trim non integer
-			heliDay = math.floor(heliDay)
+			heliDay = math.floor(heliDay+0.5)
 		end
 	end
 
@@ -178,8 +170,12 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		heliStart = ZombRand(6, 20)
 	end
 
-	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"]
-	local renewHeli = (daysBefore+heliDay <= cutOffDay)
+	local renewHeli = (daysBefore+heliDay < cutOffDay)
+
+	if (not renewHeli) and (not lastHeliEvent) then
+		return
+	end
+
 	eHeliEvent_new(ID, heliDay, heliStart, presetID, renewHeli)
 end
 
