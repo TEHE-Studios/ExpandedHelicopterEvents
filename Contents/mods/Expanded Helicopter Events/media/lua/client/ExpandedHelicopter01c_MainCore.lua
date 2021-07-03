@@ -462,7 +462,7 @@ end
 
 
 function eHelicopter:unlaunch()
-	print(" ---- HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+	print(" ---- HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")".." day:"..getGameTime():getNightsSurvived())
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter and self.lastAnnouncedLine then
 		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)
