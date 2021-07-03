@@ -100,7 +100,8 @@ eHelicopter_PRESETS = {
 		crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 		hostilePreference = "IsoZombie",
 		eventSoundEffects = {
-			["attackSingle"] = "eHeli_bolt_action_fire_single",["attackLooped"] = "eHeli_bolt_action_fire_single",
+			["attackSingle"] = "eHeli_bolt_action_fire_single",
+			["attackLooped"] = "eHeli_bolt_action_fire_single",
 			["flightSound"] = "eHeliPoliceSiren",
 		},
 		hoverOnTargetDuration = {750,1150},
