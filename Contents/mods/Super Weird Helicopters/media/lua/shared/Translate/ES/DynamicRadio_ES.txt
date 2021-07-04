@@ -1,0 +1,3 @@
+DynamicRadio_ES = {
+	AEBS_SupplyDrop = "Paquete de suministros en camino."
+}

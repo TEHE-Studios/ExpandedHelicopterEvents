@@ -1,0 +1,33 @@
+module EHE
+{
+
+    recipe Open Supplies
+    {
+       SpiffoDolls=1,
+       Result:Spiffo=1,
+       OnCreate:EHE_OpenBox.DOLLBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+      recipe Open Supplies
+    {
+       SpiffoMerchandise=1,
+       Result:Spiffo=1,
+       OnCreate:EHE_OpenBox.MERCHBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       BurgerBox=1,
+       Result:Spiffo=1,
+       OnCreate:EHE_OpenBox.BURGERBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+}

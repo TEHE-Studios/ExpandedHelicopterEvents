@@ -1,0 +1,3 @@
+DynamicRadio_RU = {
+	AEBS_SupplyDrop = "¬ход€щий пакет поставки.."
+}

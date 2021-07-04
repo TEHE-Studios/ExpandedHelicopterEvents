@@ -1,0 +1,15 @@
+Items_RU = {
+DisplayName_Police_Helicopter_Helmet = "Полицейский вертолетный шлем",
+DisplayName_Survivalist_Helicopter_Helmet= "Вертолетный шлем выживших",
+DisplayName_Civilian_Helicopter_Helmet= "Гражданский вертолетный шлем",
+DisplayName_Police_Pilot_Flying_Suit = "Полицейский лётный костюм",
+DisplayName_Press_Bulletproof_Vest = "Бронижелет прессы",
+DisplayName_Press_Helmet = "Шлем прессы",
+DisplayName_Deserter_Helmet = "Шлем дезертира",
+DisplayName_Evacuation_Flyer = "Флаер эвакуации",
+DisplayName_Emergency_Flyer = "Флаер черезвучайного проиществия",
+DisplayName_Quarantine_Flyer = "Флаер карантина",
+DisplayName_Prevention_Flyer = "Флаер предупреждения",
+DisplayName_Notice_Flyer = "Флаер обнаружения",
+DisplayName_Supply_Box = "Коробка припасов",
+}

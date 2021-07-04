@@ -1,0 +1,13 @@
+IGUI_RU = {
+	IGUI_VehicleNameUH1H = "Bell UH-1H",    
+    IGUI_VehicleNameUH1HCrash = "Bell UH-1H (Разбитый)",
+    IGUI_VehicleNameUH1Hmedevac = "Bell UH-1H Medevac",
+    IGUI_VehicleNameUH1Hmedevaccrash = "Bell UH-1H Medevac (Разбитый)",
+    IGUI_VehicleNameUH1HSurvivalist = "Bell UH-1H Выживших",
+    IGUI_VehicleNameUH1HSurvivalistCrash = "Bell UH-1H Выживших (Разбитый)",
+    IGUI_VehicleNameBell206LBMW = "Bell 206 Новостной",    
+    IGUI_VehicleNameBell206LBMWCrashed = "Bell 206 Новостной (Разбитый)",
+    IGUI_VehicleNameBell206Police = "Bell 206 Полицейский",
+    IGUI_VehicleNameBell206PoliceCrashed = "Bell 206 Полицейский (Разбит)",
+    IGUI_VehicleNameFEMASupplyDrop = "Помощь при черезвучайной ситуации",
+}

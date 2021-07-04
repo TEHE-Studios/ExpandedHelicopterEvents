@@ -1,0 +1,12 @@
+module EHE
+{
+	imports
+	{
+		Base
+	}
+    model Item_EvacFlyer
+    {
+        mesh = Item_Flyer,
+        texture = Item_EvacFlyer,
+    }
+}

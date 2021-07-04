@@ -1,0 +1,31 @@
+module EHE
+{
+	imports
+	{
+		Base
+	}
+
+	/********************** EFFECTS AND BOMBS **********************/
+
+    item HeliFireEFfect
+    {
+        OtherHandUse	=	TRUE,
+        MaxRange	= 0,
+        WeaponSprite = Molotov,
+        Type	=	Weapon,
+        MinimumSwingTime	=	0,
+        SwingAnim	=	Throw,
+        UseSelf	=	TRUE,
+        DisplayName	=	Helicopter Fire Effect (Do not equip),
+        SwingTime	=	0,
+        SwingAmountBeforeImpact	=	0.1,
+        PhysicsObject	=	MolotovCocktail,
+        MinDamage	=	0,
+        Weight	=	0,
+        MaxDamage	=	0,
+        MaxHitCount	=	0,
+        FirePower  =   100,
+        FireRange  =   20,
+        Icon	=	Molotov,
+    }
+}

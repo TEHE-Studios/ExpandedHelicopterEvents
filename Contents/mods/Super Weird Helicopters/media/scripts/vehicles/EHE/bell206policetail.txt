@@ -1,0 +1,54 @@
+module Base
+{
+	model Vehicle_Bell206Tail
+	{
+		mesh = vehicles/Vehicle_Bell206Tail,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle Bell206PoliceTail
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_Bell206Tail,
+			scale = 3.1100,
+			offset = -0.0161 0.0064 0.1093,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_Bell206PoliceCrashed,
+		}
+
+		textureMask = Vehicle_Bell206Police_mask,
+		extents = 0.3923 0.9582 1.2862,
+		mass = 200,
+		physicsChassisShape = 0.3859 0.9646 1.2926,
+		centerOfMassOffset = 0.0000 0.5016 0.0032,
+		engineForce = 3600,
+		engineQuality = 60,
+		engineLoudness = 55,
+		maxSpeed = 70f,
+		brakingForce = 1,
+		stoppingMovementForce = 2.0f,
+		rollInfluence = 1.0f,
+		steeringIncrement = 0.03,
+		steeringClamp = 0.3,
+		suspensionStiffness = 40,
+		suspensionCompression = 2.83,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2,
+		wheelFriction = 4.0f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+	}
+}

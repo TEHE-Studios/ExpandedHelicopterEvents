@@ -1,0 +1,12 @@
+module Base
+{
+    model Item_EvacFlyer
+    {
+        mesh = Item_Flyer,
+        texture = Item_EvacFlyer,
+        attachment world
+        {
+            rotate = 0.0000 -90.0000 0.0000,
+        }
+    }
+}
