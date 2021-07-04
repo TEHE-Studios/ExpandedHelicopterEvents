@@ -25,7 +25,7 @@ module Base
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_Bell206IRS,
+			texture = Vehicles/EHEWH/Vehicle_Bell206IRS,
 		}
 
 		textureMask = Vehicle_Bell206LBMW_mask,
