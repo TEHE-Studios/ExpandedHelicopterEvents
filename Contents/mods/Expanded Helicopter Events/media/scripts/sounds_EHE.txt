@@ -14,7 +14,7 @@ module Base {
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/helicrash.ogg, distanceMax = 2500, volume = 3.0, } }
+        clip { file = media/sound/helicrash.ogg, distanceMax = 2500, volume = 2.0, } }
 
     sound eHeli_machine_gun_fire_single {
         category = EHE: Main, loop = false, is3D = true,
