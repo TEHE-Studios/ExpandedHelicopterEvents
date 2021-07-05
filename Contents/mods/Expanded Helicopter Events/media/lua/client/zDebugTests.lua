@@ -90,14 +90,15 @@ if getDebug() then
 		print("-----------------------------------------------------------------")
 	end
 
-	function DEBUG_TESTS.moveHeliCloser(heli)
+	function DEBUG_TESTS.moveHeliCloser(heli,range)
 		if not heli.target then
 			return
 		end
 		--move closer
 		local tpX = heli.target:getX()
 		local tpY = heli.target:getY()
-		local offset = ZombRand(300)
+		range = range or 300
+		local offset = ZombRand(range)
 		heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 	end
 
@@ -177,7 +178,7 @@ if getDebug() then
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("aid_helicopter")
 		heli:launch()
-		DEBUG_TESTS.moveHeliCloser(heli)
+		DEBUG_TESTS.moveHeliCloser(heli, 650)
 	end
 
 
