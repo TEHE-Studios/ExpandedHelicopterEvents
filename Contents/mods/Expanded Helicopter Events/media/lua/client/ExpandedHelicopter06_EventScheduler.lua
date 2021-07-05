@@ -185,6 +185,14 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 end
 
 
+configStartDay = eHelicopterSandbox.config.startDay+ZombRand(0,3)
+
+eHeliEvents_init = eHeliEvents_init or {}
+eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=configStartDay+ZombRand(6,8), ["heliStart"]=nil}
+eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+
+
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
 	local GTMData = getGameTime():getModData()
@@ -210,18 +218,16 @@ function eHeliEvents_OnGameStart()
 	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
 	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or getGameTime():getNightsSurvived()
 
-	local configStart = eHelicopterSandbox.config.startDay+ZombRand(0,3)
-
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
-		setNextHeliFrom(nil, configStart, nil, "jet")
-		setNextHeliFrom(nil, configStart+ZombRand(6,8), nil, "civilian")
-		setNextHeliFrom(nil, configStart, nil, "military")
+		for preset,params in pairs(eHeliEvents_init) do
+			setNextHeliFrom(params["ID"], params["heliDay"], params["heliStart"], preset)
+		end
 	end
 end
 
-
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
+
 
 --Checks every hour if there is an event scheduled to engage
 function eHeliEvent_Loop()
