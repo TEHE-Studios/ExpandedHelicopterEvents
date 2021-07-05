@@ -137,7 +137,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	cutOffFactor = 0.43,
 	speed = 0.06,
 	eventSoundEffects = {
-		["foundTarget"] = "eHeli_AidDrop_1a",
-		["droppingPackage"] = "eHeli_AidDrop_1b",
+		["foundTarget"] = "eHeli_AidDrop_2",
+		["droppingPackage"] = "eHeli_AidDrop_1and3",
 		},
 	}

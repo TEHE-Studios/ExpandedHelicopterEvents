@@ -162,12 +162,23 @@ module Base {
         clip { file = media/sound/Jade_3c.ogg, distanceMax = 1500, volume = 3.0, } }
 
 
-    sound eHeli_AidDrop_1a {
+    sound eHeli_AidDrop_1and3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_aid_1.ogg, distanceMax = 1500, volume = 6.0, } }
-    sound eHeli_AidDrop_1b {
-        category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_aid_2.ogg, distanceMax = 1500, volume = 6.0, } }
+        /*standby for drop*/
+        clip { file = media/sound/Drop1A.ogg, distanceMax = 1500, volume = 6.0, }
+        clip { file = media/sound/Drop1B.ogg, distanceMax = 1500, volume = 6.0, }
+        clip { file = media/sound/Drop1C.ogg, distanceMax = 1500, volume = 6.0, }
+        /*keep clear emergency drop inbound*/
+        clip { file = media/sound/Drop3A.ogg, distanceMax = 1500, volume = 6.0, }
+        clip { file = media/sound/Drop3B.ogg, distanceMax = 1500, volume = 6.0, }
+        clip { file = media/sound/Drop3C.ogg, distanceMax = 1500, volume = 6.0, } }
 
+
+    sound eHeli_AidDrop_2 {
+        category = EHE: Voice Lines, loop = false, is3D = true,
+        /*attention survivors, emergency supplies are being delivered*/
+        clip { file = media/sound/Drop2A.ogg, distanceMax = 1500, volume = 6.0, }
+        clip { file = media/sound/Drop2B.ogg, distanceMax = 1500, volume = 6.0, }
+        clip { file = media/sound/Drop2C.ogg, distanceMax = 1500, volume = 6.0, } }
 
  }
