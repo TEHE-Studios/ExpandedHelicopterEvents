@@ -3,6 +3,15 @@
 
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
+--[[
+
+eHelicopter_PRESETS["id_name"] = {
+		variable = {values}
+	}
+
+]]
+
+
 eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1}
 }
