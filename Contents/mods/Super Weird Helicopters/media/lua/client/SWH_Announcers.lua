@@ -1,3 +1,5 @@
+eHelicopter_announcers = eHelicopter_announcers or {}
+
 --[[
 
 eHelicopter_announcers["name of announcer"] = {

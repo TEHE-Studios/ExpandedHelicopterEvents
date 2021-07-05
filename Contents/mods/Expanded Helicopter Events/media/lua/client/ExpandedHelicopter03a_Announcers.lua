@@ -1,3 +1,5 @@
+eHelicopter_announcers = eHelicopter_announcers or {}
+
 -- eHelicopter_announcers["name of announcer"] = {
 -- ["Lines"] = {
 -- ["lineID1"] = {0, "variation1"},
