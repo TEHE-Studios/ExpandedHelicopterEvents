@@ -1,37 +1,16 @@
 if getDebug() then
 
 	Events.OnCustomUIKey.Add(function(key)
-		if key == Keyboard.KEY_1 then
-			DEBUG_TESTS.testAllLines()
-
-		elseif key == Keyboard.KEY_2 then
-			DEBUG_TESTS.raiseTheDead()
-
-		elseif key == Keyboard.KEY_3 then
-			DEBUG_TESTS.eHeliEventsOnSchedule()
-
-		elseif key == Keyboard.KEY_4 then
-			--DEBUG_TESTS.CheckWeather()
-			--DEBUG_TESTS.shakeTrees()
-			DEBUG_TESTS.launch_testHeli()
-
-		elseif key == Keyboard.KEY_5 then
-			DEBUG_TESTS.launch_aid_chopper()
-
-		elseif key == Keyboard.KEY_6 then
-			DEBUG_TESTS.launch_news_chopper()
-
-		elseif key == Keyboard.KEY_7 then
-			DEBUG_TESTS.launch_increasingly_hostile()
-
-		elseif key == Keyboard.KEY_8 then
-			DEBUG_TESTS.launch_attack_only_undead()
-
-		elseif key == Keyboard.KEY_9 then
-			DEBUG_TESTS.launch_police_heli()
-
-		elseif key == Keyboard.KEY_0 then
-			DEBUG_TESTS.launchBaseHeli()
+		if key == Keyboard.KEY_1 then DEBUG_TESTS.testAllLines()
+		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
+		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.eHeliEventsOnSchedule()
+		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_testHeli()
+		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launch_aid_chopper()
+		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launch_news_chopper()
+		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launch_increasingly_hostile()
+		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launch_attack_only_undead()
+		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launch_police_heli()
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchBaseHeli()
 		end
 	end)
 
