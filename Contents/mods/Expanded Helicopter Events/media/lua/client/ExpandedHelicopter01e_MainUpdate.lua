@@ -21,7 +21,7 @@ function eHelicopter:update()
 	if distanceToTrueTarget and (distanceToTrueTarget <= (self.attackDistance*4)) then
 		--if trueTarget is outside then sync targets
 		if self.trueTarget:isOutside() then
-			if (distanceToTrueTarget < self.attackDistance) then
+			if (distanceToTrueTarget <= self.attackDistance*2) then
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
 					self:playEventSound("foundTarget")
