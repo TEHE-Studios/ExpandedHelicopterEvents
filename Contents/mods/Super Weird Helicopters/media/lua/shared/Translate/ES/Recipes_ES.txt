@@ -1,3 +1,0 @@
-Recipe_ES = {
-Recipe_Open_Supplies = "Abrir suministros",
-}

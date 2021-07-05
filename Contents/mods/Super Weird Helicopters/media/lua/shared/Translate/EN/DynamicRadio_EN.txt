@@ -1,3 +1,0 @@
-DynamicRadio_EN = {
-	AEBS_SupplyDrop = "Supply package inbound."
-}
