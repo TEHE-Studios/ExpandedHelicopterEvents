@@ -100,7 +100,6 @@ function getIsoRange(center, range, fractalOffset)
 		fractalOffset = (fractalOffset*2)+1
 	end
 
-	local centerCell = center:getCell()
 	--true center
 	local centerX, centerY = center:getX(), center:getY()
 	--add center to squares at the start
@@ -138,7 +137,7 @@ function getIsoRange(center, range, fractalOffset)
 			end
 
 			---@type IsoGridSquare square
-			local square = centerCell:getOrCreateGridSquare(currentX, currentY, 0)
+			local square = getCell():getOrCreateGridSquare(currentX, currentY, 0)
 			--[DEBUG]] getWorldMarkers():addGridSquareMarker(square, 0.8, fractalOffset-1, 0, false, 0.5)
 			table.insert(squares, square)
 		end
