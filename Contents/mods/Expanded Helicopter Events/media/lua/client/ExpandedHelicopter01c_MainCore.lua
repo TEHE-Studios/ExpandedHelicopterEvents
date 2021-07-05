@@ -452,6 +452,7 @@ function eHelicopter:launch(targetedPlayer)
 		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")
 		self.crashing = true
 	end
+	--[DEBUG]] --[[TOGGLE THIS FOR FORCE CRASH TESTS]] self.crashing = true
 	print(" ------ \n")
 end
 
