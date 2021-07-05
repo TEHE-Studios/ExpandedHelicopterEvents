@@ -12,6 +12,32 @@ eHelicopter_announcers["name of announcer"] = {
 
 ]]
 
+eHelicopter_announcers["Spiffo"] = {
+	["LeaveOutOfRandomSelection"] = true,
+	["Lines"] = {
+		["Spiffo1"] = {7500, "Spiffo1"},
+		["Spiffo2"] = {5500, "Spiffo2"},
+		["Spiffo3"] = {4750, "Spiffo3"},
+		["Spiffo4"] = {3300, "Spiffo4"},
+		["Spiffo5"] = {3500, "Spiffo5"},
+		["Spiffo6"] = {3700, "Spiffo6"},
+		["Spiffo7"] = {3500, "Spiffo7"},
+		["Spiffo8"] = {3000, "Spiffo8"},
+		["Spiffo9"] = {3500, "Spiffo9"},
+		["Spiffo10"] = {5500, "Spiffo10"},
+		["Spiffo11"] = {3500, "Spiffo11"},
+		["Spiffo12"] = {4500, "Spiffo12"},
+		["Spiffo13"] = {3700, "Spiffo13"},
+		["Spiffo14"] = {3700, "Spiffo14"},
+		["Spiffo15"] = {12500, "Spiffo15"},
+		["Spiffo16"] = {4000, "Spiffo16"},
+		["Spiffo17"] = {4500, "Spiffo17"},
+		["Spiffo18"] = {14500, "Spiffo18"},
+		["Spiffo19"] = {4400, "Spiffo19"},
+		["Spiffo20"] = {4500, "Spiffo20"},
+		["Spiffo21"] = {4000, "Spiffo21"},
+		["Spiffo22"] = {4000, "Spiffo22"},
+	} }
 
 eHelicopter_announcers["IRS"] = {
 	["LeaveOutOfRandomSelection"] = true,
