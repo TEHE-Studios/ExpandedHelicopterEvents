@@ -442,11 +442,11 @@ function eHelicopter:launch(targetedPlayer)
 	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
 	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
-	print(" -- crashChance:"..crashChance)
-	--[[DEBUG]] print(" --- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
-	--[[DEBUG]] print(" --- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
-	--[[DEBUG]] print(" --- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-	--[[DEBUG]] print(" --- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
+	print(" --- crashChance:"..crashChance)
+	--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
+	--[[DEBUG]] print(" ---- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
+	--[[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
+	--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")
