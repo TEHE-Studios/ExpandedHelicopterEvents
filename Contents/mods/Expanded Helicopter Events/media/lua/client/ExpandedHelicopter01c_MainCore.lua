@@ -302,20 +302,63 @@ function eHelicopter:move(re_aim, dampen)
 end
 
 
+---@param character IsoGameCharacter
+function eHelicopter:findAlternativeTarget(character)
+	local newTargets = {}
+	local fractalCenters = getIsoRange(character, 1, 150)
+
+	for k,square in pairs(fractalCenters) do
+		---@type IsoCell
+		local cellOfFC = square:getCell()
+		if cellOfFC then
+			--[DEBUG]] print(" ----- cell found for isoSquare diff: <"..k.."> x:"..math.floor(character:getX()-square:getX())..", y:"..math.floor(character:getY()-square:getY()))
+
+			local buildings = cellOfFC:getBuildingList()
+			--print(" ------ buildings:size: "..buildings:size())
+			for i=0, buildings:size()-1 do
+				---@type IsoBuilding
+				local isoBuilding = buildings:get(i)
+				print(" ------- building?")
+				if isoBuilding then
+					print(" -------- building")
+					local squareFromBuilding = isoBuilding:getFreeTile()
+					print(" ------- square?")
+					if squareFromBuilding then
+						print(" -------- square")
+						table.insert(newTargets,squareFromBuilding)
+					end
+				end
+			end
+
+			if #newTargets <= 0 then
+				local zombies = cellOfFC:getZombieList()
+				table.insert(newTargets,zombies:get(ZombRand(zombies:size())))
+			end
+
+		end
+	end
+
+	if (#newTargets > 0) then
+		local newTarget = newTargets[ZombRand(#newTargets)+1]
+		return newTarget
+	end
+
+	return false
+end
+
+
 ---@param range number
 function eHelicopter:findTarget(range)
 	--the -1 is to offset playerIDs starting at 0
 	local weightPlayersList = {}
-	local maxWeight = 10
-	local playersFound = 0
-	local blankWeights = 0
+	local maxWeight = 15
 
 	for character,value in pairs(EHEIsoPlayers) do
 		---@type IsoPlayer | IsoGameCharacter p
 		local p = character
 		--[DEBUG]] print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
 		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
-			playersFound = playersFound+1
+
 			local iterations = 7
 			local zone = p:getCurrentZone()
 			if zone then
@@ -342,22 +385,21 @@ function eHelicopter:findTarget(range)
 					iterations = iterations-1
 					table.insert(weightPlayersList, p)
 				else
-					blankWeights = blankWeights+1
+					local altTarget = self:findAlternativeTarget(p)
+					table.insert(weightPlayersList, altTarget)
+
+					--[[DEBUG]] if type(altTarget) == "boolean" then print(" ----- alt-target: blank")
+					elseif instanceof(altTarget, "IsoPlayer") then print(" ----- alt-target: "..altTarget:getFullName())
+					elseif instanceof(altTarget, "IsoZombie") then print(" ----- alt-target: Zombie")
+					else print(" ----- alt-target: "..tostring(altTarget)..": "..altTarget:getX()..", "..altTarget:getY())
+					end --]]
+
 				end
 			end
-
 		end
 	end
 
 	print(" -- HELI "..self.ID..": seeking target from pool of "..#weightPlayersList)
-
-	--load blanks if there is only 1 potential player target
-	if playersFound == 1 then
-		print(" --- adding blanks to pool")
-		for _=1, blankWeights do
-			table.insert(weightPlayersList, false)
-		end
-	end
 
 	local target
 
@@ -373,29 +415,33 @@ function eHelicopter:findTarget(range)
 end
 
 
----@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:launch(targetedPlayer)
+---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
+function eHelicopter:launch(targetedObject)
 
 	print(" - EHE: HELI:"..self.ID.." launched.")
 
-	if not targetedPlayer then
-		targetedPlayer = self:findTarget()
+	if not targetedObject then
+		targetedObject = self:findTarget()
 	end
 
-	if targetedPlayer then
-		print(" - target set: "..targetedPlayer:getFullName())
+	if targetedObject then
+		if instanceof(targetedObject, "IsoGameCharacter") then
+			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getFullName())
+		else
+			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
+		end
 	else
-		print(" -- ERR: no targetedPlayer set")
+		print(" -- EHE: launch: ERR: no target set")
 		self:unlaunch()
 		return
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-	local tpX = targetedPlayer:getX()+ZombRand(-10,11)
-	local tpY = targetedPlayer:getY()+ZombRand(-10,11)
+	local tpX = targetedObject:getX()+ZombRand(-10,11)
+	local tpY = targetedObject:getY()+ZombRand(-10,11)
 	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
 	--maintain trueTarget
-	self.trueTarget = targetedPlayer
+	self.trueTarget = targetedObject
 	--setTargetPos is a vector format of self.target
 	self:setTargetPos()
 
