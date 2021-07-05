@@ -14,7 +14,7 @@ eHelicopter_PRESETS["id_name"] = {
 
 eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1}
-}
+	}
 
 
 eHelicopter_PRESETS["increasingly_hostile"] = {
@@ -25,8 +25,8 @@ eHelicopter_PRESETS["increasingly_hostile"] = {
 		["attack_only_undead_evac"] = 0.1,
 		["attack_only_undead"] = 0.2,
 		["attack_only_all"] = 0.65,
+		}
 	}
-}
 
 
 eHelicopter_PRESETS["increasingly_helpful"] = {
@@ -37,13 +37,13 @@ eHelicopter_PRESETS["increasingly_helpful"] = {
 		["attack_only_undead_evac"] = 0.1,
 		["aid_helicopter"] = 0.2,
 		["attack_only_all"] = 0.65,
+		}
 	}
-}
 
 
 eHelicopter_PRESETS["civilian"] = {
 	presetRandomSelection = {"news_chopper",1,"police_heli",3}
-}
+	}
 
 
 eHelicopter_PRESETS["jet"] = {
@@ -55,7 +55,7 @@ eHelicopter_PRESETS["jet"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
 	crashType = false,
 	shadow = false,
-}
+	}
 
 
 eHelicopter_PRESETS["news_chopper"] = {
@@ -65,13 +65,13 @@ eHelicopter_PRESETS["news_chopper"] = {
 	speed = 0.06,
 	cutOffFactor = 0.5,
 	crashType = {"Bell206LBMWCrashed"}
-}
+	}
 
 
 eHelicopter_PRESETS["patrol_only"] = {
 	announcerVoice = true,
 	crew = {"AirCrew", "AirCrew", 75, "AirCrew", 50},
-}
+	}
 
 
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
@@ -79,27 +79,27 @@ eHelicopter_PRESETS["patrol_only_emergency"] = {
 	announcerVoice = true,
 	dropItems = {["EmergencyFlyer"]=250},
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
-}
+	}
 
 
 eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	announcerVoice = true,
 	dropItems = {["QuarantineFlyer"]=250},
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
-}
+	}
 
 
 eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	hostilePreference = "IsoZombie",
 	dropItems = {["EvacuationFlyer"]=250},
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
-}
+	}
 
 
 eHelicopter_PRESETS["attack_only_undead"] = {
 	hostilePreference = "IsoZombie",
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
-}
+	}
 
 
 eHelicopter_PRESETS["attack_only_all"] = {
@@ -107,7 +107,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	crashType = {"UH1Hsurvivalistcrash"},
 	crew = {"1SurvivalistPilot", "1Survivalist", 75, "1Survivalist", 50},
 	cutOffFactor = 1.5,
-}
+	}
 
 
 eHelicopter_PRESETS["police_heli"] = {
@@ -124,9 +124,9 @@ eHelicopter_PRESETS["police_heli"] = {
 		["attackSingle"] = "eHeli_bolt_action_fire_single",
 		["attackLooped"] = "eHeli_bolt_action_fire_single",
 		["additionalFlightSound"] = "eHeliPoliceSiren",
-	},
+		},
 	hoverOnTargetDuration = {750,1150},
-}
+	}
 
 
 eHelicopter_PRESETS["aid_helicopter"] = {
