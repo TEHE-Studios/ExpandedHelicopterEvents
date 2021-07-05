@@ -10,7 +10,7 @@ module Base {
 
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/policehelicopteracknowledgement.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 1500, volume = 2.0, } }
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
