@@ -60,9 +60,3 @@ eHelicopter_announcers["Jade Male C"] = {
 		["RepeatedAttemptsAtBreaching"] = {7250, "eHeli_Jade_3c"},
 	} }
 
-eHelicopter_announcers["Jade Airdrop"] = {
-	["LeaveOutOfRandomSelection"] = true,
-	["Lines"] = {
-		["AttentionSurvivors"] = {8500, "eHeli_AirDrop_1a"},
-		["StandbyForDrop"] = {9500, "eHeli_AirDrop_1b"},
-	} }

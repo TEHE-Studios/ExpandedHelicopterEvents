@@ -136,5 +136,8 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	dropItems = {["NoticeFlyer"]=250},
 	cutOffFactor = 0.43,
 	speed = 0.06,
-	announcerVoice = "Jade Airdrop",
-}
+	eventSoundEffects = {
+		["foundTarget"] = "eHeli_AidDrop_1a",
+		["droppingPackage"] = "eHeli_AidDrop_1b",
+		},
+	}
