@@ -2,7 +2,7 @@ module Base {
 
     sound assBlastUSA {
         category = EHE: Weird, loop = true, is3D = true,
-        clip { file = media/sound/heli_loop.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/assblastusa.ogg, distanceMax = 1500, volume = 2.0, } }
 
 
     sound IRS1 {
