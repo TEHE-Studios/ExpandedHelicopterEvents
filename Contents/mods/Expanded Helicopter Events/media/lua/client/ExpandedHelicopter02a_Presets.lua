@@ -123,7 +123,7 @@ eHelicopter_PRESETS["police_heli"] = {
 	eventSoundEffects = {
 		["attackSingle"] = "eHeli_bolt_action_fire_single",
 		["attackLooped"] = "eHeli_bolt_action_fire_single",
-		["flightSound"] = "eHeliPoliceSiren",
+		["additionalFlightSound"] = "eHeliPoliceSiren",
 	},
 	hoverOnTargetDuration = {750,1150},
 }
