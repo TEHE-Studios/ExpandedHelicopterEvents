@@ -155,6 +155,15 @@ function eHelicopter:update()
 		self.shadow:setSize(shadowSize)
 	end
 
+	--Wake up (Wake up) / Grab a brush and put a little make-up
+	for character,value in pairs(EHEIsoPlayers) do
+		---@type IsoGameCharacter p
+		local p = character
+		if self:getDistanceToIsoObject(p) < (self.flightVolume*3) then
+			p:forceAwake()
+		end
+	end
+
 	local volumeFactor = 1
 	if currentSquare then
 		local zoneType = currentSquare:getZoneType()
