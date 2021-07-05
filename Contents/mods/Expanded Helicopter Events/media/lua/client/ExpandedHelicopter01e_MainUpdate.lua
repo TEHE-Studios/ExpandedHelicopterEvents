@@ -1,7 +1,14 @@
 function eHelicopter:update()
 
 	if (not self.target) or (not self.trueTarget) then
-		print(" - EHE: ERR: HELI: "..self.ID.." no target/trueTarget in update()")
+
+		if (not self.target) then
+			print(" - EHE: ERR: HELI: "..self.ID.." no target in update()")
+		end
+		if (not self.trueTarget) then
+			print(" - EHE: ERR: HELI: "..self.ID.." no trueTarget in update()")
+		end
+
 		self:unlaunch()
 		return
 	end
@@ -14,11 +21,13 @@ function eHelicopter:update()
 	if distanceToTrueTarget and (distanceToTrueTarget <= (self.attackDistance*4)) then
 		--if trueTarget is outside then sync targets
 		if self.trueTarget:isOutside() then
-			if distanceToTrueTarget > self.attackDistance then
-				self.target = self.trueTarget
-				self:playEventSound("foundTarget")
+			if (distanceToTrueTarget < self.attackDistance) then
+				if (self.target ~= self.trueTarget) then
+					self.target = self.trueTarget
+					self:playEventSound("foundTarget")
+				end
+				self.timeSinceLastSeenTarget = timeStampMS
 			end
-			self.timeSinceLastSeenTarget = timeStampMS
 		else
 			--prevent constantly changing targets during roaming
 			if (self.timeSinceLastRoamed < timeStampMS) then
@@ -41,7 +50,7 @@ function eHelicopter:update()
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
 				--set target to square from calculated offset
-				self.target = getSquare(tx,ty,0)
+				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
 			end
 		end
 
@@ -54,7 +63,11 @@ function eHelicopter:update()
 	end
 
 	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration then
-		self:findTarget(self.attackDistance*4)
+		local newTarget = self:findTarget(self.attackDistance*4)
+		if newTarget then
+			self.trueTarget = newTarget
+			self:setTargetPos()
+		end
 	end
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
