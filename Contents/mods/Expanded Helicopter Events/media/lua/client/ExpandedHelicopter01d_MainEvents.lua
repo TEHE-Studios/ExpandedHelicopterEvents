@@ -5,7 +5,7 @@ function eHelicopter:crash()
 		---@type IsoGridSquare
 
 		local heliX, heliY, _ = self:getXYZAsInt()
-		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
+		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0),true)
 
 		if currentSquare and currentSquare:isSolidTrans() then
 			--[DEBUG]] print("--- EHE: currentSquare is solid-trans")
@@ -179,7 +179,7 @@ function eHelicopter:dropCarePackage(fuzz)
 		heliX = heliX+ZombRand(0-range,range)
 		heliY = heliY+ZombRand(0-range,range)
 	end
-	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0))
+	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
 	if currentSquare and currentSquare:isSolidTrans() then
 		currentSquare = nil
