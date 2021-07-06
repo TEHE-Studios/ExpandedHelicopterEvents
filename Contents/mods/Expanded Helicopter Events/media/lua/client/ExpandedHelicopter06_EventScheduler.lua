@@ -151,7 +151,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 				dayOffset = {1,2}
 
 			elseif freq == 6 then
-				dayOffset = {0,0}
+				dayOffset = {-1,0}
 
 			end
 
