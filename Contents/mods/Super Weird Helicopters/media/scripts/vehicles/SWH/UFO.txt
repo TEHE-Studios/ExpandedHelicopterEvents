@@ -2,7 +2,7 @@ module Base
 {
 	model Vehicle_UFO
 	{
-		mesh = vehicles/Vehicle_UFO,
+		mesh = vehicles/SWH/Vehicle_UFO,
 		shader = vehicle_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
