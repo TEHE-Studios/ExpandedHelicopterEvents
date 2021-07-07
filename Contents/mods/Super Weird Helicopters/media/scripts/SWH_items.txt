@@ -11,6 +11,6 @@ module EHE
 		Type = Normal,
 		DisplayName = IRS 1040 Form,
 		Icon = Flyer,
-		Map = media/ui/content/1040form.png,
+		Map = media/ui/contents/1040form.png,
 	}
 }
