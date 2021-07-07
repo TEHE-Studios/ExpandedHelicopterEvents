@@ -1,0 +1,21 @@
+module Base
+{
+    item Shoes_AlienBoots
+	{
+	Type = Clothing,
+	DisplayName = Alien Boots,
+	ClothingItem = Shoes_AlienBoots,
+	BodyLocation = Shoes,
+	BloodLocation = Shoes,
+	Icon = AlienBoots,
+	StompPower = 2.7,
+	Weight = 2,
+    RunSpeedModifier = 0.9,
+    RemoveOnBroken = false,
+    ScratchDefense = 40,
+    BiteDefense = 10,
+    Insulation = 0.9,
+    WindResistance = 0.65,
+    WaterResistance = 0.65,
+	}
+}
