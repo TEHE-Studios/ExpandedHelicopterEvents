@@ -2,7 +2,7 @@ module Base
 {
 	model Vehicle_SpiffoBurger
 	{
-		mesh = vehicles/Vehicle_SpiffoBurger,
+		mesh = vehicles/SWH/Vehicle_SpiffoBurger,
 		shader = vehicle_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
