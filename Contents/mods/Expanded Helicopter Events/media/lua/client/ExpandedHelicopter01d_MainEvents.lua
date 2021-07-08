@@ -147,23 +147,24 @@ end
 ---Heli drop item
 function eHelicopter:dropItem(type, fuzz)
 	fuzz = fuzz or 0
-	if self.dropItems then
+	if not self.dropItems then
+		return
+	end
 
-		local heliX, heliY, _ = self:getXYZAsInt()
-		if heliX and heliY then
-			local range = 3+fuzz
-			heliX = heliX+ZombRand(0-range,range)
-			heliY = heliY+ZombRand(0-range,range)
-		end
-		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
+	local heliX, heliY, _ = self:getXYZAsInt()
+	if heliX and heliY then
+		local range = 3+fuzz
+		heliX = heliX+ZombRand(0-range,range)
+		heliY = heliY+ZombRand(0-range,range)
+	end
+	local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
 
-		if currentSquare and currentSquare:isSolidTrans() then
-			currentSquare = nil
-		end
+	if currentSquare and currentSquare:isSolidTrans() then
+		currentSquare = nil
+	end
 
-		if currentSquare then
-			local _ = currentSquare:AddWorldInventoryItem("EHE."..type, 0, 0, 0)
-		end
+	if currentSquare then
+		local _ = currentSquare:AddWorldInventoryItem("EHE."..type, 0, 0, 0)
 	end
 end
 
@@ -171,6 +172,11 @@ end
 ---Heli drop carePackage
 function eHelicopter:dropCarePackage(fuzz)
 	fuzz = fuzz or 0
+
+	if not self.dropPackages then
+		return
+	end
+
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
 
 	local heliX, heliY, _ = self:getXYZAsInt()
@@ -197,4 +203,52 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 end
 
+
+---Heli drop scrap
+function eHelicopter:dropScrap(fuzz)
+	fuzz = fuzz or 0
+
+	local partsSpawned = {}
+
+	for partClass,partType in pairs(self.scrapAndParts) do
+
+		local heliX, heliY, _ = self:getXYZAsInt()
+		if heliX and heliY then
+			local range = 3+fuzz
+			heliX = heliX+ZombRand(0-range,range)
+			heliY = heliY+ZombRand(0-range,range)
+		end
+		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
+
+		if currentSquare and currentSquare:isSolidTrans() then
+			currentSquare = nil
+		end
+
+		if currentSquare then
+
+			if partClass == "vehicleSection" then
+				---@type BaseVehicle vehicleSection
+				local vehicleSection = addVehicleDebug(partType, IsoDirections.getRandom(), nil, currentSquare)
+				if vehicleSection then
+					table.insert(partsSpawned, vehicleSection)
+				end
+			end
+
+			if partClass == "scrapItem" then
+				local scrapItem = currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
+				if scrapItem then
+					table.insert(partsSpawned, scrapItem)
+				end
+			end
+
+		end
+	end
+
+	if #partsSpawned > 0 then
+		self.scrapAndParts = false
+		return partsSpawned
+	else
+		return false
+	end
+end
 

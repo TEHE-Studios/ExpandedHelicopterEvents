@@ -13,6 +13,9 @@ eHelicopter.shadow = true
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HCrash"}
 
+---@field scrapAndParts table
+eHelicopter.scrapAndParts = {} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
+
 ---@field crew table list of IDs and chances (similar to how loot distribution is handled)
 ---Example: crew = {"pilot", 100, "crew", 75, "crew", 50}
 ---If there is no number following a string a chance of 100% will be applied.
