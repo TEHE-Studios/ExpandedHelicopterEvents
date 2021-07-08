@@ -1,0 +1,16 @@
+module EHE
+{
+	imports
+	{
+		Base
+	}
+
+        item TenFortyForm
+	{
+		Weight = 0.1,
+		Type = Normal,
+		DisplayName = IRS 1040 Form,
+		Icon = Flyer,
+		Map = media/ui/contents/1040form.png,
+	}
+}

@@ -1,0 +1,17 @@
+module Base
+{
+        item AlienSuit
+    {
+        Type = Clothing,
+        DisplayName = Alien Suit,
+        ClothingItem = Suit_AlienSuit,
+        BodyLocation = FullSuit,
+        Icon = NBCSuit,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 30,
+        Insulation = 0.90,
+        WindResistance = 0.90,
+    }
+
+}

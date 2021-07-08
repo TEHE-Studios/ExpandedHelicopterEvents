@@ -1,13 +1,13 @@
 module Base
 {
-	model Vehicle_UFO
+	model Vehicle_Bell206Fuselage
 	{
-		mesh = vehicles/SWH/Vehicle_UFO,
-		shader = vehicle_multiuv,
+		mesh = vehicles/Vehicle_Bell206Fuselage,
+		shader = vehicle_norandom_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle UFO
+	vehicle Bell206IRSFuselage
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -16,23 +16,23 @@ module Base
 
 		model
 		{
-			file = Vehicle_UFO,
-			scale = 0.6600,
-			offset = 0.0000 -0.0152 0.0000,
+			file = Vehicle_Bell206Fuselage,
+			scale = 3.1100,
+			offset = -0.0836 0.0064 0.3633,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/SWH/Vehicle_UFO,
+			texture = Vehicles/SWH/Vehicle_Bell206IRSCrashed,
 		}
 
-		textureMask = Vehicle_UFO_mask,
-		extents = 8.1818 2.0303 8.0909,
+		textureMask = Vehicle_Bell206Police_mask,
+		extents = 0.7524 2.0257 2.2122,
 		mass = 200,
-		physicsChassisShape = 8.0606 2.0303 8.1818,
-		centerOfMassOffset = 0.0000 0.9848 0.1061,
+		physicsChassisShape = 0.7524 0.9646 2.2186,
+		centerOfMassOffset = 0.0000 0.5016 0.0032,
 		engineForce = 3600,
 		engineQuality = 60,
 		engineLoudness = 55,
@@ -57,13 +57,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.3636 0.4394 0.9545,
+				offset = 0.1608 0.3859 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 1.3030 0.0000 1.0455,
+				offset = 0.7235 0.0000 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
 			}
@@ -73,13 +73,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.3636 0.4394 0.9545,
+				offset = -0.1608 0.3859 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -1.3030 0.0000 1.0455,
+				offset = -0.7235 0.0000 0.1029,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
@@ -89,13 +89,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.3636 0.4394 -0.2576,
+				offset = 0.1608 0.3859 -0.3215,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 1.2879 0.0000 -0.2727,
+				offset = 0.7235 0.0000 -0.2572,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearLeft,
 			}
@@ -105,13 +105,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.3636 0.4394 -0.2576,
+				offset = -0.1608 0.3859 -0.3215,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -1.2879 0.0000 -0.2727,
+				offset = -0.7235 0.0000 -0.2572,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatRearRight,
 			}
@@ -119,22 +119,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 1.0606 2.3485 0.8182 0.8182,
+			xywh = 0.6174 0.3923 0.4823 0.4823,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0606 2.3485 0.8182 0.8182,
+			xywh = -0.6174 0.3923 0.4823 0.4823,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 1.0606 1.5152 0.8182 0.8182,
+			xywh = 0.6174 -0.0900 0.4823 0.4823,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -1.0606 1.5152 0.8182 0.8182,
+			xywh = -0.6174 -0.0900 0.4823 0.4823,
 		}
 
 		template = Seat/part/SeatFrontLeft,
