@@ -17,6 +17,8 @@ function eHelicopter:crash()
 			---@type BaseVehicle
 			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
+				heli:crash(1000,true)
+				heli:crash(1000,false)
 				--drop package on crash
 				if self.dropPackages then
 					self:dropCarePackage(2)
