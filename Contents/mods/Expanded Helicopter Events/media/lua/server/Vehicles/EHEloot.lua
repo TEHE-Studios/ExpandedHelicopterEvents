@@ -294,8 +294,8 @@ VehicleDistributions.FEMASupplyDrop = {
 distributionTable["UH1HCrash"] = { Normal = VehicleDistributions.UH1H; }
 distributionTable["UH1Hsurvivalistcrash"] = { Normal = VehicleDistributions.UH1HSurvivalist; }
 distributionTable["UH1Hmedevaccrash"] = { Normal = VehicleDistributions.UH1HMedevac; }
-distributionTable["Bell206PoliceCrashed"] = { Normal = VehicleDistributions.Bell206Police; }
-distributionTable["Bell206LBMWCrashed"] = { Normal = VehicleDistributions.Bell206News; }
+distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
+distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
 
 -- FEMA Supply Drop
 
