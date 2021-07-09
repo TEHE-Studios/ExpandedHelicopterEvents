@@ -332,9 +332,11 @@ function eHelicopter:findAlternativeTarget(character)
 
 			if #newTargets <= 0 then
 				local zombies = cellOfFC:getZombieList()
-				local zombiesSize = zombies:size()
-				if zombies and zombiesSize then
-					table.insert(newTargets,zombies:get(ZombRand(zombiesSize)))
+				if zombies then
+					local zombiesSize = zombies:size()
+					if zombiesSize then
+						table.insert(newTargets,zombies:get(ZombRand(zombiesSize)))
+					end
 				end
 			end
 
