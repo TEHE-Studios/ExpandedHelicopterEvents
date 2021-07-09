@@ -19,6 +19,12 @@ function eHelicopter:crash()
 			if heli then
 				heli:crash(1000,true)
 				heli:crash(1000,false)
+
+				--drop scrap and parts
+				if self.scrapAndParts then
+					self:dropScrap(6)
+				end
+
 				--drop package on crash
 				if self.dropPackages then
 					self:dropCarePackage(2)

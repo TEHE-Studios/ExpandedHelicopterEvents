@@ -64,7 +64,8 @@ eHelicopter_PRESETS["news_chopper"] = {
 	frequencyFactor = 2,
 	speed = 0.06,
 	cutOffFactor = 0.5,
-	crashType = {"Bell206LBMWCrashed"}
+	crashType = {"Bell206LBMWFuselage"},
+	scrapAndParts = {["vehicleSection"]="Base.Bell206LBMWTail"},
 	}
 
 
