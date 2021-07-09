@@ -29,10 +29,10 @@ module Base
 		}
 
 		textureMask = Vehicle_Bell206Police_mask,
-		extents = 0.7524 2.0257 2.2122,
+		extents = 0.7524 2.0257 1.8071,
 		mass = 200,
-		physicsChassisShape = 0.7524 0.9646 2.2186,
-		centerOfMassOffset = 0.0000 0.5016 0.0032,
+		physicsChassisShape = 0.7524 0.9646 1.8071,
+		centerOfMassOffset = 0.0000 0.5016 0.1608,
 		engineForce = 3600,
 		engineQuality = 60,
 		engineLoudness = 55,
