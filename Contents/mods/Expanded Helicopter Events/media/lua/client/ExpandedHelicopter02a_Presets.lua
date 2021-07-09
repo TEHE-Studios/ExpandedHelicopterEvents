@@ -118,7 +118,7 @@ eHelicopter_PRESETS["police_heli"] = {
 	speed = 0.06,
 	attackHitChance = 100,
 	attackDamage = 35,
-	crashType = {"Bell206PoliceCrashed"},
+	crashType = {"Bell206PoliceFuselage"},
 	crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
@@ -127,6 +127,7 @@ eHelicopter_PRESETS["police_heli"] = {
 		["additionalFlightSound"] = "eHeliPoliceSiren",
 		},
 	hoverOnTargetDuration = {750,1150},
+	scrapAndParts = {["vehicleSection"]="Base.Bell206PoliceTail"},
 	}
 
 
