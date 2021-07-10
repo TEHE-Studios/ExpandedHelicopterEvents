@@ -40,7 +40,7 @@ end
 ---Initialize Position
 ---@param targetedPlayer IsoMovingObject | IsoPlayer | IsoGameCharacter
 ---@param randomEdge boolean true = uses random edge, false = prefers closer edge
-function eHelicopter:initPos(targetedPlayer, randomEdge)
+function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 
 	setDynamicGlobalXY()
 
@@ -51,8 +51,8 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 	--assign a random spawn point for the helicopter within a radius from the player
 	--these values are being clamped to not go passed MIN_XY/MAX edges
 	local offset = 500
-	local initX = ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset))
-	local initY = ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset))
+	initX = initX or ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset))
+	initY = initY or ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset))
 
 	if not self.currentPosition then
 		self.currentPosition = Vector3.new()
@@ -417,6 +417,51 @@ function eHelicopter:findTarget(range)
 	end
 
 	return target
+end
+
+
+function eHelicopter:formationInit()
+
+	if not self.formationIDs then
+		return
+	end
+
+	local formationSize = 0
+	--parse formationIDs for formation info, strings are IDs, following numbers are assumed values -- use false for skipped values
+	for key,value in pairs(self.formationIDs) do
+
+		if (type(value) == "string") then
+
+			--The chance this extra heli is spawned
+			local chance = self.crew[key+1]
+			--If the next entry in the list is a number consider it to be a chance, otherwise use 100%
+			if type(chance) ~= "number" then
+				chance = 100
+			end
+
+			local xyPosOffset = self.crew[key+2]
+			--If the next entry in the list is a number consider it to be a chance, otherwise use 50%
+			if type(xyPosOffset) ~= "table" then
+				--fills in offsets is none are present
+				--this means you can define only 1 of the offsets in a preset
+				--use false for skipped values
+				xyPosOffset[1] = xyPosOffset[1] or ZombRand(6,12)
+				xyPosOffset[2] = xyPosOffset[2] or ZombRand(6,12)
+			end
+
+			--if new heli is spawned
+			if (ZombRand(100) <= chance) then
+				--track formation's current size
+				formationSize = formationSize+1
+				--multiply offset by formation size
+				xyPosOffset = {xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize}
+
+				self:initPos(self.target, self.randomEdgeStart)
+
+			end
+
+		end
+	end
 end
 
 

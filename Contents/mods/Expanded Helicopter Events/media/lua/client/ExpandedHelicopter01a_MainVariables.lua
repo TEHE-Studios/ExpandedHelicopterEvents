@@ -21,6 +21,9 @@ eHelicopter.scrapAndParts = {} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]=
 ---If there is no number following a string a chance of 100% will be applied.
 eHelicopter.crew = {"AirCrew", 100}
 
+---@field formation table table of IDs to generate follower helis
+eHelicopter.formationIDs = {}
+
 ---@field dropItems table
 eHelicopter.dropItems = false
 
@@ -185,6 +188,8 @@ eHelicopter.lastScanTime = -1
 eHelicopter.shadowBobRate = 0.05
 ---@field timeSinceLastShadowBob number
 eHelicopter.timeSinceLastShadowBob = -1
+---@field formationFollowingHelis table table of actual flying helis
+eHelicopter.formationFollowingHelis = {}
 ---@field currentPresetID string
 eHelicopter.currentPresetID = "<none>"
 
