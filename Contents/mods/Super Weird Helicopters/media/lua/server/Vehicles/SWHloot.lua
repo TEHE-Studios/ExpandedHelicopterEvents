@@ -82,8 +82,8 @@ VehicleDistributions.SpiffoBurger = {
 
 --Distribution
 
-distributionTable["Bell206IRS"] = { Normal = VehicleDistributions.Bell206IRS; }
-distributionTable["Bell206Spiffo"] = { Normal = VehicleDistributions.Bell206Spiffo; }
+distributionTable["Bell206IRS"] = { Normal = VehicleDistributions.Bell206IRSFuselage; }
+distributionTable["Bell206Spiffo"] = { Normal = VehicleDistributions.Bell206SpiffoFuselage; }
 
 -- Spiffo Supply Drop
 
