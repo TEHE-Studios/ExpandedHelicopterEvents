@@ -185,6 +185,8 @@ eHelicopter.lastScanTime = -1
 eHelicopter.shadowBobRate = 0.05
 ---@field timeSinceLastShadowBob number
 eHelicopter.timeSinceLastShadowBob = -1
+---@field currentPresetID string
+eHelicopter.currentPresetID = "<none>"
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}
@@ -193,3 +195,15 @@ eHelicopter_variableBackUp(eHelicopter_temporaryVariables, eHelicopter_initialVa
 --ID must not be reset ever
 ---@field ID number
 eHelicopter.ID = 0
+
+
+---returns heli's ID and preset; optionally: returns location's x and y
+---@param location boolean return x and y coords with ID and preset
+function eHelicopter:heliToString(location)
+	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..")"
+	if location then
+		local h_x, h_y, _ = self:getXYZAsInt()
+		returnString = returnString.." (x:"..h_x..", y:"..h_y..")"
+	end
+	return returnString
+end

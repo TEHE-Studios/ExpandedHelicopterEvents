@@ -3,10 +3,10 @@ function eHelicopter:update()
 	if (not self.target) or (not self.trueTarget) then
 
 		if (not self.target) then
-			print(" - EHE: ERR: HELI: "..self.ID.." no target in update()")
+			print(" - EHE: ERR: "..self:heliToString().." no target in update()")
 		end
 		if (not self.trueTarget) then
-			print(" - EHE: ERR: HELI: "..self.ID.." no trueTarget in update()")
+			print(" - EHE: ERR: "..self:heliToString().." no trueTarget in update()")
 		end
 
 		self:unlaunch()

@@ -129,7 +129,7 @@ function eHelicopter:isInBounds()
 	if h_x <= eheBounds.MAX_X and h_x >= eheBounds.MIN_X and h_y <= eheBounds.MAX_Y and h_y >= eheBounds.MIN_Y then
 		return true
 	end
-	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self.ID..": "..h_x..", "..h_y)
+	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self:heliToString())
 	return false
 end
 
@@ -404,7 +404,7 @@ function eHelicopter:findTarget(range)
 		end
 	end
 
-	print(" -- HELI "..self.ID..": seeking target from pool of "..#weightPlayersList)
+	print(" -- HELI "..self:heliToString()..": seeking target from pool of "..#weightPlayersList)
 
 	local target
 
@@ -413,7 +413,7 @@ function eHelicopter:findTarget(range)
 	end
 
 	if not target then
-		print(" --- HELI "..self.ID..": unable to find target.")
+		print(" --- HELI "..self:heliToString()..": unable to find target.")
 	end
 
 	return target
@@ -423,7 +423,7 @@ end
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject)
 
-	print(" - EHE: HELI:"..self.ID.." launched.")
+	print(" - EHE: "..self:heliToString().." launched.")
 
 	if not targetedObject then
 		targetedObject = self:findTarget()
@@ -500,7 +500,7 @@ function eHelicopter:launch(targetedObject)
 	--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
-		--[DEBUG]] print ("  - HELI: "..self.ID.." : crashing set to true.")
+		--[DEBUG]] print ("  - "..self:heliToString().." : crashing set to true.")
 		self.crashing = true
 	end
 	--[DEBUG]] --[[TOGGLE THIS FOR FORCE CRASH TESTS]] self.crashing = true
@@ -519,7 +519,7 @@ end
 
 
 function eHelicopter:unlaunch()
-	print(" ---- HELI: "..self.ID.." UN-LAUNCH".." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")".." day:"..getGameTime():getNightsSurvived())
+	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived())
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter and self.lastAnnouncedLine then
 		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)

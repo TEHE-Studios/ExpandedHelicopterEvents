@@ -37,7 +37,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 end
 
 function eHelicopter:stopAllHeldEventSounds()
-	print(" - EHE: stopAllHeldEventSounds for HELI:"..self.ID)
+	print(" - EHE: stopAllHeldEventSounds for "..self:heliToString())
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		if soundEffect then
