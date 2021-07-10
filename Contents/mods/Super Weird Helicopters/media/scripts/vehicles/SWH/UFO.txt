@@ -17,8 +17,8 @@ module Base
 		model
 		{
 			file = Vehicle_UFO,
-			scale = 0.6600,
-			offset = 0.0000 -0.0152 0.0000,
+			scale = 0.7700,
+			offset = 0.0000 -0.0152 0.0909,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -31,33 +31,18 @@ module Base
 		textureMask = Vehicle_UFO_mask,
 		extents = 8.1818 2.0303 8.0909,
 		mass = 200,
-		physicsChassisShape = 8.0606 2.0303 8.1818,
+		physicsChassisShape = 8.4242 2.0303 8.4156,
 		centerOfMassOffset = 0.0000 0.9848 0.1061,
-		engineForce = 3600,
-		engineQuality = 60,
-		engineLoudness = 55,
-		maxSpeed = 70f,
-		brakingForce = 1,
-		stoppingMovementForce = 2.0f,
-		rollInfluence = 1.0f,
-		steeringIncrement = 0.03,
-		steeringClamp = 0.3,
-		suspensionStiffness = 40,
-		suspensionCompression = 2.83,
-		suspensionDamping = 2.88,
-		maxSuspensionTravelCm = 10,
-		suspensionRestLength = 0.2,
-		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
-		seats = 4,
-		template = PassengerSeat4,
+		seats = 2,
+		template = PassengerSeat2,
 
 		passenger FrontLeft
 		{
 			position inside
 			{
-				offset = 0.3636 0.4394 0.9545,
+				offset = 0.3636 0.4394 0.1667,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -73,7 +58,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.3636 0.4394 0.9545,
+				offset = -0.3636 0.4394 0.1667,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -85,62 +70,18 @@ module Base
 			}
 		}
 
-		passenger RearLeft
-		{
-			position inside
-			{
-				offset = 0.3636 0.4394 -0.2576,
-				rotate = 0.0000 0.0000 0.0000,
-			}
-
-			position outside
-			{
-				offset = 1.2879 0.0000 -0.2727,
-				rotate = 0.0000 0.0000 0.0000,
-				area = SeatRearLeft,
-			}
-		}
-
-		passenger RearRight
-		{
-			position inside
-			{
-				offset = -0.3636 0.4394 -0.2576,
-				rotate = 0.0000 0.0000 0.0000,
-			}
-
-			position outside
-			{
-				offset = -1.2879 0.0000 -0.2727,
-				rotate = 0.0000 0.0000 0.0000,
-				area = SeatRearRight,
-			}
-		}
-
 		area SeatFrontLeft
 		{
-			xywh = 1.0606 2.3485 0.8182 0.8182,
+			xywh = 4.5000 -0.0152 0.8182 4.2121,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0606 2.3485 0.8182 0.8182,
-		}
-
-		area SeatRearLeft
-		{
-			xywh = 1.0606 1.5152 0.8182 0.8182,
-		}
-
-		area SeatRearRight
-		{
-			xywh = -1.0606 1.5152 0.8182 0.8182,
+			xywh = -4.5000 -0.0152 0.8182 4.2121,
 		}
 
 		template = Seat/part/SeatFrontLeft,
 		template = Seat/part/SeatFrontRight,
-		template = Seat/part/SeatRearLeft,
-		template = Seat/part/SeatRearRight,
 
 		part Seat*
 		{
@@ -165,14 +106,25 @@ module Base
 			}
 		}
 
+		area TruckBed
+		{
+			xywh = 0.0000 -5.3182 5.9394 2.5455,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			container
+			{
+				capacity = 300,
+			}
+		}
+
 		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,
-		template = Window/part/WindowRearLeft,
-		template = Window/part/WindowRearRight,
 		template = Door/part/DoorFrontLeft,
 		template = Door/part/DoorFrontRight,
-		template = Door/part/DoorRearLeft,
-		template = Door/part/DoorRearRight,
 	}
 }
