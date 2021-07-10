@@ -158,7 +158,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			local randomizedOffset = (ZombRand(dayOffset[1],dayOffset[2])+1)*freqFactor
 			--as days get closer to the cutoff the time between new events gets longer
 			local lessFreqOverTime = ((7-freq)*math.min(1,(daysIntoApoc/cutOffDay)))
-
+			--add randomizedOffset and lessFreqOverTime to heliday
 			heliDay = heliDay+randomizedOffset+lessFreqOverTime
 			--trim non integer
 			heliDay = math.floor(heliDay+0.5)
