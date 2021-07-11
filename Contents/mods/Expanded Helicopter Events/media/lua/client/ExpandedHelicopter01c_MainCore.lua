@@ -129,7 +129,7 @@ function eHelicopter:isInBounds()
 	if h_x <= eheBounds.MAX_X and h_x >= eheBounds.MIN_X and h_y <= eheBounds.MAX_Y and h_y >= eheBounds.MIN_Y then
 		return true
 	end
-	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self:heliToString())
+	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self:heliToString(true))
 	return false
 end
 
@@ -481,7 +481,7 @@ function eHelicopter:launch(targetedObject)
 			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
 	else
-		print(" -- EHE: launch: ERR: no target set")
+		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set")
 		self:unlaunch()
 		return
 	end
@@ -496,7 +496,7 @@ function eHelicopter:launch(targetedObject)
 	self:setTargetPos()
 
 	if not self.target then
-		print(" -- ERR: no self.target set")
+		print(" -- ERR: "..self:heliToString().." no self.target set")
 		self:unlaunch()
 		return
 	end
