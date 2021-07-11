@@ -1,0 +1,3 @@
+DynamicRadio_CN = {
+	AEBS_SupplyDrop = "在途中供应包裹。"
+}
