@@ -42,7 +42,8 @@ eHelicopter_PRESETS["increasingly_helpful"] = {
 
 
 eHelicopter_PRESETS["civilian"] = {
-	presetRandomSelection = {"news_chopper",1,"police_heli",3}
+	presetRandomSelection = {"news_chopper",1,"police_heli",3},
+	cutOffFactor = 0.67,
 	}
 
 
@@ -63,7 +64,6 @@ eHelicopter_PRESETS["news_chopper"] = {
 	eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 	frequencyFactor = 2,
 	speed = 0.06,
-	cutOffFactor = 0.5,
 	crashType = {"Bell206LBMWFuselage"},
 	scrapAndParts = {["vehicleSection"]="Base.Bell206LBMWTail"},
 	crew = {"1CivilianPilot", "1NewsReporterArmored", "1NewsReporterArmored", 40},
@@ -108,13 +108,11 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	hostilePreference = "IsoGameCharacter",
 	crashType = {"UH1Hsurvivalistcrash"},
 	crew = {"1SurvivalistPilot", "1Survivalist", 75, "1Survivalist", 50},
-	cutOffFactor = 1.5,
 	}
 
 
 eHelicopter_PRESETS["police_heli"] = {
 	attackDelay = 1100,
-	cutOffFactor = 0.67,
 	attackSpread = 4,
 	speed = 0.06,
 	attackHitChance = 100,
@@ -137,7 +135,6 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["NoticeFlyer"]=250},
-	cutOffFactor = 0.43,
 	speed = 0.06,
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_AidDrop_2",
