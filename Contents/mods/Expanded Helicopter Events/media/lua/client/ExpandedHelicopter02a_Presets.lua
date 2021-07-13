@@ -67,6 +67,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 	crashType = {"Bell206LBMWFuselage"},
 	scrapAndParts = {["vehicleSection"]="Base.Bell206LBMWTail"},
 	crew = {"1CivilianPilot", "1NewsReporterArmored", "1NewsReporterArmored", 40},
+	--formationIDs = {"police_heli", 100, {6,12}},
 	}
 
 

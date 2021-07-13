@@ -4,6 +4,22 @@ function eHelicopter:crash()
 	if self.crashType then
 		---@type IsoGridSquare
 
+		if self.formationFollowingHelis then
+			local newLeader
+			for heli,offset in pairs(self.formationFollowingHelis) do
+				if heli then
+					newLeader = heli
+					break
+				end
+			end
+			if newLeader then
+				newLeader.state = self.state
+				self.formationFollowingHelis[newLeader] = nil
+				newLeader.formationFollowingHelis = self.formationFollowingHelis
+				self.formationFollowingHelis = {}
+			end
+		end
+
 		local heliX, heliY, _ = self:getXYZAsInt()
 		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0),true)
 
@@ -89,6 +105,10 @@ function eHelicopter:spawnCrew()
 				local zombie = spawnedZombies:get(0)
 				--if there's an actual zombie
 				if zombie then
+
+					zombie:changeSpeed(1)
+					zombie:Say("My speed is something, huh?")
+
 					--33% to be dead on arrival
 					if ZombRand(100) <= 33 then
 						print("crash spawned: "..outfitID.." killed")

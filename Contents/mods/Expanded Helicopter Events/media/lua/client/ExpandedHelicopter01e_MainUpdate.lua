@@ -72,9 +72,9 @@ function eHelicopter:update()
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
 	thatIsCloseEnough = thatIsCloseEnough+4
+
 	local crashMin = math.floor(thatIsCloseEnough*20)
 	local crashMax = math.min(250, math.floor(ZombRand(crashMin,crashMin*2)))
-
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
 		--[DEBUG]] print("EHE: crashing parameters met. ("..crashMin.." to "..crashMax..")")
 		if self:crash() then
@@ -102,7 +102,6 @@ function eHelicopter:update()
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText) end
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
-
 			self:goHome()
 		end
 	end
@@ -112,33 +111,63 @@ function eHelicopter:update()
 		lockOn = false
 	end
 
+	--if it's ok to move do so, and update the shadow's position
+	if not preventMovement then
+		self:move(lockOn, true)
+	end
+
+	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
+		self:announce()
+	end
+
+	self:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
+	for heli,offsets in pairs(self.formationFollowingHelis) do
+		---@type eHelicopter
+		local followingHeli = heli
+		if followingHeli then
+			followingHeli:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
+		end
+	end
+
+	if not self:isInBounds() then
+		self:unlaunch()
+	end
+end
+
+
+function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
 	local currentSquare = self:getIsoGridSquare()
+	--Wake up (Wake up) / Grab a brush and put a little make-up
+	for character,value in pairs(EHEIsoPlayers) do
+		---@type IsoGameCharacter p
+		local p = character
+		if self:getDistanceToIsoObject(p) < (self.flightVolume*3) then
+			p:forceAwake()
+		end
+	end
+
 	--drop carpackage
 	local packageDropRange = thatIsCloseEnough*100
 	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		self:dropCarePackage()
 	end
+
 	--drop items
 	local itemDropRange = thatIsCloseEnough*250
 	if self.dropItems and (distToTarget <= itemDropRange) then
 		local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
 		self:tryToDropItem(dropChance)
 	end
-	--if it's ok to move do so, and update the shadow's position
-	if not preventMovement then
-		self:move(lockOn, true)
-		if currentSquare then
-			if self.shadow ~= false then
-				if self.shadow == true then
-					self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
-				end
 
-				local shadowSquare = getOutsideSquareFromAbove(currentSquare) or currentSquare
-				if shadowSquare then
-					self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
-				end
-			end
+	if self.shadow ~= false then
+		if self.shadow == true then
+			self.shadow = getWorldMarkers():addGridSquareMarker("circle_shadow", nil, currentSquare, 0.2, 0.2, 0.2, false, 6)
+		end
+
+		local shadowSquare = getOutsideSquareFromAbove(currentSquare) or currentSquare
+		if shadowSquare then
+			self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
 		end
 	end
 
@@ -155,34 +184,15 @@ function eHelicopter:update()
 		self.shadow:setSize(shadowSize)
 	end
 
-	--Wake up (Wake up) / Grab a brush and put a little make-up
-	for character,value in pairs(EHEIsoPlayers) do
-		---@type IsoGameCharacter p
-		local p = character
-		if self:getDistanceToIsoObject(p) < (self.flightVolume*3) then
-			p:forceAwake()
-		end
-	end
-
 	local volumeFactor = 1
-	if currentSquare then
-		local zoneType = currentSquare:getZoneType()
-		if (zoneType == "Forest") or (zoneType == "DeepForest") then
-			volumeFactor = 0.25
-		end
-		addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
+	local zoneType = currentSquare:getZoneType()
+	if (zoneType == "Forest") or (zoneType == "DeepForest") then
+		volumeFactor = 0.25
 	end
-
-	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
-		self:announce()
-	end
+	addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
 
 	if self.hostilePreference and (not self.crashing) then
 		self:lookForHostiles(self.hostilePreference)
-	end
-
-	if not self:isInBounds() then
-		self:unlaunch()
 	end
 end
 
@@ -201,7 +211,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
 
-		if heli.state and (heli.state ~= "unLaunched") then
+		if heli.state and (heli.state ~= "unLaunched") and (heli.state ~= "following") then
 			heli:update()
 		end
 	end

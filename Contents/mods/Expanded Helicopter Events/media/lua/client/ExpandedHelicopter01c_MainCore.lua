@@ -54,9 +54,7 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 	initX = initX or ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset))
 	initY = initY or ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset))
 
-	if not self.currentPosition then
-		self.currentPosition = Vector3.new()
-	end
+	self.currentPosition = self.currentPosition or Vector3.new()
 
 	if randomEdge then
 		print(" EHE: randomEdge")
@@ -246,6 +244,22 @@ function eHelicopter:aimAtTarget()
 end
 
 
+---@param heliX number
+---@param heliY number
+function eHelicopter:updatePosition(heliX, heliY)
+	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
+	self.currentPosition:set(heliX, heliY, self.height)
+	--move announcer emitter
+	if self.announceEmitter then
+		self.announceEmitter:setPos(heliX,heliY,self.height)
+	end
+	--Move held emitters to position
+	for _,emitter in pairs(self.heldEventSoundEffectEmitters) do
+		emitter:setPos(heliX,heliY,self.height)
+	end
+end
+
+
 ---@param re_aim boolean recalculate angle to target
 ---@param dampen boolean adjust speed based on distance to target
 function eHelicopter:move(re_aim, dampen)
@@ -288,15 +302,15 @@ function eHelicopter:move(re_aim, dampen)
 	local timeSpeed = getGameSpeed()
 	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
 	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
-	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-	self.currentPosition:set(v_x, v_y, self.height)
-	--move announcer emitter
-	if self.announceEmitter then
-		self.announceEmitter:setPos(v_x,v_y,self.height)
-	end
-	--Move held emitters to position
-	for _,emitter in pairs(self.heldEventSoundEffectEmitters) do
-		emitter:setPos(v_x,v_y,self.height)
+
+	self:updatePosition(v_x, v_y)
+
+	for heli,offsets in pairs(self.formationFollowingHelis) do
+		---@type eHelicopter
+		local followingHeli = heli
+		if followingHeli then
+			followingHeli:updatePosition(v_x+offsets[1], v_y+offsets[2])
+		end
 	end
 	--self:Report(re_aim, dampen)
 end
@@ -307,7 +321,7 @@ function eHelicopter:findAlternativeTarget(character)
 	local newTargets = {}
 	local fractalCenters = getIsoRange(character, 1, 150)
 
-	for k,square in pairs(fractalCenters) do
+	for _,square in pairs(fractalCenters) do
 		---@type IsoCell
 		local cellOfFC = square:getCell()
 		if cellOfFC then
@@ -358,7 +372,7 @@ function eHelicopter:findTarget(range)
 	local weightPlayersList = {}
 	local maxWeight = 15
 
-	for character,value in pairs(EHEIsoPlayers) do
+	for character,_ in pairs(EHEIsoPlayers) do
 		---@type IsoPlayer | IsoGameCharacter p
 		local p = character
 		--[DEBUG]] print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
@@ -366,9 +380,11 @@ function eHelicopter:findTarget(range)
 
 			local iterations = 7
 			local zone = p:getCurrentZone()
+			--[[DEBUG]] local DEBUGzoneID = "<none>"
 			if zone then
 				local zoneType = zone:getType()
 				if zoneType then
+					--[[DEBUG]] DEBUGzoneID = zoneType
 					if (zoneType == "DeepForest") then
 						iterations = 3
 					elseif (zoneType == "Forest") then
@@ -392,13 +408,6 @@ function eHelicopter:findTarget(range)
 				else
 					local altTarget = self:findAlternativeTarget(p)
 					table.insert(weightPlayersList, altTarget)
-
-					--[[DEBUG]] if type(altTarget) == "boolean" then print(" ----- alt-target: blank")
-					elseif instanceof(altTarget, "IsoPlayer") then print(" ----- alt-target: "..altTarget:getFullName())
-					elseif instanceof(altTarget, "IsoZombie") then print(" ----- alt-target: Zombie")
-					else print(" ----- alt-target: "..tostring(altTarget)..": "..altTarget:getX()..", "..altTarget:getY())
-					end --]]
-
 				end
 			end
 		end
@@ -406,14 +415,40 @@ function eHelicopter:findTarget(range)
 
 	print(" -- HELI "..self:heliToString()..": seeking target from pool of "..#weightPlayersList)
 
-	local target
+	--really convoluted printout method that counts repeated targets accordingly
+	--[[DEBUG]] if getDebug() then
+		local DEBUGallTargets = {}
+		for _,target in pairs(weightPlayersList) do
+			if instanceof(target, "IsoPlayer") then
+				local knownTarget =  DEBUGallTargets[target:getFullName()]
+				if knownTarget then DEBUGallTargets[target:getFullName()] = DEBUGallTargets[target:getFullName()]+1
+				else DEBUGallTargets[target:getFullName()] = 1 end
+			elseif instanceof(target, "IsoZombie") then
+				local zombieAlreadyTargeted = DEBUGallTargets["z"]
+				if zombieAlreadyTargeted then DEBUGallTargets["z"] = DEBUGallTargets["z"]+1
+				else DEBUGallTargets["z"] = 1 end
+			else
+				local unknownTarget =  DEBUGallTargets[tostring(target)]
+				if unknownTarget then DEBUGallTargets[tostring(target)] = DEBUGallTargets[tostring(target)]+1
+				else DEBUGallTargets[tostring(target)] = 1 end
+			end
+		end
+		local DEBUGallTargetsText = ""
+		for targetID,numberOf in pairs(DEBUGallTargets) do
+			DEBUGallTargetsText = DEBUGallTargetsText.."["..targetID.." x"..numberOf.."] "
+		end
+		print(" ---- Targets: "..DEBUGallTargetsText)
+	end --]]
 
+	local target
 	if #weightPlayersList then
 		target = weightPlayersList[ZombRand(1, #weightPlayersList+1)]
 	end
 
 	if not target then
 		print(" --- HELI "..self:heliToString()..": unable to find target.")
+		self:unlaunch()
+		return
 	end
 
 	return target
@@ -426,11 +461,13 @@ function eHelicopter:formationInit()
 		return
 	end
 
+	local h_x, h_y, _ = self:getXYZAsInt()
+
 	local formationSize = 0
 	--parse formationIDs for formation info, strings are IDs, following numbers are assumed values -- use false for skipped values
 	for key,value in pairs(self.formationIDs) do
 
-		if (type(value) == "string") then
+		if (type(value) == "string") and eHelicopter_PRESETS[value] then
 
 			--The chance this extra heli is spawned
 			local chance = self.crew[key+1]
@@ -440,13 +477,10 @@ function eHelicopter:formationInit()
 			end
 
 			local xyPosOffset = self.crew[key+2]
-			--If the next entry in the list is a number consider it to be a chance, otherwise use 50%
-			if type(xyPosOffset) ~= "table" then
-				--fills in offsets is none are present
-				--this means you can define only 1 of the offsets in a preset
-				--use false for skipped values
-				xyPosOffset[1] = xyPosOffset[1] or ZombRand(6,12)
-				xyPosOffset[2] = xyPosOffset[2] or ZombRand(6,12)
+			--checks if entry 2 spaces after string (ID) is a table,
+			if ((type(xyPosOffset) ~= "table")) or (#xyPosOffset < 2) or ((type(xyPosOffset[1]) ~= "number")) or ((type(xyPosOffset[2]) ~= "number")) then
+				--fills in offsets is not enough or incorrect entries are present
+				xyPosOffset = {6, 12}
 			end
 
 			--if new heli is spawned
@@ -454,14 +488,47 @@ function eHelicopter:formationInit()
 				--track formation's current size
 				formationSize = formationSize+1
 				--multiply offset by formation size
-				xyPosOffset = {xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize}
+				local heliX = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
+				local heliY = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 
-				self:initPos(self.target, self.randomEdgeStart)
-
+				local newHeli = getFreeHelicopter(value)
+				newHeli.state = "following"
+				newHeli.currentPosition = newHeli.currentPosition or Vector3.new()
+				newHeli.currentPosition:set(h_x, h_y, newHeli.height)
+				self.formationFollowingHelis[newHeli] = {heliX,heliY}
 			end
 
 		end
 	end
+end
+
+
+function eHelicopter:applyCrashChance()
+
+	--weatherImpact is a float, 0 to 1
+	local _, weatherImpact = eHeliEvent_weatherImpact()
+	local GTMData = getGameTime():getModData()
+
+	--increase crash chance as the apocalypse goes on
+	local cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
+	local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
+	local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
+	local dayOfLastCrash = GTMData["DayOfLastCrash"]
+	local expectedMaxDaysWithOutCrash = 14/(apocImpact+1)
+	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
+	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
+
+	print(" --- "..self:heliToString().."crashChance:"..crashChance)
+	--[[DEBUG]] print(" ----- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
+	--[[DEBUG]] print(" ----- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
+	--[[DEBUG]] print(" ----- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
+	--[[DEBUG]] print(" ----- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
+
+	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
+		--[[DEBUG]] print (" --- crashing set to TRUE.")
+		self.crashing = true
+	end
+	print(" --------------- \n")
 end
 
 
@@ -504,6 +571,8 @@ function eHelicopter:launch(targetedObject)
 	self:initPos(self.target, self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
+	self:formationInit()
+
 	self:playEventSound("flightSound", nil, true)
 	self:playEventSound("additionalFlightSound", nil, true)
 
@@ -525,31 +594,18 @@ function eHelicopter:launch(targetedObject)
 
 	self.state = "gotoTarget"
 
-	--weatherImpact is a float, 0 to 1
-	local _, weatherImpact = eHeliEvent_weatherImpact()
-	local GTMData = getGameTime():getModData()
+	self:applyCrashChance()
 
-	--increase crash chance as the apocalypse goes on
-	local cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
-	local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-	local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
-	local dayOfLastCrash = GTMData["DayOfLastCrash"]
-	local expectedMaxDaysWithOutCrash = 14/(apocImpact+1)
-	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
-	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
-
-	print(" --- crashChance:"..crashChance)
-	--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
-	--[[DEBUG]] print(" ---- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
-	--[[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-	--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
-
-	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
-		--[DEBUG]] print ("  - "..self:heliToString().." : crashing set to true.")
-		self.crashing = true
+	for heli,_ in pairs(self.formationFollowingHelis) do
+		---@type eHelicopter
+		local followingHeli = heli
+		if followingHeli then
+			followingHeli.attackDistance = self.attackDistance
+			followingHeli:playEventSound("flightSound", nil, true)
+			followingHeli:playEventSound("additionalFlightSound", nil, true)
+			followingHeli:applyCrashChance()
+		end
 	end
-	--[DEBUG]] --[[TOGGLE THIS FOR FORCE CRASH TESTS]] self.crashing = true
-	print(" ------ \n")
 end
 
 
@@ -574,6 +630,14 @@ function eHelicopter:unlaunch()
 		self.shadow:remove()
 	end
 	self.state = "unLaunched"
+
+	for heli,_ in pairs(self.formationFollowingHelis) do
+		---@type eHelicopter
+		local followingHeli = heli
+		if followingHeli then
+			followingHeli:unlaunch()
+		end
+	end
 end
 
 
