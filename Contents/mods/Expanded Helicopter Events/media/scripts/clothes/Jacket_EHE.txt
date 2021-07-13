@@ -1,0 +1,20 @@
+module Base
+{		
+		item Jacket_DenimCutoff
+	{
+        Type = Clothing,
+        DisplayName = Denim Raider Jacket,
+        ClothingItem = Jacket_DenimCutoff,
+        BodyLocation = Jacket,
+        Icon = DenimCutoff,
+        BloodLocation = Jacket,
+        RunSpeedModifier = 0.89,
+        CombatSpeedModifier = 0.96,
+        BiteDefense = 10,
+        ScratchDefense = 20,
+        Insulation = 0.9,
+        WindResistance = 0.95,
+        WaterResistance = 0.60,
+        Weight = 1,
+    }	
+}
