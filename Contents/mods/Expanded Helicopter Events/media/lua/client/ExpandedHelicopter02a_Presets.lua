@@ -109,7 +109,6 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	hostilePreference = "IsoGameCharacter",
 	crashType = {"UH1Hsurvivalistcrash"},
 	crew = {"1SurvivalistPilot", "1Survivalist", 75, "1Survivalist", 50},
-	cutOffFactor = 1.5,
 	}
 
 

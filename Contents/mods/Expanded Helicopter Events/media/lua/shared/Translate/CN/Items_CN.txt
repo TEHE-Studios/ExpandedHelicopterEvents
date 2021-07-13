@@ -1,0 +1,16 @@
+Items_CN = {
+DisplayName_Evacuation_Flyer = "弃城通知传单",
+DisplayName_Emergency_Flyer = "应急指导传单",
+DisplayName_Quarantine_Flyer = "隔离指导传单",
+DisplayName_Prevention_Flyer = "预防指导传单",
+DisplayName_Notice_Flyer = "紧急通知传单",
+DisplayName_Civilian_Helicopter_Helmet = "民用直升机头盔",
+DisplayName_Deserter_Helmet = "军用头盔(逃兵)",
+DisplayName_Police_Helicopter_Helmet = "警用直升机头盔",
+DisplayName_Press_Helmet = "新闻播报直升机头盔",
+DisplayName_Survivalist_Helicopter_Helmet = "援助直升机头盔",
+DisplayName_Press_Bulletproof_Vest = "新闻播报直升机防弹背心",
+DisplayName_Police_Pilot_Flying_Suit = "警用飞行员服",
+DisplayName_Helicopter_Fire_Effect_(Do_not_equip) = "直升机用燃烧瓶(请勿装备)",
+DisplayName_Supply_Box = "补给箱",
+}
