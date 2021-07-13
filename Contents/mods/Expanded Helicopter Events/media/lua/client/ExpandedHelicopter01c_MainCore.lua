@@ -491,6 +491,13 @@ function eHelicopter:formationInit()
 				local heliX = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 				local heliY = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 
+				if (ZombRand(100) <= 50) then
+					heliX = 0-heliX
+				end
+				if (ZombRand(100) <= 50) then
+					heliY = 0-heliY
+				end
+				
 				local newHeli = getFreeHelicopter(value)
 				newHeli.state = "following"
 				newHeli.currentPosition = newHeli.currentPosition or Vector3.new()
