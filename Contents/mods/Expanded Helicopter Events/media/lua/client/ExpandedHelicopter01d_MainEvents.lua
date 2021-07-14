@@ -161,9 +161,16 @@ function eHelicopter:dropItem(type, fuzz)
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
-		local range = 3+fuzz
-		heliX = heliX+ZombRand(0-range,range)
-		heliY = heliY+ZombRand(0-range,range)
+		local minX, maxX = 2, 3+fuzz
+		if ZombRand(100) <= 50 then
+			minX, maxX = -2, 0-(3+fuzz)
+		end
+		heliX = heliX+ZombRand(minX,maxX)
+		local minY, maxY = 2, 3+fuzz
+		if ZombRand(100) <= 50 then
+			minY, maxY = -2, 0-(3+fuzz)
+		end
+		heliY = heliY+ZombRand(minY,maxY)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
 
@@ -189,9 +196,16 @@ function eHelicopter:dropCarePackage(fuzz)
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
-		local range = 3+fuzz
-		heliX = heliX+ZombRand(0-range,range)
-		heliY = heliY+ZombRand(0-range,range)
+		local minX, maxX = 2, 3+fuzz
+		if ZombRand(100) <= 50 then
+			minX, maxX = -2, 0-(3+fuzz)
+		end
+		heliX = heliX+ZombRand(minX,maxX)
+		local minY, maxY = 2, 3+fuzz
+		if ZombRand(100) <= 50 then
+			minY, maxY = -2, 0-(3+fuzz)
+		end
+		heliY = heliY+ZombRand(minY,maxY)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
@@ -222,9 +236,16 @@ function eHelicopter:dropScrap(fuzz)
 
 		local heliX, heliY, _ = self:getXYZAsInt()
 		if heliX and heliY then
-			local range = 3+fuzz
-			heliX = heliX+ZombRand(0-range,range)
-			heliY = heliY+ZombRand(0-range,range)
+			local minX, maxX = 2, 3+fuzz
+			if ZombRand(100) <= 50 then
+				minX, maxX = -2, 0-(3+fuzz)
+			end
+			heliX = heliX+ZombRand(minX,maxX)
+			local minY, maxY = 2, 3+fuzz
+			if ZombRand(100) <= 50 then
+				minY, maxY = -2, 0-(3+fuzz)
+			end
+			heliY = heliY+ZombRand(minY,maxY)
 		end
 		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
