@@ -608,8 +608,9 @@ function eHelicopter:launch(targetedObject)
 		local followingHeli = heli
 		if followingHeli then
 			followingHeli.attackDistance = self.attackDistance
-			followingHeli:playEventSound("flightSound", nil, true)
-			followingHeli:playEventSound("additionalFlightSound", nil, true)
+			local randSoundDelay = ZombRand(5,15)
+			followingHeli:playEventSound("flightSound", nil, true, false, randSoundDelay)
+			followingHeli:playEventSound("additionalFlightSound", nil, true, false, randSoundDelay)
 			followingHeli:applyCrashChance()
 		end
 	end
@@ -628,6 +629,7 @@ end
 
 function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived())
+	self.delayedEventSounds = {}
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter and self.lastAnnouncedLine then
 		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)

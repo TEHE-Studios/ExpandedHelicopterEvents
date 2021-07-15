@@ -146,6 +146,8 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		end
 	end
 
+	self:checkDelayedEventSounds()
+
 	--drop carpackage
 	local packageDropRange = thatIsCloseEnough*100
 	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
