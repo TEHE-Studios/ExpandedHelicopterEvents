@@ -26,72 +26,42 @@ eHelicopterSandbox.name = "Expanded Helicopter Events" -- the name that will be 
 
 eHelicopterSandbox.menu = {
 
-	generalTitle = {type = "Text", text = "General Settings"},
-	frequency = {
-		type = "Combobox",
-		title = "Frequency",
-		tooltip = "This will supplant the vanilla helicopter event frequency.",
-		options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}}
-	},
+	frequency = { type = "Combobox", title = "Frequency", options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}} },
+	frequencyToolTip = {type = "Text", text = "This will supplant the vanilla helicopter event frequency.", a=0.65, customX=-56},
+	generalSpaceA = {type = "Space"},
 
-	startDay = {
-		type = "Numberbox",
-		title = "Events Start Day",
-		tooltip = "The day events will start on. Note: Some events are slated to start later in events.",
-	},
+	startDay = { type = "Numberbox", title = "Events Start Day", },
+	startDayToolTip = {type = "Text", text = "The day the scheduler will start assigning events to. \nNote: Some events are set to start later than this day.", a=0.65, customX=-56},
+	generalSpaceB = {type = "Space"},
 
-	cutOffDay = {
-		type = "Numberbox",
-		title = "Events CutOff Day",
-		tooltip = "The day events will be tapered to end on. Note: some events are scaled to go beyond this day.",
-	},
+	cutOffDay = { type = "Numberbox", title = "Events CutOff Day", },
+	cutOffDayToolTip = {type = "Text", text = "The day the scheduler will tapered events to end on. \nNote: Some events are scaled to go beyond this day.", a=0.65, customX=-56},
+	generalSpaceC = {type = "Space"},
 
-	neverEndingEvents = {
-		type = "Tickbox",
-		title = "Never Ending Events",
-		tooltip = "Check this off so that events never end.",
-	},
+	neverEndingEvents = { type = "Tickbox", title = "Never Ending Events", },
+	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
+	generalSpaceD = {type = "Space"},
 
-	generalSpace = {type = "Space"},
-
-	--eHelicopterSandbox.config.cutOffDay
 	--[[
 	testTitle = {type = "Text", text = "test",},
 
-	testSpinBox = {
-		type = "Spinbox",
-		title = "testSpinBox",
-		tooltip = "testSpinBox.",
-		options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}}
-	},
+	testSpinBox = { type = "Spinbox", title = "testSpinBox", tooltip = "testSpinBox.", options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}} },
 
-	testNumberbox = {
-		type = "Numberbox",
-		title = "testNumberbox",
-		tooltip = "testNumberbox.",
-	},
+	testNumberbox = { type = "Numberbox", title = "testNumberbox", tooltip = "testNumberbox.", },
 
 	testSpace = {type = "Space",},
 
-	testTickbox = {
-		type = "Tickbox",
-		title = "testTickbox",
-		tooltip = "testTickbox.",
-	},
+	testTickbox = { type = "Tickbox", title = "testTickbox", tooltip = "testTickbox.", },
 
-	testCombobox = {
-		type = "Combobox",
-		title = "testCombobox",
-		tooltip = "testCombobox.",
-		options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}}
-	}]]
+	testCombobox = { type = "Combobox", title = "testCombobox", tooltip = "testCombobox.", options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}} }
+	--]]
 }
 
 
 function loadAnnouncersToConfig()
 
 	eHelicopterSandbox.menu["voiceSpaceA"] = {type = "Space"}
-	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs"}
+	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs", }
 
 	for k,_ in pairs(eHelicopter_announcers) do
 		eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
@@ -136,7 +106,7 @@ loadPresetToConfig()]]
 
 
 --add buffer space for reset feature
-eHelicopterSandbox.menu["resetEventsA"] = {type = "Space", iteration=4}
+eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
 
