@@ -4,7 +4,7 @@ if getDebug() then
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.testAllLines()
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.eHeliEventsOnSchedule()
-		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_testHeli()
+		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_jet()
 		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launch_aid_chopper()
 		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launch_news_chopper()
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launch_increasingly_hostile()
@@ -116,15 +116,6 @@ if getDebug() then
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter("jet")
 		heli:launch()
-	end
-
-
-	--- Test launch test heli
-	function DEBUG_TESTS.launch_testHeli()
-		---@type eHelicopter heli
-		local heli = getFreeHelicopter("TestHeli")
-		heli:launch()
-		DEBUG_TESTS.moveHeliCloser(heli)
 	end
 
 
