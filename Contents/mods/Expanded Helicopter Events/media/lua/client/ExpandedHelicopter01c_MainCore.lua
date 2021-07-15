@@ -67,8 +67,8 @@ function eHelicopter:initPos(targetedPlayer, randomEdge)
 		local randXYEdge = ZombRand(1, #initPosXY+1)
 
 		--pick min=1,2 or max=3,4 (50% to be max)
-		local randXYMinMax = ZombRand(1, #initPosXY+1)
-		if ZombRand(1,3) <= 1 then
+		local randXYMinMax = randXYEdge
+		if ZombRand(101) <= 50 then
 			randXYMinMax = randXYMinMax+2
 		end
 
