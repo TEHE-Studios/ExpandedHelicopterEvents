@@ -18,13 +18,13 @@ module Base
         Weight = 1.5,
     }
 
-		item Hat_SPHSurvivalist
+		item Hat_SPHMilitary
 	{
 		Type = Clothing,
-		DisplayName = Survivalist Helicopter Helmet,
-		ClothingItem = Hat_SPHSurvivalist,
+		DisplayName = Military Helicopter Helmet,
+		ClothingItem = Hat_SPHMilitary,
 		BodyLocation = Hat,
-		Icon = HelicopterHelmetSurvivalist,
+		Icon = HelicopterHelmetMilitary,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,

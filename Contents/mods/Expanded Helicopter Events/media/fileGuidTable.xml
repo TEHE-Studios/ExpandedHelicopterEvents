@@ -12,8 +12,8 @@
 	</files>
 
 	<files>
-	<path>media/clothing/clothingItems/Hat_SPHSurvivalist.xml</path>
-	<guid>04b6c0a5-d5b5-45bf-927d-8dbd6b6d031a</guid>
+	<path>media/clothing/clothingItems/Hat_SPHMilitary.xml</path>
+	<guid>47c9769d-8935-4028-8900-54e0b83fc873</guid>
 	</files>
 
 	<files>
@@ -40,7 +40,6 @@
 	<path>media/clothing/clothingItems/Jacket_DenimCutoff.xml</path>
 	<guid>bf9cc65d-1767-4661-9ad4-db7ac0082f32</guid>
 	</files>
-
 	
 	<files>
 		<path>media/clothing/clothingItems/AmmoStrap_Shells.xml</path>
