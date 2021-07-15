@@ -2,11 +2,17 @@
 ---@param otherLocation IsoGridSquare
 ---@param saveEmitter boolean
 ---@param stopSound boolean
-function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound)
+---@param delay number
+function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound, delay)
 
 	local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 
 	if not soundEffect then
+		return
+	end
+
+	if delay then
+		table.insert(self.delayedEventSounds, {["event"]=event, ["otherLocation"]=otherLocation, ["saveEmitter"]=saveEmitter, ["stopSound"]=stopSound, ["delay"]=getTimestampMs()+delay})
 		return
 	end
 
@@ -36,8 +42,21 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	soundEmitter:playSound(soundEffect, otherLocation)
 end
 
+
+function eHelicopter:checkDelayedEventSounds()
+	local currentTime = getTimestampMs()
+	for placeInList,EventSound in pairs(self.delayedEventSounds) do
+		--event, otherLocation, saveEmitter, stopSound, delay
+		if currentTime <= EventSound["delay"] then
+			self:playEventSound(EventSound["event"], EventSound["otherLocation"], EventSound["saveEmitter"], EventSound["stopSound"])
+			self.delayedEventSounds[placeInList] = nil
+		end
+	end
+end
+
+
 function eHelicopter:stopAllHeldEventSounds()
-	print(" - EHE: stopAllHeldEventSounds for HELI:"..self.ID)
+	print(" - EHE: stopAllHeldEventSounds for "..self:heliToString())
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		if soundEffect then

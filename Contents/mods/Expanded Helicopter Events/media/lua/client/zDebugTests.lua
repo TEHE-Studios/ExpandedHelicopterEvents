@@ -72,21 +72,17 @@ if getDebug() then
 
 	function eHelicopter:hoverAndFlyOverReport(STATE)
 		if self.trueTarget and self.trueTarget:getClass() and self.target and self.target:getClass() then
-			print("HELI: "..self.ID.." "..STATE
-					..(self.trueTarget:getClass():getSimpleName()).." "
-					..(self.target:getClass():getSimpleName()).." "
-					.." (x:"..Vector3GetX(self.currentPosition)..", y:"..Vector3GetY(self.currentPosition)..")")
+			print(" - "..self:heliToString(true).." "..STATE..(self.trueTarget:getClass():getSimpleName()).." "..(self.target:getClass():getSimpleName()))
 		end
 	end
 
 	--- Debug: Reports helicopter's useful variables -- note: this will flood your output
 	function eHelicopter:Report(aiming, dampen)
 		---@type eHelicopter heli
-		local heli = self
 		local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." "
-		print("HELI: "..heli.ID.." (x:"..Vector3GetX(heli.currentPosition)..", y:"..Vector3GetY(heli.currentPosition)..")")
-		print("TARGET: (x:"..Vector3GetX(heli.targetPosition)..", y:"..Vector3GetY(heli.targetPosition)..")")
-		print("(dist: "..heli:getDistanceToVector(self.target).."  "..report)
+		print(" > "..self:heliToString(true))
+		print("   TARGET: (x:"..Vector3GetX(self.targetPosition)..", y:"..Vector3GetY(self.targetPosition)..")")
+		print("   (dist: "..self:getDistanceToVector(self.target).."  "..report)
 		print("-----------------------------------------------------------------")
 	end
 
