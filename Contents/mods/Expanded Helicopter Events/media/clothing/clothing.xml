@@ -440,6 +440,9 @@
 		<m_items> <!-- Military Bulletproof Vest -->
 			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
 		</m_items>
+		<m_items> <!-- Denim Cutoff Vest -->
+			<itemGUID>a51eee81-0e8a-45b1-9169-145d87041d99</itemGUID>
+		</m_items>
 		<m_items> <!-- Woodland Camo Pants -->
 			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
 		</m_items>
