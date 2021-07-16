@@ -3,7 +3,12 @@
 	
 	<files>
 	<path>media/clothing/clothingItems/Hat_SPHPolice.xml</path>
-	<guid>dd389eac-faf3-4876-9464-b5d6dcb4704c</guid>
+	<guid>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_SPHPoliceVISORUP.xml</path>
+	<guid>0c76d09b-86f9-41c1-9c23-3dcae5ef8fd9</guid>
 	</files>
 
 	<files>
@@ -12,8 +17,18 @@
 	</files>
 
 	<files>
+	<path>media/clothing/clothingItems/Hat_SPHCivilianVISORUP.xml</path>
+	<guid>97e9f79f-5db2-4d9a-86a3-8aeb1bbd3859</guid>
+	</files>
+
+	<files>
 	<path>media/clothing/clothingItems/Hat_SPHMilitary.xml</path>
 	<guid>47c9769d-8935-4028-8900-54e0b83fc873</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_SPHMilitaryVISORUP.xml</path>
+	<guid>a02db17f-2843-4a31-be89-84085282808d</guid>
 	</files>
 
 	<files>

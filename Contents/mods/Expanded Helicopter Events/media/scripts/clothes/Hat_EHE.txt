@@ -10,6 +10,27 @@ module Base
 		Icon = HelicopterHelmetPolice,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHPoliceVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHPoliceVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Police Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHPoliceVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetPolice,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHPolice,
+        ClothingItemExtraOption = VisorDown,
 		BiteDefense = 100,
 		ScratchDefense = 100,
 		ChanceToFall = 30,
@@ -27,6 +48,27 @@ module Base
 		Icon = HelicopterHelmetMilitary,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHMilitaryVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHMilitaryVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Military Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHMilitaryVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetMilitary,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHMilitary,
+        ClothingItemExtraOption = VisorDown,
 		BiteDefense = 100,
 		ScratchDefense = 100,
 		ChanceToFall = 30,
@@ -44,6 +86,8 @@ module Base
 		Icon = HelicopterHelmetCivilian,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHCivilianVISORUP,
+        ClothingItemExtraOption = VisorDown,
 		BiteDefense = 100,
 		ScratchDefense = 100,
 		ChanceToFall = 30,
@@ -51,8 +95,26 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
-
-	  item Boilersuit_PoliceFlying
+		item Hat_SPHCivilianVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Civilian Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHCivilianVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetCivilian,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHCivilian,
+        ClothingItemExtraOption = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+	
+	    item Boilersuit_PoliceFlying
     {
         Type = Clothing,
         DisplayName = Police Pilot Flying Suit,
