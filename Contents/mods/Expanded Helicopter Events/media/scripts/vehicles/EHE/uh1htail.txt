@@ -7,7 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle Vehicle_UH1HTail
+	vehicle UH1HTail
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
