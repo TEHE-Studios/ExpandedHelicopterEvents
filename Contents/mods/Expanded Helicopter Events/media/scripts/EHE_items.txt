@@ -11,14 +11,14 @@ module EHE
 		Weight		= 0.2,
 		Type		= Food,
 		UnhappyChange	= -35,
-		DisplayName	= PlentyTee Energy Bar,
+		DisplayName	= PlentyTee(TM) Energy Bar,
 		Icon		= Chocolate,
 		EvolvedRecipe 	= Cake:10,
 		FoodType    	= NoExplicit,
         Carbohydrates 	= 240,
         Proteins 	= 45,
         Lipids 		= 66,
-        Calories 	= 1000,
+        Calories 	= 550,
         Packaged 	= TRUE,
 	}
 }
