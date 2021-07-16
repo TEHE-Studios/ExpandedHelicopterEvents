@@ -450,10 +450,6 @@
 		<probability>0.5</probability>
 			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
 		</m_items>
-		<m_items> <!-- Tattoo on Arm -->
-		<probability>0.5</probability>
-			<itemGUID>ec2b8d6a-323b-4264-abe6-7499fa1cf01e</itemGUID>
-		</m_items>
 		<m_items> <!-- Aviators -->
 		<probability>0.1</probability>
 			<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
