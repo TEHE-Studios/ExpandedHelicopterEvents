@@ -12,7 +12,7 @@ module EHE
 		Type		= Food,
 		UnhappyChange	= -35,
 		DisplayName	= PlentyTee(TM) Energy Bar,
-		Icon		= Chocolate,
+		Icon		= PlentyTee,
 		EvolvedRecipe 	= Cake:10,
 		FoodType    	= NoExplicit,
         Carbohydrates 	= 240,
