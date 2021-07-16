@@ -66,7 +66,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 	frequencyFactor = 2,
 	speed = 0.06,
 	crashType = {"Bell206LBMWFuselage"},
-	scrapAndParts = {["vehicleSection"]="Base.Bell206LBMWTail"},
+	scrapAndParts = {["vehicleSection"]="Bell206LBMWTail"},
 	crew = {"1CivilianPilot", "1NewsReporterArmored", "1NewsReporterArmored", 40},
 	--formationIDs = {"police_heli", 100, {6,12}},
 	}
@@ -112,8 +112,9 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 
 eHelicopter_PRESETS["attack_only_all"] = {
 	hostilePreference = "IsoGameCharacter",
-	crashType = {"UH1Hsurvivalistcrash"},
+	crashType = {"UH1HSurvivalistFuselage"},
 	crew = {"1SurvivalistPilot", "1Survivalist", 75, "1Survivalist", 50},
+	scrapAndParts = {["vehicleSection"]="UH1HSurvivalistTail"},
 	}
 
 
@@ -132,12 +133,12 @@ eHelicopter_PRESETS["police_heli"] = {
 		["additionalFlightSound"] = "eHeliPoliceSiren",
 		},
 	hoverOnTargetDuration = {750,1150},
-	scrapAndParts = {["vehicleSection"]="Base.Bell206PoliceTail"},
+	scrapAndParts = {["vehicleSection"]="Bell206PoliceTail"},
 	}
 
 
 eHelicopter_PRESETS["aid_helicopter"] = {
-	crashType = {"UH1Hmedevaccrash"},
+	crashType = {"UH1HMedevacFuselage"},
 	crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["NoticeFlyer"]=250},
