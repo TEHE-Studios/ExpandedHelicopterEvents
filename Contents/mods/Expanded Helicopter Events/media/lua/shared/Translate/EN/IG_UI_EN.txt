@@ -1,21 +1,30 @@
 IG_UI_EN = {
-    IGUI_VehicleNameUH1H = "Bell UH-1H",    
+    IGUI_VehicleNameUH1H = "Bell UH-1H",
+    IGUI_VehicleNameUH1HCrash = "Bell UH-1H (Crashed)",
     IGUI_VehicleNameUH1HFuselage = "Bell UH-1H (Fuselage)",
     IGUI_VehicleNameUH1HTail = "Bell UH-1H (Tail)",
+
     IGUI_VehicleNameUH1HMedevac = "Bell UH-1H Medevac",
+    IGUI_VehicleNameUH1HMedevacCrash = "Bell UH-1H Survivalist (Crashed)",
     IGUI_VehicleNameUH1HMedevacFuselage = "Bell UH-1H Medevac (Fuselage)",
-    IGUI_VehicleNameUH1HMedevacTail = "Bell UH-1H Medevac (Fuselage)",
+    IGUI_VehicleNameUH1HMedevacTail = "Bell UH-1H Medevac (Tail)",
+
     IGUI_VehicleNameUH1HSurvivalist = "Bell UH-1H Survivalist",
-    IGUI_VehicleNameUH1HSurvivalistFuselage = "Bell UH-1H Survivalist (Crashed)",
+    IGUI_VehicleNameUH1HSurvivalistCrash = "Bell UH-1H Survivalist (Crashed)",
+    IGUI_VehicleNameUH1HSurvivalistFuselage = "Bell UH-1H Survivalist (Fuselage)",
     IGUI_VehicleNameUH1HSurvivalistTail = "Bell UH-1H Survivalist (Tail)",
+
     IGUI_VehicleNameBell206LBMW = "Bell 206 News",    
     IGUI_VehicleNameBell206LBMWCrashed = "Bell 206 News (Crashed)",
+    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 News (Fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "Bell 206 News (Tail)",
+
     IGUI_VehicleNameBell206Police = "Bell 206 Police",
     IGUI_VehicleNameBell206PoliceCrashed = "Bell 206 Police (Crashed)",
-    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 News (Fuselage)",    
-    IGUI_VehicleNameBell206LBMWTail = "Bell 206 News (Tail)",
     IGUI_VehicleNameBell206PoliceTail = "Bell 206 Police (Tail)",
     IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 Police (Fuselage)",
+
     IGUI_VehicleNameFEMASupplyDrop = "Emergency Supply Drop",
+
     IGUI_VehicleNameOH58Rescue = "OH-58",
 }
