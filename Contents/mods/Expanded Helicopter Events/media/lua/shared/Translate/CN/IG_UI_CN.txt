@@ -1,18 +1,30 @@
 IGUI_CN = {
-IGUI_VehicleNameUH1H = "贝尔-UH-1H 直升机",
-IGUI_VehicleNameUH1HCrash = "贝尔-UH-1H (坠毁)",
-IGUI_VehicleNameUH1Hmedevac = "贝尔-UH-1H 救护直升机",
-IGUI_VehicleNameUH1Hmedevaccrash = "贝尔-UH-1H 救护直升机 (坠毁)",
-IGUI_VehicleNameUH1HSurvivalist = "贝尔-UH-1H 援助直升机",
-IGUI_VehicleNameUH1HSurvivalistCrash = "贝尔-UH-1H 援助直升机 (坠毁)",
-IGUI_VehicleNameBell206LBMW = "贝尔-206 新闻直升机",
-IGUI_VehicleNameBell206LBMWCrashed = "贝尔-206 新闻直升机 (坠毁)",
-IGUI_VehicleNameBell206Police = "贝尔-206 武装直升机",
-IGUI_VehicleNameBell206PoliceCrashed = "贝尔-206 武装直升机(坠毁)",
-IGUI_VehicleNameBell206LBMWFuselage = "贝尔206 新闻直升机(机身)",
-IGUI_VehicleNameBell206LBMWTail = "贝尔-206 新闻直升机(机尾)",
-IGUI_VehicleNameBell206PoliceTail = "贝尔-206 警用直升机(机尾)",
-IGUI_VehicleNameBell206PoliceFuselage = "贝尔-206 警用直升机(机身)",
-IGUI_VehicleNameFEMASupplyDrop = "应急物资已投放",
-IGUI_VehicleNameOH58Rescue = "OH-58 救援直升机",
+    IGUI_VehicleNameUH1H = "贝尔-UH-1H 直升机",
+    IGUI_VehicleNameUH1HCrash = "贝尔-UH-1H (坠毁)",
+    IGUI_VehicleNameUH1HFuselage = "贝尔-UH-1H (机身)",
+    IGUI_VehicleNameUH1HTail = "贝尔-UH-1H (机尾)",
+
+    IGUI_VehicleNameUH1HMedevac = "贝尔-UH-1H 救护直升机",
+    IGUI_VehicleNameUH1HMedevacCrash = "贝尔-UH-1H 救护直升机 (坠毁)",
+    IGUI_VehicleNameUH1HMedevacFuselage = "贝尔-UH-1H Medevac (机身)",
+    IGUI_VehicleNameUH1HMedevacTail = "贝尔-UH-1H Medevac (机尾)",
+
+    IGUI_VehicleNameUH1HSurvivalist = "贝尔-UH-1H 援助直升机",
+    IGUI_VehicleNameUH1HSurvivalistCrash = "贝尔-UH-1H 援助直升机 (坠毁)",
+    IGUI_VehicleNameUH1HSurvivalistFuselage = "贝尔-UH-1H 援助直升机 (机身)",
+    IGUI_VehicleNameUH1HSurvivalistTail = "贝尔-UH-1H 援助直升机 (机尾)",
+    
+    IGUI_VehicleNameBell206LBMW = "贝尔-206 新闻直升机",
+    IGUI_VehicleNameBell206LBMWCrashed = "贝尔-206 新闻直升机 (坠毁)",
+    IGUI_VehicleNameBell206LBMWFuselage = "贝尔206 新闻直升机 (机身)",
+    IGUI_VehicleNameBell206LBMWTail = "贝尔-206 新闻直升机 (机尾)",
+
+    IGUI_VehicleNameBell206Police = "贝尔-206 武装直升机",
+    IGUI_VehicleNameBell206PoliceCrashed = "贝尔-206 武装直升机 (坠毁)",
+    IGUI_VehicleNameBell206PoliceTail = "贝尔-206 警用直升机 (机尾)",
+    IGUI_VehicleNameBell206PoliceFuselage = "贝尔-206 警用直升机 (机身)",
+
+    IGUI_VehicleNameFEMASupplyDrop = "应急物资已投放",
+
+    IGUI_VehicleNameOH58Rescue = "OH-58 救援直升机",
 }
