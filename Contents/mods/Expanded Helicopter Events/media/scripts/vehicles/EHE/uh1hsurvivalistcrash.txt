@@ -7,7 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle UH1Hsurvivalistcrash
+	vehicle UH1HSurvivalistCrash
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
