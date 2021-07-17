@@ -27,4 +27,5 @@ IG_UI_ES = {
     IGUI_VehicleNameFEMASupplyDrop = "Suministro de emergencia",
 
     IGUI_VehicleNameOH58Rescue = "OH-58",
+	
 }
