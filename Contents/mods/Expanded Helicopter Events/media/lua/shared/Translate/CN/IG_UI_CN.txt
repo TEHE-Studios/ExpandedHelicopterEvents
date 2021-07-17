@@ -13,7 +13,7 @@ IGUI_CN = {
     IGUI_VehicleNameUH1HSurvivalistCrash = "贝尔-UH-1H 援助直升机 (坠毁)",
     IGUI_VehicleNameUH1HSurvivalistFuselage = "贝尔-UH-1H 援助直升机 (机身)",
     IGUI_VehicleNameUH1HSurvivalistTail = "贝尔-UH-1H 援助直升机 (机尾)",
-    
+
     IGUI_VehicleNameBell206LBMW = "贝尔-206 新闻直升机",
     IGUI_VehicleNameBell206LBMWCrashed = "贝尔-206 新闻直升机 (坠毁)",
     IGUI_VehicleNameBell206LBMWFuselage = "贝尔206 新闻直升机 (机身)",
