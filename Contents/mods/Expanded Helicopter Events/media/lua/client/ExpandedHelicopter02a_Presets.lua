@@ -143,6 +143,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["NoticeFlyer"]=250},
 	speed = 0.06,
+	scrapAndParts = {["vehicleSection"]="UH1HMedevacTail"},
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_AidDrop_2",
 		["droppingPackage"] = "eHeli_AidDrop_1and3",
