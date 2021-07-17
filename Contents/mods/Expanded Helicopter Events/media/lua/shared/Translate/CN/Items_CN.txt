@@ -15,4 +15,5 @@ Items_CN = {
     DisplayName_Notice_Flyer = "紧急通知传单",
 
     DisplayName_Supply_Box = "补给箱",
+	
 }

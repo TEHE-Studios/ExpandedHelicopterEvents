@@ -28,4 +28,5 @@ IGUI_CN = {
     IGUI_VehicleNameFEMASupplyDrop = "应急物资已投放",
 
     IGUI_VehicleNameOH58Rescue = "OH-58 救援直升机",
+	
 }

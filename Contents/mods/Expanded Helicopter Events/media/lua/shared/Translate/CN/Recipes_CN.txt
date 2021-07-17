@@ -1,3 +1,4 @@
 Recipe_CN = {
     Recipe_Open_Supplies = "´ò¿ª ²¹¸øÏä",
+	
 }
