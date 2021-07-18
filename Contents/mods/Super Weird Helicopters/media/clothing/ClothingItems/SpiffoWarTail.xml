@@ -2,7 +2,7 @@
 <clothingItem>
 	<m_MaleModel>skinned\clothes\bob_spiffotail</m_MaleModel>
 	<m_FemaleModel>skinned\clothes\bob_spiffotail</m_FemaleModel>
-	<m_GUID>4d37a5ce-c152-4dd4-b632-c13c99e0da54</m_GUID>
+	<m_GUID>71a553ca-0eb3-467e-a1c8-41583fa9e4b3</m_GUID>
 	<m_Static>false</m_Static>
 	<m_AllowRandomHue>false</m_AllowRandomHue>
 	<m_AllowRandomTint>false</m_AllowRandomTint>

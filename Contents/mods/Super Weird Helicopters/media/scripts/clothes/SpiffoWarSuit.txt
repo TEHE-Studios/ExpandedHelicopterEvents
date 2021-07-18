@@ -1,0 +1,20 @@
+module Base
+{
+      item SpiffoWarSuit
+    {
+        Type = Clothing,
+        ClothingItem = SpiffoWarSuit,
+        DisplayName = Spiffo War Suit,
+        BodyLocation = FullSuit,
+        BloodLocation = Trousers;Jumper,
+        Icon = SpiffoSuit,
+        CanHaveHoles = false,
+        RunSpeedModifier = 0.7,
+        ScratchDefense = 10,
+        Insulation = 0.85,
+        WindResistance = 0.6,
+        BulletDefense = 100,
+        ScratchDefense = 100,
+        BiteDefense = 100,
+    }
+}
