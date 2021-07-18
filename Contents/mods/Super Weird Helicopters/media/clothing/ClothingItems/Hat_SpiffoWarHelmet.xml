@@ -2,7 +2,7 @@
 <clothingItem>
 	<m_MaleModel>static\clothes\m_spiffohead</m_MaleModel>
 	<m_FemaleModel>static\clothes\f_spiffohead</m_FemaleModel>
-	<m_GUID>7879787f-36a8-4409-bc9c-17d0dd5e1828</m_GUID>
+	<m_GUID>996fe619-9bb4-4725-86e4-32211147d2df</m_GUID>
 	<m_Static>true</m_Static>
 	<m_AllowRandomHue>false</m_AllowRandomHue>
 	<m_AllowRandomTint>false</m_AllowRandomTint>
