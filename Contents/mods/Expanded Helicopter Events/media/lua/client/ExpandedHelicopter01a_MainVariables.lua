@@ -11,7 +11,7 @@ eHelicopter.searchForTargetDuration = 30000
 eHelicopter.shadow = true
 
 ---@field crashType boolean
-eHelicopter.crashType = {"UH1HCrash"}
+eHelicopter.crashType = {"UH1HFuselage"}
 
 ---@field scrapAndParts table
 eHelicopter.scrapAndParts = {} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
