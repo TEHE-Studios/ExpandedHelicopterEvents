@@ -33,10 +33,11 @@ function EHE_OpenBox.SURVIVAL(recipe, result, player)
 end
 
 function EHE_OpenBox.STASHBOX(recipe, result, player)
-	player:getInventory():AddItems("WhiskeyFull", 4)
+	player:getInventory():AddItems("WhiskeyFull", 1)
 	player:getInventory():AddItems("Cigarettes", 4)
 	player:getInventory():AddItems("Lighter", 2)
 	player:getInventory():AddItems("HottieZ", 13)
+	player:getInventory():AddItems("EHE.PlentyTee", 5)
 	player:getInventory():AddItems("Spiffo", 1)
 end
 

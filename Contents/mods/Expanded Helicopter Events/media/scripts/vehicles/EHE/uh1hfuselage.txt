@@ -7,7 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle Vehicle_UH1HFuselage
+	vehicle UH1HFuselage
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,

@@ -2,7 +2,7 @@
 local distributionTable = VehicleDistributions[1]
 
 
-VehicleDistributions.UH1Seat = {
+VehicleDistributions.UH1HSeat = {
     rolls = 2,
     items ={
         "Bag_ALICEpack_Army", 9,
@@ -227,10 +227,10 @@ VehicleDistributions.FEMASupplyDrop = {
 -- UH-1H tables
 VehicleDistributions.UH1H = {
 	
-	SeatFrontLeft = VehicleDistributions.UH1Seat;
-	SeatFrontRight = VehicleDistributions.UH1Seat;
-	SeatRearLeft = VehicleDistributions.UH1Seat;
-	SeatRearRight = VehicleDistributions.UH1Seat;
+	SeatFrontLeft = VehicleDistributions.UH1HSeat;
+	SeatFrontRight = VehicleDistributions.UH1HSeat;
+	SeatRearLeft = VehicleDistributions.UH1HSeat;
+	SeatRearRight = VehicleDistributions.UH1HSeat;
 }
 
 VehicleDistributions.UH1HSurvivalist = {
@@ -267,22 +267,6 @@ VehicleDistributions.Bell206News = {
     SeatRearRight =  VehicleDistributions.Bell206NewsSeat;
 }    
 
-VehicleDistributions.Bell206PoliceFuselage = {
-	
-	SeatFrontLeft = VehicleDistributions.Bell206PoliceSeat;
-	SeatFrontRight =  VehicleDistributions.Bell206PoliceSeat;
-	SeatRearLeft =  VehicleDistributions.Bell206PoliceSeat;
-	SeatRearRight =  VehicleDistributions.Bell206PoliceSeat;
-}
-
-VehicleDistributions.Bell206WBLNFuselage = {
-
-    SeatFrontLeft = VehicleDistributions.Bell206NewsSeat;
-    SeatFrontRight = VehicleDistributions.Bell206NewsSeat;
-    SeatRearLeft = VehicleDistributions.Bell206NewsSeat;
-    SeatRearRight = VehicleDistributions.Bell206NewsSeat;
-}
-
 --Supply Drop
 VehicleDistributions.FEMASupplyDrop = {
 	
@@ -291,9 +275,9 @@ VehicleDistributions.FEMASupplyDrop = {
 }    
 
 --Distribution
-distributionTable["UH1HCrash"] = { Normal = VehicleDistributions.UH1H; }
-distributionTable["UH1Hsurvivalistcrash"] = { Normal = VehicleDistributions.UH1HSurvivalist; }
-distributionTable["UH1Hmedevaccrash"] = { Normal = VehicleDistributions.UH1HMedevac; }
+distributionTable["UH1HFuselage"] = { Normal = VehicleDistributions.UH1H; }
+distributionTable["UH1HSurvivalistFuselage"] = { Normal = VehicleDistributions.UH1HSurvivalist; }
+distributionTable["UH1HMedevacFuselage"] = { Normal = VehicleDistributions.UH1HMedevac; }
 distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
 

@@ -17,7 +17,7 @@ eHelicopter.crashType = {"UH1HFuselage"}
 eHelicopter.doStuffOnCrash = false
 
 ---@field scrapAndParts table
-eHelicopter.scrapAndParts = {} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
+eHelicopter.scrapAndParts = {["vehicleSection"]="UH1HTail"} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
 
 ---@field crew table list of IDs and chances (similar to how loot distribution is handled)
 ---Example: crew = {"pilot", 100, "crew", 75, "crew", 50}

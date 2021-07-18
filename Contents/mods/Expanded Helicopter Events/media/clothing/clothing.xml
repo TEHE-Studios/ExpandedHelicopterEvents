@@ -7,7 +7,7 @@
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
 		<m_items> <!-- Police Helicopter Helmet -->
-			<itemGUID>dd389eac-faf3-4876-9464-b5d6dcb4704c</itemGUID>
+			<itemGUID>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -33,7 +33,7 @@
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
 		<m_items> <!-- Police Helicopter Helmet -->
-			<itemGUID>dd389eac-faf3-4876-9464-b5d6dcb4704c</itemGUID>
+			<itemGUID>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -59,7 +59,7 @@
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
 		<m_items> <!-- Military Helicopter Helmet -->
-			<itemGUID>28c04952-0f67-45fa-a325-2288b032fe5d</itemGUID>
+			<itemGUID>47c9769d-8935-4028-8900-54e0b83fc873</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -88,7 +88,7 @@
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
 		<m_items> <!-- Military Helicopter Helmet -->
-			<itemGUID>28c04952-0f67-45fa-a325-2288b032fe5d</itemGUID>
+			<itemGUID>47c9769d-8935-4028-8900-54e0b83fc873</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -175,7 +175,7 @@
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
 		<m_items> <!-- Military Helicopter Helmet -->
-			<itemGUID>04b6c0a5-d5b5-45bf-927d-8dbd6b6d031a</itemGUID>
+			<itemGUID>47c9769d-8935-4028-8900-54e0b83fc873</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -186,8 +186,8 @@
 		<m_items> <!-- Hawaiian Shirt -->
 			<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
 		</m_items>
-		<m_items> <!-- Hunting Vest -->
-			<itemGUID>2f44ec3e-5711-492e-ba8f-e75cca3a4dc6</itemGUID>
+		<m_items> <!-- Denim Vest -->
+			<itemGUID>bf9cc65d-1767-4661-9ad4-db7ac0082f32</itemGUID>
 		</m_items>
 		<m_items> <!-- Woodland Camo Pants -->
 			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
@@ -440,16 +440,15 @@
 		<m_items> <!-- Military Bulletproof Vest -->
 			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
 		</m_items>
+		<m_items> <!-- Denim Cutoff Vest -->
+			<itemGUID>a51eee81-0e8a-45b1-9169-145d87041d99</itemGUID>
+		</m_items>
 		<m_items> <!-- Woodland Camo Pants -->
 			<itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
 		</m_items>
 		<m_items> <!-- Denim Jeans -->
 		<probability>0.5</probability>
 			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
-		</m_items>
-		<m_items> <!-- Tattoo on Arm -->
-		<probability>0.5</probability>
-			<itemGUID>ec2b8d6a-323b-4264-abe6-7499fa1cf01e</itemGUID>
 		</m_items>
 		<m_items> <!-- Aviators -->
 		<probability>0.1</probability>

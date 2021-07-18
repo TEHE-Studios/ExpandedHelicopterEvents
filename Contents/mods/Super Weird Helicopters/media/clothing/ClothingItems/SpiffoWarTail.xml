@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<clothingItem>
+	<m_MaleModel>skinned\clothes\bob_spiffotail</m_MaleModel>
+	<m_FemaleModel>skinned\clothes\bob_spiffotail</m_FemaleModel>
+	<m_GUID>71a553ca-0eb3-467e-a1c8-41583fa9e4b3</m_GUID>
+	<m_Static>false</m_Static>
+	<m_AllowRandomHue>false</m_AllowRandomHue>
+	<m_AllowRandomTint>false</m_AllowRandomTint>
+	<m_AttachBone></m_AttachBone>
+	<textureChoices>clothes\spiffosuit\spiffosuit</textureChoices>
+</clothingItem>

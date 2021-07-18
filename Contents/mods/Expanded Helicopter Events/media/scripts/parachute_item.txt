@@ -1,0 +1,11 @@
+module Base
+{
+	item Parachute
+	{
+		Weight = 20,
+		Type			= Moveable,
+		WorldObjectSprite	= nil,
+		DisplayName = Parachute,
+		Icon			=	Parachute,
+	}
+}
