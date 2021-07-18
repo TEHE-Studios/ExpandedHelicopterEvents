@@ -2,11 +2,12 @@ eHelicopter_zombieAI = {}
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param aiChanges string
 function eHelicopter_zombieAI.apply(zombie,aiChanges)
-	if not zombie  or not aiChanges then
+	if not zombie or not aiChanges then
 		return
 	end
 	local zMD = zombie:getModData()
-	zMD["ehe_zombieType"] = aiChanges
+	zMD["eheZombieType"] = tostring(aiChanges)
+
 end
 
 
@@ -24,7 +25,7 @@ function eHelicopter_zombieAI.checkForAI(zombie)
 	eHelicopter_zombieAI.lastCheckedForAI = timeStampMS+500
 
 	local zMD = zombie:getModData()
-	local storedAIType = zMD["ehe_zombieType"]
+	local storedAIType = zMD["eheZombieType"]
 
 	if storedAIType then
 		local specialAI = eHelicopter_zombieAI[storedAIType]
