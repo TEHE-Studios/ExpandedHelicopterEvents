@@ -13,6 +13,9 @@ eHelicopter.shadow = true
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HFuselage"}
 
+---@field doStuffOnCrash function
+eHelicopter.doStuffOnCrash = false
+
 ---@field scrapAndParts table
 eHelicopter.scrapAndParts = {} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
 

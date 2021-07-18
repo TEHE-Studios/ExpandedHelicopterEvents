@@ -51,6 +51,11 @@ function eHelicopter:crash()
 					self:dropAllItems(4)
 				end
 
+				local doStuffFunction = self.doStuffOnCrash
+				if doStuffFunction then
+					doStuffFunction(self, currentSquare)
+				end
+
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
 				self:spawnCrew()
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
