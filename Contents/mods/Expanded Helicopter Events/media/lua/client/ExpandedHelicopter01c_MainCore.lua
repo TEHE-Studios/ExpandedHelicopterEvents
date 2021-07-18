@@ -104,6 +104,10 @@ end
 
 ---@return int, int, int XYZ of eHelicopter
 function eHelicopter:getXYZAsInt()
+	if not self.currentPosition then
+		return
+	end
+	
 	local ehX = math.floor(Vector3GetX(self.currentPosition) + 0.5)
 	local ehY = math.floor(Vector3GetY(self.currentPosition) + 0.5)
 	local ehZ = self.height
