@@ -450,9 +450,17 @@ function eHelicopter:findTarget(range)
 	end
 
 	if not target then
-		print(" --- HELI "..self:heliToString()..": unable to find target.")
-		self:unlaunch()
-		return
+
+		local randomEdgeSquare = fetchRandomEdgeSquare()
+		if randomEdgeSquare then
+			print(" --- HELI "..self:heliToString()..": unable to find target, setting edge as target.")
+			target = randomEdgeSquare
+		else
+			print(" --- HELI "..self:heliToString()..": unable to find target, ERROR: unable to set edge.")
+			self:unlaunch()
+			return
+		end
+
 	end
 
 	return target
@@ -559,9 +567,15 @@ function eHelicopter:launch(targetedObject)
 			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
 	else
-		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set")
-		self:unlaunch()
-		return
+		local randomEdgeSquare = fetchRandomEdgeSquare()
+		if randomEdgeSquare then
+			print(" -- EHE: "..self:heliToString().." launch: ERR: no target set, setting random edge.")
+			targetedObject = randomEdgeSquare
+		else
+			print(" -- EHE: "..self:heliToString().." launch: ERR: no target set, ERROR: unable to set random edge.")
+			self:unlaunch()
+			return
+		end
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
