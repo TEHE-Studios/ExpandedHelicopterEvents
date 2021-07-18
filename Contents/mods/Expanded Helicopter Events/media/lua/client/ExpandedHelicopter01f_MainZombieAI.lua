@@ -41,10 +41,6 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie)
 	if not zombie then
 		return
 	end
-	local newSpeedMod = 0.99
-	if zombie:getSpeedMod() < newSpeedMod then
-		zombie:changeSpeed(1)
-		zombie:setSpeedMod(newSpeedMod)
-		zombie:DoZombieStats()
-	end
+	zombie:changeSpeed(1)
+	zombie:DoZombieStats()
 end
