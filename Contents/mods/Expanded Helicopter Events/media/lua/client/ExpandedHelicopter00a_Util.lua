@@ -107,9 +107,9 @@ function fetchRandomEdgeSquare()
 	local randomY = ZombRand(eheBounds.MIN_Y, eheBounds.MAX_Y)
 
 	if ZombRand(101) <= 50 then
-		randomX = minMaxX{ZombRand(1,3)}
+		randomX = minMaxX[ZombRand(1,3)]
 	else
-		randomY = minMaxY{ZombRand(1,3)}
+		randomY = minMaxY[ZombRand(1,3)]
 	end
 
 	local randomEdgeSquare = getCell():getOrCreateGridSquare(randomX,randomY,0)
