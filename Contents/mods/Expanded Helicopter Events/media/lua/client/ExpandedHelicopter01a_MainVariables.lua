@@ -211,7 +211,11 @@ function eHelicopter:heliToString(location)
 	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..")"
 	if location then
 		local h_x, h_y, _ = self:getXYZAsInt()
-		returnString = returnString.." (x:"..h_x..", y:"..h_y..")"
+		if h_x and h_y then
+			returnString = returnString.." (x:"..h_x..", y:"..h_y..")"
+		else
+			returnString = returnString.." (x:?, y:?)"
+		end
 	end
 	return returnString
 end
