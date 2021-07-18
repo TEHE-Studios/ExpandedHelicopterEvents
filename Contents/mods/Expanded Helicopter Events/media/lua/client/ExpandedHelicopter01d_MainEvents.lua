@@ -111,8 +111,11 @@ function eHelicopter:spawnCrew()
 				--if there's an actual zombie
 				if zombie then
 
-					zombie:changeSpeed(1)
-					zombie:Say("My speed is something, huh?")
+					local zombieAIchange = eHelicopter_zombieAI["specialZombie_"..outfitID]
+					if zombieAIchange then
+						print(" - EHE: ZombieAI change found.")
+						eHelicopter_zombieAI.apply(zombie,("specialZombie_"..outfitID))
+					end
 
 					--33% to be dead on arrival
 					if ZombRand(100) <= 33 then
