@@ -12,6 +12,7 @@ module Base
         Insulation = 0.75,
         WindResistance = 0.75,
         WaterResistance = 0.75,
+        BulletDefense = 100
     }
       item SpiffoWarSuit
     {
@@ -24,6 +25,7 @@ module Base
         ScratchDefense = 10,
         Insulation = 0.85,
         WindResistance = 0.6,
+        BulletDefense = 100
     }
     item SpiffoWarTail
     {
@@ -31,5 +33,6 @@ module Base
         ClothingItem = SpiffoTail,
         BodyLocation = Tail,
         Icon = SpiffoTail,
+        BulletDefense = 100
     }
 }

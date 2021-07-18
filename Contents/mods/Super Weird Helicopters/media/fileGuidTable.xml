@@ -60,6 +60,21 @@
 	<path>media/clothing/clothingItems/AlienSkin.xml</path>
 	<guid>d5768fec-f732-4e4b-ad50-193e55d6400f</guid>
 	</files>
+	
+	<files>
+	<path>media/clothing/clothingItems/Hat_SpiffoWarHelmet.xml</path>
+	<guid>996fe619-9bb4-4725-86e4-32211147d2df</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/SpiffoWarSuit.xml</path>
+	<guid>387547bd-fef7-4305-b83a-ce31090dc098</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/SpiffoWarTail.xml</path>
+	<guid>4d37a5ce-c152-4dd4-b632-c13c99e0da54</guid>
+	</files>
 		
 	<files>
 		<path>media/clothing/clothingItems/AmmoStrap_Shells.xml</path>
