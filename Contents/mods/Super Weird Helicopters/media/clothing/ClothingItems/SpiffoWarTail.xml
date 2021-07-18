@@ -7,5 +7,5 @@
 	<m_AllowRandomHue>false</m_AllowRandomHue>
 	<m_AllowRandomTint>false</m_AllowRandomTint>
 	<m_AttachBone></m_AttachBone>
-	<textureChoices>clothes\spiffosuit\spiffosuit</textureChoices>
+	<textureChoices>clothes\spiffowarsuit\weirdspiffosuit</textureChoices>
 </clothingItem>
