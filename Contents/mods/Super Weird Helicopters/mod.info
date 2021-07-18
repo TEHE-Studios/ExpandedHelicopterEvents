@@ -1,6 +1,0 @@
-name=Super Weird Expanded Helicopters Events
-id=WeirdExpandedHelicopterEvents
-description= This mod replaces the vanilla helicopter event with something more dynamic and engaging. Options can be found in the main menu and to the right.
-description= Note: the default vanilla sandbox option for "Helicopter Frequency" does nothing.
-poster=poster.png
-require=ExpandedHelicopterEvents
