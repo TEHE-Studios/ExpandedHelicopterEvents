@@ -7,7 +7,7 @@ if getDebug() then
 			local player = getSpecificPlayer(0)
 			local bodyLoc = player:getSquare()
 
-			local outfitID = "1Soldier"
+			local outfitID = "1AlienTourist"
 			local aiID = "gottaGoFast"
 
 			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
