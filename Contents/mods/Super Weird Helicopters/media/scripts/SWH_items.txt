@@ -1,4 +1,4 @@
-module EHE
+module SWH
 {
 	imports
 	{
