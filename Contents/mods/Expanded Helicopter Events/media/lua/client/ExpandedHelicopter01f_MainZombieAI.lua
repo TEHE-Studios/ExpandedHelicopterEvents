@@ -42,6 +42,8 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie)
 	if not zombie then
 		return
 	end
+	zombie:getHumanVisual():setHairModel("")
+	zombie:getHumanVisual():setBeardModel("")
 	zombie:changeSpeed(1)
 	zombie:DoZombieStats()
 end
