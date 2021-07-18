@@ -7,19 +7,20 @@ if getDebug() then
 			local player = getSpecificPlayer(0)
 			local bodyLoc = player:getSquare()
 
-			local aiTest = "1Soldier"
+			local outfitID = "1Soldier"
+			local aiID = "gottaGoFast"
 
 			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 			if bodyLoc then
-				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, aiTest, 50)
+				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
 				---@type IsoGameCharacter | IsoZombie
 				local zombie = spawnedZombies:get(0)
 				--if there's an actual zombie
 				if zombie then
-					local zombieAIchange = eHelicopter_zombieAI["specialZombie_gottaGoFast"]
+					local zombieAIchange = eHelicopter_zombieAI["specialZombie_"..aiID]
 					if zombieAIchange then
-						print(" - EHE: ZombieAI "..aiTest.." found.")
-						eHelicopter_zombieAI.apply(zombie,("specialZombie_gottaGoFast"))
+						print(" - EHE: ZombieAI "..outfitID.." found.")
+						eHelicopter_zombieAI.apply(zombie,"specialZombie_"..aiID)
 					end
 				end
 			end
