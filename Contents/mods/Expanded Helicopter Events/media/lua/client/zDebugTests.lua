@@ -12,7 +12,7 @@ if getDebug() then
 
 			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 			if bodyLoc then
-				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 50)
+				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 0)
 				---@type IsoGameCharacter | IsoZombie
 				local zombie = spawnedZombies:get(0)
 				--if there's an actual zombie
