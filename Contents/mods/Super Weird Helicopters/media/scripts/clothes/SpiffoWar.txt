@@ -1,0 +1,35 @@
+module Base
+{
+		item Hat_SpiffoWar
+	{
+		Type = Clothing,
+		ClothingItem = Hat_Spiffo,
+		BodyLocation = FullHat,
+		Icon = SpiffoHead,
+		CanHaveHoles = false,
+		ChanceToFall = 10,
+        BloodLocation = Head,
+        Insulation = 0.75,
+        WindResistance = 0.75,
+        WaterResistance = 0.75,
+    }
+      item SpiffoWarSuit
+    {
+        Type = Clothing,
+        ClothingItem = SpiffoSuit,
+        BodyLocation = FullSuit,
+        BloodLocation = Trousers;Jumper,
+        Icon = SpiffoSuit,
+        RunSpeedModifier = 0.7,
+        ScratchDefense = 10,
+        Insulation = 0.85,
+        WindResistance = 0.6,
+    }
+    item SpiffoWarTail
+    {
+        Type = Clothing,
+        ClothingItem = SpiffoTail,
+        BodyLocation = Tail,
+        Icon = SpiffoTail,
+    }
+}
