@@ -1,13 +1,47 @@
 module SWH
 {
 
+    recipe Open Supplies
+    {
+       BurgerBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:PreventionFlyer=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.BURGERBOX,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       MerchBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:PreventionFlyer=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.MERCHBOX,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       CostumeBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:PreventionFlyer=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.COSTUMEBOX,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
 
     recipe Open Supplies
     {
        BurgerBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
-       Result:MeatPatty=1,
-       OnCreate:SWH_OpenBox.BURGERBOX,
+       Result:PreventionFlyer=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.BURGERBOX,
        Time:70.0,
        Sound:OpenBox,
     }
@@ -16,8 +50,9 @@ module SWH
     recipe Open Supplies
     {
        MerchBox=1,
-       Result:Spiffo=1,
-       OnCreate:SWH_OpenBox.MERCHBOX,
+       Result:PreventionFlyer=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.MERCHBOX,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -27,6 +62,7 @@ module SWH
     {
        CostumeBox=1,
        Result:PreventionFlyer=1,
+       RemoveResultItem:true,
        OnCreate:EHE_OpenBox.COSTUMEBOX,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
