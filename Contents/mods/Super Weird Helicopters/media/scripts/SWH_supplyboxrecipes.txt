@@ -1,5 +1,9 @@
 module SWH
 {
+	imports
+	{
+		Base
+	}
 
     recipe Open Supplies
     {
