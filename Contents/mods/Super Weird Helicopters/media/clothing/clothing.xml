@@ -9,6 +9,22 @@
 		<m_items> <!-- Alien Skin -->
 			<itemGUID>d5768fec-f732-4e4b-ad50-193e55d6400f</itemGUID>
 		</m_items>
+		<m_items> <!-- Hawaiian Shirt -->
+			<itemGUID>76ae98e6-10d4-4d89-a4eb-3f8f6642c897</itemGUID>
+		</m_items>
+			<m_items> <!-- Shorts -->
+		<itemGUID>0cf8f577-6d64-4c62-ac85-1e9621a3b131</itemGUID>
+		    </m_items>
+			<m_items> <!-- Flip Flops -->
+		<itemGUID>46780aae-03ef-45d7-a0e8-36278f328576</itemGUID>
+		    </m_items>
+			<m_items> <!-- Fanny Pack -->
+		<itemGUID>48b63e1d-0846-407d-9007-2fdabb58eba2</itemGUID>
+		    </m_items>
+			<m_items> <!-- Visor -->
+			<probability>0.2</probability>
+		<itemGUID>aea918c3-0928-404f-a24e-43c4b28cc640</itemGUID>
+		    </m_items>
 	</m_MaleOutfits>
 </outfitManager>
 
