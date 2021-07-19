@@ -1,11 +1,13 @@
 eHelicopter_zombieAI = {}
 
 ---@param location IsoGridSquare
+---@param outfitID string
+---@param aiID string
 function eHelicopter_zombieAI:spawnZombieAI(location, outfitID, aiID)
+	--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 	if not location then
 		return
 	end
-	--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
 	local spawnedZombies = addZombiesInOutfit(location:getX(), location:getY(), location:getZ(), 1, outfitID, 0)
 	---@type IsoGameCharacter | IsoZombie
 	local zombie = spawnedZombies:get(0)
@@ -13,7 +15,7 @@ function eHelicopter_zombieAI:spawnZombieAI(location, outfitID, aiID)
 	if zombie then
 		local zombieAIchange = eHelicopter_zombieAI["specialZombie_"..aiID]
 		if zombieAIchange then
-			print(" - EHE: ZombieAI "..outfitID.." found.")
+			print(" - EHE: ZombieAI "..aiID.." found.")
 			eHelicopter_zombieAI.apply(zombie,"specialZombie_"..aiID)
 		end
 	end
