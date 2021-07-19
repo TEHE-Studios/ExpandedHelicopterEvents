@@ -71,7 +71,6 @@
 			<m_items> <!-- Socks -->
 		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
 		    </m_items>
-			</m_items>
 			<m_items> <!-- Black Shoes -->
 		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
 		    </m_items>
@@ -79,5 +78,6 @@
 		<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
 		    </m_items>
 </m_MaleOutfits>
+
 </outfitManager>
 
