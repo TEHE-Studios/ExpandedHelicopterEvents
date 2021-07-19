@@ -4,7 +4,6 @@ module Base
     {
         Type = Clothing,
         ClothingItem = SpiffoWarTail,
-        DisplayName = Spiffo War Tail,
         BodyLocation = Tail,
         Icon = SpiffoTail,
         BulletDefense = 100,

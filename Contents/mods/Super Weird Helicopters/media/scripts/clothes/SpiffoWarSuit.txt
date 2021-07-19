@@ -4,7 +4,6 @@ module Base
     {
         Type = Clothing,
         ClothingItem = SpiffoWarSuit,
-        DisplayName = Spiffo War Suit,
         BodyLocation = FullSuit,
         BloodLocation = Trousers;Jumper,
         Icon = SpiffoSuit,

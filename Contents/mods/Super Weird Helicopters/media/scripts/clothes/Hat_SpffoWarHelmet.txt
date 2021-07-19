@@ -5,7 +5,6 @@ module Base
 		Type = Clothing,
 		ClothingItem = Hat_SpiffoWarHelmet,
 		BodyLocation = FullHat,
-        DisplayName = Spiffo War Helmet,
 		Icon = SpiffoHead,
 		CanHaveHoles = false,
 		ChanceToFall = 0,
