@@ -81,5 +81,22 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie)
 		return
 	end
 	zombie:changeSpeed(1)
+	zombie:setNoTeeth(true)
+	if zombie:isCrawling() then
+		zombie:toggleCrawling()
+	end
+	zombie:DoZombieStats()
+end
+
+
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+function eHelicopter_zombieAI.specialZombie_nemesis(zombie)
+	if not zombie then
+		return
+	end
+	zombie:setNoTeeth(true)
+	if zombie:isCrawling() then
+		zombie:toggleCrawling()
+	end
 	zombie:DoZombieStats()
 end
