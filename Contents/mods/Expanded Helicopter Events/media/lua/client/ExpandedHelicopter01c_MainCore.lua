@@ -523,7 +523,7 @@ function eHelicopter:applyCrashChance()
 	local dayOfLastCrash = GTMData["DayOfLastCrash"]
 	local expectedMaxDaysWithOutCrash = 14/(apocImpact+1)
 	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
-	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
+	local crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
 	print(" --- "..self:heliToString().."crashChance:"..crashChance)
 	--[[DEBUG]] print(" ----- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)

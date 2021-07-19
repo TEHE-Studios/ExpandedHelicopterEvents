@@ -3,26 +3,13 @@ if getDebug() then
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then --DEBUG_TESTS.testAllLines()
 
-			---@type IsoPlayer | IsoGameCharacter | IsoMovingObject
-			local player = getSpecificPlayer(0)
-			local bodyLoc = player:getSquare()
-
-			local outfitID = "1AlienTourist"
-			local aiID = "gottaGoFast"
-
-			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
-			if bodyLoc then
-				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, 0)
-				---@type IsoGameCharacter | IsoZombie
-				local zombie = spawnedZombies:get(0)
-				--if there's an actual zombie
-				if zombie then
-					local zombieAIchange = eHelicopter_zombieAI["specialZombie_"..aiID]
-					if zombieAIchange then
-						print(" - EHE: ZombieAI "..outfitID.." found.")
-						eHelicopter_zombieAI.apply(zombie,"specialZombie_"..aiID)
-					end
-				end
+			if eHelicopter_zombieAI then
+				local heliA = getFreeHelicopter("Spiffocopter")
+				heliA:launch()
+				local heliB = getFreeHelicopter("UFO")
+				heliB:launch()
+				local heliC = getFreeHelicopter("IRS")
+				heliC:launch()
 			end
 
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()

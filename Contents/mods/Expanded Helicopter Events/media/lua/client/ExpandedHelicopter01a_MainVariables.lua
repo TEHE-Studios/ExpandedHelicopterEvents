@@ -13,6 +13,9 @@ eHelicopter.shadow = true
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HFuselage"}
 
+---@field addedCrashChance number
+eHelicopter.addedCrashChance = 0
+
 ---@field doStuffOnCrash function
 eHelicopter.doStuffOnCrash = false
 

@@ -111,12 +111,6 @@ function eHelicopter:spawnCrew()
 				--if there's an actual zombie
 				if zombie then
 
-					local zombieAIchange = eHelicopter_zombieAI["specialZombie_"..outfitID]
-					if zombieAIchange then
-						print(" - EHE: ZombieAI change found.")
-						eHelicopter_zombieAI.apply(zombie,("specialZombie_"..outfitID))
-					end
-
 					--33% to be dead on arrival
 					if ZombRand(100) <= 33 then
 						print("crash spawned: "..outfitID.." killed")
