@@ -6,10 +6,13 @@ if getDebug() then
 			if eHelicopter_zombieAI then
 				local heliA = getFreeHelicopter("Spiffocopter")
 				heliA:launch()
+				DEBUG_TESTS.moveHeliCloser(heliA)
 				local heliB = getFreeHelicopter("UFO")
 				heliB:launch()
+				DEBUG_TESTS.moveHeliCloser(heliB)
 				local heliC = getFreeHelicopter("IRS")
 				heliC:launch()
+				DEBUG_TESTS.moveHeliCloser(heliC)
 			end
 
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()

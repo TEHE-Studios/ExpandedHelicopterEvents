@@ -30,19 +30,12 @@ end
 
 function eHelicopter_zombieAI:spawnNemesisSpiffoZombieAI()
 	--remember ZombRand stops 1 before max.
-	local iterations = ZombRand(2,5)
+	local iterations = ZombRand(1,3)
 	for i=1, iterations do
 		eHelicopter_zombieAI:spawnZombieAI(self:getIsoGridSquare(), "1SpiffoBoss", "nemesis")
 	end
 end
 
-function eHelicopter_zombieAI:spawnIRSZombieAI()
-	--remember ZombRand stops 1 before max.
-	local iterations = ZombRand(2,5)
-	for i=1, iterations do
-		--eHelicopter_zombieAI:spawnZombieAI(self:getIsoGridSquare(), "1AlienTourist", "gottaGoFast")
-	end
-end
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param aiChanges string
