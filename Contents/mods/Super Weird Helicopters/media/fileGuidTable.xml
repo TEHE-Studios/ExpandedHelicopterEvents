@@ -60,11 +60,6 @@
 	<path>media/clothing/clothingItems/AlienSkin.xml</path>
 	<guid>d5768fec-f732-4e4b-ad50-193e55d6400f</guid>
 	</files>
-
-	<files>
-	<path>media/clothing/clothingItems/SpiffoMuscles.xml</path>
-	<guid>535e6809-6a60-4e4a-a540-8312cb8183c5</guid>
-	</files>
 	
 	<files>
 	<path>media/clothing/clothingItems/Hat_SpiffoWarHelmet.xml</path>
