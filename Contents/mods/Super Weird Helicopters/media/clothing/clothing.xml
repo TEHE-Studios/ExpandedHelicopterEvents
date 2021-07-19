@@ -62,6 +62,9 @@
 			<m_items> <!-- Short Sleeve Dress Shirt -->
 		<itemGUID>00d77803-6b57-453b-89b6-135d2d642719</itemGUID>
 		    </m_items>
+			<m_items> <!-- Tie -->
+		<itemGUID>d53c3cb1-4c67-4627-b9d9-0da2cc024980</itemGUID>
+		    </m_items>
 			<m_items> <!-- Suit Pants -->
 		<itemGUID>52acd769-424a-4cbb-b02a-441cb723b747</itemGUID>
 		    </m_items>
