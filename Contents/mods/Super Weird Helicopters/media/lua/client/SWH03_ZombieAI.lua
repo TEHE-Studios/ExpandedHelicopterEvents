@@ -29,6 +29,7 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie)
 end
 
 
+--[[ ---TODO: Cry
 ---@param location IsoGridSquare
 ---@param iterations number
 ---@param outfitID string
@@ -82,7 +83,7 @@ function eHelicopter_zombieAI.apply(zombie,aiChanges)
 		zombie:setWornItem(zombieAI:getBodyLocation(), zombieAI)
 	end
 end
-
+--]]
 
 eHelicopter_zombieAI.lastCheckedForAI = 0
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
@@ -100,7 +101,7 @@ function eHelicopter_zombieAI.checkForAI(zombie)
 	local storedAIItem = zombie:getWornItems():getItem("Left_MiddleFinger")
 	if storedAIItem then
 		print("storedAIItem:getType() = "..storedAIItem:getType())
-		local storedAI = storedAIItem:getModData()["zombieAIType"]
+		local storedAI = storedAIItem:getType()
 		if storedAI then
 			print("yes AI is here: "..storedAI)
 			local specialAI = eHelicopter_zombieAI["specialZombie_"..storedAI]

@@ -1,0 +1,24 @@
+module ZombieAI
+{
+	imports
+	{
+		Base
+	}
+
+    item gottaGoFast
+    {
+        Type = Clothing,
+        DisplayName = "",
+        ClothingItem = GottaGoFast,
+        BodyLocation=Left_MiddleFinger,
+    }
+
+    item nemesis
+    {
+        Type = Clothing,
+        DisplayName = "",
+        ClothingItem = GottaGoFast,
+        BodyLocation=Left_MiddleFinger,
+    }
+
+}
