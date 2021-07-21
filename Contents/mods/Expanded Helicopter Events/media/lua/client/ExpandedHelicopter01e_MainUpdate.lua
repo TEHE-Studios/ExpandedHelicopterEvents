@@ -62,11 +62,13 @@ function eHelicopter:update()
 		self:setTargetPos()
 	end
 
-	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration then
+	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget >= 0) then
 		local newTarget = self:findTarget(self.attackDistance*4)
 		if newTarget then
-			self.trueTarget = newTarget
-			self:setTargetPos()
+			if not instanceof(newTarget, "IsoGridSquare") then
+				self.trueTarget = newTarget
+				self:setTargetPos()
+			end
 		end
 	end
 
