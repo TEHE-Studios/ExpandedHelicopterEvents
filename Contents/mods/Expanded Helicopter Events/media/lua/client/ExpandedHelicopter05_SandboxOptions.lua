@@ -128,6 +128,9 @@ function HelicopterSandboxOptionOverride(hookEvent)
 		sandboxHeliFreq:setValue(1) -- 1 = Never
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
 	end
+	getGameTime():setHelicopterDay(0)
+	getGameTime():setHelicopterStartHour(0)
+	getGameTime():setHelicopterEndHour(0)
 end
 
 Events.OnGameBoot.Add(HelicopterSandboxOptionOverride("OnGameBoot: "))
