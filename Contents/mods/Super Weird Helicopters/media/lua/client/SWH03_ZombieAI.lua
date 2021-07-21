@@ -1,5 +1,36 @@
 eHelicopter_zombieAI = {}
 
+createNewScriptItem("Base","ZombieAI","ZombieAI","Normal","")
+
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie)
+	if not zombie then
+		return
+	end
+	print("AI running: specialZombie_gottaGoFast")
+	zombie:changeSpeed(1)
+	zombie:setNoTeeth(true)
+	if zombie:isCrawling() then
+		zombie:toggleCrawling()
+	end
+	zombie:DoZombieStats()
+end
+
+
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+function eHelicopter_zombieAI.specialZombie_nemesis(zombie)
+	if not zombie then
+		return
+	end
+	print("AI running: specialZombie_nemesis")
+	zombie:setNoTeeth(true)
+	if zombie:isCrawling() then
+		zombie:toggleCrawling()
+	end
+	zombie:DoZombieStats()
+end
+
+
 ---@param location IsoGridSquare
 ---@param outfitID string
 ---@param aiID string
@@ -45,8 +76,12 @@ function eHelicopter_zombieAI.apply(zombie,aiChanges)
 	if not zombie or not aiChanges then
 		return
 	end
-	local zMD = zombie:getModData()
-	zMD["eheZombieType"] = tostring(aiChanges)
+	local itemizedAI = instanceItem("Base.ZombieAI")
+	if (itemizedAI) then
+		itemizedAI:getModData()["zombieAIType"] = aiChanges
+		zombie:getInventory():addItem(itemizedAI)
+		print("itemizedAI is real")
+	end
 end
 
 
@@ -63,42 +98,18 @@ function eHelicopter_zombieAI.checkForAI(zombie)
 	end
 	eHelicopter_zombieAI.lastCheckedForAI = timeStampMS+500
 
-	local zMD = zombie:getModData()
-	local storedAIType = zMD["eheZombieType"]
+	local storedAIItem = zombie:getInventory():getFirstTypeRecurse("Base.ZombieAI")
+	if storedAIItem then
 
-	if storedAIType then
-		print("yes AI is here: "..storedAIType)
-		local specialAI = eHelicopter_zombieAI[storedAIType]
-		if specialAI then
-			specialAI(zombie)
+		local storedAI = storedAIItem:getModData()["zombieAIType"]
+		if storedAI then
+			print("yes AI is here: "..storedAI)
+			local specialAI = eHelicopter_zombieAI[storedAI]
+			if specialAI then
+				specialAI(zombie)
+			end
 		end
 	end
 end
+
 Events.OnZombieUpdate.Add(eHelicopter_zombieAI.checkForAI)
-
-
----@param zombie IsoZombie | IsoGameCharacter | IsoObject
-function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie)
-	if not zombie then
-		return
-	end
-	zombie:changeSpeed(1)
-	zombie:setNoTeeth(true)
-	if zombie:isCrawling() then
-		zombie:toggleCrawling()
-	end
-	zombie:DoZombieStats()
-end
-
-
----@param zombie IsoZombie | IsoGameCharacter | IsoObject
-function eHelicopter_zombieAI.specialZombie_nemesis(zombie)
-	if not zombie then
-		return
-	end
-	zombie:setNoTeeth(true)
-	if zombie:isCrawling() then
-		zombie:toggleCrawling()
-	end
-	zombie:DoZombieStats()
-end
