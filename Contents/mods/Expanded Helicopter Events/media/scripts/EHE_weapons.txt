@@ -1,4 +1,4 @@
-module Base 
+module EHE 
 {
     item FlareGun
 	{
@@ -57,11 +57,33 @@ module Base
         InsertAmmoSound = Stormy9mmClipLoad,
         EjectAmmoSound = Stormy9mmClipEject,
         RackSound = Stormy9mmRack,
-        MagazineType = Base.9mmClip,
-        AmmoType = Base.FlareCartridges,
+        AmmoType = EHE.FlareCartridge,
         WeaponReloadType = handgun,
         JamGunChance = 0,
         AttachmentType = Holster,
         StopPower = 0,
 	}
+
+		item FlareCartridge
+	{
+		Count	=	6,
+		Weight	=	0.05,
+		AlwaysWelcomeGift	=	TRUE,
+		Type	=	Normal,
+		DisplayCategory = Ammo,
+		DisplayName	=	Flare Cartridge,
+		Icon	=	ShotgunAmmo,
+		MetalValue = 1,
+		WorldStaticModel = ShotGunShells,
+	}
+
+    item FlareBox
+    {
+        Weight	=	0.9,
+        Type	=	Normal,
+        DisplayName	=	Box of Flares,
+        DisplayCategory = Ammo,
+        Icon	=	ShotgunAmmoBox,
+        WorldStaticModel = BoxOfShotGunShells,
+    }
 }
