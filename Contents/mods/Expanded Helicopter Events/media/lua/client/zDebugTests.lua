@@ -4,15 +4,12 @@ if getDebug() then
 		if key == Keyboard.KEY_1 then --DEBUG_TESTS.testAllLines()
 
 			if eHelicopter_zombieAI then
-				local heliA = getFreeHelicopter("Spiffocopter")
-				heliA:launch()
-				DEBUG_TESTS.moveHeliCloser(heliA)
-				local heliB = getFreeHelicopter("UFO")
-				heliB:launch()
-				DEBUG_TESTS.moveHeliCloser(heliB)
-				local heliC = getFreeHelicopter("IRS")
-				heliC:launch()
-				DEBUG_TESTS.moveHeliCloser(heliC)
+				---@type IsoObject
+				local player = getSpecificPlayer(0)
+				local iterations = ZombRand(2,5)
+				for i=1, iterations do
+					eHelicopter_zombieAI:spawnZombieAI(player:getSquare(), "1AlienTourist", "gottaGoFast")
+				end
 			end
 
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
