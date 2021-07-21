@@ -417,7 +417,7 @@ function eHelicopter:findTarget(range)
 		end
 	end
 
-	print(" -- HELI "..self:heliToString()..": seeking target from pool of "..#weightPlayersList)
+	local DEBUGallTargetsText = " -- HELI "..self:heliToString()..": seeking target from pool of "..#weightPlayersList.." x "
 
 	--really convoluted printout method that counts repeated targets accordingly
 	--[[DEBUG]] if getDebug() then
@@ -437,12 +437,13 @@ function eHelicopter:findTarget(range)
 				else DEBUGallTargets[tostring(target)] = 1 end
 			end
 		end
-		local DEBUGallTargetsText = ""
 		for targetID,numberOf in pairs(DEBUGallTargets) do
 			DEBUGallTargetsText = DEBUGallTargetsText.."["..targetID.." x"..numberOf.."] "
 		end
 		print(" ---- Targets: "..DEBUGallTargetsText)
 	end --]]
+
+	print(DEBUGallTargetsText)
 
 	local target
 	if #weightPlayersList then
@@ -537,17 +538,16 @@ function eHelicopter:applyCrashChance()
 	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
 	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
-	print(" --- "..self:heliToString().."crashChance:"..crashChance)
-	--[[DEBUG]] print(" ----- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
-	--[[DEBUG]] print(" ----- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
-	--[[DEBUG]] print(" ----- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-	--[[DEBUG]] print(" ----- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
+	print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
+	--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." daysIntoApoc:"..daysIntoApoc .. " apocImpact:"..apocImpact.." weatherImpact:"..weatherImpact)
+	--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
+	--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		--[[DEBUG]] print (" --- crashing set to TRUE.")
 		self.crashing = true
 	end
-	print(" --------------- \n")
+	print(" ------------ \n")
 end
 
 
