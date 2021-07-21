@@ -5,7 +5,15 @@ module SWH
 		Base
 	}
 
-        item TenFortyForm
+    item ZombieAI
+    {
+        Type = Clothing,
+        DisplayName = "",
+        ClothingItem = ZombieAI,
+        BodyLocation=Left_MiddleFinger,
+    }
+
+    item TenFortyForm
 	{
 		Weight = 0.1,
 		Type = Normal,

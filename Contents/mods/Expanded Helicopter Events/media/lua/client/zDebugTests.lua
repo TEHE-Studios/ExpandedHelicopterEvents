@@ -4,12 +4,12 @@ if getDebug() then
 		if key == Keyboard.KEY_1 then --DEBUG_TESTS.testAllLines()
 
 			if eHelicopter_zombieAI then
+				print("Testing ZombieAI Spawn")
 				---@type IsoObject
-				local player = getSpecificPlayer(0)
+				local playerSquare = getSpecificPlayer(0):getSquare()
+				local shiftedPlayerSquare = getCell():getOrCreateGridSquare(playerSquare:getX()+3,playerSquare:getY()+3,0)
 				local iterations = ZombRand(2,5)
-				for i=1, iterations do
-					eHelicopter_zombieAI:spawnZombieAI(player:getSquare(), "1AlienTourist", "gottaGoFast")
-				end
+				eHelicopter_zombieAI:spawnZombieAI(shiftedPlayerSquare, iterations, "1AlienTourist", "gottaGoFast")
 			end
 
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
