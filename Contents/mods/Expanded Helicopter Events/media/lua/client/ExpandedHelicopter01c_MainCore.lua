@@ -579,8 +579,8 @@ function eHelicopter:launch(targetedObject)
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-	local tpX = targetedObject:getX()+ZombRand(-10,11)
-	local tpY = targetedObject:getY()+ZombRand(-10,11)
+	local tpX = targetedObject:getX()+ZombRand(-25,26)
+	local tpY = targetedObject:getY()+ZombRand(-25,26)
 	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
 	--maintain trueTarget
 	self.trueTarget = targetedObject
