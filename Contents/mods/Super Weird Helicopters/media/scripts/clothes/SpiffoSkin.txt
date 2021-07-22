@@ -1,0 +1,10 @@
+module Base
+{
+    item SpiffoSkin
+	{
+	Type = Clothing,
+	DisplayName = SpiffoSkin,
+	ClothingItem = SpiffoSkin,
+	BodyLocation=TankTop,
+	}
+}
