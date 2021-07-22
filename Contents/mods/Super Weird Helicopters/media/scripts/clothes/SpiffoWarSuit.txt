@@ -7,7 +7,7 @@ module Base
         BodyLocation = FullSuit,
         BloodLocation = Trousers;Jumper,
         Icon = SpiffoSuit,
-        CanHaveHoles = false,
+        CanHaveHoles = False,
         RunSpeedModifier = 0.7,
         ScratchDefense = 10,
         Insulation = 0.85,

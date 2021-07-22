@@ -4,10 +4,11 @@ module Base
 	{
 		Type = Clothing,
 		ClothingItem = Hat_SpiffoWarHelmet,
+        DisplayName = Spiffo War Helmet,
 		BodyLocation = FullHat,
 		Icon = SpiffoHead,
 		CanHaveHoles = false,
-		ChanceToFall = 0,
+		ChanceToFall = 1,
         BloodLocation = Head,
         Insulation = 0.75,
         WindResistance = 0.75,

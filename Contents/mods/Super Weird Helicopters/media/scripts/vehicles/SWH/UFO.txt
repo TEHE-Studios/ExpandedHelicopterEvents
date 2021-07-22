@@ -17,8 +17,8 @@ module Base
 		model
 		{
 			file = Vehicle_UFO,
-			scale = 0.7700,
-			offset = 0.0000 -0.0152 0.0909,
+			scale = 0.5400,
+			offset = 0.0000 0.3018 0.0909,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -29,10 +29,12 @@ module Base
 		}
 
 		textureMask = Vehicle_UFO_mask,
-		extents = 8.1818 2.0303 8.0909,
+		extents = 8.1818 2.0260 8.1039,
 		mass = 200,
-		physicsChassisShape = 8.4242 2.0303 8.4156,
-		centerOfMassOffset = 0.0000 0.9848 0.1061,
+		physicsChassisShape = 8.4416 2.0260 8.4156,
+		centerOfMassOffset = 0.0000 0.9870 0.1039,
+		shadowExtents = 8.4411 8.4002,
+		shadowOffset = 0.0000 0.1039,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 2,
@@ -42,13 +44,13 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.3636 0.4394 0.1667,
+				offset = 0.3636 0.4416 0.1688,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = 1.3030 0.0000 1.0455,
+				offset = 1.2987 0.0000 1.0519,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontLeft,
 			}
@@ -58,13 +60,13 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.3636 0.4394 0.1667,
+				offset = -0.3636 0.4416 0.1688,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
 			position outside
 			{
-				offset = -1.3030 0.0000 1.0455,
+				offset = -1.2987 0.0000 1.0519,
 				rotate = 0.0000 0.0000 0.0000,
 				area = SeatFrontRight,
 			}
@@ -72,12 +74,12 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 4.5000 -0.0152 0.8182 4.2121,
+			xywh = 4.4935 -0.0130 0.8312 4.2078,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -4.5000 -0.0152 0.8182 4.2121,
+			xywh = -4.4935 -0.0130 0.8312 4.2078,
 		}
 
 		template = Seat/part/SeatFrontLeft,
@@ -108,7 +110,7 @@ module Base
 
 		area TruckBed
 		{
-			xywh = 0.0000 -5.3182 5.9394 2.5455,
+			xywh = 0.0000 -5.3247 5.9481 2.5455,
 		}
 
 		template = Trunk/part/TruckBed,
