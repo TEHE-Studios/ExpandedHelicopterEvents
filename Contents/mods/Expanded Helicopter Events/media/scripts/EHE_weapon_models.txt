@@ -1,9 +1,0 @@
-module Base
-{
-    
-model FlareGun
-    {
-        mesh = weapons/firearm/FlareGun,
-    }	
-
-}
