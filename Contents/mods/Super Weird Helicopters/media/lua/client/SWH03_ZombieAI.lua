@@ -1,35 +1,45 @@
+local group = AttachedLocations.getGroup("Human")
+group:getOrCreateLocation("Special Zombie AI"):setAttachmentName("special_zombie_AI")
+
 eHelicopter_zombieAI = {}
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
-function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie)
+function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
 	if not zombie then
 		return
 	end
-	print("AI running: specialZombie_gottaGoFast")
-	zombie:changeSpeed(1)
-	zombie:setNoTeeth(true)
-	if zombie:isCrawling() then
-		zombie:toggleCrawling()
+	if apply then
+		print("AI onApply: specialZombie_gottaGoFast")
+		zombie:changeSpeed(1)
+		zombie:setNoTeeth(true)
+		zombie:DoZombieStats()
+	else
+		print("AI onUpdate: specialZombie_gottaGoFast")
+		if zombie:isCrawling() then
+			zombie:toggleCrawling()
+		end
 	end
-	zombie:DoZombieStats()
 end
-
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
-function eHelicopter_zombieAI.specialZombie_nemesis(zombie)
+function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 	if not zombie then
 		return
 	end
-	print("AI running: specialZombie_nemesis")
-	zombie:setNoTeeth(true)
-	if zombie:isCrawling() then
-		zombie:toggleCrawling()
+	if apply then
+		print("AI onApply: specialZombie_nemesis")
+		zombie:setNoTeeth(true)
+		zombie:setCanCrawlUnderVehicle(false)
+		zombie:DoZombieStats()
+	else
+		print("AI onUpdate: specialZombie_nemesis")
+		if zombie:isCrawling() then
+			zombie:toggleCrawling()
+		end
 	end
-	zombie:DoZombieStats()
 end
 
 
---[[ ---TODO: Cry
 ---@param location IsoGridSquare
 ---@param iterations number
 ---@param outfitID string
@@ -49,8 +59,7 @@ function eHelicopter_zombieAI:spawnZombieAI(location, iterations, outfitID, aiID
 		if zombie then
 			local zombieAIchange = eHelicopter_zombieAI["specialZombie_"..aiID]
 			if zombieAIchange then
-				print(" - EHE: ZombieAI "..aiID.." found.")
-				eHelicopter_zombieAI.apply(zombie,aiID)
+				eHelicopter_zombieAI.apply(zombie, aiID)
 			end
 		end
 	end
@@ -76,40 +85,50 @@ function eHelicopter_zombieAI.apply(zombie,aiChanges)
 	if not zombie or not aiChanges then
 		return
 	end
-	local zombieAI = zombie:getInventory():AddItem("SWH.ZombieAI")
-	if zombieAI then
-		print("itemized zombieAI "..aiChanges.." created. : "..zombieAI:getBodyLocation())
-		zombieAI:getModData()["zombieAIType"] = aiChanges
-		zombie:setWornItem(zombieAI:getBodyLocation(), zombieAI)
+
+	local itemizedZombieAI = InventoryItemFactory.CreateItem("ZombieAI."..aiChanges)
+	if itemizedZombieAI then
+		print("itemizedZombieAI: "..aiChanges.." applied.")
+		zombie:setAttachedItem("Special Zombie AI", itemizedZombieAI)
+		---WARNING: IsoZombie ModData does not save but we can use it to individualize variables
+		zombie:getModData()["applyNextUpdate"] = true
 	end
 end
---]]
 
-eHelicopter_zombieAI.lastCheckedForAI = 0
+
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
-function eHelicopter_zombieAI.checkForAI(zombie)
+function eHelicopter_zombieAI.checkForAI(zombie, apply)
 	if not zombie then
 		return
 	end
 
-	local timeStampMS = getTimestampMs()
-	if timeStampMS <= eHelicopter_zombieAI.lastCheckedForAI then
-		return
+	if zombie:getModData()["applyNextUpdate"] == true then
+		apply = true
+		zombie:getModData()["applyNextUpdate"] = false
 	end
-	eHelicopter_zombieAI.lastCheckedForAI = timeStampMS+500
 
-	local storedAIItem = zombie:getWornItems():getItem("Left_MiddleFinger")
-	if storedAIItem then
-		print("storedAIItem:getType() = "..storedAIItem:getType())
-		local storedAI = storedAIItem:getType()
-		if storedAI then
-			print("yes AI is here: "..storedAI)
+	local attachedItems = zombie:getAttachedItems()
+	for i=0, attachedItems:size()-1 do
+		---@type InventoryItem
+		local storedAIItem = attachedItems:getItemByIndex(i)
+		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
+			local storedAI = storedAIItem:getType()
 			local specialAI = eHelicopter_zombieAI["specialZombie_"..storedAI]
 			if specialAI then
-				specialAI(zombie)
+				specialAI(zombie, apply or false)
 			end
 		end
 	end
 end
-
 Events.OnZombieUpdate.Add(eHelicopter_zombieAI.checkForAI)
+
+
+---Load technique borrowed from SoulFilcher
+function eHelicopter_zombieAI.load_zombieAI()
+	local zombies = getPlayer():getCell():getZombieList()
+	for i=0, zombies:size()-1 do
+		local zombie = zombies:get(i)
+		eHelicopter_zombieAI.checkForAI(zombie, true)
+	end
+end
+Events.OnGameStart.Add(eHelicopter_zombieAI.load_zombieAI)
