@@ -1,0 +1,8 @@
+module Base
+{
+        model FlareGun
+    {
+        mesh = Weapons/1Handed/FlareGun,
+        texture = Weapons/1Handed/FlareGun,
+    }
+}
