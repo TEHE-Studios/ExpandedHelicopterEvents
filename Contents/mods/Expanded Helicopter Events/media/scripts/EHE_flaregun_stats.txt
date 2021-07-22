@@ -50,7 +50,7 @@ module Base
         RecoilDelay = 0,
         SoundGain = 1.5,
         ClipSize = 1,
-        ReloadTime = 50,
+        ReloadTime = 10,
         AimingTime = 30,
         BreakSound  =   BreakMetalItem,
         MetalValue = 30,
@@ -77,15 +77,4 @@ module Base
 		MetalValue = 1,
 		WorldStaticModel = ShotGunShells,
 	}
-
-  item FlareBox
-  {
-    Weight	=	0.9,
-    Type	=	Normal,
-    DisplayName	=	Box of Flares,
-    DisplayCategory = Ammo,
-    Icon	=	ShotgunAmmoBox,
-    MetalValue = 24,
-    WorldStaticModel = BoxOfShotGunShells,
-  }
 }
