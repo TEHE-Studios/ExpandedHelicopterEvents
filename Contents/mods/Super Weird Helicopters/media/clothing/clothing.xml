@@ -90,5 +90,28 @@
 		    </m_items>
 </m_MaleOutfits>
 
+<m_MaleOutfits>
+		<m_Name>RJ</m_Name>
+		<m_Guid>26d1f965-6b1f-402d-ae42-49fc2488e26a</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>
+		<m_items> <!-- Fedora -->
+		<m_items> <!-- RJ Skin -->
+			<itemGUID>84d0c776-2718-478c-9447-ff9506504382</itemGUID>
+		</m_items>		
+			<m_items> <!-- Short Sleeve Dress Shirt -->
+		<itemGUID>00d77803-6b57-453b-89b6-135d2d642719</itemGUID>
+		    </m_items>
+			<m_items> <!-- Suit Pants -->
+		<itemGUID>52acd769-424a-4cbb-b02a-441cb723b747</itemGUID>
+		    </m_items>
+			<m_items> <!-- Socks -->
+		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
+		    </m_items>
+			<m_items> <!-- Black Shoes -->
+		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		    </m_items>
+</m_MaleOutfits>
 </outfitManager>
 
