@@ -2,16 +2,6 @@ if getDebug() then
 
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then --DEBUG_TESTS.testAllLines()
-
-			if eHelicopter_zombieAI then
-				print("Testing ZombieAI Spawn")
-				---@type IsoObject
-				local playerSquare = getSpecificPlayer(0):getSquare()
-				local shiftedPlayerSquare = getCell():getOrCreateGridSquare(playerSquare:getX()+3,playerSquare:getY()+3,0)
-				local iterations = ZombRand(2,5)
-				eHelicopter_zombieAI:spawnZombieAI(shiftedPlayerSquare, iterations, "1AlienTourist", "gottaGoFast")
-			end
-
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.eHeliEventsOnSchedule()
 		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_jet()

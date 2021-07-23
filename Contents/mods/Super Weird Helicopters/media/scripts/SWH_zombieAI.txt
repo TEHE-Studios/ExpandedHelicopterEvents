@@ -8,13 +8,11 @@ module ZombieAI
     item gottaGoFast
     {
         Type = Normal,
-        DisplayName = "gottaGoFast",
     }
 
     item nemesis
     {
         Type = Normal,
-        DisplayName = "nemesis",
     }
 
 }

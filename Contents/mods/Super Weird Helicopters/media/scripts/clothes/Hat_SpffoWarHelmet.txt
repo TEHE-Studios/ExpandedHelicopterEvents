@@ -13,8 +13,8 @@ module Base
         Insulation = 0.75,
         WindResistance = 0.75,
         WaterResistance = 0.75,
-        BulletDefense = 100,
-        ScratchDefense = 100,
-        BiteDefense = 100,
+        BulletDefense = 30,
+        ScratchDefense = 30,
+        BiteDefense = 30,
     }
 }
