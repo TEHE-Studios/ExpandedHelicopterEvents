@@ -18,6 +18,7 @@ eHelicopter_zombieAI = {}
 
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+---@param apply boolean
 function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
 	if not zombie then
 		return
@@ -37,6 +38,7 @@ end
 
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+---@param apply boolean
 function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 	if not zombie then
 		return
@@ -56,6 +58,7 @@ end
 
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+---@param apply boolean
 function eHelicopter_zombieAI.checkForAI(zombie, apply)
 	if not zombie then
 		return
