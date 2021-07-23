@@ -15,3 +15,9 @@ cat.outfit = "TaxMan";
 cat.haircut = "Buzzcut:50;Short:50";
 cat.beard = "None:100";
 table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
+
+local cat = {};
+cat.outfit = "RobertJohnson";
+cat.haircut = "Short:100";
+cat.beard = "None:100";
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
