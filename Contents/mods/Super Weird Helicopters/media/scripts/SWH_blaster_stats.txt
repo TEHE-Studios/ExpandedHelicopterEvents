@@ -37,7 +37,7 @@ module Base
         SplatSize	=	0,
         KnockdownMod	=	50,
         SplatBloodOnNoDeath	=	FALSE,
-        Icon	=	RevolverShort,
+        Icon	=	AlienBlaster,
         RunAnim	=	Run_Weapon2,
         CriticalChance	=	2000,
         CritDmgMultiplier = 10,
@@ -71,7 +71,7 @@ module Base
         Type	=	Normal,
         DisplayCategory = Ammo,
         DisplayName	=	Alien Power Cells,
-        Icon	=	40calAmmoBox,
+        Icon	=	AlienPowerCells,
         MetalValue = 1,
         WorldStaticModel = 38SpecialBullets,
     }
