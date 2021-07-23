@@ -69,7 +69,7 @@ function eHelicopter_zombieAI.checkForAI(zombie, apply)
 			local storedAI = storedAIItem:getType()
 			local specialAI = eHelicopter_zombieAI["specialZombie_"..storedAI]
 			if specialAI then
-				if not zombie:getModData()["initApply"] then
+				if zombie:getModData()["initApply"] ~= true then
 					print("initApply not true, setting `apply` to true")
 					apply = true
 					zombie:getModData()["initApply"] = true
