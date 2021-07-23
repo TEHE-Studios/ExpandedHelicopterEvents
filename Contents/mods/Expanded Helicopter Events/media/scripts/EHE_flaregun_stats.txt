@@ -72,8 +72,8 @@ module Base
 		Weight	=	0.05,
 		Type	=	Normal,
 		DisplayCategory = Ammo,
-		DisplayName	=	Flare Cartridge,
-		Icon	=	ShotgunAmmo,
+		DisplayName	=	Flare Shell,
+		Icon	=	Flare,
 		MetalValue = 1,
 		WorldStaticModel = ShotGunShells,
 	}
