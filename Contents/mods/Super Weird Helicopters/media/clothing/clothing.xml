@@ -91,6 +91,32 @@
 </m_MaleOutfits>
 
 <m_MaleOutfits>
+		<m_Name>Filibuster</m_Name>
+		<m_Guid>c8f1054b-4cc7-409d-8695-f96f8e28a0d5</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>	
+			<m_items> <!-- White Male Skin -->
+		<itemGUID>ccd1e523-7e92-4f6e-a5f4-0b4841cb15fe</itemGUID>
+		    </m_items>
+		<m_items> <!-- Red Hawaiian Shirt -->
+		<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
+		    </m_items>
+			<m_items> <!-- Jeans -->
+		<itemGUID>06b8adc1-ef58-4545-a30a-6ca9920c1b82</itemGUID>
+		    </m_items>
+			<m_items> <!-- Socks -->
+		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
+		    </m_items>
+			<m_items> <!-- Black Shoes -->
+		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		    </m_items>
+			<m_items> <!-- Aviators -->
+		<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		    </m_items>
+</m_MaleOutfits>
+
+<m_MaleOutfits>
 		<m_Name>RobertJohnson</m_Name>
 		<m_Guid>26d1f965-6b1f-402d-ae42-49fc2488e26a</m_Guid>
 		<m_Top>false</m_Top>
@@ -98,6 +124,9 @@
 		<m_AllowTopTint>false</m_AllowTopTint>
 		<m_items> <!-- RJ Skin -->
 			<itemGUID>84d0c776-2718-478c-9447-ff9506504382</itemGUID>
+		</m_items>	
+			<m_items> <!-- Glasses -->
+			<itemGUID>825f5380-d6ef-4cf8-8d77-d3a115724f4a</itemGUID>
 		</m_items>		
 			<m_items> <!-- RJ's Favorite Shirt -->
 		<itemGUID>09003465-24fe-4648-8a34-19326b679d31</itemGUID>

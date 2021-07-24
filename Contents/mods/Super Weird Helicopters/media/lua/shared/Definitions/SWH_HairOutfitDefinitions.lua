@@ -21,3 +21,9 @@ cat.outfit = "RobertJohnson";
 cat.haircut = "Short:100";
 cat.beard = "None:100";
 table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
+
+local cat = {};
+cat.outfit = "Filibuster";
+cat.haircut = "Short:100";
+cat.beard = "None:100";
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
