@@ -70,6 +70,11 @@
 	<path>media/clothing/clothingItems/ARRJAY.xml</path>
 	<guid>84d0c776-2718-478c-9447-ff9506504382</guid>
 	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/TShirt_RJ.xml</path>
+	<guid>09003465-24fe-4648-8a34-19326b679d31</guid>
+	</files>
 	
 	<files>
 	<path>media/clothing/clothingItems/Hat_SpiffoWarHelmet.xml</path>
