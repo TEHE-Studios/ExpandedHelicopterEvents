@@ -1,0 +1,71 @@
+module Base
+{
+
+	sound icecream
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/icecream.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+
+	sound PAWS1
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/PAWS1.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+
+	sound PAWS2
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/PAWS2.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+	sound airraid
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/airraid.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+	sound assblastUSA
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/assblastUSA.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+}
