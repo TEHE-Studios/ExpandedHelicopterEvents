@@ -3,27 +3,14 @@ HairOutfitDefinitions = HairOutfitDefinitions or {};
 
 HairOutfitDefinitions.haircutOutfitDefinition = {};
 
-local cat = {};
-cat.outfit = "AlienTourist";
-cat.haircut = "Bald:100";
-cat.beard = "None:100";
-cat.haircutColor = "0.99,0.99,0.99:100";
-table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
+local alien = { outfit = "AlienTourist", haircut = "Bald:100", beard = "None:100", haircutColor = "0.99,0.99,0.99:100" }
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, alien)
 
-local cat = {};
-cat.outfit = "TaxMan";
-cat.haircut = "Buzzcut:50;Short:50";
-cat.beard = "None:100";
-table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
+local taxman = { outfit = "TaxMan", haircut = "Buzzcut:50;Short:50", beard = "None:100" }
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, taxman)
 
-local cat = {};
-cat.outfit = "RobertJohnson";
-cat.haircut = "Short:100";
-cat.beard = "None:100";
-table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
+local RJ = { outfit = "RobertJohnson", haircut = "Short:100", beard = "None:100" }
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, RJ)
 
-local cat = {};
-cat.outfit = "Filibuster";
-cat.haircut = "Short:100";
-cat.beard = "None:100";
-table.insert(HairOutfitDefinitions.haircutOutfitDefinition, cat);
+local fili = { outfit = "Filibuster", haircut = "Short:100", beard = "None:100" }
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, fili)
