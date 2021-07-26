@@ -125,19 +125,23 @@ function eHelicopter:fireOn(targetHostile)
 
 	if ZombRand(0, 100) <= chance then
 		--knock down player
-		if instanceof(targetHostile, "IsoPlayer") then
-			targetHostile:clearVariable("BumpFallType")
-			targetHostile:setBumpType("stagger")
-			targetHostile:setBumpDone(false)
-			targetHostile:setBumpFall(true)
-			local bumpFallType = {"pushedBehind","pushedFront"}
-			bumpFallType = bumpFallType[ZombRand(1,3)]
-			targetHostile:setBumpFallType(bumpFallType)
+
+		if not targetHostile:isbFalling() then
+			if instanceof(targetHostile, "IsoPlayer") then
+				targetHostile:clearVariable("BumpFallType")
+				targetHostile:setBumpType("stagger")
+				targetHostile:setBumpDone(false)
+				targetHostile:setBumpFall(true)
+				local bumpFallType = {"pushedBehind","pushedFront"}
+				bumpFallType = bumpFallType[ZombRand(1,3)]
+				targetHostile:setBumpFallType(bumpFallType)
+			end
+			--knock down zombie
+			if instanceof(targetHostile, "IsoZombie") then
+				targetHostile:knockDown(true)
+			end
 		end
-		--knock down zombie
-		if instanceof(targetHostile, "IsoZombie") then
-			targetHostile:knockDown(true)
-		end
+		
 		--apply swiss-cheesification (holes and blood)
 		--bodyparts list has a length of 18 (0-17)
 		local bpIndexNum = ZombRand(0, 17)
