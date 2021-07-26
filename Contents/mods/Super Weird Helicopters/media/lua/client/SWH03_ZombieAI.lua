@@ -28,6 +28,8 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
 		zombie:changeSpeed(1)
 		zombie:setNoTeeth(true)
 		zombie:DoZombieStats()
+		zombie:setSpeedMod(1)
+
 	else
 		--print("AI onUpdate: specialZombie_gottaGoFast")
 		if zombie:isCrawling() then
@@ -45,16 +47,126 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 	end
 	if apply then
 		print("AI onApply: specialZombie_nemesis")
+		zombie:changeSpeed(3)
 		zombie:setNoTeeth(true)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
+		zombie:setHealth(zombie:getHealth()*1000)
+		zombie:setFireKillRate(zombie:getFireKillRate()*1000)
+		zombie:setFakeDead(true)
 	else
 		--print("AI onUpdate: specialZombie_nemesis")
 		if zombie:isCrawling() then
 			zombie:toggleCrawling()
 		end
+
+		if zombie:isBeingSteppedOn() then
+			local squaresInRange = getIsoRange(zombie, 1)
+			for k,sq in pairs(squaresInRange) do
+				---@type IsoGridSquare
+				local square = sq
+				local objs = square:getMovingObjects()
+				for i=0, objs:size()-1 do
+					local foundObj = objs:get(i)
+
+					if foundObj and (foundObj ~= zombie) then
+						if instanceof(foundObj, "BaseVehicle") then
+							---@type BaseVehicle
+							local car = foundObj
+							if car then
+								car:flipUpright()
+							end
+
+						elseif instanceof(foundObj, "IsoGameCharacter") then
+							---@type IsoGameCharacter | IsoPlayer | IsoZombie
+							local char = foundObj
+							if (not char:getBumpedChr()) and (not char:isOnFloor()) and (not char:getVehicle()) and ZombieOnGroundState.isCharacterStandingOnOther(char, zombie) then
+								char:setBumpedChr(zombie)
+								if instanceof(char, "IsoPlayer") then
+									char:clearVariable("BumpFallType")
+									char:setBumpType("stagger")
+									char:setBumpDone(false)
+									char:setBumpFall(true)
+									local bumpFallType = {"pushedBehind","pushedFront"}
+									bumpFallType = bumpFallType[ZombRand(1,3)]
+									char:setBumpFallType(bumpFallType)
+								end
+								--knock down zombie
+								if instanceof(char, "IsoZombie") then
+									char:knockDown(true)
+								end
+							end
+						end
+					end
+				end
+			end
+		end
+
+		local target = zombie:getTarget()
+		if target and instanceof(target, "IsoPlayer") and not zombie:getModData()["tempTarget"] then
+			zombie:getModData()["tempTarget"] = target
+			print("zombieAi new target = "..tostring(zombie:getModData()["tempTarget"]))
+		end
+		zombie:setTarget(zombie:getModData()["tempTarget"])
+		zombie:pathToCharacter(zombie:getModData()["tempTarget"])
 	end
 end
+
+
+---@param zombie IsoObject | IsoGameCharacter | IsoZombie
+---@param player IsoObject | IsoGameCharacter | IsoPlayer
+function eHelicopter_zombieAI.onDead(zombie, player, bodypart, weapon)
+	if not zombie then
+		return
+	end
+
+	local attachedItems = zombie:getAttachedItems()
+	for i=0, attachedItems:size()-1 do
+		---@type InventoryItem
+		local storedAIItem = attachedItems:getItemByIndex(i)
+		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
+			local storedAI = storedAIItem:getType()
+			local specialAI = eHelicopter_zombieAI["onDead_"..storedAI]
+			if specialAI then
+				specialAI(zombie)
+			end
+		end
+	end
+end
+Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
+
+
+---@param zombie IsoObject | IsoGameCharacter | IsoZombie
+---@param player IsoObject | IsoGameCharacter | IsoPlayer
+function eHelicopter_zombieAI.onHit_nemesis(player, zombie, weapon, notsure)
+	print("player:"..tostring(player))
+	print("zombie:"..tostring(zombie))
+	print("weapon:"..tostring(weapon))
+	print("notsure:"..tostring(notsure))
+end
+
+---@param zombie IsoObject | IsoGameCharacter | IsoZombie
+---@param player IsoObject | IsoGameCharacter | IsoPlayer
+function eHelicopter_zombieAI.onHit(player, zombie, weapon, notsure)
+	if not zombie then
+		return
+	end
+
+	local attachedItems = zombie:getAttachedItems()
+	for i=0, attachedItems:size()-1 do
+		---@type InventoryItem
+		local storedAIItem = attachedItems:getItemByIndex(i)
+		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
+			local storedAI = storedAIItem:getType()
+			local specialAI = eHelicopter_zombieAI["onHit_"..storedAI]
+			if specialAI then
+				specialAI(zombie)
+			end
+		end
+	end
+end
+Events.OnWeaponHitCharacter.Add(eHelicopter_zombieAI.onHit)
+
 
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
