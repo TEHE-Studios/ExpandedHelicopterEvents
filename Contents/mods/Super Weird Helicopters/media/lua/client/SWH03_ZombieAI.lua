@@ -26,9 +26,8 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
 	if apply then
 		print("AI onApply: specialZombie_gottaGoFast")
 		zombie:changeSpeed(1)
-		zombie:setNoTeeth(true)
 		zombie:DoZombieStats()
-		zombie:setSpeedMod(1)
+		zombie:setSpeedMod(10)
 
 	else
 		--print("AI onUpdate: specialZombie_gottaGoFast")
@@ -48,12 +47,10 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 	if apply then
 		print("AI onApply: specialZombie_nemesis")
 		zombie:changeSpeed(3)
-		zombie:setNoTeeth(true)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
-		zombie:setHealth(zombie:getHealth()*1000)
-		zombie:setFireKillRate(zombie:getFireKillRate()*1000)
-		zombie:setFakeDead(true)
+		zombie:setHealth(zombie:getHealth()*100000)
+		zombie:setFireKillRate(zombie:getFireKillRate()*100000)
 	else
 		--print("AI onUpdate: specialZombie_nemesis")
 		if zombie:isCrawling() then
@@ -61,7 +58,7 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		end
 
 		if zombie:isBeingSteppedOn() then
-			local squaresInRange = getIsoRange(zombie, 1)
+			local squaresInRange = getIsoRange(zombie, 0)
 			for k,sq in pairs(squaresInRange) do
 				---@type IsoGridSquare
 				local square = sq
@@ -82,11 +79,11 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 							local char = foundObj
 							if (not char:getBumpedChr()) and (not char:isOnFloor()) and (not char:getVehicle()) and ZombieOnGroundState.isCharacterStandingOnOther(char, zombie) then
 								char:setBumpedChr(zombie)
+
 								if instanceof(char, "IsoPlayer") then
 									char:clearVariable("BumpFallType")
 									char:setBumpType("stagger")
 									char:setBumpDone(false)
-									char:setBumpFall(true)
 									local bumpFallType = {"pushedBehind","pushedFront"}
 									bumpFallType = bumpFallType[ZombRand(1,3)]
 									char:setBumpFallType(bumpFallType)
