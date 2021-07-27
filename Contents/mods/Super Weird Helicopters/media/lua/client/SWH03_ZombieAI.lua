@@ -49,8 +49,8 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		zombie:changeSpeed(3)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
-		zombie:setHealth(zombie:getHealth()*100000)
-		zombie:setFireKillRate(zombie:getFireKillRate()*100000)
+		zombie:setHealth(zombie:getHealth()*1000001)
+		zombie:setFireKillRate(zombie:getFireKillRate()*1000001)
 	else
 		--print("AI onUpdate: specialZombie_nemesis")
 		if zombie:isCrawling() then
@@ -84,9 +84,7 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 									char:clearVariable("BumpFallType")
 									char:setBumpType("stagger")
 									char:setBumpDone(false)
-									local bumpFallType = {"pushedBehind","pushedFront"}
-									bumpFallType = bumpFallType[ZombRand(1,3)]
-									char:setBumpFallType(bumpFallType)
+									char:setBumpFallType("pushedFront")
 								end
 								--knock down zombie
 								if instanceof(char, "IsoZombie") then
