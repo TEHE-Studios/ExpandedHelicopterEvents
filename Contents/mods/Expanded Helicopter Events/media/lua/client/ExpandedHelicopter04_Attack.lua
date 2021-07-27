@@ -129,7 +129,7 @@ function eHelicopter:fireOn(targetHostile)
 			targetHostile:clearVariable("BumpFallType")
 			targetHostile:setBumpType("stagger")
 			targetHostile:setBumpDone(false)
-			targetHostile:setBumpFall(true)
+			targetHostile:setBumpFall(ZombRand(0, 100) <= 25)
 			local bumpFallType = {"pushedBehind","pushedFront"}
 			bumpFallType = bumpFallType[ZombRand(1,3)]
 			targetHostile:setBumpFallType(bumpFallType)
