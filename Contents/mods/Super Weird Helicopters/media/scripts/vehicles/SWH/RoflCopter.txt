@@ -24,6 +24,7 @@ module Base
 		spawnOffsetY = 0.19392952,
 
 		skin
+		{
 			texture = Vehicles/SWH/Vehicle_RoflCopter,
 		}
 
