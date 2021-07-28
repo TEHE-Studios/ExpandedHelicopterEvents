@@ -97,6 +97,8 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 			end
 		end
 
+		---EnemyList
+
 		local target = zombie:getTarget()
 		if target and instanceof(target, "IsoPlayer") and not zombie:getModData()["tempTarget"] then
 			zombie:getModData()["tempTarget"] = target
@@ -123,7 +125,7 @@ function eHelicopter_zombieAI.onDead(zombie, player, bodypart, weapon)
 			local storedAI = storedAIItem:getType()
 			local specialAI = eHelicopter_zombieAI["onDead_"..storedAI]
 			if specialAI then
-				specialAI(zombie)
+				specialAI(zombie, player, bodypart, weapon)
 			end
 		end
 	end
@@ -133,16 +135,16 @@ Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onHit_nemesis(player, zombie, weapon, notsure)
+function eHelicopter_zombieAI.onHit_nemesis(player, zombie, bodyPart, weapon)
 	print("player:"..tostring(player))
 	print("zombie:"..tostring(zombie))
+	print("bodyPart:"..tostring(bodyPart))
 	print("weapon:"..tostring(weapon))
-	print("notsure:"..tostring(notsure))
 end
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onHit(player, zombie, weapon, notsure)
+function eHelicopter_zombieAI.onHit(player, zombie, bodyPart, weapon)
 	if not zombie then
 		return
 	end
@@ -155,7 +157,7 @@ function eHelicopter_zombieAI.onHit(player, zombie, weapon, notsure)
 			local storedAI = storedAIItem:getType()
 			local specialAI = eHelicopter_zombieAI["onHit_"..storedAI]
 			if specialAI then
-				specialAI(zombie)
+				specialAI(player, zombie, bodyPart, weapon)
 			end
 		end
 	end
