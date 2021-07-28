@@ -86,7 +86,6 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "Hat_SPHSurvivalist", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
-        "Katana", 10,
         "EHE.BanditStashBox", 10,
 	
     }
