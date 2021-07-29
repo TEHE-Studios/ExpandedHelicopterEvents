@@ -5,6 +5,10 @@ IG_UI_EN = {
     IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (Crashed)",
     IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (Fuselage)",
     IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (Tail)",
+    IGUI_VehicleNameTISIceCreamTruck = "Ice Cream Truck",
+    IGUI_VehicleNameRoflCopter = "ERROR: Interdimensional Anomaly",
+
+    
     
     IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
     IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (Crashed)",
