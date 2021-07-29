@@ -50,15 +50,25 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)
-		zombie:setFireKillRate(zombie:getFireKillRate()*1000001)
+		zombie:setAvoidDamage(true)
 	else
-		--print("AI onUpdate: specialZombie_nemesis")
-		if zombie:isCrawling() then
-			zombie:toggleCrawling()
+		zombie:setCanWalk(true)
+		zombie:setHealth(zombie:getHealth()*1000001)
+
+		local currentFireDamage = zombie:getModData()["nemesisFireDmg"] or 0
+		if zombie:isOnFire() then
+			currentFireDamage = currentFireDamage+1
+			zombie:getModData()["nemesisFireDmg"] = currentFireDamage
+			print("EHE:SWH:specialZombie_nemesis: zombie is on fire.")
+		end
+
+		if currentFireDamage > 50 then
+			zombie:setHealth(0)
+			print("EHE:SWH:specialZombie_nemesis: zombie is crispy.")
 		end
 
 		if zombie:isBeingSteppedOn() then
-			local squaresInRange = getIsoRange(zombie, 0)
+			local squaresInRange = getIsoRange(zombie, 1)
 			for k,sq in pairs(squaresInRange) do
 				---@type IsoGridSquare
 				local square = sq
@@ -99,16 +109,19 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 
 		---EnemyList
 
-		local target = zombie:getTarget()
-		if target and instanceof(target, "IsoPlayer") and not zombie:getModData()["tempTarget"] then
-			zombie:getModData()["tempTarget"] = target
-			print("zombieAi new target = "..tostring(zombie:getModData()["tempTarget"]))
-		end
-		zombie:setTarget(zombie:getModData()["tempTarget"])
-		zombie:pathToCharacter(zombie:getModData()["tempTarget"])
 	end
 end
 
+
+---@param zombie IsoObject | IsoGameCharacter | IsoZombie
+---@param player IsoObject | IsoGameCharacter | IsoPlayer
+function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
+	local currentFireDamage = zombie:getModData()["nemesisFireDmg"] or 0
+	if currentFireDamage < 50 then
+		zombie:setReanimate(true)
+		print("EHE:SWH:specialZombie_nemesis: zombie is not dying today.")
+	end
+end
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
@@ -135,11 +148,12 @@ Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onHit_nemesis(player, zombie, bodyPart, weapon)
-	print("player:"..tostring(player))
-	print("zombie:"..tostring(zombie))
-	print("bodyPart:"..tostring(bodyPart))
-	print("weapon:"..tostring(weapon))
+function eHelicopter_zombieAI.onHit_nemesis(zombie, player, bodypart, weapon)
+	local currentFireDamage = zombie:getModData()["nemesisFireDmg"] or 0
+	if currentFireDamage < 50 then
+		zombie:setHealth(zombie:getHealth()*1000001)
+		print("EHE:SWH:specialZombie_nemesis: zombie is not dying today.")
+	end
 end
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
@@ -172,7 +186,10 @@ function eHelicopter_zombieAI.checkForAI(zombie, apply)
 	if not zombie then
 		return
 	end
-
+	if zombie:isDead() then
+		print("EHE:SWH:SZ:checkForAI: zombie is dead.")
+		return
+	end
 	local attachedItems = zombie:getAttachedItems()
 	for i=0, attachedItems:size()-1 do
 		---@type InventoryItem
