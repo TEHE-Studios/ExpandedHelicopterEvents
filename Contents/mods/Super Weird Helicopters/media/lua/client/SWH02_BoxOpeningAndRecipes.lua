@@ -15,7 +15,7 @@ function EHE_OpenBox.COSTUMEBOX(recipe, result, player)
 	player:getInventory():AddItems("Base.SpiffoTail", 4)
 end
 
-function EHE_OpenBox.COSTUMEBOX(recipe, result, player)
+function EHE_OpenBox.ICECREAMBOX(recipe, result, player)
 	player:getInventory():AddItems("Base.IceCream", 29)
 end
 

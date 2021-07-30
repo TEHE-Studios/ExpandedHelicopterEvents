@@ -9,7 +9,7 @@ module SWH
     {
        BurgerBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
-       Result:PreventionFlyer=1,
+       Result:Spiffo=1,
        RemoveResultItem:true,
        OnCreate:EHE_OpenBox.BURGERBOX,
        Time:70.0,
@@ -20,7 +20,7 @@ module SWH
     {
        MerchBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
-       Result:PreventionFlyer=1,
+       Result:Spiffo=1,
        RemoveResultItem:true,
        OnCreate:EHE_OpenBox.MERCHBOX,
        Time:70.0,
@@ -31,55 +31,21 @@ module SWH
     {
        CostumeBox=1,
        keep [EHE_OpenBox.CanOpenBoxes],
-       Result:PreventionFlyer=1,
+       Resul:Spiffo=1,
        RemoveResultItem:true,
        OnCreate:EHE_OpenBox.COSTUMEBOX,
        Time:70.0,
-       Sound:OpenBox,
-    }
-
-
-    recipe Open Supplies
-    {
-       BurgerBox=1,
-       keep [EHE_OpenBox.CanOpenBoxes],
-       Result:PreventionFlyer=1,
-       RemoveResultItem:true,
-       OnCreate:EHE_OpenBox.BURGERBOX,
-       Time:70.0,
-       Sound:OpenBox,
-    }
-
-
-    recipe Open Supplies
-    {
-       MerchBox=1,
-       Result:PreventionFlyer=1,
-       RemoveResultItem:true,
-       OnCreate:EHE_OpenBox.MERCHBOX,
-       Tooltip:Would be faster to open with something sharp.,
-       Time:210.0,
-       Sound:OpenBox,
-    }
-
-    recipe Open Supplies
-    {
-       CostumeBox=1,
-       Result:PreventionFlyer=1,
-       RemoveResultItem:true,
-       OnCreate:EHE_OpenBox.COSTUMEBOX,
-       Tooltip:Would be faster to open with something sharp.,
-       Time:210.0,
        Sound:OpenBox,
     }
 
       recipe Open Supplies
     {
        IceCreamBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
        Result:IceCream=1,
        RemoveResultItem:true,
-       OnCreate:EHE_OpenBox.ICECREAM,
-       Tooltip:Would be faster to open with something sharp.,
+       OnCreate:EHE_OpenBox.ICECREAMBOX,
+       Tooltip:"Would be faster to open with something sharp.",
        Time:210.0,
        Sound:OpenBox,
     }

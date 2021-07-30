@@ -32,7 +32,4 @@ module SWH
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Mysteriously Frozen Box,
 	}
-
-
-
 }
