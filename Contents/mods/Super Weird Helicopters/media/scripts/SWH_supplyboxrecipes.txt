@@ -72,4 +72,15 @@ module SWH
        Time:210.0,
        Sound:OpenBox,
     }
+
+      recipe Open Supplies
+    {
+       IceCreamBox=1,
+       Result:IceCream=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.ICECREAM,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
 }

@@ -26,5 +26,13 @@ module SWH
 		DisplayName		=	Supply Box,
 	}
 
+		item IceCreamBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Mysteriously Frozen Box,
+	}
+
+
 
 }
