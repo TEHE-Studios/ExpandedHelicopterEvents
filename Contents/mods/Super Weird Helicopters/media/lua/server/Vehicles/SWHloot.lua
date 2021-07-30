@@ -59,6 +59,18 @@ VehicleDistributions.UFOTrunk = {
     }
 }
 
+VehicleDistributions.TISTrunk = {
+    rolls = 6,
+    items ={
+        "EHE.AlienBlaster", 7,
+        "EHE.AlienPowerCells", 10,
+        "EHE.AlienPowerCells", 10,
+        "EHE.AlienPowerCells", 10,
+        "EHE.AlienPowerCells", 10,
+        "EHE.AlienPowerCells", 10,
+        "EHE.AlienPowerCells", 10,
+    }
+}
 
 VehicleDistributions.SpiffoBurger = {
     rolls = 50,
@@ -109,6 +121,13 @@ VehicleDistributions.UFO = {
     TruckBed = VehicleDistributions.UFOTrunk;
 }
 
+VehicleDistributions.IceCreamTrunk = {
+	
+	SeatFrontLeft = VehicleDistributions.TISTrunk;
+	SeatFrontRight =  VehicleDistributions.TISTrunk;
+    TruckBed = VehicleDistributions.TISTrunk;
+}
+
 --Supply Drop
 VehicleDistributions.SpiffoBurger = {
 	
@@ -121,6 +140,7 @@ VehicleDistributions.SpiffoBurger = {
 distributionTable["Bell206IRS"] = { Normal = VehicleDistributions.Bell206IRSFuselage; }
 distributionTable["Bell206Spiffo"] = { Normal = VehicleDistributions.Bell206SpiffoFuselage; }
 distributionTable["UFO"] = { Normal = VehicleDistributions.UFO; }
+distributionTable["TISIceCreamTruck"] = { Normal = VehicleDistributions.IceCreamTrunk; }
 
 -- Spiffo Supply Drop
 
