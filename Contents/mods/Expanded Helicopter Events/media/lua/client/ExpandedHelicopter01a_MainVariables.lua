@@ -20,6 +20,10 @@ eHelicopter.addedCrashChance = 0
 ---Simply make your preset's table filled with the names of functions you want to call.
 ---NOTE: Presets' file must be loaded after any called function's file to work.
 ---If you want your event to occur only once simply set the entry to false afterwards.
+---
+---All functions called have the following arguments: self (eHelicopter)
+---OnCrash has the additional argument of: currentSquare (IsoGridSquare)
+---OnAttack has the additional argument of: targetHostile (IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie)
 ---@field addedFunctionsToEvents table
 eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false,}
 

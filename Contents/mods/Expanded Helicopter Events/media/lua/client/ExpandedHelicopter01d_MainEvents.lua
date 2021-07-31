@@ -51,6 +51,11 @@ function eHelicopter:crash()
 					self:dropAllItems(4)
 				end
 
+				local eventFunction = self.doStuffOnCrash["OnCrash"]
+				if eventFunction then
+					eventFunction(self, currentSquare)
+				end
+
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
 				self:spawnCrew()
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
@@ -105,9 +110,6 @@ function eHelicopter:spawnCrew()
 				local zombie = spawnedZombies:get(0)
 				--if there's an actual zombie
 				if zombie then
-
-					zombie:changeSpeed(1)
-					zombie:Say("My speed is something, huh?")
 
 					--33% to be dead on arrival
 					if ZombRand(100) <= 33 then
@@ -302,4 +304,3 @@ function eHelicopter:dropScrap(fuzz)
 		return false
 	end
 end
-

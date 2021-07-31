@@ -93,6 +93,12 @@ function eHelicopter:update()
 		if self.hoverOnTargetDuration then
 			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
+
+			local eventFunction = self.doStuffOnCrash["OnHover"]
+			if eventFunction then
+				eventFunction(self)
+			end
+
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
 			if self.hoverOnTargetDuration <= 0 then
 				self.hoverOnTargetDuration = false
@@ -104,6 +110,12 @@ function eHelicopter:update()
 			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText) end
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
+
+			local eventFunction = self.doStuffOnCrash["OnFlyaway"]
+			if eventFunction then
+				eventFunction(self)
+			end
+
 			self:goHome()
 		end
 	end
