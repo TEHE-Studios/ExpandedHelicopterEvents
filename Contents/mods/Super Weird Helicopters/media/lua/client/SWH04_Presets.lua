@@ -23,15 +23,15 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	hostilePreference = "IsoPlayer",
 	hoverOnTargetDuration = {2000,2250},
 	scrapAndParts = {["vehicleSection"]="Bell206SpiffoTail"},
-	doStuffOnCrash = eHelicopter_zombieAI.spawnNemesisSpiffoZombieAI,
-	addedCrashChance = 25,
+	crew = {"SpiffoBoss"},
+	addedCrashChance = 75,
 }
 
 eHelicopter_PRESETS["UFO"] = {
 	crashType = {"UFO"},
 	hostilePreference = "IsoPlayer",
 	hoverOnTargetDuration = {2000,2250},
-	doStuffOnCrash = eHelicopter_zombieAI.spawnFastAlienZombieAI,
+	crew = {"AlienTourist", "AlienTourist", "AlienTourist",60, "AlienTourist",30, "AlienTourist",10, },
 	addedCrashChance = 25,
 }
 
@@ -45,5 +45,12 @@ eHelicopter_PRESETS["IRS"] = {
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan",
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan",
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan"},
+	addedCrashChance = 25,
+}
+
+eHelicopter_PRESETS["TISCreamery"] = {
+	crashType = {"TISIceCreamTruck"},
+	hostilePreference = "IsoPlayer",
+	hoverOnTargetDuration = {2000,2250},
 	addedCrashChance = 25,
 }
