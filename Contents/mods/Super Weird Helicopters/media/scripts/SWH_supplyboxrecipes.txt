@@ -45,7 +45,52 @@ module SWH
        Result:IceCream=1,
        RemoveResultItem:true,
        OnCreate:EHE_OpenBox.ICECREAMBOX,
-       Tooltip:"Would be faster to open with something sharp.",
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+    
+
+    recipe Open Supplies
+    {
+       BurgerBox=1,
+       Result:Spiffo=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.BURGERBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       MerchBox=1,
+       Result:Spiffo=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.MERCHBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       CostumeBox=1,
+       Resul:Spiffo=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.COSTUMEBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+      recipe Open Supplies
+    {
+       IceCreamBox=1,
+       Result:IceCream=1,
+       RemoveResultItem:true,
+       OnCreate:EHE_OpenBox.ICECREAMBOX,
+       Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
     }
