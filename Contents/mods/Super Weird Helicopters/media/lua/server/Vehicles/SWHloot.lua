@@ -62,13 +62,11 @@ VehicleDistributions.UFOTrunk = {
 VehicleDistributions.TISTrunk = {
     rolls = 6,
     items ={
-        "EHE.AlienBlaster", 7,
-        "EHE.AlienPowerCells", 10,
-        "EHE.AlienPowerCells", 10,
-        "EHE.AlienPowerCells", 10,
-        "EHE.AlienPowerCells", 10,
-        "EHE.AlienPowerCells", 10,
-        "EHE.AlienPowerCells", 10,
+        "SWH.IceCreamBox", 10,
+        "SWH.IceCreamBox", 10,
+        "SWH.IceCreamBox", 10,
+        "Base.IcecreamMelted", 10,
+        "Base.IcecreamMelted", 10,
     }
 }
 

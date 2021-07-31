@@ -12,6 +12,11 @@ AttachedWeaponDefinitions.nemesis = {
 	bloodLocations = nil, addHoles = false, daySurvived = 0, weapons = { "ZombieAI.nemesis" } }
 AttachedWeaponDefinitions.attachedWeaponCustomOutfit.SpiffoBoss = { chance = 100, maxitem = 1, weapons = {AttachedWeaponDefinitions.nemesis} }
 
+AttachedWeaponDefinitions.licking = {
+	chance = 100, weaponLocation = {"Special Zombie AI"}, outfit = {"RobertJohnson"},
+	bloodLocations = nil, addHoles = false, daySurvived = 0, weapons = { "ZombieAI.licking" } }
+AttachedWeaponDefinitions.attachedWeaponCustomOutfit.RobertJohnson = { chance = 100, maxitem = 1, weapons = {AttachedWeaponDefinitions.licking} }
+
 
 eHelicopter_zombieAI = {}
 

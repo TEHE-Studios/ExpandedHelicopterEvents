@@ -53,4 +53,5 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	hostilePreference = "IsoPlayer",
 	hoverOnTargetDuration = {2000,2250},
 	addedCrashChance = 25,
+	crew = {"RobertJohnson"},
 }

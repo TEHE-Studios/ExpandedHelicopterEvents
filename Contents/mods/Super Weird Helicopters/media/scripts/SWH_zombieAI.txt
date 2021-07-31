@@ -15,4 +15,9 @@ module ZombieAI
         Type = Normal,
     }
 
+    item licking
+    {
+        Type = Normal,
+    }
+
 }
