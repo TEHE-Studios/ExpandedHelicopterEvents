@@ -49,7 +49,7 @@ eheBounds.MAX_X = false
 eheBounds.MIN_X = false
 eheBounds.MAX_Y = false
 eheBounds.MIN_Y = false
-eheBounds.threshold = 5000
+eheBounds.threshold = 2500
 
 ---Sets a min/max X/Y around all the players
 function setDynamicGlobalXY()
@@ -96,6 +96,24 @@ function setDynamicGlobalXY()
 	eheBounds.MAX_Y = math.floor(eheBounds.MAX_Y)
 	eheBounds.MIN_Y = math.floor(eheBounds.MIN_Y)
 	print(" - EHE:XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
+end
+
+
+function fetchRandomEdgeSquare()
+	setDynamicGlobalXY()
+	local minMaxX = {eheBounds.MIN_X, eheBounds.MAX_X}
+	local minMaxY = {eheBounds.MIN_Y, eheBounds.MAX_Y}
+	local randomX = ZombRand(eheBounds.MIN_X, eheBounds.MAX_X)
+	local randomY = ZombRand(eheBounds.MIN_Y, eheBounds.MAX_Y)
+
+	if ZombRand(101) <= 50 then
+		randomX = minMaxX[ZombRand(1,3)]
+	else
+		randomY = minMaxY[ZombRand(1,3)]
+	end
+
+	local randomEdgeSquare = getCell():getOrCreateGridSquare(randomX,randomY,0)
+	return randomEdgeSquare
 end
 
 
