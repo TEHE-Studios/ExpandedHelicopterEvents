@@ -13,6 +13,15 @@ eHelicopter.shadow = true
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HFuselage"}
 
+---@field addedCrashChance number
+eHelicopter.addedCrashChance = 0
+
+---Useful for submodders seeking to add more functionality to events.
+---Simply make your preset's table filled with the names of functions you want to call.
+---NOTE: Presets' file must be loaded after any called function's file to work.
+---If you want your event to occur only once simply set the entry to false afterwards.
+---@field addedFunctionsToEvents table
+eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false,}
 
 ---@field scrapAndParts table
 eHelicopter.scrapAndParts = {["vehicleSection"]="UH1HTail"} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
