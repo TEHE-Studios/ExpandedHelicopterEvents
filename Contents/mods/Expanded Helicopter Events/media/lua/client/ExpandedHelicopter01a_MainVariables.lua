@@ -16,16 +16,8 @@ eHelicopter.crashType = {"UH1HFuselage"}
 ---@field addedCrashChance number
 eHelicopter.addedCrashChance = 0
 
----Useful for submodders seeking to add more functionality to events.
----Simply make your preset's table filled with the names of functions you want to call.
----NOTE: Presets' file must be loaded after any called function's file to work.
----If you want your event to occur only once simply set the entry to false afterwards.
----
----All functions called have the following arguments: self (eHelicopter)
----OnCrash has the additional argument of: currentSquare (IsoGridSquare)
----OnAttack has the additional argument of: targetHostile (IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie)
----@field addedFunctionsToEvents table
-eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false,}
+---@field doStuffOnCrash function
+eHelicopter.doStuffOnCrash = false
 
 ---@field scrapAndParts table
 eHelicopter.scrapAndParts = {["vehicleSection"]="UH1HTail"} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
@@ -59,7 +51,7 @@ eHelicopter.eventSoundEffects = {
 eHelicopter.announcerVoice = false
 
 ---@field randomEdgeStart boolean
-eHelicopter.randomEdgeStart = true
+eHelicopter.randomEdgeStart = false
 
 ---example: {["preset1"]=0,["preset2"]=25,["preset3"]=50} = at 0% (days out of cutoff day) preset1 is chosen, at 25% preset2 is chosen, etc.
 ---@field presetProgression table Table of presetIDs and corresponding % preset is compared to Days/CuttOffDay
@@ -224,11 +216,7 @@ function eHelicopter:heliToString(location)
 	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..")"
 	if location then
 		local h_x, h_y, _ = self:getXYZAsInt()
-		if h_x and h_y then
-			returnString = returnString.." (x:"..h_x..", y:"..h_y..")"
-		else
-			returnString = returnString.." (x:?, y:?)"
-		end
+		returnString = returnString.." (x:"..h_x..", y:"..h_y..")"
 	end
 	return returnString
 end
