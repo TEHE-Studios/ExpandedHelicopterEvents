@@ -113,7 +113,7 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
-	
+
 	    item Boilersuit_PoliceFlying
     {
         Type = Clothing,
@@ -141,6 +141,7 @@ module Base
         WindResistance = 0.30,
         BiteDefense = 30,
         ScratchDefense = 55,
+        BulletDefense = 100,
     }
 
 		item Hat_PressHelmet
@@ -154,6 +155,7 @@ module Base
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,
 		ScratchDefense = 100,
+		BulletDefense = 100,
 		ChanceToFall = 30,
 		Insulation = 0,
 		WaterResistance = 0.40,
@@ -171,6 +173,7 @@ module Base
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,
 		ScratchDefense = 100,
+		BulletDefense = 100,
 		ChanceToFall = 30,
 		Insulation = 0,
 		WaterResistance = 0.40,

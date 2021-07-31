@@ -48,7 +48,6 @@ eHelicopter_PRESETS["civilian"] = {
 
 
 eHelicopter_PRESETS["jet"] = {
-	randomEdgeStart = true,
 	frequencyFactor = 0.66,
 	speed = 2.8,
 	topSpeedFactor = 2,

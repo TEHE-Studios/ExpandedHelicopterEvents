@@ -3,7 +3,7 @@ module Base
 		item Jacket_DenimCutoff
 	{
         Type = Clothing,
-        DisplayName = Denim Raider Jacket,
+        DisplayName = Cutoff Denim Jacket,
         ClothingItem = Jacket_DenimCutoff,
         BodyLocation = Jacket,
         Icon = DenimCutoff,

@@ -57,7 +57,6 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 	self.currentPosition = self.currentPosition or Vector3.new()
 
 	if randomEdge then
-		print(" EHE: randomEdge")
 		local initPosXY = {initX, initY}
 		local minMax = {eheBounds.MIN_X, eheBounds.MIN_Y, eheBounds.MAX_X, eheBounds.MAX_Y}
 
@@ -70,7 +69,7 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 			randXYMinMax = randXYMinMax+2
 		end
 
-		print("  EHE: randXYEdge: "..randXYEdge.."   randXYMinMax: "..randXYMinMax)
+		print(" -- EHE: randomEdge:true; randXYEdge: "..randXYEdge.." randXYMinMax: "..randXYMinMax)
 
 		--this sets either [1] or [2] of initPosXY as [1] through [4] of minMax
 		initPosXY[randXYEdge] = minMax[randXYMinMax]
@@ -104,6 +103,10 @@ end
 
 ---@return int, int, int XYZ of eHelicopter
 function eHelicopter:getXYZAsInt()
+	if not self.currentPosition then
+		return
+	end
+
 	local ehX = math.floor(Vector3GetX(self.currentPosition) + 0.5)
 	local ehY = math.floor(Vector3GetY(self.currentPosition) + 0.5)
 	local ehZ = self.height
@@ -413,7 +416,7 @@ function eHelicopter:findTarget(range)
 		end
 	end
 
-	print(" -- HELI "..self:heliToString()..": seeking target from pool of "..#weightPlayersList)
+	local DEBUGallTargetsText = " -- HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
 	--[[DEBUG]] if getDebug() then
@@ -433,12 +436,14 @@ function eHelicopter:findTarget(range)
 				else DEBUGallTargets[tostring(target)] = 1 end
 			end
 		end
-		local DEBUGallTargetsText = ""
+
 		for targetID,numberOf in pairs(DEBUGallTargets) do
 			DEBUGallTargetsText = DEBUGallTargetsText.."["..targetID.." x"..numberOf.."] "
 		end
-		print(" ---- Targets: "..DEBUGallTargetsText)
+
 	end --]]
+
+	print(DEBUGallTargetsText)
 
 	local target
 	if #weightPlayersList then
@@ -446,9 +451,17 @@ function eHelicopter:findTarget(range)
 	end
 
 	if not target then
-		print(" --- HELI "..self:heliToString()..": unable to find target.")
-		self:unlaunch()
-		return
+
+		local randomEdgeSquare = fetchRandomEdgeSquare()
+		if randomEdgeSquare then
+			print(" --- HELI "..self:heliToString()..": unable to find target, setting edge as target.")
+			target = randomEdgeSquare
+		else
+			print(" --- HELI "..self:heliToString()..": unable to find target, ERROR: unable to set edge.")
+			self:unlaunch()
+			return
+		end
+
 	end
 
 	return target
@@ -525,17 +538,16 @@ function eHelicopter:applyCrashChance()
 	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
 	local crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
-	print(" --- "..self:heliToString().."crashChance:"..crashChance)
-	--[[DEBUG]] print(" ----- cutOffDay:"..cutOffDay.."  daysIntoApoc:"..daysIntoApoc)
-	--[[DEBUG]] print(" ----- apocImpact:"..apocImpact.."  weatherImpact:"..weatherImpact)
-	--[[DEBUG]] print(" ----- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-	--[[DEBUG]] print(" ----- dayOfLastCrash:"..dayOfLastCrash.."   daysSinceCrashImpact:"..daysSinceCrashImpact)
+	print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
+	--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
+	--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
+	--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		--[[DEBUG]] print (" --- crashing set to TRUE.")
 		self.crashing = true
 	end
-	print(" --------------- \n")
+	print(" ------------ \n")
 end
 
 
@@ -555,14 +567,14 @@ function eHelicopter:launch(targetedObject)
 			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
 	else
-		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set")
+		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set, ERROR: unable to set random edge.")
 		self:unlaunch()
 		return
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-	local tpX = targetedObject:getX()+ZombRand(-10,11)
-	local tpY = targetedObject:getY()+ZombRand(-10,11)
+	local tpX = targetedObject:getX()+ZombRand(-25,25)
+	local tpY = targetedObject:getY()+ZombRand(-25,25)
 	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
 	--maintain trueTarget
 	self.trueTarget = targetedObject
