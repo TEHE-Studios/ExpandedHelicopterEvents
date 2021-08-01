@@ -2,6 +2,11 @@ if getDebug() then
 
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then --DEBUG_TESTS.testAllLines()
+			DEBUG_TESTS.moveHeliCloser(getFreeHelicopter("Spiffocopter"):launch())
+			DEBUG_TESTS.moveHeliCloser(getFreeHelicopter("TISCreamery"):launch())
+			DEBUG_TESTS.moveHeliCloser(getFreeHelicopter("IRS"):launch())
+			DEBUG_TESTS.moveHeliCloser(getFreeHelicopter("UFO"):launch())
+			
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.eHeliEventsOnSchedule()
 		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_jet()
