@@ -74,7 +74,7 @@ function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
 	end
 end
 
-
+eHelicopter_zombieAI.nemesisFireDmgTracker = {}
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param apply boolean
 function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
@@ -92,14 +92,14 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		zombie:setCanWalk(true)
 		zombie:setHealth(zombie:getHealth()*1000001)
 
-		local currentFireDamage = zombie:getModData()["nemesisFireDmg"] or 0
+		local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
 		if zombie:isOnFire() then
 			currentFireDamage = currentFireDamage+1
-			zombie:getModData()["nemesisFireDmg"] = currentFireDamage
+			eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] = currentFireDamage
 			print("EHE:SWH:specialZombie_nemesis: zombie is on fire.")
 		end
 
-		if currentFireDamage > 50 then
+		if currentFireDamage > 250 then
 			zombie:setHealth(0)
 			print("EHE:SWH:specialZombie_nemesis: zombie is crispy.")
 		end
@@ -152,16 +152,6 @@ end
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
-	local currentFireDamage = zombie:getModData()["nemesisFireDmg"] or 0
-	if currentFireDamage < 50 then
-		zombie:setReanimate(true)
-		print("EHE:SWH:specialZombie_nemesis: zombie is not dying today.")
-	end
-end
-
----@param zombie IsoObject | IsoGameCharacter | IsoZombie
----@param player IsoObject | IsoGameCharacter | IsoPlayer
 function eHelicopter_zombieAI.onDead(zombie, player, bodypart, weapon)
 	if not zombie then
 		return
@@ -186,10 +176,10 @@ Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
 function eHelicopter_zombieAI.onHit_nemesis(zombie, player, bodypart, weapon)
-	local currentFireDamage = zombie:getModData()["nemesisFireDmg"] or 0
-	if currentFireDamage < 50 then
+	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
+	if currentFireDamage < 250 then
 		zombie:setHealth(zombie:getHealth()*1000001)
-		print("EHE:SWH:specialZombie_nemesis: zombie is not dying today.")
+		zombie:setReanimate(true)
 	end
 end
 
