@@ -12,4 +12,5 @@ DisplayName_Quarantine_Flyer = "Флаер карантина",
 DisplayName_Prevention_Flyer = "Флаер предупреждения",
 DisplayName_Notice_Flyer = "Флаер обнаружения",
 DisplayName_Supply_Box = "Коробка припасов",
+
 }
