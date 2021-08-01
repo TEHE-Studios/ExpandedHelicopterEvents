@@ -71,11 +71,11 @@ end
 
 
 ---Heli spawn crew
-function eHelicopter:spawnCrew()
+function eHelicopter:spawnCrew(deathChance)
 	if not self.crew then
 		return
 	end
-
+	local spawnedCrew = {}
 	for key,outfitID in pairs(self.crew) do
 
 		--The chance this type of zombie is spawned
@@ -129,10 +129,12 @@ function eHelicopter:spawnCrew()
 							print("crash spawned: "..outfitID)
 						end
 					end
+					table.insert(spawnedCrew, zombie)
 				end
 			end
 		end
 	end
+	return spawnedCrew
 end
 
 
