@@ -52,11 +52,17 @@ function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
 	if apply then
 		print("AI onApply: specialZombie_licking")
 		zombie:setNoTeeth(true)
+
 	else
 		if (not zombie:isDead()) and (not zombie:isOnFloor()) and zombie:isAttacking() then
-
+			---@type BaseCharacterSoundEmitter | BaseSoundEmitter | FMODSoundEmitter
+			local zombieEmitter = zombie:getEmitter()
+			if zombieEmitter then
+				zombieEmitter:stopSoundByName("MaleZombieCombined")
+				zombieEmitter:stopSoundByName("FemaleZombieCombined")
+			end
 			if (not eHelicopter_zombieAI.lickingTracker[zombie]) or (eHelicopter_zombieAI.lickingTracker[zombie] < getTimestampMs()) then
-				eHelicopter_zombieAI.lickingTracker[zombie] = getTimestampMs()+ZombRand(1650,1800)
+				eHelicopter_zombieAI.lickingTracker[zombie] = getTimestampMs()+ZombRand(800,900)
 				zombie:playSound("lick")
 			end
 		end
