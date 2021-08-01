@@ -75,6 +75,7 @@ function eHelicopter:spawnCrew(deathChance)
 	if not self.crew then
 		return
 	end
+	deathChance = deathChance or 33
 	local spawnedCrew = {}
 	for key,outfitID in pairs(self.crew) do
 
@@ -112,7 +113,7 @@ function eHelicopter:spawnCrew(deathChance)
 				if zombie then
 
 					--33% to be dead on arrival
-					if ZombRand(100) <= 33 then
+					if ZombRand(1,100) <= deathChance then
 						print("crash spawned: "..outfitID.." killed")
 						zombie:setHealth(0)
 					else
