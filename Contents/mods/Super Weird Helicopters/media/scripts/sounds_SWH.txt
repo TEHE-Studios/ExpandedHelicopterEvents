@@ -1,5 +1,10 @@
 module Base {
 
+
+	sound ZombieLick {
+		category = Zombie, loop = false, is3D = true,
+		clip { file = media/sound/lick.wav, distanceMax = 10, volume = 1.0,} }
+
     sound assBlastUSA {
         category = EHE-Weird: Voice Lines, loop = true, is3D = true,
         clip { file = media/sound/assblastusa.ogg, distanceMax = 1500, volume = 2.0, } }

@@ -55,17 +55,5 @@ module Base
 			reverbFactor = 0,
 		}
 	}
-	sound assblastUSA
-	{
-		category = Vehicle,
-		loop = true,
-		clip
-		{
-			file = media/sound/assblastUSA.ogg,
-			distanceMin = 10,
-			distanceMax = 20,
-			reverbMaxRange = 10,
-			reverbFactor = 0,
-		}
-	}
+
 }
