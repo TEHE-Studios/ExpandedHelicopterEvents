@@ -95,7 +95,7 @@ function eHelicopter:update()
 			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
 
-			local eventFunction = self.doStuffOnCrash["OnHover"]
+			local eventFunction = self.addedFunctionsToEvents["OnHover"]
 			if eventFunction then
 				eventFunction(self)
 			end
@@ -112,7 +112,7 @@ function eHelicopter:update()
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
 
-			local eventFunction = self.doStuffOnCrash["OnFlyaway"]
+			local eventFunction = self.addedFunctionsToEvents["OnFlyaway"]
 			if eventFunction then
 				eventFunction(self)
 			end
