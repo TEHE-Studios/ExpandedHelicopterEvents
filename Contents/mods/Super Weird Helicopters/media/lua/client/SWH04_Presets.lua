@@ -47,11 +47,11 @@ eHelicopter_PRESETS["IRS"] = {
 	crashType = {"Bell206IRSFuselage"},
 	hoverOnTargetDuration = {2000,2250},
 	scrapAndParts = {["vehicleSection"]="Bell206IRSTail"},
-	crew = {"1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0,
-			"1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0,
-			"1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0,
-			"1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0,
-			"1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0, "1TaxMan",100,0,},
+	crew = {"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
+			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
+			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
+			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
+			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,},
 	frequencyFactor = 0.1,
 	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,}
 }
