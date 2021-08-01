@@ -133,6 +133,7 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 			end
 		end
 	end
+	self.crew = false
 	return spawnedCrew
 end
 
