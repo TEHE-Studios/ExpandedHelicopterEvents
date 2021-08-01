@@ -90,6 +90,9 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		zombie:setAvoidDamage(true)
 	else
 		zombie:setCanWalk(true)
+		if zombie:isCrawling() then
+			zombie:toggleCrawling()
+		end
 		zombie:setHealth(zombie:getHealth()*1000001)
 
 		local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
@@ -152,6 +155,44 @@ end
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
+function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
+	if not zombie then
+		return
+	end
+	local squaresInRange = getIsoRange(zombie:getSquare(), 2)
+	print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
+	for sq=1, #squaresInRange do
+		---@type IsoGridSquare
+		local square = squaresInRange[sq]
+		local squareContents = square:getDeadBodys()
+
+		for i=0, squareContents:size()-1 do
+			---@type IsoDeadBody
+			local foundObj = squareContents:get(i)
+			if instanceof(foundObj, "IsoDeadBody") then
+				local attachedItems = foundObj:getAttachedItems()
+				print("body present")
+				for i=0, attachedItems:size()-1 do
+					---@type InventoryItem
+					local storedAIItem = attachedItems:getItemByIndex(i)
+
+					if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
+						local storedAI = storedAIItem:getType()
+						local specialAI = eHelicopter_zombieAI["specialZombie_".."nemesis"]
+						if specialAI then
+							foundObj:reanimateNow()
+						end
+					end
+				end
+
+			end
+		end
+	end
+end
+
+
+---@param zombie IsoObject | IsoGameCharacter | IsoZombie
+---@param player IsoObject | IsoGameCharacter | IsoPlayer
 function eHelicopter_zombieAI.onDead(zombie, player, bodypart, weapon)
 	if not zombie then
 		return
@@ -178,8 +219,10 @@ Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
 function eHelicopter_zombieAI.onHit_nemesis(zombie, player, bodypart, weapon)
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
 	if currentFireDamage < 250 then
+		print("EHE:SWH: Requirement Not Met. No Dying.")
 		zombie:setHealth(zombie:getHealth()*1000001)
-		zombie:setReanimate(true)
+	else
+		zombie:setHealth(0)
 	end
 end
 
