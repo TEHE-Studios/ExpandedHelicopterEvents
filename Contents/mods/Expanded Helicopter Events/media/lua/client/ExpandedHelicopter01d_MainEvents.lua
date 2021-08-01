@@ -71,11 +71,11 @@ end
 
 
 ---Heli spawn crew
-function eHelicopter:spawnCrew(deathChance)
+function eHelicopter:spawnCrew(deathChance,crawlChance)
 	if not self.crew then
 		return
 	end
-	deathChance = deathChance or 33
+
 	local spawnedCrew = {}
 	for key,outfitID in pairs(self.crew) do
 
@@ -112,20 +112,18 @@ function eHelicopter:spawnCrew(deathChance)
 				--if there's an actual zombie
 				if zombie then
 
+					deathChance = deathChance or 33
 					--33% to be dead on arrival
 					if ZombRand(1,100) <= deathChance then
 						print("crash spawned: "..outfitID.." killed")
 						zombie:setHealth(0)
 					else
-						--+1 because zombRand starts at 0
-						local typeChange = ZombRand(6)+1
-						--2/6 chance to be a crawler
-						if typeChange >= 5 then
+						crawlChance = crawlChance or 25
+						if ZombRand(1,100) <= crawlChance then
 							print("crash spawned: "..outfitID.." crawler")
 							zombie:setCanWalk(false)
 							zombie:setBecomeCrawler(true)
 							zombie:knockDown(true)
-							--4/6 chance for normaltype zombie
 						else
 							print("crash spawned: "..outfitID)
 						end
