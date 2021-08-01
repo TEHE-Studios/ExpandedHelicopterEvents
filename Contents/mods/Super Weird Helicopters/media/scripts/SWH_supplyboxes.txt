@@ -30,6 +30,6 @@ module SWH
 	{
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
-		DisplayName		=	Mysteriously Frozen Box,
+		DisplayName		=	Half-Frozen Box,
 	}
 }
