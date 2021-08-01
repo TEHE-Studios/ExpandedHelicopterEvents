@@ -56,7 +56,7 @@ function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
 		if (not zombie:isDead()) and (not zombie:isOnFloor()) and zombie:isAttacking() then
 
 			if (not eHelicopter_zombieAI.lickingTracker[zombie]) or (eHelicopter_zombieAI.lickingTracker[zombie] < getTimestampMs()) then
-				eHelicopter_zombieAI.lickingTracker[zombie] = getTimestampMs()+ZombRand(950,1100)
+				eHelicopter_zombieAI.lickingTracker[zombie] = getTimestampMs()+ZombRand(1650,1800)
 				zombie:playSound("lick")
 			end
 		end
