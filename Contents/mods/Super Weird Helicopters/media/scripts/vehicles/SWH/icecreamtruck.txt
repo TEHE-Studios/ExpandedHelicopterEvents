@@ -20,7 +20,7 @@ module Base
 
         model
         {
-            file = Vehicle_StepVan,
+            file = Vehicles_StepVanSmashedFront,
             scale = 1.8200,
             offset = 0.0000 0.4725 0.0000,
         }
