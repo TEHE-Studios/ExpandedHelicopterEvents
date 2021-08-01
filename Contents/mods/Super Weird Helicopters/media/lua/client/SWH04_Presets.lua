@@ -25,8 +25,9 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	hoverOnTargetDuration = {2000,2250},
 	scrapAndParts = {["vehicleSection"]="Bell206SpiffoTail"},
 	crew = {"SpiffoBoss"},
-	addedCrashChance = 75,
 	frequencyFactor = 0.1,
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,}
+
 }
 
 eHelicopter_PRESETS["UFO"] = {
@@ -34,10 +35,10 @@ eHelicopter_PRESETS["UFO"] = {
 	hostilePreference = "IsoPlayer",
 	hoverOnTargetDuration = {2000,2250},
 	crew = {"AlienTourist", "AlienTourist", "AlienTourist",60, "AlienTourist",30, "AlienTourist",10, },
-	addedCrashChance = 25,
 	frequencyFactor = 0.1,
 	speed = 1.3,
 	topSpeedFactor = 2,
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,}
 }
 
 eHelicopter_PRESETS["IRS"] = {
@@ -50,16 +51,16 @@ eHelicopter_PRESETS["IRS"] = {
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan",
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan",
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan"},
-	addedCrashChance = 25,
 	frequencyFactor = 0.1,
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,}
 }
 
 eHelicopter_PRESETS["TISCreamery"] = {
 	crashType = {"TISIceCreamTruck"},
 	hostilePreference = "IsoPlayer",
 	hoverOnTargetDuration = {2000,2250},
-	addedCrashChance = 25,
 	crew = {"RobertJohnson", "RobertJohnson", "RobertJohnson",75, "RobertJohnson",50 , "RobertJohnson",25, "RobertJohnson",25},
 	frequencyFactor = 0.1,
 	eventSoundEffects = {["flightSound"] = "IceCreamFlyBy"},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,}
 }
