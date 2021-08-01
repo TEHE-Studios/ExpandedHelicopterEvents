@@ -25,7 +25,8 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	scrapAndParts = {["vehicleSection"]="Bell206SpiffoTail"},
 	crew = {"SpiffoBoss",100,0, },
 	frequencyFactor = 0.1,
-	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,}
+	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
+	announcerVoice = "Spiffo",
 
 }
 
@@ -40,7 +41,7 @@ eHelicopter_PRESETS["UFO"] = {
 	frequencyFactor = 0.1,
 	speed = 1.3,
 	topSpeedFactor = 2,
-	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,}
+	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
 }
 
 eHelicopter_PRESETS["IRS"] = {
@@ -53,7 +54,8 @@ eHelicopter_PRESETS["IRS"] = {
 			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
 			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,},
 	frequencyFactor = 0.1,
-	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,}
+	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
+	announcerVoice = "IRS",
 }
 
 eHelicopter_PRESETS["TISCreamery"] = {
@@ -67,5 +69,5 @@ eHelicopter_PRESETS["TISCreamery"] = {
 			"RobertJohnson",25,0, },
 	frequencyFactor = 0.1,
 	eventSoundEffects = {["flightSound"] = "IceCreamFlyBy"},
-	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,}
+	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
 }
