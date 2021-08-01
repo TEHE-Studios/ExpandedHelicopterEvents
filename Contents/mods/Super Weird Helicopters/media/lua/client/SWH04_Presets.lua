@@ -6,6 +6,7 @@ eHeliEvents_init["preset"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStar
 eHeliEvents_init["Spiffocopter"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
 eHeliEvents_init["UFO"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
 eHeliEvents_init["IRS"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+eHeliEvents_init["TISCreamery"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
 
 
 ---Preset list, only include variables being changed.
@@ -25,6 +26,7 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	scrapAndParts = {["vehicleSection"]="Bell206SpiffoTail"},
 	crew = {"SpiffoBoss"},
 	addedCrashChance = 75,
+	frequencyFactor = 0.1,
 }
 
 eHelicopter_PRESETS["UFO"] = {
@@ -33,6 +35,7 @@ eHelicopter_PRESETS["UFO"] = {
 	hoverOnTargetDuration = {2000,2250},
 	crew = {"AlienTourist", "AlienTourist", "AlienTourist",60, "AlienTourist",30, "AlienTourist",10, },
 	addedCrashChance = 25,
+	frequencyFactor = 0.1,
 }
 
 eHelicopter_PRESETS["IRS"] = {
@@ -46,6 +49,7 @@ eHelicopter_PRESETS["IRS"] = {
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan",
 			"1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan", "1TaxMan"},
 	addedCrashChance = 25,
+	frequencyFactor = 0.1,
 }
 
 eHelicopter_PRESETS["TISCreamery"] = {
@@ -54,4 +58,5 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	hoverOnTargetDuration = {2000,2250},
 	addedCrashChance = 25,
 	crew = {"RobertJohnson"},
+	frequencyFactor = 0.1,
 }
