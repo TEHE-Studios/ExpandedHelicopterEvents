@@ -63,10 +63,12 @@ function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
 			if zombieEmitter then
 				zombieEmitter:stopSoundByName("MaleZombieCombined")
 				zombieEmitter:stopSoundByName("FemaleZombieCombined")
+				zombieEmitter:stopSoundByName("MaleZombieHurt")
+				zombieEmitter:stopSoundByName("FemaleZombieHurt")
 			end
 			if (not eHelicopter_zombieAI.lickingTracker[zombie]) or (eHelicopter_zombieAI.lickingTracker[zombie] < getTimestampMs()) then
 				eHelicopter_zombieAI.lickingTracker[zombie] = getTimestampMs()+ZombRand(800,900)
-				zombie:playSound("lick")
+				zombie:playSound("ZombieLick")
 			end
 		end
 	end
