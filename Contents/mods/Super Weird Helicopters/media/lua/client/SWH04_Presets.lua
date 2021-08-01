@@ -36,6 +36,8 @@ eHelicopter_PRESETS["UFO"] = {
 	crew = {"AlienTourist", "AlienTourist", "AlienTourist",60, "AlienTourist",30, "AlienTourist",10, },
 	addedCrashChance = 25,
 	frequencyFactor = 0.1,
+	speed = 1.3,
+	topSpeedFactor = 2,
 }
 
 eHelicopter_PRESETS["IRS"] = {
@@ -57,6 +59,7 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	hostilePreference = "IsoPlayer",
 	hoverOnTargetDuration = {2000,2250},
 	addedCrashChance = 25,
-	crew = {"RobertJohnson"},
+	crew = {"RobertJohnson", "RobertJohnson", "RobertJohnson",75, "RobertJohnson",50 , "RobertJohnson",25, "RobertJohnson",25},
 	frequencyFactor = 0.1,
+	eventSoundEffects = {["flightSound"] = "IceCreamFlyBy"},
 }
