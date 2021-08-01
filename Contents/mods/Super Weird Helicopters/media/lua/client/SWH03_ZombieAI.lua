@@ -153,13 +153,13 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 end
 
 
----@param zombie IsoObject | IsoGameCharacter | IsoZombie
----@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
-	if not zombie then
+---@param AI_ID string
+---@param location IsoGridSquare
+function eHelicopter_zombieAI.reviveAI(AI_ID,location)
+	if not AI_ID or not location then
 		return
 	end
-	local squaresInRange = getIsoRange(zombie:getSquare(), 2)
+	local squaresInRange = getIsoRange(location, 1)
 	print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
 	for sq=1, #squaresInRange do
 		---@type IsoGridSquare
@@ -178,8 +178,7 @@ function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
 
 					if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
 						local storedAI = storedAIItem:getType()
-						local specialAI = eHelicopter_zombieAI["specialZombie_".."nemesis"]
-						if specialAI then
+						if storedAI==AI_ID then
 							foundObj:reanimateNow()
 						end
 					end
@@ -187,6 +186,29 @@ function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
 
 			end
 		end
+	end
+end
+
+eHelicopter_zombieAI.reviveEvents = {}
+function eHelicopter_zombieAI.reviveEventsLoop()
+	for k,event in pairs(eHelicopter_zombieAI.reviveEvents) do
+		if event and event.time <= getTimestampMs() then
+			eHelicopter_zombieAI.reviveAI(event.AI_ID,event.location)
+			eHelicopter_zombieAI.reviveEvents[k]=nil
+		end
+	end
+end
+Events.OnTick.Add(eHelicopter_zombieAI.reviveEventsLoop)
+
+---@param zombie IsoObject | IsoGameCharacter | IsoZombie
+---@param player IsoObject | IsoGameCharacter | IsoPlayer
+function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
+	if not zombie then
+		return
+	end
+	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
+	if currentFireDamage < 250 then
+		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+500,AI_ID="nemesis",location=zombie:getSquare()})
 	end
 end
 
@@ -218,10 +240,7 @@ Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
 function eHelicopter_zombieAI.onHit_nemesis(zombie, player, bodypart, weapon)
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
-	if currentFireDamage < 250 then
-		print("EHE:SWH: Requirement Not Met. No Dying.")
-		zombie:setHealth(zombie:getHealth()*1000001)
-	else
+	if currentFireDamage >= 250 then
 		zombie:setHealth(0)
 	end
 end
