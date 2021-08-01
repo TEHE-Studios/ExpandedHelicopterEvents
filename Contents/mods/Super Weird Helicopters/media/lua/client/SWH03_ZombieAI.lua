@@ -52,6 +52,9 @@ function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
 	if apply then
 		print("AI onApply: specialZombie_licking")
 		zombie:setNoTeeth(true)
+		zombie:changeSpeed(1)
+		zombie:DoZombieStats()
+		zombie:setSpeedMod(10)
 
 	else
 		if (not zombie:isDead()) and (not zombie:isOnFloor()) and zombie:isAttacking() then
