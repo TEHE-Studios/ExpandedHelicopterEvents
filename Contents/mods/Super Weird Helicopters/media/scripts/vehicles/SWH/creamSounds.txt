@@ -1,0 +1,44 @@
+module Base
+{
+	sound creamAlarm
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_cream1.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+
+	sound creamYelp
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_cream2.ogg,
+			distanceMin = 10,
+			distanceMax = 20,
+			reverbMaxRange = 10,
+			reverbFactor = 0,
+		}
+	}
+
+	sound creamWall
+	{
+		category = Vehicle,
+		loop = true,
+		clip
+		{
+			file = media/sound/vehicle_cream3.ogg,
+			distanceMin = 0,
+			distanceMax = 0,
+			reverbMaxRange = 0,
+			reverbFactor = 0,
+		}
+	}}
+}
