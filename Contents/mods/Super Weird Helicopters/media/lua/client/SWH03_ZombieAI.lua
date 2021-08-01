@@ -42,6 +42,28 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
 end
 
 
+eHelicopter_zombieAI.lickingTracker = {}
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoMovingObject
+---@param apply boolean
+function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
+	if not zombie then
+		return
+	end
+	if apply then
+		print("AI onApply: specialZombie_licking")
+		zombie:setNoTeeth(true)
+	else
+		if (not zombie:isDead()) and (not zombie:isOnFloor()) and zombie:isAttacking() then
+
+			if (not eHelicopter_zombieAI.lickingTracker[zombie]) or (eHelicopter_zombieAI.lickingTracker[zombie] < getTimestampMs()) then
+				eHelicopter_zombieAI.lickingTracker[zombie] = getTimestampMs()+ZombRand(950,1100)
+				zombie:playSound("lick")
+			end
+		end
+	end
+end
+
+
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param apply boolean
 function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
