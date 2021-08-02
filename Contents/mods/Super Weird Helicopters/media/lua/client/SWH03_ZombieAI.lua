@@ -83,7 +83,7 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 	end
 	if apply then
 		print("AI onApply: specialZombie_nemesis")
-		zombie:changeSpeed(3)
+		zombie:changeSpeed(2)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)
