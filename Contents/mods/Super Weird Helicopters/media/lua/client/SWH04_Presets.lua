@@ -23,7 +23,7 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	crashType = {"Bell206SpiffoFuselage"},
 	hoverOnTargetDuration = {2000,2250},
 	scrapAndParts = {["vehicleSection"]="Bell206SpiffoTail"},
-	crew = {"SpiffoBoss",100,0, },
+	crew = {"SpiffoBoss",100,0, "SpiffoBoss",100,0, "SpiffoBoss",100,0, "SpiffoBoss",100,0,},
 	frequencyFactor = 0.1,
 	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
 	announcerVoice = "Spiffo",
