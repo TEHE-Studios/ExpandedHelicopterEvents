@@ -159,7 +159,7 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 	if not AI_ID or not location then
 		return
 	end
-	local squaresInRange = getIsoRange(location, 1)
+	local squaresInRange = getIsoRange(location, 2)
 	print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
 	for sq=1, #squaresInRange do
 		---@type IsoGridSquare
