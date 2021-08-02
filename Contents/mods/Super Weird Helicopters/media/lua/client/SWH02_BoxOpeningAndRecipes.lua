@@ -16,6 +16,6 @@ function EHE_OpenBox.COSTUMEBOX(recipe, result, player)
 end
 
 function EHE_OpenBox.ICECREAMBOX(recipe, result, player)
-	player:getInventory():AddItems("Base.Icecream", 29)
+	player:getInventory():AddItems("Base.IcecreamMelted", 29)
 end
 

@@ -87,7 +87,7 @@ module SWH
       recipe Open Supplies
     {
        IceCreamBox=1,
-       Result:IceCream=1,
+       Result:IcecreamMelted=1,
        RemoveResultItem:true,
        OnCreate:EHE_OpenBox.ICECREAMBOX,
        Tooltip:Would be faster to open with something sharp.,
