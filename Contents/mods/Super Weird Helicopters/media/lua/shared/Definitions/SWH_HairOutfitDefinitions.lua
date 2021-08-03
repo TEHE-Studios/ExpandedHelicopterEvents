@@ -14,3 +14,6 @@ table.insert(HairOutfitDefinitions.haircutOutfitDefinition, RJ)
 
 local fili = { outfit = "Filibuster", haircut = "Short:100", beard = "None:100" }
 table.insert(HairOutfitDefinitions.haircutOutfitDefinition, fili)
+
+local RJ = { outfit = "SpiffoBoss", haircut = "None:100", beard = "None:100", haircutColor = "0.16,0.08,0.02:100" }
+table.insert(HairOutfitDefinitions.haircutOutfitDefinition, RJ)
