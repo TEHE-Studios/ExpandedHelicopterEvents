@@ -25,7 +25,7 @@ if getDebug() then
 			DEBUG_TESTS.moveHeliCloser(heli3)
 
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launch_increasingly_hostile()
-		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launch_attack_only_undead()
+		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launch_increasingly_helpful()
 		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launch_police_heli()
 		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchBaseHeli()
 		end
@@ -177,10 +177,10 @@ if getDebug() then
 	end
 
 
-	--- Test launch close "news_chopper" heli
-	function DEBUG_TESTS.launch_aid_chopper()
+	--- Test launch close "increasingly_helpful" heli
+	function DEBUG_TESTS.launch_increasingly_helpful()
 		---@type eHelicopter heli
-		local heli = getFreeHelicopter("aid_helicopter")
+		local heli = getFreeHelicopter("increasingly_helpful")
 		heli:launch()
 		DEBUG_TESTS.moveHeliCloser(heli, 650)
 	end
