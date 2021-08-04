@@ -208,7 +208,8 @@ function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
 	end
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
 	if currentFireDamage < 250 then
-		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+500,AI_ID="nemesis",location=zombie:getSquare()})
+		zombie:setOnDeathDone(false)
+		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+10,AI_ID="nemesis",location=zombie:getSquare()})
 	end
 end
 
