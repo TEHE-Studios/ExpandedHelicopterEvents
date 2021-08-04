@@ -113,7 +113,7 @@ module Base
 		engineForce = 3700,
 		engineQuality = 70,
 		engineLoudness = 100,
-		maxSpeed = 70f,
+		maxSpeed = 350f,
 		brakingForce = 60,
 		stoppingMovementForce = 1.0f,
 		rollInfluence = 0.9f,
