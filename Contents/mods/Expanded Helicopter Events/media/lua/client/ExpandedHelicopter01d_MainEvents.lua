@@ -31,7 +31,7 @@ function eHelicopter:crash()
 		if currentSquare then
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			---@type BaseVehicle
-			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
+			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
 				heli:crash(1000,true)
 				heli:crash(1000,false)
@@ -205,7 +205,7 @@ function eHelicopter:dropItem(type, fuzz)
 	end
 
 	if currentSquare then
-		local _ = currentSquare:AddWorldInventoryItem("EHE."..type, 0, 0, 0)
+		local _ = currentSquare:AddWorldInventoryItem(type, 0, 0, 0)
 	end
 end
 
@@ -242,7 +242,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	if currentSquare then
 		--[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
 		---@type BaseVehicle airDrop
-		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
+		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
 			self:playEventSound("droppingPackage")
 			self.dropPackages = false
