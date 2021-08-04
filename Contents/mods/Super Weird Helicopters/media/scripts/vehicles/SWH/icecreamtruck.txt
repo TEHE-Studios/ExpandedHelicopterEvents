@@ -95,7 +95,7 @@ module Base
 	
 		lightbar
 		{
-			soundSiren = TapeDeck1,
+			soundSiren = icecream,
 		}
 
 		sound
@@ -114,7 +114,7 @@ module Base
 		engineQuality = 70,
 		engineLoudness = 100,
 		maxSpeed = 350f,
-		brakingForce = 60,
+		brakingForce = 150,
 		stoppingMovementForce = 1.0f,
 		rollInfluence = 0.9f,
 		steeringIncrement = 0.03,
