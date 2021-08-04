@@ -101,6 +101,7 @@ module Base
 		sound
 		{
 			horn = VehicleHorn,
+			backSignal = VehicleBackUpBeeper,
 		}
 
 
