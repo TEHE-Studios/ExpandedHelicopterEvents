@@ -5,6 +5,7 @@ require "OptionScreens/SandBoxOptions"
 eHelicopterSandbox = eHelicopterSandbox or {}
 
 eHelicopterSandbox.config = {
+	debugTests = false,
 	frequency = 2,
 	resetEvents = false,
 	cutOffDay = 30,
@@ -109,6 +110,10 @@ loadPresetToConfig()]]
 eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
+
+if getDebug() then
+	eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", }
+end
 
 
 --load mod into EasyConfig
