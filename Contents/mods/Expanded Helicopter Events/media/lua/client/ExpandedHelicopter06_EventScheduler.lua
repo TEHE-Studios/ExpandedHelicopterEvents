@@ -106,6 +106,7 @@ function eHeli_getDaysBeforeApoc()
 end
 
 
+
 ---Generates a schedule time for an event, either from scratch or a previous event.
 ---@param ID number Position in schedule
 ---@param heliDay number Day to start event
@@ -128,46 +129,53 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
 	local freq = eHelicopterSandbox.config.frequency
 
+	local hoursToShift
+
 	if not heliDay then
+		--use old event's start day for reschedule, otherwise get new day
 		if not lastHeliEvent then
 			heliDay = nightsSurvived+ZombRand(0,3)
-			--use old event's start day for reschedule, otherwise get new day
 		else
 			heliDay = lastHeliEvent.startDay
+
+			--[[DEBUG]] local debugOuput = "EHE: Event Scheudler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
 
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 			local dayOffset
 
-			if freq == 0 then
-				dayOffset = {7,14}
-
-			elseif freq == 1 then
-				dayOffset = {5,10}
-
-			elseif freq == 2 then
-				dayOffset = {3,6}
-
-			elseif freq == 3 then
-				dayOffset = {1,2}
-
-			elseif freq == 6 then
-				dayOffset = {-1,0}
-
+			if freq == 0 then dayOffset = {7,14}
+			elseif freq == 1 then dayOffset = {5,10}
+			elseif freq == 2 then dayOffset = {3,6}
+			elseif freq == 3 then dayOffset = {1,2}
+			elseif freq == 6 then dayOffset = {-1,0}
 			end
 
-			local randomizedOffset = (ZombRand(dayOffset[1],dayOffset[2])+1)*freqFactor
+			--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
+			local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
 			--as days get closer to the cutoff the time between new events gets longer
-			local lessFreqOverTime = ((7-freq)*math.min(1,(daysIntoApoc/cutOffDay)))
-			--add randomizedOffset and lessFreqOverTime to heliday
-			heliDay = heliDay+randomizedOffset+lessFreqOverTime
-			--trim non integer
-			heliDay = math.floor(heliDay+0.5)
+			local lessFreqOverTimeHrs = (((7-freq)*24)*math.min(1,(daysIntoApoc/cutOffDay)))*freqFactor
+			--combine randomizedOffset and lessFreqOverTime
+			hoursToShift = randomizedHoursOffset+lessFreqOverTimeHrs
+			--convert hoursToShift to whole days
+			local daysToShift = math.floor((hoursToShift/24))
+			--remove the day count from hours
+			hoursToShift = hoursToShift-(daysToShift*24)
+			--finally shift them
+			heliDay = heliDay+daysToShift
+
+			--[[DEBUG]] debugOuput = debugOuput.."- hrs_shift:"..hoursToShift.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
+			--[[DEBUG]] print(debugOuput)
 		end
 	end
 
 	if not heliStart then
-		--start time is random from hour 6 to 20
-		heliStart = ZombRand(6, 20)
+		--use hours left over otherwise use random
+		if hoursToShift then
+			--start time is clamped from hour 5 to 22
+			heliStart = math.max(5, math.min(22, hoursToShift))
+		else
+			heliStart = ZombRand(5,22)
+		end
 	end
 
 	local neverEnd = eHelicopterSandbox.config.neverEndingEvents
