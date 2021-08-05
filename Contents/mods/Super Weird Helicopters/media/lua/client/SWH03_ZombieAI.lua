@@ -86,7 +86,6 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)
-		zombie:setAvoidDamage(true)
 	else
 		zombie:setCanWalk(true)
 		if zombie:isCrawling() then
