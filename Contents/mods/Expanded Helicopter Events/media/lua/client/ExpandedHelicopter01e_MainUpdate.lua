@@ -9,7 +9,7 @@ function eHelicopter:update()
 			print(" - EHE: ERR: "..self:heliToString().." no trueTarget in update()")
 		end
 
-		self:findTarget(self.attackDistance)
+		self.trueTarget = self:findTarget(self.attackDistance)
 		return
 	end
 
