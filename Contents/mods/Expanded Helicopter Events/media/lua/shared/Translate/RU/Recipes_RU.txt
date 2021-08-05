@@ -1,3 +1,4 @@
 Recipe_RU = {
-Recipe_Open_Supplies = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+Recipe_Open_Supplies = "Открытые поставки",
+
 }

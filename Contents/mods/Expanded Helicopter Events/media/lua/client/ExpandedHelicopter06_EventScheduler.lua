@@ -106,6 +106,7 @@ function eHeli_getDaysBeforeApoc()
 end
 
 
+
 ---Generates a schedule time for an event, either from scratch or a previous event.
 ---@param ID number Position in schedule
 ---@param heliDay number Day to start event
@@ -127,18 +128,18 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local COF = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
 	local cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
 	local freq = eHelicopterSandbox.config.frequency
-	
+
 	local hoursToShift
-	
+
 	if not heliDay then
 		--use old event's start day for reschedule, otherwise get new day
 		if not lastHeliEvent then
 			heliDay = nightsSurvived+ZombRand(0,3)
 		else
 			heliDay = lastHeliEvent.startDay
-			
+
 			--[[DEBUG]] local debugOuput = "EHE: Event Scheudler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
-			
+
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 			local dayOffset
 
@@ -148,7 +149,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			elseif freq == 3 then dayOffset = {1,2}
 			elseif freq == 6 then dayOffset = {-1,0}
 			end
-			
+
 			--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
 			local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
 			--as days get closer to the cutoff the time between new events gets longer
