@@ -28,13 +28,12 @@ function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
 		return
 	end
 	if apply then
-		print("AI onApply: specialZombie_gottaGoFast")
+		print("EHE:SWH:SZ:AI onApply: specialZombie_gottaGoFast")
 		zombie:changeSpeed(1)
 		zombie:DoZombieStats()
 		zombie:setSpeedMod(10)
 
 	else
-		--print("AI onUpdate: specialZombie_gottaGoFast")
 		if zombie:isCrawling() then
 			zombie:toggleCrawling()
 		end
@@ -50,7 +49,7 @@ function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
 		return
 	end
 	if apply then
-		print("AI onApply: specialZombie_licking")
+		print("EHE:SWH:SZ:AI onApply: specialZombie_licking")
 		zombie:setNoTeeth(true)
 		zombie:changeSpeed(1)
 		zombie:DoZombieStats()
@@ -82,7 +81,7 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		return
 	end
 	if apply then
-		print("AI onApply: specialZombie_nemesis")
+		print("EHE:SWH:SZ:AI onApply: specialZombie_nemesis")
 		zombie:changeSpeed(2)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
@@ -160,7 +159,6 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 		return
 	end
 	local squaresInRange = getIsoRange(location, 2)
-	print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
 	for sq=1, #squaresInRange do
 		---@type IsoGridSquare
 		local square = squaresInRange[sq]
@@ -171,7 +169,7 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 			local foundObj = squareContents:get(i)
 			if instanceof(foundObj, "IsoDeadBody") then
 				local attachedItems = foundObj:getAttachedItems()
-				print("body present")
+				print("EHE:SWH:SZ:body present")
 				for i=0, attachedItems:size()-1 do
 					---@type InventoryItem
 					local storedAIItem = attachedItems:getItemByIndex(i)
@@ -289,7 +287,7 @@ function eHelicopter_zombieAI.checkForAI(zombie, apply)
 			local specialAI = eHelicopter_zombieAI["specialZombie_"..storedAI]
 			if specialAI then
 				if zombie:getModData()["initApply"] ~= true then
-					print("initApply not true, setting `apply` to true")
+					print("EHE:SWH:SZ:initApply not true, setting `apply` to true")
 					apply = true
 					zombie:getModData()["initApply"] = true
 				end
