@@ -20,15 +20,49 @@ AttachedWeaponDefinitions.attachedWeaponCustomOutfit.RobertJohnson = { chance = 
 
 eHelicopter_zombieAI = {}
 
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoDeadBody
+function eHelicopter_zombieAI.checkForAI(zombie)
+	if not zombie then
+		return
+	end
+
+	local AIs = {}
+
+	local attachedItems = zombie:getAttachedItems()
+	for i=0, attachedItems:size()-1 do
+		---@type InventoryItem
+		local storedAIItem = attachedItems:getItemByIndex(i)
+		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
+			local storedAI = storedAIItem:getType()
+			AIs[storedAI] = true
+		end
+	end
+
+	local container = zombie:getContainer()
+	if container then
+		local inventoryItems = container:getItems()
+		for i=0, inventoryItems:size()-1 do
+			---@type InventoryItem
+			local storedAIItem = inventoryItems:get(i)
+			if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
+				local storedAI = storedAIItem:getType()
+				AIs[storedAI] = true
+			end
+		end
+	end
+
+	return AIs
+end
+
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param apply boolean
-function eHelicopter_zombieAI.specialZombie_gottaGoFast(zombie, apply)
+function eHelicopter_zombieAI.onUpdate_gottaGoFast(zombie, apply)
 	if not zombie then
 		return
 	end
 	if apply then
-		print("EHE:SWH:SZ:AI onApply: specialZombie_gottaGoFast")
+		print("EHE:SWH:SZ:AI onApply: gottaGoFast")
 		zombie:changeSpeed(1)
 		zombie:DoZombieStats()
 		zombie:setSpeedMod(10)
@@ -44,12 +78,12 @@ end
 eHelicopter_zombieAI.lickingTracker = {}
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoMovingObject
 ---@param apply boolean
-function eHelicopter_zombieAI.specialZombie_licking(zombie, apply)
+function eHelicopter_zombieAI.onUpdate_licking(zombie, apply)
 	if not zombie then
 		return
 	end
 	if apply then
-		print("EHE:SWH:SZ:AI onApply: specialZombie_licking")
+		print("EHE:SWH:SZ:AI onApply: licking")
 		zombie:setNoTeeth(true)
 		zombie:changeSpeed(1)
 		zombie:DoZombieStats()
@@ -76,16 +110,17 @@ end
 eHelicopter_zombieAI.nemesisFireDmgTracker = {}
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param apply boolean
-function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
+function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 	if not zombie then
 		return
 	end
 	if apply then
-		print("EHE:SWH:SZ:AI onApply: specialZombie_nemesis")
+		print("EHE:SWH:SZ:AI onApply: nemesis")
 		zombie:changeSpeed(2)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)
+
 	else
 		zombie:setCanWalk(true)
 		if zombie:isCrawling() then
@@ -97,12 +132,12 @@ function eHelicopter_zombieAI.specialZombie_nemesis(zombie, apply)
 		if zombie:isOnFire() then
 			currentFireDamage = currentFireDamage+1
 			eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] = currentFireDamage
-			print("EHE:SWH:specialZombie_nemesis: zombie is on fire.")
+			print("EHE:SWH:nemesis: zombie is on fire.")
 		end
 
 		if currentFireDamage > 250 then
 			zombie:setHealth(0)
-			print("EHE:SWH:specialZombie_nemesis: zombie is crispy.")
+			print("EHE:SWH:nemesis: zombie is crispy.")
 		end
 
 		if zombie:isBeingSteppedOn() then
@@ -157,6 +192,7 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 	if not AI_ID or not location then
 		return
 	end
+
 	local squaresInRange = getIsoRange(location, 2)
 	for sq=1, #squaresInRange do
 		---@type IsoGridSquare
@@ -167,24 +203,15 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 			---@type IsoDeadBody
 			local foundObj = squareContents:get(i)
 			if instanceof(foundObj, "IsoDeadBody") then
-				local attachedItems = foundObj:getAttachedItems()
-				print("EHE:SWH:SZ:body present")
-				for i=0, attachedItems:size()-1 do
-					---@type InventoryItem
-					local storedAIItem = attachedItems:getItemByIndex(i)
-
-					if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
-						local storedAI = storedAIItem:getType()
-						if storedAI==AI_ID then
-							foundObj:reanimateNow()
-						end
-					end
+				local AIs = eHelicopter_zombieAI.checkForAI(foundObj)
+				if AIs and AIs[AI_ID]==true then
+					foundObj:reanimateNow()
 				end
-
 			end
 		end
 	end
 end
+
 
 eHelicopter_zombieAI.reviveEvents = {}
 function eHelicopter_zombieAI.reviveEventsLoop()
@@ -197,36 +224,37 @@ function eHelicopter_zombieAI.reviveEventsLoop()
 end
 Events.OnTick.Add(eHelicopter_zombieAI.reviveEventsLoop)
 
+
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodypart, weapon)
+function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodyPart, weapon)
 	if not zombie then
 		return
 	end
+
+	zombie:setHealth(zombie:getHealth()*1000001)
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
 	if currentFireDamage < 250 then
 		zombie:setOnDeathDone(false)
-		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+10,AI_ID="nemesis",location=zombie:getSquare()})
+		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+100,AI_ID="nemesis",location=zombie:getSquare()})
 	end
 end
 
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onDead(zombie, player, bodypart, weapon)
+function eHelicopter_zombieAI.onDead(zombie, player, bodyPart, weapon)
 	if not zombie then
 		return
 	end
 
-	local attachedItems = zombie:getAttachedItems()
-	for i=0, attachedItems:size()-1 do
-		---@type InventoryItem
-		local storedAIItem = attachedItems:getItemByIndex(i)
-		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
-			local storedAI = storedAIItem:getType()
-			local specialAI = eHelicopter_zombieAI["onDead_"..storedAI]
+	local AIs = eHelicopter_zombieAI.checkForAI(zombie)
+	if AIs then
+		for AI_ID,_ in pairs(AIs) do
+			local specialAI = eHelicopter_zombieAI["onDead_"..AI_ID]
 			if specialAI then
-				specialAI(zombie, player, bodypart, weapon)
+				print("SWH: AI: <"..AI_ID..">")
+				specialAI(zombie, player, bodyPart, weapon)
 			end
 		end
 	end
@@ -250,15 +278,12 @@ function eHelicopter_zombieAI.onHit(player, zombie, bodyPart, weapon)
 		return
 	end
 
-	local attachedItems = zombie:getAttachedItems()
-	for i=0, attachedItems:size()-1 do
-		---@type InventoryItem
-		local storedAIItem = attachedItems:getItemByIndex(i)
-		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
-			local storedAI = storedAIItem:getType()
-			local specialAI = eHelicopter_zombieAI["onHit_"..storedAI]
+	local AIs = eHelicopter_zombieAI.checkForAI(zombie)
+	if AIs then
+		for AI_ID,_ in pairs(AIs) do
+			local specialAI = eHelicopter_zombieAI["onHit_"..AI_ID]
 			if specialAI then
-				specialAI(player, zombie, bodyPart, weapon)
+				specialAI(zombie, player, bodyPart, weapon)
 			end
 		end
 	end
@@ -266,34 +291,26 @@ end
 Events.OnWeaponHitCharacter.Add(eHelicopter_zombieAI.onHit)
 
 
-
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param apply boolean
-function eHelicopter_zombieAI.checkForAI(zombie, apply)
-	if not zombie then
+function eHelicopter_zombieAI.onUpdate(zombie, apply)
+	if not zombie or zombie:isDead() then
 		return
 	end
-	if zombie:isDead() then
-		print("EHE:SWH:SZ:checkForAI: zombie is dead.")
-		return
-	end
-	local attachedItems = zombie:getAttachedItems()
-	for i=0, attachedItems:size()-1 do
-		---@type InventoryItem
-		local storedAIItem = attachedItems:getItemByIndex(i)
-		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
-			local storedAI = storedAIItem:getType()
-			local specialAI = eHelicopter_zombieAI["specialZombie_"..storedAI]
+
+	local AIs = eHelicopter_zombieAI.checkForAI(zombie)
+	if AIs then
+		for AI_ID,_ in pairs(AIs) do
+			local specialAI = eHelicopter_zombieAI["onUpdate_"..AI_ID]
 			if specialAI then
 				if zombie:getModData()["initApply"] ~= true then
 					print("EHE:SWH:SZ:initApply not true, setting `apply` to true")
 					apply = true
 					zombie:getModData()["initApply"] = true
 				end
-
 				specialAI(zombie, apply or false)
 			end
 		end
 	end
 end
-Events.OnZombieUpdate.Add(eHelicopter_zombieAI.checkForAI)
+Events.OnZombieUpdate.Add(eHelicopter_zombieAI.onUpdate)
