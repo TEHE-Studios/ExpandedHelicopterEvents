@@ -80,7 +80,7 @@ eHelicopter_PRESETS["patrol_only"] = {
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 eHelicopter_PRESETS["patrol_only_emergency"] = {
 	announcerVoice = true,
-	dropItems = {["EmergencyFlyer"]=250},
+	dropItems = {["EHE.EmergencyFlyer"]=250},
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
 	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
 	}
@@ -88,7 +88,7 @@ eHelicopter_PRESETS["patrol_only_emergency"] = {
 
 eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	announcerVoice = true,
-	dropItems = {["QuarantineFlyer"]=250},
+	dropItems = {["EHE.QuarantineFlyer"]=250},
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
 	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
 	}
@@ -96,7 +96,7 @@ eHelicopter_PRESETS["patrol_only_quarantine"] = {
 
 eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	hostilePreference = "IsoZombie",
-	dropItems = {["EvacuationFlyer"]=250},
+	dropItems = {["EHE.EvacuationFlyer"]=250},
 	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
 	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
 	}
@@ -140,7 +140,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
 	crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
 	dropPackages = {"FEMASupplyDrop"},
-	dropItems = {["NoticeFlyer"]=250},
+	dropItems = {["EHE.NoticeFlyer"]=250},
 	speed = 0.06,
 	scrapAndParts = {["vehicleSection"]="UH1HMedevacTail"},
 	eventSoundEffects = {
