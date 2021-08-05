@@ -51,7 +51,7 @@ function eHelicopter:crash()
 					self:dropAllItems(4)
 				end
 
-				local eventFunction = self.doStuffOnCrash["OnCrash"]
+				local eventFunction = self.addedFunctionsToEvents["OnCrash"]
 				if eventFunction then
 					eventFunction(self, currentSquare)
 				end

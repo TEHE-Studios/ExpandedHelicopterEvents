@@ -167,7 +167,7 @@ function eHelicopter:fireOn(targetHostile)
 	--[debug]] print(hitReport)
 
 	local targetHostileGetSquare = targetHostile:getSquare()
-	local eventFunction = self.doStuffOnCrash["OnAttack"]
+	local eventFunction = self.addedFunctionsToEvents["OnAttack"]
 	if eventFunction then
 		eventFunction(self, targetHostile)
 	end
