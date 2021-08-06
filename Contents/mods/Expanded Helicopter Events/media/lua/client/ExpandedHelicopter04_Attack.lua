@@ -166,14 +166,15 @@ function eHelicopter:fireOn(targetHostile)
 	end
 	--[debug]] print(hitReport)
 
-	local targetHostileGetSquare = targetHostile:getSquare()
-	local eventFunction = self.addedFunctionsToEvents["OnAttack"]
-	if eventFunction then
-		eventFunction(self, targetHostile)
+	if self.addedFunctionsToEvents then
+		local eventFunction = self.addedFunctionsToEvents["OnAttack"]
+		if eventFunction then
+			eventFunction(self, targetHostile)
+		end
 	end
 
 	--fireImpacts
-	self:playEventSound("attackImpacts", targetHostileGetSquare)
+	self:playEventSound("attackImpacts", targetHostile:getSquare())
 end
 
 

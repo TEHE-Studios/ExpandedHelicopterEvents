@@ -53,9 +53,11 @@ function eHelicopter:crash()
 					self:dropAllItems(4)
 				end
 
-				local eventFunction = self.addedFunctionsToEvents["OnCrash"]
-				if eventFunction then
-					eventFunction(self, currentSquare)
+				if self.addedFunctionsToEvents then
+					local eventFunction = self.addedFunctionsToEvents["OnCrash"]
+					if eventFunction then
+						eventFunction(self, currentSquare)
+					end
 				end
 
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
