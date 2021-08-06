@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9.2"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9.3"))
 
 
 ---IsoPlayer are player entities but also NPCs (from mods)
