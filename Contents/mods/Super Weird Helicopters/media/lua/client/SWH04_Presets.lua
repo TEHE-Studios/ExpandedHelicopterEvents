@@ -43,6 +43,7 @@ eHelicopter_PRESETS["UFO"] = {
 	speed = 1.3,
 	topSpeedFactor = 2,
 	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
+	scrapAndParts = false,
 }
 
 eHelicopter_PRESETS["IRS"] = {
@@ -82,4 +83,5 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	frequencyFactor = 0.1,
 	eventSoundEffects = {["flightSound"] = "IceCreamFlyBy"},
 	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
+	scrapAndParts = false,
 }
