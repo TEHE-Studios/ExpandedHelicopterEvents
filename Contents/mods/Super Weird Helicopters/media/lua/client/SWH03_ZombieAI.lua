@@ -154,7 +154,8 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 							---@type BaseVehicle
 							local car = foundObj
 							if car then
-								car:flipUpright()
+								---flip car
+								--print(" --SWH: car found near ZombieAI nemesis")
 							end
 
 						elseif instanceof(foundObj, "IsoGameCharacter") then
@@ -193,7 +194,7 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 		return
 	end
 
-	local squaresInRange = getIsoRange(location, 2)
+	local squaresInRange = getIsoRange(location, 3)
 	for sq=1, #squaresInRange do
 		---@type IsoGridSquare
 		local square = squaresInRange[sq]
@@ -236,7 +237,7 @@ function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodyPart, weapon)
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
 	if currentFireDamage < 250 then
 		zombie:setOnDeathDone(false)
-		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+100,AI_ID="nemesis",location=zombie:getSquare()})
+		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+2000,AI_ID="nemesis",location=zombie:getSquare()})
 	end
 end
 
@@ -253,7 +254,7 @@ function eHelicopter_zombieAI.onDead(zombie, player, bodyPart, weapon)
 		for AI_ID,_ in pairs(AIs) do
 			local specialAI = eHelicopter_zombieAI["onDead_"..AI_ID]
 			if specialAI then
-				print("SWH: AI: <"..AI_ID..">")
+				--[DEBUG]] print("SWH: AI found: <"..AI_ID..">")
 				specialAI(zombie, player, bodyPart, weapon)
 			end
 		end
@@ -304,7 +305,7 @@ function eHelicopter_zombieAI.onUpdate(zombie, apply)
 			local specialAI = eHelicopter_zombieAI["onUpdate_"..AI_ID]
 			if specialAI then
 				if zombie:getModData()["initApply"] ~= true then
-					print("EHE:SWH:SZ:initApply not true, setting `apply` to true")
+					--[DEBUG]] print("EHE:SWH:SZ:initApply not true, setting `apply` to true")
 					apply = true
 					zombie:getModData()["initApply"] = true
 				end
