@@ -12,13 +12,13 @@ module Base {
 		category = Vehicle,	loop = true,
 		clip { file = media/sound/vehicle_cream3.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0, } }
 
-
     sound IceCreamFlyBy {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/vehicle_cream1.ogg, distanceMax = 1500, volume = 2.0, }
         clip { file = media/sound/vehicle_cream2.ogg, distanceMax = 1500, volume = 2.0, }
         clip { file = media/sound/vehicle_cream3.ogg, distanceMax = 1500, volume = 2.0, }
         clip { file = media/sound/vehicle_cream4.ogg, distanceMax = 1500, volume = 2.0, } }
+
 
 	sound PAWS1 {
 		category = Vehicle, loop = true,
