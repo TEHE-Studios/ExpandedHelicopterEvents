@@ -109,7 +109,7 @@ function eHelicopter:update()
 			preventMovement=true
 		else
 
-			--[[DEBUG]]
+			--[[DEBUG]
 			if getDebug() then
 				local debugTargetText = " (square)"
 				if self.trueTarget then
