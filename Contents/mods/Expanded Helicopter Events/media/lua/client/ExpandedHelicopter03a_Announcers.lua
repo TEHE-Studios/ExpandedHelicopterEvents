@@ -60,3 +60,8 @@ eHelicopter_announcers["Jade Male C"] = {
 		["RepeatedAttemptsAtBreaching"] = {7250, "eHeli_Jade_3c"},
 	} }
 
+eHelicopter_announcers["Police"] = {
+	["LeaveOutOfRandomSelection"] = true,
+	["Lines"] = {
+		["PoliceLines"] = {8500, "eHeli_police_lines"},
+	} }
