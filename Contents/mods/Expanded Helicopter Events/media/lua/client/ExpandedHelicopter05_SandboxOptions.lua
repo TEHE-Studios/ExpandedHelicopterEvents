@@ -5,7 +5,7 @@ require "OptionScreens/SandBoxOptions"
 eHelicopterSandbox = eHelicopterSandbox or {}
 
 eHelicopterSandbox.config = {
-	debugTests = false,
+	debugTests = true,
 	frequency = 2,
 	resetEvents = false,
 	cutOffDay = 30,
