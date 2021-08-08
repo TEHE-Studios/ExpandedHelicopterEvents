@@ -159,7 +159,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			--convert hoursToShift to whole days
 			local daysToShift = math.floor((hoursToShift/24))
 			--remove the day count from hours
-			hoursToShift = hoursToShift-(daysToShift*24)
+			hoursToShift = math.floor(hoursToShift-(daysToShift*24))
 			--finally shift them
 			heliDay = heliDay+daysToShift
 
