@@ -142,7 +142,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 			--print("EHE:SWH:nemesis: zombie is on fire.")
 		end
 
-		if currentFireDamage > 250 then
+		if currentFireDamage > eHelicopter_zombieAI.nemesis_burnTime then
 			zombie:setHealth(0)
 			--print("EHE:SWH:nemesis: zombie is crispy.")
 			return
@@ -247,7 +247,7 @@ function eHelicopter_zombieAI.reviveEventsLoop()
 end
 Events.OnTick.Add(eHelicopter_zombieAI.reviveEventsLoop)
 
-
+eHelicopter_zombieAI.nemesis_burnTime = 3000
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
 function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodyPart, weapon)
@@ -257,7 +257,7 @@ function eHelicopter_zombieAI.onDead_nemesis(zombie, player, bodyPart, weapon)
 
 	zombie:setHealth(zombie:getHealth()*1000001)
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
-	if currentFireDamage < 250 then
+	if currentFireDamage < eHelicopter_zombieAI.nemesis_burnTime then
 		zombie:setOnDeathDone(false)
 		table.insert(eHelicopter_zombieAI.reviveEvents,{time=getTimestampMs()+2000,AI_ID="nemesis",location=zombie:getSquare()})
 	end
@@ -285,11 +285,12 @@ end
 Events.OnZombieDead.Add(eHelicopter_zombieAI.onDead)
 
 
+
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
 function eHelicopter_zombieAI.onHit_nemesis(zombie, player, bodypart, weapon)
 	local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
-	if currentFireDamage >= 250 then
+	if currentFireDamage >= eHelicopter_zombieAI.nemesis_burnTime then
 		zombie:setHealth(0)
 	end
 end
