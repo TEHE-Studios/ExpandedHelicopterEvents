@@ -33,8 +33,8 @@ module Base
 		mass = 200,
 		physicsChassisShape = 1.0292 1.4620 1.1228,
 		centerOfMassOffset = 0.0000 0.7310 -0.0117,
-		shadowExtents = 1.0284 1.1637,
-		shadowOffset = 0.0000 0.0000,
+		shadowExtents = 1.0284 1.1286,
+		shadowOffset = 0.0000 -0.0117,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 
