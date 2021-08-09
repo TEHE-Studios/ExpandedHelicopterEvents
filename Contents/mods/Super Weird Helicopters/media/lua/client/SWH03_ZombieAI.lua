@@ -187,17 +187,22 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 				end
 			end
 		end
---[[
-		local currentTarget = zombie:getTarget()
-		local foreverTarget = zombie:getModData()["foreverTarget"] or zombie:getTarget()
 
-		if currentTarget then
-			zombie:getModData()["foreverTarget"] = currentTarget
+		local foreverTarget = zombie:getModData()["foreverTarget"]
+		if not foreverTarget then
+			---@type IsoMovingObject | IsoGameCharacter | IsoObject
+			local choice
+			for character,value in pairs(EHEIsoPlayers) do
+				if (not choice) or (choice and character and (zombie:getDistanceSq(choice) < zombie:getDistanceSq(character))) then
+					choice = character
+				end
+			end
+			zombie:getModData()["foreverTarget"] = choice
 		end
-]]
+		if foreverTarget then
+			zombie:spotted(foreverTarget, true)
+		end
 
-		--zombie:getEnemyList()
-		---EnemyList
 	end
 end
 
