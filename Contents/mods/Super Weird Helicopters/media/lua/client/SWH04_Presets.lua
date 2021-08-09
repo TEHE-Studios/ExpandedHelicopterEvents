@@ -44,6 +44,7 @@ eHelicopter_PRESETS["UFO"] = {
 	topSpeedFactor = 2,
 	addedFunctionsToEvents = {["OnHover"] = eHelicopter_dropCrewOff,},
 	scrapAndParts = false,
+	eventSoundEffects = {["flightSound"] = "AlientUFOFlight"},
 }
 
 eHelicopter_PRESETS["IRS"] = {
