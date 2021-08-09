@@ -34,6 +34,7 @@ function eHelicopter_zombieAI.checkForAI(zombie)
 		local storedAIItem = attachedItems:getItemByIndex(i)
 		if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
 			local storedAI = storedAIItem:getType()
+			--[DEBUG]] print(" --- storedAI: (attached) "..storedAI)
 			AIs[storedAI] = true
 		end
 	end
@@ -46,6 +47,7 @@ function eHelicopter_zombieAI.checkForAI(zombie)
 			local storedAIItem = inventoryItems:get(i)
 			if storedAIItem and storedAIItem:getModule() == "ZombieAI" then
 				local storedAI = storedAIItem:getType()
+				--[DEBUG]] print(" --- storedAI: (container) "..storedAI)
 				AIs[storedAI] = true
 			end
 		end
@@ -124,6 +126,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)
+		zombie:setReanimatedPlayer(false)
 
 	else
 		zombie:setCanWalk(true)
@@ -136,12 +139,12 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 		if zombie:isOnFire() then
 			currentFireDamage = currentFireDamage+1
 			eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] = currentFireDamage
-			print("EHE:SWH:nemesis: zombie is on fire.")
+			--print("EHE:SWH:nemesis: zombie is on fire.")
 		end
 
 		if currentFireDamage > 250 then
 			zombie:setHealth(0)
-			print("EHE:SWH:nemesis: zombie is crispy.")
+			--print("EHE:SWH:nemesis: zombie is crispy.")
 		end
 
 		if zombie:isBeingSteppedOn() then
@@ -184,9 +187,17 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 				end
 			end
 		end
+--[[
+		local currentTarget = zombie:getTarget()
+		local foreverTarget = zombie:getModData()["foreverTarget"] or zombie:getTarget()
 
+		if currentTarget then
+			zombie:getModData()["foreverTarget"] = currentTarget
+		end
+]]
+
+		--zombie:getEnemyList()
 		---EnemyList
-
 	end
 end
 
