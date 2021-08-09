@@ -1,15 +1,9 @@
- -- define weapons to be attached to zombies when creating them
--- random knives inside their neck, spear in their stomach, meatcleaver in their back...
--- this is used in IsoZombie.addRandomAttachedWeapon()
-
 AttachedWeaponDefinitions = AttachedWeaponDefinitions or {};
 
-AttachedWeaponDefinitions.chanceOfAttachedWeapon = 9; -- Global chance of having an attached weapon, if we pass this we gonna add randomly one from the list
+-- same as vanilla handgun attachment-define but higher chance and pointed to EHE outfits
 
-
--- random weapon on police zombies holster
-AttachedWeaponDefinitions.handgunHolster = {
-	id = "handgunHolster",
+AttachedWeaponDefinitions.EHE_handgunHolster = {
+	id = "EHE_handgunHolster",
 	chance = 90,
 	outfit = {"1PolicePilot", "1PoliceOfficer","1Survivalist","1SurvivalistPilot"},
 	weaponLocation =  {"Holster Right"},
@@ -27,9 +21,8 @@ AttachedWeaponDefinitions.handgunHolster = {
 	},
 }
 
--- assault rifle on back
-AttachedWeaponDefinitions.assaultRifleOnBack = {
-	id = "assaultRifleOnBack",
+AttachedWeaponDefinitions.EHE_assaultRifleOnBack = {
+	id = "EHE_assaultRifleOnBack",
 	chance = 90,
 	outfit = {"1Soldier", "1Survivalist", "1PoliceOfficer"},
 	weaponLocation =  {"Rifle On Back"},
@@ -41,9 +34,8 @@ AttachedWeaponDefinitions.assaultRifleOnBack = {
 	},
 }
 
--- varmint/hunting rifle on back
-AttachedWeaponDefinitions.huntingRifleOnBack = {
-	id = "huntingRifleOnBack",
+AttachedWeaponDefinitions.EHE_huntingRifleOnBack = {
+	id = "EHE_huntingRifleOnBack",
 	chance = 90,
 	outfit = {"1PoliceOfficer", "1PressArmored"},
 	weaponLocation =  {"Rifle On Back"},
