@@ -1,23 +1,58 @@
+ -- define weapons to be attached to zombies when creating them
+-- random knives inside their neck, spear in their stomach, meatcleaver in their back...
+-- this is used in IsoZombie.addRandomAttachedWeapon()
 
-if not AttachedWeaponDefinitions then
-	print("EHE: ERROR: Vanilla AttachedWeaponDefinitions not found - can't load `EHE_AttachedWeaponDefinitions`")
-else
-	function EHE_AttachedWeaponDefinitions()
-		--handguns
-		table.insert(AttachedWeaponDefinitions.handgunHolster.outfit,"1PolicePilot")
-		table.insert(AttachedWeaponDefinitions.handgunHolster.outfit,"1PoliceOfficer")
-		table.insert(AttachedWeaponDefinitions.handgunHolster.outfit,"1Survivalist")
-		table.insert(AttachedWeaponDefinitions.handgunHolster.outfit,"1SurvivalistPilot")
+AttachedWeaponDefinitions = AttachedWeaponDefinitions or {};
 
-		-- assault rifle on back
-		table.insert(AttachedWeaponDefinitions.assaultRifleOnBack.outfit,"1Soldier")
-		table.insert(AttachedWeaponDefinitions.assaultRifleOnBack.outfit,"1Survivalist")
-		table.insert(AttachedWeaponDefinitions.assaultRifleOnBack.outfit,"1PoliceOfficer")
+AttachedWeaponDefinitions.chanceOfAttachedWeapon = 9; -- Global chance of having an attached weapon, if we pass this we gonna add randomly one from the list
 
-		-- varmint/hunting rifle on back
-		table.insert(AttachedWeaponDefinitions.huntingRifleOnBack.outfit,"1PoliceOfficer")
-		table.insert(AttachedWeaponDefinitions.huntingRifleOnBack.outfit,"1PressArmored")
-	end
 
-	Events.OnGameBoot.Add(EHE_AttachedWeaponDefinitions)
-end 
+-- random weapon on police zombies holster
+AttachedWeaponDefinitions.handgunHolster = {
+	id = "handgunHolster",
+	chance = 90,
+	outfit = {"1PolicePilot", "1PoliceOfficer","1Survivalist","1SurvivalistPilot"},
+	weaponLocation =  {"Holster Right"},
+	bloodLocations = nil,
+	addHoles = false,
+	daySurvived = 0,
+	ensureItem = "Base.HolsterSimple",
+	weapons = {
+		"Base.Pistol",
+		"Base.Pistol2",
+		"Base.Pistol3",
+		"Base.Revolver",
+		"Base.Revolver_Long",
+		"Base.Revolver_Short",
+	},
+}
+
+-- assault rifle on back
+AttachedWeaponDefinitions.assaultRifleOnBack = {
+	id = "assaultRifleOnBack",
+	chance = 90,
+	outfit = {"1Soldier", "1Survivalist", "1PoliceOfficer"},
+	weaponLocation =  {"Rifle On Back"},
+	bloodLocations = nil,
+	addHoles = false,
+	daySurvived = 0,
+	weapons = {
+		"Base.AssaultRifle",
+	},
+}
+
+-- varmint/hunting rifle on back
+AttachedWeaponDefinitions.huntingRifleOnBack = {
+	id = "huntingRifleOnBack",
+	chance = 90,
+	outfit = {"1PoliceOfficer", "1PressArmored"},
+	weaponLocation =  {"Rifle On Back"},
+	bloodLocations = nil,
+	addHoles = false,
+	daySurvived = 0,
+	weapons = {
+		"Base.VarmintRifle",
+		"Base.HuntingRifle",
+		"Base.Shotgun",
+	},
+}
