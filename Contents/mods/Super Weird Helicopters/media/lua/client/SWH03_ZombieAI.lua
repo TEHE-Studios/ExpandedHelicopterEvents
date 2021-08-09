@@ -145,6 +145,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 		if currentFireDamage > 250 then
 			zombie:setHealth(0)
 			--print("EHE:SWH:nemesis: zombie is crispy.")
+			return
 		end
 
 		if zombie:isBeingSteppedOn() then
