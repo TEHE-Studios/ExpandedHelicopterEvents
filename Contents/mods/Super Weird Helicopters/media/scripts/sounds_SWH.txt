@@ -85,6 +85,15 @@ module Base {
         clip { file = media/sound/IRS10.ogg, distanceMax = 1500, volume = 3.0, } }
 
 
+    sound SpiffoGiggle {
+        category = Zombie, loop = false, is3D = true,
+        clip { file = media/sound/spiffo_giggle1.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle2.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle3.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle4.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle5.ogg, distanceMax = 10, volume = 1.0, } }
+
+
     sound Spiffo1 {
         category = EHE-Weird: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/Spiffo1.ogg, distanceMax = 1500, volume = 3.0, } }
