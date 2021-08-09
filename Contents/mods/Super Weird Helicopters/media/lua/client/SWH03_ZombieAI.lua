@@ -222,6 +222,7 @@ function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 				local AIs = eHelicopter_zombieAI.checkForAI(foundObj)
 				if AIs and AIs[AI_ID]==true then
 					foundObj:reanimateNow()
+					location:playSound("SpiffoGiggle")
 				end
 			end
 		end
