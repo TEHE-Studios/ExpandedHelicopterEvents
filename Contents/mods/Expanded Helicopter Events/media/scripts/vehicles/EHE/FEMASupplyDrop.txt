@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_FEMASupplyDrop,
 			scale = 1.7100,
-			offset = 0.0000 0.1520 -0.0117,
+			offset = 0.0000 0.1170 -0.0117,
 		}
 
 		spawnOffsetY = 0.19392952,
