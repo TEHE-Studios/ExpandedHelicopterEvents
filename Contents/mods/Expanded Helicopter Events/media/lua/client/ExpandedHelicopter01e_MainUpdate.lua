@@ -95,9 +95,11 @@ function eHelicopter:update()
 			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
 
-			local eventFunction = self.addedFunctionsToEvents["OnHover"]
-			if eventFunction then
-				eventFunction(self)
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.addedFunctionsToEvents["OnHover"]
+				if eventFunction then
+					eventFunction(self)
+				end
 			end
 
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
@@ -106,15 +108,25 @@ function eHelicopter:update()
 			end
 			preventMovement=true
 		else
-			local debugTargetText = " (square)"
-			--[[DEBUG]] if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
-			--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText) end
+
+			--[[DEBUG]
+			if getDebug() then
+				local debugTargetText = " (square)"
+				if self.trueTarget then
+					if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
+					self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText)
+				end
+			end
+			--]]
+
 			self:playEventSound("hoverOverTarget",nil, nil, true)
 			self:playEventSound("flyOverTarget")
 
-			local eventFunction = self.addedFunctionsToEvents["OnFlyaway"]
-			if eventFunction then
-				eventFunction(self)
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.addedFunctionsToEvents["OnFlyaway"]
+				if eventFunction then
+					eventFunction(self)
+				end
 			end
 
 			self:goHome()
@@ -228,7 +240,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = ALL_HELICOPTERS[key]
 
-		if heli.state and (heli.state ~= "unLaunched") and (heli.state ~= "following") then
+		if heli and heli.state and (heli.state ~= "unLaunched") and (heli.state ~= "following") then
 			heli:update()
 		end
 	end

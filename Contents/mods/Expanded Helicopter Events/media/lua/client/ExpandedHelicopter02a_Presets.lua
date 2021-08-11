@@ -133,6 +133,7 @@ eHelicopter_PRESETS["police_heli"] = {
 		},
 	hoverOnTargetDuration = {750,1150},
 	scrapAndParts = {["vehicleSection"]="Bell206PoliceTail"},
+	announcerVoice = "Police",
 	}
 
 

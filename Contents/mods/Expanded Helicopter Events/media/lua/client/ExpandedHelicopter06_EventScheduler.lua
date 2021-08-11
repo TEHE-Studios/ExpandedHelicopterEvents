@@ -130,7 +130,9 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local freq = eHelicopterSandbox.config.frequency
 
 	local hoursToShift
-
+	
+	--[[DEBUG]] local debugOuput = ""
+	
 	if not heliDay then
 		--use old event's start day for reschedule, otherwise get new day
 		if not lastHeliEvent then
@@ -138,7 +140,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		else
 			heliDay = lastHeliEvent.startDay
 
-			--[[DEBUG]] local debugOuput = "EHE: Event Scheudler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
+			--[[DEBUG]] debugOuput = debugOuput.."EHE: Event Scheudler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
 
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 			local dayOffset
@@ -159,25 +161,38 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			--convert hoursToShift to whole days
 			local daysToShift = math.floor((hoursToShift/24))
 			--remove the day count from hours
-			hoursToShift = hoursToShift-(daysToShift*24)
+			hoursToShift = math.floor(hoursToShift-(daysToShift*24))
 			--finally shift them
 			heliDay = heliDay+daysToShift
 
 			--[[DEBUG]] debugOuput = debugOuput.."- hrs_shift:"..hoursToShift.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
-			--[[DEBUG]] print(debugOuput)
 		end
 	end
 
 	if not heliStart then
-		--use hours left over otherwise use random
-		if hoursToShift then
-			--start time is clamped from hour 5 to 22
-			heliStart = math.max(5, math.min(22, hoursToShift))
-		else
-			heliStart = ZombRand(5,22)
+		local HOUR = getGameTime():getHour()
+		local maxStartTime = 22
+		
+		--if no hoursToShift left over from daysToShift use random amount
+		if not hoursToShift then
+			hoursToShift = ZombRand(6,12)
 		end
+		
+		heliStart = HOUR+hoursToShift
+		
+		--if heliStart is greater than max time subtract the max
+		--mathmatically the hour will always be passed this way and the leftover will be used the next day
+		if heliStart > maxStartTime then
+			heliStart = heliStart-maxStartTime
+		end
+		
+		--clamp heliStart just in case
+		heliStart = math.max(5, math.min(maxStartTime, heliStart))
+	
 	end
 
+	--[[DEBUG]] print(debugOuput)	
+		
 	local neverEnd = eHelicopterSandbox.config.neverEndingEvents
 	local renewHeli = (daysBefore+heliDay < cutOffDay)
 

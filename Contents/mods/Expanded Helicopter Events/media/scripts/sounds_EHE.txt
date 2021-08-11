@@ -96,6 +96,50 @@ module Base {
         clip { file = media/sound/heli_lineM_10a.ogg, distanceMax = 1500, volume = 3.0, }
         clip { file = media/sound/heli_lineM_10b.ogg, distanceMax = 1500, volume = 3.0, } }
 
+    sound eHeli_police_lines {
+        category = EHE: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/police_1.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_2.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_3.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_4.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_5.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_6.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_7.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_8.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_9.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_10.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_11.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_12.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_13.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_14.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_15.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_16.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_17.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_18.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_19.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_20.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_21.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_22.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_23.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_24.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_25.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_26.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_27.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_28.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_29.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_30.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_31.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_32.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_33.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_34.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_35.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_36.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_37.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_38.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_39.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_40.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_41.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/police_42.ogg, distanceMax = 1500, volume = 3.0, } }
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,

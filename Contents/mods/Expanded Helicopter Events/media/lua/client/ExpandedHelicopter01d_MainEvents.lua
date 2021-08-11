@@ -33,9 +33,11 @@ function eHelicopter:crash()
 			---@type BaseVehicle
 			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
+				self.crashType = false
+				
 				heli:crash(1000,true)
 				heli:crash(1000,false)
-
+				
 				--drop scrap and parts
 				if self.scrapAndParts then
 					self:dropScrap(6)
@@ -51,9 +53,11 @@ function eHelicopter:crash()
 					self:dropAllItems(4)
 				end
 
-				local eventFunction = self.addedFunctionsToEvents["OnCrash"]
-				if eventFunction then
-					eventFunction(self, currentSquare)
+				if self.addedFunctionsToEvents then
+					local eventFunction = self.addedFunctionsToEvents["OnCrash"]
+					if eventFunction then
+						eventFunction(self, currentSquare)
+					end
 				end
 
 				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
