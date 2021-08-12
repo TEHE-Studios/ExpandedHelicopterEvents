@@ -130,6 +130,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 
 	else
 		zombie:setCanWalk(true)
+
 		if zombie:isCrawling() then
 			zombie:toggleCrawling()
 		end
@@ -148,7 +149,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 			return
 		end
 
-		if zombie:isBeingSteppedOn() then
+		if zombie:isOnFloor() then
 			local squaresInRange = getIsoRange(zombie, 1)
 			for k,sq in pairs(squaresInRange) do
 				---@type IsoGridSquare
@@ -162,8 +163,9 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 							---@type BaseVehicle
 							local car = foundObj
 							if car then
-								---flip car
-								--print(" --SWH: car found near ZombieAI nemesis")
+								--flip car
+								car:setAngles(car:getAngleX(), car:getAngleY(), math.max(-145, math.min(145, car:getAngleZ()+10)))
+								--car:addImpulse()
 							end
 
 						elseif instanceof(foundObj, "IsoGameCharacter") then
