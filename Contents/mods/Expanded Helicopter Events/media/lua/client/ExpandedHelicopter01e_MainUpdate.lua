@@ -236,9 +236,9 @@ function updateAllHelicopters()
 		lastUpdateAllHelicopters = timeStamp
 	end
 
-	for key,_ in ipairs(ALL_HELICOPTERS) do
+	for _,helicopter in ipairs(ALL_HELICOPTERS) do
 		---@type eHelicopter heli
-		local heli = ALL_HELICOPTERS[key]
+		local heli = helicopter
 
 		if heli and heli.state and (heli.state ~= "unLaunched") and (heli.state ~= "following") then
 			heli:update()
