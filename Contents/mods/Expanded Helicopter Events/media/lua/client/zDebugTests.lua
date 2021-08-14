@@ -14,7 +14,7 @@ if getDebug() and eHelicopterSandbox.config.debugTests then
 		end
 	end)
 
-	DEBUG_TESTS = {}
+	DEBUG_TESTS = DEBUG_TESTS or {}
 
 	--- Check weather
 	function DEBUG_TESTS.CheckWeather()
