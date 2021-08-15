@@ -24,6 +24,7 @@ eHelicopterSandbox.config = {
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
 eHelicopterSandbox.name = "Expanded Helicopter Events" -- the name that will be shown in the MOD tab
+eHelicopterSandbox.menuSpecificAccess = "mainmenu"
 
 eHelicopterSandbox.menu = {
 
@@ -116,7 +117,7 @@ end
 
 --load mod into EasyConfig
 if EasyConfig_Chucked then
-	EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS", "mainmenu")
+	EasyConfig_Chucked.addMod(eHelicopterSandbox)
 end
 
 --Overrides vanilla helicopter frequency on game boot
