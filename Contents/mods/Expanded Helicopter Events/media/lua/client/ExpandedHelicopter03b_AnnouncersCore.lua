@@ -13,8 +13,8 @@ function setAnnouncementLength()
 		eHelicopter_announcers[k]["LineCount"]=line_length
 	end
 end
---run at Lua loading
-setAnnouncementLength()
+
+Events.OnGameBoot.Add(setAnnouncementLength)
 
 
 ---Sets eHelicopter's announcer voice

@@ -31,7 +31,7 @@ function eHelicopter:crash()
 		if currentSquare then
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			---@type BaseVehicle
-			local heli = addVehicleDebug("Base."..vehicleType, IsoDirections.getRandom(), nil, currentSquare)
+			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if heli then
 				self.crashType = false
 				
@@ -75,11 +75,12 @@ end
 
 
 ---Heli spawn crew
-function eHelicopter:spawnCrew()
+function eHelicopter:spawnCrew(deathChance,crawlChance)
 	if not self.crew then
 		return
 	end
 
+	local spawnedCrew = {}
 	for key,outfitID in pairs(self.crew) do
 
 		--The chance this type of zombie is spawned
@@ -115,28 +116,29 @@ function eHelicopter:spawnCrew()
 				--if there's an actual zombie
 				if zombie then
 
+					deathChance = deathChance or 33
 					--33% to be dead on arrival
-					if ZombRand(100) <= 33 then
+					if ZombRand(1,100) <= deathChance then
 						print("crash spawned: "..outfitID.." killed")
 						zombie:setHealth(0)
 					else
-						--+1 because zombRand starts at 0
-						local typeChange = ZombRand(6)+1
-						--2/6 chance to be a crawler
-						if typeChange >= 5 then
+						crawlChance = crawlChance or 25
+						if ZombRand(1,100) <= crawlChance then
 							print("crash spawned: "..outfitID.." crawler")
 							zombie:setCanWalk(false)
 							zombie:setBecomeCrawler(true)
 							zombie:knockDown(true)
-							--4/6 chance for normaltype zombie
 						else
 							print("crash spawned: "..outfitID)
 						end
 					end
+					table.insert(spawnedCrew, zombie)
 				end
 			end
 		end
 	end
+	self.crew = false
+	return spawnedCrew
 end
 
 
@@ -207,7 +209,7 @@ function eHelicopter:dropItem(type, fuzz)
 	end
 
 	if currentSquare then
-		local _ = currentSquare:AddWorldInventoryItem("EHE."..type, 0, 0, 0)
+		local _ = currentSquare:AddWorldInventoryItem(type, 0, 0, 0)
 	end
 end
 
@@ -244,7 +246,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	if currentSquare then
 		--[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
 		---@type BaseVehicle airDrop
-		local airDrop = addVehicleDebug("Base."..carePackage, IsoDirections.getRandom(), nil, currentSquare)
+		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
 			self:playEventSound("droppingPackage")
 			self.dropPackages = false

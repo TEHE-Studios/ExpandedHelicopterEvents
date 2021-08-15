@@ -106,7 +106,7 @@ function eHelicopter:getXYZAsInt()
 	if not self.currentPosition then
 		return
 	end
-	
+
 	local ehX = math.floor(Vector3GetX(self.currentPosition) + 0.5)
 	local ehY = math.floor(Vector3GetY(self.currentPosition) + 0.5)
 	local ehZ = self.height
@@ -436,9 +436,11 @@ function eHelicopter:findTarget(range)
 				else DEBUGallTargets[tostring(target)] = 1 end
 			end
 		end
+
 		for targetID,numberOf in pairs(DEBUGallTargets) do
 			DEBUGallTargetsText = DEBUGallTargetsText.."["..targetID.." x"..numberOf.."] "
 		end
+
 	end --]]
 
 	print(DEBUGallTargetsText)
@@ -534,7 +536,7 @@ function eHelicopter:applyCrashChance()
 	local dayOfLastCrash = GTMData["DayOfLastCrash"]
 	local expectedMaxDaysWithOutCrash = 14/(apocImpact+1)
 	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
-	local crashChance = (weatherImpact+apocImpact+daysSinceCrashImpact)*100
+	local crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
 
 	print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
 	--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
@@ -571,8 +573,8 @@ function eHelicopter:launch(targetedObject)
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-	local tpX = targetedObject:getX()+ZombRand(-25,26)
-	local tpY = targetedObject:getY()+ZombRand(-25,26)
+	local tpX = targetedObject:getX()+ZombRand(-25,25)
+	local tpY = targetedObject:getY()+ZombRand(-25,25)
 	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
 	--maintain trueTarget
 	self.trueTarget = targetedObject

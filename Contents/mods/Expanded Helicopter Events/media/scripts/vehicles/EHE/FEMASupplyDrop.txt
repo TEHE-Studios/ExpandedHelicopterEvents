@@ -17,8 +17,8 @@ module Base
 		model
 		{
 			file = Vehicle_FEMASupplyDrop,
-			scale = 0.7800,
-			offset = 0.0000 -0.0769 -0.0128,
+			scale = 1.7100,
+			offset = 0.0000 0.1170 -0.0117,
 		}
 
 		spawnOffsetY = 0.19392952,
@@ -29,16 +29,18 @@ module Base
 		}
 
 		textureMask = Vehicle_FEMASupplyDrop_mask,
-		extents = 1.9231 1.4359 2.0000,
+		extents = 1.0292 1.4386 1.1228,
 		mass = 200,
-		physicsChassisShape = 1.9744 1.4615 2.0000,
-		centerOfMassOffset = 0.0000 0.7308 0.0000,
+		physicsChassisShape = 1.0292 1.4620 1.1228,
+		centerOfMassOffset = 0.0000 0.7310 -0.0117,
+		shadowExtents = 1.0284 1.1286,
+		shadowOffset = 0.0000 -0.0117,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 
 		area TruckBed
 		{
-			xywh = 0.0000 0.0000 2.4615 2.5385,
+			xywh = 0.0000 0.0000 2.4678 2.5380,
 		}
 
 		template = Trunk/part/TruckBed,
