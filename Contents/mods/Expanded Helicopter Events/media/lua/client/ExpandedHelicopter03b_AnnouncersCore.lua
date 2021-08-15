@@ -1,22 +1,3 @@
---Automatically sets respective announcer's line count to use in randomized selection
---This is needed to avoid constant length checks due to the fact Lua does not recognize #length of non-numerated lists
-function setAnnouncementLength()
-	--for each entry found in announcer list
-	for k,_ in pairs(eHelicopter_announcers) do
-		local line_length = 0
-
-		--for each entry in announcer's lines list
-		for _,_ in pairs(eHelicopter_announcers[k]["Lines"]) do
-			line_length = line_length+1
-		end
-		--line count is stored
-		eHelicopter_announcers[k]["LineCount"]=line_length
-	end
-end
-
-Events.OnGameBoot.Add(setAnnouncementLength)
-
-
 ---Sets eHelicopter's announcer voice
 ---@param specificVoice string|table can be string for specific voice or table to be picked from
 function eHelicopter:chooseVoice(specificVoice)
@@ -64,6 +45,16 @@ function eHelicopter:announce(specificLine)
 	end
 
 	if not specificLine then
+
+		if not self.announcerVoice["LineCount"] then
+			local line_length = 0
+			--for each entry in announcer's lines list
+			for _,_ in pairs(eHelicopter_announcers[self.announcerVoice]["Lines"]) do
+				line_length = line_length+1
+			end
+			--line count is stored
+			eHelicopter_announcers[self.announcerVoice]["LineCount"]=line_length
+		end
 
 		local ann_num = ZombRand(1,self.announcerVoice["LineCount"])
 

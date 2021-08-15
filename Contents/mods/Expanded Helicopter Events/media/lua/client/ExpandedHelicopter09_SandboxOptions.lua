@@ -72,7 +72,7 @@ function loadAnnouncersToConfig()
 
 	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
 end
-Events.OnGameBoot.Add(loadAnnouncersToConfig)
+loadAnnouncersToConfig()
 
 --[[
 function loadPresetToConfig()
