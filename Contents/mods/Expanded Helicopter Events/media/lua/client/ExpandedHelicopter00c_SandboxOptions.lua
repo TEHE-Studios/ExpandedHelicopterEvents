@@ -115,10 +115,10 @@ if getDebug() then
 end
 
 
---load mod into EasyConfig
-if EasyConfig_Chucked then
-	EasyConfig_Chucked.addMod(eHelicopterSandbox)
-end
+EasyConfig_Chucked = EasyConfig_Chucked or {}
+EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
+EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
+
 
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
