@@ -71,9 +71,7 @@ function loadAnnouncersToConfig()
 
 	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
 end
---run on Lua load
-loadAnnouncersToConfig()
-
+Events.OnGameBoot.Add(loadAnnouncersToConfig)
 
 --[[
 function loadPresetToConfig()
