@@ -55,6 +55,11 @@
 	<path>media/clothing/clothingItems/Jacket_DenimCutoff.xml</path>
 	<guid>bf9cc65d-1767-4661-9ad4-db7ac0082f32</guid>
 	</files>
+
+	<files>
+        <path>media/clothing/clothingItems/AmmoStrap_Bullets.xml</path>
+        <guid>15514b21-1567-4a0b-a171-9740ee9b7b3a</guid>
+    </files>
 	
 	<files>
 		<path>media/clothing/clothingItems/AmmoStrap_Shells.xml</path>
