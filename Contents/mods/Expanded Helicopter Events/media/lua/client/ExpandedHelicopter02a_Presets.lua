@@ -1,7 +1,12 @@
 ---Preset list, only include variables being changed.
 ---variables can be found in Main Variables file, at the top, fields = variables
-
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
+
+---Event Schedule Initiation
+eHeliEvents_init = eHeliEvents_init or {}
+eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=eHelicopterSandbox.config.startDay+ZombRand(0,3), ["heliStart"]=nil}
+eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=eHelicopterSandbox.config.startDay+ZombRand(6,8), ["heliStart"]=nil}
+eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=eHelicopterSandbox.config.startDay+ZombRand(0,3), ["heliStart"]=nil}
 
 --[[
 

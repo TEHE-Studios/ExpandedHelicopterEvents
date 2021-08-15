@@ -212,14 +212,6 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 end
 
 
-configStartDay = eHelicopterSandbox.config.startDay+ZombRand(0,3)
-
-eHeliEvents_init = eHeliEvents_init or {}
-eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
-eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=configStartDay+ZombRand(6,8), ["heliStart"]=nil}
-eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
-
-
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
 	local GTMData = getGameTime():getModData()
