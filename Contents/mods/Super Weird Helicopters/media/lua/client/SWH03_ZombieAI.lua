@@ -110,7 +110,7 @@ function eHelicopter_zombieAI.onUpdate_licking(zombie, apply)
 end
 
 eHelicopter_zombieAI.nemesisFireDmgTracker = {}
----@param zombie IsoZombie | IsoGameCharacter | IsoObject
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoMovingObject
 ---@param apply boolean
 function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 	if not zombie then
@@ -160,12 +160,28 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 
 					if foundObj and (foundObj ~= zombie) then
 						if instanceof(foundObj, "BaseVehicle") then
-							---@type BaseVehicle
+
+							---@type BaseVehicle | IsoObject | IsoMovingObject
 							local car = foundObj
+							--flip car
 							if car then
-								--flip car
-								car:setAngles(car:getAngleX(), car:getAngleY(), math.max(-145, math.min(145, car:getAngleZ()+10)))
-								--car:addImpulse()
+								zombie:getModData()["pushedCars"] = zombie:getModData()["pushedCars"] or {}
+								local pushedCarRecord = zombie:getModData()["pushedCars"][car]
+								if not pushedCarRecord or (pushedCarRecord < getTimestampMs()) then
+									print("Spiffo: i push now")
+
+									local pushForce = 10
+									if car:getAngleZ() < 0 then
+										pushForce = 0-pushForce
+									end
+
+									car:setAngles(car:getAngleX(), car:getAngleY(), math.max(-145, math.min(145, car:getAngleZ()+pushForce)))
+									car:setPhysicsActive(true)
+									if car:getAngleZ() >= 145 or car:getAngleZ() <= -145 then
+										zombie:getModData()["pushedCars"][car] = getTimestampMs()+250
+									end
+									--car:addImpulse()
+								end
 							end
 
 						elseif instanceof(foundObj, "IsoGameCharacter") then
