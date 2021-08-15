@@ -116,8 +116,9 @@ end
 
 --load mod into EasyConfig
 if EasyConfig_Chucked then
-	EasyConfig_Chucked.addMod(eHelicopterSandbox.modId, eHelicopterSandbox.name, eHelicopterSandbox.config, eHelicopterSandbox.menu, "EXPANDED HELICOPTER EVENTS", "mainmenu")
+	EasyConfig_Chucked.addMod(eHelicopterSandbox)
 end
+
 
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
@@ -140,6 +141,7 @@ function HelicopterSandboxOptionOverride(hookEvent)
 		getGameTime():setHelicopterEndHour(0)
 	end
 end
+
 
 Events.OnGameBoot.Add(HelicopterSandboxOptionOverride("OnGameBoot: "))
 Events.OnGameStart.Add(HelicopterSandboxOptionOverride("OnGameStart: "))
