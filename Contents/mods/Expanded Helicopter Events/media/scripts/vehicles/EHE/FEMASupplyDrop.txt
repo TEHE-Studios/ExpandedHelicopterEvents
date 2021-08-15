@@ -29,11 +29,11 @@ module Base
 		}
 
 		textureMask = Vehicle_FEMASupplyDrop_mask,
-		extents = 1.0292 1.4386 1.1228,
+		extents = 1.0292 0.4561 1.1228,
 		mass = 200,
-		physicsChassisShape = 1.0292 1.4620 1.1228,
-		centerOfMassOffset = 0.0000 0.7310 -0.0117,
-		shadowExtents = 1.0284 1.1286,
+		physicsChassisShape = 1.0292 0.4561 1.1228,
+		centerOfMassOffset = 0.0000 0.2281 -0.0117,
+		shadowExtents = 1.0284 1.1344,
 		shadowOffset = 0.0000 -0.0117,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
