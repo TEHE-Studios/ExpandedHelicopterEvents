@@ -2,6 +2,7 @@ local group = AttachedLocations.getGroup("Human")
 group:getOrCreateLocation("Special Zombie AI"):setAttachmentName("special_zombie_AI")
 
 
+
 AttachedWeaponDefinitions.gottaGoFast = {
 	chance = 100, weaponLocation = {"Special Zombie AI"}, outfit = {"AlienTourist"},
 	bloodLocations = nil, addHoles = false, daySurvived = 0, weapons = { "ZombieAI.gottaGoFast" } }
@@ -109,6 +110,7 @@ function eHelicopter_zombieAI.onUpdate_licking(zombie, apply)
 	end
 end
 
+
 eHelicopter_zombieAI.nemesisFireDmgTracker = {}
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoMovingObject
 ---@param apply boolean
@@ -168,19 +170,24 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 								zombie:getModData()["pushedCars"] = zombie:getModData()["pushedCars"] or {}
 								local pushedCarRecord = zombie:getModData()["pushedCars"][car]
 								if not pushedCarRecord or (pushedCarRecord < getTimestampMs()) then
-									print("Spiffo: i push now")
 
-									local pushForce = 10
-									if car:getAngleZ() < 0 then
-										pushForce = 0-pushForce
+									local pushForce = 15
+
+									local x_fuzz = ZombRand(3,5)
+									if ZombRand(100) <= 50 then
+										x_fuzz = 0-x_fuzz
+									end
+									local y_fuzz = ZombRand(3,5)
+									if ZombRand(100) <= 50 then
+										y_fuzz = 0-y_fuzz
 									end
 
-									car:setAngles(car:getAngleX(), car:getAngleY(), math.max(-145, math.min(145, car:getAngleZ()+pushForce)))
+									local vector3f_a = Vector3f.new(zombie:getX(),zombie:getY(),zombie:getZ())
+									local vector3f_b = Vector3f.new(car:getX()+x_fuzz,car:getY()+y_fuzz,car:getZ()+1)
+
+									car:addImpulse(vector3f_a,vector3f_b:mul(pushForce))
 									car:setPhysicsActive(true)
-									if car:getAngleZ() >= 145 or car:getAngleZ() <= -145 then
-										zombie:getModData()["pushedCars"][car] = getTimestampMs()+250
-									end
-									--car:addImpulse()
+									zombie:getModData()["pushedCars"][car] = getTimestampMs()+250
 								end
 							end
 
