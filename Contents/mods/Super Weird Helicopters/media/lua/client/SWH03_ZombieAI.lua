@@ -120,11 +120,6 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 	end
 	if apply then
 		print("EHE:SWH:SZ:AI onApply: nemesis")
-		if ZombRand(101) <= 10 then
-			zombie:changeSpeed(1)
-		else
-			zombie:changeSpeed(2)
-		end
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)
