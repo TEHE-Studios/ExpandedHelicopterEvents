@@ -62,6 +62,10 @@ eHelicopterSandbox.menu = {
 
 function loadAnnouncersToConfig()
 
+	if eHelicopterSandbox.menu["voiceSpaceB"] then
+		eHelicopterSandbox.menu["voiceSpaceB"] = nil
+	end
+
 	eHelicopterSandbox.menu["voiceSpaceA"] = {type = "Space"}
 	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs", }
 
@@ -106,14 +110,22 @@ loadPresetToConfig()]]
 
 
 --add buffer space for reset feature
-eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
-eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
-eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
+function sandboxOptionsEnd(bAdd)
+	if bAdd then
+		eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
+		eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
+		eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
 
-if getDebug() then
-	eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", }
+		if getDebug() then
+			eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", }
+		end
+	else
+		eHelicopterSandbox.menu["resetEventsA"] = nil
+		eHelicopterSandbox.menu["resetEventsToolTip"] = nil
+		eHelicopterSandbox.menu["debugTests"] = nil
+	end
 end
-
+sandboxOptionsEnd(true)
 
 EasyConfig_Chucked = EasyConfig_Chucked or {}
 EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}

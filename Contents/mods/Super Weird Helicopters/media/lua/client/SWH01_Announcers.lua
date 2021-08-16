@@ -11,6 +11,7 @@ eHelicopter_announcers["name of announcer"] = {
 	 } }
 
 ]]
+sandboxOptionsEnd(false)
 
 eHelicopter_announcers["Spiffo"] = {
 	["LeaveOutOfRandomSelection"] = true,
@@ -53,3 +54,6 @@ eHelicopter_announcers["IRS"] = {
 		["IRS9"] = {11500, "IRS9"},
 		["IRS10"] = {9000, "IRS10"},
 	} }
+
+loadAnnouncersToConfig()
+sandboxOptionsEnd(true)
