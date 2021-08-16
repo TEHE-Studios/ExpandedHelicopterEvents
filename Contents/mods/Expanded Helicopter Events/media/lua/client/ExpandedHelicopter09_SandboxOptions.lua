@@ -122,6 +122,7 @@ function sandboxOptionsEnd(bAdd)
 	else
 		eHelicopterSandbox.menu["resetEventsA"] = nil
 		eHelicopterSandbox.menu["resetEventsToolTip"] = nil
+		eHelicopterSandbox.menu["resetEvents"] = nil
 		eHelicopterSandbox.menu["debugTests"] = nil
 	end
 end
