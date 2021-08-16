@@ -1,0 +1,419 @@
+module Base
+{
+	model Vehicle_IceCreamTruck
+	{
+		mesh = vehicles/Vehicle_IceCreamTruck,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Vehicle_IceCreamTruck
+	{
+		mesh = vehicles/Vehicle_IceCreamTruck,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle TISIceCreamTruck
+	{
+	    template! = StepVan,
+
+        model
+        {
+            file = Vehicles_StepVanSmashedFront,
+            scale = 1.8200,
+            offset = 0.0000 0.4725 0.0000,
+        }
+
+		skin
+		{
+			texture = Vehicles/SWH/vehicle_icecream,
+		}
+
+		template = PassengerSeat2,
+
+        passenger FrontLeft
+        {
+            position inside
+            {
+                offset = 0.1978 -0.1429 0.3352,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+
+            position outside
+            {
+                offset = 0.6319 -0.5769 0.4231,
+                rotate = 0.0000 0.0000 0.0000,
+                area = SeatFrontLeft,
+            }
+        }
+
+        passenger FrontRight
+        {
+            position inside
+            {
+                offset = -0.1978 -0.1429 0.3352,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+
+            position outside
+            {
+                offset = -0.6319 -0.5769 0.4231,
+                rotate = 0.0000 0.0000 0.0000,
+                area = SeatFrontRight,
+            }
+        }
+
+        area SeatFrontLeft
+        {
+            xywh = 0.6813 0.4231 0.4725 0.4725,
+        }
+
+        area SeatFrontRight
+        {
+            xywh = -0.6813 0.4231 0.4725 0.4725,
+        }
+
+	}
+	template vehicle StepVan
+	{
+		mechanicType = 2,
+		engineRepairLevel = 5,
+		playerDamageProtection = 1.1,
+		engineRPMType = van,
+
+		spawnOffsetY = 0.5649187,
+
+		textureMask = Vehicles/vehicle_stepvan_mask,
+		textureLights = Vehicles/vehicle_stepvan_lights,
+		textureDamage1Overlay = Vehicles/Veh_Blood_Mask,
+		textureDamage2Overlay = Vehicles/Veh_Blood_Hvy,
+		textureDamage1Shell = Vehicles/Veh_Damage1,
+		textureDamage2Shell = Vehicles/Veh_Damage2,
+		textureRust = Vehicles/Veh_Rust,
+
+	
+		lightbar
+		{
+			soundSiren = icecream,
+		}
+
+		sound
+		{
+			horn = VehicleHorn,
+			backSignal = VehicleBackUpBeeper,
+		}
+
+
+		extents = 0.8901 0.9341 2.3297,
+		mass = 1160,
+		physicsChassisShape = 0.8901 0.9341 2.3297,
+		centerOfMassOffset = 0.0000 0.4725 0.0000,
+		extentsOffset = 1.0 1.0,
+		engineForce = 3700,
+		engineQuality = 70,
+		engineLoudness = 100,
+		maxSpeed = 350f,
+		brakingForce = 150,
+		stoppingMovementForce = 1.0f,
+		rollInfluence = 0.9f,
+		steeringIncrement = 0.03,
+		steeringClamp = 0.3,
+		suspensionStiffness = 40,
+		suspensionCompression = 3.83,
+		suspensionDamping = 4.88,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2,
+		wheelFriction = 1.8f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 2,
+		isSmallVehicle = false,
+
+		wheel FrontLeft
+		{
+			front = true,
+			offset = 0.3681 -0.4890 0.7637,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel FrontRight
+		{
+			front = true,
+			offset = -0.3681 -0.4890 0.7637,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel RearLeft
+		{
+			front = false,
+			offset = 0.3681 -0.4890 -0.5604,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+		wheel RearRight
+		{
+			front = false,
+			offset = -0.3681 -0.4890 -0.5604,
+			radius = 0.15f,
+			width = 0.2f,
+		}
+
+        area Engine
+        {
+            xywh = 0.0000 1.4011 0.8901 0.4725,
+        }
+
+        area TruckBed
+        {
+            xywh = 0.0000 -1.4011 0.8901 0.4725,
+        }
+
+		area GasTank
+		{
+			xywh = 0.6813 -0.5495 0.4725 0.4725,
+		}
+
+		area TireFrontLeft
+		{
+			xywh = 0.6813 0.7527 0.4725 0.4725,
+		}
+
+		area TireFrontRight
+		{
+			xywh = -0.6813 0.7527 0.4725 0.4725,
+		}
+
+		area TireRearLeft
+		{
+			xywh = 0.6813 -0.5495 0.4725 0.4725,
+		}
+
+		area TireRearRight
+		{
+			xywh = -0.6813 -0.5495 0.4725 0.4725,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			itemType = Base.BigTrunk,
+
+			container
+			{
+				capacity = 160,
+			}
+		}
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+
+		part Seat*
+		{
+			table install
+			{
+				skills = Mechanics:2,
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:2,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = GloveBox,
+		template = GasTank,
+
+		part GasTank
+		{
+			install
+			{
+				skills = Mechanics:7,
+				recipes = Intermediate Mechanics,
+			}
+
+			uninstall
+			{
+				skills = Mechanics:7,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Battery,
+		template = Engine,
+		template = Muffler,
+
+		part Muffler
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = EngineDoor,
+
+		part EngineDoor
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		part Heater
+		{
+			category = engine,
+
+			lua
+			{
+				update = Vehicles.Update.Heater,
+			}
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+
+			lua
+			{
+				update = Vehicles.Update.PassengerCompartment,
+			}
+		}
+
+		template = Windshield/part/Windshield,
+		template = Windshield/part/WindshieldRear,
+
+		part Windshield*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		part WindshieldRear
+		{
+			table install
+			{
+				requireInstalled = DoorRear,
+			}
+		}
+
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+
+		part Window*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRear,
+
+		part Door*
+		{
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		part DoorRear
+		{
+			table uninstall
+			{
+				requireUninstalled = WindshieldRear,
+			}
+
+			hasLightsRear = false,
+		}
+
+		template = Tire,
+		template = Brake,
+
+		part Brake*
+		{
+			table install
+			{
+				skills = Mechanics:6,
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:6,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Suspension,
+
+		part Suspension*
+		{
+			table install
+			{
+				skills = Mechanics:6,
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:6,
+				recipes = Intermediate Mechanics,
+			}
+		}
+
+		template = Radio,
+		template = Headlight,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.2747 -1.1648,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = -1,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.2747 1.1758,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = 1,
+		}
+	}
+}

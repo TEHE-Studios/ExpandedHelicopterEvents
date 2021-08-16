@@ -1,0 +1,189 @@
+module Base {
+
+	sound icecreamAlarm {
+		category = Vehicle, loop = true,
+		clip { file = media/sound/vehicle_cream1.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0,} }
+
+	sound icecreamWall {
+		category = Vehicle, loop = true,
+		clip { file = media/sound/vehicle_cream2.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0, } }
+
+	sound icecreamYelp {
+		category = Vehicle,	loop = true,
+		clip { file = media/sound/vehicle_cream3.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0, } }
+
+    sound IceCreamFlyBy {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/vehicle_cream1.ogg, distanceMax = 1500, volume = 2.0, }
+        clip { file = media/sound/vehicle_cream2.ogg, distanceMax = 1500, volume = 2.0, }
+        clip { file = media/sound/vehicle_cream3.ogg, distanceMax = 1500, volume = 2.0, }
+        clip { file = media/sound/vehicle_cream4.ogg, distanceMax = 1500, volume = 2.0, } }
+
+    sound AlientUFOFlight {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/alien_ufo_flight.ogg, distanceMax = 1500, volume = 1.0, } }
+
+	sound PAWS1 {
+		category = Vehicle, loop = true,
+		clip { file = media/sound/PAWS1.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0, } }
+
+	sound PAWS2 {
+	    category = Vehicle, loop = true,
+		clip { file = media/sound/PAWS2.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0, } }
+
+
+	sound airraid {
+	    category = Vehicle, loop = true, clip
+		{ file = media/sound/airraid.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0, } }
+
+
+	sound ZombieLick {
+		category = Zombie, loop = false, is3D = true,
+		clip { file = media/sound/lick.wav, distanceMax = 10, volume = 1.0, } }
+
+
+    sound assBlastUSA {
+        category = EHE-Weird: Voice Lines, loop = true, is3D = true,
+        clip { file = media/sound/assblastusa.ogg, distanceMax = 1500, volume = 2.0, } }
+
+
+    sound IRS1 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS1.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS2 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS2.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS3 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS3.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS4 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS4.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS5 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS5.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS6 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS6.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS7 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS7.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS8 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS8.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS9 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS9.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound IRS10 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS10.ogg, distanceMax = 1500, volume = 3.0, } }
+
+
+    sound SpiffoGiggle {
+        category = Zombie, loop = false, is3D = true,
+        clip { file = media/sound/spiffo_giggle1.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle2.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle3.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle4.ogg, distanceMax = 10, volume = 1.0, }
+        clip { file = media/sound/spiffo_giggle5.ogg, distanceMax = 10, volume = 1.0, } }
+
+
+    sound Spiffo1 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo1.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo2 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo2.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo3 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo3.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo4 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo4.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo5 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo5.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo6 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo6.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo7 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo7.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo8 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo8.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo9 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo9.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo10 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo10.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo11 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo11.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo12 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo12.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo13 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo13.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo14 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo14.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo15 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo15.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo16 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo16.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo17 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo17.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo18 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo18.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo19 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo19.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo20 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo20.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo21 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo21.ogg, distanceMax = 1500, volume = 3.0, } }
+
+    sound Spiffo22 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo22.ogg, distanceMax = 1500, volume = 3.0, } }
+
+      
+ }

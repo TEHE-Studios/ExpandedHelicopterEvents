@@ -1,0 +1,9 @@
+module Base
+{
+    item ARRJAY
+	{
+	Type = Clothing,
+	ClothingItem = ARRJAY,
+	BodyLocation=TankTop,
+	}
+}

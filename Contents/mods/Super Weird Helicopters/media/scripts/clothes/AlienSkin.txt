@@ -1,0 +1,9 @@
+module Base
+{
+    item AlienSkin
+	{
+	Type = Clothing,
+	ClothingItem = AlienSkin,
+	BodyLocation=TankTop,
+	}
+}

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outfitManager>
+<m_MaleOutfits>
+		<m_Name>AlienTourist</m_Name>
+		<m_Guid>867a2b06-066b-459e-8c58-94376ceb5e9c</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>		
+		<m_items> <!-- Alien Skin -->
+			<itemGUID>d5768fec-f732-4e4b-ad50-193e55d6400f</itemGUID>
+		</m_items>
+		<m_items> <!-- Red Hawaiian Shirt -->
+			<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
+		</m_items>
+		<probability>0.5</probability>
+			<m_items> <!-- Random T-Shirt -->
+			<itemGUID>b-4439-8ba7-5aa6d938e465</itemGUID>
+		</m_items>
+			<m_items> <!-- Shorts -->
+		<itemGUID>0cf8f577-6d64-4c62-ac85-1e9621a3b131</itemGUID>
+		    </m_items>
+			<m_items> <!-- Long Socks -->
+			<probability>0.5</probability>
+		<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		    </m_items>
+			<m_items> <!-- Flip Flops -->
+		<itemGUID>46780aae-03ef-45d7-a0e8-36278f328576</itemGUID>
+		    </m_items>
+			<m_items> <!-- Fanny Pack -->
+			<probability>0.5</probability>
+		<itemGUID>48b63e1d-0846-407d-9007-2fdabb58eba2</itemGUID>
+		    </m_items>
+			<m_items> <!-- Visor -->
+			<probability>0.2</probability>
+		<itemGUID>aea918c3-0928-404f-a24e-43c4b28cc640</itemGUID>
+		    </m_items>
+	</m_MaleOutfits>
+
+<m_MaleOutfits>
+		<m_Name>SpiffoBoss</m_Name>
+		<m_Guid>813ebabc-cabd-4675-9b3a-09957cb750a4</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>
+		<m_items> <!-- Spiffo Skin -->
+			<itemGUID>cd4610a0-49d1-4d5c-9fdd-bdd5e5a493aa</itemGUID>
+		</m_items>		
+		<m_items> <!-- Spiffo War Helmet-->
+		<itemGUID>996fe619-9bb4-4725-86e4-32211147d2df</itemGUID>
+		    </m_items>
+			<m_items> <!-- Spiffo War Suit -->
+		<itemGUID>387547bd-fef7-4305-b83a-ce31090dc098</itemGUID>
+		    </m_items>
+			<m_items> <!-- Spiffo War Tail -->
+		<itemGUID>4d37a5ce-c152-4dd4-b632-c13c99e0da54</itemGUID>
+		    </m_items>
+</m_MaleOutfits>
+
+<m_MaleOutfits>
+		<m_Name>TaxMan</m_Name>
+		<m_Guid>c2845c89-443e-4b92-a0b4-c4a162655e78</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>
+		<m_items> <!-- Fedora -->
+			<probability>0.4</probability>
+		<itemGUID>93c9d8b6-3382-4a16-a248-609a702d57b5</itemGUID>
+		    </m_items>		
+		<m_items> <!-- Suit Jacket -->
+			<probability>0.6</probability>
+		<itemGUID>eecd5923-4944-4b33-9c4c-66045ea6984e</itemGUID>
+		    </m_items>
+			<m_items> <!-- Short Sleeve Dress Shirt -->
+		<itemGUID>00d77803-6b57-453b-89b6-135d2d642719</itemGUID>
+		    </m_items>
+			<m_items> <!-- Tie -->
+		<itemGUID>d53c3cb1-4c67-4627-b9d9-0da2cc024980</itemGUID>
+		    </m_items>
+			<m_items> <!-- Suit Pants -->
+		<itemGUID>52acd769-424a-4cbb-b02a-441cb723b747</itemGUID>
+		    </m_items>
+			<m_items> <!-- Socks -->
+		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
+		    </m_items>
+			<m_items> <!-- Black Shoes -->
+		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		    </m_items>
+			<m_items> <!-- Aviators -->
+		<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		    </m_items>
+</m_MaleOutfits>
+
+<m_MaleOutfits>
+		<m_Name>Filibuster</m_Name>
+		<m_Guid>c8f1054b-4cc7-409d-8695-f96f8e28a0d5</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>	
+			<m_items> <!-- White Male Skin -->
+		<itemGUID>ccd1e523-7e92-4f6e-a5f4-0b4841cb15fe</itemGUID>
+		    </m_items>
+		<m_items> <!-- Red Hawaiian Shirt -->
+		<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
+		    </m_items>
+			<m_items> <!-- Jeans -->
+		<itemGUID>06b8adc1-ef58-4545-a30a-6ca9920c1b82</itemGUID>
+		    </m_items>
+			<m_items> <!-- Socks -->
+		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
+		    </m_items>
+			<m_items> <!-- Black Shoes -->
+		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		    </m_items>
+			<m_items> <!-- Aviators -->
+		<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
+		    </m_items>
+</m_MaleOutfits>
+
+<m_MaleOutfits>
+		<m_Name>RobertJohnson</m_Name>
+		<m_Guid>26d1f965-6b1f-402d-ae42-49fc2488e26a</m_Guid>
+		<m_Top>false</m_Top>
+		<m_Pants>false</m_Pants>
+		<m_AllowTopTint>false</m_AllowTopTint>
+		<m_items> <!-- RJ Skin -->
+			<itemGUID>84d0c776-2718-478c-9447-ff9506504382</itemGUID>
+		</m_items>	
+			<m_items> <!-- Glasses -->
+			<itemGUID>825f5380-d6ef-4cf8-8d77-d3a115724f4a</itemGUID>
+		</m_items>		
+			<m_items> <!-- RJ's Favorite Shirt -->
+		<itemGUID>09003465-24fe-4648-8a34-19326b679d31</itemGUID>
+		    </m_items>
+			<m_items> <!-- Denim Jeans -->
+		<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
+		    </m_items>
+			<m_items> <!-- Socks -->
+		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
+		    </m_items>
+			<m_items> <!-- Black Shoes -->
+		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
+		    </m_items>
+</m_MaleOutfits>
+</outfitManager>
+

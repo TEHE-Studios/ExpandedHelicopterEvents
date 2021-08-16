@@ -1,0 +1,13 @@
+module Base
+{
+    item SpiffoWarTail
+    {
+        Type = Clothing,
+        ClothingItem = SpiffoWarTail,
+        BodyLocation = Tail,
+        Icon = SpiffoTail,
+        BulletDefense = 100,
+        ScratchDefense = 100,
+        BiteDefense = 100,
+    }
+}

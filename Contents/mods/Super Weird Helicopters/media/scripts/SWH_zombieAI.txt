@@ -1,0 +1,23 @@
+module ZombieAI
+{
+	imports
+	{
+		Base
+	}
+
+    item gottaGoFast
+    {
+        Type = Normal,
+    }
+
+    item nemesis
+    {
+        Type = Normal,
+    }
+
+    item licking
+    {
+        Type = Normal,
+    }
+
+}
