@@ -73,25 +73,25 @@ VehicleDistributions.TISTrunk = {
 VehicleDistributions.SpiffoBurger = {
     rolls = 50,
     items ={
-        "EHE.SpiffoDolls", 2,
-        "EHE.SpiffoMerchandise", 2,
-        "EHE.BurgerBox", 2,
+        "SWH.SpiffoDolls", 10,
+        "SWH.SpiffoMerchandise", 10,
+        "SWH.BurgerBox", 10,
 
-        "EHE.SpiffoDolls", 2,
-        "EHE.SpiffoMerchandise", 2,
-        "EHE.BurgerBox", 2,
+        "SWH.SpiffoDolls", 10,
+        "SWH.SpiffoMerchandise", 10,
+        "SWH.BurgerBox", 10,
 
-        "EHE.SpiffoDolls", 2,
-        "EHE.SpiffoMerchandise", 2,
-        "EHE.BurgerBox", 2,
+        "SWH.SpiffoDolls", 10,
+        "SWH.SpiffoMerchandise", 10,
+        "SWH.BurgerBox", 10,
 
-        "EHE.SpiffoDolls", 2,
-        "EHE.SpiffoMerchandise", 2,
-        "EHE.BurgerBox", 2,
+        "SWH.SpiffoDolls", 10,
+        "SWH.SpiffoMerchandise", 10,
+        "SWH.BurgerBox", 10,
 
-        "EHE.SpiffoDolls", 2,
-        "EHE.SpiffoMerchandise", 2,
-        "EHE.BurgerBox", 2,
+        "SWH.SpiffoDolls", 10,
+        "SWH.SpiffoMerchandise", 10,
+        "SWH.BurgerBox", 10,
     }
 }
 
