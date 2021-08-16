@@ -227,7 +227,7 @@ function eHeliEvents_OnGameStart()
 		GTMData["DaysBeforeApoc"] = nil
 		GTMData["DayOfLastCrash"] = nil
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
-		local resetEvents = EHE.configMenu["resetEvents"]
+		local resetEvents = EHE.menu["resetEvents"]
 		resetEvents.selectedValue = "false"
 		resetEvents.selectedLabel = "false"
 		EHE.config.resetEvents = false
