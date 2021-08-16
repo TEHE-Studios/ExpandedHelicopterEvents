@@ -46,14 +46,16 @@ function eHelicopter:announce(specificLine)
 
 	if not specificLine then
 
-		if not self.announcerVoice["LineCount"] then
+		if self.announcerVoice and not self.announcerVoice["LineCount"] then
 			local line_length = 0
 			--for each entry in announcer's lines list
-			for _,_ in pairs(eHelicopter_announcers[self.announcerVoice]["Lines"]) do
-				line_length = line_length+1
+			if self.announcerVoice["Lines"] then
+				for _,_ in pairs(self.announcerVoice["Lines"]) do
+					line_length = line_length+1
+				end
 			end
 			--line count is stored
-			eHelicopter_announcers[self.announcerVoice]["LineCount"]=line_length
+			self.announcerVoice["LineCount"]=line_length
 		end
 
 		local ann_num = ZombRand(1,self.announcerVoice["LineCount"])
