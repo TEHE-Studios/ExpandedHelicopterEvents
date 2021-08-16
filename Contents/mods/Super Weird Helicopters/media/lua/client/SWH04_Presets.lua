@@ -1,12 +1,15 @@
 ---Event Scheduler List
-eHeliEvents_init = eHeliEvents_init or {}
 --[[
 eHeliEvents_init["preset"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
-]]
-eHeliEvents_init["Spiffocopter"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
-eHeliEvents_init["UFO"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
-eHeliEvents_init["IRS"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
-eHeliEvents_init["TISCreamery"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+--]]
+function eHeliEventsinit()
+	eHeliEvents_init = eHeliEvents_init or {}
+	eHeliEvents_init["Spiffocopter"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+	eHeliEvents_init["UFO"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+	eHeliEvents_init["IRS"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+	eHeliEvents_init["TISCreamery"] = {["ID"]=nil, ["heliDay"]=configStartDay, ["heliStart"]=nil}
+end
+Events.OnGameBoot.Add(eHeliEventsinit)
 
 
 ---Preset list, only include variables being changed.
@@ -18,6 +21,7 @@ eHelicopter_PRESETS["id_name"] = {
 		variable = {values}
 	}
 ]]
+
 
 eHelicopter_PRESETS["Spiffocopter"] = {
 	crashType = {"Bell206SpiffoFuselage"},
