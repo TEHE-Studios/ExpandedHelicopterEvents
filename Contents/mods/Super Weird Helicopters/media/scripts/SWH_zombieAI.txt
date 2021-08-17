@@ -20,4 +20,9 @@ module ZombieAI
         Type = Normal,
     }
 
+    item fodder
+    {
+        Type = Normal,
+    }
+
 }

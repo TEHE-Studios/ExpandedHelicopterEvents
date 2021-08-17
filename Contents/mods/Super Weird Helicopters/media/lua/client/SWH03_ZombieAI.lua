@@ -18,6 +18,11 @@ AttachedWeaponDefinitions.licking = {
 	bloodLocations = nil, addHoles = false, daySurvived = 0, weapons = { "ZombieAI.licking" } }
 AttachedWeaponDefinitions.attachedWeaponCustomOutfit.RobertJohnson = { chance = 100, maxitem = 1, weapons = {AttachedWeaponDefinitions.licking} }
 
+AttachedWeaponDefinitions.fodder = {
+	chance = 100, weaponLocation = {"Special Zombie AI"}, outfit = {"TaxMan"},
+	bloodLocations = nil, addHoles = false, daySurvived = 0, weapons = { "ZombieAI.fodder" } }
+AttachedWeaponDefinitions.attachedWeaponCustomOutfit.TaxMan = { chance = 100, maxitem = 1, weapons = {AttachedWeaponDefinitions.fodder} }
+
 
 eHelicopter_zombieAI = {}
 
@@ -60,12 +65,27 @@ end
 
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject
 ---@param apply boolean
+function eHelicopter_zombieAI.onUpdate_fodder(zombie, apply)
+	if not zombie then
+		return
+	end
+	if apply then
+		--print("EHE:SWH:SZ:AI onApply: fodder")
+		zombie:setHealth(0.01)
+	else
+		--nothing on update
+	end
+end
+
+
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject
+---@param apply boolean
 function eHelicopter_zombieAI.onUpdate_gottaGoFast(zombie, apply)
 	if not zombie then
 		return
 	end
 	if apply then
-		print("EHE:SWH:SZ:AI onApply: gottaGoFast")
+		--print("EHE:SWH:SZ:AI onApply: gottaGoFast")
 		zombie:changeSpeed(1)
 		zombie:DoZombieStats()
 		zombie:setSpeedMod(10)
@@ -86,7 +106,7 @@ function eHelicopter_zombieAI.onUpdate_licking(zombie, apply)
 		return
 	end
 	if apply then
-		print("EHE:SWH:SZ:AI onApply: licking")
+		--print("EHE:SWH:SZ:AI onApply: licking")
 		zombie:setNoTeeth(true)
 		zombie:changeSpeed(1)
 		zombie:DoZombieStats()
@@ -119,7 +139,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 		return
 	end
 	if apply then
-		print("EHE:SWH:SZ:AI onApply: nemesis")
+		--print("EHE:SWH:SZ:AI onApply: nemesis")
 		zombie:setCanCrawlUnderVehicle(false)
 		zombie:DoZombieStats()
 		zombie:setHealth(zombie:getHealth()*1000001)

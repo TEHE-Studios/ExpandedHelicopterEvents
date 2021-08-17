@@ -43,16 +43,16 @@ eHelicopter_announcers["Spiffo"] = {
 eHelicopter_announcers["IRS"] = {
 	["LeaveOutOfRandomSelection"] = true,
 	["Lines"] = {
-		["IRS1"] = {4550, "IRS1"},
-		["IRS2"] = {4500, "IRS2"},
-		["IRS3"] = {6000, "IRS3"},
-		["IRS4"] = {6500, "IRS4"},
-		["IRS5"] = {4000, "IRS5"},
-		["IRS6"] = {7500, "IRS6"},
-		["IRS7"] = {5500, "IRS7"},
-		["IRS8"] = {5500, "IRS8"},
-		["IRS9"] = {11500, "IRS9"},
-		["IRS10"] = {9000, "IRS10"},
+		["IRS1"] = {6550, "IRS1"},
+		["IRS2"] = {6500, "IRS2"},
+		["IRS3"] = {8000, "IRS3"},
+		["IRS4"] = {8500, "IRS4"},
+		["IRS5"] = {6000, "IRS5"},
+		["IRS6"] = {9500, "IRS6"},
+		["IRS7"] = {7500, "IRS7"},
+		["IRS8"] = {7500, "IRS8"},
+		["IRS9"] = {13500, "IRS9"},
+		["IRS10"] = {11000, "IRS10"},
 	} }
 
 loadAnnouncersToConfig()
