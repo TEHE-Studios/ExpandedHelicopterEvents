@@ -21,7 +21,7 @@ module Base {
 
     sound AlientUFOFlight {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/alien_ufo_flight.ogg, distanceMax = 1500, volume = 1.0, } }
+        clip { file = media/sound/alien_ufo_flight.ogg, distanceMax = 1500, volume = 2.2, } }
 
 	sound PAWS1 {
 		category = Vehicle, loop = true,
