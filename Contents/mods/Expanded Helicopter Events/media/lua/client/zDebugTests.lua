@@ -1,4 +1,4 @@
-if getDebug() and eHelicopterSandbox.config.debugTests then
+if getDebug() and eHelicopterSandbox.config.debugTests==true then
 
 	Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
