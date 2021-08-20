@@ -1,9 +1,7 @@
-version=1
+version=1.1
 id=2458631365
 title=Expanded Helicopter Events
-description= [quote][h1][b]Expanded Helicopter Events Super Weird Edition: Out now![/b][/h1]
-description= [h2] This sub-mod is not meant for a standard Zomboid experience! In fact, it may be outright unfair - enemies will sprint/do things that standard zombies do not. [b]Back up your saves if you're uncertain! [/b][/h2]
-description= [b]Warning: With this massive update you may be experiencing strange errors. If you are having any, please resubscribe to the mod to force the download of the latest version of both this mod as well as Easy Config. (As well as Conditional Speech/SwapIt if used.) If the errors persist, please supply a log/description of your issues. [/b][/quote]
+description= [quote][h1][b]Expanded Helicopter Events Super Weird Edition: Out now![/b][/h1][/quote]
 description= 
 description=
 description= [H1]This mod replaces the vanilla helicopter event with a more dynamic suite of events which is both challenging and fair.[/H1]
