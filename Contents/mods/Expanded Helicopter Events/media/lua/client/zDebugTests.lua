@@ -3,26 +3,9 @@ Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then
-			---@type eHelicopter heli
-			local heli1 = getFreeHelicopter("Spiffocopter")
-			heli1:launch()
-			DEBUG_TESTS.moveHeliCloser(heli1)
-
-		elseif key == Keyboard.KEY_4 then --DEBUG_TESTS.launch_jet()
-			local heli2 = getFreeHelicopter("TISCreamery")
-			heli2:launch()
-			DEBUG_TESTS.moveHeliCloser(heli2)
-
-		elseif key == Keyboard.KEY_5 then --DEBUG_TESTS.launch_aid_chopper()
-			local heli3 = getFreeHelicopter("IRS")
-			heli3:launch()
-			DEBUG_TESTS.moveHeliCloser(heli3)
-
-		elseif key == Keyboard.KEY_6 then --DEBUG_TESTS.launch_news_chopper()
-			local heli3 = getFreeHelicopter("UFO")
-			heli3:launch()
-			DEBUG_TESTS.moveHeliCloser(heli3)
-
+		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_jet()
+		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launch_aid_chopper()
+		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launch_news_chopper()
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launch_increasingly_hostile()
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launch_increasingly_helpful()
 		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launch_police_heli()
