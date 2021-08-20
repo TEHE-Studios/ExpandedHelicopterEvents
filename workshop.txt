@@ -1,7 +1,7 @@
 version=1.1
 id=2458631365
 title=Expanded Helicopter Events
-description= [quote][h1][b][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Expanded Helicopter Events Super Weird Edition: Out now![/url][/b][/h1][/quote]
+description= [h1][b]Expanded Helicopter Events Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
 description= 
 description=
 description= [H1]This mod replaces the vanilla helicopter event with a more dynamic suite of events which is both challenging and fair.[/H1]
