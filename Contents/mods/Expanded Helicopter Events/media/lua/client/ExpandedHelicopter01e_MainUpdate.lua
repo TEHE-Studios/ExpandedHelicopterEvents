@@ -218,7 +218,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	if (zoneType == "Forest") or (zoneType == "DeepForest") then
 		volumeFactor = 0.25
 	end
-	addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*5)*volumeFactor, self.flightVolume*volumeFactor)
+	addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor)
 
 	if self.hostilePreference and (not self.crashing) then
 		self:lookForHostiles(self.hostilePreference)
