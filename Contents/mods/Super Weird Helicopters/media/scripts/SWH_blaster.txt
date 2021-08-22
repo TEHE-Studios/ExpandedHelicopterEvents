@@ -1,8 +1,0 @@
-module Base
-{
-        model AlienBlaster
-    {
-        mesh = Weapons/1Handed/AlienBlaster,
-        texture = Weapons/1Handed/AlienBlaster,
-    }
-}

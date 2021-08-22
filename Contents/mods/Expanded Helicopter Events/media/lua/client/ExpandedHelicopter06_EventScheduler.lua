@@ -142,18 +142,25 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		if not lastHeliEvent then
 			heliDay = nightsSurvived+ZombRand(0,3)
 		else
-			heliDay = lastHeliEvent.startDay
+			heliDay = math.min(lastHeliEvent.startDay, nightsSurvived)
 
 			--[[DEBUG]] debugOuput = debugOuput.."EHE: Event Scheudler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
 
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 			local dayOffset
 
-			if freq == 0 then dayOffset = {7,14}
-			elseif freq == 1 then dayOffset = {5,10}
-			elseif freq == 2 then dayOffset = {3,6}
-			elseif freq == 3 then dayOffset = {1,2}
-			elseif freq == 6 then dayOffset = {-1,0}
+			if freq == 0 then
+				dayOffset = {7,14}
+			elseif freq == 1 then
+				dayOffset = {5,10}
+			elseif freq == 2 then
+				dayOffset = {3,6}
+			elseif freq == 3 then
+				dayOffset = {1,2}
+				freqFactor = freqFactor*0.85
+			elseif freq == 6 then
+				dayOffset = {0,0}
+				freqFactor = freqFactor*0.25
 			end
 
 			--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor

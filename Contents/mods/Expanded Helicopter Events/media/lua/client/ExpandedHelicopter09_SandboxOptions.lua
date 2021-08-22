@@ -117,11 +117,12 @@ function sandboxOptionsEnd(bAdd)
 		eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
 
 		if getDebug() then
-			eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", }
+			eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
 		end
 	else
 		eHelicopterSandbox.menu["resetEventsA"] = nil
 		eHelicopterSandbox.menu["resetEventsToolTip"] = nil
+		eHelicopterSandbox.menu["resetEvents"] = nil
 		eHelicopterSandbox.menu["debugTests"] = nil
 	end
 end

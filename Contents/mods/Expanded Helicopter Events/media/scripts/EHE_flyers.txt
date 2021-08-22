@@ -37,7 +37,7 @@ module EHE
 		Weight = 0.1,
 		Type = Normal,
 		DisplayName = Prevention Flyer,
-		Icon = Flyer,
+		Icon = FlyerPav,
 		Map = media/ui/content/PAVFlyer.png,
 		WorldStaticModel = PAVFlyer,
 	}

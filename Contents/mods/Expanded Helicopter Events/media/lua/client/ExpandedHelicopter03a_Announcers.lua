@@ -14,50 +14,50 @@ eHelicopter_announcers["name of announcer"] = {
 
 eHelicopter_announcers["Raven Male"] = {
 	["Lines"] = {
-		["PleaseReturnToYourHomes"] = {6500, "eHeli_lineM_1"},
-		["TheSituationIsUnderControl"] = {6500, "eHeli_lineM_2"},
-		["ThisAreaIsNowInQuarantine"] = {7000, "eHeli_lineM_3"},
-		["DoNotTryToLeaveTheArea"] = {6500, "eHeli_lineM_5"},
-		["LockAllEntrances"] = {7000, "eHeli_lineM_7"},
-		["AvoidContact"] = {6500, "eHeli_lineM_8"},
-		["DoNotTryToReachOut"] = {7000, "eHeli_lineM_9"},
-		["AnyCriminalActivity"] = {8500, "eHeli_lineM_10"},
-		["AnyPersonsTryingToLeave"] = {8500, "eHeli_lineM_6"},
+		["PleaseReturnToYourHomes"] = {7500, "eHeli_lineM_1"},
+		["TheSituationIsUnderControl"] = {7500, "eHeli_lineM_2"},
+		["ThisAreaIsNowInQuarantine"] = {8000, "eHeli_lineM_3"},
+		["DoNotTryToLeaveTheArea"] = {7500, "eHeli_lineM_5"},
+		["LockAllEntrances"] = {8000, "eHeli_lineM_7"},
+		["AvoidContact"] = {7500, "eHeli_lineM_8"},
+		["DoNotTryToReachOut"] = {8000, "eHeli_lineM_9"},
+		["AnyCriminalActivity"] = {9500, "eHeli_lineM_10"},
+		["AnyPersonsTryingToLeave"] = {9500, "eHeli_lineM_6"},
 	} }
 
 eHelicopter_announcers["Gabby Female"] = {
 	["Lines"] = {
-		["PleaseReturnToYourHomes"] = {5750, "eHeli_lineF_1"},
-		["TheSituationIsUnderControl"] = {6200, "eHeli_lineF_2"},
-		["ThisAreaIsNowInQuarantine"] = {6500, "eHeli_lineF_3"},
-		["DoNotTryToLeaveTheArea"] = {6500, "eHeli_lineF_5"},
-		["LockAllEntrances"] = {6500, "eHeli_lineF_7"},
-		["AvoidContact"] = {5750, "eHeli_lineF_8"},
-		["DoNotTryToReachOut"] = {6750, "eHeli_lineF_9"},
-		["AnyCriminalActivity"] = {8750, "eHeli_lineF_10"},
-		["AnyPersonsTryingToLeave"] = {7500, "eHeli_lineF_6"},
+		["PleaseReturnToYourHomes"] = {6750, "eHeli_lineF_1"},
+		["TheSituationIsUnderControl"] = {7200, "eHeli_lineF_2"},
+		["ThisAreaIsNowInQuarantine"] = {7500, "eHeli_lineF_3"},
+		["DoNotTryToLeaveTheArea"] = {7500, "eHeli_lineF_5"},
+		["LockAllEntrances"] = {7500, "eHeli_lineF_7"},
+		["AvoidContact"] = {6750, "eHeli_lineF_8"},
+		["DoNotTryToReachOut"] = {7750, "eHeli_lineF_9"},
+		["AnyCriminalActivity"] = {9750, "eHeli_lineF_10"},
+		["AnyPersonsTryingToLeave"] = {8500, "eHeli_lineF_6"},
 	} }
 
 eHelicopter_announcers["Jade Male A"] = {
 	["LineCount"] = 0,
 	["Lines"] = {
-		["ThisAreaIsUnderQuarantine"] = {7500, "eHeli_Jade_1a"},
-		["ForTheSafetyOfYourSelf"] = {8500, "eHeli_Jade_2a"},
-		["RepeatedAttemptsAtBreaching"] = {7250, "eHeli_Jade_3a"},
+		["ThisAreaIsUnderQuarantine"] = {9500, "eHeli_Jade_1a"},
+		["ForTheSafetyOfYourSelf"] = {10500, "eHeli_Jade_2a"},
+		["RepeatedAttemptsAtBreaching"] = {9250, "eHeli_Jade_3a"},
 	} }
 
 eHelicopter_announcers["Jade Male B"] = {
 	["Lines"] = {
-		["ThisAreaIsUnderQuarantine"] = {8500, "eHeli_Jade_1b"},
-		["ForTheSafetyOfYourSelf"] = {9500, "eHeli_Jade_2b"},
-		["RepeatedAttemptsAtBreaching"] = {7250, "eHeli_Jade_3b"},
+		["ThisAreaIsUnderQuarantine"] = {10500, "eHeli_Jade_1b"},
+		["ForTheSafetyOfYourSelf"] = {11500, "eHeli_Jade_2b"},
+		["RepeatedAttemptsAtBreaching"] = {9250, "eHeli_Jade_3b"},
 	} }
 
 eHelicopter_announcers["Jade Male C"] = {
 	["Lines"] = {
-		["ThisAreaIsUnderQuarantine"] = {8500, "eHeli_Jade_1c"},
-		["ForTheSafetyOfYourSelf"] = {9500, "eHeli_Jade_2c"},
-		["RepeatedAttemptsAtBreaching"] = {7250, "eHeli_Jade_3c"},
+		["ThisAreaIsUnderQuarantine"] = {10500, "eHeli_Jade_1c"},
+		["ForTheSafetyOfYourSelf"] = {11500, "eHeli_Jade_2c"},
+		["RepeatedAttemptsAtBreaching"] = {9250, "eHeli_Jade_3c"},
 	} }
 
 eHelicopter_announcers["Police"] = {
