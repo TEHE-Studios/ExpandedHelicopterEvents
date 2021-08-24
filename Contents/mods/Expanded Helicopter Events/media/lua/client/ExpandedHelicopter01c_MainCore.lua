@@ -530,7 +530,16 @@ function eHelicopter:applyCrashChance()
 	local GTMData = getGameTime():getModData()
 
 	--increase crash chance as the apocalypse goes on
-	local cutOffDay = self.cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay--eHelicopter-Sandbox.config.cutOffDay
+	local cutOffDay
+	if oldGameVersion then
+		cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
+	else
+		cutOffDay = self.cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay
+	end
+	if not cutOffDay then
+		return
+	end
+
 	local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
 	local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
 	local dayOfLastCrash = GTMData["DayOfLastCrash"]

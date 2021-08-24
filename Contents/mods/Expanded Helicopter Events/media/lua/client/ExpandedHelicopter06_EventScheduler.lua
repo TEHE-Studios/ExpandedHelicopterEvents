@@ -130,8 +130,17 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local daysIntoApoc = daysBefore+nightsSurvived
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
 	local COF = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
-	local cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay--eHelicopter-Sandbox.config.cutOffDay
-	local freq = SandboxVars.ExpandedHeli.Frequency-1--eHelicopter-Sandbox.config.frequency
+
+	local cutOffDay
+	local freq
+
+	if oldGameVersion then
+		cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
+		freq = eHelicopterSandbox.config.frequency
+	else
+		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
+		freq = SandboxVars.ExpandedHeli.Frequency-1
+	end
 
 	local hoursToShift
 	
@@ -205,7 +214,14 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 
 	--[[DEBUG]] print(debugOuput)	
 		
-	local neverEnd = SandboxVars.ExpandedHeli.NeverEndingEvents--eHelicopter-Sandbox.config.neverEndingEvents
+	local neverEnd
+
+	if oldGameVersion then
+		neverEnd = eHelicopterSandbox.config.neverEndingEvents
+	else
+		neverEnd = SandboxVars.ExpandedHeli.NeverEndingEvents
+	end
+
 	local renewHeli = (daysBefore+heliDay < cutOffDay)
 
 	if neverEnd then

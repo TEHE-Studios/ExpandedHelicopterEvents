@@ -3,34 +3,14 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-
-eHelicopterSandbox.config = {
-	debugTests = true,
-	--[[
-	frequency = 2,
-	resetEvents = false,
-	cutOffDay = 30,
-	startDay = 0,
-	neverEndingEvents = false,
-	--]]
-	--hostilePreference = "Zombie", --"Player", "All"
-	--attackDelay = 95, --min:0.01, max:1000
-	--attackDistance = 50, --min:1, max:300
-	--attackScope = 1, --min=0, max=3
-	--attackSpread = 2, --min=0, max=3
-	--speed = 0.25, --min=0.01, max=50
-	--topSpeedFactor = 3 --min=1, max=10
-	---voices added automatically
-}
-
+eHelicopterSandbox.config = { debugTests = true, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, }
+---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
 eHelicopterSandbox.name = "Expanded Helicopter Events" -- the name that will be shown in the MOD tab
 eHelicopterSandbox.menuSpecificAccess = "mainmenu"
 
 eHelicopterSandbox.menu = {
-
-	--[[
 	frequency = { type = "Combobox", title = "Frequency", options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}} },
 	frequencyToolTip = {type = "Text", text = "This will supplant the vanilla helicopter event frequency.", a=0.65, customX=-56},
 	generalSpaceA = {type = "Space"},
@@ -46,22 +26,8 @@ eHelicopterSandbox.menu = {
 	neverEndingEvents = { type = "Tickbox", title = "Never Ending Events", },
 	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
 	generalSpaceD = {type = "Space"},
---]]
-
-	--[[
-	testTitle = {type = "Text", text = "test",},
-
-	testSpinBox = { type = "Spinbox", title = "testSpinBox", tooltip = "testSpinBox.", options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}} },
-
-	testNumberbox = { type = "Numberbox", title = "testNumberbox", tooltip = "testNumberbox.", },
-
-	testSpace = {type = "Space",},
-
-	testTickbox = { type = "Tickbox", title = "testTickbox", tooltip = "testTickbox.", },
-
-	testCombobox = { type = "Combobox", title = "testCombobox", tooltip = "testCombobox.", options = {{"A", 0},{"B", 1},{"C", 2},{"D", 3}} }
-	--]]
 }
+
 
 
 function loadAnnouncersToConfig()
@@ -137,9 +103,12 @@ EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
 
 
+gameVersion = getCore():getGameVersion()
+oldGameVersion = true
+
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
-function HelicopterSandboxOptionOverride(hookEvent)
+function HelicopterSandboxOptions(hookEvent)
 	---@type SandboxOptions
 	local SANDBOX_OPTIONS = getSandboxOptions()
 	---@type SandboxOptions.EnumSandboxOption | SandboxOptions.SandboxOption
@@ -150,8 +119,15 @@ function HelicopterSandboxOptionOverride(hookEvent)
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
 	end
 
-	local gameVersion = getCore():getGameVersion()
-	if gameVersion:getMajor()>=41 and gameVersion:getMinor()>50 then
+	if (gameVersion and gameVersion:getMajor()>=41 and gameVersion:getMinor()>50) then
+		oldGameVersion = false
+		eHelicopterSandbox.config = {debugTests = true}
+		eHelicopterSandbox.menu = {}
+	else
+		print("EHE: 41.50 or older version detected: Sandbox Options in Main Menu.")
+	end
+
+	if not oldGameVersion then
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour to \"0\".")
 		getGameTime():setHelicopterDay(0)
 		getGameTime():setHelicopterStartHour(0)
@@ -159,7 +135,5 @@ function HelicopterSandboxOptionOverride(hookEvent)
 	end
 end
 
-Events.OnGameBoot.Add(HelicopterSandboxOptionOverride("OnGameBoot: "))
-Events.OnGameStart.Add(HelicopterSandboxOptionOverride("OnGameStart: "))
-Events.OnNewGame.Add(HelicopterSandboxOptionOverride("OnNewGame: "))
+Events.OnGameBoot.Add(HelicopterSandboxOptions("OnGameBoot: "))
 
