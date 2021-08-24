@@ -3,8 +3,8 @@ Events.OnCustomUIKey.Add(function(key)
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then
-		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.launch_jet()
-		elseif key == Keyboard.KEY_5 then
+		elseif key == Keyboard.KEY_4 then
+		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launch_jet()
 		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launch_news_chopper()
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launch_increasingly_hostile()
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launch_increasingly_helpful()
