@@ -6,11 +6,13 @@ eHelicopterSandbox = eHelicopterSandbox or {}
 
 eHelicopterSandbox.config = {
 	debugTests = true,
+	--[[
 	frequency = 2,
 	resetEvents = false,
 	cutOffDay = 30,
 	startDay = 0,
 	neverEndingEvents = false,
+	--]]
 	--hostilePreference = "Zombie", --"Player", "All"
 	--attackDelay = 95, --min:0.01, max:1000
 	--attackDistance = 50, --min:1, max:300
@@ -28,6 +30,7 @@ eHelicopterSandbox.menuSpecificAccess = "mainmenu"
 
 eHelicopterSandbox.menu = {
 
+	--[[
 	frequency = { type = "Combobox", title = "Frequency", options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}} },
 	frequencyToolTip = {type = "Text", text = "This will supplant the vanilla helicopter event frequency.", a=0.65, customX=-56},
 	generalSpaceA = {type = "Space"},
@@ -43,6 +46,7 @@ eHelicopterSandbox.menu = {
 	neverEndingEvents = { type = "Tickbox", title = "Never Ending Events", },
 	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
 	generalSpaceD = {type = "Space"},
+--]]
 
 	--[[
 	testTitle = {type = "Text", text = "test",},

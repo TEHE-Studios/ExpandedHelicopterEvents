@@ -1,0 +1,30 @@
+VERSION = 1,
+
+option ExpandedHeli.Frequency
+{
+	type = enum, numValues = 5, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_Frequency,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
+
+option ExpandedHeli.CutOffDay
+{
+	type = integer, min = 1, max = 999, default = 30,
+	page = ExpandedHeli, translation = ExpandedHeli_CutOffDay,
+}
+
+
+option ExpandedHeli.StartDay
+{
+	type = integer, min = 1, max = 999, default = 1,
+	page = ExpandedHeli, translation = ExpandedHeli_StartDay,
+}
+
+
+option ExpandedHeli.NeverEnding
+{
+	type = boolean, default = false,
+	page = ExpandedHeli, translation = ExpandedHeli_NeverEnding,
+}
+

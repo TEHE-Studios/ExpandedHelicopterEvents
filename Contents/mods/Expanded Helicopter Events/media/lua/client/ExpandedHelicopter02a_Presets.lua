@@ -5,11 +5,12 @@ eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 ---Event Schedule Initiation
 function eHeliEventsinit()
 	eHeliEvents_init = eHeliEvents_init or {}
-	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=eHelicopterSandbox.config.startDay+ZombRand(0,3), ["heliStart"]=nil}
-	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=eHelicopterSandbox.config.startDay+ZombRand(6,8), ["heliStart"]=nil}
-	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=eHelicopterSandbox.config.startDay+ZombRand(0,3), ["heliStart"]=nil}
+	local startDay = SandboxVars.ExpandedHeli.StartDay--eHelicopter-Sandbox.config.startDay
+	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
+	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,8), ["heliStart"]=nil}
+	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
 end
-Events.OnGameBoot.Add(eHeliEventsinit)
+Events.OnGameStart.Add(eHeliEventsinit)
 
 --[[
 
