@@ -1,4 +1,3 @@
-require "_EasyConfig_Chucked"
 require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
@@ -46,7 +45,6 @@ function loadAnnouncersToConfig()
 
 	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
 end
-loadAnnouncersToConfig()
 
 --[[
 function loadPresetToConfig()
@@ -119,13 +117,18 @@ function HelicopterSandboxOptions(hookEvent)
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
 	end
 
+
 	if (gameVersion and gameVersion:getMajor()>=41 and gameVersion:getMinor()>50) then
 		oldGameVersion = false
-		eHelicopterSandbox.config = {debugTests = true}
-		eHelicopterSandbox.menu = {}
+		eHelicopterSandbox.config = {debugTests = true, resetEvents = false}
+		eHelicopterSandbox.menu = {
+			sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65, customX=-56},
+		}
 	else
 		print("EHE: 41.50 or older version detected: Sandbox Options in Main Menu.")
 	end
+	loadAnnouncersToConfig()
+	sandboxOptionsEnd(true)
 
 	if not oldGameVersion then
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour to \"0\".")
