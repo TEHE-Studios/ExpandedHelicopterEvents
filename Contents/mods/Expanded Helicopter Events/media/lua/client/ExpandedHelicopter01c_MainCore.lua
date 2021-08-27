@@ -329,7 +329,8 @@ function eHelicopter:findAlternativeTarget(character)
 		local cellOfFC = square:getCell()
 		if cellOfFC then
 			--[DEBUG]] print(" ----- cell found for isoSquare diff: <"..k.."> x:"..math.floor(character:getX()-square:getX())..", y:"..math.floor(character:getY()-square:getY()))
-
+			---Targeting buildings don't seem to return results
+--[[
 			local buildings = cellOfFC:getBuildingList()
 			--print(" ------ buildings:size: "..buildings:size())
 			for i=0, buildings:size()-1 do
@@ -346,7 +347,8 @@ function eHelicopter:findAlternativeTarget(character)
 					end
 				end
 			end
-
+--]]
+			---target zombies instead
 			if #newTargets <= 0 then
 				local zombies = cellOfFC:getZombieList()
 				if zombies then
