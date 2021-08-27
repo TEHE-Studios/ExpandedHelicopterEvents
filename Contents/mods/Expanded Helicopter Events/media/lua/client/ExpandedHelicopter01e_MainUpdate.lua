@@ -35,6 +35,9 @@ function eHelicopter:update()
 
 				--random offset used for roaming
 				local offset = self.attackDistance
+				if self.crashing then
+					offset = math.floor(offset*(ZombRand(13,25)/10))
+				end
 				local randOffset = {-offset,offset}
 
 				local tx = self.trueTarget:getX()
@@ -76,7 +79,7 @@ function eHelicopter:update()
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
 	thatIsCloseEnough = thatIsCloseEnough+4
 
-	local crashMin = math.floor(thatIsCloseEnough*20)
+	local crashMin = math.min(250, math.floor(thatIsCloseEnough*25)+ZombRand(15,25))
 	local crashMax = math.min(250, math.floor(ZombRand(crashMin,crashMin*2)))
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
 		--[DEBUG]] print("EHE: crashing parameters met. ("..crashMin.." to "..crashMax..")")
