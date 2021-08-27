@@ -1,20 +1,66 @@
+DEBUG_TESTS = DEBUG_TESTS or {}
+DEBUG_TESTS.TOGGLE_ALL_CRASH = false
+
 Events.OnCustomUIKey.Add(function(key)
 	if getDebug() and (eHelicopterSandbox.config.debugTests==true) then
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
-		elseif key == Keyboard.KEY_3 then
-		elseif key == Keyboard.KEY_4 then
-		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launch_jet()
-		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launch_news_chopper()
-		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launch_increasingly_hostile()
-		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launch_increasingly_helpful()
-		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launch_police_heli()
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchBaseHeli()
+		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.ToggleAllCrash()
+		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.ToggleMoveHeliCloser()
+		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("jet")
+		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("news_chopper")
+		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile")
+		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful")
+		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police_heli")
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest()
 		end
 	end
 end)
 
-DEBUG_TESTS = DEBUG_TESTS or {}
+
+function DEBUG_TESTS.ToggleAllCrash()
+	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then
+		DEBUG_TESTS.TOGGLE_ALL_CRASH = false
+	else
+		DEBUG_TESTS.TOGGLE_ALL_CRASH = true
+	end
+	print("EHE: DEBUG: TOGGLE_ALL_CRASH = "..tostring(DEBUG_TESTS.TOGGLE_ALL_CRASH))
+end
+
+
+function DEBUG_TESTS.ToggleMoveHeliCloser()
+	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then
+		DEBUG_TESTS.MOVE_HELI_TEST_CLOSER = false
+	else
+		DEBUG_TESTS.MOVE_HELI_TEST_CLOSER = true
+	end
+	print("EHE: DEBUG: MOVE_HELI_TEST_CLOSER = "..tostring(DEBUG_TESTS.MOVE_HELI_TEST_CLOSER))
+end
+
+
+function DEBUG_TESTS.moveHeliCloser(heli,range)
+	if not heli.target then
+		return
+	end
+	--move closer
+	local tpX = heli.target:getX()
+	local tpY = heli.target:getY()
+	range = range or 300
+	local offset = ZombRand(range)
+	heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+end
+
+
+--- Test launch heli
+function DEBUG_TESTS.launchHeliTest(presetID)
+	---@type eHelicopter heli
+	local heli = getFreeHelicopter(presetID)
+	print("EHE: DEBUG: launchHeliTest: "..presetID)
+	heli:launch()
+	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then heli.crashing = true end
+	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then DEBUG_TESTS.moveHeliCloser(heli) end
+end
+
 
 --- Check weather
 function DEBUG_TESTS.CheckWeather()
@@ -70,11 +116,13 @@ function DEBUG_TESTS.raiseTheDead()
 	print("-- Reanimated: "..reanimated)
 end
 
+
 function eHelicopter:hoverAndFlyOverReport(STATE)
 	if self.trueTarget and self.trueTarget:getClass() and self.target and self.target:getClass() then
 		print(" - "..self:heliToString(true).." "..STATE..(self.trueTarget:getClass():getSimpleName()).." "..(self.target:getClass():getSimpleName()))
 	end
 end
+
 
 --- Debug: Reports helicopter's useful variables -- note: this will flood your output
 function eHelicopter:Report(aiming, dampen)
@@ -84,88 +132,6 @@ function eHelicopter:Report(aiming, dampen)
 	print("   TARGET: (x:"..Vector3GetX(self.targetPosition)..", y:"..Vector3GetY(self.targetPosition)..")")
 	print("   (dist: "..self:getDistanceToVector(self.target).."  "..report)
 	print("-----------------------------------------------------------------")
-end
-
-function DEBUG_TESTS.moveHeliCloser(heli,range)
-	if not heli.target then
-		return
-	end
-	--move closer
-	local tpX = heli.target:getX()
-	local tpY = heli.target:getY()
-	range = range or 300
-	local offset = ZombRand(range)
-	heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
-end
-
-
---- Test launch heli
-function DEBUG_TESTS.launchBaseHeli()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter()
-	heli:launch()
-end
-
-
---- Test launch jet
-function DEBUG_TESTS.launch_jet()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("jet")
-	heli:launch()
-end
-
-
---- Test launch close "attack_only_undead" heli
-function DEBUG_TESTS.launch_attack_only_undead()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("attack_only_undead")
-	heli:launch()
-	DEBUG_TESTS.moveHeliCloser(heli)
-end
-
-
---- Test launch close "police_heli" heli
-function DEBUG_TESTS.launch_police_heli()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("police_heli")
-	heli:launch()
-	DEBUG_TESTS.moveHeliCloser(heli)
-end
-
-
---- Test launch close "attack_only_all" heli
-function DEBUG_TESTS.launch_attack_only_all()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("attack_only_all")
-	heli:launch()
-	DEBUG_TESTS.moveHeliCloser(heli)
-end
-
-
---- Test launch close "increasingly_hostile" heli
-function DEBUG_TESTS.launch_increasingly_hostile()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("increasingly_hostile")
-	heli:launch()
-	DEBUG_TESTS.moveHeliCloser(heli)
-end
-
-
---- Test launch close "news_chopper" heli
-function DEBUG_TESTS.launch_news_chopper()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("news_chopper")
-	heli:launch()
-	DEBUG_TESTS.moveHeliCloser(heli)
-end
-
-
---- Test launch close "increasingly_helpful" heli
-function DEBUG_TESTS.launch_increasingly_helpful()
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter("increasingly_helpful")
-	heli:launch()
-	DEBUG_TESTS.moveHeliCloser(heli, 650)
 end
 
 
