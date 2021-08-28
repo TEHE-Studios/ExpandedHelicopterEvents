@@ -144,7 +144,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 
 	local hoursToShift
 	
-	--[[DEBUG]] local debugOuput = ""
+	--[[DEBUG]] local debugOutput = ""
 	
 	if not heliDay then
 		--use old event's start day for reschedule, otherwise get new day
@@ -153,7 +153,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		else
 			heliDay = math.min(lastHeliEvent.startDay, nightsSurvived)
 
-			--[[DEBUG]] debugOuput = debugOuput.."EHE: Event Scheudler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
+			--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
 
 			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
 			local dayOffset
@@ -186,7 +186,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 			--finally shift them
 			heliDay = heliDay+daysToShift
 
-			--[[DEBUG]] debugOuput = debugOuput.."- hrs_shift:"..hoursToShift.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
+			--[[DEBUG]] debugOutput = debugOutput.."- hrs_shift:"..hoursToShift.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
 		end
 	end
 
@@ -212,7 +212,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	
 	end
 
-	--[[DEBUG]] print(debugOuput)	
+	--[[DEBUG]] print(debugOutput)
 		
 	local neverEnd
 
