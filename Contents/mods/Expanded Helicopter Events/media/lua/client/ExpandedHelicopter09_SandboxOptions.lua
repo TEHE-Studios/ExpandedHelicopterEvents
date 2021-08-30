@@ -83,7 +83,6 @@ function sandboxOptionsEnd(bAdd)
 		eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 		eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 		eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
-
 		if getDebug() then
 			eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
 		end
@@ -94,7 +93,6 @@ function sandboxOptionsEnd(bAdd)
 		eHelicopterSandbox.menu["debugTests"] = nil
 	end
 end
-sandboxOptionsEnd(true)
 
 EasyConfig_Chucked = EasyConfig_Chucked or {}
 EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
@@ -117,13 +115,23 @@ function HelicopterSandboxOptions(hookEvent)
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
 	end
 
-
 	if (gameVersion and gameVersion:getMajor()>=41 and gameVersion:getMinor()>50) then
 		oldGameVersion = false
-		eHelicopterSandbox.config = {debugTests = true, resetEvents = false}
-		eHelicopterSandbox.menu = {
-			sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65, customX=-56},
-		}
+
+		eHelicopterSandbox.menu.frequency = nil
+		eHelicopterSandbox.menu.frequencyToolTip = nil
+		eHelicopterSandbox.menu.generalSpaceA = nil
+		eHelicopterSandbox.menu.startDay = nil
+		eHelicopterSandbox.menu.startDayToolTip = nil
+		eHelicopterSandbox.menu.generalSpaceB = nil
+		eHelicopterSandbox.menu.cutOffDay = nil
+		eHelicopterSandbox.menu.cutOffDayToolTip = nil
+		eHelicopterSandbox.menu.generalSpaceC = nil
+		eHelicopterSandbox.menu.neverEndingEvents = nil
+		eHelicopterSandbox.menu.neverEndingEventsToolTip = nil
+		eHelicopterSandbox.menu.generalSpaceD = nil
+
+		eHelicopterSandbox.menu.sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65, customX=-56}
 	else
 		print("EHE: 41.50 or older version detected: Sandbox Options in Main Menu.")
 	end
