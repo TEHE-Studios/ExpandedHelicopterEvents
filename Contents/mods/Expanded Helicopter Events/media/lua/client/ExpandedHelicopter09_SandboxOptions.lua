@@ -78,19 +78,16 @@ loadPresetToConfig()]]
 
 
 --add buffer space for reset feature
-function sandboxOptionsEnd(bAdd)
-	if bAdd then
-		eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
-		eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
-		eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
-		if getDebug() then
-			eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
-		end
-	else
-		eHelicopterSandbox.menu["resetEventsA"] = nil
-		eHelicopterSandbox.menu["resetEventsToolTip"] = nil
-		eHelicopterSandbox.menu["resetEvents"] = nil
-		eHelicopterSandbox.menu["debugTests"] = nil
+function sandboxOptionsEnd()
+	eHelicopterSandbox.menu["resetEventsA"] = nil
+	eHelicopterSandbox.menu["resetEventsToolTip"] = nil
+	eHelicopterSandbox.menu["resetEvents"] = nil
+	eHelicopterSandbox.menu["debugTests"] = nil
+	eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
+	eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
+	eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
+	if getDebug() then
+		eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
 	end
 end
 
@@ -136,7 +133,7 @@ function HelicopterSandboxOptions(hookEvent)
 		print("EHE: 41.50 or older version detected: Sandbox Options in Main Menu.")
 	end
 	loadAnnouncersToConfig()
-	sandboxOptionsEnd(true)
+	sandboxOptionsEnd()
 
 	if not oldGameVersion then
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour to \"0\".")
