@@ -2,7 +2,7 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = { debugTests = true, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, }
+eHelicopterSandbox.config = { debugTests = false, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, }
 ---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
