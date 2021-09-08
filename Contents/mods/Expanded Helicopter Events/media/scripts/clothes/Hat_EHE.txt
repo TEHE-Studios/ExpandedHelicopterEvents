@@ -168,7 +168,7 @@ module Base
 		DisplayName = Deserter Helmet,
 		ClothingItem = Hat_DeserterHelmet,
 		BodyLocation = Hat,
-		Icon = PressHelmet,
+		Icon = DeserterHelmet,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,
