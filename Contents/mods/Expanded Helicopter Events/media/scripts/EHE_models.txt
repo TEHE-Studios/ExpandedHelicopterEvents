@@ -34,4 +34,11 @@ module Base
 		texture = WorldItems/EvacuationPaper,
 		scale = 0.02,
 	}
+
+	     model SupplyBox
+	{
+		mesh = WorldItems/SupplyBox,
+		texture = WorldItems/SupplyBox,
+		scale = 0.01,
+	}
 }
