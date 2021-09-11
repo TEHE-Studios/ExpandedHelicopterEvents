@@ -39,6 +39,6 @@ module Base
 	{
 		mesh = WorldItems/SupplyBox,
 		texture = WorldItems/SupplyBox,
-		scale = 0.01,
+		scale = 1.0,
 	}
 }

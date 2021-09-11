@@ -6,6 +6,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
+		WorldStaticModel = SupplyBox,
 	}
 
 		item EmergencyMedicalSupplyBox
@@ -13,6 +14,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
+		WorldStaticModel = SupplyBox,
 	}
 
 		item EmergencySurvivalSupplyBox
@@ -20,6 +22,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
+		WorldStaticModel = SupplyBox,
 	}
 
 		item BanditStashBox
@@ -27,6 +30,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		WorldStaticModel = SupplyBox,
 	}
 
 }
