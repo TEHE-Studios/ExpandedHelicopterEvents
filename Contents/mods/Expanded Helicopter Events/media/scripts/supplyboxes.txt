@@ -30,7 +30,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
-		WorldStaticModel = SupplyBox,
+		WorldStaticModel = BanditBox,
 	}
 
 }
