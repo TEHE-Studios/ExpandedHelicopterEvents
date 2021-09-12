@@ -1,4 +1,4 @@
-module Base
+module EHE
 {		
 
 		item Hat_SPHPolice
@@ -162,24 +162,6 @@ module Base
         Weight = 1.5,
     }
 
-		item Hat_PressHelmet
-	{
-		Type = Clothing,
-		DisplayName = Press Helmet (Strapless),
-		ClothingItem = Hat_PressHelmetStrapless,
-		BodyLocation = Hat,
-		Icon = PressHelmet,
-		CanHaveHoles = false,
-		BloodLocation = FullHelmet,
-		BiteDefense = 100,
-		ScratchDefense = 100,
-		BulletDefense = 100,
-		ChanceToFall = 30,
-		Insulation = 0,
-		WaterResistance = 0.40,
-        Weight = 1.5,
-    }
-
 		item Hat_SurvivalistHelmet
 	{
 		Type = Clothing,
@@ -197,5 +179,5 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
-	
+
 }
