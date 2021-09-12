@@ -74,7 +74,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 	speed = 0.06,
 	crashType = {"Bell206LBMWFuselage"},
 	scrapAndParts = {["vehicleSection"]="Bell206LBMWTail"},
-	crew = {"1CivilianPilot", "1NewsReporterArmored", "1NewsReporterArmored", 40},
+	crew = {"EHECivilianPilot", "EHENewsReporterArmored", "EHENewsReporterArmored", 40},
 	--formationIDs = {"police_heli", 100, {6,12}},
 	}
 
@@ -105,14 +105,14 @@ eHelicopter_PRESETS["patrol_only_quarantine"] = {
 eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	hostilePreference = "IsoZombie",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
-	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
 	}
 
 
 eHelicopter_PRESETS["attack_only_undead"] = {
 	hostilePreference = "IsoZombie",
-	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
 	}
 
@@ -120,7 +120,7 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 eHelicopter_PRESETS["attack_only_all"] = {
 	hostilePreference = "IsoGameCharacter",
 	crashType = {"UH1HSurvivalistFuselage"},
-	crew = {"1SurvivalistPilot", "1Survivalist", 75, "1Survivalist", 50},
+	crew = {"EHESurvivalistPilot", "EHESurvivalist", 75, "EHESurvivalist", 50},
 	scrapAndParts = {["vehicleSection"]="UH1HSurvivalistTail"},
 	}
 
@@ -132,7 +132,7 @@ eHelicopter_PRESETS["police_heli"] = {
 	attackHitChance = 100,
 	attackDamage = 35,
 	crashType = {"Bell206PoliceFuselage"},
-	crew = {"1PolicePilot", "1PoliceOfficer", "1PoliceOfficer", 75},
+	crew = {"EHEPolicePilot", "EHEPoliceOfficer", "EHEPoliceOfficer", 75},
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["attackSingle"] = "eHeli_bolt_action_fire_single",
@@ -147,7 +147,7 @@ eHelicopter_PRESETS["police_heli"] = {
 
 eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
-	crew = {"1MilitaryPilot", "1Soldier", 100, "1Soldier", 100},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 100, "EHESoldier", 100},
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.NoticeFlyer"]=250},
 	speed = 0.06,
