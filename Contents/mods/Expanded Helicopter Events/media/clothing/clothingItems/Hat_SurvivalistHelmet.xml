@@ -9,6 +9,6 @@
 	<m_AttachBone>Bip01_Head</m_AttachBone>
 	<m_HatCategory>Group02</m_HatCategory>
 	<m_MasksFolder>media/textures/Clothes/Hat/Masks</m_MasksFolder>
-	<textureChoices>clothes\hat\Hat_DeserterHelmet</textureChoices>
-	<textureChoices>clothes\hat\Hat_DeserterHelmetStripes</textureChoices>
+	<textureChoices>clothes\hat\Hat_SurvivalistHelmet</textureChoices>
+	<textureChoices>clothes\hat\Hat_SurvivalistHelmetStripes</textureChoices>
 </clothingItem>
