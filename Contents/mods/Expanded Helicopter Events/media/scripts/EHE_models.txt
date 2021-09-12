@@ -48,4 +48,11 @@ module Base
 		texture = WorldItems/BanditBox,
 		scale = 1.0,
 	}
+
+		model EnergyBar
+	{
+		mesh = WorldItems/EnergyBar,
+		texture = WorldItems/EnergyBar,
+		scale = 1.0,
+	}
 }
