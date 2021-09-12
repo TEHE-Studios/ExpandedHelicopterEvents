@@ -162,13 +162,31 @@ module Base
         Weight = 1.5,
     }
 
-		item Hat_DeserterHelmet
+		item Hat_PressHelmet
 	{
 		Type = Clothing,
-		DisplayName = Deserter Helmet,
-		ClothingItem = Hat_DeserterHelmet,
+		DisplayName = Press Helmet (Strapless),
+		ClothingItem = Hat_PressHelmetStrapless,
 		BodyLocation = Hat,
 		Icon = PressHelmet,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		BulletDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SurvivalistHelmet
+	{
+		Type = Clothing,
+		DisplayName = Survivalist Helmet,
+		ClothingItem = Hat_SurvivalistHelmet,
+		BodyLocation = Hat,
+		Icon = SurvivalistHelmet,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,
