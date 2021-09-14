@@ -392,13 +392,13 @@ function eHelicopter:findTarget(range)
 					--[[DEBUG]] DEBUGzoneID = zoneType
 					if (zoneType == "DeepForest") then
 						iterations = 3
-					elseif (zoneType == "Forest") then
+					elseif (zoneType == "Forest" or zoneType == "Vegitation") then
 						iterations = 4
 					elseif (zoneType == "FarmLand") then
 						iterations = 6
 					elseif (zoneType == "Farm") then
 						iterations = 7
-					elseif (zoneType == "TrailerPark") then
+					elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
 						iterations = 9
 					elseif (zoneType == "TownZone") then
 						iterations = 10
