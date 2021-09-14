@@ -1,5 +1,5 @@
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
-EHE_WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast
+EHE_WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast or nil
 
 --local function from ISWeatherChannel.lua
 local function comp(_str)
@@ -12,7 +12,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 	--call stored version from above using the same arguments
 	EHE_WeatherChannel_FillBroadcast(_gametime, _bc)
 	
-	local c = { r=1.0, g=1.0, b=1.0 };
+	local c = { r=1.0, g=1.0, b=1.0 }
 	--check if flights would be prevented due to weather
 	local willFly,_ = eHeliEvent_weatherImpact()
 	if willFly then
