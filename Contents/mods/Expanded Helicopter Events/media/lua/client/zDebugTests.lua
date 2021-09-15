@@ -1,7 +1,7 @@
 DEBUG_TESTS = DEBUG_TESTS or {}
 DEBUG_TESTS.TOGGLE_ALL_CRASH = false
 
-Events.OnCustomUIKey.Add(function(key)
+Events.OnKeyPressed.Add(function(key)
 	if getPlayer() and getDebug() and (eHelicopterSandbox.config.debugTests==true) then
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
