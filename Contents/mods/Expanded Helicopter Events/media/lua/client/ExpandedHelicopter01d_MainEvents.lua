@@ -38,6 +38,16 @@ function eHelicopter:crash()
 				heli:crash(1000,true)
 				heli:crash(1000,false)
 				
+
+				for i=0, heli:getPartCount() do
+					---@type VehiclePart
+					local part = heli:getPartByIndex(i) --VehiclePart
+					local partDoor = part:getDoor()
+					if partDoor ~= nil then
+						partDoor:setLocked(false)
+					end
+				end
+
 				--drop scrap and parts
 				if self.scrapAndParts then
 					self:dropScrap(6)
