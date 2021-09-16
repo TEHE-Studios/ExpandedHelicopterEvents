@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <outfitManager>
 <m_MaleOutfits>
-		<m_Name>1PolicePilot</m_Name>
+		<m_Name>EHEPolicePilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -27,7 +27,7 @@
 	</m_MaleOutfits>
 
 	<m_FemaleOutfits>
-		<m_Name>1PolicePilot</m_Name>
+		<m_Name>EHEPolicePilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -82,7 +82,7 @@
 	</m_MaleOutfits>
 
 		<m_FemaleOutfits>
-		<m_Name>1MilitaryPilot</m_Name>
+		<m_Name>EHEMilitaryPilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -111,7 +111,7 @@
 	</m_FemaleOutfits>
 
 	<m_MaleOutfits>
-		<m_Name>1CivilianPilot</m_Name>
+		<m_Name>EHECivilianPilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -140,7 +140,7 @@
 	</m_MaleOutfits>
 
 	<m_FemaleOutfits>
-		<m_Name>1CivilianPilot</m_Name>
+		<m_Name>EHECivilianPilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -169,7 +169,7 @@
 	</m_FemaleOutfits>
 
 	<m_MaleOutfits>
-		<m_Name>1SurvivalistPilot</m_Name>
+		<m_Name>EHESurvivalistPilot</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -204,7 +204,7 @@
 	</m_MaleOutfits>
 
 	<m_MaleOutfits>
-		<m_Name>1NewsReporterArmored</m_Name>
+		<m_Name>EHENewsReporterArmored</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -238,7 +238,7 @@
 	</m_MaleOutfits>
 
 	<m_FemaleOutfits>
-		<m_Name>1NewsReporterArmored</m_Name>
+		<m_Name>EHENewsReporterArmored</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -272,7 +272,7 @@
 	</m_FemaleOutfits>
 
 	<m_FemaleOutfits>
-		<m_Name>1NewsReporterArmored</m_Name>
+		<m_Name>EHENewsReporterArmored</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -305,7 +305,7 @@
 	</m_FemaleOutfits>
 
 	<m_MaleOutfits>
-		<m_Name>1PoliceOfficer</m_Name>
+		<m_Name>EHEPoliceOfficer</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -350,7 +350,7 @@
 	</m_MaleOutfits>
 
 		<m_FemaleOutfits>
-		<m_Name>1PoliceOfficer</m_Name>
+		<m_Name>EHEPoliceOfficer</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -395,7 +395,7 @@
 	</m_FemaleOutfits>
 
 	<m_MaleOutfits>
-		<m_Name>1Survivalist</m_Name>
+		<m_Name>EHESurvivalist</m_Name>
 		<m_Guid>dee6938d-840e-4cc3-81ab-c071f57ca908</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -466,7 +466,7 @@
 	</m_MaleOutfits>
 
 		<m_MaleOutfits>
-		<m_Name>1Soldier</m_Name>
+		<m_Name>EHESoldier</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -510,7 +510,7 @@
 	</m_MaleOutfits>
 
 	<m_FemaleOutfits>
-		<m_Name>1Soldier</m_Name>
+		<m_Name>EHESoldier</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -554,7 +554,7 @@
 	</m_FemaleOutfits>
 
 		<m_MaleOutfits>
-		<m_Name>1General</m_Name>
+		<m_Name>EHEGeneral</m_Name>
 		<m_Guid>fda0f648-befc-4dd4-adf3-0e0ed87034fd</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>

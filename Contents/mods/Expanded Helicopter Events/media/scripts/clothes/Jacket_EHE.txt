@@ -1,4 +1,4 @@
-module Base
+module EHE
 {		
 		item Jacket_DenimCutoff
 	{
@@ -16,5 +16,6 @@ module Base
         WindResistance = 0.95,
         WaterResistance = 0.60,
         Weight = 1,
+        WorldStaticModel = JacketCoat_Ground,
     }	
 }

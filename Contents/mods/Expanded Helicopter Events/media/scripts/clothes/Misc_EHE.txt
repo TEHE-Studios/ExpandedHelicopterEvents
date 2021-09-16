@@ -1,0 +1,34 @@
+module EHE
+{		
+	    item Boilersuit_PoliceFlying
+    {
+        Type = Clothing,
+        DisplayName = Police Flying Suit,
+        ClothingItem = Suit_PoliceFlying,
+        BodyLocation = FullSuit,
+        Icon = PoliceFlying,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 10,
+        Insulation = 0.75,
+        WindResistance = 0.55,
+        FabricType = Cotton,
+        WorldStaticModel = BoilerSuit_Ground,
+    }
+	   
+	    item Vest_BulletPress
+    {
+        Type = Clothing,
+        DisplayName = Press Bulletproof Vest,
+        ClothingItem = Vest_BulletPress,
+        BodyLocation = TorsoExtra,
+        Icon = PressVest,
+        BloodLocation = ShirtNoSleeves,
+        Insulation = 0.65,
+        WindResistance = 0.30,
+        BiteDefense = 30,
+        ScratchDefense = 55,
+        BulletDefense = 100,
+		WorldStaticModel = BulletVest_Ground,
+    }
+}

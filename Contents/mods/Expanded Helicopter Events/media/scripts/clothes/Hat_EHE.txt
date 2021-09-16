@@ -1,4 +1,4 @@
-module Base
+module EHE
 {		
 
 		item Hat_SPHPolice
@@ -95,6 +95,7 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
+
 		item Hat_SPHCivilianVISORUP
 	{
 		Type = Clothing,
@@ -112,36 +113,6 @@ module Base
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
-    }
-
-	    item Boilersuit_PoliceFlying
-    {
-        Type = Clothing,
-        DisplayName = Police Pilot Flying Suit,
-        ClothingItem = Suit_PoliceFlying,
-        BodyLocation = FullSuit,
-        Icon = PoliceFlying,
-        BloodLocation = Trousers;Jumper,
-        RunSpeedModifier = 0.9,
-        ScratchDefense = 10,
-        Insulation = 0.75,
-        WindResistance = 0.55,
-        FabricType = Cotton
-    }
-	   
-	    item Vest_BulletPress
-    {
-        Type = Clothing,
-        DisplayName = Press Bulletproof Vest,
-        ClothingItem = Vest_BulletPress,
-        BodyLocation = TorsoExtra,
-        Icon = PressVest,
-        BloodLocation = ShirtNoSleeves,
-        Insulation = 0.65,
-        WindResistance = 0.30,
-        BiteDefense = 30,
-        ScratchDefense = 55,
-        BulletDefense = 100,
     }
 
 		item Hat_PressHelmet
@@ -162,13 +133,13 @@ module Base
         Weight = 1.5,
     }
 
-		item Hat_DeserterHelmet
+		item Hat_SurvivalistHelmet
 	{
 		Type = Clothing,
-		DisplayName = Deserter Helmet,
-		ClothingItem = Hat_DeserterHelmet,
+		DisplayName = Survivalist Helmet,
+		ClothingItem = Hat_SurvivalistHelmet,
 		BodyLocation = Hat,
-		Icon = DeserterHelmet,
+		Icon = SurvivalistHelmet,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
 		BiteDefense = 100,
@@ -179,5 +150,5 @@ module Base
 		WaterResistance = 0.40,
         Weight = 1.5,
     }
-	
+
 }
