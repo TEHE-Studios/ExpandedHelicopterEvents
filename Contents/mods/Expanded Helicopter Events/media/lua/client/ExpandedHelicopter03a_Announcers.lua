@@ -41,23 +41,23 @@ eHelicopter_announcers["Gabby Female"] = {
 eHelicopter_announcers["Jade Male A"] = {
 	["LineCount"] = 0,
 	["Lines"] = {
-		["ThisAreaIsUnderQuarantine"] = {9500, "eHeli_Jade_1a"},
-		["ForTheSafetyOfYourSelf"] = {10500, "eHeli_Jade_2a"},
-		["RepeatedAttemptsAtBreaching"] = {9250, "eHeli_Jade_3a"},
+		["ThisAreaIsUnderQuarantine"] = {9500*2, "eHeli_Jade_1a"},
+		["ForTheSafetyOfYourSelf"] = {10500*2, "eHeli_Jade_2a"},
+		["RepeatedAttemptsAtBreaching"] = {9250*2, "eHeli_Jade_3a"},
 	} }
 
 eHelicopter_announcers["Jade Male B"] = {
 	["Lines"] = {
-		["ThisAreaIsUnderQuarantine"] = {10500, "eHeli_Jade_1b"},
-		["ForTheSafetyOfYourSelf"] = {11500, "eHeli_Jade_2b"},
-		["RepeatedAttemptsAtBreaching"] = {9250, "eHeli_Jade_3b"},
+		["ThisAreaIsUnderQuarantine"] = {10500*2, "eHeli_Jade_1b"},
+		["ForTheSafetyOfYourSelf"] = {11500*2, "eHeli_Jade_2b"},
+		["RepeatedAttemptsAtBreaching"] = {9250*2, "eHeli_Jade_3b"},
 	} }
 
 eHelicopter_announcers["Jade Male C"] = {
 	["Lines"] = {
-		["ThisAreaIsUnderQuarantine"] = {10500, "eHeli_Jade_1c"},
-		["ForTheSafetyOfYourSelf"] = {11500, "eHeli_Jade_2c"},
-		["RepeatedAttemptsAtBreaching"] = {9250, "eHeli_Jade_3c"},
+		["ThisAreaIsUnderQuarantine"] = {10500*2, "eHeli_Jade_1c"},
+		["ForTheSafetyOfYourSelf"] = {11500*2, "eHeli_Jade_2c"},
+		["RepeatedAttemptsAtBreaching"] = {9250*2, "eHeli_Jade_3c"},
 	} }
 
 eHelicopter_announcers["Police"] = {
