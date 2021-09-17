@@ -22,11 +22,11 @@ local clothing = {
 	-- these lists are named after the BodyLocation of the item
 	-- If your item's BodyLocation = Hat then put it in "Hat"
 	Hat = {
-		"Base.Hat_SPHPolice",
-		"Base.Hat_SPHMilitary",
-		"Base.Hat_SPHCivilian",
-		"Base.Hat_PressHelmet",
-		"Base.Hat_DeserterHelmet"
+		"EHE.Hat_SPHPolice",
+		"EHE.Hat_SPHMilitary",
+		"EHE.Hat_SPHCivilian",
+		"EHE.Hat_PressHelmet",
+		"EHE.Hat_SurvivalistHelmet"
 	},
 	TankTop = {},     -- Remember,
 	Tshirt = {},      -- if
@@ -50,12 +50,12 @@ local clothing = {
 	Hands = {},
 	Legs1 = {},
 	Sweater = {},     -- Do
-	Jacket = {"Base.Jacket_DenimCutoff"},      -- not
-	FullSuit = {"Base.Boilersuit_PoliceFlying"},    -- rename
+	Jacket = {"EHE.Jacket_DenimCutoff"},      -- not
+	FullSuit = {"EHE.Boilersuit_PoliceFlying"},    -- rename
 	FullSuitHead = {},-- any
 	FullTop = {},     -- functions
 	BathRobe = {},    -- or
-	TorsoExtra = {"Base.Vest_BulletPress"},  -- lists
+	TorsoExtra = {"EHE.Vest_BulletPress"},  -- lists
 	Tail = {},        -- in
 	Back = {},        -- this
 	Scarf = {},       -- file
