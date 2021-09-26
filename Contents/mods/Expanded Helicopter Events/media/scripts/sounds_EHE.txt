@@ -2,227 +2,227 @@ module Base {
 
     sound eHelicopter {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/heli_loop.ogg, distanceMax = 1500, volume = 1.0, } }
+        clip { file = media/sound/heli_loop.ogg, distanceMax = 500, volume = 1.0, } }
 
     sound eJetFlight {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/jet_loop.ogg, distanceMax = 2500, volume = 1.0, } }
+        clip { file = media/sound/jet_loop.ogg, distanceMax = 800, volume = 1.0, } }
 
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 1500, volume = 1.0, } }
+        clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, volume = 1.0, } }
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/helicrash.ogg, distanceMax = 2500, volume = 1.0, } }
+        clip { file = media/sound/helicrash.ogg, distanceMax = 800, volume = 1.0, } }
 
     sound eHeli_machine_gun_fire_single {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_fire_single.ogg, distanceMax = 1500, volume = 2.0,} }
+        clip { file = media/sound/heli_fire_single.ogg, distanceMax = 500, volume = 2.0,} }
 
     sound eHeli_machine_gun_fire_looped {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_fire_loop.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_fire_loop.ogg, distanceMax = 500, volume = 2.0, } }
 
     sound eHeli_bolt_action_fire_single {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_stormyRifleFire.ogg, distanceMax = 1500, volume = 1.0,} }
+        clip { file = media/sound/heli_stormyRifleFire.ogg, distanceMax = 500, volume = 1.0,} }
 
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_newscaster.ogg, distanceMax = 250, volume = 0.5, } }
+        clip { file = media/sound/heli_newscaster.ogg, distanceMax = 100, volume = 0.5, } }
 
 
     sound eHeli_fire_impact {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_fire_impact1.ogg, distanceMax = 1500, volume = 1.0, }
-        clip { file = media/sound/heli_fire_impact2.ogg, distanceMax = 1500, volume = 1.0, }
-        clip { file = media/sound/heli_fire_impact3.ogg, distanceMax = 1500, volume = 1.0, } }
+        clip { file = media/sound/heli_fire_impact1.ogg, distanceMax = 500, volume = 1.0, }
+        clip { file = media/sound/heli_fire_impact2.ogg, distanceMax = 500, volume = 1.0, }
+        clip { file = media/sound/heli_fire_impact3.ogg, distanceMax = 500, volume = 1.0, } }
 
 
     sound eHeli_lineM_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_1a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_1b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_1d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_1a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_1b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_1d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_2 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_2b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_2c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_2d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_2b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_2c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_2d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_3a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_3b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_3c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_3d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_3a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_3b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_3c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_3d.ogg, distanceMax = 500, volume = 2.0, } }
 
     sound eHeli_lineM_4 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_4a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_4b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_4c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_4d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_4a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_4b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_4c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_4d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_5 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_5a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_5b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_5c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_5d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_5a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_5b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_5c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_5d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_6 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_6a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_6b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_6c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_6d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_6a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_6b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_6c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_6d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_7 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_7b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_7c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_7d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_7b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_7c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_7d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_8 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_8b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_8c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_8d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_8b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_8c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_8d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_9 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_9a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_9b.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_9c.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_9d.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_9a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_9b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_9c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_9d.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineM_10 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineM_10a.ogg, distanceMax = 1500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_10b.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_10a.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_10b.ogg, distanceMax = 500, volume = 2.0, } }
 
     sound eHeli_police_lines {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/police_1.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_2.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_3.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_4.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_5.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_6.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_7.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_8.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_9.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_10.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_11.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_12.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_13.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_14.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_15.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_16.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_17.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_18.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_19.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_20.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_21.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_22.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_23.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_24.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_25.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_26.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_27.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_28.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_29.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_30.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_31.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_32.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_33.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_34.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_35.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_36.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_37.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_38.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_39.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_40.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_41.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/police_42.ogg, distanceMax = 1500, volume = 3.0, } }
+        clip { file = media/sound/police_1.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_2.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_3.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_4.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_5.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_6.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_7.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_8.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_9.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_10.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_11.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_12.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_13.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_14.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_15.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_16.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_17.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_18.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_19.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_20.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_21.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_22.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_23.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_24.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_25.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_26.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_27.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_28.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_29.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_30.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_31.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_32.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_33.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_34.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_35.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_36.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_37.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_38.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_39.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_40.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_41.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/police_42.ogg, distanceMax = 500, volume = 3.0, } }
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_1.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_1.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_2 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_2.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_2.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_3.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_3.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_4 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_4.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_4.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_5 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_5.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_5.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_6 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_6.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_6.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_7 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_7.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_7.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_8 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_8.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_8.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_9 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_9.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_9.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_lineF_10 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/heli_lineF_10.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineF_10.ogg, distanceMax = 500, volume = 2.0, } }
 
 
     sound eHeli_Jade_1a {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_1a.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_1a.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_Jade_1b {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_1b.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_1b.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_Jade_1c {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_1c.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_1c.ogg, distanceMax = 500, volume = 2.0, } }
 
 
     sound eHeli_Jade_2a {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_2a.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_2a.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_Jade_2b {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_2b.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_2b.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_Jade_2c {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_2c.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_2c.ogg, distanceMax = 500, volume = 2.0, } }
 
 
     sound eHeli_Jade_3a {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_3a.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_3a.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_Jade_3b {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_3b.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_3b.ogg, distanceMax = 500, volume = 2.0, } }
     sound eHeli_Jade_3c {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/Jade_3c.ogg, distanceMax = 1500, volume = 2.0, } }
+        clip { file = media/sound/Jade_3c.ogg, distanceMax = 500, volume = 2.0, } }
 
 
     sound eHeli_AidDrop_1and3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
         /*standby for drop*/
-        clip { file = media/sound/Drop1A.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/Drop1B.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/Drop1C.ogg, distanceMax = 1500, volume = 3.0, }
+        clip { file = media/sound/Drop1A.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/Drop1B.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/Drop1C.ogg, distanceMax = 500, volume = 3.0, }
         /*keep clear emergency drop inbound*/
-        clip { file = media/sound/Drop3A.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/Drop3B.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/Drop3C.ogg, distanceMax = 1500, volume = 3.0, } }
+        clip { file = media/sound/Drop3A.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/Drop3B.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/Drop3C.ogg, distanceMax = 500, volume = 3.0, } }
 
 
     sound eHeli_AidDrop_2 {
         category = EHE: Voice Lines, loop = false, is3D = true,
         /*attention survivors, emergency supplies are being delivered*/
-        clip { file = media/sound/Drop2A.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/Drop2B.ogg, distanceMax = 1500, volume = 3.0, }
-        clip { file = media/sound/Drop2C.ogg, distanceMax = 1500, volume = 3.0, } }
+        clip { file = media/sound/Drop2A.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/Drop2B.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/Drop2C.ogg, distanceMax = 500, volume = 3.0, } }
 
  }
