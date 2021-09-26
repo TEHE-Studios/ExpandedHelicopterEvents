@@ -7,15 +7,19 @@ function eHeliEventsinit()
 	eHeliEvents_init = eHeliEvents_init or {}
 
 	local startDay = 0
+	local cutOffDay = 30
 	if oldGameVersion then
 		startDay = eHelicopterSandbox.config.startDay
+		cutOffDay = eHelicopterSandbox.config.cutOffDay
 	else
 		startDay = SandboxVars.ExpandedHeli.StartDay
+		cutOffDay = SandboxVars.ExpandedHeli.CutOffDay
 	end
 
 	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
 	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,8), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
+	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
 
@@ -166,3 +170,13 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 		},
 	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
 	}
+
+
+eHelicopter_PRESETS["aid_survivor"] = {
+	crashType = false,
+	crew = {"EHECivilianPilot",},
+	dropPackages = {"FEMASupplyDrop"},
+	speed = 0.06,
+	eventSoundEffects = {["flightSound"] = "ePropPlane"},
+	cutOffFactor = 3,
+}

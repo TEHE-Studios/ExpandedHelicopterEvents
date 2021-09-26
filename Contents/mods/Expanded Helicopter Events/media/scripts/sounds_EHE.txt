@@ -8,6 +8,10 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/jet_loop.ogg, distanceMax = 800, volume = 1.0, } }
 
+    sound ePropPlane {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/propplane.ogg, distanceMax = 800, volume = 1.0, } }
+
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, volume = 1.0, } }
