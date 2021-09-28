@@ -1,0 +1,94 @@
+module EHE
+{
+
+    recipe Open Supplies
+    {
+       EmergencyFoodSupplyBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:NoticeFlyer=1,
+       OnCreate:EHE_OpenBox.FOOD,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+	recipe Open Supplies
+    {
+       EmergencyMedicalSupplyBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:PreventionFlyer=1,
+       OnCreate:EHE_OpenBox.MEDICAL,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+	recipe Open Supplies
+    {
+       EmergencySurvivalSupplyBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:EmergencyFlyer=1,
+       OnCreate:EHE_OpenBox.SURVIVAL,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       BanditStashBox=1,
+       keep [EHE_OpenBox.CanOpenBoxes],
+       Result:EmergencyFlyer=1,
+       OnCreate:EHE_OpenBox.STASHBOX,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+
+
+    recipe Open Supplies
+    {
+       EmergencyFoodSupplyBox=1,
+       Result:NoticeFlyer=1,
+       OnCreate:EHE_OpenBox.FOOD,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       EmergencyMedicalSupplyBox=1,
+       Result:PreventionFlyer=1,
+       OnCreate:EHE_OpenBox.MEDICAL,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       EmergencySurvivalSupplyBox=1,
+       Result:EmergencyFlyer=1,
+       OnCreate:EHE_OpenBox.SURVIVAL,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+    recipe Open Supplies
+    {
+       BanditStashBox=1,
+       Result:EmergencyFlyer=1,
+       OnCreate:EHE_OpenBox.STASHBOX,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+      recipe Cut up Parachute
+    {
+       Parachute=1,
+       Result:RippedSheets=60,
+       Tooltip:Would be faster to cut up with something sharp.,
+       AnimNode:RipSheets,
+       Time:550.0,
+       Sound:ClothesRipping,
+    }
+}
