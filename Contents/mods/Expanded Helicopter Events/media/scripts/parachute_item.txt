@@ -1,10 +1,10 @@
-module Base
+module EHE
 {
 	item Parachute
 	{
 		Weight = 15,
-		Type = Moveable,
-		WorldObjectSprite = shark_parachute_tk_01_1,
+		Type = Normal,
+		WorldStaticModel = Parachute,
 		DisplayName = Dropped Parachute,
 		Icon = Parachute,
 	}

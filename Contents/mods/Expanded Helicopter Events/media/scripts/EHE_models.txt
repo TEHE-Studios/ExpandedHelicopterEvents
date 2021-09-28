@@ -55,4 +55,11 @@ module Base
 		texture = WorldItems/EnergyBar,
 		scale = 1.0,
 	}
+
+		model Parachute
+	{
+		mesh = WorldItems/Parachute,
+		texture = WorldItems/Parachute,
+		scale = 1.0,
+	}
 }
