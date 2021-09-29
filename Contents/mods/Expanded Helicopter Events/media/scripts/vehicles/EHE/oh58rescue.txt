@@ -29,6 +29,7 @@ module Base
 		}
 
 		textureMask = Vehicle_OH58_mask,
+		textureShadow = vehicleShadowHelicopter,
 		extents = 0.7524 0.9582 3.4534,
 		mass = 200,
 		physicsChassisShape = 0.7524 0.9646 3.4469,
