@@ -28,7 +28,7 @@ module Base
 			texture = Vehicles/EHE/Vehicle_Bell206Police,
 		}
 
-		textureMask = Vehicle_Bell206Police_mask,
+		textureMask = Vehicle_Bell20_mask,
 		textureShadow = vehicleShadowHelicopter,
 		extents = 0.7524 2.0257 3.4534,
 		mass = 200,
