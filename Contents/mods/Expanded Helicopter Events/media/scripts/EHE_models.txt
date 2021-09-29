@@ -62,4 +62,25 @@ module Base
 		texture = WorldItems/Parachute,
 		scale = 1.0,
 	}
+
+		model Bell206Fuselage
+	{
+		mesh = WorldItems/Bell206Fuselage,
+		texture = WorldItems/Bell206Police,
+		scale = 1.0,
+	}
+
+		model Bell206MainRotor
+	{
+		mesh = WorldItems/Bell206MainRotor,
+		texture = WorldItems/Bell206Police,
+		scale = 1.0,
+	}
+
+		model Bell206TailRotor
+	{
+		mesh = WorldItems/Bell206TailRotor,
+		texture = WorldItems/Bell206Police,
+		scale = 1.0,
+	}
 }

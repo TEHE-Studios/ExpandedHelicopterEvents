@@ -1,0 +1,30 @@
+module EHE
+{
+
+	   item Bell206Fuselage
+	{
+		Weight = 1,
+		Type = Normal,
+		DisplayName	= Bell 206 Fuselage,
+		Icon = Heli,
+		WorldStaticModel = Bell206Fuselage,
+	}
+
+		item Bell206MainRotor
+	{
+		Weight = 1,
+		Type = Normal,
+		DisplayName	= Bell 206 Main Rotor,
+		Icon = Heli,
+		WorldStaticModel = Bell206MainRotor,
+	}
+
+		item Bell206TailRotor
+	{
+		Weight = 1,
+		Type = Normal,
+		DisplayName	= Bell 206 Tail Rotor,
+		Icon = Heli,
+		WorldStaticModel = Bell206TailRotor,
+	}
+}
