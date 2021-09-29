@@ -29,6 +29,7 @@ module Base
 		}
 
 		textureMask = Vehicle_UH1H_mask,
+		textureShadow = vehicleShadowHelicopterFuselage,
 		extents = 1.3077 2.0220 3.1868,
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 3.1648,
