@@ -27,4 +27,34 @@ module EHE
 		Icon = Heli,
 		WorldStaticModel = Bell206TailRotor,
 	}
+<<<<<<< Updated upstream
+=======
+
+	   item UH1HFuselage
+	{
+		Weight = 1,
+		Type = Normal,
+		DisplayName	= UH-1H Fuselage,
+		Icon = Heli,
+		WorldStaticModel = UH1HFuselage,
+	}
+
+		item UH1HMainRotor
+	{
+		Weight = 1,
+		Type = Normal,
+		DisplayName	= UH-1H MainRotor,
+		Icon = Heli,
+		WorldStaticModel = UH1HMainRotor,
+	}
+
+		item UH1HTailRotor
+	{
+		Weight = 1,
+		Type = Normal,
+		DisplayName	= UH-1H Tail Rotor,
+		Icon = Heli,
+		WorldStaticModel = UH1HTailRotor,
+	}
+>>>>>>> Stashed changes
 }

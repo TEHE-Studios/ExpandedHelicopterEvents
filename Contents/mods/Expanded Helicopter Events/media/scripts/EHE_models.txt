@@ -83,4 +83,28 @@ module Base
 		texture = WorldItems/Bell206Police,
 		scale = 1.0,
 	}
+<<<<<<< Updated upstream
+=======
+
+		model UH1HFuselage
+	{
+		mesh = WorldItems/UH1HFuselage,
+		texture = WorldItems/UH1H,
+		scale = 1.0,
+	}
+
+		model UH1HMainRotor
+	{
+		mesh = WorldItems/UH1HMainRotor,
+		texture = WorldItems/UH1H,
+		scale = 1.0,
+	}
+
+		model UH1HTailRotor
+	{
+		mesh = WorldItems/UH1HTailRotor,
+		texture = WorldItems/UH1H,
+		scale = 1.0,
+	}
+>>>>>>> Stashed changes
 }
