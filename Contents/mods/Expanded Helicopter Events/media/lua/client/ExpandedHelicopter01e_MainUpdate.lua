@@ -10,6 +10,7 @@ function eHelicopter:update()
 		end
 
 		self.trueTarget = self:findTarget(self.attackDistance)
+		self.target = self.trueTarget
 		return
 	end
 
