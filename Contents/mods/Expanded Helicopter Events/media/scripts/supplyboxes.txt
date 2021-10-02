@@ -6,6 +6,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
+		SurvivalGear = TRUE,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -14,6 +15,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
+		SurvivalGear = TRUE,
 		WorldStaticModel = SupplyBox,
 	}
 
