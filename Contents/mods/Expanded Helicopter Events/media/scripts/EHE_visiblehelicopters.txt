@@ -5,58 +5,75 @@ module EHE_visibleHelis
 		Base
 	}
 
-	   item Bell206Fuselage
-	{
-		Weight = 1,
-		Type = Normal,
-		DisplayName	= Bell 206 Fuselage,
-		Icon = Heli,
-		WorldStaticModel = Bell206Fuselage,
-	}
 
 		item Bell206MainRotor
 	{
 		Weight = 1,
-		Type = Normal,
+		Type = WeaponPart,
+		PartType = Stock,
+		MountOn = Bell206Fuselage,
 		DisplayName	= Bell 206 Main Rotor,
-		Icon = Heli,
+		Icon = Bell206MainRotor,
 		WorldStaticModel = Bell206MainRotor,
 	}
 
 		item Bell206TailRotor
 	{
 		Weight = 1,
-		Type = Normal,
+		Type = WeaponPart,
+		PartType = Scope,
+		MountOn = Bell206Fuselage,
 		DisplayName	= Bell 206 Tail Rotor,
-		Icon = Heli,
+		Icon = Bell206TailRotor,
 		WorldStaticModel = Bell206TailRotor,
 	}
 
-	   item UH1HFuselage
+	   item Bell206Fuselage
 	{
 		Weight = 1,
-		Type = Normal,
-		DisplayName	= UH-1H Fuselage,
-		Icon = Heli,
-		WorldStaticModel = UH1HFuselage,
+		Type = Weapon,
+		DisplayName	= Bell 206 Fuselage,
+		Icon = Bell206Fuselage,
+		WorldStaticModel = Bell206Fuselage,
+		WeaponSprite = Bell206Fuselage,
+		ModelWeaponPart = Bell206MainRotor Bell206MainRotor stock stock,
+        ModelWeaponPart = Bell206TailRotor Bell206TailRotor scope scope,
 	}
+
 
 		item UH1HMainRotor
 	{
 		Weight = 1,
-		Type = Normal,
+		Type = WeaponPart,
+		PartType = Stock,
+		MountOn = UH1HFuselage,
 		DisplayName	= UH-1H MainRotor,
-		Icon = Heli,
+		Icon = UH1HMainRotor,
 		WorldStaticModel = UH1HMainRotor,
 	}
 
 		item UH1HTailRotor
 	{
 		Weight = 1,
-		Type = Normal,
+		Type = WeaponPart,
+		PartType = Scope,
+		MountOn = UH1HFuselage,
 		DisplayName	= UH-1H Tail Rotor,
-		Icon = Heli,
+		Icon = UH1HTailRotor,
 		WorldStaticModel = UH1HTailRotor,
 	}
+
+	   item UH1HFuselage
+	{
+		Weight = 1,
+		Type = Weapon,
+		DisplayName	= UH-1H Fuselage,
+		Icon = UH1HFuselage,
+		WorldStaticModel = UH1HFuselage,
+		WeaponSprite = UH1HFuselage,
+		ModelWeaponPart = UH1HMainRotor UH1HMainRotor stock stock,
+		ModelWeaponPart = UH1HTailRotor UH1HTailRotor scope scope,
+	}
+
 
 }

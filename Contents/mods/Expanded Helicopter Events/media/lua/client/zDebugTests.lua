@@ -12,7 +12,18 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile")
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful")
 		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police_heli")
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("aid_survivor")
+		elseif key == Keyboard.KEY_0 then --DEBUG_TESTS.launchHeliTest("aid_survivor")
+
+			---@type IsoPlayer | IsoGameCharacter | IsoMovingObject | IsoObject
+			local p = getSpecificPlayer(0)
+			local sq = p:getSquare()
+			local i = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206Fuselage", 0, 0, 0)
+
+			--local i2 = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206MainRotor", 0, 0, 0)
+			--local i3 = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206TailRotor", 0, 0, 0)
+			--i:setScope(i2)
+			--i:setStock(i3)
+
 		end
 	end
 end)
