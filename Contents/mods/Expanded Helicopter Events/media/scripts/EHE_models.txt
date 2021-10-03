@@ -63,6 +63,10 @@ module Base
 		scale = 1.0,
 	}
 
+
+
+    /*VISIBLE HELICOPTERS*/
+
 		model Bell206Fuselage
 	{
 		mesh = WorldItems/Bell206Fuselage,
@@ -83,8 +87,6 @@ module Base
 		texture = WorldItems/Bell206Police,
 		scale = 1.0,
 	}
-<<<<<<< Updated upstream
-=======
 
 		model UH1HFuselage
 	{
@@ -106,5 +108,4 @@ module Base
 		texture = WorldItems/UH1H,
 		scale = 1.0,
 	}
->>>>>>> Stashed changes
 }
