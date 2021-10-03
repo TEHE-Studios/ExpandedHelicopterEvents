@@ -1,5 +1,9 @@
-module EHE
+module EHE_visibleHelis
 {
+	imports
+	{
+		Base
+	}
 
 	   item Bell206Fuselage
 	{
@@ -27,8 +31,6 @@ module EHE
 		Icon = Heli,
 		WorldStaticModel = Bell206TailRotor,
 	}
-<<<<<<< Updated upstream
-=======
 
 	   item UH1HFuselage
 	{
@@ -56,5 +58,5 @@ module EHE
 		Icon = Heli,
 		WorldStaticModel = UH1HTailRotor,
 	}
->>>>>>> Stashed changes
+
 }
