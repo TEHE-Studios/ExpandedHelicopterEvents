@@ -72,13 +72,13 @@ module Base
 		mesh = WorldItems/Bell206Fuselage,
 		texture = WorldItems/Bell206Police,
 		scale = 1.0,
-       	attachment muzzle{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope2{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment recoilpad{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment reddot{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment laser{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment world{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment muzzle {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment scope {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment scope2 {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment recoilpad {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment reddot {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment laser {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
 		model Bell206MainRotor
@@ -86,7 +86,7 @@ module Base
 		mesh = WorldItems/Bell206MainRotor,
 		texture = WorldItems/Bell206Police,
 		scale = 1.0,
-		attachment world{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+		attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
 		model Bell206TailRotor
@@ -94,7 +94,7 @@ module Base
 		mesh = WorldItems/Bell206TailRotor,
 		texture = WorldItems/Bell206Police,
 		scale = 1.0,
-		attachment world{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+		attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
 		model UH1HFuselage
@@ -102,13 +102,13 @@ module Base
 		mesh = WorldItems/UH1HFuselage,
 		texture = WorldItems/UH1H,
 		scale = 1.0,
-       	attachment muzzle{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope2{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment recoilpad{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment reddot{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment laser{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-       	attachment world{offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment muzzle {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment scope {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment scope2 {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment recoilpad {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment reddot {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment laser {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+        attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
 		model UH1HMainRotor
