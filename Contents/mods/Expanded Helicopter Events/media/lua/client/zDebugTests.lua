@@ -17,12 +17,15 @@ Events.OnKeyPressed.Add(function(key)
 			---@type IsoPlayer | IsoGameCharacter | IsoMovingObject | IsoObject
 			local p = getSpecificPlayer(0)
 			local sq = p:getSquare()
+			---@type InventoryItem
 			local i = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206Fuselage", 0, 0, 0)
+			local i2 = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206MainRotor", 0, 0, 0)
+			local i3 = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206TailRotor", 0, 0, 0)
 
-			--local i2 = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206MainRotor", 0, 0, 0)
-			--local i3 = sq:AddWorldInventoryItem("EHE_visibleHelis.Bell206TailRotor", 0, 0, 0)
-			--i:setScope(i2)
-			--i:setStock(i3)
+			local zRot = ZombRand(0,360)
+			i:setWorldZRotation(zRot)
+			i:setWorldZRotation(zRot)
+			i:setWorldZRotation(zRot)
 
 		end
 	end
