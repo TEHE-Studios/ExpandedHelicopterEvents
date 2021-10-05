@@ -159,6 +159,7 @@ eHelicopter_PRESETS["police_heli"] = {
 
 eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
+	hoverOnTargetDuration = 500,
 	crew = {"EHEMilitaryPilot", "EHESoldier", 100, "EHESoldier", 100},
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.NoticeFlyer"]=250},
