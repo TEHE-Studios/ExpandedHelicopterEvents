@@ -76,7 +76,7 @@ eHelicopter.frequencyFactor = 1
 eHelicopter.cutOffFactor = 1
 
 ---@field speed number
-eHelicopter.speed = 0.08
+eHelicopter.speed = 0.13
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
