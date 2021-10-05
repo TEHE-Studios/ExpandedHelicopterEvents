@@ -226,6 +226,8 @@ end
 
 
 ---Heli drop carePackage
+---@param fuzz number
+---@return BaseVehicle package
 function eHelicopter:dropCarePackage(fuzz)
 	fuzz = fuzz or 0
 
