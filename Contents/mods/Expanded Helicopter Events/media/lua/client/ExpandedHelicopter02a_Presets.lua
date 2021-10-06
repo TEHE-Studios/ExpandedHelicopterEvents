@@ -83,7 +83,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 	hoverOnTargetDuration = {1500,2250},
 	eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
 	frequencyFactor = 2,
-	speed = 0.06,
+	speed = 0.08,
 	crashType = {"Bell206LBMWFuselage"},
 	scrapAndParts = {["vehicleSection"]="Bell206LBMWTail"},
 	crew = {"EHECivilianPilot", "EHENewsReporterArmored", "EHENewsReporterArmored", 40},
@@ -140,7 +140,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 eHelicopter_PRESETS["police_heli"] = {
 	attackDelay = 1100,
 	attackSpread = 4,
-	speed = 0.06,
+	speed = 0.10,
 	attackHitChance = 100,
 	attackDamage = 35,
 	crashType = {"Bell206PoliceFuselage"},
@@ -159,10 +159,11 @@ eHelicopter_PRESETS["police_heli"] = {
 
 eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
+	hoverOnTargetDuration = 500,
 	crew = {"EHEMilitaryPilot", "EHESoldier", 100, "EHESoldier", 100},
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.NoticeFlyer"]=250},
-	speed = 0.06,
+	speed = 0.11,
 	scrapAndParts = {["vehicleSection"]="UH1HMedevacTail"},
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_AidDrop_2",
@@ -176,7 +177,7 @@ eHelicopter_PRESETS["aid_survivor"] = {
 	crashType = false,
 	crew = {"EHECivilianPilot",},
 	dropPackages = {"FEMASupplyDrop"},
-	speed = 0.06,
+	speed = 0.08,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	cutOffFactor = 3,
 }

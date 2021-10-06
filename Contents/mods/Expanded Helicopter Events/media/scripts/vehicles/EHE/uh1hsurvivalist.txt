@@ -29,7 +29,7 @@ module Base
 		}
 
 		textureMask = Vehicle_UH1H_mask,
-		textureShadow = vehicleShadowHelicopter,
+		textureShadow = highlights/vehicleShadowHelicopter,
 		extents = 1.3077 2.0220 5.8791,
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 5.8791,

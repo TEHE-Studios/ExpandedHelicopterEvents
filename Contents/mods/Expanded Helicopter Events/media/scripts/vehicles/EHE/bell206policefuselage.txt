@@ -29,7 +29,7 @@ module Base
 		}
 
 		textureMask = Vehicle_Bell206Police_mask,
-		textureShadow = vehicleShadowHelicopterFuselage,
+		textureShadow = highlights/vehicleShadowHelicopterFuselage,
 		extents = 0.7524 2.0257 1.8071,
 		mass = 200,
 		physicsChassisShape = 0.7524 0.9646 1.8071,
