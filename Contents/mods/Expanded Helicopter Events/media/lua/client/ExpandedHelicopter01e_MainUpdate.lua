@@ -185,7 +185,10 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		local drop = self:dropCarePackage()
 		if drop then
-			self.trueTarget = drop
+			local dropSquare = drop:getSquare()
+			if dropSquare then
+				self.trueTarget = dropSquare
+			end
 		end
 	end
 
