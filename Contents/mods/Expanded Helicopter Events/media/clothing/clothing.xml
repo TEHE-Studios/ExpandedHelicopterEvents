@@ -53,7 +53,7 @@
 	</m_FemaleOutfits>
 
 	<m_MaleOutfits>
-		<m_Name>1MilitaryPilot</m_Name>
+		<m_Name>EHEMilitaryPilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
@@ -81,7 +81,7 @@
 		</m_items>	
 	</m_MaleOutfits>
 
-		<m_FemaleOutfits>
+	<m_FemaleOutfits>
 		<m_Name>EHEMilitaryPilot</m_Name>
 		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
@@ -349,7 +349,7 @@
 		</m_items>	
 	</m_MaleOutfits>
 
-		<m_FemaleOutfits>
+	<m_FemaleOutfits>
 		<m_Name>EHEPoliceOfficer</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
@@ -465,7 +465,7 @@
 		</m_items>	
 	</m_MaleOutfits>
 
-		<m_MaleOutfits>
+	<m_MaleOutfits>
 		<m_Name>EHESoldier</m_Name>
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
@@ -553,18 +553,14 @@
 		</m_items>	
 	</m_FemaleOutfits>
 
-		<m_MaleOutfits>
-		<m_Name>EHEGeneral</m_Name>
-		<m_Guid>fda0f648-befc-4dd4-adf3-0e0ed87034fd</m_Guid>
+	<m_MaleOutfits>
+		<m_Name>EHESamaritanPilot</m_Name>
+		<m_Guid>e0de1f47-ea6c-46cd-ade6-96bf6f7bc216</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
-		<m_items> <!-- Peaked Hat-->
-		<probability>0.5</probability>
-			<itemGUID>a15cb525-06cf-4fe4-bde9-719fbd7ab549</itemGUID>
-		</m_items>
-		<m_items> <!-- Army Beret-->
-			<itemGUID>88fa54ef-801d-45f0-87c7-57e9fdf1ad13</itemGUID>
+		<m_items> <!-- Civilian Helicopter Helmet -->
+			<itemGUID>e06b8111-1f8a-486e-b269-7bcd9541b35b</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -572,31 +568,18 @@
 		<m_items> <!-- Army Boots -->
 			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
 		</m_items>
-		<m_items> <!-- Formal Shirt -->
-			<itemGUID>ac7976de-2c73-44ea-9392-5d24ac1fb649</itemGUID>
+		<m_items> <!-- Lumberjack Shirt -->
+			<itemGUID>88b27ecc-8a00-4d1a-882e-1ab4f4a46350</itemGUID>
 		</m_items>
-		<m_items> <!-- Army Service Pants -->
-			<itemGUID>decb1435-3232-4cb7-be7f-3daf4556c759</itemGUID>
+		<m_items> <!-- Hunting Vest -->
+			<itemGUID>2f44ec3e-5711-492e-ba8f-e75cca3a4dc6</itemGUID>
 		</m_items>
-		<m_items> <!-- Army Service Jacket -->
-			<itemGUID>b3c4c9cf-4eac-4b4b-b13d-30efd77b3626</itemGUID>
-		</m_items>
-		<m_items> <!-- Tie -->
-			<itemGUID>d53c3cb1-4c67-4627-b9d9-0da2cc024980</itemGUID>
-		</m_items>
-			<m_items> <!-- Dog-Tags -->
-			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
-		</m_items>
-		<m_items> <!-- Military Watch (Right) -->
-		<probability>0.5</probability>
-			<itemGUID>807fade7-aa54-432d-b038-4bf584c79723</itemGUID>
+		<m_items> <!-- Jeans -->
+			<itemGUID>8973893f-f324-4cdb-a32b-43cd0378174f</itemGUID>
 		</m_items>
 		<m_items> <!-- Holster -->
 			<itemGUID>88f11c9e-e717-446c-82ec-f749320df25a</itemGUID>
 		</m_items>	
 	</m_MaleOutfits>
-
-
-
+	
 </outfitManager>
-
