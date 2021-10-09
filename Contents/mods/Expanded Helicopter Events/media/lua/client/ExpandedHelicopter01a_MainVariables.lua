@@ -78,6 +78,9 @@ eHelicopter.frequencyFactor = 1
 ---@field cutOffFactor number This is multiplied against eHelicopterSandbox.config.cutOffDay
 eHelicopter.cutOffFactor = 1
 
+---@field flightHours table
+eHelicopter.flightHours = {5, 22}
+
 ---@field speed number
 eHelicopter.speed = 0.13
 
