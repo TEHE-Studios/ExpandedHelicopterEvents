@@ -15,6 +15,22 @@ module EHE
         FabricType = Cotton,
         WorldStaticModel = BoilerSuit_Ground,
     }
+
+    	item Boilersuit_BlackFlying
+    {
+        Type = Clothing,
+        DisplayName = Black Flying Suit,
+        ClothingItem = Suit_BlackFlying,
+        BodyLocation = FullSuit,
+        Icon = BlackFlying,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 10,
+        Insulation = 0.75,
+        WindResistance = 0.55,
+        FabricType = Cotton,
+        WorldStaticModel = BoilerSuit_Ground,
+    }
 	   
 	    item Vest_BulletPress
     {

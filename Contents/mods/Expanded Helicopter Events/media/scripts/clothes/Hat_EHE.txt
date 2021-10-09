@@ -77,6 +77,44 @@ module EHE
         Weight = 1.5,
     }
 
+	    item Hat_SPHBlack
+	{
+		Type = Clothing,
+		DisplayName = Black Helicopter Helmet,
+		ClothingItem = Hat_SPHBlack,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetBlack,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHBlackVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
+		item Hat_SPHBlackVISORUP
+	{
+		Type = Clothing,
+		DisplayName = Black Helicopter Helmet (Up),
+		ClothingItem = Hat_SPHBlackVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetBlack,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = Hat_SPHBlack,
+        ClothingItemExtraOption = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+    }
+
 		item Hat_SPHCivilian
 	{
 		Type = Clothing,
