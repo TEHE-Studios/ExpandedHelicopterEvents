@@ -72,6 +72,12 @@
 	</files>
 
 	<files>
+	<path>media/clothing/clothingItems/Vest_PilotSurvivalVest.xml</path>
+	<guid>51f662ec-b2b2-48a1-9971-4566c40fc0f4</guid>
+	</files>
+
+
+	<files>
         <path>media/clothing/clothingItems/AmmoStrap_Bullets.xml</path>
         <guid>15514b21-1567-4a0b-a171-9740ee9b7b3a</guid>
     </files>

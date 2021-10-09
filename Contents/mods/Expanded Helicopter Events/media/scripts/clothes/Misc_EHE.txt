@@ -47,4 +47,20 @@ module EHE
         BulletDefense = 100,
 		WorldStaticModel = BulletVest_Ground,
     }
+
+    	item Vest_PilotSurvivalVest
+    {
+        Type = Clothing,
+        DisplayName = Pilot Survival Vest,
+        ClothingItem = Vest_PilotSurvivalVest,
+        BodyLocation = AmmoStrap,
+        Icon = PressVest,
+        BloodLocation = ShirtNoSleeves,
+        Insulation = 0.65,
+        WindResistance = 0.30,
+        BiteDefense = 30,
+        ScratchDefense = 55,
+        BulletDefense = 100,
+		WorldStaticModel = BulletVest_Ground,
+    }
 }
