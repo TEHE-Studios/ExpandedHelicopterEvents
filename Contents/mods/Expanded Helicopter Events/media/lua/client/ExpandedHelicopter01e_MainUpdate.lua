@@ -215,7 +215,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	--shadowBob
 	if self.shadow and (self.shadow ~= true) and (self.timeSinceLastShadowBob < timeStampMS) then
 		self.timeSinceLastShadowBob = timeStampMS+10
-		local shadowExpansion = 3.5
+		local shadowExpansion = 5
 		local shadowSize = self.shadow:getSize()-shadowExpansion
 		shadowSize = shadowSize+self.shadowBobRate
 		if shadowSize >= 1.05 then
