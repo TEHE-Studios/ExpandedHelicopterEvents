@@ -155,7 +155,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		if not lastHeliEvent then
 			heliDay = nightsSurvived+ZombRand(0,3)
 		else
-			heliDay = math.min(lastHeliEvent.startDay, nightsSurvived)
+			heliDay = math.max(lastHeliEvent.startDay, nightsSurvived)
 
 			--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
 
