@@ -131,6 +131,10 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
 	local COF = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
 
+	local flightHours = presetSettings.flightHours or eHelicopter.flightHours
+	local minStartTime = flightHours[1]
+	local maxStartTime = flightHours[2]
+
 	local cutOffDay
 	local freq
 
@@ -192,9 +196,6 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 
 	if not heliStart then
 		local HOUR = getGameTime():getHour()
-
-		local minStartTime = presetSettings.flightHours[1] or eHelicopter.flightHours[1]
-		local maxStartTime = presetSettings.flightHours[2] or eHelicopter.flightHours[2]
 
 		--if no hoursToShift left over from daysToShift use random amount
 		if not hoursToShift then
