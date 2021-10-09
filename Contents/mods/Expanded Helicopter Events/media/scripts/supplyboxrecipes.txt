@@ -1,6 +1,11 @@
 module EHE
 {
 
+	imports
+	{
+		Base
+	}
+
     recipe Open Supplies
     {
        EmergencyFoodSupplyBox=1,
@@ -80,5 +85,14 @@ module EHE
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
+    }
+
+    recipe Cut up Parachute
+    {
+       Parachute=1,
+       Result:RippedSheets=60,
+       AnimNode:RipSheets,
+       Time:550.0,
+       Sound:ClothesRipping,
     }
 }
