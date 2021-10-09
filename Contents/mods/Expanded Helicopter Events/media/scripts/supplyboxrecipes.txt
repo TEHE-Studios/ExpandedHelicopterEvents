@@ -89,7 +89,7 @@ module EHE
 
     recipe Cut up Parachute
     {
-       Parachute=1,
+       EHE_Parachute=1,
        Result:RippedSheets=60,
        AnimNode:RipSheets,
        Time:550.0,

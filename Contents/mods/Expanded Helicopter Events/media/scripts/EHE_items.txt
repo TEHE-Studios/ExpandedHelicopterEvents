@@ -5,6 +5,17 @@ module EHE
 		Base
 	}
 
+
+	    item EHE_Parachute
+	{
+		Weight = 15,
+		Type = Normal,
+		WorldStaticModel = Parachute,
+		DisplayName = Dropped Parachute,
+		Icon = Parachute,
+	}
+
+
 	   item PlentyTee
 	{
 		HungerChange	= -60,
