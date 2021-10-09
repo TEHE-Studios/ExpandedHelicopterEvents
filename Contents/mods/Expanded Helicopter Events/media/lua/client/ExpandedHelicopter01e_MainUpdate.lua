@@ -184,7 +184,9 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		local drop = self:dropCarePackage()
-		self.trueTarget = drop
+		if drop then
+			self.trueTarget = drop
+		end
 	end
 
 	--drop items
