@@ -32,8 +32,23 @@
 	</files>
 
 	<files>
+	<path>media/clothing/clothingItems/Hat_SPHBlack.xml</path>
+	<guid>47c9769d-8935-4028-8900-54e0b83fc873</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Hat_SPHBlackVISORUP.xml</path>
+	<guid>62d33441-9860-4c36-8aad-d88f4a2993c2</guid>
+	</files>
+
+	<files>
 	<path>media/clothing/clothingItems/Suit_PoliceFlying.xml</path>
 	<guid>5e9a6a86-68ed-4197-99ec-eea5df29b96e</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Suit_BlackFlying.xml</path>
+	<guid>f21654bb-527c-4235-adc8-9b90d734afea</guid>
 	</files>
 
 	<files>
