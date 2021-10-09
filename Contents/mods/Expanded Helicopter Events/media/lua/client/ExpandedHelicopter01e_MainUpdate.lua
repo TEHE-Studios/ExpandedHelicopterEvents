@@ -93,6 +93,17 @@ function eHelicopter:update()
 		thatIsCloseEnough = thatIsCloseEnough*ZombRand(2,4)
 	end
 
+	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
+	self.updateTicksPassed = self.updateTicksPassed+1
+	local maxTicksAllowed = eheBounds.threshold*3
+	if self.hoverOnTargetDuration and self.hoverOnTargetDuration > 0 then
+		maxTicksAllowed = maxTicksAllowed+self.hoverOnTargetDuration
+	end
+	if (self.updateTicksPassed > maxTicksAllowed) and (self.state ~= "goHome") then
+		print(" - EHE: Update Tick Cap Reached: "..self:heliToString())
+		self:goHome()
+	end
+
 	local preventMovement = false
 	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
 		if self.hoverOnTargetDuration then
