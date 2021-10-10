@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <outfitManager>
 <m_MaleOutfits>
 		<m_Name>EHEPolicePilot</m_Name>
@@ -8,6 +8,9 @@
 		<m_AllowTopTint>false</m_AllowTopTint>		
 		<m_items> <!-- Police Helicopter Helmet -->
 			<itemGUID>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</itemGUID>
+		</m_items>
+		<m_items> <!-- Black Pilot Survival Vest -->
+			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -35,6 +38,9 @@
 		<m_items> <!-- Police Helicopter Helmet -->
 			<itemGUID>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</itemGUID>
 		</m_items>
+		<m_items> <!-- Black Pilot Survival Vest -->
+			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
+		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
 		</m_items>	
@@ -61,9 +67,8 @@
 		<m_items> <!-- Military Helicopter Helmet -->
 			<itemGUID>47c9769d-8935-4028-8900-54e0b83fc873</itemGUID>
 		</m_items>
-     	<m_items> <!-- Black Helicopter Helmet -->
-		<probability>0.1</probability>
-			<itemGUID>62d33441-9860-4c36-8aad-d88f4a2993c2</itemGUID>
+		<m_items> <!-- Military Pilot Survival Vest -->
+			<itemGUID>51f662ec-b2b2-48a1-9971-4566c40fc0f4</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -94,12 +99,11 @@
 		<m_items> <!-- Military Helicopter Helmet -->
 			<itemGUID>47c9769d-8935-4028-8900-54e0b83fc873</itemGUID>
 		</m_items>
-		<m_items> <!-- Black Helicopter Helmet -->
-		<probability>0.1</probability>
-			<itemGUID>62d33441-9860-4c36-8aad-d88f4a2993c2</itemGUID>
-		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
+		</m_items>
+		<m_items> <!-- Military Pilot Survival Vest -->
+			<itemGUID>51f662ec-b2b2-48a1-9971-4566c40fc0f4</itemGUID>
 		</m_items>	
 		<m_items> <!-- Army Boots -->
 			<itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
@@ -599,6 +603,9 @@
 		<m_items> <!-- Black Helicopter Helmet -->
 			<itemGUID>62d33441-9860-4c36-8aad-d88f4a2993c2</itemGUID>
 		</m_items>
+		<m_items> <!-- Black Pilot Survival Vest -->
+			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
+		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
 		</m_items>	
@@ -613,7 +620,7 @@
 		</m_items>
 		<m_items> <!-- Dog-Tags -->
 			<itemGUID>88321000-2b08-4537-9c51-4b5eca360c92</itemGUID>
-		</m_items>
+		</m_items>s
 	</m_MaleOutfits>
 
 </outfitManager>

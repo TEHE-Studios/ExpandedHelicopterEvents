@@ -3,7 +3,7 @@ local distributionTable = VehicleDistributions[1]
 
 
 VehicleDistributions.UH1HSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -41,12 +41,15 @@ VehicleDistributions.UH1HSeat = {
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
 	
     }
 }
 
 VehicleDistributions.UH1HSurvivalistSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -86,14 +89,17 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "Hat_SPHSurvivalist", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
-        "Katana", 10,
+        "Katana", 3,
         "EHE.BanditStashBox", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
 	
     }
 }
 
 VehicleDistributions.UH1HMedevacSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -132,12 +138,13 @@ VehicleDistributions.UH1HMedevacSeat = {
         "FirstAidKit", 10,
         "FirstAidKit", 10,
 		"x2Scope", 0.7,
-	
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
     }
 }
 
 VehicleDistributions.Bell206PoliceSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Vest_BulletPolice", 9,
         "556Clip", 3,
@@ -172,11 +179,13 @@ VehicleDistributions.Bell206PoliceSeat = {
         "Hat_SPHPolice", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
+        "EHE.Vest_BlackPilotSurvivalVest", 10,
+        "EHE.Vest_BlackPilotSurvivalVest", 10,
     }
 }
 
 VehicleDistributions.Bell206NewsSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Pistol", 5,
         "Pistol", 5,

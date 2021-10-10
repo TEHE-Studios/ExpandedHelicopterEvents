@@ -62,4 +62,18 @@ module Base
 		texture = WorldItems/Parachute,
 		scale = 1.0,
 	}
+
+		model PilotSurvivalVest_Ground
+	{
+		mesh = WorldItems/PilotSurvivalVest_WorldItem,
+		texture = WorldItems/PilotSurvivalVest,
+		scale = 1.0,
+	}
+		
+		model BlackPilotSurvivalVest_Ground
+	{
+		mesh = WorldItems/PilotSurvivalVest_WorldItem,
+		texture = WorldItems/BlackPilotSurvivalVest,
+		scale = 1.0,
+	}
 }
