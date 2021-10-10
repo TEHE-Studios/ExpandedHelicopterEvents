@@ -151,71 +151,65 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		freq = (SandboxVars.ExpandedHeli["Frequency_"..presetID] or 3)-1
 	end
 
-	local hoursToShift
+	local hoursToShift = 0
 	
 	--[[DEBUG]] local debugOutput = ""
 	
 	if not heliDay then
+
+		--[[DEBUG]] local lastDayDebugText = "None"
 		--use old event's start day for reschedule, otherwise get new day
 		if not lastHeliEvent then
-			heliDay = nightsSurvived+ZombRand(0,3)
+			heliDay = nightsSurvived
 		else
+			--[[DEBUG]] lastDayDebugText = lastHeliEvent.startDay
 			heliDay = math.max(lastHeliEvent.startDay, nightsSurvived)
-
-			--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
-
-			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
-			local dayOffset
-
-			if freq == 0 then
-				dayOffset = {7,14}
-			elseif freq == 1 then
-				dayOffset = {5,10}
-			elseif freq == 2 then
-				dayOffset = {3,6}
-			elseif freq == 3 then
-				dayOffset = {1,2}
-				freqFactor = freqFactor*0.85
-			elseif freq == 4 then
-				freq = 6
-				dayOffset = {0,0}
-				freqFactor = freqFactor*0.25
-			end
-
-			--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
-			local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
-			--as days get closer to the cutoff the time between new events gets longer
-			local lessFreqOverTimeHrs = (((7-freq)*24)*math.min(1,(daysIntoApoc/cutOffDay)))*freqFactor
-			--combine randomizedOffset and lessFreqOverTime
-			hoursToShift = randomizedHoursOffset+lessFreqOverTimeHrs
-			--convert hoursToShift to whole days
-			local daysToShift = math.floor((hoursToShift/24))
-			--remove the day count from hours
-			hoursToShift = math.floor(hoursToShift-(daysToShift*24))
-			--finally shift them
-			heliDay = heliDay+daysToShift
-
-			--[[DEBUG]] debugOutput = debugOutput.."- hrs_shift:"..hoursToShift.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
 		end
+		--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..lastDayDebugText.." freq:"..freq.."\n"
+
+		local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
+		local dayOffset
+
+		if freq == 0 then
+			dayOffset = {7,14}
+		elseif freq == 1 then
+			dayOffset = {5,10}
+		elseif freq == 2 then
+			dayOffset = {3,6}
+		elseif freq == 3 then
+			dayOffset = {1,2}
+			freqFactor = freqFactor*0.85
+		elseif freq == 4 then
+			freq = 6
+			dayOffset = {0,0}
+			freqFactor = freqFactor*0.25
+		end
+
+		--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
+		local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
+		--as days get closer to the cutoff the time between new events gets longer
+		local lessFreqOverTimeHrs = (((7-freq)*24)*math.min(0,(daysIntoApoc/cutOffDay)))*freqFactor
+		--combine randomizedOffset and lessFreqOverTime
+		hoursToShift = randomizedHoursOffset+lessFreqOverTimeHrs
+
+		--[[DEBUG]] local hrsShiftBreakDown = " (rHO:"..randomizedHoursOffset.."  lFOTH:"..lessFreqOverTimeHrs..")"
+
+		--convert hoursToShift to whole days
+		local daysToShift = math.floor((hoursToShift/24))
+		--remove the day count from hours
+		hoursToShift = math.floor(hoursToShift-(daysToShift*24))
+		--finally shift them
+		heliDay = heliDay+daysToShift
+
+
+		--[[DEBUG]] debugOutput = debugOutput.." - hrs_shift:"..hoursToShift..hrsShiftBreakDown.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
 	end
 
 	if not heliStart then
 		local HOUR = getGameTime():getHour()
 
-		--if no hoursToShift left over from daysToShift use random amount
-		if not hoursToShift then
-			hoursToShift = ZombRand(6,12)
-		end
-		
-		heliStart = HOUR+hoursToShift
-		
-		--if heliStart is greater than max time subtract the max
-		--mathmatically the hour will always be passed this way and the leftover will be used the next day
-		if heliStart > maxStartTime then
-			heliStart = heliStart-maxStartTime
-		end
-		
-		--clamp heliStart just in case
+		heliStart = ZombRand(minStartTime,maxStartTime+1)+hoursToShift
+		--clamp heliStart
 		heliStart = math.max(minStartTime, math.min(maxStartTime, heliStart))
 	end
 
