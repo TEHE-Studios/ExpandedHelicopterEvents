@@ -1,9 +1,27 @@
 VERSION = 1,
 
-option ExpandedHeli.Frequency
+option ExpandedHeli.Frequency_jet
 {
-	type = enum, numValues = 5, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_Frequency,
+	type = enum, numValues = 6, default = 4,
+	page = ExpandedHeli, translation = ExpandedHeli_EventJet,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_civilian
+{
+	type = enum, numValues = 6, default = 4,
+	page = ExpandedHeli, translation = ExpandedHeli_EventCivilian,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_military
+{
+	type = enum, numValues = 6, default = 4,
+	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_aid_survivor
+{
+	type = enum, numValues = 6, default = 4,
+	page = ExpandedHeli, translation = ExpandedHeli_EventSurvivor,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 

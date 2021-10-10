@@ -55,6 +55,11 @@ function eHeliEvent_engage(ID)
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget()
+
+	if (not oldGameVersion) and SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
+		willFly = false
+	end
+
 	if willFly and foundTarget then
 		---@type eHelicopter
 		local heli = getFreeHelicopter(eHeliEvent.preset)
@@ -143,7 +148,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		freq = eHelicopterSandbox.config.frequency
 	else
 		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
-		freq = SandboxVars.ExpandedHeli.Frequency-1
+		freq = SandboxVars.ExpandedHeli["Frequency_"..presetID]-1
 	end
 
 	local hoursToShift
