@@ -148,7 +148,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		freq = eHelicopterSandbox.config.frequency
 	else
 		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
-		freq = SandboxVars.ExpandedHeli["Frequency_"..presetID]-1
+		freq = (SandboxVars.ExpandedHeli["Frequency_"..presetID] or 3)-1
 	end
 
 	local hoursToShift
