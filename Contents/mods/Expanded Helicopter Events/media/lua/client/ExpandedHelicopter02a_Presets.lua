@@ -16,10 +16,10 @@ function eHeliEventsinit()
 		cutOffDay = SandboxVars.ExpandedHeli.CutOffDay
 	end
 
-	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
+	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay, ["heliStart"]=12}
 	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,8), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
-	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
+	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
 
