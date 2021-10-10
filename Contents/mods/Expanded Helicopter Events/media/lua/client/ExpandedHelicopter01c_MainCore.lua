@@ -525,7 +525,7 @@ function eHelicopter:formationInit()
 end
 
 
-function eHelicopter:applyCrashChance()
+function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
 	--weatherImpact is a float, 0 to 1
 	local _, weatherImpact = eHeliEvent_weatherImpact()
@@ -542,17 +542,22 @@ function eHelicopter:applyCrashChance()
 		return
 	end
 
-	local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-	local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
-	local dayOfLastCrash = GTMData["DayOfLastCrash"]
-	local expectedMaxDaysWithOutCrash = 28/(apocImpact+1)
-	local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
-	local crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
+	local crashChance = self.addedCrashChance*100
+	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
 
-	print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
-	--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
-	--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-	--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
+	if applyEnvironmentalCrashChance then
+		local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
+		local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
+		local dayOfLastCrash = GTMData["DayOfLastCrash"]
+		local expectedMaxDaysWithOutCrash = 28/(apocImpact+1)
+		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
+		crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
+
+		print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
+		--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
+		--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
+		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
+	end
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
 		--[[DEBUG]] print (" --- crashing set to TRUE.")
@@ -563,7 +568,7 @@ end
 
 
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:launch(targetedObject)
+function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	print(" - EHE: "..self:heliToString().." launched.")
 
@@ -624,7 +629,9 @@ function eHelicopter:launch(targetedObject)
 
 	self.state = "gotoTarget"
 
-	self:applyCrashChance()
+	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
+
+	self:applyCrashChance(applyEnvironmentalCrashChance)
 
 	for heli,_ in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
@@ -634,7 +641,7 @@ function eHelicopter:launch(targetedObject)
 			local randSoundDelay = ZombRand(5,15)
 			followingHeli:playEventSound("flightSound", nil, true, false, randSoundDelay)
 			followingHeli:playEventSound("additionalFlightSound", nil, true, false, randSoundDelay)
-			followingHeli:applyCrashChance()
+			followingHeli:applyCrashChance(applyEnvironmentalCrashChance)
 		end
 	end
 end
