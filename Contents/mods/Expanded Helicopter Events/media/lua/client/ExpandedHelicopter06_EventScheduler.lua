@@ -141,7 +141,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local maxStartTime = flightHours[2]
 
 	local cutOffDay
-	local freq
+	local freq = 3
 
 	if oldGameVersion then
 		cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
@@ -150,7 +150,9 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
 		local tmpFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
 		--[[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
-		freq = (tmpFreq or 3)-1
+		if tmpFreq then
+			freq = tmpFreq-1
+		end
 	end
 
 	local hoursToShift = 0
@@ -170,7 +172,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..lastDayDebugText.." freq:"..freq.."\n"
 
 		local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
-		local dayOffset
+		local dayOffset = {1,2}
 
 		if freq == 0 then
 			dayOffset = {7,14}
