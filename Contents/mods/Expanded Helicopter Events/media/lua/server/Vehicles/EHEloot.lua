@@ -3,7 +3,7 @@ local distributionTable = VehicleDistributions[1]
 
 
 VehicleDistributions.UH1HSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -41,12 +41,18 @@ VehicleDistributions.UH1HSeat = {
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
+        "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
+        "EHE.Hat_SPHBlack", 3,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
 	
     }
 }
 
 VehicleDistributions.UH1HSurvivalistSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -86,14 +92,20 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "Hat_SPHSurvivalist", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
-        "Katana", 10,
-        "EHE.BanditStashBox", 10,
+        "Katana", 3,
+        "BanditStashBox", 10,
+        "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
+        "EHE.Hat_SPHBlack", 3,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
 	
     }
 }
 
 VehicleDistributions.UH1HMedevacSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -132,12 +144,17 @@ VehicleDistributions.UH1HMedevacSeat = {
         "FirstAidKit", 10,
         "FirstAidKit", 10,
 		"x2Scope", 0.7,
-	
+        "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
+        "EHE.Hat_SPHBlack", 3,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
     }
 }
 
 VehicleDistributions.Bell206PoliceSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Vest_BulletPolice", 9,
         "556Clip", 3,
@@ -151,8 +168,6 @@ VehicleDistributions.Bell206PoliceSeat = {
         "Hat_RiotHelmet", 7,
         "Hat_RiotHelmet", 7,
         "Hat_RiotHelmet", 7,
-        "AssaultRifle", 7,
-        "AssaultRifle", 7,
         "Pistol", 5,
         "Pistol", 5,
         "Pistol", 5,
@@ -166,17 +181,23 @@ VehicleDistributions.Bell206PoliceSeat = {
         "Bullets9mm", 3,
 		"HolsterSimple", 3,
         "Radio.WalkieTalkie3", 3,
-        "HuntingKnife", 3,
+        "AssaultRifle2", 10,
+        "AssaultRifle2", 3,
+        "Shotgun", 10,
+        "Shotgun", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
         "Hat_SPHPolice", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
+        "Hat_SPHPolice", 10,
+        "Vest_BlackPilotSurvivalVest", 10,
+        "Vest_BlackPilotSurvivalVest", 10,
     }
 }
 
 VehicleDistributions.Bell206NewsSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Pistol", 5,
         "Pistol", 5,
@@ -194,34 +215,34 @@ VehicleDistributions.Bell206NewsSeat = {
         "Vest_BulletPress", 4,
         "Vest_BulletPress", 4,
         "Vest_BulletPress", 4,
-        "Radio.WalkieTalkie5", 3,
         "FirstAidKit", 5,
-        "Hat_SPHCivilian", 10,
+        "EHE.Hat_SPHCivilian", 10,
+        "EHE.Hat_SPHCivilian", 10,
     }
 }
 
 VehicleDistributions.FEMASupplyDrop = {
     rolls = 50,
     items ={
-        "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
-        "EHE.EmergencyFoodSupplyBox", 2,
+        "EmergencyMedicalSupplyBox", 2,
+        "EmergencySurvivalSupplyBox", 2,
+        "EmergencyFoodSupplyBox", 2,
 
-        "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
-        "EHE.EmergencyFoodSupplyBox", 2,
+        "EmergencyMedicalSupplyBox", 2,
+        "EmergencySurvivalSupplyBox", 2,
+        "EmergencyFoodSupplyBox", 2,
 
-        "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
-        "EHE.EmergencyFoodSupplyBox", 2,
+        "EmergencyMedicalSupplyBox", 2,
+        "EmergencySurvivalSupplyBox", 2,
+        "EmergencyFoodSupplyBox", 2,
 
-        "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
-        "EHE.EmergencyFoodSupplyBox", 2,
+        "EmergencyMedicalSupplyBox", 2,
+        "EmergencySurvivalSupplyBox", 2,
+        "EmergencyFoodSupplyBox", 2,
 
-        "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
-        "EHE.EmergencyFoodSupplyBox", 2,
+        "EmergencyMedicalSupplyBox", 2,
+        "EmergencySurvivalSupplyBox", 2,
+        "EmergencyFoodSupplyBox", 2,
     }
 }
 
