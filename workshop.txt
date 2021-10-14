@@ -18,14 +18,21 @@ description= Raven & Gabby - Sound, Voiceover
 description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
 description=
 description=
-description= [H1]To report bugs/issues*, [i]or[/i] make suggestions, [i]or[/i] provide translations:
-description= Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H1]
+description= [H2]To make suggestions, or provide translations:
+description= Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
 description=
-description= [b]*If you're having an issue or encountering errors:[/b]
-description= First, resubscribe to this mod, any mods that this mod requires, or other dependant mods.
-description= If the problem persists, please supply a error log:
-description= The file can be found in: `C:\Users\<username>\Zomboid\console.txt`
-description= The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
+description=[H1]To report bugs/issues*, [i]or[/i] make suggestions, [i]or[/i] provide translations:
+description=Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H1]
+description=
+description=[h1]If you're having an issue or encountering errors:[/h1]
+description=[h3]First, resubscribe to this mod, and any related mod.[/h3]
+description=(This will force a download of the latest version.)
+description=
+description=[b]If the problem persists, please supply a error log:[/b]
+description=The file can be found in:
+description=[quote]`C:\Users\<username>\Zomboid\console.txt`[/quote]
+description=
+description= The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.description=
 description=
 description= [H3][b]Known Issues:[/b][/H3]
 description= [list]
