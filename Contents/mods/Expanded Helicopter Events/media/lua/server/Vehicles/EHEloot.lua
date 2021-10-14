@@ -94,6 +94,8 @@ VehicleDistributions.UH1HSurvivalistSeat = {
         "AmmoStrap_Bullets", 10,
         "Katana", 1,
         "EHE.BanditStashBox", 10,
+        "EHE.Hat_CavalryHat", 10,
+        "EHE.Hat_CavalryHat", 10,
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHBlack", 3,
         "EHE.Vest_PilotSurvivalVest", 10,
