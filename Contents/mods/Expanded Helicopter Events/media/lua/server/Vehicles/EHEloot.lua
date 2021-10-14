@@ -42,6 +42,7 @@ VehicleDistributions.UH1HSeat = {
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
         "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
         "EHE.Hat_SPHBlack", 3,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
@@ -143,6 +144,7 @@ VehicleDistributions.UH1HMedevacSeat = {
         "FirstAidKit", 10,
 		"x2Scope", 0.7,
         "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
         "EHE.Hat_SPHBlack", 3,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
@@ -188,6 +190,7 @@ VehicleDistributions.Bell206PoliceSeat = {
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
         "EHE.Hat_SPHPolice", 10,
+        "EHE.Hat_SPHPolice", 5,
         "EHE.Vest_BlackPilotSurvivalVest", 10,
         "EHE.Vest_BlackPilotSurvivalVest", 10,
     }
@@ -214,7 +217,8 @@ VehicleDistributions.Bell206NewsSeat = {
         "Vest_BulletPress", 4,
         "Radio.WalkieTalkie5", 3,
         "FirstAidKit", 5,
-        "Hat_SPHCivilian", 10,
+        "EHE.Hat_SPHCivilian", 10,
+        "EHE.Hat_SPHCivilian", 5,
     }
 }
 
