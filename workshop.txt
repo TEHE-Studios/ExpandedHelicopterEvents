@@ -23,8 +23,7 @@ description= Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEve
 description=
 description= [b]*If you're having an issue or encountering errors, please supply a error log:
 description= The file can be found in: `C:\Users\<username>\Zomboid\console.txt`[/b]
-description= The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin
-.com/]pastebin[/url] and share the link in a comment below.
+description= The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
 description=
 description= [H3][b]Known Issues:[/b][/H3]
 description= [list]
@@ -32,10 +31,9 @@ description= [*] [b]For builds prior to 41.51:[/b] This mod disables vanilla hel
 description= Just to be safe, it is recommended that you [b]DISABLE VANILLA HELICOPTERS[/b] if you do not want at least 1 vanilla helicopter event to occur.
 description=
 description= [H3][b]   To Disable Vanilla Helicopters:[/b][/H3]
-description= [olist]
+description= [list]
 description=   [*] Select "Custom Sandbox" Playstyle.
 description=   [*] Under "Sadistic AI Director", set Helicopter to "Never".
-description= [/olist]
 description= [/list]
 description=
 description=[h2]FAQ:[/h2]
