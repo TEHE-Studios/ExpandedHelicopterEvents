@@ -18,10 +18,14 @@ description= Raven & Gabby - Sound, Voiceover
 description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
 description=
 description=
-description= [H1]To report issues, make suggestions, provide translations:
+description= [H1]To report bugs/issues*, [i]or[/i] make suggestions, [i]or[/i] provide translations:
 description= Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H1]
-description= [b]If you're having an issue or encountering errors, please supply a error log:
+description=
+description= [b]*If you're having an issue or encountering errors, please supply a error log:
 description= The file can be found in: `C:\Users\<username>\Zomboid\console.txt`[/b]
+description= The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin
+.com/]pastebin[/url] and share the link in a comment below.
+description=
 description= [H3][b]Known Issues:[/b][/H3]
 description= [list]
 description= [*] [b]For builds prior to 41.51:[/b] This mod disables vanilla helicopters, but occasionally the game may turn them back on.
