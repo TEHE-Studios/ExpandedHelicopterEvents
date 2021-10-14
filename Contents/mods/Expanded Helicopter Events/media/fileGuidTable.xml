@@ -69,6 +69,11 @@
 	</files>
 
 	<files>
+	<path>media/clothing/clothingItems/Hat_CavalryHat.xml</path>
+	<guid>01505303-b171-4ac1-83c8-3614aee4b40c</guid>
+	</files>
+
+	<files>
 	<path>media/clothing/clothingItems/Jacket_DenimCutoff.xml</path>
 	<guid>bf9cc65d-1767-4661-9ad4-db7ac0082f32</guid>
 	</files>
