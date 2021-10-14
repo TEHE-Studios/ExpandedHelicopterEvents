@@ -28,7 +28,7 @@ module Base
 			texture = Vehicles/EHE/Vehicle_Bell206LBMWCrashed,
 		}
 
-		textureMask = Vehicle_Bell206Police_mask,
+		textureMask = Vehicle_Bell206_mask,
 		textureShadow = highlights/vehicleShadowHelicopterFuselage,
 		extents = 0.7524 2.0257 1.8071,
 		mass = 200,
