@@ -50,34 +50,30 @@ module EHE
 
     	item Vest_PilotSurvivalVest
     {
-        Type = Container,
+        Type = Clothing,
         DisplayName = Military Pilot Survival Vest,
         ClothingItem = Vest_PilotSurvivalVest,
         BodyLocation = AmmoStrap,
-        CanBeEquipped = AmmoStrap,
-        Capacity	=	5,
         Icon = PilotSurvivalVest,
         BloodLocation = ShirtNoSleeves,
         Insulation = 0.05,
         WindResistance = 0.05,
-        BiteDefense = 5,
+        BiteDefense = 10,
         ScratchDefense = 15,
 		WorldStaticModel = PilotSurvivalVest_Ground,
     }
 
     	item Vest_BlackPilotSurvivalVest
     {
-        Type = Container,
+        Type = Clothing,
         DisplayName = Black Pilot Survival Vest,
         ClothingItem = Vest_BlackPilotSurvivalVest,
         BodyLocation = AmmoStrap,
-        CanBeEquipped = AmmoStrap,
-        Capacity	=	5,
         Icon = BlackPilotSurvivalVest,
         BloodLocation = ShirtNoSleeves,
         Insulation = 0.05,
         WindResistance = 0.05,
-        BiteDefense = 5,
+        BiteDefense = 10,
         ScratchDefense = 15,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
     }
