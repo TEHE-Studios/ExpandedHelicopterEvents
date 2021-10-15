@@ -52,7 +52,7 @@ VehicleDistributions.UH1HSeat = {
     }
 }
 
-VehicleDistributions.UH1HSurvivalistSeat = {
+VehicleDistributions.UH1HRaiderSeat = {
     rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
@@ -90,11 +90,11 @@ VehicleDistributions.UH1HSurvivalistSeat = {
 		"x2Scope", 0.7,
         "HottieZ", 10,
         "HottieZ", 10,
-        "Hat_SPHSurvivalist", 10,
+        "Hat_SPHRaider", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
         "Katana", 1,
-        "EHE.BanditStashBox", 4,
+        "EHE.BanditStashBox", 1,
         "EHE.Hat_CavalryHat", 10,
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHBlack", 3,
@@ -256,12 +256,12 @@ VehicleDistributions.UH1H = {
 	SeatRearRight = VehicleDistributions.UH1HSeat;
 }
 
-VehicleDistributions.UH1HSurvivalist = {
+VehicleDistributions.UH1HRaider = {
 	
-	SeatFrontLeft = VehicleDistributions.UH1HSurvivalistSeat;
-	SeatFrontRight = VehicleDistributions.UH1HSurvivalistSeat;
-	SeatRearLeft = VehicleDistributions.UH1HSurvivalistSeat;
-	SeatRearRight = VehicleDistributions.UH1HSurvivalistSeat;
+	SeatFrontLeft = VehicleDistributions.UH1HRaiderSeat;
+	SeatFrontRight = VehicleDistributions.UH1HRaiderSeat;
+	SeatRearLeft = VehicleDistributions.UH1HRaiderSeat;
+	SeatRearRight = VehicleDistributions.UH1HRaiderSeat;
 }
 
 
@@ -299,7 +299,7 @@ VehicleDistributions.FEMASupplyDrop = {
 
 --Distribution
 distributionTable["UH1HFuselage"] = { Normal = VehicleDistributions.UH1H; }
-distributionTable["UH1HSurvivalistFuselage"] = { Normal = VehicleDistributions.UH1HSurvivalist; }
+distributionTable["UH1HRaiderFuselage"] = { Normal = VehicleDistributions.UH1HRaider; }
 distributionTable["UH1HMedevacFuselage"] = { Normal = VehicleDistributions.UH1HMedevac; }
 distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
