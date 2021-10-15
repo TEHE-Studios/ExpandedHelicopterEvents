@@ -216,7 +216,7 @@ function eHelicopter:setTargetPos()
 	if not self.target then
 		return
 	end
-	local tx, ty, tz = self.target:getX(), self.target:getY(), self.height
+	local tx, ty, tz = self.target:getX(), self.target:getY(), 0
 
 	if not self.targetPosition then
 		self.targetPosition = Vector3.new(tx, ty, tz)
@@ -453,17 +453,8 @@ function eHelicopter:findTarget(range)
 	end
 
 	if not target then
-
-		local randomEdgeSquare = fetchRandomEdgeSquare()
-		if randomEdgeSquare then
-			print(" --- HELI "..self:heliToString()..": unable to find target, setting edge as target.")
-			target = randomEdgeSquare
-		else
-			print(" --- HELI "..self:heliToString()..": unable to find target, ERROR: unable to set edge.")
-			self:unlaunch()
-			return
-		end
-
+		print(" --- HELI "..self:heliToString()..": unable to find target, going home.")
+		self:goHome()
 	end
 
 	return target
