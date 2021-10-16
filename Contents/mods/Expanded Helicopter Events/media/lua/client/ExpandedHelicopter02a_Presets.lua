@@ -118,7 +118,7 @@ eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	hostilePreference = "IsoZombie",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
+	formationIDs = {"patrol_only", 25, {20,25}, "patrol_only", 10, {20,25}},
 	eventSoundEffects = {["additionalFlightSound"] = "eAirRaid"},
 	}
 
@@ -126,7 +126,7 @@ eHelicopter_PRESETS["attack_only_undead_evac"] = {
 eHelicopter_PRESETS["attack_only_undead"] = {
 	hostilePreference = "IsoZombie",
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
+	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
 	eventSoundEffects = {["additionalFlightSound"] = "eAirRaid"},
 	}
 
