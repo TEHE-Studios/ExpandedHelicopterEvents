@@ -134,6 +134,12 @@ function eHelicopter:isInBounds()
 	if h_x < eheBounds.MAX_X+1 and h_x > eheBounds.MIN_X-1 and h_y < eheBounds.MAX_Y+1 and h_y > eheBounds.MIN_Y-1 then
 		return true
 	end
+
+	if self.state == "following" then
+		--Ignore followers being out of bounds
+		return true
+	end
+	
 	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self:heliToString(true))
 	return false
 end
