@@ -465,6 +465,7 @@ function eHelicopter:findTarget(range)
 	if not target then
 		print(" --- HELI "..self:heliToString()..": unable to find target, going home.")
 		self:goHome()
+		return
 	end
 
 	return target

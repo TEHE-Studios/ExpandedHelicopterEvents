@@ -268,7 +268,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = helicopter
 
-		if heli and heli.state and (heli.state ~= "unLaunched") and (heli.state ~= "following") then
+		if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
 			heli:update()
 		end
 	end
