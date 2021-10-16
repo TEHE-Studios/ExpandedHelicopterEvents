@@ -126,14 +126,14 @@ eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	hostilePreference = "IsoZombie",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"air_raid_siren", 100, {40,50}, "attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
+	formationIDs = {"air_raid_siren", 100, {100,150}, "attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
 	}
 
 
 eHelicopter_PRESETS["attack_only_undead"] = {
 	hostilePreference = "IsoZombie",
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"air_raid_siren", 100, {40,50},"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
+	formationIDs = {"air_raid_siren", 100, {100,150},"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
 	}
 
 
@@ -142,7 +142,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	crashType = {"UH1HSurvivalistFuselage"},
 	crew = {"EHESurvivalistPilot", "EHESurvivalist", 75, "EHESurvivalist", 50},
 	scrapAndParts = {["vehicleSection"]="UH1HSurvivalistTail"},
-	formationIDs = {"air_raid_siren", 100, {40,50},},
+	formationIDs = {"air_raid_siren", 100, {100,150},},
 	}
 
 
