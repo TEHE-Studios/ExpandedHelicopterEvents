@@ -118,7 +118,11 @@ end
 ---@return IsoGridSquare of eHelicopter
 function eHelicopter:getIsoGridSquare()
 	local ehX, ehY, _ = self:getXYZAsInt()
-	local square = getCell():getOrCreateGridSquare(ehX, ehY, 0)
+	local cell = getCell()
+	local square = nil
+	if cell then
+		square = getCell():getOrCreateGridSquare(ehX, ehY, 0)
+	end
 	return square
 end
 
@@ -574,8 +578,8 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
 	else
-		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set, ERROR: unable to set random edge.")
-		self:unlaunch()
+		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set; going home.")
+		self:goHome()
 		return
 	end
 
