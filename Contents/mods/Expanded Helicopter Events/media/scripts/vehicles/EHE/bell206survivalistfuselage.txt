@@ -7,7 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle Bell206LBMWFuselage
+	vehicle Bell206SurvivalistFuselage
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -18,14 +18,14 @@ module Base
 		{
 			file = Vehicle_Bell206Fuselage,
 			scale = 3.1100,
-			offset = 0.1125 -0.0032 0.3633,
+			offset = 0.1029 -0.0032 0.5113,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_Bell206LBMWDamaged,
+			texture = Vehicles/EHE/Vehicle_Bell206SurvivalistDamaged,
 		}
 
 		textureMask = Vehicle_Bell206_mask,
@@ -107,22 +107,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.6174 0.3923 0.4823 0.4823,
+			xywh = 0.6174 1.2444 0.4823 0.4823,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.6174 0.3923 0.4823 0.4823,
+			xywh = -0.6174 1.2444 0.4823 0.4823,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.6174 -0.0900 0.4823 0.4823,
+			xywh = 0.6174 0.7621 0.4823 0.4823,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.6174 -0.0900 0.4823 0.4823,
+			xywh = -0.6174 0.7621 0.4823 0.4823,
 		}
 
 		template = Seat/part/SeatFrontLeft,
