@@ -55,7 +55,7 @@ end
 function DEBUG_TESTS.launchHeliTest(presetID)
 	---@type eHelicopter heli
 	local heli = getFreeHelicopter(presetID)
-	print("EHE: DEBUG: launchHeliTest: "..tostring(presetID))
+	print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))
 	heli:launch()
 	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then heli.crashing = true end
 	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then DEBUG_TESTS.moveHeliCloser(heli) end
