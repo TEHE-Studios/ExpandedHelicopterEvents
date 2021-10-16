@@ -81,7 +81,7 @@ eHelicopter_PRESETS["jet"] = {
 
 eHelicopter_PRESETS["news_chopper"] = {
 	hoverOnTargetDuration = {1500,2250},
-	eventSoundEffects = {["hoverOverTarget"]="eHeli_newscaster"},
+	eventSoundEffects = { ["hoverOverTarget"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
 	frequencyFactor = 2,
 	speed = 0.08,
 	crashType = {"Bell206LBMWFuselage"},
@@ -150,6 +150,7 @@ eHelicopter_PRESETS["police_heli"] = {
 		["attackSingle"] = "eHeli_bolt_action_fire_single",
 		["attackLooped"] = "eHeli_bolt_action_fire_single",
 		["additionalFlightSound"] = "eHeliPoliceSiren",
+		["flightSound"] = "eHelicopter",
 		},
 	hoverOnTargetDuration = {750,1150},
 	scrapAndParts = {["vehicleSection"]="Bell206PoliceTail"},

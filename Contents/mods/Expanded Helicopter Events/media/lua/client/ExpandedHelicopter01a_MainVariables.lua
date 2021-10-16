@@ -55,7 +55,8 @@ eHelicopter.eventSoundEffects = {
 	["attackSingle"] = "eHeli_machine_gun_fire_single",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = "eHeli_fire_impact",
-	["flightSound"] = "eHelicopter", ["crashEvent"] = "eHelicopterCrash"
+	["flightSound"] = "eMiliHeli",
+	["crashEvent"] = "eHelicopterCrash",
 }
 
 ---@field announcerVoice string
