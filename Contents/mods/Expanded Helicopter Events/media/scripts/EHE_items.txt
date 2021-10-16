@@ -15,7 +15,6 @@ module EHE
 		Icon = Parachute,
 	}
 
-
 	   item PlentyTee
 	{
 		HungerChange	= -60,
@@ -32,5 +31,14 @@ module EHE
         Calories 	= 550,
         Packaged 	= TRUE,
 		WorldStaticModel = EnergyBar,
+	}
+
+		item Bell206RotorBlade
+	{
+		Weight = 60,
+		Type = Normal,
+		WorldStaticModel = Bell206RotorBlade,
+		DisplayName = Detatched Rotor Blade,
+		Icon = 206rotorblade,
 	}
 }
