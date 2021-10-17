@@ -84,7 +84,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	speed = 2.8,
 	topSpeedFactor = 2,
 	flightVolume = 25,
-	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eBomb"},
+	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
 	crashType = false,
 	shadow = false,
 }
