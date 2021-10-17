@@ -33,7 +33,7 @@ module Base {
 
     sound eCarpetBomb {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/bombingCarpet.ogg, distanceMax = 5000, volume = 1,} }
+        clip { file = media/sound/bombingCarpet.ogg, distanceMax = 5000, volume = 1.3,} }
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
