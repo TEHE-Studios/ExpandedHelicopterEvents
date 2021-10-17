@@ -25,6 +25,13 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/siren.ogg, distanceMax = 5000, volume = 0.069, } }
 
+    sound eBomb {
+        category = EHE: Main, loop = false, is3D = true,
+        clip { file = media/sound/bombing1.ogg, distanceMax = 5000, volume = 0.5, }
+        clip { file = media/sound/bombing2.ogg, distanceMax = 5000, volume = 0.5, }
+        clip { file = media/sound/bombing3.ogg, distanceMax = 5000, volume = 0.5, } }
+        }
+
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicrash.ogg, distanceMax = 800, volume = 1.0, } }
