@@ -17,6 +17,8 @@ function eHeliEventsinit()
 	end
 
 	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay, ["heliStart"]=12}
+	eHeliEvents_init["jet_bombing"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=12, ["neverRenew"]=true}
+	eHeliEvents_init["air_raid"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=11, ["neverRenew"]=true}
 	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,8), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,2), ["heliStart"]=nil}
 	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
@@ -75,8 +77,19 @@ eHelicopter_PRESETS["jet"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
 	crashType = false,
 	shadow = false,
-	formationIDs = {"jet", 65, {10,16}, "jet", 25, {10,16}},
+	formationIDs = {"jet", 75, {10,16}, "jet", 45, {10,16}, "jet", 33, {10,16}},
 	}
+
+
+eHelicopter_PRESETS["jet_bombing"] = {
+	speed = 2.8,
+	topSpeedFactor = 2,
+	flightVolume = 25,
+	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eBomb"},
+	crashType = false,
+	shadow = false,
+	formationIDs = {"jet_bombing", 75, {10,16}, "jet_bombing", 65, {10,16}, "jet_bombing", 45, {10,16}},
+}
 
 
 eHelicopter_PRESETS["news_chopper"] = {
@@ -114,20 +127,26 @@ eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	}
 
 
+eHelicopter_PRESETS["air_raid"] = {
+	crashType = false,
+	shadow = false,
+	speed = 0.02,
+	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+}
+
+
 eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	hostilePreference = "IsoZombie",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
-	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
+	formationIDs = {"air_raid", "attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
 	}
 
 
 eHelicopter_PRESETS["attack_only_undead"] = {
 	hostilePreference = "IsoZombie",
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
-	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
+	formationIDs = {"air_raid", "attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
 	}
 
 
@@ -136,7 +155,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	crashType = {"UH1HSurvivalistFuselage"},
 	crew = {"EHESurvivalistPilot", "EHESurvivalist", 75, "EHESurvivalist", 50},
 	scrapAndParts = {["vehicleSection"]="UH1HSurvivalistTail"},
-	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+	formationIDs = {"air_raid"},
 	}
 
 
