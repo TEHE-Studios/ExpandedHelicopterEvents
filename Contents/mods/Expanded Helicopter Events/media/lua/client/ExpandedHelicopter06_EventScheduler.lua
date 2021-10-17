@@ -120,7 +120,7 @@ end
 ---@param ID number Position in schedule
 ---@param heliDay number Day to start event
 ---@param heliStart number Hour to start event
-function setNextHeliFrom(ID, heliDay, heliStart, presetID)
+function setNextHeliFrom(ID, heliDay, heliStart, presetID, neverRenew)
 
 	--grab old event based on ID
 	local lastHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
@@ -233,6 +233,10 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 		renewHeli = true
 	end
 
+	if neverRenew then
+		renewHeli = false
+	end
+
 	if (not renewHeli) and (not lastHeliEvent) then
 		return
 	end
@@ -269,7 +273,7 @@ function eHeliEvents_OnGameStart()
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
 		for preset,params in pairs(eHeliEvents_init) do
-			setNextHeliFrom(params["ID"], params["heliDay"], params["heliStart"], preset)
+			setNextHeliFrom(params["ID"], params["heliDay"], params["heliStart"], preset, params["neverRenew"] or nil)
 		end
 	end
 end
