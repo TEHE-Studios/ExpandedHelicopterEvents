@@ -31,7 +31,7 @@ eHelicopter.addedCrashChance = 0
 eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false,}
 
 ---@field scrapAndParts table
-eHelicopter.scrapAndParts = {["vehicleSection"]="UH1HTail"} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
+eHelicopter.scrapAndParts = {"UH1HTail"} -- {"Base.TYPE","Base.TYPE"}
 
 ---@field crew table list of IDs and chances (similar to how loot distribution is handled)
 ---Example: crew = {"pilot", 100, "crew", 75, "crew", 50}

@@ -275,44 +275,49 @@ function eHelicopter:dropScrap(fuzz)
 
 	local partsSpawned = {}
 
-	for partClass,partType in pairs(self.scrapAndParts) do
+	for key,partType in pairs(self.scrapAndParts) do
 
-		local heliX, heliY, _ = self:getXYZAsInt()
-		if heliX and heliY then
-			local minX, maxX = 2, 3+fuzz
-			if ZombRand(100) <= 50 then
-				minX, maxX = -2, 0-(3+fuzz)
+		if type(partType) == "string" then
+
+			local heliX, heliY, _ = self:getXYZAsInt()
+
+			local iterations = self.scrapAndParts[key+1]
+			if type(iterations) ~= "number" then
+				iterations = 1
 			end
-			heliX = heliX+ZombRand(minX,maxX)
-			local minY, maxY = 2, 3+fuzz
-			if ZombRand(100) <= 50 then
-				minY, maxY = -2, 0-(3+fuzz)
-			end
-			heliY = heliY+ZombRand(minY,maxY)
-		end
-		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
-		if currentSquare and currentSquare:isSolidTrans() then
-			currentSquare = nil
-		end
+			for i=1, iterations do
+				if heliX and heliY then
+					local minX, maxX = 2, 3+fuzz
+					if ZombRand(100) <= 50 then
+						minX, maxX = -2, 0-(3+fuzz)
+					end
+					heliX = heliX+ZombRand(minX,maxX)
+					local minY, maxY = 2, 3+fuzz
+					if ZombRand(100) <= 50 then
+						minY, maxY = -2, 0-(3+fuzz)
+					end
+					heliY = heliY+ZombRand(minY,maxY)
+				end
 
-		if currentSquare then
+				local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
-			if partClass == "vehicleSection" then
-				---@type BaseVehicle vehicleSection
-				local vehicleSection = addVehicleDebug(partType, IsoDirections.getRandom(), nil, currentSquare)
-				if vehicleSection then
-					table.insert(partsSpawned, vehicleSection)
+				if currentSquare and currentSquare:isSolidTrans() then
+					currentSquare = nil
+				end
+
+				if currentSquare then
+
+					local spawntedItem = currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
+					if not spawntedItem then
+						spawntedItem = addVehicleDebug(partType, IsoDirections.getRandom(), nil, currentSquare)
+					end
+					if spawntedItem then
+						table.insert(partsSpawned, spawntedItem)
+					end
+
 				end
 			end
-
-			if partClass == "scrapItem" then
-				local scrapItem = currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
-				if scrapItem then
-					table.insert(partsSpawned, scrapItem)
-				end
-			end
-
 		end
 	end
 
