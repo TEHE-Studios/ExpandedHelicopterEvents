@@ -614,10 +614,6 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
 	self:formationInit()
-
-	local currentSquare = self:getIsoGridSquare()
-	self:playEventSound("soundAtEventOrigin", currentSquare, true)
-
 	self:playEventSound("flightSound", nil, true)
 	self:playEventSound("additionalFlightSound", nil, true)
 
@@ -643,12 +639,14 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	self:applyCrashChance(applyEnvironmentalCrashChance)
 
+	local currentSquare = self:getIsoGridSquare()
 	for heli,_ in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
 		local followingHeli = heli
 		if followingHeli then
 			followingHeli.attackDistance = self.attackDistance
 			local randSoundDelay = ZombRand(5,15)
+			followingHeli:playEventSound("soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
 			followingHeli:playEventSound("flightSound", nil, true, false, randSoundDelay)
 			followingHeli:playEventSound("additionalFlightSound", nil, true, false, randSoundDelay)
 			followingHeli:applyCrashChance(applyEnvironmentalCrashChance)
