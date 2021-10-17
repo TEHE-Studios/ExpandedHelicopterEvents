@@ -2,17 +2,18 @@ DEBUG_TESTS = DEBUG_TESTS or {}
 DEBUG_TESTS.TOGGLE_ALL_CRASH = false
 
 Events.OnKeyPressed.Add(function(key)
-	if getPlayer() and getDebug() and (eHelicopterSandbox.config.debugTests==true) then
+	local player = getPlayer()
+	if player and getDebug() and (eHelicopterSandbox.config.debugTests==true) then
 		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.ToggleAllCrash()
 		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.ToggleMoveHeliCloser()
-		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("air_raid")
-		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("jet_bombing")
-		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile")
-		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful")
-		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police_heli")
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("aid_survivor")
+		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("air_raid", player)
+		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("jet_bombing", player)
+		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile", player)
+		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful", player)
+		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police_heli", player)
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("aid_survivor", player)
 		end
 	end
 end)
@@ -52,13 +53,18 @@ end
 
 
 --- Test launch heli
-function DEBUG_TESTS.launchHeliTest(presetID)
+function DEBUG_TESTS.launchHeliTest(presetID, player)
 	---@type eHelicopter heli
 	local heli = getFreeHelicopter(presetID)
 	print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))
-	heli:launch()
-	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then heli.crashing = true end
-	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then DEBUG_TESTS.moveHeliCloser(heli) end
+	heli:launch(player)
+	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then
+		DEBUG_TESTS.moveHeliCloser(heli)
+	end
+	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then
+		heli.crashing = true
+		heli:crash()
+	end
 end
 
 
