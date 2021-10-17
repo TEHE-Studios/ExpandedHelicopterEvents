@@ -118,6 +118,11 @@ end
 ---@return IsoGridSquare of eHelicopter
 function eHelicopter:getIsoGridSquare()
 	local ehX, ehY, _ = self:getXYZAsInt()
+
+	if not ehX or not ehY then
+		return
+	end
+
 	local cell = getCell()
 	local square = nil
 	if cell then
