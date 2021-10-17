@@ -84,7 +84,7 @@ eHelicopter.cutOffFactor = 1
 eHelicopter.flightHours = {5, 22}
 
 ---@field speed number
-eHelicopter.speed = 0.13
+eHelicopter.speed = 0.10
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
