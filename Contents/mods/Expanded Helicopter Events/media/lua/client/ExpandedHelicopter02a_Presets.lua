@@ -77,7 +77,6 @@ eHelicopter_PRESETS["jet"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
 	crashType = false,
 	shadow = false,
-	formationIDs = {"jet", 75, {10,16}, "jet", 45, {10,16}, "jet", 33, {10,16}},
 	}
 
 
@@ -88,7 +87,6 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eBomb"},
 	crashType = false,
 	shadow = false,
-	formationIDs = {"jet_bombing", 75, {10,16}, "jet_bombing", 65, {10,16}, "jet_bombing", 45, {10,16}},
 }
 
 
