@@ -130,7 +130,7 @@ eHelicopter_PRESETS["patrol_only_quarantine"] = {
 eHelicopter_PRESETS["air_raid"] = {
 	crashType = false,
 	shadow = false,
-	speed = 0.04,
+	speed = 0.05,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
 }
 
