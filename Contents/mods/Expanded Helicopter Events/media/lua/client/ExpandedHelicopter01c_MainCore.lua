@@ -610,6 +610,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	self:formationInit()
 
+	local currentSquare = self:getIsoGridSquare()
+	self:playEventSound("soundAtEventOrigin", currentSquare, true)
+
 	self:playEventSound("flightSound", nil, true)
 	self:playEventSound("additionalFlightSound", nil, true)
 

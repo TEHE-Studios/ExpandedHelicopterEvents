@@ -52,6 +52,7 @@ eHelicopter.eventSoundEffects = {
 	--{"hoverOverTarget"]=nil,["flyOverTarget"]=nil}
 	--["lostTarget"]=nil, ["foundTarget"]=nil, ["droppingPackage"]=nil,
 	--["additionalAttackingSound"]=nil, ["additionalFlightSound"]=nil,
+	--["soundAtEventOrigin"]=nil,
 	["attackSingle"] = "eHeli_machine_gun_fire_single",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = "eHeli_fire_impact",
