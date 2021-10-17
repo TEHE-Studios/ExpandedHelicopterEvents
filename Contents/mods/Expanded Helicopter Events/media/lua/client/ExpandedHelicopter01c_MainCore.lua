@@ -617,6 +617,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 	self:playEventSound("flightSound", nil, true)
 	self:playEventSound("additionalFlightSound", nil, true)
 
+	local currentSquare = self:getIsoGridSquare()
+	self:playEventSound("soundAtEventOrigin", currentSquare, true, false)
+	
 	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
 		if #self.hoverOnTargetDuration >= 2 then
 			self.hoverOnTargetDuration = ZombRand(self.hoverOnTargetDuration[1],self.hoverOnTargetDuration[2])
@@ -639,7 +642,6 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	self:applyCrashChance(applyEnvironmentalCrashChance)
 
-	local currentSquare = self:getIsoGridSquare()
 	for heli,_ in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
 		local followingHeli = heli
