@@ -492,13 +492,13 @@ function eHelicopter:formationInit()
 		if (type(value) == "string") and eHelicopter_PRESETS[value] then
 
 			--The chance this extra heli is spawned
-			local chance = self.formationIDs[key+1]
+			local chance = self.formationIDs[key+1] or 100
 			--If the next entry in the list is a number consider it to be a chance, otherwise use 100%
 			if type(chance) ~= "number" then
 				chance = 100
 			end
 
-			local xyPosOffset = self.formationIDs[key+2]
+			local xyPosOffset = self.formationIDs[key+2] or {6, 12}
 			--checks if entry 2 spaces after string (ID) is a table,
 			if ((type(xyPosOffset) ~= "table")) or (#xyPosOffset < 2) or ((type(xyPosOffset[1]) ~= "number")) or ((type(xyPosOffset[2]) ~= "number")) then
 				--fills in offsets is not enough or incorrect entries are present
