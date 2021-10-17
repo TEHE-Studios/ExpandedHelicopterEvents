@@ -1,11 +1,5 @@
 module EHE
 {
-	imports
-	{
-		Base
-	}
-
-
 	    item EHE_Parachute
 	{
 		Weight = 15,

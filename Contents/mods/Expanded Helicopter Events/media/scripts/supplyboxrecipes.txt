@@ -1,11 +1,6 @@
 module EHE
 {
 
-	imports
-	{
-		Base
-	}
-
     recipe Open Supplies
     {
        EmergencyFoodSupplyBox=1,
