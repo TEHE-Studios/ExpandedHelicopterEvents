@@ -565,7 +565,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		--[[DEBUG]] print (" --- crashing set to TRUE.")
 		self.crashing = true
 	end
-	print(" ------------ \n")
+	print(" ------------")
 end
 
 
