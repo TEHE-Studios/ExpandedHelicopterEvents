@@ -182,6 +182,8 @@ eHelicopter.announceEmitter = false
 eHelicopter.lastAnnouncedLine = false
 ---@field heldEventSoundEffectEmitters table
 eHelicopter.heldEventSoundEffectEmitters = {}
+---@field placedEventSoundEffectEmitters table
+eHelicopter.placedEventSoundEffectEmitters = {}
 ---@field delayedEventSounds table
 eHelicopter.delayedEventSounds = {}
 ---@field target IsoObject
