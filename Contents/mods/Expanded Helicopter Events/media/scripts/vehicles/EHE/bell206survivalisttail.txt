@@ -7,7 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle Bell206LBMWTail
+	vehicle Bell206SurvivalistTail
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -18,18 +18,17 @@ module Base
 		{
 			file = Vehicle_Bell206Tail,
 			scale = 3.1100,
-			offset = 0.0000 -0.0161 0.1093,
+			offset = 0.0000 -0.0129 0.0675,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_Bell206LBMWDamaged,
-			,
+			texture = Vehicles/EHE/Vehicle_Bell206SurvivalistDamaged,
 		}
 
-		textureMask = Vehicle_Bell206LBMW_mask,
+		textureMask = Vehicle_Bell206_mask,
 		extents = 0.3923 0.4630 1.2090,
 		mass = 100,
 		physicsChassisShape = 0.3859 0.4630 1.2283,

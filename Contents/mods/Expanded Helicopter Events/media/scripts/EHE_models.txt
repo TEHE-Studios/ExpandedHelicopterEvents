@@ -63,6 +63,13 @@ module Base
 		scale = 1.0,
 	}
 
+		model Bell206RotorBlade
+	{
+		mesh = WorldItems/Bell206RotorBlade,
+		texture = WorldItems/Bell206RotorBlade,
+		scale = 1.0,
+	}
+
 		model PilotSurvivalVest_Ground
 	{
 		mesh = WorldItems/PilotSurvivalVest_WorldItem,
