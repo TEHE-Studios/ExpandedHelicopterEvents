@@ -1,5 +1,9 @@
 function eHelicopter:update()
 
+	if self.state == "following" then
+		return
+	end
+
 	if (not self.target) or (not self.trueTarget) then
 
 		if (not self.target) then
