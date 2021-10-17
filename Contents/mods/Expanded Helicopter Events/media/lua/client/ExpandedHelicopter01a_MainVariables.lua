@@ -230,7 +230,7 @@ eHelicopter.ID = 0
 ---returns heli's ID and preset; optionally: returns location's x and y
 ---@param location boolean return x and y coords with ID and preset
 function eHelicopter:heliToString(location)
-	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..") ["..self.state.."]"
+	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..") ["..tostring(self.state).."]"
 	if location then
 		local h_x, h_y, _ = self:getXYZAsInt()
 		if h_x and h_y then
