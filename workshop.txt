@@ -17,12 +17,8 @@ description= [url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.
 description= Raven & Gabby - Sound, Voiceover
 description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
 description=
-description=
-description= [H2]To make suggestions, or provide translations:
-description= Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
-description=
-description=[H1]To report bugs/issues*, [i]or[/i] make suggestions, [i]or[/i] provide translations:
-description=Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H1]
+description=[H2]To make suggestions, or provide translations:
+description=Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
 description=
 description=[h1]If you're having an issue or encountering errors:[/h1]
 description=[h3]First, resubscribe to this mod, and any related mod.[/h3]
