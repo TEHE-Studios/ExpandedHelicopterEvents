@@ -77,6 +77,12 @@ module Base
 		scale = 1.0,
 	}
 
+		model Bell206TailBlade
+	{
+		mesh = WorldItems/Bell206TailBlade,
+		texture = WorldItems/Bell206TailBlade,
+		scale = 1.0,
+	}
 
 		model PilotSurvivalVest_Ground
 	{
