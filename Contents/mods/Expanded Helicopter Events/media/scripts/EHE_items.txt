@@ -35,4 +35,13 @@ module EHE
 		DisplayName = Detatched Rotor Blade,
 		Icon = 206rotorblade,
 	}
+
+		item Bell206HalfSkirt
+	{
+		Weight = 60,
+		Type = Normal,
+		WorldStaticModel = Bell206HalfSkirt,
+		DisplayName = Mangled Helicopter Skirt,
+		Icon = 206rotorblade,
+	}
 }
