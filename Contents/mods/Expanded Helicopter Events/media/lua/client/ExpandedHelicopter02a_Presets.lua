@@ -112,7 +112,7 @@ eHelicopter_PRESETS["patrol_only"] = {
 eHelicopter_PRESETS["patrol_only_emergency"] = {
 	announcerVoice = true,
 	dropItems = {["EHE.EmergencyFlyer"]=250},
-	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
 	}
 
@@ -120,7 +120,7 @@ eHelicopter_PRESETS["patrol_only_emergency"] = {
 eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	announcerVoice = true,
 	dropItems = {["EHE.QuarantineFlyer"]=250},
-	crew = {"1MilitaryPilot", "1Soldier", 75, "1Soldier", 50},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
 	}
 
