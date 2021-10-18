@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_Bell206Fuselage,
 			scale = 3.1100,
-			offset = 0.1190 0.0064 0.3633,
+			offset = 0.1190 0.0064 0.2862,
 		}
 
 		spawnOffsetY = 0.19392952,
