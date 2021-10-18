@@ -2,7 +2,7 @@ module EHE
 {
 	    item EHE_Parachute
 	{
-		Weight = 15,
+		Weight = 10,
 		Type = Normal,
 		WorldStaticModel = Parachute,
 		DisplayName = Dropped Parachute,
@@ -29,10 +29,27 @@ module EHE
 
 		item Bell206RotorBlade
 	{
-		Weight = 60,
+		Weight = 45,
 		Type = Normal,
 		WorldStaticModel = Bell206RotorBlade,
 		DisplayName = Detatched Rotor Blade,
 		Icon = 206rotorblade,
+	}
+		item Bell206TailBlade
+	{
+		Weight = 10,
+		Type = Normal,
+		WorldStaticModel = Bell206TailBlade,
+		DisplayName = Detatched Tail Blade,
+		Icon = 206tailblade,
+	}
+
+		item Bell206HalfSkirt
+	{
+		Weight = 35,
+		Type = Normal,
+		WorldStaticModel = Bell206HalfSkirt,
+		DisplayName = Mangled Helicopter Skirt,
+		Icon = 206halfskirt,
 	}
 }
