@@ -103,7 +103,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 
 eHelicopter_PRESETS["patrol_only"] = {
 	announcerVoice = true,
-	crew = {"AirCrew", "AirCrew", 75, "AirCrew", 50},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	}
 
 
