@@ -18,14 +18,14 @@ module Base
 		{
 			file = Vehicle_UH1HTail,
 			scale = 1.8200,
-			offset = 0.1099 -0.0220 0.3681,
+			offset = 0.0000 -0.0220 0.6703,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_UH1HCrashed,
+			texture = Vehicles/EHE/Vehicle_UH1HDamaged,
 		}
 
 		textureMask = Vehicle_UH1H_mask,
