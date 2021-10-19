@@ -1,6 +1,12 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events
+description=[h1]If you want a more varied looting experience, download these mods that are now integrated with [i]Expanded Helicopter Events.[/i][/h1]
+description=
+description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h1]
+description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Shark's Law Enforcement Overhaul[/b][/url][/h1]
+description=
+description=
 description= [h1][b]Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
 description= [h1][b]Twitch Integration: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501]Out now![/url][/b][/h1]
 description=
@@ -84,7 +90,15 @@ description= [*] Police Helicopter: These helicopters will patrol early on and f
 description=
 description= [*] News Helicopter: These helicopters will follow their target and most closely resemble the vanilla event. However, the player can use cover as well as the indoors to flee the area.
 description=
-description= [*] Jets: While not strictly a "helicopter" the jet events whizz near by the player to keep things interesting and move horde of undead early on.
+description= [*] Passing Jets: While not strictly a "helicopter" the jet events whizz near by the player to keep things interesting and move horde of undead early on.
+description= 
+description= [*] Jet bombings: As the game world progresses, jets will begin bombing targets offscreen.
+description= 
+description= [*] Air raid siren: An air raid siren will wail as the game progresses to signal incoming hostile events.
+description= 
+description= [*] FEMA Emergency Drop: On occasion and before civilization collapses, a helicopter will drop off an emergency supply drop.
+description= 
+description= [*] [Work in progress] Plane Air Drop: Deep into the apocalypse, you may encounter a mysterious aircraft that will drop a crate of supplies.
 description= [/list]
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
