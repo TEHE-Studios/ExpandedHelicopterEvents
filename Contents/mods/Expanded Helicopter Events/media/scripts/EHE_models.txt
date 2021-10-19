@@ -70,6 +70,20 @@ module Base
 		scale = 1.0,
 	}
 
+		model UH1HRotorBlade
+	{
+		mesh = WorldItems/UH1HRotorBlade,
+		texture = WorldItems/UH1HRotorBlade,
+		scale = 1.0,
+	}
+
+		model UH1HHalfSkirt
+	{
+		mesh = WorldItems/UH1HHalfSkirt,
+		texture = WorldItems/UH1HHalfSkirt,
+		scale = 1.0,
+	}
+
 		model Bell206HalfSkirt
 	{
 		mesh = WorldItems/Bell206HalfSkirt,
