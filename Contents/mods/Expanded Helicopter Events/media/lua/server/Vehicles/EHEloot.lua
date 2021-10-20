@@ -41,6 +41,9 @@ VehicleDistributions.UH1HSeat = {
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
+
+        -- EHE -- 
+
         "EHE.Hat_CavalryHat", 5,
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHMilitary", 5,
@@ -48,7 +51,17 @@ VehicleDistributions.UH1HSeat = {
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
-	
+
+        -- SMUI -- 
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_BeretSpecial", 10,
+       
     }
 }
 
@@ -90,10 +103,11 @@ VehicleDistributions.UH1HRaiderSeat = {
 		"x2Scope", 0.7,
         "HottieZ", 10,
         "HottieZ", 10,
-        "Hat_SPHRaider", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
-        "Katana", 1,
+
+        -- EHE --
+
         "EHE.BanditStashBox", 1,
         "EHE.Hat_CavalryHat", 10,
         "EHE.Hat_SPHMilitary", 10,
@@ -101,7 +115,16 @@ VehicleDistributions.UH1HRaiderSeat = {
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
-	
+
+        -- SMUI --
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_BeretSpecial", 3,
     }
 }
 
@@ -145,11 +168,24 @@ VehicleDistributions.UH1HMedevacSeat = {
         "FirstAidKit", 10,
         "FirstAidKit", 10,
 		"x2Scope", 0.7,
+        
+        -- EHE -- 
+
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHMilitary", 5,
         "EHE.Hat_SPHBlack", 3,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
+
+        -- SMUI -- 
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_BeretSpecial", 3,
     }
 }
 
@@ -165,9 +201,6 @@ VehicleDistributions.Bell206PoliceSeat = {
         "556Box", 3,
         "556Box", 3,
         "556Box", 3,
-        "Hat_RiotHelmet", 7,
-        "Hat_RiotHelmet", 7,
-        "Hat_RiotHelmet", 7,
         "Pistol", 5,
         "Pistol", 5,
         "Pistol", 5,
@@ -190,10 +223,27 @@ VehicleDistributions.Bell206PoliceSeat = {
         "Hat_SPHPolice", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
+
+        -- EHE --
+
         "EHE.Hat_SPHPolice", 10,
         "EHE.Hat_SPHPolice", 5,
         "EHE.Vest_BlackPilotSurvivalVest", 10,
         "EHE.Vest_BlackPilotSurvivalVest", 10,
+
+        -- SLEO --
+
+        "SLEOClothing.Hat_RiotHelmet", 10,
+        "SLEOClothing.Hat_PoliceHelmet", 10,
+        "SLEOClothing.Hat_PoliceM17", 10,
+        "SLEOClothing.Vest_PoliceTacticalVest", 10,
+        "SLEOClothing.Jacket_PoliceTactical", 10,
+        "SLEOClothing.Trousers_PoliceTactical", 10,
+        "SLEOClothing.TacticalGoggles", 10,
+        "SLEOClothing.Hat_PoliceBalaclava", 10,
+        "SLEOClothing.Bag_DuffelPolice", 10,
+        "SLEOClothing.Hat_PoliceBaseballCap", 10,
+        "SLEOClothing.PoliceDutyBelt", 10,
     }
 }
 
@@ -211,14 +261,17 @@ VehicleDistributions.Bell206NewsSeat = {
         "Bullets9mm", 3,
         "Bullets9mm", 3,
         "Bullets9mm", 3,
-        "Hat_PressHelmet", 4,
-        "Hat_PressHelmet", 4,
-        "Vest_BulletPress", 4,
-        "Vest_BulletPress", 4,
-        "Vest_BulletPress", 4,
         "FirstAidKit", 5,
+
+        -- EHE -- 
+
         "EHE.Hat_SPHCivilian", 10,
         "EHE.Hat_SPHCivilian", 5,
+        "Hat_PressHelmet", 4,
+        "Hat_PressHelmet", 4,
+        "Vest_BulletPress", 4,
+        "Vest_BulletPress", 4,
+        "Vest_BulletPress", 4,
     }
 }
 
@@ -239,8 +292,32 @@ VehicleDistributions.Bell206SurvivalistSeat = {
         "Base.AssaultRifle2", 7,
         "Base.Shotgun", 7,
         "FirstAidKit", 5,
+
+        -- EHE--
+
         "EHE.Hat_SPHCivilian", 10,
         "EHE.Hat_SPHCivilian", 5,
+
+        -- SMUI --
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+
+        -- SLEO --
+
+        "SLEOClothing.Hat_RiotHelmet", 10,
+        "SLEOClothing.Hat_PoliceHelmet", 10,
+        "SLEOClothing.Vest_PoliceTacticalVest", 10,
+        "SLEOClothing.Jacket_PoliceTactical", 10,
+        "SLEOClothing.Trousers_PoliceTactical", 10,
+        "SLEOClothing.TacticalGoggles", 10,
+        "SLEOClothing.Hat_PoliceBalaclava", 10,
+        "SLEOClothing.Bag_DuffelPolice", 10,
+        "SLEOClothing.Hat_PoliceBaseballCap", 10,
+        "SLEOClothing.PoliceDutyBelt", 10,
+
     }
 }
 VehicleDistributions.FEMASupplyDrop = {
