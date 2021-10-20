@@ -149,9 +149,9 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 
 eHelicopter_PRESETS["attack_only_all"] = {
 	hostilePreference = "IsoGameCharacter",
-	crashType = {"UH1HSurvivalistFuselage"},
-	crew = {"EHESurvivalistPilot", "EHESurvivalist", 75, "EHESurvivalist", 50},
-	scrapAndParts = {"UH1HSurvivalistTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2,},
+	crashType = {"UH1HFuselage"},
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
+	scrapAndParts = {"UH1HTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2,},
 	formationIDs = {"air_raid"},
 	}
 
