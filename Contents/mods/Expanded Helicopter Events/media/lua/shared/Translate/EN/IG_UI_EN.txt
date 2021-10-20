@@ -27,5 +27,6 @@ IG_UI_EN = {
     IGUI_VehicleNameBell206Survivalist = "Bell 206 Survivalist",
 
     IGUI_VehicleNameFEMASupplyDrop = "Emergency Supply Drop",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
 
 }
