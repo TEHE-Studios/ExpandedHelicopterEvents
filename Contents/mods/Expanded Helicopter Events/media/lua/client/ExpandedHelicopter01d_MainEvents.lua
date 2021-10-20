@@ -123,27 +123,29 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, femaleChance)
 				---@type IsoGameCharacter | IsoZombie
-				local zombie = spawnedZombies:get(0)
-				--if there's an actual zombie
-				if zombie then
+				if spawnedZombies and spawnedZombies:size()>0 then
+					local zombie = spawnedZombies:get(0)
+					--if there's an actual zombie
+					if zombie then
 
-					deathChance = deathChance or 33
-					--33% to be dead on arrival
-					if ZombRand(1,100) <= deathChance then
-						print("crash spawned: "..outfitID.." killed")
-						zombie:setHealth(0)
-					else
-						crawlChance = crawlChance or 25
-						if ZombRand(1,100) <= crawlChance then
-							print("crash spawned: "..outfitID.." crawler")
-							zombie:setCanWalk(false)
-							zombie:setBecomeCrawler(true)
-							zombie:knockDown(true)
+						deathChance = deathChance or 33
+						--33% to be dead on arrival
+						if ZombRand(1,100) <= deathChance then
+							print("crash spawned: "..outfitID.." killed")
+							zombie:setHealth(0)
 						else
-							print("crash spawned: "..outfitID)
+							crawlChance = crawlChance or 25
+							if ZombRand(1,100) <= crawlChance then
+								print("crash spawned: "..outfitID.." crawler")
+								zombie:setCanWalk(false)
+								zombie:setBecomeCrawler(true)
+								zombie:knockDown(true)
+							else
+								print("crash spawned: "..outfitID)
+							end
 						end
+						table.insert(spawnedCrew, zombie)
 					end
-					table.insert(spawnedCrew, zombie)
 				end
 			end
 		end
