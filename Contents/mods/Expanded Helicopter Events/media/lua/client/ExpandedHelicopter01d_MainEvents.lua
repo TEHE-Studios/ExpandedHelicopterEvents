@@ -32,6 +32,7 @@ function eHelicopter:crash()
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			---@type BaseVehicle
 			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
+			--[[DEBUG]] print("-- EHE: DEBUG: ID["..vehicleType.."] - spawned "..heli:getVehicleType())
 			if heli then
 				self.crashType = false
 				
