@@ -306,9 +306,6 @@ VehicleDistributions.Bell206NewsSeat = {
         -- AZ -- 
 
         "AuthenticZClothing.CameraDSLR", 3,
-        "AuthenticZClothing.HoodieUP_GreyPlaid", 2,
-        "AuthenticZClothing.HoodieUP_BluePlaid", 2
-        "AuthenticZClothing.HoodieUP_RedPlaid", 2,
     }
 }
 
