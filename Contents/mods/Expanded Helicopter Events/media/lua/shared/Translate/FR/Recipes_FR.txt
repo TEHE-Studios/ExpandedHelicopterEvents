@@ -1,0 +1,3 @@
+Recipes_FR = {
+    Recipe_Open_Supplies = "Ouvrir les provisions",
+}
