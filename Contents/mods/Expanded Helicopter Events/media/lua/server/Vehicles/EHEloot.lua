@@ -61,6 +61,14 @@ VehicleDistributions.UH1HSeat = {
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_BeretSpecial", 10,
+        "SMUIClothing.M67Grenade", 4,
+
+
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
        
     }
 }
@@ -125,6 +133,16 @@ VehicleDistributions.UH1HRaiderSeat = {
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_BeretSpecial", 3,
+        "SMUIClothing.M67Grenade", 4,
+
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
+        "AuthenticZClothing.Tshirt_Rock2", 3,
+        "AuthenticZClothing.Tshirt_PostalDude", 3,
+        "AuthenticZClothing.Jacket_PostalDude", 3,
     }
 }
 
@@ -186,6 +204,13 @@ VehicleDistributions.UH1HMedevacSeat = {
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_BeretSpecial", 3,
+        "SMUIClothing.M67Grenade", 4,
+
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
     }
 }
 
@@ -262,6 +287,11 @@ VehicleDistributions.Bell206NewsSeat = {
         "Bullets9mm", 3,
         "Bullets9mm", 3,
         "FirstAidKit", 5,
+        "Shotgun", 5,
+        "Shotgun", 3,
+        "ShotgunShellsBox", 7,
+        "ShotgunShellsBox", 7,
+        "ShotgunShellsBox", 7,
 
         -- EHE -- 
 
@@ -272,6 +302,13 @@ VehicleDistributions.Bell206NewsSeat = {
         "Vest_BulletPress", 4,
         "Vest_BulletPress", 4,
         "Vest_BulletPress", 4,
+
+        -- AZ -- 
+
+        "AuthenticZClothing.CameraDSLR", 3,
+        "AuthenticZClothing.HoodieUP_GreyPlaid", 2,
+        "AuthenticZClothing.HoodieUP_BluePlaid", 2
+        "AuthenticZClothing.HoodieUP_RedPlaid", 2,
     }
 }
 
@@ -292,6 +329,7 @@ VehicleDistributions.Bell206SurvivalistSeat = {
         "Base.AssaultRifle2", 7,
         "Base.Shotgun", 7,
         "FirstAidKit", 5,
+        "Bag_Duffelbag", 7,
 
         -- EHE--
 
@@ -304,6 +342,7 @@ VehicleDistributions.Bell206SurvivalistSeat = {
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.M67Grenade", 4,
 
         -- SLEO --
 
@@ -316,7 +355,13 @@ VehicleDistributions.Bell206SurvivalistSeat = {
         "SLEOClothing.Hat_PoliceBalaclava", 10,
         "SLEOClothing.Bag_DuffelPolice", 10,
         "SLEOClothing.Hat_PoliceBaseballCap", 10,
-        "SLEOClothing.PoliceDutyBelt", 10,
+        "SLEOClothing.PoliceDutyBelt", 10, 
+            
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
 
     }
 }
