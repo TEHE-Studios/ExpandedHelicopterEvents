@@ -1,0 +1,15 @@
+Items_FR = {
+    DisplayName_Civilian_Helicopter_Helmet = "Casque d'hélicoptère civil",
+    DisplayName_Deserter_Helmet = "Casque de déserteur",
+    DisplayName_Emergency_Flyer = "Dépliant "Urgence"",
+    DisplayName_Evacuation_Flyer = "Dépliant "Évacuation"",
+    DisplayName_Notice_Flyer = "Dépliant "Notice"",
+    DisplayName_Police_Helicopter_Helmet = "Casque de pilote d'hélicoptère de Police",
+    DisplayName_Police_Pilot_Flying_Suit = "Combinaison de vol de pilote de Police",
+    DisplayName_Press_Bulletproof_Vest = "Gilet pare-balles (presse)",
+    DisplayName_Press_Helmet = "Casque (presse)",
+    DisplayName_Prevention_Flyer = "Dépliant "Prévention"",
+    DisplayName_Quarantine_Flyer = "Dépliant "Quarantaine"",
+    DisplayName_Supply_Box = "Boîte de provisions",
+    DisplayName_Survivalist_Helicopter_Helmet = "Casque d'hélicoptère de survie",
+}

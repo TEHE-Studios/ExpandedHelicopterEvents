@@ -1,0 +1,3 @@
+DynamicRadio_FR = {
+    AEBS_SupplyDrop = "Approvisionnement en cours.",
+}
