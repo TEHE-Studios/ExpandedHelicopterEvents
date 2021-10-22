@@ -18,7 +18,7 @@ module Base
 		{
 			file = Vehicle_UH1HFuselage,
 			scale = 1.8200,
-			offset = 0.0000 -0.0220 0.1703,
+			offset = 0.0549 -0.0220 0.1703,
 		}
 
 		spawnOffsetY = 0.19392952,
