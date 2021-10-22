@@ -1,12 +1,6 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events
-description=[h1]If you want a more varied looting experience, download these mods that are now integrated with [i]Expanded Helicopter Events.[/i][/h1]
-description=
-description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h1]
-description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Shark's Law Enforcement Overhaul[/b][/url][/h1]
-description=
-description=
 description= [h1][b]Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
 description= [h1][b]Twitch Integration: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501]Out now![/url][/b][/h1]
 description=
@@ -79,7 +73,6 @@ description=
 description= [*] Helicopter events are registered on AEBS (radio system) just like vanilla events!
 description= [/list]
 description=
-description=
 description= [h2]Events Currently in the mod:[/h2]
 description= *Helicopter events are written so that their features can be mixed and matched for different "types" of helicopters.
 description=
@@ -100,5 +93,10 @@ description= [*] FEMA Emergency Drop: On occasion and before civilization collap
 description= 
 description= [*] [Work in progress] Plane Air Drop: Deep into the apocalypse, you may encounter a mysterious aircraft that will drop a crate of supplies.
 description= [/list]
+description=[h1]If you want a more varied looting experience, download these mods that are now integrated with [i]Expanded Helicopter Events.[/i][/h1]
+description=
+description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h1]
+description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]Shark's Law Enforcement Overhaul[/b][/url][/h1]
+description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h1]
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
