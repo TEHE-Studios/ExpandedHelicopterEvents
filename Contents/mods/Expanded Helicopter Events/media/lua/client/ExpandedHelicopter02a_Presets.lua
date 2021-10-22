@@ -195,7 +195,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 
 eHelicopter_PRESETS["aid_survivor"] = {
 	crashType = false,
-	crew = {"EHECivilianPilot",},
+	crew = {"EHESurvivorPilot",},
 	dropPackages = {"FEMASupplyDrop"},
 	speed = 0.07,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
