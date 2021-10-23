@@ -31,7 +31,7 @@ module Base
 		textureMask = Vehicle_Bell206_mask,
 		textureShadow = highlights/vehicleShadowHelicopterFuselage,
 		extents = 0.7524 2.0257 1.8071,
-		mass = 200,
+		mass = 1500,
 		physicsChassisShape = 0.7524 0.9646 1.8071,
 		centerOfMassOffset = 0.0000 0.5016 0.1608,
 		shadowExtents = 0.7524 1.8071,
@@ -162,5 +162,17 @@ module Base
 		template = Door/part/DoorFrontRight,
 		template = Door/part/DoorRearLeft,
 		template = Door/part/DoorRearRight,
+
+		attachment trailer
+		{
+			offset = 0.0000 0.0000 -1.1640,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 0.0000 0.9389,
+			rotate = 0.0000 0.0000 0.0000,
+		}
 	}
 }
