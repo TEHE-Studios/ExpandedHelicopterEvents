@@ -163,12 +163,6 @@ module Base
 		template = Door/part/DoorRearLeft,
 		template = Door/part/DoorRearRight,
 		
-			attachment trailer
-		{
-			offset = 0.0000 0.0110 -1.7473,
-			rotate = 0.0000 0.0000 0.0000,
-		}
-
 		attachment trailerfront
 		{
 			offset = 0.0000 0.0000 1.5440,
