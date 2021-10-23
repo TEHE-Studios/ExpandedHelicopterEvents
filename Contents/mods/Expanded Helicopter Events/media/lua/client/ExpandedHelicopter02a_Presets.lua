@@ -22,6 +22,7 @@ function eHeliEventsinit()
 	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,8), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,2), ["heliStart"]=nil}
 	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
+	eHeliEvents_init["survivor_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
 
@@ -36,7 +37,6 @@ eHelicopter_PRESETS["id_name"] = {
 
 eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1}
-	}
 
 
 eHelicopter_PRESETS["increasingly_hostile"] = {
@@ -192,12 +192,21 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
 	}
 
-
 eHelicopter_PRESETS["aid_survivor"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot",},
 	dropPackages = {"FEMASupplyDrop"},
 	speed = 0.07,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
+	cutOffFactor = 3,
+}
+
+eHelicopter_PRESETS["survivor_heli"] = {
+	crashType = false,
+	crew = {"EHESurvivorPilot", "EHESurvivor", 100 ,"EHESurvivorPilot", 100, "EHESurvivor", 100,},
+	speed = 0.17,
+	crashType = {"Bell206SurvivalistFuselage"},
+	eventSoundEffects = {["flightSound"] = "eHelicopter"},
+	scrapAndParts = {"Bell206SurvivalistTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
 	cutOffFactor = 3,
 }
