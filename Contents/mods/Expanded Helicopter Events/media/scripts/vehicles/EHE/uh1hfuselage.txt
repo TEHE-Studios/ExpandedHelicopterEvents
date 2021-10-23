@@ -18,14 +18,14 @@ module Base
 		{
 			file = Vehicle_UH1HFuselage,
 			scale = 1.8200,
-			offset = 0.0000 -0.0220 -0.1264,
+			offset = 0.0549 -0.0220 0.1703,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_UH1HCrashed,
+			texture = Vehicles/EHE/Vehicle_UH1HDamaged,
 		}
 
 		textureMask = Vehicle_UH1H_mask,
@@ -34,6 +34,8 @@ module Base
 		mass = 200,
 		physicsChassisShape = 1.3846 2.0330 3.1648,
 		centerOfMassOffset = 0.0000 0.9890 0.1044,
+		shadowExtents = 1.3077 3.1868,
+		shadowOffset = 0.0000 0.1044,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 4,

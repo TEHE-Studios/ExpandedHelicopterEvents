@@ -63,67 +63,52 @@ module Base
 		scale = 1.0,
 	}
 
-
-
-    /*VISIBLE HELICOPTERS*/
-
-		model Bell206Fuselage
+		model Bell206RotorBlade
 	{
-		mesh = WorldItems/Bell206Fuselage,
-		texture = WorldItems/Bell206Police,
+		mesh = WorldItems/Bell206RotorBlade,
+		texture = WorldItems/Bell206RotorBlade,
 		scale = 1.0,
-        attachment muzzle {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope2 {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment recoilpad {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment reddot {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment laser {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
-		model Bell206MainRotor
+		model UH1HRotorBlade
 	{
-		mesh = WorldItems/Bell206MainRotor,
-		texture = WorldItems/Bell206Police,
+		mesh = WorldItems/UH1HRotorBlade,
+		texture = WorldItems/UH1HRotorBlade,
 		scale = 1.0,
-		attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
-		model Bell206TailRotor
+		model UH1HHalfSkirt
 	{
-		mesh = WorldItems/Bell206TailRotor,
-		texture = WorldItems/Bell206Police,
+		mesh = WorldItems/UH1HHalfSkirt,
+		texture = WorldItems/UH1HHalfSkirt,
 		scale = 1.0,
-		attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
-		model UH1HFuselage
+		model Bell206HalfSkirt
 	{
-		mesh = WorldItems/UH1HFuselage,
-		texture = WorldItems/UH1H,
+		mesh = WorldItems/Bell206HalfSkirt,
+		texture = WorldItems/Bell206HalfSkirt,
 		scale = 1.0,
-        attachment muzzle {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment scope2 {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment recoilpad {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment reddot {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment laser {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
-        attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
-		model UH1HMainRotor
+		model Bell206TailBlade
 	{
-		mesh = WorldItems/UH1HMainRotor,
-		texture = WorldItems/UH1H,
+		mesh = WorldItems/Bell206TailBlade,
+		texture = WorldItems/Bell206TailBlade,
 		scale = 1.0,
-		attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
 	}
 
-		model UH1HTailRotor
+		model PilotSurvivalVest_Ground
 	{
-		mesh = WorldItems/UH1HTailRotor,
-		texture = WorldItems/UH1H,
+		mesh = WorldItems/PilotSurvivalVest_WorldItem,
+		texture = WorldItems/PilotSurvivalVest,
 		scale = 1.0,
-		attachment world {offset = 0.0000 0.0000 0.0000,rotate = 0.0000 0.0000 0.0000,}
+	}
+		
+		model BlackPilotSurvivalVest_Ground
+	{
+		mesh = WorldItems/PilotSurvivalVest_WorldItem,
+		texture = WorldItems/BlackPilotSurvivalVest,
+		scale = 1.0,
 	}
 }

@@ -18,23 +18,23 @@ module Base
 		{
 			file = Vehicle_Bell206Tail,
 			scale = 3.1100,
-			offset = -0.0161 0.0064 0.1093,
+			offset = 0.0000 -0.0064 0.1093,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_Bell206PoliceCrashed,
+			texture = Vehicles/EHE/Vehicle_Bell206PoliceDamaged,
 		}
 
-		textureMask = Vehicle_Bell206Police_mask,
+		textureMask = Vehicle_Bell206_mask,
 		extents = 0.3923 0.4630 1.2090,
 		mass = 100,
 		physicsChassisShape = 0.3859 0.4630 1.2283,
 		centerOfMassOffset = 0.0000 0.2219 -0.0032,
 		shadowExtents = 0.1962 1.2862,
-        shadowOffset = 0.0675 0.0032,
+		shadowOffset = 0.0675 0.0032,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 	}

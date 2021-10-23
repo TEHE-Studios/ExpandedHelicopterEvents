@@ -55,6 +55,11 @@ function eHeliEvent_engage(ID)
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget()
+
+	if (not oldGameVersion) and SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
+		willFly = false
+	end
+
 	if willFly and foundTarget then
 		---@type eHelicopter
 		local heli = getFreeHelicopter(eHeliEvent.preset)
@@ -115,7 +120,7 @@ end
 ---@param ID number Position in schedule
 ---@param heliDay number Day to start event
 ---@param heliStart number Hour to start event
-function setNextHeliFrom(ID, heliDay, heliStart, presetID)
+function setNextHeliFrom(ID, heliDay, heliStart, presetID, neverRenew)
 
 	--grab old event based on ID
 	local lastHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
@@ -131,85 +136,84 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 	local presetSettings = eHelicopter_PRESETS[presetID] or {}
 	local COF = presetSettings.cutOffFactor or eHelicopter.cutOffFactor
 
+	local flightHours = presetSettings.flightHours or eHelicopter.flightHours
+	local minStartTime = flightHours[1]
+	local maxStartTime = flightHours[2]
+
 	local cutOffDay
-	local freq
+	local freq = 3
 
 	if oldGameVersion then
 		cutOffDay = COF*eHelicopterSandbox.config.cutOffDay
 		freq = eHelicopterSandbox.config.frequency
 	else
 		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
-		freq = SandboxVars.ExpandedHeli.Frequency-1
+		local tmpFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
+		--[[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
+		if tmpFreq then
+			freq = tmpFreq-1
+		end
 	end
 
-	local hoursToShift
+	local hoursToShift = 0
 	
 	--[[DEBUG]] local debugOutput = ""
 	
 	if not heliDay then
+
+		--[[DEBUG]] local lastDayDebugText = "None"
 		--use old event's start day for reschedule, otherwise get new day
 		if not lastHeliEvent then
-			heliDay = nightsSurvived+ZombRand(0,3)
+			heliDay = nightsSurvived
 		else
-			heliDay = math.min(lastHeliEvent.startDay, nightsSurvived)
-
-			--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..heliDay.." freq:"..freq.."\n"
-
-			local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
-			local dayOffset
-
-			if freq == 0 then
-				dayOffset = {7,14}
-			elseif freq == 1 then
-				dayOffset = {5,10}
-			elseif freq == 2 then
-				dayOffset = {3,6}
-			elseif freq == 3 then
-				dayOffset = {1,2}
-				freqFactor = freqFactor*0.85
-			elseif freq == 4 then
-				freq = 6
-				dayOffset = {0,0}
-				freqFactor = freqFactor*0.25
-			end
-
-			--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
-			local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
-			--as days get closer to the cutoff the time between new events gets longer
-			local lessFreqOverTimeHrs = (((7-freq)*24)*math.min(1,(daysIntoApoc/cutOffDay)))*freqFactor
-			--combine randomizedOffset and lessFreqOverTime
-			hoursToShift = randomizedHoursOffset+lessFreqOverTimeHrs
-			--convert hoursToShift to whole days
-			local daysToShift = math.floor((hoursToShift/24))
-			--remove the day count from hours
-			hoursToShift = math.floor(hoursToShift-(daysToShift*24))
-			--finally shift them
-			heliDay = heliDay+daysToShift
-
-			--[[DEBUG]] debugOutput = debugOutput.."- hrs_shift:"..hoursToShift.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
+			--[[DEBUG]] lastDayDebugText = lastHeliEvent.startDay
+			heliDay = math.max(lastHeliEvent.startDay, nightsSurvived)
 		end
+		--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..lastDayDebugText.." freq:"..freq.."\n"
+
+		local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
+		local dayOffset = {1,2}
+
+		if freq == 0 then
+			dayOffset = {7,14}
+		elseif freq == 1 then
+			dayOffset = {5,10}
+		elseif freq == 2 then
+			dayOffset = {3,6}
+		elseif freq == 3 then
+			dayOffset = {1,2}
+			freqFactor = freqFactor*0.85
+		elseif freq == 4 then
+			freq = 6
+			dayOffset = {0,0}
+			freqFactor = freqFactor*0.25
+		end
+
+		--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
+		local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
+		--as days get closer to the cutoff the time between new events gets longer
+		local lessFreqOverTimeHrs = (((7-freq)*24)*math.min(0,(daysIntoApoc/cutOffDay)))*freqFactor
+		--combine randomizedOffset and lessFreqOverTime
+		hoursToShift = randomizedHoursOffset+lessFreqOverTimeHrs
+
+		--[[DEBUG]] local hrsShiftBreakDown = " (rHO:"..randomizedHoursOffset.."  lFOTH:"..lessFreqOverTimeHrs..")"
+
+		--convert hoursToShift to whole days
+		local daysToShift = math.floor((hoursToShift/24))
+		--remove the day count from hours
+		hoursToShift = math.floor(hoursToShift-(daysToShift*24))
+		--finally shift them
+		heliDay = heliDay+daysToShift
+
+
+		--[[DEBUG]] debugOutput = debugOutput.." - hrs_shift:"..hoursToShift..hrsShiftBreakDown.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
 	end
 
 	if not heliStart then
 		local HOUR = getGameTime():getHour()
 
-		local minStartTime = presetSettings.flightHours[1] or eHelicopter.flightHours[1]
-		local maxStartTime = presetSettings.flightHours[2] or eHelicopter.flightHours[2]
-
-		--if no hoursToShift left over from daysToShift use random amount
-		if not hoursToShift then
-			hoursToShift = ZombRand(6,12)
-		end
-		
-		heliStart = HOUR+hoursToShift
-		
-		--if heliStart is greater than max time subtract the max
-		--mathmatically the hour will always be passed this way and the leftover will be used the next day
-		if heliStart > maxStartTime then
-			heliStart = heliStart-maxStartTime
-		end
-		
-		--clamp heliStart just in case
+		heliStart = ZombRand(minStartTime,maxStartTime+1)+hoursToShift
+		--clamp heliStart
 		heliStart = math.max(minStartTime, math.min(maxStartTime, heliStart))
 	end
 
@@ -227,6 +231,10 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID)
 
 	if neverEnd then
 		renewHeli = true
+	end
+
+	if neverRenew then
+		renewHeli = false
 	end
 
 	if (not renewHeli) and (not lastHeliEvent) then
@@ -265,7 +273,7 @@ function eHeliEvents_OnGameStart()
 	--if the list is empty call new heli events
 	if #GTMData["EventsSchedule"] < 1 then
 		for preset,params in pairs(eHeliEvents_init) do
-			setNextHeliFrom(params["ID"], params["heliDay"], params["heliStart"], preset)
+			setNextHeliFrom(params["ID"], params["heliDay"], params["heliStart"], preset, params["neverRenew"] or nil)
 		end
 	end
 end

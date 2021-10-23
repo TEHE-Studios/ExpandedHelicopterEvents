@@ -1,5 +1,9 @@
 function eHelicopter:update()
 
+	if self.state == "following" then
+		return
+	end
+
 	if (not self.target) or (not self.trueTarget) then
 
 		if (not self.target) then
@@ -11,6 +15,7 @@ function eHelicopter:update()
 
 		self.trueTarget = self:findTarget(self.attackDistance)
 		self.target = self.trueTarget
+		self:setTargetPos()
 		return
 	end
 
@@ -25,6 +30,7 @@ function eHelicopter:update()
 			if (distanceToTrueTarget <= self.attackDistance*2) then
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
+					self:setTargetPos()
 					self:playEventSound("foundTarget")
 				end
 				self.timeSinceLastSeenTarget = timeStampMS
@@ -61,6 +67,7 @@ function eHelicopter:update()
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
+			self:setTargetPos()
 			self:playEventSound("lostTarget")
 		end
 		self:setTargetPos()
@@ -91,6 +98,17 @@ function eHelicopter:update()
 
 	if self.hoverOnTargetDuration then
 		thatIsCloseEnough = thatIsCloseEnough*ZombRand(2,4)
+	end
+
+	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
+	self.updateTicksPassed = self.updateTicksPassed+1
+	local maxTicksAllowed = eheBounds.threshold*10
+	if self.hoverOnTargetDuration and self.hoverOnTargetDuration > 0 then
+		maxTicksAllowed = maxTicksAllowed+(self.hoverOnTargetDuration*10)
+	end
+	if (self.updateTicksPassed > maxTicksAllowed) and (self.state ~= "goHome") then
+		print(" - EHE: Update Tick Cap Reached: "..self:heliToString())
+		self:goHome()
 	end
 
 	local preventMovement = false
@@ -188,6 +206,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 			local dropSquare = drop:getSquare()
 			if dropSquare then
 				self.trueTarget = dropSquare
+				self:setTargetPos()
 			end
 		end
 	end
@@ -215,7 +234,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	--shadowBob
 	if self.shadow and (self.shadow ~= true) and (self.timeSinceLastShadowBob < timeStampMS) then
 		self.timeSinceLastShadowBob = timeStampMS+10
-		local shadowExpansion = 3.5
+		local shadowExpansion = 5
 		local shadowSize = self.shadow:getSize()-shadowExpansion
 		shadowSize = shadowSize+self.shadowBobRate
 		if shadowSize >= 1.05 then
@@ -253,7 +272,7 @@ function updateAllHelicopters()
 		---@type eHelicopter heli
 		local heli = helicopter
 
-		if heli and heli.state and (heli.state ~= "unLaunched") and (heli.state ~= "following") then
+		if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
 			heli:update()
 		end
 	end

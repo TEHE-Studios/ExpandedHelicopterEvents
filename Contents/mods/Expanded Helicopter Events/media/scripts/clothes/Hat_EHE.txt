@@ -189,4 +189,17 @@ module EHE
         Weight = 1.5,
     }
 
+    item Hat_CavalryHat
+    {
+        Type = Clothing,
+        DisplayName = Cavalry Hat,
+        ClothingItem = Hat_CavalryHat,
+        BodyLocation = Hat,
+        Icon = CavalryHat,
+        CanHaveHoles = false,
+        ChanceToFall = 80,
+        Insulation = 0.10,
+        Weight = 0.5,
+    }
+
 }

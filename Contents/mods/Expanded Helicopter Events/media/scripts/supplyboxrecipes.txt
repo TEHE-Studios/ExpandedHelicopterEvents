@@ -1,11 +1,6 @@
 module EHE
 {
 
-	imports
-	{
-		Base
-	}
-
     recipe Open Supplies
     {
        EmergencyFoodSupplyBox=1,
@@ -80,7 +75,7 @@ module EHE
     recipe Open Supplies
     {
        BanditStashBox=1,
-       Result:EmergencyFlyer=1,
+       Result:HottieZ=1,
        OnCreate:EHE_OpenBox.STASHBOX,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,

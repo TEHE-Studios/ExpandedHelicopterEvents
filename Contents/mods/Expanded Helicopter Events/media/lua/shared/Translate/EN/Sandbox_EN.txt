@@ -1,13 +1,25 @@
 Sandbox_EN = {
 	Sandbox_ExpandedHeli = "Expanded Helicopter Events",
 
-	Sandbox_ExpandedHeli_Frequency = "Frequency",
-	Sandbox_ExpandedHeli_Frequency_tooltip = "How frequent expanded helicopter events occur.",
-	Sandbox_ExpandedHeli_Frequency_option1 = "Rare",
-	Sandbox_ExpandedHeli_Frequency_option2 = "Uncommon",
-	Sandbox_ExpandedHeli_Frequency_option3 = "Common",
-	Sandbox_ExpandedHeli_Frequency_option4 = "Frequent",
-	Sandbox_ExpandedHeli_Frequency_option5 = "Insane",
+	Sandbox_ExpandedHeli_Frequency_option1 = "Never"
+	Sandbox_ExpandedHeli_Frequency_option2 = "Rare",
+	Sandbox_ExpandedHeli_Frequency_option3 = "Uncommon",
+	Sandbox_ExpandedHeli_Frequency_option4 = "Common",
+	Sandbox_ExpandedHeli_Frequency_option5 = "Frequent",
+	Sandbox_ExpandedHeli_Frequency_option6 = "Insane",
+
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur.",
+
+    Sandbox_ExpandedHeli_EventCivilian = "Civilians",
+    Sandbox_ExpandedHeli_EventCivilian_tooltip = "How frequent civilian events occur.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Military",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Survivors",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur.",
+
 
 	Sandbox_ExpandedHeli_StartDay = "Start Day",
 	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to. \nNote: Some events are set to start later than this day.",
@@ -16,6 +28,5 @@ Sandbox_EN = {
 	Sandbox_ExpandedHeli_CutOffDay_tooltip = "The day the scheduler will tapered events to end on. \nNote: Some events are scaled to go beyond this day.",
 
 	Sandbox_ExpandedHeli_NeverEnding = "Never Ending Events",
-	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Toggle this on so that the scheduler will always renew events. Events will still progress through stages, and taper off in occurrence, but
-	will never end.",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Toggle this on so that the scheduler will always renew events. Events will still progress through stages, and taper off in occurrence, but will never end.",
 }

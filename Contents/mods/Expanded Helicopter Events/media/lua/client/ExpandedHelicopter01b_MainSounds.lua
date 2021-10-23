@@ -20,8 +20,16 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 		soundEffect = soundEffect[ZombRand(1,#soundEffect+1)]
 	end
 
+	local oL = (otherLocation~=nil)
+
 	---@type FMODSoundEmitter | BaseSoundEmitter emitter
-	local soundEmitter = self.heldEventSoundEffectEmitters[event]
+	local soundEmitter
+
+	if oL then
+		soundEmitter = self.placedEventSoundEffectEmitters[event]
+	else
+		soundEmitter = self.heldEventSoundEffectEmitters[event]
+	end
 
 	if stopSound and soundEmitter then
 		soundEmitter:stopSoundByName(soundEffect)
@@ -34,7 +42,11 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	if not soundEmitter then
 		soundEmitter = getWorld():getFreeEmitter()
 		if saveEmitter then
-			self.heldEventSoundEffectEmitters[event] = soundEmitter
+			if oL then
+				self.placedEventSoundEffectEmitters[event] = soundEmitter
+			else
+				self.heldEventSoundEffectEmitters[event] = soundEmitter
+			end
 		end
 	elseif soundEmitter:isPlaying(soundEffect) then
 		return
@@ -56,14 +68,24 @@ end
 
 
 function eHelicopter:stopAllHeldEventSounds()
-	print(" - EHE: stopAllHeldEventSounds for "..self:heliToString())
+	--[[DEBUG]] local debugPrint = " - EHE: stopAllHeldEventSounds for "..self:heliToString().."\n -- sounds:"
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		if soundEffect then
-			print(" -- sound stoppage:"..event.." = "..soundEffect)
+			--[[DEBUG]] debugPrint = debugPrint.." "..event.." = "..soundEffect..", "
 			emitter:stopSoundByName(soundEffect)
 		else
-			print(" -- sound stoppage: ERR: soundEffect = null")
+			--[[DEBUG]] debugPrint = debugPrint.." ERR: null, "
 		end
 	end
+	for event,emitter in pairs(self.placedEventSoundEffectEmitters) do
+		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
+		if soundEffect then
+			--[[DEBUG]] debugPrint = debugPrint.." "..event.." = "..soundEffect..", "
+			emitter:stopSoundByName(soundEffect)
+		else
+			--[[DEBUG]] debugPrint = debugPrint.." ERR: null, "
+		end
+	end
+	--[[DEBUG]] print(debugPrint)
 end

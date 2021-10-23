@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <fileGuidTable>
+
+<!-- Expanded Helicopter Events -->
 	
 	<files>
 	<path>media/clothing/clothingItems/Hat_SPHPolice.xml</path>
@@ -33,12 +35,12 @@
 
 	<files>
 	<path>media/clothing/clothingItems/Hat_SPHBlack.xml</path>
-	<guid>47c9769d-8935-4028-8900-54e0b83fc873</guid>
+	<guid>010e34ef-f0eb-43e2-8e6f-63703d56db71</guid>
 	</files>
 
 	<files>
 	<path>media/clothing/clothingItems/Hat_SPHBlackVISORUP.xml</path>
-	<guid>62d33441-9860-4c36-8aad-d88f4a2993c2</guid>
+	<guid>d4051175-8c11-4eb3-ad72-402ead3dc85b</guid>
 	</files>
 
 	<files>
@@ -67,6 +69,11 @@
 	</files>
 
 	<files>
+	<path>media/clothing/clothingItems/Hat_CavalryHat.xml</path>
+	<guid>01505303-b171-4ac1-83c8-3614aee4b40c</guid>
+	</files>
+
+	<files>
 	<path>media/clothing/clothingItems/Jacket_DenimCutoff.xml</path>
 	<guid>bf9cc65d-1767-4661-9ad4-db7ac0082f32</guid>
 	</files>
@@ -76,6 +83,12 @@
 	<guid>51f662ec-b2b2-48a1-9971-4566c40fc0f4</guid>
 	</files>
 
+	<files>
+	<path>media/clothing/clothingItems/Vest_BlackPilotSurvivalVest.xml</path>
+	<guid>9e2690d2-4cf0-4572-a403-2b27d011d2a3</guid>
+	</files>
+
+<!-- End -->
 
 	<files>
         <path>media/clothing/clothingItems/AmmoStrap_Bullets.xml</path>

@@ -3,7 +3,7 @@ local distributionTable = VehicleDistributions[1]
 
 
 VehicleDistributions.UH1HSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -41,12 +41,40 @@ VehicleDistributions.UH1HSeat = {
         "HuntingKnife", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
-	
+
+        -- EHE -- 
+
+        "EHE.Hat_CavalryHat", 5,
+        "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
+        "EHE.Hat_SPHBlack", 3,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+
+        -- SMUI -- 
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_BeretSpecial", 10,
+        "SMUIClothing.M67Grenade", 4,
+
+
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
+       
     }
 }
 
-VehicleDistributions.UH1HSurvivalistSeat = {
-    rolls = 2,
+VehicleDistributions.UH1HRaiderSeat = {
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -83,17 +111,43 @@ VehicleDistributions.UH1HSurvivalistSeat = {
 		"x2Scope", 0.7,
         "HottieZ", 10,
         "HottieZ", 10,
-        "Hat_SPHSurvivalist", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
-        "Katana", 10,
-        "EHE.BanditStashBox", 10,
-	
+
+        -- EHE --
+
+        "EHE.BanditStashBox", 1,
+        "EHE.Hat_CavalryHat", 10,
+        "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHBlack", 3,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+
+        -- SMUI --
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_BeretSpecial", 3,
+        "SMUIClothing.M67Grenade", 4,
+
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
+        "AuthenticZClothing.Tshirt_Rock2", 3,
+        "AuthenticZClothing.Tshirt_PostalDude", 3,
+        "AuthenticZClothing.Jacket_PostalDude", 3,
     }
 }
 
 VehicleDistributions.UH1HMedevacSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 9,
         "Vest_BulletArmy", 9,
@@ -132,12 +186,36 @@ VehicleDistributions.UH1HMedevacSeat = {
         "FirstAidKit", 10,
         "FirstAidKit", 10,
 		"x2Scope", 0.7,
-	
+        
+        -- EHE -- 
+
+        "EHE.Hat_SPHMilitary", 10,
+        "EHE.Hat_SPHMilitary", 5,
+        "EHE.Hat_SPHBlack", 3,
+        "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.Vest_PilotSurvivalVest", 10,
+
+        -- SMUI -- 
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_PatrolCap", 10,
+        "SMUIClothing.Hat_BeretSpecial", 3,
+        "SMUIClothing.M67Grenade", 4,
+
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
     }
 }
 
 VehicleDistributions.Bell206PoliceSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Vest_BulletPolice", 9,
         "556Clip", 3,
@@ -148,11 +226,6 @@ VehicleDistributions.Bell206PoliceSeat = {
         "556Box", 3,
         "556Box", 3,
         "556Box", 3,
-        "Hat_RiotHelmet", 7,
-        "Hat_RiotHelmet", 7,
-        "Hat_RiotHelmet", 7,
-        "AssaultRifle", 7,
-        "AssaultRifle", 7,
         "Pistol", 5,
         "Pistol", 5,
         "Pistol", 5,
@@ -166,17 +239,41 @@ VehicleDistributions.Bell206PoliceSeat = {
         "Bullets9mm", 3,
 		"HolsterSimple", 3,
         "Radio.WalkieTalkie3", 3,
-        "HuntingKnife", 3,
+        "AssaultRifle2", 10,
+        "AssaultRifle2", 3,
+        "Shotgun", 10,
+        "Shotgun", 3,
         "FirstAidKit", 3,
 		"x2Scope", 0.7,
         "Hat_SPHPolice", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
+
+        -- EHE --
+
+        "EHE.Hat_SPHPolice", 10,
+        "EHE.Hat_SPHPolice", 5,
+        "EHE.Vest_BlackPilotSurvivalVest", 10,
+        "EHE.Vest_BlackPilotSurvivalVest", 10,
+
+        -- SLEO --
+
+        "SLEOClothing.Hat_RiotHelmet", 10,
+        "SLEOClothing.Hat_PoliceHelmet", 10,
+        "SLEOClothing.Hat_PoliceM17", 10,
+        "SLEOClothing.Vest_PoliceTacticalVest", 10,
+        "SLEOClothing.Jacket_PoliceTactical", 10,
+        "SLEOClothing.Trousers_PoliceTactical", 10,
+        "SLEOClothing.TacticalGoggles", 10,
+        "SLEOClothing.Hat_PoliceBalaclava", 10,
+        "SLEOClothing.Bag_DuffelPolice", 10,
+        "SLEOClothing.Hat_PoliceBaseballCap", 10,
+        "SLEOClothing.PoliceDutyBelt", 10,
     }
 }
 
 VehicleDistributions.Bell206NewsSeat = {
-    rolls = 2,
+    rolls = 3,
     items ={
         "Pistol", 5,
         "Pistol", 5,
@@ -189,17 +286,82 @@ VehicleDistributions.Bell206NewsSeat = {
         "Bullets9mm", 3,
         "Bullets9mm", 3,
         "Bullets9mm", 3,
-        "Hat_PressHelmet", 4,
-        "Hat_PressHelmet", 4,
-        "Vest_BulletPress", 4,
-        "Vest_BulletPress", 4,
-        "Vest_BulletPress", 4,
-        "Radio.WalkieTalkie5", 3,
         "FirstAidKit", 5,
-        "Hat_SPHCivilian", 10,
+        "Shotgun", 5,
+        "Shotgun", 3,
+        "ShotgunShellsBox", 7,
+        "ShotgunShellsBox", 7,
+        "ShotgunShellsBox", 7,
+
+        -- EHE -- 
+
+        "EHE.Hat_SPHCivilian", 10,
+        "EHE.Hat_SPHCivilian", 5,
+        "Hat_PressHelmet", 4,
+        "Hat_PressHelmet", 4,
+        "Vest_BulletPress", 4,
+        "Vest_BulletPress", 4,
+        "Vest_BulletPress", 4,
+
+        -- AZ -- 
+
+        "AuthenticZClothing.CameraDSLR", 3,
     }
 }
 
+VehicleDistributions.Bell206SurvivalistSeat = {
+    rolls = 3,
+    items ={
+        "Pistol", 5,
+        "Pistol", 5,
+        "9mmClip", 3,
+        "9mmClip", 3,
+        "9mmClip", 3,
+        "Bullets9mm", 3,
+        "Bullets9mm", 3,
+        "Bullets9mm", 3,
+        "HuntingKnife", 3,
+        "AmmoStraps", 10,
+        "AmmoStrap_Bullets", 10,
+        "Base.AssaultRifle2", 7,
+        "Base.Shotgun", 7,
+        "FirstAidKit", 5,
+        "Bag_Duffelbag", 7,
+
+        -- EHE--
+
+        "EHE.Hat_SPHCivilian", 10,
+        "EHE.Hat_SPHCivilian", 5,
+
+        -- SMUI --
+
+        "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.M67Grenade", 4,
+
+        -- SLEO --
+
+        "SLEOClothing.Hat_RiotHelmet", 10,
+        "SLEOClothing.Hat_PoliceHelmet", 10,
+        "SLEOClothing.Vest_PoliceTacticalVest", 10,
+        "SLEOClothing.Jacket_PoliceTactical", 10,
+        "SLEOClothing.Trousers_PoliceTactical", 10,
+        "SLEOClothing.TacticalGoggles", 10,
+        "SLEOClothing.Hat_PoliceBalaclava", 10,
+        "SLEOClothing.Bag_DuffelPolice", 10,
+        "SLEOClothing.Hat_PoliceBaseballCap", 10,
+        "SLEOClothing.PoliceDutyBelt", 10, 
+            
+        -- AZ --
+
+        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+        "AuthenticZClothing.AuthenticSmokeBomb", 10,
+
+    }
+}
 VehicleDistributions.FEMASupplyDrop = {
     rolls = 50,
     items ={
@@ -226,6 +388,7 @@ VehicleDistributions.FEMASupplyDrop = {
 }
 
 -- UH-1H tables
+
 VehicleDistributions.UH1H = {
 	
 	SeatFrontLeft = VehicleDistributions.UH1HSeat;
@@ -234,12 +397,12 @@ VehicleDistributions.UH1H = {
 	SeatRearRight = VehicleDistributions.UH1HSeat;
 }
 
-VehicleDistributions.UH1HSurvivalist = {
+VehicleDistributions.UH1HRaider = {
 	
-	SeatFrontLeft = VehicleDistributions.UH1HSurvivalistSeat;
-	SeatFrontRight = VehicleDistributions.UH1HSurvivalistSeat;
-	SeatRearLeft = VehicleDistributions.UH1HSurvivalistSeat;
-	SeatRearRight = VehicleDistributions.UH1HSurvivalistSeat;
+	SeatFrontLeft = VehicleDistributions.UH1HRaiderSeat;
+	SeatFrontRight = VehicleDistributions.UH1HRaiderSeat;
+	SeatRearLeft = VehicleDistributions.UH1HRaiderSeat;
+	SeatRearRight = VehicleDistributions.UH1HRaiderSeat;
 }
 
 
@@ -268,6 +431,14 @@ VehicleDistributions.Bell206News = {
     SeatRearRight =  VehicleDistributions.Bell206NewsSeat;
 }    
 
+VehicleDistributions.Bell206Survivalist = {
+	
+    SeatFrontLeft = VehicleDistributions.Bell206SurvivalistSeat;
+    SeatFrontRight =  VehicleDistributions.Bell20SurvivalistSeat;
+    SeatRearLeft =  VehicleDistributions.Bell206SurvivalistSeat;
+    SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
+}    
+
 --Supply Drop
 VehicleDistributions.FEMASupplyDrop = {
 	
@@ -277,10 +448,11 @@ VehicleDistributions.FEMASupplyDrop = {
 
 --Distribution
 distributionTable["UH1HFuselage"] = { Normal = VehicleDistributions.UH1H; }
-distributionTable["UH1HSurvivalistFuselage"] = { Normal = VehicleDistributions.UH1HSurvivalist; }
+distributionTable["UH1HRaiderFuselage"] = { Normal = VehicleDistributions.UH1HRaider; }
 distributionTable["UH1HMedevacFuselage"] = { Normal = VehicleDistributions.UH1HMedevac; }
 distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
+distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
 
 -- FEMA Supply Drop
 

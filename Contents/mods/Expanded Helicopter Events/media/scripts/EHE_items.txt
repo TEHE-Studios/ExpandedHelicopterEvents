@@ -1,20 +1,13 @@
 module EHE
 {
-	imports
-	{
-		Base
-	}
-
-
 	    item EHE_Parachute
 	{
-		Weight = 15,
+		Weight = 10,
 		Type = Normal,
 		WorldStaticModel = Parachute,
 		DisplayName = Dropped Parachute,
 		Icon = Parachute,
 	}
-
 
 	   item PlentyTee
 	{
@@ -33,4 +26,49 @@ module EHE
         Packaged 	= TRUE,
 		WorldStaticModel = EnergyBar,
 	}
+
+		item Bell206RotorBlade
+	{
+		Weight = 45,
+		Type = Normal,
+		WorldStaticModel = Bell206RotorBlade,
+		DisplayName = Detatched Main Rotor Blade,
+		Icon = 206rotorblade,
+	}
+		item Bell206TailBlade
+	{
+		Weight = 10,
+		Type = Normal,
+		WorldStaticModel = Bell206TailBlade,
+		DisplayName = Detatched Tail Rotor Blade,
+		Icon = 206tailblade,
+	}
+
+		item Bell206HalfSkirt
+	{
+		Weight = 35,
+		Type = Normal,
+		WorldStaticModel = Bell206HalfSkirt,
+		DisplayName = Mangled Helicopter Skirt,
+		Icon = 206halfskirt,
+	}
+
+		item UH1HRotorBlade
+	{
+		Weight = 45,
+		Type = Normal,
+		WorldStaticModel = UH1HRotorBlade,
+		DisplayName = Detached Main Rotor Blade,
+		Icon = 206rotorblade,
+	}
+
+		item UH1HHalfSkirt
+	{
+		Weight = 35,
+		Type = Normal,
+		WorldStaticModel = UH1HHalfSkirt,
+		DisplayName = Mangled Helicopter Skirt,
+		Icon = 206halfskirt,
+	}
+
 }

@@ -12,13 +12,31 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/propplane.ogg, distanceMax = 800, volume = 1.0, } }
 
+    sound eMiliHeli {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/militaryheli_loop.ogg, distanceMax = 800, volume = 1.0, } }
+
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, volume = 1.0, } }
+        
+    sound eAirRaid {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/siren.ogg, distanceMax = 5000, volume = 0.069, } }
+
+    sound eBomb {
+        category = EHE: Main, loop = false, is3D = true,
+        clip { file = media/sound/bombing1.ogg, distanceMax = 5000, volume = 0.5, }
+        clip { file = media/sound/bombing2.ogg, distanceMax = 5000, volume = 0.5, }
+        clip { file = media/sound/bombing3.ogg, distanceMax = 5000, volume = 0.5, } }
+
+    sound eCarpetBomb {
+        category = EHE: Main, loop = false, is3D = true,
+        clip { file = media/sound/bombingCarpet.ogg, distanceMax = 5000, volume = 1.3,} }
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/helicrash.ogg, distanceMax = 800, volume = 1.0, } }
+        clip { file = media/sound/helicrash.ogg, distanceMax = 800, volume = 2.5, } }
 
     sound eHeli_machine_gun_fire_single {
         category = EHE: Main, loop = false, is3D = true,

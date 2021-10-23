@@ -31,7 +31,7 @@ eHelicopter.addedCrashChance = 0
 eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false,}
 
 ---@field scrapAndParts table
-eHelicopter.scrapAndParts = {["vehicleSection"]="UH1HTail"} -- {["vehicleSection"]="Base.TYPE",["scrapItem"]="Base.TYPE"}
+eHelicopter.scrapAndParts = {"UH1HTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2,}-- {"Base.TYPE","Base.TYPE"}
 
 ---@field crew table list of IDs and chances (similar to how loot distribution is handled)
 ---Example: crew = {"pilot", 100, "crew", 75, "crew", 50}
@@ -52,10 +52,12 @@ eHelicopter.eventSoundEffects = {
 	--{"hoverOverTarget"]=nil,["flyOverTarget"]=nil}
 	--["lostTarget"]=nil, ["foundTarget"]=nil, ["droppingPackage"]=nil,
 	--["additionalAttackingSound"]=nil, ["additionalFlightSound"]=nil,
+	--["soundAtEventOrigin"]=nil,
 	["attackSingle"] = "eHeli_machine_gun_fire_single",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = "eHeli_fire_impact",
-	["flightSound"] = "eHelicopter", ["crashEvent"] = "eHelicopterCrash"
+	["flightSound"] = "eMiliHeli",
+	["crashEvent"] = "eHelicopterCrash",
 }
 
 ---@field announcerVoice string
@@ -82,7 +84,7 @@ eHelicopter.cutOffFactor = 1
 eHelicopter.flightHours = {5, 22}
 
 ---@field speed number
-eHelicopter.speed = 0.13
+eHelicopter.speed = 0.10
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 3
@@ -162,6 +164,8 @@ eHelicopter_initialVars = {}
 eHelicopter_variableBackUp(eHelicopter_initialVars, nil, "initialVars")
 
 --the below variables are to be considered "temporary"
+---@field updateTicksPassed number
+eHelicopter.updateTicksPassed = 0
 ---@field height number
 eHelicopter.height = 7
 ---@field state string
@@ -178,6 +182,8 @@ eHelicopter.announceEmitter = false
 eHelicopter.lastAnnouncedLine = false
 ---@field heldEventSoundEffectEmitters table
 eHelicopter.heldEventSoundEffectEmitters = {}
+---@field placedEventSoundEffectEmitters table
+eHelicopter.placedEventSoundEffectEmitters = {}
 ---@field delayedEventSounds table
 eHelicopter.delayedEventSounds = {}
 ---@field target IsoObject
@@ -227,7 +233,7 @@ eHelicopter.ID = 0
 ---returns heli's ID and preset; optionally: returns location's x and y
 ---@param location boolean return x and y coords with ID and preset
 function eHelicopter:heliToString(location)
-	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..")"
+	local returnString = "HELI "..self.ID.." ("..self.currentPresetID..") ["..tostring(self.state).."]"
 	if location then
 		local h_x, h_y, _ = self:getXYZAsInt()
 		if h_x and h_y then

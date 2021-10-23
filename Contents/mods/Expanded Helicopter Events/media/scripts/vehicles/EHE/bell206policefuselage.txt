@@ -18,22 +18,24 @@ module Base
 		{
 			file = Vehicle_Bell206Fuselage,
 			scale = 3.1100,
-			offset = -0.0193 0.0064 0.3633,
+			offset = 0.1190 0.0064 0.2862,
 		}
 
 		spawnOffsetY = 0.19392952,
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_Bell206PoliceCrashed,
+			texture = Vehicles/EHE/Vehicle_Bell206PoliceDamaged,
 		}
 
-		textureMask = Vehicle_Bell206Police_mask,
+		textureMask = Vehicle_Bell206_mask,
 		textureShadow = highlights/vehicleShadowHelicopterFuselage,
 		extents = 0.7524 2.0257 1.8071,
 		mass = 200,
 		physicsChassisShape = 0.7524 0.9646 1.8071,
 		centerOfMassOffset = 0.0000 0.5016 0.1608,
+		shadowExtents = 0.7524 1.8071,
+		shadowOffset = 0.0000 0.1608,
 		seats = 4,
 		template = PassengerSeat4,
 
@@ -103,22 +105,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.6174 0.3666 0.4823 0.4823,
+			xywh = 0.6174 0.7299 0.4823 0.4823,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.6174 0.3666 0.4823 0.4823,
+			xywh = -0.6174 0.7299 0.4823 0.4823,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.6174 -0.1158 0.4823 0.4823,
+			xywh = 0.6174 0.2476 0.4823 0.4823,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.6174 -0.1158 0.4823 0.4823,
+			xywh = -0.6174 0.2476 0.4823 0.4823,
 		}
 
 		template = Seat/part/SeatFrontLeft,
