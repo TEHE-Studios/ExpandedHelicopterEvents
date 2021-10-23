@@ -19,6 +19,21 @@ Events.OnKeyPressed.Add(function(key)
 end)
 
 
+function ZombRandTest(imax)
+	local results = {};
+	for i = 1, imax do
+		local testRand = (ZombRand(13)+1)/10
+		results[tostring(testRand)] = (results[tostring(testRand)] or 0) + 1
+	end
+	print("ZombRand:")
+	local output = ""
+	for k,v in pairs(results) do
+		output = output..k.." ("..v.." times)\n"
+	end
+	print(output)
+end
+
+
 function DEBUG_TESTS.ToggleAllCrash()
 	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then
 		DEBUG_TESTS.TOGGLE_ALL_CRASH = false
@@ -47,7 +62,7 @@ function DEBUG_TESTS.moveHeliCloser(heli,range)
 	local tpX = heli.target:getX()
 	local tpY = heli.target:getY()
 	range = range or 300
-	local offset = ZombRand(range)
+	local offset = ZombRand(range+1)
 	heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
 end
 

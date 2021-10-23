@@ -123,7 +123,7 @@ function eHelicopter:fireOn(targetHostile)
 	--[[debug] local hitReport = "-"..self:heliToString().." n:"..eventSound.." /t:"..timesFiredOnSpecificHostile..
 			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
-	if ZombRand(0, 100) <= chance then
+	if ZombRand(0, 101) <= chance then
 		--knock down player
 		if instanceof(targetHostile, "IsoPlayer") then
 			targetHostile:clearVariable("BumpFallType")

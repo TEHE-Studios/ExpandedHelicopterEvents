@@ -110,7 +110,7 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 		end
 
 		--assume all strings to be outfidID and roll chance/100
-		if (type(outfitID) == "string") and (ZombRand(100) <= chance) then
+		if (type(outfitID) == "string") and (ZombRand(101) <= chance) then
 			local heliX, heliY, _ = self:getXYZAsInt()
 			--fuzz up the location
 			local fuzzNums = {-5,-4,-3,-3,3,3,4,5}
@@ -131,12 +131,12 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 
 						deathChance = deathChance or 33
 						--33% to be dead on arrival
-						if ZombRand(1,100) <= deathChance then
+						if ZombRand(1,101) <= deathChance then
 							print("crash spawned: "..outfitID.." killed")
 							zombie:setHealth(0)
 						else
 							crawlChance = crawlChance or 25
-							if ZombRand(1,100) <= crawlChance then
+							if ZombRand(1,101) <= crawlChance then
 								print("crash spawned: "..outfitID.." crawler")
 								zombie:setCanWalk(false)
 								zombie:setBecomeCrawler(true)
@@ -183,7 +183,7 @@ end
 ---Heli drop items with chance
 function eHelicopter:tryToDropItem(chance, fuzz)
 	fuzz = fuzz or 0
-	chance = (ZombRand(100) <= chance)
+	chance = (ZombRand(101) <= chance)
 	for itemType,quantity in pairs(self.dropItems) do
 		if (self.dropItems[itemType] > 0) and chance then
 			self.dropItems[itemType] = self.dropItems[itemType]-1
@@ -206,12 +206,12 @@ function eHelicopter:dropItem(type, fuzz)
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
 		local minX, maxX = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
+		if ZombRand(1, 101) <= 50 then
 			minX, maxX = -2, 0-(3+fuzz)
 		end
 		heliX = heliX+ZombRand(minX,maxX)
 		local minY, maxY = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
+		if ZombRand(1, 101) <= 50 then
 			minY, maxY = -2, 0-(3+fuzz)
 		end
 		heliY = heliY+ZombRand(minY,maxY)
@@ -243,15 +243,15 @@ function eHelicopter:dropCarePackage(fuzz)
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
 		local minX, maxX = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
+		if ZombRand(1, 101) <= 50 then
 			minX, maxX = -2, 0-(3+fuzz)
 		end
-		heliX = heliX+ZombRand(minX,maxX)
+		heliX = heliX+ZombRand(minX,maxX+1)
 		local minY, maxY = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
+		if ZombRand(1, 101) <= 50 then
 			minY, maxY = -2, 0-(3+fuzz)
 		end
-		heliY = heliY+ZombRand(minY,maxY)
+		heliY = heliY+ZombRand(minY,maxY+1)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
@@ -292,12 +292,12 @@ function eHelicopter:dropScrap(fuzz)
 			for i=1, iterations do
 				if heliX and heliY then
 					local minX, maxX = 2, 3+fuzz
-					if ZombRand(100) <= 50 then
+					if ZombRand(101) <= 50 then
 						minX, maxX = -2, 0-(3+fuzz)
 					end
 					heliX = heliX+ZombRand(minX,maxX)
 					local minY, maxY = 2, 3+fuzz
-					if ZombRand(100) <= 50 then
+					if ZombRand(101) <= 50 then
 						minY, maxY = -2, 0-(3+fuzz)
 					end
 					heliY = heliY+ZombRand(minY,maxY)

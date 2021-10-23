@@ -51,8 +51,8 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 	--assign a random spawn point for the helicopter within a radius from the player
 	--these values are being clamped to not go passed MIN_XY/MAX edges
 	local offset = 500
-	initX = initX or ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset))
-	initY = initY or ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset))
+	initX = initX or ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset)+1)
+	initY = initY or ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset)+1)
 
 	self.currentPosition = self.currentPosition or Vector3.new()
 
@@ -506,17 +506,17 @@ function eHelicopter:formationInit()
 			end
 
 			--if new heli is spawned
-			if (ZombRand(100) <= chance) then
+			if (ZombRand(101) <= chance) then
 				--track formation's current size
 				formationSize = formationSize+1
 				--multiply offset by formation size
 				local heliX = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 				local heliY = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 
-				if (ZombRand(100) <= 50) then
+				if (ZombRand(101) <= 50) then
 					heliX = 0-heliX
 				end
-				if (ZombRand(100) <= 50) then
+				if (ZombRand(101) <= 50) then
 					heliY = 0-heliY
 				end
 				
@@ -566,7 +566,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 	end
 
-	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
+	if self.crashType and (not self.crashing) and (ZombRand(0,101) <= crashChance) then
 		--[[DEBUG]] print (" --- crashing set to TRUE.")
 		self.crashing = true
 	end

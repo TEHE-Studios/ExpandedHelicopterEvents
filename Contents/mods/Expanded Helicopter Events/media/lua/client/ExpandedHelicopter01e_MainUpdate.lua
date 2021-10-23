@@ -43,19 +43,19 @@ function eHelicopter:update()
 				--random offset used for roaming
 				local offset = self.attackDistance
 				if self.crashing then
-					offset = math.floor(offset*(ZombRand(13,25)/10))
+					offset = math.floor(offset*(ZombRand(13,26)/10))
 				end
 				local randOffset = {-offset,offset}
 
 				local tx = self.trueTarget:getX()
 				--50% chance to offset x
-				if ZombRand(1,100) <= 50 then
+				if ZombRand(1,101) <= 50 then
 					--pick from randOffset, 50% negative or positive
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
 				local ty = self.trueTarget:getY()
 				--50% chance to offset y
-				if ZombRand(1,100) <= 50 then
+				if ZombRand(1,101) <= 50 then
 					--pick from randOffset, 50% negative or positive
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
@@ -199,7 +199,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 	--drop carpackage
 	local packageDropRange = thatIsCloseEnough*100
-	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
+	local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		local drop = self:dropCarePackage()
 		if drop then
