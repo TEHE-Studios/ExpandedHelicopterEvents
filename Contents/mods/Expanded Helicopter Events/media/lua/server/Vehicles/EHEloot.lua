@@ -362,6 +362,43 @@ VehicleDistributions.Bell206SurvivalistSeat = {
 
     }
 }
+
+VehicleDistributions.Bell206BlackSeat = {
+    rolls = 3,
+    items ={
+        "HazmatSuit", 10,
+        "HazmatSuit", 10,
+        "556Clip", 3,
+        "556Clip", 3,
+        "556Clip", 3,
+        "556Box", 3,
+        "556Box", 3,
+        "556Box", 3,
+        "556Box", 3,
+        "556Box", 3,
+        "AssaultRifle", 7,
+        "AssaultRifle", 7,
+        "Pistol", 5,
+        "Pistol", 5,
+        "Pistol", 5,
+        "9mmClip", 3,
+        "9mmClip", 3,
+        "9mmClip", 3,
+        "Bullets9mm", 3,
+        "Bullets9mm", 3,
+        "Bullets9mm", 3,
+        "Bullets9mm", 3,
+        "Bullets9mm", 3,
+		"HolsterSimple", 3,
+        "Radio.WalkieTalkie5", 3,
+
+         -- EHE--
+
+         "EHE.Hat_SPHBlack", 5,
+         "EHE.Hat_SPHBlack", 5,
+    }
+}
+
 VehicleDistributions.FEMASupplyDrop = {
     rolls = 50,
     items ={
@@ -439,6 +476,14 @@ VehicleDistributions.Bell206Survivalist = {
     SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
 }    
 
+VehicleDistributions.Bell206Black = {
+	
+    SeatFrontLeft = VehicleDistributions.Bell206BlackSeat;
+    SeatFrontRight =  VehicleDistributions.Bell206BlackSeat;
+    SeatRearLeft =  VehicleDistributions.Bell206BlackSeat;
+    SeatRearRight =  VehicleDistributions.Bell206BlackSeat;
+}    
+
 --Supply Drop
 VehicleDistributions.FEMASupplyDrop = {
 	
@@ -453,6 +498,7 @@ distributionTable["UH1HMedevacFuselage"] = { Normal = VehicleDistributions.UH1HM
 distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
 distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
+distributionTable["Bell206BlackFuselage"] = { Normal = VehicleDistributions.Bell206Black; }
 
 -- FEMA Supply Drop
 
