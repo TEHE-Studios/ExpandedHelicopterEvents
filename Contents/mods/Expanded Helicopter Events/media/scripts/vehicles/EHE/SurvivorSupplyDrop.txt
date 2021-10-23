@@ -17,7 +17,7 @@ module Base
 		model
 		{
 			file = Vehicle_SurvivorSupplyDrop,
-			scale = 1.7100,
+			scale = 1.4000,
 			offset = 0.0000 0.1170 -0.0117,
 		}
 
@@ -29,11 +29,11 @@ module Base
 		}
 
 		textureMask = Vehicle_FEMASupplyDrop_mask,
-		extents = 1.0292 0.4561 1.1228,
+		extents = 0.9864 0.4561 1.0942,
 		mass = 200,
-		physicsChassisShape = 1.0292 0.4561 1.1228,
+		physicsChassisShape = 0.9864 0.4561 1.0942,
 		centerOfMassOffset = 0.0000 0.2281 -0.0117,
-		shadowExtents = 1.0284 1.1344,
+		shadowExtents = 0.9855 1.0987,
 		shadowOffset = 0.0000 -0.0117,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
