@@ -534,10 +534,7 @@ end
 
 function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
-	--weatherImpact is a float, 0 to 1
-	local _, weatherImpact = eHeliEvent_weatherImpact()
 	local GTMData = getGameTime():getModData()
-
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay
 	if oldGameVersion then
@@ -549,18 +546,21 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		return
 	end
 
-	local crashChance = self.addedCrashChance*100
+	local crashChance = self.addedCrashChance
 	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
 
 	if applyEnvironmentalCrashChance then
+		local _, weatherImpact = eHeliEvent_weatherImpact()
 		local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-		local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
+		local apocImpact = (daysIntoApoc/cutOffDay)/10
 		local dayOfLastCrash = GTMData["DayOfLastCrash"]
-		local expectedMaxDaysWithOutCrash = 28/(apocImpact+1)
-		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
-		crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
+		local crashDayCap = 28
+		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/crashDayCap)/2
 
-		print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
+		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
+		crashChance = math.min(100,math.floor(crashChance))
+
+		print(" --- "..self:heliToString().."crashChance:"..crashChance)
 		--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
 		--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
 		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
