@@ -81,6 +81,7 @@ eHelicopter_PRESETS["jet"] = {
 
 
 eHelicopter_PRESETS["jet_bombing"] = {
+	doNotListForTwitchIntegration = true,
 	speed = 2.8,
 	topSpeedFactor = 2,
 	flightVolume = 25,
@@ -125,6 +126,7 @@ eHelicopter_PRESETS["patrol_only_quarantine"] = {
 
 
 eHelicopter_PRESETS["air_raid"] = {
+	doNotListForTwitchIntegration = true,
 	crashType = false,
 	shadow = false,
 	speed = 0.05,
