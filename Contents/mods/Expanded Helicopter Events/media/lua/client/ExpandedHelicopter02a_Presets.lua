@@ -176,18 +176,6 @@ eHelicopter_PRESETS["police_heli"] = {
 	announcerVoice = "Police",
 	}
 
-	
-eHelicopter_PRESETS["survivor_heli"] = {
-	speed = 0.15,
-	crashType = {"Bell206SurvivalistFuselage"},
-	crew = {"EHESurvivorPilot", "EHESurvivor", "EHESurvivor", 75},
-	hostilePreference = "IsoZombie",
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-		},
-	scrapAndParts = {"Bell206SurvivalistTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
-	}
-
 
 eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
@@ -206,10 +194,30 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 
 
 eHelicopter_PRESETS["aid_survivor"] = {
+	presetRandomSelection = {"survivor_plane",2,"survivor_heli",1}
+}
+
+
+eHelicopter_PRESETS["survivor_plane"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot",},
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 0.07,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	cutOffFactor = 3,
+	frequencyFactor = 1.33,
+}
+
+
+eHelicopter_PRESETS["survivor_heli"] = {
+	speed = 0.15,
+	crashType = {"Bell206SurvivalistFuselage"},
+	crew = {"EHESurvivorPilot", "EHESurvivor", "EHESurvivor", 75},
+	hostilePreference = "IsoZombie",
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapAndParts = {"Bell206SurvivalistTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
+	cutOffFactor = 3,
+	frequencyFactor = 1.33,
 }
