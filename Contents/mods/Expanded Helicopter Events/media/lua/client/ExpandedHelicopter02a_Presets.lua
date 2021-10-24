@@ -176,6 +176,18 @@ eHelicopter_PRESETS["police_heli"] = {
 	announcerVoice = "Police",
 	}
 
+	
+eHelicopter_PRESETS["survivor_heli"] = {
+	speed = 0.15,
+	crashType = {"Bell206SurvivalistFuselage"},
+	crew = {"EHESurvivorPilot", "EHESurvivor", "EHESurvivor", 75},
+	hostilePreference = "IsoZombie",
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+		},
+	scrapAndParts = {"Bell206SurvivalistTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
+	}
+
 
 eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
@@ -196,7 +208,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 eHelicopter_PRESETS["aid_survivor"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot",},
-	dropPackages = {"FEMASupplyDrop"},
+	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 0.07,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	cutOffFactor = 3,

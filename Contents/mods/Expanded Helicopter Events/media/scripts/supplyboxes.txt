@@ -32,5 +32,53 @@ module EHE
 		DisplayName		=	Supply Box,
 		WorldStaticModel = BanditBox,
 	}
+	
+		item SurvivorFoodSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorMedicalSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorFishingSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorSeedSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorCanningSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorToiletSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
 
 }

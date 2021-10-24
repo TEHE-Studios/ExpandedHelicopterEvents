@@ -62,27 +62,67 @@ module EHE
        Sound:OpenBox,
     }
 
-    recipe Open Supplies
+       recipe Open Supplies
     {
-       EmergencySurvivalSupplyBox=1,
-       Result:EmergencyFlyer=1,
-       OnCreate:EHE_OpenBox.SURVIVAL,
+       SurvivorMedicalSupplyBox=1,
+       Result:Scalpel=1,
+       OnCreate:EHE_OpenBox.SURVIVORMEDICAL,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
     }
 
-    recipe Open Supplies
+       recipe Open Supplies
     {
-       BanditStashBox=1,
-       Result:HottieZ=1,
-       OnCreate:EHE_OpenBox.STASHBOX,
+       SurvivorFoodSupplyBox=1,
+       Result:CannedTomato=1,
+       OnCreate:EHE_OpenBox.SURVIVORFOOD,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
     }
 
-    recipe Cut up Parachute
+     recipe Open Supplies
+    {
+       SurvivorFishingSupplyBox=1,
+       Result:FishingLine=1,
+       OnCreate:EHE_OpenBox.SURVIVORFISHING,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+    
+     recipe Open Supplies
+    {
+       SurvivorCanningSupplyBox=1,
+       Result:Vinegar=1,
+       OnCreate:EHE_OpenBox.SURVIVORCANNING,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+     recipe Open Supplies
+    {
+       SurvivorToiletSupplyBox=1,
+       Result:ToiletPaper=1,
+       OnCreate:EHE_OpenBox.SURVIVORTOILET,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+    
+    recipe Open Supplies
+    {
+       SurvivorSeedSupplyBox=1,
+       Result:Fertilizer=1,
+       OnCreate:EHE_OpenBox.SURVIVORSEEDS,
+       Tooltip:Would be faster to open with something sharp.,
+       Time:210.0,
+       Sound:OpenBox,
+    }
+
+     recipe Cut up Parachute
     {
        EHE_Parachute=1,
        Result:RippedSheets=60,
