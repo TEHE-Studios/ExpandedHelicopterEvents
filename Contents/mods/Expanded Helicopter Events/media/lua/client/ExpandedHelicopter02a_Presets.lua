@@ -21,7 +21,7 @@ function eHeliEventsinit()
 	eHeliEvents_init["air_raid"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=11, ["neverRenew"]=true}
 	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
-	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(1,14)/10)), ["heliStart"]=nil}
+	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
 
