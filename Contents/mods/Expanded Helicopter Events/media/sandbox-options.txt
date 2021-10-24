@@ -39,6 +39,14 @@ option ExpandedHeli.Frequency_military
 	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
 	valueTranslation = ExpandedHeli_Frequency,
 }
+
+option ExpandedHeli.Frequency_aid_military
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
 option ExpandedHeli.Frequency_aid_survivor
 {
 	type = enum, numValues = 6, default = 3,
