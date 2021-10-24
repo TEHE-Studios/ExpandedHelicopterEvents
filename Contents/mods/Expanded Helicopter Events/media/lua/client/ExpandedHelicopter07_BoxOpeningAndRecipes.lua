@@ -26,6 +26,7 @@ function EHE_OpenBox.MEDICAL(recipe, result, player)
 end
 
 
+
 function EHE_OpenBox.SURVIVAL(recipe, result, player)
 	player:getInventory():AddItems("Base.Torch", 2)
 	player:getInventory():AddItems("Base.Battery", 12)
@@ -40,6 +41,52 @@ function EHE_OpenBox.STASHBOX(recipe, result, player)
 	player:getInventory():AddItems("EHE.PlentyTee", 5)
 	player:getInventory():AddItems("Spiffo", 1)
 end
+
+function EHE_OpenBox.SURVIVORMEDICAL(recipe, result, player)
+	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 2)
+	player:getInventory():AddItems("Gloves_Surgical", 2)
+	local items = player:getInventory():AddItems("Base.FirstAidKit", 1)
+
+	for i=0, items:size()-1 do
+		rollInventoryContainer(items:get(i), player)
+	end
+end
+
+function EHE_OpenBox.SURVIVORFOOD(recipe, result, player)
+	player:getInventory():AddItems("CannedPotato", 2)
+	player:getInventory():AddItems("CannedCarrots", 2)
+	player:getInventory():AddItems("CannedCabbage", 2)
+	player:getInventory():AddItems("CannedTomato", 2)
+	player:getInventory():AddItems("CannedBroccoli", 2)
+end
+
+function EHE_OpenBox.SURVIVORSEEDS(recipe, result, player)
+	player:getInventory():AddItems("Fertilizer", 3)
+	player:getInventory():AddItems("farming.CabbageBagSeed", 3)
+	player:getInventory():AddItems("farming.PotatoBagSeed", 3)
+	player:getInventory():AddItems("farming.BroccoliBagSeed", 3)
+	player:getInventory():AddItems("farming.TomatoBagSeed", 3)
+	player:getInventory():AddItems("farming.CarrotBagSeed", 3)
+end
+
+function EHE_OpenBox.SURVIVORTOILET(recipe, result, player)
+	player:getInventory():AddItems("ToiletPaper", 10)
+end
+
+function EHE_OpenBox.SURVIVORFISHING(recipe, result, player)
+	player:getInventory():AddItems("FishingRod", 3)
+	player:getInventory():AddItems("FishingLine", 3)
+	player:getInventory():AddItems("FishingTackle", 3)
+	player:getInventory():AddItems("FishingNet", 4)
+end
+
+function EHE_OpenBox.SURVIVORCANNING(recipe, result, player)
+	player:getInventory():AddItems("BoxOfJars", 2)
+	player:getInventory():AddItems("Sugar", 1)
+	player:getInventory():AddItems("Vinegar", 1)
+end
+
+
 
 EHE_OpenBox.typesThatCanOpenBoxes = EHE_OpenBox.typesThatCanOpenBoxes or {}
 

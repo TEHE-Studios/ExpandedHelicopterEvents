@@ -366,24 +366,66 @@ VehicleDistributions.FEMASupplyDrop = {
     rolls = 50,
     items ={
         "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 1,
         "EHE.EmergencyFoodSupplyBox", 2,
 
         "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 1,
         "EHE.EmergencyFoodSupplyBox", 2,
 
         "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 1,
         "EHE.EmergencyFoodSupplyBox", 2,
 
         "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 1,
         "EHE.EmergencyFoodSupplyBox", 2,
 
         "EHE.EmergencyMedicalSupplyBox", 2,
-        "EHE.EmergencySurvivalSupplyBox", 2,
+        "EHE.EmergencySurvivalSupplyBox", 1,
         "EHE.EmergencyFoodSupplyBox", 2,
+    }
+}
+
+VehicleDistributions.SurvivorSupplyDrop = {
+    rolls = 50,
+    items ={
+        "EHE.SurvivorMedicalSupplyBox", 1,
+        "EHE.SurvivorToiletSupplyBox", 2,
+        "EHE.SurvivorFoodSupplyBox", 1,
+        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorCanningSupplyBox", 1,
+        "EHE.SurvivorSeedSupplyBox", 1,
+
+        "EHE.SurvivorMedicalSupplyBox", 1,
+        "EHE.SurvivorToiletSupplyBox", 2,
+        "EHE.SurvivorFoodSupplyBox", 1,
+        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorCanningSupplyBox", 1,
+        "EHE.SurvivorSeedSupplyBox", 1,
+
+
+        "EHE.SurvivorMedicalSupplyBox", 1,
+        "EHE.SurvivorToiletSupplyBox", 2,
+        "EHE.SurvivorFoodSupplyBox", 1,
+        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorCanningSupplyBox", 1,
+        "EHE.SurvivorSeedSupplyBox", 1,
+
+
+        "EHE.SurvivorMedicalSupplyBox", 1,
+        "EHE.SurvivorToiletSupplyBox", 1,
+        "EHE.SurvivorFoodSupplyBox", 1,
+        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorCanningSupplyBox", 1,
+        "EHE.SurvivorSeedSupplyBox", 1,
+
+        "EHE.SurvivorMedicalSupplyBox", 1,
+        "EHE.SurvivorToiletSupplyBox", 3,
+        "EHE.SurvivorFoodSupplyBox", 1,
+        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorCanningSupplyBox", 1,
+        "EHE.SurvivorSeedSupplyBox", 1,
     }
 }
 
@@ -448,6 +490,12 @@ VehicleDistributions.FEMASupplyDrop = {
 
 }    
 
+VehicleDistributions.SurvivorSupplyDrop = {
+	
+    TruckBed = VehicleDistributions.SurvivorSupplyDrop;
+
+}    
+
 --Distribution
 
 distributionTable["UH1HFuselage"] = { Normal = VehicleDistributions.UH1H; }
@@ -457,6 +505,7 @@ distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bel
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
 distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
 
--- FEMA Supply Drop
+-- Supply Drops
 
 distributionTable["FEMASupplyDrop"] = { Normal = VehicleDistributions.FEMASupplyDrop; }
+distributionTable["SurvivorSupplyDrop"] = { Normal = VehicleDistributions.SurvivorSupplyDrop; }

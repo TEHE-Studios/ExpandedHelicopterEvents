@@ -41,6 +41,13 @@ module Base
 		texture = WorldItems/SupplyBox,
 		scale = 1.0,
 	}
+		    
+		model SurvivorSupplyBox
+	{
+		mesh = WorldItems/SupplyBox,
+		texture = WorldItems/SurvivorSupplyBox,
+		scale = 1.0,
+	}
 
 		model BanditBox
 	{
