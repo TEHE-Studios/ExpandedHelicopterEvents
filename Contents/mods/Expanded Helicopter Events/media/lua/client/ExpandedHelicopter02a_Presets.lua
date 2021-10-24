@@ -180,7 +180,7 @@ eHelicopter_PRESETS["police_heli"] = {
 eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
 	hoverOnTargetDuration = 500,
-	crew = {"EHEMilitaryPilot", "EHESoldier", 100, "EHESoldier", 100},
+	crew = {"EHEMilitaryPilot", "EHESoldier", "EHESoldier"},
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.NoticeFlyer"]=250},
 	speed = 0.09,
@@ -200,7 +200,7 @@ eHelicopter_PRESETS["aid_survivor"] = {
 
 eHelicopter_PRESETS["survivor_plane"] = {
 	crashType = false,
-	crew = {"EHESurvivorPilot",},
+	crew = {"EHESurvivorPilot", 100, 0},
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 0.07,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
@@ -212,7 +212,7 @@ eHelicopter_PRESETS["survivor_plane"] = {
 eHelicopter_PRESETS["survivor_heli"] = {
 	speed = 0.15,
 	crashType = {"Bell206SurvivalistFuselage"},
-	crew = {"EHESurvivorPilot", "EHESurvivor", "EHESurvivor", 75},
+	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
