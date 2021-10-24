@@ -27,20 +27,15 @@ option ExpandedHeli.Frequency_jet
 	page = ExpandedHeli, translation = ExpandedHeli_EventJet,
 	valueTranslation = ExpandedHeli_Frequency,
 }
+
 option ExpandedHeli.Frequency_civilian
 {
 	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventCivilian,
 	valueTranslation = ExpandedHeli_Frequency,
 }
-option ExpandedHeli.Frequency_military
-{
-	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
-	valueTranslation = ExpandedHeli_Frequency,
-}
 
-option ExpandedHeli.Frequency_aid_military
+option ExpandedHeli.Frequency_military
 {
 	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
