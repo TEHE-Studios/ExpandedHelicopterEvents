@@ -223,3 +223,43 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	cutOffFactor = 3,
 	frequencyFactor = 1.33,
 }
+
+
+eHelicopter_PRESETS["raiders"] = {
+	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_aggressive",1}
+	}
+
+eHelicopter_PRESETS["raider_heli_passive"] = {
+	speed = 0.20,
+	crashType = {"UH1HRaiderFuselage"},
+	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeli",
+		["additionalFlightSound"] = "eHeliMusicPassive",
+	},
+	scrapAndParts = {"UH1HRaiderTail", "EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
+	cutOffFactor = 3,
+	frequencyFactor = 1.33,
+}
+
+eHelicopter_PRESETS["raider_heli_aggressive"] = {
+	speed = 0.20,
+	hoverOnTargetDuration = {2500,3000},
+	attackDelay = 830,
+	attackSpread = 4,
+	attackHitChance = 55,
+	attackDamage = 75,
+	dropItems = {["EHE.EvacuationFlyer"]=250},
+	crashType = {"UH1HFuselage"},
+	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
+	hostilePreference = "IsoZombie",
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeli",
+		["attackSingle"] = "eHeli_bolt_action_fire_single",
+		["attackLooped"] = "eHeli_bolt_action_fire_single",
+		["additionalFlightSound"] = "eHeliMusicAggressive",
+	},
+	scrapAndParts = {"UH1HRaiderTail", "EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
+	cutOffFactor = 3,
+	frequencyFactor = 1.33,
+}
