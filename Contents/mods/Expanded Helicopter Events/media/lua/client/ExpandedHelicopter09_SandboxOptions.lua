@@ -38,9 +38,11 @@ function loadAnnouncersToConfig()
 	eHelicopterSandbox.menu["voiceSpaceA"] = {type = "Space"}
 	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs", }
 
-	for k,_ in pairs(eHelicopter_announcers) do
-		eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
-		eHelicopterSandbox.config[k] = true
+	for k,params in pairs(eHelicopter_announcers) do
+		if params.DoNotDisplayOnOptions ~= true then
+			eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
+			eHelicopterSandbox.config[k] = true
+		end
 	end
 
 	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
