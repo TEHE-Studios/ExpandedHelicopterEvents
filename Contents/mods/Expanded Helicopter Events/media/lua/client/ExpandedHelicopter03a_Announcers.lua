@@ -68,3 +68,12 @@ eHelicopter_announcers["Police"] = {
 	["Lines"] = {
 		["PoliceLines"] = {8500, "eHeli_police_lines"},
 	} }
+
+	eHelicopter_announcers["RaiderGunfire"] = {
+		["DoNotDisplayOnOptions"] = true,
+		["LeaveOutOfRandomSelection"] = true,
+		["Lines"] = {
+			["RaiderGunfireSingle"] = {8500, "eHeliDogfightGunfireSingle"},
+			["RaiderGunfireBurst"] = {8500, "eHeliDogfightGunfireBurst"},
+		} }
+	
