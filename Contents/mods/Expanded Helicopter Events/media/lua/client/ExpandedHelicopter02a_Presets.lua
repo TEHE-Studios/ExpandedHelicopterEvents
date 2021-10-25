@@ -23,6 +23,7 @@ function eHeliEventsinit()
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
 	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
 	eHeliEvents_init["raiders"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
+	eHeliEvents_init["samaritan_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
 
@@ -197,11 +198,6 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 
 
 eHelicopter_PRESETS["aid_survivor"] = {
-	presetRandomSelection = {"survivor_plane",2,"survivor_heli",1}
-}
-
-
-eHelicopter_PRESETS["survivor_plane"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
 	dropPackages = {"SurvivorSupplyDrop"},
@@ -212,7 +208,7 @@ eHelicopter_PRESETS["survivor_plane"] = {
 }
 
 
-eHelicopter_PRESETS["survivor_heli"] = {
+eHelicopter_PRESETS["samaritan_heli"] = {
 	speed = 0.15,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
