@@ -340,22 +340,12 @@ function eHelicopter_dropTrash(heli, location)
 	local heliX, heliY, _ = heli:getXYZAsInt()
 	local trashItems = {"Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
 	local iterations = 10
-	local fuzz = 0
 
 	for i=1, iterations do
-		if heliX and heliY then
-			local minX, maxX = 0, fuzz
-			if ZombRand(101) <= 50 then
-				minX, maxX = 0, 0-(fuzz)
-			end
-			heliX = heliX+ZombRand(minX,maxX)
-			local minY, maxY = 0, fuzz
-			if ZombRand(101) <= 50 then
-				minY, maxY = 0, 0-(fuzz)
-			end
-			heliY = heliY+ZombRand(minY,maxY)
-		end
 
+		heliY = heliY+ZombRand(-1,2)
+		heliX = heliX+ZombRand(-1,2)
+		
 		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
 		if currentSquare and currentSquare:isSolidTrans() then
