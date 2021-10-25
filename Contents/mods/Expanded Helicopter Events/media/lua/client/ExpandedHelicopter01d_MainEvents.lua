@@ -332,3 +332,40 @@ function eHelicopter:dropScrap(fuzz)
 		return false
 	end
 end
+
+
+--addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash()},
+function eHelicopter:dropTrash(iterations)
+
+	local heliX, heliY, _ = self:getXYZAsInt()
+	local trashItems = {"Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
+	iterations = iterations or 10
+
+	for i=1, iterations do
+		if heliX and heliY then
+			local minX, maxX = 2, 3+fuzz
+			if ZombRand(101) <= 50 then
+				minX, maxX = -2, 0-(3+fuzz)
+			end
+			heliX = heliX+ZombRand(minX,maxX)
+			local minY, maxY = 2, 3+fuzz
+			if ZombRand(101) <= 50 then
+				minY, maxY = -2, 0-(3+fuzz)
+			end
+			heliY = heliY+ZombRand(minY,maxY)
+		end
+
+		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
+
+		if currentSquare and currentSquare:isSolidTrans() then
+			currentSquare = nil
+		end
+
+		if currentSquare then
+			local trashType = trashItems[(ZombRand(#trashItems)+1)]
+			--more likely to drop the same thing
+			table.insert(trashItems, trashType)
+			currentSquare:AddWorldInventoryItem(trashType, 0, 0, 0)
+		end
+	end
+end
