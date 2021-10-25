@@ -21,11 +21,12 @@ function eHeliEventsinit()
 	eHeliEvents_init["air_raid"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=11, ["neverRenew"]=true}
 	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
-	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
+	eHeliEvents_init["samaritan_drop"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
 	eHeliEvents_init["raiders"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
-	eHeliEvents_init["samaritan_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
+	eHeliEvents_init["survivor_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
+
 
 --[[
 
@@ -197,7 +198,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	}
 
 
-eHelicopter_PRESETS["aid_survivor"] = {
+eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
 	dropPackages = {"SurvivorSupplyDrop"},
@@ -208,11 +209,10 @@ eHelicopter_PRESETS["aid_survivor"] = {
 }
 
 
-eHelicopter_PRESETS["samaritan_heli"] = {
+eHelicopter_PRESETS["survivor_heli"] = {
 	speed = 0.15,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
-	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
 	},
