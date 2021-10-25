@@ -26,11 +26,11 @@ module Base {
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 950, volume = 1.0, } }
+        clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 750, volume = 1.0, } }
 
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/HeliMusicAggressive.ogg, distanceMax = 950, volume = 1.0, } }
+        clip { file = media/sound/HeliMusicAggressive.ogg, distanceMax = 750, volume = 1.0, } }
         
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
