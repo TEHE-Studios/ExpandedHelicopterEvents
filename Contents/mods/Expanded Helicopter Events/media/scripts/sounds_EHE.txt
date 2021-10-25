@@ -24,6 +24,14 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/siren.ogg, distanceMax = 5000, volume = 0.069, } }
 
+    sound eHeliMusicPassive {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 950, volume = 1.0, } }
+
+    sound eHeliMusicAggressive {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/HeliMusicAggressive.ogg, distanceMax = 950, volume = 1.0, } }
+        
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/bombing1.ogg, distanceMax = 5000, volume = 0.5, }
