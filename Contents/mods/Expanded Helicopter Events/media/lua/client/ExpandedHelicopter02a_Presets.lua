@@ -240,7 +240,7 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 	scrapAndParts = {"UH1HRaiderTail", "EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
 	cutOffFactor = 3,
 	frequencyFactor = 1.33,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash(10)},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 }
 
 eHelicopter_PRESETS["raider_heli_aggressive"] = {
@@ -262,5 +262,5 @@ eHelicopter_PRESETS["raider_heli_aggressive"] = {
 	scrapAndParts = {"UH1HRaiderTail", "EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
 	cutOffFactor = 3,
 	frequencyFactor = 1.33,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash(15)},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 }

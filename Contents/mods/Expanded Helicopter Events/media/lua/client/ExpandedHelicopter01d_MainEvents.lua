@@ -335,11 +335,12 @@ end
 
 
 --addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash()},
-function eHelicopter:dropTrash(iterations)
+function eHelicopter_dropTrash(heli, location)
 
-	local heliX, heliY, _ = self:getXYZAsInt()
+	local heliX, heliY, _ = heli:getXYZAsInt()
 	local trashItems = {"Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
-	iterations = iterations or 10
+	local iterations = 10
+	local fuzz = 0
 
 	for i=1, iterations do
 		if heliX and heliY then
