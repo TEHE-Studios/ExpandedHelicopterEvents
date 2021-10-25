@@ -344,14 +344,14 @@ function eHelicopter_dropTrash(heli, location)
 
 	for i=1, iterations do
 		if heliX and heliY then
-			local minX, maxX = 2, 3+fuzz
+			local minX, maxX = 0, fuzz
 			if ZombRand(101) <= 50 then
-				minX, maxX = -2, 0-(3+fuzz)
+				minX, maxX = 0, 0-(fuzz)
 			end
 			heliX = heliX+ZombRand(minX,maxX)
-			local minY, maxY = 2, 3+fuzz
+			local minY, maxY = 0, fuzz
 			if ZombRand(101) <= 50 then
-				minY, maxY = -2, 0-(3+fuzz)
+				minY, maxY = 0, 0-(fuzz)
 			end
 			heliY = heliY+ZombRand(minY,maxY)
 		end
