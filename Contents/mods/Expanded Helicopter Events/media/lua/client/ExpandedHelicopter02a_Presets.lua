@@ -260,4 +260,5 @@ eHelicopter_PRESETS["raider_heli_aggressive"] = {
 	cutOffFactor = 3,
 	frequencyFactor = 1.33,
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
+	announcerVoice = "RaiderGunfire",
 }
