@@ -239,6 +239,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
+	local carePackagesWithOutChutes = {["FEMASupplyDrop"]=true}
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
@@ -265,7 +266,9 @@ function eHelicopter:dropCarePackage(fuzz)
 		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
 			self:playEventSound("droppingPackage")
-			currentSquare:AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
+			if carePackagesWithOutChutes[carePackage]~=true then
+				currentSquare:AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
+			end
 			self.dropPackages = false
 			return airDrop
 		end
