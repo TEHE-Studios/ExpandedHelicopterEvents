@@ -1,4 +1,0 @@
-Recipe_RU = {
-Recipe_Open_Supplies = "Открытые поставки",
-
-}
