@@ -10,6 +10,9 @@ eHelicopter.searchForTargetDuration = 30000
 ---@field shadow boolean | WorldMarkers.GridSquareMarker
 eHelicopter.shadow = true
 
+---@field markers table containing EHE_EventMarkers
+eHelicopter.markers = {}
+
 ---@field shadowTexture string
 eHelicopter.shadowTexture = "helicopter_shadow"
 
