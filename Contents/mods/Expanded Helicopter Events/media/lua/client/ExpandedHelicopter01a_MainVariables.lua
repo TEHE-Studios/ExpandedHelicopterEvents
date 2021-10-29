@@ -16,6 +16,9 @@ eHelicopter.markers = {}
 ---@field shadowTexture string
 eHelicopter.shadowTexture = "helicopter_shadow"
 
+---@field eventMarkerIcon string
+eHelicopter.eventMarkerIcon = "media/ui/helievent.png"
+
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HFuselage"}
 

@@ -42,8 +42,8 @@ end
 
 function EHE_EventMarkers:setDuration(value)
 	self.duration = value
-	self.flashticks = 0
-	self.flashingon = true
+	self.flashTicks = 0
+	self.flashingOn = true
 end
 
 
@@ -55,33 +55,20 @@ function EHE_EventMarkers:render()
 
 		local centerX = self.width / 2
 		local centerY = self.height / 2
+		local flashBaseline = (self.distancetoPoint * 3)
 
-		local flashbaseline = (self.distancetoPoint * 3)
-		local texturetoUse = self.texturePoint
-
-		---TODO: color via code perchance?
-		--[[
-		if(self.distancetoPoint <= 1) then
-			texturetoUse = self.texSameSquare
-		elseif(self.distancetoPoint <= 4) then
-			texturetoUse = self.texRed
-		elseif (self.distancetoPoint <= 9) then
-			texturetoUse = self.texOrange
-		elseif (self.distancetoPoint <= 14) then
-			texturetoUse = self.texYellow
-		end
-		]]
-
-		if((self.flashingon) and (self.flashticks < (flashbaseline))) then
-			self:DrawTextureAngle(texturetoUse, centerX, centerY, self.angle)
+		if((self.flashingOn) and (self.flashTicks < (flashBaseline))) then
+			-- texture, x, y, a, r, g, b
+			self:drawTexture(self.textureIcon, centerX-35, centerY-35, 1, 1, 1, 1)
+			self:DrawTextureAngle(self.texturePoint, centerX, centerY, self.angle)
 			ISUIElement.render(self)
-			self.flashticks = self.flashticks + 1
-		elseif((not self.flashingon) and (self.flashticks < (flashbaseline))) then
-			self.flashticks = self.flashticks + 1
+			self.flashTicks = self.flashTicks + 1
+		elseif((not self.flashingOn) and (self.flashTicks < (flashBaseline))) then
+			self.flashTicks = self.flashTicks + 1
 		else
-			self.flashticks = 0
-			self.flashingon = not self.flashingon
-			if(not self.flashingon) then self.flashticks = (flashbaseline/2) end -- flash off time half as long as flash on
+			self.flashTicks = 0
+			self.flashingOn = not self.flashingOn
+			if(not self.flashingOn) then self.flashTicks = (flashBaseline/2) end -- flash off time half as long as flash on
 
 		end
 
@@ -109,7 +96,7 @@ function EHE_EventMarkers:getPlayer()
 end
 
 
-function EHE_EventMarkers:new(heli, player, x, y, width, height, title)
+function EHE_EventMarkers:new(heli, player, x, y, width, height, title, duration)
 	local o = {}
 	o = ISUIElement:new(x, y, 1, 1)
 	setmetatable(o, self)
@@ -121,14 +108,14 @@ function EHE_EventMarkers:new(heli, player, x, y, width, height, title)
 	o.lastpx = 0
 	o.SoundSource = nil
 	o.lastpy = 0
-	o.flashticks = 0
-	o.flashingon = true
+	o.flashTicks = 0
+	o.flashingOn = true
 	o.width = width
 	o.height = height
 	o.angle = 0
 	o.opacity = 255
 	o.opacityGain = 2
-	o.duration = 0
+	o.duration = duration or 0
 	o.enabled = true
 	o.visible = true
 	o.title = title
@@ -140,6 +127,10 @@ function EHE_EventMarkers:new(heli, player, x, y, width, height, title)
 	o.joypadFocused = false
 	o.translation = nil
 	o.texturePoint = getTexture("media/ui/eventMarker.png")
+	o.textureIcon = getTexture(heli.eventMarkerIcon)
+
+	heli.markers[player] = o
+	o:initialise()
 
 	return o
 end
@@ -170,14 +161,11 @@ end
 -------------STATIC-FUNCS------------------
 
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-function eHelicopter:generateNewMarker(player)
+function EHE_EventMarkers:generateNewMarker(heli, player)
 	if(player) then
-		local SY = 0 - (64+35)
+		local SY = 0
 		local SX = (getCore():getScreenWidth()/2) - 35
-
-		local newMarker = EHE_EventMarkers:new(self,player,SX, SY,165, 165, "")
-		self.markers[player] = newMarker
-		newMarker:initialise()
+		local newMarker = EHE_EventMarkers:new(heli, player, SX, SY,165, 165, "")
 		print("Sound Direction Indicator initialised")
 		return newMarker
 	else
@@ -192,7 +180,7 @@ function eHelicopter:updateMarkers()
 		local marker = self.markers[p]
 
 		if not marker then
-			marker = self:generateNewMarker(p)
+			marker = EHE_EventMarkers:generateNewMarker(self,p)
 		end
 
 		if p and marker then

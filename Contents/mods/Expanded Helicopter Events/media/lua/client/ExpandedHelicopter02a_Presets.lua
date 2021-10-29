@@ -134,6 +134,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	shadow = false,
 	speed = 0.05,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+	eventMarkerIcon = false,
 }
 
 
