@@ -253,8 +253,8 @@ eHelicopter_PRESETS["raider_heli_aggressive"] = {
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
-		["attackSingle"] = "eHeli_bolt_action_fire_single",
-		["attackLooped"] = "eHeli_bolt_action_fire_single",
+		["attackSingle"] = "eHeliRaiderGunfireSingle",
+		["attackLooped"] = "eHeliRaiderGunfireSingle",
 		["additionalFlightSound"] = "eHeliMusicAggressive",
 	},
 	scrapAndParts = {"UH1HRaiderTail", "EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},

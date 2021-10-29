@@ -32,13 +32,13 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/HeliMusicAggressive.ogg, distanceMax = 750, volume = 1.0, } }
 
-    sound eHeliDogfightGunfireSingle {
+    sound eHeliRaiderGunfireSingle {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/DogfightRaiderGunfireSingle.ogg, distanceMax = 750, volume = 1.0, } }
+        clip { file = media/sound/RaiderGunfireSingle.ogg, distanceMax = 750, volume = 1.0, } }
 
-    sound eHeliDogfightGunfireBurst {
+    sound eHeliRaiderGunfireBurst {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/DogfightRaiderGunfireBurst.ogg, distanceMax = 750, volume = 1.0, } }
+        clip { file = media/sound/RaiderGunfireBurst.ogg, distanceMax = 750, volume = 1.0, } }
              
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
