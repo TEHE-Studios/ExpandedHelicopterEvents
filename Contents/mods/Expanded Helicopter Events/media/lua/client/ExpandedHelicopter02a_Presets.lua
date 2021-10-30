@@ -102,7 +102,7 @@ eHelicopter_PRESETS["news_chopper_hover"] = {
 	speed = 0.10,
 	crashType = {"Bell206LBMWFuselage"},
 	scrapAndParts = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-	crew = {"EHECivilianPilot", "EHENewsReporterArmored", "EHENewsReporterArmored", 40},
+	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	}
 
 
@@ -112,7 +112,7 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 		speed = 0.16,
 		crashType = {"Bell206LBMWFuselage"},
 		scrapAndParts = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-		crew = {"EHECivilianPilot", "EHENewsReporterArmored", "EHENewsReporterArmored", 40},
+		crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	}
 
 	
