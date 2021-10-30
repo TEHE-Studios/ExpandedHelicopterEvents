@@ -1,9 +1,13 @@
 EHE_Recipe = {}
 
--- Example OnCanPeform function.
-function EHE_HockeyMaskSmashBottle(recipe, playerObj)
-	local wornItem = playerObj:getWornItem("MaskEyes")
-	return (wornItem ~= nil) and (wornItem:getType() == "Hat_HockeyMask")
+
+-- Example OnCanPerform function.
+--- OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
+function EHE_Recipe.MustBeWearing_FirstItem(recipe, playerObj)
+	print("EHE_RECIPE DEBUG:")
+	--local wornItem = playerObj:getWornItem("MaskEyes")
+	--return (wornItem ~= nil) and (wornItem:getType() == "Hat_HockeyMask")
+	return true
 end
 
 

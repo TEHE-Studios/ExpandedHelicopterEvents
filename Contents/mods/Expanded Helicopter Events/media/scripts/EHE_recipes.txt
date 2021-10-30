@@ -1,0 +1,275 @@
+module EHE
+{
+
+       recipe Open Supplies
+    {
+       EmergencyFoodSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:NoticeFlyer,
+       OnCreate:EHE_Recipe.FOOD,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+           recipe Open Supplies
+        {
+           EmergencyFoodSupplyBox,
+           Result:NoticeFlyer,
+           OnCreate:EHE_Recipe.FOOD,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+	   recipe Open Supplies
+    {
+       EmergencyMedicalSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:PreventionFlyer,
+       OnCreate:EHE_Recipe.MEDICAL,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+           recipe Open Supplies
+        {
+           EmergencyMedicalSupplyBox,
+           Result:PreventionFlyer,
+           OnCreate:EHE_Recipe.MEDICAL,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+	   recipe Open Supplies
+    {
+       EmergencySurvivalSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:EmergencyFlyer,
+       OnCreate:EHE_Recipe.SURVIVAL,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+           recipe Open Supplies
+        {
+           EmergencySurvivalSupplyBox,
+           Result:EmergencyFlyer,
+           OnCreate:EHE_Recipe.SURVIVAL,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       BanditStashBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:EmergencyFlyer,
+       OnCreate:EHE_Recipe.STASHBOX,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+           recipe Open Supplies
+        {
+           BanditStashBox,
+           Result:EmergencyFlyer,
+           OnCreate:EHE_Recipe.STASHBOX,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorMedicalSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Scalpel,
+       OnCreate:EHE_Recipe.SURVIVORMEDICAL,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+           recipe Open Supplies
+        {
+           SurvivorMedicalSupplyBox,
+           Result:Scalpel,
+           OnCreate:EHE_Recipe.SURVIVORMEDICAL,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorFoodSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:CannedTomato,
+       OnCreate:EHE_Recipe.SURVIVORFOOD,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+           recipe Open Supplies
+        {
+           SurvivorFoodSupplyBox,
+           Result:CannedTomato,
+           OnCreate:EHE_Recipe.SURVIVORFOOD,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorFishingSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:FishingLine,
+       OnCreate:EHE_Recipe.SURVIVORFISHING,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorFishingSupplyBox,
+           Result:FishingLine,
+           OnCreate:EHE_Recipe.SURVIVORFISHING,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorCanningSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Vinegar,
+       OnCreate:EHE_Recipe.SURVIVORCANNING,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorCanningSupplyBox,
+           Result:Vinegar,
+           OnCreate:EHE_Recipe.SURVIVORCANNING,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorToiletSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:ToiletPaper,
+       OnCreate:EHE_Recipe.SURVIVORTOILET,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorToiletSupplyBox,
+           Result:ToiletPaper,
+           OnCreate:EHE_Recipe.SURVIVORTOILET,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorSeedSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Fertilizer,
+       OnCreate:EHE_Recipe.SURVIVORSEEDS,
+       Time:70.0,
+       Sound:OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorSeedSupplyBox,
+           Result:Fertilizer,
+           OnCreate:EHE_Recipe.SURVIVORSEEDS,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:OpenBox,
+        }
+
+
+
+       recipe Cut up Parachute
+    {
+       EHE_Parachute,
+       Result:RippedSheets=60,
+       AnimNode:RipSheets,
+       Time:550.0,
+       Sound:ClothesRipping,
+    }
+
+
+    	recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch:15,
+		Bell206RotorBlade,
+		Result:SmallSheetMetal=3,
+		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Tail Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch:15,
+		Bell206TailBlade,
+		Result:SmallSheetMetal,
+		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
+		Time:150,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch:15,
+		UH1HRotorBlade,
+		Result:SmallSheetMetal=3,
+		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Helicopter Skirt
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch:15,
+		Bell206HalfSkirt,
+		Result:MetalBar=4,
+		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Helicopter Skirt
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch:15,
+        UH1HHalfSkirt,
+		Result:MetalBar=4,
+		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+}
