@@ -96,7 +96,7 @@ function EHE_EventMarkers:getPlayer()
 end
 
 
-function EHE_EventMarkers:new(heli, player, x, y, width, height, title, duration)
+function EHE_EventMarkers:new(heli, player, x, y, width, height, icon, title, duration)
 	local o = {}
 	o = ISUIElement:new(x, y, 1, 1)
 	setmetatable(o, self)
@@ -118,7 +118,7 @@ function EHE_EventMarkers:new(heli, player, x, y, width, height, title, duration
 	o.duration = duration or 0
 	o.enabled = true
 	o.visible = true
-	o.title = title
+	o.title = title or ""
 	o.distancetoPoint = 999
 	o.mouseOver = false
 	o.tooltip = nil
@@ -127,7 +127,7 @@ function EHE_EventMarkers:new(heli, player, x, y, width, height, title, duration
 	o.joypadFocused = false
 	o.translation = nil
 	o.texturePoint = getTexture("media/ui/eventMarker.png")
-	o.textureIcon = getTexture(heli.eventMarkerIcon)
+	o.textureIcon = getTexture(icon or heli.eventMarkerIcon)
 
 	heli.markers[player] = o
 	o:initialise()
@@ -146,9 +146,13 @@ function EHE_EventMarkers:update(heli,player)
 	local radius = (heli.flightVolume*2)+1
 	local x,y,z = heli:getXYZAsInt()
 
-	if(player:HasTrait("Deaf")) then radius = 0
-	elseif(player:HasTrait("KeenHearing")) then radius = (radius * 1.2)
-	elseif(player:HasTrait("HardOfHearing")) then radius = (radius * 0.8) end
+	if(player:HasTrait("EagleEyed")) then radius = (radius * 1.2)
+	elseif(player:HasTrait("ShortSighted")) then radius = (radius * 0.8) end
+
+	local HOUR = getGameTime():getHour()
+	if player:HasTrait("NightVision") and HOUR < 6 and HOUR > 22 then
+		radius = radius*1.2
+	end
 
 	if( dist < (radius)) then
 		self:setDistance(dist)
@@ -161,11 +165,11 @@ end
 -------------STATIC-FUNCS------------------
 
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-function EHE_EventMarkers:generateNewMarker(heli, player)
+function EHE_EventMarkers:generateNewMarker(heli, player, icon)
 	if(player) then
 		local SY = 0
 		local SX = (getCore():getScreenWidth()/2) - 35
-		local newMarker = EHE_EventMarkers:new(heli, player, SX, SY,165, 165, "")
+		local newMarker = EHE_EventMarkers:new(heli, player, SX, SY,165, 165, icon or nil)
 		print("Sound Direction Indicator initialised")
 		return newMarker
 	else
@@ -174,17 +178,17 @@ function EHE_EventMarkers:generateNewMarker(heli, player)
 end
 
 
-function eHelicopter:updateMarkers()
+function EHE_EventMarkers:updateMarkers(heli, icon)
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
-		local marker = self.markers[p]
+		local marker = heli.markers[p]
 
 		if not marker then
-			marker = EHE_EventMarkers:generateNewMarker(self,p)
+			marker = EHE_EventMarkers:generateNewMarker(heli, p, icon or nil)
 		end
 
 		if p and marker then
-			marker:update(self,p)
+			marker:update(heli,p)
 		end
 		--marker:render()
 	end
