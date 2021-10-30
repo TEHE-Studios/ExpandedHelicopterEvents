@@ -4,9 +4,9 @@ module EHE
     recipe Open Supplies
     {
        EmergencyFoodSupplyBox=1,
-       keep [EHE_OpenBox.CanOpenBoxes],
+       keep [EHE_Recipe.CanOpenBoxes],
        Result:NoticeFlyer=1,
-       OnCreate:EHE_OpenBox.FOOD,
+       OnCreate:EHE_Recipe.FOOD,
        Time:70.0,
        Sound:OpenBox,
     }
@@ -14,9 +14,9 @@ module EHE
 	recipe Open Supplies
     {
        EmergencyMedicalSupplyBox=1,
-       keep [EHE_OpenBox.CanOpenBoxes],
+       keep [EHE_Recipe.CanOpenBoxes],
        Result:PreventionFlyer=1,
-       OnCreate:EHE_OpenBox.MEDICAL,
+       OnCreate:EHE_Recipe.MEDICAL,
        Time:70.0,
        Sound:OpenBox,
     }
@@ -24,9 +24,9 @@ module EHE
 	recipe Open Supplies
     {
        EmergencySurvivalSupplyBox=1,
-       keep [EHE_OpenBox.CanOpenBoxes],
+       keep [EHE_Recipe.CanOpenBoxes],
        Result:EmergencyFlyer=1,
-       OnCreate:EHE_OpenBox.SURVIVAL,
+       OnCreate:EHE_Recipe.SURVIVAL,
        Time:70.0,
        Sound:OpenBox,
     }
@@ -34,9 +34,9 @@ module EHE
     recipe Open Supplies
     {
        BanditStashBox=1,
-       keep [EHE_OpenBox.CanOpenBoxes],
+       keep [EHE_Recipe.CanOpenBoxes],
        Result:EmergencyFlyer=1,
-       OnCreate:EHE_OpenBox.STASHBOX,
+       OnCreate:EHE_Recipe.STASHBOX,
        Time:70.0,
        Sound:OpenBox,
     }
@@ -46,7 +46,7 @@ module EHE
     {
        EmergencyFoodSupplyBox=1,
        Result:NoticeFlyer=1,
-       OnCreate:EHE_OpenBox.FOOD,
+       OnCreate:EHE_Recipe.FOOD,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -56,7 +56,7 @@ module EHE
     {
        EmergencyMedicalSupplyBox=1,
        Result:PreventionFlyer=1,
-       OnCreate:EHE_OpenBox.MEDICAL,
+       OnCreate:EHE_Recipe.MEDICAL,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -66,7 +66,7 @@ module EHE
     {
        SurvivorMedicalSupplyBox=1,
        Result:Scalpel=1,
-       OnCreate:EHE_OpenBox.SURVIVORMEDICAL,
+       OnCreate:EHE_Recipe.SURVIVORMEDICAL,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -76,7 +76,7 @@ module EHE
     {
        SurvivorFoodSupplyBox=1,
        Result:CannedTomato=1,
-       OnCreate:EHE_OpenBox.SURVIVORFOOD,
+       OnCreate:EHE_Recipe.SURVIVORFOOD,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -86,7 +86,7 @@ module EHE
     {
        SurvivorFishingSupplyBox=1,
        Result:FishingLine=1,
-       OnCreate:EHE_OpenBox.SURVIVORFISHING,
+       OnCreate:EHE_Recipe.SURVIVORFISHING,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -96,7 +96,7 @@ module EHE
     {
        SurvivorCanningSupplyBox=1,
        Result:Vinegar=1,
-       OnCreate:EHE_OpenBox.SURVIVORCANNING,
+       OnCreate:EHE_Recipe.SURVIVORCANNING,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -106,7 +106,7 @@ module EHE
     {
        SurvivorToiletSupplyBox=1,
        Result:ToiletPaper=1,
-       OnCreate:EHE_OpenBox.SURVIVORTOILET,
+       OnCreate:EHE_Recipe.SURVIVORTOILET,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
@@ -116,7 +116,7 @@ module EHE
     {
        SurvivorSeedSupplyBox=1,
        Result:Fertilizer=1,
-       OnCreate:EHE_OpenBox.SURVIVORSEEDS,
+       OnCreate:EHE_Recipe.SURVIVORSEEDS,
        Tooltip:Would be faster to open with something sharp.,
        Time:210.0,
        Sound:OpenBox,
