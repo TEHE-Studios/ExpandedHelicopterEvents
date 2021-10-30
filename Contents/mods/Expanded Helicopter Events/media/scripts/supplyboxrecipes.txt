@@ -130,4 +130,60 @@ module EHE
        Time:550.0,
        Sound:ClothesRipping,
     }
+
+    	recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		Bell206RotorBlade=1,
+		keep BlowTorch,
+      keep WeldingMask,
+		Result 		: SmallSheetMetal=3,
+		Time 		: 350,
+		AnimNode 		: Disassemble,
+	}
+
+      recipe Dismantle Tail Rotor Blade
+	{
+		Category:Welding,
+		Bell206TailBlade=1,
+		keep BlowTorch,
+      keep WeldingMask,
+		Result 		: SmallSheetMetal,
+		Time 		: 150,
+		AnimNode 		: Disassemble,
+	}
+
+      recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		UH1HRotorBlade=1,
+		keep BlowTorch,
+      keep WeldingMask,
+		Result 		: SmallSheetMetal=3,
+		Time 		: 350,
+		AnimNode 		: Disassemble,
+	}
+
+      recipe Dismantle Helicopter Skirt
+	{
+		Category:Welding,
+		Bell206HalfSkirt=1,
+		keep BlowTorch,
+      keep WeldingMask,
+		Result 		: MetalBar=4,
+		Time 		: 350,
+		AnimNode 		: Disassemble,
+	}
+
+      recipe Dismantle Helicopter Skirt
+	{
+		Category:Welding,
+      UH1HHalfSkirt=1,
+		keep BlowTorch,
+      keep WeldingMask,
+		Result 		: MetalBar=4,
+		Time 		: 350,
+		AnimNode 		: Disassemble,
+	}
+
 }
