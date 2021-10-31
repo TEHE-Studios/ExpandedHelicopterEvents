@@ -13,7 +13,7 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile", player)
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful", player)
 		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police", player)
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("aid_survivor", player)
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("samaritan_drop", player)
 		end
 	end
 end)
