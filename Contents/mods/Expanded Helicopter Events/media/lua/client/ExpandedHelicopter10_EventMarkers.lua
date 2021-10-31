@@ -264,6 +264,11 @@ end
 
 
 function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration)
+
+	if eHelicopterSandbox.config.eventMarkersOn == false then
+		return
+	end
+	
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
 

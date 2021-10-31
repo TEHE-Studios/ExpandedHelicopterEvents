@@ -2,7 +2,7 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = { debugTests = false, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, }
+eHelicopterSandbox.config = { debugTests = false, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, eventMarkersOn = true}
 ---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
@@ -25,6 +25,10 @@ eHelicopterSandbox.menu = {
 	neverEndingEvents = { type = "Tickbox", title = "Never Ending Events", },
 	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
 	generalSpaceD = {type = "Space"},
+
+	eventMarkersOn = { type = "Tickbox", title = "Event Markers", },
+	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-56},
+	generalSpaceE = {type = "Space"},
 }
 
 
