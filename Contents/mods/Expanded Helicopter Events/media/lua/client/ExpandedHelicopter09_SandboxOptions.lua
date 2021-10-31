@@ -25,10 +25,6 @@ eHelicopterSandbox.menu = {
 	neverEndingEvents = { type = "Tickbox", title = "Never Ending Events", },
 	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
 	generalSpaceD = {type = "Space"},
-
-	eventMarkersOn = { type = "Tickbox", title = "Event Markers", alwaysAccessible = true},
-	eventMarkersOnToolTip = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-56, },
-	generalSpaceE = {type = "Space"},
 }
 
 
@@ -92,6 +88,11 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 	eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 	eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
+	eHelicopterSandbox.menu["generalSpaceD"] = {type = "Space"}
+	eHelicopterSandbox.menu["eventMarkersOnToolTip"] = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-67, }
+	eHelicopterSandbox.menu["eventMarkersOn"] = { type = "Tickbox", title = "Event Markers", alwaysAccessible = true}
+	eHelicopterSandbox.menu["generalSpaceE"] = {type = "Space"}
+
 	if getDebug() then
 		eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
 	end
