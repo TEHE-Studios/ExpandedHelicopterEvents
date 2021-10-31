@@ -76,6 +76,9 @@ function eHelicopter:crash()
 				self:spawnCrew()
 				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
 				self:playEventSound("crashEvent")
+
+				EHE_EventMarkerHandler.setOrUpdateMarkers(heli, "media/ui/crash.png", 50)
+
 				self:unlaunch()
 				getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
 				return true
@@ -266,6 +269,7 @@ function eHelicopter:dropCarePackage(fuzz)
 		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
 			self:playEventSound("droppingPackage")
+			EHE_EventMarkerHandler.setOrUpdateMarkers(airDrop, "media/ui/airdrop.png", 50)
 			if carePackagesWithOutChutes[carePackage]~=true then
 				currentSquare:AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
 			end
