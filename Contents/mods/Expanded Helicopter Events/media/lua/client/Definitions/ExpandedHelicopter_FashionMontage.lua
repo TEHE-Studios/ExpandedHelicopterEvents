@@ -25,8 +25,9 @@ local clothing = {
 		"EHE.Hat_SPHPolice",
 		"EHE.Hat_SPHMilitary",
 		"EHE.Hat_SPHCivilian",
+		"EHE.Hat_SPHBlack",
 		"EHE.Hat_PressHelmet",
-		"EHE.Hat_SurvivalistHelmet"
+		"EHE.Hat_SurvivalistHelmet",
 	},
 	TankTop = {},     -- Remember,
 	Tshirt = {},      -- if
@@ -49,13 +50,18 @@ local clothing = {
 	Neck = {},        -- dropdowns
 	Hands = {},
 	Legs1 = {},
-	Sweater = {},     -- Do
+	Sweater = {},     -- Doadd
 	Jacket = {"EHE.Jacket_DenimCutoff"},      -- not
-	FullSuit = {"EHE.Boilersuit_PoliceFlying"},    -- rename
+	FullSuit = {"EHE.Boilersuit_PoliceFlying",
+                "EHE.Boilersuit_BlackFlying",
+			   },    -- rename
 	FullSuitHead = {},-- any
 	FullTop = {},     -- functions
 	BathRobe = {},    -- or
-	TorsoExtra = {"EHE.Vest_BulletPress"},  -- lists
+	TorsoExtra = {"EHE.Vest_BulletPress",
+	              "EHE.Vest_PilotSurvivalVest",
+				  "EHE.Vest_BlackPilotSurvivalVest",
+},  -- lists
 	Tail = {},        -- in
 	Back = {},        -- this
 	Scarf = {},       -- file
