@@ -128,7 +128,7 @@ function EHE_EventMarker:render()
 			textureForPoint = self.textureMarkClose
 		end
 		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
-		
+
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 		ISUIElement.render(self)
 	end
@@ -205,6 +205,7 @@ function EHE_EventMarker:update(poi,player)
 		--if instanceof(poi, "BaseVehicle") then print("EHE:DEBUG: Duration-1 = "..self.duration) end
 		if(self.duration <= 0) then
 			self:setVisible(false)
+			return
 		end
 	end
 
@@ -238,6 +239,8 @@ function EHE_EventMarker:update(poi,player)
 		self:setAngleFromPoint(x,y)
 		--self:setDuration(10)
 		self:setVisible(true)
+	else
+		self:setVisible(false)
 	end
 end
 
@@ -274,8 +277,10 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration)
 
 		if not marker then
 			POI.markers[p] = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
+			marker = POI.markers[p]
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
+		marker:setDuration(duration)
 	end
 end
 
