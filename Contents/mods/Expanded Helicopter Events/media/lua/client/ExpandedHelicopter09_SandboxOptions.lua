@@ -26,8 +26,8 @@ eHelicopterSandbox.menu = {
 	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
 	generalSpaceD = {type = "Space"},
 
-	eventMarkersOn = { type = "Tickbox", title = "Event Markers", },
-	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-56},
+	eventMarkersOn = { type = "Tickbox", title = "Event Markers", alwaysAccessible = true},
+	eventMarkersOnToolTip = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-56, },
 	generalSpaceE = {type = "Space"},
 }
 
