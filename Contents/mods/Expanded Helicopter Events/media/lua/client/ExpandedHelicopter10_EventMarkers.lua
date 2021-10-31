@@ -256,7 +256,7 @@ EHE_EventMarkerHandler.allPOI = {}
 function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
 	if(player) then
 		local SX = (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
-		local SY = 0
+		local SY = (EHE_EventMarker.iconSize/2)
 		local newMarker = EHE_EventMarker:new(poi, player, SX, SY,EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, icon, duration)
 		return newMarker
 	end
