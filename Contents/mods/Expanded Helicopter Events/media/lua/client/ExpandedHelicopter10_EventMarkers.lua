@@ -113,7 +113,7 @@ end
 
 
 function EHE_EventMarker:render()
-	if self.visible then
+	if self.visible and self.duration > 0 then
 		self.setAngleFromPoint(self.lastpx,self.lastpy)
 
 		local centerX = self.width / 2
