@@ -220,7 +220,7 @@ function EHE_EventMarker:update(poi,player)
 	local x,y,z
 
 	if not self.radius then
-		self.radius = 750
+		self.radius = 1000
 	end
 
 	if poi.getDistanceToIsoObject then
