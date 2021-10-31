@@ -109,8 +109,6 @@ end
 
 function EHE_EventMarker:setDuration(value)
 	self.duration = value
-	self.flashTicks = 0
-	self.flashingOn = true
 end
 
 
@@ -120,24 +118,19 @@ function EHE_EventMarker:render()
 
 		local centerX = self.width / 2
 		local centerY = self.height / 2
-		local flashBaseline = (self.distanceToPoint * 3)
 
-		if((self.flashingOn) and (self.flashTicks < (flashBaseline))) then
-			-- texture, x, y, a, r, g, b
-			local Base_r, Base_g, Base_b = math.min(0.78,math.max(0.094,(1-(self.distanceToPoint/self.radius))*0.78)), 0.094, 0.094
-			self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, Base_r, Base_g, Base_b)
+		-- texture, x, y, a, r, g, b
+		local Base_r, Base_g, Base_b = math.min(0.78,math.max(0.094,(1-(self.distanceToPoint/self.radius))*0.78)), 0.094, 0.094
+		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, Base_r, Base_g, Base_b)
 
-			self:DrawTextureAngle(self.texturePoint, centerX, centerY, self.angle)
-			self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
-			ISUIElement.render(self)
-			self.flashTicks = self.flashTicks + 1
-		elseif((not self.flashingOn) and (self.flashTicks < (flashBaseline))) then
-			self.flashTicks = self.flashTicks + 1
-		else
-			self.flashTicks = 0
-			self.flashingOn = not self.flashingOn
-			if(not self.flashingOn) then self.flashTicks = (flashBaseline/2) end -- flash off time half as long as flash on
+		local textureForPoint = self.texturePoint
+		if self.distanceToPoint <= 4 then
+			textureForPoint = self.textureMarkClose
 		end
+		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
+
+		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
+		ISUIElement.render(self)
 	end
 end
 
@@ -170,8 +163,6 @@ function EHE_EventMarker:new(poi, player, x, y, width, height, icon, duration, t
 	o.yoff = y
 	o.lastpx = 0
 	o.lastpy = 0
-	o.flashTicks = 0
-	o.flashingOn = true
 	o.width = width
 	o.height = height
 	o.angle = 0
@@ -190,6 +181,7 @@ function EHE_EventMarker:new(poi, player, x, y, width, height, icon, duration, t
 	o.joypadFocused = false
 	o.translation = nil
 	o.texturePoint = getTexture("media/ui/eventMarker.png")
+	o.textureMarkClose = getTexture("media/ui/eventMarkerClose.png")
 	o.textureBG = getTexture("media/ui/eventMarkerBase.png")
 	if icon then
 		o.textureIcon = getTexture(icon)
@@ -209,7 +201,8 @@ function EHE_EventMarker:update(poi,player)
 	end
 
 	if self.duration > 0 then
-		self.duration = self.duration - 1
+		self.duration = self.duration-1
+		--if instanceof(poi, "BaseVehicle") then print("EHE:DEBUG: Duration-1 = "..self.duration) end
 		if(self.duration <= 0) then
 			self:setVisible(false)
 			return
@@ -223,13 +216,14 @@ function EHE_EventMarker:update(poi,player)
 		self.radius = 1000
 	end
 
-	if poi.getDistanceToIsoObject then
+	if not instanceof(poi, "BaseVehicle") then
 		dist=poi:getDistanceToIsoObject(player)
 		self.radius=(poi.flightVolume*5)+1
 		x,y,z = poi:getXYZAsInt()
 	else
-		dist=poi:getDistanceSq(player)
 		x,y,z = poi:getX(), poi:getY(), poi:getZ()
+		dist=IsoUtils.DistanceTo(x,y,player:getX(),player:getY())
+
 	end
 
 	if(player:HasTrait("EagleEyed")) then self.radius = (self.radius * 1.2)
@@ -243,8 +237,10 @@ function EHE_EventMarker:update(poi,player)
 	if((dist <= self.radius) and player:isOutside()) then
 		self:setDistance(dist)
 		self:setAngleFromPoint(x,y)
-		self:setDuration(10)
+		--self:setDuration(10)
 		self:setVisible(true)
+	else
+		self:setVisible(false)
 	end
 end
 
@@ -264,14 +260,12 @@ end
 
 
 function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration)
-
 	if eHelicopterSandbox.config.eventMarkersOn == false then
 		return
 	end
 	
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
-
 		local POI = EHE_EventMarkerHandler.allPOI[poi]
 
 		if not POI then
@@ -283,8 +277,10 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration)
 
 		if not marker then
 			POI.markers[p] = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
+			marker = POI.markers[p]
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
+		marker:setDuration(duration)
 	end
 end
 
@@ -313,6 +309,5 @@ function EHE_EventMarkerHandler.updateAll()
 		end
 	end
 end
-
 Events.OnTick.Add(EHE_EventMarkerHandler.updateAll)
 
