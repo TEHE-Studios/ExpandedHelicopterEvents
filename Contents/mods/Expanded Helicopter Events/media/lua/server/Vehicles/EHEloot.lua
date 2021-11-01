@@ -477,7 +477,6 @@ VehicleDistributions.SurvivorSupplyDrop = {
 
 VehicleDistributions.UH1H = {
 	
-	SeatFrontLeft = VehicleDistributions.UH1HSeat;
 	SeatFrontRight = VehicleDistributions.UH1HSeat;
 	SeatRearLeft = VehicleDistributions.UH1HSeat;
 	SeatRearRight = VehicleDistributions.UH1HSeat;
@@ -485,7 +484,6 @@ VehicleDistributions.UH1H = {
 
 VehicleDistributions.UH1HRaider = {
 	
-	SeatFrontLeft = VehicleDistributions.UH1HRaiderSeat;
 	SeatFrontRight = VehicleDistributions.UH1HRaiderSeat;
 	SeatRearLeft = VehicleDistributions.UH1HRaiderSeat;
 	SeatRearRight = VehicleDistributions.UH1HRaiderSeat;
@@ -494,7 +492,6 @@ VehicleDistributions.UH1HRaider = {
 
 VehicleDistributions.UH1HMedevac = {
 	
-	SeatFrontLeft = VehicleDistributions.UH1HMedevacSeat;
 	SeatFrontRight =  VehicleDistributions.UH1HMedevacSeat;
 	SeatRearLeft =  VehicleDistributions.UH1HMedevacSeat;
 	SeatRearRight =  VehicleDistributions.UH1HMedevacSeat;
@@ -504,7 +501,6 @@ VehicleDistributions.UH1HMedevac = {
 
 VehicleDistributions.Bell206Police = {
 	
-	SeatFrontLeft = VehicleDistributions.Bell206PoliceSeat;
 	SeatFrontRight =  VehicleDistributions.Bell206PoliceSeat;
 	SeatRearLeft =  VehicleDistributions.Bell206PoliceSeat;
 	SeatRearRight =  VehicleDistributions.Bell206PoliceSeat;
@@ -512,15 +508,13 @@ VehicleDistributions.Bell206Police = {
 
 VehicleDistributions.Bell206News = {
 	
-    SeatFrontLeft = VehicleDistributions.Bell206NewsSeat;
     SeatFrontRight =  VehicleDistributions.Bell206NewsSeat;
     SeatRearLeft =  VehicleDistributions.Bell206NewsSeat;
     SeatRearRight =  VehicleDistributions.Bell206NewsSeat;
 }    
 
 VehicleDistributions.Bell206Survivalist = {
-	
-    SeatFrontLeft = VehicleDistributions.Bell206SurvivalistSeat;
+
     SeatFrontRight =  VehicleDistributions.Bell20SurvivalistSeat;
     SeatRearLeft =  VehicleDistributions.Bell206SurvivalistSeat;
     SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
@@ -528,7 +522,6 @@ VehicleDistributions.Bell206Survivalist = {
 
 VehicleDistributions.Bell206Black = {
 	
-    SeatFrontLeft = VehicleDistributions.Bell206BlackSeat;
     SeatFrontRight =  VehicleDistributions.Bell20BlackSeat;
     SeatRearLeft =  VehicleDistributions.Bell206BlackSeat;
     SeatRearRight =  VehicleDistributions.Bell20BlackSeat;
