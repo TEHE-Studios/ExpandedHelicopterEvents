@@ -93,7 +93,7 @@ end
 function EHE_EventMarker:setAngleFromPoint(x,y)
 	if(x and y) then
 		local radians = math.atan2(y - self.playerObj:getY(), x - self.playerObj:getX()) + math.pi
-		local degrees = ((radians * 180 / math.pi + 270) + 45) % 360 -- add 45 deg because of the isometric view? or idk for some reason i need to
+		local degrees = ((radians * 180 / math.pi + 270) + 45) % 360
 
 		self.angle = degrees
 		self.lastpx = x
