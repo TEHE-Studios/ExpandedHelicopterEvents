@@ -41,7 +41,7 @@ function loadAnnouncersToConfig()
 	for k,params in pairs(eHelicopter_announcers) do
 		if params.DoNotDisplayOnOptions ~= true then
 			eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
-			eHelicopterSandbox.config[k] = true
+			eHelicopterSandbox.config[k] = eHelicopterSandbox.config[k] or true
 		end
 	end
 
