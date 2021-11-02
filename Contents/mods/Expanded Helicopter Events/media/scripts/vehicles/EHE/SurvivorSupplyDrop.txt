@@ -28,7 +28,7 @@ module Base
 			texture = Vehicles/EHE/Vehicle_SurvivorSupplyDrop,
 		}
 
-		textureMask = Vehicle_FEMASupplyDrop_mask,
+		textureMask = Vehicle_SurvivorSupplyDrop_mask,
 		extents = 0.9864 0.4561 1.0942,
 		mass = 700,
 		physicsChassisShape = 0.9864 0.4561 1.0942,
