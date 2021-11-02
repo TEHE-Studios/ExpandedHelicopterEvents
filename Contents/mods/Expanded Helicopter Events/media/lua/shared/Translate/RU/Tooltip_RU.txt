@@ -1,0 +1,5 @@
+Tooltip_RU = {
+	Tooltip_dismantle_helicopterpart = "С помощью горелки и сварочной маски можно получить немного метала.",
+	Tooltip_open_boxes_barehanded = "Лучше открывать чем-нибудь острым.",
+
+}
