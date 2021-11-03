@@ -1,0 +1,7 @@
+ContextMenu_RU = {
+    ContextMenu_VisorUp = "Поднять визор",	
+	ContextMenu_VisorDown = "Опустить визор",
+	ContextMenu_Tighten = "Застегнуть",
+	ContextMenu_Untighten = "Расстегнуть",
+
+}

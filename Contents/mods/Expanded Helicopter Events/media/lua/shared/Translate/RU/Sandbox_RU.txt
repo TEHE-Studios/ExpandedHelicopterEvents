@@ -1,0 +1,38 @@
+Sandbox_RU = {	
+	Sandbox_ExpandedHeli = "EXPANDED HELICOPTER EVENTS",
+
+	Sandbox_ExpandedHeli_Frequency_option1 = "Никогда"
+	Sandbox_ExpandedHeli_Frequency_option2 = "Очень редко",
+	Sandbox_ExpandedHeli_Frequency_option3 = "Редко",
+	Sandbox_ExpandedHeli_Frequency_option4 = "Часто",
+	Sandbox_ExpandedHeli_Frequency_option5 = "Очень часто",
+	Sandbox_ExpandedHeli_Frequency_option6 = "БЕЗУМИЕ",
+
+    Sandbox_ExpandedHeli_EventJet = "Реакт. самолеты",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventCivilian = "Гражданские",
+    Sandbox_ExpandedHeli_EventCivilian_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Военные",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Выжившие",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Частота данных событий.",
+
+	Sandbox_ExpandedHeli_EventRaider = "Рейдеры",
+	Sandbox_ExpandedHeli_EventRaider_tooltip = "Частота данных событий.",
+	
+	Sandbox_ExpandedHeli_EventSamaritan = "Самаритяне",
+	Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Частота данных событий.",
+	
+	Sandbox_ExpandedHeli_StartDay = "Стартовый день",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "День, когда начнут появляться различные события. \nПримечание: некоторые события начинаются позже этого дня.",
+
+	Sandbox_ExpandedHeli_CutOffDay = "Конечный день",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip = "День, когда события начнут подходить к концу. \nПримечание: Некоторые события выходят за рамки этого срока.",
+
+	Sandbox_ExpandedHeli_NeverEnding = "Бесконечные события",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Включите эту опцию, чтобы события постоянно возобновлялись. Они по-прежнему будут прогрессировать поэтапно, но никогда не закончатся.",
+	
+}
