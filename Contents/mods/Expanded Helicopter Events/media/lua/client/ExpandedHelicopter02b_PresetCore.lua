@@ -1,6 +1,6 @@
 ---@param tableToLoadFrom table
 ---@param alternateTable table
-function eHelicopter:loadVarsFrom(tableToLoadFrom, alternateTable, debugID)
+function eHelicopter:loadVarsFrom(tableToLoadFrom, alternateTable)--, debugID)
 	for var, value in pairs(tableToLoadFrom) do
 		local newValue
 
@@ -95,25 +95,26 @@ end
 
 function eHelicopter:recursivePresetCheck(preset, iteration)
 	iteration = iteration or 0
-	print(" - EHE: recursivePresetCheck: ")
+	--[[DEBUG]] local rpcText if preset.presetRandomSelection or preset.presetProgression then rpcText = " - EHE: recursivePresetCheck: " end
+
 	if preset.presetRandomSelection then
-		print(" -- EHE: presetRandomSelection: found")
 		preset = self:randomSelectPreset(preset)
+		--[[DEBUG]] rpcText = rpcText.."presetRandomSelection: "..preset..","
 	end
 
 	if preset.presetProgression then
-		print(" -- EHE: presetProgression: found")
 		preset = self:progressionSelectPreset(preset)
+		--[[DEBUG]] rpcText = rpcText.."presetProgression: "..preset..","
 	end
 
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
-		print(" -- EHE: progression/selection: found; recursive: "..iteration)
+		--[[DEBUG]] rpcText = rpcText.."\n -- EHE: progression/selection: found; recursive: "..iteration
+		--[[DEBUG]] print(rpcText)
 		return self:recursivePresetCheck(preset,iteration+1)
 	end
 
-	if iteration >= 4 then
-		print(" -- EHE: ERR: progression/selection: high recursive iteration: "..iteration)
-	end
+	--[[DEBUG]] if iteration >= 4 then rpcText = rpcText.."\n -- EHE: ERR: progression/selection: high recursive iteration: "..iteration end
+	--[[DEBUG]] if rpcText then print(rpcText) end
 
 	return preset
 end
@@ -134,11 +135,10 @@ function eHelicopter:loadPreset(ID)
 
 	self:stopAllHeldEventSounds()
 	preset = self:recursivePresetCheck(preset)
-	for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print(" -- loading preset: "..ID)
+	--[DEBUG]] for id,vars in pairs(eHelicopter_PRESETS) do if vars == preset then ID = id end end print(" -- loading preset: "..ID)
 	--compare vars against initialVars and loaded preset
 	self:loadVarsFrom(eHelicopter_initialVars, preset, "initialVars")
 	--reset other vars not included with initialVars
 	self:loadVarsFrom(eHelicopter_temporaryVariables, nil, "temporaryVariables")
-
 	self.currentPresetID = ID
 end

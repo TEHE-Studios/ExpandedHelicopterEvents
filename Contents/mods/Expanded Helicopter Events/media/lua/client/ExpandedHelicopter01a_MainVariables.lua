@@ -223,6 +223,8 @@ eHelicopter.timeSinceLastShadowBob = -1
 eHelicopter.formationFollowingHelis = {}
 ---@field currentPresetID string
 eHelicopter.currentPresetID = "<none>"
+---@field masterPresetID string
+eHelicopter.masterPresetID = false--"<none>"
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}

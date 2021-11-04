@@ -31,6 +31,7 @@ function getFreeHelicopter(preset)
 
 	if preset then
 		heli:loadPreset(preset)
+		heli.masterPresetID = preset
 	end
 
 	return heli
@@ -69,8 +70,7 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 			randXYMinMax = randXYMinMax+2
 		end
 
-		print(" -- EHE: randomEdge:true; randXYEdge: "..randXYEdge.." randXYMinMax: "..randXYMinMax)
-
+		--[DEBUG]] print(" -- EHE: randomEdge:true; randXYEdge: "..randXYEdge.." randXYMinMax: "..randXYMinMax)
 		--this sets either [1] or [2] of initPosXY as [1] through [4] of minMax
 		initPosXY[randXYEdge] = minMax[randXYMinMax]
 
@@ -294,7 +294,7 @@ function eHelicopter:move(re_aim, dampen)
 	if #self.hostilesToFireOn > 1 then
 		--slow speed down while shooting
 		self.speed = self.speed/(math.min(5,#self.hostilesToFireOn))
-		
+
 		if self.speed <= (0.0000) then
 			return
 		end
@@ -487,6 +487,8 @@ function eHelicopter:formationInit()
 		return
 	end
 
+	--[[DEBUG]] print(" -- Formation:")
+
 	local h_x, h_y, _ = self:getXYZAsInt()
 
 	local formationSize = 0
@@ -546,6 +548,8 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	else
 		cutOffDay = self.cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay
 	end
+	--[DEBUG]] print("EHE: DEBUG: Crash Chance Freq: "..self.masterPresetID)
+
 	if not cutOffDay then
 		return
 	end
@@ -564,17 +568,15 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
 		crashChance = math.min(100,math.floor(crashChance))
 
-		print(" --- "..self:heliToString().."crashChance:"..crashChance)
-		--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
+		--[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
 		--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
+		--[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 	end
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,101) <= crashChance) then
-		--[[DEBUG]] print (" --- crashing set to TRUE.")
 		self.crashing = true
 	end
-	print(" ------------")
+	--[[DEBUG]] print(" --- "..self:heliToString().."crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
 end
 
 

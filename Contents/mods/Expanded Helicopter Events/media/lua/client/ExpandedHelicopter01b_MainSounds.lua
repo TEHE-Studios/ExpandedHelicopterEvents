@@ -68,24 +68,20 @@ end
 
 
 function eHelicopter:stopAllHeldEventSounds()
-	--[[DEBUG]] local debugPrint = " - EHE: stopAllHeldEventSounds for "..self:heliToString().."\n -- sounds:"
+	--[[DEBUG]] local soundsStopped = false
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		if soundEffect then
-			--[[DEBUG]] debugPrint = debugPrint.." "..event.." = "..soundEffect..", "
+			soundsStopped = true
 			emitter:stopSoundByName(soundEffect)
-		else
-			--[[DEBUG]] debugPrint = debugPrint.." ERR: null, "
 		end
 	end
 	for event,emitter in pairs(self.placedEventSoundEffectEmitters) do
 		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
 		if soundEffect then
-			--[[DEBUG]] debugPrint = debugPrint.." "..event.." = "..soundEffect..", "
+			soundsStopped = true
 			emitter:stopSoundByName(soundEffect)
-		else
-			--[[DEBUG]] debugPrint = debugPrint.." ERR: null, "
 		end
 	end
-	--[[DEBUG]] print(debugPrint)
+	--[[DEBUG]] if soundsStopped then print(" - EHE: stopAllHeldEventSounds for "..self:heliToString()) end
 end
