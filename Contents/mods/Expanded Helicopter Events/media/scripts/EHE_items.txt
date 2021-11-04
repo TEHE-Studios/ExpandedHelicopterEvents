@@ -6,7 +6,7 @@ module EHE
 		Type = Normal,
 		WorldStaticModel = Parachute,
 		DisplayName = Dropped Parachute,
-		Tooltip = Tooltip_Parachute,
+		Tooltip = Tooltip_Parachute
 		Icon = Parachute,
 	}
 

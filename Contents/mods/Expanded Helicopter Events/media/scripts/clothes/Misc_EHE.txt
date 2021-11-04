@@ -62,9 +62,8 @@ module EHE
         WindResistance = 0.10,
         BiteDefense = 10,
         ScratchDefense = 15,
-        Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
-        
+        Tooltip = Tooltip_SurvivalVest,
     }
 
         item Vest_PilotSurvivalVestTightened
@@ -81,8 +80,8 @@ module EHE
         WindResistance = 0.10,
         BiteDefense = 10,
         ScratchDefense = 15,
-        Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
+        Tooltip = Tooltip_SurvivalVest,
     }
 
     	item Vest_BlackPilotSurvivalVest
@@ -99,8 +98,8 @@ module EHE
         WindResistance = 0.10,
         BiteDefense = 10,
         ScratchDefense = 15,
-        Tooltip = Tooltip_SurvivalVestBlack,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        Tooltip = Tooltip_SurvivalVestBlack,
     }
 
         item Vest_BlackPilotSurvivalVestTightened
@@ -117,7 +116,7 @@ module EHE
         WindResistance = 0.10,
         BiteDefense = 10,
         ScratchDefense = 15,
-        Tooltip = Tooltip_SurvivalVestBlack,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        Tooltip = Tooltip_SurvivalVestBlack,
     }
 }
