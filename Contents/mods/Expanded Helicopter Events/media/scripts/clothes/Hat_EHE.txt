@@ -18,6 +18,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHPolice,
     }
 
 		item Hat_SPHPoliceVISORUP
@@ -37,6 +38,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHPolice,
     }
 
 		item Hat_SPHMilitary
@@ -56,6 +58,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHMilitary,
     }
 
 		item Hat_SPHMilitaryVISORUP
@@ -75,6 +78,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHMilitary,
     }
 
 	    item Hat_SPHBlack
@@ -94,6 +98,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHBlack,
     }
 
 		item Hat_SPHBlackVISORUP
@@ -113,6 +118,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHBlack,
     }
 
 		item Hat_SPHCivilian
@@ -132,6 +138,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHCivilian,
     }
 
 		item Hat_SPHCivilianVISORUP
@@ -151,6 +158,7 @@ module EHE
 		Insulation = 0,
 		WaterResistance = 0.40,
         Weight = 1.5,
+		Tooltip = Tooltip_SPHCivilian,
     }
 
 		item Hat_PressHelmet

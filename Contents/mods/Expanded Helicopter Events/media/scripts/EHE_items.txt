@@ -6,6 +6,7 @@ module EHE
 		Type = Normal,
 		WorldStaticModel = Parachute,
 		DisplayName = Dropped Parachute,
+		Tooltip = Tooltip_Parachute
 		Icon = Parachute,
 	}
 
@@ -24,6 +25,7 @@ module EHE
         Lipids 		= 66,
         Calories 	= 550,
         Packaged 	= TRUE,
+		Tooltip = Tooltip_EnergyBar
 		WorldStaticModel = EnergyBar,
 	}
 

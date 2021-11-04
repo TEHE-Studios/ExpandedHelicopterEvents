@@ -1,4 +1,12 @@
 Tooltip_EN = {
-    Tooltip_dismantle_helicopterpart = "Use of a blowtorch and welding mask will yield metal."
-    Tooltip_open_boxes_barehanded = "Would be faster to open with something sharp."
+    Tooltip_dismantle_helicopterpart = "Use of a blowtorch and welding mask will yield metal",
+    Tooltip_open_boxes_barehanded = "Would be faster to open with something sharp",
+    Tooltip_Parachute = "Can be torn up to make ripped cloth",
+    Tooltip_EnergyBar = "Imported from UK",
+    Tooltip_SurvivalVest = "Standard issue survival vest for military pilots",
+    Tooltip_SurvivalVestBlack = Standard issue survival vest for police search and rescue",
+    Tooltip_SPHMilitary = "Standard issue military helicopter pilot helmet."
+    Tooltip_SPHBlack = "Standard issue military helicopter pilot helmet in black",
+    Tooltip_SPHPolice = "Helicopter helmet used by police air wings",
+    Tooltip_SPHCivilian = "Helicopter helmet used by civilian pilots",
 }
