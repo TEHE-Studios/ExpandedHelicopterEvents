@@ -101,9 +101,13 @@ function eHelicopter:fireOn(targetHostile)
 	local movementThrowOffAim = math.floor((100*eheMoveSpeed)+0.5)
 	if instanceof(targetHostile, "IsoPlayer") then
 		movementThrowOffAim = movementThrowOffAim*1.5
+		chance = (chance/timesFiredOnSpecificHostile)
+	elseif instanceof(targetHostile, "IsoZombie") then
+		--allow firing on zombies more for shock value
+		chance = (chance/(timesFiredOnSpecificHostile/2))
 	end
 	chance = chance-movementThrowOffAim
-	chance = (chance/timesFiredOnSpecificHostile)
+
 
 	if (targetHostile:getSquare():getTree()) or (targetHostile:checkIsNearWall()>0) then
 		chance = (chance*0.8)
@@ -120,51 +124,75 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	--[[debug] local hitReport = "-"..self:heliToString().." n:"..eventSound.." /t:"..timesFiredOnSpecificHostile..
+	--[[DEBUG]] local hitReport = "-hit_report: "..self:heliToString(false)..--[[" n:"..eventSound.." t:"..]]timesFiredOnSpecificHostile..
 			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
 	if ZombRand(0, 101) <= chance then
-		--knock down player
-		if instanceof(targetHostile, "IsoPlayer") then
-			targetHostile:clearVariable("BumpFallType")
-			targetHostile:setBumpType("stagger")
-			targetHostile:setBumpDone(false)
-			targetHostile:setBumpFall(ZombRand(0, 100) <= 25)
-			local bumpFallType = {"pushedBehind","pushedFront"}
-			bumpFallType = bumpFallType[ZombRand(1,3)]
-			targetHostile:setBumpFallType(bumpFallType)
-		end
-		--knock down zombie
-		if instanceof(targetHostile, "IsoZombie") then
-			targetHostile:knockDown(true)
-		end
+
 		--apply swiss-cheesification (holes and blood)
 		--bodyparts list has a length of 18 (0-17)
 		local bpIndexNum = ZombRand(0, 17)
 		--apply hole and blood
+		local bpType = BodyPartType.FromIndex(bpIndexNum)
 		local clothingBP = BloodBodyPartType.FromIndex(bpIndexNum)
 		targetHostile:addHole(clothingBP)
 		targetHostile:addBlood(clothingBP, true, true, true)
+
+		--[[DEBUG]] local preHealth = targetHostile:getHealth()
 		--apply damage to body part
-		local damage = ZombRand(1,1.5) * self.attackDamage
-		local bodyDMG = targetHostile:getBodyDamage()
-		if bodyDMG then
-			local bodyParts = bodyDMG:getBodyParts()
-			if bodyParts then
-				local actualBP = bodyParts:get(bpIndexNum)
-				if actualBP then
-					actualBP:damageFromFirearm(damage)
+		local damage = (ZombRand(10,16) * self.attackDamage)/10
+
+		if (bpType == BodyPartType.Neck) or (bpType == BodyPartType.Head) then
+			damage = damage*4
+		elseif (bpType == BodyPartType.Torso_Upper) then
+			damage = damage*2
+		end
+
+		if instanceof(targetHostile, "IsoZombie") then
+			--Zombies receive damage directly because they don't have body parts or clothing protection
+			damage = damage*3
+			targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
+			targetHostile:knockDown(true)
+
+		elseif instanceof(targetHostile, "IsoPlayer") then
+			--Messy process just to knock down the player effectively
+			targetHostile:clearVariable("BumpFallType")
+			targetHostile:setBumpType("stagger")
+			targetHostile:setBumpDone(false)
+			targetHostile:setBumpFall(ZombRand(0, 101) <= 25)
+			local bumpFallType = {"pushedBehind","pushedFront"}
+			bumpFallType = bumpFallType[ZombRand(1,3)]
+			targetHostile:setBumpFallType(bumpFallType)
+
+			--apply localized body part damage
+			local bodyDMG = targetHostile:getBodyDamage()
+			if bodyDMG then
+				local bodyParts = bodyDMG:getBodyParts()
+				if bodyParts then
+					local actualBP = bodyParts:get(bpIndexNum)
+					if actualBP then
+
+						local protection = targetHostile:getBodyPartClothingDefense(bpIndexNum, false, true)/100
+						damage = damage * (1-(protection*0.75))
+						print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
+
+						targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
+						bodyDMG:AddDamage(bpIndexNum,damage)
+						actualBP:damageFromFirearm(damage)
+					end
 				end
 			end
+
 		end
+
 		--splatter a few times
 		local splatIterations = ZombRand(1,3)
 		for _=1, splatIterations do
 			targetHostile:splatBloodFloor(0.9)
 		end
-		--[debug]] hitReport = hitReport .. "  [HIT]"
+		--[[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 	end
-	--[debug]] print(hitReport)
+	--[[DEBUG]] print(hitReport)
 
 	if self.addedFunctionsToEvents then
 		local eventFunction = self.addedFunctionsToEvents["OnAttack"]
