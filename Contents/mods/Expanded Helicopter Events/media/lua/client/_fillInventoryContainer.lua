@@ -5,6 +5,7 @@
 --- Once the game loads up LUA it converts the distribution lists into a THashMap. Trying to utilize THashMap.get() resulted in an error.
 --- The function written here uses all of the same variables and logic but instead reads from `Distributions` directly.
 
+--- This was written to fill container items like bags which are created through functions.
 
 ---@type string string
 function stringIsNullOrEmpty(text)
