@@ -19,7 +19,7 @@ function eHeliEventsinit()
 	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay, ["heliStart"]=12}
 	eHeliEvents_init["jet_bombing"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=12, ["neverRenew"]=true}
 	eHeliEvents_init["air_raid"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=11, ["neverRenew"]=true}
-	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
+	eHeliEvents_init["news_chopper"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
 	eHeliEvents_init["police"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
 	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
 	eHeliEvents_init["samaritan_drop"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
@@ -89,7 +89,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 }
 
 
-eHelicopter_PRESETS["civilian"] = {
+eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
 	cutOffFactor = 0.67,
 	}
@@ -278,7 +278,7 @@ eHelicopter_PRESETS["raider_heli_aggressive"] = {
 	attackSpread = 4,
 	attackHitChance = 65,
 	attackDamage = 100,
-	crashType = {"UH1HFuselage"},
+	crashType = {"UH1HRaiderFuselage"},
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
