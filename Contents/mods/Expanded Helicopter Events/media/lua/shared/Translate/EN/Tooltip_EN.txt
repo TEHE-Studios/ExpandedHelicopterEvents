@@ -5,8 +5,8 @@ Tooltip_EN = {
     Tooltip_EnergyBar = "Imported from UK",
     Tooltip_SurvivalVest = "Standard issue survival vest for military pilots",
     Tooltip_SurvivalVestBlack = Standard issue survival vest for police search and rescue",
-    Tooltip_SPHMilitary = "Standard issue military helicopter pilot helmet."
-    Tooltip_SPHBlack = "Standard issue military helicopter pilot helmet in black",
+    Tooltip_SPHMilitary = "Standard issue military helicopter helmet"
+    Tooltip_SPHBlack = "Standard issue military helicopter helmet in black",
     Tooltip_SPHPolice = "Helicopter helmet used by police air wings",
     Tooltip_SPHCivilian = "Helicopter helmet used by civilian pilots",
 }

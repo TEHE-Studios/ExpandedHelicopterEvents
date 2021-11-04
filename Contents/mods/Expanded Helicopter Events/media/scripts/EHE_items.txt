@@ -25,7 +25,7 @@ module EHE
         Lipids 		= 66,
         Calories 	= 550,
         Packaged 	= TRUE,
-		Tooltip = Tooltip_EnergyBar
+		Tooltip = Tooltip_EnergyBar,
 		WorldStaticModel = EnergyBar,
 	}
 
