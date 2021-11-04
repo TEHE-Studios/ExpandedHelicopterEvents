@@ -100,7 +100,7 @@ eHelicopter.flightVolume = 75
 eHelicopter.hostilePreference = false
 
 ---@field attackDelay number delay in milliseconds between attacks
-eHelicopter.attackDelay = 85
+eHelicopter.attackDelay = 60
 
 ---@field attackScope number number of rows from "center" IsoGridSquare out
 --- **area formula:** ((Scope*2)+1) ^2
@@ -133,7 +133,7 @@ eHelicopter.attackSpread = 3
 eHelicopter.attackHitChance = 85
 
 ---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5))
-eHelicopter.attackDamage = 20
+eHelicopter.attackDamage = 30
 
 ---// UNDER THE HOOD STUFF //---
 

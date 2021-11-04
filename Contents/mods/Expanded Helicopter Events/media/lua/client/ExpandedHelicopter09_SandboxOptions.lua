@@ -143,10 +143,21 @@ function HelicopterSandboxOptions(hookEvent)
 	sandboxOptionsEnd()
 
 	if not oldGameVersion then
-		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour to \"0\".")
+		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour/Helicopter to \"0\".")
 		getGameTime():setHelicopterDay(0)
 		getGameTime():setHelicopterStartHour(0)
 		getGameTime():setHelicopterEndHour(0)
+
+		SandboxVars.Helicopter = 0
+
+		print("EHE: "..(hookEvent or "").."Adding items to WorldItemRemovalList.")
+		local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
+		for k,type in pairs(typesForRemovalList) do
+			if not string.find(SandboxVars.WorldItemRemovalList, type) then
+				SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
+			end
+		end
+		getSandboxOptions():updateFromLua()
 	end
 end
 
