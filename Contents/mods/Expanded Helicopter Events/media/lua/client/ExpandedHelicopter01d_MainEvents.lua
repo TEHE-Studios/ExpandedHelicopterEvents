@@ -27,13 +27,15 @@ function eHelicopter:crash()
 			--[DEBUG]] print("--- EHE: currentSquare is solid-trans")
 			currentSquare = nil
 		end
-		--[DEBUG]] print("-- EHE: squares for crashing: "..tostring(currentSquare))
+
 		if currentSquare then
+			--[DEBUG]] print("-- EHE: square for crash: "..tostring(currentSquare))
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 			---@type BaseVehicle
 			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
-			--[[DEBUG]] print("-- EHE: DEBUG: ID["..vehicleType.."] - spawned "..heli:getVehicleType())
+			--[DEBUG]] if not heli then print("-- EHE: DEBUG: Crashed Vehicle Not Spawned.") end
 			if heli then
+				--[DEBUG]] print("-- EHE: DEBUG: ID["..vehicleType.."] - spawned "..heli:getVehicleType())
 				self.crashType = false
 				
 				heli:crash(1000,true)
@@ -135,17 +137,17 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 						deathChance = deathChance or 33
 						--33% to be dead on arrival
 						if ZombRand(1,101) <= deathChance then
-							print("crash spawned: "..outfitID.." killed")
+							--print("crash spawned: "..outfitID.." killed")
 							zombie:setHealth(0)
 						else
 							crawlChance = crawlChance or 25
 							if ZombRand(1,101) <= crawlChance then
-								print("crash spawned: "..outfitID.." crawler")
+								--print("crash spawned: "..outfitID.." crawler")
 								zombie:setCanWalk(false)
 								zombie:setBecomeCrawler(true)
 								zombie:knockDown(true)
 							else
-								print("crash spawned: "..outfitID)
+								--print("crash spawned: "..outfitID)
 							end
 						end
 						table.insert(spawnedCrew, zombie)
