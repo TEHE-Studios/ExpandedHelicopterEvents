@@ -99,12 +99,12 @@ function eHelicopter:recursivePresetCheck(preset, iteration)
 
 	if preset.presetRandomSelection then
 		preset = self:randomSelectPreset(preset)
-		--[[DEBUG]] rpcText = rpcText.."presetRandomSelection: "..preset..","
+		--[[DEBUG]] rpcText = rpcText.."presetRandomSelection:"
 	end
 
 	if preset.presetProgression then
 		preset = self:progressionSelectPreset(preset)
-		--[[DEBUG]] rpcText = rpcText.."presetProgression: "..preset..","
+		--[[DEBUG]] rpcText = rpcText.."presetProgression:"
 	end
 
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
