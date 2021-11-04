@@ -576,7 +576,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	if self.crashType and (not self.crashing) and (ZombRand(0,101) <= crashChance) then
 		self.crashing = true
 	end
-	--[[DEBUG]] print(" --- "..self:heliToString().."crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
+	--[[DEBUG]] print(" --- "..self:heliToString().." crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
 end
 
 
@@ -591,9 +591,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	if targetedObject then
 		if instanceof(targetedObject, "IsoGameCharacter") then
-			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getFullName())
+			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getFullName())
 		else
-			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
+			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
 	else
 		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set; going home.")
