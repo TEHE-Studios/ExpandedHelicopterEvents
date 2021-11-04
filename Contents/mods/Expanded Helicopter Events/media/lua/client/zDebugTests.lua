@@ -11,9 +11,9 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("raiders", player)
 		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("jet_bombing", player)
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile", player)
-		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful", player)
-		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police", player)
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("samaritan_drop", player)
+		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("police_heli_firing", player)
+		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("attack_only_all", player)
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.VehicleSpawnTest()
 		end
 	end
 end)
