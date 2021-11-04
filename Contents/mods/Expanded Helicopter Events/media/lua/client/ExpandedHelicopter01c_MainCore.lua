@@ -543,10 +543,13 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	local GTMData = getGameTime():getModData()
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay
+	local eventFrequency
 	if oldGameVersion then
 		cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
+		eventFrequency = eHelicopterSandbox.config.frequency
 	else
 		cutOffDay = self.cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay
+		eventFrequency = SandboxVars.ExpandedHeli["Frequency_"..self.masterPresetID] or 2
 	end
 	--[DEBUG]] print("EHE: DEBUG: Crash Chance Freq: "..self.masterPresetID)
 
@@ -567,6 +570,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
 		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
 		crashChance = math.min(100,math.floor(crashChance))
+		crashChance = crashChance/(eventFrequency/2)
 
 		--[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
 		--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
