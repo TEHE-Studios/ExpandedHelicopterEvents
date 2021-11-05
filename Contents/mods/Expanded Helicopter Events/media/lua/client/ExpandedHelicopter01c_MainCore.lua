@@ -157,21 +157,16 @@ function getOutsideSquareFromAbove(square,isVehicle)
 		return
 	end
 
-	if square:isOutside() and square:isSolidFloor() then
-		return square
-	end
-
-	--if isVehicle is true don't allow the code to look for roof tiles
-	if isVehicle then
-		return
-	end
-
 	local x, y = square:getX(), square:getY()
-	local cell = square:getCell()
 
-	for i=1, 7 do
-		local sq = cell:getOrCreateGridSquare(x, y, i)
-		if sq and sq:isOutside() and sq:isSolidFloor() then
+	for i=0, 7 do
+
+		if i > 0 and isVehicle then
+			return
+		end
+
+		local sq = getCell():getOrCreateGridSquare(x, y, i)
+		if sq and (not sq:isInARoom()) and (not sq:isSolidTrans()) then
 			return sq
 		end
 	end
