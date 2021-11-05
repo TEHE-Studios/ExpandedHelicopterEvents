@@ -31,7 +31,6 @@ function getFreeHelicopter(preset)
 
 	if preset then
 		heli:loadPreset(preset)
-		heli.masterPresetID = preset
 	end
 
 	return heli
