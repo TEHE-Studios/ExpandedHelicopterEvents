@@ -71,20 +71,17 @@ eHelicopter_PRESETS["increasingly_helpful"] = {
 
 eHelicopter_PRESETS["patrol_only"] = {
 	inherit = {"military"},
-	announcerVoice = true,
 }
 
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 eHelicopter_PRESETS["patrol_only_emergency"] = {
 	inherit = {"military"},
-	announcerVoice = true,
 	dropItems = {["EHE.EmergencyFlyer"]=250},
 	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
 }
 
 eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	inherit = {"military"},
-	announcerVoice = true,
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
 }
