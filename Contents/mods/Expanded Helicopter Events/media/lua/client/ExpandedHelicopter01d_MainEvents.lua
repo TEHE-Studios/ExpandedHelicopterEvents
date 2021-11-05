@@ -21,12 +21,8 @@ function eHelicopter:crash()
 		end
 
 		local heliX, heliY, _ = self:getXYZAsInt()
-		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0),true)
-
-		if currentSquare and currentSquare:isSolidTrans() then
-			--[DEBUG]] print("--- EHE: currentSquare is solid-trans")
-			currentSquare = nil
-		end
+		local actualSquare = getCell():getOrCreateGridSquare(heliX,heliY,0)
+		local currentSquare = getOutsideSquareFromAbove(actualSquare,true)
 
 		if currentSquare then
 			--[DEBUG]] print("-- EHE: square for crash: "..tostring(currentSquare))
@@ -223,10 +219,6 @@ function eHelicopter:dropItem(type, fuzz)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
 
-	if currentSquare and currentSquare:isSolidTrans() then
-		currentSquare = nil
-	end
-
 	if currentSquare then
 		local _ = currentSquare:AddWorldInventoryItem(type, 0, 0, 0)
 	end
@@ -260,10 +252,6 @@ function eHelicopter:dropCarePackage(fuzz)
 		heliY = heliY+ZombRand(minY,maxY+1)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
-
-	if currentSquare and currentSquare:isSolidTrans() then
-		currentSquare = nil
-	end
 
 	if currentSquare then
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
@@ -315,10 +303,6 @@ function eHelicopter:dropScrap(fuzz)
 
 				local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
-				if currentSquare and currentSquare:isSolidTrans() then
-					currentSquare = nil
-				end
-
 				if currentSquare then
 
 					local spawntedItem = currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
@@ -356,10 +340,6 @@ function eHelicopter_dropTrash(heli, location)
 		heliX = heliX+ZombRand(-1,2)
 		
 		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
-
-		if currentSquare and currentSquare:isSolidTrans() then
-			currentSquare = nil
-		end
 
 		if currentSquare then
 			local trashType = trashItems[(ZombRand(#trashItems)+1)]
