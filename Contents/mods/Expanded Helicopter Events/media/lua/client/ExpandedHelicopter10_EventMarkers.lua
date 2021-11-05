@@ -113,7 +113,7 @@ end
 
 
 function EHE_EventMarker:render()
-	if self.visible and self.duration > 0 and self.distanceToPoint>10 then
+	if self.visible and self.duration > 0 and self.distanceToPoint>8 then
 		self.setAngleFromPoint(self.lastpx,self.lastpy)
 
 		local centerX = self.width / 2
@@ -124,7 +124,7 @@ function EHE_EventMarker:render()
 		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, Base_r, Base_g, Base_b)
 
 		local textureForPoint = self.texturePoint
-		if self.distanceToPoint <= 15 then
+		if self.distanceToPoint <= 13 then
 			textureForPoint = self.textureMarkClose
 		end
 		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
