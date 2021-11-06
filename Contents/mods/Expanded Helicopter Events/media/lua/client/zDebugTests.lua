@@ -12,8 +12,8 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("jet_bombing", player)
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("police_heli_firing", player)
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("raiders", player)
-		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("increasingly_hostile", player)
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("increasingly_helpful", player)
+		elseif key == Keyboard.KEY_9 then 
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.farSquareSpawnPrint()
 		end
 	end
 end)
@@ -54,50 +54,17 @@ end
 --function PrintProceduralDistributions() print("ProceduralDistributions:"..DEBUG_TESTS.RecursiveTablePrint(ProceduralDistributions).."\nEnd Of ProceduralDistributions") end
 
 
-function DEBUG_TESTS.VehicleSpawnTest()
-
-	local player = getPlayer()
-	local testX, testY = math.floor(player:getX())+80, math.floor(player:getY()+80)
-	--,true)---isVehicle to ignore roof tiles
-	local runTest = true
-	local rangeMax = 1500
-	local tick = 4
-
-	local vehicles = 0
-
-	while rangeMax>0 and runTest==true do
-		rangeMax=rangeMax-tick
-		testX=testX+tick
-		testY=testY+tick
-
-		---@type IsoGridSquare
-		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(testX,testY,0))
-
-		getWorld():getMetaChunk(testX,testY):getEmptyOutsideAt()
-
-		if currentSquare and currentSquare:isSolidTrans() then
-			print("--- EHE: VehicleSpawnTest: currentSquare is solid-trans")
-			currentSquare = nil
+function DEBUG_TESTS.farSquareSpawnPrint()
+	local farSquarePendingSpawns = farSquareSpawn.getOrSetPendingSpawnsList()
+	print("farSquareSpawn: ")
+	for k,entry in pairs(farSquarePendingSpawns) do
+		local text = " -- "..k.." : "
+		for kk,data in pairs(entry) do
+			text = text..kk.." = "..data.." "
 		end
-
-		if currentSquare then
-			local vehicleType = eHelicopter.crashType[ZombRand(1,#eHelicopter.crashType+1)]
-			---@type BaseVehicle
-			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
-
-			if heli then
-				vehicles=vehicles+1
-				print("-- EHE: crash #"..vehicles.." X:"..testX..", Y:"..testY.."  range:"..testX-player:getX())
-			else
-				print("-- EHE: DEBUG: Crashed Vehicle Not Spawned.")
-				runTest = false
-			end
-		else
-			print("-- EHE: DEBUG: currentSquare not found.  X:"..testX..", Y:"..testY)
-		end
+		print(text)
 	end
 end
-
 
 
 function DEBUG_TESTS.ZombRandTest(imax)
