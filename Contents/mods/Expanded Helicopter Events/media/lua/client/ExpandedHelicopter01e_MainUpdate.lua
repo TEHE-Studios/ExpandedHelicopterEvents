@@ -85,13 +85,13 @@ function eHelicopter:update()
 	end
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
-	thatIsCloseEnough = thatIsCloseEnough+4
+	thatIsCloseEnough = thatIsCloseEnough+5
 
-	local crashMin = math.min(250, math.floor(thatIsCloseEnough*25)+ZombRand(15,25))
-	local crashMax = math.min(250, math.floor(ZombRand(crashMin,crashMin*2)))
+	local crashMin = math.max(200, math.floor(thatIsCloseEnough*35)+ZombRand(35,50))
+	local crashMax = math.min(2000, math.floor(ZombRand(crashMin,crashMin*4))+50)
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
-		--[DEBUG]] print("EHE: crashing parameters met. ("..crashMin.." to "..crashMax..")")
 		if self:crash() then
+			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashMin.." to "..crashMax..")")
 			return
 		end
 	end
