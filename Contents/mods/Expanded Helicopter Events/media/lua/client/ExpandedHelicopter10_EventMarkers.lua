@@ -2,7 +2,7 @@
 
 EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 
-EHE_EventMarker.iconSize = 64
+EHE_EventMarker.iconSize = 63
 
 function EHE_EventMarker:initialise()
 	ISUIElement.initialise(self)
