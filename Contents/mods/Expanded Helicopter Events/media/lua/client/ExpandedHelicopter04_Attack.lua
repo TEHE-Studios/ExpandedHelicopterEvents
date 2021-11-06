@@ -135,8 +135,6 @@ function eHelicopter:fireOn(targetHostile)
 		--apply hole and blood
 		local bpType = BodyPartType.FromIndex(bpIndexNum)
 		local clothingBP = BloodBodyPartType.FromIndex(bpIndexNum)
-		targetHostile:addHole(clothingBP)
-		targetHostile:addBlood(clothingBP, true, true, true)
 
 		--[[DEBUG]] local preHealth = targetHostile:getHealth()
 		--apply damage to body part
@@ -182,8 +180,10 @@ function eHelicopter:fireOn(targetHostile)
 					end
 				end
 			end
-
 		end
+
+		targetHostile:addHole(clothingBP)
+		targetHostile:addBlood(clothingBP, true, true, true)
 
 		--splatter a few times
 		local splatIterations = ZombRand(1,3)
