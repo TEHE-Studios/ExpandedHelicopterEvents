@@ -86,7 +86,7 @@ function eHelicopter:crash()
 		addSound(nil, heliX, heliY, 0, 250, 300)
 		self:playEventSound("crashEvent")
 
-		EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/crash.png", 1500, heliX, heliY)
+		EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/crash.png", 3000, heliX, heliY)
 
 		self:unlaunch()
 		getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
@@ -301,7 +301,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 
 	self:playEventSound("droppingPackage")
-	EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/airdrop.png", 1500, heliX, heliY)
+	EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
 	self.dropPackages = false
 end
 
