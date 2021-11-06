@@ -152,14 +152,12 @@ function EHE_EventMarker:getPlayer()
 end
 
 
-function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon, duration, poiX, poiY)
+function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon, duration)
 	local o = {}
 	o = ISUIElement:new(screenX, screenY, 1, 1)
 	setmetatable(o, self)
 	self.__index = self
 	o.source = poi
-	o.sourceX = poiX
-	o.sourceY = poiY
 	o.playerObj = player
 	o.xoff = screenX
 	o.yoff = screenY
@@ -219,18 +217,13 @@ function EHE_EventMarker:update(player)
 		self.radius = 1000
 	end
 
-	if poi then
-		if not instanceof(poi, "BaseVehicle") then
-			dist=poi:getDistanceToIsoObject(player)
-			self.radius=(poi.flightVolume*5)+1
-			x,y,z = poi:getXYZAsInt()
-		else
-			x,y,z = poi:getX(), poi:getY(), poi:getZ()
-			dist=IsoUtils.DistanceTo(x,y,player:getX(),player:getY())
-		end
+	if (not instanceof(poi, "BaseVehicle")) and (not instanceof(poi, "IsoGridSquare")) then
+		dist=poi:getDistanceToIsoObject(player)
+		self.radius=(poi.flightVolume*5)+1
+		x,y,z = poi:getXYZAsInt()
 	else
-		x = self.sourceX
-		y = self.sourceY
+		x,y,z = poi:getX(), poi:getY(), poi:getZ()
+		dist=IsoUtils.DistanceTo(x,y,player:getX(),player:getY())
 	end
 
 	if(player:HasTrait("EagleEyed")) then self.radius = (self.radius * 1.2)
@@ -256,49 +249,46 @@ EHE_EventMarkerHandler = {}
 EHE_EventMarkerHandler.allPOI = {}
 
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration, x, y)
+function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
 	if(player) then
 		local SX = (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
 		local SY = (EHE_EventMarker.iconSize/2)
-		local newMarker = EHE_EventMarker:new(poi, player, SX, SY, EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, icon, duration, x, y)
+		local newMarker = EHE_EventMarker:new(poi, player, SX, SY, EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, icon, duration)
 		return newMarker
 	end
 end
 
 
-function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x, y)
+function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 	if eHelicopterSandbox.config.eventMarkersOn == false then
 		return
 	end
-	
+
+	if not poi then
+		poi = getCell():getOrCreateGridSquare(x,y,0)
+	end
+
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
-		local POI
-		if poi then
+		local POI = EHE_EventMarkerHandler.allPOI[poi]
+
+		if not POI then
+			EHE_EventMarkerHandler.allPOI[poi] = {markers={}}
 			POI = EHE_EventMarkerHandler.allPOI[poi]
-
-			if not POI then
-				EHE_EventMarkerHandler.allPOI[poi] = {markers={}}
-				POI = EHE_EventMarkerHandler.allPOI[poi]
-			end
 		end
 
-		local marker
-
-		if POI then
-			marker = POI.markers[p]
-		end
+		local marker = POI.markers[p]
 
 		if not marker then
-			marker = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration, x, y)
-			if POI then
-				POI.markers[p] = marker
-			end
+			marker = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
+			POI.markers[p] = marker
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
+
 		marker:setDuration(duration)
 	end
 end
+
 
 function EHE_EventMarkerHandler.disableMarkersForPOI(poi)
 	local POI = EHE_EventMarkerHandler.allPOI[poi]
@@ -308,6 +298,7 @@ function EHE_EventMarkerHandler.disableMarkersForPOI(poi)
 		end
 	end
 end
+
 
 EHE_EventMarkerHandler.lastUpdateTime = -1
 function EHE_EventMarkerHandler.updateAll()
