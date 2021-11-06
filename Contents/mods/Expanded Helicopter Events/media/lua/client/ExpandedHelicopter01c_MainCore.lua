@@ -167,10 +167,9 @@ function getOutsideSquareFromAbove(square,isVehicle)
 	end
 
 	local x, y = square:getX(), square:getY()
-	local cell = square:getCell()
 
 	for i=1, 7 do
-		local sq = cell:getOrCreateGridSquare(x, y, i)
+		local sq = getSquare(x, y, i)
 		if sq and sq:isOutside() and sq:isSolidFloor() then
 			return sq
 		end
