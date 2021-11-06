@@ -60,7 +60,7 @@ function DEBUG_TESTS.farSquareSpawnPrint()
 	for k,entry in pairs(farSquarePendingSpawns) do
 		local text = " -- "..k.." : "
 		for kk,data in pairs(entry) do
-			text = text..kk.." = "..data.." "
+			text = text..kk.." = "..tostring(data).." "
 		end
 		print(text)
 	end
