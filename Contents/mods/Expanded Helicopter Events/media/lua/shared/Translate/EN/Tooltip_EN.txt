@@ -9,4 +9,8 @@ Tooltip_EN = {
     Tooltip_SPHBlack = "Standard issue military helicopter helmet in black",
     Tooltip_SPHPolice = "Helicopter helmet used by police air wings",
     Tooltip_SPHCivilian = "Helicopter helmet used by civilian pilots",
+
+    Tooltip_FlyerCDC = "Looks like a health advisory flyer",
+    Tooltip_FlyerMilitary = "Looks like a notice flyer from the military",
+    Tooltip_CivilDefense = "Looks like a civil defense flyer",
 }

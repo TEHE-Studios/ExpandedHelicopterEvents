@@ -133,7 +133,7 @@ eHelicopter.attackSpread = 3
 eHelicopter.attackHitChance = 85
 
 ---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5))
-eHelicopter.attackDamage = 30
+eHelicopter.attackDamage = 10
 
 ---// UNDER THE HOOD STUFF //---
 
