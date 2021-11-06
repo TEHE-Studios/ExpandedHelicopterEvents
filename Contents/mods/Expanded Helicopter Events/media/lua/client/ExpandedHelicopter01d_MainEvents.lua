@@ -1,7 +1,7 @@
 ---Heli goes down
 
 ---@param vehicle BaseVehicle
-function eHelicopter.crashSubFunc.applyCrashOnVehicle(vehicle)
+function eHelicopter.applyCrashOnVehicle(vehicle)
 	if not vehicle then
 		return
 	end
@@ -54,7 +54,7 @@ function eHelicopter:crash()
 				eHelicopter.applyCrashOnVehicle(heli)
 			end
 		else
-			farSquareSpawn.setToSpawn("Vehicle", vehicleType, heliX, heliY, 0, {eHelicopter.crashSubFunc.applyCrashOnVehicle})
+			farSquareSpawn.setToSpawn("Vehicle", vehicleType, heliX, heliY, 0, {eHelicopter.applyCrashOnVehicle})
 		end
 
 		self.crashType = false
@@ -97,7 +97,7 @@ end
 
 
 ---@param arrayOfZombies ArrayList
-function eHelicopter.spawnCrewSubFunc.applyDeathOrCrawlerToCrew(arrayOfZombies)
+function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
 	if arrayOfZombies and arrayOfZombies:size()>0 then
 		local zombie = arrayOfZombies:get(0)
 		--33% to be dead on arrival
@@ -154,14 +154,14 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 			if bodyLoc then
 				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, femaleChance)
 				if spawnedZombies and spawnedZombies:size()>0 then
-					eHelicopter.spawnCrewSubFunc.applyDeathOrCrawlerToCrew(spawnedZombies)
+					eHelicopter.applyDeathOrCrawlerToCrew(spawnedZombies)
 					local zombie = spawnedZombies:get(0)
 					if zombie then
 						table.insert(spawnedCrew, zombie)
 					end
 				end
 			else
-				farSquareSpawn.setToSpawn("Zombie", outfitID, heliX, heliY, 0, eHelicopter.spawnCrewSubFunc.applyDeathOrCrawlerToCrew)
+				farSquareSpawn.setToSpawn("Zombie", outfitID, heliX, heliY, 0, eHelicopter.applyDeathOrCrawlerToCrew)
 			end
 		end
 	end
@@ -240,7 +240,7 @@ end
 
 
 ---@param vehicle BaseVehicle
-function eHelicopter.dropCarePackageSubFunc.applyParachute(vehicle)
+function eHelicopter.applyParachuteToCarePackage(vehicle)
 	vehicle:getSquare():AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
 end
 
@@ -277,13 +277,13 @@ function eHelicopter:dropCarePackage(fuzz)
 		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
 			if carePackagesWithOutChutes[carePackage]~=true then
-				eHelicopter.dropCarePackageSubFunc.applyParachute(airDrop)
+				eHelicopter.applyParachuteToCarePackage(airDrop)
 			end
 		end
 	else
 		local parachuteFunc
 		if carePackagesWithOutChutes[carePackage]~=true then
-			parachuteFunc = eHelicopter.dropCarePackageSubFunc.applyParachute
+			parachuteFunc = eHelicopter.applyParachuteToCarePackage
 		end
 		farSquareSpawn.setToSpawn("Vehicle", carePackage, heliX, heliY, 0, parachuteFunc)
 	end
