@@ -2,6 +2,9 @@
 
 ---@param vehicle BaseVehicle
 function eHelicopter.crashSubFunc.applyCrashOnVehicle(vehicle)
+	if not vehicle then
+		return
+	end
 	vehicle:crash(1000,true)
 	vehicle:crash(1000,false)
 
