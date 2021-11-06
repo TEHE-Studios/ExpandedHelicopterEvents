@@ -149,7 +149,6 @@ function eHelicopter:fireOn(targetHostile)
 		if instanceof(targetHostile, "IsoZombie") then
 			--Zombies receive damage directly because they don't have body parts or clothing protection
 			damage = damage*3
-			targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
 			targetHostile:knockDown(true)
 
 		elseif instanceof(targetHostile, "IsoPlayer") then
@@ -174,7 +173,6 @@ function eHelicopter:fireOn(targetHostile)
 						damage = damage * (1-(protection*0.75))
 						print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
 
-						targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
 						bodyDMG:AddDamage(bpIndexNum,damage)
 						actualBP:damageFromFirearm(damage)
 					end
@@ -184,6 +182,7 @@ function eHelicopter:fireOn(targetHostile)
 
 		targetHostile:addHole(clothingBP)
 		targetHostile:addBlood(clothingBP, true, true, true)
+		targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
 
 		--splatter a few times
 		local splatIterations = ZombRand(1,3)
