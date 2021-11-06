@@ -109,7 +109,8 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.NoticeFlyer"]=250},
 	speed = 0.09,
-	scrapAndParts = {"UH1HMedevacTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH1HMedevacTail"},
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_AidDrop_2",
 		["droppingPackage"] = "eHeli_AidDrop_1and3",
@@ -121,7 +122,8 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoGameCharacter",
-	scrapAndParts = {"UH1HTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH1HTail"},
 	formationIDs = {"air_raid"},
 }
 
@@ -156,7 +158,8 @@ eHelicopter_PRESETS["news_chopper"] = {
 	speed = 0.10,
 	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
-	scrapAndParts = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206LBMWTail"},
 	}
 
 eHelicopter_PRESETS["news_chopper_hover"] = {
@@ -185,7 +188,8 @@ eHelicopter_PRESETS["police"] = {
 	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2},
 	crashType = {"Bell206PoliceFuselage"},
 	crew = {"EHEPolicePilot", "EHEPoliceOfficer", "EHEPoliceOfficer", 75},
-	scrapAndParts = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206PoliceTail"},
 	announcerVoice = "Police",
 	}
 
@@ -236,7 +240,8 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
 	},
-	scrapAndParts = {"Bell206SurvivalistTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206SurvivalistTail"},
 	cutOffFactor = 3,
 	frequencyFactor = 1.33,
 }
@@ -247,7 +252,8 @@ eHelicopter_PRESETS["raiders"] = {
 	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_aggressive",1},
 	speed = 0.20,
 	crashType = {"UH1HRaiderFuselage"},
-	scrapAndParts = {"UH1HRaiderTail", "EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
+	scrapVehicles = {"UH1HRaiderTail"},
 	cutOffFactor = 3,
 	frequencyFactor = 1.33,
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
