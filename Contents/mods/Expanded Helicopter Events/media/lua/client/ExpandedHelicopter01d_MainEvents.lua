@@ -83,7 +83,7 @@ function eHelicopter:crash()
 
 		--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
 		self:spawnCrew()
-		addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
+		addSound(nil, heliX, heliY, 0, 250, 300)
 		self:playEventSound("crashEvent")
 
 		EHE_EventMarkerHandler.setOrUpdateMarkers(heli, "media/ui/crash.png", 1500)
