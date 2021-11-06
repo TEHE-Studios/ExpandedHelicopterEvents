@@ -246,7 +246,9 @@ end
 
 ---@param vehicle BaseVehicle
 function eHelicopter.applyParachuteToCarePackage(vehicle)
-	vehicle:getSquare():AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
+	if vehicle then
+		vehicle:getSquare():AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
+	end
 end
 
 ---Heli drop carePackage
