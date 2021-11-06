@@ -122,6 +122,12 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 	end
 
 	local anythingSpawned = {}
+
+	local addedEventFunction
+	if self.addedFunctionsToEvents then
+		addedEventFunction = self.addedFunctionsToEvents["OnSpawnCrew"]
+	end
+
 	for key,outfitID in pairs(self.crew) do
 
 		--The chance this type of zombie is spawned
@@ -161,11 +167,15 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 					end
 				end
 			else
-				farSquareSpawn.setToSpawn("Zombie", outfitID, heliX, heliY, 0, eHelicopter.applyDeathOrCrawlerToCrew)
+				farSquareSpawn.setToSpawn("Zombie", outfitID, heliX, heliY, 0, {eHelicopter.applyDeathOrCrawlerToCrew, addedEventFunction})
 			end
 		end
 	end
 	self.crew = false
+
+	if #anythingSpawned and addedEventFunction then
+		addedEventFunction(anythingSpawned)
+	end
 
 	return anythingSpawned
 end
@@ -287,7 +297,7 @@ function eHelicopter:dropCarePackage(fuzz)
 		if carePackagesWithOutChutes[carePackage]~=true then
 			parachuteFunc = eHelicopter.applyParachuteToCarePackage
 		end
-		farSquareSpawn.setToSpawn("Vehicle", carePackage, heliX, heliY, 0, parachuteFunc)
+		farSquareSpawn.setToSpawn("Vehicle", carePackage, heliX, heliY, 0, {parachuteFunc})
 	end
 
 	self:playEventSound("droppingPackage")

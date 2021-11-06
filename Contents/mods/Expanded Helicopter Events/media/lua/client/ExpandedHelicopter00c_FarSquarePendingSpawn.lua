@@ -41,7 +41,7 @@ function farSquareSpawn.parseSquare(square)
 				local spawnedObject = spawnFunc(shiftedSquare, entry.objectType)
 				if spawnedObject then
 					--[DEBUG]] print("DEBUG: farSquareSpawn.parseSquare: "..tostring(spawnedObject).." "..square:getX()..","..square:getY())
-					if entry.funcsToApply then
+					if entry.funcsToApply and (type(entry.funcsToApply)=="table") then
 						for k,func in pairs(entry.funcsToApply) do
 							func(spawnedObject)
 						end
