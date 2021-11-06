@@ -247,7 +247,10 @@ end
 ---@param vehicle BaseVehicle
 function eHelicopter.applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		vehicle:getSquare():AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
+		local vSq = getSquare(vehicle:getX(),vehicle:getY(),0)
+		if vSq then
+			vSq:AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
+		end
 	end
 end
 
@@ -279,9 +282,11 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
+	local airDrop
+
 	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 	if currentSquare then
-		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
+		airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
 			if carePackagesWithOutChutes[carePackage]~=true then
 				eHelicopter.applyParachuteToCarePackage(airDrop)
@@ -290,14 +295,15 @@ function eHelicopter:dropCarePackage(fuzz)
 	else
 		local parachuteFunc
 		if carePackagesWithOutChutes[carePackage]~=true then
-			parachuteFunc = eHelicopter.applyParachuteToCarePackage
+			farSquareSpawn.setToSpawn("Vehicle", carePackage, heliX, heliY, 0, {eHelicopter.applyParachuteToCarePackage})
 		end
-		farSquareSpawn.setToSpawn("Vehicle", carePackage, heliX, heliY, 0, {parachuteFunc})
+
 	end
 
 	self:playEventSound("droppingPackage")
 	EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
 	self.dropPackages = false
+	return airDrop
 end
 
 
