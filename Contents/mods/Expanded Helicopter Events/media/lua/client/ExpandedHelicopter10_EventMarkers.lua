@@ -152,15 +152,17 @@ function EHE_EventMarker:getPlayer()
 end
 
 
-function EHE_EventMarker:new(poi, player, x, y, width, height, icon, duration, title)
+function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon, duration, poiX, poiY)
 	local o = {}
-	o = ISUIElement:new(x, y, 1, 1)
+	o = ISUIElement:new(screenX, screenY, 1, 1)
 	setmetatable(o, self)
 	self.__index = self
 	o.source = poi
+	o.sourceX = poiX
+	o.sourceY = poiY
 	o.playerObj = player
-	o.xoff = x
-	o.yoff = y
+	o.xoff = screenX
+	o.yoff = screenY
 	o.lastpx = 0
 	o.lastpy = 0
 	o.width = width
@@ -171,7 +173,7 @@ function EHE_EventMarker:new(poi, player, x, y, width, height, icon, duration, t
 	o.duration = duration
 	o.enabled = true
 	o.visible = true
-	o.title = title or ""
+	o.title = ""
 	o.distanceToPoint = 999
 	o.radius = nil
 	o.mouseOver = false
@@ -194,9 +196,9 @@ end
 
 ---@param poi IsoObject | IsoMovingObject | eHelicopter
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-function EHE_EventMarker:update(poi,player)
+function EHE_EventMarker:update(player)
 
-	if not poi or not player then
+	if not player then
 		return
 	end
 
@@ -210,20 +212,25 @@ function EHE_EventMarker:update(poi,player)
 	end
 
 	local dist
+	local poi = self.source
 	local x,y,z
 
 	if not self.radius then
 		self.radius = 1000
 	end
 
-	if not instanceof(poi, "BaseVehicle") then
-		dist=poi:getDistanceToIsoObject(player)
-		self.radius=(poi.flightVolume*5)+1
-		x,y,z = poi:getXYZAsInt()
+	if poi then
+		if not instanceof(poi, "BaseVehicle") then
+			dist=poi:getDistanceToIsoObject(player)
+			self.radius=(poi.flightVolume*5)+1
+			x,y,z = poi:getXYZAsInt()
+		else
+			x,y,z = poi:getX(), poi:getY(), poi:getZ()
+			dist=IsoUtils.DistanceTo(x,y,player:getX(),player:getY())
+		end
 	else
-		x,y,z = poi:getX(), poi:getY(), poi:getZ()
-		dist=IsoUtils.DistanceTo(x,y,player:getX(),player:getY())
-
+		x = self.sourceX
+		y = self.sourceY
 	end
 
 	if(player:HasTrait("EagleEyed")) then self.radius = (self.radius * 1.2)
@@ -249,35 +256,44 @@ EHE_EventMarkerHandler = {}
 EHE_EventMarkerHandler.allPOI = {}
 
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
+function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration, x, y)
 	if(player) then
 		local SX = (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
 		local SY = (EHE_EventMarker.iconSize/2)
-		local newMarker = EHE_EventMarker:new(poi, player, SX, SY,EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, icon, duration)
+		local newMarker = EHE_EventMarker:new(poi, player, SX, SY, EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, icon, duration, x, y)
 		return newMarker
 	end
 end
 
 
-function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration)
+function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x, y)
 	if eHelicopterSandbox.config.eventMarkersOn == false then
 		return
 	end
 	
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
-		local POI = EHE_EventMarkerHandler.allPOI[poi]
-
-		if not POI then
-			EHE_EventMarkerHandler.allPOI[poi] = {markers={}}
+		local POI
+		if poi then
 			POI = EHE_EventMarkerHandler.allPOI[poi]
+
+			if not POI then
+				EHE_EventMarkerHandler.allPOI[poi] = {markers={}}
+				POI = EHE_EventMarkerHandler.allPOI[poi]
+			end
 		end
 
-		local marker = POI.markers[p]
+		local marker
+
+		if POI then
+			marker = POI.markers[p]
+		end
 
 		if not marker then
-			POI.markers[p] = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
-			marker = POI.markers[p]
+			marker = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration, x, y)
+			if POI then
+				POI.markers[p] = marker
+			end
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
 		marker:setDuration(duration)
@@ -305,7 +321,7 @@ function EHE_EventMarkerHandler.updateAll()
 
 	for poiObject,poiData in pairs(EHE_EventMarkerHandler.allPOI) do
 		for player,marker in pairs(poiData.markers) do
-			marker:update(poiObject,player)
+			marker:update(player)
 		end
 	end
 end
