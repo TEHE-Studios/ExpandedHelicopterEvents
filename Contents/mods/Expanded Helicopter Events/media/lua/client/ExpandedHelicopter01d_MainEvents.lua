@@ -121,7 +121,7 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 		return
 	end
 
-	local spawnedCrew = {}
+	local anythingSpawned = {}
 	for key,outfitID in pairs(self.crew) do
 
 		--The chance this type of zombie is spawned
@@ -157,7 +157,7 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 					eHelicopter.applyDeathOrCrawlerToCrew(spawnedZombies)
 					local zombie = spawnedZombies:get(0)
 					if zombie then
-						table.insert(spawnedCrew, zombie)
+						table.insert(anythingSpawned, zombie)
 					end
 				end
 			else
@@ -166,6 +166,8 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 		end
 	end
 	self.crew = false
+
+	return anythingSpawned
 end
 
 
