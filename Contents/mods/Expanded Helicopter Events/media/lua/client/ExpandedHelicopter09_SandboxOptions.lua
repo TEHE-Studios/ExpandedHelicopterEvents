@@ -143,10 +143,10 @@ function HelicopterSandboxOptions(hookEvent)
 	sandboxOptionsEnd()
 
 	if not oldGameVersion then
-		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour/Helicopter to \"0\".")
-		getGameTime():setHelicopterDay(0)
-		getGameTime():setHelicopterStartHour(0)
-		getGameTime():setHelicopterEndHour(0)
+		print("EHE: "..(hookEvent or "").."Disabling vanilla helicopter Day/StartHour/EndHour/Helicopter.")
+		getGameTime():setHelicopterDay(-1)
+		getGameTime():setHelicopterStartHour(-1)
+		getGameTime():setHelicopterEndHour(-1)
 
 		SandboxVars.Helicopter = 0
 
