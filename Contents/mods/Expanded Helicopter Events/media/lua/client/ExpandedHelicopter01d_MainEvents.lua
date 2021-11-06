@@ -230,16 +230,9 @@ function eHelicopter:dropItem(type, fuzz)
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
-		local minX, maxX = 2, 3+fuzz
-		if ZombRand(1, 101) <= 50 then
-			minX, maxX = -2, 0-(3+fuzz)
-		end
-		heliX = heliX+ZombRand(minX,maxX)
-		local minY, maxY = 2, 3+fuzz
-		if ZombRand(1, 101) <= 50 then
-			minY, maxY = -2, 0-(3+fuzz)
-		end
-		heliY = heliY+ZombRand(minY,maxY)
+		local min, max = 0-3-fuzz, 3+fuzz
+		heliX = heliX+ZombRand(min,max)
+		heliY = heliY+ZombRand(min,max)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX,heliY,0))
 
@@ -284,7 +277,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
-	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
+	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 	if currentSquare then
 		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
 		if airDrop then
