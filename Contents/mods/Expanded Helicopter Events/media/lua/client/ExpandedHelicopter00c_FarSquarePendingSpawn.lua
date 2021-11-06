@@ -14,10 +14,11 @@ end
 ---@param x number
 ---@param y number
 ---@param z number
-function farSquareSpawn.setToSpawn(spawnFuncType, objectType, x, y, z)
+---@param funcsToApply table
+function farSquareSpawn.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply)
 	local farSquarePendingSpawns = farSquareSpawn.getOrSetPendingSpawnsList()
 	--[DEBUG]] print("farSquareSpawn.setToSpawn: added")
-	table.insert(farSquarePendingSpawns, {spawnFuncType=spawnFuncType, objectType=objectType, x=x, y=y, z=z})
+	table.insert(farSquarePendingSpawns, {spawnFuncType=spawnFuncType, objectType=objectType, x=x, y=y, z=z, funcsToApply=funcsToApply})
 end
 
 
@@ -40,6 +41,11 @@ function farSquareSpawn.parseSquare(square)
 				local spawnedObject = spawnFunc(shiftedSquare, entry.objectType)
 				if spawnedObject then
 					--[DEBUG]] print("DEBUG: farSquareSpawn.parseSquare: "..tostring(spawnedObject).." "..square:getX()..","..square:getY())
+					if entry.funcsToApply then
+						for k,func in pairs(entry.funcsToApply) do
+							func(spawnedObject)
+						end
+					end
 					farSquarePendingSpawns[key] = nil
 				end
 			else
