@@ -387,7 +387,7 @@ end
 function eHelicopter_dropTrash(heli, location)
 
 	local heliX, heliY, _ = heli:getXYZAsInt()
-	local trashItems = {"Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
+	local trashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
 	local iterations = 10
 
 	for i=1, iterations do
