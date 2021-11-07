@@ -5,15 +5,23 @@ function farSquareSpawn.getOrSetPendingSpawnsList()
 end
 
 
----@param objectType string
+---@param spawnFuncType string This string is concated to the end of 'farSquareSpawn.spawn' to run a corresponding function.
+---@param objectType string Module.Type for Items and Vehicles, OutfitID for Zombies
 ---@param x number
 ---@param y number
 ---@param z number
----@param funcsToApply table
+---@param funcsToApply table Table of functions which gets applied on the results of whatever is spawned.
 function farSquareSpawn.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply)
 	local farSquarePendingSpawns = farSquareSpawn.getOrSetPendingSpawnsList()
-	--[DEBUG]] print("farSquareSpawn.setToSpawn: added")
 	table.insert(farSquarePendingSpawns, {spawnFuncType=spawnFuncType, objectType=objectType, x=x, y=y, z=z, funcsToApply=funcsToApply})
+end
+
+
+---@param item InventoryItem
+function farSquareSpawn.ageInventoryItem(item)
+	if item then
+		item:setAutoAge()
+	end
 end
 
 

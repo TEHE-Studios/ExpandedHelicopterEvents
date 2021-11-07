@@ -239,7 +239,7 @@ function eHelicopter:dropItem(type, fuzz)
 	if currentSquare then
 		currentSquare:AddWorldInventoryItem(type, 0, 0, 0)
 	else
-		farSquareSpawn.setToSpawn("Item", type, heliX, heliY, 0)
+		farSquareSpawn.setToSpawn("Item", type, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem})
 	end
 end
 
@@ -340,7 +340,7 @@ function eHelicopter:dropScrap(fuzz)
 				if currentSquare then
 					currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
 				else
-					farSquareSpawn.setToSpawn("Item", partType, heliX, heliY, 0)
+					farSquareSpawn.setToSpawn("Item", partType, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem})
 				end
 			end
 		end
@@ -405,7 +405,7 @@ function eHelicopter_dropTrash(heli, location)
 		if currentSquare then
 			currentSquare:AddWorldInventoryItem(trashType, 0, 0, 0)
 		else
-			farSquareSpawn.setToSpawn("Item", trashType, heliX, heliY, 0)
+			farSquareSpawn.setToSpawn("Item", trashType, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem})
 		end
 	end
 end
