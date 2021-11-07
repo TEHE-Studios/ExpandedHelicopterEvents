@@ -1,12 +1,7 @@
 farSquareSpawn = {}
 
 function farSquareSpawn.getOrSetPendingSpawnsList()
-	local GTMData = getGameTime():getModData()
-	--if no EventsSchedule found make it an empty list
-	if not GTMData.farSquarePendingSpawns then
-		GTMData.farSquarePendingSpawns = {}
-	end
-	return GTMData.farSquarePendingSpawns
+	return ModData.getOrCreate("farSquarePendingSpawns")
 end
 
 
