@@ -69,14 +69,12 @@ function farSquareSpawn.parseSquare(square)
 								end
 							end
 						end
-						farSquarePendingSpawns[key] = nil
+					else
+						print("farSquareSpawn: ERR: item not spawned - clearing entry. "..entry.objectType.." ("..sqX..","..sqY..","..sqZ..")")
 					end
-				else
-					farSquarePendingSpawns[key] = nil
 				end
-			else
-				farSquarePendingSpawns[key] = nil
 			end
+			farSquarePendingSpawns[key] = nil
 		end
 	end
 end
