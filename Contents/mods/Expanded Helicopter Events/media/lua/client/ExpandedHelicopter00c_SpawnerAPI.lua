@@ -24,6 +24,7 @@ function spawnerAPI.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pro
 	end
 
 	if currentSquare then
+		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local item = currentSquare:AddWorldInventoryItem(itemType, x, y, z)
 		if item then
 			spawnerAPI.processExtraFunctionsOnto(item,extraFunctions)
@@ -80,6 +81,7 @@ function spawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance,
 	end
 
 	if currentSquare then
+		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
 		if zombies and zombies:size()>0 then
 			spawnerAPI.processExtraFunctionsOnto(zombies,extraFunctions)
