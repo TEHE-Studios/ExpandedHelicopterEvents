@@ -72,7 +72,6 @@ description=[*] Fully voiced announcements, which can be easily expanded upon by
 description=
 description=[*] CO-OP/NPC/Eventual MP Support: The helicopters will target people depending on their location; prefer targets in the cities over those in the forest.
 description=
-description=
 description=[*] Helicopter events are registered on AEBS (radio system) just like vanilla events!
 description=[/list]
 description=
