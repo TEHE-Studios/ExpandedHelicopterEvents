@@ -13,7 +13,7 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("police_heli_firing", player)
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("raiders", player)
 		elseif key == Keyboard.KEY_9 then 
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.farSquareSpawnPrint()
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.spawnerAPIPrint()
 		end
 	end
 end)
@@ -54,10 +54,10 @@ end
 --function PrintProceduralDistributions() print("ProceduralDistributions:"..DEBUG_TESTS.RecursiveTablePrint(ProceduralDistributions).."\nEnd Of ProceduralDistributions") end
 
 
-function DEBUG_TESTS.farSquareSpawnPrint()
-	local farSquarePendingSpawns = farSquareSpawn.getOrSetPendingSpawnsList()
-	print("farSquareSpawn: ")
-	for k,entry in pairs(farSquarePendingSpawns) do
+function DEBUG_TESTS.spawnerAPIPrint()
+	local spawnerAPIPendingSpawns = spawnerAPI.getOrSetPendingSpawnsList()
+	print("spawnerAPIPrint: ")
+	for k,entry in pairs(spawnerAPIPendingSpawns) do
 		local text = " -- "..k.." : "
 		for kk,data in pairs(entry) do
 			text = text..kk.." = "..tostring(data).." "
