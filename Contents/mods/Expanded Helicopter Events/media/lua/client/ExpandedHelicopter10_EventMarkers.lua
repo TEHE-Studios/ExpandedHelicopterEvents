@@ -234,7 +234,7 @@ function EHE_EventMarker:update(player)
 		self.radius = self.radius*1.2
 	end
 
-	if((dist <= self.radius) and player:isOutside()) then
+	if (dist <= self.radius) then--and player:isOutside() then
 		self:setDistance(dist)
 		self:setAngleFromPoint(x,y)
 		--self:setDuration(10)
