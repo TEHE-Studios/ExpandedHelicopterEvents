@@ -1,5 +1,12 @@
 ---Heli goes down
 
+---@param item InventoryItem
+function eHelicopter.ageInventoryItem(item)
+	if item then
+		item:setAutoAge()
+	end
+end
+
 ---@param vehicle BaseVehicle
 function eHelicopter.applyCrashOnVehicle(vehicle)
 	if not vehicle then
@@ -43,19 +50,17 @@ function eHelicopter:crash()
 		end
 
 		local heliX, heliY, _ = self:getXYZAsInt()
-		local actualSquare = getSquare(heliX,heliY,0)
-		local currentSquare = getOutsideSquareFromAbove(actualSquare,true)
-
 		local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
-		if currentSquare then
-			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
-			if heli then
-				eHelicopter.applyCrashOnVehicle(heli)
+		local extraFunctions = {eHelicopter.applyCrashOnVehicle}
+		if self.addedFunctionsToEvents then
+			local eventFunction = self.addedFunctionsToEvents["OnCrash"]
+			if eventFunction then
+				table.insert(extraFunctions, eventFunction)
 			end
-		else
-			farSquareSpawn.setToSpawn("Vehicle", vehicleType, heliX, heliY, 0, {eHelicopter.applyCrashOnVehicle})
 		end
+
+		spawnerAPI.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
 
 		self.crashType = false
 
@@ -72,13 +77,6 @@ function eHelicopter:crash()
 		--drop all items
 		if self.dropItems then
 			self:dropAllItems(4)
-		end
-
-		if self.addedFunctionsToEvents then
-			local eventFunction = self.addedFunctionsToEvents["OnCrash"]
-			if eventFunction then
-				eventFunction(self, currentSquare)
-			end
 		end
 
 		--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
@@ -116,7 +114,7 @@ function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
 end
 
 ---Heli spawn crew
-function eHelicopter:spawnCrew(deathChance,crawlChance)
+function eHelicopter:spawnCrew()
 	if not self.crew then
 		return
 	end
@@ -154,21 +152,8 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			local bodyLoc = getOutsideSquareFromAbove(getSquare(heliX,heliY,0))
-			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
+			spawnerAPI.spawnZombie(outfitID, heliX, heliY, 0, {eHelicopter.applyDeathOrCrawlerToCrew,addedEventFunction}, femaleChance, getOutsideSquareFromAbove)
 
-			if bodyLoc then
-				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, femaleChance)
-				if spawnedZombies and spawnedZombies:size()>0 then
-					eHelicopter.applyDeathOrCrawlerToCrew(spawnedZombies)
-					local zombie = spawnedZombies:get(0)
-					if zombie then
-						table.insert(anythingSpawned, zombie)
-					end
-				end
-			else
-				farSquareSpawn.setToSpawn("Zombie", outfitID, heliX, heliY, 0, {eHelicopter.applyDeathOrCrawlerToCrew, addedEventFunction})
-			end
 		end
 	end
 	self.crew = false
@@ -234,25 +219,18 @@ function eHelicopter:dropItem(type, fuzz)
 		heliX = heliX+ZombRand(min,max)
 		heliY = heliY+ZombRand(min,max)
 	end
-	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX,heliY,0))
 
-	if currentSquare then
-		currentSquare:AddWorldInventoryItem(type, 0, 0, 0)
-	else
-		farSquareSpawn.setToSpawn("Item", type, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem})
-	end
+	spawnerAPI.spawnItem(type, heliX, heliY, 0, {eHelicopter.ageInventoryItem})
 end
 
 
 ---@param vehicle BaseVehicle
 function eHelicopter.applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		local vSq = getSquare(vehicle:getX(),vehicle:getY(),0)
-		if vSq then
-			vSq:AddWorldInventoryItem("EHE.EHE_Parachute", 0, 0, 0)
-		end
+		spawnerAPI.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, getOutsideSquareFromAbove)
 	end
 end
+
 
 ---Heli drop carePackage
 ---@param fuzz number
@@ -280,25 +258,14 @@ function eHelicopter:dropCarePackage(fuzz)
 		end
 		heliY = heliY+ZombRand(minY,maxY+1)
 	end
-	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
-	local airDrop
-
-	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
-	if currentSquare then
-		airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
-		if airDrop then
-			if carePackagesWithOutChutes[carePackage]~=true then
-				eHelicopter.applyParachuteToCarePackage(airDrop)
-			end
-		end
-	else
-		local parachuteFunc
-		if carePackagesWithOutChutes[carePackage]~=true then
-			farSquareSpawn.setToSpawn("Vehicle", carePackage, heliX, heliY, 0, {eHelicopter.applyParachuteToCarePackage})
-		end
-
+	local extraFunctions
+	if carePackagesWithOutChutes[carePackage]~=true then
+		extraFunctions = {eHelicopter.applyParachuteToCarePackage}
 	end
+
+	spawnerAPI.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
+	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 
 	self:playEventSound("droppingPackage")
 	EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
@@ -335,13 +302,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
-
-				if currentSquare then
-					currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
-				else
-					farSquareSpawn.setToSpawn("Item", partType, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem})
-				end
+				spawnerAPI.spawnItem(partType, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 			end
 		end
 	end
@@ -368,13 +329,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
-
-				if currentSquare then
-					addVehicleDebug(partType, IsoDirections.getRandom(), nil, currentSquare)
-				else
-					farSquareSpawn.setToSpawn("Vehicle", partType, heliX, heliY, 0)
-				end
+				spawnerAPI.spawnVehicle(partType, heliX, heliY, 0, nil, nil, getOutsideSquareFromAbove)
 			end
 		end
 	end
@@ -395,17 +350,11 @@ function eHelicopter_dropTrash(heli, location)
 
 		heliY = heliY+ZombRand(-2,3)
 		heliX = heliX+ZombRand(-2,3)
-		
-		local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
 
 		local trashType = trashItems[(ZombRand(#trashItems)+1)]
 		--more likely to drop the same thing
 		table.insert(trashItems, trashType)
 
-		if currentSquare then
-			currentSquare:AddWorldInventoryItem(trashType, 0, 0, 0)
-		else
-			farSquareSpawn.setToSpawn("Item", trashType, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem})
-		end
+		spawnerAPI.spawnItem(trashType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 	end
 end
