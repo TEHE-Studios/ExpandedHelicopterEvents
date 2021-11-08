@@ -60,7 +60,7 @@ function eHelicopter:crash()
 			end
 		end
 
-		spawnerAPI.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
+		SpawnerAPI.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
 
 		self.crashType = false
 
@@ -152,7 +152,7 @@ function eHelicopter:spawnCrew()
 				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			spawnerAPI.spawnZombie(outfitID, heliX, heliY, 0, {eHelicopter.applyDeathOrCrawlerToCrew,addedEventFunction}, femaleChance, getOutsideSquareFromAbove)
+			SpawnerAPI.spawnZombie(outfitID, heliX, heliY, 0, {eHelicopter.applyDeathOrCrawlerToCrew,addedEventFunction}, femaleChance, getOutsideSquareFromAbove)
 
 		end
 	end
@@ -220,14 +220,14 @@ function eHelicopter:dropItem(type, fuzz)
 		heliY = heliY+ZombRand(min,max)
 	end
 
-	spawnerAPI.spawnItem(type, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+	SpawnerAPI.spawnItem(type, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 end
 
 
 ---@param vehicle BaseVehicle
 function eHelicopter.applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		spawnerAPI.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, getOutsideSquareFromAbove)
+		SpawnerAPI.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, getOutsideSquareFromAbove)
 	end
 end
 
@@ -264,7 +264,7 @@ function eHelicopter:dropCarePackage(fuzz)
 		extraFunctions = {eHelicopter.applyParachuteToCarePackage}
 	end
 
-	spawnerAPI.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
+	SpawnerAPI.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
 	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 
 	self:playEventSound("droppingPackage")
@@ -302,7 +302,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				spawnerAPI.spawnItem(partType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+				SpawnerAPI.spawnItem(partType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 			end
 		end
 	end
@@ -329,7 +329,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				spawnerAPI.spawnVehicle(partType, heliX, heliY, 0, nil, nil, getOutsideSquareFromAbove)
+				SpawnerAPI.spawnVehicle(partType, heliX, heliY, 0, nil, nil, getOutsideSquareFromAbove)
 			end
 		end
 	end
@@ -355,6 +355,6 @@ function eHelicopter_dropTrash(heli, location)
 		--more likely to drop the same thing
 		table.insert(trashItems, trashType)
 
-		spawnerAPI.spawnItem(trashType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+		SpawnerAPI.spawnItem(trashType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 	end
 end
