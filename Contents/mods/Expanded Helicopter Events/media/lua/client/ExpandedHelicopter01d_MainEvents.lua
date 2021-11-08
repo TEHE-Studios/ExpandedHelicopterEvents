@@ -302,7 +302,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				spawnerAPI.spawnItem(partType, heliX, heliY, 0, {farSquareSpawn.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+				spawnerAPI.spawnItem(partType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 			end
 		end
 	end
