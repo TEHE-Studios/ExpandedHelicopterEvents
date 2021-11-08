@@ -67,7 +67,7 @@ end
 ---@param y number
 ---@param z number
 ---@param extraFunctions table
----@param femaleChance number extraParam for other spawners 0-100
+---@param femaleChance number extraParam for other spawners; 0-100
 ---@param processSquare function
 ---@return InventoryItem
 function SpawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
