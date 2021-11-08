@@ -340,7 +340,7 @@ end
 
 
 --addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash()},
-function eHelicopter_dropTrash(heli, location)
+function eHelicopter_dropTrash(heli)
 
 	local heliX, heliY, _ = heli:getXYZAsInt()
 	local trashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
