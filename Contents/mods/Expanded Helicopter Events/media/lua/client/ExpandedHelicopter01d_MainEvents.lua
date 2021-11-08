@@ -220,14 +220,14 @@ function eHelicopter:dropItem(type, fuzz)
 		heliY = heliY+ZombRand(min,max)
 	end
 
-	spawnerAPI.spawnItem(type, heliX, heliY, 0, {eHelicopter.ageInventoryItem})
+	spawnerAPI.spawnItem(type, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
 end
 
 
 ---@param vehicle BaseVehicle
 function eHelicopter.applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		spawnerAPI.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, getOutsideSquareFromAbove)
+		spawnerAPI.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, getOutsideSquareFromAbove)
 	end
 end
 
