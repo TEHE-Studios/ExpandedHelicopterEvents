@@ -88,7 +88,7 @@ function eHelicopter:update()
 	thatIsCloseEnough = thatIsCloseEnough+5
 
 	local crashMin = math.max(200, math.floor(thatIsCloseEnough*35)+ZombRand(35,50))
-	local crashMax = math.min(2000, math.floor(ZombRand(crashMin,crashMin*4))+50)
+	local crashMax = math.min(750, math.floor(ZombRand(crashMin,crashMin*4))+50)
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
 		if self:crash() then
 			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashMin.." to "..crashMax..")")
