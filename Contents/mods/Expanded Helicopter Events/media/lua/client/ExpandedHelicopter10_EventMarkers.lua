@@ -132,7 +132,7 @@ function EHE_EventMarker:render()
 			--no change
 		elseif distanceOverRadius <= (375/1000) then
 			textureForPoint = self.texturePointMedium
-		elseif distanceOverRadius <= (750/1000) then
+		else
 			textureForPoint = self.texturePointFar
 		end
 
