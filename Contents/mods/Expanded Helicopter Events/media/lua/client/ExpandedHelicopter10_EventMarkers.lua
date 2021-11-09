@@ -172,7 +172,7 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 	o.enabled = true
 	o.visible = true
 	o.title = ""
-	o.distanceToPoint = 999
+	o.distanceToPoint = 1000
 	o.radius = nil
 	o.mouseOver = false
 	o.tooltip = nil
@@ -219,7 +219,6 @@ function EHE_EventMarker:update(player)
 
 	if (not instanceof(poi, "BaseVehicle")) and (not instanceof(poi, "IsoGridSquare")) then
 		dist=poi:getDistanceToIsoObject(player)
-		self.radius=(poi.flightVolume*5)+1
 		x,y,z = poi:getXYZAsInt()
 	else
 		x,y,z = poi:getX(), poi:getY(), poi:getZ()
