@@ -113,7 +113,7 @@ end
 
 
 function EHE_EventMarker:render()
-	if self.visible and self.duration > 0 and self.distanceToPoint>8 then
+	if self.visible and self.duration > 0 and self.distanceToPoint>4 then
 		self.setAngleFromPoint(self.lastpx,self.lastpy)
 
 		local centerX = self.width / 2
@@ -124,9 +124,18 @@ function EHE_EventMarker:render()
 		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, Base_r, Base_g, Base_b)
 
 		local textureForPoint = self.texturePoint
-		if self.distanceToPoint <= 13 then
-			textureForPoint = self.textureMarkClose
+		local distanceOverRadius = self.distanceToPoint/self.radius
+
+		if distanceOverRadius <= (8/1000) then
+			textureForPoint = self.texturePointClose
+		elseif distanceOverRadius <= (125/1000) then
+			--no change
+		elseif distanceOverRadius <= (375/1000) then
+			textureForPoint = self.texturePointMedium
+		elseif distanceOverRadius <= (750/1000) then
+			textureForPoint = self.texturePointFar
 		end
+
 		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
@@ -181,7 +190,9 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 	o.joypadFocused = false
 	o.translation = nil
 	o.texturePoint = getTexture("media/ui/eventMarker.png")
-	o.textureMarkClose = getTexture("media/ui/eventMarkerClose.png")
+	o.texturePointClose = getTexture("media/ui/eventMarker_close.png")
+	o.texturePointMedium = getTexture("media/ui/eventMarker_medium.png")
+	o.texturePointFar = getTexture("media/ui/eventMarker_far.png")
 	o.textureBG = getTexture("media/ui/eventMarkerBase.png")
 	if icon then
 		o.textureIcon = getTexture(icon)
