@@ -1,0 +1,3 @@
+DynamicRadio_EN = {
+	AEBS_SupplyDrop = "Askeri yardım paketi geliyor."
+}
