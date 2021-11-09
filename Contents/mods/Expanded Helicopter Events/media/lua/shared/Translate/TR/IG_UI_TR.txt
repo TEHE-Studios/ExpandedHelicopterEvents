@@ -1,4 +1,4 @@
-IG_UI_EN = {
+IG_UI_TR = {
     IGUI_VehicleNameUH1H = "Bell UH-1H",
     IGUI_VehicleNameUH1HFuselage = "Bell UH-1H (GÃ¶vde)",
     IGUI_VehicleNameUH1HTail = "Bell UH-1H (Kuyruk)",

@@ -1,4 +1,4 @@
-Items_EN = {
+Items_TR = {
     DisplayName_Civilian_Helicopter_Helmet= "Helikopter KaskÄ± - Sivil",
     DisplayName_Press_Helmet = "Helikopter KaskÄ± - BasÄ±n",
     DisplayName_Police_Helicopter_Helmet = "Helikopter KaskÄ± - Polis",

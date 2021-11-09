@@ -1,4 +1,4 @@
-Sandbox_EN = {
+Sandbox_TR = {
 	Sandbox_ExpandedHeli = "Expanded Helicopter Events Modu",
 
 	Sandbox_ExpandedHeli_Frequency_option1 = "Asla"

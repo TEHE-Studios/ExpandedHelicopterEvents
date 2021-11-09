@@ -1,4 +1,4 @@
-ContextMenu_EN = {
+ContextMenu_TR = {
     ContextMenu_DownHoodie = "KapÅŸon KapalÄ±",
 	ContextMenu_VisorUp = "AÃ§Ä±k Kask",
     ContextMenu_VisorDown = "KapalÄ± Kask",

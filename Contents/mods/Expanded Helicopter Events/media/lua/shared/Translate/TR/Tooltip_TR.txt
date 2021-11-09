@@ -1,4 +1,4 @@
-Tooltip_EN = {
+Tooltip_TR = {
     Tooltip_dismantle_helicopterpart = "Helikopter Ã¼zerinde kaynak makinesi ve kaynak maskesi kullanÄ±mÄ± size metal verir.",
     Tooltip_open_boxes_barehanded = "Keskin bir ÅŸey ile daha hÄ±zlÄ± aÃ§Ä±labilir.",
     Tooltip_Parachute = "YÄ±rtÄ±k Bez yapmak iÃ§in parÃ§alara ayrÄ±labilir.",
