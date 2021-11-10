@@ -264,7 +264,6 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 	inherit = {"raiders"},
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
-		["additionalFlightSound"] = "eHeliMusicPassive",
 	},
 }
 
