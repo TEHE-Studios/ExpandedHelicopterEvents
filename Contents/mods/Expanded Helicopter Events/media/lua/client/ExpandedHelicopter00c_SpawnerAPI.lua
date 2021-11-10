@@ -12,7 +12,6 @@ end
 ---@param extraFunctions table
 ---@param extraParam any
 ---@param processSquare function
----@return InventoryItem
 function SpawnerAPI.spawnItem(itemType, x, y, z, extraFunctions, extraParam, processSquare)
 	if not itemType then
 		return
@@ -41,7 +40,6 @@ end
 ---@param extraFunctions table
 ---@param extraParam any
 ---@param processSquare function
----@return InventoryItem
 function SpawnerAPI.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
 	if not vehicleType then
 		return
@@ -69,7 +67,6 @@ end
 ---@param extraFunctions table
 ---@param femaleChance number extraParam for other spawners; 0-100
 ---@param processSquare function
----@return InventoryItem
 function SpawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
 	if not outfitID then
 		return
