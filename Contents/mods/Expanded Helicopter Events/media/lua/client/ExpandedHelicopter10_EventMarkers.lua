@@ -74,11 +74,9 @@ function EHE_EventMarker:onMouseMoveOutside(dx, dy)
 		if self.parent then
 			self.parent:setX(self.parent.x + dx)
 			self.parent:setY(self.parent.y + dy)
-			pModData.ehe_eventMakerScreenPos = {self.parent.x,self.parent.y}
 		else
 			self:setX(self.x + dx)
 			self:setY(self.y + dy)
-			pModData.ehe_eventMakerScreenPos = {self.x,self.y}
 			self:bringToTop()
 		end
 	end
@@ -98,11 +96,9 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 		if self.parent then
 			self.parent:setX(self.parent.x + dx)
 			self.parent:setY(self.parent.y + dy)
-			pModData.ehe_eventMakerScreenPos = {self.parent.x,self.parent.y}
 		else
 			self:setX(self.x + dx)
 			self:setY(self.y + dy)
-			pModData.ehe_eventMakerScreenPos = {self.x,self.y}
 			self:bringToTop()
 		end
 		--ISMouseDrag.dragView = self
