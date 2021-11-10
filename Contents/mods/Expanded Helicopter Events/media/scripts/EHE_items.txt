@@ -10,13 +10,13 @@ module EHE
 		Icon = Parachute,
 	}
 
-	   item PlentyTee
+	   item ProteinBar
 	{
 		HungerChange	= -60,
 		Weight		= 0.2,
 		Type		= Food,
 		UnhappyChange	= -35,
-		DisplayName	= PlentyTee(TM) Energy Bar,
+		DisplayName	= Protein Bar,
 		Icon		= PlentyTee,
 		EvolvedRecipe 	= Cake:10,
 		FoodType    	= NoExplicit,
@@ -25,7 +25,6 @@ module EHE
         Lipids 		= 66,
         Calories 	= 550,
         Packaged 	= TRUE,
-		Tooltip = Tooltip_EnergyBar,
 		WorldStaticModel = EnergyBar,
 	}
 
