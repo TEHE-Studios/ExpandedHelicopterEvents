@@ -16,20 +16,15 @@ end
 
 
 ---@param tableToLoadFrom table
----@param alternateTable table
-function eHelicopter:loadVarsFrom(tableToLoadFrom, alternateTable, DEBUG_ID)
+function eHelicopter:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
 	--[[DEBUG]] print("-- loadVarsFrom: "..DEBUG_ID)
 	--[DEBUG]] local debugPrint = ""
 	for var, value in pairs(tableToLoadFrom) do
 		local newValue
-		local ignore = ((var=="presetProgression") or (var=="presetRandomSelection"))
+		local ignore = ((var=="presetProgression") or (var=="presetRandomSelection") or (var=="inherit"))
 
 		if not ignore then
-			if (alternateTable and (alternateTable[var] ~= nil)) then
-				newValue = alternateTable[var]
-			else
-				newValue = value
-			end
+			newValue = value
 			--tables needs to be copied piece by piece to avoid direct references links
 			if type(newValue) == "table" then
 				--[DEBUG]] debugPrint = debugPrint..("--- "..var.." is a table (#"..#newValue.."); generating copy:\n")
@@ -114,7 +109,7 @@ end
 function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 	iteration = iteration or 0
 	--Load preset vars
-	self:loadVarsFrom(preset, nil, "presetLoad:"..tostring(recursiveID))
+	self:loadVarsFrom(preset, "presetLoad:"..tostring(recursiveID))
 
 	--[[DEBUG]] local rpcText
 	if preset.presetRandomSelection then
@@ -125,7 +120,7 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 				presetID = id
 			end
 		end
-		self:loadVarsFrom(preset, nil, "-- presetRand:"..tostring(presetID))
+		self:loadVarsFrom(preset, "-- presetRand:"..tostring(presetID))
 	end
 
 	if preset.presetProgression then
@@ -136,7 +131,7 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 				presetID = id
 			end
 		end
-		self:loadVarsFrom(preset, nil, "-- presetProg:"..tostring(presetID))
+		self:loadVarsFrom(preset, "-- presetProg:"..tostring(presetID))
 	end
 
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
@@ -174,10 +169,15 @@ function eHelicopter:loadPreset(ID)
 
 	self:stopAllHeldEventSounds()
 	--[[DEBUG]] print("\n------------[loadPreset:"..ID.."]------------")
-	self:loadVarsFrom(eHelicopter_initialVars, preset.inherit, "initialVars")
+	self:loadVarsFrom(eHelicopter_initialVars, "initialVars")
+	if preset.inherit then
+		for k,inheritedPresetID in pairs(preset.inherit) do
+			self:loadVarsFrom(eHelicopter_PRESETS[inheritedPresetID], "presetInherited")
+		end
+	end
 	preset = self:recursivePresetCheck(preset, nil, masterID)
 	--reset other vars not included with initialVars
-	self:loadVarsFrom(eHelicopter_temporaryVariables, nil, "temporaryVars")
+	self:loadVarsFrom(eHelicopter_temporaryVariables, "temporaryVars")
 	for id,vars in pairs(eHelicopter_PRESETS) do
 		if vars == preset then
 			ID = id
