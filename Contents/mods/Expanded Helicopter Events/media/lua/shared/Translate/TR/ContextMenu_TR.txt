@@ -1,7 +1,7 @@
 ContextMenu_TR = {
-    ContextMenu_DownHoodie = "KapÅŸon KapalÄ±",
-	ContextMenu_VisorUp = "AÃ§Ä±k Kask",
-    ContextMenu_VisorDown = "KapalÄ± Kask",
-	ContextMenu_Tighten = "SÄ±k",
-    ContextMenu_Untighten = "GevÅŸet",
+    ContextMenu_DownHoodie = "Kapşon Kapalı",
+	ContextMenu_VisorUp = "Açık Kask",
+    ContextMenu_VisorDown = "Kapalı Kask",
+	ContextMenu_Tighten = "Sık",
+    ContextMenu_Untighten = "Gevşet",
 } 
