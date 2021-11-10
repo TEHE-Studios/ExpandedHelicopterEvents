@@ -3,6 +3,7 @@
 EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 
 EHE_EventMarker.iconSize = 96
+EHE_EventMarker.clickableSize = 45
 
 function EHE_EventMarker:initialise()
 	ISUIElement.initialise(self)
@@ -15,74 +16,96 @@ end
 
 
 function EHE_EventMarker:onMouseUp(x, y)
-	if not self.moveWithMouse then return; end
+	if not self.moveWithMouse then
+		return
+	end
 	if not self:getIsVisible() then
-		return;
+		return
 	end
 
-	self.moving = false;
+	self.moving = false
 	if ISMouseDrag.tabPanel then
-		ISMouseDrag.tabPanel:onMouseUp(x,y);
+		ISMouseDrag.tabPanel:onMouseUp(x,y)
 	end
 
-	ISMouseDrag.dragView = nil;
+	ISMouseDrag.dragView = nil
 end
 
 function EHE_EventMarker:onMouseUpOutside(x, y)
-	if not self.moveWithMouse then return; end
+	if not self.moveWithMouse then
+		return
+	end
 	if not self:getIsVisible() then
-		return;
+		return
 	end
 
-	self.moving = false;
-	ISMouseDrag.dragView = nil;
+	self.moving = false
+	ISMouseDrag.dragView = nil
 end
 
 function EHE_EventMarker:onMouseDown(x, y)
-	if not self.moveWithMouse then return true; end
+	if not self.moveWithMouse then
+		return true
+	end
 	if not self:getIsVisible() then
-		return;
+		return
 	end
 	if not self:isMouseOver() then
 		return -- this happens with setCapture(true)
 	end
 
-	self.downX = x;
-	self.downY = y;
-	self.moving = true;
-	self:bringToTop();
+	self.downX = x
+	self.downY = y
+	self.moving = true
+	self:bringToTop()
 end
 
 function EHE_EventMarker:onMouseMoveOutside(dx, dy)
-	if not self.moveWithMouse then return; end
-	self.mouseOver = false;
+	if not self.moveWithMouse then
+		return
+	end
+	self.mouseOver = false
 
 	if self.moving then
+
+		local p = self:getPlayer()
+		local pModData = p:getModData()
+
 		if self.parent then
-			self.parent:setX(self.parent.x + dx);
-			self.parent:setY(self.parent.y + dy);
+			self.parent:setX(self.parent.x + dx)
+			self.parent:setY(self.parent.y + dy)
+			pModData.ehe_eventMakerScreenPos = {self.parent.x,self.parent.y}
 		else
-			self:setX(self.x + dx);
-			self:setY(self.y + dy);
-			self:bringToTop();
+			self:setX(self.x + dx)
+			self:setY(self.y + dy)
+			pModData.ehe_eventMakerScreenPos = {self.x,self.y}
+			self:bringToTop()
 		end
 	end
 end
 
 function EHE_EventMarker:onMouseMove(dx, dy)
-	if not self.moveWithMouse then return; end
-	self.mouseOver = true;
+	if not self.moveWithMouse then
+		return
+	end
+	self.mouseOver = true
 
 	if self.moving then
+
+		local p = self:getPlayer()
+		local pModData = p:getModData()
+
 		if self.parent then
-			self.parent:setX(self.parent.x + dx);
-			self.parent:setY(self.parent.y + dy);
+			self.parent:setX(self.parent.x + dx)
+			self.parent:setY(self.parent.y + dy)
+			pModData.ehe_eventMakerScreenPos = {self.parent.x,self.parent.y}
 		else
-			self:setX(self.x + dx);
-			self:setY(self.y + dy);
-			self:bringToTop();
+			self:setX(self.x + dx)
+			self:setY(self.y + dy)
+			pModData.ehe_eventMakerScreenPos = {self.x,self.y}
+			self:bringToTop()
 		end
-		--ISMouseDrag.dragView = self;
+		--ISMouseDrag.dragView = self
 	end
 end
 
@@ -156,6 +179,8 @@ function EHE_EventMarker:refresh()
 	self.opacityGain = 2
 end
 
+
+---@return IsoPlayer | IsoGameCharacter | IsoMovingObject | IsoObject
 function EHE_EventMarker:getPlayer()
 	return self.playerObj
 end
@@ -261,9 +286,10 @@ EHE_EventMarkerHandler.allPOI = {}
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
 function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
 	if(player) then
-		local SX = (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
-		local SY = (EHE_EventMarker.iconSize/2)
-		local newMarker = EHE_EventMarker:new(poi, player, SX, SY, EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, icon, duration)
+
+		local screenX = (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
+		local screenY = (EHE_EventMarker.iconSize/2)
+		local newMarker = EHE_EventMarker:new(poi, player, screenX, screenY, EHE_EventMarker.clickableSize, EHE_EventMarker.clickableSize, icon, duration)
 		return newMarker
 	end
 end
