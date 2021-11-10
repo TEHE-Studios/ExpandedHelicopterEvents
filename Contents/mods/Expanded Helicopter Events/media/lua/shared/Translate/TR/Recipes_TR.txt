@@ -1,0 +1,3 @@
+Recipe_TR = {
+    Recipe_Open_Supplies = "AÃ§Ä±k Malzemeler",
+}
