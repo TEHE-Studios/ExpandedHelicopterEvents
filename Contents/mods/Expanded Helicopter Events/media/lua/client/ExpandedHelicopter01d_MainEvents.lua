@@ -114,12 +114,11 @@ function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
 end
 
 ---Heli spawn crew
+---@param funcOnPerform function
 function eHelicopter:spawnCrew()
 	if not self.crew then
 		return
 	end
-
-	local anythingSpawned = {}
 
 	local addedEventFunction
 	if self.addedFunctionsToEvents then
@@ -157,12 +156,6 @@ function eHelicopter:spawnCrew()
 		end
 	end
 	self.crew = false
-
-	if #anythingSpawned and addedEventFunction then
-		addedEventFunction(anythingSpawned)
-	end
-
-	return anythingSpawned
 end
 
 
