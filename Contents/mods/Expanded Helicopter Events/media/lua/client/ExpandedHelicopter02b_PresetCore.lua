@@ -114,7 +114,7 @@ end
 function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 	iteration = iteration or 0
 	--Load preset vars
-	self:loadVarsFrom(preset, preset.inherit or nil, "presetLoad:"..tostring(recursiveID))
+	self:loadVarsFrom(preset, nil, "presetLoad:"..tostring(recursiveID))
 
 	--[[DEBUG]] local rpcText
 	if preset.presetRandomSelection then
@@ -185,9 +185,9 @@ function eHelicopter:loadPreset(ID)
 	end
 	self.currentPresetID = ID
 	self.masterPresetID = masterID
-	--[[DEBUG]] print("------------------------\n")
 
-	--[[DEBUG] print("=-=-=-=-=-=-=[Confirming]=-=-=-=-=-=-=-=")
+	--[[DEBUG]]
+	print("=-=-=-=-=-=-=[Confirming]=-=-=-=-=-=-=-=")
 	for var, _ in pairs(eHelicopter_initialVars) do print(" - "..var.." = "..tostring(self[var])) end
 	for var, _ in pairs(eHelicopter_temporaryVariables) do print(" - "..var.." = "..tostring(self[var])) end
 	print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
