@@ -200,8 +200,6 @@ module EHE
            Sound:OpenBox,
         }
 
-
-
        recipe Cut up Parachute
     {
        EHE_Parachute,
@@ -211,6 +209,12 @@ module EHE
        Sound:ClothesRipping,
     }
 
+      recipe Unseal Water Ration
+    {
+       EmergencyWaterRation,
+       Result:EmergencyWaterRationOpen=1,
+       Time:5.0,
+    }
 
     	recipe Dismantle Main Rotor Blade
 	{
