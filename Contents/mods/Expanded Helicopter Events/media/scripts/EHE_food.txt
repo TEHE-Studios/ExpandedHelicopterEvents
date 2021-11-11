@@ -1,0 +1,30 @@
+module EHE
+{	
+	item EmergencyWaterRation
+	{
+		Weight	=	0.3,
+		Type	=	Normal,
+		DisplayName	=	Emergency Water Ration,
+		Icon	=	EmergencyWaterRation,
+		Tooltip = Tooltip_WaterSealed,
+		StaticModel = EmergencyWaterRation,
+		WorldStaticModel = EmergencyWaterRation,
+	}
+
+    item EmergencyWaterRationOpen
+
+	{
+		IsWaterSource	=	TRUE,
+		Weight	=	0.3,
+		CanStoreWater	=	TRUE,
+		Type	=	Drainable,
+		UseWhileEquipped	=	FALSE,
+		UseDelta	=	0.1,
+		DisplayName	=	Emergency Water Ration (Open),
+		Icon	=	EmergencyWaterRation,
+		Tooltip = Tooltip_WaterUnsealed,
+		StaticModel = EmergencyWaterRationOpen,
+		WorldStaticModel = EmergencyWaterRationOpen,
+		CustomEatSound = DrinkingFromCan,
+	}
+}
