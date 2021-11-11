@@ -6,6 +6,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
+		Tooltip  Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -14,6 +15,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -22,6 +24,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -30,6 +33,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_BanditBox,
 		WorldStaticModel = BanditBox,
 	}
 	
@@ -38,6 +42,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
 	}
 
@@ -46,6 +51,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
 	}
 
@@ -54,6 +60,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
 	}
 
@@ -62,6 +69,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
 	}
 
@@ -70,6 +78,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
 	}
 
@@ -78,6 +87,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
 	}
 

@@ -15,5 +15,10 @@ Tooltip_EN = {
     Tooltip_CivilDefense = "Looks like a civil defense flyer.",
 
     Tooltip_WaterSealed = "Sealed Water Ration distributed by the US Government."
-    Tooltip_WaterUnsealed = "Unsealed Water Ration distributed by the US Government."
+    Tooltip_WaterUnsealed = "Unsealed Water Ration distributed by the US Government." 
+    Tooltip_MRE = "Meal-Ready-to-Eat. Standard for soldiers and relief aid."
+
+    Tooltip_SupplyBox = "US Government Supply Box."
+    Tooltip_SamaritanBox = "Supply Box from a group of mysterious samaritans.",
+    Tooltip_BanditBox = "Personal stash box. Reads "MY SHIT, DONT TOUCH!"
 }
