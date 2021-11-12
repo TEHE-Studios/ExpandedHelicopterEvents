@@ -14,6 +14,7 @@ function eHelicopter:update()
 		end
 
 		self.trueTarget = self:findTarget(self.attackDistance)
+
 		self.target = self.trueTarget
 		self:setTargetPos()
 		return
@@ -30,7 +31,6 @@ function eHelicopter:update()
 			if (distanceToTrueTarget <= self.attackDistance*2) then
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
-					self:setTargetPos()
 					self:playEventSound("foundTarget")
 				end
 				self.timeSinceLastSeenTarget = timeStampMS
@@ -67,22 +67,21 @@ function eHelicopter:update()
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
-			self:setTargetPos()
 			self:playEventSound("lostTarget")
 		end
-		self:setTargetPos()
 	end
 
-	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+	if self.state == "gotoTarget" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 		local newTarget = self:findTarget(self.attackDistance*4)
 		if newTarget and not instanceof(newTarget, "IsoGridSquare") then
 			self.trueTarget = newTarget
-			self:setTargetPos()
 		else
 			--look again later
 			self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
 		end
 	end
+
+	self:setTargetPos()
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
 	thatIsCloseEnough = thatIsCloseEnough+5

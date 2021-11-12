@@ -489,12 +489,35 @@ function eHelicopter:findTarget(range)
 	end
 
 	if not target then
-		print(" --- HELI "..self:heliToString()..": unable to find target, unlaunching.")
-		self:unlaunch()
+		print(" --- HELI "..self:heliToString().."- WARN: unable to find target: grabbing random square nearby.")
+		target = self:grabRandomSquareNearby(range)
+		if not target then
+			self:goHome()
+			print(" ----- HELI "..self:heliToString().."- ERROR: unable to find nearby square: going home.")
+		end
 		return
 	end
 
 	return target
+end
+
+
+---@param range number
+function eHelicopter:grabRandomSquareNearby(range)
+	range = range or eheBounds.threshold
+	local x,y,z = self:getXYZAsInt()
+
+	local xShift = ZombRand(range/2, range+1)+1
+	local yShift = ZombRand(range/2, range+1)+1
+
+	if ZombRand(101) >= 50 then
+		xShift = 0-xShift
+	end
+	if ZombRand(101) >= 50 then
+		yShift = 0-yShift
+	end
+
+	return getCell():getOrCreateGridSquare(x+xShift,y+yShift, 0)
 end
 
 
@@ -691,7 +714,7 @@ function eHelicopter:goHome()
 	local selfSquare = self:getIsoGridSquare()
 
 	if not selfSquare then
-		print(" --- HELI "..self:heliToString()..": unable to go home, farewell.")
+		print(" --- HELI "..self:heliToString()..": unable to go home; unlaunching.")
 		self:unlaunch()
 		return
 	end
