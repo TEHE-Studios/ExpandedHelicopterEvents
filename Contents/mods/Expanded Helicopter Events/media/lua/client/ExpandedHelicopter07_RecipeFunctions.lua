@@ -17,11 +17,11 @@ end
 
 
 function EHE_Recipe.FOOD(recipe, result, player)
-	player:getInventory():AddItems("Base.WaterBottleFull", 2)
+	player:getInventory():AddItems("EHE.EmergencyWaterRation", 5)
 	player:getInventory():AddItems("Base.TinnedBeans", 1)
 	player:getInventory():AddItems("Base.CannedPeas", 1)
 	player:getInventory():AddItems("Base.CannedCorn", 1)
-	player:getInventory():AddItems("Base.Chocolate", 2)
+	player:getInventory():AddItems("Base.Chocolate", 1)
 	player:getInventory():AddItems("Base.Rice", 1)
 end
 
@@ -35,8 +35,6 @@ function EHE_Recipe.MEDICAL(recipe, result, player)
 		rollInventoryContainer(items:get(i), player)
 	end
 end
-
-
 
 function EHE_Recipe.SURVIVAL(recipe, result, player)
 	player:getInventory():AddItems("Base.Torch", 2)

@@ -1,6 +1,6 @@
 module EHE
-{	
-	item EmergencyWaterRation
+{	 
+	    item EmergencyWaterRation
 	{
 		Weight	=	0.3,
 		Type	=	Normal,
@@ -11,8 +11,7 @@ module EHE
 		WorldStaticModel = EmergencyWaterRation,
 	}
 
-    item EmergencyWaterRationOpen
-
+        item EmergencyWaterRationOpen
 	{
 		IsWaterSource	=	TRUE,
 		Weight	=	0.3,
@@ -26,5 +25,23 @@ module EHE
 		StaticModel = EmergencyWaterRationOpen,
 		WorldStaticModel = EmergencyWaterRationOpen,
 		CustomEatSound = DrinkingFromCan,
+	}
+
+		item ProteinBar
+	{
+		HungerChange	= -60,
+		Weight		= 0.2,
+		Type		= Food,
+		UnhappyChange	= -35,
+		DisplayName	= Protein Bar,
+		Icon		= PlentyTee,
+		EvolvedRecipe 	= Cake:10,
+		FoodType    	= NoExplicit,
+        Carbohydrates 	= 240,
+        Proteins 	= 45,
+        Lipids 		= 66,
+        Calories 	= 550,
+        Packaged 	= TRUE,
+		WorldStaticModel = EnergyBar,
 	}
 }
