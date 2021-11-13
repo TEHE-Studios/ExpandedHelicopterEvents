@@ -106,7 +106,7 @@ end
 
 
 function DEBUG_TESTS.moveHeliCloser(heli)
-	if not heli.target then
+	if not heli or not heli.target then
 		return
 	end
 	--move closer
