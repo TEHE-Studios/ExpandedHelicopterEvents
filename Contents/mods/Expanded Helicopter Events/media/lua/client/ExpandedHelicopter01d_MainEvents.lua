@@ -124,13 +124,13 @@ function eHelicopter:spawnCrew(x, y, z)
 	y = y or heliY
 	z = z or heliZ
 
-	local addedEventFunction
+	local onSpawnCrewEvents = {"applyDeathOrCrawlerToCrew"}
 	local preset = eHelicopter_PRESETS[self.currentPresetID]
 	if preset then
 		local presetFuncs = preset.addedFunctionsToEvents
 		if presetFuncs then
 			if presetFuncs.OnSpawnCrew then
-				addedEventFunction = self.currentPresetID.."OnSpawnCrew"
+				onSpawnCrewEvents = {self.currentPresetID.."OnSpawnCrew"}
 			end
 		end
 	end
@@ -161,7 +161,7 @@ function eHelicopter:spawnCrew(x, y, z)
 				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, {"applyDeathOrCrawlerToCrew",addedEventFunction}, femaleChance, "getOutsideSquareFromAbove")
+			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, onSpawnCrewEvents, femaleChance, "getOutsideSquareFromAbove")
 
 		end
 	end
