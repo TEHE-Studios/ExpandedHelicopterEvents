@@ -69,15 +69,15 @@ function eHelicopter:update()
 			self.trueTarget = self.target
 			self:playEventSound("lostTarget")
 		end
-	end
 
-	if self.state == "gotoTarget" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
-		local newTarget = self:findTarget(self.attackDistance*4)
-		if newTarget and not instanceof(newTarget, "IsoGridSquare") then
-			self.trueTarget = newTarget
-		else
-			--look again later
-			self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
+		if self.state == "gotoTarget" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
+			if newTarget and not instanceof(newTarget, "IsoGridSquare") then
+				self.trueTarget = newTarget
+			else
+				--look again later
+				self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
+			end
 		end
 	end
 
