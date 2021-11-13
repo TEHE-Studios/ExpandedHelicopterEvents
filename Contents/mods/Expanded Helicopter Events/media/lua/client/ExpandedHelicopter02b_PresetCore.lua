@@ -17,7 +17,7 @@ end
 
 ---@param tableToLoadFrom table
 function eHelicopter:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
-	--[[DEBUG]] print("-- loadVarsFrom: "..DEBUG_ID)
+	--[DEBUG]] print("-- loadVarsFrom: "..DEBUG_ID)
 	--[DEBUG]] local debugPrint = ""
 	for var, value in pairs(tableToLoadFrom) do
 		local newValue
