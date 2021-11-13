@@ -1,9 +1,9 @@
 ---===---===---===---===---===---===--- TEMP
-local StringUtils = {}
+local stringyUtil = {}
 --- Transform a square position into a unique string
 ---@param square IsoGridSquare
 ---@return string
-function StringUtils.SquareToId(square)
+function stringyUtil.SquareToId(square)
 	return square:getX() .. "|" .. square:getY() .. "|" .. square:getZ()
 end
 
@@ -12,12 +12,12 @@ end
 ---@param y number
 ---@param z number
 ---@return string
-function StringUtils.PositionToId(x, y ,z)
+function stringyUtil.PositionToId(x, y ,z)
 	return x .. "|" .. y .. "|" .. z
 end
 ---===---===---===---===---===---===---
 
---TODO: DELETE THIS FILE LATER
+--TODO: DELETE THIS FILE AFTER CAPI IS MADE PUBLIC
 SpawnerTEMP = {}
 
 ---=-=-=-=-=-=-=-=-=-=-=-=-[TEMPORARY STOPGAP]-=-=-=-=-=-=-=-=---
@@ -179,7 +179,7 @@ end
 ---@param funcsToApply table Table of functions which gets applied on the results of whatever is spawned.
 function SpawnerTEMP.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
 	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
-	local positionID = StringUtils.PositionToId(x, y ,z)
+	local positionID = stringyUtil.PositionToId(x, y ,z)
 	if not farSquarePendingSpawns[positionID] then
 		farSquarePendingSpawns[positionID] = {}
 	end
@@ -207,37 +207,40 @@ function SpawnerTEMP.parseSquare(square)
 		return
 	end
 
-	local positionID = StringUtils.SquareToId(square)
-	local positions = farSquarePendingSpawns[positionID]
+	local positionID = stringyUtil.SquareToId(square)
+	local pendingItems = farSquarePendingSpawns[positionID]
 
-	if #positions < 1 then
+	if not pendingItems then
+		print("EHE:DEBUG:SpawnerTEMP: "..positionID.." no pendingItems for this square")
 		return
 	end
 
-	for key,entry in pairs(positions) do
-		if (not entry.spawned) then
+	if #pendingItems < 1 then
+		print("EHE:DEBUG:SpawnerTEMP: "..positionID.." #pendingItems for this square < 1")
+		return
+	end
 
-			local shiftedSquare = square
-			if entry.processSquare then
+	for key,entry in pairs(pendingItems) do
+		local shiftedSquare = square
+		if entry.processSquare then
 
-				local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
-				if func then
-					shiftedSquare = func(shiftedSquare)
-				end
+			local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
+			if func then
+				shiftedSquare = func(shiftedSquare)
 			end
-
-			if shiftedSquare then
-				local spawnFunc = SpawnerTEMP["spawn"..entry.spawnFuncType]
-
-				if spawnFunc then
-					local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
-					if not spawnedObject then
-						print("SpawnerTEMP: ERR: item not spawned: "..entry.objectType.." ("..entry.x..","..entry.y..","..entry.z..")")
-					end
-				end
-			end
-			positions[key] = nil
 		end
+
+		if shiftedSquare then
+			local spawnFunc = SpawnerTEMP["spawn"..entry.spawnFuncType]
+
+			if spawnFunc then
+				local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
+				if not spawnedObject then
+					print("SpawnerTEMP: ERR: item not spawned: "..entry.objectType.." ("..entry.x..","..entry.y..","..entry.z..")")
+				end
+			end
+		end
+		pendingItems[key] = nil
 	end
 	farSquarePendingSpawns[positionID] = nil
 end
