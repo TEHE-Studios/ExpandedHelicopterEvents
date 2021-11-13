@@ -93,7 +93,7 @@ eHelicopter.flightHours = {5, 22}
 eHelicopter.speed = 0.10
 
 ---@field topSpeedFactor number speed x this = top "speed"
-eHelicopter.topSpeedFactor = 3
+eHelicopter.topSpeedFactor = 1.5
 
 ---@field flightVolume number
 eHelicopter.flightVolume = 75
