@@ -85,8 +85,6 @@ function eHelicopter:update()
 	self:setTargetPos()
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
-	thatIsCloseEnough = thatIsCloseEnough+5
-
 	local crashMin = math.max(150, math.floor(thatIsCloseEnough*35)+ZombRand(35,50))
 	local crashMax = math.min(300, math.floor(ZombRand(crashMin,crashMin*4))+50)
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
@@ -94,10 +92,6 @@ function eHelicopter:update()
 			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashMin.." to "..crashMax..")")
 			return
 		end
-	end
-
-	if self.hoverOnTargetDuration then
-		thatIsCloseEnough = math.max(6,thatIsCloseEnough)
 	end
 
 	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
