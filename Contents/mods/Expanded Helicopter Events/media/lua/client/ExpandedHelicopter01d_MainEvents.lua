@@ -114,10 +114,15 @@ function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
 end
 
 ---Heli spawn crew
-function eHelicopter:spawnCrew()
+function eHelicopter:spawnCrew(x, y, z)
 	if not self.crew then
 		return
 	end
+
+	local heliX, heliY, heliZ = self:getXYZAsInt()
+	x = x or heliX
+	y = y or heliY
+	z = z or heliZ
 
 	local addedEventFunction
 	if self.addedFunctionsToEvents then
@@ -142,15 +147,15 @@ function eHelicopter:spawnCrew()
 
 		--assume all strings to be outfidID and roll chance/100
 		if (type(outfitID) == "string") and (ZombRand(101) <= chance) then
-			local heliX, heliY, _ = self:getXYZAsInt()
+
 			--fuzz up the location
 			local fuzzNums = {-5,-4,-3,-3,3,3,4,5}
-			if heliX and heliY then
-				heliX = heliX+fuzzNums[ZombRand(#fuzzNums)+1]
-				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
+			if x and y then
+				x = x+fuzzNums[ZombRand(#fuzzNums)+1]
+				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			SpawnerTEMP.spawnZombie(outfitID, heliX, heliY, 0, {"applyDeathOrCrawlerToCrew","addedEventFunction"}, femaleChance, "getOutsideSquareFromAbove")
+			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, {"applyDeathOrCrawlerToCrew","addedEventFunction"}, femaleChance, "getOutsideSquareFromAbove")
 
 		end
 	end
