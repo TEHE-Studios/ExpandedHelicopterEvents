@@ -259,7 +259,8 @@ function eHeliEvents_OnGameStart()
 		GTMData["EventsSchedule"] = {}
 		GTMData["DaysBeforeApoc"] = nil
 		GTMData["DayOfLastCrash"] = nil
-		GTMData["farSquarePendingSpawns"] = {}
+		local spawnerAPIList = SpawnerAPI.getOrSetPendingSpawnsList()
+		spawnerAPIList = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
 		local resetEvents = EHE.menu["resetEvents"]
 		resetEvents.selectedValue = "false"
