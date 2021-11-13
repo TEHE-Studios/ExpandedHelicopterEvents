@@ -149,7 +149,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID, neverRenew)
 	else
 		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
 		local tmpFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
-		--[[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
+		--[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
 		if tmpFreq then
 			freq = tmpFreq-1
 		end
