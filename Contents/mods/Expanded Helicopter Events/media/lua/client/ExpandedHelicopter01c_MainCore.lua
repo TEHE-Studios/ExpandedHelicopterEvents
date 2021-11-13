@@ -547,12 +547,7 @@ function eHelicopter:grabRandomSquareNearby(range)
 		yShift = 0-yShift
 	end
 
-	local cell = getCell()
-	if not cell then
-		return
-	end
-
-	local square = cell:getOrCreateGridSquare(x+xShift,y+yShift, 0)
+	local square = getSquare(x+xShift,y+yShift, 0)
 
 	return square
 end
@@ -578,12 +573,7 @@ function eHelicopter:grabRandomEdgeSquare()
 		x = ZombRand(eheBounds.MIN_X+1,eheBounds.MAX_X)
 	end
 
-	local cell = getCell()
-	if not cell then
-		return
-	end
-
-	local square = cell:getOrCreateGridSquare(x,y, 0)
+	local square = getSquare(x,y, 0)
 
 	return square
 end
