@@ -148,7 +148,7 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
 		if zombies and zombies:size()>0 then
-			SpawnerTEMP.processExtraFunctionsOnto(zombies,extraFunctions)
+			SpawnerTEMP.processExtraFunctionsOnto(zombies, extraFunctions)
 		end
 	else
 		SpawnerTEMP.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
@@ -162,6 +162,7 @@ end
 function SpawnerTEMP.processExtraFunctionsOnto(spawned,functions)
 	if spawned and functions and (type(functions)=="table") then
 		for k,funcID in pairs(functions) do
+			print("EHE: DEBUG: processExtraFunctionsOnto: "..funcID)
 			local func = SpawnerTEMP.fetchFromDictionary(funcID)
 			if func then
 				func(spawned)
