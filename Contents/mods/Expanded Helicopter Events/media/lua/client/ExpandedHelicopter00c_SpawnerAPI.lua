@@ -38,11 +38,12 @@ function SpawnerAPI.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pro
 	end
 
 	local currentSquare = getSquare(x,y,z)
-	if processSquare then
-		currentSquare = processSquare(currentSquare)
-	end
 
 	if currentSquare then
+		if processSquare then
+			currentSquare = processSquare(currentSquare)
+		end
+
 		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local item = currentSquare:AddWorldInventoryItem(itemType, x, y, z)
 		if item then
@@ -66,11 +67,12 @@ function SpawnerAPI.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPara
 	end
 
 	local currentSquare = getSquare(x,y,z)
-	if processSquare then
-		currentSquare = processSquare(currentSquare)
-	end
 
 	if currentSquare then
+		if processSquare then
+			currentSquare = processSquare(currentSquare)
+		end
+
 		local vehicle = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 		if vehicle then
 			SpawnerAPI.processExtraFunctionsOnto(vehicle,extraFunctions)
@@ -93,11 +95,12 @@ function SpawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance,
 	end
 
 	local currentSquare = getSquare(x,y,z)
-	if processSquare then
-		currentSquare = processSquare(currentSquare)
-	end
 
 	if currentSquare then
+		if processSquare then
+			currentSquare = processSquare(currentSquare)
+		end
+
 		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
 		if zombies and zombies:size()>0 then
