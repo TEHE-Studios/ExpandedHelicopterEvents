@@ -63,6 +63,13 @@ module Base
 		scale = 1.0,
 	}
 
+		model MREWrapper
+	{
+		mesh = WorldItems/MREWrapper,
+		texture = WorldItems/MRE,
+		scale = 1.0,
+	}
+
 		model EnergyBar
 	{
 		mesh = WorldItems/EnergyBar,

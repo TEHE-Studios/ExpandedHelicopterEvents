@@ -44,4 +44,29 @@ module EHE
         Packaged 	= TRUE,
 		WorldStaticModel = EnergyBar,
 	}
+
+		item MealReadytoEat
+	{
+		HungerChange	= -60,
+		Weight		= 0.6,
+		Type		= Food,
+		DisplayName	= MRE,
+		Icon		= MRE,
+        Carbohydrates 	= 150,
+        Proteins 	= 45,
+        Lipids 		= 66,
+        Calories 	= 1800,
+        Packaged 	= TRUE,
+		ReplaceOnUse = MREWrapper,
+		WorldStaticModel = MRE,
+	}
+
+		item MREWrapper
+	{
+		Weight	=	0.1,
+		Type	=	Normal,
+		DisplayName	=	MRE Wrapper,
+		Icon	=	MRE,
+		WorldStaticModel = MREWrapper,
+	}
 }
