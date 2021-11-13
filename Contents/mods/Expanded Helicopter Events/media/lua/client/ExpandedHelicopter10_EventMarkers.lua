@@ -317,7 +317,9 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
 
-		marker:setDuration(duration)
+		if marker then
+			marker:setDuration(duration)
+		end
 	end
 end
 
