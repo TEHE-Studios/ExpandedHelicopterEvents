@@ -4,9 +4,9 @@ module EHE
 	item EmergencyFoodSupplyBox
 	{
 		Weight			=	6.3,
-		Icon			=	SupplyBox_aid,
+		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
-		Tooltip  Tooltip_SupplyBox,
+		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
