@@ -703,10 +703,6 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 		else
 			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
-	else
-		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set; going home.")
-		self:goHome()
-		return
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
@@ -717,12 +713,6 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 	self.trueTarget = targetedObject
 	--setTargetPos is a vector format of self.target
 	self:setTargetPos()
-
-	if not self.target then
-		print(" -- ERR: "..self:heliToString().." no self.target set")
-		self:unlaunch()
-		return
-	end
 
 	self:initPos(self.target, self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
