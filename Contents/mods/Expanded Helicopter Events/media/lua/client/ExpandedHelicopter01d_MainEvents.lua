@@ -155,7 +155,7 @@ function eHelicopter:spawnCrew(x, y, z)
 				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, {"applyDeathOrCrawlerToCrew","addedEventFunction"}, femaleChance, "getOutsideSquareFromAbove")
+			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, {"applyDeathOrCrawlerToCrew",addedEventFunction}, femaleChance, "getOutsideSquareFromAbove")
 
 		end
 	end
