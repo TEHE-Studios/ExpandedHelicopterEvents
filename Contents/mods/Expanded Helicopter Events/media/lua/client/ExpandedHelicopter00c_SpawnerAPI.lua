@@ -202,11 +202,6 @@ end
 ---@param square IsoGridSquare
 function SpawnerTEMP.parseSquare(square)
 	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
-
-	if #farSquarePendingSpawns < 1 then
-		return
-	end
-
 	local positionID = stringyUtil.SquareToId(square)
 	local pendingItems = farSquarePendingSpawns[positionID]
 
