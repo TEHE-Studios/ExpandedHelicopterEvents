@@ -426,7 +426,7 @@ end
 
 
 ---@param range number
-function eHelicopter:findTarget(range)
+function eHelicopter:findTarget(range, DEBUGID)
 	--the -1 is to offset playerIDs starting at 0
 	local weightPlayersList = {}
 	local maxWeight = 15
@@ -472,7 +472,11 @@ function eHelicopter:findTarget(range)
 		end
 	end
 
-	local DEBUGallTargetsText = " -- HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
+	if DEBUGID then
+		DEBUGID = "["..DEBUGID.."]: "
+	end
+
+	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
 	--[[DEBUG]] if getDebug() then
@@ -591,8 +595,6 @@ function eHelicopter:formationInit()
 		return
 	end
 
-	--[[DEBUG]] print(" -- Formation:")
-
 	local h_x, h_y, _ = self:getXYZAsInt()
 
 	local formationSize = 0
@@ -694,7 +696,7 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 	print(" - EHE: "..self:heliToString().." launched.")
 
 	if not targetedObject then
-		targetedObject = self:findTarget()
+		targetedObject = self:findTarget(nil, "launch")
 	end
 
 	if targetedObject then

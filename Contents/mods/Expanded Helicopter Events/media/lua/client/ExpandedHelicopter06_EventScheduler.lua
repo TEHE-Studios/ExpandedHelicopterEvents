@@ -54,7 +54,7 @@ function eHeliEvent_engage(ID)
 	
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
-	local foundTarget = eHelicopter:findTarget()
+	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 
 	if (not oldGameVersion) and SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
 		willFly = false
