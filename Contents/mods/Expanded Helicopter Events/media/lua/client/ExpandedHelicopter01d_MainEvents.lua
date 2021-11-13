@@ -125,8 +125,14 @@ function eHelicopter:spawnCrew(x, y, z)
 	z = z or heliZ
 
 	local addedEventFunction
-	if self.addedFunctionsToEvents then
-		addedEventFunction = self.currentPresetID.."OnSpawnCrew"--self.addedFunctionsToEvents["OnSpawnCrew"]
+	local preset = eHelicopter_PRESETS[self.currentPresetID]
+	if preset then
+		local presetFuncs = preset.addedFunctionsToEvents
+		if presetFuncs then
+			if presetFuncs.OnSpawnCrew then
+				addedEventFunction = self.currentPresetID.."OnSpawnCrew"
+			end
+		end
 	end
 
 	for key,outfitID in pairs(self.crew) do
