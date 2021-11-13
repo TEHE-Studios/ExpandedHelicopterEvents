@@ -96,7 +96,7 @@ function eHelicopter:update()
 	end
 
 	if self.hoverOnTargetDuration then
-		thatIsCloseEnough = math.min(6,thatIsCloseEnough)
+		thatIsCloseEnough = math.max(6,thatIsCloseEnough)
 	end
 
 	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
