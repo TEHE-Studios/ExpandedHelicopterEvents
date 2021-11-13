@@ -105,16 +105,25 @@ function DEBUG_TESTS.ToggleMoveHeliCloser()
 end
 
 
-function DEBUG_TESTS.moveHeliCloser(heli,range)
+function DEBUG_TESTS.moveHeliCloser(heli)
 	if not heli.target then
 		return
 	end
 	--move closer
 	local tpX = heli.target:getX()
 	local tpY = heli.target:getY()
-	range = range or 300
-	local offset = ZombRand(range+1)
-	heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+	local offsetX = ZombRand(150, 300)
+	if ZombRand(101) <= 50 then
+		offsetX = 0-offsetX
+	end
+
+	local offsetY = ZombRand(150, 300)
+	if ZombRand(101) <= 50 then
+		offsetY = 0-offsetY
+	end
+	
+	heli.currentPosition:set(tpX+offsetX, tpY+offsetY, heli.height)
 end
 
 
