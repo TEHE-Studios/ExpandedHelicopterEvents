@@ -76,7 +76,8 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 
 	if currentSquare then
 		if processSquare then
-			currentSquare = processSquare(currentSquare)
+			local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+			currentSquare = func(currentSquare)
 		end
 	end
 
@@ -107,7 +108,8 @@ function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPar
 
 	if currentSquare then
 		if processSquare then
-			currentSquare = processSquare(currentSquare)
+			local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+			currentSquare = func(currentSquare)
 		end
 	end
 
