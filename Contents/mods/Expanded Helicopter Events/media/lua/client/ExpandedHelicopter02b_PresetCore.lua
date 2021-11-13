@@ -186,7 +186,7 @@ function eHelicopter:loadPreset(ID)
 	self.currentPresetID = ID
 	self.masterPresetID = masterID
 
-	--[[DEBUG]]
+	--[[DEBUG]
 	print("=-=-=-=-=-=-=[Confirming]=-=-=-=-=-=-=-=")
 	for var, _ in pairs(eHelicopter_initialVars) do print(" - "..var.." = "..tostring(self[var])) end
 	for var, _ in pairs(eHelicopter_temporaryVariables) do print(" - "..var.." = "..tostring(self[var])) end
