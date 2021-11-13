@@ -204,6 +204,7 @@ function SpawnerTEMP.parseSquare(square)
 	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
 
 	if #farSquarePendingSpawns < 1 then
+		print("EHE:DEBUG:SpawnerTEMP: no farSquarePendingSpawns to trace")
 		return
 	end
 
