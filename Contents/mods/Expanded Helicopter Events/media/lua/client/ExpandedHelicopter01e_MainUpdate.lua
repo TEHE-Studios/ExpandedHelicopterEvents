@@ -21,7 +21,7 @@ function eHelicopter:update()
 	end
 
 	local timeStampMS = getTimestampMs()
-	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
+	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())+4
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
 	--if trueTarget is within range
@@ -86,7 +86,7 @@ function eHelicopter:update()
 
 	local distToTarget = self:getDistanceToVector(self.targetPosition)
 	local crashMin = math.max(150, math.floor(thatIsCloseEnough*35)+ZombRand(35,50))
-	local crashMax = math.min(300, math.floor(ZombRand(crashMin,crashMin*4))+50)
+	local crashMax = math.min(300, math.floor(ZombRand(crashMin+50,crashMin*3)))
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
 		if self:crash() then
 			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashMin.." to "..crashMax..")")
@@ -106,7 +106,7 @@ function eHelicopter:update()
 	end
 
 	local preventMovement = false
-	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
+	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough+1) then
 		if self.hoverOnTargetDuration then
 			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
@@ -163,7 +163,7 @@ function eHelicopter:update()
 		EHE_EventMarkerHandler.setOrUpdateMarkers(self, self.eventMarkerIcon,10)
 	end
 
-	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*500) then
+	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1000) then
 		self:announce()
 	end
 
@@ -196,7 +196,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	self:checkDelayedEventSounds()
 
 	--drop carpackage
-	local packageDropRange = ZombRand(75, 150)
+	local packageDropRange = ZombRand(75, 100)
 	local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		local drop = self:dropCarePackage()
