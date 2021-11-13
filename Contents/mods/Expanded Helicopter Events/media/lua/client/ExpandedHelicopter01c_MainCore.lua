@@ -507,6 +507,10 @@ function eHelicopter:grabRandomSquareNearby(range)
 	range = range or 50
 	local x,y,z = self:getXYZAsInt()
 
+	if not x or not y or not z then
+		return
+	end
+
 	local xShift = ZombRand(range/2, range+1)+1
 	local yShift = ZombRand(range/2, range+1)+1
 
