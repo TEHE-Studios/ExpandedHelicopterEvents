@@ -137,8 +137,18 @@ function SpawnerAPI.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply,
 		farSquarePendingSpawns[positionID] = {}
 	end
 
-	table.insert(positionList,{ spawnFuncType=spawnFuncType, objectType=objectType, x=x, y=y, z=z,
-		funcsToApply=funcsToApply, extraParam=extraParam, processSquare=processSquare })
+	local newEntry = {
+		spawnFuncType=spawnFuncType,
+		objectType=objectType,
+		x=x,
+		y=y,
+		z=z,
+		funcsToApply=funcsToApply,
+		extraParam=extraParam,
+		processSquare=processSquare
+	}
+
+	table.insert(positionList,newEntry)
 end
 
 
