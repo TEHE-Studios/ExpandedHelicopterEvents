@@ -504,7 +504,7 @@ end
 
 ---@param range number
 function eHelicopter:grabRandomSquareNearby(range)
-	range = range or eheBounds.threshold
+	range = range or 50
 	local x,y,z = self:getXYZAsInt()
 
 	local xShift = ZombRand(range/2, range+1)+1
@@ -517,7 +517,14 @@ function eHelicopter:grabRandomSquareNearby(range)
 		yShift = 0-yShift
 	end
 
-	return getCell():getOrCreateGridSquare(x+xShift,y+yShift, 0)
+	local cell = getCell()
+	if not cell then
+		return
+	end
+
+	local square = cell:getOrCreateGridSquare(x+xShift,y+yShift, 0)
+
+	return square
 end
 
 
