@@ -55,12 +55,15 @@ end
 
 
 function DEBUG_TESTS.SpawnerAPIPrint()
-	local SpawnerAPIPendingSpawns = SpawnerAPI.getOrSetPendingSpawnsList()
+	local SpawnerAPIPendingLocations = SpawnerAPI.getOrSetPendingSpawnsList()
 	print("SpawnerAPIPrint: ")
-	for k,entry in pairs(SpawnerAPIPendingSpawns) do
-		local text = " -- "..k.." : "
-		for kk,data in pairs(entry) do
-			text = text..kk.." = "..tostring(data).." "
+	for k,position in pairs(SpawnerAPIPendingLocations) do
+		local text = " -- "..k.." : \n"
+		for kk,data in pairs(position) do
+			text = text.." --- "..kk.." = "..tostring(data).." \n"
+			for kkk,entry in pairs(data) do
+				text = text.." ---- "..kkk.." = "..tostring(entry).." \n"
+			end
 		end
 		print(text)
 	end
