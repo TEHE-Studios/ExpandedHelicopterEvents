@@ -514,12 +514,8 @@ function eHelicopter:findTarget(range, DEBUGID)
 		print(" --- HELI "..self:heliToString().."- WARN: unable to find target: grabbing random square nearby.")
 		target = self:grabRandomSquareNearby(range)
 		if not target then
-			target = self:grabRandomEdgeSquare()
-			print(" ----- HELI "..self:heliToString().."- WARN: unable to find nearby square: grabbing edge.")
-			if not target then
-				self:goHome()
-				print(" ------ HELI "..self:heliToString().."- ERROR: unable to find edge square: going home.")
-			end
+			self:goHome()
+			print(" ------ HELI "..self:heliToString().."- ERROR: unable to find square: going home.")
 		end
 		return
 	end
@@ -548,32 +544,6 @@ function eHelicopter:grabRandomSquareNearby(range)
 	end
 
 	local square = getSquare(x+xShift,y+yShift, 0)
-
-	return square
-end
-
-
-function eHelicopter:grabRandomEdgeSquare()
-
-	local x,y
-
-	if ZombRand(101) <= 50 then
-		if ZombRand(101) <= 50 then
-			x = eheBounds.MAX_X
-		else
-			x = eheBounds.MIN_X
-		end
-		y = ZombRand(eheBounds.MIN_Y+1,eheBounds.MAX_Y)
-	else
-		if ZombRand(101) <= 50 then
-			y = eheBounds.MAX_Y
-		else
-			y = eheBounds.MIN_Y
-		end
-		x = ZombRand(eheBounds.MIN_X+1,eheBounds.MAX_X)
-	end
-
-	local square = getSquare(x,y, 0)
 
 	return square
 end
