@@ -137,6 +137,7 @@ eHelicopter_PRESETS["jet"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
 	crashType = false,
 	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
 	}
 
 eHelicopter_PRESETS["jet_bombing"] = {
@@ -147,6 +148,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
 	crashType = false,
 	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
 }
 
 
