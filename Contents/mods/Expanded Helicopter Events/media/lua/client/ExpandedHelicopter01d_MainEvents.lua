@@ -52,15 +52,15 @@ function eHelicopter:crash()
 		local heliX, heliY, _ = self:getXYZAsInt()
 		local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
-		local extraFunctions = {eHelicopter.applyCrashOnVehicle}
+		local extraFunctions = {"applyCrashOnVehicle"}
 		if self.addedFunctionsToEvents then
-			local eventFunction = self.addedFunctionsToEvents["OnCrash"]
+			local eventFunction = self.currentPresetID.."OnCrash"--self.addedFunctionsToEvents["OnCrash"]
 			if eventFunction then
 				table.insert(extraFunctions, eventFunction)
 			end
 		end
 
-		SpawnerAPI.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
+		SpawnerTEMP.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 
 		self.crashType = false
 
@@ -114,7 +114,6 @@ function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
 end
 
 ---Heli spawn crew
----@param funcOnPerform function
 function eHelicopter:spawnCrew()
 	if not self.crew then
 		return
@@ -122,7 +121,7 @@ function eHelicopter:spawnCrew()
 
 	local addedEventFunction
 	if self.addedFunctionsToEvents then
-		addedEventFunction = self.addedFunctionsToEvents["OnSpawnCrew"]
+		addedEventFunction = self.currentPresetID.."OnSpawnCrew"--self.addedFunctionsToEvents["OnSpawnCrew"]
 	end
 
 	for key,outfitID in pairs(self.crew) do
@@ -151,7 +150,7 @@ function eHelicopter:spawnCrew()
 				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			SpawnerAPI.spawnZombie(outfitID, heliX, heliY, 0, {eHelicopter.applyDeathOrCrawlerToCrew,addedEventFunction}, femaleChance, getOutsideSquareFromAbove)
+			SpawnerTEMP.spawnZombie(outfitID, heliX, heliY, 0, {"applyDeathOrCrawlerToCrew","addedEventFunction"}, femaleChance, "getOutsideSquareFromAbove")
 
 		end
 	end
@@ -213,14 +212,14 @@ function eHelicopter:dropItem(type, fuzz)
 		heliY = heliY+ZombRand(min,max)
 	end
 
-	SpawnerAPI.spawnItem(type, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+	SpawnerTEMP.spawnItem(type, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 end
 
 
 ---@param vehicle BaseVehicle
 function eHelicopter.applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		SpawnerAPI.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, getOutsideSquareFromAbove)
+		SpawnerTEMP.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, "getOutsideSquareFromAbove")
 	end
 end
 
@@ -254,10 +253,10 @@ function eHelicopter:dropCarePackage(fuzz)
 
 	local extraFunctions
 	if carePackagesWithOutChutes[carePackage]~=true then
-		extraFunctions = {eHelicopter.applyParachuteToCarePackage}
+		extraFunctions = {"applyParachuteToCarePackage"}
 	end
 
-	SpawnerAPI.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, getOutsideSquareFromAbove_vehicle)
+	SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 
 	self:playEventSound("droppingPackage")
@@ -295,7 +294,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				SpawnerAPI.spawnItem(partType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+				SpawnerTEMP.spawnItem(partType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 			end
 		end
 	end
@@ -322,7 +321,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				SpawnerAPI.spawnVehicle(partType, heliX, heliY, 0, nil, nil, getOutsideSquareFromAbove)
+				SpawnerTEMP.spawnVehicle(partType, heliX, heliY, 0, nil, nil, "getOutsideSquareFromAbove")
 			end
 		end
 	end
@@ -348,6 +347,6 @@ function eHelicopter_dropTrash(heli)
 		--more likely to drop the same thing
 		table.insert(trashItems, trashType)
 
-		SpawnerAPI.spawnItem(trashType, heliX, heliY, 0, {eHelicopter.ageInventoryItem}, nil, getOutsideSquareFromAbove)
+		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 	end
 end

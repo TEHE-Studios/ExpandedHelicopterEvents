@@ -17,11 +17,46 @@ function StringUtils.PositionToId(x, y ,z)
 end
 ---===---===---===---===---===---===---
 
+--TODO: DELETE THIS FILE LATER
+SpawnerTEMP = {}
 
-SpawnerAPI = {}
+---=-=-=-=-=-=-=-=-=-=-=-=-[TEMPORARY STOPGAP]-=-=-=-=-=-=-=-=---
+SpawnerTEMP.functionDictionary = {}
 
-function SpawnerAPI.getOrSetPendingSpawnsList()
-	return ModData.getOrCreate("farSquarePendingSpawns")
+function SpawnerTEMP.fetchFromDictionary(ID)
+	if ID then
+		if SpawnerTEMP.functionDictionary[ID] then
+			return SpawnerTEMP.functionDictionary[ID]
+		end
+	end
+end
+
+function SpawnerTEMP.setDictionary()
+	SpawnerTEMP.functionDictionary = {
+		getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle,
+		getOutsideSquareFromAbove = getOutsideSquareFromAbove,
+		applyCrashOnVehicle = eHelicopter.applyCrashOnVehicle,
+		ageInventoryItem = eHelicopter.ageInventoryItem,
+		applyDeathOrCrawlerToCrew = eHelicopter.applyDeathOrCrawlerToCrew,
+		applyParachuteToCarePackage = eHelicopter.applyParachuteToCarePackage
+	}
+
+	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
+		local presetAddedFunc = presetVars["addedFunctionsToEvents"]
+		if presetAddedFunc then
+			for eventID,func in pairs(presetAddedFunc) do
+				SpawnerTEMP.functionDictionary[presetID..eventID] = func
+			end
+		end
+	end
+end
+Events.OnGameBoot.Add(SpawnerTEMP.setDictionary)
+---=-=-=-=-=-=-=-=-=-=-=-=-
+
+function SpawnerTEMP.getOrSetPendingSpawnsList()
+	local modData = ModData.getOrCreate("SpawnerTEMP")
+	if not modData.FarSquarePendingSpawns then modData.FarSquarePendingSpawns = {} end
+	return modData.FarSquarePendingSpawns
 end
 
 
@@ -32,7 +67,7 @@ end
 ---@param extraFunctions table
 ---@param extraParam any
 ---@param processSquare function
-function SpawnerAPI.spawnItem(itemType, x, y, z, extraFunctions, extraParam, processSquare)
+function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, processSquare)
 	if not itemType then
 		return
 	end
@@ -49,10 +84,10 @@ function SpawnerAPI.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pro
 		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local item = currentSquare:AddWorldInventoryItem(itemType, x, y, z)
 		if item then
-			SpawnerAPI.processExtraFunctionsOnto(item,extraFunctions)
+			SpawnerTEMP.processExtraFunctionsOnto(item,extraFunctions)
 		end
 	else
-		SpawnerAPI.setToSpawn("Item", itemType, x, y, z, extraFunctions, extraParam, processSquare)
+		SpawnerTEMP.setToSpawn("Item", itemType, x, y, z, extraFunctions, extraParam, processSquare)
 	end
 end
 
@@ -63,7 +98,7 @@ end
 ---@param extraFunctions table
 ---@param extraParam any
 ---@param processSquare function
-function SpawnerAPI.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
 	if not vehicleType then
 		return
 	end
@@ -79,10 +114,10 @@ function SpawnerAPI.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPara
 	if currentSquare then
 		local vehicle = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 		if vehicle then
-			SpawnerAPI.processExtraFunctionsOnto(vehicle,extraFunctions)
+			SpawnerTEMP.processExtraFunctionsOnto(vehicle,extraFunctions)
 		end
 	else
-		SpawnerAPI.setToSpawn("Vehicle", vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+		SpawnerTEMP.setToSpawn("Vehicle", vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
 	end
 end
 
@@ -93,7 +128,7 @@ end
 ---@param extraFunctions table
 ---@param femaleChance number extraParam for other spawners; 0-100
 ---@param processSquare function
-function SpawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
 	if not outfitID then
 		return
 	end
@@ -102,7 +137,8 @@ function SpawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance,
 
 	if currentSquare then
 		if processSquare then
-			currentSquare = processSquare(currentSquare)
+			local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+			currentSquare = func(currentSquare)
 		end
 	end
 
@@ -110,10 +146,10 @@ function SpawnerAPI.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance,
 		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 		local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
 		if zombies and zombies:size()>0 then
-			SpawnerAPI.processExtraFunctionsOnto(zombies,extraFunctions)
+			SpawnerTEMP.processExtraFunctionsOnto(zombies,extraFunctions)
 		end
 	else
-		SpawnerAPI.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+		SpawnerTEMP.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
 	end
 end
 
@@ -121,9 +157,10 @@ end
 
 ---@param spawned IsoObject | ArrayList
 ---@param functions table table of functions
-function SpawnerAPI.processExtraFunctionsOnto(spawned,functions)
+function SpawnerTEMP.processExtraFunctionsOnto(spawned,functions)
 	if spawned and functions and (type(functions)=="table") then
-		for k,func in pairs(functions) do
+		for k,funcID in pairs(functions) do
+			local func = SpawnerTEMP.fetchFromDictionary(funcID)
 			if func then
 				func(spawned)
 			end
@@ -132,17 +169,16 @@ function SpawnerAPI.processExtraFunctionsOnto(spawned,functions)
 end
 
 
----@param spawnFuncType string This string is concated to the end of 'SpawnerAPI.spawn' to run a corresponding function.
+---@param spawnFuncType string This string is concated to the end of 'SpawnerTEMP.spawn' to run a corresponding function.
 ---@param objectType string Module.Type for Items and Vehicles, OutfitID for Zombies
 ---@param x number
 ---@param y number
 ---@param z number
 ---@param funcsToApply table Table of functions which gets applied on the results of whatever is spawned.
-function SpawnerAPI.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
-	local farSquarePendingSpawns = SpawnerAPI.getOrSetPendingSpawnsList()
+function SpawnerTEMP.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
+	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
 	local positionID = StringUtils.PositionToId(x, y ,z)
-	local positionList = farSquarePendingSpawns[positionID]
-	if not positionList then
+	if not farSquarePendingSpawns[positionID] then
 		farSquarePendingSpawns[positionID] = {}
 	end
 
@@ -157,13 +193,13 @@ function SpawnerAPI.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply,
 		processSquare=processSquare
 	}
 
-	table.insert(positionList,newEntry)
+	table.insert(farSquarePendingSpawns[positionID],newEntry)
 end
 
 
 ---@param square IsoGridSquare
-function SpawnerAPI.parseSquare(square)
-	local farSquarePendingSpawns = SpawnerAPI.getOrSetPendingSpawnsList()
+function SpawnerTEMP.parseSquare(square)
+	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
 
 	if #farSquarePendingSpawns < 1 then
 		return
@@ -181,16 +217,20 @@ function SpawnerAPI.parseSquare(square)
 
 			local shiftedSquare = square
 			if entry.processSquare then
-				shiftedSquare = entry.processSquare(shiftedSquare)
+
+				local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
+				if func then
+					shiftedSquare = func(shiftedSquare)
+				end
 			end
 
 			if shiftedSquare then
-				local spawnFunc = SpawnerAPI["spawn"..entry.spawnFuncType]
+				local spawnFunc = SpawnerTEMP["spawn"..entry.spawnFuncType]
 
 				if spawnFunc then
 					local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
 					if not spawnedObject then
-						print("SpawnerAPI: ERR: item not spawned: "..entry.objectType.." ("..entry.x..","..entry.y..","..entry.z..")")
+						print("SpawnerTEMP: ERR: item not spawned: "..entry.objectType.." ("..entry.x..","..entry.y..","..entry.z..")")
 					end
 				end
 			end
@@ -199,4 +239,4 @@ function SpawnerAPI.parseSquare(square)
 	end
 	farSquarePendingSpawns[positionID] = nil
 end
-Events.LoadGridsquare.Add(SpawnerAPI.parseSquare)
+Events.LoadGridsquare.Add(SpawnerTEMP.parseSquare)
