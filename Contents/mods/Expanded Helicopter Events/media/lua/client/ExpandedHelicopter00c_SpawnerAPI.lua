@@ -204,7 +204,6 @@ function SpawnerTEMP.parseSquare(square)
 	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
 
 	if #farSquarePendingSpawns < 1 then
-		print("EHE:DEBUG:SpawnerTEMP: no farSquarePendingSpawns to trace")
 		return
 	end
 
@@ -212,19 +211,15 @@ function SpawnerTEMP.parseSquare(square)
 	local pendingItems = farSquarePendingSpawns[positionID]
 
 	if not pendingItems then
-		print("EHE:DEBUG:SpawnerTEMP: "..positionID.." no pendingItems for this square")
 		return
 	end
-
 	if #pendingItems < 1 then
-		print("EHE:DEBUG:SpawnerTEMP: "..positionID.." #pendingItems for this square < 1")
 		return
 	end
 
 	for key,entry in pairs(pendingItems) do
 		local shiftedSquare = square
 		if entry.processSquare then
-
 			local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
 			if func then
 				shiftedSquare = func(shiftedSquare)
@@ -241,7 +236,7 @@ function SpawnerTEMP.parseSquare(square)
 				end
 			end
 		end
-		pendingItems[key] = nil
+		--farSquarePendingSpawns[positionID][key] = nil
 	end
 	farSquarePendingSpawns[positionID] = nil
 end
