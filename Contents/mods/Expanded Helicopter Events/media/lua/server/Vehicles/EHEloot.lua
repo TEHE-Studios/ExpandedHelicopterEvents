@@ -51,6 +51,8 @@ VehicleDistributions.UH1HSeat = {
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.MealReadytoEat", 10,
+        "EHE.MealReadytoEat", 10,
 
         -- SMUI -- 
 
@@ -122,6 +124,8 @@ VehicleDistributions.UH1HRaiderSeat = {
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.MealReadytoEat", 10,
+        "EHE.MealReadytoEat", 10,
 
         -- SMUI --
 
@@ -193,6 +197,9 @@ VehicleDistributions.UH1HMedevacSeat = {
         "EHE.Hat_SPHBlack", 3,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
+        "EHE.MealReadytoEat", 10,
+        "EHE.MealReadytoEat", 10,
+
 
         -- SMUI -- 
 
@@ -331,6 +338,9 @@ VehicleDistributions.Bell206SurvivalistSeat = {
 
         "EHE.Hat_SPHCivilian", 10,
         "EHE.Hat_SPHCivilian", 5,
+        "EHE.MealReadytoEat", 10,
+        "EHE.MealReadytoEat", 10,
+
 
         -- SMUI --
 
