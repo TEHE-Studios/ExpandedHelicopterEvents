@@ -63,7 +63,7 @@ function eHelicopter:update()
 				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
 			end
 		end
-
+--[[
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
@@ -79,6 +79,7 @@ function eHelicopter:update()
 				self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
 			end
 		end
+--]]
 	end
 
 	self:setTargetPos()
