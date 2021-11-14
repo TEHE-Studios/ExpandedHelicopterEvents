@@ -310,14 +310,20 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 		end
 
 		local marker = POI.markers[p]
-
+		local isNew = false
 		if not marker then
 			marker = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
 			POI.markers[p] = marker
+			isNew = true
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
 
 		if marker then
+			if not isNew then
+				marker.source = poi
+				marker.textureIcon = getTexture(icon)
+				marker.playerObj = p
+			end
 			marker:setDuration(duration)
 		end
 	end
