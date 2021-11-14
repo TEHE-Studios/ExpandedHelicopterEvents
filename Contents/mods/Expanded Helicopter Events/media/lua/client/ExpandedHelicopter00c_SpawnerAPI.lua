@@ -227,9 +227,6 @@ function SpawnerTEMP.parseSquare(square)
 
 			if spawnFunc then
 				local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
-				if not spawnedObject then
-					print("SpawnerTEMP: ERR: item not spawned: "..entry.objectType.." ("..entry.x..","..entry.y..","..entry.z..")")
-				end
 			end
 		end
 		--farSquarePendingSpawns[positionID][key] = nil
