@@ -117,7 +117,7 @@ function eHelicopter:update()
 		end
 	end
 
-	if (self.state == "arrived") and (distToTarget <= thatIsCloseEnough*1.5) then
+	if (self.state == "arrived" or self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*1.5) then
 		if self.hoverOnTargetDuration then
 
 			self:playEventSound("hoverOverTarget", nil, true)
