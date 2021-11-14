@@ -84,7 +84,7 @@ function eHelicopter:update()
 
 	self:setTargetPos()
 
-	local distToTarget = self:getDistanceToVector(self.targetPosition)
+	local distToTarget = self:getDistanceToIsoObject(self.trueTarget)
 	local crashMin = math.max(150, math.floor(thatIsCloseEnough*35)+ZombRand(35,50))
 	local crashMax = math.min(300, math.floor(ZombRand(crashMin+50,crashMin*3)))
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
@@ -108,12 +108,13 @@ function eHelicopter:update()
 	local preventMovement = false
 	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*2) then
 		if self.hoverOnTargetDuration then
-			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
+
 			self:playEventSound("hoverOverTarget", nil, true)
 
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnHover"]
 				if eventFunction then
+					--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 					eventFunction(self)
 				end
 			end
