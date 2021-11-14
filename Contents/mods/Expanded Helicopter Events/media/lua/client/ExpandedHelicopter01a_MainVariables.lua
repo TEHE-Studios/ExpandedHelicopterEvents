@@ -31,7 +31,13 @@ eHelicopter.addedCrashChance = 0
 ---OnCrash has the additional argument of: currentSquare (IsoGridSquare)
 ---OnAttack has the additional argument of: targetHostile (IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie)
 ---@field addedFunctionsToEvents table
-eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false, ["OnSpawnCrew"] = false}
+eHelicopter.addedFunctionsToEvents = {
+	["OnCrash"] = false,
+	["OnHover"] = false,
+	["OnFlyaway"] = false,
+	["OnAttack"] = false,
+	["OnSpawnCrew"] = false,
+	["OnArrived"] = false}
 
 ---@field scrapVehicles table
 eHelicopter.scrapVehicles = {"UH1HTail"} --{"Base.TYPE","Base.TYPE"}

@@ -65,12 +65,12 @@ function eHelicopter:update()
 		end
 
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
-		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+		if self.state == "arrived" and (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 			self:playEventSound("lostTarget")
 		end
---[[
-		if self.state == "gotoTarget" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+
+		if self.state == "arrived" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
 			if newTarget and not instanceof(newTarget, "IsoGridSquare") then
 				self.trueTarget = newTarget
@@ -79,7 +79,7 @@ function eHelicopter:update()
 				self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
 			end
 		end
---]]
+
 	end
 
 	self:setTargetPos()
@@ -106,7 +106,18 @@ function eHelicopter:update()
 	end
 
 	local preventMovement = false
-	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*2) then
+
+	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*2.5) then
+		self.state = "arrived"
+		if self.addedFunctionsToEvents then
+			local eventFunction = self.addedFunctionsToEvents["OnArrive"]
+			if eventFunction then
+				eventFunction(self)
+			end
+		end
+	end
+
+	if (self.state == "arrived") and (distToTarget <= thatIsCloseEnough*1.5) then
 		if self.hoverOnTargetDuration then
 
 			self:playEventSound("hoverOverTarget", nil, true)
