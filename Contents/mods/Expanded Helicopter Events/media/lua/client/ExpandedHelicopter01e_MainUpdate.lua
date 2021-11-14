@@ -106,7 +106,7 @@ function eHelicopter:update()
 	end
 
 	local preventMovement = false
-	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough+1) then
+	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*3) then
 		if self.hoverOnTargetDuration then
 			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 			self:playEventSound("hoverOverTarget", nil, true)
