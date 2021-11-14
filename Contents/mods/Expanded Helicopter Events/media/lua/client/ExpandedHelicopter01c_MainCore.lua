@@ -526,7 +526,7 @@ end
 
 ---@param range number
 function eHelicopter:grabRandomSquareNearby(range)
-	range = range or 50
+	range = range or 25
 	local x,y,z = self:getXYZAsInt()
 
 	if not x or not y or not z then
