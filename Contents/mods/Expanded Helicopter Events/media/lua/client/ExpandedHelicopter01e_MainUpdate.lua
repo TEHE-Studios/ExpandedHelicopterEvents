@@ -95,7 +95,7 @@ function eHelicopter:update()
 	end
 
 	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
-	self.updateTicksPassed = self.updateTicksPassed+1
+	self.updateTicksPassed = (self.updateTicksPassed+1)*getGameSpeed()
 	local maxTicksAllowed = eheBounds.threshold*10
 	if self.hoverOnTargetDuration and self.hoverOnTargetDuration > 0 then
 		maxTicksAllowed = maxTicksAllowed+(self.hoverOnTargetDuration*10)
@@ -130,7 +130,7 @@ function eHelicopter:update()
 				end
 			end
 
-			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
+			self.hoverOnTargetDuration = (self.hoverOnTargetDuration-1)*getGameSpeed()
 			if self.hoverOnTargetDuration <= 0 then
 				self.hoverOnTargetDuration = false
 			end
