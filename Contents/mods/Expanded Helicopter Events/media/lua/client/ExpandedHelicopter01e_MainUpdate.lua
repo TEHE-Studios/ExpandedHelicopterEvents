@@ -63,13 +63,13 @@ function eHelicopter:update()
 				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
 			end
 		end
---[[
+
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 			self:playEventSound("lostTarget")
 		end
-
+--[[
 		if self.state == "gotoTarget" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
 			if newTarget and not instanceof(newTarget, "IsoGridSquare") then
