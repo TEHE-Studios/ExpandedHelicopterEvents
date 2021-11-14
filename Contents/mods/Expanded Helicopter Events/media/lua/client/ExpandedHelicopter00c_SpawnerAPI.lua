@@ -162,7 +162,7 @@ end
 function SpawnerTEMP.processExtraFunctionsOnto(spawned,functions)
 	if spawned and functions and (type(functions)=="table") then
 		for k,funcID in pairs(functions) do
-			print("EHE: DEBUG: processExtraFunctionsOnto: "..funcID)
+			--print("EHE: DEBUG: processExtraFunctionsOnto: "..funcID)
 			local func = SpawnerTEMP.fetchFromDictionary(funcID)
 			if func then
 				func(spawned)
