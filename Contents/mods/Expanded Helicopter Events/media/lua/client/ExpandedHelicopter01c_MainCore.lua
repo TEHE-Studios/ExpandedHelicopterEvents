@@ -651,7 +651,7 @@ end
 
 
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
+function eHelicopter:launch(targetedObject,blockCrashing)
 
 	print(" - EHE: "..self:heliToString().." launched.")
 
@@ -710,9 +710,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	self.state = "gotoTarget"
 
-	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
-
-	self:applyCrashChance(applyEnvironmentalCrashChance)
+	if not blockCrashing then
+		self:applyCrashChance()
+	end
 
 	for heli,_ in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
@@ -723,7 +723,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 			followingHeli:playEventSound("soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
 			followingHeli:playEventSound("flightSound", nil, true, false, randSoundDelay)
 			followingHeli:playEventSound("additionalFlightSound", nil, true, false, randSoundDelay)
-			followingHeli:applyCrashChance(applyEnvironmentalCrashChance)
+			if not blockCrashing then
+				followingHeli:applyCrashChance()
+			end
 		end
 	end
 end
