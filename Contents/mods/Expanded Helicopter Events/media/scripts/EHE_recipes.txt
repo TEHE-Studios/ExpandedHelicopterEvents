@@ -209,11 +209,11 @@ module EHE
        Sound:ClothesRipping,
     }
 
-      recipe Unseal Water Ration
+      recipe Deploy Flare
     {
-       EmergencyWaterRation,
-       Result:EmergencyWaterRationOpen=1,
-       Time:5.0,
+       SignalFlare,
+       Result:SignalFlareSpent=1,
+       Time:45.0,
     }
 
     	recipe Dismantle Main Rotor Blade

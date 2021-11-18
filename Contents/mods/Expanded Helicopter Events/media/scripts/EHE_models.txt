@@ -91,6 +91,13 @@ module Base
 		scale = 1.0,
 	}
 
+		model SignalFlare
+	{
+		mesh = WorldItems/SignalFlare,
+		texture = WorldItems/SignalFlare,
+		scale = 1.0,
+	}
+
 		model Parachute
 	{
 		mesh = WorldItems/Parachute,

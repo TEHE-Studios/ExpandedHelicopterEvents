@@ -1,5 +1,26 @@
 module EHE
 {
+
+		item SignalFlare
+	{
+		Weight = 0.3,
+		Type = Normal,
+		WorldStaticModel = SignalFlare,
+		DisplayName = Signal Flare,
+		Tooltip = Tooltip_SignalFlare,
+		Icon = SignalFlare,
+	}
+
+		item SignalFlareSpent
+	{
+		Weight = 0.3,
+		Type = Normal,
+		WorldStaticModel = SignalFlare,
+		DisplayName = Signal Flare (Spent),
+		Tooltip = Tooltip_SignalFlareSpent,
+		Icon = SignalFlare,
+	}
+	
 	    item EHE_Parachute
 	{
 		Weight = 10,
