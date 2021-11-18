@@ -1,5 +1,11 @@
 module EHE
 {
+
+	imports
+	{
+		Base
+	}
+
         item EvacuationFlyer
 	{
 		Weight = 0.1,
