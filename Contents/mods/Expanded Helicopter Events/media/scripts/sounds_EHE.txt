@@ -139,11 +139,11 @@ module Base {
     sound eHeli_lineM_11 {
         category = EHE: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/heli_lineM_11a.ogg, distanceMax = 500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_12a.ogg, distanceMax = 500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_13a.ogg, distanceMax = 500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_14a.ogg, distanceMax = 500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_15a.ogg, distanceMax = 500, volume = 2.0, }
-        clip { file = media/sound/heli_lineM_16a.ogg, distanceMax = 500, volume = 2.0, } }
+        clip { file = media/sound/heli_lineM_11b.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_11c.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_11d.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_11e.ogg, distanceMax = 500, volume = 2.0, }
+        clip { file = media/sound/heli_lineM_11f.ogg, distanceMax = 500, volume = 2.0, } }
 
     sound eHeli_police_lines {
         category = EHE: Voice Lines, loop = false, is3D = true,

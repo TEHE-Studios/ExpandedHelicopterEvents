@@ -65,12 +65,7 @@ eHelicopter_announcers["Jade Male C"] = {
 
 eHelicopter_announcers["Jade Male D"] = {
 	["Lines"] = {
-		["ClearTheStreets"] = {10500*2, "heli_lineM_11a"},
-		["YouAreInImmediateDangerClearTheStreets"] = {11500*2, "heli_lineM_12a"},
-		["InhabitantsAreAdvisedToWearFaceCoveringsAtAllTimes"] = {11500*2, "heli_lineM_13a"},
-		["DoNotInterfereWithArmedPatrolsWeAreHereForYourSafety"] = {11500*2, "heli_lineM_14a"},
-		["RemainWhereYouAreHelpIsOnTheWay"] = {11500*2, "heli_lineM_15a"},
-		["ActsOfVigiliantismWillNotBeTolerated"] = {11500*2, "heli_lineM_16a"},
+		["FlyerChoppers"] = {5000*2, "eHeli_lineM_11"},
 	} }
 	
 
