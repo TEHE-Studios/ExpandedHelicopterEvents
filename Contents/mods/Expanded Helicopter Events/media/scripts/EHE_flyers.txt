@@ -16,7 +16,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Emergency Flyer,
 		Icon = Flyer,
-		Toolip = Tooltip_CivilDefense,
+		Toolip = Tooltip_FlyerMilitary,
 		Map = media/ui/content/EmergencyFlyer.png,
 		WorldStaticModel = EmergencyFlyer,
 	}
