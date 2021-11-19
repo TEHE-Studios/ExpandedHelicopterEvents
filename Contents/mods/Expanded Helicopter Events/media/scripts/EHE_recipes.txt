@@ -209,6 +209,14 @@ module EHE
        Sound:ClothesRipping,
     }
 
+       recipe Unseal Water Ration
+    {
+       EmergencyWaterRation,
+       Result:EmergencyWaterRationOpen=1,
+       Time:45.0,
+    }
+
+
       recipe Deploy Flare
     {
        SignalFlare,
