@@ -76,15 +76,9 @@ function eHelicopter:progressionSelectPreset(preset)
 	local pp = preset.presetProgression
 	if pp then
 		local DaysSinceApoc = getGameTime():getModData()["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-		local cutOffFactor = preset.cutOffFactor or eHelicopter.cutOffFactor
+		local cutOffFactor = preset.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
 
-		local CutOffDay
-		if oldGameVersion then
-			CutOffDay = cutOffFactor*eHelicopterSandbox.config.cutOffDay
-		else
-			CutOffDay = cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay
-		end
-
+		local CutOffDay = cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay
 		local DaysOverCutOff = DaysSinceApoc/CutOffDay
 		local presetIDTmp
 		--run through presetProgression list

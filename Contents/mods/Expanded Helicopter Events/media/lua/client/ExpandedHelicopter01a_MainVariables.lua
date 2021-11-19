@@ -1,6 +1,23 @@
 ---@class eHelicopter
 eHelicopter = {}
 
+---@field eventChain string|nil string used for scheduler; leaving it as nil means the event will not spawn from the scheduler
+eHelicopter.eventChain = nil
+
+---@field eventSpawnWeight number This number is how many times this event is included in the scheduler's pool of events
+eHelicopter.eventSpawnWeight = 6
+
+---@field eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
+--- if a table of at least 2 length is provided the values are randomly selected between them.
+eHelicopter.eventStartDayFactors = 0--{0,0}
+
+---@field eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
+--- if a table of at least 2 length is provided the values are randomly selected between them.
+eHelicopter.eventCutOffDayFactor = 0.33--{0.33,0.33}
+
+---@field flightHours table
+eHelicopter.flightHours = {5, 22}
+
 ---@field hoverOnTargetDuration number|boolean How long the helicopter will hover over the player, this is subtracted from every tick
 eHelicopter.hoverOnTargetDuration = false
 
@@ -85,15 +102,6 @@ eHelicopter.presetProgression = false
 ---Example: {"preset1",2,"preset2","preset3",4} = a list equal to {"preset1","preset1","preset2","preset3","preset3","preset3","preset3"}
 ---@field presetRandomSelection table Table of presetIDs and optional corresponding weight (weight is 1 if none found) in list to be chosen from.
 eHelicopter.presetRandomSelection = false
-
----@field frequencyFactor number This is multiplied against the min/max day range; less than 1 results in higher frequency, more than 1 results in less frequency
-eHelicopter.frequencyFactor = 1
-
----@field cutOffFactor number This is multiplied against eHelicopterSandbox.config.cutOffDay
-eHelicopter.cutOffFactor = 1
-
----@field flightHours table
-eHelicopter.flightHours = {5, 22}
 
 ---@field speed number
 eHelicopter.speed = 0.10

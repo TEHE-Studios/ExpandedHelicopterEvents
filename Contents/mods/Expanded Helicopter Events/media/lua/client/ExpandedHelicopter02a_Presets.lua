@@ -2,39 +2,10 @@
 ---variables can be found in Main Variables file, at the top, fields = variables
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
----Event Schedule Initiation
-function eHeliEventsinit()
-	eHeliEvents_init = eHeliEvents_init or {}
-
-	local startDay = 0
-	local cutOffDay = 30
-	if oldGameVersion then
-		startDay = eHelicopterSandbox.config.startDay
-		cutOffDay = eHelicopterSandbox.config.cutOffDay
-	else
-		startDay = SandboxVars.ExpandedHeli.StartDay
-		cutOffDay = SandboxVars.ExpandedHeli.CutOffDay
-	end
-
-	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay, ["heliStart"]=12}
-	eHeliEvents_init["jet_bombing"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=12, ["neverRenew"]=true}
-	eHeliEvents_init["air_raid"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=11, ["neverRenew"]=true}
-	eHeliEvents_init["news_chopper"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
-	eHeliEvents_init["police"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
-	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
-	eHeliEvents_init["samaritan_drop"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
-	eHeliEvents_init["raiders"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
-	eHeliEvents_init["survivor_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
-end
-Events.OnGameStart.Add(eHeliEventsinit)
-
-
 --[[
-
 eHelicopter_PRESETS["id_name"] = {
 		variable = {values}
 	}
-
 ]]
 
 
@@ -42,6 +13,7 @@ eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1},
 	announcerVoice = true,
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
+	eventChain = "Main",
 	}
 
 
@@ -51,8 +23,8 @@ eHelicopter_PRESETS["increasingly_hostile"] = {
 		["patrol_only_emergency"] = 0.02,
 		["patrol_only_quarantine"] = 0.05,
 		["attack_only_undead_evac"] = 0.1,
-		["attack_only_undead"] = 0.2,
-		["attack_only_all"] = 0.65,
+		["attack_only_undead"] = 0.15,
+		["attack_only_all"] = 0.24,
 		}
 	}
 
@@ -63,8 +35,8 @@ eHelicopter_PRESETS["increasingly_helpful"] = {
 		["patrol_only_emergency"] = 0.02,
 		["patrol_only_quarantine"] = 0.05,
 		["attack_only_undead_evac"] = 0.1,
-		["aid_helicopter"] = 0.2,
-		["attack_only_all"] = 0.65,
+		["aid_helicopter"] = 0.15,
+		["attack_only_all"] = 0.24,
 		}
 	}
 
@@ -132,7 +104,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 
 
 eHelicopter_PRESETS["jet"] = {
-	frequencyFactor = 0.66,
+	eventSpawnWeight = 4,
 	speed = 2.8,
 	topSpeedFactor = 2,
 	flightVolume = 25,
@@ -151,14 +123,15 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	crashType = false,
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
+	flightHours = {12, 12}
 }
 
 
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
-	cutOffFactor = 0.67,
+	eventCutOffDayFactor = 0.22,
 	eventSoundEffects = { ["hoverOverTarget"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
-	frequencyFactor = 2,
+	eventSpawnWeight = 4,
 	speed = 0.10,
 	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
@@ -184,6 +157,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	speed = 0.05,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
 	eventMarkerIcon = false,
+	flightHours = {11, 11}
 }
 
 
@@ -232,8 +206,8 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 0.10,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
-	cutOffFactor = 3,
-	frequencyFactor = 1.33,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.66,
 }
 
 
@@ -246,8 +220,8 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	},
 	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206SurvivalistTail"},
-	cutOffFactor = 3,
-	frequencyFactor = 1.33,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.66,
 }
 
 
@@ -258,8 +232,8 @@ eHelicopter_PRESETS["raiders"] = {
 	crashType = {"UH1HRaiderFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
 	scrapVehicles = {"UH1HRaiderTail"},
-	cutOffFactor = 3,
-	frequencyFactor = 1.33,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.66,
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
 	}

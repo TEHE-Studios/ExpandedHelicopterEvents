@@ -2,7 +2,7 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = { debugTests = false, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, eventMarkersOn = true}
+eHelicopterSandbox.config = { debugTests = false, eventMarkersOn = true}
 ---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
@@ -10,21 +10,7 @@ eHelicopterSandbox.name = "Expanded Helicopter Events" -- the name that will be 
 eHelicopterSandbox.menuSpecificAccess = "mainmenu"
 
 eHelicopterSandbox.menu = {
-	frequency = { type = "Combobox", title = "Frequency", options = {{"Rare", 0}, {"Uncommon", 1}, {"Common", 2}, {"Frequent", 3}, {"Insane", 6}} },
-	frequencyToolTip = {type = "Text", text = "This will supplant the vanilla helicopter event frequency.", a=0.65, customX=-56},
-	generalSpaceA = {type = "Space"},
-
-	startDay = { type = "Numberbox", title = "Events Start Day", },
-	startDayToolTip = {type = "Text", text = "The day the scheduler will start assigning events to. \nNote: Some events are set to start later than this day.", a=0.65, customX=-56},
-	generalSpaceB = {type = "Space"},
-
-	cutOffDay = { type = "Numberbox", title = "Events CutOff Day", },
-	cutOffDayToolTip = {type = "Text", text = "The day the scheduler will tapered events to end on. \nNote: Some events are scaled to go beyond this day.", a=0.65, customX=-56},
-	generalSpaceC = {type = "Space"},
-
-	neverEndingEvents = { type = "Tickbox", title = "Never Ending Events", },
-	neverEndingEventsToolTip = {type = "Text", text = "Toggle this on so that the scheduler will always renew events. \nEvents will still progress through stages, and taper off in occurrence, but will never end.", a=0.65, customX=-56},
-	generalSpaceD = {type = "Space"},
+	sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65, customX=-56}
 }
 
 
@@ -103,9 +89,6 @@ EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
 
 
-gameVersion = getCore():getGameVersion()
-oldGameVersion = true
-
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
 function HelicopterSandboxOptions(hookEvent)
@@ -119,46 +102,24 @@ function HelicopterSandboxOptions(hookEvent)
 		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
 	end
 
-	if (gameVersion and gameVersion:getMajor()>=41 and gameVersion:getMinor()>50) then
-		oldGameVersion = false
-
-		eHelicopterSandbox.menu.frequency = nil
-		eHelicopterSandbox.menu.frequencyToolTip = nil
-		eHelicopterSandbox.menu.generalSpaceA = nil
-		eHelicopterSandbox.menu.startDay = nil
-		eHelicopterSandbox.menu.startDayToolTip = nil
-		eHelicopterSandbox.menu.generalSpaceB = nil
-		eHelicopterSandbox.menu.cutOffDay = nil
-		eHelicopterSandbox.menu.cutOffDayToolTip = nil
-		eHelicopterSandbox.menu.generalSpaceC = nil
-		eHelicopterSandbox.menu.neverEndingEvents = nil
-		eHelicopterSandbox.menu.neverEndingEventsToolTip = nil
-		eHelicopterSandbox.menu.generalSpaceD = nil
-
-		eHelicopterSandbox.menu.sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65, customX=-56}
-	else
-		print("EHE: 41.50 or older version detected: Sandbox Options in Main Menu.")
-	end
 	loadAnnouncersToConfig()
 	sandboxOptionsEnd()
 
-	if not oldGameVersion then
-		print("EHE: "..(hookEvent or "").."Disabling vanilla helicopter Day/StartHour/EndHour/Helicopter.")
-		getGameTime():setHelicopterDay(-1)
-		getGameTime():setHelicopterStartHour(-1)
-		getGameTime():setHelicopterEndHour(-1)
+	print("EHE: "..(hookEvent or "").."Disabling vanilla helicopter Day/StartHour/EndHour/Helicopter.")
+	getGameTime():setHelicopterDay(-1)
+	getGameTime():setHelicopterStartHour(-1)
+	getGameTime():setHelicopterEndHour(-1)
 
-		SandboxVars.Helicopter = 0
+	SandboxVars.Helicopter = 0
 
-		print("EHE: "..(hookEvent or "").."Adding items to WorldItemRemovalList.")
-		local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
-		for k,type in pairs(typesForRemovalList) do
-			if not string.find(SandboxVars.WorldItemRemovalList, type) then
-				SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
-			end
+	print("EHE: "..(hookEvent or "").."Adding items to WorldItemRemovalList.")
+	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
+	for k,type in pairs(typesForRemovalList) do
+		if not string.find(SandboxVars.WorldItemRemovalList, type) then
+			SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
 		end
-		getSandboxOptions():updateFromLua()
 	end
+	getSandboxOptions():updateFromLua()
 end
 
 Events.OnGameBoot.Add(HelicopterSandboxOptions("OnGameBoot: "))
