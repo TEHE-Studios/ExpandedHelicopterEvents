@@ -219,7 +219,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	end
 
 	--drop items
-	local itemDropRange = math.min(80,thatIsCloseEnough*80)
+	local itemDropRange = math.min(225,thatIsCloseEnough*225)
 	if self.dropItems and (distToTarget <= itemDropRange) then
 		local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
 		self:tryToDropItem(dropChance)
