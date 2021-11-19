@@ -8,7 +8,7 @@
 --- This was written to fill container items like bags which are created through functions.
 
 ---@type string string
-function stringIsNullOrEmpty(text)
+local function stringIsNullOrEmpty(text)
 	return (text==nil or string.len(text)==0)
 end
 
