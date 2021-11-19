@@ -82,8 +82,8 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 	end
 
 	if currentSquare then
-		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
-		local item = currentSquare:AddWorldInventoryItem(itemType, x, y, z)
+		--x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
+		local item = currentSquare:AddWorldInventoryItem(itemType, 0, 0, 0)
 		if item then
 			SpawnerTEMP.processExtraFunctionsOnto(item,extraFunctions)
 		end
