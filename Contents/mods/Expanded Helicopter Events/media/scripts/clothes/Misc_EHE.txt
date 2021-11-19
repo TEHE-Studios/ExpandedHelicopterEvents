@@ -58,12 +58,9 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_PilotSurvivalVestTightened,
         ClothingItemExtraOption = Tighten,
-        Insulation = 0.05,
-        WindResistance = 0.10,
-        BiteDefense = 10,
-        ScratchDefense = 15,
-		WorldStaticModel = PilotSurvivalVest_Ground,
         Tooltip = Tooltip_SurvivalVest,
+		WorldStaticModel = PilotSurvivalVest_Ground,
+        
     }
 
         item Vest_PilotSurvivalVestTightened
@@ -76,12 +73,9 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_PilotSurvivalVest,
         ClothingItemExtraOption = Untighten,
-        Insulation = 0.05,
-        WindResistance = 0.10,
-        BiteDefense = 10,
-        ScratchDefense = 15,
-		WorldStaticModel = PilotSurvivalVest_Ground,
         Tooltip = Tooltip_SurvivalVest,
+		WorldStaticModel = PilotSurvivalVest_Ground,
+        
     }
 
     	item Vest_BlackPilotSurvivalVest
@@ -94,12 +88,9 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_BlackPilotSurvivalVestTightened,
         ClothingItemExtraOption = Tighten,
-        Insulation = 0.05,
-        WindResistance = 0.10,
-        BiteDefense = 10,
-        ScratchDefense = 15,
-		WorldStaticModel = BlackPilotSurvivalVest_Ground,
         Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
     }
 
         item Vest_BlackPilotSurvivalVestTightened
@@ -112,11 +103,8 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_BlackPilotSurvivalVest,
         ClothingItemExtraOption = Untighten,
-        Insulation = 0.05,
-        WindResistance = 0.10,
-        BiteDefense = 10,
-        ScratchDefense = 15,
-		WorldStaticModel = BlackPilotSurvivalVest_Ground,
         Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
     }
 }
