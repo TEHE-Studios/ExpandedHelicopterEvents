@@ -8,6 +8,9 @@ eHelicopter_announcers["name of announcer"] = {
 		 -- For the sake of organization It is recommended you write out some of the spoken audio for "LineID"
 		 -- The first entry within each line is the delay added as it is spoken, the second is the sound file
 		 -- File names have to match scripted sounds found in sounds_EHE.txt for those scripts to be loaded
+
+		 -- ["LeaveOutOfRandomSelection"] = true,
+		 -- ["DoNotDisplayOnOptions"] = true,
 	 } }
 
 ]]
@@ -59,6 +62,13 @@ eHelicopter_announcers["Jade Male C"] = {
 		["ForTheSafetyOfYourSelf"] = {11500*2, "eHeli_Jade_2c"},
 		["RepeatedAttemptsAtBreaching"] = {9250*2, "eHeli_Jade_3c"},
 	} }
+
+eHelicopter_announcers["FlyerChoppers"] = {
+	["LeaveOutOfRandomSelection"] = true,
+	["Lines"] = {
+		["FlyerChoppers"] = {10500*2, "eHeli_lineM_11"},
+	} }
+	
 
 eHelicopter_announcers["Police"] = {
 	["LeaveOutOfRandomSelection"] = true,

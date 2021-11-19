@@ -6,6 +6,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Evacuation Flyer,
 		Icon = Flyer,
+		Tooltip = Tooltip_FlyerMilitary,
 		Map = media/ui/content/EvacuationFlyer.png,
 		WorldStaticModel = EvacuationFlyer,
 	}
@@ -15,6 +16,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Emergency Flyer,
 		Icon = Flyer,
+		Tooltip = Tooltip_FlyerMilitary,
 		Map = media/ui/content/EmergencyFlyer.png,
 		WorldStaticModel = EmergencyFlyer,
 	}
@@ -24,6 +26,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Quarantine Flyer,
 		Icon = Flyer,
+		Tooltip = Tooltip_FlyerMilitary,
 		Map = media/ui/content/QuarantineFlyer.png,
 		WorldStaticModel = EmergencyFlyer,
 	}
@@ -33,6 +36,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Prevention Flyer,
 		Icon = FlyerPav,
+		Tooltip = Tooltip_FlyerCDC,
 		Map = media/ui/content/PAVFlyer.png,
 		WorldStaticModel = PAVFlyer,
 	}
@@ -42,6 +46,7 @@ module EHE
 		Type = Normal,
 		DisplayName = Notice Flyer,
 		Icon = Flyer,
+		Tooltip = Tooltip_CivilDefense,
 		Map = media/ui/content/NoticeFlyer.png,
 		WorldStaticModel = NoticeFlyer,
 	}

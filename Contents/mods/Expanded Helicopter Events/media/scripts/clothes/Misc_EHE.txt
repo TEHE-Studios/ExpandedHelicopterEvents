@@ -56,11 +56,26 @@ module EHE
         BodyLocation = AmmoStrap,
         Icon = PilotSurvivalVest,
         BloodLocation = ShirtNoSleeves,
-        Insulation = 0.05,
-        WindResistance = 0.05,
-        BiteDefense = 10,
-        ScratchDefense = 15,
+        ClothingItemExtra = Vest_PilotSurvivalVestTightened,
+        ClothingItemExtraOption = Tighten,
+        Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
+        
+    }
+
+        item Vest_PilotSurvivalVestTightened
+    {
+        Type = Clothing,
+        DisplayName = Military Pilot Survival Vest (Tightened),
+        ClothingItem = Vest_PilotSurvivalVestTightened,
+        BodyLocation = AmmoStrap,
+        Icon = PilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        ClothingItemExtra = Vest_PilotSurvivalVest,
+        ClothingItemExtraOption = Untighten,
+        Tooltip = Tooltip_SurvivalVest,
+		WorldStaticModel = PilotSurvivalVest_Ground,
+        
     }
 
     	item Vest_BlackPilotSurvivalVest
@@ -71,10 +86,25 @@ module EHE
         BodyLocation = AmmoStrap,
         Icon = BlackPilotSurvivalVest,
         BloodLocation = ShirtNoSleeves,
-        Insulation = 0.05,
-        WindResistance = 0.05,
-        BiteDefense = 10,
-        ScratchDefense = 15,
+        ClothingItemExtra = Vest_BlackPilotSurvivalVestTightened,
+        ClothingItemExtraOption = Tighten,
+        Tooltip = Tooltip_SurvivalVestBlack,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
+    }
+
+        item Vest_BlackPilotSurvivalVestTightened
+    {
+        Type = Clothing,
+        DisplayName = Black Pilot Survival Vest (Tightened),
+        ClothingItem = Vest_BlackPilotSurvivalVestTightened,
+        BodyLocation = AmmoStrap,
+        Icon = BlackPilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        ClothingItemExtra = Vest_BlackPilotSurvivalVest,
+        ClothingItemExtraOption = Untighten,
+        Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
     }
 }

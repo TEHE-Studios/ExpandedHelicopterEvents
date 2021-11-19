@@ -1,23 +1,13 @@
 module Base
 {
-<<<<<<< HEAD:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206nightwatch.txt
-	model Vehicle_Bell206
-	{
-		mesh = vehicles/Vehicle_Bell206,
-=======
 	model Vehicle_Bell206Fuselage
 	{
 		mesh = vehicles/Vehicle_Bell206Fuselage,
->>>>>>> main:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206survivalistfuselage.txt
 		shader = vehicle_norandom_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
 	}
-<<<<<<< HEAD:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206nightwatch.txt
-	vehicle Bell206Nightwatch
-=======
 	vehicle Bell206SurvivalistFuselage
->>>>>>> main:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206survivalistfuselage.txt
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -26,11 +16,7 @@ module Base
 
 		model
 		{
-<<<<<<< HEAD:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206nightwatch.txt
-			file = Vehicle_Bell206,
-=======
 			file = Vehicle_Bell206Fuselage,
->>>>>>> main:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206survivalistfuselage.txt
 			scale = 3.1100,
 			offset = 0.1029 -0.0032 0.2186,
 		}
@@ -39,26 +25,17 @@ module Base
 
 		skin
 		{
-<<<<<<< HEAD:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206nightwatch.txt
-			texture = Vehicles/EHE/Vehicle_Bell206Nightwatch,
-		}
-
-		textureMask = Vehicle_Bell206_mask,
-		textureShadow = vehicleShadowHelicopter,
-		extents = 0.7524 0.9582 3.4534,
-=======
 			texture = Vehicles/EHE/Vehicle_Bell206SurvivalistDamaged,
 		}
 
 		textureMask = Vehicle_Bell206_mask,
 		textureShadow = highlights/vehicleShadowHelicopterFuselage,
-		extents = 0.7524 2.0257 1.8071,
->>>>>>> main:Contents/mods/Expanded Helicopter Events/media/scripts/vehicles/EHE/bell206survivalistfuselage.txt
-		mass = 200,
-		physicsChassisShape = 0.7524 0.9646 1.8071,
-		centerOfMassOffset = 0.0000 0.5016 0.1608,
-		shadowExtents = 0.7524 1.8071,
-		shadowOffset = 0.0000 0.1608,
+		extents = 0.7524 2.0257 1.8006,
+		mass = 1500,
+		physicsChassisShape = 0.7524 0.9646 1.7942,
+		centerOfMassOffset = 0.0000 0.5016 0.2572,
+		shadowExtents = 0.7524 1.7364,
+		shadowOffset = 0.0000 0.2798,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 		seats = 4,
@@ -185,5 +162,11 @@ module Base
 		template = Door/part/DoorFrontRight,
 		template = Door/part/DoorRearLeft,
 		template = Door/part/DoorRearRight,
+
+		attachment trailerfront
+		{
+			offset = 0.0000 0.0000 0.9453,
+			rotate = 0.0000 0.0000 0.0000,
+		}
 	}
 }

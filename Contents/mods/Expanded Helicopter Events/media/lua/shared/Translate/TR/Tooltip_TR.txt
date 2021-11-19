@@ -1,0 +1,16 @@
+Tooltip_TR = {
+    Tooltip_dismantle_helicopterpart = "Helikopter üzerinde kaynak makinesi ve kaynak maskesi kullanımı size metal verir.",
+    Tooltip_open_boxes_barehanded = "Keskin bir şey ile daha hızlı açılabilir.",
+    Tooltip_Parachute = "Yırtık Bez yapmak için parçalara ayrılabilir.",
+    Tooltip_EnergyBar = "Birleşik Krallık tarafından ithal edilmiştir.",
+    Tooltip_SurvivalVest = "Askeri pilotlar tarafından kullanılan yelek",
+    Tooltip_SurvivalVestBlack = "Polis arama-kurtarma operasyonlarında kullanılan standart yelek",
+    Tooltip_SPHMilitary = "Standart yapım askeri helikopter kaskı"
+    Tooltip_SPHBlack = "Standart yapım askeri helikopter kaskı - Siyah",
+    Tooltip_SPHPolice = "Polis helikopterlerinde kullanılan kask",
+    Tooltip_SPHCivilian = "Sivil pilotlar tarafından kullanılan kask",
+
+    Tooltip_FlyerCDC = "Sağlık danışma broşürüne benziyor.",
+    Tooltip_FlyerMilitary = "Ordudan bir duyuru kağıdı.",
+    Tooltip_CivilDefense = "Sivil savunmadan bir duyuru kağıdı.",
+}

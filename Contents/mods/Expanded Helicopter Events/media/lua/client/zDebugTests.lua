@@ -8,15 +8,81 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
 		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.ToggleAllCrash()
 		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.ToggleMoveHeliCloser()
-		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("air_raid", player)
-		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("jet_bombing", player)
-		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("increasingly_hostile", player)
-		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("increasingly_helpful", player)
-		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.launchHeliTest("police_heli", player)
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.launchHeliTest("aid_survivor", player)
+		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("patrol_only_emergency", player)
+		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("patrol_only_quarantine", player)
+		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("police_heli_firing", player)
+		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("raiders", player)
+		elseif key == Keyboard.KEY_9 then 
+		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.SpawnerPrint()
 		end
 	end
 end)
+
+
+function DEBUG_TESTS.SandboxVarsDUMP()
+	--SandboxVars
+	print("SandboxVars:"..DEBUG_TESTS.RecursiveTablePrint(SandboxVars).."\nEnd Of SandboxVars")
+end
+function DEBUG_TESTS.SandboxVarsTest()
+	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
+	for k,type in pairs(typesForRemovalList) do
+		if not string.find(SandboxVars.WorldItemRemovalList, type) then
+			SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
+		end
+	end
+	getSandboxOptions():updateFromLua()
+end
+
+
+function DEBUG_TESTS.RTP_indent(n) local text = "" for i=0, n do text = text.."   " end return text end
+function DEBUG_TESTS.RecursiveTablePrint(object,nesting,every_other)
+	nesting = nesting or 0
+	local text = ""..DEBUG_TESTS.RTP_indent(nesting)
+	if type(object) == 'table' then
+		local s = '{ \n'
+		for k,v in pairs(object) do
+			local items_print = false
+			if k == "items" then items_print = true end
+			if type(k) ~= 'number' then k = '"'..k..'"' end
+			if (not every_other) or (every_other and (not (k % 2 == 0))) then s = s..DEBUG_TESTS.RTP_indent(nesting+1) end
+			s = s..'['..k..'] = '..DEBUG_TESTS.RecursiveTablePrint(v,nesting+1,items_print)..", "
+			if (not every_other) or (every_other and (k % 2 == 0)) then s = s.."\n" end
+		end text = s.."\n"..DEBUG_TESTS.RTP_indent(nesting).."}"
+	else text = tostring(object) end
+	return text
+end
+--function PrintProceduralDistributions() print("ProceduralDistributions:"..DEBUG_TESTS.RecursiveTablePrint(ProceduralDistributions).."\nEnd Of ProceduralDistributions") end
+
+
+function DEBUG_TESTS.SpawnerPrint()
+	local SpawnerPendingLocations = SpawnerTEMP.getOrSetPendingSpawnsList()
+	print("Spawner Print: ")
+	for k,position in pairs(SpawnerPendingLocations) do
+		local text = " -- "..k.." : \n"
+		for kk,data in pairs(position) do
+			text = text.." --- "..kk.." = "..tostring(data).." \n"
+			for kkk,entry in pairs(data) do
+				text = text.." ---- "..kkk.." = "..tostring(entry).." \n"
+			end
+		end
+		print(text)
+	end
+end
+
+
+function DEBUG_TESTS.ZombRandTest(imax)
+	local results = {};
+	for i = 1, imax do
+		local testRand = (ZombRand(13)+1)/10
+		results[tostring(testRand)] = (results[tostring(testRand)] or 0) + 1
+	end
+	print("ZombRand:")
+	local output = ""
+	for k,v in pairs(results) do
+		output = output..k.." ("..v.." times)\n"
+	end
+	print(output)
+end
 
 
 function DEBUG_TESTS.ToggleAllCrash()
@@ -39,16 +105,25 @@ function DEBUG_TESTS.ToggleMoveHeliCloser()
 end
 
 
-function DEBUG_TESTS.moveHeliCloser(heli,range)
-	if not heli.target then
+function DEBUG_TESTS.moveHeliCloser(heli)
+	if not heli or not heli.target then
 		return
 	end
 	--move closer
 	local tpX = heli.target:getX()
 	local tpY = heli.target:getY()
-	range = range or 300
-	local offset = ZombRand(range)
-	heli.currentPosition:set(tpX+offset, tpY+offset, heli.height)
+
+	local offsetX = ZombRand(150, 300)
+	if ZombRand(101) <= 50 then
+		offsetX = 0-offsetX
+	end
+
+	local offsetY = ZombRand(150, 300)
+	if ZombRand(101) <= 50 then
+		offsetY = 0-offsetY
+	end
+	
+	heli.currentPosition:set(tpX+offsetX, tpY+offsetY, heli.height)
 end
 
 

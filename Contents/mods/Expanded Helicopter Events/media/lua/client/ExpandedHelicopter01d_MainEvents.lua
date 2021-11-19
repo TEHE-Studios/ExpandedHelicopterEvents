@@ -1,4 +1,33 @@
 ---Heli goes down
+
+---@param item InventoryItem
+function eHelicopter.ageInventoryItem(item)
+	if item then
+		item:setAutoAge()
+	end
+end
+
+---@param vehicle BaseVehicle
+function eHelicopter.applyCrashOnVehicle(vehicle)
+	if not vehicle then
+		return
+	end
+	vehicle:crash(1000,true)
+	vehicle:crash(1000,false)
+
+	for i=0, vehicle:getPartCount() do
+		---@type VehiclePart
+		local part = vehicle:getPartByIndex(i) --VehiclePart
+		if part then
+			local partDoor = part:getDoor()
+			if partDoor ~= nil then
+				partDoor:setLocked(false)
+			end
+		end
+	end
+end
+
+
 function eHelicopter:crash()
 
 	if self.crashType then
@@ -21,78 +50,91 @@ function eHelicopter:crash()
 		end
 
 		local heliX, heliY, _ = self:getXYZAsInt()
-		local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0),true)
+		local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
-		if currentSquare and currentSquare:isSolidTrans() then
-			--[DEBUG]] print("--- EHE: currentSquare is solid-trans")
-			currentSquare = nil
-		end
-		--[DEBUG]] print("-- EHE: squares for crashing: "..tostring(currentSquare))
-		if currentSquare then
-			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
-			---@type BaseVehicle
-			local heli = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
-			--[[DEBUG]] print("-- EHE: DEBUG: ID["..vehicleType.."] - spawned "..heli:getVehicleType())
-			if heli then
-				self.crashType = false
-				
-				heli:crash(1000,true)
-				heli:crash(1000,false)
-
-				for i=0, heli:getPartCount() do
-					---@type VehiclePart
-					local part = heli:getPartByIndex(i) --VehiclePart
-					if part then
-						local partDoor = part:getDoor()
-						if partDoor ~= nil then
-							partDoor:setLocked(false)
-						end
-					end
-				end
-
-				--drop scrap and parts
-				if self.scrapAndParts then
-					self:dropScrap(6)
-				end
-
-				--drop package on crash
-				if self.dropPackages then
-					self:dropCarePackage(2)
-				end
-
-				--drop all items
-				if self.dropItems then
-					self:dropAllItems(4)
-				end
-
-				if self.addedFunctionsToEvents then
-					local eventFunction = self.addedFunctionsToEvents["OnCrash"]
-					if eventFunction then
-						eventFunction(self, currentSquare)
-					end
-				end
-
-				--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
-				self:spawnCrew()
-				addSound(nil, currentSquare:getX(), currentSquare:getY(), 0, 250, 300)
-				self:playEventSound("crashEvent")
-				self:unlaunch()
-				getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
-				return true
+		local extraFunctions = {"applyCrashOnVehicle"}
+		if self.addedFunctionsToEvents then
+			local eventFunction = self.currentPresetID.."OnCrash"--self.addedFunctionsToEvents["OnCrash"]
+			if eventFunction then
+				table.insert(extraFunctions, eventFunction)
 			end
 		end
+
+		SpawnerTEMP.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+
+		self.crashType = false
+
+		--drop scrap and parts
+		if self.scrapItems or self.scrapVehicles then
+			self:dropScrap(6)
+		end
+
+		--drop package on crash
+		if self.dropPackages then
+			self:dropCarePackage(2)
+		end
+
+		--drop all items
+		if self.dropItems then
+			self:dropAllItems(4)
+		end
+
+		--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
+		self:spawnCrew()
+		addSound(nil, heliX, heliY, 0, 250, 300)
+		self:playEventSound("crashEvent")
+
+		EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/crash.png", 3000, heliX, heliY)
+
+		self:unlaunch()
+		getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
+		return true
 	end
 	return false
 end
 
 
+---@param arrayOfZombies ArrayList
+function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
+	if arrayOfZombies and arrayOfZombies:size()>0 then
+		local zombie = arrayOfZombies:get(0)
+		--33% to be dead on arrival
+		if ZombRand(1,101) <= 33 then
+			--print("crash spawned: "..outfitID.." killed")
+			zombie:setHealth(0)
+		else
+			if ZombRand(1,101) <= 25 then
+				--print("crash spawned: "..outfitID.." crawler")
+				zombie:setCanWalk(false)
+				zombie:setBecomeCrawler(true)
+				zombie:knockDown(true)
+			end
+		end
+	end
+end
+
 ---Heli spawn crew
-function eHelicopter:spawnCrew(deathChance,crawlChance)
+function eHelicopter:spawnCrew(x, y, z)
 	if not self.crew then
 		return
 	end
 
-	local spawnedCrew = {}
+	local heliX, heliY, heliZ = self:getXYZAsInt()
+	x = x or heliX
+	y = y or heliY
+	z = z or heliZ
+
+	local onSpawnCrewEvents = {"applyDeathOrCrawlerToCrew"}
+	local preset = eHelicopter_PRESETS[self.currentPresetID]
+	if preset then
+		local presetFuncs = preset.addedFunctionsToEvents
+		if presetFuncs then
+			if presetFuncs.OnSpawnCrew then
+				onSpawnCrewEvents = {self.currentPresetID.."OnSpawnCrew"}
+			end
+		end
+	end
+
 	for key,outfitID in pairs(self.crew) do
 
 		--The chance this type of zombie is spawned
@@ -110,49 +152,20 @@ function eHelicopter:spawnCrew(deathChance,crawlChance)
 		end
 
 		--assume all strings to be outfidID and roll chance/100
-		if (type(outfitID) == "string") and (ZombRand(100) <= chance) then
-			local heliX, heliY, _ = self:getXYZAsInt()
+		if (type(outfitID) == "string") and (ZombRand(101) <= chance) then
+
 			--fuzz up the location
 			local fuzzNums = {-5,-4,-3,-3,3,3,4,5}
-			if heliX and heliY then
-				heliX = heliX+fuzzNums[ZombRand(#fuzzNums)+1]
-				heliY = heliY+fuzzNums[ZombRand(#fuzzNums)+1]
+			if x and y then
+				x = x+fuzzNums[ZombRand(#fuzzNums)+1]
+				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			local bodyLoc = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
-			--if there is an actual location - IsoGridSquare may not be loaded in under certain circumstances
-			if bodyLoc then
-				local spawnedZombies = addZombiesInOutfit(bodyLoc:getX(), bodyLoc:getY(), bodyLoc:getZ(), 1, outfitID, femaleChance)
-				---@type IsoGameCharacter | IsoZombie
-				if spawnedZombies and spawnedZombies:size()>0 then
-					local zombie = spawnedZombies:get(0)
-					--if there's an actual zombie
-					if zombie then
+			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, onSpawnCrewEvents, femaleChance, "getOutsideSquareFromAbove")
 
-						deathChance = deathChance or 33
-						--33% to be dead on arrival
-						if ZombRand(1,100) <= deathChance then
-							print("crash spawned: "..outfitID.." killed")
-							zombie:setHealth(0)
-						else
-							crawlChance = crawlChance or 25
-							if ZombRand(1,100) <= crawlChance then
-								print("crash spawned: "..outfitID.." crawler")
-								zombie:setCanWalk(false)
-								zombie:setBecomeCrawler(true)
-								zombie:knockDown(true)
-							else
-								print("crash spawned: "..outfitID)
-							end
-						end
-						table.insert(spawnedCrew, zombie)
-					end
-				end
-			end
 		end
 	end
 	self.crew = false
-	return spawnedCrew
 end
 
 
@@ -183,7 +196,7 @@ end
 ---Heli drop items with chance
 function eHelicopter:tryToDropItem(chance, fuzz)
 	fuzz = fuzz or 0
-	chance = (ZombRand(100) <= chance)
+	chance = (ZombRand(101) <= chance)
 	for itemType,quantity in pairs(self.dropItems) do
 		if (self.dropItems[itemType] > 0) and chance then
 			self.dropItems[itemType] = self.dropItems[itemType]-1
@@ -205,25 +218,19 @@ function eHelicopter:dropItem(type, fuzz)
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
-		local minX, maxX = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
-			minX, maxX = -2, 0-(3+fuzz)
-		end
-		heliX = heliX+ZombRand(minX,maxX)
-		local minY, maxY = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
-			minY, maxY = -2, 0-(3+fuzz)
-		end
-		heliY = heliY+ZombRand(minY,maxY)
-	end
-	local currentSquare = getOutsideSquareFromAbove(getCell():getOrCreateGridSquare(heliX,heliY,0))
-
-	if currentSquare and currentSquare:isSolidTrans() then
-		currentSquare = nil
+		local min, max = 0-3-fuzz, 3+fuzz
+		heliX = heliX+ZombRand(min,max)
+		heliY = heliY+ZombRand(min,max)
 	end
 
-	if currentSquare then
-		local _ = currentSquare:AddWorldInventoryItem(type, 0, 0, 0)
+	SpawnerTEMP.spawnItem(type, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+end
+
+
+---@param vehicle BaseVehicle
+function eHelicopter.applyParachuteToCarePackage(vehicle)
+	if vehicle then
+		SpawnerTEMP.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, "getOutsideSquareFromAbove")
 	end
 end
 
@@ -239,36 +246,34 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
+	local carePackagesWithOutChutes = {["FEMASupplyDrop"]=true}
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 	if heliX and heliY then
 		local minX, maxX = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
+		if ZombRand(1, 101) <= 50 then
 			minX, maxX = -2, 0-(3+fuzz)
 		end
-		heliX = heliX+ZombRand(minX,maxX)
+		heliX = heliX+ZombRand(minX,maxX+1)
 		local minY, maxY = 2, 3+fuzz
-		if ZombRand(100) <= 50 then
+		if ZombRand(1, 101) <= 50 then
 			minY, maxY = -2, 0-(3+fuzz)
 		end
-		heliY = heliY+ZombRand(minY,maxY)
-	end
-	local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
-
-	if currentSquare and currentSquare:isSolidTrans() then
-		currentSquare = nil
+		heliY = heliY+ZombRand(minY,maxY+1)
 	end
 
-	if currentSquare then
-		--[DEBUG]] print("EHE: "..carePackage.." dropped: "..currentSquare:getX()..", "..currentSquare:getY())
-		---@type BaseVehicle airDrop
-		local airDrop = addVehicleDebug(carePackage, IsoDirections.getRandom(), nil, currentSquare)
-		if airDrop then
-			self:playEventSound("droppingPackage")
-			self.dropPackages = false
-			return airDrop
-		end
+	local extraFunctions
+	if carePackagesWithOutChutes[carePackage]~=true then
+		extraFunctions = {"applyParachuteToCarePackage"}
 	end
+
+	SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
+
+	self:playEventSound("droppingPackage")
+	EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
+	self.dropPackages = false
+	return airDrop
 end
 
 
@@ -276,15 +281,12 @@ end
 function eHelicopter:dropScrap(fuzz)
 	fuzz = fuzz or 0
 
-	local partsSpawned = {}
+	local heliX, heliY, _ = self:getXYZAsInt()
 
-	for key,partType in pairs(self.scrapAndParts) do
-
+	for key,partType in pairs(self.scrapItems) do
 		if type(partType) == "string" then
 
-			local heliX, heliY, _ = self:getXYZAsInt()
-
-			local iterations = self.scrapAndParts[key+1]
+			local iterations = self.scrapItems[key+1]
 			if type(iterations) ~= "number" then
 				iterations = 1
 			end
@@ -292,42 +294,70 @@ function eHelicopter:dropScrap(fuzz)
 			for i=1, iterations do
 				if heliX and heliY then
 					local minX, maxX = 2, 3+fuzz
-					if ZombRand(100) <= 50 then
+					if ZombRand(101) <= 50 then
 						minX, maxX = -2, 0-(3+fuzz)
 					end
 					heliX = heliX+ZombRand(minX,maxX)
 					local minY, maxY = 2, 3+fuzz
-					if ZombRand(100) <= 50 then
+					if ZombRand(101) <= 50 then
 						minY, maxY = -2, 0-(3+fuzz)
 					end
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				local currentSquare = getOutsideSquareFromAbove(getSquare(heliX, heliY, 0),true)
-
-				if currentSquare and currentSquare:isSolidTrans() then
-					currentSquare = nil
-				end
-
-				if currentSquare then
-
-					local spawntedItem = currentSquare:AddWorldInventoryItem(partType, 0, 0, 0)
-					if not spawntedItem then
-						spawntedItem = addVehicleDebug(partType, IsoDirections.getRandom(), nil, currentSquare)
-					end
-					if spawntedItem then
-						table.insert(partsSpawned, spawntedItem)
-					end
-
-				end
+				SpawnerTEMP.spawnItem(partType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 			end
 		end
 	end
 
-	if #partsSpawned > 0 then
-		self.scrapAndParts = false
-		return partsSpawned
-	else
-		return false
+	for key,partType in pairs(self.scrapVehicles) do
+		if type(partType) == "string" then
+
+			local iterations = self.scrapVehicles[key+1]
+			if type(iterations) ~= "number" then
+				iterations = 1
+			end
+
+			for i=1, iterations do
+				if heliX and heliY then
+					local minX, maxX = 2, 3+fuzz
+					if ZombRand(101) <= 50 then
+						minX, maxX = -2, 0-(3+fuzz)
+					end
+					heliX = heliX+ZombRand(minX,maxX)
+					local minY, maxY = 2, 3+fuzz
+					if ZombRand(101) <= 50 then
+						minY, maxY = -2, 0-(3+fuzz)
+					end
+					heliY = heliY+ZombRand(minY,maxY)
+				end
+
+				SpawnerTEMP.spawnVehicle(partType, heliX, heliY, 0, nil, nil, "getOutsideSquareFromAbove")
+			end
+		end
+	end
+
+	self.scrapItems = false
+	self.scrapVehicles = false
+end
+
+
+--addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash()},
+function eHelicopter_dropTrash(heli)
+
+	local heliX, heliY, _ = heli:getXYZAsInt()
+	local trashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
+	local iterations = 10
+
+	for i=1, iterations do
+
+		heliY = heliY+ZombRand(-2,3)
+		heliX = heliX+ZombRand(-2,3)
+
+		local trashType = trashItems[(ZombRand(#trashItems)+1)]
+		--more likely to drop the same thing
+		table.insert(trashItems, trashType)
+
+		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 	end
 end

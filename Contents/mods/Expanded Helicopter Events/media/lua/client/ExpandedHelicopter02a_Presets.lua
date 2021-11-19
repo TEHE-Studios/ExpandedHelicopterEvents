@@ -19,12 +19,15 @@ function eHeliEventsinit()
 	eHeliEvents_init["jet"] = {["ID"]=nil, ["heliDay"]=startDay, ["heliStart"]=12}
 	eHeliEvents_init["jet_bombing"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=12, ["neverRenew"]=true}
 	eHeliEvents_init["air_raid"] = {["ID"]=nil, ["heliDay"]=startDay+cutOffDay*0.2, ["heliStart"]=11, ["neverRenew"]=true}
-	eHeliEvents_init["civilian"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,8), ["heliStart"]=nil}
-	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,2), ["heliStart"]=nil}
-	eHeliEvents_init["aid_survivor"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
-	eHeliEvents_init["survivor_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*ZombRand(1,1.3)), ["heliStart"]=nil}
+	eHeliEvents_init["news_chopper"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
+	eHeliEvents_init["police"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(6,9), ["heliStart"]=nil}
+	eHeliEvents_init["military"] = {["ID"]=nil, ["heliDay"]=startDay+ZombRand(0,3), ["heliStart"]=nil}
+	eHeliEvents_init["samaritan_drop"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
+	eHeliEvents_init["raiders"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
+	eHeliEvents_init["survivor_heli"] = {["ID"]=nil, ["heliDay"]=startDay+math.floor(cutOffDay*(ZombRand(15,21)/10)), ["heliStart"]=nil}
 end
 Events.OnGameStart.Add(eHeliEventsinit)
+
 
 --[[
 
@@ -36,7 +39,10 @@ eHelicopter_PRESETS["id_name"] = {
 
 
 eHelicopter_PRESETS["military"] = {
-	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1}
+	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1},
+	announcerVoice = true,
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
+	}
 
 
 eHelicopter_PRESETS["increasingly_hostile"] = {
@@ -63,10 +69,66 @@ eHelicopter_PRESETS["increasingly_helpful"] = {
 	}
 
 
-eHelicopter_PRESETS["civilian"] = {
-	presetRandomSelection = {"news_chopper",1,"police_heli",3},
-	cutOffFactor = 0.67,
-	}
+eHelicopter_PRESETS["patrol_only"] = {
+	inherit = {"military"},
+}
+
+-- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
+eHelicopter_PRESETS["patrol_only_emergency"] = {
+	inherit = {"military"},
+	dropItems = {["EHE.EmergencyFlyer"]=250},
+	announcerVoice = "FlyerChoppers",
+	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
+}
+
+eHelicopter_PRESETS["patrol_only_quarantine"] = {
+	inherit = {"military"},
+	dropItems = {["EHE.QuarantineFlyer"]=250},
+	announcerVoice = "FlyerChoppers",
+	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
+}
+
+eHelicopter_PRESETS["attack_only_undead_evac"] = {
+	announcerVoice = false,
+	inherit = {"military"},
+	hostilePreference = "IsoZombie",
+	dropItems = {["EHE.EvacuationFlyer"]=250},
+	formationIDs = {"air_raid", "attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
+}
+
+eHelicopter_PRESETS["attack_only_undead"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	hostilePreference = "IsoZombie",
+	formationIDs = {"air_raid", "attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
+}
+
+eHelicopter_PRESETS["aid_helicopter"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	crashType = {"UH1HMedevacFuselage"},
+	hoverOnTargetDuration = 500,
+	dropPackages = {"FEMASupplyDrop"},
+	dropItems = {["EHE.NoticeFlyer"]=250},
+	speed = 0.09,
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH1HMedevacTail"},
+	eventSoundEffects = {
+		["foundTarget"] = "eHeli_AidDrop_2",
+		["droppingPackage"] = "eHeli_AidDrop_1and3",
+	},
+	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
+}
+
+eHelicopter_PRESETS["attack_only_all"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	hostilePreference = "IsoGameCharacter",
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH1HTail"},
+	formationIDs = {"air_raid"},
+}
+
 
 
 eHelicopter_PRESETS["jet"] = {
@@ -77,136 +139,150 @@ eHelicopter_PRESETS["jet"] = {
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
 	crashType = false,
 	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
 	}
 
-
 eHelicopter_PRESETS["jet_bombing"] = {
+	doNotListForTwitchIntegration = true,
 	speed = 2.8,
 	topSpeedFactor = 2,
 	flightVolume = 25,
 	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
 	crashType = false,
 	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
 }
 
 
 eHelicopter_PRESETS["news_chopper"] = {
-	hoverOnTargetDuration = {1500,2250},
+	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
+	cutOffFactor = 0.67,
 	eventSoundEffects = { ["hoverOverTarget"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
 	frequencyFactor = 2,
-	speed = 0.07,
+	speed = 0.10,
+	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
-	scrapAndParts = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
-	crew = {"EHECivilianPilot", "EHENewsReporterArmored", "EHENewsReporterArmored", 40},
+	scrapItems = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206LBMWTail"},
 	}
 
-
-eHelicopter_PRESETS["patrol_only"] = {
-	announcerVoice = true,
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
+eHelicopter_PRESETS["news_chopper_hover"] = {
+	inherit = {"news_chopper"},
+	hoverOnTargetDuration = {1500,2400},
 	}
 
-
--- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
-eHelicopter_PRESETS["patrol_only_emergency"] = {
-	announcerVoice = true,
-	dropItems = {["EHE.EmergencyFlyer"]=250},
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
-	}
-
-
-eHelicopter_PRESETS["patrol_only_quarantine"] = {
-	announcerVoice = true,
-	dropItems = {["EHE.QuarantineFlyer"]=250},
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
+eHelicopter_PRESETS["news_chopper_fleeing"] = {
+	inherit = {"news_chopper"},
+	speed = 0.16,
 	}
 
 
 eHelicopter_PRESETS["air_raid"] = {
+	doNotListForTwitchIntegration = true,
 	crashType = false,
 	shadow = false,
 	speed = 0.05,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+	eventMarkerIcon = false,
 }
 
 
-eHelicopter_PRESETS["attack_only_undead_evac"] = {
-	hostilePreference = "IsoZombie",
-	dropItems = {["EHE.EvacuationFlyer"]=250},
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"air_raid", "attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
-	}
 
-
-eHelicopter_PRESETS["attack_only_undead"] = {
-	hostilePreference = "IsoZombie",
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	formationIDs = {"air_raid", "attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
-	}
-
-
-eHelicopter_PRESETS["attack_only_all"] = {
-	hostilePreference = "IsoGameCharacter",
-	crashType = {"UH1HFuselage"},
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	scrapAndParts = {"UH1HTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2,},
-	formationIDs = {"air_raid"},
-	}
-
-
-eHelicopter_PRESETS["police_heli"] = {
-	attackDelay = 1100,
-	attackSpread = 4,
-	speed = 0.08,
-	attackHitChance = 100,
-	attackDamage = 35,
+eHelicopter_PRESETS["police"] = {
+	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2},
 	crashType = {"Bell206PoliceFuselage"},
 	crew = {"EHEPolicePilot", "EHEPoliceOfficer", "EHEPoliceOfficer", 75},
+	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206PoliceTail"},
+	announcerVoice = "Police",
+	}
+
+eHelicopter_PRESETS["police_heli_emergency"] = {
+	inherit = {"police"},
+	speed = 0.15,
+	eventSoundEffects = {
+		["additionalFlightSound"] = "eHeliPoliceEmergencyWarning",
+		["flightSound"] = "eHelicopter",
+		},
+
+	}
+
+eHelicopter_PRESETS["police_heli_firing"] = {
+	inherit = {"police"},
+	attackDelay = 1700,
+	attackSpread = 4,
+	speed = 0.10,
+	attackHitChance = 95,
+	attackDamage = 12,
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
-		["attackSingle"] = "eHeli_bolt_action_fire_single",
-		["attackLooped"] = "eHeli_bolt_action_fire_single",
+		["attackSingle"] = "eHeliM16GunfireSingle",
+		["attackLooped"] = "eHeliM16GunfireSingle",
 		["additionalFlightSound"] = "eHeliPoliceSiren",
 		["flightSound"] = "eHelicopter",
 		},
 	hoverOnTargetDuration = {750,1150},
-	scrapAndParts = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
-	announcerVoice = "Police",
 	}
 
 
-eHelicopter_PRESETS["aid_helicopter"] = {
-	crashType = {"UH1HMedevacFuselage"},
-	hoverOnTargetDuration = 500,
-	crew = {"EHEMilitaryPilot", "EHESoldier", 100, "EHESoldier", 100},
-	dropPackages = {"FEMASupplyDrop"},
-	dropItems = {["EHE.NoticeFlyer"]=250},
-	speed = 0.09,
-	scrapAndParts = {"UH1HMedevacTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2,},
-	eventSoundEffects = {
-		["foundTarget"] = "eHeli_AidDrop_2",
-		["droppingPackage"] = "eHeli_AidDrop_1and3",
-		},
-	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
-	}
 
-eHelicopter_PRESETS["aid_survivor"] = {
+eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
-	crew = {"EHESurvivorPilot",},
-	dropPackages = {"FEMASupplyDrop"},
-	speed = 0.07,
+	crew = {"EHESurvivorPilot", 100, 0},
+	dropPackages = {"SurvivorSupplyDrop"},
+	speed = 0.10,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	cutOffFactor = 3,
+	frequencyFactor = 1.33,
 }
 
+
 eHelicopter_PRESETS["survivor_heli"] = {
-	crashType = false,
-	crew = {"EHESurvivorPilot", "EHESurvivor", 100 ,"EHESurvivorPilot", 100, "EHESurvivor", 100,},
-	speed = 0.17,
+	speed = 0.15,
 	crashType = {"Bell206SurvivalistFuselage"},
-	eventSoundEffects = {["flightSound"] = "eHelicopter"},
-	scrapAndParts = {"Bell206SurvivalistTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2,},
+	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206SurvivalistTail"},
 	cutOffFactor = 3,
+	frequencyFactor = 1.33,
+}
+
+
+
+eHelicopter_PRESETS["raiders"] = {
+	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_aggressive",1},
+	speed = 0.20,
+	crashType = {"UH1HRaiderFuselage"},
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
+	scrapVehicles = {"UH1HRaiderTail"},
+	cutOffFactor = 3,
+	frequencyFactor = 1.33,
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
+	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
+	}
+
+eHelicopter_PRESETS["raider_heli_passive"] = {
+	inherit = {"raiders"},
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeli",
+	},
+}
+
+eHelicopter_PRESETS["raider_heli_aggressive"] = {
+	inherit = {"raiders"},
+	hoverOnTargetDuration = {2500,3000},
+	attackDelay = 1700,
+	attackSpread = 4,
+	attackHitChance = 55,
+	attackDamage = 10,
+	hostilePreference = "IsoZombie",
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeli",
+		["attackSingle"] = "eHeliM16GunfireSingle",
+		["attackLooped"] = "eHeliM16GunfireSingle",
+		["additionalFlightSound"] = "eHeliMusicAggressive",
+	},
 }

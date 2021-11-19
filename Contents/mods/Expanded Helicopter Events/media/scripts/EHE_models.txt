@@ -41,6 +41,13 @@ module Base
 		texture = WorldItems/SupplyBox,
 		scale = 1.0,
 	}
+		    
+		model SurvivorSupplyBox
+	{
+		mesh = WorldItems/SupplyBox,
+		texture = WorldItems/SurvivorSupplyBox,
+		scale = 1.0,
+	}
 
 		model BanditBox
 	{
@@ -49,10 +56,45 @@ module Base
 		scale = 1.0,
 	}
 
+		model MRE
+	{
+		mesh = WorldItems/MRE,
+		texture = WorldItems/MRE,
+		scale = 1.0,
+	}
+
+		model MREWrapper
+	{
+		mesh = WorldItems/MREWrapper,
+		texture = WorldItems/MRE,
+		scale = 1.0,
+	}
+
 		model EnergyBar
 	{
 		mesh = WorldItems/EnergyBar,
 		texture = WorldItems/EnergyBar,
+		scale = 1.0,
+	}
+
+		model EmergencyWaterRation
+	{
+		mesh = WorldItems/EmergencyWaterRation,
+		texture = WorldItems/EmergencyWaterRation,
+		scale = 1.0,
+	}
+
+		model EmergencyWaterRationOpen
+	{
+		mesh = WorldItems/EmergencyWaterRation,
+		texture = WorldItems/EmergencyWaterRationOpen,
+		scale = 1.0,
+	}
+
+		model SignalFlare
+	{
+		mesh = WorldItems/SignalFlare,
+		texture = WorldItems/SignalFlare,
 		scale = 1.0,
 	}
 

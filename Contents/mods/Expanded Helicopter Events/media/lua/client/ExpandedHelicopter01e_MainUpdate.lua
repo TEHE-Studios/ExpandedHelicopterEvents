@@ -13,14 +13,15 @@ function eHelicopter:update()
 			print(" - EHE: ERR: "..self:heliToString().." no trueTarget in update()")
 		end
 
-		self.trueTarget = self:findTarget(self.attackDistance)
+		self.trueTarget = self:findTarget(self.attackDistance, "update")
+
 		self.target = self.trueTarget
 		self:setTargetPos()
 		return
 	end
 
 	local timeStampMS = getTimestampMs()
-	local thatIsCloseEnough = (self.topSpeedFactor*self.speed)*tonumber(getGameSpeed())
+	local thatIsCloseEnough = ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))+4
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
 	--if trueTarget is within range
@@ -30,7 +31,6 @@ function eHelicopter:update()
 			if (distanceToTrueTarget <= self.attackDistance*2) then
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
-					self:setTargetPos()
 					self:playEventSound("foundTarget")
 				end
 				self.timeSinceLastSeenTarget = timeStampMS
@@ -43,19 +43,19 @@ function eHelicopter:update()
 				--random offset used for roaming
 				local offset = self.attackDistance
 				if self.crashing then
-					offset = math.floor(offset*(ZombRand(13,25)/10))
+					offset = math.floor(offset*(ZombRand(13,26)/10))
 				end
 				local randOffset = {-offset,offset}
 
 				local tx = self.trueTarget:getX()
 				--50% chance to offset x
-				if ZombRand(1,100) <= 50 then
+				if ZombRand(1,101) <= 50 then
 					--pick from randOffset, 50% negative or positive
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
 				local ty = self.trueTarget:getY()
 				--50% chance to offset y
-				if ZombRand(1,100) <= 50 then
+				if ZombRand(1,101) <= 50 then
 					--pick from randOffset, 50% negative or positive
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
@@ -65,43 +65,37 @@ function eHelicopter:update()
 		end
 
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
-		if (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+		if self.state == "arrived" and (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
-			self:setTargetPos()
 			self:playEventSound("lostTarget")
 		end
-		self:setTargetPos()
-	end
 
-	if instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
-		local newTarget = self:findTarget(self.attackDistance*4)
-		if newTarget and not instanceof(newTarget, "IsoGridSquare") then
-			self.trueTarget = newTarget
-			self:setTargetPos()
-		else
-			--look again later
-			self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
+		if self.state == "arrived" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
+			if newTarget and not instanceof(newTarget, "IsoGridSquare") then
+				self.trueTarget = newTarget
+			else
+				--look again later
+				self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
+			end
 		end
+
 	end
 
-	local distToTarget = self:getDistanceToVector(self.targetPosition)
-	thatIsCloseEnough = thatIsCloseEnough+4
+	self:setTargetPos()
 
-	local crashMin = math.min(250, math.floor(thatIsCloseEnough*25)+ZombRand(15,25))
-	local crashMax = math.min(250, math.floor(ZombRand(crashMin,crashMin*2)))
+	local distToTarget = self:getDistanceToIsoObject(self.trueTarget)
+	local crashMin = ZombRand(75,150)
+	local crashMax = ZombRand(151,325)
 	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) then
-		--[DEBUG]] print("EHE: crashing parameters met. ("..crashMin.." to "..crashMax..")")
 		if self:crash() then
+			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashMin.." to "..crashMax..")")
 			return
 		end
 	end
 
-	if self.hoverOnTargetDuration then
-		thatIsCloseEnough = thatIsCloseEnough*ZombRand(2,4)
-	end
-
 	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
-	self.updateTicksPassed = self.updateTicksPassed+1
+	self.updateTicksPassed = (self.updateTicksPassed+1)*getGameSpeed()
 	local maxTicksAllowed = eheBounds.threshold*10
 	if self.hoverOnTargetDuration and self.hoverOnTargetDuration > 0 then
 		maxTicksAllowed = maxTicksAllowed+(self.hoverOnTargetDuration*10)
@@ -112,19 +106,31 @@ function eHelicopter:update()
 	end
 
 	local preventMovement = false
-	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough) then
+
+	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*2.5) then
+		self.state = "arrived"
+		if self.addedFunctionsToEvents then
+			local eventFunction = self.addedFunctionsToEvents["OnArrive"]
+			if eventFunction then
+				eventFunction(self)
+			end
+		end
+	end
+
+	if (self.state == "arrived" or self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*1.5) then
 		if self.hoverOnTargetDuration then
-			--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
+
 			self:playEventSound("hoverOverTarget", nil, true)
 
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnHover"]
 				if eventFunction then
+					--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 					eventFunction(self)
 				end
 			end
 
-			self.hoverOnTargetDuration = self.hoverOnTargetDuration-(1*getGameSpeed())
+			self.hoverOnTargetDuration = (self.hoverOnTargetDuration-1)*getGameSpeed()
 			if self.hoverOnTargetDuration <= 0 then
 				self.hoverOnTargetDuration = false
 			end
@@ -165,7 +171,11 @@ function eHelicopter:update()
 		self:move(lockOn, true)
 	end
 
-	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1500) then
+	if self.eventMarkerIcon ~= false then
+		EHE_EventMarkerHandler.setOrUpdateMarkers(self, self.eventMarkerIcon,10)
+	end
+
+	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1000) then
 		self:announce()
 	end
 
@@ -198,21 +208,18 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	self:checkDelayedEventSounds()
 
 	--drop carpackage
-	local packageDropRange = thatIsCloseEnough*100
-	local packageDropRateChance = ZombRand(100) <= ((distToTarget/packageDropRange)*100)+10
+	local packageDropRange = ZombRand(75, 100)
+	local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		local drop = self:dropCarePackage()
-		if drop then
-			local dropSquare = drop:getSquare()
-			if dropSquare then
-				self.trueTarget = dropSquare
-				self:setTargetPos()
-			end
+		if drop and self.hoverOnTargetDuration then
+			self.trueTarget = drop
+			self:setTargetPos()
 		end
 	end
 
 	--drop items
-	local itemDropRange = thatIsCloseEnough*250
+	local itemDropRange = math.min(225,thatIsCloseEnough*225)
 	if self.dropItems and (distToTarget <= itemDropRange) then
 		local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
 		self:tryToDropItem(dropChance)

@@ -1,0 +1,31 @@
+IG_UI_TR = {
+    IGUI_VehicleNameUH1H = "Bell UH-1H",
+    IGUI_VehicleNameUH1HFuselage = "Bell UH-1H (Gövde)",
+    IGUI_VehicleNameUH1HTail = "Bell UH-1H (Kuyruk)",
+
+    IGUI_VehicleNameUH1HMedevac = "Bell UH-1H Ambulans Helikopteri",
+    IGUI_VehicleNameUH1HMedevacFuselage = "Bell UH-1H Ambulans Helikopteri (Gövde)",
+    IGUI_VehicleNameUH1HMedevacTail = "Bell UH-1H Ambulans Helikopteri (Kuyruk)",
+
+    IGUI_VehicleNameUH1HRaider = "Bell UH-1H Yağmacı Helikopteri",
+    IGUI_VehicleNameUH1HRaiderFuselage = "Bell UH-1H Yağmacı Helikopteri (Gövde)",
+    IGUI_VehicleNameUH1HRaiderTail = "Bell UH-1H Yağmacı Helikopteri (Kuyruk)",
+
+    IGUI_VehicleNameBell206LBMW = "Bell 206 Yayın Helikopteri",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 Yayın Helikopteri (Gövde)",
+    IGUI_VehicleNameBell206LBMWTail = "Bell 206 Yayın Helikopteri (Kuyruk)",
+
+    IGUI_VehicleNameBell206Police = "Bell 206 Polis Helikopteri",
+    IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 Polis Helikopteri (Gövde)",
+    IGUI_VehicleNameBell206PoliceTail = "Bell 206 Polis Helikopteri (Kuyruk)",
+
+    IGUI_VehicleNameBell206Survivalist = "Bell 206 Survivalist",
+    
+    IGUI_VehicleNameBell206Black = "Bell 206 Helikopter",
+    IGUI_VehicleNameBell206BlackFuselage = "Bell 206 Helikopter(Gövde)",
+    IGUI_VehicleNameBell206BlackFuselage = "Bell 206 Helikopter(Kuyruk)",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Acil Yardım Paketi",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Yardım Paketi",
+
+}

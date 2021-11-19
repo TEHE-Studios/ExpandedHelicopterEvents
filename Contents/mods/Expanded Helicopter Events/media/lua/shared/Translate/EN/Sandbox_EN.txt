@@ -20,6 +20,11 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_EventSurvivor = "Survivors",
     Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur.",
 
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "How frequent raider events occur.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritans",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur.",
 
 	Sandbox_ExpandedHeli_StartDay = "Start Day",
 	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to. \nNote: Some events are set to start later than this day.",

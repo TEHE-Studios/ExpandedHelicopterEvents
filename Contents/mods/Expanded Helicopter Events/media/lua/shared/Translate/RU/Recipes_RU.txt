@@ -1,4 +1,8 @@
-Recipe_RU = {
-Recipe_Open_Supplies = "Открытые поставки",
+Recipes_RU = {
+	Recipe_Open_Supplies = "Открыть коробку",
+	Recipe_Cut_up_Parachute = "Порвать парашют на тряпки",
+	Recipe_Dismantle_Helicopter_Skirt = "Разобрать шасси",
+	Recipe_Dismantle_Main_Rotor_Blade = "Разобрать лопасть",
+	Recipe_Dismantle_Tail_Rotor_Blade = "Разобрать лопасть",
 
 }

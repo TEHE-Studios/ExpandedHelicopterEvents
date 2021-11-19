@@ -4,9 +4,9 @@ module EHE
 	item EmergencyFoodSupplyBox
 	{
 		Weight			=	6.3,
-		Icon			=	SupplyBox_aid,
+		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
-		SurvivalGear = TRUE,
+		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -15,7 +15,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
-		SurvivalGear = TRUE,
+		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -24,6 +24,7 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
 	}
 
@@ -32,7 +33,62 @@ module EHE
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_BanditBox,
 		WorldStaticModel = BanditBox,
+	}
+
+		item SurvivorFoodSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorMedicalSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorFishingSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorSeedSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorCanningSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorToiletSupplyBox
+	{
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
 	}
 
 }

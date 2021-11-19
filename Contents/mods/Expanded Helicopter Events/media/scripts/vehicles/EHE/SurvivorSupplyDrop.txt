@@ -28,9 +28,9 @@ module Base
 			texture = Vehicles/EHE/Vehicle_SurvivorSupplyDrop,
 		}
 
-		textureMask = Vehicle_FEMASupplyDrop_mask,
+		textureMask = Vehicle_SurvivorSupplyDrop_mask,
 		extents = 0.9864 0.4561 1.0942,
-		mass = 200,
+		mass = 700,
 		physicsChassisShape = 0.9864 0.4561 1.0942,
 		centerOfMassOffset = 0.0000 0.2281 -0.0117,
 		shadowExtents = 0.9855 1.0987,
@@ -41,6 +41,18 @@ module Base
 		area TruckBed
 		{
 			xywh = 0.0000 0.0000 2.4678 2.5380,
+		}
+
+		attachment trailer
+		{
+			offset = 0.5071 -0.3357 0.0000,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = -0.5071 -0.3643 0.0000,
+			rotate = 0.0000 0.0000 0.0000,
 		}
 
 		template = Trunk/part/TruckBed,

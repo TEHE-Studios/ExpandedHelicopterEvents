@@ -30,12 +30,14 @@ module Base
 
 		textureMask = Vehicle_Bell206_mask,
 		textureShadow = highlights/vehicleShadowHelicopterFuselage,
-		extents = 0.7524 2.0257 1.8071,
-		mass = 200,
-		physicsChassisShape = 0.7524 0.9646 1.8071,
-		centerOfMassOffset = 0.0000 0.5016 0.1608,
-		shadowExtents = 0.7524 1.8071,
-		shadowOffset = 0.0000 0.1608,
+        extents = 0.7524 2.0257 1.8006,
+        mass = 1500,
+        physicsChassisShape = 0.7524 0.9646 1.7942,
+        centerOfMassOffset = 0.0000 0.5016 0.2572,
+        shadowExtents = 0.7524 1.7364,
+        shadowOffset = 0.0000 0.2798,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
 		seats = 4,
 		template = PassengerSeat4,
 
@@ -105,22 +107,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.6174 0.7299 0.4823 0.4823,
+			xywh = 0.6174 0.6559 0.4823 0.4823,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.6174 0.7299 0.4823 0.4823,
+			xywh = -0.6174 0.6559 0.4823 0.4823,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.6174 0.2476 0.4823 0.4823,
+			xywh = 0.6174 0.1736 0.4823 0.4823,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.6174 0.2476 0.4823 0.4823,
+			xywh = -0.6174 0.1736 0.4823 0.4823,
 		}
 
 		template = Seat/part/SeatFrontLeft,
@@ -160,5 +162,11 @@ module Base
 		template = Door/part/DoorFrontRight,
 		template = Door/part/DoorRearLeft,
 		template = Door/part/DoorRearRight,
+
+		attachment trailerfront
+		{
+			offset = 0.0000 0.0000 0.9486,
+			rotate = 0.0000 0.0000 0.0000,
+		}
 	}
 }

@@ -1,0 +1,7 @@
+ContextMenu_TR = {
+    ContextMenu_DownHoodie = "Kapşon Kapalı",
+	ContextMenu_VisorUp = "Açık Kask",
+    ContextMenu_VisorDown = "Kapalı Kask",
+	ContextMenu_Tighten = "Sık",
+    ContextMenu_Untighten = "Gevşet",
+} 

@@ -51,8 +51,8 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 	--assign a random spawn point for the helicopter within a radius from the player
 	--these values are being clamped to not go passed MIN_XY/MAX edges
 	local offset = 500
-	initX = initX or ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset))
-	initY = initY or ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset))
+	initX = initX or ZombRand(math.max(eheBounds.MIN_X, tpX-offset), math.min(eheBounds.MAX_X, tpX+offset)+1)
+	initY = initY or ZombRand(math.max(eheBounds.MIN_Y, tpY-offset), math.min(eheBounds.MAX_Y, tpY+offset)+1)
 
 	self.currentPosition = self.currentPosition or Vector3.new()
 
@@ -69,8 +69,7 @@ function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 			randXYMinMax = randXYMinMax+2
 		end
 
-		print(" -- EHE: randomEdge:true; randXYEdge: "..randXYEdge.." randXYMinMax: "..randXYMinMax)
-
+		--[DEBUG]] print(" -- EHE: randomEdge:true; randXYEdge: "..randXYEdge.." randXYMinMax: "..randXYMinMax)
 		--this sets either [1] or [2] of initPosXY as [1] through [4] of minMax
 		initPosXY[randXYEdge] = minMax[randXYMinMax]
 
@@ -152,6 +151,25 @@ end
 
 --This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
 ---@param square IsoGridSquare
+function getOutsideSquareFromAbove_vehicle(square)
+	local foundSquare
+	local aSqOutsideAbove = {}
+	for k,sq in pairs(getIsoRange(square, 2)) do
+		local outsideSq = getOutsideSquareFromAbove(sq,true)
+		if outsideSq then
+			table.insert(aSqOutsideAbove,outsideSq)
+		end
+	end
+	if #aSqOutsideAbove > 0 then
+		foundSquare = aSqOutsideAbove[ZombRand(#aSqOutsideAbove)+1]
+	end
+
+	return foundSquare
+end
+
+
+--This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
+---@param square IsoGridSquare
 ---@return IsoGridSquare
 function getOutsideSquareFromAbove(square,isVehicle)
 	if not square then
@@ -168,10 +186,9 @@ function getOutsideSquareFromAbove(square,isVehicle)
 	end
 
 	local x, y = square:getX(), square:getY()
-	local cell = square:getCell()
 
 	for i=1, 7 do
-		local sq = cell:getOrCreateGridSquare(x, y, i)
+		local sq = getSquare(x, y, i)
 		if sq and sq:isOutside() and sq:isSolidFloor() then
 			return sq
 		end
@@ -290,10 +307,14 @@ function eHelicopter:move(re_aim, dampen)
 	end
 
 	local storedSpeed = self.speed
-	--if there's more than 5 targets
-	if #self.hostilesToFireOn > 5 then
+	--if there's targets
+	if #self.hostilesToFireOn > 1 then
 		--slow speed down while shooting
-		self.speed = self.speed/2
+		self.speed = self.speed/(math.min(5,#self.hostilesToFireOn))
+
+		if self.speed <= (0.0000) then
+			return
+		end
 	end
 
 	if re_aim then
@@ -382,12 +403,30 @@ function eHelicopter:findAlternativeTarget(character)
 		return newTarget
 	end
 
+	local x, y = character:getX(), character:getY()
+
+	local xOffset = ZombRand(55,80)
+	local yOffset = ZombRand(55,80)
+
+	if ZombRand(101) <= 50 then
+		yOffset=0-yOffset
+	end
+	if ZombRand(101) <= 50 then
+		yOffset=0-yOffset
+	end
+
+	local square = getCell():getOrCreateGridSquare(x+xOffset, y+yOffset, 0)
+
+	if square then
+		return square
+	end
+
 	return false
 end
 
 
 ---@param range number
-function eHelicopter:findTarget(range)
+function eHelicopter:findTarget(range, DEBUGID)
 	--the -1 is to offset playerIDs starting at 0
 	local weightPlayersList = {}
 	local maxWeight = 15
@@ -433,7 +472,11 @@ function eHelicopter:findTarget(range)
 		end
 	end
 
-	local DEBUGallTargetsText = " -- HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
+	if DEBUGID then
+		DEBUGID = "["..DEBUGID.."]: "
+	end
+
+	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
 	--[[DEBUG]] if getDebug() then
@@ -468,12 +511,41 @@ function eHelicopter:findTarget(range)
 	end
 
 	if not target then
-		print(" --- HELI "..self:heliToString()..": unable to find target, unlaunching.")
-		self:unlaunch()
+		print(" --- HELI "..self:heliToString().."- WARN: unable to find target: grabbing random square nearby.")
+		target = self:grabRandomSquareNearby(range)
+		if not target then
+			self:goHome()
+			print(" ------ HELI "..self:heliToString().."- ERROR: unable to find square: going home.")
+		end
 		return
 	end
 
 	return target
+end
+
+
+---@param range number
+function eHelicopter:grabRandomSquareNearby(range)
+	range = range or 25
+	local x,y,z = self:getXYZAsInt()
+
+	if not x or not y or not z then
+		return
+	end
+
+	local xShift = ZombRand(range/2, range+1)+1
+	local yShift = ZombRand(range/2, range+1)+1
+
+	if ZombRand(101) >= 50 then
+		xShift = 0-xShift
+	end
+	if ZombRand(101) >= 50 then
+		yShift = 0-yShift
+	end
+
+	local square = getSquare(x+xShift,y+yShift, 0)
+
+	return square
 end
 
 
@@ -506,17 +578,17 @@ function eHelicopter:formationInit()
 			end
 
 			--if new heli is spawned
-			if (ZombRand(100) <= chance) then
+			if (ZombRand(101) <= chance) then
 				--track formation's current size
 				formationSize = formationSize+1
 				--multiply offset by formation size
 				local heliX = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 				local heliY = ZombRand(xyPosOffset[1]*formationSize,xyPosOffset[2]*formationSize)
 
-				if (ZombRand(100) <= 50) then
+				if (ZombRand(101) <= 50) then
 					heliX = 0-heliX
 				end
-				if (ZombRand(100) <= 50) then
+				if (ZombRand(101) <= 50) then
 					heliY = 0-heliY
 				end
 				
@@ -534,81 +606,81 @@ end
 
 function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
-	--weatherImpact is a float, 0 to 1
-	local _, weatherImpact = eHeliEvent_weatherImpact()
 	local GTMData = getGameTime():getModData()
-
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay
+	local eventFrequency
 	if oldGameVersion then
 		cutOffDay = self.cutOffFactor*eHelicopterSandbox.config.cutOffDay
+		eventFrequency = eHelicopterSandbox.config.frequency
 	else
 		cutOffDay = self.cutOffFactor*SandboxVars.ExpandedHeli.CutOffDay
+		eventFrequency = SandboxVars.ExpandedHeli["Frequency_"..self.masterPresetID] or 2
 	end
+	--[DEBUG]] print("EHE: DEBUG: Crash Chance Freq: "..self.masterPresetID)
+
 	if not cutOffDay then
 		return
 	end
 
-	local crashChance = self.addedCrashChance*100
+	local crashChance = self.addedCrashChance
 	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
 
 	if applyEnvironmentalCrashChance then
+		local _, weatherImpact = eHeliEvent_weatherImpact()
 		local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
-		local apocImpact = math.min(1,(daysIntoApoc/cutOffDay)/2)
+		local apocImpact = (daysIntoApoc/cutOffDay)/10
 		local dayOfLastCrash = GTMData["DayOfLastCrash"]
-		local expectedMaxDaysWithOutCrash = 28/(apocImpact+1)
-		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/expectedMaxDaysWithOutCrash)/4
-		crashChance = (self.addedCrashChance+weatherImpact+apocImpact+daysSinceCrashImpact)*100
+		local crashDayCap = 28
+		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/crashDayCap)/2
 
-		print(" --- "..self:heliToString().."crashChance:"..math.floor(crashChance))
-		--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
+		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
+		crashChance = math.min(100,math.floor(crashChance))
+		crashChance = crashChance/(eventFrequency/2)
+
+		--[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
 		--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
-		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
+		--[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 	end
 
-	if self.crashType and (not self.crashing) and (ZombRand(0,100) <= crashChance) then
-		--[[DEBUG]] print (" --- crashing set to TRUE.")
+	if self.crashType and (not self.crashing) and (ZombRand(0,101) <= crashChance) then
 		self.crashing = true
 	end
-	print(" ------------")
+	--[[DEBUG]] print(" --- "..self:heliToString().." crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
 end
 
 
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
-function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
+function eHelicopter:launch(targetedObject,blockCrashing)
 
 	print(" - EHE: "..self:heliToString().." launched.")
 
 	if not targetedObject then
-		targetedObject = self:findTarget()
+		targetedObject = self:findTarget(nil, "launch")
 	end
 
 	if targetedObject then
 		if instanceof(targetedObject, "IsoGameCharacter") then
-			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getFullName())
+			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getFullName())
 		else
-			print(" - target set: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
+			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
 		end
-	else
-		print(" -- EHE: "..self:heliToString().." launch: ERR: no target set; going home.")
-		self:goHome()
-		return
 	end
 
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-	local tpX = targetedObject:getX()+ZombRand(-25,25)
-	local tpY = targetedObject:getY()+ZombRand(-25,25)
+	local tpX = targetedObject:getX()
+	local tpY = targetedObject:getY()
+
+	if not targetedObject:isOutside() then
+		tpX = tpX+ZombRand(-25,25)
+		tpY = tpY+ZombRand(-25,25)
+	end
+
 	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
 	--maintain trueTarget
 	self.trueTarget = targetedObject
 	--setTargetPos is a vector format of self.target
 	self:setTargetPos()
-
-	if not self.target then
-		print(" -- ERR: "..self:heliToString().." no self.target set")
-		self:unlaunch()
-		return
-	end
 
 	self:initPos(self.target, self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
@@ -638,9 +710,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 
 	self.state = "gotoTarget"
 
-	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
-
-	self:applyCrashChance(applyEnvironmentalCrashChance)
+	if not blockCrashing then
+		self:applyCrashChance()
+	end
 
 	for heli,_ in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
@@ -651,7 +723,9 @@ function eHelicopter:launch(targetedObject,applyEnvironmentalCrashChance)
 			followingHeli:playEventSound("soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
 			followingHeli:playEventSound("flightSound", nil, true, false, randSoundDelay)
 			followingHeli:playEventSound("additionalFlightSound", nil, true, false, randSoundDelay)
-			followingHeli:applyCrashChance(applyEnvironmentalCrashChance)
+			if not blockCrashing then
+				followingHeli:applyCrashChance()
+			end
 		end
 	end
 end
@@ -660,11 +734,12 @@ end
 ---Heli goes home
 function eHelicopter:goHome()
 	self.state = "goHome"
+	self.hoverOnTargetDuration = 0
 	--set truTarget to target's current location -- this prevents changing course while flying away
 	local selfSquare = self:getIsoGridSquare()
 
 	if not selfSquare then
-		print(" --- HELI "..self:heliToString()..": unable to go home, farewell.")
+		print(" --- HELI "..self:heliToString()..": unable to go home; unlaunching.")
 		self:unlaunch()
 		return
 	end
@@ -678,6 +753,7 @@ end
 function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived())
 	self.delayedEventSounds = {}
+	EHE_EventMarkerHandler.disableMarkersForPOI(self)
 	--stop old emitter to prevent occasional "phantom" announcements
 	if self.announceEmitter and self.lastAnnouncedLine then
 		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)

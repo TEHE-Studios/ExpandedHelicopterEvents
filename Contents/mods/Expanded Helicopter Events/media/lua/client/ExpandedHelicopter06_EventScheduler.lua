@@ -54,7 +54,7 @@ function eHeliEvent_engage(ID)
 	
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
-	local foundTarget = eHelicopter:findTarget()
+	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 
 	if (not oldGameVersion) and SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
 		willFly = false
@@ -149,7 +149,7 @@ function setNextHeliFrom(ID, heliDay, heliStart, presetID, neverRenew)
 	else
 		cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
 		local tmpFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
-		--[[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
+		--[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
 		if tmpFreq then
 			freq = tmpFreq-1
 		end
@@ -259,6 +259,8 @@ function eHeliEvents_OnGameStart()
 		GTMData["EventsSchedule"] = {}
 		GTMData["DaysBeforeApoc"] = nil
 		GTMData["DayOfLastCrash"] = nil
+		local spawnerList = SpawnerTEMP.getOrSetPendingSpawnsList()
+		spawnerList = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
 		local resetEvents = EHE.menu["resetEvents"]
 		resetEvents.selectedValue = "false"

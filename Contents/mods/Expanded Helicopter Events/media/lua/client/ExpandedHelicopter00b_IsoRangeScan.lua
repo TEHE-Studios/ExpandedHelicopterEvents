@@ -1,3 +1,5 @@
+---This is an utility function meant for large scale scans of isoGridSquares around a given IsoObject.
+---The scans are done fractally - that is to say from a center (or centers) outward to fill a larger area.
 
 ---@param center IsoGameCharacter
 function recursiveGetSquare(center)
@@ -142,10 +144,8 @@ function getIsoRange(center, range, fractalOffset)
 			table.insert(squares, square)
 		end
 	end
-	--[[
-	---DEBUG
-	print("---[ IsoRange ]---")
-	print(" total "..#squares.."/"..((range*2)+1)^2)
+	--[[DEBUG
+	print("---[ IsoRange ]---\n total "..#squares.."/"..((range*2)+1)^2)
 	for k,v in pairs(squares) do
 		---@type IsoGridSquare vSquare
 		local vSquare = v

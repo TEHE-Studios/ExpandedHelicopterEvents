@@ -2,7 +2,7 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = { debugTests = false, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, }
+eHelicopterSandbox.config = { debugTests = false, frequency = 2, resetEvents = false, cutOffDay = 30, startDay = 0, neverEndingEvents = false, eventMarkersOn = true}
 ---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
@@ -38,9 +38,11 @@ function loadAnnouncersToConfig()
 	eHelicopterSandbox.menu["voiceSpaceA"] = {type = "Space"}
 	eHelicopterSandbox.menu["voiceTitle"] = {type = "Text", text = "Voice Packs", }
 
-	for k,_ in pairs(eHelicopter_announcers) do
-		eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
-		eHelicopterSandbox.config[k] = true
+	for k,params in pairs(eHelicopter_announcers) do
+		if params.DoNotDisplayOnOptions ~= true then
+			eHelicopterSandbox.menu[k] = {type = "Tickbox", title = k, tooltip = "", }
+			eHelicopterSandbox.config[k] = eHelicopterSandbox.config[k] or true
+		end
 	end
 
 	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
@@ -86,6 +88,11 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 	eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 	eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
+	eHelicopterSandbox.menu["generalSpaceD"] = {type = "Space"}
+	eHelicopterSandbox.menu["eventMarkersOnToolTip"] = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-67, }
+	eHelicopterSandbox.menu["eventMarkersOn"] = { type = "Tickbox", title = "Event Markers", alwaysAccessible = true}
+	eHelicopterSandbox.menu["generalSpaceE"] = {type = "Space"}
+
 	if getDebug() then
 		eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
 	end
@@ -136,10 +143,21 @@ function HelicopterSandboxOptions(hookEvent)
 	sandboxOptionsEnd()
 
 	if not oldGameVersion then
-		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter Day/StartHour/EndHour to \"0\".")
-		getGameTime():setHelicopterDay(0)
-		getGameTime():setHelicopterStartHour(0)
-		getGameTime():setHelicopterEndHour(0)
+		print("EHE: "..(hookEvent or "").."Disabling vanilla helicopter Day/StartHour/EndHour/Helicopter.")
+		getGameTime():setHelicopterDay(-1)
+		getGameTime():setHelicopterStartHour(-1)
+		getGameTime():setHelicopterEndHour(-1)
+
+		SandboxVars.Helicopter = 0
+
+		print("EHE: "..(hookEvent or "").."Adding items to WorldItemRemovalList.")
+		local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
+		for k,type in pairs(typesForRemovalList) do
+			if not string.find(SandboxVars.WorldItemRemovalList, type) then
+				SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
+			end
+		end
+		getSandboxOptions():updateFromLua()
 	end
 end
 

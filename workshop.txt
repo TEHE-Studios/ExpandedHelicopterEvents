@@ -1,102 +1,119 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events
-description= [h1][b]Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
-description= [h1][b]Twitch Integration: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501]Out now![/url][/b][/h1]
+description=[h1][b]Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
+description=[h1][b]Twitch Integration: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501]Out now![/url][/b][/h1]
 description=
 description=
-description= [H1]This mod replaces the vanilla helicopter event with a more dynamic suite of events which is both challenging and fair.[/H1]
-description= [H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
+description=[H1]This mod replaces the vanilla helicopter event with a more dynamic suite of events which is both challenging and fair.[/H1]
+description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
-description= [img]https://i.imgur.com/p7Fv1Z6.gif[/img]
+description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=
-description= [h2]Credits:[/h2]
-description= [h3]Consider supporting your favorite modders![/h3]
-description= [url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art
-description= [url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
-description= Raven & Gabby - Sound, Voiceover
-description= [url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
+description=[h2]Credits:[/h2]
+description=[h3]Consider supporting your favorite modders![/h3]
+description=[url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art
+description=[url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
+description=Raven & Gabby - Sound, Voiceover
+description=[url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
 description=
-description=[H2]To make suggestions, or provide translations:
-description=Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
+description=[H2]To make suggestions, or provide translations: Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
 description=
 description=[h1]If you're having an issue or encountering errors:[/h1]
 description=[h3]First, resubscribe to this mod, and any related mod.[/h3]
 description=(This will force a download of the latest version.)
 description=[b]If the problem persists, please supply a error log, which can be found here:[/b]
 description=[quote]`C:\Users\<username>\Zomboid\console.txt`[/quote]
-description= The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.description=
+description=The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
 description=
-description= [H3][b]Known Issues:[/b][/H3]
-description= [list]
-description= [*] [b]For builds prior to 41.51:[/b] This mod disables vanilla helicopters, but occasionally the game may turn them back on.
-description= Just to be safe, it is recommended that you [b]DISABLE VANILLA HELICOPTERS[/b] if you do not want at least 1 vanilla helicopter event to occur.
+description=[H3][b]Known Issues:[/b][/H3]
+description=[list]
+description=[*] [b]For builds prior to 41.51:[/b] This mod disables vanilla helicopters, but occasionally the game may turn them back on.
+description=Just to be safe, it is recommended that you [b]DISABLE VANILLA HELICOPTERS[/b] if you do not want at least 1 vanilla helicopter event to occur.
 description=
-description= [H3][b]   To Disable Vanilla Helicopters:[/b][/H3]
-description= [list]
-description=   [*] Select "Custom Sandbox" Playstyle.
-description=   [*] Under "Sadistic AI Director", set Helicopter to "Never".
-description= [/list]
+description=[H3][b]   To Disable Vanilla Helicopters:[/b][/H3]
+description=[list]
+description=[*] Select "Custom Sandbox" Playstyle.
+description=[*] Under "Sadistic AI Director", set Helicopter to "Never".
+description=[/list]
+description=[/list]
 description=
 description=[h2]FAQ:[/h2]
 description=What version of zomboid is this for?
 description=[b]Build 41+[/b]
 description=
-description=Does this mod work with with non-vanilla maps?
+description=Does this mod work with non-vanilla maps?
 description=[b]Yes. Any map, any size.[/b]
 description=
 description=Does this work with on-going/old saves?
 description=[b]Applying the mod to an ongoing save will use default settings for events. By default, events will taper off becoming less frequent up to 30 days. For more options see the sandbox settings when you create a save.[/b]
 description=
-description= [h2]Features:[/h2]
-description= [list]
-description= [*] Events become less frequent and end at around a month. (Note this factors in the "months after apocalypse" sandbox setting.)
+description=[h2]Features:[/h2]
+description=[list]
+description=[*] Events become less frequent and end at around a month. (Note this factors in the "months after apocalypse" sandbox setting.)
 description=
-description= [*] Helicopters (and other flying events) will not fly in extremely bad weather, and have a relative chance to crash based on how less than ideal the weather is.
+description=[*] Helicopters (and other flying events) will not fly in extremely bad weather, and have a relative chance to crash based on how less than ideal the weather is.
 description=
-description= [*] Crashed helicopters are vehicle objects, which can be looted and slept in.
+description=[*] Crashed helicopters are vehicle objects, which can be looted and slept in.
 description=
-description= [*] Multiple types of helicopters or other flying events.
+description=[*] Multiple types of helicopters or other flying events.
 description=
-description= [*] Players can actually hide from / avoid the helicopter.
+description=[*] Players can actually hide from / avoid the helicopter.
 description=
-description= [*] The helicopter casts a shadow to indicate where it is in relation to the player.
+description=[*] Helicopters can drop items or care packages for the player.
 description=
-description= [*] Helicopters can fire on targets. This does not instantly kill but does gravely wound targets and shred clothing.
+description=[*] Indicator system that will point out incoming helicopters, crashes, supply drops, and their overall distance to the player.
 description=
-description= [*] Fully voiced announcements, which can be easily expanded upon by others in the future.
+description=[*] The helicopter casts a shadow to indicate where it is in relation to the player.
 description=
-description= [*] CO-OP/NPC/Eventual MP Support: The helicopters will target people depending on their location; prefer targets in the cities over those in the forest.
+description=[*] Helicopters can fire on targets. This does not instantly kill but does gravely wound targets and shred clothing.
 description=
-description= [*] Helicopters can drop items or care packages for the player.
+description=[*] Fully voiced announcements, which can be easily expanded upon by others in the future.
 description=
-description= [*] Helicopter events are registered on AEBS (radio system) just like vanilla events!
-description= [/list]
+description=[*] CO-OP/NPC/Eventual MP Support: The helicopters will target people depending on their location; prefer targets in the cities over those in the forest.
 description=
-description= [h2]Events Currently in the mod:[/h2]
-description= *Helicopter events are written so that their features can be mixed and matched for different "types" of helicopters.
+description=[*] Helicopter events are registered on AEBS (radio system) just like vanilla events!
+description=[/list]
 description=
-description= [list]
-description= [*] (Military) Increasingly Hostile Helicopter: Initially this helicopter will only make announcements but will over time begin firing on targets; at first towards the undead then later, towards players as well.
+description=[h2]Events Currently in the mod:[/h2]
+description=*Helicopter events are written so that their features can be mixed and matched for different "types" of helicopters.
 description=
-description= [*] Police Helicopter: These helicopters will patrol early on and fire on undead right away.
+description=[list]
 description=
-description= [*] News Helicopter: These helicopters will follow their target and most closely resemble the vanilla event. However, the player can use cover as well as the indoors to flee the area.
+description=[h2]EARLY GAME:[/h2]
+description=[list]
+description=[*] [b]Military Helicopter:[/b] Initially this helicopter will only make announcements but will over time begin firing on targets; at first towards the
+undead then later, towards players as well.
 description=
-description= [*] Passing Jets: While not strictly a "helicopter" the jet events whizz near by the player to keep things interesting and move horde of undead early on.
-description= 
-description= [*] Jet bombings: As the game world progresses, jets will begin bombing targets offscreen.
-description= 
-description= [*] Air raid siren: An air raid siren will wail as the game progresses to signal incoming hostile events.
-description= 
-description= [*] FEMA Emergency Drop: On occasion and before civilization collapses, a helicopter will drop off an emergency supply drop.
-description= 
-description= [*] [Work in progress] Plane Air Drop: Deep into the apocalypse, you may encounter a mysterious aircraft that will drop a crate of supplies.
-description= [/list]
-description=[h1]If you want a more varied looting experience, download these mods that are now integrated with [i]Expanded Helicopter Events.[/i][/h1]
+description=[*] [b]FEMA Emergency Drop:[/b] On occasion and before civilization collapses, a helicopter will drop off an emergency supply drop.
 description=
-description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h1]
-description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]Shark's Law Enforcement Overhaul[/b][/url][/h1]
-description= [h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h1]
+description=[*] [b]Police Helicopter:[/b] These helicopters will patrol early on and fire on undead right away.
+description=
+description=[*] [b]News Helicopter:[/b] These helicopters will follow their target and most closely resemble the vanilla event. However, the player can use cover as well as the indoors to
+flee the area.
+description=
+description=[*] [b]Passing Jets:[/b] While not strictly a "helicopter" the jet events whizz near by the player to keep things interesting and move horde of undead early on.
+description=
+description=[*] [b]Bombings and Air Raid Sirens:[/b] An air raid will signal the shift in events' hostility.
+description=[/list]
+description=
+description=
+description=[h2]LATE GAME:[/h2]
+description=[list]
+description=[*] [b]The Wolverines:[/b] A group of raiders may fly into the area late in the game. Their actions range can range from innocuous to incredibly adverse.
+description=
+description=[*] [b]Survivors:[/b] A group of survivors may fly around the area looking for supplies and will buzz past you.
+description=
+description=[*] [b]The Samaritans:[/b] Deep into the apocalypse, you may encounter a mysterious aircraft that will drop a crate of supplies.
+description=[/list]
+description=[/list]
+description=
+description=[quote]
+description=[h2][b]For a more varied looting experience, try these integrated mods:[/b][/h2]
+description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h2]
+description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]Shark's Law Enforcement Overhaul[/b][/url][/h2]
+description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h2]
+description=[/quote]
+description=
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public

@@ -1,0 +1,18 @@
+Items_TR = {
+    DisplayName_Civilian_Helicopter_Helmet= "Helikopter Kaskı - Sivil",
+    DisplayName_Press_Helmet = "Helikopter Kaskı - Basın",
+    DisplayName_Police_Helicopter_Helmet = "Helikopter Kaskı - Polis",
+    DisplayName_Deserter_Helmet = "Firari Kaskı",
+    DisplayName_Survivalist_Helicopter_Helmet= "Helikopter Kaskı - Normal",
+
+    DisplayName_Police_Pilot_Flying_Suit = "Uçuş Kıyafeti - Polis",
+    DisplayName_Press_Bulletproof_Vest = "Kurşun Geçirmez Yelek - Basın",
+
+    DisplayName_Evacuation_Flyer = "Acil Bildiri - No 1",
+    DisplayName_Emergency_Flyer = "Acil Bildiri - No 2",
+    DisplayName_Quarantine_Flyer = "Karantina Bildirisi - No 1",
+    DisplayName_Prevention_Flyer = "Acil Bildiri - No 3",
+    DisplayName_Notice_Flyer = "Askeri Bildiri - No 1",
+
+    DisplayName_Supply_Box = "Acil Yardım Paketi",
+}

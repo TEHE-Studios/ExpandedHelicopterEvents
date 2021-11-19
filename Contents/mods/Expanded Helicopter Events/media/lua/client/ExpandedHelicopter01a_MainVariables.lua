@@ -13,6 +13,9 @@ eHelicopter.shadow = true
 ---@field shadowTexture string
 eHelicopter.shadowTexture = "helicopter_shadow"
 
+---@field eventMarkerIcon string
+eHelicopter.eventMarkerIcon = "media/ui/helievent.png"
+
 ---@field crashType boolean
 eHelicopter.crashType = {"UH1HFuselage"}
 
@@ -28,10 +31,19 @@ eHelicopter.addedCrashChance = 0
 ---OnCrash has the additional argument of: currentSquare (IsoGridSquare)
 ---OnAttack has the additional argument of: targetHostile (IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie)
 ---@field addedFunctionsToEvents table
-eHelicopter.addedFunctionsToEvents = {["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false,}
+eHelicopter.addedFunctionsToEvents = {
+	["OnCrash"] = false,
+	["OnHover"] = false,
+	["OnFlyaway"] = false,
+	["OnAttack"] = false,
+	["OnSpawnCrew"] = false,
+	["OnArrived"] = false}
 
----@field scrapAndParts table
-eHelicopter.scrapAndParts = {"UH1HTail", "EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2,}-- {"Base.TYPE","Base.TYPE"}
+---@field scrapVehicles table
+eHelicopter.scrapVehicles = {"UH1HTail"} --{"Base.TYPE","Base.TYPE"}
+
+---@field scrapItems table
+eHelicopter.scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10}
 
 ---@field crew table list of IDs and chances (similar to how loot distribution is handled)
 ---Example: crew = {"pilot", 100, "crew", 75, "crew", 50}
@@ -87,7 +99,7 @@ eHelicopter.flightHours = {5, 22}
 eHelicopter.speed = 0.10
 
 ---@field topSpeedFactor number speed x this = top "speed"
-eHelicopter.topSpeedFactor = 3
+eHelicopter.topSpeedFactor = 1.5
 
 ---@field flightVolume number
 eHelicopter.flightVolume = 75
@@ -97,7 +109,7 @@ eHelicopter.flightVolume = 75
 eHelicopter.hostilePreference = false
 
 ---@field attackDelay number delay in milliseconds between attacks
-eHelicopter.attackDelay = 85
+eHelicopter.attackDelay = 60
 
 ---@field attackScope number number of rows from "center" IsoGridSquare out
 --- **area formula:** ((Scope*2)+1) ^2
@@ -130,7 +142,7 @@ eHelicopter.attackSpread = 3
 eHelicopter.attackHitChance = 85
 
 ---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5))
-eHelicopter.attackDamage = 20
+eHelicopter.attackDamage = 10
 
 ---// UNDER THE HOOD STUFF //---
 
@@ -220,6 +232,8 @@ eHelicopter.timeSinceLastShadowBob = -1
 eHelicopter.formationFollowingHelis = {}
 ---@field currentPresetID string
 eHelicopter.currentPresetID = "<none>"
+---@field masterPresetID string
+eHelicopter.masterPresetID = false--"<none>"
 
 --This stores the above "temporary" variables for resetting eHelicopters later
 eHelicopter_temporaryVariables = {}

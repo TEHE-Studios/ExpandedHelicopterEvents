@@ -1,31 +1,33 @@
 IGUI_RU = {
-	IGUI_VehicleNameUH1H = "Bell UH-1H",    
-    IGUI_VehicleNameUH1HCrash = "Bell UH-1H (Разбитый)",
-    IGUI_VehicleNameUH1HFuselage = "Bell UH-1H (Fuselage)",
-    IGUI_VehicleNameUH1HTail = "Bell UH-1H (Tail)",
+	IGUI_VehicleNameBell206Black = "Белл 206",
+	IGUI_VehicleNameBell206BlackFuselage = "Белл 206 (Фюзеляж)",
+	IGUI_VehicleNameBell206BlackTail = "Белл 206 (Хвост)",
+	
+	IGUI_VehicleNameBell206LBMW = "Белл 206 Новостной",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Белл 206 Новостной (Фюзеляж)",
+    IGUI_VehicleNameBell206LBMWTail = "Белл 206 Новостной (Хвост)",
+	
+	IGUI_VehicleNameBell206Police = "Белл 206 Полицейский",
+    IGUI_VehicleNameBell206PoliceFuselage = "Белл 206 Полицейский (Фюзеляж)",
+    IGUI_VehicleNameBell206PoliceTail = "Белл 206 Полицейский (Хвост)",
+	
+	IGUI_VehicleNameBell206Survivalist = "Белл 206 Выживших",
+	IGUI_VehicleNameBell206SurvivalistFuselage = "Белл 206 Выживших (Фюзеляж)",
+	IGUI_VehicleNameBell206SurvivalistTail = "Белл 206 Выживших (Хвост)",
+	
+	IGUI_VehicleNameFEMASupplyDrop = "Сброшенные припасы",	
+	IGUI_VehicleNameSurvivorSupplyDrop = "Сброшенные припасы",
+	
+	IGUI_VehicleNameUH1H = "Белл UH-1H",    
+	IGUI_VehicleNameUH1HFuselage = "Белл UH-1H (Фюзеляж)",
+    IGUI_VehicleNameUH1HTail = "Белл UH-1H (Хвост)",
+	
+	IGUI_VehicleNameUH1HMedevac = "Белл UH-1H Медицинский",
+    IGUI_VehicleNameUH1HMedevacFuselage = "Белл UH-1H Медицинский (Фюзеляж)",
+    IGUI_VehicleNameUH1HMedevacTail = "Белл UH-1H Медицинский (Хвост)",
 
-    IGUI_VehicleNameUH1HMedevac = "Bell UH-1H Medevac",
-    IGUI_VehicleNameUH1HMedevacCrash = "Bell UH-1H Medevac (Разбитый)",
-    IGUI_VehicleNameUH1HMedevacFuselage = "Bell UH-1H Medevac (Fuselage)",
-    IGUI_VehicleNameUH1HMedevacTail = "Bell UH-1H Medevac (Tail)",
-
-    IGUI_VehicleNameUH1HSurvivalist = "Bell UH-1H Выживших",
-    IGUI_VehicleNameUH1HSurvivalistCrash = "Bell UH-1H Выживших (Разбитый)",
-    IGUI_VehicleNameUH1HSurvivalistFuselage = "Bell UH-1H Выживших (Fuselage)",
-    IGUI_VehicleNameUH1HSurvivalistTail = "Bell UH-1H Выживших (Tail)",
-
-    IGUI_VehicleNameBell206LBMW = "Bell 206 Новостной",    
-    IGUI_VehicleNameBell206LBMWCrashed = "Bell 206 Новостной (Разбитый)",
-    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 Новостной (Fuselage)",
-    IGUI_VehicleNameBell206LBMWTail = "Bell 206 Новостной (Tail)",
-
-    IGUI_VehicleNameBell206Police = "Bell 206 Полицейский",
-    IGUI_VehicleNameBell206PoliceCrashed = "Bell 206 Полицейский (Разбит)",
-    IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 Полицейский (Fuselage)",
-    IGUI_VehicleNameBell206PoliceTail = "Bell 206 Полицейский (Tail)",
-
-    IGUI_VehicleNameFEMASupplyDrop = "Помощь при черезвучайной ситуации",
-
-    IGUI_VehicleNameOH58Rescue = "OH-58",
+    IGUI_VehicleNameUH1HRaider = "Белл UH-1H Рейдеров",
+    IGUI_VehicleNameUH1HRaiderFuselage = "Белл UH-1H Рейдеров (Фюзеляж)",
+    IGUI_VehicleNameUH1HRaiderTail = "Белл UH-1H Рейдеров (Хвост)",
 
 }

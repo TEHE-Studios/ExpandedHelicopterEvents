@@ -37,5 +37,17 @@ module Base
 		shadowOffset = -0.0495 0.1044,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
+
+		attachment trailer
+		{
+			offset = 0.0000 0.0000 -1.4670,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 0.0000 1.1209,
+			rotate = 0.0000 0.0000 0.0000,
+		}
 	}
 }

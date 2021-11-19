@@ -84,8 +84,18 @@
 	</files>
 
 	<files>
+	<path>media/clothing/clothingItems/Vest_PilotSurvivalVestTightened.xml</path>
+	<guid>e8ed687e-070d-4a07-97b5-4f403b995839</guid>
+	</files>
+
+	<files>
 	<path>media/clothing/clothingItems/Vest_BlackPilotSurvivalVest.xml</path>
 	<guid>9e2690d2-4cf0-4572-a403-2b27d011d2a3</guid>
+	</files>
+
+	<files>
+	<path>media/clothing/clothingItems/Vest_BlackPilotSurvivalVestTightened.xml</path>
+	<guid>470b89ae-9ca0-4b73-a855-269433fbae75</guid>
 	</files>
 
 <!-- End -->

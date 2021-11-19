@@ -1,5 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.9.7"))
-
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.1.1b"))
 
 ---IsoPlayer are player entities but also NPCs (from mods)
 EHEIsoPlayers = {}
@@ -91,11 +90,16 @@ function setDynamicGlobalXY()
 		end
 	end
 
+	if (not eheBounds.MIN_X) or (not eheBounds.MAX_X) or (not eheBounds.MIN_Y) or (not eheBounds.MAX_Y) then
+		--[[DEBUG]] print(" - EHE:ERROR: ".." X:"..tostring(eheBounds.MIN_X).."-"..tostring(eheBounds.MAX_X)..", Y:"..tostring(eheBounds.MIN_X).."-"..tostring(eheBounds.MIN_X))
+		return
+	end
+
 	eheBounds.MAX_X = math.floor(eheBounds.MAX_X)
 	eheBounds.MIN_X = math.floor(eheBounds.MIN_X)
 	eheBounds.MAX_Y = math.floor(eheBounds.MAX_Y)
 	eheBounds.MIN_Y = math.floor(eheBounds.MIN_Y)
-	print(" - EHE:XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
+	print(" -- EHE:XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
 end
 
 

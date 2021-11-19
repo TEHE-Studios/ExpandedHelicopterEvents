@@ -1,0 +1,26 @@
+Tooltip_EN = {
+    Tooltip_dismantle_helicopterpart = "Use of a blowtorch and welding mask will yield metal.",
+    Tooltip_open_boxes_barehanded = "Would be faster to open with something sharp.",
+    Tooltip_Parachute = "Can be torn up to make ripped cloth.",
+    Tooltip_EnergyBar = "An energy bar packaged for survival kits. Manufactured by PT&D.",
+    Tooltip_SurvivalVest = "Standard issue survival vest for military pilots.",
+    Tooltip_SurvivalVestBlack = "Standard issue survival vest for police search and rescue.",
+    Tooltip_SPHMilitary = "Standard issue military helicopter helmet."
+    Tooltip_SPHBlack = "Standard issue military helicopter helmet in black.",
+    Tooltip_SPHPolice = "Helicopter helmet used by police air wings.",
+    Tooltip_SPHCivilian = "Helicopter helmet used by civilian pilots.",
+
+    Tooltip_FlyerCDC = "Looks like a health advisory flyer.",
+    Tooltip_FlyerMilitary = "Looks like a notice flyer from the military.",
+    Tooltip_CivilDefense = "Looks like a civil defense flyer.",
+
+    Tooltip_WaterSealed = "Sealed Water Ration distributed by the US Government."
+    Tooltip_WaterUnsealed = "Unsealed Water Ration distributed by the US Government." 
+
+    Tooltip_SupplyBox = "Supply Box from the US Government."
+    Tooltip_SamaritanBox = "Supply Box from a group of mysterious samaritans.",
+    Tooltip_BanditBox = "Personal stash box. Reads "MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Military Signalling flare. Do not fire indoors.",
+    Tooltip_SignalFlareSpent = "Military Signalling flare. It's been used."
+}
