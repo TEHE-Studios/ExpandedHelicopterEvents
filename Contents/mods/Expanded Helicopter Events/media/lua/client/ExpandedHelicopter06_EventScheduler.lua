@@ -218,6 +218,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
 		end
 
 		--[[DEBUG]
+		if lessFreqOverTime > 0 then print("EHE:Scheduler: lessFreqOverTime:"..lessFreqOverTime) end
 		local options_tally = {}
 		for kk,vv in pairs(options) do if options_tally[vv] then options_tally[vv] = options_tally[vv]+1 else options_tally[vv] = 1 end end
 		local options_string
