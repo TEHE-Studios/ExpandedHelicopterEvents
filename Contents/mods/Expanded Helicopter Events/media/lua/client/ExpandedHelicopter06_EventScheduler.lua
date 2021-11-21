@@ -179,17 +179,15 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
 				local startDay = math.floor((StartDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
 
 				local dayAndHourInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay) and (currentHour >= flightHours[1]) and (currentHour <= flightHours[2]))
-				local eventAvailable = (dayAndHourInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
+
 				local freq = 3
 				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
 				if presetFreq then
 					freq = presetFreq-1
 				end
-				local freqForChance = math.floor(((freq/6)*100)/24)
-				local chance = freqForChance*schedulingFactor
-				if ZombRand(301) >= chance then
-					eventAvailable = false
-				end
+
+				local chance = (8-freq)*100
+				local eventAvailable = (dayAndHourInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
 
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
 
@@ -206,15 +204,12 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
 					weight = weight*freq
 
 					for i=1, weight do
-						table.insert(options, presetID)
+						if (ZombRand(chance) <= freq*schedulingFactor) then
+							table.insert(options, presetID)
+						end
 					end
 				end
 			end
-		end
-
-		local lessFreqOverTime = math.floor((daysIntoApoc/SandboxVars.ExpandedHeli.CutOffDay)*(#options/2))
-		for i=1, lessFreqOverTime do
-			table.insert(options, false)
 		end
 
 		--[[DEBUG]
@@ -234,7 +229,11 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
 			local CutOffDayFactor = selectedPreset.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
 			local cutOffDay = math.floor((CutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
-			local startDay = math.min(nightsSurvived+ZombRand(3), cutOffDay)
+
+			local dayOffset = {0,0,0,1,1,2}
+			dayOffset = dayOffset[ZombRand(#dayOffset)+1]
+
+			local startDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 			print(" -Scheduled: "..selectedPresetID.." [Day:"..startDay.." Time:"..startTime.."]")
 			eHeliEvent_new(startDay, startTime, selectedPresetID)

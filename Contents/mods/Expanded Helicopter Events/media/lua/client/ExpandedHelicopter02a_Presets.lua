@@ -129,7 +129,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	forScheduling = true,
 	flightHours = {11, 11},
 	eventSpawnWeight = 50,
-	schedulingFactor = 10000,
+	schedulingFactor = 99999,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
 }
@@ -146,7 +146,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	forScheduling = true,
 	flightHours = {12, 12},
 	eventSpawnWeight = 50,
-	schedulingFactor = 10000,
+	schedulingFactor = 99999,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
 }
