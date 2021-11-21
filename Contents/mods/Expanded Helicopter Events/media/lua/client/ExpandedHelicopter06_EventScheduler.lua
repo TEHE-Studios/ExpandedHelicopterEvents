@@ -148,7 +148,7 @@ end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 
 
-function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
+function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 	local GT = getGameTime()
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
@@ -186,7 +186,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
 					freq = presetFreq-1
 				end
 
-				local chance = (10-freq)*3000
+				freq = freqOverride or freq
 				local eventAvailable = (dayAndHourInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
 
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]

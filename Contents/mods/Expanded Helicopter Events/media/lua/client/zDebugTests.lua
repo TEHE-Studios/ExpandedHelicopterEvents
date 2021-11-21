@@ -163,21 +163,26 @@ end
 function DEBUG_TESTS.eHeliEvents_SchedulerUnitTest()
 	local GTMData = getGameTime():getModData()
 	GTMData["EventsOnSchedule"] = {}
-	print("eHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
-	for i=0, 90 do
-		for ii=0, 24 do
-			eHeliEvent_ScheduleNew(i,ii)
-			for k,v in pairs(GTMData["EventsOnSchedule"]) do
-				if v.triggered then
-					GTMData["EventsOnSchedule"][k] = nil
-				elseif (v.startDay <= i) and (v.startTime == ii) then
-					GTMData["EventsOnSchedule"][k].triggered = true
+	print("======================================")
+	print("neHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
+	print("--------------------------------------")
+	for freq=0, 6 do
+		print("Frequency Test: "..freq)
+		for day=0, 90 do
+			for hour=0, 24 do
+				eHeliEvent_ScheduleNew(day,hour,freq)
+				for k,v in pairs(GTMData["EventsOnSchedule"]) do
+					if v.triggered then
+						GTMData["EventsOnSchedule"][k] = nil
+					elseif (v.startDay <= day) and (v.startTime == hour) then
+						GTMData["EventsOnSchedule"][k].triggered = true
+					end
 				end
 			end
 		end
+		print("--------------------------------------")
 	end
-	print("-=-=-=-=-=-=-=-=-\n")
-
+	print("======================================")
 end
 
 
