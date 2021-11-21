@@ -186,7 +186,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour)
 					freq = presetFreq-1
 				end
 
-				local chance = (10-freq)*100
+				local chance = (11-freq)*150
 				local eventAvailable = (dayAndHourInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
 
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
