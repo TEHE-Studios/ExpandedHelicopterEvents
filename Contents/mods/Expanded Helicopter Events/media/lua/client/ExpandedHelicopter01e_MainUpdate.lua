@@ -252,12 +252,14 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		self.shadow:setSize(shadowSize+shadowExpansion)
 	end
 
-	local volumeFactor = 1
-	local zoneType = currentSquare:getZoneType()
-	if (zoneType == "Forest") or (zoneType == "DeepForest") then
-		volumeFactor = 0.25
+	if self.flightVolume then
+		local volumeFactor = 1
+		local zoneType = currentSquare:getZoneType()
+		if (zoneType == "Forest") or (zoneType == "DeepForest") then
+			volumeFactor = 0.25
+		end
+		addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor)
 	end
-	addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor)
 
 	if self.hostilePreference and (not self.crashing) then
 		self:lookForHostiles(self.hostilePreference)
