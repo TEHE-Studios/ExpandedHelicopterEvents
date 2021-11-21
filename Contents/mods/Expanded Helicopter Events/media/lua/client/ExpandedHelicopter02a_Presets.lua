@@ -16,7 +16,6 @@ eHelicopter_PRESETS["military"] = {
 	forScheduling = true,
 	eventSpawnWeight = 20,
 	schedulingFactor = 1.5,
-	schedulingFactor = 3,
 	}
 
 
