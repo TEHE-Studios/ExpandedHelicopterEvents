@@ -188,7 +188,11 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 
 				freq = freqOverride or freq
 
-				local chance = (10-freq)*2500
+				--the greater the frequency the smaller the denominator
+				local probabilityDenominator = ((10-freq)*2500)
+				--less frequent over time
+				probabilityDenominator = probabilityDenominator+(1000*(daysIntoApoc/SandboxVars.ExpandedHeli.CutOffDay))
+
 				local eventAvailable = (dayAndHourInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
 
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
@@ -206,7 +210,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 					weight = weight*freq
 
 					for i=1, weight do
-						if (ZombRand(chance) <= freq*schedulingFactor) then
+						if (ZombRand(probabilityDenominator) <= freq*schedulingFactor) then
 							table.insert(options, presetID)
 						end
 					end
