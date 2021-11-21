@@ -1,3 +1,5 @@
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.1"))
+
 DEBUG_TESTS = DEBUG_TESTS or {}
 DEBUG_TESTS.TOGGLE_ALL_CRASH = false
 
@@ -158,13 +160,24 @@ function DEBUG_TESTS.CheckWeather()
 end
 
 
-
 function DEBUG_TESTS.eHeliEvents_SchedulerUnitTest()
+	local GTMData = getGameTime():getModData()
+	GTMData["EventsOnSchedule"] = {}
 	print("eHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
 	for i=0, 90 do
-		eHeliEvent_ScheduleNew(i, true)
+		for ii=0, 24 do
+			eHeliEvent_ScheduleNew(i,ii)
+			for k,v in pairs(GTMData["EventsOnSchedule"]) do
+				if v.triggered then
+					GTMData["EventsOnSchedule"][k] = nil
+				elseif (v.startDay <= i) and (v.startTime == ii) then
+					GTMData["EventsOnSchedule"][k].triggered = true
+				end
+			end
+		end
 	end
 	print("-=-=-=-=-=-=-=-=-\n")
+
 end
 
 

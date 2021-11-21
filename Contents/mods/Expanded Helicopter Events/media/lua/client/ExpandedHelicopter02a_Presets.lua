@@ -14,6 +14,9 @@ eHelicopter_PRESETS["military"] = {
 	announcerVoice = true,
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	forScheduling = true,
+	eventSpawnWeight = 20,
+	schedulingFactor = 1.5,
+	schedulingFactor = 3,
 	}
 
 
@@ -112,9 +115,24 @@ eHelicopter_PRESETS["jet"] = {
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
 	forScheduling = true,
-	schedulingFactor = 2,
-	eventSpawnWeight = 4,
+	schedulingFactor = 4,
+	eventSpawnWeight = 5,
 	}
+
+eHelicopter_PRESETS["air_raid"] = {
+	doNotListForTwitchIntegration = true,
+	crashType = false,
+	shadow = false,
+	speed = 0.05,
+	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+	eventMarkerIcon = false,
+	forScheduling = true,
+	flightHours = {11, 11},
+	eventSpawnWeight = 50,
+	schedulingFactor = 10000,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.067,
+}
 
 eHelicopter_PRESETS["jet_bombing"] = {
 	doNotListForTwitchIntegration = true,
@@ -125,7 +143,12 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	crashType = false,
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
-	flightHours = {12, 12}
+	forScheduling = true,
+	flightHours = {12, 12},
+	eventSpawnWeight = 50,
+	schedulingFactor = 10000,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.067,
 }
 
 
@@ -138,7 +161,6 @@ eHelicopter_PRESETS["news_chopper"] = {
 	scrapItems = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206LBMWTail"},
 	forScheduling = true,
-	eventSpawnWeight = 4,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
 	}
@@ -154,17 +176,6 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 	}
 
 
-eHelicopter_PRESETS["air_raid"] = {
-	doNotListForTwitchIntegration = true,
-	crashType = false,
-	shadow = false,
-	speed = 0.05,
-	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
-	eventMarkerIcon = false,
-	flightHours = {11, 11}
-}
-
-
 
 eHelicopter_PRESETS["police"] = {
 	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2},
@@ -174,7 +185,6 @@ eHelicopter_PRESETS["police"] = {
 	scrapVehicles = {"Bell206PoliceTail"},
 	announcerVoice = "Police",
 	forScheduling = true,
-	eventSpawnWeight = 5,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
 	}
@@ -217,7 +227,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
-	eventSpawnWeight = 5,
+	eventSpawnWeight = 3,
 }
 
 

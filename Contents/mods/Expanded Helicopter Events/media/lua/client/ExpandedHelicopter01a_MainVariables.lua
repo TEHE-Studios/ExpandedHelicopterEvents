@@ -8,7 +8,7 @@ eHelicopter.forScheduling = false
 eHelicopter.schedulingFactor = 1
 
 ---@field eventSpawnWeight number This number is how many times this event is included in the scheduler's pool of events
-eHelicopter.eventSpawnWeight = 6
+eHelicopter.eventSpawnWeight = 10
 
 ---@field eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
 eHelicopter.eventStartDayFactor = 0
