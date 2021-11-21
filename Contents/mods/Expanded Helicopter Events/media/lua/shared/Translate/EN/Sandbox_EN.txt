@@ -11,8 +11,11 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_EventJet = "Jets",
     Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur.",
 
-    Sandbox_ExpandedHeli_EventCivilian = "Civilians",
-    Sandbox_ExpandedHeli_EventCivilian_tooltip = "How frequent civilian events occur.",
+    Sandbox_ExpandedHeli_EventNews = "News",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "How frequent news events occur.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Police",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "How frequent Police events occur.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Military",
     Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur.",
@@ -27,10 +30,10 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur.",
 
 	Sandbox_ExpandedHeli_StartDay = "Start Day",
-	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to. \nNote: Some events are set to start later than this day.",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to. (Default: 0)",
 
 	Sandbox_ExpandedHeli_CutOffDay = "Cutoff Day",
-	Sandbox_ExpandedHeli_CutOffDay_tooltip = "The day the scheduler will tapered events to end on. \nNote: Some events are scaled to go beyond this day.",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip = "The day the scheduler will taper events to end on. (Default: 90)",
 
 	Sandbox_ExpandedHeli_NeverEnding = "Never Ending Events",
 	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Toggle this on so that the scheduler will always renew events. Events will still progress through stages, and taper off in occurrence, but will never end.",

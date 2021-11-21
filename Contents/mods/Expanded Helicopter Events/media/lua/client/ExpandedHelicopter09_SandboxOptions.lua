@@ -2,7 +2,7 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = { debugTests = false, eventMarkersOn = true}
+eHelicopterSandbox.config = { debugTests = false, eventMarkersOn = true, resetEvents = false}
 ---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
@@ -70,7 +70,12 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu["resetEventsA"] = nil
 	eHelicopterSandbox.menu["resetEventsToolTip"] = nil
 	eHelicopterSandbox.menu["resetEvents"] = nil
+	eHelicopterSandbox.menu["generalSpaceD"] = nil
+	eHelicopterSandbox.menu["eventMarkersOnToolTip"] =  nil
+	eHelicopterSandbox.menu["eventMarkersOn"] = nil
+	eHelicopterSandbox.menu["generalSpaceE"] = nil
 	eHelicopterSandbox.menu["debugTests"] = nil
+
 	eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 	eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 	eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
@@ -92,15 +97,6 @@ EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
 function HelicopterSandboxOptions(hookEvent)
-	---@type SandboxOptions
-	local SANDBOX_OPTIONS = getSandboxOptions()
-	---@type SandboxOptions.EnumSandboxOption | SandboxOptions.SandboxOption
-	local sandboxHeliFreq = SANDBOX_OPTIONS:getOptionByName("Helicopter")
-	--if vanilla helicopter freq is not never then set to never	
-	if sandboxHeliFreq:getValue() ~= 1 then
-		sandboxHeliFreq:setValue(1) -- 1 = Never
-		print("EHE: "..(hookEvent or "").."Setting vanilla helicopter frequency to \"never\".")
-	end
 
 	loadAnnouncersToConfig()
 	sandboxOptionsEnd()
@@ -109,8 +105,8 @@ function HelicopterSandboxOptions(hookEvent)
 	getGameTime():setHelicopterDay(-1)
 	getGameTime():setHelicopterStartHour(-1)
 	getGameTime():setHelicopterEndHour(-1)
-
-	SandboxVars.Helicopter = 0
+	getSandboxOptions():getOptionByName("Helicopter"):setValue(1) -- 1 = Never
+	SandboxVars.Helicopter = 1
 
 	print("EHE: "..(hookEvent or "").."Adding items to WorldItemRemovalList.")
 	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}

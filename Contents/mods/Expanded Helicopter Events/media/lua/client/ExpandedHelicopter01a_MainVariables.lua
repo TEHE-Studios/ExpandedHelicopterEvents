@@ -1,19 +1,20 @@
 ---@class eHelicopter
 eHelicopter = {}
 
----@field eventChain string|nil string used for scheduler; leaving it as nil means the event will not spawn from the scheduler
-eHelicopter.eventChain = nil
+---@field forScheduling string|nil string used for scheduler; leaving it as nil means the event will not spawn from the scheduler
+eHelicopter.forScheduling = false
+
+---@field schedulingFactor number multiplied against frequency to make them more or less likely - high number = more likely to be scheduled
+eHelicopter.schedulingFactor = 1
 
 ---@field eventSpawnWeight number This number is how many times this event is included in the scheduler's pool of events
 eHelicopter.eventSpawnWeight = 6
 
 ---@field eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
---- if a table of at least 2 length is provided the values are randomly selected between them.
-eHelicopter.eventStartDayFactors = 0--{0,0}
+eHelicopter.eventStartDayFactor = 0
 
 ---@field eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
---- if a table of at least 2 length is provided the values are randomly selected between them.
-eHelicopter.eventCutOffDayFactor = 0.33--{0.33,0.33}
+eHelicopter.eventCutOffDayFactor = 0.34
 
 ---@field flightHours table
 eHelicopter.flightHours = {5, 22}

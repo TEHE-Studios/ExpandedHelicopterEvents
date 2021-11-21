@@ -1,22 +1,14 @@
----Inserts a new eHeliEvent (table) to the "EventsSchedule" table
----@param replacePos number If not nil, replace specific entry in "EventsSchedule", otherwise insert as normal (at end)
+---Inserts a new eHeliEvent (table) to the "EventsOnSchedule" table
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
 ---@param preset string Name of preset found in PRESETS
 ---Events are handled as tables because ModData does not save Lua "classes" properly, even though they are really tables.
-function eHeliEvent_new(replacePos, startDay, startTime, preset)
-	
+function eHeliEvent_new(startDay, startTime, preset)
 	if (not startDay) or (not startTime) then
 		return
 	end
-
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
-
-	if replacePos then
-		getGameTime():getModData()["EventsSchedule"][replacePos] = newEvent
-	else
-		table.insert(getGameTime():getModData()["EventsSchedule"], newEvent)
-	end
+	table.insert(getGameTime():getModData()["EventsOnSchedule"], newEvent)
 end
 
 
@@ -45,10 +37,10 @@ end
 
 
 --Engages specific eHeliEvent based on ID
----@param ID number position in "EventsSchedule"
+---@param ID number position in "EventsOnSchedule"
 function eHeliEvent_engage(ID)
 
-	local eHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
+	local eHeliEvent = getGameTime():getModData()["EventsOnSchedule"][ID]
 	eHeliEvent.triggered = true
 	
 	--check if the event will occur
@@ -110,121 +102,13 @@ function eHeli_getDaysBeforeApoc()
 end
 
 
-
----Generates a schedule time for an event, either from scratch or a previous event.
----@param ID number Position in schedule
----@param heliDay number Day to start event
----@param heliStart number Hour to start event
-function setNextHeliFrom(ID, heliDay, heliStart, presetID)
-
-	--grab old event based on ID
-	local lastHeliEvent = getGameTime():getModData()["EventsSchedule"][ID]
-
-	--override preset with lastHeliEvent's if preset is nil
-	if not presetID and lastHeliEvent then
-		presetID = lastHeliEvent.preset
-	end
-
-	local nightsSurvived = getGameTime():getNightsSurvived()
-	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"] or 0
-	local daysIntoApoc = daysBefore+nightsSurvived
-	local presetSettings = eHelicopter_PRESETS[presetID] or {}
-	local COF = presetSettings.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
-
-	local flightHours = presetSettings.flightHours or eHelicopter.flightHours
-	local minStartTime = flightHours[1]
-	local maxStartTime = flightHours[2]
-
-	local cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
-	local freq = 3
-	local tmpFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
-	--[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
-	if tmpFreq then
-		freq = tmpFreq-1
-	end
-
-	local hoursToShift = 0
-	
-	--[[DEBUG]] local debugOutput = ""
-	
-	if not heliDay then
-
-		--[[DEBUG]] local lastDayDebugText = "None"
-		--use old event's start day for reschedule, otherwise get new day
-		if not lastHeliEvent then
-			heliDay = nightsSurvived
-		else
-			--[[DEBUG]] lastDayDebugText = lastHeliEvent.startDay
-			heliDay = math.max(lastHeliEvent.startDay, nightsSurvived)
-		end
-		--[[DEBUG]] debugOutput = debugOutput.."EHE: Event Scheduler:\n - previous heli day:"..lastDayDebugText.." freq:"..freq.."\n"
-
-		local freqFactor = presetSettings.frequencyFactor or eHelicopter.frequencyFactor
-		local dayOffset = {1,2}
-
-		if freq == 0 then
-			dayOffset = {7,14}
-		elseif freq == 1 then
-			dayOffset = {5,10}
-		elseif freq == 2 then
-			dayOffset = {3,6}
-		elseif freq == 3 then
-			dayOffset = {1,2}
-			freqFactor = freqFactor*0.85
-		elseif freq == 4 then
-			freq = 6
-			dayOffset = {0,0}
-			freqFactor = freqFactor*0.25
-		end
-
-		--pick a random day offset (converted to hours) based on what is above also multiplied by the event's frequency factor
-		local randomizedHoursOffset = (ZombRand(dayOffset[1]*24,dayOffset[2]*24)+1)*freqFactor
-		--as days get closer to the cutoff the time between new events gets longer
-		local lessFreqOverTimeHrs = (((7-freq)*24)*math.min(0,(daysIntoApoc/cutOffDay)))*freqFactor
-		--combine randomizedOffset and lessFreqOverTime
-		hoursToShift = randomizedHoursOffset+lessFreqOverTimeHrs
-
-		--[[DEBUG]] local hrsShiftBreakDown = " (rHO:"..randomizedHoursOffset.."  lFOTH:"..lessFreqOverTimeHrs..")"
-
-		--convert hoursToShift to whole days
-		local daysToShift = math.floor((hoursToShift/24))
-		--remove the day count from hours
-		hoursToShift = math.floor(hoursToShift-(daysToShift*24))
-		--finally shift them
-		heliDay = heliDay+daysToShift
-
-
-		--[[DEBUG]] debugOutput = debugOutput.." - hrs_shift:"..hoursToShift..hrsShiftBreakDown.." day_shift:"..daysToShift.."  new heli day:"..heliDay.."\n"
-	end
-
-	if not heliStart then
-		local HOUR = getGameTime():getHour()
-
-		heliStart = ZombRand(minStartTime,maxStartTime+1)+hoursToShift
-		--clamp heliStart
-		heliStart = math.max(minStartTime, math.min(maxStartTime, heliStart))
-	end
-
-	--[[DEBUG]] print(debugOutput)
-end
-
-
-local eventChainsFound = nil
-function eHeliEvents_getEventChains()
-	return eventChainsFound
-end
-function eHeliEvents_setEventChains()
-	if not eventChainsFound then
-
-		eventChainsFound = {}
-
+local eventsForScheduling = nil
+function eHeliEvents_setEventsForScheduling()
+	if not eventsForScheduling then
+		eventsForScheduling = {}
 		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-			if presetVars.eventChain then
-				if eventChainsFound[presetVars.eventChain] then
-					table.insert(eventChainsFound[presetVars.eventChain], presetID)
-				else
-					eventChainsFound[presetVars.eventChain] = {presetID}
-				end
+			if presetVars.forScheduling then
+				table.insert(eventsForScheduling, presetID)
 			end
 		end
 	end
@@ -235,12 +119,12 @@ end
 function eHeliEvents_OnGameStart()
 	local GTMData = getGameTime():getModData()
 
-	eHeliEvents_setEventChains()
+	eHeliEvents_setEventsForScheduling()
 
 	--if eHelicopterSandbox.config.resetEvents == true, reset
 	if eHelicopterSandbox.config.resetEvents == true then
 		EasyConfig_Chucked.loadConfig()
-		GTMData["EventsSchedule"] = {}
+		GTMData["EventsOnSchedule"] = {}
 		GTMData["DaysBeforeApoc"] = nil
 		GTMData["DayOfLastCrash"] = nil
 		local spawnerList = SpawnerTEMP.getOrSetPendingSpawnsList()
@@ -256,90 +140,132 @@ function eHeliEvents_OnGameStart()
 	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
 	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or getGameTime():getNightsSurvived()
 
-	--if no EventsSchedule found make it an empty list
-	if not GTMData["EventsSchedule"] then
-		GTMData["EventsSchedule"] = {}
+	--if no EventsOnSchedule found make it an empty list
+	if not GTMData["EventsOnSchedule"] then
+		GTMData["EventsOnSchedule"] = {}
 	end
 end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 
 
----@param events table
-function eHeliEvent_processEventChain(events)
+function eHeliEvent_ScheduleNew(nightsSurvived, bypassCheckingAlreadyScheduled)
+	local GT = getGameTime()
+	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
+	local neverEnd = SandboxVars.ExpandedHeli.NeverEnding
+	local daysIntoApoc = (GT:getModData()["DaysBeforeApoc"] or 0)+nightsSurvived
 
-	local nightsSurvived = getGameTime():getNightsSurvived()
-	local daysBefore = getGameTime():getModData()["DaysBeforeApoc"] or 0
-	local daysIntoApoc = daysBefore+nightsSurvived
+	local eventIDsScheduled = {}
+	for k,v in pairs(GT:getModData()["EventsOnSchedule"]) do
+		if not v.triggered then
+			eventIDsScheduled[v.preset] = true
+		end
+	end
+	if bypassCheckingAlreadyScheduled==true then
+		eventIDsScheduled = {}
+	end
 
-	local options = {}
+	--print("EHE:DEBUG: Scheduler Drafting: daysIntoApoc: "..daysIntoApoc.." Hour "..GT:getHour())
 
-	for k,presetID in pairs(events) do
+	if neverEnd or (daysIntoApoc <= SandboxVars.ExpandedHeli.CutOffDay) then
+		local options = {}
 
-		local CutOffDayFactor = eHelicopter.eventCutOffDayFactor
-		local presetSettings = eHelicopter_PRESETS[presetID]
-		if presetSettings then
-			local inheritedSettings = eHelicopter_PRESETS[presetSettings.inherit]
-			if presetSettings.eventCutOffDayFactor then
-				CutOffDayFactor = presetSettings.eventCutOffDayFactor
-			elseif inheritedSettings.eventCutOffDayFactor then
-				CutOffDayFactor = inheritedSettings.eventCutOffDayFactor
+		for k,presetID in pairs(eventsForScheduling) do
+			if not eventIDsScheduled[presetID] then
+
+				local CutOffDayFactor = eHelicopter.eventCutOffDayFactor
+				local StartDayFactor = eHelicopter.eventStartDayFactor
+				local schedulingFactor = eHelicopter.schedulingFactor
+				local presetSettings = eHelicopter_PRESETS[presetID]
+
+				if presetSettings and presetSettings.eventCutOffDayFactor then
+					CutOffDayFactor = presetSettings.eventCutOffDayFactor
+				end
+				if presetSettings and presetSettings.eventStartDayFactor then
+					StartDayFactor = presetSettings.eventStartDayFactor
+				end
+				if presetSettings and presetSettings.schedulingFactor then
+					schedulingFactor = presetSettings.schedulingFactor
+				end
+
+				local cutOffDay = math.floor(CutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay)
+				local startDay = math.floor(StartDayFactor*SandboxVars.ExpandedHeli.CutOffDay)
+				local dayInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc < cutOffDay))
+				local eventAvailable = (dayInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
+				local freq = 3
+				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
+				if presetFreq then
+					freq = presetFreq-1
+				end
+				local freqForChance = math.floor(((freq/6)*1000)/24)
+				local chance = freqForChance*schedulingFactor
+				if ZombRand(101) >= chance then
+					eventAvailable = false
+				end
+
+				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
+
+				if eventAvailable then
+					local weight = eHelicopter.eventSpawnWeight
+					if presetSettings then
+						if presetSettings.eventSpawnWeight then
+							weight = presetSettings.eventSpawnWeight
+						elseif inheritedSettings and inheritedSettings.eventSpawnWeight then
+							weight = inheritedSettings.eventSpawnWeight
+						end
+					end
+
+					weight = weight*freq
+
+					for i=1, weight do
+						table.insert(options, presetID)
+					end
+				end
 			end
 		end
-		
 
-
-		local eventStillAvailable = (daysBefore < cutOffDay)
-		local COF = presetSettings.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
-
-		local flightHours = presetSettings.flightHours or eHelicopter.flightHours
-		local minStartTime = flightHours[1]
-		local maxStartTime = flightHours[2]
-
-		local cutOffDay = COF*SandboxVars.ExpandedHeli.CutOffDay
-		local freq = 3
-		local tmpFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
-		--[DEBUG]] print("EHE: setNextHeliEvent: "..presetID.."  freq="..tostring(tmpFreq))
-		if tmpFreq then
-			freq = tmpFreq-1
+		local lessFreqOverTime = math.floor((daysIntoApoc/SandboxVars.ExpandedHeli.CutOffDay)*(#options/2))
+		for i=1, lessFreqOverTime do
+			table.insert(options, false)
 		end
 
-		if neverEnd then
-			renewHeli = true
-		end
+		--[[DEBUG]
+		local options_tally = {}
+		for kk,vv in pairs(options) do if options_tally[vv] then options_tally[vv] = options_tally[vv]+1 else options_tally[vv] = 1 end end
+		local options_string
+		for kk,vv in pairs(options_tally) do
+			if not options_string then options_string = " --- EHE:Options: "
+			end options_string = options_string..tostring(kk).." "..tostring(vv)..", "
+		end if options_string then print(options_string) end
+		--]]
 
-		if (not renewHeli) and (not lastHeliEvent) then
-			return
-		end
-	end
-
-	eHeliEvent_new(ID, heliDay, heliStart, presetID)
-end
-
-function eHeliEvent_ScheduleNewDay()
-
-	local neverEnd = SandboxVars.ExpandedHeli.NeverEndingEvents
-
-	local DAY = getGameTime():getDay()
-	local HOUR = getGameTime():getHour()
-
-	print("EHE:DEBUG: Scheduler Draft: DAY "..DAY.." HOUR "..HOUR)
-
-	if neverEnd or (DAY <= SandboxVars.ExpandedHeli.CutOffDay ) then
-		for chainID,events in pairs(eventChainsFound) do
-			eHeliEvent_processEventChain(events)
+		local selectedPresetID = options[ZombRand(#options)+1]
+		if selectedPresetID and (selectedPresetID ~= false) then
+			local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
+			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
+			local startDay = nightsSurvived+ZombRand(3)
+			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
+			print(" - EHE: Event Scheduled: "..selectedPresetID.." (Day:"..startDay.." Time:"..startTime..")")
+			eHeliEvent_new(startDay, startTime, selectedPresetID)
 		end
 	end
+	--print("-=-=-=-=-=-=-=-=-=-=-\n")
 end
-Events.EveryDays.Add(eHeliEvent_ScheduleNewDay)
+Events.EveryHours.Add(eHeliEvent_ScheduleNew)
 
 
 
 --Checks every hour if there is an event scheduled to engage
 function eHeliEvent_Loop()
-	local DAY = getGameTime():getNightsSurvived()
-	local HOUR = getGameTime():getHour()
-	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-		if (not v.triggered) and (v.startDay <= DAY) and (v.startTime == HOUR) then
+	local GT = getGameTime()
+	local nightsSurvived = GT:getNightsSurvived()
+	local HOUR = GT:getHour()
+	local events = GT:getModData()["EventsOnSchedule"]
+
+	for k,v in pairs(events) do
+		if v.triggered then
+			--clean out old events if any
+			events[k] = nil
+		elseif (v.startDay <= nightsSurvived) and (v.startTime == HOUR) then
 			print("EHE: LAUNCH INFO:  HELI ID:"..k.." - "..v.preset)
 			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)

@@ -12,7 +12,7 @@ Events.OnKeyPressed.Add(function(key)
 		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("patrol_only_quarantine", player)
 		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("police_heli_firing", player)
 		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("raiders", player)
-		elseif key == Keyboard.KEY_9 then 
+		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.eHeliEvents_SchedulerUnitTest()
 		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.SpawnerPrint()
 		end
 	end
@@ -158,12 +158,33 @@ function DEBUG_TESTS.CheckWeather()
 end
 
 
+
+function DEBUG_TESTS.eHeliEvents_SchedulerUnitTest()
+	print("eHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
+	for i=0, 90 do
+		eHeliEvent_ScheduleNew(i, true)
+	end
+	print("-=-=-=-=-=-=-=-=-\n")
+end
+
+
 --- Check eHeliEvent within eHeliEventsOnSchedule
 function DEBUG_TESTS.eHeliEventsOnSchedule()
-	print("--- eHeliEventsOnSchedule: ".."current day: "..tostring(getGameTime():getNightsSurvived()).." hr: "..tostring(getGameTime():getHour()))
-	for k,v in pairs(getGameTime():getModData()["EventsSchedule"]) do
-		print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." p:"..tostring(v.preset)..
-				" r:"..tostring(v.renew).." t:"..tostring(v.triggered))
+
+	local GT = getGameTime()
+	local nightsSurvived = tostring(GT:getNightsSurvived())
+	local daysIntoApoc = (GT:getModData()["DaysBeforeApoc"] or 0)+nightsSurvived
+	local hour = tostring(GT:getHour())
+
+	local eventsScheduled = false
+
+	print("--- eHeliEventsOnSchedule: ".." daysIntoApoc: "..daysIntoApoc.."  nights-surv: "..nightsSurvived.."  hr: "..hour)
+	for k,v in pairs(getGameTime():getModData()["EventsOnSchedule"]) do
+		eventsScheduled = true
+		print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
+	end
+	if not eventsScheduled then
+		print("------ \[0\]  No Events Schedule")
 	end
 end
 

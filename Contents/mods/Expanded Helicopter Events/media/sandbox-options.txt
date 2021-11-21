@@ -2,7 +2,7 @@ VERSION = 1,
 
 option ExpandedHeli.CutOffDay
 {
-	type = integer, min = 1, max = 999, default = 30,
+	type = integer, min = 1, max = 999, default = 90,
 	page = ExpandedHeli, translation = ExpandedHeli_CutOffDay,
 }
 
@@ -28,10 +28,17 @@ option ExpandedHeli.Frequency_jet
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
-option ExpandedHeli.Frequency_civilian
+option ExpandedHeli.Frequency_police
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_EventCivilian,
+	page = ExpandedHeli, translation = ExpandedHeli_EventPolice,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
+option ExpandedHeli.Frequency_news_chopper
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventNews,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 

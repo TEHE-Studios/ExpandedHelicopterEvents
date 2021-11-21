@@ -20,7 +20,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		local linesGoingOut = {}
 		WeatherChannel.AddFuzz(c, _bc, 6);
 
-		for _,event in pairs(getGameTime():getModData()["EventsSchedule"]) do
+		for _,event in pairs(getGameTime():getModData()["EventsOnSchedule"]) do
 			if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
 
 				linesGoingOut["airActivity"] = getRadioText("AEBS_Choppah")

@@ -13,18 +13,18 @@ eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1},
 	announcerVoice = true,
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
-	eventChain = "Main",
+	forScheduling = true,
 	}
 
 
 eHelicopter_PRESETS["increasingly_hostile"] = {
 	presetProgression = {
 		["patrol_only"] = 0,
-		["patrol_only_emergency"] = 0.02,
-		["patrol_only_quarantine"] = 0.05,
-		["attack_only_undead_evac"] = 0.1,
-		["attack_only_undead"] = 0.15,
-		["attack_only_all"] = 0.24,
+		["patrol_only_emergency"] = 0.0066,
+		["patrol_only_quarantine"] = 0.0165,
+		["attack_only_undead_evac"] = 0.033,
+		["attack_only_undead"] = 0.066,
+		["attack_only_all"] = 0.2145,
 		}
 	}
 
@@ -32,11 +32,11 @@ eHelicopter_PRESETS["increasingly_hostile"] = {
 eHelicopter_PRESETS["increasingly_helpful"] = {
 	presetProgression = {
 		["patrol_only"] = 0,
-		["patrol_only_emergency"] = 0.02,
-		["patrol_only_quarantine"] = 0.05,
-		["attack_only_undead_evac"] = 0.1,
-		["aid_helicopter"] = 0.15,
-		["attack_only_all"] = 0.24,
+		["patrol_only_emergency"] = 0.0066,
+		["patrol_only_quarantine"] = 0.0165,
+		["attack_only_undead_evac"] = 0.033,
+		["aid_helicopter"] = 0.066,
+		["attack_only_all"] = 0.2145,
 		}
 	}
 
@@ -104,7 +104,6 @@ eHelicopter_PRESETS["attack_only_all"] = {
 
 
 eHelicopter_PRESETS["jet"] = {
-	eventSpawnWeight = 4,
 	speed = 2.8,
 	topSpeedFactor = 2,
 	flightVolume = 25,
@@ -112,6 +111,9 @@ eHelicopter_PRESETS["jet"] = {
 	crashType = false,
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
+	forScheduling = true,
+	schedulingFactor = 2,
+	eventSpawnWeight = 4,
 	}
 
 eHelicopter_PRESETS["jet_bombing"] = {
@@ -129,14 +131,16 @@ eHelicopter_PRESETS["jet_bombing"] = {
 
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
-	eventCutOffDayFactor = 0.22,
 	eventSoundEffects = { ["hoverOverTarget"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
-	eventSpawnWeight = 4,
 	speed = 0.10,
 	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
 	scrapItems = {"Bell206LBMWTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206LBMWTail"},
+	forScheduling = true,
+	eventSpawnWeight = 4,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.22,
 	}
 
 eHelicopter_PRESETS["news_chopper_hover"] = {
@@ -169,6 +173,10 @@ eHelicopter_PRESETS["police"] = {
 	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206PoliceTail"},
 	announcerVoice = "Police",
+	forScheduling = true,
+	eventSpawnWeight = 5,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.22,
 	}
 
 eHelicopter_PRESETS["police_heli_emergency"] = {
@@ -206,8 +214,10 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 0.10,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
+	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
+	eventSpawnWeight = 5,
 }
 
 
@@ -220,6 +230,7 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	},
 	scrapItems = {"Bell206PoliceTail", "EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206SurvivalistTail"},
+	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
 }
@@ -232,10 +243,11 @@ eHelicopter_PRESETS["raiders"] = {
 	crashType = {"UH1HRaiderFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
 	scrapVehicles = {"UH1HRaiderTail"},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.66,
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
+	forScheduling = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.66,
 	}
 
 eHelicopter_PRESETS["raider_heli_passive"] = {
