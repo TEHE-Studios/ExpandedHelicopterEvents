@@ -128,7 +128,7 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	--[[DEBUG]] local hitReport = "-hit_report: "..self:heliToString(false)..--[[" n:"..eventSound.." t:"..]]timesFiredOnSpecificHostile..
+	--[[DEBUG] local hitReport = "-hit_report: "..self:heliToString(false)..timesFiredOnSpecificHostile..
 			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
 	if ZombRand(0, 101) <= chance then
