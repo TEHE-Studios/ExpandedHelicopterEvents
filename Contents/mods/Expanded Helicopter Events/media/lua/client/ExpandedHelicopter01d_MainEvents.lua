@@ -63,7 +63,7 @@ function eHelicopter:crash()
 		SpawnerTEMP.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 
 		self.crashType = false
-
+		self.state = "crashed"
 		--drop scrap and parts
 		if self.scrapItems or self.scrapVehicles then
 			self:dropScrap(6)
