@@ -4,6 +4,7 @@ EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 
 EHE_EventMarker.iconSize = 96
 EHE_EventMarker.clickableSize = 45
+EHE_EventMarker.maxRange = 500
 
 function EHE_EventMarker:initialise()
 	ISUIElement.initialise(self)
@@ -145,11 +146,11 @@ function EHE_EventMarker:render()
 		local textureForPoint = self.texturePoint
 		local distanceOverRadius = self.distanceToPoint/self.radius
 
-		if distanceOverRadius <= (8/1000) then
+		if distanceOverRadius <= (8/EHE_EventMarker.maxRange) then
 			textureForPoint = self.texturePointClose
-		elseif distanceOverRadius <= (125/1000) then
+		elseif distanceOverRadius <= (125/EHE_EventMarker.maxRange) then
 			--no change
-		elseif distanceOverRadius <= (375/1000) then
+		elseif distanceOverRadius <= (375/EHE_EventMarker.maxRange) then
 			textureForPoint = self.texturePointMedium
 		else
 			textureForPoint = self.texturePointFar
@@ -202,7 +203,7 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 	o.enabled = true
 	o.visible = true
 	o.title = ""
-	o.distanceToPoint = 1000
+	o.distanceToPoint = EHE_EventMarker.maxRange
 	o.radius = nil
 	o.mouseOver = false
 	o.tooltip = nil
@@ -246,7 +247,7 @@ function EHE_EventMarker:update(player)
 	local x,y,z
 
 	if not self.radius then
-		self.radius = 1000
+		self.radius = EHE_EventMarker.maxRange
 	end
 
 	if (not instanceof(poi, "BaseVehicle")) and (not instanceof(poi, "IsoGridSquare")) then
