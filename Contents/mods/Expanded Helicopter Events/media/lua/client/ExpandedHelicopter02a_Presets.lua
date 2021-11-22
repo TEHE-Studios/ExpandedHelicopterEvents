@@ -73,14 +73,14 @@ eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	inherit = {"military"},
 	hostilePreference = "IsoZombie",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
-	formationIDs = {"air_raid", "attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},
+	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},--"air_raid",
 }
 
 eHelicopter_PRESETS["attack_only_undead"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
-	formationIDs = {"air_raid", "attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},
+	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
 }
 
 eHelicopter_PRESETS["aid_helicopter"] = {
@@ -106,7 +106,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	hostilePreference = "IsoGameCharacter",
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH1HTail"},
-	formationIDs = {"air_raid"},
+	--formationIDs = {"air_raid"},
 }
 
 
