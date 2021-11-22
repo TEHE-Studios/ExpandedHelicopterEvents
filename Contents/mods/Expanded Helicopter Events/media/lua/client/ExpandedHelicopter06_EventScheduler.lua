@@ -260,11 +260,13 @@ function eHeliEvent_Loop()
 	for k,v in pairs(events) do
 		if v.triggered then
 			--clean out old events if any
-			events[k] = nil
+			GT:getModData()["EventsOnSchedule"][k] = nil
 		elseif (v.startDay <= nightsSurvived) and (v.startTime == HOUR) then
 			print("EHE: LAUNCH INFO:  HELI ID:"..k.." - "..v.preset)
 			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)
+			else
+				GT:getModData()["EventsOnSchedule"][k] = nil
 			end
 		end
 	end
