@@ -175,7 +175,7 @@ function eHelicopter:fireOn(targetHostile)
 
 						local protection = targetHostile:getBodyPartClothingDefense(bpIndexNum, false, true)/100
 						damage = damage * (1-(protection*0.75))
-						print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
+						--print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
 
 						bodyDMG:AddDamage(bpIndexNum,damage)
 						actualBP:damageFromFirearm(damage)
@@ -193,9 +193,9 @@ function eHelicopter:fireOn(targetHostile)
 		for _=1, splatIterations do
 			targetHostile:splatBloodFloor(0.9)
 		end
-		--[[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
+		--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 	end
-	--[[DEBUG]] print(hitReport)
+	--[DEBUG]] print(hitReport)
 
 	if self.addedFunctionsToEvents then
 		local eventFunction = self.addedFunctionsToEvents["OnAttack"]
