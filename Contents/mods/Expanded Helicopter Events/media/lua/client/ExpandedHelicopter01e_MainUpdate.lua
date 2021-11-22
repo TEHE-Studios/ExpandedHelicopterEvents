@@ -4,7 +4,7 @@ function eHelicopter:update()
 		return
 	end
 
-	if (not self.target) or (not self.trueTarget) then
+	if (self.state == "arrived" or self.state == "gotoTarget") and ((not self.target) or (not self.trueTarget)) then
 
 		if (not self.target) then
 			print(" - EHE: ERR: "..self:heliToString().." no target in update()")
@@ -14,7 +14,6 @@ function eHelicopter:update()
 		end
 
 		self.trueTarget = self:findTarget(self.attackDistance, "update")
-
 		self.target = self.trueTarget
 		self:setTargetPos()
 		return

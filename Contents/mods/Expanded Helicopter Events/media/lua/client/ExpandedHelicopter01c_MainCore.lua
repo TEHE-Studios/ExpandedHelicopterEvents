@@ -741,6 +741,7 @@ function eHelicopter:goHome()
 	self.trueTarget = selfSquare
 	self.target = self.trueTarget
 	self:setTargetPos()
+	return selfSquare
 end
 
 
