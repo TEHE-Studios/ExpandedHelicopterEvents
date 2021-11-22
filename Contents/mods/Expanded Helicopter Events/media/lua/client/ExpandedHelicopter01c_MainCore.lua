@@ -264,6 +264,10 @@ function eHelicopter:aimAtTarget()
 
 	self:setTargetPos()
 
+	if not self.targetPosition or not self.currentPosition then
+		return
+	end
+
 	local movement_x = Vector3GetX(self.targetPosition) - Vector3GetX(self.currentPosition)
 	local movement_y = Vector3GetY(self.targetPosition) - Vector3GetY(self.currentPosition)
 
