@@ -8,6 +8,12 @@ eHelicopter_PRESETS["id_name"] = {
 	}
 ]]
 
+--- forScheduling string used for scheduler; leaving it as nil means the event will not spawn from the scheduler
+--- schedulingFactor number multiplied against frequency to make them more or less likely - high number = more likely to be scheduled
+--- eventSpawnWeight number This number is how many times this event is included in the scheduler's pool of events
+--- eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
+--- eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
+
 
 eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1},
