@@ -193,7 +193,14 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 				--less frequent over time
 				probabilityDenominator = probabilityDenominator+(1000*(daysIntoApoc/SandboxVars.ExpandedHeli.CutOffDay))
 
-				local eventAvailable = (dayAndHourInRange or (SandboxVars.ExpandedHeli.NeverEnding==true))
+				local eventAvailable = false
+
+				if dayAndHourInRange then
+					eventAvailable = true
+				--if (daysIn > startDay) AND (not ignoring never-end) AND (never-end is on)
+				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreNeverEnding) and SandboxVars.ExpandedHeli.NeverEnding==true) then
+					eventAvailable = true
+				end
 
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
 
@@ -258,15 +265,12 @@ function eHeliEvent_Loop()
 	local events = GT:getModData()["EventsOnSchedule"]
 
 	for k,v in pairs(events) do
-		if v.triggered then
-			--clean out old events if any
+		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
 			GT:getModData()["EventsOnSchedule"][k] = nil
 		elseif (v.startDay <= nightsSurvived) and (v.startTime == HOUR) then
 			print("EHE: LAUNCH INFO:  HELI ID:"..k.." - "..v.preset)
 			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)
-			else
-				GT:getModData()["EventsOnSchedule"][k] = nil
 			end
 		end
 	end

@@ -14,6 +14,8 @@ eHelicopter_PRESETS["id_name"] = {
 --- eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
 --- eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
 
+--- doNotListForTwitchIntegration
+--- ignoreNeverEnding
 
 eHelicopter_PRESETS["military"] = {
 	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1},
@@ -137,6 +139,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	schedulingFactor = 99999,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
+	ignoreNeverEnding = true,
 }
 
 eHelicopter_PRESETS["jet_bombing"] = {
@@ -154,6 +157,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	schedulingFactor = 99999,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
+	ignoreNeverEnding = true,
 }
 
 
