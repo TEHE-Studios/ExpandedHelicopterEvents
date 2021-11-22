@@ -82,15 +82,15 @@ description=[list]
 description=
 description=[h2]EARLY GAME:[/h2]
 description=[list]
-description=[*] [b]Military Helicopter:[/b] Initially this helicopter will only make announcements but will over time begin firing on targets; at first towards the
-undead then later, towards players as well.
+description=[*] [b]Military Helicopter:[/b] Initially this helicopter will only make announcements but will over time begin firing on targets;
+description= at first towards the undead then later, towards players as well.
 description=
 description=[*] [b]FEMA Emergency Drop:[/b] On occasion and before civilization collapses, a helicopter will drop off an emergency supply drop.
 description=
 description=[*] [b]Police Helicopter:[/b] These helicopters will patrol early on and fire on undead right away.
 description=
-description=[*] [b]News Helicopter:[/b] These helicopters will follow their target and most closely resemble the vanilla event. However, the player can use cover as well as the indoors to
-flee the area.
+description=[*] [b]News Helicopter:[/b] These helicopters will follow their target and most closely resemble the vanilla event.
+description= However, the player can use cover as well as the indoors to flee the area.
 description=
 description=[*] [b]Passing Jets:[/b] While not strictly a "helicopter" the jet events whizz near by the player to keep things interesting and move horde of undead early on.
 description=
