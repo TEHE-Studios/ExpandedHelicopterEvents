@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.1"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.3-hotfix2"))
 
 DEBUG_TESTS = DEBUG_TESTS or {}
 DEBUG_TESTS.TOGGLE_ALL_CRASH = false
