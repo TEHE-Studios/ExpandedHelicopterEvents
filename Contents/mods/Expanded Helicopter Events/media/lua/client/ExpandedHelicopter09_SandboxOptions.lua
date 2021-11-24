@@ -2,7 +2,7 @@ require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = { debugTests = false, eventMarkersOn = true, resetEvents = false}
+eHelicopterSandbox.config = {eventMarkersOn = true, resetEvents = false}
 ---voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
@@ -74,7 +74,6 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu["eventMarkersOnToolTip"] =  nil
 	eHelicopterSandbox.menu["eventMarkersOn"] = nil
 	eHelicopterSandbox.menu["generalSpaceE"] = nil
-	eHelicopterSandbox.menu["debugTests"] = nil
 
 	eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
 	eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
@@ -83,10 +82,6 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu["eventMarkersOnToolTip"] = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-67, }
 	eHelicopterSandbox.menu["eventMarkersOn"] = { type = "Tickbox", title = "Event Markers", alwaysAccessible = true}
 	eHelicopterSandbox.menu["generalSpaceE"] = {type = "Space"}
-
-	if getDebug() then
-		eHelicopterSandbox.menu["debugTests"] = {type = "Tickbox", title = "EHE: Debug Test Suite", tooltip = "", alwaysAccessible = true }
-	end
 end
 
 EasyConfig_Chucked = EasyConfig_Chucked or {}

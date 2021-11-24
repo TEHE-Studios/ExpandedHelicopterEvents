@@ -1,78 +1,36 @@
 Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.3-hotfix2"))
 
-DEBUG_TESTS = DEBUG_TESTS or {}
-DEBUG_TESTS.TOGGLE_ALL_CRASH = false
+require "zDebugPanel"
 
-Events.OnKeyPressed.Add(function(key)
-	local player = getPlayer()
-	if player and getDebug() and (eHelicopterSandbox.config.debugTests==true) then
-		if key == Keyboard.KEY_1 then DEBUG_TESTS.eHeliEventsOnSchedule()--DEBUG_TESTS.testAllLines()
-		elseif key == Keyboard.KEY_2 then DEBUG_TESTS.raiseTheDead()
-		elseif key == Keyboard.KEY_3 then DEBUG_TESTS.ToggleAllCrash()
-		elseif key == Keyboard.KEY_4 then DEBUG_TESTS.ToggleMoveHeliCloser()
-		elseif key == Keyboard.KEY_5 then DEBUG_TESTS.launchHeliTest("patrol_only_emergency", player)
-		elseif key == Keyboard.KEY_6 then DEBUG_TESTS.launchHeliTest("patrol_only_quarantine", player)
-		elseif key == Keyboard.KEY_7 then DEBUG_TESTS.launchHeliTest("police_heli_firing", player)
-		elseif key == Keyboard.KEY_8 then DEBUG_TESTS.launchHeliTest("raiders", player)
-		elseif key == Keyboard.KEY_9 then DEBUG_TESTS.eHeliEvents_SchedulerUnitTest()
-		elseif key == Keyboard.KEY_0 then DEBUG_TESTS.SpawnerPrint()
-		end
-	end
-end)
+CustomDebugPanel = CustomDebugPanel or {}
+CustomDebugPanel.TOGGLE_ALL_CRASH = false
 
-
-function DEBUG_TESTS.SandboxVarsDUMP()
+function CustomDebugPanel.SandboxVarsDUMP()
 	--SandboxVars
-	print("SandboxVars:"..DEBUG_TESTS.RecursiveTablePrint(SandboxVars).."\nEnd Of SandboxVars")
-end
-function DEBUG_TESTS.SandboxVarsTest()
-	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
-	for k,type in pairs(typesForRemovalList) do
-		if not string.find(SandboxVars.WorldItemRemovalList, type) then
-			SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
-		end
-	end
-	getSandboxOptions():updateFromLua()
+	print("SandboxVars:"..CustomDebugPanel.RecursiveTablePrint(SandboxVars).."\nEnd Of SandboxVars")
 end
 
-
-function DEBUG_TESTS.RTP_indent(n) local text = "" for i=0, n do text = text.."   " end return text end
-function DEBUG_TESTS.RecursiveTablePrint(object,nesting,every_other)
+function CustomDebugPanel.RTP_indent(n) local text = "" for i=0, n do text = text.."   " end return text end
+function CustomDebugPanel.RecursiveTablePrint(object,nesting,every_other)
 	nesting = nesting or 0
-	local text = ""..DEBUG_TESTS.RTP_indent(nesting)
+	local text = ""..CustomDebugPanel.RTP_indent(nesting)
 	if type(object) == 'table' then
 		local s = '{ \n'
 		for k,v in pairs(object) do
 			local items_print = false
 			if k == "items" then items_print = true end
 			if type(k) ~= 'number' then k = '"'..k..'"' end
-			if (not every_other) or (every_other and (not (k % 2 == 0))) then s = s..DEBUG_TESTS.RTP_indent(nesting+1) end
-			s = s..'['..k..'] = '..DEBUG_TESTS.RecursiveTablePrint(v,nesting+1,items_print)..", "
+			if (not every_other) or (every_other and (not (k % 2 == 0))) then s = s..CustomDebugPanel.RTP_indent(nesting+1) end
+			s = s..'['..k..'] = '..CustomDebugPanel.RecursiveTablePrint(v,nesting+1,items_print)..", "
 			if (not every_other) or (every_other and (k % 2 == 0)) then s = s.."\n" end
-		end text = s.."\n"..DEBUG_TESTS.RTP_indent(nesting).."}"
+		end text = s.."\n"..CustomDebugPanel.RTP_indent(nesting).."}"
 	else text = tostring(object) end
 	return text
 end
---function PrintProceduralDistributions() print("ProceduralDistributions:"..DEBUG_TESTS.RecursiveTablePrint(ProceduralDistributions).."\nEnd Of ProceduralDistributions") end
+--function PrintProceduralDistributions() print("ProceduralDistributions:"..CustomDebugPanel.RecursiveTablePrint(ProceduralDistributions).."\nEnd Of ProceduralDistributions") end
 
 
-function DEBUG_TESTS.SpawnerPrint()
-	local SpawnerPendingLocations = SpawnerTEMP.getOrSetPendingSpawnsList()
-	print("Spawner Print: ")
-	for k,position in pairs(SpawnerPendingLocations) do
-		local text = " -- "..k.." : \n"
-		for kk,data in pairs(position) do
-			text = text.." --- "..kk.." = "..tostring(data).." \n"
-			for kkk,entry in pairs(data) do
-				text = text.." ---- "..kkk.." = "..tostring(entry).." \n"
-			end
-		end
-		print(text)
-	end
-end
-
-
-function DEBUG_TESTS.ZombRandTest(imax)
+function CustomDebugPanel.ZombRandTest(imax)
 	local results = {};
 	for i = 1, imax do
 		local testRand = (ZombRand(13)+1)/10
@@ -87,27 +45,27 @@ function DEBUG_TESTS.ZombRandTest(imax)
 end
 
 
-function DEBUG_TESTS.ToggleAllCrash()
-	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then
-		DEBUG_TESTS.TOGGLE_ALL_CRASH = false
+function CustomDebugPanel.ToggleAllCrash()
+	if CustomDebugPanel.TOGGLE_ALL_CRASH == true then
+		CustomDebugPanel.TOGGLE_ALL_CRASH = false
 	else
-		DEBUG_TESTS.TOGGLE_ALL_CRASH = true
+		CustomDebugPanel.TOGGLE_ALL_CRASH = true
 	end
-	print("EHE: DEBUG: TOGGLE_ALL_CRASH = "..tostring(DEBUG_TESTS.TOGGLE_ALL_CRASH))
+	print("EHE: DEBUG: TOGGLE_ALL_CRASH = "..tostring(CustomDebugPanel.TOGGLE_ALL_CRASH))
 end
 
 
-function DEBUG_TESTS.ToggleMoveHeliCloser()
-	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then
-		DEBUG_TESTS.MOVE_HELI_TEST_CLOSER = false
+function CustomDebugPanel.ToggleMoveHeliCloser()
+	if CustomDebugPanel.MOVE_HELI_TEST_CLOSER == true then
+		CustomDebugPanel.MOVE_HELI_TEST_CLOSER = false
 	else
-		DEBUG_TESTS.MOVE_HELI_TEST_CLOSER = true
+		CustomDebugPanel.MOVE_HELI_TEST_CLOSER = true
 	end
-	print("EHE: DEBUG: MOVE_HELI_TEST_CLOSER = "..tostring(DEBUG_TESTS.MOVE_HELI_TEST_CLOSER))
+	print("EHE: DEBUG: MOVE_HELI_TEST_CLOSER = "..tostring(CustomDebugPanel.MOVE_HELI_TEST_CLOSER))
 end
 
 
-function DEBUG_TESTS.moveHeliCloser(heli)
+function CustomDebugPanel.moveHeliCloser(heli)
 	if not heli or not heli.target then
 		return
 	end
@@ -130,15 +88,15 @@ end
 
 
 --- Test launch heli
-function DEBUG_TESTS.launchHeliTest(presetID, player)
+function CustomDebugPanel.launchHeliTest(presetID, player)
 	---@type eHelicopter heli
 	local heli = getFreeHelicopter(presetID)
 	print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))
 	heli:launch(player)
-	if DEBUG_TESTS.MOVE_HELI_TEST_CLOSER == true then
-		DEBUG_TESTS.moveHeliCloser(heli)
+	if CustomDebugPanel.MOVE_HELI_TEST_CLOSER == true then
+		CustomDebugPanel.moveHeliCloser(heli)
 	end
-	if DEBUG_TESTS.TOGGLE_ALL_CRASH == true then
+	if CustomDebugPanel.TOGGLE_ALL_CRASH == true then
 		heli.crashing = true
 		heli:crash()
 	end
@@ -146,7 +104,7 @@ end
 
 
 --- Check weather
-function DEBUG_TESTS.CheckWeather()
+function CustomDebugPanel.CheckWeather()
 	local CM = getClimateManager()
 	print("--- CM:getWindIntensity: "..CM:getWindIntensity())
 	print("--- CM:getFogIntensity: "..CM:getFogIntensity())
@@ -160,7 +118,7 @@ function DEBUG_TESTS.CheckWeather()
 end
 
 
-function DEBUG_TESTS.eHeliEvents_SchedulerUnitTest()
+function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	local GTMData = getGameTime():getModData()
 	GTMData["EventsOnSchedule"] = {}
 	print("======================================")
@@ -187,7 +145,7 @@ end
 
 
 --- Check eHeliEvent within eHeliEventsOnSchedule
-function DEBUG_TESTS.eHeliEventsOnSchedule()
+function CustomDebugPanel.eHeliEventsOnSchedule()
 
 	local GT = getGameTime()
 	local nightsSurvived = tostring(GT:getNightsSurvived())
@@ -208,7 +166,7 @@ end
 
 
 --- Raise the dead
-function DEBUG_TESTS.raiseTheDead()
+function CustomDebugPanel.raiseTheDead()
 	local player = getSpecificPlayer(0)
 	local squaresInRange = getIsoRange(player, 15)
 	local reanimated=0
@@ -256,7 +214,7 @@ end
 
 
 --- Test getHumanoidsInFractalRange
-function DEBUG_TESTS.getHumanoidsInFractalRange()
+function CustomDebugPanel.getHumanoidsInFractalRange()
 	local player = getSpecificPlayer(0)
 	local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
 
@@ -270,7 +228,7 @@ end
 
 
 --- Test getHumanoidsInRange
-function DEBUG_TESTS.getHumanoidsInRange()
+function CustomDebugPanel.getHumanoidsInRange()
 	local player = getSpecificPlayer(0)
 	local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
 
@@ -291,7 +249,7 @@ testAllLines__ALL_LINES = {}
 testAllLines__DELAYS = {}
 testAllLines__lastDemoTime = 0
 
-function DEBUG_TESTS.testAllLines()
+function CustomDebugPanel.testAllLines()
 	if #testAllLines__ALL_LINES > 0 then
 		testAllLines__ALL_LINES = {}
 		testAllLines__DELAYS = {}
@@ -311,7 +269,7 @@ function DEBUG_TESTS.testAllLines()
 	table.insert(testAllLines__DELAYS, 1)
 end
 
-function DEBUG_TESTS.testAllLinesLOOP()
+function CustomDebugPanel.testAllLinesLOOP()
 	if #testAllLines__ALL_LINES > 0 then
 		if (testAllLines__lastDemoTime < getTimestampMs()) then
 			local line = testAllLines__ALL_LINES[1]
@@ -326,57 +284,4 @@ function DEBUG_TESTS.testAllLinesLOOP()
 	end
 end
 
-Events.OnTick.Add(DEBUG_TESTS.testAllLinesLOOP)
-
-
----Try to shake trees near by
-function DEBUG_TESTS.shakeTrees()
-	print("impactEnvironment: ")
-	if not getCore():getOptionDoWindSpriteEffects() then
-		print("-- Core:getOptionDoWindSpriteEffects == false; No effects for you. ")
-		return
-	end
-
-	---@type IsoObject | IsoGameCharacter |IsoMovingObject
-	local player = getSpecificPlayer(0)
-	local centerSquare = player:getSquare()--self:getIsoGridSquare()
-	print("-- square:"..tostring(centerSquare:getClass():getSimpleName()))
-	--local cell = (not square) or square:getCell()
-	--print("-- cell:"..tostring(cell))
-	local squaresInRange = (not centerSquare) or getIsoRange(centerSquare, 5)
-	print("-- squaresInRange: "..tostring(squaresInRange))
-
-	if squaresInRange then
-		for _,v in pairs(squaresInRange) do
-			---@type IsoGridSquare
-			local square = v
-			--print("--- square: "..tostring(square))
-			---@type IsoTree | IsoObject
-			local tree = (not square) or square:getTree()
-			if tree then
-				print("--- tree: "..tostring(tree:getClass():getSimpleName()))
-
-				--local CM = getClimateManager()
-				--local windTick = CM:getWindTickFinal()
-				--local windAngle = CM:getWindAngleIntensity()
-				--print("windTick: "..windTick.."   windAngle: "..windAngle)
-
-				tree:setRenderEffect(RenderEffectType, true)
-
-				local renderEffect = tree:getWindRenderEffects()
-
-				if renderEffect then
-					print("--- --- Render Effect getNextWindEffect")
-					---HANGS HERE
-					--renderEffect:getNextWindEffect(1,true)
-					print("--- --- Render Effect update")
-					renderEffect:update()--0.1,0.5)
-				else
-					print("--- --- No Render Effect")
-				end
-				--renderEffect:getNextWindEffect(1,true)
-				--renderEffect:getNew(tree, RenderEffectType.Vegetation_Rustle, false, false) ---RenderEffectType is private
-			end
-		end
-	end
-end
+Events.OnTick.Add(CustomDebugPanel.testAllLinesLOOP)
