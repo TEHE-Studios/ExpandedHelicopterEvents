@@ -2,6 +2,19 @@ Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.3-hotfix2"))
 
 require "zDebugPanel"
 
+Events.OnGameBoot.Add(function()
+	ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
+	ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
+	ISCustomDebugTestsPanel.Tests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
+	ISCustomDebugTestsPanel.Tests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
+	ISCustomDebugTestsPanel.Tests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
+	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
+		ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
+	end
+	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
+end)
+
+
 CustomDebugPanel = CustomDebugPanel or {}
 CustomDebugPanel.TOGGLE_ALL_CRASH = false
 

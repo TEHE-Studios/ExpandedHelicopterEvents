@@ -3,20 +3,14 @@ require "DebugUIs/DebugMenu/Base/ISDebugSubPanelBase"
 ---@class ISCustomDebugTestsPanel : ISCustomDebugTestsPanel
 ISCustomDebugTestsPanel = ISDebugSubPanelBase:derive("ISCustomDebugTestsPanel")
 
+ISCustomDebugTestsPanel.Tests = ISCustomDebugTestsPanel.Tests or {}
+
 function ISCustomDebugTestsPanel:initialise()
 	ISPanel.initialise(self)
 
-	self:addButtonInfo("Check Schedule",CustomDebugPanel.eHeliEventsOnSchedule)
-	self:addButtonInfo("Test All Voice Lines",CustomDebugPanel.testAllLines)
-	self:addButtonInfo("Raise The Dead",CustomDebugPanel.raiseTheDead)
-	self:addButtonInfo("ToggleAllCrash",CustomDebugPanel.ToggleAllCrash)
-	self:addButtonInfo("ToggleMoveHeliCloser",CustomDebugPanel.ToggleMoveHeliCloser)
-
-	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-		self:addButtonInfo("Launch: "..presetID, function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
+	for title,func in pairs(ISCustomDebugTestsPanel.Tests) do
+		self:addButtonInfo(title,func)
 	end
-
-	self:addButtonInfo("Scheduler Unit Test",CustomDebugPanel.eHeliEvents_SchedulerUnitTest)
 end
 
 function ISCustomDebugTestsPanel:addButtonInfo(_title, _command, _marginBot)
