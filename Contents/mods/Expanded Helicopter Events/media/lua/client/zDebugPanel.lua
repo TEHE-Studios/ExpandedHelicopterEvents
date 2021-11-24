@@ -13,31 +13,51 @@ function ISCustomDebugTestsPanel:initialise()
 	end
 end
 
+
 function ISCustomDebugTestsPanel:addButtonInfo(_title, _command, _marginBot)
 	self.buttons = self.buttons or {}
-
 	table.insert(self.buttons, { title = _title, command = _command, marginBot = (_marginBot or 0) })
 end
+
 
 function ISCustomDebugTestsPanel:createChildren()
 	ISPanel.createChildren(self)
 
 	local v, obj
-	local x,y,w,margin = 10,10,self.width-30,5
+	local x = 10
+	local y = 10
+	local w = self.width-30
+	local margin = 5
+
 	y, obj = ISDebugUtils.addLabel(self,"game_title",x+(w/2),y,"Custom Debug Tests", UIFont.Medium)
 	obj.center = true
+
 	y = y+10
+
 	local h = 20
+
 	if self.buttons then
 		for k,v in ipairs(self.buttons)  do
-			y, obj = ISDebugUtils.addButton(self,v,x,y+margin,w,h,v.title,ISCustomDebugTestsPanel.onClick)
-			if v.marginBot and v.marginBot>0 then
+
+			local evenNumber = (k % 2 == 0)
+			local newY = 0
+			if evenNumber then
+				x = 15 + w/2
+				newY = y-h
+			else
+				x = 10
+				newY = y+margin
+			end
+
+			y, obj = ISDebugUtils.addButton(self,v,x,newY,(w/2)-5,h,v.title,ISCustomDebugTestsPanel.onClick)
+			if (not evenNumber) and v.marginBot and v.marginBot>0 then
 				y = y+v.marginBot
 			end
 		end
 	end
 	self:setScrollHeight(y+10)
 end
+
 
 function ISCustomDebugTestsPanel:onClick(_button)
 	if _button.customData and _button.customData.command then
@@ -54,6 +74,7 @@ end
 function ISCustomDebugTestsPanel:update()
 	ISPanel.update(self)
 end
+
 
 function ISCustomDebugTestsPanel:new(x, y, width, height, doStencil)
 	local o = {}
