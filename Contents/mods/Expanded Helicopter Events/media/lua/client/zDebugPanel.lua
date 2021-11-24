@@ -34,15 +34,13 @@ function ISCustomDebugTestsPanel:createChildren()
 
 	local v, obj
 	local x = 10
-	local y = 10
+	local y = 5
 	local w = self.width-30
-	local h = 20
+	local h = 18
 	local margin = 5
 
 	y, obj = ISDebugUtils.addLabel(self,"game_title",x+(w/2),y,"Custom Debug Tests", UIFont.Medium)
 	obj.center = true
-
-	y = y+10
 
 	if self.buttons then
 		for k,v in ipairs(self.buttons)  do
