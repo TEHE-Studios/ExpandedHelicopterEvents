@@ -3,7 +3,16 @@ require "DebugUIs/DebugMenu/Base/ISDebugSubPanelBase"
 ---@class ISCustomDebugTestsPanel : ISCustomDebugTestsPanel
 ISCustomDebugTestsPanel = ISDebugSubPanelBase:derive("ISCustomDebugTestsPanel")
 
-ISCustomDebugTestsPanel.Tests = ISCustomDebugTestsPanel.Tests or {}
+---Global test list to add onto.
+--[[ EXAMPLE
+Events.OnGameBoot.Add(function()
+	ISCustomDebugTestsPanel.Tests["LABEL TEXT"] = FUNCTION
+	ISCustomDebugTestsPanel.Tests["LABEL TEXT"] = FUNCTION
+	ISCustomDebugTestsPanel.Tests["LABEL TEXT"] = FUNCTION
+end)
+--]]
+ISCustomDebugTestsPanel.Tests = {}
+
 
 function ISCustomDebugTestsPanel:initialise()
 	ISPanel.initialise(self)
@@ -27,14 +36,13 @@ function ISCustomDebugTestsPanel:createChildren()
 	local x = 10
 	local y = 10
 	local w = self.width-30
+	local h = 20
 	local margin = 5
 
 	y, obj = ISDebugUtils.addLabel(self,"game_title",x+(w/2),y,"Custom Debug Tests", UIFont.Medium)
 	obj.center = true
 
 	y = y+10
-
-	local h = 20
 
 	if self.buttons then
 		for k,v in ipairs(self.buttons)  do
@@ -85,7 +93,7 @@ function ISCustomDebugTestsPanel:new(x, y, width, height, doStencil)
 end
 
 
----=-=-=-=-=-==|[ Override debug panel ]|==-=-=-=-=-=---
+---Override debug panel
 require "DebugUIs/DebugMenu/Base/ISDebugPanelBase"
 
 local stored__ISGeneralDebug_initialise = ISGeneralDebug.initialise
