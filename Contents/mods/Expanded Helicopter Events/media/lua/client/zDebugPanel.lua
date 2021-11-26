@@ -6,11 +6,14 @@ ISCustomDebugTestsPanel = ISDebugSubPanelBase:derive("ISCustomDebugTestsPanel")
 ---Global test list to add onto.
 --[[ EXAMPLE
 Events.OnGameBoot.Add(function()
+	--`LABEL TEXT` represents what will be placed on the button.
+	--`FUNCTION` represents a function. Arguments are optional.
 	ISCustomDebugTestsPanel.Tests["LABEL TEXT"] = FUNCTION
 	ISCustomDebugTestsPanel.Tests["LABEL TEXT"] = FUNCTION
 	ISCustomDebugTestsPanel.Tests["LABEL TEXT"] = FUNCTION
 end)
 --]]
+
 ISCustomDebugTestsPanel.Tests = {}
 
 
