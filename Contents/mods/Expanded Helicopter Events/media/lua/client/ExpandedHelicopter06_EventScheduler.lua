@@ -262,7 +262,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 					eventAvailable = true
 				end
 
-				if (specialDatesObserved and specialDatesInRange) then
+				if (specialDatesObserved and (not specialDatesInRange)) then
 					eventAvailable = false
 				end
 
