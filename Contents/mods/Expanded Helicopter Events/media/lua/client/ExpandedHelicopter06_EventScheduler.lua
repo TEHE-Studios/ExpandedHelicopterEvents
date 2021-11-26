@@ -223,17 +223,20 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 				local dayAndHourInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay) and (currentHour >= flightHours[1]) and (currentHour <= flightHours[2]))
 
 				local specialDatesObserved = presetSettings.eventSpecialDates
-				local specialDatesInRange_inGame = false
-				local specialDatesInRange_system = false
+				local specialDatesInRange = false
 				if specialDatesObserved then
 					if specialDatesObserved.inGameDates then
 						local currentInGameDate = {GT:getMonth(), GT:getDay()}
-						specialDatesInRange_inGame = eHeliEvent_processSchedulerDates(currentInGameDate,specialDatesObserved.inGameDates)
+						if eHeliEvent_processSchedulerDates(currentInGameDate,specialDatesObserved.inGameDates) == true then
+							specialDatesInRange = true
+						end
 					end
 					if specialDatesObserved.systemDates then
 						local osDate = os.date("*t")
 						local currentSystemDate = {osDate.month, osDate.day}
-						specialDatesInRange_system = eHeliEvent_processSchedulerDates(currentSystemDate,specialDatesObserved.systemDates)
+						if eHeliEvent_processSchedulerDates(currentSystemDate,specialDatesObserved.systemDates) == true then
+							specialDatesInRange = true
+						end
 					end
 				end
 
@@ -252,20 +255,15 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 
 				local eventAvailable = false
 
-				if specialDatesObserved then
-					if specialDatesObserved.inGameDates and specialDatesInRange_inGame then
-						eventAvailable = true
-					end
-					if specialDatesObserved.systemDates and specialDatesInRange_system then
-						eventAvailable = true
-					end
-				end
-
 				if dayAndHourInRange then
 					eventAvailable = true
 				--if (daysIn > startDay) AND (not ignoring never-end) AND (never-end is on)
 				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreNeverEnding) and SandboxVars.ExpandedHeli.NeverEnding==true) then
 					eventAvailable = true
+				end
+
+				if (specialDatesObserved and specialDatesInRange) then
+					eventAvailable = false
 				end
 
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]

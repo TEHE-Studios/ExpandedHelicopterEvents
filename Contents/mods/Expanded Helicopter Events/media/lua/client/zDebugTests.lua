@@ -168,21 +168,17 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	print("======================================")
 	print("neHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
 	print("--------------------------------------")
-	for freq=0, 6 do
-		print("Frequency Test: "..freq)
-		for day=0, 90 do
-			for hour=0, 24 do
-				eHeliEvent_ScheduleNew(day,hour,freq)
-				for k,v in pairs(GTMData["EventsOnSchedule"]) do
-					if v.triggered then
-						GTMData["EventsOnSchedule"][k] = nil
-					elseif (v.startDay <= day) and (v.startTime == hour) then
-						GTMData["EventsOnSchedule"][k].triggered = true
-					end
+	for day=0, 90 do
+		for hour=0, 24 do
+			eHeliEvent_ScheduleNew(day,hour)
+			for k,v in pairs(GTMData["EventsOnSchedule"]) do
+				if v.triggered then
+					GTMData["EventsOnSchedule"][k] = nil
+				elseif (v.startDay <= day) and (v.startTime == hour) then
+					GTMData["EventsOnSchedule"][k].triggered = true
 				end
 			end
 		end
-		print("--------------------------------------")
 	end
 	print("======================================")
 end
