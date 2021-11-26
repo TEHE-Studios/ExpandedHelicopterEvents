@@ -36,7 +36,7 @@ function ISCustomDebugTestsPanel:createChildren()
 	ISPanel.createChildren(self)
 
 	local v, obj
-	local x = 10
+	local x = 20
 	local y = 5
 	local w = self.width-30
 	local h = 18
@@ -50,15 +50,16 @@ function ISCustomDebugTestsPanel:createChildren()
 
 			local evenNumber = (k % 2 == 0)
 			local newY = 0
+			local newX = 0
 			if evenNumber then
-				x = 15 + w/2
+				newX = x - 5 + w/2
 				newY = y-h
 			else
-				x = 10
+				newX = x
 				newY = y+margin
 			end
 
-			y, obj = ISDebugUtils.addButton(self,v,x,newY,(w/2)-5,h,v.title,ISCustomDebugTestsPanel.onClick)
+			y, obj = ISDebugUtils.addButton(self,v,newX,newY,(w/2)-20,h,v.title,ISCustomDebugTestsPanel.onClick)
 			if (not evenNumber) and v.marginBot and v.marginBot>0 then
 				y = y+v.marginBot
 			end
