@@ -148,6 +148,48 @@ end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 
 
+---@param targetDate table table of numbers: 1=month, 2=day
+---@param expectedDates table table of dates (like above)
+function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
+
+	if (type(targetDate)~="table") or (type(expectedDates)~="table") or (#targetDate<=0) or (#expectedDates<=0) then
+		print ("A")
+		return false
+	end
+
+	local targetMonth = targetDate[1]
+	local targetDay = targetDate[2] or 1
+
+	local expectedDateMIN = expectedDates[1]
+	local MIN_month
+	local MIN_day
+	if expectedDateMIN and type(expectedDateMIN)=="table" then
+		MIN_month = expectedDateMIN[1]
+		MIN_day = expectedDateMIN[2]
+	end
+
+	local expectedDateMAX = expectedDates[2]
+	local MAX_month
+	local MAX_day
+	if expectedDateMAX and type(expectedDateMAX)=="table" then
+		MAX_month = expectedDateMAX[1]
+		MAX_day = expectedDateMAX[2]
+	end
+
+	--no expected max for range; if month is current; if min day is current day is min day = true
+	if not expectedDateMAX then
+		if (MIN_month==targetMonth) and ((not MIN_day) or (MIN_day==targetDay)) then
+			return true
+		end
+	else
+		if ((MAX_month<=targetMonth) and ((not MAX_day) or (MAX_day<=targetDay))) and ((MAX_month>=targetMonth) and ((not MAX_day) or (MAX_day>=targetDay))) then
+			return true
+		end
+	end
+	return false
+end
+
+
 function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 	local GT = getGameTime()
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
@@ -180,6 +222,21 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 
 				local dayAndHourInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay) and (currentHour >= flightHours[1]) and (currentHour <= flightHours[2]))
 
+				local specialDatesObserved = presetSettings.eventSpecialDates
+				local specialDatesInRange_inGame = false
+				local specialDatesInRange_system = false
+				if specialDatesObserved then
+					if specialDatesObserved.inGameDates then
+						local currentInGameDate = {GT:getMonth(), GT:getDay()}
+						specialDatesInRange_inGame = eHeliEvent_processSchedulerDates(currentInGameDate,specialDatesObserved.inGameDates)
+					end
+					if specialDatesObserved.systemDates then
+						local osDate = os.date("*t")
+						local currentSystemDate = {osDate.month, osDate.day}
+						specialDatesInRange_system = eHeliEvent_processSchedulerDates(currentSystemDate,specialDatesObserved.systemDates)
+					end
+				end
+
 				local freq = 3
 				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
 				if presetFreq then
@@ -194,6 +251,15 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 				probabilityDenominator = probabilityDenominator+(1000*(daysIntoApoc/SandboxVars.ExpandedHeli.CutOffDay))
 
 				local eventAvailable = false
+
+				if specialDatesObserved then
+					if specialDatesObserved.inGameDates and specialDatesInRange_inGame then
+						eventAvailable = true
+					end
+					if specialDatesObserved.systemDates and specialDatesInRange_system then
+						eventAvailable = true
+					end
+				end
 
 				if dayAndHourInRange then
 					eventAvailable = true

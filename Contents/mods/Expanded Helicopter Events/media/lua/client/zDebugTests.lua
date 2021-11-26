@@ -12,11 +12,42 @@ Events.OnGameBoot.Add(function()
 		ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
 	end
 	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test 90 Days [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
+	ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
 end)
 
 
 CustomDebugPanel = CustomDebugPanel or {}
 CustomDebugPanel.TOGGLE_ALL_CRASH = false
+---TEST FUNCTIONS:
+
+function CustomDebugPanel.TemporaryTest()
+	local osDate = os.date("*t")
+	local currentSystemDate = {osDate.month, osDate.day}
+	local currentInGameDate = {getGameTime():getMonth(), getGameTime():getDay()}
+	print("currentSystemDate: "..currentSystemDate[1].."/"..currentSystemDate[2].."  currentInGameDate:"..currentInGameDate[1].."/"..currentInGameDate[2])
+
+	--11/26  6/30
+
+	local TESTS = {
+		{{1}},
+		{{1,1}},
+		{{1,15},{12}},
+		{{1},{12}},
+		{{1},{12}},
+		{{1},{12}},
+		{{1},{12}},
+		{{1},{12}},
+		{{11}},
+		{{11,1},{11,15}},
+	}
+
+	for k,v in pairs(TESTS) do
+		local systemDateTest = eHeliEvent_processSchedulerDates(currentSystemDate, v)
+		local inGameDateTest = eHeliEvent_processSchedulerDates(currentInGameDate, v)
+		print("test "..k.." systemDateTest:"..tostring(systemDateTest).."  inGameDateTest:"..tostring(inGameDateTest))
+	end
+end
+
 
 function CustomDebugPanel.SandboxVarsDUMP()
 	--SandboxVars
