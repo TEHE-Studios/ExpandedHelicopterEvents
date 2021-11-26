@@ -231,7 +231,6 @@ module EHE
 		BlowTorch=15,
 		Bell206RotorBlade,
 		Result:SmallSheetMetal=3,
-		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
 		Time:350,
 		AnimNode:Disassemble,
 	}
@@ -243,7 +242,6 @@ module EHE
 		BlowTorch=15,
 		Bell206TailBlade,
 		Result:SmallSheetMetal,
-		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
 		Time:150,
 		AnimNode:Disassemble,
 	}
@@ -255,7 +253,6 @@ module EHE
 		BlowTorch=15,
 		UH1HRotorBlade,
 		Result:SmallSheetMetal=3,
-		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
 		Time:350,
 		AnimNode:Disassemble,
 	}
@@ -267,7 +264,6 @@ module EHE
 		BlowTorch=15,
 		Bell206HalfSkirt,
 		Result:MetalBar=4,
-		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
 		Time:350,
 		AnimNode:Disassemble,
 	}
@@ -279,7 +275,6 @@ module EHE
 		BlowTorch=15,
         UH1HHalfSkirt,
 		Result:MetalBar=4,
-		OnCanPerform:EHE_Recipe.MustBeWearing_FirstItem,
 		Time:350,
 		AnimNode:Disassemble,
 	}
