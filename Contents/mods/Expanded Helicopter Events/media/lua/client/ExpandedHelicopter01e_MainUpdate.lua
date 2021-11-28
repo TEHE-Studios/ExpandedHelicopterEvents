@@ -251,7 +251,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		self.shadow:setSize(shadowSize+shadowExpansion)
 	end
 
-	if self.flightVolume then
+	if self.flightVolume>0 then
 		local volumeFactor = 1
 		local zoneType = currentSquare:getZoneType()
 		if (zoneType == "Forest") or (zoneType == "DeepForest") then
