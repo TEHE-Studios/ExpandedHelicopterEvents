@@ -69,9 +69,6 @@ function EHE_EventMarker:onMouseMoveOutside(dx, dy)
 
 	if self.moving then
 
-		local p = self:getPlayer()
-		local pModData = p:getModData()
-
 		if self.parent then
 			self.parent:setX(self.parent.x + dx)
 			self.parent:setY(self.parent.y + dy)
@@ -79,6 +76,11 @@ function EHE_EventMarker:onMouseMoveOutside(dx, dy)
 			self:setX(self.x + dx)
 			self:setY(self.y + dy)
 			self:bringToTop()
+		end
+
+		local p = self:getPlayer()
+		if p then
+			p:getModData()["EHE_markerPlacement"] = {self.x, self.y}
 		end
 	end
 end
@@ -91,9 +93,6 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 
 	if self.moving then
 
-		local p = self:getPlayer()
-		local pModData = p:getModData()
-
 		if self.parent then
 			self.parent:setX(self.parent.x + dx)
 			self.parent:setY(self.parent.y + dy)
@@ -101,6 +100,11 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 			self:setX(self.x + dx)
 			self:setY(self.y + dy)
 			self:bringToTop()
+		end
+
+		local p = self:getPlayer()
+		if p then
+			p:getModData()["EHE_markerPlacement"] = {self.x, self.y}
 		end
 		--ISMouseDrag.dragView = self
 	end
@@ -298,8 +302,16 @@ EHE_EventMarkerHandler.allPOI = {}
 function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
 	if(player) then
 
-		local screenX = (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
-		local screenY = (EHE_EventMarker.iconSize/2)
+		local oldx, oldy
+
+		local pModData = player:getModData()["EHE_markerPlacement"]
+
+		if pModData then
+			oldx, oldy = pModData[1], pModData[2]
+		end
+
+		local screenX = oldx or (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
+		local screenY = oldy or (EHE_EventMarker.iconSize/2)
 		local newMarker = EHE_EventMarker:new(poi, player, screenX, screenY, EHE_EventMarker.clickableSize, EHE_EventMarker.clickableSize, icon, duration)
 		return newMarker
 	end
