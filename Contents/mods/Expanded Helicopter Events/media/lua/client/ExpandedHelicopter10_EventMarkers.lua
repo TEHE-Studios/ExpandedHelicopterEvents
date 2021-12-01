@@ -159,6 +159,10 @@ function EHE_EventMarker:render()
 		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
+		if self.playerObj and getNumActivePlayers()>1 then
+			self:drawTexture(self.textureCoopNum[self.playerObj:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
+		end
+
 		ISUIElement.render(self)
 	end
 end
@@ -216,6 +220,11 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 	o.texturePointMedium = getTexture("media/ui/eventMarker_medium.png")
 	o.texturePointFar = getTexture("media/ui/eventMarker_far.png")
 	o.textureBG = getTexture("media/ui/eventMarkerBase.png")
+	o.textureCoopNum = {
+		getTexture("media/ui/coop1.png"),
+		getTexture("media/ui/coop2.png"),
+		getTexture("media/ui/coop3.png"),
+		getTexture("media/ui/coop4.png")}
 	if icon then
 		o.textureIcon = getTexture(icon)
 	end
@@ -225,9 +234,14 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 end
 
 
----@param poi IsoObject | IsoMovingObject | eHelicopter
----@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-function EHE_EventMarker:update(player)
+---@param playerIndex number
+function EHE_EventMarker:update(playerIndex)
+	if not playerIndex then
+		return
+	end
+
+	---@type IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
+	local player = getSpecificPlayer(playerIndex)
 
 	if not player then
 		return
@@ -301,20 +315,21 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 		poi = getCell():getOrCreateGridSquare(x,y,0)
 	end
 
+	local POI = EHE_EventMarkerHandler.allPOI[poi]
+
+	if not POI then
+		EHE_EventMarkerHandler.allPOI[poi] = {markers={}}
+		POI = EHE_EventMarkerHandler.allPOI[poi]
+	end
+
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
-		local POI = EHE_EventMarkerHandler.allPOI[poi]
 
-		if not POI then
-			EHE_EventMarkerHandler.allPOI[poi] = {markers={}}
-			POI = EHE_EventMarkerHandler.allPOI[poi]
-		end
-
-		local marker = POI.markers[p]
+		local marker = POI.markers[playerIndex]
 		local isNew = false
 		if not marker then
 			marker = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
-			POI.markers[p] = marker
+			POI.markers[playerIndex] = marker
 			isNew = true
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
@@ -334,7 +349,7 @@ end
 function EHE_EventMarkerHandler.disableMarkersForPOI(poi)
 	local POI = EHE_EventMarkerHandler.allPOI[poi]
 	if POI then
-		for player,marker in pairs(POI.markers) do
+		for playerIndex,marker in pairs(POI.markers) do
 			marker:setVisible(false)
 		end
 	end
@@ -352,8 +367,8 @@ function EHE_EventMarkerHandler.updateAll()
 	end
 
 	for poiObject,poiData in pairs(EHE_EventMarkerHandler.allPOI) do
-		for player,marker in pairs(poiData.markers) do
-			marker:update(player)
+		for playerIndex,marker in pairs(poiData.markers) do
+			marker:update(playerIndex)
 		end
 	end
 end
