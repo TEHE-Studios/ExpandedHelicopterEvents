@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.3-hotfix2"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.4-COOP_Markers"))
 
 require "zDebugPanel"
 
