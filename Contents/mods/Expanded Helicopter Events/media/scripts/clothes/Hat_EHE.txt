@@ -3,6 +3,7 @@ module EHE
 
 		item Hat_SPHPolice
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Police Helicopter Helmet,
 		ClothingItem = Hat_SPHPolice,
@@ -23,6 +24,7 @@ module EHE
 
 		item Hat_SPHPoliceVISORUP
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Police Helicopter Helmet (Up),
 		ClothingItem = Hat_SPHPoliceVISORUP,
@@ -43,6 +45,7 @@ module EHE
 
 		item Hat_SPHMilitary
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Military Helicopter Helmet,
 		ClothingItem = Hat_SPHMilitary,
@@ -63,6 +66,7 @@ module EHE
 
 		item Hat_SPHMilitaryVISORUP
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Military Helicopter Helmet (Up),
 		ClothingItem = Hat_SPHMilitaryVISORUP,
@@ -83,6 +87,7 @@ module EHE
 
 	    item Hat_SPHBlack
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Black Helicopter Helmet,
 		ClothingItem = Hat_SPHBlack,
@@ -103,6 +108,7 @@ module EHE
 
 		item Hat_SPHBlackVISORUP
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Black Helicopter Helmet (Up),
 		ClothingItem = Hat_SPHBlackVISORUP,
@@ -123,6 +129,7 @@ module EHE
 
 		item Hat_SPHCivilian
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Civilian Helicopter Helmet,
 		ClothingItem = Hat_SPHCivilian,
@@ -143,6 +150,7 @@ module EHE
 
 		item Hat_SPHCivilianVISORUP
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Civilian Helicopter Helmet (Up),
 		ClothingItem = Hat_SPHCivilianVISORUP,
@@ -162,7 +170,9 @@ module EHE
     }
 
 		item Hat_PressHelmet
-	{
+
+	{   
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Press Helmet,
 		ClothingItem = Hat_PressHelmet,
@@ -181,6 +191,7 @@ module EHE
 
 		item Hat_SurvivalistHelmet
 	{
+		DisplayCategory = Clothing,
 		Type = Clothing,
 		DisplayName = Survivalist Helmet,
 		ClothingItem = Hat_SurvivalistHelmet,
@@ -199,6 +210,7 @@ module EHE
 
     item Hat_CavalryHat
     {
+		DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Cavalry Hat,
         ClothingItem = Hat_CavalryHat,

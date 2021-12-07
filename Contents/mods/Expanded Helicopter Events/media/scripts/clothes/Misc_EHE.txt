@@ -2,6 +2,7 @@ module EHE
 {		
 	    item Boilersuit_PoliceFlying
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Police Flying Suit,
         ClothingItem = Suit_PoliceFlying,
@@ -18,6 +19,7 @@ module EHE
 
     	item Boilersuit_BlackFlying
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Black Flying Suit,
         ClothingItem = Suit_BlackFlying,
@@ -34,6 +36,7 @@ module EHE
 	   
 	    item Vest_BulletPress
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Press Bulletproof Vest,
         ClothingItem = Vest_BulletPress,
@@ -50,6 +53,7 @@ module EHE
 
     	item Vest_PilotSurvivalVest
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Military Pilot Survival Vest,
         ClothingItem = Vest_PilotSurvivalVest,
@@ -65,6 +69,7 @@ module EHE
 
         item Vest_PilotSurvivalVestTightened
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Military Pilot Survival Vest (Tightened),
         ClothingItem = Vest_PilotSurvivalVestTightened,
@@ -80,6 +85,7 @@ module EHE
 
     	item Vest_BlackPilotSurvivalVest
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Black Pilot Survival Vest,
         ClothingItem = Vest_BlackPilotSurvivalVest,
@@ -95,6 +101,7 @@ module EHE
 
         item Vest_BlackPilotSurvivalVestTightened
     {
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Black Pilot Survival Vest (Tightened),
         ClothingItem = Vest_BlackPilotSurvivalVestTightened,

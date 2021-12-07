@@ -2,6 +2,7 @@ module EHE
 {		
 		item Jacket_DenimCutoff
 	{
+        DisplayCategory = Clothing,
         Type = Clothing,
         DisplayName = Cutoff Denim Jacket,
         ClothingItem = Jacket_DenimCutoff,
