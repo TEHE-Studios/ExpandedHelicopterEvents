@@ -2,8 +2,9 @@ module EHE
 {
         item EvacuationFlyer
 	{
+		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Normal,
+		Type = Map,
 		DisplayName = Evacuation Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
@@ -12,8 +13,9 @@ module EHE
 	}
 	    item EmergencyFlyer
 	{
+		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Normal,
+		Type = Map,
 		DisplayName = Emergency Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
@@ -22,8 +24,9 @@ module EHE
 	}
 		item QuarantineFlyer
 	{
+		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Normal,
+		Type = Map,
 		DisplayName = Quarantine Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
@@ -32,8 +35,9 @@ module EHE
 	}
 		item PreventionFlyer
 	{
+		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Normal,
+		Type = Map,
 		DisplayName = Prevention Flyer,
 		Icon = FlyerPav,
 		Tooltip = Tooltip_FlyerCDC,
@@ -42,8 +46,9 @@ module EHE
 	}
 		item NoticeFlyer
 	{
+		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Normal,
+		Type = Map,
 		DisplayName = Notice Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_CivilDefense,

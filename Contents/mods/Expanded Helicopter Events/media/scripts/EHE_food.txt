@@ -2,6 +2,7 @@ module EHE
 {	 
 	    item EmergencyWaterRation
 	{
+		DisplayCategory = WaterContainer,
 		Weight	=	0.3,
 		Type	=	Normal,
 		DisplayName	=	Emergency Water Ration,
@@ -13,6 +14,7 @@ module EHE
 
         item EmergencyWaterRationOpen
 	{
+		DisplayCategory = WaterContainer,
 		IsWaterSource	=	TRUE,
 		Weight	=	0.3,
 		CanStoreWater	=	TRUE,
@@ -29,6 +31,7 @@ module EHE
 
 		item ProteinBar
 	{
+		DisplayCategory = Food,
 		HungerChange	= -60,
 		Weight		= 0.2,
 		Type		= Food,
@@ -47,6 +50,7 @@ module EHE
 
 		item MealReadytoEat
 	{
+		DisplayCategory = Food,
 		HungerChange	= -60,
 		Weight		= 0.6,
 		Type		= Food,
@@ -63,6 +67,7 @@ module EHE
 
 		item MREWrapper
 	{
+		DisplayCategory = Junk,
 		Weight	=	0.1,
 		Type	=	Normal,
 		DisplayName	=	MRE Wrapper,

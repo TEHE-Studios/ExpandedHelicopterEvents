@@ -3,6 +3,7 @@ module EHE
 
 	item EmergencyFoodSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
@@ -12,6 +13,7 @@ module EHE
 
 		item EmergencyMedicalSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_aid,
 		DisplayName		=	Supply Box,
@@ -21,6 +23,7 @@ module EHE
 
 		item EmergencySurvivalSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_fema,
 		DisplayName		=	Supply Box,
@@ -30,6 +33,7 @@ module EHE
 
 		item BanditStashBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
@@ -39,6 +43,7 @@ module EHE
 
 		item SurvivorFoodSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
@@ -48,6 +53,7 @@ module EHE
 
 		item SurvivorMedicalSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
@@ -57,6 +63,7 @@ module EHE
 
 		item SurvivorFishingSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
@@ -66,6 +73,7 @@ module EHE
 
 		item SurvivorSeedSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
@@ -75,6 +83,7 @@ module EHE
 
 		item SurvivorCanningSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,
@@ -84,6 +93,7 @@ module EHE
 
 		item SurvivorToiletSupplyBox
 	{
+		DisplayCategory = Container,
 		Weight			=	6.3,
 		Icon			=	SupplyBox_blank,
 		DisplayName		=	Supply Box,

@@ -3,6 +3,7 @@ module EHE
 
 		item SignalFlare
 	{
+		DisplayCategory = Tool,
 		Weight = 0.3,
 		Type = Normal,
 		WorldStaticModel = SignalFlare,
@@ -13,6 +14,7 @@ module EHE
 
 		item SignalFlareSpent
 	{
+		DisplayCategory = Junk,
 		Weight = 0.3,
 		Type = Normal,
 		WorldStaticModel = SignalFlare,
@@ -23,6 +25,7 @@ module EHE
 	
 	    item EHE_Parachute
 	{
+		DisplayCategory = Junk,
 		Weight = 10,
 		Type = Normal,
 		WorldStaticModel = Parachute,
@@ -33,6 +36,7 @@ module EHE
 
 		item Bell206RotorBlade
 	{
+		DisplayCategory = Junk,
 		Weight = 45,
 		Type = Normal,
 		WorldStaticModel = Bell206RotorBlade,
@@ -42,6 +46,7 @@ module EHE
 	}
 		item Bell206TailBlade
 	{
+		DisplayCategory = Junk,
 		Weight = 10,
 		Type = Normal,
 		WorldStaticModel = Bell206TailBlade,
@@ -52,6 +57,7 @@ module EHE
 
 		item Bell206HalfSkirt
 	{
+		DisplayCategory = Junk,
 		Weight = 35,
 		Type = Normal,
 		WorldStaticModel = Bell206HalfSkirt,
@@ -62,6 +68,7 @@ module EHE
 
 		item UH1HRotorBlade
 	{
+		DisplayCategory = Junk,
 		Weight = 45,
 		Type = Normal,
 		WorldStaticModel = UH1HRotorBlade,
@@ -72,6 +79,7 @@ module EHE
 
 		item UH1HHalfSkirt
 	{
+		DisplayCategory = Junk,
 		Weight = 35,
 		Type = Normal,
 		WorldStaticModel = UH1HHalfSkirt,
