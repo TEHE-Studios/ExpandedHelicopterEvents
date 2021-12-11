@@ -93,6 +93,7 @@ function eHelicopter:update()
 		end
 	end
 
+	--[[
 	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
 	self.updateTicksPassed = (self.updateTicksPassed+1)*getGameSpeed()
 	local maxTicksAllowed = eheBounds.threshold*10
@@ -103,6 +104,7 @@ function eHelicopter:update()
 		print(" - EHE: Update Tick Cap Reached: "..self:heliToString())
 		self:goHome()
 	end
+	-]]
 
 	local preventMovement = false
 

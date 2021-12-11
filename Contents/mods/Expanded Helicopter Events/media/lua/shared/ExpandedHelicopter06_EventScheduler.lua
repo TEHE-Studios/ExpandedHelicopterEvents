@@ -8,7 +8,9 @@ function eHeliEvent_new(startDay, startTime, preset)
 		return
 	end
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
-	table.insert(getGameTime():getModData()["EventsOnSchedule"], newEvent)
+
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	table.insert(globalModData.EventsOnSchedule, newEvent)
 end
 
 
@@ -40,7 +42,9 @@ end
 ---@param ID number position in "EventsOnSchedule"
 function eHeliEvent_engage(ID)
 
-	local eHeliEvent = getGameTime():getModData()["EventsOnSchedule"][ID]
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local eHeliEvent = globalModData.EventsOnSchedule[ID]
+
 	eHeliEvent.triggered = true
 	
 	--check if the event will occur
@@ -117,16 +121,14 @@ end
 
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
-	local GTMData = getGameTime():getModData()
-
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
 	eHeliEvents_setEventsForScheduling()
-
 	--if eHelicopterSandbox.config.resetEvents == true, reset
 	if eHelicopterSandbox.config.resetEvents == true then
 		EasyConfig_Chucked.loadConfig()
-		GTMData["EventsOnSchedule"] = {}
-		GTMData["DaysBeforeApoc"] = nil
-		GTMData["DayOfLastCrash"] = nil
+		globalModData.EventsOnSchedule = {}
+		globalModData.DaysBeforeApoc = nil
+		globalModData.DayOfLastCrash = nil
 		local spawnerList = SpawnerTEMP.getOrSetPendingSpawnsList()
 		spawnerList = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
@@ -136,13 +138,11 @@ function eHeliEvents_OnGameStart()
 		EHE.config.resetEvents = false
 		EasyConfig_Chucked.saveConfig()
 	end
-
-	GTMData["DaysBeforeApoc"] = GTMData["DaysBeforeApoc"] or eHeli_getDaysBeforeApoc()
-	GTMData["DayOfLastCrash"] = GTMData["DayOfLastCrash"] or getGameTime():getNightsSurvived()
-
+	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysBeforeApoc()
+	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or getGameTime():getNightsSurvived()
 	--if no EventsOnSchedule found make it an empty list
-	if not GTMData["EventsOnSchedule"] then
-		GTMData["EventsOnSchedule"] = {}
+	if not globalModData.EventsOnSchedule then
+		globalModData.EventsOnSchedule = {}
 	end
 end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)

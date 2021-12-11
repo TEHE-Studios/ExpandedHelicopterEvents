@@ -20,21 +20,24 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		local linesGoingOut = {}
 		WeatherChannel.AddFuzz(c, _bc, 6);
 
-		for _,event in pairs(getGameTime():getModData()["EventsOnSchedule"]) do
-			if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
+		local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+		if globalModData.EventsOnSchedule then
+			for _,event in pairs(globalModData.EventsOnSchedule) do
+				if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
 
-				linesGoingOut["airActivity"] = getRadioText("AEBS_Choppah")
-				--pulls event's info to see if more lines can be added
-				local presetID = event["preset"]
-				local eventPreset = eHelicopter_PRESETS[presetID]
-				
-				if eventPreset then
-					local presetDropPackages = eventPreset.dropPackages
-					if presetDropPackages then
-						linesGoingOut["aidDrop"] = getRadioText("AEBS_SupplyDrop")
+					linesGoingOut["airActivity"] = getRadioText("AEBS_Choppah")
+					--pulls event's info to see if more lines can be added
+					local presetID = event["preset"]
+					local eventPreset = eHelicopter_PRESETS[presetID]
+
+					if eventPreset then
+						local presetDropPackages = eventPreset.dropPackages
+						if presetDropPackages then
+							linesGoingOut["aidDrop"] = getRadioText("AEBS_SupplyDrop")
+						end
 					end
-				end
 
+				end
 			end
 		end
 		

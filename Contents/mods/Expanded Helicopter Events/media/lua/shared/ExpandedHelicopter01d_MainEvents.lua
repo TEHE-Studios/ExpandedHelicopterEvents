@@ -87,7 +87,9 @@ function eHelicopter:crash()
 		EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/crash.png", 3000, heliX, heliY)
 
 		self:unlaunch()
-		getGameTime():getModData()["DayOfLastCrash"] = math.max(1,getGameTime():getNightsSurvived())
+
+		local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+		globalModData.DayOfLastCrash = math.max(1,getGameTime():getNightsSurvived())
 		return true
 	end
 	return false

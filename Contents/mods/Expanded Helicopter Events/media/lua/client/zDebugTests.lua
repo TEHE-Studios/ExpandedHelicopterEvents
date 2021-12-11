@@ -163,19 +163,19 @@ end
 
 
 function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
-	local GTMData = getGameTime():getModData()
-	GTMData["EventsOnSchedule"] = {}
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	globalModData.EventsOnSchedule = {}
 	print("======================================")
 	print("neHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
 	print("--------------------------------------")
 	for day=0, 90 do
 		for hour=0, 24 do
 			eHeliEvent_ScheduleNew(day,hour)
-			for k,v in pairs(GTMData["EventsOnSchedule"]) do
+			for k,v in pairs(globalModData.EventsOnSchedule) do
 				if v.triggered then
-					GTMData["EventsOnSchedule"][k] = nil
+					globalModData.EventsOnSchedule[k] = nil
 				elseif (v.startDay <= day) and (v.startTime == hour) then
-					GTMData["EventsOnSchedule"][k].triggered = true
+					globalModData.EventsOnSchedule[k].triggered = true
 				end
 			end
 		end
@@ -191,11 +191,11 @@ function CustomDebugPanel.eHeliEventsOnSchedule()
 	local nightsSurvived = tostring(GT:getNightsSurvived())
 	local daysIntoApoc = (GT:getModData()["DaysBeforeApoc"] or 0)+nightsSurvived
 	local hour = tostring(GT:getHour())
-
 	local eventsScheduled = false
-
 	print("--- eHeliEventsOnSchedule: ".." daysIntoApoc: "..daysIntoApoc.."  nights-surv: "..nightsSurvived.."  hr: "..hour)
-	for k,v in pairs(getGameTime():getModData()["EventsOnSchedule"]) do
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+
+	for k,v in pairs(globalModData.EventsOnSchedule) do
 		eventsScheduled = true
 		print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
 	end

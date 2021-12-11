@@ -230,6 +230,9 @@ end
 ---@param movement Vector3
 ---@return Vector3
 function eHelicopter:dampen(movement)
+	if self.state == "crashed" then
+		return
+	end
 	self:setTargetPos()
 	--finds the fraction of distance to target and preflight distance to target
 	local distanceCompare = self:getDistanceToVector(self.targetPosition) / self.preflightDistance
@@ -302,6 +305,10 @@ end
 ---@param re_aim boolean recalculate angle to target
 ---@param dampen boolean adjust speed based on distance to target
 function eHelicopter:move(re_aim, dampen)
+
+	if self.state == "crashed" then
+		return
+	end
 
 	---@type Vector3
 	local velocity
@@ -610,7 +617,7 @@ end
 
 function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
-	local GTMData = getGameTime():getModData()
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay = self.eventCutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay
 	local eventFrequency = SandboxVars.ExpandedHeli["Frequency_"..self.masterPresetID] or 2
@@ -626,9 +633,9 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
 	if applyEnvironmentalCrashChance then
 		local _, weatherImpact = eHeliEvent_weatherImpact()
-		local daysIntoApoc = GTMData["DaysBeforeApoc"]+getGameTime():getNightsSurvived()
+		local daysIntoApoc = globalModData.DaysBeforeApoc+getGameTime():getNightsSurvived()
 		local apocImpact = (daysIntoApoc/cutOffDay)/10
-		local dayOfLastCrash = GTMData["DayOfLastCrash"]
+		local dayOfLastCrash = globalModData.DayOfLastCrash
 		local crashDayCap = 28
 		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/crashDayCap)/2
 
