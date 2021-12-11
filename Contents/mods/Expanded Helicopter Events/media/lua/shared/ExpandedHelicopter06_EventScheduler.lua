@@ -1,3 +1,19 @@
+function getExpandedHeliEventsModData()
+	local modData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	if not modData.EventsOnSchedule then modData.EventsOnSchedule = {} end
+
+	if not modData.DayOfLastCrash then
+		modData.DayOfLastCrash = false
+	end
+
+	if not modData.DaysBeforeApoc then
+		modData.DaysBeforeApoc = false
+	end
+
+	return modData
+end
+
+
 ---Inserts a new eHeliEvent (table) to the "EventsOnSchedule" table
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
@@ -9,7 +25,7 @@ function eHeliEvent_new(startDay, startTime, preset)
 	end
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
 
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
 end
 
@@ -42,7 +58,7 @@ end
 ---@param ID number position in "EventsOnSchedule"
 function eHeliEvent_engage(ID)
 
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	local eHeliEvent = globalModData.EventsOnSchedule[ID]
 
 	eHeliEvent.triggered = true
@@ -121,14 +137,14 @@ end
 
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	eHeliEvents_setEventsForScheduling()
 	--if eHelicopterSandbox.config.resetEvents == true, reset
 	if eHelicopterSandbox.config.resetEvents == true then
 		EasyConfig_Chucked.loadConfig()
 		globalModData.EventsOnSchedule = {}
-		globalModData.DaysBeforeApoc = nil
-		globalModData.DayOfLastCrash = nil
+		globalModData.DaysBeforeApoc = false
+		globalModData.DayOfLastCrash = false
 		local spawnerList = SpawnerTEMP.getOrSetPendingSpawnsList()
 		spawnerList = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
@@ -195,7 +211,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
 	local neverEnd = SandboxVars.ExpandedHeli.NeverEnding
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 
 	local eventIDsScheduled = {}
@@ -325,7 +341,7 @@ Events.EveryHours.Add(eHeliEvent_ScheduleNew)
 --Checks every hour if there is an event scheduled to engage
 function eHeliEvent_Loop()
 	local GT = getGameTime()
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	local nightsSurvived = GT:getNightsSurvived()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule

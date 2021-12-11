@@ -617,7 +617,7 @@ end
 
 function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	--increase crash chance as the apocalypse goes on
 	local cutOffDay = self.eventCutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay
 	local eventFrequency = SandboxVars.ExpandedHeli["Frequency_"..self.masterPresetID] or 2

@@ -163,7 +163,7 @@ end
 
 
 function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	globalModData.EventsOnSchedule = {}
 	print("======================================")
 	print("neHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
@@ -188,7 +188,7 @@ end
 function CustomDebugPanel.eHeliEventsOnSchedule()
 
 	local GT = getGameTime()
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local globalModData = getExpandedHeliEventsModData()
 	local nightsSurvived = tostring(GT:getNightsSurvived())
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 	local hour = tostring(GT:getHour())

@@ -22,7 +22,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		local linesGoingOut = {}
 		WeatherChannel.AddFuzz(c, _bc, 6);
 
-		local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+		local globalModData = getExpandedHeliEventsModData()
 		if globalModData.EventsOnSchedule then
 			for _,event in pairs(globalModData.EventsOnSchedule) do
 				if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then

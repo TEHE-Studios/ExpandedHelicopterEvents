@@ -88,7 +88,7 @@ function eHelicopter:crash()
 
 		self:unlaunch()
 
-		local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+		local globalModData = getExpandedHeliEventsModData()
 		globalModData.DayOfLastCrash = math.max(1,getGameTime():getNightsSurvived())
 		return true
 	end
