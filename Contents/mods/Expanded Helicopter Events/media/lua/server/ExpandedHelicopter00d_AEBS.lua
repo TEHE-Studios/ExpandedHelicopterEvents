@@ -1,3 +1,5 @@
+require "radio/ISWeatherChannel"
+
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
 EHE_WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast or nil
 
