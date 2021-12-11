@@ -195,10 +195,11 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
 	local neverEnd = SandboxVars.ExpandedHeli.NeverEnding
-	local daysIntoApoc = (GT:getModData()["DaysBeforeApoc"] or 0)+nightsSurvived
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 
 	local eventIDsScheduled = {}
-	for k,v in pairs(GT:getModData()["EventsOnSchedule"]) do
+	for k,v in pairs(globalModData.EventsOnSchedule) do
 		if not v.triggered and v.startDay == nightsSurvived then
 			eventIDsScheduled[v.preset] = true
 		end
@@ -324,13 +325,14 @@ Events.EveryHours.Add(eHeliEvent_ScheduleNew)
 --Checks every hour if there is an event scheduled to engage
 function eHeliEvent_Loop()
 	local GT = getGameTime()
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
 	local nightsSurvived = GT:getNightsSurvived()
 	local HOUR = GT:getHour()
-	local events = GT:getModData()["EventsOnSchedule"]
+	local events = globalModData.EventsOnSchedule
 
 	for k,v in pairs(events) do
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
-			GT:getModData()["EventsOnSchedule"][k] = nil
+			globalModData.EventsOnSchedule[k] = nil
 		elseif (v.startDay <= nightsSurvived) and (v.startTime == HOUR) then
 			print("EHE: LAUNCH INFO:  HELI ID:"..k.." - "..v.preset)
 			if eHelicopter_PRESETS[v.preset] then

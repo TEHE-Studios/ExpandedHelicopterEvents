@@ -188,12 +188,13 @@ end
 function CustomDebugPanel.eHeliEventsOnSchedule()
 
 	local GT = getGameTime()
+	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
 	local nightsSurvived = tostring(GT:getNightsSurvived())
-	local daysIntoApoc = (GT:getModData()["DaysBeforeApoc"] or 0)+nightsSurvived
+	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 	local hour = tostring(GT:getHour())
 	local eventsScheduled = false
 	print("--- eHeliEventsOnSchedule: ".." daysIntoApoc: "..daysIntoApoc.."  nights-surv: "..nightsSurvived.."  hr: "..hour)
-	local globalModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+
 
 	for k,v in pairs(globalModData.EventsOnSchedule) do
 		eventsScheduled = true
