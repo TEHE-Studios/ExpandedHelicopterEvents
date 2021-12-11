@@ -1,6 +1,10 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events
+description=
+description=[h1]This mod is [b]currently non-functional in multiplayer[/b]. A patch is being accessed and assembled in the time being.[/h1]
+description=[h1][b]However, this mod is still functional and working as intended in singleplayer.[/b][/h1]
+description=
 description=[h1][b]Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
 description=[h1][b]Twitch Integration: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501]Out now![/url][/b][/h1]
 description=
