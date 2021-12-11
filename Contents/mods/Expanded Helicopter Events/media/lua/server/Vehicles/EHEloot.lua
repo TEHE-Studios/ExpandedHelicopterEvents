@@ -44,7 +44,6 @@ VehicleDistributions.UH1HSeat = {
 
         -- EHE -- 
 
-        "EHE.Hat_CavalryHat", 5,
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHMilitary", 5,
         "EHE.Hat_SPHBlack", 3,
@@ -118,7 +117,6 @@ VehicleDistributions.UH1HRaiderSeat = {
         -- EHE --
 
         "EHE.BanditStashBox", 1,
-        "EHE.Hat_CavalryHat", 10,
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHBlack", 3,
         "EHE.Vest_PilotSurvivalVest", 10,
