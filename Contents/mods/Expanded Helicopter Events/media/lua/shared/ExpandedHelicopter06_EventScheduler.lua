@@ -3,11 +3,11 @@ function getExpandedHeliEventsModData()
 	if not modData.EventsOnSchedule then modData.EventsOnSchedule = {} end
 
 	if not modData.DayOfLastCrash then
-		modData.DayOfLastCrash = false
+		modData.DayOfLastCrash = getGameTime():getNightsSurvived()
 	end
-
+	
 	if not modData.DaysBeforeApoc then
-		modData.DaysBeforeApoc = false
+		modData.DaysBeforeApoc = eHeli_getDaysBeforeApoc()
 	end
 
 	return modData
