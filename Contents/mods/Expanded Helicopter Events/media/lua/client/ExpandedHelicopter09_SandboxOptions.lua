@@ -1,5 +1,6 @@
 require "OptionScreens/ServerSettingsScreen"
 require "OptionScreens/SandBoxOptions"
+require "EasyConfigChucked1_Main"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
 eHelicopterSandbox.config = {eventMarkersOn = true, resetEvents = false}
@@ -67,7 +68,7 @@ loadPresetToConfig()]]
 
 --add buffer space for reset feature
 function sandboxOptionsEnd()
-	eHelicopterSandbox.menu["resetEventsA"] = nil
+	eHelicopterSandbox.menu["generalSpaceA"] = nil
 	eHelicopterSandbox.menu["resetEventsToolTip"] = nil
 	eHelicopterSandbox.menu["resetEvents"] = nil
 	eHelicopterSandbox.menu["generalSpaceD"] = nil
@@ -75,13 +76,15 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu["eventMarkersOn"] = nil
 	eHelicopterSandbox.menu["generalSpaceE"] = nil
 
-	eHelicopterSandbox.menu["resetEventsA"] = {type = "Space"}
+	eHelicopterSandbox.menu["generalSpaceA"] = {type = "Space", alwaysAccessible = true}
 	eHelicopterSandbox.menu["resetEventsToolTip"] = {type = "Text", text = "Reset scheduled events in case of emergency:", a=0.65, customX=-67}
 	eHelicopterSandbox.menu["resetEvents"] = {type = "Tickbox", title = "Reset Events", tooltip = "", }
 	eHelicopterSandbox.menu["generalSpaceD"] = {type = "Space"}
 	eHelicopterSandbox.menu["eventMarkersOnToolTip"] = {type = "Text", text = "Toggle this on to enable event markers. \nNote: Events markers can be dragged.", a=0.65, customX=-67, }
 	eHelicopterSandbox.menu["eventMarkersOn"] = { type = "Tickbox", title = "Event Markers", alwaysAccessible = true}
-	eHelicopterSandbox.menu["generalSpaceE"] = {type = "Space"}
+	eHelicopterSandbox.menu["generalSpaceE"] = {type = "Space", alwaysAccessible = true}
+
+	loadAnnouncersToConfig()
 end
 
 EasyConfig_Chucked = EasyConfig_Chucked or {}
@@ -92,9 +95,6 @@ EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
 --Overrides vanilla helicopter frequency on game boot
 ---@param hookEvent string optional
 function HelicopterSandboxOptions(hookEvent)
-
-	loadAnnouncersToConfig()
-	sandboxOptionsEnd()
 
 	print("EHE: "..(hookEvent or "").."Disabling vanilla helicopter Day/StartHour/EndHour/Helicopter.")
 	getGameTime():setHelicopterDay(-1)
@@ -113,5 +113,6 @@ function HelicopterSandboxOptions(hookEvent)
 	getSandboxOptions():updateFromLua()
 end
 
+Events.OnGameBoot.Add(sandboxOptionsEnd)
 Events.OnGameBoot.Add(HelicopterSandboxOptions("OnGameBoot: "))
 
