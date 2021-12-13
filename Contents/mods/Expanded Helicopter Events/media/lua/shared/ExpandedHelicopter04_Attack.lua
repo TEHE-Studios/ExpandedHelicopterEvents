@@ -191,7 +191,7 @@ function eHelicopter:fireOn(targetHostile)
 		--splatter a few times
 		local splatIterations = ZombRand(1,3)
 		for _=1, splatIterations do
-			targetHostile:splatBloodFloor(0.9)
+			targetHostile:splatBloodFloor()
 		end
 		--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 	end
