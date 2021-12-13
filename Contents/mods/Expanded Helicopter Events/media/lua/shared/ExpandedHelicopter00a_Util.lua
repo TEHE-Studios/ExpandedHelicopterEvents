@@ -29,9 +29,11 @@ function removeFromEIP(playerObject)
 end
 
 function addActualPlayersToEIP()
-	for playerIndex=0, getNumActivePlayers()-1 do
-		---@type IsoLivingCharacter | IsoGameCharacter
-		addToEIP(getSpecificPlayer(playerIndex))
+	local playersOnline = getOnlinePlayers()
+	for i=0, playersOnline:size()-1 do
+		---@type IsoPlayer
+		local player = playersOnline:get(i)
+		addToEIP(player)
 	end
 end
 

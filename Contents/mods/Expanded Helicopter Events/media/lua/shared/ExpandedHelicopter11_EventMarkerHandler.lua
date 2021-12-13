@@ -37,11 +37,12 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 		POI = EHE_EventMarkerHandler.allPOI[poi]
 	end
 
-	print("EHE: getNumActivePlayers: "..getNumActivePlayers())
+	print("EHE: getOnlinePlayers():size(): "..getOnlinePlayers():size())
 
-	for playerIndex=0, getNumActivePlayers()-1 do
-		local p = getSpecificPlayer(playerIndex)
-
+	local playersOnline = getOnlinePlayers():size()>1
+	for i=0, playersOnline:size()-1 do
+		---@type IsoPlayer
+		local p = playersOnline:get(i)
 		local marker = POI.markers[playerIndex]
 		local isNew = false
 		if not marker then
