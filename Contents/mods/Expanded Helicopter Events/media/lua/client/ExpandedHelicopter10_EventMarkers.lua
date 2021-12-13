@@ -163,7 +163,8 @@ function EHE_EventMarker:render()
 		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
-		if self.playerObj and getOnlinePlayers():size()>1 then
+
+		if self.playerObj and #getActualPlayers()>1 then
 			self:drawTexture(self.textureCoopNum[self.playerObj:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 		end
 

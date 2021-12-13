@@ -28,17 +28,36 @@ function removeFromEIP(playerObject)
 	end
 end
 
-function addActualPlayersToEIP()
+function getActualPlayers()
+	local players = {}
+
 	local playersOnline = getOnlinePlayers()
-	for i=0, playersOnline:size()-1 do
-		---@type IsoPlayer
-		local player = playersOnline:get(i)
-		addToEIP(player)
+	if playersOnline then
+		for i=0, playersOnline:size()-1 do
+			local player = playersOnline:get(i)
+			players[player] = true
+		end
+	end
+
+	for playerIndex=0, getNumActivePlayers()-1 do
+		players[getSpecificPlayer(playerIndex)] = true
+	end
+
+	local cleanedPlayerList = {}
+	for playerObj,_ in pairs(players) do
+		table.insert(cleanedPlayerList, playerObj)
+	end
+
+	return cleanedPlayerList
+end
+
+function addActualPlayersToEIP()
+	local playersOnline = getActualPlayers()
+	for _,playerObj in pairs(playersOnline) do
+		addToEIP(playerObj)
 	end
 end
 
-
-Events.OnGameStart.Add(addActualPlayersToEIP)
 Events.OnCreateLivingCharacter.Add(addToEIP)
 Events.OnCharacterDeath.Add(removeFromEIP)
 
@@ -52,6 +71,8 @@ eheBounds.threshold = 2500
 
 ---Sets a min/max X/Y around all the players
 function setDynamicGlobalXY()
+
+	addActualPlayersToEIP()
 
 	eheBounds.MAX_X = false
 	eheBounds.MIN_X = false

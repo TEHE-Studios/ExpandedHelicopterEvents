@@ -42,6 +42,10 @@ end
 ---@param randomEdge boolean true = uses random edge, false = prefers closer edge
 function eHelicopter:initPos(targetedPlayer, randomEdge, initX, initY)
 
+	if not targetedPlayer then
+		return
+	end
+
 	setDynamicGlobalXY()
 
 	--player's location
@@ -441,6 +445,8 @@ function eHelicopter:findTarget(range, DEBUGID)
 	--the -1 is to offset playerIDs starting at 0
 	local weightPlayersList = {}
 	local maxWeight = 15
+
+	addActualPlayersToEIP()
 
 	for character,_ in pairs(EHEIsoPlayers) do
 		---@type IsoPlayer | IsoGameCharacter p
