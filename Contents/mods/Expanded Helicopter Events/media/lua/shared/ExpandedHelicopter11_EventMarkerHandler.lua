@@ -37,6 +37,8 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 		POI = EHE_EventMarkerHandler.allPOI[poi]
 	end
 
+	print("EHE: getNumActivePlayers: "..getNumActivePlayers())
+
 	for playerIndex=0, getNumActivePlayers()-1 do
 		local p = getSpecificPlayer(playerIndex)
 
