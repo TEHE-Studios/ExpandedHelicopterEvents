@@ -39,7 +39,7 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 
 	print("EHE: getOnlinePlayers():size(): "..getOnlinePlayers():size())
 
-	local playersOnline = getOnlinePlayers():size()>1
+	local playersOnline = getOnlinePlayers()
 	for i=0, playersOnline:size()-1 do
 		---@type IsoPlayer
 		local p = playersOnline:get(i)
