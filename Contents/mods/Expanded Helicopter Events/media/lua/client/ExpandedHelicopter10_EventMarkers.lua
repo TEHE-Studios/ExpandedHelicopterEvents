@@ -245,7 +245,7 @@ function EHE_EventMarker:update(playerIndex)
 	end
 
 	---@type IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-	local player = getSpecificPlayer(playerIndex)
+	local player = getSpecificPlayer(playerIndex-1)
 
 	if not player then
 		return
