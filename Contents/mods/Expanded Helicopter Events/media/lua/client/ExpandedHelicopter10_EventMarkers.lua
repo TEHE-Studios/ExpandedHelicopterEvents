@@ -240,14 +240,7 @@ end
 
 
 ---@param playerIndex number
-function EHE_EventMarker:update(playerIndex)
-	if not playerIndex then
-		return
-	end
-
-	---@type IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
-	local player = getSpecificPlayer(playerIndex-1)
-
+function EHE_EventMarker:update(player)
 	if not player then
 		return
 	end

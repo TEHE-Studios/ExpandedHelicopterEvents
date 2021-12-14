@@ -42,11 +42,11 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 
 	local playersOnline = getActualPlayers()
 	for _,p in pairs(playersOnline) do
-		local marker = POI.markers[p:getPlayerNum()+1]
+		local marker = POI.markers[p]
 		local isNew = false
 		if not marker then
 			marker = EHE_EventMarkerHandler.generateNewMarker(poi, p, icon, duration)
-			POI.markers[p:getPlayerNum()+1] = marker
+			POI.markers[p] = marker
 			isNew = true
 			--print("EHE:DEBUG: #"..poi.ID.." no marker found.")
 		end
@@ -84,8 +84,8 @@ function EHE_EventMarkerHandler.updateAll()
 	end
 
 	for poiObject,poiData in pairs(EHE_EventMarkerHandler.allPOI) do
-		for playerIndex,marker in pairs(poiData.markers) do
-			marker:update(playerIndex)
+		for playerObj,marker in pairs(poiData.markers) do
+			marker:update(playerObj)
 		end
 	end
 end
