@@ -13,6 +13,8 @@ function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
 			oldx, oldy = pModData[1], pModData[2]
 		end
 
+		print("EHE_EventMarkerHandler: generateNewMarker: "..player:getUsername())
+
 		local screenX = oldx or (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
 		local screenY = oldy or (EHE_EventMarker.iconSize/2)
 		local newMarker = EHE_EventMarker:new(poi, player, screenX, screenY, EHE_EventMarker.clickableSize, EHE_EventMarker.clickableSize, icon, duration)
