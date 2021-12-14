@@ -44,9 +44,9 @@ function getActualPlayers()
 	end
 
 	local cleanedPlayerList = {}
-	print("--getActualPlayers: ")
+	--print("--getActualPlayers: ")
 	for playerObj,_ in pairs(players) do
-		print(" --"..playerObj:getUsername())
+		--print(" --"..playerObj:getUsername())
 		table.insert(cleanedPlayerList, playerObj)
 	end
 
