@@ -252,6 +252,8 @@ function EHE_EventMarker:update(playerIndex)
 		return
 	end
 
+	print(" -- -- EHE_EventMarker:update: "..player:getUsername())
+
 	if self.duration > 0 then
 		self.duration = self.duration-1
 		--if instanceof(poi, "BaseVehicle") then print("EHE:DEBUG: Duration-1 = "..self.duration) end
