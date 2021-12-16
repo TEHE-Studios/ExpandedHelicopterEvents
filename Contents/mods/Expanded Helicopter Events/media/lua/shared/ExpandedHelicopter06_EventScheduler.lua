@@ -221,6 +221,11 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 		end
 	end
 
+	--TODO: Fix MP
+	if getCore():getGameMode() == "Multiplayer" then
+		return
+	end
+
 	if neverEnd or (daysIntoApoc <= SandboxVars.ExpandedHeli.CutOffDay) then
 		local options = {}
 
