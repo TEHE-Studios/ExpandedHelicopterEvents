@@ -1,3 +1,5 @@
+require "ISUI/ISUIElement"
+
 --[[ Base code derived from: Sound Direction Indicator -- Nolan Ritchie ]]--
 
 EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
@@ -116,7 +118,7 @@ function EHE_EventMarker:setDistance(dist)
 end
 function EHE_EventMarker:setAngleFromPoint(x,y)
 	if(x and y) then
-		local radians = math.atan2(y - self.playerObj:getY(), x - self.playerObj:getX()) + math.pi
+		local radians = math.atan2(y - self.player:getY(), x - self.player:getX()) + math.pi
 		local degrees = ((radians * 180 / math.pi + 270) + 45) % 360
 
 		self.angle = degrees
@@ -164,8 +166,8 @@ function EHE_EventMarker:render()
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 
-		if self.playerObj and #getActualPlayers()>1 then
-			self:drawTexture(self.textureCoopNum[self.playerObj:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
+		if self.player and #getActualPlayers()>1 then
+			self:drawTexture(self.textureCoopNum[self.player:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 		end
 
 		ISUIElement.render(self)
@@ -188,7 +190,7 @@ end
 
 ---@return IsoPlayer | IsoGameCharacter | IsoMovingObject | IsoObject
 function EHE_EventMarker:getPlayer()
-	return self.playerObj
+	return self.player
 end
 
 
@@ -198,7 +200,7 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 	setmetatable(o, self)
 	self.__index = self
 	o.source = poi
-	o.playerObj = player
+	o.player = player
 	o.xoff = screenX
 	o.yoff = screenY
 	o.lastpx = 0
@@ -239,14 +241,12 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 end
 
 
----@param playerIndex number
+---@param player IsoPlayer
 function EHE_EventMarker:update(player)
 	if not player then
 		return
 	end
-
-	print(" -- -- EHE_EventMarker:update: "..player:getUsername())
-
+	--print(" -- -- EHE_EventMarker:update: "..player:getUsername())
 	if self.duration > 0 then
 		self.duration = self.duration-1
 		--if instanceof(poi, "BaseVehicle") then print("EHE:DEBUG: Duration-1 = "..self.duration) end

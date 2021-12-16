@@ -231,6 +231,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 			local alpha = 0.25
 			self.shadow = getWorldMarkers():addGridSquareMarker((self.shadowTexture or eHelicopter.shadowTexture), nil, currentSquare, 0.2, 0.2, 0.2, true, 1, 0, alpha, alpha)
 			self.shadow:setAlpha(alpha)
+			self.shadow:setSize(5)
 		end
 
 		local shadowSquare = getOutsideSquareFromAbove(currentSquare) or currentSquare
@@ -239,6 +240,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		end
 	end
 
+	--[[
 	--shadowBob
 	if self.shadow and (self.shadow ~= true) and (self.timeSinceLastShadowBob < timeStampMS) then
 		self.timeSinceLastShadowBob = timeStampMS+10
@@ -252,6 +254,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		end
 		self.shadow:setSize(shadowSize+shadowExpansion)
 	end
+	--]]
 
 	if self.flightVolume>0 then
 		local volumeFactor = 1

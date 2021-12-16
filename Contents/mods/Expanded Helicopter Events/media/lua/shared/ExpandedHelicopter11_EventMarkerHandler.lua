@@ -55,7 +55,7 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x , y)
 			if not isNew then
 				marker.source = poi
 				marker.textureIcon = getTexture(icon)
-				marker.playerObj = p
+				marker.player = p
 			end
 			marker:setDuration(duration)
 		end
