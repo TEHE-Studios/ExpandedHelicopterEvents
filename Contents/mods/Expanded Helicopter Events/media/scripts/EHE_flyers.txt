@@ -8,7 +8,7 @@ module EHE
 		DisplayName = Evacuation Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = media/ui/content/EvacuationFlyer.png,
+		Map = EHE_evacuationflyer.png,
 		WorldStaticModel = EvacuationFlyer,
 	}
 	    item EmergencyFlyer
@@ -19,7 +19,7 @@ module EHE
 		DisplayName = Emergency Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = media/ui/content/EmergencyFlyer.png,
+		Map = EHE_emergencyflyer,
 		WorldStaticModel = EmergencyFlyer,
 	}
 		item QuarantineFlyer
@@ -30,7 +30,7 @@ module EHE
 		DisplayName = Quarantine Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = media/ui/content/QuarantineFlyer.png,
+		Map = EHE_quarantineflyer,
 		WorldStaticModel = EmergencyFlyer,
 	}
 		item PreventionFlyer
@@ -41,7 +41,7 @@ module EHE
 		DisplayName = Prevention Flyer,
 		Icon = FlyerPav,
 		Tooltip = Tooltip_FlyerCDC,
-		Map = media/ui/content/PAVFlyer.png,
+		Map = EHE_preventionflyer,
 		WorldStaticModel = PAVFlyer,
 	}
 		item NoticeFlyer
@@ -52,7 +52,7 @@ module EHE
 		DisplayName = Notice Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_CivilDefense,
-		Map = media/ui/content/NoticeFlyer.png,
+		Map = EHE_noticeflyer,
 		WorldStaticModel = NoticeFlyer,
 	}
 }
