@@ -65,7 +65,7 @@ eHelicopter_PRESETS["patrol_only_emergency"] = {
 
 eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	inherit = {"military"},
-	dropItems = {["EHE.QuarantineFlyer"]=250},
+	--dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
 }
