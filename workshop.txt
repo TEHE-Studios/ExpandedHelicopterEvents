@@ -1,8 +1,8 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events
-description=[h2]This mod is currently non-functional in multiplayer. A patch is assembled in the time being.[/h2]
-description=[h2]However, this mod is still functional and working as intended in singleplayer.[/h2]
+description=[h2]This mod is currently [b]non-functional in multiplayer.[/b] A patch is assembled in the time being.[/h2]
+description=[h2]However, this mod is [b]still functional and working as intended in singleplayer.[/b][/h2]
 description=
 description=[h1][b]Super Weird Edition: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162]Out now![/url][/b][/h1]
 description=[h1][b]Twitch Integration: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501]Out now![/url][/b][/h1]
@@ -118,7 +118,7 @@ description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h2]
 description=[/quote]
 description=
-description=[h2]This mod is currently non-functional in multiplayer. A patch is being assembled in the time being.[/h2]
-description=[h2]However, this mod is still functional and working as intended in singleplayer.[/h2]
+description=[h2]This mod is currently [b]non-functional in multiplayer.[/b] A patch is assembled in the time being.[/h2]
+description=[h2]However, this mod is [b]still functional and working as intended in singleplayer.[/b][/h2]
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
