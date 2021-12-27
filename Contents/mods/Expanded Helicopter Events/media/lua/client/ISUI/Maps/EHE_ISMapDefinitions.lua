@@ -15,54 +15,46 @@ local function overlayPNG(mapUI, x, y, scale, layerName, tex, alpha)
 	layer:setBoundsInSquares(x, y, x + texture:getWidth() * scale, y + texture:getHeight() * scale)
 end
 
+local FlyerX1 = 10
+local FlyerY1 = 10
+
+local FlyerX2 = 1003
+local FlyerY2 = 1255
+
 
 LootMaps.Init.EHE_emergencyflyer = function(mapUI)
-
-	-- Your custom initialization for MuldraughMap
 	local mapAPI = mapUI.javaObject:getAPIv1()
 	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
-	mapAPI:setBoundsInSquares(10000, 10000, 12990, 10480)
-	overlayPNG(mapUI, 10524, 9222, 1.0, "lootMapPNG", "media/ui/LootableMaps/emergencyflyer.png", 1.0)
-
-end
-
-LootMaps.Init.EHE_evacuationflyer = function(mapUI)
-
-	-- Your custom initialization for RosewoodMap
-	local mapAPI = mapUI.javaObject:getAPIv1()
-	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
-	mapAPI:setBoundsInSquares(10000, 10000, 12990, 10480)
-	overlayPNG(mapUI, 10524, 9222, 1.0, "lootMapPNG", "media/ui/LootableMaps/evacuationflyer.png", 1.0)
-
+	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/emergencyflyer.png", 1.0)
 end
 
 LootMaps.Init.EHE_noticeflyer = function(mapUI)
-
-	-- Your custom initialization for RosewoodMap
 	local mapAPI = mapUI.javaObject:getAPIv1()
 	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
-	mapAPI:setBoundsInSquares(10540, 9240, 12990, 10480)
-	overlayPNG(mapUI, 10524, 9222, 1.0, "lootMapPNG", "media/ui/LootableMaps/noticeflyer.png", 1.0)
-
-end
-
-
-LootMaps.Init.EHE_PAVflyer = function(mapUI)
-
-	-- Your custom initialization for MuldraughMap
-	local mapAPI = mapUI.javaObject:getAPIv1()
-	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
-	mapAPI:setBoundsInSquares(10540, 9240, 12990, 10480)
-	overlayPNG(mapUI, 10524, 9222, 1.0, "lootMapPNG", "media/ui/LootableMaps/PAVflyer.png", 1.0)
-
+	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/noticeflyer.png", 1.0)
 end
 
 LootMaps.Init.EHE_quarantineflyer = function(mapUI)
-
-	-- Your custom initialization for RosewoodMap
 	local mapAPI = mapUI.javaObject:getAPIv1()
 	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
-	mapAPI:setBoundsInSquares(10540, 9240, 12990, 10480)
-	overlayPNG(mapUI, 10524, 9222, 1.0, "lootMapPNG", "media/ui/LootableMaps/quarantineflyer.png", 1.0)
-
+	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/quarantineflyer.png", 1.0)
 end
+
+
+LootMaps.Init.EHE_evacflyer = function(mapUI)
+	local mapAPI = mapUI.javaObject:getAPIv1()
+	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
+	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/evacflyer.png", 1.0)
+end
+
+LootMaps.Init.EHE_pavflyer = function(mapUI)
+	local mapAPI = mapUI.javaObject:getAPIv1()
+	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
+	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/pavflyer.png", 1.0)
+end
+
