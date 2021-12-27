@@ -44,17 +44,17 @@ LootMaps.Init.EHE_quarantineflyer = function(mapUI)
 end
 
 
-LootMaps.Init.EHE_evacflyer = function(mapUI)
+LootMaps.Init.EHE_warningflyer = function(mapUI)
 	local mapAPI = mapUI.javaObject:getAPIv1()
 	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
 	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
-	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/evacflyer.png", 1.0)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/warningflyer.png", 1.0)
 end
 
-LootMaps.Init.EHE_pavflyer = function(mapUI)
+LootMaps.Init.EHE_preventionflyer = function(mapUI)
 	local mapAPI = mapUI.javaObject:getAPIv1()
 	MapUtils.initDirectoryMapData(mapUI, 'media/maps/Muldraugh, KY')
 	mapAPI:setBoundsInSquares(FlyerX1, FlyerY1, FlyerX2, FlyerY2)
-	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/pavflyer.png", 1.0)
+	overlayPNG(mapUI, FlyerX1, FlyerY1, 1.0, "lootMapPNG", "media/ui/LootableMaps/preventionflyer.png", 1.0)
 end
 

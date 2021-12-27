@@ -8,7 +8,7 @@ module EHE
 		DisplayName = Evacuation Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = EHE_evacflyer,
+		Map = EHE_warningflyer,
 		WorldStaticModel = EvacuationFlyer,
 	}
 
@@ -21,7 +21,7 @@ module EHE
         DisplayName = Prevention Flyer,
         Icon = FlyerPav,
         Tooltip = Tooltip_FlyerCDC,
-        Map = EHE_pavflyer,
+        Map = EHE_preventionflyer,
         WorldStaticModel = PAVFlyer,
     }
 
