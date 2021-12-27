@@ -58,14 +58,14 @@ eHelicopter_PRESETS["patrol_only"] = {
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 eHelicopter_PRESETS["patrol_only_emergency"] = {
 	inherit = {"military"},
-	--dropItems = {["EHE.EmergencyFlyer"]=250},
+	dropItems = {["EHE.EmergencyFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
 }
 
 eHelicopter_PRESETS["patrol_only_quarantine"] = {
 	inherit = {"military"},
-	--dropItems = {["EHE.QuarantineFlyer"]=250},
+	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
 }
@@ -74,7 +74,7 @@ eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	announcerVoice = false,
 	inherit = {"military"},
 	hostilePreference = "IsoZombie",
-	--dropItems = {["EHE.EvacuationFlyer"]=250},
+	dropItems = {["EHE.EvacuationFlyer"]=250},
 	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},--"air_raid",
 }
 
@@ -91,7 +91,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
 	hoverOnTargetDuration = 500,
 	dropPackages = {"FEMASupplyDrop"},
-	--dropItems = {["EHE.NoticeFlyer"]=250},
+	dropItems = {["EHE.NoticeFlyer"]=250},
 	speed = 0.09,
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH1HMedevacTail"},
