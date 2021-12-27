@@ -217,13 +217,6 @@ module EHE
     }
 
 
-      recipe Deploy Flare
-    {
-       SignalFlare,
-       Result:SignalFlareSpent=1,
-       Time:45.0,
-    }
-
     	recipe Dismantle Main Rotor Blade
 	{
 		Category:Welding,
