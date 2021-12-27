@@ -1,5 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.4-COOP_Markers"))
-
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.5-fixforSP-disabledMP"))
 require "zDebugPanel"
 
 Events.OnGameBoot.Add(function()

@@ -8,9 +8,24 @@ module EHE
 		DisplayName = Evacuation Flyer,
 		Icon = Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
-		Map = EHE_evacuationflyer.png,
+		Map = EHE_evacflyer,
 		WorldStaticModel = EvacuationFlyer,
 	}
+
+
+	    item PreventionFlyer
+    {
+        DisplayCategory = Literature,
+        Weight = 0.1,
+        Type = Map,
+        DisplayName = Prevention Flyer,
+        Icon = FlyerPav,
+        Tooltip = Tooltip_FlyerCDC,
+        Map = EHE_pavflyer,
+        WorldStaticModel = PAVFlyer,
+    }
+
+
 	    item EmergencyFlyer
 	{
 		DisplayCategory = Literature,
@@ -22,6 +37,8 @@ module EHE
 		Map = EHE_emergencyflyer,
 		WorldStaticModel = EmergencyFlyer,
 	}
+
+
 		item QuarantineFlyer
 	{
 		DisplayCategory = Literature,
@@ -33,17 +50,7 @@ module EHE
 		Map = EHE_quarantineflyer,
 		WorldStaticModel = EmergencyFlyer,
 	}
-		item PreventionFlyer
-	{
-		DisplayCategory = Literature,
-		Weight = 0.1,
-		Type = Map,
-		DisplayName = Prevention Flyer,
-		Icon = FlyerPav,
-		Tooltip = Tooltip_FlyerCDC,
-		Map = EHE_preventionflyer,
-		WorldStaticModel = PAVFlyer,
-	}
+
 		item NoticeFlyer
 	{
 		DisplayCategory = Literature,
