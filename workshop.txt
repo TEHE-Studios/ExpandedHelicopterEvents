@@ -1,6 +1,6 @@
 version=1
 id=2458631365
-title=Expanded Helicopter Events
+title=Expanded Helicopter Events [MP PATCH IN PROGRESS]
 description=[h2]This mod is currently [b]non-functional in multiplayer.[/b] A patch is assembled in the time being.[/h2]
 description=[h2]However, this mod is [b]still functional and working as intended in singleplayer.[/b][/h2]
 description=
