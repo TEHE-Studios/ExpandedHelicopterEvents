@@ -84,7 +84,7 @@ function eHelicopter:crash()
 		addSound(nil, heliX, heliY, 0, 250, 300)
 		self:playEventSound("crashEvent")
 
-		EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/crash.png", 3000, heliX, heliY)
+		EHE_SendMarker(nil, "media/ui/crash.png", 3000, heliX, heliY)
 
 		self:unlaunch()
 
@@ -273,7 +273,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 
 	self:playEventSound("droppingPackage")
-	EHE_EventMarkerHandler.setOrUpdateMarkers(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
+	EHE_SendMarker(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
 	self.dropPackages = false
 	return airDrop
 end

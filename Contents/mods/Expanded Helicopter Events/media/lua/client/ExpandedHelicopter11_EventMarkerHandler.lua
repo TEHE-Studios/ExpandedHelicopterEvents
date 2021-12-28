@@ -1,6 +1,7 @@
 EHE_EventMarkerHandler = {}
 EHE_EventMarkerHandler.allPOI = {}
 
+
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
 function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)
 	if(player) then
@@ -91,3 +92,20 @@ function EHE_EventMarkerHandler.updateAll()
 end
 Events.OnTick.Add(EHE_EventMarkerHandler.updateAll)
 
+
+local Commands = {}
+Commands.EHEMarkers = {}
+function Commands.EHEMarkers.Receive(args)
+	print(" - Commands.EHEMarkers.Receive")
+	if args then
+		print(" --ARGS FOUND")
+		EHE_EventMarkerHandler.setOrUpdateMarkers(args.poi, args.icon, args.duration, args.x, args.y)
+	end
+end
+function onServerCommand(module, command, arguments)
+	print("NET TEST: " .. module .. " " .. command)
+	if Commands[module] and Commands[module][command] then
+		Commands[module][command](arguments)
+	end
+end
+Events.OnServerCommand.Add(onServerCommand)
