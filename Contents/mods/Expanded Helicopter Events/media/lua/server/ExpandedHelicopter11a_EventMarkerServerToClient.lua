@@ -1,8 +1,11 @@
-local Commands = {};
-Commands.ModuleName = {};
-function Commands.ModuleName.CommandName(arguments)
-	--- do things on the client when this command has been received
-	--- arguments is the kahlua table containing the data
+local Commands = {}
+Commands.EHEMarkers = {}
+function Commands.EHEMarkers.Receive(args)
+	print(" - OnClient: Commands.EHEMarkers.Receive")
+	if args then
+		print(" --ARGS FOUND")
+		EHE_EventMarkerHandler.setOrUpdateMarkers(args.poi, args.icon, args.duration, args.x, args.y)
+	end
 end
 function onServerCommand(module, command, arguments)
 	if Commands[module] and Commands[module][command] then
@@ -10,6 +13,7 @@ function onServerCommand(module, command, arguments)
 	end
 end
 Events.OnClientCommand.Add(onServerCommand);
+
 
 
 function EHE_SendMarker(poi, icon, duration, x, y)
@@ -21,6 +25,7 @@ function EHE_SendMarker(poi, icon, duration, x, y)
 		EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x, y)
 	else
 		print(" -- MP")
+		sendClientCommand("EHEMarkers", "Receive", { poi=poi, icon=icon, duration=duration, x=x, y=y })
 		sendServerCommand("EHEMarkers", "Receive", { poi=poi, icon=icon, duration=duration, x=x, y=y })
 	end
 end

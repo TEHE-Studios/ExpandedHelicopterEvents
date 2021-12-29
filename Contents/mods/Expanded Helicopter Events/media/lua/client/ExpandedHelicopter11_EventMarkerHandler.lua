@@ -96,7 +96,7 @@ Events.OnTick.Add(EHE_EventMarkerHandler.updateAll)
 local Commands = {}
 Commands.EHEMarkers = {}
 function Commands.EHEMarkers.Receive(args)
-	print(" - Commands.EHEMarkers.Receive")
+	print(" - OnServer: Commands.EHEMarkers.Receive")
 	if args then
 		print(" --ARGS FOUND")
 		EHE_EventMarkerHandler.setOrUpdateMarkers(args.poi, args.icon, args.duration, args.x, args.y)
