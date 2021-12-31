@@ -664,7 +664,7 @@ end
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)
 
-	print(" - EHE: "..self:heliToString().." launched.")
+	print(" - EHE: LAUNCH: "..self:heliToString().." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 
 	if not targetedObject then
 		targetedObject = self:findTarget(nil, "launch")
@@ -763,7 +763,7 @@ end
 
 
 function eHelicopter:unlaunch()
-	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().."hour:"..getGameTime():getHour())
+	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 	self.delayedEventSounds = {}
 	EHE_EventMarkerHandler.disableMarkersForPOI(self)
 	--stop old emitter to prevent occasional "phantom" announcements
