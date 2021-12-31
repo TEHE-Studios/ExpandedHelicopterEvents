@@ -91,28 +91,4 @@ EasyConfig_Chucked = EasyConfig_Chucked or {}
 EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
 
-
---Overrides vanilla helicopter frequency on game boot
----@param hookEvent string optional
-function HelicopterSandboxOptions(hookEvent)
-
-	print("EHE: "..(hookEvent or "").."Disabling vanilla helicopter Day/StartHour/EndHour/Helicopter.")
-	getGameTime():setHelicopterDay(-1)
-	getGameTime():setHelicopterStartHour(-1)
-	getGameTime():setHelicopterEndHour(-1)
-	getSandboxOptions():getOptionByName("Helicopter"):setValue(1) -- 1 = Never
-	SandboxVars.Helicopter = 1
-
-	print("EHE: "..(hookEvent or "").."Adding items to WorldItemRemovalList.")
-	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
-	for k,type in pairs(typesForRemovalList) do
-		if not string.find(SandboxVars.WorldItemRemovalList, type) then
-			SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
-		end
-	end
-	getSandboxOptions():updateFromLua()
-end
-
 Events.OnGameBoot.Add(sandboxOptionsEnd)
-Events.OnGameBoot.Add(HelicopterSandboxOptions("OnGameBoot: "))
-
