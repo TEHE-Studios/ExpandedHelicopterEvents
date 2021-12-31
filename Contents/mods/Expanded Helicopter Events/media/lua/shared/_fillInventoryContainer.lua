@@ -76,8 +76,8 @@ function rollInventoryContainer(inventoryContainer, player)
 					end
 
 					local maxMapIteration = 0
-
-					if not stringIsNullOrEmpty(createdItem:getMap()) and itemContainerDistribution.maxMap > 0 then
+					
+					if createdItem:getType()=="Map" and not stringIsNullOrEmpty(createdItem:getMapID()) and itemContainerDistribution.maxMap and itemContainerDistribution.maxMap > 0 then
 						local maxMapCount = 0
 
 						for iteration=0, itemContainer:getItems():size() do
