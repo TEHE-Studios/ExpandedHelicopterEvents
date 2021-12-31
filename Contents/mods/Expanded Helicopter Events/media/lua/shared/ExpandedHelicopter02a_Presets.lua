@@ -126,21 +126,21 @@ eHelicopter_PRESETS["jet"] = {
 	eventSpawnWeight = 5,
 	}
 
---eHelicopter_PRESETS["air_raid"] = {
-	--doNotListForTwitchIntegration = true,
-	--crashType = false,
-	--shadow = false,
-	--speed = 0.05,
-	--flightVolume = 0,
-	--eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
-	--eventMarkerIcon = false,
-	--forScheduling = true,
-	--flightHours = {11, 11},
-	--eventSpawnWeight = 50,
-	--schedulingFactor = 99999,
-	--eventStartDayFactor = 0.067,
-	--eventCutOffDayFactor = 0.067,
-	--ignoreNeverEnding = true,
+eHelicopter_PRESETS["air_raid"] = {
+	doNotListForTwitchIntegration = true,
+	crashType = false,
+	shadow = false,
+	speed = 0.05,
+	flightVolume = 0,
+	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+	eventMarkerIcon = false,
+	forScheduling = true,
+	flightHours = {11, 11},
+	eventSpawnWeight = 50,
+	schedulingFactor = 99999,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.067,
+	ignoreNeverEnding = true,
 }
 
 eHelicopter_PRESETS["jet_bombing"] = {
