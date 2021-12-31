@@ -275,7 +275,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	self:playEventSound("droppingPackage")
 	EHE_SendMarker(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
 	self.dropPackages = false
-	return airDrop
+	return true
 end
 
 
