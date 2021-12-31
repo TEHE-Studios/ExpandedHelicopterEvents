@@ -93,19 +93,27 @@ end
 Events.OnTick.Add(EHE_EventMarkerHandler.updateAll)
 
 
+
+
 local Commands = {}
 Commands.EHEMarkers = {}
-function Commands.EHEMarkers.Receive(args)
-	print(" - OnServer: Commands.EHEMarkers.Receive")
+Commands.EHE = {}
+function Commands.EHEMarkers.Receive(player, args)
+	print(" -CLIENT: Commands.EHEMarkers.Receive"..player:getUsername())
 	if args then
 		print(" --ARGS FOUND")
 		EHE_EventMarkerHandler.setOrUpdateMarkers(args.poi, args.icon, args.duration, args.x, args.y)
 	end
 end
+
+function Commands.EHE.TempTest(player, args)
+	print(" -CLIENT: Commands.EHE.TempTest - "..player:getUsername())
+end
+
 function onServerCommand(module, command, arguments)
-	print("NET TEST: " .. module .. " " .. command)
 	if Commands[module] and Commands[module][command] then
 		Commands[module][command](arguments)
 	end
 end
+Events.OnClientCommand.Add(onServerCommand)
 Events.OnServerCommand.Add(onServerCommand)
