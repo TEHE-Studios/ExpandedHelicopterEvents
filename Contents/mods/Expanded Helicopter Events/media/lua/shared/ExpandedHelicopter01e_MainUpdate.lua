@@ -211,7 +211,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	self:checkDelayedEventSounds()
 
 	--drop carpackage
-	local packageDropRange = ZombRand(75, 100)
+	local packageDropRange = ZombRand(50, 75)
 	local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
 	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 		local drop = self:dropCarePackage()
