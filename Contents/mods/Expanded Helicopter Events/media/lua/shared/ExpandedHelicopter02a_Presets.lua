@@ -130,7 +130,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	doNotListForTwitchIntegration = true,
 	crashType = false,
 	shadow = false,
-	speed = 0.7,
+	speed = 0.09,
 	flightVolume = 0,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
 	eventMarkerIcon = false,
