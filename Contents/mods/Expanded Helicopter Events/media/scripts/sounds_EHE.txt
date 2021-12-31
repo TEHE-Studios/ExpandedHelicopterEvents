@@ -26,7 +26,7 @@ module Base {
         
     sound eAirRaid {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/siren.ogg, distanceMax = 5000, volume = 0.069, } }
+        clip { file = media/sound/siren.ogg, distanceMax = 5100, volume = 0.069, } }
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
@@ -38,13 +38,13 @@ module Base {
              
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/bombing1.ogg, distanceMax = 5000, volume = 0.5, }
-        clip { file = media/sound/bombing2.ogg, distanceMax = 5000, volume = 0.5, }
-        clip { file = media/sound/bombing3.ogg, distanceMax = 5000, volume = 0.5, } }
+        clip { file = media/sound/bombing1.ogg, distanceMax = 5100, volume = 0.5, }
+        clip { file = media/sound/bombing2.ogg, distanceMax = 5100, volume = 0.5, }
+        clip { file = media/sound/bombing3.ogg, distanceMax = 5100, volume = 0.5, } }
 
     sound eCarpetBomb {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/bombingCarpet.ogg, distanceMax = 5000, volume = 1.3,} }
+        clip { file = media/sound/bombingCarpet.ogg, distanceMax = 5100, volume = 1.3,} }
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
