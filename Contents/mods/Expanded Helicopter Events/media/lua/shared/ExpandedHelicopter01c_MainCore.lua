@@ -763,7 +763,7 @@ end
 
 
 function eHelicopter:unlaunch()
-	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived())
+	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().."hour:"..getGameTime():getHour())
 	self.delayedEventSounds = {}
 	EHE_EventMarkerHandler.disableMarkersForPOI(self)
 	--stop old emitter to prevent occasional "phantom" announcements

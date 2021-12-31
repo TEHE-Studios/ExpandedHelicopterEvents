@@ -126,10 +126,12 @@ function eHelicopter:update()
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnHover"]
 				if eventFunction then
-					--[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
+					--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
 					eventFunction(self)
 				end
 			end
+
+			--[[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
 
 			self.hoverOnTargetDuration = (self.hoverOnTargetDuration-1)*getGameSpeed()
 			if self.hoverOnTargetDuration <= 0 then
