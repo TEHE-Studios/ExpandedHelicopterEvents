@@ -1,20 +1,51 @@
-require "ExpandedHelicopter01c_MainCore"
+require "ExpandedHelicopter01a_MainVariables"
 
----@param event string
+eventSoundHandler = {}
+
+storedLooperEvents = {}
+function eventSoundHandler:playLooperEvent(reusableID, DATA, command)
+	if isClient() then
+		---@type BaseSoundEmitter | FMODSoundEmitter
+		local soundEmitter = storedLooperEvents[reusableID]
+		if not soundEmitter then
+			storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
+			soundEmitter = storedLooperEvents[reusableID]
+		end
+		if soundEmitter then
+			if command == "play" then
+				soundEmitter:playSound(DATA)
+			elseif command == "setPos" then
+				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
+			elseif command == "stop" then
+				soundEmitter:stopSoundByName(DATA)
+				storedLooperEvents[reusableID] = nil
+			end
+		end
+	end
+end
+
+
+---@param soundEvent string
 ---@param otherLocation IsoGridSquare
 ---@param saveEmitter boolean
 ---@param stopSound boolean
 ---@param delay number
-function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound, delay)
+function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveEmitter, stopSound, delay)
 
-	local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
+	local soundEffect = heli.eventSoundEffects[soundEvent] or eHelicopter.eventSoundEffects[soundEvent] or soundEvent
 
 	if not soundEffect or soundEffect=="IGNORE" then
 		return
 	end
 
 	if delay then
-		table.insert(self.delayedEventSounds, {["event"]=event, ["otherLocation"]=otherLocation, ["saveEmitter"]=saveEmitter, ["stopSound"]=stopSound, ["delay"]=getTimestampMs()+delay})
+		table.insert(heli.delayedEventSounds, {
+			["event"]=soundEvent,
+			["otherLocation"]=otherLocation,
+			["saveEmitter"]=saveEmitter,
+			["stopSound"]=stopSound,
+			["delay"]=getTimestampMs()+delay
+		})
 		return
 	end
 
@@ -28,28 +59,31 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	local soundEmitter
 
 	if oL then
-		soundEmitter = self.placedEventSoundEffectEmitters[event]
+		soundEmitter = heli.placedEventSoundEffectEmitters[soundEvent]
 	else
-		soundEmitter = self.heldEventSoundEffectEmitters[event]
+		soundEmitter = heli.heldEventSoundEffectEmitters[soundEvent]
 	end
 
 	if stopSound then
+		if isClient() and heli.looperEventIDs[soundEvent] then
+			sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="stop"})
+		end
 		if soundEmitter then
 			soundEmitter:stopSoundByName(soundEffect)
 		end
 		return
 	end
 
-	--if otherlocation provided use it; if not use self
-	otherLocation = otherLocation or self:getIsoGridSquare()
+	--if otherlocation provided use it; if not use heli
+	otherLocation = otherLocation or heli:getIsoGridSquare()
 
 	if not soundEmitter then
 		soundEmitter = getWorld():getFreeEmitter()
 		if saveEmitter then
 			if oL then
-				self.placedEventSoundEffectEmitters[event] = soundEmitter
+				heli.placedEventSoundEffectEmitters[soundEvent] = soundEmitter
 			else
-				self.heldEventSoundEffectEmitters[event] = soundEmitter
+				heli.heldEventSoundEffectEmitters[soundEvent] = soundEmitter
 			end
 		end
 
@@ -57,43 +91,60 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 			print("--soundEmitter:isPlaying:"..soundEffect)
 			return
 		else
-			print("--event:"..event..":"..soundEffect)
-			soundEmitter:playSound(soundEffect)--, otherLocation)
+
+			if isClient() and heli.looperEventIDs[soundEvent] then
+				sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="play"})
+			else
+				print("--event:"..soundEvent..":"..soundEffect)
+				soundEmitter:playSoundImpl(soundEffect, otherLocation)
+			end
 		end
-		soundEmitter:setPos(otherLocation:getX(),otherLocation:getY(),otherLocation:getZ())
 	end
 end
 
 
-function eHelicopter:checkEventSounds()
+function eventSoundHandler:updatePos(heli,heliX,heliY)
+	--Move held emitters to position
+
+	if isClient() and #heli.looperEventIDs>0 then
+		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliX,z=heli.height}, command="setPos"})
+	end
+
+	for _,emitter in pairs(heli.heldEventSoundEffectEmitters) do
+		emitter:setPos(heliX,heliY,heli.height)
+	end
+end
+
+
+function eventSoundHandler:checkEventSounds(heli)
 	--check delayed event sounds
 	local currentTime = getTimestampMs()
-	for placeInList,EventSound in pairs(self.delayedEventSounds) do
+	for placeInList,EventSound in pairs(heli.delayedEventSounds) do
 		--event, otherLocation, saveEmitter, stopSound, delay
 		if currentTime <= EventSound["delay"] then
-			self:playEventSound(EventSound["event"], EventSound["otherLocation"], EventSound["saveEmitter"], EventSound["stopSound"])
-			self.delayedEventSounds[placeInList] = nil
+			eventSoundHandler:playEventSound(heli, EventSound["otherLocation"], EventSound["saveEmitter"], EventSound["stopSound"])
+			heli.delayedEventSounds[placeInList] = nil
 		end
 	end
 end
 
 
-function eHelicopter:stopAllHeldEventSounds()
+function eventSoundHandler:stopAllHeldEventSounds(heli)
 	--[[DEBUG]] local soundsStopped = false
-	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
-		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
+	for event,emitter in pairs(heli.heldEventSoundEffectEmitters) do
+		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 		if soundEffect then
 			soundsStopped = true
 			emitter:stopSoundByName(soundEffect)
 		end
 	end
-	for event,emitter in pairs(self.placedEventSoundEffectEmitters) do
-		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
+	for event,emitter in pairs(heli.placedEventSoundEffectEmitters) do
+		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 		if soundEffect then
 			soundsStopped = true
 			emitter:stopSoundByName(soundEffect)
 		end
 	end
-	self.delayedEventSounds = {}
-	--[[DEBUG]] if soundsStopped then print(" - EHE: stopAllHeldEventSounds for "..self:heliToString()) end
+	heli.delayedEventSounds = {}
+	--[[DEBUG]] if soundsStopped then print(" - EHE: stopAllHeldEventSounds for "..heli:heliToString()) end
 end

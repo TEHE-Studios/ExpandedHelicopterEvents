@@ -1,6 +1,10 @@
 EHE_EventMarkerHandler = {}
 EHE_EventMarkerHandler.allPOI = {}
 
+function EHE_SendMarker(poi, icon, duration, x, y)
+	EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x, y)
+end
+
 
 ---@param player IsoObject | IsoMovingObject | IsoGameCharacter | IsoPlayer
 function EHE_EventMarkerHandler.generateNewMarker(poi, player, icon, duration)

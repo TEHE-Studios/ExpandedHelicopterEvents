@@ -1,4 +1,6 @@
 require "ExpandedHelicopter01c_MainCore"
+require "ExpandedHelicopter01a_MainVariables"
+require "ExpandedHelicopter01b_MainSounds"
 
 function eHelicopter:update()
 
@@ -32,7 +34,7 @@ function eHelicopter:update()
 			if (distanceToTrueTarget <= self.attackDistance*2) then
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
-					self:playEventSound("foundTarget")
+					eventSoundHandler:playEventSound(self, "foundTarget")
 				end
 				self.timeSinceLastSeenTarget = timeStampMS
 			end
@@ -68,7 +70,7 @@ function eHelicopter:update()
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if self.state == "arrived" and (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
-			self:playEventSound("lostTarget")
+			eventSoundHandler:playEventSound(self, "lostTarget")
 		end
 
 		if self.state == "arrived" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
@@ -125,7 +127,7 @@ function eHelicopter:update()
 
 			if type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
 
-				self:playEventSound("hoverOverTarget", nil, true)
+				eventSoundHandler:playEventSound(self, "hoverOverTarget", nil, true)
 
 				if self.addedFunctionsToEvents then
 					local eventFunction = self.addedFunctionsToEvents["OnHover"]
@@ -157,8 +159,8 @@ function eHelicopter:update()
 			end
 			--]]
 
-			self:playEventSound("hoverOverTarget",nil, nil, true)
-			self:playEventSound("flyOverTarget")
+			eventSoundHandler:playEventSound(self, "hoverOverTarget",nil, nil, true)
+			eventSoundHandler:playEventSound(self, "flyOverTarget")
 
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnFlyaway"]
@@ -215,7 +217,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		end
 	end
 
-	self:checkEventSounds()
+	eventSoundHandler:checkEventSounds(self)
 
 	--drop carpackage
 	local packageDropRange = ZombRand(50, 75)

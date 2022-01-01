@@ -1,3 +1,5 @@
+require "ExpandedHelicopter01b_MainSounds"
+
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:lookForHostiles(targetType)
 
@@ -81,8 +83,8 @@ function eHelicopter:fireOn(targetHostile)
 		eventSound = "attackLooped"
 	end
 	--determine location of helicopter
-	self:playEventSound(eventSound)
-	self:playEventSound("additionalAttackingSound")
+	eventSoundHandler:playEventSound(self, eventSound)
+	eventSoundHandler:playEventSound(self, "additionalAttackingSound")
 
 	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies
@@ -205,7 +207,7 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	--fireImpacts
-	self:playEventSound("attackImpacts", targetHostile:getSquare())
+	eventSoundHandler:playEventSound(self, "attackImpacts", targetHostile:getSquare())
 end
 
 

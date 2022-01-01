@@ -2,6 +2,14 @@ require "ExpandedHelicopter00c_SpawnerAPI"
 
 --if isClient() then sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)
+	--serverside
+	if _module == "sendLooper" then
+		if _command == "ping" then
+			print("--sendLooper:ping")
+			sendServerCommand("sendLooper", _dataB.command, _dataB)
+		end
+	end
+
 	if _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			print("--spawnZombie")

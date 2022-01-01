@@ -1,3 +1,5 @@
+require "ExpandedHelicopter01b_MainSounds"
+
 ---Sets eHelicopter's announcer voice
 ---@param specificVoice string|table can be string for specific voice or table to be picked from
 function eHelicopter:chooseVoice(specificVoice)
@@ -76,8 +78,8 @@ function eHelicopter:announce(specificLine)
 	self.timeUntilCanAnnounce = getTimestampMs()+lineDelay
 
 	if self.lastAnnouncedLine then
-		self:playEventSound(self.lastAnnouncedLine,nil, nil, true)
+		eventSoundHandler:playEventSound(self, self.lastAnnouncedLine,nil, nil, true)
 	end
 	self.lastAnnouncedLine = announcePick
-	self:playEventSound(announcePick)
+	eventSoundHandler:playEventSound(self, announcePick)
 end

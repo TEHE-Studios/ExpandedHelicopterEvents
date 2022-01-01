@@ -1,4 +1,5 @@
 require "ExpandedHelicopter01c_MainCore"
+require "ExpandedHelicopter01a_MainVariables"
 require "ExpandedHelicopter00c_SpawnerAPI"
 --Heli goes down
 
@@ -84,7 +85,7 @@ function eHelicopter:crash()
 		--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
 		self:spawnCrew()
 		addSound(nil, heliX, heliY, 0, 250, 300)
-		self:playEventSound("crashEvent")
+		eventSoundHandler:playEventSound(self, "crashEvent")
 
 		EHE_SendMarker(nil, "media/ui/crash.png", 3000, heliX, heliY)
 
@@ -274,7 +275,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 
-	self:playEventSound("droppingPackage")
+	eventSoundHandler:playEventSound(self, "droppingPackage")
 	EHE_SendMarker(nil, "media/ui/airdrop.png", 3000, heliX, heliY)
 	self.dropPackages = false
 	return true

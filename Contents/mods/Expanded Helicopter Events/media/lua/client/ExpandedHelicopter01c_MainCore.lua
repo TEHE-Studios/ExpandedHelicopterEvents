@@ -1,4 +1,5 @@
 require "ExpandedHelicopter00f_WeatherImpact"
+require "ExpandedHelicopter01b_MainSounds"
 
 ALL_HELICOPTERS = {}
 
@@ -296,10 +297,7 @@ end
 function eHelicopter:updatePosition(heliX, heliY)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(heliX, heliY, self.height)
-	--Move held emitters to position
-	for _,emitter in pairs(self.heldEventSoundEffectEmitters) do
-		emitter:setPos(heliX,heliY,self.height)
-	end
+	eventSoundHandler:updatePos(self,heliX,heliY)
 end
 
 
@@ -694,11 +692,11 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
 	self:formationInit()
-	self:playEventSound("flightSound", nil, true)
-	self:playEventSound("additionalFlightSound", nil, true)
+	eventSoundHandler:playEventSound(self,"flightSound", nil, true)
+	eventSoundHandler:playEventSound(self,"additionalFlightSound", nil, true)
 
 	local currentSquare = self:getIsoGridSquare()
-	self:playEventSound("soundAtEventOrigin", currentSquare, true, false)
+	eventSoundHandler:playEventSound(self,"soundAtEventOrigin", currentSquare, true, false)
 	
 	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
 		if #self.hoverOnTargetDuration >= 2 then
@@ -729,9 +727,9 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		if followingHeli then
 			followingHeli.attackDistance = self.attackDistance
 			local randSoundDelay = ZombRand(5,15)
-			followingHeli:playEventSound("soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
-			followingHeli:playEventSound("flightSound", nil, true, false, randSoundDelay)
-			followingHeli:playEventSound("additionalFlightSound", nil, true, false, randSoundDelay)
+			eventSoundHandler:playEventSound(followingHeli, "soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
+			eventSoundHandler:playEventSound(followingHeli, "flightSound", nil, true, false, randSoundDelay)
+			eventSoundHandler:playEventSound(followingHeli, "additionalFlightSound", nil, true, false, randSoundDelay)
 			if not blockCrashing then
 				followingHeli:applyCrashChance()
 			end
@@ -763,7 +761,7 @@ end
 function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 	EHE_EventMarkerHandler.disableMarkersForPOI(self)
-	self:stopAllHeldEventSounds()
+	eventSoundHandler:stopAllHeldEventSounds(self)
 	if self.shadow and type(self.shadow)~="boolean" then
 		self.shadow:remove()
 	end
