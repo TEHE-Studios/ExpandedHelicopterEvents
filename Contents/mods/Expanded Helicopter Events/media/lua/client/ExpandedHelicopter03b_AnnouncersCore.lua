@@ -81,5 +81,5 @@ function eHelicopter:announce(specificLine)
 		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)
 	end
 	self.lastAnnouncedLine = announcePick
-	self.announceEmitter:playSound(announcePick, ehX, ehY, ehZ)
+	self.announceEmitter:playSoundImpl(announcePick, ehX, ehY, ehZ)
 end
