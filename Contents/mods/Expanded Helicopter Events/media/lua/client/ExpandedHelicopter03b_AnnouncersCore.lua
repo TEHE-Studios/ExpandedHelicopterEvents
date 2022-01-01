@@ -79,5 +79,5 @@ function eHelicopter:announce(specificLine)
 		self:playEventSound(self.lastAnnouncedLine,nil, nil, true)
 	end
 	self.lastAnnouncedLine = announcePick
-	self:playEventSound(announcePick, nil, true)
+	self:playEventSound(announcePick)
 end
