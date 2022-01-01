@@ -84,9 +84,6 @@ eHelicopter.dropItems = false
 ---@field dropPackages table
 eHelicopter.dropPackages = false
 
----@field loopedSoundIDs table
-eHelicopter.loopedSoundIDs = {["additionalFlightSound"]=true,["flightSound"]=true}
-
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {
 	["hoverOverTarget"]="IGNORE",

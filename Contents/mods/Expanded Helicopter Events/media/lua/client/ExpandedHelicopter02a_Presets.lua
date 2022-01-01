@@ -134,7 +134,6 @@ eHelicopter_PRESETS["air_raid"] = {
 	topSpeedFactor = 3,
 	flightVolume = 0,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
-	loopedSoundIDs = {["hoverOverTarget"]=true,["additionalFlightSound"]=true,["flightSound"]=true,["soundAtEventOrigin"]=true},
 	eventMarkerIcon = false,
 	forScheduling = true,
 	flightHours = {11, 11},

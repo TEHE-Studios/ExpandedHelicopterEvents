@@ -1,3 +1,5 @@
+require "ExpandedHelicopter01c_MainCore"
+
 ---@param event string
 ---@param otherLocation IsoGridSquare
 ---@param saveEmitter boolean
@@ -58,13 +60,13 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 			print("--event:"..event..":"..soundEffect)
 			soundEmitter:playSound(soundEffect)--, otherLocation)
 		end
-
 		soundEmitter:setPos(otherLocation:getX(),otherLocation:getY(),otherLocation:getZ())
 	end
 end
 
 
 function eHelicopter:checkEventSounds()
+	--check delayed event sounds
 	local currentTime = getTimestampMs()
 	for placeInList,EventSound in pairs(self.delayedEventSounds) do
 		--event, otherLocation, saveEmitter, stopSound, delay
