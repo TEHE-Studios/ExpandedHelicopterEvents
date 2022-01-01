@@ -28,5 +28,5 @@ function EHE_onCommand(_module, _command, _dataA, _dataB)
 		end
 	end
 end
-Events.OnClientCommand.Add(EHE_onCommand)--server/
-Events.OnServerCommand.Add(EHE_onCommand)--client/
+Events.OnClientCommand.Add(EHE_onCommand)
+Events.OnServerCommand.Add(EHE_onCommand)

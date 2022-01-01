@@ -1,4 +1,5 @@
----Heli goes down
+require "ExpandedHelicopter01c_MainCore"
+--Heli goes down
 
 ---@param item InventoryItem
 function eHelicopter.ageInventoryItem(item)

@@ -104,22 +104,31 @@ function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPar
 		return
 	end
 
-	local currentSquare = getSquare(x,y,z)
-
-	if currentSquare then
-		if processSquare then
-			local func = SpawnerTEMP.fetchFromDictionary(processSquare)
-			currentSquare = func(currentSquare)
-		end
+	if isClient() then
+		print("sending spawnVehicle data")
+		sendClientCommand(getSpecificPlayer(0), "SpawnerAPI", "spawnVehicle",
+				{vehicleType=vehicleType,x=x,y=y,z=z,extraFunctions=extraFunctions,extraParam=extraParam,processSquare=processSquare})
 	end
 
-	if currentSquare then
-		local vehicle = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
-		if vehicle then
-			SpawnerTEMP.processExtraFunctionsOnto(vehicle,extraFunctions)
+	if isServer() then
+		print("receiving spawnVehicle data")
+		local currentSquare = getSquare(x,y,z)
+
+		if currentSquare then
+			if processSquare then
+				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+				currentSquare = func(currentSquare)
+			end
 		end
-	else
-		SpawnerTEMP.setToSpawn("Vehicle", vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+
+		if currentSquare then
+			local vehicle = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
+			if vehicle then
+				SpawnerTEMP.processExtraFunctionsOnto(vehicle,extraFunctions)
+			end
+		else
+			SpawnerTEMP.setToSpawn("Vehicle", vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+		end
 	end
 end
 
@@ -135,23 +144,32 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 		return
 	end
 
-	local currentSquare = getSquare(x,y,z)
-
-	if currentSquare then
-		if processSquare then
-			local func = SpawnerTEMP.fetchFromDictionary(processSquare)
-			currentSquare = func(currentSquare)
-		end
+	if isClient() then
+		print("sending spawnZombie data")
+		sendClientCommand(getSpecificPlayer(0), "SpawnerAPI", "spawnZombie",
+				{outfitID=outfitID,x=x,y=y,z=z,extraFunctions=extraFunctions,femaleChance=femaleChance,processSquare=processSquare})
 	end
 
-	if currentSquare then
-		x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
-		local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
-		if zombies and zombies:size()>0 then
-			SpawnerTEMP.processExtraFunctionsOnto(zombies, extraFunctions)
+	if isServer() then
+		print("receiving spawnZombie data")
+		local currentSquare = getSquare(x,y,z)
+
+		if currentSquare then
+			if processSquare then
+				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+				currentSquare = func(currentSquare)
+			end
 		end
-	else
-		SpawnerTEMP.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+
+		if currentSquare then
+			x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
+			local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
+			if zombies and zombies:size()>0 then
+				SpawnerTEMP.processExtraFunctionsOnto(zombies, extraFunctions)
+			end
+		else
+			SpawnerTEMP.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+		end
 	end
 end
 

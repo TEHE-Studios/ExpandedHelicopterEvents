@@ -1,3 +1,5 @@
+require "ExpandedHelicopter01c_MainCore"
+
 function eHelicopter:update()
 
 	if self.state == "following" then
