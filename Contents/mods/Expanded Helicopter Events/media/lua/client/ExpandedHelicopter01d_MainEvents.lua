@@ -1,4 +1,5 @@
 require "ExpandedHelicopter01c_MainCore"
+require "ExpandedHelicopter00c_SpawnerAPI"
 --Heli goes down
 
 ---@param item InventoryItem

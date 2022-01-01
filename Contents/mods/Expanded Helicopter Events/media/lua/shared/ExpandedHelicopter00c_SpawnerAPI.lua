@@ -100,18 +100,19 @@ end
 ---@param extraParam any
 ---@param processSquare function
 function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+	print("-sending spawnVehicle data")
 	if not vehicleType then
 		return
 	end
 
 	if isClient() then
-		print("sending spawnVehicle data")
-		sendClientCommand(getSpecificPlayer(0), "SpawnerAPI", "spawnVehicle",
+		print("--isClient")
+		sendClientCommand("SpawnerAPI", "spawnVehicle",
 				{vehicleType=vehicleType,x=x,y=y,z=z,extraFunctions=extraFunctions,extraParam=extraParam,processSquare=processSquare})
 	end
 
-	if isServer() then
-		print("receiving spawnVehicle data")
+	if isServer() or (not isServer() and not isClient()) then
+		print("--isServer")
 		local currentSquare = getSquare(x,y,z)
 
 		if currentSquare then
@@ -140,18 +141,20 @@ end
 ---@param femaleChance number extraParam for other spawners; 0-100
 ---@param processSquare function
 function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+	print("-sending spawnZombie data")
 	if not outfitID then
 		return
 	end
+	print("--outfitID:"..outfitID)
 
 	if isClient() then
-		print("sending spawnZombie data")
-		sendClientCommand(getSpecificPlayer(0), "SpawnerAPI", "spawnZombie",
+		print("--isClient")
+		sendClientCommand("SpawnerAPI", "spawnZombie",
 				{outfitID=outfitID,x=x,y=y,z=z,extraFunctions=extraFunctions,femaleChance=femaleChance,processSquare=processSquare})
 	end
 
-	if isServer() then
-		print("receiving spawnZombie data")
+	if isServer() or (not isServer() and not isClient()) then
+		print("--isServer")
 		local currentSquare = getSquare(x,y,z)
 
 		if currentSquare then
