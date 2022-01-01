@@ -222,7 +222,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		local drop = self:dropCarePackage()
 		if drop then
 			if self.hoverOnTargetDuration then
-				self.trueTarget = drop
+				self.trueTarget = currentSquare
 				self:setTargetPos()
 			end
 		else
