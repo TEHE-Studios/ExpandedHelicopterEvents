@@ -1,39 +1,39 @@
 module Base {
 
     sound eHelicopter {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/heli_loop.ogg, distanceMax = 500, volume = 1.0, } }
 
     sound eJetFlight {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/jet_loop.ogg, distanceMax = 800, volume = 1.0, } }
 
     sound ePropPlane {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/propplane.ogg, distanceMax = 800, volume = 1.0, } }
 
     sound eMiliHeli {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/militaryheli_loop.ogg, distanceMax = 800, volume = 1.0, } }
     
     sound eHeliPoliceEmergencyWarning {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/policeemergencywarning.ogg, distanceMax = 500, volume = 1.0, } }
         
     sound eHeliPoliceSiren {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, volume = 1.0, } }
         
     sound eAirRaid {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/siren.ogg, distanceMax = 5100, volume = 0.069, } }
 
     sound eHeliMusicPassive {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 650, volume = 0.7, } }
 
     sound eHeliMusicAggressive {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/HeliMusicAggressive.ogg, distanceMax = 650, volume = 0.7, } }
              
     sound eBomb {

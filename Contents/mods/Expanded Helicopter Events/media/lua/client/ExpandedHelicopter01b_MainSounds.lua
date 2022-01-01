@@ -52,14 +52,11 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 		end
 
 		if soundEmitter:isPlaying(soundEffect) then
+			print("--soundEmitter:isPlaying:"..soundEffect)
 			return
 		else
-			if self.loopedSoundIDs[event] then
-				print("--event:"..event..":"..soundEffect)
-				soundEmitter:playSoundLooped(soundEffect)--, otherLocation)
-			else
-				soundEmitter:playSound(soundEffect)--, otherLocation)
-			end
+			print("--event:"..event..":"..soundEffect)
+			soundEmitter:playSound(soundEffect)--, otherLocation)
 		end
 
 		soundEmitter:setPos(otherLocation:getX(),otherLocation:getY(),otherLocation:getZ())
