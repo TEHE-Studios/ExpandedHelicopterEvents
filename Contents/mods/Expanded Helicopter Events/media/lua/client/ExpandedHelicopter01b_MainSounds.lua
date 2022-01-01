@@ -92,5 +92,6 @@ function eHelicopter:stopAllHeldEventSounds()
 			emitter:stopSoundByName(soundEffect)
 		end
 	end
+	self.delayedEventSounds = {}
 	--[[DEBUG]] if soundsStopped then print(" - EHE: stopAllHeldEventSounds for "..self:heliToString()) end
 end
