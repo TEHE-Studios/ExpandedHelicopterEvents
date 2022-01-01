@@ -51,7 +51,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 	elseif soundEmitter:isPlaying(soundEffect) then
 		return
 	end
-	soundEmitter:playSound(soundEffect, otherLocation)
+	soundEmitter:playSoundImpl(soundEffect, otherLocation)
 end
 
 

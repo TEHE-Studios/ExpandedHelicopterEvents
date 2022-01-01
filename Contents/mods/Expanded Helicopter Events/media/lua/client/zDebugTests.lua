@@ -318,7 +318,7 @@ function CustomDebugPanel.testAllLinesLOOP()
 			testAllLines__lastDemoTime = getTimestampMs()+delay
 			---@type IsoPlayer | IsoGameCharacter player
 			local player = getSpecificPlayer(0)
-			player:playSound(line)
+			player:playSoundImpl(line)
 			table.remove(testAllLines__ALL_LINES, 1)
 			table.remove(testAllLines__DELAYS, 1)
 		end
