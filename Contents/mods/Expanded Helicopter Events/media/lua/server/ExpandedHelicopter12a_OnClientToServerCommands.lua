@@ -2,19 +2,7 @@ require "ExpandedHelicopter00c_SpawnerAPI"
 
 --if isClient() then sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)
-
-	if _module == "EHE_SendSound" then
-
-
-		if _command == "sendPlay" then
-
-
-		elseif _command == "sendStop" then
-
-
-		end
-
-	elseif _module == "SpawnerAPI" then
+	if _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			print("--spawnZombie")
 			--_dataA = player, _dataB = args

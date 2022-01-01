@@ -84,16 +84,24 @@ eHelicopter.dropItems = false
 ---@field dropPackages table
 eHelicopter.dropPackages = false
 
+---@field loopedSoundIDs table
+eHelicopter.loopedSoundIDs = {["additionalFlightSound"]=true,["flightSound"]=true}
+
 ---@field eventSoundEffects table
 eHelicopter.eventSoundEffects = {
-	--{"hoverOverTarget"]=nil,["flyOverTarget"]=nil}
-	--["lostTarget"]=nil, ["foundTarget"]=nil, ["droppingPackage"]=nil,
-	--["additionalAttackingSound"]=nil, ["additionalFlightSound"]=nil,
-	--["soundAtEventOrigin"]=nil,
+	["hoverOverTarget"]="IGNORE",
+	["flyOverTarget"]="IGNORE",
+	["lostTarget"]="IGNORE",
+	["foundTarget"]="IGNORE",
+	["droppingPackage"]="IGNORE",
+	["additionalAttackingSound"]="IGNORE",
+	["additionalFlightSound"]="IGNORE",--LOOP
+	["soundAtEventOrigin"]="IGNORE",
+	--
 	["attackSingle"] = "eHeli_machine_gun_fire_single",
 	["attackLooped"] = "eHeli_machine_gun_fire_looped",
 	["attackImpacts"] = "eHeli_fire_impact",
-	["flightSound"] = "eMiliHeli",
+	["flightSound"] = "eMiliHeli",--LOOP
 	["crashEvent"] = "eHelicopterCrash",
 }
 

@@ -134,6 +134,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	topSpeedFactor = 3,
 	flightVolume = 0,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
+	loopedSoundIDs = {["hoverOverTarget"]=true,["additionalFlightSound"]=true,["flightSound"]=true,["soundAtEventOrigin"]=true},
 	eventMarkerIcon = false,
 	forScheduling = true,
 	flightHours = {11, 11},
@@ -165,7 +166,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
-	eventSoundEffects = { ["hoverOverTarget"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
+	eventSoundEffects = { ["additionalFlightSound"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
 	speed = 0.10,
 	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
