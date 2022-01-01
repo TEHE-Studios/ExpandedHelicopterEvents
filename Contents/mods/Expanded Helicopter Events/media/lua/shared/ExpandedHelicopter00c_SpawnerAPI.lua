@@ -74,23 +74,29 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 		return
 	end
 
-	local currentSquare = getSquare(x,y,z)
-
-	if currentSquare then
-		if processSquare then
-			local func = SpawnerTEMP.fetchFromDictionary(processSquare)
-			currentSquare = func(currentSquare)
-		end
-	end
-
-	if currentSquare then
-		--x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
-		local item = currentSquare:AddWorldInventoryItem(itemType, 0, 0, 0)
-		if item then
-			SpawnerTEMP.processExtraFunctionsOnto(item,extraFunctions)
-		end
+	print("--spawnItem:isClient:"..tostring(isClient()))
+	if isClient() then
+		sendClientCommand("SpawnerAPI", "spawnItem",
+				{itemType=itemType,x=x,y=y,z=z,extraFunctions=extraFunctions,extraParam=extraParam,processSquare=processSquare})
 	else
-		SpawnerTEMP.setToSpawn("Item", itemType, x, y, z, extraFunctions, extraParam, processSquare)
+		local currentSquare = getSquare(x,y,z)
+
+		if currentSquare then
+			if processSquare then
+				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+				currentSquare = func(currentSquare)
+			end
+		end
+
+		if currentSquare then
+			--x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
+			local item = currentSquare:AddWorldInventoryItem(itemType, 0, 0, 0)
+			if item then
+				SpawnerTEMP.processExtraFunctionsOnto(item,extraFunctions)
+			end
+		else
+			SpawnerTEMP.setToSpawn("Item", itemType, x, y, z, extraFunctions, extraParam, processSquare)
+		end
 	end
 end
 

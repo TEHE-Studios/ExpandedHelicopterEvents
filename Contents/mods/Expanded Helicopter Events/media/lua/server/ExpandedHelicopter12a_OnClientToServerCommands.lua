@@ -10,7 +10,9 @@ local function onCommand(_module, _command, _dataA, _dataB)
 		elseif _command == "spawnVehicle" then
 			print("--spawnVehicle")
 			SpawnerTEMP.spawnVehicle(_dataB.vehicleType, _dataB.x, _dataB.y, _dataB.z, _dataB.extraFunctions, _dataB.extraParam, _dataB.processSquare)
-			--elseif _command == "spawnItem" then
+		elseif _command == "spawnItem" then
+			print("--spawnItem")
+			SpawnerTEMP.spawnItem(_dataB.itemType, _dataB.x, _dataB.y, _dataB.z, _dataB.extraFunctions, _dataB.extraParam, _dataB.processSquare)
 		end
 	end
 end
