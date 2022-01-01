@@ -81,14 +81,14 @@ end
 function eHelicopter:stopAllHeldEventSounds()
 	--[[DEBUG]] local soundsStopped = false
 	for event,emitter in pairs(self.heldEventSoundEffectEmitters) do
-		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
+		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 		if soundEffect then
 			soundsStopped = true
 			emitter:stopSoundByName(soundEffect)
 		end
 	end
 	for event,emitter in pairs(self.placedEventSoundEffectEmitters) do
-		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
+		local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 		if soundEffect then
 			soundsStopped = true
 			emitter:stopSoundByName(soundEffect)
