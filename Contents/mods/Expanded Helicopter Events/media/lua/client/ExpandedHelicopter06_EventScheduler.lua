@@ -1,18 +1,4 @@
-function getExpandedHeliEventsModData()
-	local modData = ModData.getOrCreate("ExpandedHelicopterEvents")
-	if not modData.EventsOnSchedule then modData.EventsOnSchedule = {} end
-
-	if not modData.DayOfLastCrash then
-		modData.DayOfLastCrash = getGameTime():getNightsSurvived()
-	end
-	
-	if not modData.DaysBeforeApoc then
-		modData.DaysBeforeApoc = eHeli_getDaysBeforeApoc()
-	end
-
-	return modData
-end
-
+require "ExpandedHelicopter00f_WeatherImpact"
 
 ---Inserts a new eHeliEvent (table) to the "EventsOnSchedule" table
 ---@param startDay number Day scheduled for start of this event
@@ -27,30 +13,6 @@ function eHeliEvent_new(startDay, startTime, preset)
 
 	local globalModData = getExpandedHeliEventsModData()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
-end
-
-
----Calculates if a flight should go out and the weather impact on flight safety
----@return boolean, number returns two values: willFly, impactOnFlightSafety
-function eHeliEvent_weatherImpact()
-	local CM = getClimateManager()
-	
-	local willFly = true
-	local impactOnFlightSafety = 0
-	
-	local wind = CM:getWindIntensity()
-	local fog = CM:getFogIntensity()
-	local rain = CM:getRainIntensity()/2
-	local snow = CM:getSnowIntensity()/2
-	local thunder = CM:getIsThunderStorming()
-
-	if (wind+rain+snow > 1.1) or (fog > 0.33) or (thunder == true) then
-		willFly = false
-	end
-
-	impactOnFlightSafety = math.floor(((wind+rain+snow+(fog*3))/6)+0.5)
-
-	return willFly, impactOnFlightSafety
 end
 
 
@@ -78,47 +40,6 @@ function eHeliEvent_engage(ID)
 			heli:launch(foundTarget)
 		end
 	end
-end
-
-
----Check how many days it has been since the start of the apocalypse; corrects for sandbox option "Months since Apoc"
----@return number Days since start of in-game apocalypse
-function eHeli_getDaysBeforeApoc()
-
-	local monthsAfterApo = getSandboxOptions():getTimeSinceApo()-1
-	--no months to count, go away
-	if monthsAfterApo <= 0 then
-		return 0
-	end
-
-	local gameTime = getGameTime()
-	local startYear = gameTime:getStartYear()
-	--months of the year start at 0
-	local apocStartMonth = (gameTime:getStartMonth()+1)-monthsAfterApo
-	--roll the year back if apocStartMonth is negative
-	if apocStartMonth <= 0 then
-		apocStartMonth = 12+apocStartMonth
-		startYear = startYear-1
-	end
-	local apocDays = 0
-	--count each month at a time to get correct day count
-	for month=0, monthsAfterApo do
-		apocStartMonth = apocStartMonth+1
-		--roll year forward if needed, reset month
-		if apocStartMonth > 12 then
-			apocStartMonth = 1
-			startYear = startYear+1
-		end
-		--months of the year start at 0
-		local daysInM = gameTime:daysInMonth(startYear, apocStartMonth-1)
-		--if this is the first month being counted subtract starting day date
-		if month==0 then
-			daysInM = daysInM-gameTime:getStartDay()+1
-		end
-		apocDays = apocDays+daysInM
-	end
-
-	return apocDays
 end
 
 

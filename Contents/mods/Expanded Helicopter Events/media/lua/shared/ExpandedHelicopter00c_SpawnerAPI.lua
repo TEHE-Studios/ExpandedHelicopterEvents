@@ -1,3 +1,5 @@
+require "ExpandedHelicopter00e_EHEGlobalModData"
+
 ---===---===---===---===---===---===--- TEMP
 local stringyUtil = {}
 --- Transform a square position into a unique string
@@ -100,19 +102,14 @@ end
 ---@param extraParam any
 ---@param processSquare function
 function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
-	print("-sending spawnVehicle data")
 	if not vehicleType then
 		return
 	end
-
+	print("--spawnVehicle:isClient:"..tostring(isClient()))
 	if isClient() then
-		print("--isClient")
 		sendClientCommand("SpawnerAPI", "spawnVehicle",
 				{vehicleType=vehicleType,x=x,y=y,z=z,extraFunctions=extraFunctions,extraParam=extraParam,processSquare=processSquare})
-	end
-
-	if isServer() or (not isServer() and not isClient()) then
-		print("--isServer")
+	else
 		local currentSquare = getSquare(x,y,z)
 
 		if currentSquare then
@@ -141,20 +138,16 @@ end
 ---@param femaleChance number extraParam for other spawners; 0-100
 ---@param processSquare function
 function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
-	print("-sending spawnZombie data")
 	if not outfitID then
 		return
 	end
-	print("--outfitID:"..outfitID)
 
+	print("--spawnZombie:isClient:"..tostring(isClient()).."outfitID:"..outfitID)
 	if isClient() then
-		print("--isClient")
+
 		sendClientCommand("SpawnerAPI", "spawnZombie",
 				{outfitID=outfitID,x=x,y=y,z=z,extraFunctions=extraFunctions,femaleChance=femaleChance,processSquare=processSquare})
-	end
-
-	if isServer() or (not isServer() and not isClient()) then
-		print("--isServer")
+	else
 		local currentSquare = getSquare(x,y,z)
 
 		if currentSquare then

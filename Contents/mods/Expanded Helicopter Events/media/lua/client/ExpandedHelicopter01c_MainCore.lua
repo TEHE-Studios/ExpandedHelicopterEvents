@@ -1,3 +1,4 @@
+require "ExpandedHelicopter00f_WeatherImpact"
 
 ALL_HELICOPTERS = {}
 

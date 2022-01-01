@@ -1,5 +1,6 @@
 Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.5-fixforSP-disabledMP"))
 require "zDebugPanel"
+require "ExpandedHelicopter00f_WeatherImpact"
 
 Events.OnGameBoot.Add(function()
 	ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule

@@ -154,3 +154,44 @@ function Vector3GetY(ShmectorTree)
 	--[debug]] print("EHE: Vector3-GetY-Workaround:  "..tostring.."  =  "..coordinate)
 	return coordinate
 end
+
+
+---Check how many days it has been since the start of the apocalypse; corrects for sandbox option "Months since Apoc"
+---@return number Days since start of in-game apocalypse
+function eHeli_getDaysBeforeApoc()
+
+	local monthsAfterApo = getSandboxOptions():getTimeSinceApo()-1
+	--no months to count, go away
+	if monthsAfterApo <= 0 then
+		return 0
+	end
+
+	local gameTime = getGameTime()
+	local startYear = gameTime:getStartYear()
+	--months of the year start at 0
+	local apocStartMonth = (gameTime:getStartMonth()+1)-monthsAfterApo
+	--roll the year back if apocStartMonth is negative
+	if apocStartMonth <= 0 then
+		apocStartMonth = 12+apocStartMonth
+		startYear = startYear-1
+	end
+	local apocDays = 0
+	--count each month at a time to get correct day count
+	for month=0, monthsAfterApo do
+		apocStartMonth = apocStartMonth+1
+		--roll year forward if needed, reset month
+		if apocStartMonth > 12 then
+			apocStartMonth = 1
+			startYear = startYear+1
+		end
+		--months of the year start at 0
+		local daysInM = gameTime:daysInMonth(startYear, apocStartMonth-1)
+		--if this is the first month being counted subtract starting day date
+		if month==0 then
+			daysInM = daysInM-gameTime:getStartDay()+1
+		end
+		apocDays = apocDays+daysInM
+	end
+
+	return apocDays
+end
