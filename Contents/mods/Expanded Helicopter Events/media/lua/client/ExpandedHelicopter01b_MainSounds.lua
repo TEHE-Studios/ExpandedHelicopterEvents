@@ -53,11 +53,13 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 			return
 		else
 			if self.loopedSoundIDs[event] then
-				soundEmitter:playSoundLooped(soundEffect, otherLocation)
+				soundEmitter:playSoundLooped(soundEffect)--, otherLocation)
 			else
-				soundEmitter:playSound(soundEffect, otherLocation)
+				soundEmitter:playSound(soundEffect)--, otherLocation)
 			end
 		end
+
+		soundEmitter:setPos(otherLocation:getX(),otherLocation:getY(),otherLocation:getZ())
 	end
 end
 
