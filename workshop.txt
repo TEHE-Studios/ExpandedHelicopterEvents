@@ -1,10 +1,12 @@
 version=1
 id=2458631365
-title=Expanded Helicopter Events [MP PATCH IN PROGRESS]
-description=[h2]This mod is currently [b]non-functional in multiplayer.[/b][/h2]
-description=[h3]A patch is in progress, however, this mod is [b]stable* in singleplayer.[/b][/h3]
+title=Expanded Helicopter Events [MP PATCH OUT]
+description=[h2][b]Multiplayer support is now available.[/b][/h2]
+description=[h2][b]Indicators were disabled temporarily.[/b][h2]
+description=[h2]Features that will better translate to multiplayer (like map system integration for crash location) will come in later builds[/b][/h2]
 description=
-description=
+description=[h2][b]Report all weird behavior and errors with logs so that they may be reviewed.[/b][h2]
+description
 description=[H1][i]This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.[/i][/H1]
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
