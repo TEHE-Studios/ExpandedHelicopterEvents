@@ -48,10 +48,17 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 				self.heldEventSoundEffectEmitters[event] = soundEmitter
 			end
 		end
-	elseif soundEmitter:isPlaying(soundEffect) then
-		return
+
+		if soundEmitter:isPlaying(soundEffect) then
+			return
+		else
+			if self.self.loopedSoundIDs[event] then
+				soundEmitter:playSoundLooped(soundEffect, otherLocation)
+			else
+				soundEmitter:playSound(soundEffect, otherLocation)
+			end
+		end
 	end
-	soundEmitter:playSound(soundEffect, otherLocation)
 end
 
 
@@ -63,17 +70,6 @@ function eHelicopter:checkDelayedEventSounds()
 			self:playEventSound(EventSound["event"], EventSound["otherLocation"], EventSound["saveEmitter"], EventSound["stopSound"])
 			self.delayedEventSounds[placeInList] = nil
 		end
-	end
-end
-
-
-function eHelicopter:checkLoopedEventSounds()
-	if #self.loopedSoundIDs<=0 or self.state=="unLaunched" then
-		return
-	end
-	for soundID,_ in pairs(self.loopedSoundIDs) do
-		--event, otherLocation, saveEmitter, stopSound, delay
-		self:playEventSound(soundID, nil, true, false)
 	end
 end
 
