@@ -64,7 +64,7 @@ function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound
 end
 
 
-function eHelicopter:checkDelayedEventSounds()
+function eHelicopter:checkEventSounds()
 	local currentTime = getTimestampMs()
 	for placeInList,EventSound in pairs(self.delayedEventSounds) do
 		--event, otherLocation, saveEmitter, stopSound, delay

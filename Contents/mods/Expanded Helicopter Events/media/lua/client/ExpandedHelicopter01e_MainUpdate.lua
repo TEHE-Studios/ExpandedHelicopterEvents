@@ -215,7 +215,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		end
 	end
 
-	self:checkDelayedEventSounds()
+	self:checkEventSounds()
 
 	--drop carpackage
 	local packageDropRange = ZombRand(50, 75)
