@@ -236,10 +236,15 @@ end
 ---@param movement Vector3
 ---@return Vector3
 function eHelicopter:dampen(movement)
-	if self.state == "crashed" then
+	if self.state == "crashed" or self.state == "unLaunched" then
 		return
 	end
 	self:setTargetPos()
+
+	if not self.targetPosition or not self.preflightDistance then
+		return movement
+	end
+
 	--finds the fraction of distance to target and preflight distance to target
 	local distanceCompare = self:getDistanceToVector(self.targetPosition) / self.preflightDistance
 	--clamp with a max of self.topSpeedFactor and min of 0.1 (10%) is applied to the fraction
