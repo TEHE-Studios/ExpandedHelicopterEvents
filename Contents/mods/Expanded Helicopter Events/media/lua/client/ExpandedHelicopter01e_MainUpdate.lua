@@ -135,9 +135,9 @@ function eHelicopter:update()
 					end
 				end
 
-				--[[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
+				--[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
 
-				self.hoverOnTargetDuration = (self.hoverOnTargetDuration-1)*getGameSpeed()
+				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(1,(1*getGameSpeed()))
 				if self.hoverOnTargetDuration <= 0 then
 					self.hoverOnTargetDuration = false
 				end
