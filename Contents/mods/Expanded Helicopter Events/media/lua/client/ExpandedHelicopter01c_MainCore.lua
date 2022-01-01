@@ -296,10 +296,6 @@ end
 function eHelicopter:updatePosition(heliX, heliY)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
 	self.currentPosition:set(heliX, heliY, self.height)
-	--move announcer emitter
-	if self.announceEmitter then
-		self.announceEmitter:setPos(heliX,heliY,self.height)
-	end
 	--Move held emitters to position
 	for _,emitter in pairs(self.heldEventSoundEffectEmitters) do
 		emitter:setPos(heliX,heliY,self.height)
@@ -768,10 +764,6 @@ function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 	self.delayedEventSounds = {}
 	EHE_EventMarkerHandler.disableMarkersForPOI(self)
-	--stop old emitter to prevent occasional "phantom" announcements
-	if self.announceEmitter and self.lastAnnouncedLine then
-		self.announceEmitter:stopSoundByName(self.lastAnnouncedLine)
-	end
 	self:stopAllHeldEventSounds()
 	if self.shadow and type(self.shadow)~="boolean" then
 		self.shadow:remove()

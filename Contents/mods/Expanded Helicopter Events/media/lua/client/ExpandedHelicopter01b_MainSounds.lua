@@ -5,7 +5,7 @@
 ---@param delay number
 function eHelicopter:playEventSound(event, otherLocation, saveEmitter, stopSound, delay)
 
-	local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event]
+	local soundEffect = self.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 
 	if not soundEffect then
 		return

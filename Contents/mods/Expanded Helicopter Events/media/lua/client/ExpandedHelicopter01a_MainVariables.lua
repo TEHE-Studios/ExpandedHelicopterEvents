@@ -204,8 +204,6 @@ eHelicopter.crashing = false
 eHelicopter.timeUntilCanAnnounce = -1
 ---@field preflightDistance number
 eHelicopter.preflightDistance = false
----@field announceEmitter FMODSoundEmitter | BaseSoundEmitter
-eHelicopter.announceEmitter = false
 ---@field lastAnnouncedLine string
 eHelicopter.lastAnnouncedLine = false
 ---@field heldEventSoundEffectEmitters table
