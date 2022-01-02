@@ -73,8 +73,6 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 	if not itemType then
 		return
 	end
-
-	print("--spawnItem:isClient:"..tostring(isClient()))
 	if isClient() then
 		sendClientCommand("SpawnerAPI", "spawnItem",
 				{itemType=itemType,x=x,y=y,z=z,extraFunctions=extraFunctions,extraParam=extraParam,processSquare=processSquare})
@@ -111,7 +109,6 @@ function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPar
 	if not vehicleType then
 		return
 	end
-	print("--spawnVehicle:isClient:"..tostring(isClient()))
 	if isClient() then
 		sendClientCommand("SpawnerAPI", "spawnVehicle",
 				{vehicleType=vehicleType,x=x,y=y,z=z,extraFunctions=extraFunctions,extraParam=extraParam,processSquare=processSquare})
@@ -147,10 +144,7 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 	if not outfitID then
 		return
 	end
-
-	print("--spawnZombie:isClient:"..tostring(isClient()).."outfitID:"..outfitID)
 	if isClient() then
-
 		sendClientCommand("SpawnerAPI", "spawnZombie",
 				{outfitID=outfitID,x=x,y=y,z=z,extraFunctions=extraFunctions,femaleChance=femaleChance,processSquare=processSquare})
 	else
