@@ -33,8 +33,8 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x, y)
 			print("EHE_EventMarkerHandler: generateNewMarker: "..p:getUsername().." ".."("..screenX..","..screenY..")")
 
 			if isClient() then
-				marker = sendClientCommand("EHE_EventMarkerHandler", "new",
-						{poi=poi, p=p, sX=screenX, sY=screenY, w=EHE_EventMarker.clickableSize, h=EHE_EventMarker.clickableSize, icon=icon, duration=duration})
+				--marker = sendClientCommand("EHE_EventMarkerHandler", "new",
+				--		{poi=poi, p=p, sX=screenX, sY=screenY, w=EHE_EventMarker.clickableSize, h=EHE_EventMarker.clickableSize, icon=icon, duration=duration})
 			else
 				marker = EHE_EventMarker:new(poi, p, screenX, screenY, EHE_EventMarker.clickableSize, EHE_EventMarker.clickableSize, icon, duration)
 			end
@@ -79,7 +79,7 @@ function EHE_EventMarkerHandler.updateAll()
 	for poiObject,poiData in pairs(EHE_EventMarkerHandler.allPOI) do
 		for playerObj,marker in pairs(poiData.markers) do
 			if isClient() then
-				sendClientCommand(playerObj, "EHE_EventMarkerHandler", "update", {marker=marker})
+				--sendClientCommand(playerObj, "EHE_EventMarkerHandler", "update", {marker=marker})
 			else
 				marker:update(playerObj)
 			end
