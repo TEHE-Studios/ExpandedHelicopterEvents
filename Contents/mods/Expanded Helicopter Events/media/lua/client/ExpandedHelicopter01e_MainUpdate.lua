@@ -184,7 +184,8 @@ function eHelicopter:update()
 	end
 
 	if self.eventMarkerIcon ~= false then
-		EHE_SendMarker(self, self.eventMarkerIcon,10)
+		local hX, hY, _ = self:getXYZAsInt()
+		EHE_EventMarkerHandler.setOrUpdateMarkers(self, self.eventMarkerIcon,10, hX, hY)
 	end
 
 	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1000) then
