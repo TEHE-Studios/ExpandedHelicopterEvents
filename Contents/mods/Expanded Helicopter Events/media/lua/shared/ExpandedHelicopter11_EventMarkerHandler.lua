@@ -30,7 +30,7 @@ function EHE_EventMarkerHandler.setOrUpdateMarkers(poi, icon, duration, x, y)
 			end
 			local screenX = oldx or (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
 			local screenY = oldy or (EHE_EventMarker.iconSize/2)
-			print("EHE_EventMarkerHandler: generateNewMarker: "..p:getUsername().." ".."("..screenX..","..screenY..")")
+			--print("EHE_EventMarkerHandler: generateNewMarker: "..p:getUsername().." ".."("..screenX..","..screenY..")")
 
 			if isClient() then
 				--marker = sendClientCommand("EHE_EventMarkerHandler", "new",
