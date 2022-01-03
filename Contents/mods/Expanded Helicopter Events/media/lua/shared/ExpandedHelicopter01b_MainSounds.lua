@@ -3,22 +3,31 @@ require "ExpandedHelicopter01a_MainVariables"
 eventSoundHandler = {}
 
 storedLooperEvents = {}
-function eventSoundHandler:playLooperEvent(reusableID, DATA, command)
+function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 	if isClient() then
 		---@type BaseSoundEmitter | FMODSoundEmitter
 		local soundEmitter = storedLooperEvents[reusableID]
-		if not soundEmitter then
+		if not soundEmitter and command ~= "drop" then
 			storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
 			soundEmitter = storedLooperEvents[reusableID]
 		end
 		if soundEmitter then
 			if command == "play" then
-				soundEmitter:playSound(DATA)
+				if soundEmitter:isPlaying(DATA.soundEffect) then
+					print("--soundEmitter:isPlaying:"..DATA.soundEffect)
+					return
+				end
+				--print("--play:"..tostring(soundEmitter).." - "..DATA.soundEffect.." ("..DATA.x..","..DATA.y..")")
+				--local square = getSquare(DATA.x, DATA.y, DATA.z)
+				soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
 			elseif command == "setPos" then
+				--print("--setPos:"..tostring(soundEmitter).." - x:"..DATA.x..","..DATA.y)
 				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
 			elseif command == "stop" then
+				--print("--stop:"..tostring(soundEmitter).." - "..DATA)
 				soundEmitter:stopSoundByName(DATA)
 			elseif command == "drop" then
+				--print("--drop:"..tostring(soundEmitter))
 				soundEmitter:stopAll()
 				storedLooperEvents[reusableID] = nil
 			end
@@ -108,7 +117,7 @@ end
 function eventSoundHandler:updatePos(heli,heliX,heliY)
 	--Move held emitters to position
 
-	if isClient() and #heli.looperEventIDs>0 then
+	if isClient() and heli.looperEventIDs then
 		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliX,z=heli.height}, command="setPos"})
 	end
 
@@ -134,7 +143,7 @@ end
 function eventSoundHandler:stopAllHeldEventSounds(heli)
 	--[[DEBUG]] local soundsStopped = false
 
-	if isClient() and #heli.looperEventIDs>0 then
+	if isClient() and heli.looperEventIDs then
 		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), command="drop"})
 	end
 
