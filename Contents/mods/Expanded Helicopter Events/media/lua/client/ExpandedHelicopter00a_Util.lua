@@ -9,7 +9,7 @@ function addToEIP(playerObject)
 	end
 
 	if playerObject:getX() < 1 or playerObject:getY() < 1 then
-		print(" - EHE: ERR: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getFullName())
+		print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getFullName())
 		return
 	end
 
