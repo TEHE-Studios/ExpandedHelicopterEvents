@@ -11,6 +11,8 @@ description
 description=[H1][i]This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.[/i][/H1]
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
+description=[url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827906428][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/media/ui/FAQ.png[/img][/url][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827912378][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/media/ui/FEATURES.png[/img][/url]
+description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
 description=[h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Super Weird Edition[/b][/url][/h1]
