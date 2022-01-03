@@ -19,6 +19,7 @@ function eventSoundHandler:playLooperEvent(reusableID, DATA, command)
 			elseif command == "stop" then
 				soundEmitter:stopSoundByName(DATA)
 			elseif command == "drop" then
+				soundEmitter:stopAll()
 				storedLooperEvents[reusableID] = nil
 			end
 		end
@@ -141,14 +142,14 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 		if soundEffect then
 			soundsStopped = true
-			emitter:stopSoundByName(soundEffect)
+			emitter:stopAll()--stopSoundByName(soundEffect)
 		end
 	end
 	for event,emitter in pairs(heli.placedEventSoundEffectEmitters) do
 		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
 		if soundEffect then
 			soundsStopped = true
-			emitter:stopSoundByName(soundEffect)
+			emitter:stopAll()--stopSoundByName(soundEffect)
 		end
 	end
 	heli.delayedEventSounds = {}
