@@ -88,6 +88,11 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	--if otherlocation provided use it; if not use heli
 	otherLocation = otherLocation or heli:getIsoGridSquare()
 
+	if heli.looperEventIDs[soundEvent] and isClient() then
+		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="play"})
+		return
+	end
+	
 	if not soundEmitter then
 		soundEmitter = getWorld():getFreeEmitter()
 		if saveEmitter then
@@ -100,15 +105,9 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 
 		if soundEmitter:isPlaying(soundEffect) then
 			print("--soundEmitter:isPlaying:"..soundEffect)
-			return
 		else
-
-			if isClient() and heli.looperEventIDs[soundEvent] then
-				sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="play"})
-			else
-				print("--event:"..soundEvent..":"..soundEffect)
-				soundEmitter:playSoundImpl(soundEffect, otherLocation)
-			end
+			print("--event:"..soundEvent..":"..soundEffect)
+			soundEmitter:playSoundImpl(soundEffect, otherLocation)
 		end
 	end
 end
