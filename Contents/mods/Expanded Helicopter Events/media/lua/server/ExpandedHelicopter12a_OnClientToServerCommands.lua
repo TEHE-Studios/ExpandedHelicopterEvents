@@ -5,7 +5,7 @@ local function onCommand(_module, _command, _dataA, _dataB)
 	--serverside
 	if _module == "sendLooper" then
 		if _command == "ping" then
-			print("--sendLooper:ping")
+			print("--sendLooper:ping -- ".._dataB.command)
 			sendServerCommand("sendLooper", _dataB.command, _dataB)
 		end
 
