@@ -53,13 +53,8 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	end
 
 	if delay then
-		table.insert(heli.delayedEventSounds, {
-			["event"]=soundEvent,
-			["otherLocation"]=otherLocation,
-			["saveEmitter"]=saveEmitter,
-			["stopSound"]=stopSound,
-			["delay"]=getTimestampMs()+delay
-		})
+		table.insert(heli.delayedEventSounds, { ["event"]=soundEvent, ["otherLocation"]=otherLocation,
+			["saveEmitter"]=saveEmitter, ["stopSound"]=stopSound, ["delay"]=getTimestampMs()+delay })
 		return
 	end
 
