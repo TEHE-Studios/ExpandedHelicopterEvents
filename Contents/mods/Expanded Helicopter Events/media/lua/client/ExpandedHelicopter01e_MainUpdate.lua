@@ -221,28 +221,30 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 	eventSoundHandler:checkEventSounds(self)
 
-	--drop carpackage
-	local packageDropRange = ZombRand(50, 75)
-	local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
-	if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
-		local drop = self:dropCarePackage()
-		if drop then
-			if self.hoverOnTargetDuration then
-				self.trueTarget = currentSquare
-				self:setTargetPos()
-			end
-		else
-			if self.hoverOnTargetDuration ~= false then
-				self.hoverOnTargetDuration = false
+	if thatIsCloseEnough and distToTarget then
+		--drop carpackage
+		local packageDropRange = ZombRand(50, 75)
+		local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
+		if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
+			local drop = self:dropCarePackage()
+			if drop then
+				if self.hoverOnTargetDuration then
+					self.trueTarget = currentSquare
+					self:setTargetPos()
+				end
+			else
+				if self.hoverOnTargetDuration ~= false then
+					self.hoverOnTargetDuration = false
+				end
 			end
 		end
-	end
 
-	--drop items
-	local itemDropRange = math.min(225,thatIsCloseEnough*225)
-	if self.dropItems and (distToTarget <= itemDropRange) then
-		local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
-		self:tryToDropItem(dropChance)
+		--drop items
+		local itemDropRange = math.min(225,thatIsCloseEnough*225)
+		if self.dropItems and (distToTarget <= itemDropRange) then
+			local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
+			self:tryToDropItem(dropChance)
+		end
 	end
 
 	--shadow
