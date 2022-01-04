@@ -244,35 +244,10 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		self:tryToDropItem(dropChance)
 	end
 
-	if self.shadow ~= false then
-		if self.shadow == true then
-			local alpha = 0.25
-			self.shadow = getWorldMarkers():addGridSquareMarker((self.shadowTexture or eHelicopter.shadowTexture), nil, currentSquare, 0.2, 0.2, 0.2, true, 1, 0, alpha, alpha)
-			self.shadow:setAlpha(alpha)
-			self.shadow:setSize(5)
-		end
-
-		local shadowSquare = getOutsideSquareFromAbove(currentSquare) or currentSquare
-		if self.shadow and shadowSquare then
-			self.shadow:setPos(shadowSquare:getX(),shadowSquare:getY(),shadowSquare:getZ())
-		end
+	--shadow
+	if self.shadow==true then
+		eventShadowHandler:setShadowPos(self.ID, self.shadowTexture, currentSquare:getX(),currentSquare:getY(),currentSquare:getX(),currentSquare:getZ())
 	end
-
-	--[[
-	--shadowBob
-	if self.shadow and (self.shadow ~= true) and (self.timeSinceLastShadowBob < timeStampMS) then
-		self.timeSinceLastShadowBob = timeStampMS+10
-		local shadowExpansion = 5
-		local shadowSize = self.shadow:getSize()-shadowExpansion
-		shadowSize = shadowSize+self.shadowBobRate
-		if shadowSize >= 1.05 then
-			self.shadowBobRate = 0-math.abs(self.shadowBobRate)
-		elseif shadowSize <= 1 then
-			self.shadowBobRate = math.abs(self.shadowBobRate)
-		end
-		self.shadow:setSize(shadowSize+shadowExpansion)
-	end
-	--]]
 
 	if self.flightVolume>0 then
 		local volumeFactor = 1

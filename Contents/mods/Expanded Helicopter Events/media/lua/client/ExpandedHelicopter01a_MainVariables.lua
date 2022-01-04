@@ -246,12 +246,6 @@ eHelicopter.hostilesToFireOn = {}
 eHelicopter.hostilesAlreadyFiredOn = {}
 ---@field lastScanTime number
 eHelicopter.lastScanTime = -1
---[[
----@field shadowBobRate number
-eHelicopter.shadowBobRate = 0.005
----@field timeSinceLastShadowBob number
-eHelicopter.timeSinceLastShadowBob = -1
---]]
 ---@field formationFollowingHelis table table of actual flying helis
 eHelicopter.formationFollowingHelis = {}
 ---@field currentPresetID string

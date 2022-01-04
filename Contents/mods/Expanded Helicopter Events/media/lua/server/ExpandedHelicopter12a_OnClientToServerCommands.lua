@@ -16,6 +16,9 @@ local function onCommand(_module, _command, _dataA, _dataB)
 			EHE_EventMarkerHandler.updateAll()
 		end
 
+	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
+		eventShadowHandler:setShadowPos(_dataB.ID, _dataB.texture, _dataB.x, _dataB.y, _dataB.z)
+
 	elseif _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			--print("--spawnZombie")
