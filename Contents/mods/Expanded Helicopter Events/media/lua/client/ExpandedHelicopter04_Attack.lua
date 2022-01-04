@@ -91,6 +91,7 @@ function eHelicopter:fireOn(targetHostile)
 	addSound(nil, ehX, ehY, 0, 250, 75)
 
 	local chance = self.attackHitChance
+	local damage = (ZombRand(10,16) * self.attackDamage)/10
 
 	--IsoGameCharacter:getMoveSpeed() doesn't seem to work on IsoPlayers (works on IsoZombie)
 	local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLx())
@@ -123,9 +124,10 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	if targetHostile:getVehicle() then
-		chance = (chance*0.8)
+		chance = (chance*0.6)
+		damage = (damage*0.95)
 	end
-	
+
 	if (targetSquare:isVehicleIntersecting()) then
 		chance = (chance*0.8)
 	end
@@ -159,7 +161,6 @@ function eHelicopter:fireOn(targetHostile)
 
 		--[[DEBUG]] local preHealth = targetHostile:getHealth()
 		--apply damage to body part
-		local damage = (ZombRand(10,16) * self.attackDamage)/10
 
 		if (bpType == BodyPartType.Neck) or (bpType == BodyPartType.Head) then
 			damage = damage*4
