@@ -23,6 +23,9 @@ local function onCommand(_module, _command, _dataA, _dataB)
 			eventSoundHandler:handleLooperEvent(_dataA.reusableID, nil, _dataA.command)
 		end
 
+	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
+		--sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
+		eventShadowHandler:setShadowPos(_dataB.ID, _dataB.texture, _dataB.x, _dataB.y, _dataB.z, true)
 	end
 end
 --Events.OnClientCommand.Add(onCommand)--/client/ to server

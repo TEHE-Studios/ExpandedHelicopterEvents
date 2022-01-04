@@ -4,8 +4,8 @@ eventShadowHandler = {}
 storedShadows = {}
 
 --eventShadowHandler:setShadowPos(self.ID, self.shadowTexture, currentSquare:getX(),currentSquare:getY(),currentSquare:getX(),currentSquare:getZ())
-function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
-	if isClient() then
+function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
+	if isClient() and not override then
 		sendClientCommand("eventShadowHandler", "setShadowPos", {ID=ID,texture=texture,x=x,y=y,z=z})
 	else
 		print("set Shadow Pos: "..ID.." - "..texture.." - "..x..","..y..","..z)

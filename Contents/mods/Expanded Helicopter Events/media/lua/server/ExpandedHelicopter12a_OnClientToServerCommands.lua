@@ -17,7 +17,7 @@ local function onCommand(_module, _command, _dataA, _dataB)
 		end
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		eventShadowHandler:setShadowPos(_dataB.ID, _dataB.texture, _dataB.x, _dataB.y, _dataB.z)
+		sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
 
 	elseif _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
