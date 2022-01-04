@@ -8,7 +8,7 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
 	if isClient() and not override then
 		sendClientCommand("eventShadowHandler", "setShadowPos", {ID=ID,texture=texture,x=x,y=y,z=z})
 	else
-		print("set Shadow Pos: "..ID.." - "..texture.." - "..x..","..y..","..z)
+		print("set Shadow Pos: "..ID.." - "..tostring(texture).." - "..tostring(x)..","..tostring(y)..","..tostring(z))
 
 		local square = getCell():getOrCreateGridSquare(x, y, 0)
 		local outsideSquare
