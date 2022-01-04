@@ -1,4 +1,5 @@
 require "ISUI/ISUIElement"
+require "ExpandedHelicopter00a_Util"
 
 --[[ Base code derived from: Sound Direction Indicator -- Nolan Ritchie ]]--
 

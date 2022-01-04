@@ -195,3 +195,31 @@ function eHeli_getDaysBeforeApoc()
 
 	return apocDays
 end
+
+
+--This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
+---@param square IsoGridSquare
+---@return IsoGridSquare
+function getOutsideSquareFromAbove(square,isVehicle)
+	if not square then
+		return
+	end
+
+	if square:isOutside() and square:isSolidFloor() then
+		return square
+	end
+
+	--if isVehicle is true don't allow the code to look for roof tiles
+	if isVehicle then
+		return
+	end
+
+	local x, y = square:getX(), square:getY()
+
+	for i=1, 7 do
+		local sq = getSquare(x, y, i)
+		if sq and sq:isOutside() and sq:isSolidFloor() then
+			return sq
+		end
+	end
+end

@@ -1,4 +1,5 @@
 require "ExpandedHelicopter10_EventMarkers"
+require "ExpandedHelicopter00a_Util"
 
 EHE_EventMarkerHandler = {}
 EHE_EventMarkerHandler.allPOI = {}

@@ -1,5 +1,6 @@
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter00a_Util"
 
 ALL_HELICOPTERS = {}
 
@@ -171,34 +172,6 @@ function getOutsideSquareFromAbove_vehicle(square)
 	end
 
 	return foundSquare
-end
-
-
---This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
----@param square IsoGridSquare
----@return IsoGridSquare
-function getOutsideSquareFromAbove(square,isVehicle)
-	if not square then
-		return
-	end
-
-	if square:isOutside() and square:isSolidFloor() then
-		return square
-	end
-
-	--if isVehicle is true don't allow the code to look for roof tiles
-	if isVehicle then
-		return
-	end
-
-	local x, y = square:getX(), square:getY()
-
-	for i=1, 7 do
-		local sq = getSquare(x, y, i)
-		if sq and sq:isOutside() and sq:isSolidFloor() then
-			return sq
-		end
-	end
 end
 
 
@@ -767,9 +740,7 @@ function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 	EHE_EventMarkerHandler.disableMarkersForPOI(self)
 	eventSoundHandler:stopAllHeldEventSounds(self)
-	if self.shadow and type(self.shadow)~="boolean" then
-		self.shadow:remove()
-	end
+	eventShadowHandler:setShadowPos(self.ID)
 	self.state = "unLaunched"
 
 	for heli,_ in pairs(self.formationFollowingHelis) do

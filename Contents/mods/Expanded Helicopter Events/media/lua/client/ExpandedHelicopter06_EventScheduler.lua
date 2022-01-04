@@ -1,4 +1,5 @@
 require "ExpandedHelicopter00f_WeatherImpact"
+require "ExpandedHelicopter00a_Util"
 
 ---Inserts a new eHeliEvent (table) to the "EventsOnSchedule" table
 ---@param startDay number Day scheduled for start of this event

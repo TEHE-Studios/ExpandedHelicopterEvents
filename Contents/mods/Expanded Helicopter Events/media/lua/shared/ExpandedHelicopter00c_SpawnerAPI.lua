@@ -1,4 +1,5 @@
 require "ExpandedHelicopter00e_EHEGlobalModData"
+require "ExpandedHelicopter00a_Util"
 
 ---===---===---===---===---===---===--- TEMP
 local stringyUtil = {}

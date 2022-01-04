@@ -1,6 +1,7 @@
 require "ExpandedHelicopter01c_MainCore"
 require "ExpandedHelicopter01a_MainVariables"
 require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter01f_ShadowSystem"
 
 function eHelicopter:update()
 
@@ -246,7 +247,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 	--shadow
 	if self.shadow==true then
-		eventShadowHandler:setShadowPos(self.ID, self.shadowTexture, currentSquare:getX(),currentSquare:getY(),currentSquare:getX(),currentSquare:getZ())
+		eventShadowHandler:setShadowPos(self.ID, self.shadowTexture, currentSquare:getX(),currentSquare:getY(),currentSquare:getZ())
 	end
 
 	if self.flightVolume>0 then

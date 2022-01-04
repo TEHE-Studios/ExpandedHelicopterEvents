@@ -1,4 +1,5 @@
 require "ExpandedHelicopter00f_WeatherImpact"
+require "ExpandedHelicopter00a_Util"
 
 function initExpandedHeliEventsModData()
 	local modData = ModData.getOrCreate("ExpandedHelicopterEvents")
