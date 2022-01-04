@@ -10,6 +10,9 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 		if not soundEmitter and command ~= "drop" then
 			storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
 			soundEmitter = storedLooperEvents[reusableID]
+			if command=="setPos" then
+				command = "play"
+			end
 		end
 		if soundEmitter then
 			if command == "play" then
