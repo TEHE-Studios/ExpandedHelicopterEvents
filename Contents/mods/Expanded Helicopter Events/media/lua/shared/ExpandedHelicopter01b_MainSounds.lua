@@ -89,7 +89,9 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	otherLocation = otherLocation or heli:getIsoGridSquare()
 
 	if heli.looperEventIDs[soundEvent] and isClient() then
-		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="play"})
+		local heliX, heliY, heliZ = heli:getXYZAsInt()
+		sendClientCommand("sendLooper", "ping",
+				{reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}, command="play"})
 		return
 	end
 	
@@ -117,7 +119,7 @@ function eventSoundHandler:updatePos(heli,heliX,heliY)
 	--Move held emitters to position
 
 	if isClient() and heli.looperEventIDs then
-		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliX,z=heli.height}, command="setPos"})
+		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliY,z=heli.height}, command="setPos"})
 	end
 
 	for _,emitter in pairs(heli.heldEventSoundEffectEmitters) do
