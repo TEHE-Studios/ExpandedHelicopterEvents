@@ -95,23 +95,38 @@ function eHelicopter:fireOn(targetHostile)
 	--IsoGameCharacter:getMoveSpeed() doesn't seem to work on IsoPlayers (works on IsoZombie)
 	local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLx())
 	local getysubly = math.abs(targetHostile:getY()-targetHostile:getLy())
-	local eheMoveSpeed = math.sqrt((getxsublx * getxsublx + getysubly * getysubly))
+	local hostileVelocity = math.sqrt((getxsublx * getxsublx + getysubly * getysubly))
 	--floors float to 1000ths place decimal
-	eheMoveSpeed = math.floor(eheMoveSpeed * 1000) / 1000
+	hostileVelocity = math.floor(hostileVelocity * 1000) / 1000
 
-	--convert eheMoveSpeed to a %
-	local movementThrowOffAim = math.floor((100*eheMoveSpeed)+0.5)
+	--convert hostileVelocity to a %
+	local movementThrowOffAim = math.floor((100*hostileVelocity)+0.5)
 	if instanceof(targetHostile, "IsoPlayer") then
 		movementThrowOffAim = movementThrowOffAim*1.5
-		chance = (chance/timesFiredOnSpecificHostile)
+		chance = (chance/(timesFiredOnSpecificHostile*2))
 	elseif instanceof(targetHostile, "IsoZombie") then
 		--allow firing on zombies more for shock value
+		movementThrowOffAim = movementThrowOffAim/1.5
 		chance = (chance/(timesFiredOnSpecificHostile/2))
 	end
 	chance = chance-movementThrowOffAim
 
 
-	if (targetHostile:getSquare():getTree()) then
+	local targetSquare = targetHostile:getSquare()
+
+	if (targetSquare:getTree()) then
+		chance = (chance*0.8)
+	end
+
+	if targetHostile:isNearVehicle() then
+		chance = (chance*0.8)
+	end
+
+	if targetHostile:getVehicle() then
+		chance = (chance*0.8)
+	end
+	
+	if (targetSquare:isVehicleIntersecting()) then
 		chance = (chance*0.8)
 	end
 
@@ -131,7 +146,7 @@ function eHelicopter:fireOn(targetHostile)
 	chance = math.floor(chance)
 
 	--[[DEBUG] local hitReport = "-hit_report: "..self:heliToString(false)..timesFiredOnSpecificHostile..
-			"  eMS:"..eheMoveSpeed.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
+			"  eMS:"..hostileVelocity.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
 	if ZombRand(0, 101) <= chance then
 
