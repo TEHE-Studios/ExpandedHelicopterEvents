@@ -264,6 +264,11 @@ Events.EveryHours.Add(eHeliEvent_ScheduleNew)
 
 --Checks every hour if there is an event scheduled to engage
 function eHeliEvent_Loop()
+
+	---NO MP FOR YOU
+	--TODO: DON'T FORGET THIS HERE WHEN RELEASING MP BRANCH
+	if isClient() then return end
+
 	local GT = getGameTime()
 	local globalModData = getExpandedHeliEventsModData()
 	local nightsSurvived = GT:getNightsSurvived()
