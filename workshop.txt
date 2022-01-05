@@ -1,17 +1,17 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events [MP PATCH OUT]
-description=[h2][b]Multiplayer support is now available.[/b][/h2]
-description=[h2][b]Indicators were disabled in multiplayer temporarily.[/b][h2]
-description=[h2]Features that will better translate to multiplayer (like map system integration for crash location and an admin menu) will come in later builds[/b][/h2]
+description=[h2][b]This is the last update before the MP patch.
+description=Please, test Single Player thoroughly and report any odd behaviors.[/b][/h2]
+description=[h2][b]Features outside of the current scope will come in later builds.[/b][/h2]
 description=
 description=
-description=[h2][b]Report all weird behavior and errors with logs so that they may be reviewed.[/b][h2]
-description
 description=[H1][i]This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.[/i][/H1]
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
 description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827906428][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827912378][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url]description=
+description=
+description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198118348349680656/][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_alt.png[/img][/url]
 description=
 description=[h2]Check out the sub-mods:[/h2]
 description=[h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Super Weird Edition[/b][/url][/h1]
