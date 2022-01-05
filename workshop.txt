@@ -13,6 +13,8 @@ description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopte
 description=
 description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198118348349680656/][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_alt.png[/img][/url]
 description=
+description=
+description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=[h2]Check out the sub-mods:[/h2]
 description=[h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Super Weird Edition[/b][/url][/h1]
 description=[h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][b]Twitch Integration[/b][/url][/h1]
@@ -21,17 +23,6 @@ description=[h2]For a more varied looting experience, try these integrated mods:
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h2]
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]Shark's Law Enforcement Overhaul[/b][/url][/h2]
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h2]
-description=
-description=
-description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
-description=
-description=[h2]Credits:[/h2]
-description=[h3]Consider supporting your favorite modders![/h3]
-description=[url=https://ko-fi.com/sharkmods]Shark [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Models, Art
-description=[url=https://ko-fi.com/chuckleberryfinn]Chuck [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Programming, Art
-description=Raven & Gabby - Sound, Voiceover
-description=[url=https://ko-fi.com/jadedp]Jade [img]https://i.imgur.com/TO5DVAt.png[/img][/url] - Voiceover
-description=
 description=
 description=
 description=[H2]To make suggestions, or provide translations: Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
