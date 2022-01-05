@@ -13,8 +13,8 @@ description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopte
 description=
 description=[img]https://i.imgur.com/p7Fv1Z6.gif[/img]
 description=[h2]Check out the sub-mods:[/h2]
-description=[h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][b]Super Weird Edition[/b][/url][/h1]
-description=[h1][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][b]Twitch Integration[/b][/url][/h1]
+description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/ChuckTheSheep/SuperWeirdHelicopterEvents/main/Contents/mods/Super%20Weird%20Helicopters/poster_s.png[/img][/url][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/ChuckTheSheep/ExpandedHelicopterEventsTwitchIntegration/main/Contents/mods/ExpandedHelicopterEventsTwitchIntegration/poster_s.png[/img][/url]
+description=
 description=
 description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h2]
