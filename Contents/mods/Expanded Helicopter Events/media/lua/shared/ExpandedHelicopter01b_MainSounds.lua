@@ -107,7 +107,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 			--print("--soundEmitter:isPlaying:"..soundEffect)
 		else
 			--print("--event:"..soundEvent..":"..soundEffect)
-			soundEmitter:playSoundImpl(soundEffect, otherLocation)
+			soundEmitter:playSound(soundEffect, otherLocation)
 		end
 	end
 end
