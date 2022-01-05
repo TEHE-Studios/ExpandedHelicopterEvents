@@ -16,4 +16,5 @@ function HelicopterSandboxOptions()
 	getSandboxOptions():updateFromLua()
 end
 
+Events.OnGameBoot.Add(HelicopterSandboxOptions)
 Events.OnLoad.Add(HelicopterSandboxOptions)
