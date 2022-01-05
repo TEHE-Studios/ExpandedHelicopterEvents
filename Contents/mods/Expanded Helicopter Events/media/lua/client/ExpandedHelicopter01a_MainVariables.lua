@@ -23,6 +23,9 @@ eHelicopter.eventSpecialDates = false --example: { systemDates = {{1,1}}, inGame
 ---@field eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
 eHelicopter.eventCutOffDayFactor = 0.34
 
+---@field radioChatter string
+eHelicopter.radioChatter = "AEBS_Choppah"
+
 ---@field flightHours table
 eHelicopter.flightHours = {5, 22}
 

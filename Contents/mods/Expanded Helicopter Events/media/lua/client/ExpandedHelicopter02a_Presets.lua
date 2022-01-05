@@ -100,6 +100,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 		["droppingPackage"] = "eHeli_AidDrop_1and3",
 	},
 	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
+	radioChatter = "AEBS_SupplyDrop"
 }
 
 eHelicopter_PRESETS["attack_only_all"] = {
@@ -239,6 +240,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
 	eventSpawnWeight = 3,
+	radioChatter = "AEBS_SupplyDrop"
 }
 
 

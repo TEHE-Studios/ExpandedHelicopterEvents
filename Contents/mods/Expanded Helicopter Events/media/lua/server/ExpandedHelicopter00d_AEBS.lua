@@ -27,19 +27,9 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		if globalModData.EventsOnSchedule then
 			for _,event in pairs(globalModData.EventsOnSchedule) do
 				if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
-
-					linesGoingOut["airActivity"] = getRadioText("AEBS_Choppah")
 					--pulls event's info to see if more lines can be added
 					local presetID = event["preset"]
-					local eventPreset = eHelicopter_PRESETS[presetID]
-
-					if eventPreset then
-						local presetDropPackages = eventPreset.dropPackages
-						if presetDropPackages then
-							linesGoingOut["aidDrop"] = getRadioText("AEBS_SupplyDrop")
-						end
-					end
-
+					linesGoingOut["airActivity"] = getRadioText(eHelicopter_PRESETS[presetID].radioChatter or eHelicopter.radioChatter)
 				end
 			end
 		end
