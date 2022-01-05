@@ -10,36 +10,39 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
 	else
 		--print("set Shadow Pos: "..ID.." - "..tostring(texture).." - "..tostring(x)..","..tostring(y)..","..tostring(z))
 
-		local square = getCell():getOrCreateGridSquare(x, y, 0)
-		local outsideSquare
-		if square then
-			outsideSquare = getOutsideSquareFromAbove(square) or square
-		end
-
-		if not texture or not x or not y or not z then
-			--print("-- clear shadow")
-			outsideSquare = nil
-		end
-
-		---@type WorldMarkers.GridSquareMarker
-		local shadow = storedShadows["HELI"..ID]
-
-		if not shadow and outsideSquare then
-			--print("-- no shadow but yes square")
-			shadow = getWorldMarkers():addGridSquareMarker(texture, nil, outsideSquare, 0.2, 0.2, 0.2, true, 1, 0, 0.25, 0.25)
-		end
-
-		if shadow then
-			--print("-- -- yes shadow, square:?")
-			if not outsideSquare then
-				print("-- -- -- no square : hide shadow")
-				shadow:setAlpha(0)
-			else
-				--print("-- -- -- yes square : show")
-				shadow:setAlpha(0.25)
-				shadow:setPosAndSize(outsideSquare:getX(),outsideSquare:getY(),outsideSquare:getZ(), 5)
+		local cell = getCell()
+		if cell then
+			local square = cell:getOrCreateGridSquare(x, y, 0)
+			local outsideSquare
+			if square then
+				outsideSquare = getOutsideSquareFromAbove(square) or square
 			end
-			storedShadows["HELI"..ID] = shadow
+
+			if not texture or not x or not y or not z then
+				--print("-- clear shadow")
+				outsideSquare = nil
+			end
+
+			---@type WorldMarkers.GridSquareMarker
+			local shadow = storedShadows["HELI"..ID]
+
+			if not shadow and outsideSquare then
+				--print("-- no shadow but yes square")
+				shadow = getWorldMarkers():addGridSquareMarker(texture, nil, outsideSquare, 0.2, 0.2, 0.2, true, 1, 0, 0.25, 0.25)
+			end
+
+			if shadow then
+				--print("-- -- yes shadow, square:?")
+				if not outsideSquare then
+					print("-- -- -- no square : hide shadow")
+					shadow:setAlpha(0)
+				else
+					--print("-- -- -- yes square : show")
+					shadow:setAlpha(0.25)
+					shadow:setPosAndSize(outsideSquare:getX(),outsideSquare:getY(),outsideSquare:getZ(), 5)
+				end
+				storedShadows["HELI"..ID] = shadow
+			end
 		end
 	end
 end
