@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.5-fixforSP-disabledMP"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.9-totallyNotMP"))
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
 
