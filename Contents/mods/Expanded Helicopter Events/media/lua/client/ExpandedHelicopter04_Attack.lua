@@ -64,6 +64,21 @@ function eHelicopter:lookForHostiles(targetType)
 end
 
 
+--for targeting
+local bodyPartSelectionWeight = {
+	["Hand_L"]=5,["Hand_R"]=5,["ForeArm_L"]=10,["ForeArm_R"]=10,
+	["UpperArm_L"]=15,["UpperArm_R"]=15,["Torso_Upper"]=15,["Torso_Lower"]=15,
+	["Head"]=1,["Neck"]=1,["Groin"]=5,["UpperLeg_L"]=15,["UpperLeg_R"]=15,
+	["LowerLeg_L"]=10,["LowerLeg_R"]=10,["Foot_L"]=5,["Foot_R"]=5
+}
+local bodyPartSelection = {}
+for type,weight in pairs(bodyPartSelectionWeight) do
+	for i=1, weight do
+		--print("body parts: "..i.." - "..type)
+		table.insert(bodyPartSelection,type)
+	end
+end
+
 ---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie
 function eHelicopter:fireOn(targetHostile)
 
@@ -102,6 +117,7 @@ function eHelicopter:fireOn(targetHostile)
 
 	--convert hostileVelocity to a %
 	local movementThrowOffAim = math.floor((100*hostileVelocity)+0.5)
+
 	if instanceof(targetHostile, "IsoPlayer") then
 		movementThrowOffAim = movementThrowOffAim*1.5
 		chance = (chance/(timesFiredOnSpecificHostile*2))
@@ -119,8 +135,13 @@ function eHelicopter:fireOn(targetHostile)
 		chance = (chance*0.8)
 	end
 
-	if targetHostile:isNearVehicle() then
-		chance = (chance*0.8)
+	if instanceof(targetHostile, "IsoPlayer") then
+		if targetHostile:isNearVehicle() then
+			chance = (chance*0.8)
+		end
+		if (targetHostile:checkIsNearWall()>0) then
+			chance = (chance*0.8)
+		end
 	end
 
 	if targetHostile:getVehicle() then
@@ -129,10 +150,6 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	if (targetSquare:isVehicleIntersecting()) then
-		chance = (chance*0.8)
-	end
-
-	if (targetHostile:checkIsNearWall()>0) then
 		chance = (chance*0.8)
 	end
 
@@ -152,12 +169,9 @@ function eHelicopter:fireOn(targetHostile)
 
 	if ZombRand(0, 101) <= chance then
 
-		--apply swiss-cheesification (holes and blood)
-		--bodyparts list has a length of 18 (0-17)
-		local bpIndexNum = ZombRand(0, 17)
-		--apply hole and blood
-		local bpType = BodyPartType.FromIndex(bpIndexNum)
-		local clothingBP = BloodBodyPartType.FromIndex(bpIndexNum)
+		local bpRandSelect = bodyPartSelection[ZombRand(#bodyPartSelection)+1]
+		local bpType = BodyPartType.FromString(bpRandSelect)
+		local clothingBP = BloodBodyPartType.FromString(bpRandSelect)
 
 		--[[DEBUG]] local preHealth = targetHostile:getHealth()
 		--apply damage to body part
@@ -186,18 +200,14 @@ function eHelicopter:fireOn(targetHostile)
 			--apply localized body part damage
 			local bodyDMG = targetHostile:getBodyDamage()
 			if bodyDMG then
-				local bodyParts = bodyDMG:getBodyParts()
-				if bodyParts then
-					local actualBP = bodyParts:get(bpIndexNum)
-					if actualBP then
+				local bodyPart = bodyDMG:getBodyPart(bpType)
+				if bodyPart then
+					local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
+					damage = damage * (1-(protection*0.75))
+					--print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
 
-						local protection = targetHostile:getBodyPartClothingDefense(bpIndexNum, false, true)/100
-						damage = damage * (1-(protection*0.75))
-						--print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
-
-						bodyDMG:AddDamage(bpIndexNum,damage)
-						actualBP:damageFromFirearm(damage)
-					end
+					bodyDMG:AddDamage(bpType,damage)
+					bodyPart:damageFromFirearm(damage)
 				end
 			end
 		end
