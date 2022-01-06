@@ -1,8 +1,8 @@
 version=1
 id=2458631365
 title=Expanded Helicopter Events [MP PATCH OUT]
-description=[h2][b]This is the last update before the MP patch.
-description=Please, test Single Player thoroughly and report any odd behaviors.[/b][/h2]
+description=[h2][b]The MP patch is now out.
+description=Please, report all irregular behavior and bugs.[/b][/h2]
 description=[h2][b]Features outside of the current scope will come in later builds.[/b][/h2]
 description=
 description=
