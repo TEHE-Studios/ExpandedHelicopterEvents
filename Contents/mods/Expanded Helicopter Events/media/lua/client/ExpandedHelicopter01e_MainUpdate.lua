@@ -214,7 +214,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	for character,value in pairs(EHEIsoPlayers) do
 		---@type IsoGameCharacter p
 		local p = character
-		if self:getDistanceToIsoObject(p) < (self.flightVolume*3) then
+		if self:getDistanceToIsoObject(p) < (self.flightVolume*0.8) then
 			p:forceAwake()
 		end
 	end
