@@ -31,9 +31,6 @@ description=[b]If the problem persists, please supply a error log, which can be 
 description=[quote]`C:\Users\<username>\Zomboid\console.txt`[/quote]
 description=The file can be supplied to either our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page or you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
 description=
-description=
-description=Workshop ID: 2458631365
-description=Mod ID: ExpandedHelicopterEvents
 description=[img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/SteamDescSpacer.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198118348349680656/][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_sm.png[/img][/url]
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
