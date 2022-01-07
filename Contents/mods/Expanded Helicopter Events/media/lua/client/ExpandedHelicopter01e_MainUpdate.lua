@@ -87,13 +87,11 @@ function eHelicopter:update()
 	end
 
 	self:setTargetPos()
-
 	local distToTarget = self:getDistanceToIsoObject(self.trueTarget)
-	local crashMin = ZombRand(75,150)
-	local crashMax = ZombRand(151,325)
-	if self.crashing and (distToTarget <= crashMax) and (distToTarget >= crashMin) and (ZombRand(10)>0) then
+	local crashDist = ZombRand(75,200)
+	if self.crashing and (distToTarget <= crashDist) and (ZombRand(10)>0) then
 		if self:crash() then
-			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashMin.." to "..crashMax..")")
+			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashDist..")")
 			return
 		end
 	end
