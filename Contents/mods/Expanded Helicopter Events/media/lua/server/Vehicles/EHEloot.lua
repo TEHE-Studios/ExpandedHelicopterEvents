@@ -72,6 +72,23 @@ VehicleDistributions.UH1HSeat = {
         "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
         "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
         "AuthenticZClothing.AuthenticSmokeBomb", 10,
+
+        -- Firearms B41 -- 
+
+        "Base.MP5", 10,
+        "Base.M60", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.762x51Box", 10,
+        "Base.762x51Box", 10,
+        "Base.762x51Box", 10,
+        "Base.762x51Box", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
        
     }
 }
@@ -149,6 +166,15 @@ VehicleDistributions.UH1HRaiderSeat = {
         "AuthenticZClothing.Tshirt_Rock2", 3,
         "AuthenticZClothing.Tshirt_PostalDude", 3,
         "AuthenticZClothing.Jacket_PostalDude", 3,
+        
+        -- Firearms B41 --
+
+        "Base.MP5", 10,
+        "Base.M60", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
     }
 }
 
@@ -223,6 +249,23 @@ VehicleDistributions.UH1HMedevacSeat = {
         "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
         "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
         "AuthenticZClothing.AuthenticSmokeBomb", 10,
+
+        -- Firearms B41 --
+
+        "Base.MP5", 10,
+        "Base.M60", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.Bullets9mmBox", 10,
+        "Base.762x51Box", 10,
+        "Base.762x51Box", 10,
+        "Base.762x51Box", 10,
+        "Base.762x51Box", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
+        "Base.AmmoCan762", 10,
     }
 }
 
