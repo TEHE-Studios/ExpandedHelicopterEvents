@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.2.9-totallyNotMP"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3-MP"))
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
 
@@ -12,6 +12,7 @@ Events.OnGameBoot.Add(function()
 		ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
 	end
 	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test 90 Days [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
+	ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
 	ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
 end)
 
