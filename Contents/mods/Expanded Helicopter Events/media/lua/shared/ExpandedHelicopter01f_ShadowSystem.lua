@@ -10,7 +10,10 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
 	else
 		--print("set Shadow Pos: "..ID.." - "..tostring(texture).." - "..tostring(x)..","..tostring(y)..","..tostring(z))
 
-		local square = getSquare(x, y, 0)
+		local square
+		if x and y then
+			square = getSquare(x, y, 0)
+		end
 		local outsideSquare
 		if square then
 			outsideSquare = getOutsideSquareFromAbove(square) or square
