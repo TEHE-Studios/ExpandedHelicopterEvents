@@ -20,7 +20,7 @@ description=[h2]For a more varied looting experience, try these integrated mods:
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]Shark and Peaches Military Uniform Improvements[/b][/url][/h2]
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]Shark's Law Enforcement Overhaul[/b][/url][/h2]
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h2]
-description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]B41 Weapons[/b][/url][/h2]
+description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
 description=
 description=
 description=[H2]To make suggestions, or provide translations: Visit the [url=https://github.com/sharkster91/ExpandedHelicopterEvents]GITHUB[/url][/H2]
