@@ -32,7 +32,7 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
 		if shadow then
 			--print("-- -- yes shadow, square:?")
 			if not outsideSquare then
-				print("-- -- -- no square : hide shadow")
+				--print("-- -- -- no square : hide shadow")
 				shadow:setAlpha(0)
 			else
 				--print("-- -- -- yes square : show")
