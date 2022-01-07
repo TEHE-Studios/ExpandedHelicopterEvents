@@ -56,13 +56,16 @@ VehicleDistributions.UH1HSeat = {
         -- SMUI -- 
 
         "SMUIClothing.Hat_M17", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_M17Doff", 10,
+        "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
+        "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
+        "SMUIClothing.NightVisionGoggles", 10,
+        "SMUIClothing.MilitaryWebbingBag", 10,
+        "SMUIClothing.MilitaryWebbing", 5,
+        "SMUIClothing.MilitaryWebbing", 5,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_BeretSpecial", 10,
-        "SMUIClothing.M67Grenade", 4,
 
         -- AZ --
 
@@ -119,6 +122,9 @@ VehicleDistributions.UH1HRaiderSeat = {
         "EHE.BanditStashBox", 1,
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHBlack", 3,
+        "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
+        "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
+        "SMUIClothing.NightVisionGoggles", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
@@ -134,7 +140,6 @@ VehicleDistributions.UH1HRaiderSeat = {
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_BeretSpecial", 3,
-        "SMUIClothing.M67Grenade", 4,
 
         -- AZ --
 
@@ -193,6 +198,9 @@ VehicleDistributions.UH1HMedevacSeat = {
         "EHE.Hat_SPHMilitary", 10,
         "EHE.Hat_SPHMilitary", 5,
         "EHE.Hat_SPHBlack", 3,
+        "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
+        "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
+        "SMUIClothing.NightVisionGoggles", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.Vest_PilotSurvivalVest", 10,
         "EHE.MealReadytoEat", 10,
@@ -202,13 +210,13 @@ VehicleDistributions.UH1HMedevacSeat = {
         -- SMUI -- 
 
         "SMUIClothing.Hat_M17", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
+        "SMUIClothing.Hat_M17Doff", 10,
+        "SMUIClothing.MilitaryWebbingBag", 10,
+        "SMUIClothing.MilitaryWebbing", 5,
+        "SMUIClothing.MilitaryWebbing", 5,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_PatrolCap", 10,
         "SMUIClothing.Hat_BeretSpecial", 3,
-        "SMUIClothing.M67Grenade", 4,
 
         -- AZ --
 
@@ -346,7 +354,6 @@ VehicleDistributions.Bell206SurvivalistSeat = {
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.M67Grenade", 4,
 
         -- SLEO --
 
@@ -402,7 +409,6 @@ VehicleDistributions.Bell206BlackSeat = {
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.M67Grenade", 4,
 
         -- AZ --
 
