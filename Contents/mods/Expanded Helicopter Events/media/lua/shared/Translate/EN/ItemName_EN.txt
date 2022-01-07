@@ -1,4 +1,4 @@
-Items_EN = {
+ItemName_EN = {
     DisplayName_Civilian_Helicopter_Helmet= "Civilian Helicopter Helmet",
     DisplayName_Press_Helmet = "Press Helmet",
     DisplayName_Police_Helicopter_Helmet = "Police Helicopter Helmet",
