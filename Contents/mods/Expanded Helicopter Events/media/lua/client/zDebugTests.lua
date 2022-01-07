@@ -148,22 +148,33 @@ end
 function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	local globalModData = getExpandedHeliEventsModData()
 	globalModData.EventsOnSchedule = {}
-	print("======================================")
-	print("neHeliEvents_SchedulerUnitTest: (SandboxVars.ExpandedHeli.CutOffDay:"..SandboxVars.ExpandedHeli.CutOffDay..")")
-	print("--------------------------------------")
-	for day=0, 90 do
-		for hour=0, 24 do
-			eHeliEvent_ScheduleNew(day,hour)
-			for k,v in pairs(globalModData.EventsOnSchedule) do
-				if v.triggered then
-					globalModData.EventsOnSchedule[k] = nil
-				elseif (v.startDay <= day) and (v.startTime == hour) then
-					globalModData.EventsOnSchedule[k].triggered = true
+	for freq=1, 6 do
+		local testsRan = {}
+		for day=0, 90 do
+			for hour=0, 24 do
+				eHeliEvent_ScheduleNew(day,hour,freq,true)
+				for k,v in pairs(globalModData.EventsOnSchedule) do
+					if v.triggered then
+						globalModData.EventsOnSchedule[k] = nil
+					elseif (v.startDay <= day) and (v.startTime == hour) then
+						testsRan[v.preset] = testsRan[v.preset] or 0
+						testsRan[v.preset] = testsRan[v.preset]+1
+						globalModData.EventsOnSchedule[k].triggered = true
+					end
 				end
 			end
 		end
+		print("======================================")
+		print("HeliEvents_SchedulerUnitTest: FREQ:"..freq)
+		print("--------------------------------------")
+		local totalTimes= 0
+		for preset,times in pairs(testsRan) do
+			totalTimes = totalTimes+times
+			print("-preset:"..preset.."  x"..times)
+		end
+		print("--- TOTAL EVENTS: "..totalTimes)
+		print("======================================")
 	end
-	print("======================================")
 end
 
 

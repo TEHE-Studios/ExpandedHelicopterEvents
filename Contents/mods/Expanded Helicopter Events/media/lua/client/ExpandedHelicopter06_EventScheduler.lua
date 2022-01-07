@@ -128,7 +128,7 @@ function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
 end
 
 
-function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
+function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 	local GT = getGameTime()
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
@@ -253,7 +253,9 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride)
 
 			local startDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
-			print(" -Scheduled: "..selectedPresetID.." [Day:"..startDay.." Time:"..startTime.."]")
+			if not noPrint==true then
+				print(" -Scheduled: "..selectedPresetID.." [Day:"..startDay.." Time:"..startTime.."]")
+			end
 			eHeliEvent_new(startDay, startTime, selectedPresetID)
 		end
 	end
