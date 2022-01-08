@@ -4,13 +4,6 @@ require "ExpandedHelicopter00f_WeatherImpact"
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
 EHE_WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast or nil
 
---local function from ISWeatherChannel.lua
-local function comp(_str)
-	--local radio = getZomboidRadio();
-	--return radio:computerize(_str);
-	return _str;
-end
-
 function WeatherChannel.FillBroadcast(_gametime, _bc)
 	--call stored version from above using the same arguments
 	EHE_WeatherChannel_FillBroadcast(_gametime, _bc)
@@ -35,7 +28,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		end
 		
 		for _,line in pairs(linesGoingOut) do
-			_bc:AddRadioLine(RadioLine.new(comp(line), c.r, c.g, c.b) )
+			_bc:AddRadioLine(RadioLine.new(line, c.r, c.g, c.b))
 		end
 		WeatherChannel.AddFuzz(c, _bc);
 	end

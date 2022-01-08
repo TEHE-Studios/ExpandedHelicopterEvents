@@ -100,7 +100,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 		["droppingPackage"] = "eHeli_AidDrop_1and3",
 	},
 	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
-	radioChatter = "AEBS_SupplyDrop"
+	radioChatter = "AEBS_SupplyDrop",
 }
 
 eHelicopter_PRESETS["attack_only_all"] = {
@@ -125,6 +125,7 @@ eHelicopter_PRESETS["jet"] = {
 	forScheduling = true,
 	schedulingFactor = 4,
 	eventSpawnWeight = 5,
+	radioChatter = "AEBS_JetPass",
 	}
 
 eHelicopter_PRESETS["air_raid"] = {
@@ -143,6 +144,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
 	ignoreNeverEnding = true,
+	radioChatter = "AEBS_AirRaid",
 }
 
 eHelicopter_PRESETS["jet_bombing"] = {
@@ -161,6 +163,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
 	ignoreNeverEnding = true,
+	radioChatter = "AEBS_JetBombing",
 }
 
 
@@ -175,6 +178,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 	forScheduling = true,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
+	radioChatter = "AEBS_UnauthorizedEntryNews",
 	}
 
 eHelicopter_PRESETS["news_chopper_hover"] = {
@@ -199,6 +203,7 @@ eHelicopter_PRESETS["police"] = {
 	forScheduling = true,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
+	radioChatter = "AEBS_UnauthorizedEntryPolice",
 	}
 
 eHelicopter_PRESETS["police_heli_emergency"] = {
@@ -240,7 +245,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
 	eventSpawnWeight = 3,
-	radioChatter = "AEBS_SupplyDrop"
+	radioChatter = "AEBS_SamaritanDrop"
 }
 
 
@@ -256,8 +261,8 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
+	radioChatter = "AEBS_SurvivorHeli",
 }
-
 
 
 eHelicopter_PRESETS["raiders"] = {
@@ -271,7 +276,9 @@ eHelicopter_PRESETS["raiders"] = {
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.66,
+	radioChatter = "AEBS_Raiders",
 	}
+
 
 eHelicopter_PRESETS["raider_heli_passive"] = {
 	inherit = {"raiders"},
