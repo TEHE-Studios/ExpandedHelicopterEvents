@@ -240,6 +240,11 @@ function eHelicopter.applyParachuteToCarePackage(vehicle)
 	end
 end
 
+function eHelicopter.applySoundToDrop(vehicle)
+	if vehicle then
+		addSound(vehicle, vehicle:getX(),vehicle:getY(), 0, 100, 100)
+	end
+end
 
 ---Heli drop carePackage
 ---@param fuzz number
@@ -268,9 +273,9 @@ function eHelicopter:dropCarePackage(fuzz)
 		heliY = heliY+ZombRand(minY,maxY+1)
 	end
 
-	local extraFunctions
+	local extraFunctions = {"applySoundToDrop"}
 	if carePackagesWithOutChutes[carePackage]~=true then
-		extraFunctions = {"applyParachuteToCarePackage"}
+		table.insert(extraFunctions, "applyParachuteToCarePackage")
 	end
 
 	SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
