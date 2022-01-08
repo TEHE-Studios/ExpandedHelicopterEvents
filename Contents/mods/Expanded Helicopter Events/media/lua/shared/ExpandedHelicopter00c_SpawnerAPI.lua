@@ -84,14 +84,16 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 		if currentSquare then
 			if processSquare then
 				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
-				currentSquare = func(currentSquare)
+				if func then
+					currentSquare = func(currentSquare)
+				end
 			end
 		end
 
 		if currentSquare then
 			--x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 			local item = currentSquare:AddWorldInventoryItem(itemType, 0, 0, 0)
-			if item then
+			if item and extraFunctions then
 				SpawnerTEMP.processExtraFunctionsOnto(item,extraFunctions)
 			end
 		else
@@ -120,7 +122,9 @@ function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPar
 		if currentSquare then
 			if processSquare then
 				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
-				currentSquare = func(currentSquare)
+				if func then
+					currentSquare = func(currentSquare)
+				end
 			end
 		end
 
@@ -155,7 +159,9 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 		if currentSquare then
 			if processSquare then
 				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
-				currentSquare = func(currentSquare)
+				if func then
+					currentSquare = func(currentSquare)
+				end
 			end
 		end
 
