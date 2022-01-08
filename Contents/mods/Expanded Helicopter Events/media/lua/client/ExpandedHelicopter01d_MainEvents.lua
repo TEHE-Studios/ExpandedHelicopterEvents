@@ -4,33 +4,6 @@ require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter00a_Util"
 --Heli goes down
 
----@param item InventoryItem
-function eHelicopter.ageInventoryItem(item)
-	if item then
-		item:setAutoAge()
-	end
-end
-
----@param vehicle BaseVehicle
-function eHelicopter.applyCrashOnVehicle(vehicle)
-	if not vehicle then
-		return
-	end
-	vehicle:crash(1000,true)
-	vehicle:crash(1000,false)
-
-	for i=0, vehicle:getPartCount() do
-		---@type VehiclePart
-		local part = vehicle:getPartByIndex(i) --VehiclePart
-		if part then
-			local partDoor = part:getDoor()
-			if partDoor ~= nil then
-				partDoor:setLocked(false)
-			end
-		end
-	end
-end
-
 
 function eHelicopter:crash()
 
@@ -99,25 +72,6 @@ function eHelicopter:crash()
 	return false
 end
 
-
----@param arrayOfZombies ArrayList
-function eHelicopter.applyDeathOrCrawlerToCrew(arrayOfZombies)
-	if arrayOfZombies and arrayOfZombies:size()>0 then
-		local zombie = arrayOfZombies:get(0)
-		--33% to be dead on arrival
-		if ZombRand(1,101) <= 33 then
-			--print("crash spawned: "..outfitID.." killed")
-			zombie:setHealth(0)
-		else
-			if ZombRand(1,101) <= 25 then
-				--print("crash spawned: "..outfitID.." crawler")
-				zombie:setCanWalk(false)
-				zombie:setBecomeCrawler(true)
-				zombie:knockDown(true)
-			end
-		end
-	end
-end
 
 ---Heli spawn crew
 function eHelicopter:spawnCrew(x, y, z)
@@ -232,13 +186,6 @@ function eHelicopter:dropItem(type, fuzz)
 	SpawnerTEMP.spawnItem(type, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 end
 
-
----@param vehicle BaseVehicle
-function eHelicopter.applyParachuteToCarePackage(vehicle)
-	if vehicle then
-		SpawnerTEMP.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, "getOutsideSquareFromAbove")
-	end
-end
 
 ---Heli drop carePackage
 ---@param fuzz number

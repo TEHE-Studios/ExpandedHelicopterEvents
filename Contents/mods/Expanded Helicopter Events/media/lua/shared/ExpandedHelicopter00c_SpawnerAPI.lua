@@ -36,14 +36,12 @@ function SpawnerTEMP.fetchFromDictionary(ID)
 end
 
 function SpawnerTEMP.setDictionary()
-	SpawnerTEMP.functionDictionary = {
-		getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle,
-		getOutsideSquareFromAbove = getOutsideSquareFromAbove,
-		applyCrashOnVehicle = eHelicopter.applyCrashOnVehicle,
-		ageInventoryItem = eHelicopter.ageInventoryItem,
-		applyDeathOrCrawlerToCrew = eHelicopter.applyDeathOrCrawlerToCrew,
-		applyParachuteToCarePackage = eHelicopter.applyParachuteToCarePackage
-	}
+	SpawnerTEMP.functionDictionary.getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle
+	SpawnerTEMP.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
+	SpawnerTEMP.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
+	SpawnerTEMP.functionDictionary.ageInventoryItem = ageInventoryItem
+	SpawnerTEMP.functionDictionary.applyDeathOrCrawlerToCrew = applyDeathOrCrawlerToCrew
+	SpawnerTEMP.functionDictionary.applyParachuteToCarePackage = applyParachuteToCarePackage
 
 	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 		local presetAddedFunc = presetVars["addedFunctionsToEvents"]

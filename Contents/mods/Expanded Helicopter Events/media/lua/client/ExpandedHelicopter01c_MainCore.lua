@@ -345,6 +345,9 @@ end
 
 ---@param character IsoGameCharacter
 function eHelicopter:findAlternativeTarget(character)
+	if not character then
+		return false
+	end
 	local newTargets = {}
 	local fractalCenters = getIsoRange(character, 1, 150)
 
@@ -456,7 +459,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 					table.insert(weightPlayersList, p)
 				else
 					local altTarget = self:findAlternativeTarget(p)
-					table.insert(weightPlayersList, altTarget)
+					if altTarget then
+						table.insert(weightPlayersList, altTarget)
+					end
 				end
 			end
 		end

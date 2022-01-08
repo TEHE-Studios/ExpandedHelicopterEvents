@@ -90,7 +90,7 @@ end
 ---@return table of IsoGridSquare
 function getIsoRange(center, range, fractalOffset)
 
-	if center then
+	if center and center~= false then
 		center = recursiveGetSquare(center)
 	else
 		return {}
