@@ -240,12 +240,6 @@ function eHelicopter.applyParachuteToCarePackage(vehicle)
 	end
 end
 
-function eHelicopter.applySoundToDrop(vehicle)
-	if vehicle then
-		addSound(vehicle, vehicle:getX(),vehicle:getY(), 0, 100, 100)
-	end
-end
-
 ---Heli drop carePackage
 ---@param fuzz number
 ---@return BaseVehicle package
@@ -273,14 +267,15 @@ function eHelicopter:dropCarePackage(fuzz)
 		heliY = heliY+ZombRand(minY,maxY+1)
 	end
 
-	local extraFunctions = {"applySoundToDrop"}
+	local extraFunctions = {}
 	if carePackagesWithOutChutes[carePackage]~=true then
-		table.insert(extraFunctions, "applyParachuteToCarePackage")
+		table.insert(extraFunctions, "applySoundToEvent")
 	end
 
 	SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 	eventSoundHandler:playEventSound(self, "droppingPackage")
+	addSound(nil, heliX, heliY, 0, 200, 150)
 	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 3000, heliX, heliY)
 	self.dropPackages = false
 	return true

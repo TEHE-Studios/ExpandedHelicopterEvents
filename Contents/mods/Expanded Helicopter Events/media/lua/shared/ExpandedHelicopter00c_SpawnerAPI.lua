@@ -42,8 +42,7 @@ function SpawnerTEMP.setDictionary()
 		applyCrashOnVehicle = eHelicopter.applyCrashOnVehicle,
 		ageInventoryItem = eHelicopter.ageInventoryItem,
 		applyDeathOrCrawlerToCrew = eHelicopter.applyDeathOrCrawlerToCrew,
-		applyParachuteToCarePackage = eHelicopter.applyParachuteToCarePackage,
-		applySoundToDrop = eHelicopter.applySoundToDrop,
+		applyParachuteToCarePackage = eHelicopter.applyParachuteToCarePackage
 	}
 
 	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
