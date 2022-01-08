@@ -68,7 +68,7 @@ end
 local bodyPartSelectionWeight = {
 	["Hand_L"]=5,["Hand_R"]=5,["ForeArm_L"]=10,["ForeArm_R"]=10,
 	["UpperArm_L"]=15,["UpperArm_R"]=15,["Torso_Upper"]=15,["Torso_Lower"]=15,
-	["Head"]=1,["Neck"]=1,["Groin"]=5,["UpperLeg_L"]=15,["UpperLeg_R"]=15,
+	["Head"]=1,["Neck"]=1,["Groin"]=2,["UpperLeg_L"]=15,["UpperLeg_R"]=15,
 	["LowerLeg_L"]=10,["LowerLeg_R"]=10,["Foot_L"]=5,["Foot_R"]=5
 }
 local bodyPartSelection = {}
