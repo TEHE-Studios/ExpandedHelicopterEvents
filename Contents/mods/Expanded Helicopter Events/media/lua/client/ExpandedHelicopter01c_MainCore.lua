@@ -738,9 +738,11 @@ end
 
 function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
-	EHE_EventMarkerHandler.disableMarkersForPOI(self)
+
 	eventSoundHandler:stopAllHeldEventSounds(self)
 	eventShadowHandler:setShadowPos(self.ID)
+	eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 0)
+
 	self.state = "unLaunched"
 
 	for heli,_ in pairs(self.formationFollowingHelis) do

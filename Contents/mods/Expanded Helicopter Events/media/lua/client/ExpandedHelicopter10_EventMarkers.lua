@@ -12,8 +12,6 @@ EHE_EventMarker.maxRange = 500
 function EHE_EventMarker:initialise()
 	ISUIElement.initialise(self)
 	self:addToUIManager()
-	--self.javaObject:setWantKeyEvents(false)
-	--self.javaObject:setConsumeMouseEvents(false)
 	self.moveWithMouse = true
 	self:setVisible(false)
 end
@@ -83,7 +81,7 @@ function EHE_EventMarker:onMouseMoveOutside(dx, dy)
 
 		local p = self:getPlayer()
 		if p then
-			p:getModData()["EHE_markerPlacement"] = {self.x, self.y}
+			p:getModData()["EHE_eventMarkerPlacement"] = {self.x, self.y}
 		end
 	end
 end
@@ -93,9 +91,7 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 		return
 	end
 	self.mouseOver = true
-
 	if self.moving then
-
 		if self.parent then
 			self.parent:setX(self.parent.x + dx)
 			self.parent:setY(self.parent.y + dy)
@@ -104,12 +100,10 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 			self:setY(self.y + dy)
 			self:bringToTop()
 		end
-
 		local p = self:getPlayer()
 		if p then
-			p:getModData()["EHE_markerPlacement"] = {self.x, self.y}
+			p:getModData()["EHE_eventMarkerPlacement"] = {self.x, self.y}
 		end
-		--ISMouseDrag.dragView = self
 	end
 end
 
@@ -117,14 +111,14 @@ end
 function EHE_EventMarker:setDistance(dist)
 	self.distanceToPoint = dist
 end
-function EHE_EventMarker:setAngleFromPoint(x,y)
-	if(x and y) then
-		local radians = math.atan2(y - self.player:getY(), x - self.player:getX()) + math.pi
+function EHE_EventMarker:setAngleFromPoint(posX,posY)
+	if(posX and posY) then
+		local radians = math.atan2(posY - self.player:getY(), posX - self.player:getX()) + math.pi
 		local degrees = ((radians * 180 / math.pi + 270) + 45) % 360
 
 		self.angle = degrees
-		self.lastpx = x
-		self.lastpy = y
+		self.posY = posX
+		self.posY = posY
 	end
 
 end
@@ -141,7 +135,7 @@ end
 
 function EHE_EventMarker:render()
 	if self.visible and self.duration > 0 then--and self.distanceToPoint>4 then
-		self.setAngleFromPoint(self.lastpx,self.lastpy)
+		self.setAngleFromPoint(self.posX,self.posY)
 
 		local centerX = self.width / 2
 		local centerY = self.height / 2
@@ -167,7 +161,7 @@ function EHE_EventMarker:render()
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 
-		if self.player and #getActualPlayers()>1 then
+		if self.player and getNumActivePlayers()>1 then
 			self:drawTexture(self.textureCoopNum[self.player:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 		end
 
@@ -195,23 +189,25 @@ function EHE_EventMarker:getPlayer()
 end
 
 
-function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon, duration)
+function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY)
+	print(" --- marker new: eventID:"..eventID..": tex:"..icon.." d:"..duration.." x/y:"..posX..","..posY.." "..tostring(player).." screen:"..screenX..","..screenY)
 	local o = {}
 	o = ISUIElement:new(screenX, screenY, 1, 1)
 	setmetatable(o, self)
 	self.__index = self
-	o.source = poi
+	o.eventID = eventID
 	o.player = player
-	o.xoff = screenX
-	o.yoff = screenY
-	o.lastpx = 0
-	o.lastpy = 0
-	o.width = width
-	o.height = height
+	o.x = screenX
+	o.y = screenY
+	o.posX = posX or 0
+	o.posY = posY or 0
+	o.width = EHE_EventMarker.clickableSize
+	o.height = EHE_EventMarker.clickableSize
 	o.angle = 0
 	o.opacity = 255
 	o.opacityGain = 2
 	o.duration = duration
+	o.lastUpdateTime = -1
 	o.enabled = true
 	o.visible = true
 	o.title = ""
@@ -242,51 +238,54 @@ function EHE_EventMarker:new(poi, player, screenX, screenY, width, height, icon,
 end
 
 
----@param player IsoPlayer
-function EHE_EventMarker:update(player)
-	if not player then
+function EHE_EventMarker:update(posX,posY)
+	if self.duration<=0 and not self:isVisible() then
 		return
 	end
-	--print(" -- -- EHE_EventMarker:update: "..player:getUsername())
-	if self.duration > 0 then
-		self.duration = self.duration-1
-		--if instanceof(poi, "BaseVehicle") then print("EHE:DEBUG: Duration-1 = "..self.duration) end
-		if(self.duration <= 0) then
-			self:setVisible(false)
-			return
-		end
+
+	local timeStamp = getTimestampMs()
+	if (self.lastUpdateTime+10 >= timeStamp) then
+		return
+	else
+		self.lastUpdateTime = timeStamp
 	end
 
+	--print(" ---- marker "..self.eventID.." update")
 	local dist
-	local poi = self.source
-	local x,y,z
+	posX = posX or self.posX
+	posY = posY or self.posY
+
+	if posX and posY and self.player then
+		dist = IsoUtils.DistanceTo(posX, posY, self.player:getX(), self.player:getY())
+		--print(" ----- marker:"..self.eventID.." x("..x..") y("..y..") and player("..tostring(self.player)..") found : attempting to set dist("..dist..")")
+	end
 
 	if not self.radius then
 		self.radius = EHE_EventMarker.maxRange
 	end
 
-	if (not instanceof(poi, "BaseVehicle")) and (not instanceof(poi, "IsoGridSquare")) then
-		dist=poi:getDistanceToIsoObject(player)
-		x,y,z = poi:getXYZAsInt()
-	else
-		x,y,z = poi:getX(), poi:getY(), poi:getZ()
-		dist=IsoUtils.DistanceTo(x,y,player:getX(),player:getY())
-	end
-
-	if(player:HasTrait("EagleEyed")) then self.radius = (self.radius * 1.2)
-	elseif(player:HasTrait("ShortSighted")) then self.radius = (self.radius * 0.8) end
+	if(self.player:HasTrait("EagleEyed")) then self.radius = (self.radius * 1.2)
+	elseif(self.player:HasTrait("ShortSighted")) then self.radius = (self.radius * 0.8) end
 
 	local HOUR = getGameTime():getHour()
-	if player:HasTrait("NightVision") and HOUR < 6 and HOUR > 22 then
+	if self.player:HasTrait("NightVision") and HOUR < 6 and HOUR > 22 then
 		self.radius = self.radius*1.2
 	end
 
-	if (dist <= self.radius) then--and player:isOutside() then
-		self:setDistance(dist)
-		self:setAngleFromPoint(x,y)
-		--self:setDuration(10)
-		self:setVisible(true)
+	if self.duration > 0 then--and player:isOutside() then
+		--print(" ----- marker:"..self.eventID.." x("..posX..") y("..posY..") and dist("..tostring(dist)..") found : attempting to compare to radius("..self.radius..")")
+		self.posX = posX
+		self.posY = posY
+		if dist and (dist <= self.radius) then
+			--print(" ------ marker "..self.eventID.." in range - visible")
+			self:setDistance(dist)
+			self:setAngleFromPoint(self.posX,self.posY)
+			self:setVisible(true)
+		else
+			self:setVisible(false)
+		end
 	else
+		--print(" ------ hiding marker "..self.eventID)
 		self:setVisible(false)
 	end
 end

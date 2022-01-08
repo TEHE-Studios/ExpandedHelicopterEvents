@@ -25,9 +25,13 @@ local function onCommand(_module, _command, _dataA, _dataB)
 			eventSoundHandler:handleLooperEvent(_dataA.reusableID, nil, _dataA.command)
 		end
 
+	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
+		--sendServerCommand("EventMarkerHandler", "setOrUpdateMarker", _dataB)
+		eventMarkerHandler.setOrUpdate(_dataA.eventID, _dataA.icon, _dataA.duration, _dataA.posX, _dataA.posY, true)
+
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
 		--sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
-		eventShadowHandler:setShadowPos(_dataA.ID, _dataA.texture, _dataA.x, _dataA.y, _dataA.z, true)
+		eventShadowHandler:setShadowPos(_dataA.eventID, _dataA.texture, _dataA.x, _dataA.y, _dataA.z, true)
 	end
 end
 --Events.OnClientCommand.Add(onCommand)--/client/ to server

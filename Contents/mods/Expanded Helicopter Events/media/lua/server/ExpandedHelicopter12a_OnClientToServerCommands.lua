@@ -11,12 +11,8 @@ local function onCommand(_module, _command, _dataA, _dataB)
 			sendServerCommand("sendLooper", _dataB.command, _dataB)
 		end
 
-	elseif _module == "EHE_EventMarkerHandler" then
-		if _command == "new" then
-			return EHE_EventMarker:new(_dataB.poi, _dataB.p, _dataB.sX, _dataB.sY, _dataB.w, _dataB.h, _dataB.icon, _dataB.duration)
-		elseif _command == "update" then
-			EHE_EventMarkerHandler.updateAll()
-		end
+	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
+			sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _dataB)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
 		sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
