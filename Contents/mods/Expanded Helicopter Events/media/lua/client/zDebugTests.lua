@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.1-UniqueRadioMessages"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.2-HOTFIX-MP"))
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
 
