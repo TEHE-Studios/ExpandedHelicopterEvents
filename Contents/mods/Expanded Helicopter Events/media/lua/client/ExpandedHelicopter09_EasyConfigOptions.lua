@@ -3,17 +3,18 @@ require "OptionScreens/SandBoxOptions"
 require "EasyConfigChucked1_Main"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
-eHelicopterSandbox.config = {eventMarkersOn = true, resetEvents = false}
----voices added automatically
 
 eHelicopterSandbox.modId = "ExpandedHelicopterEvents" -- needs to the same as in your mod.info
 eHelicopterSandbox.name = "Expanded Helicopter Events" -- the name that will be shown in the MOD tab
 eHelicopterSandbox.menuSpecificAccess = "mainmenu"
 
-eHelicopterSandbox.menu = {
-	sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65, customX=-56}
-}
+eHelicopterSandbox.config = eHelicopterSandbox.config or {}
+eHelicopterSandbox.config.eventMarkersOn = true
+eHelicopterSandbox.config.resetEvents = false
 
+eHelicopterSandbox.menu = eHelicopterSandbox.menu or {}
+eHelicopterSandbox.menu.sandBoxMovedText = {type = "Text", text = "Configuration options can be found in sandbox options.", r=1, g=0.2, b=0.2, a=0.65,customX=-56}
+---voices added automatically
 
 
 function loadAnnouncersToConfig()
@@ -34,37 +35,6 @@ function loadAnnouncersToConfig()
 
 	eHelicopterSandbox.menu["voiceSpaceB"] = {type = "Space"}
 end
-
---[[
-function loadPresetToConfig()
-	eHelicopterSandbox.menu["presetsSpaceA"] = {type = "Space", iteration=2}
-	eHelicopterSandbox.menu["presetsTitle"] = {type = "Text", text = "Events"}
-
-	eHelicopterSandbox.menu["presetsSpaceB"] = {type = "Space"}
-	eHelicopterSandbox.menu["presetsDefault"] = {type = "Text", text = "Default Values"}
-	for var,value in pairs(eHelicopter_initialVars) do
-		local varMenuID = "varForDefault"..var
-		eHelicopterSandbox.menu[varMenuID] = {type = "Text", text = var.." = "..tostring(value),}
-		--eHelicopterSandbox.config[var] = variableValue
-	end
-	eHelicopterSandbox.menu["presetsSpaceForpresetsDefault"] = {type = "Space", iteration=2}
-
-	eHelicopterSandbox.menu["presetsSpaceC"] = {type = "Space"}
-	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-		eHelicopterSandbox.menu[presetID] = {type = "Text", text = presetID}
-		for var,value in pairs(presetVars) do
-			local varMenuID = "varFor"..presetID..var
-			eHelicopterSandbox.menu[varMenuID] = {type = "Text", text = tostring(value),}
-			--eHelicopterSandbox.config[var] = variableValue
-		end
-		local spaceID = "presetsSpaceFor"..presetID
-		eHelicopterSandbox.menu[spaceID] = {type = "Space", iteration=2}
-	end
-	eHelicopterSandbox.menu["presetsSpaceD"] = {type = "Space"}
-end
---run on Lua load
-loadPresetToConfig()]]
-
 
 --add buffer space for reset feature
 function sandboxOptionsEnd()
@@ -90,5 +60,4 @@ end
 EasyConfig_Chucked = EasyConfig_Chucked or {}
 EasyConfig_Chucked.mods = EasyConfig_Chucked.mods or {}
 EasyConfig_Chucked.mods[eHelicopterSandbox.modId] = eHelicopterSandbox
-
 Events.OnGameBoot.Add(sandboxOptionsEnd)
