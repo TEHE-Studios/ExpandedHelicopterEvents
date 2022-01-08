@@ -9,6 +9,9 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
 		sendClientCommand("eventShadowHandler", "setShadowPos", {ID=ID,texture=texture,x=x,y=y,z=z})
 	else
 		--print("set Shadow Pos: "..ID.." - "..tostring(texture).." - "..tostring(x)..","..tostring(y)..","..tostring(z))
+		if not ID or not x or not y then
+			return
+		end
 
 		local square
 		if x and y then
