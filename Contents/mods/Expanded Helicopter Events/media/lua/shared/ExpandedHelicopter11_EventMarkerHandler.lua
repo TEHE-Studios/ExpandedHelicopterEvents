@@ -49,6 +49,7 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 
 				if marker then
 					--print(" --- marker given duration")
+					marker.textureIcon = getTexture(icon)
 					marker:setDuration(duration)
 					marker:update(posX,posY)
 				end
