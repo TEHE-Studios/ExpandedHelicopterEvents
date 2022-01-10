@@ -1,3 +1,11 @@
 DynamicRadio_RU = {
-	AEBS_SupplyDrop = "¬ход€щий пакет поставки.."
+	AEBS_SupplyDrop = "Посылка с припасами в пути."
+	AEBS_Raiders = "Если ты это слышишь, уёб-"
+    AEBS_SurvivorHeli = "Выживший уходит."
+    AEBS_SamaritanDrop = "Всем, кто еще жив, мы доставляем припасы."
+    AEBS_UnauthorizedEntryPolice = "Несанкционированная воздушная деятельность, нарушитель правоохранительные органы".
+    AEBS_UnauthorizedEntryNews = "Несанкционированная воздушная деятельность, нарушитель СМИ".
+    AEBS_JetBombing = "Груз для зачистки на подходе."
+    AEBS_JetPass = "Джет-пасс прибыл."
+    AEBS_AirRaid = "ОСТАВАЙТЕСЬ ВНУТРИ И ИЩИТЕ УБЕЖИЩЕ"
 }

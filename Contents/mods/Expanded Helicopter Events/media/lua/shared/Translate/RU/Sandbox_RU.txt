@@ -10,9 +10,12 @@ Sandbox_RU = {
 
     Sandbox_ExpandedHeli_EventJet = "Реакт. самолеты",
     Sandbox_ExpandedHeli_EventJet_tooltip = "Частота данных событий.",
+	
+	Sandbox_ExpandedHeli_EventNews = "Журналисты",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Частота данных событий.",
 
-    Sandbox_ExpandedHeli_EventCivilian = "Гражданские",
-    Sandbox_ExpandedHeli_EventCivilian_tooltip = "Частота данных событий.",
+    Sandbox_ExpandedHeli_EventPolice = "Полиция",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Частота данных событий.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Военные",
     Sandbox_ExpandedHeli_EventMilitary_tooltip = "Частота данных событий.",
