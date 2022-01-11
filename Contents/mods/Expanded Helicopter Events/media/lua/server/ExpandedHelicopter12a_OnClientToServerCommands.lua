@@ -12,7 +12,7 @@ local function onCommand(_module, _command, _dataA, _dataB)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-			sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _dataB)
+		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _dataB)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
 		sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
