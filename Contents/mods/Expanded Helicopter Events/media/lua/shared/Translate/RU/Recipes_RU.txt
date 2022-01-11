@@ -4,5 +4,5 @@ Recipes_RU = {
 	Recipe_Dismantle_Helicopter_Skirt = "Разобрать шасси",
 	Recipe_Dismantle_Main_Rotor_Blade = "Разобрать лопасть",
 	Recipe_Dismantle_Tail_Rotor_Blade = "Разобрать лопасть",
-
+	Recipe_Unseal_Water_Ration = "Распечатать пакет с водой"
 }
