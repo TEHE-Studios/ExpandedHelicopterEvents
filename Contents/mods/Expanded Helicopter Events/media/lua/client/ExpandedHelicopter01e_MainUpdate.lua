@@ -89,7 +89,7 @@ function eHelicopter:update()
 	self:setTargetPos()
 	local distToTarget = self:getDistanceToIsoObject(self.trueTarget)
 	local crashDist = ZombRand(75,200)
-	if self.crashing and (distToTarget <= crashDist) and (ZombRand(10)>0) then
+	if self.crashing and distToTarget and (distToTarget <= crashDist) and (ZombRand(10)>0) then
 		if self:crash() then
 			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashDist..")")
 			return
@@ -187,7 +187,7 @@ function eHelicopter:update()
 		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 30, hX, hY)
 	end
 
-	if self.announcerVoice and (not self.crashing) and (distToTarget <= thatIsCloseEnough*1000) then
+	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then
 		self:announce()
 	end
 
