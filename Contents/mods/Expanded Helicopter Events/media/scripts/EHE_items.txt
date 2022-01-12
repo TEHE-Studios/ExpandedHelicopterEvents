@@ -37,7 +37,7 @@ module EHE
 		item Bell206RotorBlade
 	{
 		DisplayCategory = Junk,
-		Weight = 45,
+		Weight = 15,
 		Type = Normal,
 		WorldStaticModel = Bell206RotorBlade,
 		DisplayName = Detatched Main Rotor Blade,
@@ -58,7 +58,7 @@ module EHE
 		item Bell206HalfSkirt
 	{
 		DisplayCategory = Junk,
-		Weight = 35,
+		Weight = 10,
 		Type = Normal,
 		WorldStaticModel = Bell206HalfSkirt,
 		DisplayName = Mangled Helicopter Skirt,
@@ -69,7 +69,7 @@ module EHE
 		item UH1HRotorBlade
 	{
 		DisplayCategory = Junk,
-		Weight = 45,
+		Weight = 15,
 		Type = Normal,
 		WorldStaticModel = UH1HRotorBlade,
 		DisplayName = Detached Main Rotor Blade,
@@ -80,7 +80,7 @@ module EHE
 		item UH1HHalfSkirt
 	{
 		DisplayCategory = Junk,
-		Weight = 35,
+		Weight = 10,
 		Type = Normal,
 		WorldStaticModel = UH1HHalfSkirt,
 		DisplayName = Mangled Helicopter Skirt,
