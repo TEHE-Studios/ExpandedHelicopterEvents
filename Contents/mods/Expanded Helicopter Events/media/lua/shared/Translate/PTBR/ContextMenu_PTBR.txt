@@ -1,0 +1,7 @@
+ContextMenu_PTBR = {
+    ContextMenu_DownHoodie       = "Abaixar Capuz",
+	ContextMenu_VisorUp          = "Levantar Viseira",
+    ContextMenu_VisorDown        = "Abaixar Viseira",
+	ContextMenu_Tighten          = "Apertar",
+    ContextMenu_Untighten        = "Afrouxar",
+} 

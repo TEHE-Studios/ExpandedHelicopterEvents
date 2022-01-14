@@ -1,0 +1,11 @@
+DynamicRadio_PTBR = {
+	AEBS_SupplyDrop                    = "Entrega de suprimentos a caminho"
+	AEBS_Raiders                       = "Se você consegue ouvir isso, vai se fu-"
+    AEBS_SurvivorHeli                  = "Saqueador saindo."
+    AEBS_SamaritanDrop                 = "Para quem ainda estiver vivo, estamos trazendo suprimentos."
+    AEBS_UnauthorizedEntryPolice       = "Atividade aérea não autorizada, Atividade policial irregular."
+    AEBS_UnauthorizedEntryNews         = "Atividade aérea não autorizada, Invasão de equipe da mídia."
+    AEBS_JetBombing                    = "Bombardeio para extermínio a caminho."
+    AEBS_JetPass                       = "Passagem de jato a caminho."
+    AEBS_AirRaid                       = "PERMANEÇAM EM CASA E BUSQUEM ABRIGO"
+}

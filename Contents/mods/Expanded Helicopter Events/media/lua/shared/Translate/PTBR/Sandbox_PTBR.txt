@@ -1,0 +1,40 @@
+Sandbox_PTBR = {
+	Sandbox_ExpandedHeli                                = "Expanded Helicopter Events",
+										                
+	Sandbox_ExpandedHeli_Frequency_option1              = "Nunca"
+	Sandbox_ExpandedHeli_Frequency_option2              = "Raro",
+	Sandbox_ExpandedHeli_Frequency_option3              = "Incomum",
+	Sandbox_ExpandedHeli_Frequency_option4              = "Comum",
+	Sandbox_ExpandedHeli_Frequency_option5              = "Frequente",
+	Sandbox_ExpandedHeli_Frequency_option6              = "Insano",
+										                
+    Sandbox_ExpandedHeli_EventJet                       = "Jatos",
+    Sandbox_ExpandedHeli_EventJet_tooltip               = "Com que frequência os eventos de jato ocorrem.",
+										                
+    Sandbox_ExpandedHeli_EventNews                      = "Imprensa",
+    Sandbox_ExpandedHeli_EventNews_tooltip              = "Com que frequência os eventos da imprensa ocorrem.",
+										                
+    Sandbox_ExpandedHeli_EventPolice                    = "Polícia",
+    Sandbox_ExpandedHeli_EventPolice_tooltip            = "Com que frequência os eventos policiais ocorrem.",
+											            
+    Sandbox_ExpandedHeli_EventMilitary                  = "Militares",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip          = "Com que frequência os eventos militares ocorrem.",
+											            
+    Sandbox_ExpandedHeli_EventSurvivor                  = "Sobreviventes",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip          = "Com que frequência os eventos de sobreviventes ocorrem.",
+											            
+    Sandbox_ExpandedHeli_EventRaider                    = "Invasores",
+    Sandbox_ExpandedHeli_EventRaider_tooltip            = "Com que frequência os eventos de Invasores ocorrem.",
+											            
+    Sandbox_ExpandedHeli_EventSamaritan                 = "Samaritanos",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip         = "Com que frequência os eventos de samaritanos ocorrem.",
+												        
+	Sandbox_ExpandedHeli_StartDay                       = "Dia inícial",
+	Sandbox_ExpandedHeli_StartDay_tooltip               = "O dia que o agendador fara com que os eventos Comecem. (Padrão: 0)",
+											            
+	Sandbox_ExpandedHeli_CutOffDay                      = "Dia Final",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip              = "O dia que o agendador fara com que os eventos terminem. (Padrão: 90)",
+											            
+	Sandbox_ExpandedHeli_NeverEnding                    = "Eventos Sem Fim",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip            = "Ative essa opção para que o agendador sempre renove os eventos. Os eventos ainda irão progredir através dos estágios, e diminuir na ocorrência, mas nunca terminarão.",
+}
