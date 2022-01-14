@@ -474,7 +474,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
-	--[[DEBUG]] if getDebug() then
+	--[[DEBUG] if getDebug() then
 		local DEBUGallTargets = {}
 		for _,target in pairs(weightPlayersList) do
 			if instanceof(target, "IsoPlayer") then
