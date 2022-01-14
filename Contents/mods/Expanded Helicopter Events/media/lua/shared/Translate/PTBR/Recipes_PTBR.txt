@@ -1,0 +1,9 @@
+Recipe_PTBR = {
+    Recipe_Open_Supplies                   = "Abrir Suprimentos",
+    Recipe_Cut_up_Parachute                = "Cortar o pára-quedas",
+    Recipe_Dismantle_Helicopter_Skirt      = "Desmontar a Esqui de Pouso do Helicóptero",
+    Recipe_Dismantle_Main_Rotor_Blade      = "Desmontar a Hélice do Rotor Principal",
+    Recipe_Dismantle_Tail_Rotor_Blade      = "Desmontar a Hélice do Rotor da Cauda",
+    Recipe_Unseal_Water_Ration             = "Abrir Água Potável de Emergência",
+
+}

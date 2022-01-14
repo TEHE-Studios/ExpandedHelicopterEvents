@@ -1,0 +1,26 @@
+Tooltip_PTBR = {
+    Tooltip_dismantle_helicopterpart       = "O uso de um maçarico e máscara de solda ira produzir metal.",
+    Tooltip_open_boxes_barehanded          = "Seria mais rápido abrir com algo afiado.",
+    Tooltip_Parachute                      = "Pode ser rasgado para fazer pano rasgado.",
+    Tooltip_PTBRergyBar                    = "Uma Barra Energética embalada para kits de sobrevivência. Fabricado pela PT&D.",
+    Tooltip_SurvivalVest                   = "Modelo Padrão de colete de sobrevivência para pilotos militares.",
+    Tooltip_SurvivalVestBlack              = "Modelo Padrão de colete de sobrevivência para equipe de resgate policial.",
+    Tooltip_SPHMilitary                    = "Modelo Padrão de capacete de helicóptero militar."
+    Tooltip_SPHBlack                       = "Modelo Padrão de capacete de helicóptero militar na cor preta.",
+    Tooltip_SPHPolice                      = "Capacete de helicóptero usado pela força aérea policial.",
+    Tooltip_SPHCivilian                    = "Capacete de helicóptero usado por pilotos civis.",
+									       
+    Tooltip_FlyerCDC                       = "Parece um panfleto de aviso com conselhos de saúde.",
+    Tooltip_FlyerMilitary                  = "Parece um panfleto de aviso dos militares.",
+    Tooltip_CivilDefense                   = "Parece um panfleto da defesa civil.",
+						                   
+    Tooltip_WaterSealed                    = "Água Potável de Emergência Selada distribuída pelo Governo dos EUA."
+    Tooltip_WaterUnsealed                  = "Água Potável de Emergência Não Selada distribuída pelo Governo dos EUA." 
+						                   
+    Tooltip_SupplyBox                      = "Caixa de suprimentos do governo dos EUA."
+    Tooltip_SamaritanBox                   = "Caixa de Suprimentos de um grupo de misteriosos samaritanos.",
+    Tooltip_BanditBox                      = "Caixa de suprimentos pessoais. está escrito "ESSA MERDA AQUI É MINHA, TIRA O DEDO!!!",
+						                   
+    Tooltip_SignalFlare                    = "Sinalizador Militar. Não use dentro de casa.",
+    Tooltip_SignalFlareSpent               = "Sinalizador Militar. Já foi usado."
+}

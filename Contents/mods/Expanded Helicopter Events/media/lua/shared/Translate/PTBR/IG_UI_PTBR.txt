@@ -1,0 +1,31 @@
+IG_UI_PTBR = {
+    IGUI_VehicleNameUH1H                    = "Helicóptero Militar",
+    IGUI_VehicleNameUH1HFuselage            = "Helicóptero Militar (Fuselagem)",
+    IGUI_VehicleNameUH1HTail                = "Helicóptero Militar (Cauda)",
+								            
+    IGUI_VehicleNameUH1HMedevac             = "Helicóptero de Evacuação Médica",
+    IGUI_VehicleNameUH1HMedevacFuselage     = "Helicóptero de Evacuação Médica (Fuselagem)",
+    IGUI_VehicleNameUH1HMedevacTail         = "Helicóptero de Evacuação Médica (Cauda)",
+										    
+    IGUI_VehicleNameUH1HRaider              = "Helicóptero de Invasor",
+    IGUI_VehicleNameUH1HRaiderFuselage      = "Helicóptero de Invasor (Fuselagem)",
+    IGUI_VehicleNameUH1HRaiderTail          = "Helicóptero de Invasor (Cauda)",
+										    
+    IGUI_VehicleNameBell206LBMW             = "Helicóptero da Imprensa",    
+    IGUI_VehicleNameBell206LBMWFuselage     = "Helicóptero da Imprensa (Fuselagem)",
+    IGUI_VehicleNameBell206LBMWTail         = "Helicóptero da Imprensa (Cauda)",
+									        
+    IGUI_VehicleNameBell206Police           = "Helicóptero Policial",
+    IGUI_VehicleNameBell206PoliceFuselage   = "Helicóptero Policial (Fuselagem)",
+    IGUI_VehicleNameBell206PoliceTail       = "Helicóptero Policial (Cauda)",
+										    
+    IGUI_VehicleNameBell206Survivalist      = "Helicóptero Civil",
+										    
+    IGUI_VehicleNameBell206Black            = "Helicóptero Misterioso",
+    IGUI_VehicleNameBell206BlackFuselage    = "Helicóptero Misterioso (Fuselagem)",
+    IGUI_VehicleNameBell206BlackFuselage    = "Helicóptero Misterioso (Cauda)",
+										    
+    IGUI_VehicleNameFEMASupplyDrop          = "Entrega de suprimentos Emergênciais",
+    IGUI_VehicleNameSurvivorSupplyDrop      = "Entrega de suprimentos Samaritano",
+
+}
