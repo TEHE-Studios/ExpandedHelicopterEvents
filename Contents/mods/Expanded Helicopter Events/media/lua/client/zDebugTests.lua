@@ -1,4 +1,4 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.3-EasyConfigMPUpdate"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.3-Shadow-And-Marker-Unlaunch-HOTFIX"))
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
 
