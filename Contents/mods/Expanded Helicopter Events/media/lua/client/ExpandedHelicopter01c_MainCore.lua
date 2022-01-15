@@ -745,8 +745,13 @@ function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 
 	eventSoundHandler:stopAllHeldEventSounds(self)
-	eventShadowHandler:setShadowPos(self.ID)
-	eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 0)
+
+	if self.shadow==true then
+		eventShadowHandler:setShadowPos(self.ID)
+	end
+	if self.eventMarkerIcon ~= false then
+		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 0)
+	end
 
 	self.state = "unLaunched"
 
