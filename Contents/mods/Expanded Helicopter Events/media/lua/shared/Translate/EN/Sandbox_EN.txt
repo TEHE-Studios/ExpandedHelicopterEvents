@@ -9,32 +9,32 @@ Sandbox_EN = {
 	Sandbox_ExpandedHeli_Frequency_option6 = "Insane",
 
     Sandbox_ExpandedHeli_EventJet = "Jets",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur. Jets fly by players causing horde movement.",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur.\n Jets fly by players causing horde movement.",
 
     Sandbox_ExpandedHeli_EventNews = "News",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "How frequent news events occur. News choppers will hone in on any citizen they find and follow them around for a short time.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "How frequent news events occur.\n News choppers will hone in on any citizen they find and follow them around for a short time.",
 
     Sandbox_ExpandedHeli_EventPolice = "Police",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "How frequent Police events occur. The police will take matters into their own hands and escort citizens around while firing on zombies.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "How frequent Police events occur.\n The police will take matters into their own hands and escort citizens around while firing on zombies.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Military",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur. The military will progress through stages: initially warn citizens, dropping off supplies, purging the undead, purge anything that moves.",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur.\n The military will progress through stages: warn citizens,\n drop off supplies, purge the undead, purge anything that moves.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Survivors",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur. Survivors will only flyby on scouting missions causing horde movement.",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur.\n Survivors will only flyby on scouting missions causing horde movement.",
 
     Sandbox_ExpandedHeli_EventRaider = "Raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "How frequent raider events occur. Raiders will hone in on survivors to torment them for some entertainment.",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "How frequent raider events occur.\n Raiders will hone in on survivors to torment them for some entertainment.",
 
     Sandbox_ExpandedHeli_EventSamaritan = "Samaritans",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur. Samaritans will drop off supplies to help survivors.",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur.\n Samaritans will drop off supplies to help survivors.",
 
 	Sandbox_ExpandedHeli_StartDay = "Start Day",
 	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to.",
 
-	Sandbox_ExpandedHeli_CutOffDay = "Cutoff Day",
-	Sandbox_ExpandedHeli_CutOffDay_tooltip = "The scheduler will use this day to measure event stage progression. This day is also when the scheduler will end all events.",
+	Sandbox_ExpandedHeli_CutOffDay = "Scheduler Duration",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip = "How long will the scheduler run from the start day.\n The scheduler will adjust event progression to fit this duration.",
 
-	Sandbox_ExpandedHeli_NeverEnding = "Never Ending Events",
-	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Toggle this on so that the scheduler will always spawn events. Events will still progress through stages according to the cutoff day but events will never stop being scheduled.",
+	Sandbox_ExpandedHeli_NeverEnding = "Continue Scheduling Forever",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Toggle this on so that the scheduler will spawn events passed the duration limit. Events will still progress through stages according to the duration but events will never stop being scheduled.",
 }
