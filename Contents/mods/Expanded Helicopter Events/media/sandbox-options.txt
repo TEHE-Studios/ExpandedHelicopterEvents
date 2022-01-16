@@ -9,7 +9,7 @@ option ExpandedHeli.CutOffDay
 
 option ExpandedHeli.StartDay
 {
-	type = integer, min = 1, max = 999, default = 1,
+	type = integer, min = 0, max = 999, default = 0,
 	page = ExpandedHeli, translation = ExpandedHeli_StartDay,
 }
 
