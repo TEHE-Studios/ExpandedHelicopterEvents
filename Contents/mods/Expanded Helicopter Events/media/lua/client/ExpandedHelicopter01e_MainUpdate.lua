@@ -265,22 +265,18 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 end
 
 
-lastUpdateAllHelicopters = -1
+lastUpdateAllHelicopters = 0
 function updateAllHelicopters()
+	lastUpdateAllHelicopters = lastUpdateAllHelicopters + getGameTime():getMultiplier()
+	if (lastUpdateAllHelicopters >= 5) then
+		lastUpdateAllHelicopters = 0
+		for _,helicopter in ipairs(ALL_HELICOPTERS) do
+			---@type eHelicopter heli
+			local heli = helicopter
 
-	local timeStamp = getTimestampMs()
-	if (lastUpdateAllHelicopters+5 >= timeStamp) then
-		return
-	else
-		lastUpdateAllHelicopters = timeStamp
-	end
-
-	for _,helicopter in ipairs(ALL_HELICOPTERS) do
-		---@type eHelicopter heli
-		local heli = helicopter
-
-		if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
-			heli:update()
+			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
+				heli:update()
+			end
 		end
 	end
 end
