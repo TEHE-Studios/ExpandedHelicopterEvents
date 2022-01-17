@@ -70,7 +70,9 @@ function eventMarkerHandler.updateAll(player)
 		for id,time in pairs(personalMarkers) do
 			if time <= getGametimeTimestamp() then
 				local marker = eventMarkerHandler.markers[player][id]
-				marker:setDuration(0)
+				if marker then
+					marker:setDuration(0)
+				end
 			end
 		end
 	end
