@@ -3,6 +3,7 @@ require "ExpandedHelicopter00a_Util"
 
 eventMarkerHandler = {}
 eventMarkerHandler.markers = {} --[player] = {["id"]=marker}
+eventMarkerHandler.expirations = {} --[player] = {["id]=time}
 
 --set
 --updatePos
@@ -23,7 +24,10 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 
 				--print(" - player:"..player:getUsername())
 				eventMarkerHandler.markers[player] = eventMarkerHandler.markers[player] or {}
+				eventMarkerHandler.expirations[player] = eventMarkerHandler.expirations[player] or {}
+
 				local marker = eventMarkerHandler.markers[player][eventID]
+				eventMarkerHandler.expirations[player][eventID] = getTimestampMs()+duration
 
 				if not marker and duration>0 then
 					local dist = IsoUtils.DistanceTo(posX, posY, player:getX(), player:getY())
@@ -59,15 +63,16 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 end
 
 
---[[
+
 function eventMarkerHandler.updateAll(player)
-	local personalMarkers = eventMarkerHandler.markers[player]
+	local personalMarkers = eventMarkerHandler.expirations[player]
 	if personalMarkers then
-		for id,marker in pairs(personalMarkers) do
-			print(" xx - updateAll")
-			marker:update()
+		for id,time in pairs(personalMarkers) do
+			if time <= getTimestampMs() then
+				local marker = eventMarkerHandler.markers[player][id]
+				marker:setDuration(0)
+			end
 		end
 	end
 end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateAll)
---]]

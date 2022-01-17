@@ -130,6 +130,9 @@ end
 
 function EHE_EventMarker:setDuration(value)
 	self.duration = value
+	if value <= 0 then
+		self:setVisible(false)
+	end
 end
 
 
