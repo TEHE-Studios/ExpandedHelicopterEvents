@@ -54,7 +54,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 
 	if delay then
 		table.insert(heli.delayedEventSounds, { ["event"]=soundEvent, ["otherLocation"]=otherLocation,
-			["saveEmitter"]=saveEmitter, ["stopSound"]=stopSound, ["delay"]=getTimestampMs()+delay })
+			["saveEmitter"]=saveEmitter, ["stopSound"]=stopSound, ["delay"]=getGametimeTimestamp()+delay })
 		return
 	end
 
@@ -128,7 +128,7 @@ end
 
 function eventSoundHandler:checkEventSounds(heli)
 	--check delayed event sounds
-	local currentTime = getTimestampMs()
+	local currentTime = getGametimeTimestamp()
 	for placeInList,EventSound in pairs(heli.delayedEventSounds) do
 		--event, otherLocation, saveEmitter, stopSound, delay
 		if currentTime <= EventSound["delay"] then

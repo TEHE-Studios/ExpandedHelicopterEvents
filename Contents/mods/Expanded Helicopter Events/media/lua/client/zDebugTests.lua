@@ -305,10 +305,10 @@ end
 
 function CustomDebugPanel.testAllLinesLOOP()
 	if #testAllLines__ALL_LINES > 0 then
-		if (testAllLines__lastDemoTime < getTimestampMs()) then
+		if (testAllLines__lastDemoTime < getGametimeTimestamp()) then
 			local line = testAllLines__ALL_LINES[1]
 			local delay = testAllLines__DELAYS[1]
-			testAllLines__lastDemoTime = getTimestampMs()+delay
+			testAllLines__lastDemoTime = getGametimeTimestamp()+delay
 			---@type IsoPlayer | IsoGameCharacter player
 			local player = getSpecificPlayer(0)
 			player:playSoundImpl(line)

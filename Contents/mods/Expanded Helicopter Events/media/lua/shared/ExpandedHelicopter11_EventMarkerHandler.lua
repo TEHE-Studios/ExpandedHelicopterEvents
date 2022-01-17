@@ -27,7 +27,7 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 				eventMarkerHandler.expirations[player] = eventMarkerHandler.expirations[player] or {}
 
 				local marker = eventMarkerHandler.markers[player][eventID]
-				eventMarkerHandler.expirations[player][eventID] = getTimestampMs()+duration
+				eventMarkerHandler.expirations[player][eventID] = getGametimeTimestamp()+duration
 
 				if not marker and duration>0 then
 					local dist = IsoUtils.DistanceTo(posX, posY, player:getX(), player:getY())
@@ -68,7 +68,7 @@ function eventMarkerHandler.updateAll(player)
 	local personalMarkers = eventMarkerHandler.expirations[player]
 	if personalMarkers then
 		for id,time in pairs(personalMarkers) do
-			if time <= getTimestampMs() then
+			if time <= getGametimeTimestamp() then
 				local marker = eventMarkerHandler.markers[player][id]
 				marker:setDuration(0)
 			end

@@ -24,7 +24,7 @@ function eHelicopter:update()
 		return
 	end
 
-	local timeStampMS = getTimestampMs()
+	local timeStampMS = getGametimeTimestamp()
 	local thatIsCloseEnough = ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))+4
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
