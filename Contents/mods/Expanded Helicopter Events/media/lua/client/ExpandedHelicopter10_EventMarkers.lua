@@ -242,9 +242,6 @@ end
 
 
 function EHE_EventMarker:update(posX,posY)
-	if self.duration<=0 and not self:isVisible() then
-		return
-	end
 
 	local timeStamp = getTimestampMs()
 	if (self.lastUpdateTime+10 >= timeStamp) then
