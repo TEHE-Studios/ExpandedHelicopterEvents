@@ -599,11 +599,19 @@ function eHelicopter:formationInit()
 end
 
 
-function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
+function fetchStartDayAndCutOffDay(HelicopterOrPreset)
+	local startDayFactor = HelicopterOrPreset.eventStartDayFactor or eHelicopter.eventStartDayFactor
+	local startDay = math.floor((startDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
+	local cutOffDayFactor = HelicopterOrPreset.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
+	local cutOffDay = math.floor((cutOffDayFactor*(startDay+SandboxVars.ExpandedHeli.CutOffDay))+0.5)
+	return startDay, cutOffDay
+end
 
+
+function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	local globalModData = getExpandedHeliEventsModData()
 	--increase crash chance as the apocalypse goes on
-	local cutOffDay = self.eventCutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay
+	local startDay, cutOffDay = fetchStartDayAndCutOffDay(self)
 	local eventFrequency = SandboxVars.ExpandedHeli["Frequency_"..self.masterPresetID] or 2
 
 	--[DEBUG]] print("EHE: DEBUG: Crash Chance Freq: "..self.masterPresetID)

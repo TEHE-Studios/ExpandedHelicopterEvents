@@ -154,13 +154,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				local presetSettings = eHelicopter_PRESETS[presetID]
 				local schedulingFactor = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
 				local flightHours = presetSettings.flightHours or eHelicopter.flightHours
-
-				local CutOffDayFactor = presetSettings.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
-				local cutOffDay = math.floor((CutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
-
-				local StartDayFactor = presetSettings.eventStartDayFactor or eHelicopter.eventStartDayFactor
-				local startDay = math.floor((StartDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
-
+				local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
 				local dayAndHourInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay) and (currentHour >= flightHours[1]) and (currentHour <= flightHours[2]))
 
 				local specialDatesObserved = presetSettings.eventSpecialDates
@@ -245,18 +239,17 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 		if selectedPresetID and (selectedPresetID ~= false) then
 			local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
-			local CutOffDayFactor = selectedPreset.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
-			local cutOffDay = math.floor((CutOffDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
+			local startDay, cutOffDay = fetchStartDayAndCutOffDay(selectedPreset)
 
 			local dayOffset = {0,0,0,1,1,2}
 			dayOffset = dayOffset[ZombRand(#dayOffset)+1]
 
-			local startDay = math.min(nightsSurvived+dayOffset, cutOffDay)
+			local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 			if not noPrint==true then
-				print(" -Scheduled: "..selectedPresetID.." [Day:"..startDay.." Time:"..startTime.."]")
+				print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]")
 			end
-			eHeliEvent_new(startDay, startTime, selectedPresetID)
+			eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
 		end
 	end
 end
