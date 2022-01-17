@@ -1,3 +1,11 @@
 DynamicRadio_FR = {
+    AEBS_AirRaid = "RESTEZ À L'INTERIEUR ET CHERCHEZ UN ABRI",
+    AEBS_JetBombing = "Mise en place de la charge pour la purge.",
+    AEBS_JetPass = "Mise en place d'un passage de Jet.",
+    AEBS_Raiders = "Si vous entendez ceci, allez vous faire f****",
+    AEBS_SamaritanDrop = "Si quelqu'un est encore en vie, nous déposons des provisions.",
     AEBS_SupplyDrop = "Approvisionnement en cours.",
+    AEBS_SurvivorHeli = "Des survivants courent vers le butin.",
+    AEBS_UnauthorizedEntryNews = "Activité aérienne non autorisée, intrus médiatique.",
+    AEBS_UnauthorizedEntryPolice = "Activité aérienne non autorisée, forces de l'ordre malhonnêtes.",
 }
