@@ -259,17 +259,17 @@ Events.EveryHours.Add(eHeliEvent_ScheduleNew)
 
 --Checks every hour if there is an event scheduled to engage
 function eHeliEvent_Loop()
-	
+
 	local GT = getGameTime()
 	local globalModData = getExpandedHeliEventsModData()
-	local nightsSurvived = GT:getNightsSurvived()
+	local DAY = GT:getDay()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 
 	for k,v in pairs(events) do
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
 			globalModData.EventsOnSchedule[k] = nil
-		elseif (v.startDay <= nightsSurvived) and (v.startTime == HOUR) then
+		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
 			print("EHE: SCHEDULED-LAUNCH INFO:  HELI ID:"..k.." - "..v.preset)
 			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)
