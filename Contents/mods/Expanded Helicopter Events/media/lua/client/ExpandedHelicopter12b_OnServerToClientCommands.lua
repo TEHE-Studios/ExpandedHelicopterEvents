@@ -1,6 +1,25 @@
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter11_EventMarkerHandler"
+
+function eventMarkerHandler.updateAll(player)
+	local personalMarkers = eventMarkerHandler.markers[player]
+	if personalMarkers then
+		for id,_ in pairs(personalMarkers) do
+			local marker = eventMarkerHandler.markers[player][id]
+			if marker then
+				local currentTime = getGametimeTimestamp()
+				local expireTime = eventMarkerHandler.expirations[player][id]
+				if (expireTime <= currentTime) or (marker.lastUpdateTime+50 > currentTime) then
+					marker:setDuration(0)
+				end
+			end
+		end
+	end
+end
+Events.OnPlayerUpdate.Add(eventMarkerHandler.updateAll)
+
 
 --if isClient() then sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)

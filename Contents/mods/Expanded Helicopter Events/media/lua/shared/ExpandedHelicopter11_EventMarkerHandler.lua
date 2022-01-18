@@ -61,20 +61,3 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 		end
 	end
 end
-
-
-
-function eventMarkerHandler.updateAll(player)
-	local personalMarkers = eventMarkerHandler.expirations[player]
-	if personalMarkers then
-		for id,time in pairs(personalMarkers) do
-			if time <= getGametimeTimestamp() then
-				local marker = eventMarkerHandler.markers[player][id]
-				if marker then
-					marker:setDuration(0)
-				end
-			end
-		end
-	end
-end
-Events.OnPlayerUpdate.Add(eventMarkerHandler.updateAll)
