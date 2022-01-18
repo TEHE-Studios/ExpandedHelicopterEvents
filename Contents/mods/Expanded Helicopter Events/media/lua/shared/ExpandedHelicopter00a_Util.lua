@@ -69,7 +69,7 @@ eheBounds.MAX_X = false
 eheBounds.MIN_X = false
 eheBounds.MAX_Y = false
 eheBounds.MIN_Y = false
-eheBounds.threshold = 2500
+eheBounds.threshold = 500
 
 ---Sets a min/max X/Y around all the players
 function setDynamicGlobalXY()
