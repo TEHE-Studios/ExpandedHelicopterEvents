@@ -1,5 +1,6 @@
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
+require "ExpandedHelicopter00a_Util"
 
 Events.OnGameBoot.Add(function()
 	ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
@@ -13,6 +14,7 @@ Events.OnGameBoot.Add(function()
 	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test 90 Days [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 	ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
 	ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
+	ISCustomDebugTestsPanel.Tests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
 end)
 
 
@@ -30,6 +32,12 @@ function CustomDebugPanel.TemporaryTest()
 	print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
 end
 
+function CustomDebugPanel.printEHEIsoPlayers()
+	print("EHEIsoPlayers: ")
+	for playerObj,v in pairs(EHEIsoPlayers) do
+		print(" - "..playerObj:getFullName().." - "..playerObj:getUsername())
+	end
+end
 
 function CustomDebugPanel.SandboxVarsDUMP()
 	--SandboxVars
