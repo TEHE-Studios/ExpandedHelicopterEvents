@@ -11,7 +11,7 @@ function eventMarkerHandler.updateAll(player)
 			if marker then
 				local currentTime = getGametimeTimestamp()
 				local expireTime = eventMarkerHandler.expirations[player][id]
-				if (expireTime <= currentTime) or (marker.lastUpdateTime+5000 > currentTime) then
+				if (expireTime <= currentTime) or (marker.lastUpdateTime+5000 <= currentTime) then
 					marker:setDuration(0)
 				end
 			end
