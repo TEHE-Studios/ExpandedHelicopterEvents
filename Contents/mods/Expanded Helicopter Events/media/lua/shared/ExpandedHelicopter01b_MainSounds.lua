@@ -141,6 +141,7 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 	if isClient() then
 		for soundID,_ in pairs(heli.looperEventIDs) do
 			local soundEffect = heli.eventSoundEffects[soundID]
+			soundsStopped = true
 			sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="stop"})
 		end
 	end
