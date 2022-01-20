@@ -3,7 +3,34 @@ require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
 
-function eventMarkerHandler.updateAll(player)
+
+function eventShadowHandler.updateForPlayer(player)
+	local currentTime = getGametimeTimestamp()
+	for shadowID,_ in pairs(storedShadows) do
+		if storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
+			---@type FMODSoundEmitter | BaseSoundEmitter emitter
+			local shadow = storedShadows[shadowID]
+			shadow:setAlpha(0)
+		end
+	end
+end
+Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
+
+
+function eventSoundHandler.updateForPlayer(player)
+	local currentTime = getGametimeTimestamp()
+	for emitterID,_ in pairs(storedLooperEvents) do
+		if storedLooperEventsUpdateTimes[emitterID]+5000 <= currentTime then
+			---@type FMODSoundEmitter | BaseSoundEmitter emitter
+			local emitter = storedLooperEvents[emitterID]
+			emitter:stopAll()
+		end
+	end
+end
+Events.OnPlayerUpdate.Add(eventSoundHandler.updateForPlayer)
+
+
+function eventMarkerHandler.updateForPlayer(player)
 	local personalMarkers = eventMarkerHandler.markers[player]
 	if personalMarkers then
 		for id,_ in pairs(personalMarkers) do
@@ -18,7 +45,7 @@ function eventMarkerHandler.updateAll(player)
 		end
 	end
 end
-Events.OnPlayerUpdate.Add(eventMarkerHandler.updateAll)
+Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
 
 --if isClient() then sendClientCommand(player, module, command, args) end -- to server

@@ -3,6 +3,7 @@ require "ExpandedHelicopter01a_MainVariables"
 eventSoundHandler = {}
 
 storedLooperEvents = {}
+storedLooperEventsUpdateTimes = {}
 function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 	if isClient() then
 		---@type BaseSoundEmitter | FMODSoundEmitter
@@ -15,6 +16,9 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 			end
 		end
 		if soundEmitter then
+
+			storedLooperEventsUpdateTimes[reusableID] = getGametimeTimestamp()
+
 			if command == "play" then
 				if soundEmitter:isPlaying(DATA.soundEffect) then
 					print("--soundEmitter:isPlaying:"..DATA.soundEffect)
