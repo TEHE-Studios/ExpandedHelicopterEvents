@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.3-Shadow-And-Marker-Unlaunch-HOTFIX"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.5-ShadowsSoundsMarker-TimeOuts"))
