@@ -134,7 +134,7 @@ module EHE
 		DisplayName = Civilian Helicopter Helmet,
 		ClothingItem = Hat_SPHCivilian,
 		BodyLocation = Hat,
-		Icon = HelicopterHelmetCivilian,
+		IconsForTexture = HelicopterHelmetCivilian;HelicopterHelmetCivilianRed,
 		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
 		ClothingItemExtra = Hat_SPHCivilianVISORUP,
