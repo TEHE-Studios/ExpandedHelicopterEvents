@@ -183,7 +183,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 
 eHelicopter_PRESETS["news_chopper_hover"] = {
 	inherit = {"news_chopper"},
-	hoverOnTargetDuration = {1500,2400},
+	hoverOnTargetDuration = {750,1200},
 	}
 
 eHelicopter_PRESETS["news_chopper_fleeing"] = {
@@ -230,7 +230,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 		["additionalFlightSound"] = "eHeliPoliceSiren",
 		["flightSound"] = "eHelicopter",
 		},
-	hoverOnTargetDuration = {750,1150},
+	hoverOnTargetDuration = {375,575},
 	}
 
 
@@ -289,7 +289,7 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 
 eHelicopter_PRESETS["raider_heli_aggressive"] = {
 	inherit = {"raiders"},
-	hoverOnTargetDuration = {2500,3000},
+	hoverOnTargetDuration = {1250,1500},
 	attackDelay = 1700,
 	attackSpread = 4,
 	attackHitChance = 55,
