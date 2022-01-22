@@ -254,8 +254,6 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 		end
 	end
 end
-Events.EveryHours.Add(eHeliEvent_ScheduleNew)
-
 
 
 --Checks every hour if there is an event scheduled to engage
@@ -267,7 +265,12 @@ function eHeliEvent_Loop()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 
+	if getDebug() then print("--- EVERYHOUR:  isClient:"..tostring(isClient())) end
+
 	for k,v in pairs(events) do
+
+		if getDebug() then print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered)) end
+
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
 			globalModData.EventsOnSchedule[k] = nil
 		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
@@ -279,4 +282,17 @@ function eHeliEvent_Loop()
 	end
 end
 
-Events.EveryHours.Add(eHeliEvent_Loop)
+local currentHour = -1
+function eHeliEvent_OnHour()
+
+	local GT = getGameTime()
+	local HOUR = GT:getHour()
+
+	if HOUR ~= currentHour then
+		currentHour = HOUR
+		eHeliEvent_ScheduleNew()
+		eHeliEvent_Loop()
+	end
+end
+
+Events.OnTick.Add(eHeliEvent_OnHour)
