@@ -92,7 +92,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	hoverOnTargetDuration = 500,
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.NoticeFlyer"]=250},
-	speed = 0.09,
+	speed = 0.9,
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH1HMedevacTail"},
 	eventSoundEffects = {
@@ -115,7 +115,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 
 
 eHelicopter_PRESETS["jet"] = {
-	speed = 2.8,
+	speed = 22,
 	topSpeedFactor = 2,
 	flightVolume = 25,
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
@@ -132,7 +132,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	doNotListForTwitchIntegration = true,
 	crashType = false,
 	shadow = false,
-	speed = 0.66,
+	speed = 6.6,
 	topSpeedFactor = 3,
 	flightVolume = 0,
 	eventSoundEffects = {["soundAtEventOrigin"] = "eAirRaid"},
@@ -149,7 +149,7 @@ eHelicopter_PRESETS["air_raid"] = {
 
 eHelicopter_PRESETS["jet_bombing"] = {
 	doNotListForTwitchIntegration = true,
-	speed = 2.8,
+	speed = 22,
 	topSpeedFactor = 2,
 	flightVolume = 25,
 	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
@@ -170,7 +170,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
 	eventSoundEffects = { ["additionalFlightSound"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
-	speed = 0.10,
+	speed = 1,
 	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
@@ -188,7 +188,7 @@ eHelicopter_PRESETS["news_chopper_hover"] = {
 
 eHelicopter_PRESETS["news_chopper_fleeing"] = {
 	inherit = {"news_chopper"},
-	speed = 0.16,
+	speed = 1.6,
 	}
 
 
@@ -208,7 +208,7 @@ eHelicopter_PRESETS["police"] = {
 
 eHelicopter_PRESETS["police_heli_emergency"] = {
 	inherit = {"police"},
-	speed = 0.15,
+	speed = 1.5,
 	eventSoundEffects = {
 		["additionalFlightSound"] = "eHeliPoliceEmergencyWarning",
 		["flightSound"] = "eHelicopter",
@@ -220,7 +220,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	inherit = {"police"},
 	attackDelay = 1700,
 	attackSpread = 4,
-	speed = 0.10,
+	speed = 1.0,
 	attackHitChance = 95,
 	attackDamage = 12,
 	hostilePreference = "IsoZombie",
@@ -239,7 +239,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
 	dropPackages = {"SurvivorSupplyDrop"},
-	speed = 0.10,
+	speed = 1.0,
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
@@ -250,7 +250,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 
 
 eHelicopter_PRESETS["survivor_heli"] = {
-	speed = 0.15,
+	speed = 1.5,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
 	eventSoundEffects = {
@@ -267,7 +267,7 @@ eHelicopter_PRESETS["survivor_heli"] = {
 
 eHelicopter_PRESETS["raiders"] = {
 	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_aggressive",1},
-	speed = 0.20,
+	speed = 2.0,
 	crashType = {"UH1HRaiderFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
 	scrapVehicles = {"UH1HRaiderTail"},

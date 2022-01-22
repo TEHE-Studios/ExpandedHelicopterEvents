@@ -123,7 +123,7 @@ eHelicopter.presetProgression = false
 eHelicopter.presetRandomSelection = false
 
 ---@field speed number
-eHelicopter.speed = 0.10
+eHelicopter.speed = 1
 
 ---@field topSpeedFactor number speed x this = top "speed"
 eHelicopter.topSpeedFactor = 1.5
