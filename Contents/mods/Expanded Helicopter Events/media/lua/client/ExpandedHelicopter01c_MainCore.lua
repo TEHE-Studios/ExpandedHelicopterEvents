@@ -1,6 +1,7 @@
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter00a_Util"
+require "ExpandedHelicopter00b_IsoRangeScan"
 
 ALL_HELICOPTERS = {}
 

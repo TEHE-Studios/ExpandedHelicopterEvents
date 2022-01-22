@@ -1,4 +1,5 @@
 require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter00b_IsoRangeScan"
 
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:lookForHostiles(targetType)

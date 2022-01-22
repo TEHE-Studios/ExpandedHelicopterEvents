@@ -1,6 +1,7 @@
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter00a_Util"
+require "ExpandedHelicopter00b_IsoRangeScan"
 
 Events.OnGameBoot.Add(function()
 	ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
