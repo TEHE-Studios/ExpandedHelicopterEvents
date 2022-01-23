@@ -115,7 +115,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 
 
 eHelicopter_PRESETS["jet"] = {
-	speed = 22,
+	speed = 18,
 	topSpeedFactor = 2,
 	flightVolume = 25,
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
@@ -149,7 +149,7 @@ eHelicopter_PRESETS["air_raid"] = {
 
 eHelicopter_PRESETS["jet_bombing"] = {
 	doNotListForTwitchIntegration = true,
-	speed = 22,
+	speed = 18,
 	topSpeedFactor = 2,
 	flightVolume = 25,
 	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
