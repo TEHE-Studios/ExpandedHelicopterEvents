@@ -200,20 +200,23 @@ module EHE
            Sound:OpenBox,
         }
 
-       recipe Cut up Parachute
-    {
-       EHE_Parachute,
-       Result:RippedSheets=60,
-       AnimNode:RipSheets,
-       Time:550.0,
-       Sound:ClothesRipping,
-    }
 
        recipe Unseal Water Ration
     {
        EmergencyWaterRation,
        Result:EmergencyWaterRationOpen=1,
        Time:45.0,
+    }
+
+
+       recipe Cut up Parachute
+    {
+       EHE_Parachute,
+       Result:RippedSheets=60,
+       CanBeDoneFromFloor:true,
+       AnimNode:RipSheets,
+       Time:550.0,
+       Sound:ClothesRipping,
     }
 
 
@@ -224,9 +227,11 @@ module EHE
 		BlowTorch=15,
 		Bell206RotorBlade,
 		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
 		Time:350,
 		AnimNode:Disassemble,
 	}
+
 
         recipe Dismantle Tail Rotor Blade
 	{
@@ -235,9 +240,11 @@ module EHE
 		BlowTorch=15,
 		Bell206TailBlade,
 		Result:SmallSheetMetal,
+		CanBeDoneFromFloor:true,
 		Time:150,
 		AnimNode:Disassemble,
 	}
+
 
         recipe Dismantle Main Rotor Blade
 	{
@@ -246,9 +253,11 @@ module EHE
 		BlowTorch=15,
 		UH1HRotorBlade,
 		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
 		Time:350,
 		AnimNode:Disassemble,
 	}
+
 
         recipe Dismantle Helicopter Skirt
 	{
@@ -257,9 +266,11 @@ module EHE
 		BlowTorch=15,
 		Bell206HalfSkirt,
 		Result:MetalBar=4,
+		CanBeDoneFromFloor:true,
 		Time:350,
 		AnimNode:Disassemble,
 	}
+
 
         recipe Dismantle Helicopter Skirt
 	{
@@ -268,6 +279,7 @@ module EHE
 		BlowTorch=15,
         UH1HHalfSkirt,
 		Result:MetalBar=4,
+		CanBeDoneFromFloor:true,
 		Time:350,
 		AnimNode:Disassemble,
 	}
