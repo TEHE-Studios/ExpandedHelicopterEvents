@@ -263,7 +263,7 @@ function eHeliEvent_Loop()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 
-	if getDebug() then print("--- EVERYHOUR:  isClient:"..tostring(isClient())) end
+	--if getDebug() then print("--- EVERYHOUR:  isClient:"..tostring(isClient())) end
 	for k,v in pairs(events) do
 
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
