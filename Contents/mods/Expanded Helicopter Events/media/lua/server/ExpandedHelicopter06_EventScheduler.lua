@@ -150,8 +150,12 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 		eHeliEvents_setEventsForScheduling()
 
+		if #eventsForScheduling <= 0 then
+			return
+		end
+
 		for k,presetID in pairs(eventsForScheduling) do
-			if not eventIDsScheduled[presetID] then
+			if (not eventIDsScheduled[presetID]) or (not eHelicopter_PRESETS[presetID]) then
 
 				local presetSettings = eHelicopter_PRESETS[presetID]
 				local schedulingFactor = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
@@ -159,7 +163,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
 				local dayAndHourInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay) and (currentHour >= flightHours[1]) and (currentHour <= flightHours[2]))
 
-				local specialDatesObserved = presetSettings.eventSpecialDates
+				local specialDatesObserved = presetSettings.eventSpecialDates or eHelicopter.eventSpecialDates
 				local specialDatesInRange = false
 				if specialDatesObserved then
 					if specialDatesObserved.inGameDates then
@@ -206,16 +210,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
 
 				if eventAvailable then
-					local weight = eHelicopter.eventSpawnWeight
-					if presetSettings then
-						if presetSettings.eventSpawnWeight then
-							weight = presetSettings.eventSpawnWeight
-						elseif inheritedSettings and inheritedSettings.eventSpawnWeight then
-							weight = inheritedSettings.eventSpawnWeight
-						end
-					end
-
-					weight = weight*freq
+					local weight = eHelicopter.eventSpawnWeight*freq
 
 					for i=1, weight do
 						if (ZombRand(probabilityDenominator) <= freq*schedulingFactor) then
