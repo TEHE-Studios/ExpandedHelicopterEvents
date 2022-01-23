@@ -13,6 +13,12 @@ eHelicopter.eventSpawnWeight = 10
 ---@field eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
 eHelicopter.eventStartDayFactor = 0
 
+---@field doNotListForTwitchIntegration
+eHelicopter.doNotListForTwitchIntegration = false
+
+---@field ignoreNeverEnding
+eHelicopter.ignoreNeverEnding = false
+
 ---@field eventSpecialDates table table of specific in-game months/day tables; inGameDates/systemDates (table of tables)
 --- EXAMPLES: {{1,1}} = 1st month and 1st day only
 ---           {{1}} = Entire 1st Month
