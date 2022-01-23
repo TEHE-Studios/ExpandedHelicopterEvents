@@ -214,9 +214,11 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 				if eventAvailable then
 					local weight = eHelicopter.eventSpawnWeight*freq
-
+					local playersOnlineNum = getOnlinePlayers():size()
+					local probabilityNumerator = math.floor(((freq*schedulingFactor)/playersOnlineNum) + 0.5 )
+					
 					for i=1, weight do
-						if (ZombRand(probabilityDenominator) <= freq*schedulingFactor) then
+						if (ZombRand(probabilityDenominator) <= probabilityNumerator) then
 							table.insert(options, presetID)
 						end
 					end
