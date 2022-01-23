@@ -1,7 +1,9 @@
 require "ExpandedHelicopter00f_WeatherImpact"
+require "ExpandedHelicopter00e_EHEGlobalModData"
 require "ExpandedHelicopter00a_Util"
 require "ExpandedHelicopter09_EasyConfigOptions"
 require "ExpandedHelicopter02a_Presets"
+require "ExpandedHelicopter01a_MainVariables"
 
 ---Inserts a new eHeliEvent (table) to the "EventsOnSchedule" table
 ---@param startDay number Day scheduled for start of this event
@@ -46,7 +48,7 @@ function eHeliEvent_engage(ID)
 end
 
 
-local eventsForScheduling = nil
+local eventsForScheduling
 function eHeliEvents_setEventsForScheduling()
 	if not eventsForScheduling then
 		eventsForScheduling = {}
@@ -155,9 +157,10 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 		end
 
 		for k,presetID in pairs(eventsForScheduling) do
-			if (not eventIDsScheduled[presetID]) or (not eHelicopter_PRESETS[presetID]) then
 
-				local presetSettings = eHelicopter_PRESETS[presetID]
+			local presetSettings = eHelicopter_PRESETS[presetID]
+			if (not eventIDsScheduled[presetID]) and presetSettings and eHelicopter then
+
 				local schedulingFactor = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
 				local flightHours = presetSettings.flightHours or eHelicopter.flightHours
 				local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
@@ -221,8 +224,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			end
 		end
 
-		--[[DEBUG]
-		if lessFreqOverTime > 0 then print("EHE:Scheduler: lessFreqOverTime:"..lessFreqOverTime) end
+		--[[DEBUG]]
 		local options_tally = {}
 		for kk,vv in pairs(options) do if options_tally[vv] then options_tally[vv] = options_tally[vv]+1 else options_tally[vv] = 1 end end
 		local options_string
@@ -250,3 +252,43 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 		end
 	end
 end
+
+
+--Checks every hour if there is an event scheduled to engage
+function eHeliEvent_Loop()
+
+	local GT = getGameTime()
+	local globalModData = getExpandedHeliEventsModData()
+	local DAY = GT:getDay()
+	local HOUR = GT:getHour()
+	local events = globalModData.EventsOnSchedule
+
+	if getDebug() then print("--- EVERYHOUR:  isClient:"..tostring(isClient())) end
+	for k,v in pairs(events) do
+
+		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
+			globalModData.EventsOnSchedule[k] = nil
+		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
+			print("EHE: SCHEDULED-LAUNCH INFO:  HELI ID:"..k.." - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
+			if eHelicopter_PRESETS[v.preset] then
+				eHeliEvent_engage(k)
+			end
+		end
+	end
+end
+
+
+local currentHour = -1
+function eHeliEvent_OnHour()
+
+	local GT = getGameTime()
+	local HOUR = GT:getHour()
+
+	if HOUR ~= currentHour then
+		currentHour = HOUR
+		eHeliEvent_ScheduleNew()
+		eHeliEvent_Loop()
+	end
+end
+
+Events.OnTick.Add(eHeliEvent_OnHour)
