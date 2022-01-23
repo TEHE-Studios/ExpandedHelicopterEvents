@@ -224,7 +224,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			end
 		end
 
-		--[[DEBUG]]
+		--[[DEBUG]
 		local options_tally = {}
 		for kk,vv in pairs(options) do if options_tally[vv] then options_tally[vv] = options_tally[vv]+1 else options_tally[vv] = 1 end end
 		local options_string
