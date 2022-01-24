@@ -1,0 +1,26 @@
+Tooltip_PL = {
+    Tooltip_dismantle_helicopterpart = "U¿ycie palnika i maski spawalniczej spowoduje powstanie metalu.",
+    Tooltip_open_boxes_barehanded = "Szybciej by³oby otworzyæ coœ ostrego.",
+    Tooltip_Parachute = "Mo¿na go podrzeæ, aby zrobiæ podart¹ szmatkê.",
+    Tooltip_EnergyBar = "Baton energetyczny pakowany do zestawów survivalowych. Wyprodukowane przez PT&D.",
+    Tooltip_SurvivalVest = "Standardowa kamizelka ratunkowa dla pilotów wojskowych.",
+    Tooltip_SurvivalVestBlack = "Standardowa kamizelka ratunkowa do policyjnego poszukiwania i ratownictwa.",
+    Tooltip_SPHMilitary = "Standardowy he³m wojskowy."
+    Tooltip_SPHBlack = "Standardowy he³m wojskowy w kolorze czarnym.",
+    Tooltip_SPHPolice = "He³m u¿ywany przez pilotów policji.",
+    Tooltip_SPHCivilian = "He³m u¿ywany przez pilotów cywilnych.",
+
+    Tooltip_FlyerCDC = "Wygl¹da na ulotkê informacyjn¹ dotycz¹c¹ zdrowia.",
+    Tooltip_FlyerMilitary = "Wygl¹da na ulotkê wojskow¹.",
+    Tooltip_CivilDefense = "Wygl¹da jak ulotka obrony cywilnej.",
+
+    Tooltip_WaterSealed = "Zamkniêta Racja Wody rozprowadzana przez rz¹d USA."
+    Tooltip_WaterUnsealed = "Nieuszczelniona racja wody rozprowadzana przez rz¹d USA." 
+
+    Tooltip_SupplyBox = "Pude³ko z zaopatrzeniem od rz¹du USA."
+    Tooltip_SamaritanBox = "Pude³ko z zaopatrzeniem od grupy tajemniczych samarytan.",
+    Tooltip_BanditBox = "Osobista skrytka. Czyta „MOJE GÓWNO, NIE DOTYKAJ",
+
+    Tooltip_SignalFlare = "Wojskowa flara sygnalizacyjna. Nie strzelaj w pomieszczeniu.",
+    Tooltip_SignalFlareSpent = "Wojskowa flara sygnalizacyjna. By³a u¿ywana."
+}

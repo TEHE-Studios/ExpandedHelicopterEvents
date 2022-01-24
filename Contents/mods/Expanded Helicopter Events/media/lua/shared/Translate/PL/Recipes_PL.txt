@@ -1,0 +1,3 @@
+Recipe_PL = {
+    Recipe_Open_Supplies = "Otwórz pud³o",
+}

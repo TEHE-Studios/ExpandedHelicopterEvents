@@ -1,0 +1,39 @@
+Sandbox_PL = {
+	Sandbox_ExpandedHeli = "Rozszerzone wydarzenia œmig³owcowe",
+
+	Sandbox_ExpandedHeli_Frequency_option1 = "nigdy"
+	Sandbox_ExpandedHeli_Frequency_option2 = "bardzo rzadko",
+	Sandbox_ExpandedHeli_Frequency_option3 = "rzadko",
+	Sandbox_ExpandedHeli_Frequency_option4 = "normalnie",
+	Sandbox_ExpandedHeli_Frequency_option5 = "Czêsto",
+	Sandbox_ExpandedHeli_Frequency_option6 = "Szalenie czêsto",
+
+    Sandbox_ExpandedHeli_EventJet = "Odrzutowce",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak czêsto wystêpuj¹ zdarzenia z odrzutowcami.\n Odrzutowce przelatuj¹ nad graczami, powoduj¹c ruchy hord.",
+
+    Sandbox_ExpandedHeli_EventNews = "Reporte¿y",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Czêstotliwoœæ wydarzeñ zwi¹zanych z wiadomoœciami.\n Œmig³owce reporterów skupi¹ siê na ka¿dym znalezionym obywatelu i bêd¹ za nim pod¹¿aæ przez krótki czas.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Policja",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak czêsto zdarzaj¹ siê zdarzenia policyjne.\n Policja weŸmie sprawy w swoje rêce i bêdzie eskortowaæ obywateli podczas strzelania do zombie.",
+    Sandbox_ExpandedHeli_EventMilitary = "Wojsko",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak czêsto maj¹ miejsce wydarzenia wojskowe.\n Wojsko bêdzie przechodziæ etapy: ostrzeganie obywateli,\n dostarczanie zapasów, oczyszczanie nieumar³ych, oczyszczanie wszystkiego, co siê rusza.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Ocaleni",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak czêsto wystêpuj¹ zdarzenia ocala³ych.\n Ocaleni bêd¹ lataæ tylko podczas misji zwiadowczych, powoduj¹c ruch hordy.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Bandyci",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak czêsto maj¹ miejsce zdarzenia najeŸdŸców.\n NajeŸdŸcy bêd¹ drêczyæ ocala³ych dla rozrywki.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samarytanie",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak czêsto zdarzaj¹ siê wydarzenia samarytañskie.\n Samarytanie przywo¿¹ zapasy, aby pomóc ocala³ym.",
+
+	Sandbox_ExpandedHeli_StartDay = "Dzieñ startowy",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "Dzieñ od którego zaczn¹ siê przypisywaæ zdarzenia.",
+
+	Sandbox_ExpandedHeli_CutOffDay = "Czas trwania harmonogramu",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip = "Jak d³ugo harmonogram bêdzie dzia³a³ od dnia startowego.\n Harmonogram dostosuje przebieg wydarzenia, aby pasowa³ do tego czasu trwania.",
+
+	Sandbox_ExpandedHeli_NeverEnding = "Kontynuuj planowanie na zawsze",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip = "W³¹cz tê opcjê, aby harmonogram odradza³ wydarzenia, które przekroczy³y limit czasu trwania. Wydarzenia bêd¹ nadal przechodziæ przez etapy zgodnie z czasem trwania, ale wydarzenia nigdy nie przestan¹ byæ zaplanowane.",
+}

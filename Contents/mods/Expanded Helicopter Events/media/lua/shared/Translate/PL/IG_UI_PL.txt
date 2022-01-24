@@ -1,0 +1,31 @@
+IG_UI_PL = {
+    IGUI_VehicleNameUH1H = "Helikopter Wojskowy",
+    IGUI_VehicleNameUH1HFuselage = "Helikopter Wojskowy (Kad³ub samolotu)",
+    IGUI_VehicleNameUH1HTail = "Helikopter Wojskowy (Ogon)",
+
+    IGUI_VehicleNameUH1HMedevac = "Helikopter Medyczny",
+    IGUI_VehicleNameUH1HMedevacFuselage = "Helikopter Medyczny (Kad³ub samolotu)",
+    IGUI_VehicleNameUH1HMedevacTail = Helikopter Medyczny (Ogon)",
+
+    IGUI_VehicleNameUH1HRaider = "Helikopter Bandytów",
+    IGUI_VehicleNameUH1HRaiderFuselage = "Helikopter Bandytów (Ogon)",
+    IGUI_VehicleNameUH1HRaiderTail = "Helikopter Bandytów (Ogon)",
+
+    IGUI_VehicleNameBell206LBMW = "Helikopter Reporterów",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Helikopter Bandytów (Kad³ub samolotu)",
+    IGUI_VehicleNameBell206LBMWTail = "Helikopter Bandytów (Ogon)",
+
+    IGUI_VehicleNameBell206Police = "Policyjny Helikopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Policyjny Helikopter (Kad³ub samolotu)",
+    IGUI_VehicleNameBell206PoliceTail = "Policyjny Helikopter (Ogon)",
+
+    IGUI_VehicleNameBell206Survivalist = "Cywilny Helikopter",
+    
+    IGUI_VehicleNameBell206Black = "Tajemniczy helikopter",
+    IGUI_VehicleNameBell206BlackFuselage = "Tajemniczy helikopter (Kad³ub samolotu)",
+    IGUI_VehicleNameBell206BlackFuselage = "Tajemniczy helikopter (Ogon)",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Awaryjny zrzut zaopatrzenia",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Dobroczynny zrzut zaopatrzenia",
+
+}

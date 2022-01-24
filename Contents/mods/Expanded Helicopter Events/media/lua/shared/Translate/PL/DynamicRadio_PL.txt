@@ -1,0 +1,11 @@
+DynamicRadio_PL = {
+	AEBS_SupplyDrop = "Pakiet dostaw przychodz¹cy."
+	AEBS_Raiders = Jeœli to s³yszysz, zdob¹dŸ-"
+    AEBS_SurvivorHeli = "Poszukiwacz ³upów wyrusza."
+    AEBS_SamaritanDrop = "Ka¿demu, kto jeszcze ¿yje, niesiemy zaopatrzenie."
+    AEBS_UnauthorizedEntryPolice = "Nieuprawniona dzia³alnoœæ lotnicza, nieuczciwe organy œcigania."
+    AEBS_UnauthorizedEntryNews = "Nieuprawniona dzia³alnoœæ lotnicza, intruz mediów."
+    AEBS_JetBombing = "£adunek przychodz¹cych do czyszczenia."
+    AEBS_JetPass = "Przychodz¹cy odrzutowiec."
+    AEBS_AirRaid = "POZOSTAÑ W DOMU I SZUKAJ Schronienia"
+}

@@ -1,0 +1,18 @@
+ItemName_PL = {
+    DisplayName_Civilian_Helicopter_Helmet= "He³m Lotniczy",
+    DisplayName_Press_Helmet = "Kask Reportera",
+    DisplayName_Police_Helicopter_Helmet = "Policyjny He³m Lotniczy",
+    DisplayName_Deserter_Helmet = "He³m dezertera",
+    DisplayName_Survivalist_Helicopter_Helmet= "Survivalowy He³m Lotniczy",
+
+    DisplayName_Police_Pilot_Flying_Suit = "Kombinezon pilota policyjnego",
+    DisplayName_Press_Bulletproof_Vest = "Dziennikarska kamizelka kuloodporna",
+
+    DisplayName_Evacuation_Flyer = "Ulotka ewakuacyjna",
+    DisplayName_Emergency_Flyer = "Ulotka awaryjna",
+    DisplayName_Quarantine_Flyer = "Ulotka dotycz¹ca kwarantanny",
+    DisplayName_Prevention_Flyer = "Ulotka profilaktyczna",
+    DisplayName_Notice_Flyer = "Ulotka informacyjna",
+
+    DisplayName_Supply_Box = "Pud³o z zaopatrzeniem",
+}

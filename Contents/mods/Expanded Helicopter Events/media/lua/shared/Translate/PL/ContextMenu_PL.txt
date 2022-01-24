@@ -1,0 +1,7 @@
+ContextMenu_PL = {
+    ContextMenu_DownHoodie = "Kaptur w dó³",
+	ContextMenu_VisorUp = "Wizjer w górê",
+    ContextMenu_VisorDown = "Wizjer w dó³",
+	ContextMenu_Tighten = "Dokrêæ",
+    ContextMenu_Untighten = "Odkrêæ",
+} 
