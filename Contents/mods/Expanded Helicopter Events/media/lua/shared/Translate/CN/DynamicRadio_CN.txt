@@ -1,4 +1,3 @@
 DynamicRadio_CN = {
-	AEBS_SupplyDrop = "²¹¸øÏäÒÑÍ¶·Å"
-	
+	AEBS_SupplyDrop = "è¡¥ç»™ç®±å·²æŠ•æ”¾ã€‚"
 }

@@ -1,19 +1,18 @@
 Items_CN = {
-    DisplayName_Civilian_Helicopter_Helmet = "ÃñÓÃÖ±Éı»úÍ·¿ø",
-    DisplayName_Press_Helmet = "ĞÂÎÅ²¥±¨Ö±Éı»úÍ·¿ø",
-    DisplayName_Police_Helicopter_Helmet = "¾¯ÓÃÖ±Éı»úÍ·¿ø",
-    DisplayName_Deserter_Helmet = "¾üÓÃÍ·¿ø(ÌÓ±ø)",
-    DisplayName_Survivalist_Helicopter_Helmet = "Ô®ÖúÖ±Éı»úÍ·¿ø",
+    DisplayName_Civilian_Helicopter_Helmet= "é£è¡Œå‘˜å¤´ç›”(æ°‘ç”¨)",
+    DisplayName_Press_Helmet = "é£è¡Œå‘˜å¤´ç›”(æ–°é—»)",
+    DisplayName_Police_Helicopter_Helmet = "é£è¡Œå‘˜å¤´ç›”(è­¦ç”¨)",
+    DisplayName_Deserter_Helmet = "é£è¡Œå‘˜å¤´ç›”(é€ƒå…µ)",
+    DisplayName_Survivalist_Helicopter_Helmet= "é£è¡Œå‘˜å¤´ç›”(å¹¸å­˜è€…)",
 
-    DisplayName_Police_Pilot_Flying_Suit = "¾¯ÓÃ·ÉĞĞÔ±·ş",
-    DisplayName_Press_Bulletproof_Vest = "ĞÂÎÅ²¥±¨Ö±Éı»ú·Àµ¯±³ĞÄ",
+    DisplayName_Police_Pilot_Flying_Suit = "é£è¡Œå‘˜åˆ¶æœ(è­¦ç”¨)",
+    DisplayName_Press_Bulletproof_Vest = "é£è¡Œå‘˜åˆ¶æœ(æ–°é—»)",
 
-    DisplayName_Evacuation_Flyer = "Æú³ÇÍ¨Öª´«µ¥",
-    DisplayName_Emergency_Flyer = "Ó¦¼±Ö¸µ¼´«µ¥",
-    DisplayName_Quarantine_Flyer = "¸ôÀëÖ¸µ¼´«µ¥",
-    DisplayName_Prevention_Flyer = "Ô¤·ÀÖ¸µ¼´«µ¥",
-    DisplayName_Notice_Flyer = "½ô¼±Í¨Öª´«µ¥",
+    DisplayName_Evacuation_Flyer = "ç–æ•£ä¼ å•",
+    DisplayName_Emergency_Flyer = "åº”æ€¥å¤„ç½®ä¼ å•",
+    DisplayName_Quarantine_Flyer = "éš”ç¦»æ£€ç–«ä¼ å•",
+    DisplayName_Prevention_Flyer = "é¢„é˜²æŒ‡å¯¼ä¼ å•",
+    DisplayName_Notice_Flyer = "é€šçŸ¥ä¼ å•",
 
-    DisplayName_Supply_Box = "²¹¸øÏä",
-	
+    DisplayName_Supply_Box = "è¡¥ç»™ç®±",
 }

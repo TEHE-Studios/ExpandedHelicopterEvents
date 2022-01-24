@@ -1,0 +1,40 @@
+Sandbox_CN = {
+	Sandbox_ExpandedHeli = "直升机事件扩展",
+
+	Sandbox_ExpandedHeli_Frequency_option1 = "无"
+	Sandbox_ExpandedHeli_Frequency_option2 = "稀少",
+	Sandbox_ExpandedHeli_Frequency_option3 = "偶尔",
+	Sandbox_ExpandedHeli_Frequency_option4 = "普通",
+	Sandbox_ExpandedHeli_Frequency_option5 = "频繁",
+	Sandbox_ExpandedHeli_Frequency_option6 = "疯狂",
+
+    Sandbox_ExpandedHeli_EventJet = "喷气式飞机",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "喷气式飞机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventNews = "新闻直升机",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "新闻直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventPolice = "警方直升机",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "警方直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventMilitary = "军方直升机",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "军方直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "幸存者直升机",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "幸存者直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventRaider = "劫掠直升机",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "劫掠直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "撒马利坦协会直升机",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "撒马利坦协会直升机出现的频率。",
+
+	Sandbox_ExpandedHeli_StartDay = "起始日期",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "直升机事件将会有几率出现的起始日期。(默认: 0)",
+
+	Sandbox_ExpandedHeli_CutOffDay = "截至日期",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip = "直升机事件将会停止出现的截止日期。(默认: 90)",
+
+	Sandbox_ExpandedHeli_NeverEnding = "无尽的直升机事件",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip = "开启这个选项后，直升机事件将会分阶段出现，并且逐渐减少，但永远不会停止刷新。",
+}

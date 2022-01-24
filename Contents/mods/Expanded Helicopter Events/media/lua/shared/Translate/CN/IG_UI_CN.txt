@@ -1,32 +1,31 @@
-IGUI_CN = {
-    IGUI_VehicleNameUH1H = "±´¶û-UH-1H Ö±Éı»ú",
-    IGUI_VehicleNameUH1HCrash = "±´¶û-UH-1H (×¹»Ù)",
-    IGUI_VehicleNameUH1HFuselage = "±´¶û-UH-1H (»úÉí)",
-    IGUI_VehicleNameUH1HTail = "±´¶û-UH-1H (»úÎ²)",
+IG_UI_CN = {
+    IGUI_VehicleNameUH1H = "è´å°”UH-1Hç›´å‡æœº",
+    IGUI_VehicleNameUH1HFuselage = "è´å°”UH-1Hç›´å‡æœº(æœºèº«)",
+    IGUI_VehicleNameUH1HTail = "è´å°”UH-1Hç›´å‡æœº(æœºå°¾)",
 
-    IGUI_VehicleNameUH1HMedevac = "±´¶û-UH-1H ¾È»¤Ö±Éı»ú",
-    IGUI_VehicleNameUH1HMedevacCrash = "±´¶û-UH-1H ¾È»¤Ö±Éı»ú (×¹»Ù)",
-    IGUI_VehicleNameUH1HMedevacFuselage = "±´¶û-UH-1H Medevac (»úÉí)",
-    IGUI_VehicleNameUH1HMedevacTail = "±´¶û-UH-1H Medevac (»úÎ²)",
+    IGUI_VehicleNameUH1HMedevac = "è´å°”UH-1Hæ•‘æ´ç›´å‡æœº",
+    IGUI_VehicleNameUH1HMedevacFuselage = "è´å°”UH-1Hæ•‘æ´ç›´å‡æœº(æœºèº«)",
+    IGUI_VehicleNameUH1HMedevacTail = "è´å°”UH-1Hæ•‘æ´ç›´å‡æœº(æœºå°¾)",
 
-    IGUI_VehicleNameUH1HSurvivalist = "±´¶û-UH-1H Ô®ÖúÖ±Éı»ú",
-    IGUI_VehicleNameUH1HSurvivalistCrash = "±´¶û-UH-1H Ô®ÖúÖ±Éı»ú (×¹»Ù)",
-    IGUI_VehicleNameUH1HSurvivalistFuselage = "±´¶û-UH-1H Ô®ÖúÖ±Éı»ú (»úÉí)",
-    IGUI_VehicleNameUH1HSurvivalistTail = "±´¶û-UH-1H Ô®ÖúÖ±Éı»ú (»úÎ²)",
+    IGUI_VehicleNameUH1HRaider = "è´å°”UH-1HåŠ«æ ç›´å‡æœº",
+    IGUI_VehicleNameUH1HRaiderFuselage = "è´å°”UH-1HåŠ«æ ç›´å‡æœº(æœºèº«)",
+    IGUI_VehicleNameUH1HRaiderTail = "è´å°”UH-1HåŠ«æ ç›´å‡æœº(æœºå°¾)",
 
-    IGUI_VehicleNameBell206LBMW = "±´¶û-206 ĞÂÎÅÖ±Éı»ú",
-    IGUI_VehicleNameBell206LBMWCrashed = "±´¶û-206 ĞÂÎÅÖ±Éı»ú (×¹»Ù)",
-    IGUI_VehicleNameBell206LBMWFuselage = "±´¶û206 ĞÂÎÅÖ±Éı»ú (»úÉí)",
-    IGUI_VehicleNameBell206LBMWTail = "±´¶û-206 ĞÂÎÅÖ±Éı»ú (»úÎ²)",
+    IGUI_VehicleNameBell206LBMW = "è´å°”206æ–°é—»ç›´å‡æœº",    
+    IGUI_VehicleNameBell206LBMWFuselage = "è´å°”206æ–°é—»ç›´å‡æœº(æœºèº«)",
+    IGUI_VehicleNameBell206LBMWTail = "è´å°”206æ–°é—»ç›´å‡æœº(æœºå°¾)",
 
-    IGUI_VehicleNameBell206Police = "±´¶û-206 Îä×°Ö±Éı»ú",
-    IGUI_VehicleNameBell206PoliceCrashed = "±´¶û-206 Îä×°Ö±Éı»ú (×¹»Ù)",
-    IGUI_VehicleNameBell206PoliceFuselage = "±´¶û-206 ¾¯ÓÃÖ±Éı»ú (»úÉí)",
-    IGUI_VehicleNameBell206PoliceTail = "±´¶û-206 ¾¯ÓÃÖ±Éı»ú (»úÎ²)",
+    IGUI_VehicleNameBell206Police = "è´å°”206è­¦ç”¨ç›´å‡æœº",
+    IGUI_VehicleNameBell206PoliceFuselage = "è´å°”206è­¦ç”¨ç›´å‡æœº(æœºèº«)",
+    IGUI_VehicleNameBell206PoliceTail = "è´å°”206è­¦ç”¨ç›´å‡æœº(æœºå°¾)",
 
+    IGUI_VehicleNameBell206Survivalist = "è´å°”206å¹¸å­˜è€…ç›´å‡æœº",
+    
+    IGUI_VehicleNameBell206Black = "è´å°”206ç›´å‡æœº",
+    IGUI_VehicleNameBell206BlackFuselage = "è´å°”206ç›´å‡æœº(æœºèº«)",
+    IGUI_VehicleNameBell206BlackFuselage = "è´å°”206ç›´å‡æœº(æœºå°¾)",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "åº”æ€¥ç‰©èµ„ç©ºæŠ•ç®±",
+    IGUI_VehicleNameSurvivorSupplyDrop = "æ’’é©¬åˆ©å¦åä¼šç‰©èµ„ç©ºæŠ•ç®±",
 
-    IGUI_VehicleNameFEMASupplyDrop = "Ó¦¼±Îï×ÊÒÑÍ¶·Å",
-
-    IGUI_VehicleNameOH58Rescue = "OH-58 ¾ÈÔ®Ö±Éı»ú",
-	
 }

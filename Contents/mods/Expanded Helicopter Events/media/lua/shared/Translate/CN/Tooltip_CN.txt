@@ -1,0 +1,26 @@
+Tooltip_CN = {
+    Tooltip_dismantle_helicopterpart = "使用丙烷喷灯和焊接面罩能拆解出金属。",
+    Tooltip_open_boxes_barehanded = "如果用什么锋利的东西来打开会更快一点。",
+    Tooltip_Parachute = "能撕成碎布条。",
+    Tooltip_EnergyBar = "应急救生包中的能量棒。由PT&D公司制造。",
+    Tooltip_SurvivalVest = "军队飞行员的制式救生衣。",
+    Tooltip_SurvivalVestBlack = "警察搜救时所穿的制式背心。",
+    Tooltip_SPHMilitary = "标准的飞行员头盔。"
+    Tooltip_SPHBlack = "标准的黑色飞行员头盔。",
+    Tooltip_SPHPolice = "警方飞行员使用的头盔。",
+    Tooltip_SPHCivilian = "私人飞行员使用的头盔。",
+
+    Tooltip_FlyerCDC = "看起来像是健康调查传单。",
+    Tooltip_FlyerMilitary = "看起来像是军队分发的通知传单。",
+    Tooltip_CivilDefense = "看起来像是民防传单。",
+
+    Tooltip_WaterSealed = "政府发放的密封纯净水配给。"
+    Tooltip_WaterUnsealed = "政府发放的开封纯净水配给。" 
+
+    Tooltip_SupplyBox = "政府投放的物资补给箱。"
+    Tooltip_SamaritanBox = "神秘的撒马利坦协会投放的物资补给箱。",
+    Tooltip_BanditBox = "私人储物箱。上面写着"MY SHIT，不许碰！",
+
+    Tooltip_SignalFlare = "军用信号弹。不要在室内使用。",
+    Tooltip_SignalFlareSpent = "军用信号弹。这个已经被使用过了。"
+}
