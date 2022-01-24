@@ -62,6 +62,7 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_PilotSurvivalVestTightened,
         ClothingItemExtraOption = Tighten,
+        ClothingExtraSubmenu = Untighten,
         Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
         
@@ -78,6 +79,7 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_PilotSurvivalVest,
         ClothingItemExtraOption = Untighten,
+        ClothingExtraSubmenu = Tighten,
         Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
         
@@ -94,6 +96,7 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_BlackPilotSurvivalVestTightened,
         ClothingItemExtraOption = Tighten,
+        ClothingExtraSubmenu = Untighten,
         Tooltip = Tooltip_SurvivalVestBlack,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
         
@@ -110,6 +113,7 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         ClothingItemExtra = Vest_BlackPilotSurvivalVest,
         ClothingItemExtraOption = Untighten,
+        ClothingExtraSubmenu = Tighten,
         Tooltip = Tooltip_SurvivalVestBlack,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
         
