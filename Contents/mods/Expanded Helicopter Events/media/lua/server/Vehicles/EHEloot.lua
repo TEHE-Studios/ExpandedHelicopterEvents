@@ -57,6 +57,8 @@ VehicleDistributions.UH1HSeat = {
 
         "SMUIClothing.Hat_M17", 10,
         "SMUIClothing.Hat_M17Doff", 10,
+        "SMUIClothing.Hat_M40", 10,
+        "SMUIClothing.Hat_M40Doff", 10,
         "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
         "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
         "SMUIClothing.NightVisionGoggles", 10,
@@ -151,6 +153,9 @@ VehicleDistributions.UH1HRaiderSeat = {
         -- SMUI --
 
         "SMUIClothing.Hat_M17", 10,
+        "SMUIClothing.Hat_M17Doff", 10,
+        "SMUIClothing.Hat_M40", 10,
+        "SMUIClothing.Hat_M40Doff", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
@@ -237,6 +242,8 @@ VehicleDistributions.UH1HMedevacSeat = {
 
         "SMUIClothing.Hat_M17", 10,
         "SMUIClothing.Hat_M17Doff", 10,
+        "SMUIClothing.Hat_M40", 10,
+        "SMUIClothing.Hat_M40Doff", 10,
         "SMUIClothing.MilitaryWebbingBag", 10,
         "SMUIClothing.MilitaryWebbing", 5,
         "SMUIClothing.MilitaryWebbing", 5,
