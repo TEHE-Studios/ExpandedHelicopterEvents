@@ -28,8 +28,6 @@ function eHeliEvent_engage(ID)
 	local globalModData = getExpandedHeliEventsModData()
 	local eHeliEvent = globalModData.EventsOnSchedule[ID]
 
-	eHeliEvent.triggered = true
-	
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
@@ -42,6 +40,7 @@ function eHeliEvent_engage(ID)
 		---@type eHelicopter
 		local heli = getFreeHelicopter(eHeliEvent.preset)
 		if heli then
+			eHeliEvent.triggered = true
 			heli:launch(foundTarget)
 		end
 	end
