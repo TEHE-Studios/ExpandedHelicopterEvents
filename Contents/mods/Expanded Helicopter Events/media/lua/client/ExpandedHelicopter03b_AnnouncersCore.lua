@@ -41,7 +41,7 @@ function eHelicopter:announce(specificLine)
 		return
 	end
 
-	local timeStamp = getGametimeTimestamp()
+	local timeStamp = getTimeInMillis()
 	if (self.timeUntilCanAnnounce > timeStamp) or (self.lastAttackTime > timeStamp) or (#self.hostilesToFireOn > 0) then
 		return
 	end
@@ -75,7 +75,7 @@ function eHelicopter:announce(specificLine)
 	local announcePick = line[ZombRand(2,#line+1)]
 	local lineDelay = line[1]
 
-	self.timeUntilCanAnnounce = getGametimeTimestamp()+lineDelay
+	self.timeUntilCanAnnounce = timeStamp+lineDelay
 
 	if self.lastAnnouncedLine then
 		eventSoundHandler:playEventSound(self, self.lastAnnouncedLine,nil, nil, true)
