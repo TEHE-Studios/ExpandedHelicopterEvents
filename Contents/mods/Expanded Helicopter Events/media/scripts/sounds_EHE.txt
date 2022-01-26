@@ -26,7 +26,7 @@ module Base {
         
     sound eAirRaid {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/siren.ogg, distanceMax = 5100, volume = 0.069, } }
+        clip { file = media/sound/siren.ogg, distanceMax = 5100, volume = 0.035, } }
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
