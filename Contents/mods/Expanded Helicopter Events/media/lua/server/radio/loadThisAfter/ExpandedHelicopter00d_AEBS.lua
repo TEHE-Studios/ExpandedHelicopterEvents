@@ -21,7 +21,10 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 				if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
 					--pulls event's info to see if more lines can be added
 					local presetID = event.preset
-					local radioChatter = eHelicopter_PRESETS[presetID].radioChatter or eHelicopter.radioChatter
+					local radioChatter = eHelicopter.radioChatter
+					if eHelicopter_PRESETS[presetID] and eHelicopter_PRESETS[presetID].radioChatter then
+						radioChatter = eHelicopter_PRESETS[presetID].radioChatter
+					end
 					linesGoingOut.presetID = getRadioText(radioChatter)
 				end
 			end
