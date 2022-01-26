@@ -243,7 +243,7 @@ end
 
 function EHE_EventMarker:update(posX,posY)
 
-	local timeStamp = getGametimeTimestamp()
+	local timeStamp = getTimeInMillis()
 	if (self.lastUpdateTime+5 >= timeStamp) then
 		return
 	else
