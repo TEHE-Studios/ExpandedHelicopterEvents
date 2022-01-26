@@ -265,7 +265,7 @@ function eHeliEvent_Loop()
 
 	local GT = getGameTime()
 	local globalModData = getExpandedHeliEventsModData()
-	local DAY = GT:getDay()
+	local DAY = GT:getDaysSurvived()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 
