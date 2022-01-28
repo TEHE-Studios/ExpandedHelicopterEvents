@@ -270,11 +270,11 @@ function eHeliEvent_Loop()
 
 	local GT = getGameTime()
 	local globalModData = getExpandedHeliEventsModData()
-	local DAY = GT:getDaysSurvived()
+	local DAY = GT:getNightsSurvived()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 
-	--if getDebug() then print("--- EVERYHOUR:  isClient:"..tostring(isClient())) end
+	--if getDebug() then print("---DAY:"..DAY.." HOUR:"..HOUR.."  isClient:"..tostring(isClient()).." isServer:"..tostring(isServer())) end
 	for k,v in pairs(events) do
 
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
