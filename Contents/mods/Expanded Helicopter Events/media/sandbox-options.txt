@@ -21,49 +21,49 @@ option ExpandedHeli.NeverEnding
 
 option ExpandedHeli.Frequency_jet
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventJet,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_police
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventPolice,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_news_chopper
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventNews,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_military
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_samaritan_drop
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventSamaritan,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_survivor_heli
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventSurvivor,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_raiders
 {
-	type = enum, numValues = 6, default = 4,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventRaider,
 	valueTranslation = ExpandedHeli_Frequency,
 }
