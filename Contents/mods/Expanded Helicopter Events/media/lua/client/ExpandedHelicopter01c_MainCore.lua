@@ -347,7 +347,7 @@ function eHelicopter:findAlternativeTarget(character)
 		return false
 	end
 	local newTargets = {}
-	local fractalCenters = getIsoRange(character, 1, 150)
+	local fractalCenters = getIsoRange(character, 1, 50)
 
 	for _,square in pairs(fractalCenters) do
 		---@type IsoCell
