@@ -135,6 +135,10 @@ VehicleDistributions.UH1HRaiderSeat = {
         "HottieZ", 10,
         "AmmoStraps", 10,
         "AmmoStrap_Bullets", 10,
+        "Speaker", 10,
+        "Speaker", 10,
+        "ElectronicsScrap", 10,
+        "ElectronicsScrap", 10,
 
         -- EHE --
 
