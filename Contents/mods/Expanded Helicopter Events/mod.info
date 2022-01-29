@@ -1,6 +1,0 @@
-name=Expanded Helicopter Events
-id=ExpandedHelicopterEvents
-description= This mod replaces the vanilla helicopter event with something more dynamic and engaging. Options can be found in the main menu and sandbox.
-poster=poster.png
-require=EasyConfigChucked
-versionMin=41.51
