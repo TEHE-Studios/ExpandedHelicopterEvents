@@ -266,7 +266,7 @@ eHelicopter_PRESETS["survivor_heli"] = {
 
 
 eHelicopter_PRESETS["raiders"] = {
-	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_aggressive",1},
+	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1},
 	speed = 2.0,
 	crashType = {"UH1HRaiderFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
