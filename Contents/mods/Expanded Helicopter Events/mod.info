@@ -1,0 +1,6 @@
+name=Expanded Helicopter Events BETA
+id=ExpandedHelicopterEventsBETA
+description=EHE_BETA
+poster=poster.png
+require=EasyConfigChucked
+versionMin=41.51
