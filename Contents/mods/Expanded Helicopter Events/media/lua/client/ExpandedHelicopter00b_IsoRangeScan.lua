@@ -92,7 +92,9 @@ function getIsoRange(center, range, fractalOffset)
 
 	if center and center~= false then
 		center = recursiveGetSquare(center)
-	else
+	end
+
+	if not center then
 		return {}
 	end
 
