@@ -166,7 +166,10 @@ function eHelicopter:loadPreset(ID)
 	self:loadVarsFrom(eHelicopter_initialVars, "initialVars")
 	if preset.inherit then
 		for k,inheritedPresetID in pairs(preset.inherit) do
-			self:loadVarsFrom(eHelicopter_PRESETS[inheritedPresetID], "presetInherited")
+			local presetFound = eHelicopter_PRESETS[inheritedPresetID]
+			if presetFound then
+				self:loadVarsFrom(presetFound, "presetInherited")
+			end
 		end
 	end
 	preset = self:recursivePresetCheck(preset, nil, masterID)
