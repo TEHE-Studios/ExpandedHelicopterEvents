@@ -261,16 +261,22 @@ function EHE_EventMarker:update(posX,posY)
 	end
 
 	if not self.radius then
-		self.radius = EHE_EventMarker.maxRange
+		self.radius = EHE_EventMarker.maxRange*0.83
 	end
 
 	if(self.player:HasTrait("EagleEyed")) then self.radius = (self.radius * 1.2)
 	elseif(self.player:HasTrait("ShortSighted")) then self.radius = (self.radius * 0.8) end
 
 	local HOUR = getGameTime():getHour()
-	if self.player:HasTrait("NightVision") and HOUR < 6 and HOUR > 22 then
-		self.radius = self.radius*1.2
+	if HOUR < 6 and HOUR > 22 then
+		if self.player:HasTrait("NightVision") then
+			self.radius = self.radius*1.1
+		else
+			self.radius = self.radius*0.75
+		end
 	end
+
+	self.radius = math.max(EHE_EventMarker.maxRange/3, math.min(self.radius,EHE_EventMarker.maxRange))
 
 	if self.duration > 0 then--and player:isOutside() then
 		--print(" ----- marker:"..self.eventID.." x("..posX..") y("..posY..") and dist("..tostring(dist)..") found : attempting to compare to radius("..self.radius..")")
