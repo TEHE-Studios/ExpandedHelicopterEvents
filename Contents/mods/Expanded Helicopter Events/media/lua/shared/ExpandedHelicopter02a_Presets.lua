@@ -243,7 +243,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.66,
+	eventStartDayFactor = 0.48,
 	eventSpawnWeight = 3,
 	radioChatter = "AEBS_SamaritanDrop"
 }
@@ -260,7 +260,7 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	scrapVehicles = {"Bell206SurvivalistTail"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.66,
+	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorHeli",
 }
 
@@ -275,7 +275,7 @@ eHelicopter_PRESETS["raiders"] = {
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.66,
+	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_Raiders",
 	}
 
