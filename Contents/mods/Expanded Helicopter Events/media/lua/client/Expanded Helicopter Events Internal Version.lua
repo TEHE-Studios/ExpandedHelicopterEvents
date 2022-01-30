@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.3.7--Scheduler-HOTFIX-2-Electric-Boogaloo"))
+--TODO: DELETE THIS
