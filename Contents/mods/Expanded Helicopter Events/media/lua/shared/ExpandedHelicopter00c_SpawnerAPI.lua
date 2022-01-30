@@ -1,6 +1,7 @@
 require "ExpandedHelicopter00e_EHEGlobalModData"
 require "ExpandedHelicopter01a_MainVariables"
 require "ExpandedHelicopter00a_Util"
+require "ExpandedHelicopter02a_Presets"
 
 ---===---===---===---===---===---===--- TEMP
 local stringyUtil = {}
