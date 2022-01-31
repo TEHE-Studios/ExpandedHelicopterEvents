@@ -30,24 +30,30 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 				eventMarkerHandler.expirations[player][eventID] = getGametimeTimestamp()+duration
 
 				if not marker and duration>0 then
-					local dist = IsoUtils.DistanceTo(posX, posY, player:getX(), player:getY())
-					if dist and (dist <= EHE_EventMarker.maxRange) then
-						--print(" -- not marker: generating")
-						local oldX
-						local oldY
-						local pModData = player:getModData()["EHE_eventMarkerPlacement"]
-						if pModData then
-							oldX = pModData[1]
-							oldY = pModData[2]
-						end
-						local screenX = oldX or (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
-						local screenY = oldY or (EHE_EventMarker.iconSize/2)
-						--print("eventMarkerHandler: generateNewMarker: "..p:getUsername().." ".."("..screenX..","..screenY..")")
 
-						marker = EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY)
-						eventMarkerHandler.markers[player][eventID] = marker
+					if EHE_EventMarker then
+
+						local dist = IsoUtils.DistanceTo(posX, posY, player:getX(), player:getY())
+						if dist and (dist <= EHE_EventMarker.maxRange) then
+							--print(" -- not marker: generating")
+							local oldX
+							local oldY
+							local pModData = player:getModData()["EHE_eventMarkerPlacement"]
+							if pModData then
+								oldX = pModData[1]
+								oldY = pModData[2]
+							end
+							local screenX = oldX or (getCore():getScreenWidth()/2) - (EHE_EventMarker.iconSize/2)
+							local screenY = oldY or (EHE_EventMarker.iconSize/2)
+							--print("eventMarkerHandler: generateNewMarker: "..p:getUsername().." ".."("..screenX..","..screenY..")")
+
+							marker = EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY)
+							eventMarkerHandler.markers[player][eventID] = marker
+						else
+							--print("-- dist not valid: "..tostring(dist))
+						end
 					else
-						--print("-- dist not valid: "..tostring(dist))
+						print("EHE: ERR: EHE_EventMarker not found: ".."  isClient:"..tostring(isClient()).." isServer:"..tostring(isServer()) )
 					end
 				end
 
