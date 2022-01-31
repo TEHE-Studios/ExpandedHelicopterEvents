@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4-Server-Side-EHE"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.1-Server-Side-EHE-HOTFIX1"))
