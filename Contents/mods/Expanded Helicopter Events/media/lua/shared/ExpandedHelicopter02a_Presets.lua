@@ -297,8 +297,8 @@ eHelicopter_PRESETS["raider_heli_harasser"] = {
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
-		["attackSingle"] = "eHeliM16GunfireSingle",
-		["attackLooped"] = "eHeliM16GunfireSingle",
+		["attackSingle"] = "eHeliRaiderGuns",
+		["attackLooped"] = "eHeliRaiderGuns",
 		["additionalFlightSound"] = "eHeliMusicAggressive",
 	},
 }
