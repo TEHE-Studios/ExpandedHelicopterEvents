@@ -289,7 +289,7 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 
 eHelicopter_PRESETS["raider_heli_harasser"] = {
 	inherit = {"raiders"},
-	hoverOnTargetDuration = {1250,1500},
+	hoverOnTargetDuration = {1000,1350},
 	attackDelay = 1700,
 	attackSpread = 4,
 	attackHitChance = 40,
