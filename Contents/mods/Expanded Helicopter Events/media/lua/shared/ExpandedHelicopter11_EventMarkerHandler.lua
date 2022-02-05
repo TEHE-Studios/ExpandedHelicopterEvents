@@ -53,7 +53,7 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 							--print("-- dist not valid: "..tostring(dist))
 						end
 					else
-						print("EHE: ERR: EHE_EventMarker not found: ".." isClient:"..tostring(isClient()).." isServer:"..tostring(isServer()) )
+						--print("EHE: ERR: EHE_EventMarker not found: ".." isClient:"..tostring(isClient()).." isServer:"..tostring(isServer()) )
 					end
 				end
 
