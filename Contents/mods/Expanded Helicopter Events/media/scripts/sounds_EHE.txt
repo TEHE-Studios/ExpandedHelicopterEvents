@@ -164,7 +164,6 @@ module Base {
         clip { file = media/sound/police_9.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_10.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_11.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_12.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_13.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_14.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_15.ogg, distanceMax = 500, volume = 3.0, }
@@ -197,7 +196,8 @@ module Base {
  sound eHeli_PoliceSpotted {
         category = EHE: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/PoliceSpotted1.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/PoliceSpotted2.ogg, distanceMax = 500, volume = 3.0, }}
+        clip { file = media/sound/PoliceSpotted2.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/PoliceSpotted3.ogg, distanceMax = 500, volume = 3.0, }}
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
