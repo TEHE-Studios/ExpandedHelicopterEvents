@@ -91,7 +91,7 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	crashType = {"UH1HMedevacFuselage"},
 	hoverOnTargetDuration = 500,
 	dropPackages = {"FEMASupplyDrop"},
-	dropItems = {["EHE.NoticeFlyer"]=250},
+	dropItems = {["EHE.QuarantineFlyer"]=150},
 	speed = 0.9,
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH1HMedevacTail"},
@@ -166,7 +166,6 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	radioChatter = "AEBS_JetBombing",
 }
 
-
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
 	eventSoundEffects = { ["additionalFlightSound"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
@@ -191,8 +190,6 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 	speed = 1.6,
 }
 
-
-
 eHelicopter_PRESETS["police"] = {
 	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2},
 	crashType = {"Bell206PoliceFuselage"},
@@ -200,6 +197,9 @@ eHelicopter_PRESETS["police"] = {
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206PoliceTail"},
 	announcerVoice = "Police",
+	eventSoundEffects = {
+		["foundTarget"] = "eHeli_PoliceSpotted",
+	},
 	forScheduling = true,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
@@ -210,7 +210,7 @@ eHelicopter_PRESETS["police_heli_emergency"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
-		["additionalFlightSound"] = "eHeliPoliceEmergencyWarning",
+		["additionalFlightSound"] = "eHeliPoliceSiren",
 		["flightSound"] = "eHelicopter",
 	},
 

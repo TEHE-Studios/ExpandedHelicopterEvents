@@ -16,12 +16,9 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/militaryheli_loop.ogg, distanceMax = 800, volume = 1.0, } }
     
-    sound eHeliPoliceEmergencyWarning {
-        category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/policeemergencywarning.ogg, distanceMax = 500, volume = 1.0, } }
-        
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/policeemergencywarning.ogg, distanceMax = 500, volume = 1.0, }
         clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, volume = 1.0, } }
         
     sound eAirRaid {
@@ -50,7 +47,8 @@ module Base {
 
     sound eHelicopterCrash {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/helicrash.ogg, distanceMax = 800, volume = 2.5, } }
+        clip { file = media/sound/helicrash.ogg, distanceMax = 800, volume = 2.5, }
+        clip { file = media/sound/helicrash2.ogg, distanceMax = 800, volume = 2.5, }  }
 
     sound eHeli_machine_gun_fire_single {
         category = EHE: Main, loop = false, is3D = true,
@@ -64,11 +62,7 @@ module Base {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/heli_stormyRifleFire.ogg, distanceMax = 500, volume = 1.0,} }
 
-    sound eHeliM16GunfireSingle {
-        category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/M16GunfireSingle.ogg, distanceMax = 750, volume = 1.0, } }
-        
-    sound eHeliRaiderGuns {
+    sound eHeliAlternatingShots {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/M16GunfireSingle.ogg, distanceMax = 750, volume = 1.0, } 
         clip { file = media/sound/M16GunfireAlternate.ogg, distanceMax = 750, volume = 1.0, } }
@@ -198,9 +192,12 @@ module Base {
         clip { file = media/sound/police_37.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_38.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_39.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_40.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_41.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_42.ogg, distanceMax = 500, volume = 3.0, } }
+        clip { file = media/sound/police_40.ogg, distanceMax = 500, volume = 3.0, }}
+
+ sound eHeli_PoliceSpotted {
+        category = EHE: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/PoliceSpotted1.ogg, distanceMax = 500, volume = 3.0, }
+        clip { file = media/sound/PoliceSpotted2.ogg, distanceMax = 500, volume = 3.0, }}
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
