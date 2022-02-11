@@ -47,16 +47,9 @@ option ExpandedHeli.Frequency_military
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
-option ExpandedHeli.Frequency_FEMA
-{
-	type = enum, numValues = 6, default = 2,
-	page = ExpandedHeli, translation = ExpandedHeli_EventFEMA,
-	valueTranslation = ExpandedHeli_Frequency,
-}
-
 option ExpandedHeli.Frequency_samaritan_drop
 {
-	type = enum, numValues = 6, default = 2,
+	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventSamaritan,
 	valueTranslation = ExpandedHeli_Frequency,
 }

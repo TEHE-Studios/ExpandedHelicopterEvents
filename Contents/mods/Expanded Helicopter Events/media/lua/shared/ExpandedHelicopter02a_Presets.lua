@@ -45,6 +45,7 @@ eHelicopter_PRESETS["increasingly_helpful"] = {
 		["patrol_only_emergency"] = 0.0066,
 		["patrol_only_quarantine"] = 0.0165,
 		["attack_only_undead_evac"] = 0.033,
+		["aid_helicopter"] = 0.066,
 		["attack_only_all"] = 0.2145,
 	}
 }
