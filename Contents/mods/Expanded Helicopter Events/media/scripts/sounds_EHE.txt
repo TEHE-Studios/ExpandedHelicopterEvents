@@ -197,7 +197,7 @@ module Base {
         category = EHE: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/PoliceSpotted1.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/PoliceSpotted2.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/PoliceSpotted3.ogg, distanceMax = 500, volume = 3.0, }}
+        clip { file = media/sound/PoliceSpotted1.ogg, distanceMax = 500, volume = 3.0, }}
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,

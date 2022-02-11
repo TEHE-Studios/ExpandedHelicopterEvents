@@ -18,7 +18,10 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_EventPolice_tooltip = "How frequent Police events occur.\n The police will take matters into their own hands and escort citizens around while firing on zombies.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Military",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur.\n The military will progress through stages: warn citizens,\n drop off supplies, purge the undead, purge anything that moves.",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur.\n The military will progress through stages: warn citizens, purge the undead, purge anything that moves.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "How frequent the government will drop emergency supplies \n The government will attempt to drop off emergency supplies to survivors in the area.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Survivors",
     Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur.\n Survivors will only flyby on scouting missions causing horde movement.",
