@@ -680,7 +680,8 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	self:initPos(self.target, self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
-	self:formationInit()
+	---TODO: Confirm formations work in MP
+	--self:formationInit()
 	eventSoundHandler:playEventSound(self,"flightSound", nil, true)
 	eventSoundHandler:playEventSound(self,"additionalFlightSound", nil, true)
 
