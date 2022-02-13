@@ -18,34 +18,17 @@ eHelicopter_PRESETS["id_name"] = {
 --- ignoreNeverEnding
 
 eHelicopter_PRESETS["military"] = {
-	presetRandomSelection = {"increasingly_hostile",3,"increasingly_helpful",1},
 	announcerVoice = true,
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	forScheduling = true,
+	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
 	eventSpawnWeight = 20,
 	schedulingFactor = 1.5,
-}
-
-
-eHelicopter_PRESETS["increasingly_hostile"] = {
 	presetProgression = {
 		["patrol_only"] = 0,
 		["patrol_only_emergency"] = 0.0066,
 		["patrol_only_quarantine"] = 0.0165,
 		["attack_only_undead_evac"] = 0.033,
 		["attack_only_undead"] = 0.066,
-		["attack_only_all"] = 0.2145,
-	}
-}
-
-
-eHelicopter_PRESETS["increasingly_helpful"] = {
-	presetProgression = {
-		["patrol_only"] = 0,
-		["patrol_only_emergency"] = 0.0066,
-		["patrol_only_quarantine"] = 0.0165,
-		["attack_only_undead_evac"] = 0.033,
-		["aid_helicopter"] = 0.066,
 		["attack_only_all"] = 0.2145,
 	}
 }
@@ -85,9 +68,21 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
 }
 
-eHelicopter_PRESETS["aid_helicopter"] = {
+
+eHelicopter_PRESETS["attack_only_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
+	hostilePreference = "IsoGameCharacter",
+	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH1HTail"},
+	--formationIDs = {"air_raid"},
+}
+
+
+eHelicopter_PRESETS["FEMA_drop"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	forScheduling = true,
 	crashType = {"UH1HMedevacFuselage"},
 	hoverOnTargetDuration = 500,
 	dropPackages = {"FEMASupplyDrop"},
@@ -101,17 +96,9 @@ eHelicopter_PRESETS["aid_helicopter"] = {
 	},
 	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
 	radioChatter = "AEBS_SupplyDrop",
+	eventStartDayFactor = 0.034,
+	eventCutOffDayFactor = 0.2145,
 }
-
-eHelicopter_PRESETS["attack_only_all"] = {
-	inherit = {"military"},
-	announcerVoice = false,
-	hostilePreference = "IsoGameCharacter",
-	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-	scrapVehicles = {"UH1HTail"},
-	--formationIDs = {"air_raid"},
-}
-
 
 
 eHelicopter_PRESETS["jet"] = {
