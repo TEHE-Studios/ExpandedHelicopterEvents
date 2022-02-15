@@ -65,7 +65,7 @@ module Base {
     sound eHeliAlternatingShots {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/M16GunfireSingle.ogg, distanceMax = 750, volume = 1.0, } 
-        clip { file = media/sound/M16GunfireAlternate.ogg, distanceMax = 750, volume = 1.0, } }
+        clip { file = media/sound/M16GunfireBurst.ogg, distanceMax = 750, volume = 1.0, } }
         
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
