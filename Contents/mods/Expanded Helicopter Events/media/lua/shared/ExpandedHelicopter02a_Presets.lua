@@ -212,8 +212,8 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	attackDamage = 12,
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
-		["attackSingle"] = "eHeliM16GunfireSingle",
-		["attackLooped"] = "eHeliM16GunfireSingle",
+		["attackSingle"] = "eHeliAlternatingShots",
+		["attackLooped"] = "eHeliAlternatingShots",
 		["additionalFlightSound"] = "eHeliPoliceSiren",
 		["flightSound"] = "eHelicopter",
 	},
