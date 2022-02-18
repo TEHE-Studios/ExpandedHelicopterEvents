@@ -227,6 +227,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	crew = {"EHESurvivorPilot", 100, 0},
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 1.0,
+	eventMarkerIcon = "media/ui/jet.png",
 	eventSoundEffects = {["flightSound"] = "ePropPlane"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
