@@ -164,7 +164,6 @@ module Base {
         clip { file = media/sound/police_9.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_10.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_11.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_13.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_14.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_15.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_16.ogg, distanceMax = 500, volume = 3.0, }
