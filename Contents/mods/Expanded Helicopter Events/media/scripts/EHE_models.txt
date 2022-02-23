@@ -105,20 +105,34 @@ module Base
 		scale = 1.0,
 	}
 
-		model Bell206RotorBlade
+		model Bell206RotorBlade1
 	{
-		mesh = WorldItems/Bell206RotorBlade,
+		mesh = WorldItems/Bell206RotorBlade1,
 		texture = WorldItems/Bell206RotorBlade,
 		scale = 1.0,
 	}
 
-		model UH1HRotorBlade
+		model Bell206RotorBlade2
 	{
-		mesh = WorldItems/UH1HRotorBlade,
-		texture = WorldItems/UH1HRotorBlade,
+		mesh = WorldItems/Bell206RotorBlade2,
+		texture = WorldItems/Bell206RotorBlade,
 		scale = 1.0,
 	}
 
+		model UH1HRotorBlade1
+	{
+		mesh = WorldItems/UH1HRotorBlade1,
+		texture = WorldItems/UH1HRotorBlade,
+		scale = 1.0,
+	}
+	
+		model UH1HRotorBlade2
+	{
+		mesh = WorldItems/UH1HRotorBlade2,
+		texture = WorldItems/UH1HRotorBlade,
+		scale = 1.0,
+	}
+	
 		model UH1HHalfSkirt
 	{
 		mesh = WorldItems/UH1HHalfSkirt,
