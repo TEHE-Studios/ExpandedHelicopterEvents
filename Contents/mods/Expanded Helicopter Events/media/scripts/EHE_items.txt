@@ -42,7 +42,7 @@ module EHE
 		WorldStaticModel = Bell206RotorBlade1,
 		DisplayName = Mangled Main Rotor Blade,
 		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206rotorblade,
+		Icon = Rotorblade1,
 	}
 
 		item Bell206RotorBlade2
@@ -53,7 +53,7 @@ module EHE
 		WorldStaticModel = Bell206RotorBlade2,
 		DisplayName = Mangled Main Rotor Blade,
 		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206rotorblade,
+		Icon = Rotorblade2,
 	}
 
 		item Bell206TailBlade
@@ -86,7 +86,7 @@ module EHE
 		WorldStaticModel = UH1HRotorBlade1,
 		DisplayName = Mangled Main Rotor Blade,
 		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206rotorblade,
+		Icon = Rotorblade1,
 	}
 
 		item UH1HRotorBlade2
@@ -97,7 +97,7 @@ module EHE
 		WorldStaticModel = UH1HRotorBlade2,
 		DisplayName = Mangled Main Rotor Blade,
 		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206rotorblade,
+		Icon = Rotorblade2,
 	}
 
 		item UH1HHalfSkirt2
