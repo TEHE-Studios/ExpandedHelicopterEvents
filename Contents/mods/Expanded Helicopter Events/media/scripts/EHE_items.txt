@@ -34,6 +34,28 @@ module EHE
 		Icon = Parachute,
 	}
 
+		item UH60Elevator
+	{
+		DisplayCategory = Junk,
+		Weight = 10,
+		Type = Normal,
+		WorldStaticModel = UH60Elevator,
+		DisplayName = Detached UH-60 Elevator,
+		Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = 206halfskirt,
+	}
+
+		item UH60ElevatorDesert
+	{
+		DisplayCategory = Junk,
+		Weight = 10,
+		Type = Normal,
+		WorldStaticModel = UH60ElevatorDesert,
+		DisplayName = Detached UH-60 Elevator,
+		Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = 206halfskirt,
+	}
+
 		item Bell206RotorBlade1
 	{
 		DisplayCategory = Junk,
@@ -110,5 +132,7 @@ module EHE
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = 206halfskirt,
 	}
+
+
 
 }

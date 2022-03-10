@@ -73,8 +73,8 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoGameCharacter",
-	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade1", 2, "EHE.UH1HRotorBlade2", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-	scrapVehicles = {"UH1HTail"},
+	scrapItems = {"EHE.UH1HRotorBlade1", 2, "EHE.UH60Elevator", 1, "Base.ScrapMetal", 5},
+	scrapVehicles = {"UH60GreenTail"},
 	--formationIDs = {"air_raid"},
 }
 
@@ -83,13 +83,13 @@ eHelicopter_PRESETS["FEMA_drop"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	forScheduling = true,
-	crashType = {"UH1HMedevacFuselage"},
+	crashType = {"UH60MedevacFuselage"},
 	hoverOnTargetDuration = 500,
 	dropPackages = {"FEMASupplyDrop"},
 	dropItems = {["EHE.QuarantineFlyer"]=150},
 	speed = 0.9,
-	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade1", 2, "EHE.UH1HRotorBlade2", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-	scrapVehicles = {"UH1HMedevacTail"},
+	scrapItems = {"EHE.UH1HRotorBlade1", 2, "EHE.UH60Elevator", 1, "Base.ScrapMetal", 5},
+	scrapVehicles = {"UH60GreenTail"},
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_AidDrop_2",
 		["droppingPackage"] = "eHeli_AidDrop_1and3",

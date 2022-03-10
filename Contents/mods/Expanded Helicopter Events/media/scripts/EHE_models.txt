@@ -105,6 +105,20 @@ module Base
 		scale = 1.0,
 	}
 
+		model UH60ElevatorGreen
+	{
+		mesh = WorldItems/UH60Elevator,
+		texture = WorldItems/UH60Green,
+		scale = 1.0,
+	}
+
+		model UH60ElevatorDesert
+	{
+		mesh = WorldItems/UH60Elevator,
+		texture = WorldItems/UH60Desert,
+		scale = 1.0,
+	}
+
 		model Bell206RotorBlade1
 	{
 		mesh = WorldItems/Bell206RotorBlade1,
