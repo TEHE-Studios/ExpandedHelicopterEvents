@@ -25,11 +25,11 @@ module Base
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_UH60Green,
+			texture = Vehicles/EHE/Vehicle_UH60Green_Crash,
 		}
 
 		textureMask = Vehicle_UH60_mask,
-		textureShadow = vehicleShadowHelicopter,
+		textureShadow = highlights/tailshadow,
 		extents = 0.7524 0.3560 0.5957,
 		mass = 200,
 		physicsChassisShape = 0.7524 0.3338 0.6082,

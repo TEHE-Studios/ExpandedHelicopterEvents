@@ -112,9 +112,51 @@ module Base
 		scale = 1.0,
 	}
 
+		model UH60Elevator
+	{
+		mesh = WorldItems/UH60Elevator,
+		texture = WorldItems/UH60Green,
+		scale = 1.0,
+	}
+
 		model UH60ElevatorDesert
 	{
 		mesh = WorldItems/UH60Elevator,
+		texture = WorldItems/UH60Desert,
+		scale = 1.0,
+	}
+
+		model UH60WindowGreen
+	{
+		mesh = WorldItems/UH60CrewWindow,
+		texture = WorldItems/UH60Green,
+		scale = 1.0,
+	}
+	
+	    model UH60WindowDesert
+	{
+		mesh = WorldItems/UH60CrewWindow,
+		texture = WorldItems/UH60Desert,
+		scale = 1.0,
+	}
+
+		model UH60DoorGreen
+	{
+		mesh = WorldItems/UH60Door,
+		texture = WorldItems/UH60Green,
+		scale = 1.0,
+	}
+
+		model UH60DoorMedevac
+	{
+		mesh = WorldItems/UH60Door,
+		texture = WorldItems/UH60Medevac,
+		scale = 1.0,
+	}
+
+		model UH60DoorDesert
+	{
+		mesh = WorldItems/UH60Door,
 		texture = WorldItems/UH60Desert,
 		scale = 1.0,
 	}

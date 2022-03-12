@@ -37,23 +37,72 @@ module EHE
 		item UH60Elevator
 	{
 		DisplayCategory = Junk,
-		Weight = 10,
+		Weight = 25,
 		Type = Normal,
 		WorldStaticModel = UH60Elevator,
 		DisplayName = Detached UH-60 Elevator,
-		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206halfskirt,
+		Icon = UH60Elevator,
+	}
+
+		item UH60WindowGreen
+	{
+		DisplayCategory = Junk,
+		Weight = 15,
+		Type = Normal,
+		WorldStaticModel = UH60WindowGreen,
+		DisplayName = Blown Out UH-60 Window,
+		Icon = UH60Window,
+	}
+
+		item UH60WindowDesert
+	{
+		DisplayCategory = Junk,
+		Weight = 15,
+		Type = Normal,
+		WorldStaticModel = UH60WindowDesert,
+		DisplayName = Blown Out UH-60 Window,
+		Icon = UH60Window,
+	}
+
+		item UH60DoorGreen
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		Type = Normal,
+		WorldStaticModel = UH60DoorGreen,
+		DisplayName = Detached UH-60 Door,
+		Icon = UH60Door,
+	}
+	
+		item UH60DoorMedevac
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		Type = Normal,
+		WorldStaticModel = UH60DoorMedevac,
+		DisplayName = Detached UH-60 Door,
+		Icon = UH60Door,
+	}
+
+		item UH60DoorDesert
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		Type = Normal,
+		WorldStaticModel = UH60DoorDesert,
+		DisplayName = Detached UH-60 Door,
+		Icon = UH60Door,
 	}
 
 		item UH60ElevatorDesert
 	{
 		DisplayCategory = Junk,
-		Weight = 10,
+		Weight = 25,
 		Type = Normal,
 		WorldStaticModel = UH60ElevatorDesert,
 		DisplayName = Detached UH-60 Elevator,
 		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206halfskirt,
+		Icon = UH60Elevator,
 	}
 
 		item Bell206RotorBlade1
