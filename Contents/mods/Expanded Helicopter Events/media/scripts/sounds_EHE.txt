@@ -16,6 +16,10 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/militaryheli_loop.ogg, distanceMax = 800, volume = 1.0, } }
     
+    sound eMiliHeliCargo {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/heavyheli_mono_loop.ogg, distanceMax = 800, volume = 1.0, } }
+    
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/policeemergencywarning.ogg, distanceMax = 500, volume = 1.0, }
