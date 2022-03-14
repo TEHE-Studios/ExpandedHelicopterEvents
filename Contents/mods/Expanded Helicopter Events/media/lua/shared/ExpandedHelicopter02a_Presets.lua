@@ -29,10 +29,10 @@ eHelicopter_PRESETS["military"] = {
 		["patrol_only_quarantine"] = 0.0165,
 		["attack_only_undead_evac"] = 0.033,
 		["attack_only_undead"] = 0.066,
+		["cargo_helicopter"] = 0.1900,
 		["attack_only_all"] = 0.2145,
 	}
 }
-
 
 eHelicopter_PRESETS["patrol_only"] = {
 	inherit = {"military"},
@@ -68,17 +68,25 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
 }
 
-
 eHelicopter_PRESETS["attack_only_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoGameCharacter",
 	crashType = {"UH60GreenFuselage"},
-	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
 	--formationIDs = {"air_raid"},
 }
 
+eHelicopter_PRESETS["cargo_helicopter"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeliCargo",
+	},
+}
 
 eHelicopter_PRESETS["FEMA_drop"] = {
 	inherit = {"military"},
@@ -222,7 +230,6 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 }
 
 
-
 eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
@@ -257,9 +264,9 @@ eHelicopter_PRESETS["survivor_heli"] = {
 eHelicopter_PRESETS["raiders"] = {
 	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1},
 	speed = 2.0,
-	crashType = {"UH1HRaiderFuselage"},
-	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade1", 2, "EHE.UH1HRotorBlade2", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-	scrapVehicles = {"UH1HRaiderTail"},
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH60GreenTail"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
 	forScheduling = true,
