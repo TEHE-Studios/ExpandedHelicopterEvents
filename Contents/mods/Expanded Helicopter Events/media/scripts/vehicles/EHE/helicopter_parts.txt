@@ -1,0 +1,30 @@
+module EHE
+{
+
+
+	/*******Cargo Space*******/
+
+
+    	item HelicopterInterior
+    {
+        Weight    =    30,
+        Type    =    Normal,
+        MaxCapacity    =    300,
+        DisplayName    =   Helicopter Interior Space,
+        Icon    =    CarSeat,
+        ConditionMax = 100,
+    }
+	
+     item HelicopterSeat
+     {
+         Weight	=	20.0,
+         Type	=	Normal,
+         DisplayName	= HelicopterSeat,
+         Icon	=	CarSeat,
+         VehicleType =   8,
+         MaxCapacity = 40,
+         ChanceToSpawnDamaged = 25,
+     }
+
+	
+}

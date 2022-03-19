@@ -153,6 +153,23 @@ module Base
 			}
 		}
 
+		part HelicopterInterior
+		{
+			area = SeatFrontRight,
+			itemType = EHE.HelicopterInterior,
+			specificItem = false,
+
+			container
+			{
+				test = Vehicles.ContainerAccess.HelicopterInterior,
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+		}
+		
 		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,
