@@ -21,13 +21,15 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
 			if command == "play" then
 				if soundEmitter:isPlaying(DATA.soundEffect) then
-					print("--soundEmitter:isPlaying:"..DATA.soundEffect)
-					return
+					print("--soundEmitter is already playing"..DATA.soundEffect)
+					--print("--play:"..tostring(soundEmitter).." - "..DATA.soundEffect.." ("..DATA.x..","..DATA.y..")")
+					--local square = getSquare(DATA.x, DATA.y, DATA.z)
+				else
+					soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
 				end
-				--print("--play:"..tostring(soundEmitter).." - "..DATA.soundEffect.." ("..DATA.x..","..DATA.y..")")
-				--local square = getSquare(DATA.x, DATA.y, DATA.z)
-				soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
-			elseif command == "setPos" then
+			end
+
+			if command == "setPos" then
 				--print("--setPos:"..tostring(soundEmitter).." - x:"..DATA.x..","..DATA.y)
 				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
 			elseif command == "stop" then

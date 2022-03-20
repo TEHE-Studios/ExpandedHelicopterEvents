@@ -7,7 +7,7 @@ require "ExpandedHelicopter11_EventMarkerHandler"
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getGametimeTimestamp()
 	for shadowID,_ in pairs(storedShadows) do
-		if storedShadowsUpdateTimes[shadowID]+10 <= currentTime then
+		if storedShadowsUpdateTimes[shadowID]+100 <= currentTime then
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local shadow = storedShadows[shadowID]
 			shadow:setAlpha(0)
@@ -19,11 +19,13 @@ Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
 function eventSoundHandler.updateForPlayer(player)
 	local currentTime = getGametimeTimestamp()
-	for emitterID,_ in pairs(storedLooperEvents) do
-		if storedLooperEventsUpdateTimes[emitterID]+10 <= currentTime then
+	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
+		if timeStamp+100 <= currentTime then
+			print("--eventSoundHandler.updateForPlayer: ts:"..timeStamp.."+100 >="..currentTime)
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
 			emitter:stopAll()
+			storedLooperEventsUpdateTimes[emitterID] = nil
 		end
 	end
 end
@@ -38,7 +40,7 @@ function eventMarkerHandler.updateForPlayer(player)
 			if marker then
 				local currentTime = getGametimeTimestamp()
 				local expireTime = eventMarkerHandler.expirations[player][id]
-				if (expireTime <= currentTime) and (marker.lastUpdateTime+10 <= currentTime) then
+				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTime) then
 					marker:setDuration(0)
 				end
 			end
