@@ -21,7 +21,7 @@ function eventSoundHandler.updateForPlayer(player)
 	local currentTime = getGametimeTimestamp()
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
 		if timeStamp+100 <= currentTime then
-			print("--eventSoundHandler.updateForPlayer: ts:"..timeStamp.."+100 >="..currentTime)
+			--print("--eventSoundHandler.updateForPlayer: ts:"..timeStamp.."+100 >="..currentTime)
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
 			emitter:stopAll()
