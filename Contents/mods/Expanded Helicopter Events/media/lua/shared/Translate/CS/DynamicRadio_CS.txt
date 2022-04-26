@@ -1,0 +1,11 @@
+DynamicRadio_CS = {
+    AEBS_AirRaid = "ZÙSTAÒTE UVNITØ A HLEDEJTE ÚKRYT",
+    AEBS_JetBombing = "Pøíchozí bombardování oblasti.",
+    AEBS_JetPass = "Prùlet proudového letounu.",
+    AEBS_Raiders = "Pokud to slyšíte, jdìte do...",
+    AEBS_SamaritanDrop = "Všem, kdo jsou ještì naživu, pøinášíme zásoby.",
+    AEBS_SupplyDrop = "Pøíchozí dodávka zásob.",
+    AEBS_SurvivorHeli = "Lovec s koøistí míøí ven.",
+    AEBS_UnauthorizedEntryNews = "Nepovolená letecká èinnost, narušení vzdušného prostoru médii.",
+    AEBS_UnauthorizedEntryPolice = "Nepovolená letecká èinnost, nepovolené prosazování poøádku.",
+}
