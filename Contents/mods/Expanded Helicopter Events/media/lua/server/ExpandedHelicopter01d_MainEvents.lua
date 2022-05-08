@@ -27,47 +27,62 @@ function eHelicopter:crash()
 		end
 
 		local heliX, heliY, _ = self:getXYZAsInt()
-		local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
-		local extraFunctions = {"applyCrashOnVehicle"}
-		if self.addedFunctionsToEvents then
-			local eventFunction = self.currentPresetID.."OnCrash"--self.addedFunctionsToEvents["OnCrash"]
-			if eventFunction then
-				table.insert(extraFunctions, eventFunction)
+		local returned_sq
+		local square = getCell():getOrCreateGridSquare(heliX, heliY, 0)
+		if square then
+			---@type IsoGridSquare
+			returned_sq = getOutsideSquareFromAbove_vehicle(square)
+			if returned_sq then
+				heliX = returned_sq:getX()
+				heliY = returned_sq:getY()
 			end
 		end
 
-		SpawnerTEMP.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+		if not returned_sq then
 
-		self.crashType = false
-		self.state = "crashed"
-		--drop scrap and parts
-		if self.scrapItems or self.scrapVehicles then
-			self:dropScrap(6)
+			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
+
+			local extraFunctions = {"applyCrashOnVehicle"}
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.currentPresetID.."OnCrash"--self.addedFunctionsToEvents["OnCrash"]
+				if eventFunction then
+					table.insert(extraFunctions, eventFunction)
+				end
+			end
+
+			SpawnerTEMP.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+
+			self.crashType = false
+			self.state = "crashed"
+			--drop scrap and parts
+			if self.scrapItems or self.scrapVehicles then
+				self:dropScrap(6)
+			end
+
+			--drop package on crash
+			if self.dropPackages then
+				self:dropCarePackage(2)
+			end
+
+			--drop all items
+			if self.dropItems then
+				self:dropAllItems(4)
+			end
+
+			--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
+			self:spawnCrew()
+			addSound(nil, heliX, heliY, 0, 250, 300)
+			eventSoundHandler:playEventSound(self, "crashEvent")
+
+			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 180, heliX, heliY)
+
+			self:unlaunch()
+
+			local globalModData = getExpandedHeliEventsModData()
+			globalModData.DayOfLastCrash = math.max(1,getGameTime():getNightsSurvived())
+			return true
 		end
-
-		--drop package on crash
-		if self.dropPackages then
-			self:dropCarePackage(2)
-		end
-
-		--drop all items
-		if self.dropItems then
-			self:dropAllItems(4)
-		end
-
-		--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
-		self:spawnCrew()
-		addSound(nil, heliX, heliY, 0, 250, 300)
-		eventSoundHandler:playEventSound(self, "crashEvent")
-
-		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 180, heliX, heliY)
-
-		self:unlaunch()
-
-		local globalModData = getExpandedHeliEventsModData()
-		globalModData.DayOfLastCrash = math.max(1,getGameTime():getNightsSurvived())
-		return true
 	end
 	return false
 end
@@ -201,6 +216,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	local carePackagesWithOutChutes = {["FEMASupplyDrop"]=true}
 
 	local heliX, heliY, _ = self:getXYZAsInt()
+
 	if heliX and heliY then
 		local minX, maxX = 2, 3+fuzz
 		if ZombRand(1, 101) <= 50 then
@@ -214,18 +230,31 @@ function eHelicopter:dropCarePackage(fuzz)
 		heliY = heliY+ZombRand(minY,maxY+1)
 	end
 
-	local extraFunctions = {}
-	if carePackagesWithOutChutes[carePackage]~=true then
-		table.insert(extraFunctions, "applySoundToEvent")
+	local returned_sq
+	local square = getCell():getOrCreateGridSquare(heliX, heliY, 0)
+	if square then
+		---@type IsoGridSquare
+		returned_sq = getOutsideSquareFromAbove_vehicle(square)
+		if returned_sq then
+			heliX = returned_sq:getX()
+			heliY = returned_sq:getY()
+		end
 	end
 
-	SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
-	--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
-	eventSoundHandler:playEventSound(self, "droppingPackage")
-	addSound(nil, heliX, heliY, 0, 200, 150)
-	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 180, heliX, heliY)
-	self.dropPackages = false
-	return true
+	if returned_sq then
+		local extraFunctions = {}
+		if carePackagesWithOutChutes[carePackage]~=true then
+			table.insert(extraFunctions, "applySoundToEvent")
+		end
+
+		SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
+		eventSoundHandler:playEventSound(self, "droppingPackage")
+		addSound(nil, heliX, heliY, 0, 200, 150)
+		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 180, heliX, heliY)
+		self.dropPackages = false
+		return true
+	end
 end
 
 

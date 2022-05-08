@@ -16,6 +16,7 @@ Events.OnGameBoot.Add(function()
 	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test 90 Days [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 	ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
 	ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
+	ISCustomDebugTestsPanel.Tests.checkSquare = CustomDebugPanel.checkSquare
 	ISCustomDebugTestsPanel.Tests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
 end)
 
@@ -64,6 +65,20 @@ function CustomDebugPanel.RecursiveTablePrint(object,nesting,every_other)
 	return text
 end
 --function PrintProceduralDistributions() print("ProceduralDistributions:"..CustomDebugPanel.RecursiveTablePrint(ProceduralDistributions).."\nEnd Of ProceduralDistributions") end
+
+
+function CustomDebugPanel.checkSquare()
+	---@type IsoMovingObject | IsoGameCharacter | IsoPlayer
+	local player = getSpecificPlayer(0)
+	local square = player:getSquare()
+
+	print("square:isOutside() : "..tostring(square:isOutside()))
+	print("square:isSolidFloor() : "..tostring(square:isSolidFloor()))
+	print("square:getRoomID()==-1 : "..tostring(square:getRoomID()==-1))
+
+	print("square:isSolid() : "..tostring(square:isSolid()))
+	print("square:isSolidTrans() : "..tostring(square:isSolidTrans()))
+end
 
 
 function CustomDebugPanel.ZombRandTest(imax)

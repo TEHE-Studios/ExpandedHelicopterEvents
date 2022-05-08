@@ -205,7 +205,7 @@ function getOutsideSquareFromAbove(square,isVehicle)
 		return
 	end
 
-	if square:isOutside() and square:isSolidFloor() then
+	if square:isOutside() and not square:isSolidTrans() and square:getRoomID()==-1 then
 		return square
 	end
 
@@ -218,7 +218,7 @@ function getOutsideSquareFromAbove(square,isVehicle)
 
 	for i=1, 7 do
 		local sq = getSquare(x, y, i)
-		if sq and sq:isOutside() and sq:isSolidFloor() then
+		if sq and sq:isOutside() and not sq:isSolidTrans() and sq:getRoomID()==-1 then
 			return sq
 		end
 	end
