@@ -72,10 +72,14 @@ function CustomDebugPanel.checkSquare()
 	local player = getSpecificPlayer(0)
 	local square = player:getSquare()
 
+	if not square then
+		print("square is null")
+		return
+	end
+
 	print("square:isOutside() : "..tostring(square:isOutside()))
 	print("square:isSolidFloor() : "..tostring(square:isSolidFloor()))
 	print("square:getRoomID()==-1 : "..tostring(square:getRoomID()==-1))
-
 	print("square:isSolid() : "..tostring(square:isSolid()))
 	print("square:isSolidTrans() : "..tostring(square:isSolidTrans()))
 end
