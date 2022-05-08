@@ -157,25 +157,6 @@ function eHelicopter:isInBounds()
 end
 
 
---This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
----@param square IsoGridSquare
-function getOutsideSquareFromAbove_vehicle(square)
-	local foundSquare
-	local aSqOutsideAbove = {}
-	for k,sq in pairs(getIsoRange(square, 2)) do
-		local outsideSq = getOutsideSquareFromAbove(sq,true)
-		if outsideSq then
-			table.insert(aSqOutsideAbove,outsideSq)
-		end
-	end
-	if #aSqOutsideAbove > 0 then
-		foundSquare = aSqOutsideAbove[ZombRand(#aSqOutsideAbove)+1]
-	end
-
-	return foundSquare
-end
-
-
 ---@param vector Vector3
 ---@return number
 function eHelicopter:getDistanceToVector(vector)
