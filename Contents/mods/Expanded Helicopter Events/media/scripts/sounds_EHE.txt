@@ -31,7 +31,8 @@ module Base {
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 650, volume = 0.7, } }
+        clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 650, volume = 0.7, } 
+        clip { file = media/sound/bandit_vibes.ogg, distanceMax = 650, volume = 0.7, } }
 
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
