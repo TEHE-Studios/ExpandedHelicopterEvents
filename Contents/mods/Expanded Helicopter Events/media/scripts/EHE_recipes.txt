@@ -225,13 +225,24 @@ module EHE
 		Category:Welding,
 		keep WeldingMask,
 		BlowTorch=15,
-		Bell206RotorBlade,
+		Bell206RotorBlade1,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
 		Time:350,
 		AnimNode:Disassemble,
 	}
 
+    	recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		Bell206RotorBlade2,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
 
         recipe Dismantle Tail Rotor Blade
 	{
@@ -251,13 +262,112 @@ module EHE
 		Category:Welding,
 		keep WeldingMask,
 		BlowTorch=15,
-		UH1HRotorBlade,
+		UH1HRotorBlade1,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
 		Time:350,
 		AnimNode:Disassemble,
 	}
 
+
+        recipe Dismantle UH-60 Window
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60WindowDesert,
+		Result:MetalBar,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Window
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60WindowGreen,
+		Result:MetalBar,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle UH-60 Door
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60DoorDesert,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Door
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60DoorMedevac,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Door
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60DoorGreen,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle UH-60 Elevator
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60ElevatorDesert,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Elevator
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH60Elevator,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=15,
+		UH1HRotorBlade2,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
 
         recipe Dismantle Helicopter Skirt
 	{
@@ -271,13 +381,12 @@ module EHE
 		AnimNode:Disassemble,
 	}
 
-
         recipe Dismantle Helicopter Skirt
 	{
 		Category:Welding,
 		keep WeldingMask,
 		BlowTorch=15,
-        UH1HHalfSkirt,
+		UH1HHalfSkirt2,
 		Result:MetalBar=4,
 		CanBeDoneFromFloor:true,
 		Time:350,

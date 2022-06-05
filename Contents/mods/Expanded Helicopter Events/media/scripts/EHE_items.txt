@@ -1,6 +1,6 @@
 module EHE
 {
-
+/*
 		item SignalFlare
 	{
 		DisplayCategory = Tool,
@@ -22,7 +22,7 @@ module EHE
 		Tooltip = Tooltip_SignalFlareSpent,
 		Icon = SignalFlare,
 	}
-	
+	*/
 	    item EHE_Parachute
 	{
 		DisplayCategory = Junk,
