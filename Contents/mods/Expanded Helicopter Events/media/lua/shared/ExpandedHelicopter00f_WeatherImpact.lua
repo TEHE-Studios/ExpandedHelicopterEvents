@@ -6,9 +6,9 @@ function eHeliEvent_weatherImpact()
 	local willFly = true
 	local impactOnFlightSafety = 0
 
-	local wind = CM:getWindIntensity()
-	local fog = CM:getFogIntensity()
-	local rain = CM:getRainIntensity()/2
+	local wind = CM:getWindIntensity()/2
+	local fog = CM:getFogIntensity()/2
+	local rain = CM:getRainIntensity()/3
 	local snow = CM:getSnowIntensity()/2
 	local thunder = CM:getIsThunderStorming()
 

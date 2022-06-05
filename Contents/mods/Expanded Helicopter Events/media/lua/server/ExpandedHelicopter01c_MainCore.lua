@@ -605,14 +605,14 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	if applyEnvironmentalCrashChance then
 		local _, weatherImpact = eHeliEvent_weatherImpact()
 		local daysIntoApoc = globalModData.DaysBeforeApoc+getGameTime():getNightsSurvived()
-		local apocImpact = (daysIntoApoc/cutOffDay)/10
+		local apocImpact = (daysIntoApoc/cutOffDay)/20
 		local dayOfLastCrash = globalModData.DayOfLastCrash
 		local crashDayCap = 28
 		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/crashDayCap)/2
 
 		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
 		crashChance = math.min(100,math.floor(crashChance))
-		crashChance = crashChance/(eventFrequency/2)
+		crashChance = crashChance/(eventFrequency/3)
 
 		--[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
 		--[DEBUG]] print(" ---- expectedMaxDaysWithOutCrash:"..expectedMaxDaysWithOutCrash)
