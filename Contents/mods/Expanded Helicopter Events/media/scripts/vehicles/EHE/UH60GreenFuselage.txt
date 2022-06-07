@@ -107,22 +107,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 1.0669 2.3457 0.8253 0.8253,
+			xywh = 0.5948 1.4238 0.3717 0.3569,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0669 2.3457 0.8253 0.8253,
+			xywh = -0.5948 1.4238 0.3717 0.3569,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 1.0669 1.5204 0.8253 0.8253,
+			xywh = 0.8216 0.4126 0.8253 0.8253,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -1.0669 1.5204 0.8253 0.8253,
+			xywh = -0.8216 0.4126 0.8253 0.8253,
 		}
 
 		template = Seat/part/SeatFrontLeft,
@@ -169,7 +169,7 @@ module Base
 				create = Vehicles.Create.Default,
 			}
 		}
-		
+
 		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,

@@ -541,28 +541,23 @@ VehicleDistributions.SurvivorSupplyDrop = {
     }
 }
 
--- UH-1H tables
+-- UH-60A tables
 
-VehicleDistributions.UH1H = {
+VehicleDistributions.UH60Green = {
 	
 	SeatFrontRight = VehicleDistributions.UH1HSeat;
 	SeatRearLeft = VehicleDistributions.UH1HSeat;
 	SeatRearRight = VehicleDistributions.UH1HSeat;
-}
-
-VehicleDistributions.UH1HRaider = {
-	
-	SeatFrontRight = VehicleDistributions.UH1HRaiderSeat;
-	SeatRearLeft = VehicleDistributions.UH1HRaiderSeat;
-	SeatRearRight = VehicleDistributions.UH1HRaiderSeat;
+    HelicopterInterior = VehicleDistributions.UH1HSeat;
 }
 
 
-VehicleDistributions.UH1HMedevac = {
+VehicleDistributions.UH60Medevac = {
 	
 	SeatFrontRight =  VehicleDistributions.UH1HMedevacSeat;
 	SeatRearLeft =  VehicleDistributions.UH1HMedevacSeat;
 	SeatRearRight =  VehicleDistributions.UH1HMedevacSeat;
+    HelicopterInterior = VehicleDistributions.UH1HSeat;
 }
 
 --Bell 206 tables
@@ -588,14 +583,6 @@ VehicleDistributions.Bell206Survivalist = {
     SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
 }    
 
-VehicleDistributions.Bell206Black = {
-	
-    SeatFrontRight =  VehicleDistributions.Bell20BlackSeat;
-    SeatRearLeft =  VehicleDistributions.Bell206BlackSeat;
-    SeatRearRight =  VehicleDistributions.Bell20BlackSeat;
-}    
-
-
 --Supply Drop
 
 VehicleDistributions.FEMASupplyDrop = {
@@ -612,9 +599,8 @@ VehicleDistributions.SurvivorSupplyDrop = {
 
 --Distribution
 
-distributionTable["UH1HFuselage"] = { Normal = VehicleDistributions.UH1H; }
-distributionTable["UH1HRaiderFuselage"] = { Normal = VehicleDistributions.UH1HRaider; }
-distributionTable["UH1HMedevacFuselage"] = { Normal = VehicleDistributions.UH1HMedevac; }
+distributionTable["UH60Green"] = { Normal = VehicleDistributions.UH60Green; }
+distributionTable["UH60Medevac"] = { Normal = VehicleDistributions.UH60Medevac; }
 distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
 distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }

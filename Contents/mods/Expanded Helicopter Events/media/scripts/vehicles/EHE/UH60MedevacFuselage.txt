@@ -45,7 +45,7 @@ module Base
 		{
 			position inside
 			{
-				offset = 0.2342 0.3606 0.9628,
+				offset = 0.3680 0.4349 0.9628,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -61,7 +61,7 @@ module Base
 		{
 			position inside
 			{
-				offset = -0.1636 0.3494 0.9628,
+				offset = -0.3680 0.4349 0.9628,
 				rotate = 0.0000 0.0000 0.0000,
 			}
 
@@ -107,22 +107,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 0.8216 1.5242 0.8253 0.8253,
+			xywh = 0.5948 1.4238 0.3717 0.3569,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -0.8253 1.5242 0.8253 0.8253,
+			xywh = -0.5948 1.4238 0.3717 0.3569,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 0.8216 0.6171 0.8253 0.8253,
+			xywh = 0.8216 0.4126 0.8253 0.8253,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -0.8178 0.5762 0.8253 0.8253,
+			xywh = -0.8216 0.4126 0.8253 0.8253,
 		}
 
 		template = Seat/part/SeatFrontLeft,
@@ -150,6 +150,23 @@ module Base
 			lua
 			{
 				update = Vehicles.Update.PassengerCompartment,
+			}
+		}
+
+		part HelicopterInterior
+		{
+			area = SeatFrontRight,
+			itemType = EHE.HelicopterInterior,
+			specificItem = false,
+
+			container
+			{
+				test = Vehicles.ContainerAccess.HelicopterInterior,
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
 			}
 		}
 
