@@ -107,22 +107,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 1.0669 2.3457 0.8253 0.8253,
+			xywh = 0.6245 1.8476 0.4089 0.3717,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0669 2.3457 0.8253 0.8253,
+			xywh = -0.6245 1.8476 0.4089 0.3717,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 1.0669 1.5204 0.8253 0.8253,
+			xywh = 0.6245 0.9591 0.4089 0.8253,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -1.0669 1.5204 0.8253 0.8253,
+			xywh = -0.6245 0.9591 0.4089 0.8253,
 		}
 
 		template = Seat/part/SeatFrontLeft,

@@ -30,11 +30,11 @@ module Base
 
 		textureMask = Vehicle_UH60_mask,
 		textureShadow = highlights/vehicleShadowUH60,
-		extents = 1.0409 1.1822 4.5502,
+	extents = 0.8401 1.1822 4.5353,
 		mass = 200,
-		physicsChassisShape = 1.0409 1.1599 4.5428,
+		physicsChassisShape = 0.8253 1.1599 4.5428,
 		centerOfMassOffset = 0.0000 0.5799 0.1041,
-		shadowExtents = 1.5196 4.5297,
+		shadowExtents = 1.5196 4.7081,
 		shadowOffset = 0.0000 0.1044,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
@@ -107,22 +107,22 @@ module Base
 
 		area SeatFrontLeft
 		{
-			xywh = 1.0669 2.3457 0.8253 0.8253,
+			xywh = 0.6245 1.8476 0.4089 0.3717,
 		}
 
 		area SeatFrontRight
 		{
-			xywh = -1.0669 2.3457 0.8253 0.8253,
+			xywh = -0.6245 1.8476 0.4089 0.3717,
 		}
 
 		area SeatRearLeft
 		{
-			xywh = 1.0669 1.5204 0.8253 0.8253,
+			xywh = 0.6245 0.9591 0.4089 0.8253,
 		}
 
 		area SeatRearRight
 		{
-			xywh = -1.0669 1.5204 0.8253 0.8253,
+			xywh = -0.6245 0.9591 0.4089 0.8253,
 		}
 
 		template = Seat/part/SeatFrontLeft,
