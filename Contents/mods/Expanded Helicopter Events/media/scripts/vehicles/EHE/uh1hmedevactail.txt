@@ -1,0 +1,53 @@
+module Base
+{
+	model Vehicle_UH1HTail
+	{
+		mesh = vehicles/Vehicle_UH1Htail,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle UH1HMedevacTail
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_UH1HTail,
+			scale = 1.8200,
+			offset = 0.1099 -0.0220 0.3681,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_UH1HMedevacDamaged,
+		}
+
+		textureMask = Vehicle_UH1H_mask,
+		extents = 1.2857 2.0220 3.0440,
+		mass = 200,
+		physicsChassisShape = 1.2857 2.0330 3.0440,
+		centerOfMassOffset = 0.0000 0.9890 0.1044,
+		shadowExtents = 0.4945 3.0440,
+		shadowOffset = -0.0495 0.1044,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+
+		attachment trailer
+		{
+			offset = 0.0000 0.0000 -1.4670,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 0.0000 1.1209,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+}

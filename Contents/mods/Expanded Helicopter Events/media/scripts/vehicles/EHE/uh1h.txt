@@ -1,0 +1,165 @@
+module Base
+{
+	model Vehicle_UH1H
+	{
+		mesh = vehicles/Vehicle_UH1H,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle UH1H
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_UH1H,
+			scale = 1.8200,
+			offset = 0.0000 -0.0220 1.3462,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_UH1H,
+		}
+
+		textureMask = Vehicle_UH1H_mask,
+		textureShadow = highlights/vehicleShadowHelicopter,
+		extents = 1.3077 2.0220 5.8791,
+		mass = 200,
+		physicsChassisShape = 1.3846 2.0330 5.8791,
+		centerOfMassOffset = 0.0000 0.9890 0.1044,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 4,
+
+		template = PassengerSeat4,
+
+		passenger FrontLeft
+		{
+			position inside
+			{
+				offset = 0.3681 0.4341 0.9615,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 1.3022 0.0000 1.0385,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontLeft,
+			}
+		}
+
+		passenger FrontRight
+		{
+			position inside
+			{
+				offset = -0.3681 0.4341 0.9615,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -1.3022 0.0000 1.0385,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatFrontRight,
+			}
+		}
+
+		passenger RearLeft
+		{
+			position inside
+			{
+				offset = 0.3626 0.4341 -0.2582,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = 1.2912 0.0000 -0.2802,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatRearLeft,
+			}
+		}
+
+		passenger RearRight
+		{
+			position inside
+			{
+				offset = -0.3626 0.4341 -0.2582,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			position outside
+			{
+				offset = -1.2912 0.0000 -0.2802,
+				rotate = 0.0000 0.0000 0.0000,
+				area = SeatRearRight,
+			}
+		}
+
+		area SeatFrontLeft
+		{
+			xywh = 1.0659 2.3462 0.8242 0.8242,
+		}
+
+		area SeatFrontRight
+		{
+			xywh = -1.0659 2.3462 0.8242 0.8242,
+		}
+
+		area SeatRearLeft
+		{
+			xywh = 1.0659 1.5220 0.8242 0.8242,
+		}
+
+		area SeatRearRight
+		{
+			xywh = -1.0659 1.5220 0.8242 0.8242,
+		}
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+		template = Seat/part/SeatRearLeft,
+		template = Seat/part/SeatRearRight,
+
+		part Seat*
+		{
+			table install
+			{
+				skills = Mechanics:2,
+			}
+
+			table uninstall
+			{
+				skills = Mechanics:2,
+			}
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+
+			lua
+			{
+				update = Vehicles.Update.PassengerCompartment,
+			}
+		}
+
+		template = Windshield/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRearLeft,
+		template = Door/part/DoorRearRight,
+	}
+}
