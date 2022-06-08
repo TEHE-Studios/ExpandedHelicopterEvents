@@ -80,7 +80,15 @@ function eHelicopter:update()
 				self.trueTarget = newTarget
 			else
 				--look again later
-				self.timeSinceLastSeenTarget = timeStampMS+(self.searchForTargetDuration/5)
+				local timeInterval = self.searchForTargetDuration/5
+				--Remove this time from hover-time
+				if type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
+					self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(5,(timeInterval/100))
+					if self.hoverOnTargetDuration <= 0 then
+						self.hoverOnTargetDuration = false
+					end
+				end
+				self.timeSinceLastSeenTarget = timeStampMS+timeInterval
 			end
 		end
 
@@ -138,7 +146,7 @@ function eHelicopter:update()
 
 				--[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
 
-				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(1,(1*getGameSpeed()))
+				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(5,(5*getGameSpeed()))
 				if self.hoverOnTargetDuration <= 0 then
 					self.hoverOnTargetDuration = false
 				end
