@@ -363,11 +363,6 @@ VehicleDistributions.Bell206NewsSeat = {
 
         "EHE.Hat_SPHCivilian", 10,
         "EHE.Hat_SPHCivilian", 5,
-        "Hat_PressHelmet", 4,
-        "Hat_PressHelmet", 4,
-        "Vest_BulletPress", 4,
-        "Vest_BulletPress", 4,
-        "Vest_BulletPress", 4,
 
         -- AZ -- 
 
@@ -429,49 +424,6 @@ VehicleDistributions.Bell206SurvivalistSeat = {
         "AuthenticZClothing.AuthenticSmokeBomb", 10,
 
     }
-}
-
-VehicleDistributions.Bell206BlackSeat = {
-    rolls = 5,
-    items ={
-        "Pistol", 5,
-        "Pistol", 5,
-        "Pistol", 5,
-        "9mmClip", 3,
-        "9mmClip", 3,
-        "9mmClip", 3,
-        "Bullets9mm", 3,
-        "Bullets9mm", 3,
-        "Bullets9mm", 3,
-        "Bullets9mm", 3,
-        "Bullets9mm", 3,
-        "FirstAidKit", 5,
-        "Bag_LargeBackpack", 6,
-        "HazmatSuit", 10,
-        "HazmatSuit", 10,
-        "HazmatSuit", 10,
-        
-        -- EHE --
-
-        "EHE.Hat_SPHBlack", 10,
-        "EHE.Vest_BlackPilotSurvivalVest", 10,
-        "EHE.Suit_BlackFlying", 10,
-
-        -- SMUI --
-
-        "SMUIClothing.Hat_M17", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-        "SMUIClothing.MilitaryWebbing", 10,
-
-        -- AZ --
-
-        "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
-        "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
-        "AuthenticZClothing.AuthenticSmokeBomb", 10,
-    }
-
-
 }
 
 VehicleDistributions.FEMASupplyDrop = {
