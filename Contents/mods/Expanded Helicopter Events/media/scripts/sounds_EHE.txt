@@ -31,7 +31,8 @@ module Base {
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/HeliMusicPassive.ogg, distanceMax = 650, volume = 0.7, } 
+        clip { file = media/sound/BecauseImAMan.ogg, distanceMax = 650, volume = 0.7, } 
+        clip { file = media/sound/TheGonk.ogg, distanceMax = 650, volume = 0.7, } 
         clip { file = media/sound/bandit_vibes.ogg, distanceMax = 650, volume = 0.7, } }
 
     sound eHeliMusicAggressive {
@@ -158,9 +159,6 @@ module Base {
 
     sound eHeli_police_lines {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/police_1.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_2.ogg, distanceMax = 500, volume = 3.0, }
-        clip { file = media/sound/police_3.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_4.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_5.ogg, distanceMax = 500, volume = 3.0, }
         clip { file = media/sound/police_6.ogg, distanceMax = 500, volume = 3.0, }

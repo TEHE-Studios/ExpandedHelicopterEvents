@@ -81,6 +81,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 eHelicopter_PRESETS["cargo_helicopter"] = {
 	inherit = {"military"},
 	announcerVoice = false,
+	crashType = false,
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	eventSoundEffects = {
@@ -263,7 +264,6 @@ eHelicopter_PRESETS["survivor_heli"] = {
 
 eHelicopter_PRESETS["raiders"] = {
 	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1},
-	speed = 2.0,
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
@@ -278,23 +278,29 @@ eHelicopter_PRESETS["raiders"] = {
 
 eHelicopter_PRESETS["raider_heli_passive"] = {
 	inherit = {"raiders"},
+	speed = 0.5,
+	flightVolume = 750,
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
+		["additionalFlightSound"] = "eHeliMusicPassive",
 	},
 }
 
 eHelicopter_PRESETS["raider_heli_harasser"] = {
 	inherit = {"raiders"},
-	hoverOnTargetDuration = {850,1000},
-	attackDelay = 1700,
+	hoverOnTargetDuration = {450,850},
+	speed = 2,
+	attackDelay = 1000,
 	attackSpread = 4,
-	attackHitChance = 40,
-	attackDamage = 70,
+	attackHitChance = 70,
+	attackDamage = 50,
+	flightVolume = 750,
+	crashType = false,
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
-		["attackSingle"] = "eHeliRaiderGuns",
-		["attackLooped"] = "eHeliRaiderGuns",
+		["attackSingle"] = "eHeliAlternatingShots",
+		["attackLooped"] = "eHeliAlternatingShots",
 		["additionalFlightSound"] = "eHeliMusicAggressive",
 	},
 }
