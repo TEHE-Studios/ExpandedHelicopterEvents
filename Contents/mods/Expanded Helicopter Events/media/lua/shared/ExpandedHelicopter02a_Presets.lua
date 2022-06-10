@@ -230,6 +230,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	hoverOnTargetDuration = {375,575},
 }
 
+
 eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
@@ -243,6 +244,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	eventSpawnWeight = 3,
 	radioChatter = "AEBS_SamaritanDrop"
 }
+
 
 eHelicopter_PRESETS["survivor_heli"] = {
 	speed = 1.5,
@@ -259,8 +261,9 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	radioChatter = "AEBS_SurvivorHeli",
 }
 
+
 eHelicopter_PRESETS["raiders"] = {
-	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1 "raider_heli_harasser",0.5},
+	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
@@ -271,6 +274,7 @@ eHelicopter_PRESETS["raiders"] = {
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_Raiders",
 }
+
 
 eHelicopter_PRESETS["raider_heli_passive"] = {
 	inherit = {"raiders"},
@@ -290,24 +294,6 @@ eHelicopter_PRESETS["raider_heli_harasser"] = {
 	attackSpread = 4,
 	attackHitChance = 70,
 	attackDamage = 50,
-	flightVolume = 750,
-	crashType = false,
-	hostilePreference = "IsoZombie",
-	eventSoundEffects = {
-		["flightSound"] = "eMiliHeli",
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = "eHeliMusicAggressive",
-	},
-
-eHelicopter_PRESETS["raider_heli_hostile"] = {
-	inherit = {"raiders"},
-	hoverOnTargetDuration = {450,850},
-	speed = 0.5,
-	attackDelay = 700,
-	attackSpread = 4,
-	attackHitChance = 30,
-	attackDamage = 35,
 	flightVolume = 750,
 	crashType = false,
 	hostilePreference = "IsoZombie",
