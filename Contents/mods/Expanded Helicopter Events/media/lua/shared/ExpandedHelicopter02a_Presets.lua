@@ -263,7 +263,7 @@ eHelicopter_PRESETS["survivor_heli"] = {
 
 
 eHelicopter_PRESETS["raiders"] = {
-	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1},
+	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1,"raider_heli_hostile",1},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
@@ -297,6 +297,26 @@ eHelicopter_PRESETS["raider_heli_harasser"] = {
 	flightVolume = 750,
 	crashType = false,
 	hostilePreference = "IsoZombie",
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeli",
+		["attackSingle"] = "eHeliAlternatingShots",
+		["attackLooped"] = "eHeliAlternatingShots",
+		["additionalFlightSound"] = "eHeliMusicAggressive",
+	},
+}
+
+
+eHelicopter_PRESETS["raider_heli_hostile"] = {
+	inherit = {"raiders"},
+	hoverOnTargetDuration = {650,1500},
+	speed = 1.5,
+	attackDelay = 650,
+	attackSpread = 4,
+	attackHitChance = 60,
+	attackDamage = 10,
+	flightVolume = 750,
+	crashType = false,
+	hostilePreference = "IsoPlayer",
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
 		["attackSingle"] = "eHeliAlternatingShots",
