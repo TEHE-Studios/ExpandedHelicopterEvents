@@ -26,6 +26,7 @@ eHelicopter_PRESETS["military"] = {
 	presetProgression = {
 		["patrol_only"] = 0,
 		["patrol_only_emergency"] = 0.0066,
+		["military_recon_hover"] = 0.0070
 		["patrol_only_quarantine"] = 0.0165,
 		["attack_only_undead_evac"] = 0.033,
 		["attack_only_undead"] = 0.066,
@@ -87,6 +88,11 @@ eHelicopter_PRESETS["cargo_helicopter"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeliCargo",
 	},
+}
+
+eHelicopter_PRESETS["military_recon_hover"] = {
+	inherit = {"military"},
+	hoverOnTargetDuration = {200,400},
 }
 
 eHelicopter_PRESETS["FEMA_drop"] = {
