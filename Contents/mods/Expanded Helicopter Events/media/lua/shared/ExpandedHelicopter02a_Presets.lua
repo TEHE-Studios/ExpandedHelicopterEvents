@@ -256,6 +256,7 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206SurvivalistTail"},
 	forScheduling = true,
+	crashType = false,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorHeli",
