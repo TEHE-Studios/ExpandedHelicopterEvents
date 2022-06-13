@@ -38,61 +38,16 @@ module Base
 		shadowOffset = 0.0000 0.0003,
 		frontEndHealth = 550,
 		rearEndHealth = 150,
-		seats = 2,
-		template = PassengerSeat2,
-
-		passenger FrontLeft
-		{
-			position inside
-			{
-				offset = 0.3680 0.4349 0.9628,
-				rotate = 0.0000 0.0000 0.0000,
-			}
-
-			position outside
-			{
-				offset = 1.3011 0.0000 1.0372,
-				rotate = 0.0000 0.0000 0.0000,
-				area = SeatFrontLeft,
-			}
-		}
-
-		passenger FrontRight
-		{
-			position inside
-			{
-				offset = -0.3680 0.4349 0.9628,
-				rotate = 0.0000 0.0000 0.0000,
-			}
-
-			position outside
-			{
-				offset = -1.3011 0.0000 1.0372,
-				rotate = 0.0000 0.0000 0.0000,
-				area = SeatFrontRight,
-			}
-		}
-
-		area SeatFrontLeft
-		{
-			xywh = 0.5948 1.4238 0.3717 0.3569,
-		}
-
-		area SeatFrontRight
-		{
-			xywh = -0.5948 1.4238 0.3717 0.3569,
-		}
 
 		area TruckBed
 		{
-			xywh = 0.0000 -0.7912 1.8132 1.4945,
+			xywh = 0.0000 0.6989 1.1375 1.6283,
 		}
-
-		template = Seat/part/SeatFrontLeft,
-		template = Seat/part/SeatFrontRight,
 
 		part Seat*
 		{
+			category = nodisplay,
+
 			table install
 			{
 				skills = Mechanics:2,
@@ -105,18 +60,19 @@ module Base
 		}
 
 		template = Trunk/part/TruckBedOpen,
-        part TruckBedOpen
-        {
-            container
-            {
-                capacity = 300,
-            }
-        }
+
+		part TruckBedOpen
+		{
+			category = nodisplay,
+
+			container
+			{
+				capacity = 300,
+			}
+		}
 
 		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,
-		template = Door/part/DoorFrontLeft,
-		template = Door/part/DoorFrontRight,
 	}
 }
