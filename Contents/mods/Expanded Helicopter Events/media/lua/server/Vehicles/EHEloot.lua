@@ -2,7 +2,7 @@
 local distributionTable = VehicleDistributions[1]
 
 
-VehicleDistributions.UH1HSeat = {
+VehicleDistributions.UH60 = {
     rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 4,
@@ -58,7 +58,6 @@ VehicleDistributions.UH1HSeat = {
         "SMUIClothing.Hat_M17", 10,
         "SMUIClothing.Hat_M17Doff", 10,
         "SMUIClothing.Hat_M40", 10,
-        "SMUIClothing.Hat_M40Doff", 10,
         "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
         "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
         "SMUIClothing.NightVisionGoggles", 10,
@@ -95,7 +94,7 @@ VehicleDistributions.UH1HSeat = {
     }
 }
 
-VehicleDistributions.UH1HRaiderSeat = {
+VehicleDistributions.RaiderCargo = {
     rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 4,
@@ -159,7 +158,6 @@ VehicleDistributions.UH1HRaiderSeat = {
         "SMUIClothing.Hat_M17", 10,
         "SMUIClothing.Hat_M17Doff", 10,
         "SMUIClothing.Hat_M40", 10,
-        "SMUIClothing.Hat_M40Doff", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
         "SMUIClothing.MilitaryWebbing", 10,
@@ -187,7 +185,7 @@ VehicleDistributions.UH1HRaiderSeat = {
     }
 }
 
-VehicleDistributions.UH1HMedevacSeat = {
+VehicleDistributions.UH60Medevac = {
     rolls = 3,
     items ={
         "Bag_ALICEpack_Army", 4,
@@ -244,7 +242,6 @@ VehicleDistributions.UH1HMedevacSeat = {
         "SMUIClothing.Hat_M17", 10,
         "SMUIClothing.Hat_M17Doff", 10,
         "SMUIClothing.Hat_M40", 10,
-        "SMUIClothing.Hat_M40Doff", 10,
         "SMUIClothing.MilitaryWebbingBag", 10,
         "SMUIClothing.MilitaryWebbing", 5,
         "SMUIClothing.MilitaryWebbing", 5,
@@ -495,21 +492,16 @@ VehicleDistributions.SurvivorSupplyDrop = {
 
 -- UH-60A tables
 
-VehicleDistributions.UH60Green = {
+VehicleDistributions.UH60Cargo = {
 	
-	SeatFrontRight = VehicleDistributions.UH1HSeat;
-	SeatRearLeft = VehicleDistributions.UH1HSeat;
-	SeatRearRight = VehicleDistributions.UH1HSeat;
-    HelicopterInterior = VehicleDistributions.UH1HSeat;
+	TruckBedOpen = VehicleDistributions.UH60;
+
 }
 
 
-VehicleDistributions.UH60Medevac = {
+VehicleDistributions.UH60MedevacCargo = {
 	
-	SeatFrontRight =  VehicleDistributions.UH1HMedevacSeat;
-	SeatRearLeft =  VehicleDistributions.UH1HMedevacSeat;
-	SeatRearRight =  VehicleDistributions.UH1HMedevacSeat;
-    HelicopterInterior = VehicleDistributions.UH1HSeat;
+	TruckBedOpen =  VehicleDistributions.UH60Medevac;
 }
 
 --Bell 206 tables
@@ -551,8 +543,9 @@ VehicleDistributions.SurvivorSupplyDrop = {
 
 --Distribution
 
-distributionTable["UH60Green"] = { Normal = VehicleDistributions.UH60Green; }
-distributionTable["UH60Medevac"] = { Normal = VehicleDistributions.UH60Medevac; }
+distributionTable["UH60GreenFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
+distributionTable["UH60DesertFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
+distributionTable["UH60MedevacFuselage"] = { Normal = VehicleDistributions.UH60MedevacCargo; }
 distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
 distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
 distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
