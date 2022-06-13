@@ -1,0 +1,1 @@
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.3-ReturnOfTheMack"))
