@@ -212,8 +212,8 @@ module Base
 
 		model PilotSurvivalVest_Ground
 	{
-		mesh = WorldItems/PilotSurvivalVest_WorldItem,
-		texture = WorldItems/PilotSurvivalVest,
+		mesh = WorldItems/SRUVest_WorldItem,
+		texture = WorldItems/SRUVest,
 		scale = 1.0,
 	}
 		
