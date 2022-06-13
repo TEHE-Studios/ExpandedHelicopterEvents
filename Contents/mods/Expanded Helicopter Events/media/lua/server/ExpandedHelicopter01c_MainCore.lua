@@ -517,7 +517,7 @@ function eHelicopter:grabRandomSquareNearby(range)
 		yShift = 0-yShift
 	end
 
-	local square = getSquare(x+xShift,y+yShift, 0)
+	local square =  getCell():getOrCreateGridSquare(x+xShift,y+yShift, 0)
 
 	return square
 end
@@ -645,10 +645,11 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
 	local tpX = targetedObject:getX()
 	local tpY = targetedObject:getY()
-
+	local targetOffset = 75
+	
 	if not targetedObject:isOutside() then
-		tpX = tpX+ZombRand(-25,25)
-		tpY = tpY+ZombRand(-25,25)
+		tpX = tpX+ZombRand(0-targetOffset,targetOffset)
+		tpY = tpY+ZombRand(0-targetOffset,targetOffset)
 	end
 
 	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
