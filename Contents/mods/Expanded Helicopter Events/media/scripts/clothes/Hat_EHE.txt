@@ -178,43 +178,4 @@ module EHE
         Weight = 1.5,
 		Tooltip = Tooltip_SPHCivilian,
     }
-
-		item Hat_PressHelmet
-
-	{   
-		DisplayCategory = Clothing,
-		Type = Clothing,
-		DisplayName = Press Helmet,
-		ClothingItem = Hat_PressHelmet,
-		BodyLocation = Hat,
-		Icon = PressHelmet,
-		CanHaveHoles = false,
-		BloodLocation = FullHelmet,
-		BiteDefense = 100,
-		ScratchDefense = 100,
-		BulletDefense = 100,
-		ChanceToFall = 30,
-		Insulation = 0,
-		WaterResistance = 0.40,
-        Weight = 1.5,
-    }
-
-		item Hat_SurvivalistHelmet
-	{
-		DisplayCategory = Clothing,
-		Type = Clothing,
-		DisplayName = Survivalist Helmet,
-		ClothingItem = Hat_SurvivalistHelmet,
-		BodyLocation = Hat,
-		Icon = SurvivalistHelmet,
-		CanHaveHoles = false,
-		BloodLocation = FullHelmet,
-		BiteDefense = 100,
-		ScratchDefense = 100,
-		BulletDefense = 100,
-		ChanceToFall = 30,
-		Insulation = 0,
-		WaterResistance = 0.40,
-        Weight = 1.5,
-    }
 }
