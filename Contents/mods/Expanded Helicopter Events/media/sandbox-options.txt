@@ -3,48 +3,48 @@ VERSION = 1,
 option ExpandedHeli.StartDay
 {
 	type = integer, min = 0, max = 999, default = 0,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_StartDay,
+	page = ExpandedHeli, translation = ExpandedHeli_StartDay,
 }
 
 option ExpandedHeli.CutOffDay
 {
 	type = integer, min = 1, max = 999, default = 90,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_CutOffDay,
+	page = ExpandedHeli, translation = ExpandedHeli_CutOffDay,
 }
 
 option ExpandedHeli.NeverEnding
 {
 	type = boolean, default = false,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_NeverEnding,
+	page = ExpandedHeli, translation = ExpandedHeli_NeverEnding,
 }
 
 
 option ExpandedHeli.Frequency_jet
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventJet,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventJet,
+	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_police
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventPolice,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventPolice,
+	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_news_chopper
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventSurvivor,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventSurvivor,
+	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_military
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventMilitary,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventMilitary,
+	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_FEMA_drop
@@ -57,21 +57,21 @@ option ExpandedHeli.Frequency_FEMA_drop
 option ExpandedHeli.Frequency_samaritan_drop
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventSamaritan,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventSamaritan,
+	valueTranslation = ExpandedHeli_Frequency,
 }
  
 option ExpandedHeli.Frequency_survivor_heli
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventSurvivor,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventSurvivor,
+	valueTranslation = ExpandedHeli_Frequency,
 }
 
 option ExpandedHeli.Frequency_raiders
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = Sandbox_ExpandedHeli_EventRaider,
-	valueTranslation = Sandbox_ExpandedHeli_Frequency,
+	page = ExpandedHeli, translation = ExpandedHeli_EventRaider,
+	valueTranslation = ExpandedHeli_Frequency,
 }
 
