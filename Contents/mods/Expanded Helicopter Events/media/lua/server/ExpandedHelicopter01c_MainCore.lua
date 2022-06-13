@@ -618,7 +618,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 	end
 
-	if self.crashType and (not self.crashing) and (ZombRand(0,1001) <= crashChance) then
+	if self.crashType and (not self.crashing) and (ZombRand(0,501) <= crashChance) then
 		self.crashing = true
 	end
 	--[[DEBUG]] print(" --- "..self:heliToString().." crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
