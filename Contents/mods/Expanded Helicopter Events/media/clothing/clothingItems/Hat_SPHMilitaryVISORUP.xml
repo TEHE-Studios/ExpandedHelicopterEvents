@@ -10,6 +10,4 @@
 	<m_HatCategory>Group02</m_HatCategory>
 	<m_MasksFolder>media/textures/Clothes/Hat/Masks</m_MasksFolder>
 	<textureChoices>clothes\hat\Hat_SPHMilitaryVISORUP</textureChoices>
-	<textureChoices>clothes\hat\Hat_SPHMilitaryStripesVISORUP</textureChoices>
-	<textureChoices>clothes\hat\Hat_SPHMilitaryLightningVISORUP</textureChoices>
 </clothingItem>
