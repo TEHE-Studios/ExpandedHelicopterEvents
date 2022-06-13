@@ -36,10 +36,10 @@ module Base
 		centerOfMassOffset = 0.0000 0.5799 0.0000,
 		shadowExtents = 2.2854 3.8308,
 		shadowOffset = 0.0000 0.0003,
-		frontEndHealth = 150,
+		frontEndHealth = 550,
 		rearEndHealth = 150,
-		seats = 4,
-		template = PassengerSeat4,
+		seats = 2,
+		template = PassengerSeat2,
 
 		passenger FrontLeft
 		{
@@ -73,38 +73,6 @@ module Base
 			}
 		}
 
-		passenger RearLeft
-		{
-			position inside
-			{
-				offset = 0.3643 0.4349 -0.2565,
-				rotate = 0.0000 0.0000 0.0000,
-			}
-
-			position outside
-			{
-				offset = 1.2900 0.0000 -0.2788,
-				rotate = 0.0000 0.0000 0.0000,
-				area = SeatRearLeft,
-			}
-		}
-
-		passenger RearRight
-		{
-			position inside
-			{
-				offset = -0.3643 0.4349 -0.2565,
-				rotate = 0.0000 0.0000 0.0000,
-			}
-
-			position outside
-			{
-				offset = -1.2900 0.0000 -0.2788,
-				rotate = 0.0000 0.0000 0.0000,
-				area = SeatRearRight,
-			}
-		}
-
 		area SeatFrontLeft
 		{
 			xywh = 0.5948 1.4238 0.3717 0.3569,
@@ -115,20 +83,13 @@ module Base
 			xywh = -0.5948 1.4238 0.3717 0.3569,
 		}
 
-		area SeatRearLeft
+		area TruckBed
 		{
-			xywh = 0.8216 0.4126 0.8253 0.8253,
-		}
-
-		area SeatRearRight
-		{
-			xywh = -0.8216 0.4126 0.8253 0.8253,
+			xywh = 0.0000 -0.7912 1.8132 1.4945,
 		}
 
 		template = Seat/part/SeatFrontLeft,
 		template = Seat/part/SeatFrontRight,
-		template = Seat/part/SeatRearLeft,
-		template = Seat/part/SeatRearRight,
 
 		part Seat*
 		{
@@ -143,41 +104,19 @@ module Base
 			}
 		}
 
-		part PassengerCompartment
-		{
-			category = nodisplay,
-
-			lua
-			{
-				update = Vehicles.Update.PassengerCompartment,
-			}
-		}
-
-		part HelicopterInterior
-		{
-			area = SeatFrontRight,
-			itemType = EHE.HelicopterInterior,
-			specificItem = false,
-
-			container
-			{
-				test = Vehicles.ContainerAccess.HelicopterInterior,
-			}
-
-			lua
-			{
-				create = Vehicles.Create.Default,
-			}
-		}
+		template = Trunk/part/TruckBedOpen,
+        part TruckBedOpen
+        {
+            container
+            {
+                capacity = 300,
+            }
+        }
 
 		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,
-		template = Window/part/WindowRearLeft,
-		template = Window/part/WindowRearRight,
 		template = Door/part/DoorFrontLeft,
 		template = Door/part/DoorFrontRight,
-		template = Door/part/DoorRearLeft,
-		template = Door/part/DoorRearRight,
 	}
 }
