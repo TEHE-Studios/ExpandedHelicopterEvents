@@ -21,6 +21,9 @@ eHelicopter_PRESETS["military"] = {
 	announcerVoice = true,
 	forScheduling = true,
 	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
+	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 20,
 	schedulingFactor = 1.5,
 	presetProgression = {
@@ -93,6 +96,8 @@ eHelicopter_PRESETS["cargo_helicopter"] = {
 eHelicopter_PRESETS["military_recon_hover"] = {
 	inherit = {"military"},
 	announcerVoice = false,
+	speed = 1.5,
+	crashType = false,
 	hoverOnTargetDuration = {200,400},
 }
 
