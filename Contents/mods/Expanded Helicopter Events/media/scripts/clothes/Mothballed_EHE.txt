@@ -8,13 +8,6 @@ module EHE
         BodyLocation = Jacket,
         Icon = DenimCutoff,
         BloodLocation = Jacket,
-        RunSpeedModifier = 0.89,
-        CombatSpeedModifier = 0.96,
-        BiteDefense = 10,
-        ScratchDefense = 20,
-        Insulation = 0.9,
-        WindResistance = 0.95,
-        WaterResistance = 0.60,
         Weight = 1,
         WorldStaticModel = JacketCoat_Ground,
     }	
@@ -27,14 +20,7 @@ module EHE
 		ClothingItem = Hat_PressHelmet,
 		BodyLocation = Hat,
 		Icon = PressHelmet,
-		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
-		BiteDefense = 100,
-		ScratchDefense = 100,
-		BulletDefense = 100,
-		ChanceToFall = 30,
-		Insulation = 0,
-		WaterResistance = 0.40,
         Weight = 1.5,
     }
 
@@ -45,14 +31,7 @@ module EHE
 		ClothingItem = Hat_SurvivalistHelmet,
 		BodyLocation = Hat,
 		Icon = SurvivalistHelmet,
-		CanHaveHoles = false,
 		BloodLocation = FullHelmet,
-		BiteDefense = 100,
-		ScratchDefense = 100,
-		BulletDefense = 100,
-		ChanceToFall = 30,
-		Insulation = 0,
-		WaterResistance = 0.40,
         Weight = 1.5,
     }
     
@@ -64,11 +43,6 @@ module EHE
         BodyLocation = TorsoExtra,
         Icon = PressVest,
         BloodLocation = ShirtNoSleeves,
-        Insulation = 0.65,
-        WindResistance = 0.30,
-        BiteDefense = 30,
-        ScratchDefense = 55,
-        BulletDefense = 100,
 		WorldStaticModel = BulletVest_Ground,
     }
     
