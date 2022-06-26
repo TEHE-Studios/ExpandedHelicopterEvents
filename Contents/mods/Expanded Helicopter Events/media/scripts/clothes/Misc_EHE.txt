@@ -34,23 +34,6 @@ module EHE
         WorldStaticModel = BoilerSuit_Ground,
     }
 	   
-	    item Vest_BulletPress
-    {
-        DisplayCategory = Clothing,
-        Type = Clothing,
-        DisplayName = Press Bulletproof Vest,
-        ClothingItem = Vest_BulletPress,
-        BodyLocation = TorsoExtra,
-        Icon = PressVest,
-        BloodLocation = ShirtNoSleeves,
-        Insulation = 0.65,
-        WindResistance = 0.30,
-        BiteDefense = 30,
-        ScratchDefense = 55,
-        BulletDefense = 100,
-		WorldStaticModel = BulletVest_Ground,
-    }
-
     	item Vest_PilotSurvivalVest
     {
         DisplayCategory = Clothing,
