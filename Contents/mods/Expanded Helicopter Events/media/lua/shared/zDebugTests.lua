@@ -13,7 +13,7 @@ Events.OnGameBoot.Add(function()
 	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 		ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
 	end
-	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test 90 Days [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
+	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 	ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
 	ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
 	ISCustomDebugTestsPanel.Tests.checkSquare = CustomDebugPanel.checkSquare
@@ -178,7 +178,7 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	globalModData.EventsOnSchedule = {}
 	for freq=1, 6 do
 		local testsRan = {}
-		for day=0, 90 do
+		for day=0, 150 do
 			for hour=0, 24 do
 				eHeliEvent_ScheduleNew(day,hour,freq,true)
 				for k,v in pairs(globalModData.EventsOnSchedule) do
