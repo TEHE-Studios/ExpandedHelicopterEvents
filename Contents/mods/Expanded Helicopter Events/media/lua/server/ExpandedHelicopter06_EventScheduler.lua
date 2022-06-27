@@ -136,6 +136,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
 	local neverEnd = SandboxVars.ExpandedHeli.NeverEnding
+	local neverEndingLateGameOnly = SandboxVars.ExpandedHeli.NeverEndingLateGameOnly
 	local globalModData = getExpandedHeliEventsModData()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 
@@ -200,8 +201,9 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 				if dayAndHourInRange then
 					eventAvailable = true
-				--if (daysIn > startDay) AND (not ignoring never-end) AND (never-end is on)
-				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreNeverEnding) and SandboxVars.ExpandedHeli.NeverEnding==true) then
+
+					--if (daysIn > startDay) AND (not ignoring never-end) AND (never-end is on)
+				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreNeverEnding) and (neverEnd==true and ( (not neverEndingLateGameOnly) or (neverEndingLateGameOnly and cutOffDay>=SandboxVars.ExpandedHeli.CutOffDay) )) ) then
 					eventAvailable = true
 				end
 

@@ -18,6 +18,11 @@ option ExpandedHeli.NeverEnding
 	page = ExpandedHeli, translation = ExpandedHeli_NeverEnding,
 }
 
+option ExpandedHeli.NeverEndingLateGameOnly
+{
+	type = boolean, default = true,
+	page = ExpandedHeli, translation = ExpandedHeli_NeverEndingLateGameOnly,
+}
 
 option ExpandedHeli.Frequency_jet
 {

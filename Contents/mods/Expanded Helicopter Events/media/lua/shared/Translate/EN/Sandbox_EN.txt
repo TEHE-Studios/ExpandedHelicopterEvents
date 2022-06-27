@@ -40,4 +40,7 @@ Sandbox_EN = {
 
 	Sandbox_ExpandedHeli_NeverEnding = "Continue Scheduling Forever",
 	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Toggle this on so that the scheduler will spawn events passed the duration limit. Events will still progress through stages according to the duration but events will never stop being scheduled.",
+
+    Sandbox_ExpandedHeli_NeverEndingLateGameOnly = "Continue Scheduling: Late Game Events Only",
+    Sandbox_ExpandedHeli_NeverEnding_tooltip = "When \"Continue Scheduling Forever\" is toggle on, this toggled on makes the scheduler only use late-game events.",
 }
