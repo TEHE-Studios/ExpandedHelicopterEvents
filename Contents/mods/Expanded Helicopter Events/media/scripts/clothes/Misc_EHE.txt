@@ -34,23 +34,6 @@ module EHE
         WorldStaticModel = BoilerSuit_Ground,
     }
 	   
-	    item Vest_BulletPress
-    {
-        DisplayCategory = Clothing,
-        Type = Clothing,
-        DisplayName = Press Bulletproof Vest,
-        ClothingItem = Vest_BulletPress,
-        BodyLocation = TorsoExtra,
-        Icon = PressVest,
-        BloodLocation = ShirtNoSleeves,
-        Insulation = 0.65,
-        WindResistance = 0.30,
-        BiteDefense = 30,
-        ScratchDefense = 55,
-        BulletDefense = 100,
-		WorldStaticModel = BulletVest_Ground,
-    }
-
     	item Vest_PilotSurvivalVest
     {
         DisplayCategory = Clothing,
@@ -79,6 +62,38 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
+        
+    }
+
+    	item Vest_BlackPilotSurvivalVest
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        DisplayName = Black SRU-21/P Survival Vest,
+        CanBeEquipped = EHEPilotVest,
+        ClothingItem = Vest_BlackPilotSurvivalVest,
+        BodyLocation = EHEPilotVest,
+        Icon = BlackPilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
+    }
+
+        item Vest_BlackPilotSurvivalVestTightened
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        CanBeEquipped = EHEPilotVest,
+        DisplayName = Black SRU-21/P Survival Vest,
+        ClothingItem = Vest_BlackPilotSurvivalVestTightened,
+        BodyLocation = EHEPilotVest,
+        Icon = BlackPilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
         
     }
 }

@@ -5,7 +5,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Police Helicopter Helmet,
+		DisplayName = Police SPH-3 Pilot Helmet,
 		ClothingItem = Hat_SPHPolice,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetPolice,
@@ -28,7 +28,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Police Helicopter Helmet (Up),
+		DisplayName = Police SPH-3 Pilot Helmet (Up),
 		ClothingItem = Hat_SPHPoliceVISORUP,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetPolice,
@@ -50,7 +50,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Military Helicopter Helmet,
+		DisplayName = Military SPH-3 Pilot Helmet,
 		ClothingItem = Hat_SPHMilitary,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetMilitary,
@@ -72,7 +72,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Military Helicopter Helmet (Up),
+		DisplayName = Military SPH-3 Pilot Helmet (Up),
 		ClothingItem = Hat_SPHMilitaryVISORUP,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetMilitary,
@@ -95,7 +95,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Black Helicopter Helmet,
+		DisplayName = Black SPH-3 Pilot Helmet,
 		ClothingItem = Hat_SPHBlack,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetBlack,
@@ -117,7 +117,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Black Helicopter Helmet (Up),
+		DisplayName = Black SPH-3 Pilot Helmet (Up),
 		ClothingItem = Hat_SPHBlackVISORUP,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetBlack,
@@ -139,7 +139,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Civilian Helicopter Helmet,
+		DisplayName = White SPH-3 Pilot Helmet,
 		ClothingItem = Hat_SPHCivilian,
 		BodyLocation = Hat,
 		IconsForTexture = HelicopterHelmetCivilian;HelicopterHelmetCivilianRed,
@@ -161,7 +161,7 @@ module EHE
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
-		DisplayName = Civilian Helicopter Helmet (Up),
+		DisplayName = White SPH-3 Pilot Helmet (Up),
 		ClothingItem = Hat_SPHCivilianVISORUP,
 		BodyLocation = Hat,
 		Icon = HelicopterHelmetCivilian,
