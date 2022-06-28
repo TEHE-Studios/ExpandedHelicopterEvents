@@ -1,17 +1,5 @@
 module EHE
 {		
-		item Jacket_DenimCutoff
-	{
-        DisplayCategory = Clothing,
-        Type = Clothing,
-        ClothingItem = Jacket_DenimCutoff,
-        BodyLocation = Jacket,
-        Icon = DenimCutoff,
-        BloodLocation = Jacket,
-        Weight = 1,
-        WorldStaticModel = JacketCoat_Ground,
-    }	
-
     	item Hat_PressHelmet
 
 	{   
@@ -44,6 +32,37 @@ module EHE
         Icon = PressVest,
         BloodLocation = ShirtNoSleeves,
 		WorldStaticModel = BulletVest_Ground,
+    }
+
+        item Vest_PilotSurvivalVestTightened
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        CanBeEquipped = EHEPilotVest,
+        ClothingItem = Vest_PilotSurvivalVestTightened,
+        BodyLocation = EHEPilotVest,
+        Icon = PilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVest,
+		WorldStaticModel = PilotSurvivalVest_Ground,
+        
+    }
+    
+        item Vest_BlackPilotSurvivalVestTightened
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        CanBeEquipped = EHEPilotVest,
+        DisplayName = Black SRU-21/P Survival Vest,
+        ClothingItem = Vest_BlackPilotSurvivalVestTightened,
+        BodyLocation = EHEPilotVest,
+        Icon = BlackPilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
     }
     
 }
