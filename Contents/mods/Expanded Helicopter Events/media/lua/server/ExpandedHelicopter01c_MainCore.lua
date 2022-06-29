@@ -732,10 +732,12 @@ end
 function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 
+	eHelicopter:updatePosition(1, 1)
 	eventSoundHandler:stopAllHeldEventSounds(self)
 
 	if self.shadow==true then
-		eventShadowHandler:setShadowPos(self.ID)
+		local x, y, z = self:getXYZAsInt()
+		eventShadowHandler:setShadowPos(self.ID, nil, x, y, z)
 	end
 	if self.eventMarkerIcon ~= false then
 		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 0)
