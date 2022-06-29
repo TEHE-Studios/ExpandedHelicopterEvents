@@ -5,19 +5,21 @@ require "ExpandedHelicopter00b_IsoRangeScan"
 require "ExpandedHelicopter01a_MainVariables"
 
 Events.OnGameBoot.Add(function()
-	ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
-	ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
-	ISCustomDebugTestsPanel.Tests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
-	ISCustomDebugTestsPanel.Tests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
-	ISCustomDebugTestsPanel.Tests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
-	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-		ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
+	if ISCustomDebugTestsPanel and ISCustomDebugTestsPanel.Tests then
+		ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
+		ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
+		ISCustomDebugTestsPanel.Tests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
+		ISCustomDebugTestsPanel.Tests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
+		ISCustomDebugTestsPanel.Tests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
+		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
+			ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
+		end
+		ISCustomDebugTestsPanel.Tests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
+		ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
+		ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
+		ISCustomDebugTestsPanel.Tests.checkSquare = CustomDebugPanel.checkSquare
+		ISCustomDebugTestsPanel.Tests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
 	end
-	ISCustomDebugTestsPanel.Tests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
-	ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
-	ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
-	ISCustomDebugTestsPanel.Tests.checkSquare = CustomDebugPanel.checkSquare
-	ISCustomDebugTestsPanel.Tests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
 end)
 
 
