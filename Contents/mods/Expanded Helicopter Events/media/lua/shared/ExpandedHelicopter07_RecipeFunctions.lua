@@ -81,46 +81,59 @@ end
 
 
 
-EHE_Recipe.typesThatCanOpenBoxes = EHE_Recipe.typesThatCanOpenBoxes or {}
-
+---Forces a numerically keyed list into a type=true table
+---
+---Allows for: 'if list[key] == true'
 ---@param list table of type paths
-function EHE_Recipe.addCanOpenBoxTypes(list)
-	for _,type in pairs(list) do
-		table.insert(EHE_Recipe.typesThatCanOpenBoxes, type)
+function EHE_Recipe.convertNumericListToKeyedTable(list,table)
+	for _,value in pairs(list) do
+		print(" x - "..value)
+		table[value]=true
 	end
 end
 
+EHE_Recipe.typesThatCanOpenBoxes = EHE_Recipe.typesThatCanOpenBoxes or {}
 ---Sub-mod authors will have to use the following function to add more types
-EHE_Recipe.addCanOpenBoxTypes(
-		{"Base.Fork","Base.ButterKnife","Base.HuntingKnife","Base.KitchenKnife","Base.Scissors",
-		 "Base.RedPen","Base.BluePen","Base.Pen","Base.Pencil","Base.Screwdriver","Base.GardenFork",
-		 "Base.Scalpel","Base.LetterOpener","Base.IcePick","Base.BreadKnife","Base.MeatCleaver","Base.FlintKnife",
-		 "Base.Machete","Base.Katana","Base.HandAxe","Base.Axe","Base.WoodAxe","Base.HandScythe",})
+
+EHE_Recipe.convertNumericListToKeyedTable(
+		---List param
+		{"Base.IcePick","Base.HandScythe","Base.MeatCleaver","Base.LetterOpener","Base.Katana","Base.Scalpel","Base.GardenFork",}
+	---Table param
+	,EHE_Recipe.typesThatCanOpenBoxes)
 
 
----Adds "CanOpenBoxes" tag to scripts for type
----@param type string
-function EHE_Recipe.addCanOpenBoxesTag(type)
-	local item = ScriptManager.instance:getItem(type);
-	if item then
-		local tags = item:getTags()
-		local tagString = "CanOpenBoxes"
+EHE_Recipe.additionalTagChecks = EHE_Recipe.additionalTagChecks or {}
+EHE_Recipe.convertNumericListToKeyedTable(
+		{"Screwdriver","DullKnife","SharpKnife","Write","ChopTree","CutPlant","Scissors","Fork","Spoon"}
+	, EHE_Recipe.additionalTagChecks)
 
+
+
+---Scans through every item, checks for types listed above as well as additional tag checks - avoids redundant tags
+function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
+	---Adds "CanOpenBoxes" tag to scripts for type
+	local allItems = ScriptManager.instance:getAllItems()
+	for i=0, allItems:size()-1 do
+
+		---@type Item
+		local itemScript = allItems:get(i)
+		local itemFullName = itemScript:getFullName()
+		local tags = itemScript:getTags()
+		local addCanOpenBoxesTag = EHE_Recipe.typesThatCanOpenBoxes[itemFullName]
+		local tagString = ""
 		for i=0, tags:size()-1 do
 			---@type string
 			local tag = tags:get(i)
-			tagString = tagString..";"..tag
+			if EHE_Recipe.additionalTagChecks[tag] then
+				addCanOpenBoxesTag = true
+			end
+			tagString = tagString..tag..";"
 		end
 
-		item:DoParam("Tags = "..tagString);
-		print("--AddTag:"..type..": "..tagString);
-	end
-end
-
----For each type in EHE_Recipe.addCanOpenBoxTypes process EHE_Recipe.addCanOpenBoxesTag(type)
-function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
-	for _,type in pairs(EHE_Recipe.typesThatCanOpenBoxes) do
-		EHE_Recipe.addCanOpenBoxesTag(type)
+		if addCanOpenBoxesTag then
+			print("EHE: Added Tag 'CanOpenBoxes' to: "..itemFullName)
+			itemScript:DoParam("Tags = "..tagString..";CanOpenBoxes");
+		end
 	end
 end
 
