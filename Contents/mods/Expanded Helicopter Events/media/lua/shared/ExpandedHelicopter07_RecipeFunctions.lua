@@ -32,7 +32,7 @@ function EHE_Recipe.STASHBOX(recipe, result, player)
 	player:getInventory():AddItems("Cigarettes", 4)
 	player:getInventory():AddItems("Lighter", 2)
 	player:getInventory():AddItems("HottieZ", 13)
-	player:getInventory():AddItems("EHE.PlentyTee", 5)
+	player:getInventory():AddItems("EHE.ProteinBar", 5)
 end
 
 function EHE_Recipe.SURVIVORMEDICAL(recipe, result, player)
