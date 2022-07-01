@@ -80,7 +80,6 @@ function EHE_Recipe.SURVIVORCANNING(recipe, result, player)
 end
 
 
-
 ---Forces a numerically keyed list into a type=true table
 ---
 ---Allows for: 'if list[key] == true'
@@ -92,9 +91,9 @@ function EHE_Recipe.convertNumericListToKeyedTable(list,table)
 	end
 end
 
+
 EHE_Recipe.typesThatCanOpenBoxes = EHE_Recipe.typesThatCanOpenBoxes or {}
 ---Sub-mod authors will have to use the following function to add more types
-
 EHE_Recipe.convertNumericListToKeyedTable(
 		---List param
 		{"Base.IcePick","Base.HandScythe","Base.MeatCleaver","Base.LetterOpener","Base.Katana","Base.Scalpel","Base.GardenFork",}
@@ -104,9 +103,10 @@ EHE_Recipe.convertNumericListToKeyedTable(
 
 EHE_Recipe.additionalTagChecks = EHE_Recipe.additionalTagChecks or {}
 EHE_Recipe.convertNumericListToKeyedTable(
+		---List param
 		{"Screwdriver","DullKnife","SharpKnife","Write","ChopTree","CutPlant","Scissors","Fork","Spoon"}
+	---Table param
 	, EHE_Recipe.additionalTagChecks)
-
 
 
 ---Scans through every item, checks for types listed above as well as additional tag checks - avoids redundant tags
