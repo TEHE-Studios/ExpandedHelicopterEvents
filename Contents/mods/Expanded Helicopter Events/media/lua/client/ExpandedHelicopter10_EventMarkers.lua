@@ -17,6 +17,11 @@ function EHE_EventMarker:initialise()
 end
 
 
+function EHE_EventMarker:onMouseDoubleClick(x, y)
+	return self:setDuration(0)
+end
+
+
 function EHE_EventMarker:onMouseUp(x, y)
 	if not self.moveWithMouse then
 		return
