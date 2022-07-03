@@ -22,12 +22,14 @@ end
 function getFreeHelicopter(preset)
 	---@type eHelicopter heli
 	local heli
-	for _,h in ipairs(ALL_HELICOPTERS) do
-		if h.state == "unLaunched" then
-			heli = h
-			break
-		end
-	end
+
+	---Testing non-recycling
+	--for _,h in ipairs(ALL_HELICOPTERS) do
+	--	if h.state == "unLaunched" then
+	--		heli = h
+	--		break
+	--	end
+	--end
 
 	if not heli then
 		heli = eHelicopter:new()
@@ -256,7 +258,9 @@ end
 ---@param heliY number
 function eHelicopter:updatePosition(heliX, heliY)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-	self.currentPosition:set(heliX, heliY, self.height)
+	if self.currentPosition then
+		self.currentPosition:set(heliX, heliY, self.height)
+	end
 	eventSoundHandler:updatePos(self,heliX,heliY)
 end
 
