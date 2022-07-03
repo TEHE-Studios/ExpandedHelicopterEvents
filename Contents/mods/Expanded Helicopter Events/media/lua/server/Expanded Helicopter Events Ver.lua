@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.5-JUN29"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.6-JUL3"))
