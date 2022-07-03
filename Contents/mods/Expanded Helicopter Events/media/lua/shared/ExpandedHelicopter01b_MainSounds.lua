@@ -35,6 +35,8 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 			elseif command == "stop" then
 				--print("--stop:"..tostring(soundEmitter).." - "..DATA)
 				soundEmitter:stopSoundByName(DATA)
+			elseif command == "stopAll" then
+				soundEmitter:stopAll()
 			end
 		end
 	end
@@ -148,7 +150,7 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 		for soundID,_ in pairs(heli.looperEventIDs) do
 			local soundEffect = heli.eventSoundEffects[soundID]
 			soundsStopped = true
-			sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="stop"})
+			sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="stopAll"})
 		end
 	end
 
