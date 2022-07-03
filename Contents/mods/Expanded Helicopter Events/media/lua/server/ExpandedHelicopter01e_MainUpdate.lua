@@ -192,7 +192,7 @@ function eHelicopter:update()
 
 	if self.eventMarkerIcon ~= false then
 		local hX, hY, _ = self:getXYZAsInt()
-		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 3, hX, hY)
+		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 101, hX, hY)
 	end
 
 	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then
