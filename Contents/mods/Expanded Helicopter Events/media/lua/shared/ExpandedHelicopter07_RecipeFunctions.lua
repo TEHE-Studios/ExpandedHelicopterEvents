@@ -86,7 +86,7 @@ end
 ---@param list table of type paths
 function EHE_Recipe.convertNumericListToKeyedTable(list,table)
 	for _,value in pairs(list) do
-		print(" x - "..value)
+		--print(" x - "..value)
 		table[value]=true
 	end
 end
@@ -113,8 +113,9 @@ EHE_Recipe.convertNumericListToKeyedTable(
 function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 	---Adds "CanOpenBoxes" tag to scripts for type
 	local allItems = ScriptManager.instance:getAllItems()
-	for i=0, allItems:size()-1 do
+	local debugText = "EHE: Added Tag 'CanOpenBoxes' to: "
 
+	for i=0, allItems:size()-1 do
 		---@type Item
 		local itemScript = allItems:get(i)
 		local itemFullName = itemScript:getFullName()
@@ -131,10 +132,11 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 		end
 
 		if addCanOpenBoxesTag then
-			print("EHE: Added Tag 'CanOpenBoxes' to: "..itemFullName)
+			debugText = debugText..itemFullName..", "
 			itemScript:DoParam("Tags = "..tagString..";CanOpenBoxes");
 		end
 	end
+	print(debugText)
 end
 
 Events.OnGameBoot.Add(EHE_Recipe.addCanOpenBoxesTagToTypesThatCan)
