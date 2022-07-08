@@ -8,4 +8,5 @@ DynamicRadio_EN = {
     AEBS_JetBombing = "Payload for purge inbound."
     AEBS_JetPass = "Jet pass inbound."
     AEBS_AirRaid = "REMAIN IN DOORS AND SEEK SHELTER"
+    AEBS_HostileMilitary = "Air Activity Detected. Military Special Operations Underway. Godspeed."
 }

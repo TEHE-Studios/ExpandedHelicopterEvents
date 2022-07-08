@@ -79,6 +79,7 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
+	radioChatter = "AEBS_HostileMilitary",
 	--formationIDs = {"air_raid"},
 }
 
