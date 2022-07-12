@@ -10,8 +10,9 @@ function HelicopterSandboxOptions()
 			SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
 		end
 	end
-	getSandboxOptions():updateFromLua()
+	--getSandboxOptions():updateFromLua()
 end
+
 
 Events.OnGameBoot.Add(HelicopterSandboxOptions)
 Events.OnLoad.Add(HelicopterSandboxOptions)
