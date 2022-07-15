@@ -17,7 +17,7 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 		end
 		if soundEmitter then
 
-			storedLooperEventsUpdateTimes[reusableID] = getGametimeTimestamp()
+			storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
 
 			if command == "play" then
 				if soundEmitter:isPlaying(DATA.soundEffect) then

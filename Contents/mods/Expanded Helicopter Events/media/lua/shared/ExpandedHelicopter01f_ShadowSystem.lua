@@ -38,7 +38,7 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z, override)
 
 		if shadow then
 
-			storedShadowsUpdateTimes["HELI"..ID] = getGametimeTimestamp()
+			storedShadowsUpdateTimes["HELI"..ID] = getTimeInMillis()
 
 			--print("-- -- yes shadow, square:?")
 			if not outsideSquare then
