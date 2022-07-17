@@ -1,7 +1,6 @@
 module EHE
 {		
-    	item Hat_PressHelmet
-
+    item Hat_PressHelmet
 	{   
 		DisplayCategory = Clothing,
 		Type = Clothing,
@@ -10,9 +9,11 @@ module EHE
 		Icon = PressHelmet,
 		BloodLocation = FullHelmet,
         Weight = 1.5,
+        OBSOLETE = true,
     }
 
-		item Hat_SurvivalistHelmet
+
+	item Hat_SurvivalistHelmet
 	{
 		DisplayCategory = Clothing,
 		Type = Clothing,
@@ -21,9 +22,11 @@ module EHE
 		Icon = SurvivalistHelmet,
 		BloodLocation = FullHelmet,
         Weight = 1.5,
+        OBSOLETE = true,
     }
-    
-    	item Vest_BulletPress
+
+
+    item Vest_BulletPress
     {
         DisplayCategory = Clothing,
         Type = Clothing,
@@ -32,9 +35,11 @@ module EHE
         Icon = PressVest,
         BloodLocation = ShirtNoSleeves,
 		WorldStaticModel = BulletVest_Ground,
+		OBSOLETE = true,
     }
 
-        item Vest_PilotSurvivalVestTightened
+
+    item Vest_PilotSurvivalVestTightened
     {
         DisplayCategory = Clothing,
         Type = Container,
@@ -46,10 +51,10 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         Tooltip = Tooltip_SurvivalVest,
 		WorldStaticModel = PilotSurvivalVest_Ground,
-        
+		OBSOLETE = true,
     }
     
-        item Vest_BlackPilotSurvivalVestTightened
+    item Vest_BlackPilotSurvivalVestTightened
     {
         DisplayCategory = Clothing,
         Type = Container,
@@ -62,7 +67,7 @@ module EHE
         BloodLocation = ShirtNoSleeves,
         Tooltip = Tooltip_SurvivalVestBlack,
 		WorldStaticModel = BlackPilotSurvivalVest_Ground,
-        
+		OBSOLETE = true,
     }
     
 }
