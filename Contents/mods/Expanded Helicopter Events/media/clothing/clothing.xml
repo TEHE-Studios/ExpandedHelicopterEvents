@@ -140,9 +140,6 @@
 		<m_items> <!-- Lumberjack Shirt -->
 			<itemGUID>88b27ecc-8a00-4d1a-882e-1ab4f4a46350</itemGUID>
 		</m_items>
-		<m_items> <!-- Press Vest -->
-			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
-		</m_items>
 		<m_items> <!-- Jeans -->
 			<itemGUID>8973893f-f324-4cdb-a32b-43cd0378174f</itemGUID>
 		</m_items>
@@ -169,9 +166,6 @@
 		</m_items>
 		<m_items> <!-- Lumberjack Shirt -->
 			<itemGUID>88b27ecc-8a00-4d1a-882e-1ab4f4a46350</itemGUID>
-		</m_items>
-		<m_items> <!-- Press Vest -->
-			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
 		</m_items>
 		<m_items> <!-- Jeans -->
 			<itemGUID>8973893f-f324-4cdb-a32b-43cd0378174f</itemGUID>
@@ -223,10 +217,6 @@
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
 		<m_AllowTopTint>false</m_AllowTopTint>		
-		<m_items> <!-- Press Helmet -->
-			<itemGUID>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</itemGUID>
-			<probability>0.5</probability>
-		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
 		</m_items>	
@@ -235,9 +225,6 @@
 		</m_items>
 		<m_items> <!-- Sport Shirt -->
 			<itemGUID>c23a5490-4c9c-4338-8c9b-50d85ae4460c</itemGUID>
-		</m_items>
-		<m_items> <!-- Press Vest -->
-			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
 		</m_items>
 		<m_items> <!-- Denim Jeans -->
 			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
@@ -257,11 +244,7 @@
 		<m_Guid>cc072be0-b9d0-43d4-894e-58f31bfe7c03</m_Guid>
 		<m_Top>false</m_Top>
 		<m_Pants>false</m_Pants>
-		<m_AllowTopTint>false</m_AllowTopTint>		
-		<m_items> <!-- Press Helmet -->
-			<itemGUID>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</itemGUID>
-			<probability>0.5</probability>
-		</m_items>
+		<m_AllowTopTint>false</m_AllowTopTint>		c
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
 		</m_items>	
@@ -270,9 +253,6 @@
 		</m_items>
 		<m_items> <!-- Sport Shirt -->
 			<itemGUID>c23a5490-4c9c-4338-8c9b-50d85ae4460c</itemGUID>
-		</m_items>
-		<m_items> <!-- Press Vest -->
-			<itemGUID>efc9fca0-d052-4ef4-b67c-589c619a3ad6</itemGUID>
 		</m_items>
 		<m_items> <!-- Denim Jeans -->
 			<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
