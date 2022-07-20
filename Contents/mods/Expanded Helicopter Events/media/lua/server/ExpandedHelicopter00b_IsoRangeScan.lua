@@ -20,6 +20,7 @@ end
 
 
 ---@param square IsoGridSquare
+---@param returnFirst boolean
 ---@return table|BaseVehicle table of BaseVehicles or just 1 BaseVehicle
 function getVehiclesIntersecting(square, returnFirst)
 	local vehicles = getCell():getVehicles()
@@ -38,7 +39,7 @@ function getVehiclesIntersecting(square, returnFirst)
 	if #intersectingVehicles==1 then
 		return intersectingVehicles[1]
 	end
-	
+
 	return intersectingVehicles
 end
 
