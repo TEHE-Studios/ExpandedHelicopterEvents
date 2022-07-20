@@ -20,19 +20,27 @@ end
 
 
 ---@param square IsoGridSquare
----@return table BaseVehicle
-function getVehiclesIntersecting(square)
+---@return table|BaseVehicle table of BaseVehicles or just 1 BaseVehicle
+function getVehiclesIntersecting(square, returnFirst)
 	local vehicles = getCell():getVehicles()
 	local intersectingVehicles = {}
 	for v=0, vehicles:size()-1 do
 		---@type BaseVehicle
 		local vehicle = vehicles:get(v)
 		if vehicle:isIntersectingSquare(square:getX(),square:getY(),square:getZ()) then
+			if returnFirst then
+				return vehicle
+			end
 			table.insert(intersectingVehicles, vehicle)
 		end
 	end
-end
 
+	if #intersectingVehicles==1 then
+		return intersectingVehicles[1]
+	end
+	
+	return intersectingVehicles
+end
 
 ---@param center IsoObject|IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
