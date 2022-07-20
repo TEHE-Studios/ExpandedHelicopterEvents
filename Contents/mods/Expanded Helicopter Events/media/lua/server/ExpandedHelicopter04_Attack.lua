@@ -223,6 +223,7 @@ function eHelicopter:fireOn(targetHostile)
 
 			if collateral then
 				if not vehicleParts then
+					vehicleParts = {}
 					for partName,_ in pairs(ISCarMechanicsOverlay.PartList) do
 						table.insert(vehicleParts, partName)
 					end
