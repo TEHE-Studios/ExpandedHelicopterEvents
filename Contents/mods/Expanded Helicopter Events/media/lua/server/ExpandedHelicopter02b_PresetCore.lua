@@ -161,7 +161,7 @@ function eHelicopter:loadPreset(ID)
 		return
 	end
 
-	eventSoundHandler:stopAllHeldEventSounds(self)
+	--eventSoundHandler:stopAllHeldEventSounds(self)
 	--[DEBUG]] print("\n------------[loadPreset:"..ID.."]------------")
 	self:loadVarsFrom(eHelicopter_initialVars, "initialVars")
 	if preset.inherit then
