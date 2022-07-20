@@ -218,7 +218,7 @@ function eHelicopter:fireOn(targetHostile)
 
 	if HIT then
 
-		if istanceof(targetHostile, "BaseVehicle") then
+		if instanceof(targetHostile, "BaseVehicle") then
 			local targetZones = {"tires","tires","tires","tires","GasTank","Engine","random"}
 
 			if collateral then
@@ -263,7 +263,7 @@ function eHelicopter:fireOn(targetHostile)
 			end
 		end
 
-		if istanceof(targetHostile, "IsoGameCharacter") then
+		if instanceof(targetHostile, "IsoGameCharacter") then
 
 			if targetVehicle then
 				local seatID = targetVehicle:getSeat(targetHostile)
