@@ -228,7 +228,7 @@ function eHelicopter:fireOn(targetHostile)
 						table.insert(vehicleParts, partName)
 					end
 				end
-				for _,partName in pairs(ISCarMechanicsOverlay.PartList) do
+				for _,partName in pairs(vehicleParts) do
 					table.insert(targetZones, partName)
 				end
 			else
