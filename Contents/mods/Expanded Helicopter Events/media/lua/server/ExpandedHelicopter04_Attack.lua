@@ -250,12 +250,16 @@ function eHelicopter:fireOn(targetHostile)
 			else
 				local partDamage = damage
 				local part = returnValidPartById(targetHostile,selectedZone)
-				--catches engine's doors
-				local partDoor = returnValidPartById(targetHostile,selectedZone.."Door")
 
+				local partDoor = part:getDoor()
 				if partDoor then
 					partDoor:damage(partDamage)
 					partDamage = partDamage*0.8
+				end
+
+				local partWindow = part:getWindow()
+				if partWindow then
+					partWindow:damage(partDamage*10)
 				end
 
 				if part then
@@ -269,7 +273,14 @@ function eHelicopter:fireOn(targetHostile)
 			if targetVehicle then
 				local seatID = targetVehicle:getSeat(targetHostile)
 				local door = targetVehicle:getPassengerDoor(seatID)
-				door:damage(damage)
+				if door then
+					door:damage(damage)
+					damage = damage*0.8
+				end
+				local window = door:getWindow()
+				if window then
+					window:damage(damage*10)
+				end
 			end
 
 			local bpRandSelect = bodyPartSelection[ZombRand(#bodyPartSelection)+1]
