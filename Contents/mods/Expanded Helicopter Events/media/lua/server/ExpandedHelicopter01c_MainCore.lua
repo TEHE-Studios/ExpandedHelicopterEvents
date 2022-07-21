@@ -269,7 +269,7 @@ end
 ---@param dampen boolean adjust speed based on distance to target
 function eHelicopter:move(re_aim, dampen)
 
-	if self.state == "crashed" then
+	if self.state == "crashed" or self.state == "unLaunched" then
 		return
 	end
 
@@ -282,7 +282,7 @@ function eHelicopter:move(re_aim, dampen)
 
 	local storedSpeed = self.speed
 	--if there's targets
-	if #self.hostilesToFireOn > 1 then
+	if #self.hostilesToFireOn > 1 and (self.state ~= "goHome") then
 		--slow speed down while shooting
 		self.speed = math.min(self.speed/3, self.speed/#self.hostilesToFireOn)
 		
