@@ -104,7 +104,7 @@ function eHelicopter:update()
 		end
 	end
 
-	if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
+	if self.state ~= "goHome" and self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
 		local GT = getGameTime()
 		local DAY = GT:getNightsSurvived()
 		local HOUR = GT:getHour()
