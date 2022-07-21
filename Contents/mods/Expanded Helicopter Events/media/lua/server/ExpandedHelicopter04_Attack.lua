@@ -254,11 +254,6 @@ function eHelicopter:fireOn(targetHostile)
 				local part = returnValidPartById(targetHostile,selectedZone)
 
 				if part then
-					local partDoor = part:getDoor()
-					if partDoor then
-						partDoor:damage(partDamage)
-						partDamage = partDamage*0.8
-					end
 
 					local partWindow = part:getWindow()
 					if partWindow then
