@@ -710,6 +710,18 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 			end
 		end
 	end
+
+	local GT = getGameTime()
+	local DAY = GT:getNightsSurvived()
+	local HOUR = GT:getHour()
+
+	HOUR = HOUR+4
+	if HOUR > 24 then
+		HOUR = HOUR-24
+		DAY = DAY+1
+	end
+
+	self.forceUnlaunchTime = {DAY, HOUR}
 end
 
 

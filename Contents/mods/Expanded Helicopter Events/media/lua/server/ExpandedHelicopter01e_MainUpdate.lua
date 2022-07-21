@@ -104,18 +104,20 @@ function eHelicopter:update()
 		end
 	end
 
-	--[[
-	---EVENTS SHOULD HIT A MAX TICK THRESHOLD (TAKING INTO ACCOUNT HOVER TIME) THEN GET "SENT HOME" IF STUCK
-	self.updateTicksPassed = (self.updateTicksPassed+1)*getGameSpeed()
-	local maxTicksAllowed = eheBounds.threshold*10
-	if self.hoverOnTargetDuration and self.hoverOnTargetDuration > 0 then
-		maxTicksAllowed = maxTicksAllowed+(self.hoverOnTargetDuration*10)
+	if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
+		local GT = getGameTime()
+		local DAY = GT:getNightsSurvived()
+		local HOUR = GT:getHour()
+		local unlaunchDay = self.forceUnlaunchTime[1]
+		local unlaunchHour = self.forceUnlaunchTime[2]
+
+		if unlaunchDay>=DAY and unlaunchHour>HOUR then
+			--[[DEBUG]] print(" - EHE: "..self:heliToString().."forceUnlaunchTime reached: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
+			self:goHome()
+		end
+	else
+		--[[DEBUG]] print(" - EHE: ERR: "..self:heliToString().." `actualLaunchedTime` not set properly: ("..tostring(self.actualLaunchedTime)..")")
 	end
-	if (self.updateTicksPassed > maxTicksAllowed) and (self.state ~= "goHome") then
-		print(" - EHE: Update Tick Cap Reached: "..self:heliToString())
-		self:goHome()
-	end
-	-]]
 
 	local preventMovement = false
 

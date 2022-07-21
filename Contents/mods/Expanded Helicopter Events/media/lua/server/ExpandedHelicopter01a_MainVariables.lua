@@ -209,8 +209,8 @@ eHelicopter_initialVars = {}
 eHelicopter_variableBackUp(eHelicopter_initialVars, nil, "initialVars")
 
 --the below variables are to be considered "temporary"
----@field updateTicksPassed number
-eHelicopter.updateTicksPassed = 0
+---@field forceUnlaunchTime table|boolean table of day,hour | false when not set
+eHelicopter.forceUnlaunchTime = false
 ---@field height number
 eHelicopter.height = 7
 ---@field state string
