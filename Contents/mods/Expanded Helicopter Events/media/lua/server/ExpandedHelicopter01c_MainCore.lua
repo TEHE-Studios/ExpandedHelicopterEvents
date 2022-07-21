@@ -282,10 +282,9 @@ function eHelicopter:move(re_aim, dampen)
 
 	local storedSpeed = self.speed
 	--if there's targets
-	if #self.hostilesToFireOn > 1 and (self.state ~= "goHome") then
+	if #self.hostilesToFireOn > 1 then
 		--slow speed down while shooting
-		self.speed = math.min(self.speed/3, self.speed/#self.hostilesToFireOn)
-		
+		self.speed = math.max(self.speed*0.2, self.speed/#self.hostilesToFireOn)
 	end
 
 	if re_aim then
