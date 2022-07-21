@@ -125,7 +125,7 @@ eHelicopter_PRESETS["FEMA_drop"] = {
 
 
 eHelicopter_PRESETS["jet"] = {
-	speed = 18,
+	speed = 15,
 	topSpeedFactor = 2,
 	flightVolume = 25,
 	eventSoundEffects = {["flightSound"] = "eJetFlight"},
