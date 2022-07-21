@@ -407,7 +407,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	addActualPlayersToEIP()
 
 	for character,_ in pairs(EHEIsoPlayers) do
-		---@type IsoPlayer | IsoGameCharacter p
+		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject p
 		local p = character
 		--[DEBUG]] print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
 		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
@@ -434,6 +434,22 @@ function eHelicopter:findTarget(range, DEBUGID)
 					end
 				end
 			end
+
+			local pCar = p:getVehicle()
+
+			if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then
+				iterations = math.floor(iterations*1.3)
+			end
+
+			if pCar and pCar:getCurrentSpeedKmHour()>0 then
+				iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100)))
+			end
+
+			local targetSquare = p:getSquare()
+			if (targetSquare:getTree()) then
+				iterations = math.floor(iterations*0.66)
+			end
+
 
 			for _=1, maxWeight do
 				if iterations > 0 then
