@@ -111,7 +111,7 @@ function eHelicopter:update()
 		local unlaunchDay = self.forceUnlaunchTime[1]
 		local unlaunchHour = self.forceUnlaunchTime[2]
 
-		if unlaunchDay>=DAY and unlaunchHour>HOUR then
+		if unlaunchDay<=DAY and unlaunchHour<=HOUR then
 			--[[DEBUG]] print(" - EHE: "..self:heliToString().."forceUnlaunchTime reached: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
 			self:goHome()
 		end
