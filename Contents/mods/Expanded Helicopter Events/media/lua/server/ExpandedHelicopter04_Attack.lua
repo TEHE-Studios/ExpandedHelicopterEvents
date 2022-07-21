@@ -159,8 +159,10 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	if instanceof(targetHostile, "IsoGameCharacter") then
-		if targetHostile:isNearVehicle() then
-			chance = (chance*0.8)
+		if instanceof(targetHostile, "IsoPlayer") then
+			if targetHostile:isNearVehicle() then
+				chance = (chance*0.8)
+			end
 		end
 		if (targetHostile:checkIsNearWall()>0) then
 			chance = (chance*0.8)
