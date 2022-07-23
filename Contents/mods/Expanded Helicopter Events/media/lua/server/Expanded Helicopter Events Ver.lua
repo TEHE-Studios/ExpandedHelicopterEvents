@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.13-TargetVehiclesAndForcedUnlaunchREADY-JUL21"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.14-JUL23"))
