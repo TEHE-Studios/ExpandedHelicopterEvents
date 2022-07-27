@@ -135,8 +135,6 @@ eHelicopter_PRESETS["id_name"] = {
 	}
 ]]
 
---- SPECIAL VARIABLES UNIQUE TO PRESETS: `inherit`
-
 eHelicopter_PRESETS["military"] = {
     announcerVoice = true,
     forScheduling = true,
