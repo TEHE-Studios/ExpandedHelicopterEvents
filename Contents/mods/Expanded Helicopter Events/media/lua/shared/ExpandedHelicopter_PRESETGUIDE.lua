@@ -3,11 +3,9 @@ if 1==1 then return end ---Remove this Line to get started.
 --- YOUR SUB-MOD FILE MUST GO IN MEDIA/SHARED/ IN ORDER TO WORK ---
 -----------------------------------------------------------
 
----This is required so that your mod is loaded AFTER the original mod
-require "ExpandedHelicopter02a_Presets"
--- require "SWH04_Presets" -- This is the filename for Super Weird Helis
+---Presets should only include variables you want changed,
+---if a variable is not listed it uses the default value OR in some cases any previously loaded preset.
 
----Only include variables you want changed in the preset.
 ---@class eHelicopter
 ---@field forScheduling boolean default: false, used for scheduler; leaving it as false means the event will not spawn from the scheduler
 ---@field schedulingFactor number multiplied against frequency to make them more or less likely - high number = more likely to be scheduled
@@ -127,14 +125,25 @@ require "ExpandedHelicopter02a_Presets"
 ---@field attackHitChance number multiplied against chance to hit in attacking, default: 85
 ---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5)), default: 10
 
+---=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=---
+
+--- [ FILE HEADER ] --- FILE REQUIRES, AND SAFELY OVERWRITING/ADDING TO `eHelicopter_PRESETS`
+--- This is required so that your sub-mod is loaded AFTER the original Expanded Helicopter Events
+require "ExpandedHelicopter02a_Presets"
+--- Additionally, if you want to modify or make use of an other sub-mod's presets you need to require their preset file.
+-- require "SWH04_Presets" -- This is the filename for Super Weird Helis
+
+--- This is also required before your presets are defined so presets are always adding onto the same table.
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
+--- TEMPLATE
 --[[
 eHelicopter_PRESETS["id_name"] = {
 		variable = {values}
 	}
 ]]
 
+--- ALL PRESETS BELOW ARE COPIES OF THE VANILLA EVENTS, DO NOT INCLUDE THEM AGAIN IN YOUR SUB-MOD - THESE ARE LEFT HERE TO ACT AS EXAMPLES.
 eHelicopter_PRESETS["military"] = {
     announcerVoice = true,
     forScheduling = true,
@@ -160,7 +169,7 @@ eHelicopter_PRESETS["patrol_only"] = {
     inherit = {"military"},
 }
 
--- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
+
 eHelicopter_PRESETS["patrol_only_emergency"] = {
     inherit = {"military"},
     dropItems = {["EHE.EmergencyFlyer"]=250},
