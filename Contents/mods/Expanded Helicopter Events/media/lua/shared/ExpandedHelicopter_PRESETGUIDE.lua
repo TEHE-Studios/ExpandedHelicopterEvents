@@ -1,18 +1,29 @@
 if 1==1 then return end ---Remove this Line to get started.
+-----------------------------------------------------------
+--- YOUR SUB-MOD FILE MUST GO IN MEDIA/SHARED/ IN ORDER TO WORK ---
+-----------------------------------------------------------
 
------------------------------------------------------------
---- THIS FILE MUST GO IN MEDIA/SHARED/ IN ORDER TO WORK ---
------------------------------------------------------------
+---This is required so that your mod is loaded AFTER the original mod
 require "ExpandedHelicopter02a_Presets"
----Only include variables you want changed in the preset.
+-- require "SWH04_Presets" -- This is the filename for Super Weird Helis
 
+---Only include variables you want changed in the preset.
 ---@class eHelicopter
----@field forScheduling boolean false | string used for scheduler; leaving it as false means the event will not spawn from the scheduler
+---@field forScheduling boolean default: false, used for scheduler; leaving it as false means the event will not spawn from the scheduler
 ---@field schedulingFactor number multiplied against frequency to make them more or less likely - high number = more likely to be scheduled
 ---@field eventSpawnWeight number This number is how many times this event is included in the scheduler's pool of events
 ---@field eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
----@field doNotListForTwitchIntegration boolean default is false
----@field ignoreNeverEnding boolean default is false
+---@field eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
+---@field doNotListForTwitchIntegration boolean default: false
+---@field ignoreNeverEnding boolean default: false
+
+---@field inherit table default: false; Table of PresetIDs, each is loaded in order - previous variables are overwritten.
+
+---@field presetProgression table default: false; Table of presetIDs and corresponding % preset is compared to Days/CuttOffDay
+---example: {["presetA"]=0,["presetB"]=25,["presetC"]=50} = at 0% (days out of cutoff day) preset1 is chosen, at 25% presetB is chosen, etc.
+
+---@field presetRandomSelection table default: false; Table of presetIDs and optional corresponding weight (weight is 1 if none found) in list to be chosen from.
+---Example: {"presetA", 2, "presetB", "presetC", 4} = a list equal to {"presetA","presetA","presetB","presetC","presetC","presetC","presetC"}
 
 ---@field eventSpecialDates table table of specific in-game months/day tables; inGameDates/systemDates (table of tables)
 --- EXAMPLES: {{1,1}} = 1st month and 1st day only
@@ -21,16 +32,15 @@ require "ExpandedHelicopter02a_Presets"
 ---If no day is provided it is assumed to use the entire month
 --- example: { systemDates = {{1,1}}, inGameDates = {{2}, {3,15}}}
 
----@field eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
 ---@field radioChatter string default: "AEBS_Choppah" - you will need to add your own translation file for unique strings.
 ---@field flightHours table table of numbers, example, flightHours = {5, 22}
----@field hoverOnTargetDuration number|boolean How long the helicopter will hover over the player, this is subtracted from every tick, default is false
+---@field hoverOnTargetDuration number|boolean How long the helicopter will hover over the player, this is subtracted from every tick, default: false
 ---@field searchForTargetDurationMS number How long the helicopter will search for last seen targets in ticks
 ---@field shadow boolean | WorldMarkers.GridSquareMarker if set to true a shadow (WorldMarkers.GridSquareMarker) will be created
 ---@field shadowTexture string texture filename to use for the shadow, default: "helicopter_shadow"
 ---@field eventMarkerIcon string texture filename to use for markers, default: "media/ui/helievent.png"
 ---@field crashType boolean|table is false no wreck will be spawned, otherwise use a table - only 1 entry will be selected at random, default: {"UH1HFuselage"}
----@field addedCrashChance number additional % to add to crash chance , default is 0.
+---@field addedCrashChance number additional % to add to crash chance , default: 0.
 
 ---@field addedFunctionsToEvents table table of IDs for additional function calls on specific events, these functions need to be defined/before above the presets file
 ---Useful for submodders seeking to add more functionality to events.
@@ -46,8 +56,10 @@ require "ExpandedHelicopter02a_Presets"
 ---@field scrapItems table table of additional vehicles to act as extra small pieces, default: {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10}
 
 ---@field crew table list of IDs and chances (similar to how loot distribution is handled)
----Example: crew = {"pilot", 100, "crew", 75, "crew", 50}
----If there is no number following a string a chance of 100% will be applied.
+---The format ias ID, spawnChance, isFemaleChance
+---Example: crew = {"pilot", 100, 50, "crew", 75, 50, "crew", 50, 50}
+---The number after the ID is assumed for spawn chance, if there is no number found 100% is used.
+---If there is a number after the spawnChance it it assumed for the isFemaleChance, if no number 50% is used.
 ---default: {"AirCrew", 100}
 
 ---@field formation table table of IDs to generate follower helis, default: {}
@@ -80,39 +92,19 @@ require "ExpandedHelicopter02a_Presets"
 ---@field announcerVoice string string ID of announcer, or false to disable, default: false
 
 ---@field randomEdgeStart boolean if the edge the event starts from will be random
---- default is true, false will force the edge to always be the closest
+--- default: true, false will force the edge to always be the closest
 
----@field presetProgression table Table of presetIDs and corresponding % preset is compared to Days/CuttOffDay
----example: {["preset1"]=0,["preset2"]=25,["preset3"]=50} = at 0% (days out of cutoff day) preset1 is chosen, at 25% preset2 is chosen, etc.
----default: false
+---@field speed number default: 1
+---@field topSpeedFactor number speed x this = top "speed", default: 1.5
+---@field flightVolume number range of flight sound to attract zombies, default: 75
+---@field hostilePreference string default: false. 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
+---@field attackDelay number delay in milliseconds between attacks, default: 60
 
----@field presetRandomSelection table Table of presetIDs and optional corresponding weight (weight is 1 if none found) in list to be chosen from.
----Example: {"preset1",2,"preset2","preset3",4} = a list equal to {"preset1","preset1","preset2","preset3","preset3","preset3","preset3"}
----default: false
-
----@field speed number
-eHelicopter.speed = 1
-
----@field topSpeedFactor number speed x this = top "speed"
-eHelicopter.topSpeedFactor = 1.5
-
----@field flightVolume number
-eHelicopter.flightVolume = 75
-
----@field hostilePreference string
----set to 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
-eHelicopter.hostilePreference = false
-
----@field attackDelay number delay in milliseconds between attacks
-eHelicopter.attackDelay = 60
-
----@field attackScope number number of rows from "center" IsoGridSquare out
+---@field attackScope number number of rows from "center" IsoGridSquare out, default: 1
 --- **area formula:** ((Scope*2)+1) ^2
----
 --- scope:⠀0=1x1;⠀1=3x3;⠀2=5x5;⠀3=7x7;⠀4=9x9
-eHelicopter.attackScope = 1
 
----@field attackSpread number number of rows made of "scopes" from center-scope out
+---@field attackSpread number number of rows made of "scopes" from center-scope out, default: 3
 ---**formula for ScopeSpread area:**
 ---
 ---((Scope * 2)+1) * ((Spread * 2)+1) ^2
@@ -131,13 +123,9 @@ eHelicopter.attackScope = 1
 --- -----------------------------------
 --- ⠀  ⠀⠀⠀  ⠀| 03 | 49 | 441 | 1225 | 2401 |
 --- -----------------------------------
-eHelicopter.attackSpread = 3
 
----@field attackHitChance number multiplied against chance to hit in attacking
-eHelicopter.attackHitChance = 85
-
----@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5))
-eHelicopter.attackDamage = 10
+---@field attackHitChance number multiplied against chance to hit in attacking, default: 85
+---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5)), default: 10
 
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
@@ -147,15 +135,7 @@ eHelicopter_PRESETS["id_name"] = {
 	}
 ]]
 
-
---- forScheduling string used for scheduler; leaving it as nil means the event will not spawn from the scheduler
---- schedulingFactor number multiplied against frequency to make them more or less likely - high number = more likely to be scheduled
---- eventSpawnWeight number This number is how many times this event is included in the scheduler's pool of events
---- eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
---- eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
-
---- doNotListForTwitchIntegration
---- ignoreNeverEnding
+--- SPECIAL VARIABLES UNIQUE TO PRESETS: `inherit`
 
 eHelicopter_PRESETS["military"] = {
     announcerVoice = true,
