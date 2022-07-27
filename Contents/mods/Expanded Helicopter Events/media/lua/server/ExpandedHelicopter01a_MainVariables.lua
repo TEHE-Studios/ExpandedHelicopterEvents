@@ -43,6 +43,7 @@ eHelicopter.eventSoundEffects = {
 
 eHelicopter.announcerVoice = false
 eHelicopter.randomEdgeStart = true
+eHelicopter.inherit = false
 eHelicopter.presetProgression = false
 eHelicopter.presetRandomSelection = false
 eHelicopter.speed = 1
