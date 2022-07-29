@@ -634,8 +634,8 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		crashChance = math.min(100,math.floor(crashChance))
 		crashChance = crashChance/(eventFrequency/3)
 
-		--[[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
-		--[[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
+		--[DEBUG]] print(" ---- cutOffDay:"..cutOffDay.." | daysIntoApoc:"..daysIntoApoc .. " | apocImpact:"..apocImpact.." | weatherImpact:"..weatherImpact)
+		--[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 	end
 
 	if self.crashType and (not self.crashing) and (ZombRand(0,501) <= crashChance) then
