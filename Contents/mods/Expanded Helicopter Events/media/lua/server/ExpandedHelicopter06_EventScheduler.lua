@@ -147,7 +147,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 		end
 	end
 	
-	if neverEnd or (daysIntoApoc <= SandboxVars.ExpandedHeli.CutOffDay) then
+	if (neverEnd or (daysIntoApoc <= SandboxVars.ExpandedHeli.CutOffDay)) and (daysIntoApoc >= SandboxVars.ExpandedHeli.StartDay) then
 		local options = {}
 
 		eHeliEvents_setEventsForScheduling()
