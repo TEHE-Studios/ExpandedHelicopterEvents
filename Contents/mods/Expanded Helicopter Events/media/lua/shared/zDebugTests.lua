@@ -35,6 +35,10 @@ function CustomDebugPanel.TemporaryTest()
 	print("getOptionByName: "..getSandboxOptions():getOptionByName("Helicopter"):getValue())
 	print("SandboxVars.Helicopter: "..SandboxVars.Helicopter)
 	print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
+
+	print("SchedulerDuration: depreciated:"..tostring(SandboxVars.ExpandedHeli.CutOffDay).."  current:"..tostring(SandboxVars.ExpandedHeli.SchedulerDuration))
+	print("ContinueScheduling: depreciated:"..tostring(SandboxVars.ExpandedHeli.NeverEnding).."  current:"..tostring(SandboxVars.ExpandedHeli.ContinueScheduling))
+	print("ContinueSchedulingLateGameOnly: depreciated:"..tostring(SandboxVars.ExpandedHeli.NeverEndingLateGameOnly).."  current:"..tostring(SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly))
 end
 
 function CustomDebugPanel.printEHEIsoPlayers()
@@ -46,7 +50,16 @@ end
 
 function CustomDebugPanel.SandboxVarsDUMP()
 	--SandboxVars
-	print("SandboxVars:"..CustomDebugPanel.RecursiveTablePrint(SandboxVars).."\nEnd Of SandboxVars")
+	print(" - SandboxVars:")
+	local optionsSize = getSandboxOptions():getNumOptions()
+	for i=1, optionsSize do
+		---@type SandboxOptions.SandboxOption
+		local option = getSandboxOptions():getOptionByIndex(i-1)
+		local optionName = tostring(option:getShortName())
+		local optionTableName = tostring(option:getTableName())
+		print(" --- "..optionName.. " ("..optionTableName..")")
+	end
+
 end
 
 function CustomDebugPanel.RTP_indent(n) local text = "" for i=0, n do text = text.."   " end return text end
