@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.4.14-HOTFIX-JUL29"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.5-SandboxOptionsRedux-JUL29"))
