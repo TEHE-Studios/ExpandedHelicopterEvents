@@ -599,10 +599,10 @@ end
 
 function fetchStartDayAndCutOffDay(HelicopterOrPreset)
 	local startDayFactor = HelicopterOrPreset.eventStartDayFactor or eHelicopter.eventStartDayFactor
-	local startDay = math.floor((startDayFactor*SandboxVars.ExpandedHeli.CutOffDay)+0.5)
+	local startDay = math.floor((startDayFactor*SandboxVars.ExpandedHeli.SchedulerDuration)+0.5)
 	startDay = math.max(startDay, SandboxVars.ExpandedHeli.StartDay)
 	local cutOffDayFactor = HelicopterOrPreset.eventCutOffDayFactor or eHelicopter.eventCutOffDayFactor
-	local cutOffDay = math.floor((cutOffDayFactor*(startDay+SandboxVars.ExpandedHeli.CutOffDay))+0.5)
+	local cutOffDay = math.floor((cutOffDayFactor*(startDay+SandboxVars.ExpandedHeli.SchedulerDuration))+0.5)
 	return startDay, cutOffDay
 end
 

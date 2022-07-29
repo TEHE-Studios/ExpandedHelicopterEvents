@@ -135,8 +135,8 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 	local GT = getGameTime()
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
-	local neverEnd = SandboxVars.ExpandedHeli.NeverEnding
-	local neverEndingLateGameOnly = SandboxVars.ExpandedHeli.NeverEndingLateGameOnly
+	local continueScheduling = SandboxVars.ExpandedHeli.ContinueScheduling
+	local csLateGameOnly = SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly
 	local globalModData = getExpandedHeliEventsModData()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 
@@ -147,7 +147,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 		end
 	end
 	
-	if (neverEnd or (daysIntoApoc <= (SandboxVars.ExpandedHeli.StartDay+SandboxVars.ExpandedHeli.CutOffDay))) and (daysIntoApoc >= SandboxVars.ExpandedHeli.StartDay) then
+	if (continueScheduling or (daysIntoApoc <= (SandboxVars.ExpandedHeli.StartDay+SandboxVars.ExpandedHeli.SchedulerDuration))) and (daysIntoApoc >= SandboxVars.ExpandedHeli.StartDay) then
 		local options = {}
 
 		eHeliEvents_setEventsForScheduling()
@@ -195,7 +195,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				--the greater the frequency the smaller the denominator
 				local probabilityDenominator = ((10-freq)*2500)
 				--less frequent over time
-				probabilityDenominator = probabilityDenominator+(1000*(daysIntoApoc/SandboxVars.ExpandedHeli.CutOffDay))
+				probabilityDenominator = probabilityDenominator+(1000*(daysIntoApoc/SandboxVars.ExpandedHeli.SchedulerDuration))
 
 				local eventAvailable = false
 
@@ -203,7 +203,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 					eventAvailable = true
 
 					--if (daysIn > startDay) AND (not ignoring never-end) AND (never-end is on)
-				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreNeverEnding) and (neverEnd==true and ( (not neverEndingLateGameOnly) or (neverEndingLateGameOnly and cutOffDay>=SandboxVars.ExpandedHeli.CutOffDay) )) ) then
+				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreContinueScheduling) and (continueScheduling==true and ( (not csLateGameOnly) or (csLateGameOnly and cutOffDay>=SandboxVars.ExpandedHeli.SchedulerDuration) )) ) then
 					eventAvailable = true
 				end
 
@@ -211,7 +211,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 					eventAvailable = false
 				end
 
-				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.NeverEnding==true).." c:"..chance)--]]
+				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.csLateGameOnly==true).." c:"..chance)--]]
 
 				if eventAvailable then
 					local weight = eHelicopter.eventSpawnWeight*freq

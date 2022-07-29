@@ -36,16 +36,6 @@ Sandbox_EN = {
 	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to.",
 	Sandbox_ExpandedHeli_StartDay_help = "This is what day into the game events occur. You will need to factor in "months into the apocalypse" settings."
 
-    Sandbox_ExpandedHeli_CutOffDay = "OLD CutOffDay",
-    Sandbox_ExpandedHeli_CutOffDay_help = "This value is depreciated, if it is in here ignore it, use SchedulerDuration instead.",
-
-    Sandbox_ExpandedHeli_NeverEnding = "OLD NeverEnding",
-    Sandbox_ExpandedHeli_NeverEnding_help = "This value is depreciated, if it is in here ignore it, use ContinueScheduling instead.",
-
-    Sandbox_ExpandedHeli_NeverEndingLateGameOnly = "OLD NeverEndingLateGameOnly",
-    Sandbox_ExpandedHeli_NeverEndingLateGameOnly_help = "This value is depreciated, if it is in here ignore it, use ContinueSchedulingLateGameOnly instead.",
-
-
 	Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler Duration",
 	Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "How long will the scheduler run from the start day.\n The scheduler will adjust event progression to fit this duration.",
     Sandbox_ExpandedHeli_SchedulerDuration_help = "This is how many days the scheduler will operate for."
@@ -55,4 +45,15 @@ Sandbox_EN = {
 
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continue Scheduling: Late Game Events Only",
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "When \"Continue Scheduling Forever\" is toggle on, this toggled on makes the scheduler only use late-game events.",
+
+
+    /* DO NOT TRANSLATE THESE, THEY ARE DEPRECIATED/OLD/NOT USED, THEY ARE HERE FOR OLDER SAVES, MAY BE REMOVED IN THE FUTURE :) */
+    Sandbox_ExpandedHeli_CutOffDay = "OLD CutOffDay",
+    Sandbox_ExpandedHeli_CutOffDay_help = "This value is depreciated, if it is in here ignore it, use SchedulerDuration instead.",
+
+    Sandbox_ExpandedHeli_NeverEnding = "OLD NeverEnding",
+    Sandbox_ExpandedHeli_NeverEnding_help = "This value is depreciated, if it is in here ignore it, use ContinueScheduling instead.",
+
+    Sandbox_ExpandedHeli_NeverEndingLateGameOnly = "OLD NeverEndingLateGameOnly",
+    Sandbox_ExpandedHeli_NeverEndingLateGameOnly_help = "This value is depreciated, if it is in here ignore it, use ContinueSchedulingLateGameOnly instead.",
 }
