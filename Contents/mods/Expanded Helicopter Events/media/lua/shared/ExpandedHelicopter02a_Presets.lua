@@ -138,7 +138,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	schedulingFactor = 99999,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
-	ignoreNeverEnding = true,
+	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_AirRaid",
 }
 
@@ -157,7 +157,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	schedulingFactor = 99999,
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.067,
-	ignoreNeverEnding = true,
+	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_JetBombing",
 }
 

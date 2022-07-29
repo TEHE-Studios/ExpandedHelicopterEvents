@@ -13,7 +13,7 @@ if 1==1 then return end ---Remove this Line to get started.
 ---@field eventStartDayFactor number This is number is multiplied against cutOffDay to act as when it will be able to spawn.
 ---@field eventCutOffDayFactor number This is multiplied against cutOffDay to act as the day this event no longer spawns
 ---@field doNotListForTwitchIntegration boolean default: false
----@field ignoreNeverEnding boolean default: false
+---@field ignoreContinueScheduling boolean default: false
 
 ---@field inherit table default: false; Table of PresetIDs, each is loaded in order - previous variables are overwritten.
 
@@ -280,7 +280,7 @@ eHelicopter_PRESETS["air_raid"] = {
     schedulingFactor = 99999,
     eventStartDayFactor = 0.067,
     eventCutOffDayFactor = 0.067,
-    ignoreNeverEnding = true,
+    ignoreContinueScheduling = true,
     radioChatter = "AEBS_AirRaid",
 }
 
@@ -299,7 +299,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
     schedulingFactor = 99999,
     eventStartDayFactor = 0.067,
     eventCutOffDayFactor = 0.067,
-    ignoreNeverEnding = true,
+    ignoreContinueScheduling = true,
     radioChatter = "AEBS_JetBombing",
 }
 
