@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.5-SandboxOptionsRedux-JUL29"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.6-MP-SOUND-TWEAK-AUG1"))
