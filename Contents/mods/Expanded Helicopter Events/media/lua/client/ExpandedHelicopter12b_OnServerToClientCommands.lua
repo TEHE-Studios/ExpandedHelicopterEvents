@@ -55,7 +55,6 @@ function eventMarkerHandler.updateForPlayer(player)
 					eventMarkerHandler.expirations[player][id] = nil
 					marker:setDuration(0)
 					marker:setEnabled(false)
-					marker:removeFromUIManager()
 				end
 			end
 		end
