@@ -19,10 +19,21 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
 			storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
 
+			if command ~= "setPos" then
+				local emitterDebugText = "-- ["..command.."]:"..tostring(soundEmitter).." - "..tostring(reusableID)
+				if type(DATA)=="table" then
+					for k,v in pairs(DATA) do
+						emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")"
+					end
+				else
+					emitterDebugText = emitterDebugText.." - (DATA = "..tostring(DATA)..")"
+				end
+				print(emitterDebugText)
+			end
+
 			if command == "play" then
 				if soundEmitter:isPlaying(DATA.soundEffect) then
 					print("--soundEmitter is already playing"..DATA.soundEffect)
-					--print("--play:"..tostring(soundEmitter).." - "..DATA.soundEffect.." ("..DATA.x..","..DATA.y..")")
 					--local square = getSquare(DATA.x, DATA.y, DATA.z)
 				else
 					soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
