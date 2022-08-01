@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.6-MP-SOUND-TWEAK-AUG1"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.6.2-HOTFIX3-AUG1"))

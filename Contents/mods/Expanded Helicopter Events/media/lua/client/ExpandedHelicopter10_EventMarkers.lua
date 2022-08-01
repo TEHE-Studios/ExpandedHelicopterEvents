@@ -140,6 +140,9 @@ function EHE_EventMarker:setDuration(value)
 	end
 end
 
+function EHE_EventMarker:getDuration()
+	return self.duration
+end
 
 function EHE_EventMarker:render()
 	if self.visible and self.duration > 0 then--and self.distanceToPoint>4 then
@@ -180,6 +183,10 @@ end
 
 function EHE_EventMarker:setEnabled(value)
 	self.enabled = value
+end
+
+function EHE_EventMarker:getEnabled()
+	return self.enabled
 end
 
 function EHE_EventMarker:prerender()
@@ -247,6 +254,7 @@ end
 
 
 function EHE_EventMarker:update(posX,posY)
+	if not self.enabled then return end
 
 	local timeStamp = getTimeInMillis()
 	if (self.lastUpdateTime+5 >= timeStamp) then

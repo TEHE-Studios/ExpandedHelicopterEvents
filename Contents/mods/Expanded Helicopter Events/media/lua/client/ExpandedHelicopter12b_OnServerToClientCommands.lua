@@ -43,14 +43,19 @@ function eventMarkerHandler.updateForPlayer(player)
 	local personalMarkers = eventMarkerHandler.markers[player]
 	if personalMarkers then
 		for id,_ in pairs(personalMarkers) do
+			---@type ISUIElement
 			local marker = eventMarkerHandler.markers[player][id]
-			if marker then
+			if marker and marker:getEnabled() then
 				local currentTime = getGametimeTimestamp()
 				local currentTimeMS = getTimeInMillis()
 				local expireTime = eventMarkerHandler.expirations[player][id]
 				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then
 					print("-- EHE: WARN: eventMarkerHandler.updateForPlayer: no update received")
+					eventMarkerHandler.markers[player][id] = nil
+					eventMarkerHandler.expirations[player][id] = nil
 					marker:setDuration(0)
+					marker:setEnabled(false)
+					marker:removeFromUIManager()
 				end
 			end
 		end
