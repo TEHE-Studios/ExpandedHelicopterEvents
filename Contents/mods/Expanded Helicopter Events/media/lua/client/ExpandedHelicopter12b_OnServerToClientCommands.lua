@@ -8,9 +8,9 @@ storedShadows = {}
 storedShadowsUpdateTimes = {}
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
-	for shadowID,_ in pairs(storedShadows) do
-		if storedShadowsUpdateTimes[shadowID]+100 <= currentTime then
-			---@type FMODSoundEmitter | BaseSoundEmitter emitter
+	for shadowID,timestamps in pairs(storedShadows) do
+		if timestamps+1000 <= currentTime then
+			--print("-- EHE: WARN: eventShadowHandler.updateForPlayer: ts:"..timestamps.."+100 >="..currentTime)
 			local shadow = storedShadows[shadowID]
 			shadow:setAlpha(0)
 		end
@@ -24,8 +24,8 @@ storedLooperEventsUpdateTimes = {}
 function eventSoundHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
-		if timeStamp+100 <= currentTime then
-			--print("--eventSoundHandler.updateForPlayer: ts:"..timeStamp.."+100 >="..currentTime)
+		if timeStamp+1000 <= currentTime then
+			print("-- EHE: WARN: eventSoundHandler.updateForPlayer: ts:"..timeStamp.."+100 >="..currentTime)
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
 			emitter:stopAll()
@@ -48,6 +48,7 @@ function eventMarkerHandler.updateForPlayer(player)
 				local currentTimeMS = getTimeInMillis()
 				local expireTime = eventMarkerHandler.expirations[player][id]
 				if (expireTime <= currentTime) and (marker.lastUpdateTime+10 <= currentTimeMS) then
+					--print("-- EHE: WARN: eventMarkerHandler.updateForPlayer: ts:"..marker.lastUpdateTime.."+10 >="..currentTime)
 					marker:setDuration(0)
 				end
 			end

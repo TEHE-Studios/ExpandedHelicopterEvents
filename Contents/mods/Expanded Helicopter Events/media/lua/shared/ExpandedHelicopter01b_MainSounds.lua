@@ -2,8 +2,6 @@ require "ExpandedHelicopter01a_MainVariables"
 
 eventSoundHandler = {}
 
-storedLooperEvents = {}
-storedLooperEventsUpdateTimes = {}
 function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 	if isClient() then
 		---@type BaseSoundEmitter | FMODSoundEmitter
