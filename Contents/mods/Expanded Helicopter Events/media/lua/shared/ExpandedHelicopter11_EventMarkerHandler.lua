@@ -2,8 +2,6 @@ require "ExpandedHelicopter10_EventMarkers"
 require "ExpandedHelicopter00a_Util"
 
 eventMarkerHandler = {}
-eventMarkerHandler.markers = {} --[player] = {["id"]=marker}
-eventMarkerHandler.expirations = {} --[player] = {["id]=time}
 
 --set
 --updatePos

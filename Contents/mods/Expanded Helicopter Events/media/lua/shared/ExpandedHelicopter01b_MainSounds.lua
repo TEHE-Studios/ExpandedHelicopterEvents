@@ -20,7 +20,7 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 			storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
 
 			if command ~= "setPos" then
-				local emitterDebugText = "-- ["..command.."]:"..tostring(soundEmitter).." - "..tostring(reusableID)
+				local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:"..tostring(soundEmitter).." - "..tostring(reusableID)
 				if type(DATA)=="table" then
 					for k,v in pairs(DATA) do
 						emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")"

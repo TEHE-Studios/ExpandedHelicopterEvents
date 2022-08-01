@@ -4,6 +4,8 @@ require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
 
 
+storedShadows = {}
+storedShadowsUpdateTimes = {}
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for shadowID,_ in pairs(storedShadows) do
@@ -17,6 +19,8 @@ end
 Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
 
+storedLooperEvents = {}
+storedLooperEventsUpdateTimes = {}
 function eventSoundHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
@@ -32,6 +36,8 @@ end
 Events.OnPlayerUpdate.Add(eventSoundHandler.updateForPlayer)
 
 
+eventMarkerHandler.markers = {} --[player] = {["id"]=marker}
+eventMarkerHandler.expirations = {} --[player] = {["id]=time}
 function eventMarkerHandler.updateForPlayer(player)
 	local personalMarkers = eventMarkerHandler.markers[player]
 	if personalMarkers then
