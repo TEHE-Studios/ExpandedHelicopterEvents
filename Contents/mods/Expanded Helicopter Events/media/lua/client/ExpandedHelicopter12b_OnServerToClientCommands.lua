@@ -8,8 +8,8 @@ storedShadows = {}
 storedShadowsUpdateTimes = {}
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
-	for shadowID,timestamps in pairs(storedShadows) do
-		if timestamps+1000 <= currentTime then
+	for shadowID,_ in pairs(storedShadows) do
+		if storedShadowsUpdateTimes[shadowID]+1000 <= currentTime then
 			--print("-- EHE: WARN: eventShadowHandler.updateForPlayer: ts:"..timestamps.."+100 >="..currentTime)
 			local shadow = storedShadows[shadowID]
 			shadow:setAlpha(0)
