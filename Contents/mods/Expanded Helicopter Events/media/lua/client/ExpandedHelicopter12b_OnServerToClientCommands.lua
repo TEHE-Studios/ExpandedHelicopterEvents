@@ -9,10 +9,13 @@ storedShadowsUpdateTimes = {}
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for shadowID,_ in pairs(storedShadows) do
-		if storedShadowsUpdateTimes[shadowID]+1000 <= currentTime then
-			--print("-- EHE: WARN: eventShadowHandler.updateForPlayer: ts:"..timestamps.."+100 >="..currentTime)
+		if storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
+			print("-- EHE: WARN: eventShadowHandler.updateForPlayer: no update received")
+			---@type WorldMarkers.GridSquareMarker
 			local shadow = storedShadows[shadowID]
 			shadow:setAlpha(0)
+			storedShadows[shadowID] = nil
+			storedShadowsUpdateTimes[shadowID] = nil
 		end
 	end
 end
@@ -24,8 +27,8 @@ storedLooperEventsUpdateTimes = {}
 function eventSoundHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
-		if timeStamp+1000 <= currentTime then
-			print("-- EHE: WARN: eventSoundHandler.updateForPlayer: ts:"..timeStamp.."+100 >="..currentTime)
+		if timeStamp+5000 <= currentTime then
+			print("-- EHE: WARN: eventSoundHandler.updateForPlayer: no update received")
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
 			emitter:stopAll()
@@ -45,8 +48,8 @@ function eventMarkerHandler.updateForPlayer(player)
 				local currentTime = getGametimeTimestamp()
 				local currentTimeMS = getTimeInMillis()
 				local expireTime = eventMarkerHandler.expirations[player][id]
-				if (expireTime <= currentTime) and (marker.lastUpdateTime+10 <= currentTimeMS) then
-					--print("-- EHE: WARN: eventMarkerHandler.updateForPlayer: ts:"..marker.lastUpdateTime.."+10 >="..currentTime)
+				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then
+					print("-- EHE: WARN: eventMarkerHandler.updateForPlayer: no update received")
 					marker:setDuration(0)
 				end
 			end
