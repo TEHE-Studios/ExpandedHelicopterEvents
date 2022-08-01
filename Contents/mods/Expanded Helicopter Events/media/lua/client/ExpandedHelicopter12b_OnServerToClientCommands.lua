@@ -36,8 +36,6 @@ end
 Events.OnPlayerUpdate.Add(eventSoundHandler.updateForPlayer)
 
 
-eventMarkerHandler.markers = {} --[player] = {["id"]=marker}
-eventMarkerHandler.expirations = {} --[player] = {["id]=time}
 function eventMarkerHandler.updateForPlayer(player)
 	local personalMarkers = eventMarkerHandler.markers[player]
 	if personalMarkers then
