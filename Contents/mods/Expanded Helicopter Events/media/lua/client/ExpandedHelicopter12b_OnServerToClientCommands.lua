@@ -3,9 +3,6 @@ require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
 
-
-storedShadows = {}
-storedShadowsUpdateTimes = {}
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for shadowID,_ in pairs(storedShadows) do
