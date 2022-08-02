@@ -3,10 +3,12 @@ require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
 
+
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
+	if not storedShadows then return end
 	for shadowID,_ in pairs(storedShadows) do
-		if storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
+		if storedShadowsUpdateTimes and storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
 			print("-- EHE: WARN: eventShadowHandler.updateForPlayer: no update received")
 			---@type WorldMarkers.GridSquareMarker
 			local shadow = storedShadows[shadowID]
