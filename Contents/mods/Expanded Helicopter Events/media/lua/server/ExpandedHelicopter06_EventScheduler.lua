@@ -255,7 +255,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 
-			if startTime >= 24 then
+			if startTime > 24 then
 				startTime = startTime-24
 			end
 
