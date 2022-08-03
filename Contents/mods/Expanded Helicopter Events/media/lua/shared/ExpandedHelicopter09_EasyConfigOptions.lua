@@ -41,7 +41,8 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu.resetEventsToolTip = nil
 	eHelicopterSandbox.menu.resetEvents = nil
 	eHelicopterSandbox.menu.generalSpaceD = nil
-	eHelicopterSandbox.menu.eventMarkersOnToolTip =  nil
+	eHelicopterSandbox.menu.eventMarkersOnToolTip1 =  nil
+	eHelicopterSandbox.menu.eventMarkersOnToolTip2 =  nil
 	eHelicopterSandbox.menu.eventMarkersOn = nil
 	eHelicopterSandbox.menu.generalSpaceE = nil
 
