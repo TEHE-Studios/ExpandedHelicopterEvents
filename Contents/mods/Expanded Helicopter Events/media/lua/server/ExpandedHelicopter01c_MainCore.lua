@@ -416,25 +416,25 @@ function eHelicopter:findTarget(range, DEBUGID)
 		table.insert(targetPool, flare)
 	end
 
-	for target,_ in pairs(targetPool) do
-
+	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
 		local p = target
-		--[DEBUG]] print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
+		--[DEBUG]] print(" -- EHE: Potential Target:".." = "..tostring(p))
 		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
 
 			local iterations = 7
-
+			---@type IsoGridSquare
 			local pSquare
 
 			if instanceof(p, "IsoPlayer") then
 				pSquare = p:getSquare()
-			else
-				pSquare = p:getWorldItem():getSquare()
+
+			elseif instanceof(p, "InventoryItem") then
+				pSquare = eheFlares.getFlareOuterMostSquare(p)
 			end
 
 			if pSquare then
-				local zone = pSquare:getCurrentZone()
+				local zone = pSquare:getZone()
 				--[[DEBUG]] local DEBUGzoneID = "<none>"
 				if zone then
 					local zoneType = zone:getType()
@@ -455,41 +455,40 @@ function eHelicopter:findTarget(range, DEBUGID)
 						end
 					end
 				end
-			end
 
-			if instanceof(p, "IsoPlayer") then
-				local pCar = p:getVehicle()
+				if instanceof(p, "IsoPlayer") then
+					local pCar = p:getVehicle()
 
-				if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then
-					iterations = math.floor(iterations*1.3)
+					if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then
+						iterations = math.floor(iterations*1.3)
+					end
+
+					if pCar and pCar:getCurrentSpeedKmHour()>0 then
+						iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100)))
+					end
+
+					local targetSquare = p:getSquare()
+					if (targetSquare:getTree()) then
+						iterations = math.floor(iterations*0.66)
+					end
+
+				elseif eheFlares.activeObjects[p] then
+					if pSquare:isOutside() then
+						iterations = iterations*5
+					else
+						iterations = 0
+					end
 				end
 
-				if pCar and pCar:getCurrentSpeedKmHour()>0 then
-					iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100)))
-				end
-
-				local targetSquare = p:getSquare()
-				if (targetSquare:getTree()) then
-					iterations = math.floor(iterations*0.66)
-				end
-
-			elseif eheFlares.activeObjects[p] then
-				if p:isOutside() then
-					iterations = iterations*5
-				else
-					iterations = 0
-				end
-			end
-
-
-			for _=1, maxWeight do
-				if iterations > 0 then
-					iterations = iterations-1
-					table.insert(weightPlayersList, p)
-				else
-					local altTarget = self:findAlternativeTarget(p)
-					if altTarget then
-						table.insert(weightPlayersList, altTarget)
+				for _=1, maxWeight do
+					if iterations > 0 then
+						iterations = iterations-1
+						table.insert(weightPlayersList, p)
+					else
+						local altTarget = self:findAlternativeTarget(pSquare)
+						if altTarget then
+							table.insert(weightPlayersList, altTarget)
+						end
 					end
 				end
 			end
@@ -535,7 +534,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	end
 
 	if not target then
-		print(" --- HELI "..self:heliToString().."- WARN: unable to find target: grabbing random square nearby.")
+		print(" --- HELI "..self:heliToString().."- WARN: unable to find target...")
 		target = self:grabRandomSquareNearby(range)
 		if not target and self~=eHelicopter then
 			self:goHome()
