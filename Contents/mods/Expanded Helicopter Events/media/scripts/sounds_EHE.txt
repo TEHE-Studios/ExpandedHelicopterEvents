@@ -41,7 +41,11 @@ module Base {
         clip { file = media/sound/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/EntryOfTheGladiators.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/CanCanMusic.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
-             
+
+     sound eheFlare {
+         category = EHE: Main, loop = false, is3D = true,
+         clip { file = media/sound/flare.ogg, distanceMax = 80, reverbFactor = 0.1, volume = 0.25, } }
+
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/bombing1.ogg, distanceMax = 5100, reverbFactor = 0.1, volume = 0.5, }

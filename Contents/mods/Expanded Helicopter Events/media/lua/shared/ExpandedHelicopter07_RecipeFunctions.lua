@@ -1,3 +1,5 @@
+require "ExpandedHelicopter_Flares"
+
 EHE_Recipe = {}
 
 function EHE_Recipe.CanOpenBoxes(scriptItems)
@@ -122,9 +124,17 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 		local tags = itemScript:getTags()
 		local addCanOpenBoxesTag = EHE_Recipe.typesThatCanOpenBoxes[itemFullName]
 		local tagString = ""
+
+		if tags:contains("EHESignalFlare") then
+			eheFlares.addFlareType(itemFullName, "EHESignalFlare")
+		elseif tags:contains("EHEFlare") then
+			eheFlares.addFlareType(itemFullName, "EHEFlare")
+		end
+
 		for i=0, tags:size()-1 do
 			---@type string
 			local tag = tags:get(i)
+
 			if EHE_Recipe.additionalTagChecks[tag] then
 				addCanOpenBoxesTag = true
 			end

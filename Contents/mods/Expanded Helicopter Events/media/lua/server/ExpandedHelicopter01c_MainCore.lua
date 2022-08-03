@@ -2,6 +2,7 @@ require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter00a_Util"
 require "ExpandedHelicopter00b_IsoRangeScan"
+require "ExpandedHelicopter_Flares"
 
 ALL_HELICOPTERS = {}
 
@@ -406,48 +407,78 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 	addActualPlayersToEIP()
 
-	for character,_ in pairs(EHEIsoPlayers) do
-		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject p
-		local p = character
+	local targetPool = {}
+
+	for player,_ in pairs(EHEIsoPlayers) do
+		table.insert(targetPool, player)
+	end
+	for flare,_ in pairs(eheFlares.activeObjects) do
+		table.insert(targetPool, flare)
+	end
+
+	for target,_ in pairs(targetPool) do
+
+		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
+		local p = target
 		--[DEBUG]] print("EHE: Potential Target:"..p:getFullName().." = "..tostring(value))
 		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
 
 			local iterations = 7
-			local zone = p:getCurrentZone()
-			--[[DEBUG]] local DEBUGzoneID = "<none>"
-			if zone then
-				local zoneType = zone:getType()
-				if zoneType then
-					--[[DEBUG]] DEBUGzoneID = zoneType
-					if (zoneType == "DeepForest") then
-						iterations = 3
-					elseif (zoneType == "Forest" or zoneType == "Vegitation") then
-						iterations = 4
-					elseif (zoneType == "FarmLand") then
-						iterations = 6
-					elseif (zoneType == "Farm") then
-						iterations = 7
-					elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
-						iterations = 9
-					elseif (zoneType == "TownZone") then
-						iterations = 10
+
+			local pSquare
+
+			if instanceof(p, "IsoPlayer") then
+				pSquare = p:getSquare()
+			else
+				pSquare = p:getWorldItem():getSquare()
+			end
+
+			if pSquare then
+				local zone = pSquare:getCurrentZone()
+				--[[DEBUG]] local DEBUGzoneID = "<none>"
+				if zone then
+					local zoneType = zone:getType()
+					if zoneType then
+						--[[DEBUG]] DEBUGzoneID = zoneType
+						if (zoneType == "DeepForest") then
+							iterations = 3
+						elseif (zoneType == "Forest" or zoneType == "Vegitation") then
+							iterations = 4
+						elseif (zoneType == "FarmLand") then
+							iterations = 6
+						elseif (zoneType == "Farm") then
+							iterations = 7
+						elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
+							iterations = 9
+						elseif (zoneType == "TownZone") then
+							iterations = 10
+						end
 					end
 				end
 			end
 
-			local pCar = p:getVehicle()
+			if instanceof(p, "IsoPlayer") then
+				local pCar = p:getVehicle()
 
-			if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then
-				iterations = math.floor(iterations*1.3)
-			end
+				if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then
+					iterations = math.floor(iterations*1.3)
+				end
 
-			if pCar and pCar:getCurrentSpeedKmHour()>0 then
-				iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100)))
-			end
+				if pCar and pCar:getCurrentSpeedKmHour()>0 then
+					iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100)))
+				end
 
-			local targetSquare = p:getSquare()
-			if (targetSquare:getTree()) then
-				iterations = math.floor(iterations*0.66)
+				local targetSquare = p:getSquare()
+				if (targetSquare:getTree()) then
+					iterations = math.floor(iterations*0.66)
+				end
+
+			elseif eheFlares.activeObjects[p] then
+				if p:isOutside() then
+					iterations = iterations*5
+				else
+					iterations = 0
+				end
 			end
 
 
@@ -506,7 +537,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	if not target then
 		print(" --- HELI "..self:heliToString().."- WARN: unable to find target: grabbing random square nearby.")
 		target = self:grabRandomSquareNearby(range)
-		if not target then
+		if not target and self~=eHelicopter then
 			self:goHome()
 			print(" ------ HELI "..self:heliToString().."- ERROR: unable to find square: going home.")
 		end

@@ -413,4 +413,29 @@ module EHE
 		AnimNode:Disassemble,
 	}
 
+
+       recipe Light Flare
+    {
+       keep SignalFlare,
+       Result:FlareCharge,
+       OnCreate:eheFlares.onCreate,
+       /*OnTest:,*/
+       OnCanPerform:eheFlares.onCanPerform,
+       Time:30.0,
+       Sound:FlareShot,
+    }
+
+       recipe Light Flare
+    {
+       keep HandFlare,
+       Result:HandFlare,
+       RemoveResultItem:true,
+       OnCreate:eheFlares.onCreate,
+       /*OnTest:,*/
+       OnCanPerform:eheFlares.onCanPerform,
+       Time:30.0,
+       Sound:FlareShot,
+    }
+
+
 }

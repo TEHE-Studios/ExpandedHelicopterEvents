@@ -289,6 +289,10 @@ function EHE_EventMarker:update(posX,posY)
 		end
 	end
 
+	if not self.player:isOutside() then
+		self.radius = self.radius*0.33
+	end
+
 	self.radius = math.max(EHE_EventMarker.maxRange/3, math.min(self.radius,EHE_EventMarker.maxRange))
 
 	if self.duration > 0 then--and player:isOutside() then
