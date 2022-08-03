@@ -34,6 +34,7 @@ function eHeliEvent_engage(ID)
 
 	if SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
 		willFly = false
+		eHeliEvent.triggered = true
 	end
 
 	if willFly and foundTarget then
