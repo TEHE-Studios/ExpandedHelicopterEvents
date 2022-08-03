@@ -50,8 +50,8 @@ function sandboxOptionsEnd()
 	eHelicopterSandbox.menu.resetEventsToolTip = {type = "Text", a=0.65, customX=-67}
 	eHelicopterSandbox.menu.resetEvents = {type = "Tickbox", tooltip = "", }
 	eHelicopterSandbox.menu.generalSpaceD = {type = "Space"}
-	eHelicopterSandbox.menu.eventMarkersOnToolTip1 = {type = "Text", a=0.65, customX=-67, }
-	eHelicopterSandbox.menu.eventMarkersOnToolTip2 = {type = "Text", a=0.65, customX=-67, }
+	eHelicopterSandbox.menu.eventMarkersOnToolTip1 = {type = "Text", a=0.65, customX=-67, alwaysAccessible = true}
+	eHelicopterSandbox.menu.eventMarkersOnToolTip2 = {type = "Text", a=0.65, customX=-67, alwaysAccessible = true}
 	eHelicopterSandbox.menu.eventMarkersOn = { type = "Tickbox", alwaysAccessible = true}
 	eHelicopterSandbox.menu.generalSpaceE = {type = "Space", alwaysAccessible = true}
 
