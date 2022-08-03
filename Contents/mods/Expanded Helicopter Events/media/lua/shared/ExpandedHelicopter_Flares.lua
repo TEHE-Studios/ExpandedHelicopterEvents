@@ -18,8 +18,7 @@ function eheFlares.getFlareWhereContained(flareObject)
         if containing then
             return containing:getParent()
         end
-    end
-    if flareObject and instanceof(flareObject, "IsoWorldInventoryObject") then
+
         ---@type IsoWorldInventoryObject|IsoObject
         local worldItem = flareObject:getWorldItem()
         if worldItem then
