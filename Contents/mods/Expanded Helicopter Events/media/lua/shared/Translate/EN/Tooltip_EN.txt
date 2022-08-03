@@ -21,6 +21,6 @@ Tooltip_EN = {
     Tooltip_SamaritanBox = "Supply Box from a group of mysterious samaritans.",
     Tooltip_BanditBox = "Personal stash box. Reads "MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Military Signalling flare. Do not fire indoors.",
-    Tooltip_SignalFlareSpent = "Military Signalling flare. It's been used."
+    Tooltip_SignalFlare = "Signalling flare. Do not fire indoors.",
+    Tooltip_HandFlare = "Flare. Do not fire indoors."
 }
