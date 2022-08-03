@@ -1,5 +1,13 @@
 module Base
 {
+
+	    model HandFlare
+	{
+		mesh = WorldItems/HandFlare,
+		texture = WorldItems/HandFlare,
+		scale = 0.02,
+	}
+
     	model PAVFlyer
 	{
 		mesh = WorldItems/SheetOfPaper,
@@ -88,13 +96,6 @@ module Base
 	{
 		mesh = WorldItems/EmergencyWaterRation,
 		texture = WorldItems/EmergencyWaterRationOpen,
-		scale = 1.0,
-	}
-
-		model SignalFlare
-	{
-		mesh = WorldItems/SignalFlare,
-		texture = WorldItems/SignalFlare,
 		scale = 1.0,
 	}
 

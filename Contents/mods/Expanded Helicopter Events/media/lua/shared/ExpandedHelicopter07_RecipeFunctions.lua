@@ -27,6 +27,7 @@ function EHE_Recipe.SURVIVAL(recipe, result, player)
 	player:getInventory():AddItems("Base.Torch", 2)
 	player:getInventory():AddItems("Base.Battery", 12)
 	player:getInventory():AddItems("Radio.RadioBlack", 2)
+	player:getInventory():AddItems("EHE.HandFlare", 2)
 end
 
 function EHE_Recipe.STASHBOX(recipe, result, player)
@@ -38,6 +39,7 @@ function EHE_Recipe.STASHBOX(recipe, result, player)
 end
 
 function EHE_Recipe.SURVIVORMEDICAL(recipe, result, player)
+	player:getInventory():AddItems("EHE.HandFlare", 2)
 	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 2)
 	player:getInventory():AddItems("Gloves_Surgical", 2)
 	local items = player:getInventory():AddItems("Base.FirstAidKit", 1)
