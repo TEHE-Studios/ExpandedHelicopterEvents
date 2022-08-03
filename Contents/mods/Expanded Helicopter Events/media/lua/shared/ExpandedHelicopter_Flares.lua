@@ -12,15 +12,26 @@ function eheFlares.addFlareType(itemModuleDotType, flareType)
 end
 
 ---@param flareObject InventoryItem|IsoObject
-function eheFlares.getFlareOuterMostSquare(flareObject)
-    local containing = flareObject:getOutermostContainer()
-    if containing then
-        return containing:getParent():getSquare()
+function eheFlares.getFlareWhereContained(flareObject)
+    if flareObject and instanceof(flareObject, "InventoryItem") then
+        local containing = flareObject:getOutermostContainer()
+        if containing then
+            return containing:getParent()
+        end
+
+        ---@type IsoWorldInventoryObject|IsoObject
+        local worldItem = flareObject:getWorldItem()
+        if worldItem then
+            return worldItem
+        end
     end
-    ---@type IsoWorldInventoryObject|IsoObject
-    local worldItem = flareObject:getWorldItem()
-    if worldItem then
-        return worldItem:getSquare()
+end
+
+---@param flareObject InventoryItem|IsoObject
+function eheFlares.getFlareOuterMostSquare(flareObject)
+    local containedIn = eheFlares.getFlareWhereContained(flareObject)
+    if containedIn then
+        return containedIn:getSquare()
     end
 end
 

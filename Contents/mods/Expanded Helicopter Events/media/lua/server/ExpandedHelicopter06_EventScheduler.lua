@@ -34,6 +34,7 @@ function eHeliEvent_engage(ID)
 
 	if SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
 		willFly = false
+		eHeliEvent.triggered = true
 	end
 
 	if willFly and foundTarget then
@@ -254,7 +255,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 
-			if startTime >= 24 then
+			if startTime > 24 then
 				startTime = startTime-24
 			end
 
@@ -280,7 +281,7 @@ function eHeliEvent_Loop()
 	for k,v in pairs(events) do
 
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
-			globalModData.EventsOnSchedule[k] = nil
+			--globalModData.EventsOnSchedule[k] = nil
 		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
 			print("EHE: SCHEDULED-LAUNCH INFO:  HELI ID:"..k.." - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
 			if eHelicopter_PRESETS[v.preset] then
