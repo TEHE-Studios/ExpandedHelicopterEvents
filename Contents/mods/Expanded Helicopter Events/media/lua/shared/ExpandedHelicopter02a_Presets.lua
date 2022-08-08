@@ -11,6 +11,7 @@ eHelicopter_PRESETS["military"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 20,
 	schedulingFactor = 1.5,
+	radioChatter = "AEBS_Military",
 	presetProgression = {
 		["patrol_only"] = 0,
 		["patrol_only_emergency"] = 0.0066,
@@ -46,6 +47,7 @@ eHelicopter_PRESETS["attack_only_undead_evac"] = {
 	announcerVoice = false,
 	inherit = {"military"},
 	hostilePreference = "IsoZombie",
+	radioChatter = "AEBS_PurgeMilitary",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
 	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},--"air_raid",
 }
@@ -54,6 +56,7 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
+	radioChatter = "AEBS_PurgeMilitary",
 	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
 }
 
