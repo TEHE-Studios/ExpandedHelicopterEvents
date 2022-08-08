@@ -50,6 +50,7 @@ eHelicopter.speed = 1
 eHelicopter.topSpeedFactor = 1.5
 eHelicopter.flightVolume = 75
 eHelicopter.hostilePreference = false
+eHelicopter.hostilePredicate = false
 eHelicopter.attackDelay = 60
 eHelicopter.attackScope = 1
 eHelicopter.attackSpread = 3

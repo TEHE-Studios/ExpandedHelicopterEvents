@@ -96,6 +96,7 @@ if 1==1 then return end ---Remove this Line to get started.
 ---@field topSpeedFactor number speed x this = top "speed", default: 1.5
 ---@field flightVolume number range of flight sound to attract zombies, default: 75
 ---@field hostilePreference string default: false. 'false' for *none*, otherwise has to be 'IsoPlayer' or 'IsoZombie' or 'IsoGameCharacter'
+---@field hostilePredicate function direct function reference, this has to be defined before (written above) it's used in a preset.
 ---@field attackDelay number delay in milliseconds between attacks, default: 60
 
 ---@field attackScope number number of rows from "center" IsoGridSquare out, default: 1
@@ -199,10 +200,36 @@ eHelicopter_PRESETS["attack_only_undead"] = {
     formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
 }
 
+local function hostilePredicateNotMilitary(target)
+    if not target then return end
+
+    local militaryScore = 0
+    ---@type IsoPlayer|IsoGameCharacter
+    local player = target
+    local wornItems = player:getWornItems()
+    if wornItems then
+        for i=0, wornItems:size()-1 do
+            ---@type InventoryItem
+            local item = wornItems:get(i):getItem()
+            if item then
+                if string.match(string.lower(item:getFullType()),"army")
+                        or string.match(string.lower(item:getFullType()),"military")
+                        or item:getTags():contains("Military") then
+                    militaryScore = militaryScore+1
+                end
+            end
+        end
+    end
+
+    print("militaryScore: "..militaryScore)
+    return militaryScore<3
+end
+
 eHelicopter_PRESETS["attack_only_all"] = {
     inherit = {"military"},
     announcerVoice = false,
     hostilePreference = "IsoGameCharacter",
+    hostilePredicate = hostilePredicateNotMilitary,
     crashType = {"UH60GreenFuselage"},
     scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
     scrapVehicles = {"UH60GreenTail"},

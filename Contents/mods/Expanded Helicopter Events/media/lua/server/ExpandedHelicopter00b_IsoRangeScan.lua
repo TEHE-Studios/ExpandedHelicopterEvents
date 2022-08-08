@@ -43,10 +43,11 @@ function getVehiclesIntersecting(square, returnFirst)
 	return intersectingVehicles
 end
 
+
 ---@param center IsoObject|IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param lookForType string
-function getHumanoidsInRange(center, range, lookForType)
+function getHumanoidsInRange(center, range, lookForType, predicateFunction)
 
 	if center then
 		center = recursiveGetSquare(center)
@@ -67,8 +68,8 @@ function getHumanoidsInRange(center, range, lookForType)
 			---@type IsoMovingObject|IsoGameCharacter foundObject
 			local foundObj = squareContents[i]
 
-			if instanceof(foundObj, lookForType) and instanceof(foundObj, "IsoGameCharacter") then
-				if foundObj:isOutside() then
+			if instanceof(foundObj, lookForType) then
+				if square:isOutside() and ((not predicateFunction) or (predicateFunction and predicateFunction(foundObj))) then
 					table.insert(objectsFound, foundObj)
 				end
 			end
@@ -83,7 +84,8 @@ end
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param fractalRange number number of rows, made up of `range`, from the center range
 ---@param lookForType string
-function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
+---@param predicateFunction function
+function getHumanoidsInFractalRange(center, range, fractalRange, lookForType, predicateFunction)
 
 	if center then
 		center = recursiveGetSquare(center)
@@ -98,7 +100,7 @@ function getHumanoidsInFractalRange(center, range, fractalRange, lookForType)
 	---print("getHumanoidsInFractalRange: centers found: "..#fractalCenters)
 	--pass through each "center square" found
 	for i=1, #fractalCenters do
-		local objectsFound = getHumanoidsInRange(fractalCenters[i], range, lookForType)
+		local objectsFound = getHumanoidsInRange(fractalCenters[i], range, lookForType, predicateFunction)
 		---print(" fractal center "..i..":  "..#objectsFound)
 		--store a list of objectsFound within the fractalObjectsFound list
 		table.insert(fractalObjectsFound, objectsFound)

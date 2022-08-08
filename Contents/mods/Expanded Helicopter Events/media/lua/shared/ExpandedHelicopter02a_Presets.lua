@@ -57,10 +57,37 @@ eHelicopter_PRESETS["attack_only_undead"] = {
 	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
 }
 
+
+local function hostilePredicateCivilian(target)
+	if not target then return end
+	local nonCivScore = 0
+	---@type IsoPlayer|IsoGameCharacter
+	local player = target
+	local wornItems = player:getWornItems()
+	if wornItems then
+		for i=0, wornItems:size()-1 do
+			---@type InventoryItem
+			local item = wornItems:get(i):getItem()
+			if item then
+				if string.match(string.lower(item:getFullType()),"army")
+						or string.match(string.lower(item:getFullType()),"military")
+						or string.match(string.lower(item:getFullType()),"riot")
+						or string.match(string.lower(item:getFullType()),"police")
+						or item:getTags():contains("Police")
+						or item:getTags():contains("Military") then
+					nonCivScore = nonCivScore+1
+				end
+			end
+		end
+	end
+	return nonCivScore<3
+end
+
 eHelicopter_PRESETS["attack_only_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoGameCharacter",
+	hostilePredicate = hostilePredicateCivilian,
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},

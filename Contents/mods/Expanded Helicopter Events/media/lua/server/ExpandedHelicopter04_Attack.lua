@@ -357,7 +357,7 @@ function eHelicopter:attackScan(location, targetType)
 		return {}
 	end
 
-	local fractalObjectsFound = getHumanoidsInFractalRange(location, self.attackScope, self.attackSpread, targetType)
+	local fractalObjectsFound = getHumanoidsInFractalRange(location, self.attackScope, self.attackSpread, targetType, self.hostilePredicate)
 	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do
