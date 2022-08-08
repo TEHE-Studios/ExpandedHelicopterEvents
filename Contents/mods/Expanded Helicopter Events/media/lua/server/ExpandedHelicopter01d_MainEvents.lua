@@ -321,32 +321,3 @@ function eHelicopter:dropScrap(fuzz)
 	self.scrapItems = false
 	self.scrapVehicles = false
 end
-
-
---addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter:dropTrash()},
-function eHelicopter_dropTrash(heli)
-
-	local heliX, heliY, _ = heli:getXYZAsInt()
-	local trashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
-	local iterations = 10
-
-	for i=1, iterations do
-
-		heliY = heliY+ZombRand(-2,3)
-		heliX = heliX+ZombRand(-2,3)
-
-		local trashType = trashItems[(ZombRand(#trashItems)+1)]
-		--more likely to drop the same thing
-		table.insert(trashItems, trashType)
-
-		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
-	end
-end
-
-
-
-function eHelicopter_jetBombing(heli)
-	local heliX, heliY, _ = heli:getXYZAsInt()
-	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
-	soundEmitter:playSound("eCarpetBomb", heliX, heliY, 0)
-end

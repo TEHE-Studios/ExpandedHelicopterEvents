@@ -288,6 +288,24 @@ eHelicopter_PRESETS["survivor_heli"] = {
 }
 
 
+local function eHelicopter_dropTrash(heli)
+
+	local heliX, heliY, _ = heli:getXYZAsInt()
+	local trashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
+	local iterations = 10
+
+	for i=1, iterations do
+
+		heliY = heliY+ZombRand(-2,3)
+		heliX = heliX+ZombRand(-2,3)
+
+		local trashType = trashItems[(ZombRand(#trashItems)+1)]
+		--more likely to drop the same thing
+		table.insert(trashItems, trashType)
+
+		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+	end
+end
 eHelicopter_PRESETS["raiders"] = {
 	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1,"raider_heli_hostile",1},
 	crashType = {"UH60GreenFuselage"},
