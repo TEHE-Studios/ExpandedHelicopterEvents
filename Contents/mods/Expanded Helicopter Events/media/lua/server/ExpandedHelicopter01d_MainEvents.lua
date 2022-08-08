@@ -342,3 +342,11 @@ function eHelicopter_dropTrash(heli)
 		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 	end
 end
+
+
+
+function eHelicopter_jetBombing(heli)
+	local heliX, heliY, _ = heli:getXYZAsInt()
+	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
+	soundEmitter:playSound("eCarpetBomb", heliX, heliY, 0)
+end

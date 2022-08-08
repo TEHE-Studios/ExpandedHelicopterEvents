@@ -172,16 +172,12 @@ eHelicopter_PRESETS["air_raid"] = {
 	radioChatter = "AEBS_AirRaid",
 }
 
+
 eHelicopter_PRESETS["jet_bombing"] = {
+	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
-	speed = 18,
-	topSpeedFactor = 2,
-	flightVolume = 25,
-	eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
-	crashType = false,
-	shadow = false,
-	eventMarkerIcon = "media/ui/jet.png",
-	forScheduling = true,
+	--eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
+	addedFunctionsToEvents = {["OnLaunch"] = eHelicopter_jetBombing},
 	flightHours = {12, 12},
 	eventSpawnWeight = 50,
 	schedulingFactor = 99999,
@@ -190,6 +186,7 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_JetBombing",
 }
+
 
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },

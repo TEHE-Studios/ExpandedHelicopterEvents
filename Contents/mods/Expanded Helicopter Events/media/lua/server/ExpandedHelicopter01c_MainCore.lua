@@ -768,6 +768,13 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	self.forceUnlaunchTime = {DAY, HOUR}
+
+	if self.addedFunctionsToEvents then
+		local eventFunction = self.addedFunctionsToEvents["OnLaunch"]
+		if eventFunction then
+			eventFunction(self)
+		end
+	end
 end
 
 
