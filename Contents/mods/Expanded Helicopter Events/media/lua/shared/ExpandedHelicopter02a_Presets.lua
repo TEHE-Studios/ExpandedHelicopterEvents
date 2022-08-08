@@ -173,6 +173,22 @@ eHelicopter_PRESETS["air_raid"] = {
 }
 
 
+local function eHelicopter_jetBombing(heli)
+	local heliX, heliY, _ = heli:getXYZAsInt()
+	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
+	soundEmitter:playSound("eCarpetBomb", heliX, heliY, 0)
+
+	local cell = getCell()
+
+	local vehiclesInCell = cell:getVehicles()
+	for i=0, vehiclesInCell:size()-1 do
+		---@type BaseVehicle
+		local vehicle = vehiclesInCell:get(i)
+		if vehicle and vehicle:isAlarmed() then
+			vehicle:triggerAlarm()
+		end
+	end
+end
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
