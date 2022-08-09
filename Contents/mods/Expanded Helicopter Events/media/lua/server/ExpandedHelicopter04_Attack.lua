@@ -219,120 +219,121 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	if HIT then
+		if self.attackDamage>0 then
+			if instanceof(targetHostile, "BaseVehicle") then
+				local targetZones = {"tires","tires","tires","tires","GasTank","Engine","random"}
 
-		if instanceof(targetHostile, "BaseVehicle") then
-			local targetZones = {"tires","tires","tires","tires","GasTank","Engine","random"}
-
-			if collateral then
-				if not vehicleParts then
-					vehicleParts = {}
-					for partName,_ in pairs(ISCarMechanicsOverlay.PartList) do
-						table.insert(vehicleParts, partName)
+				if collateral then
+					if not vehicleParts then
+						vehicleParts = {}
+						for partName,_ in pairs(ISCarMechanicsOverlay.PartList) do
+							table.insert(vehicleParts, partName)
+						end
+					end
+					for _,partName in pairs(vehicleParts) do
+						table.insert(targetZones, partName)
+					end
+				else
+					for i=0, 6 do
+						table.insert(targetZones, "tires")
 					end
 				end
-				for _,partName in pairs(vehicleParts) do
-					table.insert(targetZones, partName)
-				end
-			else
-				for i=0, 6 do
-					table.insert(targetZones, "tires")
-				end
-			end
 
-			local selectedZone = targetZones[ZombRand(#targetZones)+1]
+				local selectedZone = targetZones[ZombRand(#targetZones)+1]
 
-			if selectedZone == "tires" then
-				local tires = {"TireRearLeft","TireRearRight","TireFrontRight","TireFrontLeft"}
-				---@type VehiclePart
-				local tire = returnValidPartById(targetHostile,tires[ZombRand(#tires)+1])
-				if tire then
-					tire:damage(damage)
-				end
-
-			else
-				local partDamage = damage
-				local part = returnValidPartById(targetHostile,selectedZone)
-
-				if part then
-
-					local partWindow = part:getWindow()
-					if partWindow then
-						partWindow:damage(partDamage*10)
+				if selectedZone == "tires" then
+					local tires = {"TireRearLeft","TireRearRight","TireFrontRight","TireFrontLeft"}
+					---@type VehiclePart
+					local tire = returnValidPartById(targetHostile,tires[ZombRand(#tires)+1])
+					if tire then
+						tire:damage(damage)
 					end
-					
-					part:damage(partDamage)
-				end
-			end
-		end
 
-		if instanceof(targetHostile, "IsoGameCharacter") then
+				else
+					local partDamage = damage
+					local part = returnValidPartById(targetHostile,selectedZone)
 
-			if targetVehicle then
-				local seatID = targetVehicle:getSeat(targetHostile)
-				local door = targetVehicle:getPassengerDoor(seatID)
-				if door then
-					door:damage(damage)
-					damage = damage*0.8
-				end
-				local window = door:getWindow()
-				if window then
-					window:damage(damage*10)
-				end
-			end
+					if part then
 
-			local bpRandSelect = bodyPartSelection[ZombRand(#bodyPartSelection)+1]
-			local bpType = BodyPartType.FromString(bpRandSelect)
-			local clothingBP = BloodBodyPartType.FromString(bpRandSelect)
+						local partWindow = part:getWindow()
+						if partWindow then
+							partWindow:damage(partDamage*10)
+						end
 
-			--[[DEBUG]] local preHealth = targetHostile:getHealth()
-			--apply damage to body part
-
-			if (bpType == BodyPartType.Neck) or (bpType == BodyPartType.Head) then
-				damage = damage*4
-			elseif (bpType == BodyPartType.Torso_Upper) then
-				damage = damage*2
-			end
-
-			if instanceof(targetHostile, "IsoZombie") then
-				--Zombies receive damage directly because they don't have body parts or clothing protection
-				damage = damage*3
-				targetHostile:knockDown(true)
-
-			elseif instanceof(targetHostile, "IsoPlayer") then
-				--Messy process just to knock down the player effectively
-				targetHostile:clearVariable("BumpFallType")
-				targetHostile:setBumpType("stagger")
-				targetHostile:setBumpDone(false)
-				targetHostile:setBumpFall(ZombRand(0, 101) <= 25)
-				local bumpFallType = {"pushedBehind","pushedFront"}
-				bumpFallType = bumpFallType[ZombRand(1,3)]
-				targetHostile:setBumpFallType(bumpFallType)
-
-				--apply localized body part damage
-				local bodyDMG = targetHostile:getBodyDamage()
-				if bodyDMG then
-					local bodyPart = bodyDMG:getBodyPart(bpType)
-					if bodyPart then
-						local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
-						damage = damage * (1-(protection*0.75))
-						--print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
-
-						bodyDMG:AddDamage(bpType,damage)
-						bodyPart:damageFromFirearm(damage)
+						part:damage(partDamage)
 					end
 				end
 			end
 
-			targetHostile:addHole(clothingBP)
-			targetHostile:addBlood(clothingBP, true, true, true)
-			targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
+			if instanceof(targetHostile, "IsoGameCharacter") then
 
-			--splatter a few times
-			local splatIterations = ZombRand(1,3)
-			for _=1, splatIterations do
-				targetHostile:splatBloodFloor()
+				if targetVehicle then
+					local seatID = targetVehicle:getSeat(targetHostile)
+					local door = targetVehicle:getPassengerDoor(seatID)
+					if door then
+						door:damage(damage)
+						damage = damage*0.8
+					end
+					local window = door:getWindow()
+					if window then
+						window:damage(damage*10)
+					end
+				end
+
+				local bpRandSelect = bodyPartSelection[ZombRand(#bodyPartSelection)+1]
+				local bpType = BodyPartType.FromString(bpRandSelect)
+				local clothingBP = BloodBodyPartType.FromString(bpRandSelect)
+
+				--[[DEBUG]] local preHealth = targetHostile:getHealth()
+				--apply damage to body part
+
+				if (bpType == BodyPartType.Neck) or (bpType == BodyPartType.Head) then
+					damage = damage*4
+				elseif (bpType == BodyPartType.Torso_Upper) then
+					damage = damage*2
+				end
+
+				if instanceof(targetHostile, "IsoZombie") then
+					--Zombies receive damage directly because they don't have body parts or clothing protection
+					damage = damage*3
+					targetHostile:knockDown(true)
+
+				elseif instanceof(targetHostile, "IsoPlayer") then
+					--Messy process just to knock down the player effectively
+					targetHostile:clearVariable("BumpFallType")
+					targetHostile:setBumpType("stagger")
+					targetHostile:setBumpDone(false)
+					targetHostile:setBumpFall(ZombRand(0, 101) <= 25)
+					local bumpFallType = {"pushedBehind","pushedFront"}
+					bumpFallType = bumpFallType[ZombRand(1,3)]
+					targetHostile:setBumpFallType(bumpFallType)
+
+					--apply localized body part damage
+					local bodyDMG = targetHostile:getBodyDamage()
+					if bodyDMG then
+						local bodyPart = bodyDMG:getBodyPart(bpType)
+						if bodyPart then
+							local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
+							damage = damage * (1-(protection*0.75))
+							--print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
+
+							bodyDMG:AddDamage(bpType,damage)
+							bodyPart:damageFromFirearm(damage)
+						end
+					end
+				end
+
+				targetHostile:addHole(clothingBP)
+				targetHostile:addBlood(clothingBP, true, true, true)
+				targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
+
+				--splatter a few times
+				local splatIterations = ZombRand(1,3)
+				for _=1, splatIterations do
+					targetHostile:splatBloodFloor()
+				end
+				--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 			end
-			--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 		end
 
 		if self.addedFunctionsToEvents then
