@@ -334,6 +334,13 @@ function eHelicopter:fireOn(targetHostile)
 			end
 			--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 		end
+
+		if self.addedFunctionsToEvents then
+			local eventFunction = self.addedFunctionsToEvents["OnAttackHit"]
+			if eventFunction then
+				eventFunction(self, targetHostile)
+			end
+		end
 	end
 	--[DEBUG]] print(hitReport)
 
