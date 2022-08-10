@@ -381,6 +381,6 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 		["flightSound"] = "eMiliHeli",
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = "eHeliMusicAggressive",
+		["additionalFlightSound"] = { "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
 	},
 }

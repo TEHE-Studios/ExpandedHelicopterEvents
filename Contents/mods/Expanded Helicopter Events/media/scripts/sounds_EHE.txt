@@ -38,9 +38,16 @@ module Base {
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/HeliMusicAggressive.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
-        clip { file = media/sound/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/EntryOfTheGladiators.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/CanCanMusic.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
+
+    sound eHeliCrewLaughingAndDrinking
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/HeliLaughingDrinking.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 0.7, } }
+
+    sound eHeliMusicHostile {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
      sound eheFlare {
          category = EHE: Main, loop = false, is3D = true,
