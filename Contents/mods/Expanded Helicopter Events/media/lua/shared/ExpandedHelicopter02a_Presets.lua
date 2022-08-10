@@ -13,53 +13,71 @@ eHelicopter_PRESETS["military"] = {
 	schedulingFactor = 1.5,
 	radioChatter = "AEBS_Military",
 	presetProgression = {
-		["patrol_only"] = 0,
-		["patrol_only_emergency"] = 0.0066,
+		["military_patrol"] = 0,
+		["military_patrol_emergency"] = 0.0066,
 		["military_recon_hover"] = 0.0070,
-		["patrol_only_quarantine"] = 0.0165,
-		["attack_only_undead_evac"] = 0.033,
-		["attack_only_undead"] = 0.066,
-		["cargo_helicopter"] = 0.1900,
-		["attack_only_all"] = 0.2145,
+		["military_patrol_quarantine"] = 0.0165,
+		["military_attack_undead_evac"] = 0.033,
+		["military_attack_undead"] = 0.066,
+		["military_cargo"] = 0.1900,
+		["military_attack_all"] = 0.2145,
 	}
 }
 
-eHelicopter_PRESETS["patrol_only"] = {
+eHelicopter_PRESETS["military_patrol"] = {
 	inherit = {"military"},
 }
 
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
-eHelicopter_PRESETS["patrol_only_emergency"] = {
+eHelicopter_PRESETS["military_patrol_emergency"] = {
 	inherit = {"military"},
 	dropItems = {["EHE.EmergencyFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
-	formationIDs = {"patrol_only_emergency", 25, {20,25}, "patrol_only_emergency", 10, {20,25}},
+	formationIDs = {"military_patrol_emergency", 25, {20,25}, "military_patrol_emergency", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["patrol_only_quarantine"] = {
+eHelicopter_PRESETS["military_recon_hover"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	speed = 1.5,
+	crashType = false,
+	hoverOnTargetDuration = {200,400},
+}
+
+eHelicopter_PRESETS["military_patrol_quarantine"] = {
 	inherit = {"military"},
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
-	formationIDs = {"patrol_only_quarantine", 25, {20,25}, "patrol_only_quarantine", 10, {20,25}},
+	formationIDs = {"military_patrol_quarantine", 25, {20,25}, "military_patrol_quarantine", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["attack_only_undead_evac"] = {
+eHelicopter_PRESETS["military_attack_undead_evac"] = {
 	announcerVoice = false,
 	inherit = {"military"},
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
-	formationIDs = {"attack_only_undead_evac", 25, {20,25}, "attack_only_undead_evac", 10, {20,25}},--"air_raid",
+	formationIDs = {"military_attack_undead_evac", 25, {20,25}, "military_attack_undead_evac", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["attack_only_undead"] = {
+eHelicopter_PRESETS["military_attack_undead"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
-	formationIDs = {"attack_only_undead", 25, {12,17}, "attack_only_undead", 10, {12,17}},--"air_raid",
+	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
 }
 
+eHelicopter_PRESETS["military_cargo"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	crashType = false,
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	eventSoundEffects = {
+		["flightSound"] = "eMiliHeliCargo",
+	},
+}
 
 local function hostilePredicateCivilian(target)
 	if not target then return end
@@ -86,7 +104,7 @@ local function hostilePredicateCivilian(target)
 	return nonCivScore<3
 end
 
-eHelicopter_PRESETS["attack_only_all"] = {
+eHelicopter_PRESETS["military_attack_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoGameCharacter",
@@ -95,27 +113,8 @@ eHelicopter_PRESETS["attack_only_all"] = {
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
 	radioChatter = "AEBS_HostileMilitary",
-	--formationIDs = {"air_raid"},
 }
 
-eHelicopter_PRESETS["cargo_helicopter"] = {
-	inherit = {"military"},
-	announcerVoice = false,
-	crashType = false,
-	crashType = {"UH60GreenFuselage"},
-	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
-	eventSoundEffects = {
-		["flightSound"] = "eMiliHeliCargo",
-	},
-}
-
-eHelicopter_PRESETS["military_recon_hover"] = {
-	inherit = {"military"},
-	announcerVoice = false,
-	speed = 1.5,
-	crashType = false,
-	hoverOnTargetDuration = {200,400},
-}
 
 eHelicopter_PRESETS["FEMA_drop"] = {
 	inherit = {"military"},
@@ -132,7 +131,7 @@ eHelicopter_PRESETS["FEMA_drop"] = {
 		["foundTarget"] = "eHeli_AidDrop_2",
 		["droppingPackage"] = "eHeli_AidDrop_1and3",
 	},
-	formationIDs = {"patrol_only", 25, {12,17}, "patrol_only", 10, {12,17}},
+	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
 	radioChatter = "AEBS_SupplyDrop",
 	eventStartDayFactor = 0.034,
 	eventCutOffDayFactor = 0.2145,
