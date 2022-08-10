@@ -61,6 +61,13 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 
 	local soundEffect = heli.eventSoundEffects[soundEvent] or eHelicopter.eventSoundEffects[soundEvent] or soundEvent
 
+	if soundEffect and type(soundEffect)=="table" then
+		for _,sound in soundEvent do
+			eventSoundHandler:playEventSound(heli, sound, otherLocation, saveEmitter, stopSound, delay)
+		end
+		return
+	end
+
 	if not soundEffect or soundEffect=="IGNORE" then
 		return
 	end
