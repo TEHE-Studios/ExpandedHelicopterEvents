@@ -23,15 +23,14 @@ eHelicopter.crew = {"AirCrew", 100}
 eHelicopter.formationIDs = {}
 eHelicopter.dropItems = false
 eHelicopter.dropPackages = false
-eHelicopter.looperEventIDs = {["additionalFlightSound"]=true, ["flightSound"]=true}
+eHelicopter.looperEventIDs = {["flightSound"]=true}
 eHelicopter.eventSoundEffects = {
 	["hoverOverTarget"]="IGNORE",
 	["flyOverTarget"]="IGNORE",
 	["lostTarget"]="IGNORE",
 	["foundTarget"]="IGNORE",
 	["droppingPackage"]="IGNORE",
-	["additionalAttackingSound"]="IGNORE",
-	["additionalFlightSound"]="IGNORE",--LOOP
+	["attackingSound"]="IGNORE",
 	["soundAtEventOrigin"]="IGNORE",
 	--
 	["attackSingle"] = "eHeli_machine_gun_fire_single",

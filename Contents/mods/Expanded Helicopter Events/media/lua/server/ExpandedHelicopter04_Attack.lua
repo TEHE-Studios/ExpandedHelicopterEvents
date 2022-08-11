@@ -113,7 +113,7 @@ function eHelicopter:fireOn(targetHostile)
 	end
 	--determine location of helicopter
 	eventSoundHandler:playEventSound(self, eventSound)
-	eventSoundHandler:playEventSound(self, "additionalAttackingSound")
+	eventSoundHandler:playEventSound(self, "attackingSound")
 
 	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies

@@ -714,7 +714,6 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	---TODO: Confirm formations work in MP
 	--self:formationInit()
 	eventSoundHandler:playEventSound(self,"flightSound", nil, true)
-	eventSoundHandler:playEventSound(self,"additionalFlightSound", nil, true)
 
 	local currentSquare = self:getIsoGridSquare()
 	eventSoundHandler:playEventSound(self,"soundAtEventOrigin", currentSquare, true, false)
@@ -750,7 +749,6 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 			local randSoundDelay = ZombRand(5,15)
 			eventSoundHandler:playEventSound(followingHeli, "soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
 			eventSoundHandler:playEventSound(followingHeli, "flightSound", nil, true, false, randSoundDelay)
-			eventSoundHandler:playEventSound(followingHeli, "additionalFlightSound", nil, true, false, randSoundDelay)
 			if not blockCrashing then
 				followingHeli:applyCrashChance()
 			end

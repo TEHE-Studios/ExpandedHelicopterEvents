@@ -142,7 +142,9 @@ eHelicopter_PRESETS["jet"] = {
 	speed = 15,
 	topSpeedFactor = 2,
 	flightVolume = 25,
-	eventSoundEffects = {["flightSound"] = "eJetFlight"},
+	eventSoundEffects = {
+		["flightSound"] = "eJetFlight"
+	},
 	crashType = false,
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
@@ -159,7 +161,10 @@ eHelicopter_PRESETS["air_raid"] = {
 	speed = 0.5,
 	topSpeedFactor = 3,
 	flightVolume = 0,
-	eventSoundEffects = {["flightSound"]="IGNORE",["soundAtEventOrigin"] = "eAirRaid"},
+	eventSoundEffects = {
+		["flightSound"]="IGNORE",
+		["soundAtEventOrigin"] = "eAirRaid",
+	},
 	eventMarkerIcon = false,
 	forScheduling = true,
 	flightHours = {11, 11},
@@ -191,7 +196,6 @@ end
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
-	--eventSoundEffects = {["flightSound"] = "eJetFlight", ["soundAtEventOrigin"] = "eCarpetBomb"},
 	addedFunctionsToEvents = {["OnLaunch"] = eHelicopter_jetBombing},
 	flightHours = {12, 12},
 	eventSpawnWeight = 50,
@@ -205,7 +209,9 @@ eHelicopter_PRESETS["jet_bombing"] = {
 
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
-	eventSoundEffects = { ["additionalFlightSound"] = "eHeli_newscaster", ["flightSound"] = "eHelicopter", },
+	eventSoundEffects = {
+		["flightSound"] = { "eHelicopter", "eHeli_newscaster" },
+	},
 	speed = 1,
 	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
 	crashType = {"Bell206LBMWFuselage"},
@@ -247,8 +253,7 @@ eHelicopter_PRESETS["police_heli_emergency"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
-		["additionalFlightSound"] = "eHeliPoliceSiren",
-		["flightSound"] = "eHelicopter",
+		["flightSound"] = { "eHelicopter", "eHeliPoliceSiren" },
 	},
 
 }
@@ -264,8 +269,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	eventSoundEffects = {
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = "eHeliPoliceSiren",
-		["flightSound"] = "eHelicopter",
+		["flightSound"] = { "eHelicopter", "eHeliPoliceSiren" },
 	},
 	hoverOnTargetDuration = {375,575},
 }
@@ -277,7 +281,9 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 1.0,
 	eventMarkerIcon = "media/ui/jet.png",
-	eventSoundEffects = {["flightSound"] = "ePropPlane"},
+	eventSoundEffects = {
+		["flightSound"] = "ePropPlane",
+	},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
@@ -341,8 +347,7 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 	flightVolume = 750,
 	crashType = false,
 	eventSoundEffects = {
-		["flightSound"] = "eMiliHeli",
-		["additionalFlightSound"] = "eHeliMusicPassive",
+		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive" },
 	},
 }
 
@@ -358,10 +363,9 @@ eHelicopter_PRESETS["raider_heli_harasser"] = {
 	crashType = false,
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
-		["flightSound"] = "eMiliHeli",
+		["flightSound"] = { "eMiliHeli", "eHeliMusicAggressive", "eHeliCrewLaughingAndDrinking" },
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = { "eHeliMusicAggressive", "eHeliCrewLaughingAndDrinking" },
 	},
 }
 
@@ -378,9 +382,8 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 	eventSoundEffects = {
-		["flightSound"] = "eMiliHeli",
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile" },
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = "eHeliMusicHostile",
 	},
 }
