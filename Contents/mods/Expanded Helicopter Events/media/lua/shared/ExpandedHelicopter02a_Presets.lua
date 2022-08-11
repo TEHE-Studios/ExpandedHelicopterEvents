@@ -312,9 +312,11 @@ eHelicopter_PRESETS["survivor_heli"] = {
 local function eHelicopter_dropTrash(heli)
 
 	local heliX, heliY, _ = heli:getXYZAsInt()
-	local trashItems = {"WhiskeyEmpty","BeerEmpty","BeerEmpty","BeerEmpty"}
+	local trashItems = {"WhiskeyEmpty","SmashedBottle","BeerEmpty","BeerEmpty"}
 
-	local moreTrashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
+	local moreTrashItems = {"SmashedBottle","SmashedBottle","SmashedBottle","SmashedBottle",
+							"MayonnaiseEmpty","Pop3Empty","Pop2Empty","Pop3Empty","WhiskeyEmpty",
+							"BeerCanEmpty","BeerCanEmpty","BeerCanEmpty","BeerCanEmpty","BeerEmpty"}
 	local iterations = 10
 	for i=1, iterations do
 		local trashType = moreTrashItems[(ZombRand(#moreTrashItems)+1)]
