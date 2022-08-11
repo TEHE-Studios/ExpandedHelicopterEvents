@@ -69,6 +69,7 @@ if 1==1 then return end ---Remove this Line to get started.
 ---default: {["additionalFlightSound"]=true, ["flightSound"]=true}
 
 ---@field eventSoundEffects table table of additional soundeffectIDs with corresponding "IGNORE" or sound filenames
+---These can also be tables unto themselves - each entry gets played.
 ---default:
 ---eHelicopter.eventSoundEffects = {
 ---    ["hoverOverTarget"]="IGNORE",
