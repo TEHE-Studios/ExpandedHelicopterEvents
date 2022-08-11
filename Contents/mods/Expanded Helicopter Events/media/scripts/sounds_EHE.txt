@@ -45,6 +45,10 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/HeliLaughingDrinking.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 0.7, } }
 
+     sound eHeliDumpTrash {
+         category = EHE: Main, loop = false, is3D = true,
+         clip { file = media/sound/dumpingTrash.ogg, distanceMax = 80, reverbFactor = 0.1, volume = 0.5, } }
+
     sound eHeliMusicHostile {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }

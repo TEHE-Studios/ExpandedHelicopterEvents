@@ -314,6 +314,9 @@ local function eHelicopter_dropTrash(heli)
 	local heliX, heliY, _ = heli:getXYZAsInt()
 	local trashItems = {"MayonnaiseEmpty","SmashedBottle","Pop3Empty","PopEmpty","Pop2Empty","WhiskeyEmpty","BeerCanEmpty","BeerEmpty"}
 	local iterations = 10
+	
+	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
+	soundEmitter:playSound("eHeliDumpTrash", heliX, heliY, 0)
 
 	for i=1, iterations do
 
