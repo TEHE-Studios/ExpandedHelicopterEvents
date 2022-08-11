@@ -41,7 +41,7 @@ module Base {
         clip { file = media/sound/EntryOfTheGladiators.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/CanCanMusic.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
-    sound eHeliCrewLaughingAndDrinking
+    sound eHeliCrewLaughingAndDrinking {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/HeliLaughingDrinking.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 0.7, } }
 
