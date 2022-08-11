@@ -113,8 +113,10 @@ EHE_Recipe.convertNumericListToKeyedTable(
 	, EHE_Recipe.additionalTagChecks)
 
 
+local ran = false
 ---Scans through every item, checks for types listed above as well as additional tag checks - avoids redundant tags
 function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
+	if ran then return else ran = true end
 	---Adds "CanOpenBoxes" tag to scripts for type
 	local allItems = ScriptManager.instance:getAllItems()
 	local debugText = "EHE: Added Tag 'CanOpenBoxes' to: "
