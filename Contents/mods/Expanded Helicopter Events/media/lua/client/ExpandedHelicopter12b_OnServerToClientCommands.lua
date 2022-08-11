@@ -28,7 +28,7 @@ function eventSoundHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
 		if timeStamp+5000 <= currentTime then
-			--[[DEBUG]] local printString
+			--[[DEBUG]] local printString = ""
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
 
@@ -40,8 +40,8 @@ function eventSoundHandler.updateForPlayer(player)
 					end
 				end
 			end
-			--[[DEBUG]] if printString then printString = "\n --- stopped: "..printString end
-			--[[DEBUG]] print("-- EHE: WARN: eventSoundHandler.updateForPlayer: no update received."..(printString or ""))
+			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
+			--[[DEBUG]] print("-- EHE: WARN: eventSoundHandler.updateForPlayer: no update received."..printString)
 			emitter:stopAll()
 			storedLooperEventsSoundEffects[emitterID] = nil
 			storedLooperEventsUpdateTimes[emitterID] = nil
