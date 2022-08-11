@@ -361,7 +361,7 @@ eHelicopter_PRESETS["raider_heli_harasser"] = {
 		["flightSound"] = "eMiliHeli",
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = "eHeliMusicAggressive",
+		["additionalFlightSound"] = { "eHeliMusicAggressive", "eHeliCrewLaughingAndDrinking" },
 	},
 }
 
@@ -381,6 +381,6 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 		["flightSound"] = "eMiliHeli",
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["additionalFlightSound"] = { "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
+		["additionalFlightSound"] = "eHeliMusicHostile",
 	},
 }
