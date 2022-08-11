@@ -34,6 +34,8 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 					print("--soundEmitter is already playing"..DATA.soundEffect)
 					--local square = getSquare(DATA.x, DATA.y, DATA.z)
 				else
+					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
+					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = true
 					soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
 				end
 			end
