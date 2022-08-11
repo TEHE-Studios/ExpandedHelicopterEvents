@@ -6,14 +6,14 @@ function EHE_Recipe.CanOpenBoxes(scriptItems)
 	scriptItems:addAll(getScriptManager():getItemsTag("CanOpenBoxes"))
 end
 
-
-function EHE_Recipe.FOOD(recipe, result, player)
+--recipe, result
+function EHE_Recipe.FOOD(_, _, player)
 	player:getInventory():AddItems("EHE.EmergencyWaterRation", 5)
 	player:getInventory():AddItems("EHE.MealReadytoEat", 5)
 end
 
 ---@param player IsoGameCharacter | IsoMovingObject
-function EHE_Recipe.MEDICAL(recipe, result, player)
+function EHE_Recipe.MEDICAL(_, _, player)
 	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 6)
 	player:getInventory():AddItems("Gloves_Surgical", 6)
 	local items = player:getInventory():AddItems("Base.FirstAidKit", 1)
@@ -23,14 +23,14 @@ function EHE_Recipe.MEDICAL(recipe, result, player)
 	end
 end
 
-function EHE_Recipe.SURVIVAL(recipe, result, player)
+function EHE_Recipe.SURVIVAL(_, _, player)
 	player:getInventory():AddItems("Base.Torch", 2)
 	player:getInventory():AddItems("Base.Battery", 12)
 	player:getInventory():AddItems("Radio.RadioBlack", 2)
 	player:getInventory():AddItems("EHE.HandFlare", 2)
 end
 
-function EHE_Recipe.STASHBOX(recipe, result, player)
+function EHE_Recipe.STASHBOX(_, _, player)
 	player:getInventory():AddItems("WhiskeyFull", 1)
 	player:getInventory():AddItems("Cigarettes", 4)
 	player:getInventory():AddItems("Lighter", 2)
@@ -38,7 +38,7 @@ function EHE_Recipe.STASHBOX(recipe, result, player)
 	player:getInventory():AddItems("EHE.ProteinBar", 5)
 end
 
-function EHE_Recipe.SURVIVORMEDICAL(recipe, result, player)
+function EHE_Recipe.SURVIVORMEDICAL(_, _, player)
 	player:getInventory():AddItems("EHE.HandFlare", 2)
 	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 2)
 	player:getInventory():AddItems("Gloves_Surgical", 2)
@@ -49,7 +49,7 @@ function EHE_Recipe.SURVIVORMEDICAL(recipe, result, player)
 	end
 end
 
-function EHE_Recipe.SURVIVORFOOD(recipe, result, player)
+function EHE_Recipe.SURVIVORFOOD(_, _, player)
 	player:getInventory():AddItems("CannedPotato", 2)
 	player:getInventory():AddItems("CannedCarrots", 2)
 	player:getInventory():AddItems("CannedCabbage", 2)
@@ -57,7 +57,7 @@ function EHE_Recipe.SURVIVORFOOD(recipe, result, player)
 	player:getInventory():AddItems("CannedBroccoli", 2)
 end
 
-function EHE_Recipe.SURVIVORSEEDS(recipe, result, player)
+function EHE_Recipe.SURVIVORSEEDS(_, _, player)
 	player:getInventory():AddItems("Fertilizer", 3)
 	player:getInventory():AddItems("farming.CabbageBagSeed", 3)
 	player:getInventory():AddItems("farming.PotatoBagSeed", 3)
@@ -66,18 +66,18 @@ function EHE_Recipe.SURVIVORSEEDS(recipe, result, player)
 	player:getInventory():AddItems("farming.CarrotBagSeed", 3)
 end
 
-function EHE_Recipe.SURVIVORTOILET(recipe, result, player)
+function EHE_Recipe.SURVIVORTOILET(_, _, player)
 	player:getInventory():AddItems("ToiletPaper", 10)
 end
 
-function EHE_Recipe.SURVIVORFISHING(recipe, result, player)
+function EHE_Recipe.SURVIVORFISHING(_, _, player)
 	player:getInventory():AddItems("FishingRod", 3)
 	player:getInventory():AddItems("FishingLine", 3)
 	player:getInventory():AddItems("FishingTackle", 3)
 	player:getInventory():AddItems("FishingNet", 4)
 end
 
-function EHE_Recipe.SURVIVORCANNING(recipe, result, player)
+function EHE_Recipe.SURVIVORCANNING(_, _, player)
 	player:getInventory():AddItems("BoxOfJars", 2)
 	player:getInventory():AddItems("Sugar", 1)
 	player:getInventory():AddItems("Vinegar", 1)
@@ -133,9 +133,9 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 			eheFlares.addFlareType(itemFullName, "EHEFlare")
 		end
 
-		for i=0, tags:size()-1 do
+		for ii=0, tags:size()-1 do
 			---@type string
-			local tag = tags:get(i)
+			local tag = tags:get(ii)
 
 			if EHE_Recipe.additionalTagChecks[tag] then
 				addCanOpenBoxesTag = true
