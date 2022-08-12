@@ -283,7 +283,7 @@ function eHeliEvent_Loop()
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
 			--globalModData.EventsOnSchedule[k] = nil
 		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
-			print("EHE: SCHEDULED-LAUNCH INFO:  HELI ID:"..k.." - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
+			print("EHE: SCHEDULED-LAUNCH INFO:  ["..k.."] - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
 			if eHelicopter_PRESETS[v.preset] then
 				eHeliEvent_engage(k)
 			end
