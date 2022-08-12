@@ -44,7 +44,7 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 				--print("--setPos:"..tostring(soundEmitter).." - x:"..DATA.x..","..DATA.y)
 				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
 			elseif command == "stop" then
-				print("--stop:"..tostring(soundEmitter).." - "..DATA.soundEffect)
+				print("--stop:"..tostring(soundEmitter).." - "..tostring(DATA).." - "..tostring(DATA.soundEffect))
 				soundEmitter:stopSoundByName(DATA.soundEffect)
 			elseif command == "stopAll" then
 				soundEmitter:stopAll()
