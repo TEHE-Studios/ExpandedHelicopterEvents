@@ -161,6 +161,9 @@ eHelicopter_PRESETS["air_raid"] = {
 	speed = 0.8,
 	topSpeedFactor = 3,
 	flightVolume = 0,
+	looperEventIDs = {
+		["soundAtEventOrigin"]=true
+	},
 	eventSoundEffects = {
 		["flightSound"]="IGNORE",
 		["soundAtEventOrigin"] = "eAirRaid",
