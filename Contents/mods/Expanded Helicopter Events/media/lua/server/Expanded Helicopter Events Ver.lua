@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.7-FLARES-AUG-2"))
+Events.OnGameBoot.Add(print("Expanded Helicopter Events: ver:0.8-AUG-12"))
