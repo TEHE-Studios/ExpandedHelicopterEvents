@@ -32,4 +32,3 @@ local function onCommand(_module, _command, _dataA, _dataB)
 	end
 end
 Events.OnClientCommand.Add(onCommand)--/client/ to server
---Events.OnServerCommand.Add(onCommand)--/server/ to client

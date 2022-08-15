@@ -75,7 +75,7 @@ end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
 
---if isClient() then sendClientCommand(player, module, command, args) end -- to server
+--if isServer() then sendServerCommand(module, command, player, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)
 	--clientside
 	if _module == "sendLooper" then
@@ -107,5 +107,4 @@ local function onCommand(_module, _command, _dataA, _dataB)
 		eventShadowHandler:setShadowPos(_dataA.eventID, _dataA.texture, _dataA.x, _dataA.y, _dataA.z, true)
 	end
 end
---Events.OnClientCommand.Add(onCommand)--/client/ to server
 Events.OnServerCommand.Add(onCommand)--/server/ to client
