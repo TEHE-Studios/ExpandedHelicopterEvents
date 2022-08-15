@@ -454,14 +454,14 @@ VehicleDistributions.SurvivorSupplyDrop = {
         "EHE.SurvivorMedicalSupplyBox", 1,
         "EHE.SurvivorToiletSupplyBox", 2,
         "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorFishingSupplyBox", 1,
         "EHE.SurvivorCanningSupplyBox", 1,
         "EHE.SurvivorSeedSupplyBox", 1,
 
         "EHE.SurvivorMedicalSupplyBox", 1,
         "EHE.SurvivorToiletSupplyBox", 2,
         "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorFishingSupplyBox", 1,
         "EHE.SurvivorCanningSupplyBox", 1,
         "EHE.SurvivorSeedSupplyBox", 1,
 
@@ -469,7 +469,7 @@ VehicleDistributions.SurvivorSupplyDrop = {
         "EHE.SurvivorMedicalSupplyBox", 1,
         "EHE.SurvivorToiletSupplyBox", 2,
         "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorFishingSupplyBox", 1,
         "EHE.SurvivorCanningSupplyBox", 1,
         "EHE.SurvivorSeedSupplyBox", 1,
 
@@ -477,14 +477,14 @@ VehicleDistributions.SurvivorSupplyDrop = {
         "EHE.SurvivorMedicalSupplyBox", 1,
         "EHE.SurvivorToiletSupplyBox", 1,
         "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorFishingSupplyBox", 1,
         "EHE.SurvivorCanningSupplyBox", 1,
         "EHE.SurvivorSeedSupplyBox", 1,
 
         "EHE.SurvivorMedicalSupplyBox", 1,
         "EHE.SurvivorToiletSupplyBox", 3,
         "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
+        "EHE.SurvivorFishingSupplyBox", 1,
         "EHE.SurvivorCanningSupplyBox", 1,
         "EHE.SurvivorSeedSupplyBox", 1,
     }
