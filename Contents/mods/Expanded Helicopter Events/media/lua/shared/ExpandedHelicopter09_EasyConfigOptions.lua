@@ -1,5 +1,3 @@
-require "OptionScreens/ServerSettingsScreen"
-require "OptionScreens/SandBoxOptions"
 require "EasyConfigChucked1_Main"
 
 eHelicopterSandbox = eHelicopterSandbox or {}
