@@ -2,7 +2,7 @@ require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 
---if isServer() then sendServerCommand(module, command, player, args) end -- to client
+--sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)
 	--serverside
 	if _module == "sendLooper" then
