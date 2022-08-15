@@ -74,8 +74,7 @@ function eventMarkerHandler.updateForPlayer(player)
 end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
-
---if isServer() then sendServerCommand(module, command, player, args) end -- to server
+--if isClient() then sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)
 	--clientside
 	if _module == "sendLooper" then
