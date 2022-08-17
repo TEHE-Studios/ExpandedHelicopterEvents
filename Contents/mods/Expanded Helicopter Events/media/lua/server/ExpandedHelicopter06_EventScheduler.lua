@@ -18,6 +18,7 @@ function eHeliEvent_new(startDay, startTime, preset)
 
 	local globalModData = getExpandedHeliEventsModData()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
+	triggerEvent("EHE_ServerModDataReady", false)
 end
 
 
@@ -45,6 +46,7 @@ function eHeliEvent_engage(ID)
 			heli:launch(foundTarget)
 		end
 	end
+	triggerEvent("EHE_ServerModDataReady", false)
 end
 
 
@@ -86,6 +88,7 @@ function eHeliEvents_OnGameStart()
 	if not globalModData.EventsOnSchedule then
 		globalModData.EventsOnSchedule = {}
 	end
+	triggerEvent("EHE_ServerModDataReady", false)
 end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 

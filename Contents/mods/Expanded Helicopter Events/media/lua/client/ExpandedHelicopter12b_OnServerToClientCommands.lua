@@ -1,7 +1,17 @@
+if isServer() then return end
+
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
+
+LuaEventManager.AddEvent("EHE_ClientModDataReady") -- p1: isNewGame
+--triggerEvent("EHE_ClientModDataReady", false) send change if any
+
+local function onClientModDataReady()
+	ModData.request("ExpandedHelicopterEvents")
+end
+Events.EHE_ClientModDataReady.Add(onClientModDataReady)
 
 
 function eventShadowHandler.updateForPlayer(player)

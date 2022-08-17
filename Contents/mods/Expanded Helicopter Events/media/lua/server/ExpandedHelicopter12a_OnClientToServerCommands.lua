@@ -1,3 +1,8 @@
+if isClient() then return end -- execute in SP or on Server
+
+LuaEventManager.AddEvent("EHE_ServerModDataReady")
+--triggerEvent("EHE_ServerModDataReady", false) -- to send updates
+
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
