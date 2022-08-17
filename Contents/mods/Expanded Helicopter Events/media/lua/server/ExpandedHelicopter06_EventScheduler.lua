@@ -95,7 +95,6 @@ Events.OnGameStart.Add(eHeliEvents_OnGameStart)
 function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
 
 	if (type(targetDate)~="table") or (type(expectedDates)~="table") or (#targetDate<=0) or (#expectedDates<=0) then
-		print ("A")
 		return false
 	end
 
