@@ -84,32 +84,19 @@ function EHE_Recipe.SURVIVORCANNING(_, _, player)
 end
 
 
----Forces a numerically keyed list into a type=true table
----
----Allows for: 'if list[key] == true'
+---Forces a numerically keyed list into a type=true table, Allows for: 'if list[key] == true' checks.
 ---@param list table of type paths
-function EHE_Recipe.convertNumericListToKeyedTable(list,table)
-	for _,value in pairs(list) do
-		--print(" x - "..value)
-		table[value]=true
-	end
-end
-
+function EHE_Recipe.convertNumericListToKeyedTable(list,table) for _,value in pairs(list) do table[value]=true end end
 
 EHE_Recipe.typesThatCanOpenBoxes = EHE_Recipe.typesThatCanOpenBoxes or {}
 ---Sub-mod authors will have to use the following function to add more types
 EHE_Recipe.convertNumericListToKeyedTable(
-		---List param
-		{"Base.IcePick","Base.HandScythe","Base.MeatCleaver","Base.LetterOpener","Base.Katana","Base.Scalpel","Base.GardenFork",}
-	---Table param
+	{"Base.IcePick","Base.HandScythe","Base.MeatCleaver","Base.LetterOpener","Base.Katana","Base.Scalpel","Base.GardenFork",}
 	,EHE_Recipe.typesThatCanOpenBoxes)
-
 
 EHE_Recipe.additionalTagChecks = EHE_Recipe.additionalTagChecks or {}
 EHE_Recipe.convertNumericListToKeyedTable(
-		---List param
-		{"Screwdriver","DullKnife","SharpKnife","Write","ChopTree","CutPlant","Scissors","Fork","Spoon"}
-	---Table param
+	{"Screwdriver","DullKnife","SharpKnife","Write","ChopTree","CutPlant","Scissors","Fork","Spoon"}
 	, EHE_Recipe.additionalTagChecks)
 
 
@@ -147,7 +134,7 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 
 		if addCanOpenBoxesTag then
 			debugText = debugText..itemFullName..", "
-			itemScript:DoParam("Tags = "..tagString..";CanOpenBoxes");
+			itemScript:DoParam("Tags = "..tagString..";CanOpenBoxes")
 		end
 	end
 	print(debugText)
