@@ -15,38 +15,37 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 		end
 		if soundEmitter then
 
-			storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
-
 			if command ~= "setPos" then
 				local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:"..tostring(soundEmitter).." - "..tostring(reusableID)
-				if type(DATA)=="table" then
-					for k,v in pairs(DATA) do
-						emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")"
-					end
-				else
-					emitterDebugText = emitterDebugText.." - (DATA = "..tostring(DATA)..")"
-				end
+				if DATA and type(DATA)=="table" then for k,v in pairs(DATA) do emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")" end
+				else emitterDebugText = emitterDebugText.." - /!\\ (DATA = "..tostring(DATA)..")" end
 				print(emitterDebugText)
 			end
 
-			if command == "play" then
-				if soundEmitter:isPlaying(DATA.soundEffect) then
-					print("--soundEmitter is already playing"..DATA.soundEffect)
-					--local square = getSquare(DATA.x, DATA.y, DATA.z)
-				else
-					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
-					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = true
-					soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
+			storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
+
+			if not DATA then print(" --WARN: Command has a data of nil!")
+			else
+				if command == "play" then
+					if soundEmitter:isPlaying(DATA.soundEffect) then
+						print("--soundEmitter is already playing"..DATA.soundEffect)
+						--local square = getSquare(DATA.x, DATA.y, DATA.z)
+					else
+						storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
+						storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = true
+						soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
+					end
+				end
+
+				if command == "setPos" then soundEmitter:setPos(DATA.x,DATA.y,DATA.z) end
+
+				if command == "stop" then
+					print("--stop:"..tostring(soundEmitter).." - "..tostring(DATA).." - "..tostring(DATA.soundEffect))
+					soundEmitter:stopSoundByName(DATA.soundEffect)
 				end
 			end
 
-			if command == "setPos" then
-				--print("--setPos:"..tostring(soundEmitter).." - x:"..DATA.x..","..DATA.y)
-				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
-			elseif command == "stop" then
-				print("--stop:"..tostring(soundEmitter).." - "..tostring(DATA).." - "..tostring(DATA.soundEffect))
-				soundEmitter:stopSoundByName(DATA.soundEffect)
-			elseif command == "stopAll" then
+			if command == "stopAll" then
 				soundEmitter:stopAll()
 			end
 		end
