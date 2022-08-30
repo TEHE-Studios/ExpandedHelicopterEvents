@@ -20,10 +20,12 @@ function eHelicopter:lookForHostiles(targetType)
 
 	--clear entries that are too far
 	for i=1, n do
-		local hostile = self.hostilesToFireOn[i]
-		local distanceTo = tonumber(hostile:getSquare():DistTo(selfSquare))
+		local hostile, hSq, distanceTo
+		hostile = self.hostilesToFireOn[i]
+		if hostile then hSq = hostile:getSquare() end
+		if hSq then distanceTo = tonumber(hSq:DistTo(selfSquare)) end
 		--if hostile is too far set to nil
-		if distanceTo > self.attackDistance then
+		if (not hSq) or (not distanceTo) or (distanceTo and distanceTo > self.attackDistance) then
 			self.hostilesToFireOn[i] = nil
 		end
 	end
