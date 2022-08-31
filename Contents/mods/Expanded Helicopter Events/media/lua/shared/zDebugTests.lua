@@ -7,7 +7,7 @@ require "ExpandedHelicopter01a_MainVariables"
 Events.OnGameBoot.Add(function()
 	if ISCustomDebugTestsPanel and ISCustomDebugTestsPanel.Tests then
 		ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
-		ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
+		--ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
 		ISCustomDebugTestsPanel.Tests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
 		ISCustomDebugTestsPanel.Tests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
 		ISCustomDebugTestsPanel.Tests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
@@ -302,8 +302,8 @@ function CustomDebugPanel.getHumanoidsInRange()
 	end
 end
 
-
---- Test all announcements
+--[[
+---- Test all announcements
 --GLOBAL DEBUG VARS
 testAllLines__ALL_LINES = {}
 testAllLines__DELAYS = {}
@@ -345,3 +345,4 @@ function CustomDebugPanel.testAllLinesLOOP()
 end
 
 Events.OnTick.Add(CustomDebugPanel.testAllLinesLOOP)
+--]]
