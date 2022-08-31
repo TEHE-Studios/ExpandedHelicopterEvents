@@ -5,8 +5,9 @@ require "ExpandedHelicopter12a_OnClientToServerCommands"
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter00a_Util"
 
-local ExpandedHeliEventsModData = nil
-function initExpandedHeliEventsModData(isNewGame)
+local ExpandedHeliEventsModData
+
+local function initExpandedHeliEventsModData(isNewGame)
 	local modData = ModData.getOrCreate("ExpandedHelicopterEvents")
 	if not modData.EventsOnSchedule then
 		modData.EventsOnSchedule = {}

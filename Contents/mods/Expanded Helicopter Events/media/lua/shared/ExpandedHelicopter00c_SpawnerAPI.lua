@@ -177,81 +177,84 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 end
 
 
+if not isClient() then
 
----@param spawned IsoObject | ArrayList
----@param functions table table of functions
-function SpawnerTEMP.processExtraFunctionsOnto(spawned,functions)
-	if spawned and functions and (type(functions)=="table") then
-		for k,funcID in pairs(functions) do
-			--print("EHE: DEBUG: processExtraFunctionsOnto: "..funcID)
-			local func = SpawnerTEMP.fetchFromDictionary(funcID)
-			if func then
-				func(spawned)
+	---@param spawned IsoObject | ArrayList
+	---@param functions table table of functions
+	function SpawnerTEMP.processExtraFunctionsOnto(spawned,functions)
+		if spawned and functions and (type(functions)=="table") then
+			for k,funcID in pairs(functions) do
+				--print("EHE: DEBUG: processExtraFunctionsOnto: "..funcID)
+				local func = SpawnerTEMP.fetchFromDictionary(funcID)
+				if func then
+					func(spawned)
+				end
 			end
 		end
 	end
-end
 
 
----@param spawnFuncType string This string is concated to the end of 'SpawnerTEMP.spawn' to run a corresponding function.
----@param objectType string Module.Type for Items and Vehicles, OutfitID for Zombies
----@param x number
----@param y number
----@param z number
----@param funcsToApply table Table of functions which gets applied on the results of whatever is spawned.
-function SpawnerTEMP.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
-	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
-	local positionID = stringyUtil.PositionToId(x, y ,z)
-	if not farSquarePendingSpawns[positionID] then
-		farSquarePendingSpawns[positionID] = {}
-	end
-
-	local newEntry = {
-		spawnFuncType=spawnFuncType,
-		objectType=objectType,
-		x=x,
-		y=y,
-		z=z,
-		funcsToApply=funcsToApply,
-		extraParam=extraParam,
-		processSquare=processSquare
-	}
-
-	table.insert(farSquarePendingSpawns[positionID],newEntry)
-end
-
-
----@param square IsoGridSquare
-function SpawnerTEMP.parseSquare(square)
-	local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
-	local positionID = stringyUtil.SquareToId(square)
-	local pendingItems = farSquarePendingSpawns[positionID]
-
-	if not pendingItems then
-		return
-	end
-	if #pendingItems < 1 then
-		return
-	end
-
-	for key,entry in pairs(pendingItems) do
-		local shiftedSquare = square
-		if entry.processSquare then
-			local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
-			if func then
-				shiftedSquare = func(shiftedSquare)
-			end
+	---@param spawnFuncType string This string is concated to the end of 'SpawnerTEMP.spawn' to run a corresponding function.
+	---@param objectType string Module.Type for Items and Vehicles, OutfitID for Zombies
+	---@param x number
+	---@param y number
+	---@param z number
+	---@param funcsToApply table Table of functions which gets applied on the results of whatever is spawned.
+	function SpawnerTEMP.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
+		local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
+		local positionID = stringyUtil.PositionToId(x, y ,z)
+		if not farSquarePendingSpawns[positionID] then
+			farSquarePendingSpawns[positionID] = {}
 		end
 
-		if shiftedSquare then
-			local spawnFunc = SpawnerTEMP["spawn"..entry.spawnFuncType]
+		local newEntry = {
+			spawnFuncType=spawnFuncType,
+			objectType=objectType,
+			x=x,
+			y=y,
+			z=z,
+			funcsToApply=funcsToApply,
+			extraParam=extraParam,
+			processSquare=processSquare
+		}
 
-			if spawnFunc then
-				local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
-			end
-		end
-		--farSquarePendingSpawns[positionID][key] = nil
+		table.insert(farSquarePendingSpawns[positionID],newEntry)
 	end
-	farSquarePendingSpawns[positionID] = nil
+
+
+	---@param square IsoGridSquare
+	function SpawnerTEMP.parseSquare(square)
+		local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
+		local positionID = stringyUtil.SquareToId(square)
+		local pendingItems = farSquarePendingSpawns[positionID]
+
+		if not pendingItems then
+			return
+		end
+		if #pendingItems < 1 then
+			return
+		end
+
+		for key,entry in pairs(pendingItems) do
+			local shiftedSquare = square
+			if entry.processSquare then
+				local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
+				if func then
+					shiftedSquare = func(shiftedSquare)
+				end
+			end
+
+			if shiftedSquare then
+				local spawnFunc = SpawnerTEMP["spawn"..entry.spawnFuncType]
+
+				if spawnFunc then
+					local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
+				end
+			end
+			--farSquarePendingSpawns[positionID][key] = nil
+		end
+		farSquarePendingSpawns[positionID] = nil
+	end
+	Events.LoadGridsquare.Add(SpawnerTEMP.parseSquare)
+
 end
-Events.LoadGridsquare.Add(SpawnerTEMP.parseSquare)
