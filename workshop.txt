@@ -4,13 +4,17 @@ title=Expanded Helicopter Events
 description=[H1][i]This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.[/i][/H1]
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
-description=[url=https://github.com/sharkster91/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/GITHUB.png[/img][/url][img]https://i.imgur.com/Q2tgXe0.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827906428][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url][img]https://i.imgur.com/Q2tgXe0.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827912378][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url]
+description=
+description=[img]https://i.imgur.com/YumCnsY.png[/img][img]https://i.imgur.com/Q2tgXe0.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827906428][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url] [url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198117849827912378][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url] [url=https://github.com/sharkster91/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/GITHUB.png[/img][/url]
+description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
 description=[img]https://i.imgur.com/AH72i9j.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/ChuckTheSheep/SuperWeirdHelicopterEvents/main/Contents/mods/Super%20Weird%20Helicopters/poster_s.png[/img][/url][img]https://i.imgur.com/AH72i9j.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/ChuckTheSheep/ExpandedHelicopterEventsTwitchIntegration/main/Contents/mods/ExpandedHelicopterEventsTwitchIntegration/poster_s.png[/img][/url]
 description=
+description=
 description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
 description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]SMUI[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]SLEO[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
+description=
 description=
 description=[h1][b]If you're having an issue or encountering errors:[/b][/h1]
 description=[h3]First, resubscribe to this mod, and any related mod.[/h3]
@@ -18,6 +22,7 @@ description=[i](This will force a download of the latest version.)[/i]
 description=[b]If the problem persists, please supply an error log, which can be found here:[/b]
 description=[quote]`C:\Users\<username>\Zomboid\console.txt`[/quote]
 description=The preferred method of reporting issues is through our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page. Alternatively, you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
+description=
 description=
 description=[img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][url=https://steamcommunity.com/workshop/filedetails/discussion/2458631365/3198118348349680656/][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_sm.png[/img][/url]
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
