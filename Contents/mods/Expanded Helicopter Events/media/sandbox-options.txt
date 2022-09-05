@@ -6,21 +6,18 @@ option ExpandedHeli.StartDay
 	page = ExpandedHeli, translation = ExpandedHeli_StartDay,
 }
 
-option ExpandedHeli.CutOffDay { type = integer, min = 1, max = 999, default = 90, page = , translation = ExpandedHeli_CutOffDay,}
 option ExpandedHeli.SchedulerDuration
 {
 	type = integer, min = 1, max = 999, default = 90,
 	page = ExpandedHeli, translation = ExpandedHeli_SchedulerDuration,
 }
 
-option ExpandedHeli.NeverEnding { type = boolean, default = false, page = , translation = ExpandedHeli_NeverEnding,}
 option ExpandedHeli.ContinueScheduling
 {
 	type = boolean, default = false,
 	page = ExpandedHeli, translation = ExpandedHeli_ContinueScheduling,
 }
 
-option ExpandedHeli.NeverEndingLateGameOnly { type = boolean, default = true, page = , translation = ExpandedHeli_NeverEndingLateGameOnly, }
 option ExpandedHeli.ContinueSchedulingLateGameOnly
 {
 	type = boolean, default = true,

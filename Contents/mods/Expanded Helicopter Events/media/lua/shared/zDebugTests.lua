@@ -36,9 +36,9 @@ function CustomDebugPanel.TemporaryTest()
 	print("SandboxVars.Helicopter: "..SandboxVars.Helicopter)
 	print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
 
-	print("SchedulerDuration: depreciated:"..tostring(SandboxVars.ExpandedHeli.CutOffDay).."  current:"..tostring(SandboxVars.ExpandedHeli.SchedulerDuration))
-	print("ContinueScheduling: depreciated:"..tostring(SandboxVars.ExpandedHeli.NeverEnding).."  current:"..tostring(SandboxVars.ExpandedHeli.ContinueScheduling))
-	print("ContinueSchedulingLateGameOnly: depreciated:"..tostring(SandboxVars.ExpandedHeli.NeverEndingLateGameOnly).."  current:"..tostring(SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly))
+	print("SchedulerDuration: "..tostring(SandboxVars.ExpandedHeli.SchedulerDuration))
+	print("ContinueScheduling: "..tostring(SandboxVars.ExpandedHeli.ContinueScheduling))
+	print("ContinueSchedulingLateGameOnly: "..tostring(SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly))
 end
 
 function CustomDebugPanel.printEHEIsoPlayers()
