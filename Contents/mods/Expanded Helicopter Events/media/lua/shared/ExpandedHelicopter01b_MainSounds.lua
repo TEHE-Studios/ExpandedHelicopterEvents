@@ -22,6 +22,8 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 				print(emitterDebugText)
 			end
 
+			storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
+
 			if not DATA then print(" --WARN: Command has a data of nil!")
 			else
 				if command == "play" then

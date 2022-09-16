@@ -30,11 +30,12 @@ Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
 storedLooperEvents = {}
 storedLooperEventsSoundEffects = {}
-local storedLooperEventsUpdateTimes = {}
+storedLooperEventsUpdateTimes = {}
 
 function eventSoundHandler.updateForPlayer(player)
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
-		if timeStamp+5000 <= currentTime then
+		if timeStamp+5000 <= getTimeInMillis() then
+			print(emitterID..".overdueSound: "..(timeStamp+5000).." <= "..getTimeInMillis())
 			--[[DEBUG]] local printString = ""
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
@@ -86,7 +87,8 @@ local function onCommand(_module, _command, _dataA, _dataB)
 	--clientside
 	if _module == "sendLooper" then
 
-		storedLooperEventsUpdateTimes[_dataA.reusableID] = getTimeInMillis()+1000
+		storedLooperEventsUpdateTimes[_dataA.reusableID] = getTimeInMillis()
+		print(_dataA.reusableID..".storedLooperEventsUpdateTimes - new received: "..getTimeInMillis())
 
 		--print("--pong")
 		if _command == "play" then
