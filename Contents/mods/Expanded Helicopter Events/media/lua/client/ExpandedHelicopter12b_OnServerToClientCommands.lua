@@ -29,10 +29,10 @@ Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
 
 storedLooperEvents = {}
-storedLooperEventsUpdateTimes = {}
 storedLooperEventsSoundEffects = {}
+local storedLooperEventsUpdateTimes = {}
+
 function eventSoundHandler.updateForPlayer(player)
-	local currentTime = getTimeInMillis()
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
 		if timeStamp+5000 <= currentTime then
 			--[[DEBUG]] local printString = ""
@@ -86,8 +86,8 @@ local function onCommand(_module, _command, _dataA, _dataB)
 	--clientside
 	if _module == "sendLooper" then
 
-		storedLooperEventsUpdateTimes[_dataA.reusableID] = getTimeInMillis()
-		
+		storedLooperEventsUpdateTimes[_dataA.reusableID] = getTimeInMillis()+1000
+
 		--print("--pong")
 		if _command == "play" then
 			--print("--play")
