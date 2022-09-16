@@ -85,6 +85,9 @@ Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 local function onCommand(_module, _command, _dataA, _dataB)
 	--clientside
 	if _module == "sendLooper" then
+
+		storedLooperEventsUpdateTimes[_dataA.reusableID] = getTimeInMillis()
+		
 		--print("--pong")
 		if _command == "play" then
 			--print("--play")
