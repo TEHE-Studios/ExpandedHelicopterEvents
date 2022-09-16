@@ -97,7 +97,7 @@ local function onCommand(_module, _command, _dataA, _dataB)
 
 		elseif _command == "stop" then
 			--print("--loop stop")
-			eventSoundHandler:handleLooperEvent(_dataA.reusableID, {_dataA.soundEffect}, _dataA.command)
+			eventSoundHandler:handleLooperEvent(_dataA.reusableID, {soundEffect=_dataA.soundEffect}, _dataA.command)
 
 		elseif _command == "drop" then
 			--print("--loop drop")
