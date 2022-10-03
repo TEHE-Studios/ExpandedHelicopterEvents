@@ -34,8 +34,7 @@ storedLooperEventsUpdateTimes = {}
 
 function eventSoundHandler.updateForPlayer(player)
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
-		if timeStamp+5000 <= getTimeInMillis() then
-			print(emitterID..".overdueSound: "..(timeStamp+5000).." <= "..getTimeInMillis())
+		if timeStamp~=false and timeStamp <= getGametimeTimestamp() then
 			--[[DEBUG]] local printString = ""
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
@@ -49,7 +48,7 @@ function eventSoundHandler.updateForPlayer(player)
 				end
 			end
 			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
-			--[[DEBUG]] print("-- EHE: WARN: eventSoundHandler.updateForPlayer: no update received."..printString)
+			--[[DEBUG]] print("-- EHE: "..emitterID.." eventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
 			emitter:stopAll()
 			storedLooperEventsSoundEffects[emitterID] = nil
 			storedLooperEventsUpdateTimes[emitterID] = nil
@@ -70,7 +69,7 @@ function eventMarkerHandler.updateForPlayer(player)
 				local currentTimeMS = getTimeInMillis()
 				local expireTime = eventMarkerHandler.expirations[player][id]
 				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then
-					print("-- EHE: WARN: eventMarkerHandler.updateForPlayer: no update received")
+					print("-- EHE: eventMarkerHandler.updateForPlayer: no update received; stopping marker. ")
 					eventMarkerHandler.markers[player][id] = nil
 					eventMarkerHandler.expirations[player][id] = nil
 					marker:setDuration(0)
@@ -86,35 +85,26 @@ Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 local function onCommand(_module, _command, _dataA, _dataB)
 	--clientside
 	if _module == "sendLooper" then
+		storedLooperEventsUpdateTimes[_dataA.reusableID] = getGametimeTimestamp()+100
 
-		storedLooperEventsUpdateTimes[_dataA.reusableID] = getTimeInMillis()
-		print(_dataA.reusableID..".storedLooperEventsUpdateTimes - new received: "..getTimeInMillis())
-
-		--print("--pong")
 		if _command == "play" then
-			--print("--play")
 			eventSoundHandler:handleLooperEvent(_dataA.reusableID,
 					{soundEffect=_dataA.soundEffect, x=_dataA.coords.x, y=_dataA.coords.y, z=_dataA.coords.z}, _dataA.command)
 
 		elseif _command == "setPos" then
-			--print("--loop setPos")
 			eventSoundHandler:handleLooperEvent(_dataA.reusableID, {x=_dataA.coords.x, y=_dataA.coords.y, z=_dataA.coords.z}, _dataA.command)
 
 		elseif _command == "stop" then
-			--print("--loop stop")
 			eventSoundHandler:handleLooperEvent(_dataA.reusableID, {soundEffect=_dataA.soundEffect}, _dataA.command)
 
 		elseif _command == "drop" then
-			--print("--loop drop")
 			eventSoundHandler:handleLooperEvent(_dataA.reusableID, nil, _dataA.command)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		--sendServerCommand("EventMarkerHandler", "setOrUpdateMarker", _dataB)
 		eventMarkerHandler.setOrUpdate(_dataA.eventID, _dataA.icon, _dataA.duration, _dataA.posX, _dataA.posY, true)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		--sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
 		eventShadowHandler:setShadowPos(_dataA.eventID, _dataA.texture, _dataA.x, _dataA.y, _dataA.z, true)
 	end
 end
