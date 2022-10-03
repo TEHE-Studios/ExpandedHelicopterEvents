@@ -40,8 +40,15 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 				if command == "setPos" then soundEmitter:setPos(DATA.x,DATA.y,DATA.z) end
 
 				if command == "stop" then
-					print("--stop:"..tostring(soundEmitter).." - "..tostring(DATA).." - "..tostring(DATA.soundEffect))
-					soundEmitter:stopSoundByName(DATA.soundEffect)
+					if DATA and DATA.soundEffect and type(DATA.soundEffect)=="table" then
+						for _,sound in pairs(DATA.soundEffect) do
+							print("--stop:"..tostring(soundEmitter).." - "..tostring(DATA).." - "..tostring(DATA.soundEffect))
+							soundEmitter:stopSoundByName(sound)
+						end
+					else
+						print("--stop:"..tostring(soundEmitter).." - "..tostring(DATA).." - "..tostring(DATA.soundEffect))
+						soundEmitter:stopSoundByName(DATA.soundEffect)
+					end
 				end
 			end
 
