@@ -294,9 +294,7 @@ function updateAllHelicopters()
 			local heli = helicopter
 
 			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
-
 				if not heli.updateEvent then print("ERR: updateAllHelicopters: heli.update not accessible. heli:"..tostring(heli)) return end
-
 				heli:updateEvent()
 			end
 		end
