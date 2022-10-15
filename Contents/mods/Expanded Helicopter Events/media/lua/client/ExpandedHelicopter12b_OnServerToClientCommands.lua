@@ -49,7 +49,8 @@ function eventSoundHandler.updateForPlayer(player)
 			end
 			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
 			--[[DEBUG]] print("-- EHE: "..emitterID.." eventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
-			emitter:stopAll()
+			emitter:setVolumeAll(0)
+			--emitter:stopAll()
 			storedLooperEventsSoundEffects[emitterID] = nil
 			storedLooperEventsUpdateTimes[emitterID] = nil
 		end
