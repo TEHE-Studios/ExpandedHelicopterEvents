@@ -25,6 +25,12 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 					if eHelicopter_PRESETS[presetID] and eHelicopter_PRESETS[presetID].radioChatter then
 						radioChatter = eHelicopter_PRESETS[presetID].radioChatter
 					end
+
+					--local isRadioText = getRadioText(radioChatter)
+					--if isRadioText == radioChatter then
+					--	isRadioText = getText(radioChatter)
+					--end
+
 					linesGoingOut.presetID = getRadioText(radioChatter)
 				end
 			end
