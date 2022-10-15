@@ -3,7 +3,7 @@ require "ExpandedHelicopter01a_MainVariables"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter01f_ShadowSystem"
 
-function eHelicopter:update()
+function eHelicopter:updateEvent()
 
 	if self.state == "following" then
 		return
@@ -12,10 +12,10 @@ function eHelicopter:update()
 	if (self.state == "arrived" or self.state == "gotoTarget") and ((not self.target) or (not self.trueTarget)) then
 
 		if (not self.target) then
-			print(" - EHE: ERR: "..self:heliToString().." no target in update()")
+			print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()")
 		end
 		if (not self.trueTarget) then
-			print(" - EHE: ERR: "..self:heliToString().." no trueTarget in update()")
+			print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()")
 		end
 
 		self.trueTarget = self:findTarget(self.attackDistance, "update")
@@ -294,7 +294,10 @@ function updateAllHelicopters()
 			local heli = helicopter
 
 			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
-				heli:update()
+
+				if not heli.update then print("ERR: updateAllHelicopters: heli.update not accessible. heli:"..tostring(heli)) return end
+
+				heli:updateEvent()
 			end
 		end
 	end
