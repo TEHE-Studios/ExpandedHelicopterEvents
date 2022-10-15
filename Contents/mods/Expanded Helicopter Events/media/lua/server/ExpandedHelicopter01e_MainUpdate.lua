@@ -36,6 +36,7 @@ function eHelicopter:updateEvent()
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
 					eventSoundHandler:playEventSound(self, "foundTarget")
+					--[[DEBUG]] print("EHE: "..self:heliToString().."  -found target outside: "..tostring(self.target))
 				end
 				self.timeSinceLastSeenTarget = timeStampMS
 			end
@@ -65,6 +66,8 @@ function eHelicopter:updateEvent()
 				end
 				--set target to square from calculated offset
 				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
+
+				--[[DEBUG]] print("EHE: "..self:heliToString().."  -roaming")
 			end
 		end
 
@@ -72,11 +75,13 @@ function eHelicopter:updateEvent()
 		if self.state == "arrived" and (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 			eventSoundHandler:playEventSound(self, "lostTarget")
+			--[[DEBUG]] print("EHE: "..self:heliToString().."  -lost target")
 		end
 
 		if self.state == "arrived" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
 			if newTarget and not instanceof(newTarget, "IsoGridSquare") then
+				--[[DEBUG]] print("EHE: "..self:heliToString().."  -found new target: "..tostring(newTarget))
 				self.trueTarget = newTarget
 			else
 				--look again later
@@ -148,7 +153,7 @@ function eHelicopter:updateEvent()
 					end
 				end
 
-				--[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
+				--[[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
 
 				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(5,(5*getGameSpeed()))
 				if self.hoverOnTargetDuration <= 0 then
