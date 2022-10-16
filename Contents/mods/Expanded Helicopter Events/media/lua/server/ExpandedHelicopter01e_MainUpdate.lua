@@ -92,6 +92,8 @@ function eHelicopter:updateEvent()
 					if self.hoverOnTargetDuration <= 0 then
 						self.hoverOnTargetDuration = false
 					end
+
+					--[[DEBUG]] if getDebug() then print("roaming - hover-time:"..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 				end
 				self.timeSinceLastSeenTarget = timeStampMS+timeInterval
 			end
@@ -151,7 +153,7 @@ function eHelicopter:updateEvent()
 				end
 			end
 
-			--[[DEBUG]] if getDebug() then print("self.hoverOnTargetDuration: "..self.hoverOnTargetDuration.." "..self:heliToString()) end
+			--[[DEBUG]] if getDebug() then print("hovering near target: "..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(10*getGameSpeed()))
 			if self.hoverOnTargetDuration <= 0 then
