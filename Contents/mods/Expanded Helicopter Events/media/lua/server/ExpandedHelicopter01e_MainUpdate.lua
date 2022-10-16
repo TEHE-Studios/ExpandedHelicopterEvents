@@ -78,9 +78,11 @@ function eHelicopter:updateEvent()
 			--[[DEBUG]] print("EHE: "..self:heliToString().."  -lost target")
 		end
 
-		if self.state == "arrived" and instanceof(self.trueTarget, "IsoGridSquare") and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
-			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
-			if newTarget and not instanceof(newTarget, "IsoGridSquare") then
+		if self.state == "arrived" and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
+			local newTarget
+
+			if instanceof(self.trueTarget, "IsoGridSquare") then newTarget = self:findTarget(self.attackDistance*4, "retrackTarget") end
+			if newTarget and (not instanceof(newTarget, "IsoGridSquare")) then
 				--[[DEBUG]] print("EHE: "..self:heliToString().."  -found new target: "..tostring(newTarget))
 				self.trueTarget = newTarget
 			else
