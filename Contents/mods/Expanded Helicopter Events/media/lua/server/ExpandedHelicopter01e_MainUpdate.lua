@@ -146,7 +146,7 @@ function eHelicopter:updateEvent()
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnHover"]
 				if eventFunction then
-					--[[DEBUG]] if getDebug() then self:hoverAndFlyOverReport(" - HOVERING OVER TARGET") end
+					--[[DEBUG]] self:hoverAndFlyOverReport(" - HOVERING OVER TARGET "..tostring(self.target))
 					eventFunction(self)
 				end
 			end
@@ -160,15 +160,11 @@ function eHelicopter:updateEvent()
 			preventMovement=true
 		else
 
-			--[[DEBUG]
-			if getDebug() then
-				local debugTargetText = " (square)"
-				if self.trueTarget then
-					if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
-					self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText)
-				end
+			local debugTargetText = " "..tostring(self.trueTarget)
+			if self.trueTarget then
+				if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
+				self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText)
 			end
-			--]]
 
 			eventSoundHandler:playEventSound(self, "hoverOverTarget",nil, nil, true)
 			eventSoundHandler:playEventSound(self, "flyOverTarget")
