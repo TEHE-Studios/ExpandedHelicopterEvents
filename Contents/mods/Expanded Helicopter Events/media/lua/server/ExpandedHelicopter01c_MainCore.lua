@@ -759,7 +759,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	local DAY = GT:getNightsSurvived()
 	local HOUR = GT:getHour()
 
-	HOUR = HOUR+3
+	HOUR = HOUR+2
 	if HOUR > 24 then
 		HOUR = HOUR-24
 		DAY = DAY+1
@@ -769,9 +769,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 
 	if self.addedFunctionsToEvents then
 		local eventFunction = self.addedFunctionsToEvents["OnLaunch"]
-		if eventFunction then
-			eventFunction(self)
-		end
+		if eventFunction then eventFunction(self) end
 	end
 end
 
