@@ -4,19 +4,11 @@ require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter01f_ShadowSystem"
 
 function eHelicopter:updateEvent()
-
-	if self.state == "following" then
-		return
-	end
+	if self.state == "following" then return end
 
 	if (self.state == "arrived" or self.state == "gotoTarget") and ((not self.target) or (not self.trueTarget)) then
-
-		if (not self.target) then
-			print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()")
-		end
-		if (not self.trueTarget) then
-			print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()")
-		end
+		if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
+		if (not self.trueTarget) then print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()") end
 
 		self.trueTarget = self:findTarget(self.attackDistance, "update")
 		self.target = self.trueTarget
@@ -122,7 +114,7 @@ function eHelicopter:updateEvent()
 			local unlaunchHour = self.forceUnlaunchTime[2]
 
 			if unlaunchDay<=DAY and unlaunchHour<=HOUR then
-				--[[DEBUG]] print(" - EHE: "..self:heliToString().."forceUnlaunchTime reached: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
+				--[[DEBUG]] print(" - EHE: "..self:heliToString().." forceUnlaunchTime reached: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
 				self:goHome()
 			end
 		else
@@ -136,9 +128,7 @@ function eHelicopter:updateEvent()
 		self.state = "arrived"
 		if self.addedFunctionsToEvents then
 			local eventFunction = self.addedFunctionsToEvents["OnArrive"]
-			if eventFunction then
-				eventFunction(self)
-			end
+			if eventFunction then eventFunction(self) end
 		end
 	end
 
@@ -158,9 +148,7 @@ function eHelicopter:updateEvent()
 			--[[DEBUG]] if getDebug() then print("hovering near target: "..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 
 			self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(10*getGameSpeed()))
-			if self.hoverOnTargetDuration <= 0 then
-				self.hoverOnTargetDuration = false
-			end
+			if self.hoverOnTargetDuration <= 0 then self.hoverOnTargetDuration = false end
 			preventMovement=true
 		else
 
@@ -175,46 +163,33 @@ function eHelicopter:updateEvent()
 
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnFlyaway"]
-				if eventFunction then
-					eventFunction(self)
-				end
+				if eventFunction then eventFunction(self) end
 			end
-
 			self:goHome()
 		end
 	end
 
 	local lockOn = true
-	if self.state == "goHome" then
-		lockOn = false
-	end
+	if self.state == "goHome" then lockOn = false end
 
 	--if it's ok to move do so, and update the shadow's position
-	if not preventMovement then
-		self:move(lockOn, true)
-	end
+	if not preventMovement then self:move(lockOn, true) end
 
 	if self.eventMarkerIcon ~= false then
 		local hX, hY, _ = self:getXYZAsInt()
 		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 101, hX, hY)
 	end
 
-	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then
-		self:announce()
-	end
+	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then self:announce() end
 
 	self:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
 	for heli,offsets in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
 		local followingHeli = heli
-		if followingHeli then
-			followingHeli:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
-		end
+		if followingHeli then followingHeli:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS) end
 	end
 
-	if not self:isInBounds() then
-		self:unlaunch()
-	end
+	if not self:isInBounds() then self:unlaunch() end
 end
 
 
