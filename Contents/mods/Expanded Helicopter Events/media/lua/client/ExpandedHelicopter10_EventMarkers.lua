@@ -18,6 +18,7 @@ end
 
 
 function EHE_EventMarker:onMouseDoubleClick(x, y)
+	--[[DEBUG]] if getDebug() then print("EHE: "..self.eventID) end
 	return self:setDuration(0)
 end
 
