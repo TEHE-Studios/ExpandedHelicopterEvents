@@ -10,6 +10,8 @@ function eHelicopter:updateEvent()
 		if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
 		if (not self.trueTarget) then print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()") end
 
+		--[[DEBUG]] print("EHE: "..self:heliToString().."  -no target + arrived")
+
 		self.trueTarget = self:findTarget(self.attackDistance, "update")
 		self.target = self.trueTarget
 		self:setTargetPos()
@@ -21,7 +23,7 @@ function eHelicopter:updateEvent()
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
 	--if trueTarget is within range
-	if distanceToTrueTarget and (distanceToTrueTarget <= (self.attackDistance*4)) then
+	if self.state ~= "goHome" and distanceToTrueTarget and (distanceToTrueTarget <= (self.attackDistance*4)) then
 		--if trueTarget is outside then sync targets
 		if self.trueTarget:isOutside() then
 			if (distanceToTrueTarget <= self.attackDistance*2) then
@@ -59,40 +61,41 @@ function eHelicopter:updateEvent()
 				--set target to square from calculated offset
 				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
 
-				--[[DEBUG]] print("EHE: "..self:heliToString().."  -roaming")
+				--[[DEBUG]] print("EHE: "..self:heliToString().."  -roaming + set target to random square")
 			end
 		end
 
+	--[[
 		--if trueTarget is not a gridSquare and timeSinceLastSeenTarget exceeds searchForTargetDuration set trueTarget to current target
 		if self.state == "arrived" and (not instanceof(self.trueTarget, "IsoGridSquare")) and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			self.trueTarget = self.target
 			eventSoundHandler:playEventSound(self, "lostTarget")
-			--[[DEBUG]] print("EHE: "..self:heliToString().."  -lost target")
+			--[DEBUG] print("EHE: "..self:heliToString().."  -lost target")
 		end
+	--]]
 
 		if self.state == "arrived" and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
-			local newTarget
+			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
+			--[[DEBUG]] print("EHE: "..self:heliToString().."  -looking for new target")
 
-			if instanceof(self.trueTarget, "IsoGridSquare") then newTarget = self:findTarget(self.attackDistance*4, "retrackTarget") end
 			if newTarget and (not instanceof(newTarget, "IsoGridSquare")) then
 				--[[DEBUG]] print("EHE: "..self:heliToString().."  -found new target: "..tostring(newTarget))
 				self.trueTarget = newTarget
-			else
-				--look again later
-				local timeInterval = self.searchForTargetDuration/5
-				--Remove this time from hover-time
-				if type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
-					self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(timeInterval/100))
-					if self.hoverOnTargetDuration <= 0 then
-						self.hoverOnTargetDuration = false
-					end
-
-					--[[DEBUG]] if getDebug() then print("roaming - hover-time:"..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
-				end
-				self.timeSinceLastSeenTarget = timeStampMS+timeInterval
 			end
-		end
 
+			--look again later
+			local timeInterval = self.searchForTargetDuration/5
+			--Remove this time from hover-time
+			--[[DEBUG]] print("EHE: "..self:heliToString().."  -NO new target: ")
+			if type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
+				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(timeInterval/100))
+				if self.hoverOnTargetDuration <= 0 then
+					self.hoverOnTargetDuration = false
+				end
+				--[[DEBUG]] if getDebug() then print("roaming - hover-time:"..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
+			end
+			self.timeSinceLastSeenTarget = timeStampMS+timeInterval
+		end
 	end
 
 	self:setTargetPos()
