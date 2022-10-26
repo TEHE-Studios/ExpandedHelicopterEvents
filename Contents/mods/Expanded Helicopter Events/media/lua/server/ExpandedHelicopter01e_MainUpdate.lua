@@ -101,7 +101,7 @@ function eHelicopter:updateEvent()
 	end
 
 	self:setTargetPos()
-	local distToTarget = self:getDistanceToIsoObject(self.trueTarget)
+	local distToTarget = self:getDistanceToIsoObject(self.target)
 	local crashDist = ZombRand(75,200)
 	if self.crashing and distToTarget and (distToTarget <= crashDist) and (ZombRand(10)>0) then
 		if self:crash() then
