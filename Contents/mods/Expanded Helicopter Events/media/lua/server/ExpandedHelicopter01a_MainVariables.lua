@@ -177,7 +177,14 @@ end
 
 function eHelicopter:hoverAndFlyOverReport(STATE)
 	if self.trueTarget and self.trueTarget:getClass() and self.target and self.target:getClass() then
-		print(" - "..self:heliToString(true).." "..STATE..(self.trueTarget:getClass():getSimpleName()).." "..(self.target:getClass():getSimpleName()))
+
+		local additionalDebug = ""
+		if getDebug() then
+			if self.trueTarget then additionalDebug = " tT:"..self.trueTarget:getClass():getSimpleName() end
+			if self.target then additionalDebug = additionalDebug.." t:"..self.target:getClass():getSimpleName() end
+		end
+
+		print(" - "..self:heliToString(true).." "..STATE..additionalDebug)
 	end
 end
 
