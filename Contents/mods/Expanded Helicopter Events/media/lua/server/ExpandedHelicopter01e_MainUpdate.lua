@@ -40,7 +40,9 @@ function eHelicopter:updateEvent()
 				self.timeSinceLastRoamed = timeStampMS+1000 --10 seconds
 
 				--random offset used for roaming
-				local offset = self.attackDistance
+				local offset = 30
+				if self.attackDistance then offset = (self.attackDistance*3) end
+				
 				if self.crashing then
 					offset = math.floor(offset*(ZombRand(13,26)/10))
 				end
