@@ -1,9 +1,9 @@
 --- Chuckleberry Finn
--- Adds the context menu for itemContainers than can be worn.
+-- Adds the context menu for InventoryContainer that can be worn.
 require "ISUI/ISInventoryPaneContextMenu"
 
-local clothingItemContainerContextFix = {}
-function clothingItemContainerContextFix.apply(player, context, items)
+local clothingInventoryContainerContextFix = {}
+function clothingInventoryContainerContextFix.apply(player, context, items)
 
     local testItem, clothing
 
@@ -19,4 +19,4 @@ function clothingItemContainerContextFix.apply(player, context, items)
     if clothing then ISInventoryPaneContextMenu.doWearClothingMenu(player, clothing, items, context) end
 end
 
-Events.OnFillInventoryObjectContextMenu.Add(clothingItemContainerContextFix.apply)
+Events.OnFillInventoryObjectContextMenu.Add(clothingInventoryContainerContextFix.apply)
