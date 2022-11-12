@@ -11,10 +11,8 @@ function clothingItemContainerContextFix.apply(player, context, items)
         testItem = v
         if not instanceof(v, "InventoryItem") then testItem = v.items[1] end
 
-        if instanceof(testItem, "InventoryContainer") then
-            if testItem:canBeEquipped() ~= nil and testItem:canBeEquipped() ~= "" and not testItem:isEquipped() then
-                clothing = testItem
-            end
+        if testItem:canBeEquipped() ~= nil and testItem:canBeEquipped() ~= "" and not testItem:isEquipped() then
+            clothing = testItem
         end
     end
 
