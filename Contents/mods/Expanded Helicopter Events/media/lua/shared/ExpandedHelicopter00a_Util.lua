@@ -13,9 +13,8 @@ function addToEIP(playerObject)
 		return
 	end
 
-	print(" - EHE: IsoPlayers adding:"..playerObject:getFullName())
-
 	if not playerObject:isDead() then
+		print(" - EHE: IsoPlayers adding:"..playerObject:getFullName())
 		EHEIsoPlayers[playerObject] = true
 	end
 end
