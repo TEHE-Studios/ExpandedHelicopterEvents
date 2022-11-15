@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(function() print("Expanded Helicopter Events: ver:0.9.0.7__WEAR-CONTEXT-FIX__NOV-11-22") end)
+Events.OnGameBoot.Add(function() print("Expanded Helicopter Events: ver:0.9.0.8__WEAR-CONTEXT-FIX__NOV-14-22") end)
