@@ -678,8 +678,6 @@ end
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)
 
-	print(" - EHE: LAUNCH: "..self:heliToString().." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
-
 	if not targetedObject then
 		targetedObject = self:findTarget(nil, "launch")
 	end
@@ -771,6 +769,8 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		local eventFunction = self.addedFunctionsToEvents["OnLaunch"]
 		if eventFunction then eventFunction(self) end
 	end
+
+	print(" - EHE: LAUNCH: "..self:heliToString().." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 end
 
 
