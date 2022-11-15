@@ -27,7 +27,6 @@ Events.OnInitGlobalModData.Add(initGlobalModData)
 ---@param name string
 ---@param data table
 local function receiveGlobalModData(name, data)
-    print("- Received ModData " .. name)
     if name == "ExpandedHelicopterEvents" then
         EHE_copyAgainst(ExpandedHeliEventsModData,data)
     end
