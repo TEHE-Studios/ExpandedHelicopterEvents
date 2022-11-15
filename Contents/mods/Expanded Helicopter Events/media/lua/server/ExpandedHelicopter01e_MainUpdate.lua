@@ -110,21 +110,27 @@ function eHelicopter:updateEvent()
 		end
 	end
 
-	if self.state ~= "goHome" then
-		if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
-			local GT = getGameTime()
-			local DAY = GT:getNightsSurvived()
-			local HOUR = GT:getHour()
-			local unlaunchDay = self.forceUnlaunchTime[1]
-			local unlaunchHour = self.forceUnlaunchTime[2]
 
+	if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
+		local GT = getGameTime()
+		local DAY = GT:getNightsSurvived()
+		local HOUR = GT:getHour()
+		local unlaunchDay = self.forceUnlaunchTime[1]
+		local unlaunchHour = self.forceUnlaunchTime[2]
+
+		if self.state ~= "goHome" then
 			if unlaunchDay<=DAY and unlaunchHour<=HOUR then
-				--[[DEBUG]] print(" - EHE: "..self:heliToString().." forceUnlaunchTime reached: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
+				--[[DEBUG]] print(" - EHE: "..self:heliToString().." Forced Go-Home Time: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
 				self:goHome()
 			end
-		else
-			--[[DEBUG]] print(" - EHE: ERR: "..self:heliToString().." `actualLaunchedTime` not set properly: ("..tostring(self.actualLaunchedTime)..")")
+		elseif self.state == "goHome" then
+			if unlaunchDay<=DAY and unlaunchHour+4<=HOUR then
+				--[[DEBUG]] print(" - EHE: "..self:heliToString().." ERR: Forcing Unlaunch: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
+				self:unlaunch()
+			end
 		end
+	else
+		--[[DEBUG]] print(" - EHE: ERR: "..self:heliToString().." `actualLaunchedTime` not set properly: ("..tostring(self.actualLaunchedTime)..")")
 	end
 
 	local preventMovement = false
