@@ -778,7 +778,7 @@ end
 function eHelicopter:goHome()
 	self.state = "goHome"
 	self.hoverOnTargetDuration = 0
-	--set truTarget to target's current location -- this prevents changing course while flying away
+
 	local selfSquare = self:getIsoGridSquare()
 
 	if not selfSquare then
@@ -787,9 +787,11 @@ function eHelicopter:goHome()
 		return
 	end
 
+	--set truTarget to target's current location -- this prevents changing course while flying away
 	self.trueTarget = selfSquare
-	self.target = self.trueTarget
+	self.target = selfSquare
 	self:setTargetPos()
+	print(" --- HELI "..self:heliToString()..": setting fixed course.")
 	return selfSquare
 end
 
