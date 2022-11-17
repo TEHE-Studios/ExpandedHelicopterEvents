@@ -171,12 +171,12 @@ end
 
 function eventSoundHandler:stopAllHeldEventSounds(heli)
 
-	--if isClient() then
-	for soundID,_ in pairs(heli.looperEventIDs) do
-		local soundEffect = heli.eventSoundEffects[soundID]
-		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="stop"})
+	if isClient() then
+		for soundID,_ in pairs(heli.looperEventIDs) do
+			local soundEffect = heli.eventSoundEffects[soundID]
+			sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, command="stop"})
+		end
 	end
-	--sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), command="stopAll"})
 
 	for event,emitter in pairs(heli.heldEventSoundEffectEmitters) do
 		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
