@@ -799,7 +799,7 @@ end
 function eHelicopter:unlaunch()
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 
-	self:updatePosition(1, 1)
+	self:updatePosition(-10000, -10000)
 	eventSoundHandler:stopAllHeldEventSounds(self)
 
 	if self.shadow==true then
