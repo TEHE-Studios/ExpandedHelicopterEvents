@@ -70,7 +70,7 @@ function eHelicopter:crash()
 				self:dropAllItems(4)
 			end
 
-			--[[DEBUG]] print("---- EHE: CRASH EVENT: HELI: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
+			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
 			self:spawnCrew()
 			addSound(nil, heliX, heliY, 0, 250, 300)
 			eventSoundHandler:playEventSound(self, "crashEvent")

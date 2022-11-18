@@ -14,7 +14,7 @@ function addToEIP(playerObject)
 	end
 
 	if not playerObject:isDead() then
-		print(" - EHE: IsoPlayers adding:"..playerObject:getFullName())
+		print(" -- EHE: IsoPlayers adding:"..playerObject:getFullName())
 		EHEIsoPlayers[playerObject] = true
 	end
 end
@@ -22,7 +22,7 @@ end
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function removeFromEIP(playerObject)
 	if EHEIsoPlayers[playerObject] then
-		print(" - EHE: IsoPlayers removing:"..playerObject:getFullName())
+		print(" -- EHE: IsoPlayers removing:"..playerObject:getFullName())
 		EHEIsoPlayers[playerObject] = nil
 	end
 end

@@ -30,7 +30,7 @@ function eHelicopter:updateEvent()
 				if (self.target ~= self.trueTarget) then
 					self.target = self.trueTarget
 					eventSoundHandler:playEventSound(self, "foundTarget")
-					--[[DEBUG]] print("EHE: "..self:heliToString().."  -found target outside: "..tostring(self.target))
+					--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -found target outside: "..tostring(self.target))
 				end
 				self.timeSinceLastSeenTarget = timeStampMS
 			end
@@ -63,7 +63,7 @@ function eHelicopter:updateEvent()
 				--set target to square from calculated offset
 				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
 
-				--[[DEBUG]] print("EHE: "..self:heliToString().."  -roaming + set target to random square")
+				--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -roaming + set target to random square")
 			end
 		end
 
@@ -78,23 +78,23 @@ function eHelicopter:updateEvent()
 
 		if self.state == "arrived" and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
-			--[[DEBUG]] print("EHE: "..self:heliToString().."  -looking for new target")
+			--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -looking for new target")
 
 			if newTarget and (not instanceof(newTarget, "IsoGridSquare")) then
-				--[[DEBUG]] print("EHE: "..self:heliToString().."  -found new target: "..tostring(newTarget))
+				--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -found new target: "..tostring(newTarget))
 				self.trueTarget = newTarget
 			end
 
 			--look again later
 			local timeInterval = self.searchForTargetDuration/5
 			--Remove this time from hover-time
-			--[[DEBUG]] print("EHE: "..self:heliToString().."  -NO new target: ")
+			--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -NO new target: ")
 			if type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
 				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(timeInterval/100))
 				if self.hoverOnTargetDuration <= 0 then
 					self.hoverOnTargetDuration = false
 				end
-				--[[DEBUG]] if getDebug() then print("roaming - hover-time:"..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
+				--[[DEBUG]] if getDebug() then print(" --- roaming - hover-time:"..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 			end
 			self.timeSinceLastSeenTarget = timeStampMS+timeInterval
 		end
@@ -105,7 +105,7 @@ function eHelicopter:updateEvent()
 	local crashDist = ZombRand(75,200)
 	if self.crashing and distToTarget and (distToTarget <= crashDist) and (ZombRand(10)>0) then
 		if self:crash() then
-			--[[DEBUG]] print("EHE: crash: dist:"..math.floor(distToTarget).." ("..crashDist..")")
+			--[[DEBUG]] print(" - EHE: crash: dist:"..math.floor(distToTarget).." ("..crashDist..")")
 			return
 		end
 	end
@@ -184,7 +184,9 @@ function eHelicopter:updateEvent()
 	if self.state == "goHome" then lockOn = false end
 
 	--if it's ok to move do so, and update the shadow's position
-	if not preventMovement then self:move(lockOn, true) end
+	if not preventMovement then
+		self:move(lockOn, true)
+	end
 
 	if self.eventMarkerIcon ~= false then
 		local hX, hY, _ = self:getXYZAsInt()

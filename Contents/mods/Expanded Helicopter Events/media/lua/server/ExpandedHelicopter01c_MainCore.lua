@@ -155,7 +155,7 @@ function eHelicopter:isInBounds()
 		return true
 	end
 	
-	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: HELI: "..self:heliToString(true))
+	--[[DEBUG]] print("- EHE: OUT OF BOUNDS: "..self:heliToString(true))
 	return false
 end
 
@@ -770,7 +770,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		if eventFunction then eventFunction(self) end
 	end
 
-	print(" - EHE: LAUNCH: "..self:heliToString().." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
+	print(" -- EHE: LAUNCH: "..self:heliToString().." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 end
 
 

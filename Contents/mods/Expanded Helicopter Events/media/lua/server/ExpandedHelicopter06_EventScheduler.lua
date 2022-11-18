@@ -286,7 +286,7 @@ function eHeliEvent_Loop()
 			--if getDebug() and (not eHelicopter_PRESETS[v.preset]) then print(" ---ERR: not eHelicopter_PRESETS["..tostring(v.preset).."]") end
 		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
 			if eHelicopter_PRESETS[v.preset] then
-				print("EHE: SCHEDULED-LAUNCH INFO:  ["..k.."] - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
+				print(" \[EHE\]: SCHEDULED-LAUNCH INFO:  ["..k.."] - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
 				eHeliEvent_engage(k)
 			end
 		end
