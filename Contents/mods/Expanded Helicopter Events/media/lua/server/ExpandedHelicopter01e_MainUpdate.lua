@@ -4,7 +4,7 @@ require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter01f_ShadowSystem"
 
 function eHelicopter:updateEvent()
-	if self.state == "following" then return end
+	if self.state == "following" or self.state == "unLaunched" then return end
 
 	if (self.state == "arrived" or self.state == "gotoTarget") and ((not self.target) or (not self.trueTarget)) then
 		if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
@@ -127,6 +127,7 @@ function eHelicopter:updateEvent()
 			if unlaunchDay<=DAY and unlaunchHour+4<=HOUR then
 				--[[DEBUG]] print(" - EHE: "..self:heliToString().." ERR: Forcing Unlaunch: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
 				self:unlaunch()
+				return
 			end
 		end
 	else

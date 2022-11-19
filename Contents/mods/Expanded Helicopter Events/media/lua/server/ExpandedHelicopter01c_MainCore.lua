@@ -797,6 +797,8 @@ end
 
 
 function eHelicopter:unlaunch()
+	if self.state == "unLaunched" then return end
+
 	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
 
 	self:updatePosition(-10000, -10000)
