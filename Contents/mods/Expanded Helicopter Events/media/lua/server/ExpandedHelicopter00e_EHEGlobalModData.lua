@@ -1,5 +1,4 @@
 ---Credit to Konijima (Konijima#9279) for clearing up networking :thumbsup:
-if isClient() then return end
 
 require "ExpandedHelicopter12a_OnClientToServerCommands"
 require "ExpandedHelicopter00f_WeatherImpact"

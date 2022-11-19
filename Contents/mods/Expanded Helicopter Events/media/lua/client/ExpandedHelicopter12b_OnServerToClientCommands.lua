@@ -1,15 +1,52 @@
-if isServer() then return end
-
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
+require "ExpandedHelicopter00a_Util"
 
+
+local function copyAgainst(tableA,tableB)
+	if not tableA or not tableB then return end
+	for key,value in pairs(tableB) do tableA[key] = value end
+	for key,_ in pairs(tableA) do if not tableB[key] then tableA[key] = nil end end
+end
+
+---Credit to Konijima (Konijima#9279) for clearing up networking :thumbsup:
 LuaEventManager.AddEvent("EHE_ClientModDataReady") -- p1: isNewGame
 --triggerEvent("EHE_ClientModDataReady", false) send change if any
 
-local function onClientModDataReady() ModData.request("ExpandedHelicopterEvents") end
+local ExpandedHeliEventsModData --.EventsOnSchedule = {} --.DayOfLastCrash = 0 --.DaysBeforeApoc = 0
+local function receiveGlobalModData(name, data)
+	if name == "ExpandedHelicopterEvents" then
+		copyAgainst(ExpandedHeliEventsModData,data)
+	end
+end
+Events.OnReceiveGlobalModData.Add(receiveGlobalModData)
+
+function getExpandedHeliEventsModData_Client()
+	triggerEvent("EHE_ServerModDataReady", false)
+	return ExpandedHeliEventsModData
+end
+
+local function initGlobalModData(isNewGame)
+	if isClient() then
+		if ModData.exists("ExpandedHelicopterEvents") then
+			ModData.remove("ExpandedHelicopterEvents")
+		end
+	end
+
+	ExpandedHeliEventsModData = ModData.getOrCreate("ExpandedHelicopterEvents")
+	if isNewGame then print("- New Game Initialized!") else print("- Existing Game Initialized!") end
+	triggerEvent("EHE_ClientModDataReady", isNewGame)
+end
+Events.OnInitGlobalModData.Add(initGlobalModData)
+
+local function onClientModDataReady()
+	if not isClient() then copyAgainst(getExpandedHeliEventsModData(), ExpandedHeliEventsModData)
+	else ModData.request("ExpandedHelicopterEvents") end
+end
 Events.EHE_ClientModDataReady.Add(onClientModDataReady)
+
 
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
@@ -82,10 +119,15 @@ function eventMarkerHandler.updateForPlayer(player)
 end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
+
 -- sendServerCommand(module, command, player, args) end -- to client
-local function onCommand(_module, _command, _dataA, _dataB)
+local function onServerCommand(_module, _command, _dataA, _dataB)
 	--clientside
-	if _module == "sendLooper" then
+
+	if _module == "EHE_ServerModData" and  _command == "severModData_received" then
+		onClientModDataReady()
+
+	elseif _module == "sendLooper" then
 		storedLooperEventsUpdateTimes[_dataA.reusableID] = getGametimeTimestamp()+100
 
 		if _command == "play" then
@@ -109,4 +151,4 @@ local function onCommand(_module, _command, _dataA, _dataB)
 		eventShadowHandler:setShadowPos(_dataA.eventID, _dataA.texture, _dataA.x, _dataA.y, _dataA.z, true)
 	end
 end
-Events.OnServerCommand.Add(onCommand)--/server/ to client
+Events.OnServerCommand.Add(onServerCommand)--/server/ to client

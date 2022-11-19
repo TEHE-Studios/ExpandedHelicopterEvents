@@ -232,10 +232,12 @@ function CustomDebugPanel.eHeliEventsOnSchedule()
 	local eventsScheduled = false
 	print("--- eHeliEventsOnSchedule: ".." daysIntoApoc: "..daysIntoApoc.."  nights-surv: "..nightsSurvived.."  hr: "..hour)
 
-
 	for k,v in pairs(globalModData.EventsOnSchedule) do
 		eventsScheduled = true
-		print("------ \["..k.."\]  day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
+		local text = "------ \["..k.."\]"
+		if type(v)=="table" then for kk,vv in pairs(v) do text = text.."  "..string.sub(kk, 1, 1)..":"..tostring(vv) end
+		else text = text.." = "..v end
+		print(text)
 	end
 	if not eventsScheduled then
 		print("------ \[0\]  No Events Schedule")

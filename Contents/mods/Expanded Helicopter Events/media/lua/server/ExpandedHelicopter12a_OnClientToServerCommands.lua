@@ -1,7 +1,8 @@
-if isClient() then return end -- execute in SP or on Server
-
 LuaEventManager.AddEvent("EHE_ServerModDataReady")
 --triggerEvent("EHE_ServerModDataReady", false) -- to send updates
+
+local function onServerModDataReady() sendServerCommand("EHE_ServerModData", "severModData_received", {}) end
+Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
