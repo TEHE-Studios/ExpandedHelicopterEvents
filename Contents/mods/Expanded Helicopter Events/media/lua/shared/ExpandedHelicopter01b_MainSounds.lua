@@ -145,6 +145,7 @@ end
 
 function eventSoundHandler:updatePos(heli,heliX,heliY)
 	--Move held emitters to position
+	if heli.state == "unLaunched" then return end
 
 	if isClient() and heli.looperEventIDs then
 		sendClientCommand("sendLooper", "ping", {reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliY,z=heli.height}, command="setPos"})
