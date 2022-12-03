@@ -57,7 +57,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	--if otherlocation provided use it; if not use heli
 	otherLocation = otherLocation or heli:getIsoGridSquare()
 
-	if heli.looperEventIDs[soundEvent] and isClient() then
+	if heli.looperEventIDs[soundEvent] then
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
 		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
 		return
