@@ -7,13 +7,16 @@ eventSoundHandler = {}
 ---@param saveEmitter boolean
 ---@param stopSound boolean
 ---@param delay number
-function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveEmitter, stopSound, delay)
+function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveEmitter, stopSound, delay, backupSoundEventID)
 
 	local soundEffect = heli.eventSoundEffects[soundEvent] or eHelicopter.eventSoundEffects[soundEvent] or soundEvent
+	if backupSoundEventID then
+		soundEvent = backupSoundEventID
+	end
 
 	if soundEffect and type(soundEffect)=="table" then
 		for _,sound in pairs(soundEffect) do
-			eventSoundHandler:playEventSound(heli, sound, otherLocation, saveEmitter, stopSound, delay)
+			eventSoundHandler:playEventSound(heli, sound, otherLocation, saveEmitter, stopSound, delay, soundEvent)
 		end
 		return
 	end
@@ -59,9 +62,14 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 
 	if heli.looperEventIDs[soundEvent] and isServer() then
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
-		--if getDebug() then print(" -- EHE: {reusableID=(HELI"..heli.ID..", soundEffect="..soundEffect.."}") end
+		if getDebug() then
+			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isServer:"..tostring(isServer()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
+		end
 		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
 	else
+		if getDebug() then
+			print(" -- NO - looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isServer:"..tostring(isServer()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
+		end
 		if not soundEmitter then
 			soundEmitter = getWorld():getFreeEmitter()
 			if saveEmitter then
