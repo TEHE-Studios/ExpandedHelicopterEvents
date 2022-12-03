@@ -1,4 +1,4 @@
-require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter01b_Sounds"
 require "ExpandedHelicopter00b_IsoRangeScan"
 
 ---@param targetType string IsoZombie or IsoPlayer

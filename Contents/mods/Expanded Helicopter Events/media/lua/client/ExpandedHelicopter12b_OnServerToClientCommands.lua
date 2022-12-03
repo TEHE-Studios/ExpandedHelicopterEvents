@@ -1,6 +1,6 @@
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
-require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter01b_Sounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
 require "ExpandedHelicopter00a_Util"
 

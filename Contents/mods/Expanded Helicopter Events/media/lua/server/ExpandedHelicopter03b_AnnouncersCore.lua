@@ -1,4 +1,4 @@
-require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter01b_Sounds"
 
 ---Sets eHelicopter's announcer voice
 ---@param specificVoice string|table can be string for specific voice or table to be picked from

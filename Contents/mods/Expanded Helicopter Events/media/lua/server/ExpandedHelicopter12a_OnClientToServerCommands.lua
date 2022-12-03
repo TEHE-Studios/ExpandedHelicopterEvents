@@ -6,7 +6,7 @@ Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
-require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter01b_Sounds"
 
 --sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _player, _data)

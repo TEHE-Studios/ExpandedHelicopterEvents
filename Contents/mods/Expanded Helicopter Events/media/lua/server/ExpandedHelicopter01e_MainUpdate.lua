@@ -1,6 +1,6 @@
 require "ExpandedHelicopter01c_MainCore"
 require "ExpandedHelicopter01a_MainVariables"
-require "ExpandedHelicopter01b_MainSounds"
+require "ExpandedHelicopter01b_Sounds"
 require "ExpandedHelicopter01f_ShadowSystem"
 
 function eHelicopter:updateEvent()
