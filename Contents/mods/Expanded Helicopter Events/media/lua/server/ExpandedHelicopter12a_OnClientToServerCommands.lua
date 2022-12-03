@@ -9,25 +9,25 @@ require "ExpandedHelicopter01f_ShadowSystem"
 require "ExpandedHelicopter01b_MainSounds"
 
 --sendClientCommand(player, module, command, args) end -- to server
-local function onCommand(_module, _command, _dataA, _dataB)
+local function onCommand(_module, _command, _player, _data)
 	--serverside
 	if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _dataB)
+		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _data)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		sendServerCommand("eventShadowHandler", "setShadowPos", _dataB)
+		sendServerCommand("eventShadowHandler", "setShadowPos", _data)
 
 	elseif _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			--print("--spawnZombie")
-			--_dataA = player, _dataB = args
-			SpawnerTEMP.spawnZombie(_dataB.outfitID, _dataB.x, _dataB.y, _dataB.z, _dataB.extraFunctions, _dataB.femaleChance, _dataB.processSquare)
+			--_dataA = player, _data = args
+			SpawnerTEMP.spawnZombie(_data.outfitID, _data.x, _data.y, _data.z, _data.extraFunctions, _data.femaleChance, _data.processSquare)
 		elseif _command == "spawnVehicle" then
 			--print("--spawnVehicle")
-			SpawnerTEMP.spawnVehicle(_dataB.vehicleType, _dataB.x, _dataB.y, _dataB.z, _dataB.extraFunctions, _dataB.extraParam, _dataB.processSquare)
+			SpawnerTEMP.spawnVehicle(_data.vehicleType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
 		elseif _command == "spawnItem" then
 			--print("--spawnItem")
-			SpawnerTEMP.spawnItem(_dataB.itemType, _dataB.x, _dataB.y, _dataB.z, _dataB.extraFunctions, _dataB.extraParam, _dataB.processSquare)
+			SpawnerTEMP.spawnItem(_data.itemType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
 		end
 	end
 end

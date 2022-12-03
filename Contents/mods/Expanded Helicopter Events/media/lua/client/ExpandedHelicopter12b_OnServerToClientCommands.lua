@@ -183,34 +183,42 @@ Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
 
 -- sendServerCommand(module, command, player, args) end -- to client
-local function onServerCommand(_module, _command, _dataA, _dataB)
+local function onServerCommand(_module, _command, _data)
 	--clientside
+
+	if getDebug() and _module=="sendLooper" and _command~="setPos" then
+		local dataText = "{"
+		for k,v in pairs(_data) do
+			dataText = dataText..tostring(k).."="..tostring(v)..", "
+		end
+		print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
+	end
 
 	if _module == "EHE_ServerModData" and  _command == "severModData_received" then
 		onClientModDataReady()
 
 	elseif _module == "sendLooper" then
-		storedLooperEventsUpdateTimes[_dataA.reusableID] = getGametimeTimestamp()+100
+		storedLooperEventsUpdateTimes[_data.reusableID] = getGametimeTimestamp()+100
 
 		if _command == "play" then
-			eventSoundHandler:handleLooperEvent(_dataA.reusableID,
-					{soundEffect=_dataA.soundEffect, x=_dataA.coords.x, y=_dataA.coords.y, z=_dataA.coords.z}, _dataA.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID,
+					{soundEffect=_data.soundEffect, x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _data.command)
 
 		elseif _command == "setPos" then
-			eventSoundHandler:handleLooperEvent(_dataA.reusableID, {x=_dataA.coords.x, y=_dataA.coords.y, z=_dataA.coords.z}, _dataA.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _data.command)
 
 		elseif _command == "stop" then
-			eventSoundHandler:handleLooperEvent(_dataA.reusableID, {soundEffect=_dataA.soundEffect}, _dataA.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID, {soundEffect=_data.soundEffect}, _data.command)
 
 		elseif _command == "drop" then
-			eventSoundHandler:handleLooperEvent(_dataA.reusableID, nil, _dataA.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID, nil, _data.command)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		eventMarkerHandler.setOrUpdate(_dataA.eventID, _dataA.icon, _dataA.duration, _dataA.posX, _dataA.posY, true)
+		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, true)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		eventShadowHandler:setShadowPos(_dataA.eventID, _dataA.texture, _dataA.x, _dataA.y, _dataA.z, true)
+		eventShadowHandler:setShadowPos(_data.eventID, _data.texture, _data.x, _data.y, _data.z, true)
 	end
 end
 Events.OnServerCommand.Add(onServerCommand)--/server/ to client

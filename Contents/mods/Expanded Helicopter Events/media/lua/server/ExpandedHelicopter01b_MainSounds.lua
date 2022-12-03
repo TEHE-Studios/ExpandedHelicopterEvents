@@ -44,7 +44,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	end
 
 	if stopSound then
-		if heli.looperEventIDs[soundEvent] then
+		if heli.looperEventIDs[soundEvent] and isServer() then
 			sendServerCommand("sendLooper", "stop", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
 		end
 
@@ -57,10 +57,10 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	--if otherlocation provided use it; if not use heli
 	otherLocation = otherLocation or heli:getIsoGridSquare()
 
-	if heli.looperEventIDs[soundEvent] then
+	if heli.looperEventIDs[soundEvent] and isServer() then
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
+		--if getDebug() then print(" -- EHE: {reusableID=(HELI"..heli.ID..", soundEffect="..soundEffect.."}") end
 		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
-		return
 	end
 	
 	if not soundEmitter then
@@ -87,7 +87,7 @@ function eventSoundHandler:updatePos(heli,heliX,heliY)
 	--Move held emitters to position
 	if heli.state == "unLaunched" then return end
 
-	if heli.looperEventIDs then
+	if heli.looperEventIDs and isServer() then
 		sendServerCommand("sendLooper", "setPos",{reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliY,z=heli.height}})
 	end
 
@@ -112,12 +112,12 @@ end
 
 function eventSoundHandler:stopAllHeldEventSounds(heli)
 
-
-	for soundID,_ in pairs(heli.looperEventIDs) do
-		local soundEffect = heli.eventSoundEffects[soundID]
-		sendServerCommand("sendLooper", "stop",{reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
+	if isServer() then
+		for soundID,_ in pairs(heli.looperEventIDs) do
+			local soundEffect = heli.eventSoundEffects[soundID]
+			sendServerCommand("sendLooper", "stop",{reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
+		end
 	end
-
 
 	for event,emitter in pairs(heli.heldEventSoundEffectEmitters) do
 		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
