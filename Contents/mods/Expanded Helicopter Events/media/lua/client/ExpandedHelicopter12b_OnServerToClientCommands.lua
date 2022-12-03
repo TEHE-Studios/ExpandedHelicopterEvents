@@ -48,6 +48,7 @@ end
 Events.EHE_ClientModDataReady.Add(onClientModDataReady)
 
 
+
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	if not storedShadows then return end
@@ -64,10 +65,71 @@ function eventShadowHandler.updateForPlayer(player)
 end
 Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
+local storedLooperEvents = {}
+local storedLooperEventsSoundEffects = {}
+local storedLooperEventsUpdateTimes = {}
 
-storedLooperEvents = {}
-storedLooperEventsSoundEffects = {}
-storedLooperEventsUpdateTimes = {}
+local eventSoundHandler = {}
+
+function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
+
+	---@type BaseSoundEmitter | FMODSoundEmitter
+	local soundEmitter = storedLooperEvents[reusableID]
+	if not soundEmitter and command ~= "drop" then
+		storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
+		soundEmitter = storedLooperEvents[reusableID]
+		if command=="setPos" then
+			command = "play"
+		end
+	end
+	if soundEmitter then
+
+		if command ~= "setPos" then
+			local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:"..tostring(soundEmitter).." - "..tostring(reusableID)
+			if DATA and type(DATA)=="table" then for k,v in pairs(DATA) do emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")" end
+			else emitterDebugText = emitterDebugText.." - /!\\ (DATA = "..tostring(DATA)..")" end
+			print(emitterDebugText)
+		end
+
+		storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
+
+		if not DATA then print(" --WARN: Command has a data of nil!")
+		else
+			if command == "play" then
+				if soundEmitter:isPlaying(DATA.soundEffect) then
+					print("--soundEmitter is already playing \`"..DATA.soundEffect.."\`")
+					--local square = getSquare(DATA.x, DATA.y, DATA.z)
+				else
+					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
+					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = true
+					soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
+				end
+			end
+
+			if command == "setPos" then soundEmitter:setPos(DATA.x,DATA.y,DATA.z) end
+
+			if command == "stop" then
+				if DATA and DATA.soundEffect and type(DATA.soundEffect)=="table" then
+					print("--soundEffect set:")
+					for _,sound in pairs(DATA.soundEffect) do
+						print("---stop:"..tostring(soundEmitter).." - ".." - "..sound)
+						soundEmitter:stopSoundByName(sound)
+					end
+				else
+					print("--stop:"..tostring(soundEmitter).." - ".." - "..tostring(DATA.soundEffect))
+					soundEmitter:stopSoundByName(DATA.soundEffect)
+
+				end
+			end
+		end
+
+		if command == "stopAll" then
+			soundEmitter:setVolumeAll(0)
+			--soundEmitter:stopAll()
+		end
+	end
+end
+
 
 function eventSoundHandler.updateForPlayer(player)
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do

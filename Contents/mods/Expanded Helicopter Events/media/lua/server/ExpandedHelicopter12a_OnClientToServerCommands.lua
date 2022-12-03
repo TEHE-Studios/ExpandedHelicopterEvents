@@ -11,13 +11,7 @@ require "ExpandedHelicopter01b_MainSounds"
 --sendClientCommand(player, module, command, args) end -- to server
 local function onCommand(_module, _command, _dataA, _dataB)
 	--serverside
-	if _module == "sendLooper" then
-		if _command == "ping" then
-			--print("--sendLooper:ping -- ".._dataB.command)
-			sendServerCommand("sendLooper", _dataB.command, _dataB)
-		end
-
-	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
+	if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
 		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _dataB)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
