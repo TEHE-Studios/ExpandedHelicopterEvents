@@ -46,10 +46,10 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	if stopSound then
 		if heli.looperEventIDs[soundEvent] and isServer() then
 			sendServerCommand("sendLooper", "stop", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
-		end
-
-		if soundEmitter then
-			soundEmitter:stopSoundByName(soundEffect)
+		else
+			if soundEmitter then
+				soundEmitter:stopSoundByName(soundEffect)
+			end
 		end
 		return
 	end
@@ -61,23 +61,23 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
 		--if getDebug() then print(" -- EHE: {reusableID=(HELI"..heli.ID..", soundEffect="..soundEffect.."}") end
 		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
-	end
-	
-	if not soundEmitter then
-		soundEmitter = getWorld():getFreeEmitter()
-		if saveEmitter then
-			if oL then
-				heli.placedEventSoundEffectEmitters[soundEvent] = soundEmitter
-			else
-				heli.heldEventSoundEffectEmitters[soundEvent] = soundEmitter
+	else
+		if not soundEmitter then
+			soundEmitter = getWorld():getFreeEmitter()
+			if saveEmitter then
+				if oL then
+					heli.placedEventSoundEffectEmitters[soundEvent] = soundEmitter
+				else
+					heli.heldEventSoundEffectEmitters[soundEvent] = soundEmitter
+				end
 			end
-		end
 
-		if soundEmitter:isPlaying(soundEffect) then
-			--print("--soundEmitter:isPlaying:"..soundEffect)
-		else
-			--print("--event:"..soundEvent..":"..soundEffect)
-			soundEmitter:playSound(soundEffect, otherLocation)
+			if soundEmitter:isPlaying(soundEffect) then
+				--print("--soundEmitter:isPlaying:"..soundEffect)
+			else
+				--print("--event:"..soundEvent..":"..soundEffect)
+				soundEmitter:playSound(soundEffect, otherLocation)
+			end
 		end
 	end
 end

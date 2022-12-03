@@ -73,6 +73,8 @@ local eventSoundHandler = {}
 
 function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
+	if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
+	
 	---@type BaseSoundEmitter | FMODSoundEmitter
 	local soundEmitter = storedLooperEvents[reusableID]
 	if not soundEmitter and command ~= "drop" then
