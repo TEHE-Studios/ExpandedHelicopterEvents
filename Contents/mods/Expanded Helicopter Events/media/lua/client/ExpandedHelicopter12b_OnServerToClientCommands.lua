@@ -202,16 +202,16 @@ local function onServerCommand(_module, _command, _data)
 
 		if _command == "play" then
 			eventSoundHandler:handleLooperEvent(_data.reusableID,
-					{soundEffect=_data.soundEffect, x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _data.command)
+					{soundEffect=_data.soundEffect, x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
 
 		elseif _command == "setPos" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _data.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
 
 		elseif _command == "stop" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID, {soundEffect=_data.soundEffect}, _data.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID, {soundEffect=_data.soundEffect}, _command)
 
 		elseif _command == "drop" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID, nil, _data.command)
+			eventSoundHandler:handleLooperEvent(_data.reusableID, nil, _command)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
