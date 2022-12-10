@@ -264,7 +264,10 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		if (zoneType == "Forest") or (zoneType == "DeepForest") then
 			volumeFactor = 0.75
 		end
-		addSound(nil, currentSquare:getX(),currentSquare:getY(), 0, (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor)
+
+		local heliX, heliY = currentSquare:getX(), currentSquare:getY()
+		local radius, volume = (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor
+		getWorldSoundManager():addSound(nil, heliX, heliY, 0, radius, volume, true, 275, 5)
 	end
 
 	if self.hostilePreference and (not self.crashing) then
