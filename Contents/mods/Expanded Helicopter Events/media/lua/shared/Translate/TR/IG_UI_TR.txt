@@ -1,15 +1,4 @@
 IG_UI_TR = {
-    IGUI_VehicleNameUH1H = "Bell UH-1H",
-    IGUI_VehicleNameUH1HFuselage = "Bell UH-1H (Gövde)",
-    IGUI_VehicleNameUH1HTail = "Bell UH-1H (Kuyruk)",
-
-    IGUI_VehicleNameUH1HMedevac = "Bell UH-1H Ambulans Helikopteri",
-    IGUI_VehicleNameUH1HMedevacFuselage = "Bell UH-1H Ambulans Helikopteri (Gövde)",
-    IGUI_VehicleNameUH1HMedevacTail = "Bell UH-1H Ambulans Helikopteri (Kuyruk)",
-
-    IGUI_VehicleNameUH1HRaider = "Bell UH-1H Yağmacı Helikopteri",
-    IGUI_VehicleNameUH1HRaiderFuselage = "Bell UH-1H Yağmacı Helikopteri (Gövde)",
-    IGUI_VehicleNameUH1HRaiderTail = "Bell UH-1H Yağmacı Helikopteri (Kuyruk)",
 
     IGUI_VehicleNameBell206LBMW = "Bell 206 Yayın Helikopteri",    
     IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 Yayın Helikopteri (Gövde)",

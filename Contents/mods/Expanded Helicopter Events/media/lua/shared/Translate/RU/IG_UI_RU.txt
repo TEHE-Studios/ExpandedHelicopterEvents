@@ -1,33 +1,21 @@
 IGUI_RU = {
-	IGUI_VehicleNameBell206Black = "Загадочный вертолёт",
-	IGUI_VehicleNameBell206BlackFuselage = "Загадочный вертолёт (фюзеляж)",
-	IGUI_VehicleNameBell206BlackTail = "Загадочный вертолёт (хвост)",
+	IGUI_VehicleNameBell206Black = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+	IGUI_VehicleNameBell206BlackFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+	IGUI_VehicleNameBell206BlackTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameBell206LBMW = "Новостной вертолёт",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Новостной вертолёт (фюзеляж)",
-    IGUI_VehicleNameBell206LBMWTail = "Новостной вертолёт (хвост)",
+	IGUI_VehicleNameBell206LBMW = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",    
+    IGUI_VehicleNameBell206LBMWFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+    IGUI_VehicleNameBell206LBMWTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameBell206Police = "Полицейский вертолёт",
-    IGUI_VehicleNameBell206PoliceFuselage = "Полицейский вертолёт (фюзеляж)",
-    IGUI_VehicleNameBell206PoliceTail = "Белл 206 Полицейский (хвост)",
+	IGUI_VehicleNameBell206Police = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+    IGUI_VehicleNameBell206PoliceFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+    IGUI_VehicleNameBell206PoliceTail = "пїЅпїЅпїЅпїЅ 206 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameBell206Survivalist = "Гражданский вертолёт",
-	IGUI_VehicleNameBell206SurvivalistFuselage = "Гражданский вертолёт (фюзеляж)",
-	IGUI_VehicleNameBell206SurvivalistTail = "Гражданский вертолёт (хвост)",
+	IGUI_VehicleNameBell206Survivalist = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+	IGUI_VehicleNameBell206SurvivalistFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+	IGUI_VehicleNameBell206SurvivalistTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameFEMASupplyDrop = "Сброшенные припасы FEMA",	
-	IGUI_VehicleNameSurvivorSupplyDrop = "Сброшенные припасы самаритян",
+	IGUI_VehicleNameFEMASupplyDrop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ FEMA",	
+	IGUI_VehicleNameSurvivorSupplyDrop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
 	
-	IGUI_VehicleNameUH1H = "Военный вертолёт",    
-	IGUI_VehicleNameUH1HFuselage = "Военный вертолёт (фюзеляж)",
-    IGUI_VehicleNameUH1HTail = "Военный вертолёт (хвост)",
-	
-	IGUI_VehicleNameUH1HMedevac = "Медицинский вертолёт",
-    IGUI_VehicleNameUH1HMedevacFuselage = "Медицинский вертолёт (фюзеляж)",
-    IGUI_VehicleNameUH1HMedevacTail = "Медицинский вертолёт (хвост)",
-
-    IGUI_VehicleNameUH1HRaider = "Вертолёт рейдеров",
-    IGUI_VehicleNameUH1HRaiderFuselage = "Вертолёт рейдеров (фюзеляж)",
-    IGUI_VehicleNameUH1HRaiderTail = "Вертолёт рейдеров (хвост)",
-
 }

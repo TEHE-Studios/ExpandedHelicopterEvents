@@ -1,15 +1,4 @@
 IG_UI_CN = {
-    IGUI_VehicleNameUH1H = "贝尔UH-1H直升机",
-    IGUI_VehicleNameUH1HFuselage = "贝尔UH-1H直升机(机身)",
-    IGUI_VehicleNameUH1HTail = "贝尔UH-1H直升机(机尾)",
-
-    IGUI_VehicleNameUH1HMedevac = "贝尔UH-1H救援直升机",
-    IGUI_VehicleNameUH1HMedevacFuselage = "贝尔UH-1H救援直升机(机身)",
-    IGUI_VehicleNameUH1HMedevacTail = "贝尔UH-1H救援直升机(机尾)",
-
-    IGUI_VehicleNameUH1HRaider = "贝尔UH-1H劫掠直升机",
-    IGUI_VehicleNameUH1HRaiderFuselage = "贝尔UH-1H劫掠直升机(机身)",
-    IGUI_VehicleNameUH1HRaiderTail = "贝尔UH-1H劫掠直升机(机尾)",
 
     IGUI_VehicleNameBell206LBMW = "贝尔206新闻直升机",    
     IGUI_VehicleNameBell206LBMWFuselage = "贝尔206新闻直升机(机身)",
