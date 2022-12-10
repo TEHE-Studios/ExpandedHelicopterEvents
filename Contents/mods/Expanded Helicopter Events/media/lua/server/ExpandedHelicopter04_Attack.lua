@@ -119,7 +119,7 @@ function eHelicopter:fireOn(targetHostile)
 
 	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies
-	getWorldSoundManager():addSound(nil, ehX, ehY, 0, 250, 75, true, 150, 10)
+	getWorldSoundManager():addSound(nil, ehX, ehY, 0, 75, 30, true, 15, 10)
 
 	local chance = self.attackHitChance
 	local damage = (ZombRand(10,16) * self.attackDamage)/10

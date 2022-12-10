@@ -267,7 +267,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 		local heliX, heliY = currentSquare:getX(), currentSquare:getY()
 		local radius, volume = (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor
-		getWorldSoundManager():addSound(nil, heliX, heliY, 0, radius, volume, true, 275, 5)
+		getWorldSoundManager():addSound(nil, heliX, heliY, 0, radius, volume, true, 20, 5)
 	end
 
 	if self.hostilePreference and (not self.crashing) then
