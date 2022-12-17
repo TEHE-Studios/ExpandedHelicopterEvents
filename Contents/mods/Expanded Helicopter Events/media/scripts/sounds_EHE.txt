@@ -51,6 +51,7 @@ module Base {
 
     sound eHeliMusicHostile {
         category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
      sound eheFlare {
