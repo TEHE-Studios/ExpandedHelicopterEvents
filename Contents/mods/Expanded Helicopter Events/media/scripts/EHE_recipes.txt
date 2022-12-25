@@ -244,7 +244,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		Bell206RotorBlade1,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -256,7 +256,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		Bell206RotorBlade2,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -268,7 +268,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		Bell206TailBlade,
 		Result:SmallSheetMetal,
 		CanBeDoneFromFloor:true,
@@ -281,7 +281,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH1HRotorBlade1,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -294,7 +294,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60WindowDesert,
 		Result:MetalBar,
 		CanBeDoneFromFloor:true,
@@ -306,7 +306,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60WindowGreen,
 		Result:MetalBar,
 		CanBeDoneFromFloor:true,
@@ -319,7 +319,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60DoorDesert,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -331,7 +331,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60DoorMedevac,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -343,7 +343,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60DoorGreen,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -356,7 +356,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60ElevatorDesert,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -368,7 +368,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH60Elevator,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -381,7 +381,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH1HRotorBlade2,
 		Result:SmallSheetMetal=3,
 		CanBeDoneFromFloor:true,
@@ -393,7 +393,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		Bell206HalfSkirt,
 		Result:MetalBar=4,
 		CanBeDoneFromFloor:true,
@@ -405,7 +405,7 @@ module EHE
 	{
 		Category:Welding,
 		keep WeldingMask,
-		BlowTorch=15,
+		BlowTorch=2,
 		UH1HHalfSkirt2,
 		Result:MetalBar=4,
 		CanBeDoneFromFloor:true,
