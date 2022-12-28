@@ -86,7 +86,7 @@ end
 
 ---Forces a numerically keyed list into a type=true table, Allows for: 'if list[key] == true' checks.
 ---@param list table of type paths
-function EHE_Recipe.convertNumericListToKeyedTable(list,table) for _,value in pairs(list) do table[value]=true end end
+function EHE_Recipe.convertNumericListToKeyedTable(list,tbl) for _,value in pairs(list) do tbl[value]=true end end
 
 EHE_Recipe.typesThatCanOpenBoxes = EHE_Recipe.typesThatCanOpenBoxes or {}
 ---Sub-mod authors will have to use the following function to add more types
