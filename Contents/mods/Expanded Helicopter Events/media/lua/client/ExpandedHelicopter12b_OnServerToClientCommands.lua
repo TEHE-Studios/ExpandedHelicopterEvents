@@ -16,11 +16,7 @@ LuaEventManager.AddEvent("EHE_ClientModDataReady") -- p1: isNewGame
 --triggerEvent("EHE_ClientModDataReady", false) send change if any
 
 local ExpandedHeliEventsModData --.EventsOnSchedule = {} --.DayOfLastCrash = 0 --.DaysBeforeApoc = 0
-local function receiveGlobalModData(name, data)
-	if name == "ExpandedHelicopterEvents" then
-		copyAgainst(ExpandedHeliEventsModData,data)
-	end
-end
+local function receiveGlobalModData(name, data) if name == "ExpandedHelicopterEvents" then copyAgainst(ExpandedHeliEventsModData,data) end end
 Events.OnReceiveGlobalModData.Add(receiveGlobalModData)
 
 function getExpandedHeliEventsModData_Client()
@@ -37,7 +33,7 @@ local function initGlobalModData(isNewGame)
 
 	ExpandedHeliEventsModData = ModData.getOrCreate("ExpandedHelicopterEvents")
 	if isNewGame then print("- New Game Initialized!") else print("- Existing Game Initialized!") end
-	triggerEvent("EHE_ClientModDataReady", isNewGame)
+	triggerEvent("EHE_ClientModDataReady")
 end
 Events.OnInitGlobalModData.Add(initGlobalModData)
 

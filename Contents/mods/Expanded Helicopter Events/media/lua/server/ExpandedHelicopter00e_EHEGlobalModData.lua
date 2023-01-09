@@ -8,21 +8,14 @@ local ExpandedHeliEventsModData
 
 local function initExpandedHeliEventsModData(isNewGame)
 	local modData = ModData.getOrCreate("ExpandedHelicopterEvents")
-	if not modData.EventsOnSchedule then
-		modData.EventsOnSchedule = {}
-	end
 
-	if not modData.DayOfLastCrash then
-		modData.DayOfLastCrash = getGameTime():getNightsSurvived()
-	end
-
-	if not modData.DaysBeforeApoc then
-		modData.DaysBeforeApoc = eHeli_getDaysBeforeApoc()
-	end
+	if not modData.EventsOnSchedule then modData.EventsOnSchedule = {} end
+	if not modData.DayOfLastCrash then modData.DayOfLastCrash = getGameTime():getNightsSurvived() end
+	if not modData.DaysBeforeApoc then modData.DaysBeforeApoc = eHeli_getDaysBeforeApoc() end
 
 	ExpandedHeliEventsModData = modData
 
-	triggerEvent("EHE_ServerModDataReady", isNewGame)
+	if not isNewGame then triggerEvent("EHE_ServerModDataReady") end
 end
 
 function getExpandedHeliEventsModData()
