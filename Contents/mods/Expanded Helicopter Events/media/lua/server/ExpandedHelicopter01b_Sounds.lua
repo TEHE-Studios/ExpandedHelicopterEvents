@@ -129,11 +129,25 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 
 	for event,emitter in pairs(heli.heldEventSoundEffectEmitters) do
 		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
-		if soundEffect then emitter:stopSoundByName(soundEffect) end
+
+		if soundEffect then
+			if type(soundEffect)=="table" then
+				for _,sound in pairs(soundEffect) do emitter:stopSoundByName(sound) end
+			else
+				emitter:stopSoundByName(soundEffect)
+			end
+		end
+
 	end
 	for event,emitter in pairs(heli.placedEventSoundEffectEmitters) do
 		local soundEffect = heli.eventSoundEffects[event] or eHelicopter.eventSoundEffects[event] or event
-		if soundEffect then emitter:stopSoundByName(soundEffect) end
+		if soundEffect then
+			if type(soundEffect)=="table" then
+				for _,sound in pairs(soundEffect) do emitter:stopSoundByName(sound) end
+			else
+				emitter:stopSoundByName(soundEffect)
+			end
+		end
 	end
 	heli.delayedEventSounds = {}
 	--[[DEBUG]] print(" - EHE: stopAllHeldEventSounds for "..heli:heliToString())
