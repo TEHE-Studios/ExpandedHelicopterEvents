@@ -5,7 +5,11 @@ description=[H1][i]This mod replaces the vanilla helicopter event with a more dy
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
 description=
-description=[img]https://i.imgur.com/Q2tgXe0.png[/img][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url] [url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url] [url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/GITHUB.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url]
+description=
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url]
+description=
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/GITHUB.png[/img][/url]
 description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
