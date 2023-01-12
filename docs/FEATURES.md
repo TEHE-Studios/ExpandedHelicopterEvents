@@ -1,5 +1,5 @@
 # General Features:
-***
+
 - (Early game) Events become less frequent and end at around a month. (Note this factors in the "months after apocalypse" sandbox setting.) Before (late game events) picking back up again at day 45 and tapering off for good on day 90.
 
 
@@ -35,7 +35,6 @@
 
 - Flares to attract events!
 
-#
 ***
 
 # Events Currently in the mod:   
