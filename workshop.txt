@@ -29,5 +29,10 @@ description=The preferred method of reporting issues is through our github's [ur
 description=
 description=
 description=[img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/SUPPORT.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_sm.png[/img][/url]
+description=
+description=
+description=
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/README.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/steamToGithub.png[/img][/url]
+description=
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
