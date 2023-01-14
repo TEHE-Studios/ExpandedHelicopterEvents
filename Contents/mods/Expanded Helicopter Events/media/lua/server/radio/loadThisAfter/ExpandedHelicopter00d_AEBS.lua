@@ -1,6 +1,8 @@
 require "radio/ISWeatherChannel"
 require "ExpandedHelicopter00f_WeatherImpact"
 
+Events.OnGameBoot.Add(function() Translator.loadFiles() end)
+
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
 local EHE_WeatherChannel_FillBroadcast = WeatherChannel.FillBroadcast or nil
 function WeatherChannel.FillBroadcast(_gametime, _bc)
