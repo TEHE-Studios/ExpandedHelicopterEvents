@@ -42,3 +42,5 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		WeatherChannel.AddFuzz(c, _bc);
 	end
 end
+
+return EHE_WeatherChannel_FillBroadcast
