@@ -64,12 +64,12 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	if isClient() and heli.looperEventIDs[soundEvent] then
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
 		if getDebug() then
-			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
+			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent])..", isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
 		end
 		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
 	else
 		if getDebug() then
-			print(" -- normalEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
+			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent] or false)..", isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
 		end
 		if not soundEmitter then
 			soundEmitter = getWorld():getFreeEmitter()
