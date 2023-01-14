@@ -2,7 +2,7 @@
 local function HelicopterSandboxOptions()
 	print("EHE: Disabling vanilla helicopter. Adding items to WorldItemRemovalList.")
 
-	getSandboxOptions():set("Helicopter", 1)
+	--getSandboxOptions():set("Helicopter", 1)
 	SandboxVars.Helicopter = 1
 
 	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
@@ -12,13 +12,13 @@ local function HelicopterSandboxOptions()
 		end
 	end
 
-	if isServer() then
-		local serverFileName = getServerName()
-		print("serverFileName: "..serverFileName)
-		if serverFileName then
-			getSandboxOptions():saveServerLuaFile(serverFileName)
-		end
-	end
+	--if isServer() then
+	--	local serverFileName = getServerName()
+	--	print("serverFileName: "..serverFileName)
+	--	if serverFileName then
+	--		getSandboxOptions():saveServerLuaFile(serverFileName)
+	--	end
+	--end
 end
 
 Events.OnGameStart.Add(HelicopterSandboxOptions)
