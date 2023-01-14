@@ -1,6 +1,6 @@
 require "ExpandedHelicopter01a_MainVariables"
 
-eventSoundHandler = {}
+local eventSoundHandler = {}
 
 ---@param soundEvent string
 ---@param otherLocation IsoGridSquare
@@ -152,3 +152,5 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 	heli.delayedEventSounds = {}
 	--[[DEBUG]] print(" - EHE: stopAllHeldEventSounds for "..heli:heliToString())
 end
+
+return eventSoundHandler

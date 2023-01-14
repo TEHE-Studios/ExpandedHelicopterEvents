@@ -1,5 +1,5 @@
-require "ExpandedHelicopter01b_Sounds"
 require "ExpandedHelicopter00b_IsoRangeScan"
+local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:lookForHostiles(targetType)

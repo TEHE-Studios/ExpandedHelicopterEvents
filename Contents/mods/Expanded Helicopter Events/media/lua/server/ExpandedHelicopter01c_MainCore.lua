@@ -1,8 +1,9 @@
 require "ExpandedHelicopter00f_WeatherImpact"
-require "ExpandedHelicopter01b_Sounds"
 require "ExpandedHelicopter00a_Util"
 require "ExpandedHelicopter00b_IsoRangeScan"
 require "ExpandedHelicopter_Flares"
+
+local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 
 ALL_HELICOPTERS = {}
 

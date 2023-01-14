@@ -16,7 +16,6 @@ end)
 
 ISCustomDebugTestsPanel.Tests = {}
 
-
 function ISCustomDebugTestsPanel:initialise()
 	ISPanel.initialise(self)
 

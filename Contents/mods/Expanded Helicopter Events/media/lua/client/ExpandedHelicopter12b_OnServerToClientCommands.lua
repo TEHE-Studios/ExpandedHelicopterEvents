@@ -1,6 +1,5 @@
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
-require "ExpandedHelicopter01b_Sounds"
 require "ExpandedHelicopter11_EventMarkerHandler"
 require "ExpandedHelicopter00a_Util"
 
@@ -65,9 +64,9 @@ local storedLooperEvents = {}
 local storedLooperEventsSoundEffects = {}
 local storedLooperEventsUpdateTimes = {}
 
-local eventSoundHandler = {}
+local clientSideEventSoundHandler = {}
 
-function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
+function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
 	if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
 	
@@ -129,7 +128,7 @@ function eventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 end
 
 
-function eventSoundHandler.updateForPlayer(player)
+function clientSideEventSoundHandler.updateForPlayer(player)
 	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
 		if timeStamp~=false and timeStamp <= getGametimeTimestamp() then
 			--[[DEBUG]] local printString = ""
@@ -145,7 +144,7 @@ function eventSoundHandler.updateForPlayer(player)
 				end
 			end
 			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
-			--[[DEBUG]] print("-- EHE: "..emitterID.." eventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
+			--[[DEBUG]] print("-- EHE: "..emitterID.." clientSideEventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
 			emitter:setVolumeAll(0)
 			--emitter:stopAll()
 			storedLooperEventsSoundEffects[emitterID] = nil
@@ -153,7 +152,7 @@ function eventSoundHandler.updateForPlayer(player)
 		end
 	end
 end
-Events.OnPlayerUpdate.Add(eventSoundHandler.updateForPlayer)
+Events.OnPlayerUpdate.Add(clientSideEventSoundHandler.updateForPlayer)
 
 
 function eventMarkerHandler.updateForPlayer(player)
@@ -199,17 +198,17 @@ local function onServerCommand(_module, _command, _data)
 		storedLooperEventsUpdateTimes[_data.reusableID] = getGametimeTimestamp()+100
 
 		if _command == "play" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID,
+			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID,
 					{soundEffect=_data.soundEffect, x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
 
 		elseif _command == "setPos" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
+			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
 
 		elseif _command == "stop" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID, {soundEffect=_data.soundEffect}, _command)
+			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, {soundEffect=_data.soundEffect}, _command)
 
 		elseif _command == "drop" then
-			eventSoundHandler:handleLooperEvent(_data.reusableID, nil, _command)
+			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, nil, _command)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
