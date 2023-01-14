@@ -182,12 +182,10 @@ Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 -- sendServerCommand(module, command, player, args) end -- to client
 local function onServerCommand(_module, _command, _data)
 	--clientside
-
-	if getDebug() and _module=="sendLooper" and _command~="setPos" then
+	
+	if getDebug() --[[and _module=="sendLooper" and _command~="setPos"==]] then
 		local dataText = "{"
-		for k,v in pairs(_data) do
-			dataText = dataText..tostring(k).."="..tostring(v)..", "
-		end
+		for k,v in pairs(_data) do dataText = dataText..tostring(k).."="..tostring(v)..", " end
 		print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
 	end
 
