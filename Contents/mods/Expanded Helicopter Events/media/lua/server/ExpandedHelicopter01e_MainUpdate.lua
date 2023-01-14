@@ -2,7 +2,7 @@ require "ExpandedHelicopter01c_MainCore"
 require "ExpandedHelicopter01a_MainVariables"
 require "ExpandedHelicopter01f_ShadowSystem"
 
-
+local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end
