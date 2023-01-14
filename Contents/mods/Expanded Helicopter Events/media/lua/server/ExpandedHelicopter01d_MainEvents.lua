@@ -4,6 +4,7 @@ require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter00a_Util"
 --Heli goes down
 
+local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 
 function eHelicopter:crash()
 
