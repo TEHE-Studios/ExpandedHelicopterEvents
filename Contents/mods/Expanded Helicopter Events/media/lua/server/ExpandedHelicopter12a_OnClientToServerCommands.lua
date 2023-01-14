@@ -17,6 +17,9 @@ local function onCommand(_module, _command, _player, _data)
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
 		sendServerCommand("eventShadowHandler", "setShadowPos", _data)
 
+	elseif _module == "sendLooper" then
+		sendServerCommand("sendLooper", _command, _data)
+
 	elseif _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			--print("--spawnZombie")

@@ -48,7 +48,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 
 	if stopSound then
 		if heli.looperEventIDs[soundEvent] and isClient() then
-			sendServerCommand("sendLooper", "stop", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
+			sendClientCommand("sendLooper", "stop", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
 		else
 			if soundEmitter then
 				soundEmitter:stopSoundByName(soundEffect)
@@ -66,7 +66,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 		if getDebug() then
 			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent])..", isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
 		end
-		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
+		sendClientCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
 	else
 		if getDebug() then
 			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent] or false)..", isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
@@ -97,7 +97,7 @@ function eventSoundHandler:updatePos(heli,heliX,heliY)
 	if heli.state == "unLaunched" then return end
 
 	if heli.looperEventIDs and isClient() then
-		sendServerCommand("sendLooper", "setPos",{reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliY,z=heli.height}})
+		sendClientCommand("sendLooper", "setPos",{reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliY,z=heli.height}})
 	end
 
 	for _,emitter in pairs(heli.heldEventSoundEffectEmitters) do
@@ -124,7 +124,7 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 	if isClient() then
 		for soundID,_ in pairs(heli.looperEventIDs) do
 			local soundEffect = heli.eventSoundEffects[soundID]
-			sendServerCommand("sendLooper", "stop",{reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
+			sendClientCommand("sendLooper", "stop",{reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
 		end
 	end
 
