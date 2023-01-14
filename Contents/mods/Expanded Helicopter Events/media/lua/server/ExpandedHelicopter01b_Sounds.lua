@@ -47,7 +47,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	end
 
 	if stopSound then
-		if heli.looperEventIDs[soundEvent] and isServer() then
+		if heli.looperEventIDs[soundEvent] and isClient() then
 			sendServerCommand("sendLooper", "stop", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
 		else
 			if soundEmitter then
@@ -60,15 +60,16 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	--if otherlocation provided use it; if not use heli
 	otherLocation = otherLocation or heli:getIsoGridSquare()
 
-	if heli.looperEventIDs[soundEvent] and isServer() then
+
+	if isClient() and heli.looperEventIDs[soundEvent] then
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
 		if getDebug() then
-			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isServer:"..tostring(isServer()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
+			print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
 		end
 		sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
 	else
 		if getDebug() then
-			print(" -- NO - looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isServer:"..tostring(isServer()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
+			print(" -- normalEvent:"..tostring(heli.looperEventIDs[soundEvent]).."+isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..soundEvent.." soundEffect="..soundEffect)
 		end
 		if not soundEmitter then
 			soundEmitter = getWorld():getFreeEmitter()
@@ -95,7 +96,7 @@ function eventSoundHandler:updatePos(heli,heliX,heliY)
 	--Move held emitters to position
 	if heli.state == "unLaunched" then return end
 
-	if heli.looperEventIDs and isServer() then
+	if heli.looperEventIDs and isClient() then
 		sendServerCommand("sendLooper", "setPos",{reusableID=("HELI"..heli.ID), coords={x=heliX,y=heliY,z=heli.height}})
 	end
 
@@ -120,7 +121,7 @@ end
 
 function eventSoundHandler:stopAllHeldEventSounds(heli)
 
-	if isServer() then
+	if isClient() then
 		for soundID,_ in pairs(heli.looperEventIDs) do
 			local soundEffect = heli.eventSoundEffects[soundID]
 			sendServerCommand("sendLooper", "stop",{reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
