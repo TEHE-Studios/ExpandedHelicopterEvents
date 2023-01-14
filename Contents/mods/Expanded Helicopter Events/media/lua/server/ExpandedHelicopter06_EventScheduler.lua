@@ -29,6 +29,13 @@ function eHeliEvent_engage(ID)
 	local globalModData = getExpandedHeliEventsModData()
 	local eHeliEvent = globalModData.EventsOnSchedule[ID]
 
+	if not eHeliEvent or not eHeliEvent.preset then
+		print("ERROR: scheduler given invalid event (preset:"..tostring(eHeliEvent.preset)..") - CLEARING")
+		globalModData.EventsOnSchedule[ID] = nil
+		triggerEvent("EHE_ServerModDataReady", false)
+		return
+	end
+
 	--check if the event will occur
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
