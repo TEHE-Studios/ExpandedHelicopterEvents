@@ -15,13 +15,16 @@ Events.OnInitGlobalModData.Add(heatMap.initModData)
 function heatMap.calibrateCell(cellID, eventData)
     local cellData = heatMap.cells[cellID]
 
-    local intensityPull = eventData.intensity/cellData.level
+    local intensityFactor = eventData.intensity/cellData.level
+    local avgX, avgY = (cellData.centerX+eventData.x)/2, (cellData.centerY+eventData.y)/2
+    local xDiff, yDiff = math.abs(cellData.centerX-avgX), math.abs(cellData.centerX-avgY)
+    local iX, iY = xDiff*intensityFactor, yDiff*intensityFactor
+
+    if cellData.centerX >= eventData.x then cellData.centerX = cellData.centerX-iX else cellData.centerX = cellData.centerX+iX end
+    if cellData.centerY >= eventData.y then cellData.centerY = cellData.centerY-iX else cellData.centerY = cellData.centerY+iY end
 
     cellData.level = cellData.level+eventData.intensity
     cellData.eventCount = cellData.eventCount+1
-
-    cellData.centerX = math.floor((cellData.centerX + (eventData.x*intensityPull) ) /2)
-    cellData.centerY = math.floor((cellData.centerY + (eventData.y*intensityPull) ) /2)
 end
 
 
