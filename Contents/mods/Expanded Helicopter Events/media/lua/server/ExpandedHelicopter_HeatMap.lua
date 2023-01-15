@@ -28,9 +28,10 @@ function heatMap.calibrateCell(cellID, eventData)
 end
 
 
+
 function heatMap.coolOff()
     for key,e in pairs(heatMap.events) do
-        if e and e.timeStamp+(e.intensity*1000) > getTimeInMillis() then
+        if e and e.timeStamp+(e.intensity*1000) < getTimeInMillis() then
 
             if heatMap.cells[e.cellID] then
 
