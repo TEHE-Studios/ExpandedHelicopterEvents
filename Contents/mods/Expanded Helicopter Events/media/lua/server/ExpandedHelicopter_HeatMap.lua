@@ -1,4 +1,5 @@
 require "ExpandedHelicopter_Flares"
+--local heatMap = require "ExpandedHelicopter_HeatMap" --/server/
 
 local heatMap = {}
 
@@ -47,7 +48,7 @@ function heatMap.coolOff()
         end
     end
 end
-Events.EveryHour.Add(heatMap.coolOff)
+Events.EveryHours.Add(heatMap.coolOff)
 
 
 function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
