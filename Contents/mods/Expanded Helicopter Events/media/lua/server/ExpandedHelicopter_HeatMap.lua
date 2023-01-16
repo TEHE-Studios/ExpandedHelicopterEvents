@@ -5,6 +5,7 @@ local heatMap = {}
 heatMap.events = {}
 heatMap.cells = {}
 
+
 function heatMap.initModData(isNewGame)
     heatMap.events = ModData.getOrCreate("heatMap_events")
     heatMap.cells = ModData.getOrCreate("heatMap_cells")
@@ -28,7 +29,6 @@ function heatMap.calibrateCell(cellID, eventData)
 end
 
 
-
 function heatMap.coolOff()
     for key,e in pairs(heatMap.events) do
         if e and e.timeStamp+(e.intensity*1000) < getTimeInMillis() then
@@ -47,7 +47,7 @@ function heatMap.coolOff()
         end
     end
 end
-Events.EveryTenMinutes.Add(heatMap.coolOff)
+Events.EveryHour.Add(heatMap.coolOff)
 
 
 function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
