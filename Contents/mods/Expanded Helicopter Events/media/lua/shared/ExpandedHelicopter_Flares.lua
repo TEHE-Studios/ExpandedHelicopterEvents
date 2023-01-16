@@ -35,12 +35,15 @@ function eheFlares.getFlareOuterMostSquare(flareObject)
     end
 end
 
+LuaEventManager.AddEvent("EHE_OnActivateFlare")
 
 ---@param flareObject InventoryItem|IsoObject
 function eheFlares.activateFlare(flareObject, duration)
     if not flareObject or not duration or (duration and duration<=0) then return end
     eheFlares.activeObjects[flareObject] = true
     eheFlares.activeTimes[flareObject] = getGameTime():getMinutesStamp()+duration
+
+    triggerEvent("EHE_OnActivateFlare", flareObject)
 end
 
 
@@ -161,7 +164,7 @@ function eheFlares.scanForActiveFlares(object)
                 local flareDuration = item:getModData()["flareDuration"]
                 local flareType = eheFlares.flareTypes[item:getFullType()]
                 if item and flareType and (flareType =="EHEFlare") and (not item:isBroken()) and flareDuration and flareDuration>0 then
-                    print(" -- found previously active flare: "..tostring(object).."  durationLeft: "..flareDuration)
+                    --print(" -- found previously active flare: "..tostring(object).."  durationLeft: "..flareDuration)
                     eheFlares.activateFlare(item, flareDuration)
                 end
             end
