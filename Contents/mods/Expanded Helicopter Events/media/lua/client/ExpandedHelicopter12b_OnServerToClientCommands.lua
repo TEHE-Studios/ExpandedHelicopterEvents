@@ -15,7 +15,10 @@ LuaEventManager.AddEvent("EHE_ClientModDataReady") -- p1: isNewGame
 --triggerEvent("EHE_ClientModDataReady", false) send change if any
 
 local ExpandedHeliEventsModData --.EventsOnSchedule = {} --.DayOfLastCrash = 0 --.DaysBeforeApoc = 0
-local function receiveGlobalModData(name, data) if name == "ExpandedHelicopterEvents" then copyAgainst(ExpandedHeliEventsModData,data) end end
+local function receiveGlobalModData(name, data)
+	if name == "ExpandedHelicopterEvents" then copyAgainst(ExpandedHeliEventsModData,data)
+	end
+end
 Events.OnReceiveGlobalModData.Add(receiveGlobalModData)
 
 function getExpandedHeliEventsModData_Client()
