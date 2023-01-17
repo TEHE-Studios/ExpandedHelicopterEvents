@@ -3,20 +3,29 @@ require "ExpandedHelicopter01a_MainVariables"
 require "ExpandedHelicopter01f_ShadowSystem"
 
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
+local heatMap = require "ExpandedHelicopter_HeatMap"
 
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end
 
-	if (self.state == "arrived" or self.state == "gotoTarget") and ((not self.target) or (not self.trueTarget)) then
-		if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
-		if (not self.trueTarget) then print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()") end
+	if (self.state == "arrived" or self.state == "gotoTarget") then
 
-		--[[DEBUG]] print("EHE: "..self:heliToString().."  -no target + arrived")
+		local relativeHeatMapCell = heatMap.getObjectRelativeHeatMapCell(self.target)
+		local hX, hY, _ = self:getXYZAsInt()
+		local hottestCell = heatMap.getHottestCell()
+		local hotterTargetAvailable = relativeHeatMapCell.heatLevel*self.targetIntensityThreshold < hottestCell.heatLevel
 
-		self.trueTarget = self:findTarget(self.attackDistance, "update")
-		self.target = self.trueTarget
-		self:setTargetPos()
-		return
+		if (not self.target) or (not self.trueTarget) or hotterTargetAvailable then
+			if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
+			if (not self.trueTarget) then print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()") end
+
+			--[[DEBUG]] print("EHE: "..self:heliToString().."  -no target + arrived")
+
+			self.trueTarget = self:findTarget(self.attackDistance*4, "update")
+			self.target = self.trueTarget
+			self:setTargetPos()
+			return
+		end
 	end
 
 	local timeStampMS = getGametimeTimestamp()

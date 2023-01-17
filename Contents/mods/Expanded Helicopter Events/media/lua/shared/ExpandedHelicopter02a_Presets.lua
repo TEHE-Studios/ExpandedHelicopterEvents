@@ -162,6 +162,7 @@ eHelicopter_PRESETS["jet"] = {
 	speed = 15,
 	topSpeedFactor = 2,
 	flightVolume = 25,
+	targetIntensityThreshold = false,
 	eventSoundEffects = {
 		["flightSound"] = "eJetFlight"
 	},
@@ -179,6 +180,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	crashType = false,
 	shadow = false,
 	speed = 0.65,
+	targetIntensityThreshold = false,
 	topSpeedFactor = 3,
 	flightVolume = 0,
 	looperEventIDs = {

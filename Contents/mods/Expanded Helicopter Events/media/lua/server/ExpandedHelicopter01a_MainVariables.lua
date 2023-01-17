@@ -1,4 +1,5 @@
 eHelicopter = {}
+---CHECK THE PRESETGUIDE FILE IN /SHARED/ FOR MORE INFORMATION
 eHelicopter.forScheduling = false
 eHelicopter.schedulingFactor = 1
 eHelicopter.eventSpawnWeight = 10
@@ -9,6 +10,7 @@ eHelicopter.eventSpecialDates = false
 eHelicopter.eventCutOffDayFactor = 0.34
 eHelicopter.radioChatter = "AEBS_Choppah"
 eHelicopter.flightHours = {5, 22}
+eHelicopter.targetIntensityThreshold = 1.25
 eHelicopter.hoverOnTargetDuration = false
 eHelicopter.searchForTargetDuration = 30000
 eHelicopter.shadow = true

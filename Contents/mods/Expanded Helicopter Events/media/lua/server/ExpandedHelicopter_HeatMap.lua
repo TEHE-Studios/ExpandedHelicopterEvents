@@ -4,7 +4,7 @@ require "ExpandedHelicopter_Flares"
 local heatMap = {}
 
 heatMap.events = {}
-heatMap.cells = {}
+heatMap.cells = {} --heatLevel, centerX, centerY
 heatMap.cellsIDs = {}
 
 function heatMap.initModData(isNewGame)
@@ -23,10 +23,17 @@ Events.OnInitGlobalModData.Add(heatMap.initModData)
 
 function heatMap.getHottestCell()
     heatMap.sortCellsByHeat()
-    local hottestCell = heatMap.cells[#heatMap.cellsIDs]
+    local hottestCell = heatMap.cells[heatMap.cellsIDs[1]]
     return hottestCell
 end
 
+
+function heatMap.getObjectRelativeHeatMapCell(object)
+    local oX, oY = math.floor(object:getX()), math.floor(object:getY())
+    local cellID = "x:"..math.floor(oX/300).."|y:"..math.floor(oY/300)
+    local relativeCell = heatMap.cells[cellID]
+    return relativeCell
+end
 
 
 function heatMap.sortCellsByHeat()
@@ -118,7 +125,7 @@ end
 
 
 function heatMap.EHE_OnActivateFlare(flare)
-    if flare:isOutside() then heatMap.registerEventByObject(flare, 10, "activatedFlare") end
+    if flare:isOutside() then heatMap.registerEventByObject(flare, 100, "activatedFlare") end
 end
 Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
 
@@ -127,14 +134,14 @@ Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
 ---@param player IsoPlayer|IsoGameCharacter|IsoMovingObject|IsoObject
 ---@param weapon HandWeapon|InventoryItem
 function heatMap.OnHitZombie(zombie, player, bodyPart, weapon)
-    if zombie:isOutside() or player:isOutside() then heatMap.registerEventByObject(player, 1, "zombieHit") end
+    if zombie:isOutside() or player:isOutside() then heatMap.registerEventByObject(player, 10, "zombieHit") end
 end
 Events.OnHitZombie.Add(heatMap.OnHitZombie)
 
 
 ---@param zombie IsoZombie|IsoGameCharacter|IsoMovingObject|IsoObject
 function heatMap.OnZombieDead(zombie)
-    if zombie:isOutside() then heatMap.registerEventByObject(zombie, 2, "zombieKilled") end
+    if zombie:isOutside() then heatMap.registerEventByObject(zombie, 20, "zombieKilled") end
 end
 Events.OnZombieDead.Add(heatMap.OnZombieDead)
 
@@ -147,7 +154,7 @@ function heatMap.OnPlayerMove(player)
     onceEveryList[player] = onceEveryList[player]-1
     if onceEveryList[player] <= 0 then
         onceEveryList[player] = soManyTicks
-        heatMap.registerEventByObject(player, 0.1, "playerMove")
+        heatMap.registerEventByObject(player, 1, "playerMove")
     end
 end
 Events.OnPlayerMove.Add(heatMap.OnPlayerMove)
@@ -156,7 +163,7 @@ Events.OnPlayerMove.Add(heatMap.OnPlayerMove)
 ---@param player IsoPlayer|IsoGameCharacter|IsoMovingObject|IsoObject
 function heatMap.OnPlayerDeath(player)
     if not player:isOutside() then return end
-    heatMap.registerEventByObject(player, 2, "playerDeath")
+    heatMap.registerEventByObject(player, 20, "playerDeath")
 end
 Events.OnPlayerDeath.Add(heatMap.OnPlayerDeath)
 
@@ -172,7 +179,7 @@ function heatMap.OnWeaponSwing(player,weapon)
         if wepOk and notShoving and hasAmmo then
             local intensity = weapon:getSoundRadius()
             if isClient() or isServer() then intensity = intensity / 1.8 end
-            heatMap.registerEventByObject(player, intensity/10, "gunFire")
+            heatMap.registerEventByObject(player, intensity/2, "gunFire")
         end
     end
 end

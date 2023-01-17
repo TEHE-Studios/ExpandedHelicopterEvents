@@ -339,26 +339,6 @@ function eHelicopter:findAlternativeTarget(character)
 		---@type IsoCell
 		local cellOfFC = square:getCell()
 		if cellOfFC then
-			--[DEBUG]] print(" ----- cell found for isoSquare diff: <"..k.."> x:"..math.floor(character:getX()-square:getX())..", y:"..math.floor(character:getY()-square:getY()))
-			---Targeting buildings don't seem to return results
---[[
-			local buildings = cellOfFC:getBuildingList()
-			--print(" ------ buildings:size: "..buildings:size())
-			for i=0, buildings:size()-1 do
-				---@type IsoBuilding
-				local isoBuilding = buildings:get(i)
-				print(" ------- building?")
-				if isoBuilding then
-					print(" -------- building")
-					local squareFromBuilding = isoBuilding:getFreeTile()
-					print(" ------- square?")
-					if squareFromBuilding then
-						print(" -------- square")
-						table.insert(newTargets,squareFromBuilding)
-					end
-				end
-			end
---]]
 			---target zombies instead
 			if #newTargets <= 0 then
 				local zombies = cellOfFC:getZombieList()
@@ -369,7 +349,6 @@ function eHelicopter:findAlternativeTarget(character)
 					end
 				end
 			end
-
 		end
 	end
 
@@ -400,22 +379,31 @@ function eHelicopter:findAlternativeTarget(character)
 end
 
 
+local heatMap = require "ExpandedHelicopter_HeatMap"
 ---@param range number
 function eHelicopter:findTarget(range, DEBUGID)
-	--the -1 is to offset playerIDs starting at 0
-	local weightPlayersList = {}
+
+	local weightedTargetList = {}
 	local maxWeight = 15
 
-	addActualPlayersToEIP()
-
+	--addActualPlayersToEIP()
 	local targetPool = {}
 
-	for player,_ in pairs(EHEIsoPlayers) do
-		table.insert(targetPool, player)
+	heatMap.sortCellsByHeat()
+	local cellsSize = #heatMap.cellsIDs
+	for i=1, #heatMap.cellsIDs do
+		local heatCell = heatMap.cells[heatMap.cellsIDs[i]]
+		---weigh list by hottest to coldest
+		local cSquare = getSquare(heatCell.CenterX,heatCell.CenterY,0)
+		if self:getDistanceToIsoObject(cSquare) <= range then
+			for n=0, (cellsSize-i)+1 do
+				table.insert(targetPool, cSquare)
+			end
+		end
 	end
-	for flare,_ in pairs(eheFlares.activeObjects) do
-		table.insert(targetPool, flare)
-	end
+
+	--for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
+	for flare,_ in pairs(eheFlares.activeObjects) do table.insert(targetPool, flare) end
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
@@ -427,12 +415,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 			---@type IsoGridSquare
 			local pSquare
 
-			if instanceof(p, "IsoPlayer") then
-				pSquare = p:getSquare()
-
-			elseif instanceof(p, "InventoryItem") then
-				pSquare = eheFlares.getFlareOuterMostSquare(p)
-			end
+			if instanceof(p, "IsoGridSquare") then pSquare = p end
+			--if instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
+			if instanceof(p, "InventoryItem") then pSquare = eheFlares.getFlareOuterMostSquare(p) end
 
 			if pSquare then
 				local zone = pSquare:getZone()
@@ -459,21 +444,13 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 				if instanceof(p, "IsoPlayer") then
 					local pCar = p:getVehicle()
-
-					if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then
-						iterations = math.floor(iterations*1.3)
-					end
-
-					if pCar and pCar:getCurrentSpeedKmHour()>0 then
-						iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100)))
-					end
-
+					if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then iterations = math.floor(iterations*1.3) end
+					if pCar and pCar:getCurrentSpeedKmHour()>0 then iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100))) end
 					local targetSquare = p:getSquare()
-					if (targetSquare:getTree()) then
-						iterations = math.floor(iterations*0.66)
-					end
+					if (targetSquare:getTree()) then iterations = math.floor(iterations*0.66) end
+				end
 
-				elseif eheFlares.activeObjects[p] then
+				if eheFlares.activeObjects[p] then
 					if pSquare:isOutside() then
 						iterations = iterations*5
 					else
@@ -484,23 +461,18 @@ function eHelicopter:findTarget(range, DEBUGID)
 				for _=1, maxWeight do
 					if iterations > 0 then
 						iterations = iterations-1
-						table.insert(weightPlayersList, p)
+						table.insert(weightedTargetList, p)
 					else
 						local altTarget = self:findAlternativeTarget(pSquare)
-						if altTarget then
-							table.insert(weightPlayersList, altTarget)
-						end
+						if altTarget then table.insert(weightedTargetList, altTarget) end
 					end
 				end
 			end
 		end
 	end
 
-	if DEBUGID then
-		DEBUGID = "["..DEBUGID.."]: "
-	end
-
-	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightPlayersList.."> x "
+	if DEBUGID then DEBUGID = "["..DEBUGID.."]: " end
+	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightedTargetList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
 	--[[DEBUG] if getDebug() then
@@ -530,9 +502,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	print(DEBUGallTargetsText)
 
 	local target
-	if #weightPlayersList then
-		target = weightPlayersList[ZombRand(1, #weightPlayersList+1)]
-	end
+	if #weightedTargetList then target = weightedTargetList[ZombRand(1, #weightedTargetList+1)] end
 
 	if not target then
 		print(" --- HELI "..self:heliToString().."- WARN: unable to find target...")
@@ -679,9 +649,9 @@ end
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)
 
-	if not targetedObject then
-		targetedObject = self:findTarget(nil, "launch")
-	end
+	if not self.attackDistance then self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1) end
+
+	if not targetedObject then targetedObject = self:findTarget(nil, "launch") end
 
 	if targetedObject then
 		if instanceof(targetedObject, "IsoGameCharacter") then
@@ -724,10 +694,6 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 			print("EHE: ERROR: "..self:heliToString().." -- hoverOnTargetDuration is table with less than 2 entries - nulling hover time.")
 			self.hoverOnTargetDuration = false
 		end
-	end
-
-	if not self.attackDistance then
-		self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1)
 	end
 
 	if self.announcerVoice ~= false then

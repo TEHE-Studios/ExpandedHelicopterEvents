@@ -32,6 +32,7 @@ if 1==1 then return end ---Remove this Line to get started.
 
 ---@field radioChatter string default: "AEBS_Choppah" - you will need to add your own translation file for unique strings.
 ---@field flightHours table table of numbers, example, flightHours = {5, 22}
+---@field targetIntensityThreshold number factor difference of target intensity needed to change course, default 1.25, false = can't change course
 ---@field hoverOnTargetDuration number|boolean How long the helicopter will hover over the player, this is subtracted from every tick, default: false
 ---@field searchForTargetDurationMS number How long the helicopter will search for last seen targets in ticks
 ---@field shadow boolean | WorldMarkers.GridSquareMarker if set to true a shadow (WorldMarkers.GridSquareMarker) will be created
