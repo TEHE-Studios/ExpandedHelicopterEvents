@@ -5,48 +5,69 @@ local heatMap = {}
 
 heatMap.events = {}
 heatMap.cells = {}
-
+heatMap.cellsIDs = {}
 
 function heatMap.initModData(isNewGame)
+
+    local cellData = ModData.getOrCreate("heatMap_cellData")
+    if not cellData.cellsIDs then cellData.cellsIDs = {} end
+    if not cellData.cells then cellData.cells = {} end
+
+    heatMap.cellsIDs = cellData.cellsIDs
+    heatMap.cells = cellData.cells
+
     heatMap.events = ModData.getOrCreate("heatMap_events")
-    heatMap.cells = ModData.getOrCreate("heatMap_cells")
 end
 Events.OnInitGlobalModData.Add(heatMap.initModData)
+
+
+function heatMap.sortCellsByHeat()
+    table.sort(heatMap.cellsIDs, function(a,b) return heatMap.cells[a].heatLevel > heatMap.cells[b].heatLevel end)
+end
 
 
 function heatMap.calibrateCell(cellID, eventData)
     local cellData = heatMap.cells[cellID]
 
-    local intensityFactor = eventData.intensity/cellData.level
+    local intensityFactor = eventData.intensity/cellData.heatLevel
     local avgX, avgY = (cellData.centerX+eventData.x)/2, (cellData.centerY+eventData.y)/2
     local xDiff, yDiff = math.abs(cellData.centerX-avgX), math.abs(cellData.centerX-avgY)
-    local iX, iY = xDiff*intensityFactor, yDiff*intensityFactor
+    local iX, iY = math.floor(xDiff*intensityFactor), math.floor(yDiff*intensityFactor)
 
     if cellData.centerX >= eventData.x then cellData.centerX = cellData.centerX-iX else cellData.centerX = cellData.centerX+iX end
     if cellData.centerY >= eventData.y then cellData.centerY = cellData.centerY-iX else cellData.centerY = cellData.centerY+iY end
 
-    cellData.level = cellData.level+eventData.intensity
+    cellData.heatLevel = cellData.heatLevel+eventData.intensity
     cellData.eventCount = cellData.eventCount+1
 end
 
 
 function heatMap.coolOff()
+    local changeToCellsMade = false
     for key,e in pairs(heatMap.events) do
         if e and e.timeStamp+(e.intensity*1000) < getTimeInMillis() then
 
             if heatMap.cells[e.cellID] then
 
                 local cellData = heatMap.cells[e.cellID]
-                cellData.level = cellData.level-e.intensity
+                cellData.heatLevel = cellData.heatLevel-e.intensity
                 cellData.eventCount = cellData.eventCount-1
-                if cellData.eventCount <= 0 or cellData.level <= 0 then
+
+                if cellData.eventCount <= 0 or cellData.heatLevel <= 0 then
                     heatMap.cells[e.cellID] = nil
+                    for n,cellID in pairs(heatMap.cellsIDs) do
+                        if cellID == e.cellID then
+                            heatMap.cellsIDs[n] = nil
+                        end
+                    end
+                    changeToCellsMade = true
                 end
             end
 
             heatMap.events[key] = nil
         end
     end
+    if changeToCellsMade then heatMap.sortCellsByHeat() end
 end
 Events.EveryHours.Add(heatMap.coolOff)
 
@@ -56,10 +77,14 @@ function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
     type = type or "none"
     timeStamp = timeStamp or getTimeInMillis()
 
-    if getDebug() then print("registerEventByXY: "..type.."  x:"..x..", y:"..y) end
+    if getDebug() then print("heatMap: "..type.."  x:"..x..", y:"..y) end
 
-    local cellID = "x:"..math.floor(x/300).."-y:"..math.floor(y/300)
-    heatMap.cells[cellID] = heatMap.cells[cellID] or {level=intensity, centerX=x, centerY=y, eventCount=0}
+    local cellID = "x:"..math.floor(x/300).."|y:"..math.floor(y/300)
+
+    if not heatMap.cells[cellID] then
+        table.insert(heatMap.cellsIDs, cellID)
+        heatMap.cells[cellID] = {heatLevel=intensity, centerX=math.floor(x), centerY=math.floor(y), eventCount=0}
+    end
 
     local eventData = {cellID=cellID, x=x, y=y, intensity=intensity, type=type, timeStamp=timeStamp}
 
