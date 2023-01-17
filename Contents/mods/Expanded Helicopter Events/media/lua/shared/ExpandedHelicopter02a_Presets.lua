@@ -19,6 +19,7 @@ eHelicopter_PRESETS["military"] = {
 		["military_patrol_quarantine"] = 0.0165,
 		["military_attack_undead_evac"] = 0.033,
 		["military_attack_undead"] = 0.066,
+		["military_attackhelicopter_gunrun"] = 0.077,
 		["military_cargo"] = 0.1900,
 		["military_attack_all"] = 0.2145,
 	}
@@ -77,6 +78,25 @@ eHelicopter_PRESETS["military_cargo"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeliCargo",
 	},
+}
+
+eHelicopter_PRESETS["military_attackhelicopter_gunrun"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	crashType = false,
+	speed = 0.2,
+	attackDelay = 1500,
+	attackSpread = 50,
+	attackHitChance = 70,
+	attackDamage = 100,
+	eventSoundEffects = {
+		["attackSingle"] = "eHeli30mmCannon",
+		["attackLooped"] = "eHeli30mmCannon",
+		["flightSound"] = { "eMiliHeli"},
+	},
+	hostilePreference = "IsoZombie",
+	radioChatter = "AEBS_PurgeMilitary",
+	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
 }
 
 local function hostilePredicateCivilian(target)
@@ -385,8 +405,8 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
 	attackDelay = 650,
-	attackSpread = 4,
-	attackHitChance = 60,
+	attackSpread = 50,
+	attackHitChance = 30,
 	attackDamage = 10,
 	flightVolume = 750,
 	crashType = false,
