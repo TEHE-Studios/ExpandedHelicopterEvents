@@ -21,6 +21,14 @@ end
 Events.OnInitGlobalModData.Add(heatMap.initModData)
 
 
+function heatMap.getHottestCell()
+    heatMap.sortCellsByHeat()
+    local hottestCell = heatMap.cells[#heatMap.cellsIDs]
+    return hottestCell
+end
+
+
+
 function heatMap.sortCellsByHeat()
     table.sort(heatMap.cellsIDs, function(a,b) return heatMap.cells[a].heatLevel > heatMap.cells[b].heatLevel end)
 end
@@ -43,7 +51,6 @@ end
 
 
 function heatMap.coolOff()
-    local changeToCellsMade = false
     for key,e in pairs(heatMap.events) do
         if e and e.timeStamp+(e.intensity*1000) < getTimeInMillis() then
 
@@ -60,14 +67,12 @@ function heatMap.coolOff()
                             heatMap.cellsIDs[n] = nil
                         end
                     end
-                    changeToCellsMade = true
                 end
             end
-
             heatMap.events[key] = nil
         end
     end
-    if changeToCellsMade then heatMap.sortCellsByHeat() end
+    if getDebug() then heatMap.sortCellsByHeat() end
 end
 Events.EveryHours.Add(heatMap.coolOff)
 
