@@ -130,15 +130,10 @@ end
 function eHelicopter:getIsoGridSquare()
 	local ehX, ehY, _ = self:getXYZAsInt()
 
-	if not ehX or not ehY then
-		return
-	end
+	if not ehX or not ehY then return end
 
-	local cell = getCell()
-	local square = nil
-	if cell then
-		square = getCell():getOrCreateGridSquare(ehX, ehY, 0)
-	end
+	local square = getCell():getOrCreateGridSquare(ehX, ehY, 0)
+
 	return square
 end
 
@@ -161,34 +156,32 @@ function eHelicopter:isInBounds()
 end
 
 
+---@param x number
+---@param y number
+---@return number
+function eHelicopter:getDistanceToXY(x,y)
+	if (not x) or (not y) or (not self.currentPosition) then print("ERR: getDistanceToIsoObject: no x/y or no currentPosition") return end
+
+	local a = x - Vector3GetX(self.currentPosition)
+	local b = y - Vector3GetY(self.currentPosition)
+
+	return math.sqrt((a*a)+(b*b))
+end
+
+
 ---@param vector Vector3
 ---@return number
 function eHelicopter:getDistanceToVector(vector)
-
-	if (not vector) or (not self.currentPosition) then
-		print("ERR: getDistanceToVector: no vector or no currentPosition")
-		return
-	end
-
-	local a = Vector3GetX(vector) - Vector3GetX(self.currentPosition)
-	local b = Vector3GetY(vector) - Vector3GetY(self.currentPosition)
-
-	return math.sqrt((a*a)+(b*b))
+	if not vector then print("ERR: getDistanceToVector: no vector or no currentPosition") return end
+	return self:getDistanceToXY(Vector3GetX(vector),Vector3GetY(vector))
 end
 
 
 ---@param object IsoObject
 ---@return number
 function eHelicopter:getDistanceToIsoObject(object)
-	if (not object) or (not self.currentPosition) then
-		print("ERR: getDistanceToIsoObject: no object or no currentPosition")
-		return
-	end
-
-	local a = object:getX() - Vector3GetX(self.currentPosition)
-	local b = object:getY() - Vector3GetY(self.currentPosition)
-
-	return math.sqrt((a*a)+(b*b))
+	if not object then print("ERR: getDistanceToIsoObject: no object or no currentPosition") return end
+	return self:getDistanceToXY(object:getX(),object:getY())
 end
 
 
@@ -394,11 +387,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 	for i=1, #heatMap.cellsIDs do
 		local heatCell = heatMap.cells[heatMap.cellsIDs[i]]
 		---weigh list by hottest to coldest
-		local cSquare = getSquare(heatCell.CenterX,heatCell.CenterY,0)
-		if self:getDistanceToIsoObject(cSquare) <= range then
-			for n=0, (cellsSize-i)+1 do
-				table.insert(targetPool, cSquare)
-			end
+		local cSquare = getCell():getOrCreateGridSquare(heatCell.centerX,heatCell.centerY,0)
+		if cSquare and self:getDistanceToIsoObject(cSquare) <= range then
+			for n=0, (cellsSize-i)+1 do table.insert(targetPool, cSquare) end
 		end
 	end
 
@@ -416,7 +407,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 			local pSquare
 
 			if instanceof(p, "IsoGridSquare") then pSquare = p end
-			--if instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
+
+			local hottestCell = heatMap.getHottestCell()
+			if not hottestCell and instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
 			if instanceof(p, "InventoryItem") then pSquare = eheFlares.getFlareOuterMostSquare(p) end
 
 			if pSquare then

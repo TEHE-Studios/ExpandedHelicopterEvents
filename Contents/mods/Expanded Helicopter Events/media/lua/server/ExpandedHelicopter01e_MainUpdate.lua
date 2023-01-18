@@ -10,10 +10,15 @@ function eHelicopter:updateEvent()
 
 	if (self.state == "arrived" or self.state == "gotoTarget") then
 
-		local relativeHeatMapCell = heatMap.getObjectRelativeHeatMapCell(self.target)
-		local hX, hY, _ = self:getXYZAsInt()
+		local relativeHeatMapCell = self.target and heatMap.getObjectRelativeHeatMapCell(self.target)
 		local hottestCell = heatMap.getHottestCell()
-		local hotterTargetAvailable = relativeHeatMapCell.heatLevel*self.targetIntensityThreshold < hottestCell.heatLevel
+
+		local hotterTargetAvailable = false
+		if self.targetIntensityThreshold and hottestCell and relativeHeatMapCell then
+			if (relativeHeatMapCell.heatLevel*self.targetIntensityThreshold < hottestCell.heatLevel) then
+				hotterTargetAvailable = true
+			end
+		end
 
 		if (not self.target) or (not self.trueTarget) or hotterTargetAvailable then
 			if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end

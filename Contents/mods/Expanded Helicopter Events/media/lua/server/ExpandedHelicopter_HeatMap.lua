@@ -29,6 +29,7 @@ end
 
 
 function heatMap.getObjectRelativeHeatMapCell(object)
+    if not object then return end
     local oX, oY = math.floor(object:getX()), math.floor(object:getY())
     local cellID = "x:"..math.floor(oX/300).."|y:"..math.floor(oY/300)
     local relativeCell = heatMap.cells[cellID]
