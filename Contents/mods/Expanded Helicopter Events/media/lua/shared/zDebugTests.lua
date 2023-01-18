@@ -5,20 +5,20 @@ require "ExpandedHelicopter00b_IsoRangeScan"
 require "ExpandedHelicopter01a_MainVariables"
 
 Events.OnGameBoot.Add(function()
-	if ISCustomDebugTestsPanel and ISCustomDebugTestsPanel.Tests then
-		ISCustomDebugTestsPanel.Tests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
+	if EHE_DebugTests then
+		EHE_DebugTests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
 		--ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
-		ISCustomDebugTestsPanel.Tests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
-		ISCustomDebugTestsPanel.Tests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
-		ISCustomDebugTestsPanel.Tests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
+		EHE_DebugTests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
+		EHE_DebugTests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
+		EHE_DebugTests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
 		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-			ISCustomDebugTestsPanel.Tests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
+			EHE_DebugTests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
 		end
-		ISCustomDebugTestsPanel.Tests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
-		ISCustomDebugTestsPanel.Tests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
-		ISCustomDebugTestsPanel.Tests.TemporaryTest = CustomDebugPanel.TemporaryTest
-		ISCustomDebugTestsPanel.Tests.checkSquare = CustomDebugPanel.checkSquare
-		ISCustomDebugTestsPanel.Tests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
+		EHE_DebugTests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
+		EHE_DebugTests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
+		EHE_DebugTests.TemporaryTest = CustomDebugPanel.TemporaryTest
+		EHE_DebugTests.checkSquare = CustomDebugPanel.checkSquare
+		EHE_DebugTests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
 	end
 end)
 
