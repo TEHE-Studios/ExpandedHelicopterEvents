@@ -35,10 +35,10 @@ function EHE_DebugTestWindow:initialise()
 	ISPanel.initialise(self)
 	--self:instantiate()
 
-	local padding = 15
+	local padding = 10
 	local yOffset = 4
 
-	local y = padding
+	local y = padding+5
 
 	local w = self.width/2-(padding*1.5)
 	local h = 18
