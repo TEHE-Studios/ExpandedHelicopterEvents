@@ -14,7 +14,7 @@ EHE_DebugTests = EHE_DebugTests or {}
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 
 
-function EHE_DebugTestWindow.openInstance()
+function EHE_DebugTestWindow.OnOpenPanel()
 	if not EHE_DebugTestWindow.instance then
 		EHE_DebugTestWindow.instance = EHE_DebugTestWindow:new(100, 100, 550, 200)
 		EHE_DebugTestWindow.instance:initialise()
@@ -100,6 +100,6 @@ end
 require "DebugUIs/DebugMenu/ISDebugMenu"
 local ISDebugMenu_setupButtons = ISDebugMenu.setupButtons
 function ISDebugMenu:setupButtons()
-	self:addButtonInfo("EHE Debug Tests", function() EHE_DebugTestWindow.openInstance() end, "MAIN")
+	self:addButtonInfo("EHE Debug Tests", function() EHE_DebugTestWindow.OnOpenPanel() end, "MAIN")
 	ISDebugMenu_setupButtons(self)
 end
