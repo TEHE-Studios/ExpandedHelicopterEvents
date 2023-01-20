@@ -63,7 +63,7 @@ function EHE_DebugTestWindow:initialise()
 	local newWindowHeight = y + (padding*2) + h
 	self:setHeight( newWindowHeight )
 
-	EHE_DebugTestWindow.addButton(self, function() EHE_DebugTestWindow.openInstance() end, "Close", (self.width/2)-(w/2), newWindowHeight-padding-h, w, h)
+	EHE_DebugTestWindow.addButton(self, function() self:close() end, "Close", (self.width/2)-(w/2), newWindowHeight-padding-h, w, h)
 
 
 end
