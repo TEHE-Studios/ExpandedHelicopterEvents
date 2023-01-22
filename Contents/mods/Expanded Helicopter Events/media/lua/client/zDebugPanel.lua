@@ -8,6 +8,7 @@ Events.OnGameBoot.Add(function()
 	EHE_DebugTests["LABEL TEXT"] = FUNCTION
 end)
 --]]
+require "DebugUIs/DebugMenu/ISDebugMenu"
 
 EHE_DebugTests = EHE_DebugTests or {}
 
@@ -15,8 +16,12 @@ EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 
 
 function EHE_DebugTestWindow.OnOpenPanel()
+
+	local x = ISDebugMenu.instance:getX()+ISDebugMenu.instance:getWidth()+5
+	local y = ISDebugMenu.instance:getY()
+
 	if not EHE_DebugTestWindow.instance then
-		EHE_DebugTestWindow.instance = EHE_DebugTestWindow:new(100, 100, 550, 200)
+		EHE_DebugTestWindow.instance = EHE_DebugTestWindow:new(x, y, 550, 200)
 		EHE_DebugTestWindow.instance:initialise()
 		EHE_DebugTestWindow.instance:addToUIManager()
 		EHE_DebugTestWindow.instance:setVisible(true)
@@ -27,6 +32,8 @@ function EHE_DebugTestWindow.OnOpenPanel()
 		EHE_DebugTestWindow.instance:setVisible(false)
 	else
 		EHE_DebugTestWindow.instance:setVisible(true)
+		EHE_DebugTestWindow.instance:setX(x)
+		EHE_DebugTestWindow.instance:setY(y)
 	end
 end
 
