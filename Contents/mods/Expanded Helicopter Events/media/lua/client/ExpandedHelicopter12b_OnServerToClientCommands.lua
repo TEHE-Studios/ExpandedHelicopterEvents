@@ -72,7 +72,7 @@ local clientSideEventSoundHandler = {}
 
 function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
-	if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
+	--if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
 	
 	---@type BaseSoundEmitter | FMODSoundEmitter
 	local soundEmitter = storedLooperEvents[reusableID]
