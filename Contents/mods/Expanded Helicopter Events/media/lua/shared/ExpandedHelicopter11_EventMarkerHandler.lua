@@ -9,13 +9,13 @@ eventMarkerHandler.expirations = {} --[player] = {["id]=time}
 --unSet
 --OnPlayerUpdate
 
-function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, override)
+function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, color, override)
 	if eHelicopterSandbox.config.eventMarkersOn == false then
 		return
 	end
 	--print("eventMarker: eventID:"..tostring(eventID).." icon:"..tostring(icon).." duration:"..tostring(duration).." posX:"..tostring(posX).." posY:"..tostring(posY).." override:"..tostring(override))
 	if not override and isClient() then
-		sendClientCommand("eventMarkerHandler", "setOrUpdateMarker", {eventID=eventID, icon=icon, duration=duration, posX=posX, posY=posY})
+		sendClientCommand("eventMarkerHandler", "setOrUpdateMarker", {eventID=eventID, icon=icon, duration=duration, posX=posX, posY=posY, color=color})
 	else
 		for p=1, getNumActivePlayers() do
 			local player = getSpecificPlayer(p-1)
@@ -46,7 +46,7 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, ove
 							local screenY = oldY or (EHE_EventMarker.iconSize/2)
 							--print("eventMarkerHandler: generateNewMarker: "..p:getUsername().." ".."("..screenX..","..screenY..")")
 
-							marker = EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY)
+							marker = EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY, color)
 							eventMarkerHandler.markers[player][eventID] = marker
 						else
 							--print("-- dist not valid: "..tostring(dist))

@@ -214,7 +214,7 @@ local function onServerCommand(_module, _command, _data)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, true)
+		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, _data.color, true)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
 		eventShadowHandler:setShadowPos(_data.eventID, _data.texture, _data.x, _data.y, _data.z, true)
