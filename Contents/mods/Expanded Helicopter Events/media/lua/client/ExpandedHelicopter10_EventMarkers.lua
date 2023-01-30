@@ -145,6 +145,21 @@ function EHE_EventMarker:getDuration()
 	return self.duration
 end
 
+
+local function colorBlend(color, underLayer, fade)
+
+	local fadedColor = {r=color.r*fade, g=color.g*fade, b=color.b*fade, a=fade}
+	local _color = {r=1, g=1, b=1, a=1}
+	local alphaShift = 1 - (1 - fadedColor.a) * (1 - underLayer.a)
+
+	_color.r = fadedColor.r * fadedColor.r / alphaShift + underLayer.r * underLayer.a * (1 - fadedColor.a) / alphaShift
+	_color.g = fadedColor.g * fadedColor.g / alphaShift + underLayer.g * underLayer.a * (1 - fadedColor.a) / alphaShift
+	_color.b = fadedColor.b * fadedColor.b / alphaShift + underLayer.b * underLayer.a * (1 - fadedColor.a) / alphaShift
+
+	return _color
+end
+
+
 function EHE_EventMarker:render()
 	if self.visible and self.duration > 0 then--and self.distanceToPoint>4 then
 		self.setAngleFromPoint(self.posX,self.posY)
@@ -153,15 +168,10 @@ function EHE_EventMarker:render()
 		local centerY = self.height / 2
 
 		local aFromDist = 0.2 + (0.8*(1-(self.distanceToPoint/self.radius)))
-		local mColor = { r = self.markerColor.r*aFromDist, g = self.markerColor.g*aFromDist, b = self.markerColor.b*aFromDist, a=aFromDist}
+		local mColor = {r=self.markerColor.r, g=self.markerColor.g, b=self.markerColor.b, a=1}
 		local base = {r=0.22, g=0.22, b=0.22, a=1}
 
-		local _color = {r=1, g=1, b=1, a=1}--set up return color
-
-		_color.a = 1 - (1 - mColor.a) * (1 - base.a)--alpha
-		_color.r = mColor.r * mColor.r / _color.a + base.r * base.a * (1 - mColor.a) / _color.a--red
-		_color.g = mColor.g * mColor.g / _color.a + base.g * base.a * (1 - mColor.a) / _color.a--green
-		_color.b = mColor.b * mColor.b / _color.a + base.b * base.a * (1 - mColor.a) / _color.a--blue
+		local _color = colorBlend(mColor, base, aFromDist)
 
 		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, _color.r, _color.g, _color.b)
 
