@@ -142,7 +142,7 @@ end
 function eHelicopter:isInBounds()
 	local h_x, h_y, _ = self:getXYZAsInt()
 
-	if h_x < eheBounds.MAX_X+1 and h_x > eheBounds.MIN_X-1 and h_y < eheBounds.MAX_Y+1 and h_y > eheBounds.MIN_Y-1 then
+	if h_x and h_y and h_x < eheBounds.MAX_X+1 and h_x > eheBounds.MIN_X-1 and h_y < eheBounds.MAX_Y+1 and h_y > eheBounds.MIN_Y-1 then
 		return true
 	end
 
