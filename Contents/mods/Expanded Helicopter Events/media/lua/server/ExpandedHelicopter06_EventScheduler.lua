@@ -198,6 +198,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
 				if presetFreq then
 					freq = presetFreq-1
+					if freq == 5 then freq = 25 end
 				end
 
 				freq = freqOverride or freq
