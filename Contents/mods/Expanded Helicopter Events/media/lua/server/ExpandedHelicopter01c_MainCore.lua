@@ -379,7 +379,6 @@ function eHelicopter:findTarget(range, DEBUGID)
 	local weightedTargetList = {}
 	local maxWeight = 15
 
-	--addActualPlayersToEIP()
 	local targetPool = {}
 
 	heatMap.sortCellsByHeat()
@@ -393,7 +392,11 @@ function eHelicopter:findTarget(range, DEBUGID)
 		end
 	end
 
-	--for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
+	if #targetPool <= 0 then
+		addActualPlayersToEIP()
+		for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
+	end
+	
 	for flare,_ in pairs(eheFlares.activeObjects) do table.insert(targetPool, flare) end
 
 	for _,target in pairs(targetPool) do
