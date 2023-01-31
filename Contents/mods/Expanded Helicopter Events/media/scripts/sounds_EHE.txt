@@ -31,9 +31,7 @@ module Base {
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/music/HowdyDoodyTime.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
-        clip { file = media/sound/music/BecauseImAMan.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
-        clip { file = media/sound/music/TheGonk.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
+        clip { file = media/sound/music/HowdyDoodyTime.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
@@ -51,7 +49,6 @@ module Base {
 
     sound eHeliMusicHostile {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/music/GhostRidersInTheSky.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } 
         clip { file = media/sound/music/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
