@@ -5,11 +5,11 @@ description=[H1][i]This mod replaces the vanilla helicopter event with a more dy
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FAQ.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FAQ.png[/img][/url]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/FEATURES.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FEATURES.png[/img][/url]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/GITHUB.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/GITHUB.png[/img][/url]
 description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
@@ -28,12 +28,12 @@ description=[quote]`C:\Users\<username>\Zomboid\console.txt`[/quote]
 description=The preferred method of reporting issues is through our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page. Alternatively, you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
 description=
 description=
-description=[img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/SUPPORT.md][img]https://raw.githubusercontent.com/sharkster91/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/supportLogo_sm.png[/img][/url]
+description=[img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/SUPPORT.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/supportLogo_sm.png[/img][/url]
 description=
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/discussions][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/steamToGithub2.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/discussions][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/steamToGithub2.png[/img][/url]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/README.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/Contents/mods/Expanded%20Helicopter%20Events/steamToGithub.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/README.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/steamToGithub.png[/img][/url]
 description=
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
