@@ -13,7 +13,7 @@ description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]h
 description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
-description=[img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/ChuckTheSheep/SuperWeirdHelicopterEvents/main/Contents/mods/Super%20Weird%20Helicopters/poster_s.png[/img][/url][img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/ChuckTheSheep/ExpandedHelicopterEventsTwitchIntegration/main/Contents/mods/ExpandedHelicopterEventsTwitchIntegration/poster_s.png[/img][/url]
+description=[img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/TEHE-Studios/SuperWeirdHelicopterEvents/main/images/poster_s.png[/img][/url][img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEventsTwitchIntegration/main/images/poster_s.png[/img][/url]
 description=
 description=
 description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
