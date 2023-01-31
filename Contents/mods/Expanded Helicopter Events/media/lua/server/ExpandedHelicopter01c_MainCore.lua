@@ -388,7 +388,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 		local heatCell = heatMap.cells[heatMap.cellsIDs[i]]
 		---weigh list by hottest to coldest
 		local cSquare = getCell():getOrCreateGridSquare(heatCell.centerX,heatCell.centerY,0)
-		if cSquare and self:getDistanceToIsoObject(cSquare) <= range then
+		if cSquare and ( (not range) or (range and self:getDistanceToIsoObject(cSquare) <= range) ) then
 			for n=0, (cellsSize-i)+1 do table.insert(targetPool, cSquare) end
 		end
 	end
