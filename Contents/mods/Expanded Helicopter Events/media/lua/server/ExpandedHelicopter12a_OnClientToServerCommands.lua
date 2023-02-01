@@ -11,16 +11,24 @@ require "ExpandedHelicopter01f_ShadowSystem"
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
 	--serverside
-	if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _data)
+	--if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
+	--	sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _data)
 
-	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		sendServerCommand("eventShadowHandler", "setShadowPos", _data)
+	--elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
+	--	sendServerCommand("eventShadowHandler", "setShadowPos", _data)
 
-	elseif _module == "sendLooper" then
-		sendServerCommand("sendLooper", _command, _data)
+	--elseif _module == "sendLooper" then
+	--	sendServerCommand("sendLooper", _command, _data)
 
-	elseif _module == "SpawnerAPI" then
+	--else
+
+	if _module == "CustomDebugPanel" then
+		if _command == "launchHeliTest" then
+			CustomDebugPanel.launchHeliTest(_data.presetID, _player, _data.moveCloser, _data.crashIt)
+		end
+	end
+
+	if _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			--print("--spawnZombie")
 			--_dataA = player, _data = args

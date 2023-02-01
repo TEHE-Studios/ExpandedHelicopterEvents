@@ -158,17 +158,24 @@ end
 
 
 --- Test launch heli
-function CustomDebugPanel.launchHeliTest(presetID, player)
-	---@type eHelicopter heli
-	local heli = getFreeHelicopter(presetID)
-	print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))
-	heli:launch(player)
-	if CustomDebugPanel.MOVE_HELI_TEST_CLOSER == true then
-		CustomDebugPanel.moveHeliCloser(heli)
-	end
-	if CustomDebugPanel.TOGGLE_ALL_CRASH == true then
-		heli.crashing = true
-		heli:crash()
+function CustomDebugPanel.launchHeliTest(presetID, player, moveCloser, crashIt)
+
+	moveCloser = moveCloser or CustomDebugPanel.MOVE_HELI_TEST_CLOSER
+	crashIt = crashIt or CustomDebugPanel.TOGGLE_ALL_CRASH
+
+	if isClient() then
+		sendClientCommand("CustomDebugPanel", "launchHeliTest", {presetID=presetID,moveCloser=moveCloser,crashIt=crashIt})
+	else
+		print("launchHeliTest: isClient():"..tostring(isClient())..", isServer():"..tostring(isServer()))
+		---@type eHelicopter heli
+		local heli = getFreeHelicopter(presetID)
+		print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))
+		heli:launch(player)
+		if moveCloser == true then CustomDebugPanel.moveHeliCloser(heli) end
+		if crashIt == true then
+			heli.crashing = true
+			heli:crash()
+		end
 	end
 end
 

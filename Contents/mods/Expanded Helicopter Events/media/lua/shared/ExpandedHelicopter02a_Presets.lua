@@ -206,11 +206,7 @@ eHelicopter_PRESETS["air_raid"] = {
 
 local function eHelicopter_jetBombing(heli)
 	local heliX, heliY, _ = heli:getXYZAsInt()
-	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
-	soundEmitter:playSound("eCarpetBomb", heliX, heliY, 0)
-
 	local cell = getCell()
-
 	local vehiclesInCell = cell:getVehicles()
 	for i=0, vehiclesInCell:size()-1 do
 		---@type BaseVehicle
@@ -220,10 +216,17 @@ local function eHelicopter_jetBombing(heli)
 		end
 	end
 end
+
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = eHelicopter_jetBombing},
+
+	eventSoundEffects = {
+		["flightSound"] = "eJetFlight",
+		["soundAtEventOrigin"] = "eCarpetBomb",
+	},
+
 	flightHours = {12, 12},
 	eventSpawnWeight = 50,
 	schedulingFactor = 99999,

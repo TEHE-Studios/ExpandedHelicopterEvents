@@ -305,4 +305,6 @@ function eHeliEvent_OnHour()
 	end
 end
 
-Events.OnTick.Add(eHeliEvent_OnHour)
+if not isClient() then
+	Events.OnTick.Add(eHeliEvent_OnHour)
+end

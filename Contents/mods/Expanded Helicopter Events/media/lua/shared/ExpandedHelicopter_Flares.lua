@@ -89,7 +89,9 @@ function eheFlares.validateFlares()
         end
     end
 end
-Events.OnTick.Add(eheFlares.validateFlares)
+if not isClient() then
+    Events.OnTick.Add(eheFlares.validateFlares)
+end
 
 
 ---@param player IsoGameCharacter|IsoPlayer|IsoMovingObject

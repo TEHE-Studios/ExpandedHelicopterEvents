@@ -193,7 +193,7 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	--[[DEBUG] local hitReport = "-hit_report: "..self:heliToString(false)..timesFiredOnSpecificHostile..
+	--[[DEBUG]] local hitReport = "-hit_report: "..self:heliToString(false)..timesFiredOnSpecificHostile..
 			"  eMS:"..hostileVelocity.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
 	local HIT = false

@@ -196,6 +196,12 @@ local function onServerCommand(_module, _command, _data)
 	if _module == "EHE_ServerModData" and  _command == "severModData_received" then
 		onClientModDataReady()
 
+	elseif _module == "sound" then
+		if _command == "play" then
+			local soundEmitter = getWorld():getFreeEmitter()
+			if not soundEmitter:isPlaying(_data.soundEffect) then soundEmitter:playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z) end
+		end
+
 	elseif _module == "sendLooper" then
 		storedLooperEventsUpdateTimes[_data.reusableID] = getGametimeTimestamp()+100
 
@@ -214,10 +220,10 @@ local function onServerCommand(_module, _command, _data)
 		end
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, _data.color, true)
+		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, _data.color)
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		eventShadowHandler:setShadowPos(_data.eventID, _data.texture, _data.x, _data.y, _data.z, true)
+		eventShadowHandler:setShadowPos(_data.eventID, _data.texture, _data.x, _data.y, _data.z)
 	end
 end
 Events.OnServerCommand.Add(onServerCommand)--/server/ to client
