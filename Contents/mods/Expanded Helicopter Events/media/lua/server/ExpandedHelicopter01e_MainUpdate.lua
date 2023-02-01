@@ -200,9 +200,7 @@ function eHelicopter:updateEvent()
 	if self.state == "goHome" then lockOn = false end
 
 	--if it's ok to move do so, and update the shadow's position
-	if not preventMovement then
-		self:move(lockOn, true)
-	end
+	if not preventMovement then self:move(lockOn, true) end
 
 	if self.eventMarkerIcon ~= false then
 		local hX, hY, _ = self:getXYZAsInt()

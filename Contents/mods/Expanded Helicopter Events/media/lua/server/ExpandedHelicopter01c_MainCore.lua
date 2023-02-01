@@ -211,9 +211,8 @@ end
 
 ---Sets targetPosition (Vector3) to match target (IsoObject)
 function eHelicopter:setTargetPos()
-	if not self.target then
-		return
-	end
+	if not self.target then return end
+
 	local tx, ty, tz = self.target:getX(), self.target:getY(), 0
 
 	if not self.targetPosition then
@@ -253,9 +252,7 @@ end
 ---@param heliY number
 function eHelicopter:updatePosition(heliX, heliY)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-	if self.currentPosition then
-		self.currentPosition:set(heliX, heliY, self.height)
-	end
+	if self.currentPosition then self.currentPosition:set(heliX, heliY, self.height) end
 	eventSoundHandler:updatePos(self,heliX,heliY)
 end
 
@@ -263,17 +260,12 @@ end
 ---@param re_aim boolean recalculate angle to target
 ---@param dampen boolean adjust speed based on distance to target
 function eHelicopter:move(re_aim, dampen)
-
-	if self.state == "crashed" or self.state == "unLaunched" then
-		return
-	end
+	if self.state == "crashed" or self.state == "unLaunched" then return end
 
 	---@type Vector3
 	local velocity
 
-	if not self.lastMovement then
-		re_aim = true
-	end
+	if not self.lastMovement then re_aim = true end
 
 	local storedSpeed = self.speed
 	--if there's targets
@@ -295,15 +287,14 @@ function eHelicopter:move(re_aim, dampen)
 		velocity = self.lastMovement:clone()
 	end
 
-	if dampen then
-		velocity = self:dampen(velocity)
-	end
+	if dampen then velocity = self:dampen(velocity) end
 
 	--restore speed
 	self.speed = storedSpeed
 
 	--account for sped up time
-	local timeSpeed = getGameSpeed()
+	local timeSpeed = math.max(1, getGameSpeed())
+
 	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
 	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
 
@@ -312,9 +303,7 @@ function eHelicopter:move(re_aim, dampen)
 	for heli,offsets in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
 		local followingHeli = heli
-		if followingHeli then
-			followingHeli:updatePosition(v_x+offsets[1], v_y+offsets[2])
-		end
+		if followingHeli then followingHeli:updatePosition(v_x+offsets[1], v_y+offsets[2]) end
 	end
 	--self:Report(re_aim, dampen)
 end
