@@ -9,7 +9,7 @@ require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
 
 --sendClientCommand(player, module, command, args) end -- to server
-local function onCommand(_module, _command, _player, _data)
+local function onClientCommand(_module, _command, _player, _data)
 	--serverside
 	if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
 		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _data)
@@ -34,4 +34,4 @@ local function onCommand(_module, _command, _player, _data)
 		end
 	end
 end
-Events.OnClientCommand.Add(onCommand)--/client/ to server
+Events.OnClientCommand.Add(onClientCommand)--/client/ to server
