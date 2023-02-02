@@ -14,18 +14,20 @@ for type,weight in pairs(bodyPartSelectionWeight) do
 end
 
 
-local function squareGetZombieByID(square, ID)
+local function getZombieByID(square, ID)
     if not square then return end
 
-    local movingObjects = square:getMovingObjects()
-    if not movingObjects then return end
+    ---@type IsoCell
+    local cell = getCell()
+    if not cell then return end
 
-    for i=0, movingObjects:size()-1 do
+    local zombies = cell:getZombieList()
+    if not zombies then return end
+
+    for i=0, zombies:size()-1 do
         ---@type IsoZombie|IsoGameCharacter|IsoMovingObject|IsoObject
-        local zombie = movingObjects:get(i)
-        if instanceof(zombie, "IsoZombie") and zombie:getOnlineID()==ID then
-            return zombie
-        end
+        local zombie = zombies:get(i)
+        if zombie:getOnlineID()==ID then return zombie end
     end
 end
 
@@ -43,7 +45,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, x, y
     local targetHostile
 
     if targetType=="IsoZombie" and targetID then
-        targetHostile = squareGetZombieByID(square, targetID)
+        targetHostile = getZombieByID(square, targetID)
     elseif targetType=="IsoPlayer" then
         targetHostile = getPlayerByOnlineID(targetID)
     end
