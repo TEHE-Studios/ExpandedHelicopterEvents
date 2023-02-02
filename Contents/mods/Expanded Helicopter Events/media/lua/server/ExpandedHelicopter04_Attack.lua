@@ -67,23 +67,8 @@ function eHelicopter:lookForHostiles(targetType)
 end
 
 
---for targeting
-local bodyPartSelectionWeight = {
-	["Hand_L"]=5,["Hand_R"]=5,["ForeArm_L"]=10,["ForeArm_R"]=10,
-	["UpperArm_L"]=15,["UpperArm_R"]=15,["Torso_Upper"]=15,["Torso_Lower"]=15,
-	["Head"]=1,["Neck"]=1,["Groin"]=2,["UpperLeg_L"]=15,["UpperLeg_R"]=15,
-	["LowerLeg_L"]=10,["LowerLeg_R"]=10,["Foot_L"]=5,["Foot_R"]=5
-}
-local bodyPartSelection = {}
-for type,weight in pairs(bodyPartSelectionWeight) do
-	for i=1, weight do
-		--print("body parts: "..i.." - "..type)
-		table.insert(bodyPartSelection,type)
-	end
-end
 
 local vehicleParts
-
 ---@param vehicle BaseVehicle
 ---@param partById string
 local function returnValidPartById(vehicle, partById)
@@ -156,9 +141,7 @@ function eHelicopter:fireOn(targetHostile)
 
 	local targetSquare = targetHostile:getSquare()
 
-	if (targetSquare:getTree()) then
-		chance = (chance*0.8)
-	end
+	if targetSquare and (targetSquare:getTree()) then chance = (chance*0.8) end
 
 	if instanceof(targetHostile, "IsoGameCharacter") then
 		if instanceof(targetHostile, "IsoPlayer") then
@@ -249,6 +232,7 @@ function eHelicopter:fireOn(targetHostile)
 					local tire = returnValidPartById(targetHostile,tires[ZombRand(#tires)+1])
 					if tire then
 						tire:damage(damage)
+						targetHostile:transmitPartCondition(tire)
 					end
 
 				else
@@ -260,9 +244,11 @@ function eHelicopter:fireOn(targetHostile)
 						local partWindow = part:getWindow()
 						if partWindow then
 							partWindow:damage(partDamage*10)
+							targetHostile:transmitPartCondition(partWindow)
 						end
 
 						part:damage(partDamage)
+						targetHostile:transmitPartCondition(part)
 					end
 				end
 			end
@@ -274,66 +260,20 @@ function eHelicopter:fireOn(targetHostile)
 					local door = targetVehicle:getPassengerDoor(seatID)
 					if door then
 						door:damage(damage)
+						targetVehicle:transmitPartCondition(door)
 						damage = damage*0.8
 					end
 					local window = door:getWindow()
 					if window then
 						window:damage(damage*10)
+						targetVehicle:transmitPartCondition(window)
 					end
 				end
 
-				local bpRandSelect = bodyPartSelection[ZombRand(#bodyPartSelection)+1]
-				local bpType = BodyPartType.FromString(bpRandSelect)
-				local clothingBP = BloodBodyPartType.FromString(bpRandSelect)
-
-				--[[DEBUG]] local preHealth = targetHostile:getHealth()
-				--apply damage to body part
-
-				if (bpType == BodyPartType.Neck) or (bpType == BodyPartType.Head) then
-					damage = damage*4
-				elseif (bpType == BodyPartType.Torso_Upper) then
-					damage = damage*2
-				end
-
-				if instanceof(targetHostile, "IsoZombie") then
-					--Zombies receive damage directly because they don't have body parts or clothing protection
-					damage = damage*3
-					targetHostile:knockDown(true)
-
-				elseif instanceof(targetHostile, "IsoPlayer") then
-					--Messy process just to knock down the player effectively
-					targetHostile:clearVariable("BumpFallType")
-					targetHostile:setBumpType("stagger")
-					targetHostile:setBumpDone(false)
-					targetHostile:setBumpFall(ZombRand(0, 101) <= 25)
-					local bumpFallType = {"pushedBehind","pushedFront"}
-					bumpFallType = bumpFallType[ZombRand(1,3)]
-					targetHostile:setBumpFallType(bumpFallType)
-
-					--apply localized body part damage
-					local bodyDMG = targetHostile:getBodyDamage()
-					if bodyDMG then
-						local bodyPart = bodyDMG:getBodyPart(bpType)
-						if bodyPart then
-							local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
-							damage = damage * (1-(protection*0.75))
-							--print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
-
-							bodyDMG:AddDamage(bpType,damage)
-							bodyPart:damageFromFirearm(damage)
-						end
-					end
-				end
-
-				targetHostile:addHole(clothingBP)
-				targetHostile:addBlood(clothingBP, true, true, true)
-				targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
-
-				--splatter a few times
-				local splatIterations = ZombRand(1,3)
-				for _=1, splatIterations do
-					targetHostile:splatBloodFloor()
-				end
+				local targetType = tostring(targetHostile):match('[^.]+$'):match("(.-)@")
+				local targetOnlineID = targetHostile:getOnlineID()
+				local tX, tY, tZ = targetHostile:getX(), targetHostile:getY(), targetHostile:getZ()
+				heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetOnlineID, tX, tY, tZ)
 				--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 			end
 		end

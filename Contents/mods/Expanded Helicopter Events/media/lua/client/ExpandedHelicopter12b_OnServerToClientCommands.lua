@@ -196,6 +196,9 @@ local function onServerCommand(_module, _command, _data)
 	if _module == "EHE_ServerModData" and  _command == "severModData_received" then
 		onClientModDataReady()
 
+	elseif _module == "helicopterEvent" and  _command == "attack" then
+		heliEventAttackHitOnIsoGameCharacter(_data.damage, _data.targetType, _data.targetID, _data.coords.x, _data.coords.y, _data.coords.z)
+
 	elseif _module == "sound" then
 		if _command == "play" then
 			local soundEmitter = getWorld():getFreeEmitter()
