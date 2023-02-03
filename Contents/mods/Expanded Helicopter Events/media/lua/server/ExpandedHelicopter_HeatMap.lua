@@ -125,8 +125,10 @@ function heatMap.registerEventByObject(object, intensity, type, timeStamp)
 end
 
 
+---@param flare InventoryItem|IsoObject
 function heatMap.EHE_OnActivateFlare(flare)
-    if flare:isOutside() then heatMap.registerEventByObject(flare, 100, "activatedFlare") end
+    local fSquare = flare:getSquare()
+    if fSquare and fSquare:isOutside() then heatMap.registerEventByObject(flare, 100, "activatedFlare") end
 end
 Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
 
