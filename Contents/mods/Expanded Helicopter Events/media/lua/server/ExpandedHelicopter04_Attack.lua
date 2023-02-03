@@ -159,7 +159,7 @@ function eHelicopter:fireOn(targetHostile)
 			damage = (damage*0.95)
 		end
 
-		if (targetSquare:isVehicleIntersecting()) then
+		if (targetSquare and targetSquare:isVehicleIntersecting()) then
 			chance = (chance*0.8)
 		end
 	end
@@ -272,8 +272,7 @@ function eHelicopter:fireOn(targetHostile)
 
 				local targetType = tostring(targetHostile):match('[^.]+$'):match("(.-)@")
 				local targetOnlineID = targetHostile:getOnlineID()
-				local tX, tY, tZ = targetHostile:getX(), targetHostile:getY(), targetHostile:getZ()
-				heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetOnlineID, tX, tY, tZ)
+				heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetOnlineID)
 				--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 			end
 		end

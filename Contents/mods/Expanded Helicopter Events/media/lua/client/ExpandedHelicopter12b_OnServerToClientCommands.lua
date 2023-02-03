@@ -197,7 +197,7 @@ local function onServerCommand(_module, _command, _data)
 		onClientModDataReady()
 
 	elseif _module == "helicopterEvent" and  _command == "attack" then
-		heliEventAttackHitOnIsoGameCharacter(_data.damage, _data.targetType, _data.targetID, _data.coords.x, _data.coords.y, _data.coords.z)
+		heliEventAttackHitOnIsoGameCharacter(_data.damage, _data.targetType, _data.targetID)
 
 	elseif _module == "sound" then
 		if _command == "play" then

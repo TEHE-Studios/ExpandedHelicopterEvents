@@ -14,9 +14,7 @@ for type,weight in pairs(bodyPartSelectionWeight) do
 end
 
 
-local function getZombieByID(square, ID)
-    if not square then return end
-
+local function getZombieByID(ID)
     ---@type IsoCell
     local cell = getCell()
     if not cell then return end
@@ -32,20 +30,18 @@ local function getZombieByID(square, ID)
 end
 
 
-function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, x, y, z)
+function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
 
     if isServer() then
-        sendServerCommand("helicopterEvent", "attack", {damage=damage, targetType=targetType, targetID=targetID, coords={x=x,y=y,z=z}})
+        sendServerCommand("helicopterEvent", "attack", {damage=damage, targetType=targetType, targetID=targetID})
         return
     end
 
-    local square = getSquare(x, y, z)
-    if not square then return end
-
+    ---@type IsoGameCharacter|IsoZombie|IsoPlayer|IsoMovingObject
     local targetHostile
 
     if targetType=="IsoZombie" and targetID then
-        targetHostile = getZombieByID(square, targetID)
+        targetHostile = getZombieByID(targetID)
     elseif targetType=="IsoPlayer" then
         targetHostile = getPlayerByOnlineID(targetID)
     end
@@ -65,12 +61,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, x, y
         damage = damage*2
     end
 
-    if instanceof(targetHostile, "IsoZombie") then
-        --Zombies receive damage directly because they don't have body parts or clothing protection
-        damage = damage*3
-        targetHostile:knockDown(true)
-
-    elseif instanceof(targetHostile, "IsoPlayer") then
+    if instanceof(targetHostile, "IsoPlayer") then
         --Messy process just to knock down the player effectively
         targetHostile:clearVariable("BumpFallType")
         targetHostile:setBumpType("stagger")
@@ -80,6 +71,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, x, y
         bumpFallType = bumpFallType[ZombRand(1,3)]
         targetHostile:setBumpFallType(bumpFallType)
 
+        print("  EHE:[hit-player]: damage:"..damage)
         --apply localized body part damage
         local bodyDMG = targetHostile:getBodyDamage()
         if bodyDMG then
@@ -87,21 +79,29 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, x, y
             if bodyPart then
                 local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
                 damage = damage * (1-(protection*0.75))
-                --print("  EHE:[hit-dampened]: new damage:"..damage.." protection:"..protection)
-
+                print("   -- [dampened]: new damage:"..damage.." protection:"..protection)
                 bodyDMG:AddDamage(bpType,damage)
                 bodyPart:damageFromFirearm(damage)
             end
+        end
+
+    elseif instanceof(targetHostile, "IsoZombie") then
+        --Zombies receive damage directly because they don't have body parts or clothing protection
+        damage = damage*3
+        if not targetHostile:isStaggerBack() and not targetHostile:isbFalling() and not targetHostile:isOnFloor() then targetHostile:knockDown(ZombRand(2)==1 and true) end
+        targetHostile:addBlood(2)
+        targetHostile:setHealth(0)--math.max(0,targetHostile:getHealth()-damage/50))
+        print("  EHE:[hit-zombie]: new damage:"..damage.."  applied:"..(damage/50).."  hp:"..targetHostile:getHealth())
+        if targetHostile:getHealth() <= 0 then
+            targetHostile:changeState(ZombieOnGroundState.instance())
+            targetHostile:die()
         end
     end
 
     targetHostile:addHole(clothingBP)
     targetHostile:addBlood(clothingBP, true, true, true)
-    targetHostile:setHealth(targetHostile:getHealth()-(damage/100))
 
     --splatter a few times
-    local splatIterations = ZombRand(1,3)
-    for _=1, splatIterations do
-        targetHostile:splatBloodFloor()
-    end
+    local splatIterations = ZombRand(3)+1
+    for _=1, splatIterations do targetHostile:splatBloodFloor() end
 end
