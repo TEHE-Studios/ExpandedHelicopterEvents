@@ -127,8 +127,12 @@ end
 
 ---@param flare InventoryItem|IsoObject
 function heatMap.EHE_OnActivateFlare(flare)
-    local fSquare = flare:getSquare()
-    if fSquare and fSquare:isOutside() then heatMap.registerEventByObject(flare, 100, "activatedFlare") end
+    local containing = flare:getOutermostContainer()
+    local flareLoc = (containing and containing:getParent()) or flare:getWorldItem()
+    if flareLoc then
+        local flareSq = flareLoc:getSquare()
+        if flareSq and flareSq:isOutside() then heatMap.registerEventByObject(flareSq, 100, "activatedFlare") end
+    end
 end
 Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
 
