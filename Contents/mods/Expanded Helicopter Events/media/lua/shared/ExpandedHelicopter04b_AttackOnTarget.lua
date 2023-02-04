@@ -79,7 +79,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
             if bodyPart then
                 local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
                 damage = damage * (1-(protection*0.75))
-                print("   -- [dampened]: new damage:"..damage.." protection:"..protection)
+                print("   -- [dampened] damage:"..damage.." protection:"..protection)
                 bodyDMG:AddDamage(bpType,damage)
                 bodyPart:damageFromFirearm(damage)
             end
@@ -87,14 +87,15 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
 
     elseif instanceof(targetHostile, "IsoZombie") then
         --Zombies receive damage directly because they don't have body parts or clothing protection
-        damage = damage*3
+        targetHostile:addBlood(damage/100)
+        damage = (damage*3)/50
         if not targetHostile:isStaggerBack() and not targetHostile:isbFalling() and not targetHostile:isOnFloor() then targetHostile:knockDown(ZombRand(2)==1 and true) end
-        targetHostile:addBlood(2)
-        targetHostile:setHealth(0)--math.max(0,targetHostile:getHealth()-damage/50))
-        print("  EHE:[hit-zombie]: new damage:"..damage.."  applied:"..(damage/50).."  hp:"..targetHostile:getHealth())
+        targetHostile:setHealth(math.max(0,targetHostile:getHealth()-damage))
+        print("  EHE:[hit-zombie]: damage:"..damage.." hp-after:"..targetHostile:getHealth())
         if targetHostile:getHealth() <= 0 then
             targetHostile:changeState(ZombieOnGroundState.instance())
-            targetHostile:die()
+            targetHostile:setAttackedBy(getCell():getFakeZombieForHit())
+            targetHostile:becomeCorpse()
         end
     end
 
@@ -103,5 +104,5 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
 
     --splatter a few times
     local splatIterations = ZombRand(3)+1
-    for _=1, splatIterations do targetHostile:splatBloodFloor() end
+    for n=1, splatIterations do targetHostile:splatBloodFloor() end
 end
