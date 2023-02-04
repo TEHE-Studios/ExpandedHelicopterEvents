@@ -49,11 +49,12 @@ end
 
 function eheFlares.validateFlares()
     for flareObject,timestamp in pairs(eheFlares.activeTimes) do
-        ---@type InventoryItem
+        ---@type InventoryItem|IsoObject
         local flare = flareObject
         if flare and timestamp and timestamp > getGameTime():getMinutesStamp() then
 
             flare:getModData()["flareDuration"] = (timestamp-getGameTime():getMinutesStamp())
+            flare:transmitModData()
 
             ---@type IsoLightSource|IsoLightSource
             local oldLightSource = eheFlares.activeLightSources[flare]
@@ -86,6 +87,7 @@ function eheFlares.validateFlares()
             flare:getModData()["flareDuration"] = 0
             flare:setCondition(0)
             flare:setName(getText("IGUI_Spent").." "..flare:getScriptItem():getDisplayName())
+            flare:transmitModData()
         end
     end
 end
