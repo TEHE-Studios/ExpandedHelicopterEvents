@@ -76,7 +76,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 	
 	---@type BaseSoundEmitter | FMODSoundEmitter
 	local soundEmitter = storedLooperEvents[reusableID]
-	if not soundEmitter and command ~= "drop" then
+	if not soundEmitter and (command == "setPos" or command == "play") then
 		storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
 		soundEmitter = storedLooperEvents[reusableID]
 		if command=="setPos" then
