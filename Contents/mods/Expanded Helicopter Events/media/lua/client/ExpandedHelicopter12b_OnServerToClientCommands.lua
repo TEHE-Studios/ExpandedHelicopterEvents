@@ -183,6 +183,7 @@ end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
 
+local eheFlareSystem = require "ExpandedHelicopter_Flares"
 -- sendServerCommand(module, command, player, args) end -- to client
 local function onServerCommand(_module, _command, _data)
 	--clientside
@@ -193,6 +194,23 @@ local function onServerCommand(_module, _command, _data)
 		print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
 	end
 
+	if _module == "flare" then
+		if _command == "sendDuration" then
+			eheFlareSystem.sendDuration(_data.flare, _data.duration)
+
+		elseif _command == "updateLocation" then
+
+			local flareSquare = eheFlareSystem.getFlareOuterMostSquare(_data.flare)
+			if flareSquare then
+				local fSquareXYZ = {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
+				sendClientCommand("flare", "updateLocation", {loc=fSquareXYZ})
+			end
+
+		elseif _command == "processLightSource" then
+			eheFlareSystem.processLightSource(_data.flare, _data.x, _data.y, _data.z, _data.active)
+		end
+	end
+
 	if _module == "EHE_ServerModData" and  _command == "severModData_received" then
 		onClientModDataReady()
 
@@ -201,8 +219,7 @@ local function onServerCommand(_module, _command, _data)
 
 	elseif _module == "sound" then
 		if _command == "play" then
-			local soundEmitter = getWorld():getFreeEmitter()
-			if not soundEmitter:isPlaying(_data.soundEffect) then soundEmitter:playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z) end
+			getWorld():getFreeEmitter():playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z)
 		end
 
 	elseif _module == "sendLooper" then

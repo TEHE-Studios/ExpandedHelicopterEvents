@@ -1,4 +1,4 @@
-require "ExpandedHelicopter_Flares"
+local flareSystem = require "ExpandedHelicopter_Flares"
 --local heatMap = require "ExpandedHelicopter_HeatMap" --/server/
 
 local heatMap = {}

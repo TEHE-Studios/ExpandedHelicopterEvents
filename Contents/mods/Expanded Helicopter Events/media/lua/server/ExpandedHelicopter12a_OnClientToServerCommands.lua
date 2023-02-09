@@ -1,12 +1,11 @@
 LuaEventManager.AddEvent("EHE_ServerModDataReady")
 
-local function onServerModDataReady(isNewGame)
-	sendServerCommand("EHE_ServerModData", "severModData_received", {})
-end
+local function onServerModDataReady(isNewGame) sendServerCommand("EHE_ServerModData", "severModData_received", {}) end
 Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
+local eheFlareSystem = require "ExpandedHelicopter_Flares"
 
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
@@ -25,6 +24,15 @@ local function onClientCommand(_module, _command, _player, _data)
 	if _module == "CustomDebugPanel" then
 		if _command == "launchHeliTest" then
 			CustomDebugPanel.launchHeliTest(_data.presetID, _player, _data.moveCloser, _data.crashIt)
+		end
+	end
+
+	if _module == "flare" then
+		if _command == "activate" then
+			eheFlareSystem.activateFlare(_data.flare, _data.duration, _data.loc)
+			
+		elseif _command == "updateLocation" then
+			eheFlareSystem.activeObjects[_data.flare] = _data.loc
 		end
 	end
 

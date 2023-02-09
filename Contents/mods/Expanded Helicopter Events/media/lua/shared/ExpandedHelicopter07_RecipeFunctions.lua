@@ -1,6 +1,6 @@
-require "ExpandedHelicopter_Flares"
+local eheFlareSystem = require "ExpandedHelicopter_Flares"
 
-EHE_Recipe = {}
+EHE_Recipe = EHE_Recipe or {}
 
 function EHE_Recipe.CanOpenBoxes(scriptItems)
 	scriptItems:addAll(getScriptManager():getItemsTag("CanOpenBoxes"))
@@ -131,9 +131,9 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 		local tagString = ""
 
 		if tags:contains("EHESignalFlare") then
-			eheFlares.addFlareType(itemFullName, "EHESignalFlare")
+			eheFlareSystem.addFlareType(itemFullName, "EHESignalFlare")
 		elseif tags:contains("EHEFlare") then
-			eheFlares.addFlareType(itemFullName, "EHEFlare")
+			eheFlareSystem.addFlareType(itemFullName, "EHEFlare")
 		end
 
 		for ii=0, tags:size()-1 do

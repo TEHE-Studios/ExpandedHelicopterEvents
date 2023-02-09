@@ -1,8 +1,7 @@
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter00a_Util"
 require "ExpandedHelicopter00b_IsoRangeScan"
-require "ExpandedHelicopter_Flares"
-
+local flareSystem = require "ExpandedHelicopter_Flares"
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 
 ALL_HELICOPTERS = {}
@@ -386,7 +385,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 		for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
 	end
 	
-	for flare,_ in pairs(eheFlares.activeObjects) do table.insert(targetPool, flare) end
+	for flare,_ in pairs(flareSystem.activeObjects) do table.insert(targetPool, flare) end
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
@@ -402,7 +401,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 			local hottestCell = heatMap.getHottestCell()
 			if not hottestCell and instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
-			if instanceof(p, "InventoryItem") then pSquare = eheFlares.getFlareOuterMostSquare(p) end
+			if instanceof(p, "InventoryItem") then pSquare = flareSystem.getFlareOuterMostSquare(p) end
 
 			if pSquare then
 				local zone = pSquare:getZone()
@@ -435,7 +434,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 					if (targetSquare:getTree()) then iterations = math.floor(iterations*0.66) end
 				end
 
-				if eheFlares.activeObjects[p] then
+				if flareSystem.activeObjects[p] then
 					if pSquare:isOutside() then
 						iterations = iterations*5
 					else

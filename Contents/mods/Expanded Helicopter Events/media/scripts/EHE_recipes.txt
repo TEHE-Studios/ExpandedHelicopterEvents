@@ -418,9 +418,9 @@ module EHE
     {
        keep SignalFlare,
        Result:FlareCharge,
-       OnCreate:eheFlares.onCreate,
+       OnCreate:EHE_Recipe.onFlareLight,
        /*OnTest:,*/
-       OnCanPerform:eheFlares.onCanPerform,
+       OnCanPerform:EHE_Recipe.onCanLightFlare,
        Time:30.0,
        Sound:FlareShot,
     }
@@ -430,9 +430,9 @@ module EHE
        keep HandFlare,
        Result:HandFlare,
        RemoveResultItem:true,
-       OnCreate:eheFlares.onCreate,
+       OnCreate:EHE_Recipe.onFlareLight,
        /*OnTest:,*/
-       OnCanPerform:eheFlares.onCanPerform,
+       OnCanPerform:EHE_Recipe.onCanLightFlare,
        Time:30.0,
        Sound:FlareShot,
     }
