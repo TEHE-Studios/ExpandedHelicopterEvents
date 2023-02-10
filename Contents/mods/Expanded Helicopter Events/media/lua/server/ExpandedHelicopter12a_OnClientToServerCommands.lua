@@ -32,6 +32,7 @@ local function onClientCommand(_module, _command, _player, _data)
 			eheFlareSystem.activateFlare(_data.flare, _data.duration, _data.loc)
 			
 		elseif _command == "updateLocation" then
+			print(" -- onClientCommand: updateLocation")
 			eheFlareSystem.activeObjects[_data.flare] = _data.loc
 		end
 	end

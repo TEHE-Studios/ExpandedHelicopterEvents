@@ -17,14 +17,23 @@ end
 ---@param flareObject InventoryItem|IsoObject
 function eheFlareSystem.getFlareWhereContained(flareObject)
     if flareObject and instanceof(flareObject, "InventoryItem") then
+
+        print("getFlareWhereContained: ")
+
         local containing = flareObject:getOutermostContainer()
+        print(" -- containing: "..tostring(containing))
         if containing then return containing:getParent() end
+
 
         ---@type IsoWorldInventoryObject|IsoObject
         local worldItem = flareObject:getWorldItem()
+        print(" -- worldItem: "..tostring(worldItem))
         if worldItem then return worldItem end
 
-        if isServer() then sendServerCommand("flare", "updateLocation", {flare=flareObject}) end
+        if isServer() then
+            print("UPDATE LOC")
+            sendServerCommand("flare", "updateLocation", {flare=flareObject})
+        end
 
         local sentLoc = eheFlareSystem.activeObjects[flareObject]
         if sentLoc then return getSquare(sentLoc.x,sentLoc.y,sentLoc.z) end
@@ -36,6 +45,7 @@ end
 ---@param flareObject InventoryItem|IsoObject
 function eheFlareSystem.getFlareOuterMostSquare(flareObject)
     local containedIn = eheFlareSystem.getFlareWhereContained(flareObject)
+    print("- containedIn: "..tostring(containedIn))
     if containedIn then
         if instanceof(containedIn, "IsoGridSquare") then return containedIn end
         return containedIn:getSquare()
@@ -45,21 +55,19 @@ end
 
 ---@param flareObject InventoryItem|IsoObject
 function eheFlareSystem.activateFlare(flareObject, duration, location)
+    if not flareObject or not duration or (duration and duration<=0) then return end
+
+    local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flareObject)
+    local fSquareXYZ = flareSquare and {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
 
     if isClient() then
-        local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flareObject)
-        local fSquareXYZ = {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
         sendClientCommand("flare","activate", {flare=flareObject, duration=duration, loc=fSquareXYZ})
-    else
-        print("flareObject:"..tostring(flareObject).."   duration:"..duration)
-
-        if not flareObject or not duration or (duration and duration<=0) then return end
-
-        eheFlareSystem.activeObjects[flareObject] = location
-        eheFlareSystem.activeTimes[flareObject] = getGameTime():getMinutesStamp()+duration
-
-        triggerEvent("EHE_OnActivateFlare", flareObject)
     end
+
+    print("flareObject:"..tostring(flareObject).."   duration:"..duration)
+    eheFlareSystem.activeObjects[flareObject] = location or fSquareXYZ
+    eheFlareSystem.activeTimes[flareObject] = getGameTime():getMinutesStamp()+duration
+    triggerEvent("EHE_OnActivateFlare", flareObject)
 end
 
 
@@ -89,9 +97,10 @@ function eheFlareSystem.processLightSource(flare, x, y, z, active)
     end
 end
 
-function eheFlareSystem.sendDuration(flare, timestamp)
-    if (not isClient()) or (not flare) or (not timestamp) then return end
-    flare:getModData()["flareDuration"] = timestamp
+function eheFlareSystem.sendDuration(flare, duration)
+    if (not flare) or (not duration) then return end
+    print(" -- duration received: "..duration)
+    flare:getModData()["flareDuration"] = duration
 end
 
 function eheFlareSystem.validateFlare(flare, timestamp)
@@ -107,7 +116,7 @@ function eheFlareSystem.validateFlare(flare, timestamp)
         local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flare)
         if flareSquare then
             local fsqX, fsqY, fsqZ = flareSquare:getX(), flareSquare:getY(), flareSquare:getZ()
-            print(" -- -- -- SQUARE")
+            --print(" -- -- -- SQUARE")
             eheFlareSystem.processLightSource(flare, fsqX, fsqY, fsqZ, true)
             addSound(nil, flareSquare:getX(),flareSquare:getY(), flareSquare:getZ(), 15, 25)
 
@@ -145,14 +154,13 @@ eheFlareSystem.scannedObjects = {}
 function eheFlareSystem.scanForActiveFlares(object)
     if not object then return end
 
-    if eheFlareSystem.scannedObjects[object] then return end
-    eheFlareSystem.scannedObjects[object] = true
-
     local items
 
     if instanceof(object, "IsoGameCharacter") then
         items = object:getInventory():getItems()
     elseif instanceof(object, "IsoGridSquare") then
+        if eheFlareSystem.scannedObjects[object] then return end
+        eheFlareSystem.scannedObjects[object] = true
         items = object:getWorldObjects()
     end
 
@@ -166,8 +174,14 @@ function eheFlareSystem.scanForActiveFlares(object)
                 local flareDuration = item:getModData()["flareDuration"]
                 local flareType = eheFlareSystem.flareTypes[item:getFullType()]
                 if item and flareType and (flareType =="EHEFlare") and (not item:isBroken()) and flareDuration and flareDuration>0 then
-                    --print(" -- found previously active flare: "..tostring(object).."  durationLeft: "..flareDuration)
-                    eheFlareSystem.activateFlare(item, flareDuration)
+
+                    if not eheFlareSystem.activeObjects[item] then
+                        eheFlareSystem.activateFlare(item, flareDuration)
+                    end
+
+                    if eheFlareSystem.activeTimes[item] then
+                        eheFlareSystem.validateFlare(item, eheFlareSystem.activeTimes[item])
+                    end
                 end
             end
         end
@@ -212,6 +226,7 @@ function EHE_Recipe.onFlareLight(recipe, result, player)
             result:getWorldItem():transmitCompleteItemToServer()
         end
     end
+    flare:getModData()["flareLit"] = true
     eheFlareSystem.activateFlare(flare, eheFlareSystem.Duration)
 end
 
@@ -220,7 +235,7 @@ end
 ---@param item InventoryItem
 function EHE_Recipe.onCanLightFlare(recipe, player, item)
     --and (not eheFlareSystem.activeObjects[item])
-    if item and (not item:isBroken()) and (not item:getModData()["flareDuration"]) then
+    if item and (not item:isBroken()) and (not item:getModData()["flareLit"]) then
         return true
     end
     return false
