@@ -1,14 +1,16 @@
 ---FLARE SYSTEM PROPER
 local eheFlareSystem = {}
+
 eheFlareSystem.activeObjects = {}
 eheFlareSystem.activeTimes = {}
 eheFlareSystem.activeLightSources = {}
 eheFlareSystem.activeSoundLoop = {}
+
 eheFlareSystem.Duration = 30
+
 eheFlareSystem.flareTypes = {} --["HandFlare"] = "EHEFlare", ["SignalFlare"] = "EHESignalFlare", }
 
 function eheFlareSystem.getFlareTypes() return eheFlareSystem.flareTypes end
-
 function eheFlareSystem.addFlareType(itemModuleDotType, flareType)
     if not itemModuleDotType or not flareType then return end
     eheFlareSystem.flareTypes[itemModuleDotType] = flareType
@@ -18,22 +20,17 @@ end
 function eheFlareSystem.getFlareWhereContained(flareObject)
     if flareObject and instanceof(flareObject, "InventoryItem") then
 
-        print("getFlareWhereContained: ")
+        --print("getFlareWhereContained: ")
 
         local containing = flareObject:getOutermostContainer()
-        print(" -- containing: "..tostring(containing))
+        --print("   -- containing:  "..tostring(containing))
         if containing then return containing:getParent() end
 
 
         ---@type IsoWorldInventoryObject|IsoObject
         local worldItem = flareObject:getWorldItem()
-        print(" -- worldItem: "..tostring(worldItem))
+        --print("   -- worldItem:  "..tostring(worldItem))
         if worldItem then return worldItem end
-
-        if isServer() then
-            print("UPDATE LOC")
-            sendServerCommand("flare", "updateLocation", {flare=flareObject})
-        end
 
         local sentLoc = eheFlareSystem.activeObjects[flareObject]
         if sentLoc then return getSquare(sentLoc.x,sentLoc.y,sentLoc.z) end
@@ -45,7 +42,7 @@ end
 ---@param flareObject InventoryItem|IsoObject
 function eheFlareSystem.getFlareOuterMostSquare(flareObject)
     local containedIn = eheFlareSystem.getFlareWhereContained(flareObject)
-    print("- containedIn: "..tostring(containedIn))
+    --print("- containedIn: "..tostring(containedIn).."   "..tostring(flareObject))
     if containedIn then
         if instanceof(containedIn, "IsoGridSquare") then return containedIn end
         return containedIn:getSquare()
@@ -57,14 +54,17 @@ end
 function eheFlareSystem.activateFlare(flareObject, duration, location)
     if not flareObject or not duration or (duration and duration<=0) then return end
 
+    flareObject:getModData()["flareDuration"] = duration
     local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flareObject)
     local fSquareXYZ = flareSquare and {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
 
     if isClient() then
+        --print(" -- activateFlare: client   "..tostring(flareObject).."   ID:"..flareObject:getID())
         sendClientCommand("flare","activate", {flare=flareObject, duration=duration, loc=fSquareXYZ})
+        return
     end
 
-    print("flareObject:"..tostring(flareObject).."   duration:"..duration)
+    --print("flareObject:"..tostring(flareObject).."   ID:"..flareObject:getID().."   duration:"..duration)
     eheFlareSystem.activeObjects[flareObject] = location or fSquareXYZ
     eheFlareSystem.activeTimes[flareObject] = getGameTime():getMinutesStamp()+duration
     triggerEvent("EHE_OnActivateFlare", flareObject)
@@ -75,7 +75,6 @@ function eheFlareSystem.processLightSource(flare, x, y, z, active)
 
     if isServer() then
         sendServerCommand("flare", "processLightSource", {flare=flare, x=x, y=y, z=z, active=active})
-
     else
         ---@type IsoLightSource|IsoLightSource
         local currentLightSource = eheFlareSystem.activeLightSources[flare]
@@ -97,36 +96,56 @@ function eheFlareSystem.processLightSource(flare, x, y, z, active)
     end
 end
 
+
 function eheFlareSystem.sendDuration(flare, duration)
     if (not flare) or (not duration) then return end
-    print(" -- duration received: "..duration)
     flare:getModData()["flareDuration"] = duration
 end
 
-function eheFlareSystem.validateFlare(flare, timestamp)
 
-    --print(" -- flare:"..tostring(flare~=nil).."  "..timestamp.."  "..getGameTime():getMinutesStamp())
+---@param flare InventoryItem|IsoObject
+function eheFlareSystem.validateFlare(flare, timestamp, location)
+
+    if isClient() then
+        local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flare)
+        local fSquareXYZ = flareSquare and {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
+        --print(" -- validateFlare: client   "..tostring(flare).."   (ID:"..flare:getID()..")")
+        sendClientCommand("flare","validate", {flare=flare, timestamp=timestamp, loc=fSquareXYZ})
+        return
+    end
+
+    --print(" -- flare:"..tostring(flare).."  (ID:"..tostring(flare:getID()).."  "..tostring(timestamp).."  "..getGameTime():getMinutesStamp())
+
+    timestamp = timestamp or eheFlareSystem.activeTimes[flare]
+
+    if not eheFlareSystem.activeObjects[flare] then
+        local flareDuration = flare:getModData()["flareDuration"]
+        eheFlareSystem.activateFlare(flare, flareDuration, location)
+        return
+    end
+
+    if location then eheFlareSystem.activeObjects[flare] = location end
 
     if timestamp > getGameTime():getMinutesStamp() then
-        print(" -- -- flare ts > gTgMS  server:"..tostring(isServer()))
+        --print(" -- -- flare ts > gTgMS  "..tostring(flare).."  server:"..tostring(isServer()))
         flare:getModData()["flareDuration"] = (timestamp-getGameTime():getMinutesStamp())
         if isServer() then sendServerCommand("flare", "sendDuration", {flare=flare, duration=flare:getModData()["flareDuration"]}) end
 
         ---@type IsoGridSquare
-        local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flare)
-        if flareSquare then
-            local fsqX, fsqY, fsqZ = flareSquare:getX(), flareSquare:getY(), flareSquare:getZ()
-            --print(" -- -- -- SQUARE")
-            eheFlareSystem.processLightSource(flare, fsqX, fsqY, fsqZ, true)
-            addSound(nil, flareSquare:getX(),flareSquare:getY(), flareSquare:getZ(), 15, 25)
+        local flareLoc = eheFlareSystem.activeObjects[flare]
+        if flareLoc then
+
+            eheFlareSystem.processLightSource(flare, flareLoc.x, flareLoc.y, flareLoc.z, true)
+            addSound(nil, flareLoc.x, flareLoc.y, flareLoc.z, 15, 25)
 
             if not eheFlareSystem.activeSoundLoop[flare] or eheFlareSystem.activeSoundLoop[flare] < getTimeInMillis() then
                 eheFlareSystem.activeSoundLoop[flare] = getTimeInMillis()+750
 
                 if isServer() then
-                    sendServerCommand("sound", "play", {soundEffect="eheFlare", coords={x=fsqX,y=fsqY,z=fsqZ}})
+                    sendServerCommand("sound", "play", {soundEffect="eheFlare", coords={x=flareLoc.x,y=flareLoc.y,z=flareLoc.z}})
                 else
-                    flareSquare:playSound("eheFlare")
+                    local square = getSquare(flareLoc.x, flareLoc.y, flareLoc.z)
+                    if square then square:playSound("eheFlare") end
                 end
             end
         end
@@ -171,16 +190,15 @@ function eheFlareSystem.scanForActiveFlares(object)
             if item and instanceof(item, "IsoWorldInventoryObject") then item = item:getItem() end
 
             if item and instanceof(item, "InventoryItem") then
-                local flareDuration = item:getModData()["flareDuration"]
+                --local flareDuration = item:getModData()["flareDuration"]
                 local flareType = eheFlareSystem.flareTypes[item:getFullType()]
-                if item and flareType and (flareType =="EHEFlare") and (not item:isBroken()) and flareDuration and flareDuration>0 then
+                if item and flareType and (flareType =="EHEFlare") then
+                    if (not item:isBroken()) and item:getModData()["flareLit"] then
+                        --print(" ---- validateFlare: "..tostring(item))
+                        --eheFlareSystem.activateFlare(item, flareDuration)
 
-                    if not eheFlareSystem.activeObjects[item] then
-                        eheFlareSystem.activateFlare(item, flareDuration)
-                    end
-
-                    if eheFlareSystem.activeTimes[item] then
-                        eheFlareSystem.validateFlare(item, eheFlareSystem.activeTimes[item])
+                        local flareXYZ = {x=object:getX(),y=object:getY(),z=object:getZ()}
+                        eheFlareSystem.validateFlare(item, nil, flareXYZ)--, eheFlareSystem.activeTimes[item])
                     end
                 end
             end
@@ -234,7 +252,6 @@ end
 ---@param player IsoGameCharacter | IsoPlayer
 ---@param item InventoryItem
 function EHE_Recipe.onCanLightFlare(recipe, player, item)
-    --and (not eheFlareSystem.activeObjects[item])
     if item and (not item:isBroken()) and (not item:getModData()["flareLit"]) then
         return true
     end

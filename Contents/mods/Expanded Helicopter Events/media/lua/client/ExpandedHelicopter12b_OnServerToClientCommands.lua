@@ -196,17 +196,6 @@ local function onServerCommand(_module, _command, _data)
 
 	if _module == "flare" then
 		if _command == "sendDuration" then eheFlareSystem.sendDuration(_data.flare, _data.duration) end
-
-		if _command == "updateLocation" then
-			print("--onServerCommand: updateLocation:")
-			local flareSquare = eheFlareSystem.getFlareOuterMostSquare(_data.flare)
-			if flareSquare then
-				local fSquareXYZ = {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
-				print("  -- -- --: "..flareSquare:getX()..", "..flareSquare:getY())
-				sendClientCommand("flare", "updateLocation", {loc=fSquareXYZ})
-			end
-		end
-
 		if _command == "processLightSource" then eheFlareSystem.processLightSource(_data.flare, _data.x, _data.y, _data.z, _data.active) end
 	end
 
