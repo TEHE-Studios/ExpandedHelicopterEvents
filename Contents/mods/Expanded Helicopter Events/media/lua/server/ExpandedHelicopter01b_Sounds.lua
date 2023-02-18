@@ -67,7 +67,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 			sendServerCommand("sendLooper", "play", {reusableID=("HELI"..heli.ID), soundEffect=soundEffect, coords={x=heliX,y=heliY,z=heliZ}})
 		else
 			local x, y, z = otherLocation:getX(), otherLocation:getY(), otherLocation:getZ()
-			sendServerCommand("sound", "play", {soundEffect=soundEffect, coords={x=x,y=y,z=z}})
+			sendServerCommand("sendLooper", "playOnce", {soundEffect=soundEffect, coords={x=x,y=y,z=z}})
 		end
 
 	else

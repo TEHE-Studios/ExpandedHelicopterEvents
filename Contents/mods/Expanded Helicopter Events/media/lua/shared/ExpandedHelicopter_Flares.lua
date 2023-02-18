@@ -2,6 +2,7 @@
 local eheFlareSystem = {}
 
 eheFlareSystem.activeObjects = {}
+eheFlareSystem.activeLocations = {}
 eheFlareSystem.activeTimes = {}
 eheFlareSystem.activeLightSources = {}
 eheFlareSystem.activeSoundLoop = {}
@@ -32,7 +33,7 @@ function eheFlareSystem.getFlareWhereContained(flareObject)
         --print("   -- worldItem:  "..tostring(worldItem))
         if worldItem then return worldItem end
 
-        local sentLoc = eheFlareSystem.activeObjects[flareObject]
+        local sentLoc = eheFlareSystem.activeLocations[flareObject:getID()]
         if sentLoc then return getSquare(sentLoc.x,sentLoc.y,sentLoc.z) end
     end
 end
@@ -65,34 +66,37 @@ function eheFlareSystem.activateFlare(flareObject, duration, location)
     end
 
     --print("flareObject:"..tostring(flareObject).."   ID:"..flareObject:getID().."   duration:"..duration)
-    eheFlareSystem.activeObjects[flareObject] = location or fSquareXYZ
-    eheFlareSystem.activeTimes[flareObject] = getGameTime():getMinutesStamp()+duration
+    eheFlareSystem.activeObjects[flareObject:getID()] = flareObject
+    eheFlareSystem.activeLocations[flareObject:getID()] = location or fSquareXYZ
+    eheFlareSystem.activeTimes[flareObject:getID()] = getGameTime():getMinutesStamp()+duration
     triggerEvent("EHE_OnActivateFlare", flareObject)
 end
 
 
 function eheFlareSystem.processLightSource(flare, x, y, z, active)
+    if isServer() then return end
+    --print("PROCESS LIGHT -- x"..tostring(x)..", y"..tostring(y)..", z"..tostring(z).." = "..tostring(active))
 
-    if isServer() then
-        sendServerCommand("flare", "processLightSource", {flare=flare, x=x, y=y, z=z, active=active})
-    else
-        ---@type IsoLightSource|IsoLightSource
-        local currentLightSource = eheFlareSystem.activeLightSources[flare]
+    ---@type IsoLightSource|IsoLightSource
+    local currentLight = eheFlareSystem.activeLightSources[flare:getID()]
+    local ignoreUpdate = currentLight and currentLight:getX()==x and currentLight:getY()==y and currentLight:getZ()==z
 
-        if active==true then
-            eheFlareSystem.activeLightSources[flare] = IsoLightSource.new(x, y, z, 200, 0, 0, 4)
-            getCell():addLamppost(eheFlareSystem.activeLightSources[flare])
-        end
+    if active==true then
+        if ignoreUpdate then return end
 
-        if currentLightSource then
-            currentLightSource:setActive(false)
-            getCell():removeLamppost(currentLightSource)
-        end
+        eheFlareSystem.activeLightSources[flare:getID()] = IsoLightSource.new(x, y, z, 200, 0, 0, 4)
+        --print("activeLightSources ID:"..tostring(eheFlareSystem.activeLightSources[flare:getID()]))
+        getCell():addLamppost(eheFlareSystem.activeLightSources[flare:getID()])
+    end
 
-        if active==false then
-            flare:setCondition(0)
-            flare:setName(getText("IGUI_Spent").." "..flare:getScriptItem():getDisplayName())
-        end
+    if currentLight then
+        currentLight:setActive(false)
+        getCell():removeLamppost(currentLight)
+    end
+
+    if active==false then
+        flare:setCondition(0)
+        flare:setName(getText("IGUI_Spent").." "..flare:getScriptItem():getDisplayName())
     end
 end
 
@@ -107,42 +111,54 @@ end
 function eheFlareSystem.validateFlare(flare, timestamp, location)
 
     if isClient() then
-        local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flare)
-        local fSquareXYZ = flareSquare and {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
+        if not location then
+            local flareSquare = eheFlareSystem.getFlareOuterMostSquare(flare)
+            location = flareSquare and {x=flareSquare:getX(),y=flareSquare:getY(),z=flareSquare:getZ()}
+        end
         --print(" -- validateFlare: client   "..tostring(flare).."   (ID:"..flare:getID()..")")
-        sendClientCommand("flare","validate", {flare=flare, timestamp=timestamp, loc=fSquareXYZ})
+        sendClientCommand("flare","validate", {flare=flare, timestamp=timestamp, loc=location})
         return
     end
 
     --print(" -- flare:"..tostring(flare).."  (ID:"..tostring(flare:getID()).."  "..tostring(timestamp).."  "..getGameTime():getMinutesStamp())
 
-    timestamp = timestamp or eheFlareSystem.activeTimes[flare]
+    timestamp = timestamp or eheFlareSystem.activeTimes[flare:getID()]
 
-    if not eheFlareSystem.activeObjects[flare] then
+    if not eheFlareSystem.activeLocations[flare:getID()] then
         local flareDuration = flare:getModData()["flareDuration"]
         eheFlareSystem.activateFlare(flare, flareDuration, location)
         return
     end
 
-    if location then eheFlareSystem.activeObjects[flare] = location end
+    if location then eheFlareSystem.activeLocations[flare:getID()] = location end
+
+    local serverCommandData --={}
 
     if timestamp > getGameTime():getMinutesStamp() then
         --print(" -- -- flare ts > gTgMS  "..tostring(flare).."  server:"..tostring(isServer()))
         flare:getModData()["flareDuration"] = (timestamp-getGameTime():getMinutesStamp())
-        if isServer() then sendServerCommand("flare", "sendDuration", {flare=flare, duration=flare:getModData()["flareDuration"]}) end
+        if isServer() then
+            serverCommandData = serverCommandData or {}
+            serverCommandData.flare = flare
+            serverCommandData.duration = flare:getModData()["flareDuration"]
+        end
 
         ---@type IsoGridSquare
-        local flareLoc = eheFlareSystem.activeObjects[flare]
+        local flareLoc = eheFlareSystem.activeLocations[flare:getID()]
         if flareLoc then
 
             eheFlareSystem.processLightSource(flare, flareLoc.x, flareLoc.y, flareLoc.z, true)
             addSound(nil, flareLoc.x, flareLoc.y, flareLoc.z, 15, 25)
 
-            if not eheFlareSystem.activeSoundLoop[flare] or eheFlareSystem.activeSoundLoop[flare] < getTimeInMillis() then
-                eheFlareSystem.activeSoundLoop[flare] = getTimeInMillis()+750
+            serverCommandData = serverCommandData or {}
+            serverCommandData.coords = {x=flareLoc.x,y=flareLoc.y,z=flareLoc.z}
+            serverCommandData.active = true
+
+            if not eheFlareSystem.activeSoundLoop[flare:getID()] or eheFlareSystem.activeSoundLoop[flare:getID()] < getTimeInMillis() then
+                eheFlareSystem.activeSoundLoop[flare:getID()] = getTimeInMillis()+750
 
                 if isServer() then
-                    sendServerCommand("sound", "play", {soundEffect="eheFlare", coords={x=flareLoc.x,y=flareLoc.y,z=flareLoc.z}})
+                    serverCommandData.soundEffect = "eheFlare"
                 else
                     local square = getSquare(flareLoc.x, flareLoc.y, flareLoc.z)
                     if square then square:playSound("eheFlare") end
@@ -151,21 +167,29 @@ function eheFlareSystem.validateFlare(flare, timestamp, location)
         end
 
     else
-        eheFlareSystem.activeObjects[flare] = nil
-        eheFlareSystem.activeTimes[flare] = nil
+        eheFlareSystem.activeObjects[flare:getID()] = nil
+        eheFlareSystem.activeLocations[flare:getID()] = nil
+        eheFlareSystem.activeTimes[flare:getID()] = nil
         flare:getModData()["flareDuration"] = 0
-        if isServer() then sendServerCommand("flare", "sendDuration", {flare=flare, duration=0}) end
         eheFlareSystem.processLightSource(flare, nil, nil, nil, false)
+        if isServer() then
+            serverCommandData = serverCommandData or {}
+            serverCommandData.flare = flare
+            serverCommandData.duration = 0
+            serverCommandData.coords = {x=nil, y=nil, z=nil}
+            serverCommandData.active = false
+        end
     end
+
+    if serverCommandData then sendServerCommand("flare", "updateClient", serverCommandData) end
 end
 
 
 function eheFlareSystem.validateFlares()
-    for flareObject,timestamp in pairs(eheFlareSystem.activeTimes) do eheFlareSystem.validateFlare(flareObject, timestamp) end
+    for flareID,flare in pairs(eheFlareSystem.activeObjects) do eheFlareSystem.validateFlare(flare, eheFlareSystem.activeTimes[flareID]) end
 end
-if not isClient() then
-    Events.OnTick.Add(eheFlareSystem.validateFlares)
-end
+
+if not isClient() then Events.OnTick.Add(eheFlareSystem.validateFlares) end
 
 
 eheFlareSystem.scannedObjects = {}
