@@ -56,7 +56,7 @@ module Base {
 
      sound eheFlare {
          category = EHE: Main, loop = false, is3D = true,
-         clip { file = media/sound/crashes_bombs_misc/flare.ogg, distanceMax = 80, reverbFactor = 0.1, volume = 0.25, } }
+         clip { file = media/sound/crashes_bombs_misc/flare.ogg, distanceMax = 33, reverbFactor = 0.01, volume = 0.15, } }
 
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
