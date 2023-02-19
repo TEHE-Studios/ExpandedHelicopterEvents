@@ -102,9 +102,9 @@ module Base {
 
     sound eHeli_fire_impact {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_fire_impact1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/gunfire/heli_fire_impact2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/gunfire/heli_fire_impact3.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/gunfire/heli_fire_impact1.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
+        clip { file = media/sound/gunfire/heli_fire_impact2.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
+        clip { file = media/sound/gunfire/heli_fire_impact3.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eHeli_lineM_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
