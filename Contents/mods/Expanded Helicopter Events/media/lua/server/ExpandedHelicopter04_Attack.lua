@@ -115,14 +115,16 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 		end
 	end
 
-	--fireSound
-	local eventSound = "attackSingle"
-	if self.hostilesToFireOnIndex > 1 then
-		eventSound = "attackLooped"
+	if not soundDelay then
+		--fireSound
+		local eventSound = "attackSingle"
+		if self.hostilesToFireOnIndex > 1 then
+			eventSound = "attackLooped"
+		end
+		--determine location of helicopter
+		eventSoundHandler:playEventSound(self, eventSound, nil, nil, nil, soundDelay)
+		eventSoundHandler:playEventSound(self, "attackingSound", nil, nil, nil, soundDelay)
 	end
-	--determine location of helicopter
-	eventSoundHandler:playEventSound(self, eventSound, nil, nil, nil, soundDelay)
-	eventSoundHandler:playEventSound(self, "attackingSound", nil, nil, nil, soundDelay)
 
 	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies
