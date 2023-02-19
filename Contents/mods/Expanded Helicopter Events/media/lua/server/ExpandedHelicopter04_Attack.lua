@@ -75,7 +75,7 @@ function eHelicopter:lookForHostiles(targetType)
 				if otherHostile then
 					local dist = IsoUtils.DistanceTo(hX, hY, otherHostile:getX(), otherHostile:getY())
 					if dist <= self.attackSplash then
-						local randDelay = ZombRand(4,10)
+						local randDelay = ZombRand(1,4)
 						self:fireOn(otherHostile, randDelay)
 						self.hostilesToFireOn[k] = nil
 					end
