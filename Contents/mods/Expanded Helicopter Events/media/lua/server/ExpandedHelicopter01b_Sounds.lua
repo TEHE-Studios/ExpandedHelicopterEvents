@@ -26,7 +26,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	end
 
 	if delay then
-		table.insert(heli.delayedEventSounds, { ["event"]=soundEvent, ["otherLocation"]=otherLocation,
+		table.insert(heli.delayedEventSounds, { ["soundEvent"]=soundEvent, ["otherLocation"]=otherLocation,
 			["saveEmitter"]=saveEmitter, ["stopSound"]=stopSound, ["delay"]=getGametimeTimestamp()+delay })
 		return
 	end
@@ -107,7 +107,7 @@ function eventSoundHandler:checkEventSounds(heli)
 	for placeInList,EventSound in pairs(heli.delayedEventSounds) do
 		--event, otherLocation, saveEmitter, stopSound, delay
 		if currentTime <= EventSound["delay"] then
-			eventSoundHandler:playEventSound(heli, EventSound["otherLocation"], EventSound["saveEmitter"], EventSound["stopSound"])
+			eventSoundHandler:playEventSound(heli, EventSound["soundEvent"], EventSound["otherLocation"], EventSound["saveEmitter"], EventSound["stopSound"])
 			heli.delayedEventSounds[placeInList] = nil
 		end
 	end
