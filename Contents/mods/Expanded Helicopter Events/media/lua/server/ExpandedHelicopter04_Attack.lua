@@ -75,7 +75,8 @@ function eHelicopter:lookForHostiles(targetType)
 				if otherHostile then
 					local dist = IsoUtils.DistanceTo(hX, hY, otherHostile:getX(), otherHostile:getY())
 					if dist <= self.attackSplash then
-						self:fireOn(otherHostile)
+						local randDelay = ZombRand(4,10)
+						self:fireOn(otherHostile, randDelay)
 						self.hostilesToFireOn[k] = nil
 					end
 				end
@@ -102,7 +103,7 @@ local function returnValidPartById(vehicle, partById)
 end
 
 ---@param targetHostile IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie
-function eHelicopter:fireOn(targetHostile)
+function eHelicopter:fireOn(targetHostile, soundDelay)
 
 	self.lastAttackTime = getTimeInMillis()
 
@@ -120,8 +121,8 @@ function eHelicopter:fireOn(targetHostile)
 		eventSound = "attackLooped"
 	end
 	--determine location of helicopter
-	eventSoundHandler:playEventSound(self, eventSound)
-	eventSoundHandler:playEventSound(self, "attackingSound")
+	eventSoundHandler:playEventSound(self, eventSound, nil, nil, nil, soundDelay)
+	eventSoundHandler:playEventSound(self, "attackingSound", nil, nil, nil, soundDelay)
 
 	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies
@@ -314,7 +315,7 @@ function eHelicopter:fireOn(targetHostile)
 	end
 
 	--fireImpacts
-	eventSoundHandler:playEventSound(self, "attackImpacts", targetHostile:getSquare())
+	eventSoundHandler:playEventSound(self, "attackImpacts", targetHostile:getSquare(), nil, nil, soundDelay)
 end
 
 
