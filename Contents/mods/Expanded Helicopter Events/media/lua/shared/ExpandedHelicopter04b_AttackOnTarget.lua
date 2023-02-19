@@ -71,7 +71,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         bumpFallType = bumpFallType[ZombRand(1,3)]
         targetHostile:setBumpFallType(bumpFallType)
 
-        print("  EHE:[hit-player]: damage:"..damage)
+        --print("  EHE:[hit-player]: damage:"..damage)
         --apply localized body part damage
         local bodyDMG = targetHostile:getBodyDamage()
         if bodyDMG then
@@ -79,7 +79,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
             if bodyPart then
                 local protection = targetHostile:getBodyPartClothingDefense(BodyPartType.ToIndex(bpType), false, true)/100
                 damage = damage * (1-(protection*0.75))
-                print("   -- [dampened] damage:"..damage.." protection:"..protection)
+                --print("   -- [dampened] damage:"..damage.." protection:"..protection)
                 bodyDMG:AddDamage(bpType,damage)
                 bodyPart:damageFromFirearm(damage)
             end
@@ -91,7 +91,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         damage = (damage*3)/50
         if not targetHostile:isStaggerBack() and not targetHostile:isbFalling() and not targetHostile:isOnFloor() then targetHostile:knockDown(ZombRand(2)==1 and true) end
         targetHostile:setHealth(math.max(0,targetHostile:getHealth()-damage))
-        print("  EHE:[hit-zombie]: damage:"..damage.." hp-after:"..targetHostile:getHealth())
+        --print("  EHE:[hit-zombie]: damage:"..damage.." hp-after:"..targetHostile:getHealth())
         if targetHostile:getHealth() <= 0 then
             targetHostile:changeState(ZombieOnGroundState.instance())
             targetHostile:setAttackedBy(getCell():getFakeZombieForHit())
