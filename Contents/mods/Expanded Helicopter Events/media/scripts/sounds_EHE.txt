@@ -31,6 +31,8 @@ module Base {
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/music/banjo-romp-Caffeine_Creek_Band.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
+        clip { file = media/sound/music/happy-brithday-tuba-Nesrality.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/HowdyDoodyTime.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
     sound eHeliMusicAggressive {

@@ -1,8 +1,7 @@
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter00a_Util"
 require "ExpandedHelicopter00b_IsoRangeScan"
-require "ExpandedHelicopter_Flares"
-
+local flareSystem = require "ExpandedHelicopter_Flares"
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 
 ALL_HELICOPTERS = {}
@@ -142,7 +141,7 @@ end
 function eHelicopter:isInBounds()
 	local h_x, h_y, _ = self:getXYZAsInt()
 
-	if h_x < eheBounds.MAX_X+1 and h_x > eheBounds.MIN_X-1 and h_y < eheBounds.MAX_Y+1 and h_y > eheBounds.MIN_Y-1 then
+	if h_x and h_y and h_x < eheBounds.MAX_X+1 and h_x > eheBounds.MIN_X-1 and h_y < eheBounds.MAX_Y+1 and h_y > eheBounds.MIN_Y-1 then
 		return true
 	end
 
@@ -211,9 +210,8 @@ end
 
 ---Sets targetPosition (Vector3) to match target (IsoObject)
 function eHelicopter:setTargetPos()
-	if not self.target then
-		return
-	end
+	if not self.target then return end
+
 	local tx, ty, tz = self.target:getX(), self.target:getY(), 0
 
 	if not self.targetPosition then
@@ -253,9 +251,7 @@ end
 ---@param heliY number
 function eHelicopter:updatePosition(heliX, heliY)
 	--The actual movement occurs here when the modified `velocity` is added to `self.currentPosition`
-	if self.currentPosition then
-		self.currentPosition:set(heliX, heliY, self.height)
-	end
+	if self.currentPosition then self.currentPosition:set(heliX, heliY, self.height) end
 	eventSoundHandler:updatePos(self,heliX,heliY)
 end
 
@@ -263,17 +259,12 @@ end
 ---@param re_aim boolean recalculate angle to target
 ---@param dampen boolean adjust speed based on distance to target
 function eHelicopter:move(re_aim, dampen)
-
-	if self.state == "crashed" or self.state == "unLaunched" then
-		return
-	end
+	if self.state == "crashed" or self.state == "unLaunched" then return end
 
 	---@type Vector3
 	local velocity
 
-	if not self.lastMovement then
-		re_aim = true
-	end
+	if not self.lastMovement then re_aim = true end
 
 	local storedSpeed = self.speed
 	--if there's targets
@@ -295,15 +286,14 @@ function eHelicopter:move(re_aim, dampen)
 		velocity = self.lastMovement:clone()
 	end
 
-	if dampen then
-		velocity = self:dampen(velocity)
-	end
+	if dampen then velocity = self:dampen(velocity) end
 
 	--restore speed
 	self.speed = storedSpeed
 
 	--account for sped up time
-	local timeSpeed = getGameSpeed()
+	local timeSpeed = math.max(1, getGameSpeed())
+
 	local v_x = Vector3GetX(self.currentPosition)+(Vector3GetX(velocity)*timeSpeed)
 	local v_y = Vector3GetY(self.currentPosition)+(Vector3GetY(velocity)*timeSpeed)
 
@@ -312,9 +302,7 @@ function eHelicopter:move(re_aim, dampen)
 	for heli,offsets in pairs(self.formationFollowingHelis) do
 		---@type eHelicopter
 		local followingHeli = heli
-		if followingHeli then
-			followingHeli:updatePosition(v_x+offsets[1], v_y+offsets[2])
-		end
+		if followingHeli then followingHeli:updatePosition(v_x+offsets[1], v_y+offsets[2]) end
 	end
 	--self:Report(re_aim, dampen)
 end
@@ -379,7 +367,6 @@ function eHelicopter:findTarget(range, DEBUGID)
 	local weightedTargetList = {}
 	local maxWeight = 15
 
-	--addActualPlayersToEIP()
 	local targetPool = {}
 
 	heatMap.sortCellsByHeat()
@@ -393,8 +380,12 @@ function eHelicopter:findTarget(range, DEBUGID)
 		end
 	end
 
-	--for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
-	for flare,_ in pairs(eheFlares.activeObjects) do table.insert(targetPool, flare) end
+	if #targetPool <= 0 then
+		addActualPlayersToEIP()
+		for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
+	end
+	
+	for flare,_ in pairs(flareSystem.activeObjects) do table.insert(targetPool, flare) end
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
@@ -410,7 +401,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 			local hottestCell = heatMap.getHottestCell()
 			if not hottestCell and instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
-			if instanceof(p, "InventoryItem") then pSquare = eheFlares.getFlareOuterMostSquare(p) end
+			if instanceof(p, "InventoryItem") then pSquare = flareSystem.getFlareOuterMostSquare(p) end
 
 			if pSquare then
 				local zone = pSquare:getZone()
@@ -424,9 +415,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 						elseif (zoneType == "Forest" or zoneType == "Vegitation") then
 							iterations = 4
 						elseif (zoneType == "FarmLand") then
-							iterations = 6
+							iterations = 5
 						elseif (zoneType == "Farm") then
-							iterations = 7
+							iterations = 6
 						elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
 							iterations = 9
 						elseif (zoneType == "TownZone") then
@@ -443,7 +434,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 					if (targetSquare:getTree()) then iterations = math.floor(iterations*0.66) end
 				end
 
-				if eheFlares.activeObjects[p] then
+				if flareSystem.activeObjects[p] then
 					if pSquare:isOutside() then
 						iterations = iterations*5
 					else

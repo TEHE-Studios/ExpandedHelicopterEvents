@@ -145,6 +145,21 @@ function EHE_EventMarker:getDuration()
 	return self.duration
 end
 
+
+local function colorBlend(color, underLayer, fade)
+
+	local fadedColor = {r=color.r*fade, g=color.g*fade, b=color.b*fade, a=fade}
+	local _color = {r=1, g=1, b=1, a=1}
+	local alphaShift = 1 - (1 - fadedColor.a) * (1 - underLayer.a)
+
+	_color.r = fadedColor.r * fadedColor.r / alphaShift + underLayer.r * underLayer.a * (1 - fadedColor.a) / alphaShift
+	_color.g = fadedColor.g * fadedColor.g / alphaShift + underLayer.g * underLayer.a * (1 - fadedColor.a) / alphaShift
+	_color.b = fadedColor.b * fadedColor.b / alphaShift + underLayer.b * underLayer.a * (1 - fadedColor.a) / alphaShift
+
+	return _color
+end
+
+
 function EHE_EventMarker:render()
 	if self.visible and self.duration > 0 then--and self.distanceToPoint>4 then
 		self.setAngleFromPoint(self.posX,self.posY)
@@ -152,9 +167,13 @@ function EHE_EventMarker:render()
 		local centerX = self.width / 2
 		local centerY = self.height / 2
 
-		-- texture, x, y, a, r, g, b
-		local Base_r, Base_g, Base_b = math.min(0.78,math.max(0.094,(1-(self.distanceToPoint/self.radius))*0.78)), 0.094, 0.094
-		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, Base_r, Base_g, Base_b)
+		local aFromDist = 0.2 + (0.8*(1-(self.distanceToPoint/self.radius)))
+		local mColor = {r=self.markerColor.r, g=self.markerColor.g, b=self.markerColor.b, a=1}
+		local base = {r=0.22, g=0.22, b=0.22, a=1}
+
+		local _color = colorBlend(mColor, base, aFromDist)
+
+		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, _color.r, _color.g, _color.b)
 
 		local textureForPoint = self.texturePoint
 		local distanceOverRadius = self.distanceToPoint/self.radius
@@ -170,7 +189,6 @@ function EHE_EventMarker:render()
 		end
 
 		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
-
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 
 		if self.player and getNumActivePlayers()>1 then
@@ -205,7 +223,7 @@ function EHE_EventMarker:getPlayer()
 end
 
 
-function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY)
+function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY, color)
 	print(" --- marker new: eventID:"..eventID..": tex:"..icon.." d:"..duration.." x/y:"..posX..","..posY.." "..tostring(player).." screen:"..screenX..","..screenY)
 	local o = {}
 	o = ISUIElement:new(screenX, screenY, 1, 1)
@@ -215,6 +233,7 @@ function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screen
 	o.player = player
 	o.x = screenX
 	o.y = screenY
+	o.markerColor = color or {r=1,g=1,b=1}
 	o.posX = posX or 0
 	o.posY = posY or 0
 	o.width = EHE_EventMarker.clickableSize

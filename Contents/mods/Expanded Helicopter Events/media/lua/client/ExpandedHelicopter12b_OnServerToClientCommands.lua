@@ -72,11 +72,11 @@ local clientSideEventSoundHandler = {}
 
 function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
-	if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
+	--if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
 	
 	---@type BaseSoundEmitter | FMODSoundEmitter
 	local soundEmitter = storedLooperEvents[reusableID]
-	if not soundEmitter and command ~= "drop" then
+	if not soundEmitter and (command == "setPos" or command == "play") then
 		storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
 		soundEmitter = storedLooperEvents[reusableID]
 		if command=="setPos" then
@@ -183,18 +183,37 @@ end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
 
+local eheFlareSystem = require "ExpandedHelicopter_Flares"
 -- sendServerCommand(module, command, player, args) end -- to client
 local function onServerCommand(_module, _command, _data)
 	--clientside
 
-	if getDebug() and _module=="sendLooper" and _command~="setPos" then
-		local dataText = "{"
-		for k,v in pairs(_data) do dataText = dataText..tostring(k).."="..tostring(v)..", " end
-		print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
+	--if getDebug() and _module=="sendLooper" and _command~="setPos" then
+	--	local dataText = "{"
+	--	for k,v in pairs(_data) do dataText = dataText..tostring(k).."="..tostring(v)..", " end
+	--	print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
+	--end
+
+	if _module == "flare" and _command == "updateClient" then
+		if _data.soundEffect and _data.coords.x and _data.coords.y and _data.coords.z then
+			getWorld():getFreeEmitter():playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z)
+		end
+
+		if _data.flare then
+			if _data.duration then eheFlareSystem.sendDuration(_data.flare, _data.duration) end
+
+			if _data.active ~= nil and _data.coords.x and _data.coords.y and _data.coords.z then
+				eheFlareSystem.processLightSource(_data.flare, _data.coords.x, _data.coords.y, _data.coords.z, _data.active)
+			end
+		end
 	end
+
 
 	if _module == "EHE_ServerModData" and  _command == "severModData_received" then
 		onClientModDataReady()
+
+	elseif _module == "helicopterEvent" and  _command == "attack" then
+		heliEventAttackHitOnIsoGameCharacter(_data.damage, _data.targetType, _data.targetID)
 
 	elseif _module == "sendLooper" then
 		storedLooperEventsUpdateTimes[_data.reusableID] = getGametimeTimestamp()+100
@@ -202,6 +221,9 @@ local function onServerCommand(_module, _command, _data)
 		if _command == "play" then
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID,
 					{soundEffect=_data.soundEffect, x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
+
+		elseif _command == "playOnce" then
+			getWorld():getFreeEmitter():playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z)
 
 		elseif _command == "setPos" then
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
@@ -213,11 +235,14 @@ local function onServerCommand(_module, _command, _data)
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, nil, _command)
 		end
 
+
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, true)
+		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, _data.color)
+
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		eventShadowHandler:setShadowPos(_data.eventID, _data.texture, _data.x, _data.y, _data.z, true)
+		eventShadowHandler:setShadowPos(_data.eventID, _data.texture, _data.x, _data.y, _data.z)
 	end
+
 end
 Events.OnServerCommand.Add(onServerCommand)--/server/ to client

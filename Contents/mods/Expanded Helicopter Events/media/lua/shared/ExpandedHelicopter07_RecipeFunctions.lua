@@ -1,86 +1,100 @@
-require "ExpandedHelicopter_Flares"
+local eheFlareSystem = require "ExpandedHelicopter_Flares"
 
-EHE_Recipe = {}
+EHE_Recipe = EHE_Recipe or {}
 
 function EHE_Recipe.CanOpenBoxes(scriptItems)
 	scriptItems:addAll(getScriptManager():getItemsTag("CanOpenBoxes"))
 end
 
---recipe, result
-function EHE_Recipe.FOOD(_, _, player)
-	player:getInventory():AddItems("EHE.EmergencyWaterRation", 5)
-	player:getInventory():AddItems("EHE.MealReadytoEat", 5)
+
+function EHE_Recipe.FOOD(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("EHE.EmergencyWaterRation", 5)
+	itemContainer:AddItems("EHE.MealReadytoEat", 5)
 end
 
 ---@param player IsoGameCharacter | IsoMovingObject
-function EHE_Recipe.MEDICAL(_, _, player)
-	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 6)
-	player:getInventory():AddItems("Gloves_Surgical", 6)
-	local items = player:getInventory():AddItems("Base.FirstAidKit", 1)
-
-	for i=0, items:size()-1 do
-		rollInventoryContainer(items:get(i), player)
-	end
+function EHE_Recipe.MEDICAL(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("Hat_SurgicalMask_Blue", 6)
+	itemContainer:AddItems("Gloves_Surgical", 6)
+	local medKit = itemContainer:AddItem("Base.FirstAidKit")
+	if medKit then rollInventoryContainer(medKit, player) end
 end
 
-function EHE_Recipe.SURVIVAL(_, _, player)
-	player:getInventory():AddItems("Base.Torch", 2)
-	player:getInventory():AddItems("Base.Battery", 12)
-	player:getInventory():AddItems("Radio.RadioBlack", 2)
-	player:getInventory():AddItems("EHE.HandFlare", 2)
+function EHE_Recipe.SURVIVAL(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("Base.Torch", 2)
+	itemContainer:AddItems("Base.Battery", 12)
+	itemContainer:AddItems("Radio.RadioBlack", 2)
+	itemContainer:AddItems("EHE.HandFlare", 2)
 end
 
-function EHE_Recipe.STASHBOX(_, _, player)
-	player:getInventory():AddItems("WhiskeyFull", 1)
-	player:getInventory():AddItems("Cigarettes", 4)
-	player:getInventory():AddItems("Lighter", 2)
-	player:getInventory():AddItems("HottieZ", 13)
-	player:getInventory():AddItems("EHE.ProteinBar", 5)
+function EHE_Recipe.STASHBOX(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItem("WhiskeyFull")
+	itemContainer:AddItems("Cigarettes", 4)
+	itemContainer:AddItems("Lighter", 2)
+	itemContainer:AddItems("HottieZ", 13)
+	itemContainer:AddItems("EHE.ProteinBar", 5)
 end
 
-function EHE_Recipe.SURVIVORMEDICAL(_, _, player)
-	player:getInventory():AddItems("EHE.HandFlare", 2)
-	player:getInventory():AddItems("Hat_SurgicalMask_Blue", 2)
-	player:getInventory():AddItems("Gloves_Surgical", 2)
-	local items = player:getInventory():AddItems("Base.FirstAidKit", 1)
-
-	for i=0, items:size()-1 do
-		rollInventoryContainer(items:get(i), player)
-	end
+function EHE_Recipe.SURVIVORMEDICAL(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("EHE.HandFlare", 2)
+	itemContainer:AddItems("Hat_SurgicalMask_Blue", 2)
+	itemContainer:AddItems("Gloves_Surgical", 2)
+	local medKit = itemContainer:AddItem("Base.FirstAidKit")
+	if medKit then rollInventoryContainer(medKit, player) end
 end
 
-function EHE_Recipe.SURVIVORFOOD(_, _, player)
-	player:getInventory():AddItems("CannedPotato", 2)
-	player:getInventory():AddItems("CannedCarrots", 2)
-	player:getInventory():AddItems("CannedCabbage", 2)
-	player:getInventory():AddItems("CannedTomato", 2)
-	player:getInventory():AddItems("CannedBroccoli", 2)
+function EHE_Recipe.SURVIVORFOOD(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("CannedPotato", 2)
+	itemContainer:AddItems("CannedCarrots", 2)
+	itemContainer:AddItems("CannedCabbage", 2)
+	itemContainer:AddItems("CannedTomato", 2)
+	itemContainer:AddItems("CannedBroccoli", 2)
 end
 
-function EHE_Recipe.SURVIVORSEEDS(_, _, player)
-	player:getInventory():AddItems("Fertilizer", 3)
-	player:getInventory():AddItems("farming.CabbageBagSeed", 3)
-	player:getInventory():AddItems("farming.PotatoBagSeed", 3)
-	player:getInventory():AddItems("farming.BroccoliBagSeed", 3)
-	player:getInventory():AddItems("farming.TomatoBagSeed", 3)
-	player:getInventory():AddItems("farming.CarrotBagSeed", 3)
+function EHE_Recipe.SURVIVORSEEDS(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("Fertilizer", 3)
+	itemContainer:AddItems("farming.CabbageBagSeed", 3)
+	itemContainer:AddItems("farming.PotatoBagSeed", 3)
+	itemContainer:AddItems("farming.BroccoliBagSeed", 3)
+	itemContainer:AddItems("farming.TomatoBagSeed", 3)
+	itemContainer:AddItems("farming.CarrotBagSeed", 3)
 end
 
-function EHE_Recipe.SURVIVORTOILET(_, _, player)
-	player:getInventory():AddItems("ToiletPaper", 10)
+function EHE_Recipe.SURVIVORTOILET(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("ToiletPaper", 10)
 end
 
-function EHE_Recipe.SURVIVORFISHING(_, _, player)
-	player:getInventory():AddItems("FishingRod", 3)
-	player:getInventory():AddItems("FishingLine", 3)
-	player:getInventory():AddItems("FishingTackle", 3)
-	player:getInventory():AddItems("FishingNet", 4)
+function EHE_Recipe.SURVIVORFISHING(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("FishingRod", 3)
+	itemContainer:AddItems("FishingLine", 3)
+	itemContainer:AddItems("FishingTackle", 3)
+	itemContainer:AddItems("FishingNet", 4)
 end
 
-function EHE_Recipe.SURVIVORCANNING(_, _, player)
-	player:getInventory():AddItems("BoxOfJars", 2)
-	player:getInventory():AddItems("Sugar", 1)
-	player:getInventory():AddItems("Vinegar", 1)
+function EHE_Recipe.SURVIVORCANNING(items, result, player)
+	local itemContainer = player:getInventory()
+	if not itemContainer then return end
+	itemContainer:AddItems("BoxOfJars", 2)
+	itemContainer:AddItem("Sugar")
+	itemContainer:AddItem("Vinegar")
 end
 
 
@@ -117,9 +131,9 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 		local tagString = ""
 
 		if tags:contains("EHESignalFlare") then
-			eheFlares.addFlareType(itemFullName, "EHESignalFlare")
+			eheFlareSystem.addFlareType(itemFullName, "EHESignalFlare")
 		elseif tags:contains("EHEFlare") then
-			eheFlares.addFlareType(itemFullName, "EHEFlare")
+			eheFlareSystem.addFlareType(itemFullName, "EHEFlare")
 		end
 
 		for ii=0, tags:size()-1 do

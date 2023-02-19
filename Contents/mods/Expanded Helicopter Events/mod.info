@@ -3,4 +3,4 @@ id=ExpandedHelicopterEvents
 description=This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.
 poster=poster.png
 require=EasyConfigChucked
-versionMin=41.51
+versionMin=41.66

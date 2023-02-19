@@ -9,11 +9,9 @@ require "ExpandedHelicopter01a_MainVariables"
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
 ---@param preset string Name of preset found in PRESETS
----Events are handled as tables because ModData does not save Lua "classes" properly, even though they are really tables.
 function eHeliEvent_new(startDay, startTime, preset)
-	if (not startDay) or (not startTime) then
-		return
-	end
+	if (not startDay) or (not startTime) then return end
+
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
 
 	local globalModData = getExpandedHeliEventsModData()
@@ -198,6 +196,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
 				if presetFreq then
 					freq = presetFreq-1
+					if freq == 5 then freq = 25 end
 				end
 
 				freq = freqOverride or freq
@@ -225,13 +224,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 				if eventAvailable then
 					local weight = eHelicopter.eventSpawnWeight*freq
-					local playersOnlineNum = 1
-					local playersOnline = getOnlinePlayers()
-					if playersOnline then
-						playersOnlineNum = playersOnline:size()
-					end
-					
-					local probabilityNumerator = math.floor(((freq*schedulingFactor)/playersOnlineNum) + 0.5 )
+					local probabilityNumerator = math.floor((freq*schedulingFactor) + 0.5 )
 
 					for i=1, weight do
 						if (ZombRand(probabilityDenominator) <= probabilityNumerator) then
@@ -286,11 +279,9 @@ function eHeliEvent_Loop()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 
-	--if getDebug() then print("---DAY:"..DAY.." HOUR:"..HOUR.."  isClient:"..tostring(isClient()).." isServer:"..tostring(isServer())) end
 	for k,v in pairs(events) do
 
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
-			--if getDebug() and (not eHelicopter_PRESETS[v.preset]) then print(" ---ERR: not eHelicopter_PRESETS["..tostring(v.preset).."]") end
 		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
 			if eHelicopter_PRESETS[v.preset] then
 				print(" \[EHE\]: SCHEDULED-LAUNCH INFO:  ["..k.."] - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
@@ -314,4 +305,6 @@ function eHeliEvent_OnHour()
 	end
 end
 
-Events.OnTick.Add(eHeliEvent_OnHour)
+if not isClient() then
+	Events.OnTick.Add(eHeliEvent_OnHour)
+end

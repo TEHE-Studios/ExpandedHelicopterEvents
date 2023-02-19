@@ -34,7 +34,7 @@ function eHelicopter:updateEvent()
 	end
 
 	local timeStampMS = getGametimeTimestamp()
-	local thatIsCloseEnough = ((self.topSpeedFactor*self.speed)*tonumber(getGameSpeed()))+4
+	local thatIsCloseEnough = ((self.topSpeedFactor*self.speed)*tonumber(math.max(1, getGameSpeed())))+4
 	local distanceToTrueTarget = self:getDistanceToIsoObject(self.trueTarget)
 
 	--if trueTarget is within range
@@ -174,7 +174,7 @@ function eHelicopter:updateEvent()
 
 			--[DEBUG]] if getDebug() then print("hovering near target: "..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 
-			self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(10*getGameSpeed()))
+			self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(10*math.max(1, getGameSpeed())))
 			if self.hoverOnTargetDuration <= 0 then self.hoverOnTargetDuration = false end
 			preventMovement=true
 		else
@@ -197,16 +197,14 @@ function eHelicopter:updateEvent()
 	end
 
 	local lockOn = true
-	if self.state == "goHome" then lockOn = false end
+	if self.state ~= "gotoTarget" then lockOn = false end
 
 	--if it's ok to move do so, and update the shadow's position
-	if not preventMovement then
-		self:move(lockOn, true)
-	end
+	if not preventMovement then self:move(lockOn, true) end
 
 	if self.eventMarkerIcon ~= false then
 		local hX, hY, _ = self:getXYZAsInt()
-		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 101, hX, hY)
+		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 101, hX, hY, self.markerColor)
 	end
 
 	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then self:announce() end
@@ -308,4 +306,6 @@ function updateAllHelicopters()
 	end
 end
 
-Events.OnTick.Add(updateAllHelicopters)
+if not isClient() then
+	Events.OnTick.Add(updateAllHelicopters)
+end

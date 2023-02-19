@@ -1,26 +1,32 @@
 LuaEventManager.AddEvent("EHE_ServerModDataReady")
 
-local function onServerModDataReady(isNewGame)
-	sendServerCommand("EHE_ServerModData", "severModData_received", {})
-end
+local function onServerModDataReady(isNewGame) sendServerCommand("EHE_ServerModData", "severModData_received", {}) end
 Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
 require "ExpandedHelicopter00c_SpawnerAPI"
 require "ExpandedHelicopter01f_ShadowSystem"
+local eheFlareSystem = require "ExpandedHelicopter_Flares"
 
 --sendClientCommand(player, module, command, args) end -- to server
-local function onCommand(_module, _command, _player, _data)
+local function onClientCommand(_module, _command, _player, _data)
 	--serverside
-	if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _data)
 
-	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-		sendServerCommand("eventShadowHandler", "setShadowPos", _data)
+	if _module == "CustomDebugPanel" then
+		if _command == "launchHeliTest" then
+			CustomDebugPanel.launchHeliTest(_data.presetID, _player, _data.moveCloser, _data.crashIt)
+		end
+	end
 
-	elseif _module == "sendLooper" then
-		sendServerCommand("sendLooper", _command, _data)
+	if _module == "flare" then
+		if _command == "activate" then
+			eheFlareSystem.activateFlare(_data.flare, _data.duration, _data.loc)
 
-	elseif _module == "SpawnerAPI" then
+		elseif _command == "validate" then
+			eheFlareSystem.validateFlare(_data.flare, _data.timestamp, _data.loc)
+		end
+	end
+
+	if _module == "SpawnerAPI" then
 		if _command == "spawnZombie" then
 			--print("--spawnZombie")
 			--_dataA = player, _data = args
@@ -34,4 +40,4 @@ local function onCommand(_module, _command, _player, _data)
 		end
 	end
 end
-Events.OnClientCommand.Add(onCommand)--/client/ to server
+Events.OnClientCommand.Add(onClientCommand)--/client/ to server

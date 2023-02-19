@@ -1,4 +1,4 @@
-require "ExpandedHelicopter_Flares"
+local flareSystem = require "ExpandedHelicopter_Flares"
 --local heatMap = require "ExpandedHelicopter_HeatMap" --/server/
 
 local heatMap = {}
@@ -85,10 +85,36 @@ end
 Events.EveryHours.Add(heatMap.coolOff)
 
 
+function heatMap.adjustByZone(x, y)
+    local square = getSquare(x, y, 0)
+
+    local intensity = 0.7
+    if square then
+        local zone = square:getZone()
+        if zone then
+            local zoneType = zone:getType()
+            if zoneType then
+                if (zoneType == "DeepForest") then intensity = 0.3
+                elseif (zoneType == "Forest" or zoneType == "Vegitation") then intensity = 0.4
+                elseif (zoneType == "FarmLand") then intensity = 0.5
+                elseif (zoneType == "Farm") then intensity = 0.6
+                elseif (zoneType == "TrailerPark" or zoneType == "Nav") then intensity = 0.9
+                elseif (zoneType == "TownZone") then intensity = 1
+                end
+            end
+        end
+    end
+
+    return intensity
+end
+
+
 function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
     intensity = intensity or 1
     type = type or "none"
     timeStamp = timeStamp or getTimeInMillis()
+
+    intensity = intensity * heatMap.adjustByZone(x, y)
 
     if getDebug() then print("heatMap: "..type.."  x:"..x..", y:"..y) end
 
@@ -125,8 +151,14 @@ function heatMap.registerEventByObject(object, intensity, type, timeStamp)
 end
 
 
+---@param flare InventoryItem|IsoObject
 function heatMap.EHE_OnActivateFlare(flare)
-    if flare:isOutside() then heatMap.registerEventByObject(flare, 100, "activatedFlare") end
+    local containing = flare:getOutermostContainer()
+    local flareLoc = (containing and containing:getParent()) or flare:getWorldItem()
+    if flareLoc then
+        local flareSq = flareLoc:getSquare()
+        if flareSq and flareSq:isOutside() then heatMap.registerEventByObject(flareSq, 100, "activatedFlare") end
+    end
 end
 Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
 

@@ -15,6 +15,7 @@ eHelicopter.hoverOnTargetDuration = false
 eHelicopter.searchForTargetDuration = 30000
 eHelicopter.shadow = true
 eHelicopter.shadowTexture = "helicopter_shadow"
+eHelicopter.markerColor = {r=1,g=1,b=1}
 eHelicopter.eventMarkerIcon = "media/ui/helievent.png"
 eHelicopter.crashType = {"UH1HFuselage"}
 eHelicopter.addedCrashChance = 0

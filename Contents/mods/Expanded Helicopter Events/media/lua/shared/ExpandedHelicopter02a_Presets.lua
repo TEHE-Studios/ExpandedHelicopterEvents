@@ -11,6 +11,7 @@ eHelicopter_PRESETS["military"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 20,
 	schedulingFactor = 1.5,
+	markerColor = {r=0.29,g=0.78,b=0.21},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
 		["military_patrol"] = 0,
@@ -127,6 +128,7 @@ end
 eHelicopter_PRESETS["military_attack_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
+	markerColor = {r=0.96,g=0.21,b=0.21},
 	hostilePreference = "IsoGameCharacter",
 	hostilePredicate = hostilePredicateCivilian,
 	crashType = {"UH60GreenFuselage"},
@@ -204,11 +206,7 @@ eHelicopter_PRESETS["air_raid"] = {
 
 local function eHelicopter_jetBombing(heli)
 	local heliX, heliY, _ = heli:getXYZAsInt()
-	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
-	soundEmitter:playSound("eCarpetBomb", heliX, heliY, 0)
-
 	local cell = getCell()
-
 	local vehiclesInCell = cell:getVehicles()
 	for i=0, vehiclesInCell:size()-1 do
 		---@type BaseVehicle
@@ -218,10 +216,17 @@ local function eHelicopter_jetBombing(heli)
 		end
 	end
 end
+
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = eHelicopter_jetBombing},
+
+	eventSoundEffects = {
+		["flightSound"] = "eJetFlight",
+		["soundAtEventOrigin"] = "eCarpetBomb",
+	},
+
 	flightHours = {12, 12},
 	eventSpawnWeight = 50,
 	schedulingFactor = 99999,
@@ -243,6 +248,7 @@ eHelicopter_PRESETS["news_chopper"] = {
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206LBMWTail"},
 	forScheduling = true,
+	markerColor = {r=0.96,g=0.78,b=0.17},
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
 	radioChatter = "AEBS_UnauthorizedEntryNews",
@@ -269,6 +275,7 @@ eHelicopter_PRESETS["police"] = {
 		["foundTarget"] = "eHeli_PoliceSpotted",
 	},
 	forScheduling = true,
+	markerColor = {r=0.21,g=0.21,b=0.96},
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
 	radioChatter = "AEBS_UnauthorizedEntryPolice",
@@ -310,6 +317,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 		["flightSound"] = "ePropPlane",
 	},
 	forScheduling = true,
+	markerColor = {r=0.29,g=0.78,b=0.21},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	eventSpawnWeight = 3,
@@ -367,6 +375,7 @@ eHelicopter_PRESETS["raiders"] = {
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
 	forScheduling = true,
+	markerColor = {r=0.96,g=0.39,b=0.21},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_Raiders",
