@@ -124,6 +124,7 @@ if 1==1 then return end ---Remove this Line to get started.
 --- ⠀  ⠀⠀⠀  ⠀| 03 | 49 | 441 | 1225 | 2401 |
 --- -----------------------------------
 
+---@field attackSplash number number of tiles from attack point that damage can be process on (will hit all targets with in this range), default = 0
 ---@field attackHitChance number multiplied against chance to hit in attacking, default: 85
 ---@field attackDamage number damage dealt to zombies/players on hit (gets randomized to: attackDamage * random(1 to 1.5)), default: 10
 

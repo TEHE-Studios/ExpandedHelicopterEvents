@@ -88,6 +88,7 @@ eHelicopter_PRESETS["military_attackhelicopter_gunrun"] = {
 	speed = 0.2,
 	attackDelay = 1500,
 	attackSpread = 5,
+	attackSplash = 2,
 	attackHitChance = 70,
 	attackDamage = 100,
 	eventSoundEffects = {

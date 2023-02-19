@@ -1,19 +1,33 @@
 require "ExpandedHelicopter00b_IsoRangeScan"
+
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
+
+local function compressTableOfNils(table)
+	local n = #table
+	--prepare new index for self.hostilesToFireOn
+	local newIndex = 0
+	--iterate through and overwrite nil entries
+	for i=1, n do
+		if table[i]~=nil then
+			newIndex = newIndex+1
+			table[newIndex]=table[i]
+		end
+	end
+
+	--overwrite rest of entries to nil based on newIndex
+	for i=newIndex+1, n do table[i]=nil end
+end
+
 
 ---@param targetType string IsoZombie or IsoPlayer
 function eHelicopter:lookForHostiles(targetType)
 
 	local selfSquare = self:getIsoGridSquare()
-	if not selfSquare then
-		return
-	end
+	if not selfSquare then return end
 
 	local timeStamp = getTimeInMillis()
 	--too soon to attack again OR will overlap with an announcement
-	if (self.lastAttackTime+self.attackDelay >= timeStamp) then
-		return
-	end
+	if (self.lastAttackTime+self.attackDelay >= timeStamp) then return end
 
 	--store numeration (length) of self.hostilesToFireOn
 	local n = #self.hostilesToFireOn
@@ -29,19 +43,8 @@ function eHelicopter:lookForHostiles(targetType)
 			self.hostilesToFireOn[i] = nil
 		end
 	end
-	--prepare new index for self.hostilesToFireOn
-	local newIndex = 0
-	--iterate through and overwrite nil entries
-	for i=1, n do
-		if self.hostilesToFireOn[i]~=nil then
-			newIndex = newIndex+1
-			self.hostilesToFireOn[newIndex]=self.hostilesToFireOn[i]
-		end
-	end
-	--cut off end of list based on newIndex
-	for i=newIndex+1, n do
-		self.hostilesToFireOn[i]=nil
-	end
+
+	compressTableOfNils(self.hostilesToFireOn)
 
 	if self.lastScanTime <= timeStamp then
 		self.lastScanTime = timeStamp+(self.attackDelay*2)
@@ -57,12 +60,30 @@ function eHelicopter:lookForHostiles(targetType)
 
 	--if there are hostiles identified
 	if #self.hostilesToFireOn > 0 then
+
 		--just grab the first target
 		---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
 		local hostile = self.hostilesToFireOn[1]
 		self:fireOn(hostile)
+
+		local hX, hY = hostile:getX(), hostile:getY()
 		--remove target
-		table.remove(self.hostilesToFireOn,1)
+		self.hostilesToFireOn[1] = nil
+
+		if self.attackSplash > 0 then
+			for k,otherHostile in pairs(self.hostilesToFireOn) do
+				if otherHostile then
+					local dist = IsoUtils.DistanceTo(hX, hY, otherHostile:getX(), otherHostile:getY())
+					if dist <= self.attackSplash then
+						self:fireOn(otherHostile)
+						self.hostilesToFireOn[k] = nil
+					end
+				end
+			end
+
+			compressTableOfNils(self.hostilesToFireOn)
+		end
+
 	end
 end
 
@@ -176,8 +197,7 @@ function eHelicopter:fireOn(targetHostile)
 	--floor things off to a whole number
 	chance = math.floor(chance)
 
-	--[[DEBUG]] local hitReport = "-hit_report: "..self:heliToString(false)..timesFiredOnSpecificHostile..
-			"  eMS:"..hostileVelocity.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
+	--[DEBUG]] local hitReport = "-hit_report: "..self:heliToString(false)..timesFiredOnSpecificHostile.."  eMS:"..hostileVelocity.." %:"..chance.." "..tostring(targetHostile:getClass()) --]]
 
 	local HIT = false
 	local collateral = false

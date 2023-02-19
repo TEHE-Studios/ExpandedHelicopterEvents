@@ -56,6 +56,7 @@ eHelicopter.hostilePredicate = false
 eHelicopter.attackDelay = 60
 eHelicopter.attackScope = 1
 eHelicopter.attackSpread = 3
+eHelicopter.attackSplash = 0
 eHelicopter.attackHitChance = 85
 eHelicopter.attackDamage = 10
 
