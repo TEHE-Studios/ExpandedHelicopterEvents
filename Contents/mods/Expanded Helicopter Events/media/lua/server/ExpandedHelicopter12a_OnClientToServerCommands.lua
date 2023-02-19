@@ -10,16 +10,6 @@ local eheFlareSystem = require "ExpandedHelicopter_Flares"
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
 	--serverside
-	--if _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-	--	sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", _data)
-
-	--elseif _module == "eventShadowHandler" and _command == "setShadowPos" then
-	--	sendServerCommand("eventShadowHandler", "setShadowPos", _data)
-
-	--elseif _module == "sendLooper" then
-	--	sendServerCommand("sendLooper", _command, _data)
-
-	--else
 
 	if _module == "CustomDebugPanel" then
 		if _command == "launchHeliTest" then

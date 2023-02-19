@@ -415,9 +415,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 						elseif (zoneType == "Forest" or zoneType == "Vegitation") then
 							iterations = 4
 						elseif (zoneType == "FarmLand") then
-							iterations = 6
+							iterations = 5
 						elseif (zoneType == "Farm") then
-							iterations = 7
+							iterations = 6
 						elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
 							iterations = 9
 						elseif (zoneType == "TownZone") then
