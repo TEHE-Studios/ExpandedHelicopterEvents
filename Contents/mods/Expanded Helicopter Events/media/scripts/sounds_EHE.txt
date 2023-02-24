@@ -8,9 +8,13 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/jet_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
-    sound ePropPlane {
+    sound eLargePropPlane {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/propplane.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
+
+    sound eSmallPropPlane {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/helicopter_and_planes/Cessna.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eMiliHeli {
         category = EHE: Main, loop = true, is3D = true,
