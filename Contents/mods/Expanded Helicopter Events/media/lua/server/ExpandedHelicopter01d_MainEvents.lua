@@ -76,7 +76,7 @@ function eHelicopter:crash()
 
 			getWorldSoundManager():addSound(nil, heliX, heliY, 0, 175, 300, true, 0, 25)
 			eventSoundHandler:playEventSound(self, "crashEvent")
-			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 1300, heliX, heliY)
+			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 2600, heliX, heliY)
 
 			self:unlaunch()
 
@@ -214,7 +214,6 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 
 	local carePackage = self.dropPackages[ZombRand(1,#self.dropPackages+1)]
-	local carePackagesWithOutChutes = {["FEMASupplyDrop"]=true}
 
 	local heliX, heliY, _ = self:getXYZAsInt()
 
@@ -243,16 +242,13 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 
 	if returned_sq then
-		local extraFunctions = {}
-		if carePackagesWithOutChutes[carePackage]~=true then
-			table.insert(extraFunctions, "applySoundToEvent")
-		end
+		local extraFunctions = {"applyFlaresToEvent"}
 
 		SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
 		addSound(nil, heliX, heliY, 0, 200, 150)
-		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 1300, heliX, heliY)
+		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 2000, heliX, heliY)
 		self.dropPackages = false
 		return true
 	end

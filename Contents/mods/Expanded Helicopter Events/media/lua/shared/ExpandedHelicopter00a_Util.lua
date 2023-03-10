@@ -259,6 +259,27 @@ function ageInventoryItem(item)
 end
 
 
+local flareSystem = require "ExpandedHelicopter_Flares"
+---@param vehicle BaseVehicle
+function applyFlaresToEvent(vehicle)
+	if not vehicle then return end
+
+	local x, y, z = vehicle:getX(), vehicle:getY(), vehicle:getZ()
+	local flares = 1 + ((ZombRand(10)==0 and 1) or 0)
+
+	for i=1, flares do
+		local sq = getSquare(x+ZombRand(-2,3), y+ZombRand(-2,3), z)
+		if sq then
+			---@type InventoryItem
+			local flare = InventoryItemFactory.CreateItem("EHE.HandFlare")
+			flare:getModData()["flareLit"] = true
+			flareSystem.activateFlare(flare, flareSystem.Duration)
+			sq:AddWorldInventoryItem(flare, 0, 0, 0)
+		end
+	end
+end
+
+
 ---@param vehicle BaseVehicle
 function applyCrashOnVehicle(vehicle)
 	if not vehicle then

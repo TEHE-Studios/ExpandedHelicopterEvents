@@ -40,6 +40,7 @@ function SpawnerTEMP.setDictionary()
 	SpawnerTEMP.functionDictionary.getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle
 	SpawnerTEMP.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
 	SpawnerTEMP.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
+	SpawnerTEMP.functionDictionary.applyFlaresToEvent = applyFlaresToEvent
 	SpawnerTEMP.functionDictionary.ageInventoryItem = ageInventoryItem
 	SpawnerTEMP.functionDictionary.applyDeathOrCrawlerToCrew = applyDeathOrCrawlerToCrew
 	SpawnerTEMP.functionDictionary.applyParachuteToCarePackage = applyParachuteToCarePackage

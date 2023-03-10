@@ -180,7 +180,7 @@ end
 ---@return number
 function eHelicopter:getDistanceToIsoObject(object)
 	if not object then print("ERR: getDistanceToIsoObject: no object or no currentPosition") return end
-	return self:getDistanceToXY(object:getX(),object:getY())
+	return self and self:getDistanceToXY(object:getX(),object:getY())
 end
 
 
