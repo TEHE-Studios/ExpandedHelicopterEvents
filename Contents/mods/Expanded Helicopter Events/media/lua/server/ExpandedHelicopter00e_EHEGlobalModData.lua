@@ -11,7 +11,7 @@ local function initExpandedHeliEventsModData(isNewGame)
 
 	if not modData.EventsOnSchedule then modData.EventsOnSchedule = {} end
 	if not modData.DayOfLastCrash then modData.DayOfLastCrash = getGameTime():getNightsSurvived() end
-	if not modData.DaysBeforeApoc then modData.DaysBeforeApoc = eHeli_getDaysBeforeApoc() end
+	if not modData.DaysBeforeApoc then modData.DaysBeforeApoc = eHeli_getDaysSinceApoc() end
 
 	ExpandedHeliEventsModData = modData
 

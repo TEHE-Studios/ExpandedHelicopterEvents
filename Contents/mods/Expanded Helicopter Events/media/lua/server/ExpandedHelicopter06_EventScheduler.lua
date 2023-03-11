@@ -87,7 +87,7 @@ function eHeliEvents_OnGameStart()
 		EHE.config.resetEvents = false
 		EasyConfig_Chucked.saveConfig()
 	end
-	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysBeforeApoc()
+	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysSinceApoc()
 	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or getGameTime():getNightsSurvived()
 	--if no EventsOnSchedule found make it an empty list
 	if not globalModData.EventsOnSchedule then

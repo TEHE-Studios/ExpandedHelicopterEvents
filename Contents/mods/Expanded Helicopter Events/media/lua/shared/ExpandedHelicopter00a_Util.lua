@@ -157,13 +157,11 @@ end
 
 ---Check how many days it has been since the start of the apocalypse; corrects for sandbox option "Months since Apoc"
 ---@return number Days since start of in-game apocalypse
-function eHeli_getDaysBeforeApoc()
+function eHeli_getDaysSinceApoc()
 
 	local monthsAfterApo = getSandboxOptions():getTimeSinceApo()-1
 	--no months to count, go away
-	if monthsAfterApo <= 0 then
-		return 0
-	end
+	if monthsAfterApo <= 0 then return 0 end
 
 	local gameTime = getGameTime()
 	local startYear = gameTime:getStartYear()
