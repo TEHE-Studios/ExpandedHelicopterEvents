@@ -1,0 +1,29 @@
+IG_UI_IT = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A Distrutto (Fusoliera)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A Distrutto (Coda)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Desert",
+    IGUI_VehicleNameUH60DesertFuselage = "UH-60A Desert Distrutto (Fusoliera)",
+    IGUI_VehicleNameUH60DesertTail = "UH-60A Desert Distrutto (Coda)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "UH-60A Medevac Distrutto (Fusoliera)",
+    IGUI_VehicleNameUH60MedevacTail = "UH-60A Medevac Distrutto (Coda)",
+
+    IGUI_VehicleNameBell206LBMW = "Elicottero di Cronaca",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Elicottero di Cronaca (Fusoliera)",
+    IGUI_VehicleNameBell206LBMWTail = "Elicottero di Cronaca (Coda)",
+
+    IGUI_VehicleNameBell206Police = "Elicottero della Polizia",
+    IGUI_VehicleNameBell206PoliceFuselage = "Elicottero della Polizia (Fusoliera)",
+    IGUI_VehicleNameBell206PoliceTail = "Elicottero della Polizia (Coda)",
+
+    IGUI_VehicleNameBell206Survivalist = "Elicottero Civile",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Rifornimenti d'Emergenza",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Rifornimenti del Samaritano",
+
+    IGUI_Spent = "Spento",
+    IGUI_Lit = "Acceso",
+}

@@ -1,0 +1,14 @@
+DynamicRadio_IT = {
+	AEBS_SupplyDrop = "Pacchetto di rifornimenti in arrivo."
+	AEBS_Raiders = "Se riuscite a sentire questo, andate a farvi f..."
+    AEBS_SurvivorHeli = "Corridore del bottino in uscita."
+    AEBS_SamaritanDrop = "A chiunque sia ancora vivo, stiamo portando rifornimenti."
+    AEBS_UnauthorizedEntryPolice = "Attivita' aerea non autorizzata, forze dell'ordine ribelli."
+    AEBS_UnauthorizedEntryNews = "Attivita' aerea non autorizzata, intrusione dei media."
+    AEBS_JetBombing = "Carico utile per l'epurazione in arrivo."
+    AEBS_JetPass = "Passaggio di jet in arrivo."
+    AEBS_AirRaid = "RIMANETE DENTRO E CERCATE UN RIPARO"
+    AEBS_HostileMilitary = "Rilevata attivita' aerea. Operazioni speciali militari in corso. Buona fortuna."
+    AEBS_PurgeMilitary = "Rilevata attivita' aerea. Operazioni di controllo della folla infetta in corso."
+    AEBS_Military = "Rilevata attivita' aerea. Operazioni di evacuazione in corso."
+}
