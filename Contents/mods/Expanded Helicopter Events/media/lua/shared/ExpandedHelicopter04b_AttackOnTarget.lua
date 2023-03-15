@@ -52,8 +52,6 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
     local bpType = BodyPartType.FromString(bpRandSelect)
     local clothingBP = BloodBodyPartType.FromString(bpRandSelect)
 
-    --[[DEBUG]] local preHealth = targetHostile:getHealth()
-    --apply damage to body part
 
     if (bpType == BodyPartType.Neck) or (bpType == BodyPartType.Head) then
         damage = damage*4
