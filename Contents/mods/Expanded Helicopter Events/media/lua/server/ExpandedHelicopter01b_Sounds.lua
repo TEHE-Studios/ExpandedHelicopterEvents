@@ -119,7 +119,7 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 	if isServer() then
 		for soundID,_ in pairs(heli.looperEventIDs) do
 			local soundEffect = heli.eventSoundEffects[soundID]
-			sendServerCommand("sendLooper", "stop",{reusableID=("HELI"..heli.ID), soundEffect=soundEffect})
+			sendServerCommand("sendLooper", "stopAll",{reusableID=("HELI"..heli.ID)})
 		end
 	end
 

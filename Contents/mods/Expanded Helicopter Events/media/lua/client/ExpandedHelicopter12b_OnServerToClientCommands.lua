@@ -86,7 +86,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 	if soundEmitter then
 
 		if command ~= "setPos" then
-			local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:"..tostring(soundEmitter).." - "..tostring(reusableID)
+			local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:".." - "..tostring(reusableID)
 			if DATA and type(DATA)=="table" then for k,v in pairs(DATA) do emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")" end
 			else emitterDebugText = emitterDebugText.." - /!\\ (DATA = "..tostring(DATA)..")" end
 			print(emitterDebugText)
@@ -98,7 +98,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 		else
 			if command == "play" then
 				if soundEmitter:isPlaying(DATA.soundEffect) then
-					print("--soundEmitter is already playing \`"..DATA.soundEffect.."\`")
+					print("-- warn: soundEmitter is already playing \`"..DATA.soundEffect.."\`")
 					--local square = getSquare(DATA.x, DATA.y, DATA.z)
 				else
 					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
@@ -110,23 +110,35 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 			if command == "setPos" then soundEmitter:setPos(DATA.x,DATA.y,DATA.z) end
 
 			if command == "stop" then
-				if DATA and DATA.soundEffect and type(DATA.soundEffect)=="table" then
-					print("--soundEffect set:")
-					for _,sound in pairs(DATA.soundEffect) do
-						print("---stop:"..tostring(soundEmitter).." - ".." - "..sound)
-						soundEmitter:stopSoundByName(sound)
+				if DATA and DATA.soundEffect then
+					if type(DATA.soundEffect)=="table" then
+						print("--soundEffect set:")
+						for _,sound in pairs(DATA.soundEffect) do
+							print("---stop:".." - "..sound)
+							soundEmitter:stopSoundByName(sound)
+						end
+					else
+						print("--stop:".." - "..tostring(DATA.soundEffect))
+						soundEmitter:stopSoundByName(DATA.soundEffect)
 					end
-				else
-					print("--stop:"..tostring(soundEmitter).." - ".." - "..tostring(DATA.soundEffect))
-					soundEmitter:stopSoundByName(DATA.soundEffect)
-
 				end
 			end
 		end
 
 		if command == "stopAll" then
+
+			print("-- emitter: "..tostring(reusableID).." -stopAll:")
+
+			local storedSounds = storedLooperEventsSoundEffects[reusableID]
+			if storedSounds then
+				for sound,_ in pairs(storedSounds) do
+					soundEmitter:stopSoundByName(sound)
+					print("---- "..sound)
+				end
+			end
+
 			soundEmitter:setVolumeAll(0)
-			--soundEmitter:stopAll()
+			soundEmitter:stopAll()
 		end
 	end
 end
@@ -139,20 +151,18 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 			---@type FMODSoundEmitter | BaseSoundEmitter emitter
 			local emitter = storedLooperEvents[emitterID]
 
-			if storedLooperEventsSoundEffects[emitterID] then
-				for sound,_ in pairs(storedLooperEventsSoundEffects[emitterID]) do
-					if emitter:isPlaying(sound) then
-						printString = sound..", "..printString
-						emitter:stopSoundByName(sound)
-					end
+			local storedSounds = storedLooperEventsSoundEffects[emitterID]
+			if storedSounds then
+				for sound,_ in pairs(storedSounds) do
+					printString = sound..", "..printString
+					emitter:stopSoundByName(sound)
 				end
 			end
 			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
 			--[[DEBUG]] print("-- EHE: "..emitterID.." clientSideEventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
 			emitter:setVolumeAll(0)
-			--emitter:stopAll()
-			storedLooperEventsSoundEffects[emitterID] = nil
-			storedLooperEventsUpdateTimes[emitterID] = nil
+			emitter:stopAll()
+			storedLooperEventsUpdateTimes[emitterID] = false
 		end
 	end
 end
@@ -231,8 +241,8 @@ local function onServerCommand(_module, _command, _data)
 		elseif _command == "stop" then
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, {soundEffect=_data.soundEffect}, _command)
 
-		elseif _command == "drop" then
-			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, nil, _command)
+		elseif _command == "stopAll" then
+			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, {}, _command)
 		end
 
 
