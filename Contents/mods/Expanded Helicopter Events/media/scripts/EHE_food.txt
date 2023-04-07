@@ -48,7 +48,7 @@ module EHE
 		WorldStaticModel = EnergyBar,
 	}
 
-		item MealReadytoEat
+		item MealReadytoEatEHE
 	{
 		DisplayCategory = Food,
 		HungerChange	= -60,
@@ -65,7 +65,7 @@ module EHE
 		WorldStaticModel = MRE,
 	}
 
-		item MREWrapper
+		item MREWrapperEHE
 	{
 		DisplayCategory = Junk,
 		Weight	=	0.1,

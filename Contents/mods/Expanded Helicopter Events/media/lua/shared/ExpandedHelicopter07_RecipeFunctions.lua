@@ -11,7 +11,7 @@ function EHE_Recipe.FOOD(items, result, player)
 	local itemContainer = player:getInventory()
 	if not itemContainer then return end
 	itemContainer:AddItems("EHE.EmergencyWaterRation", 5)
-	itemContainer:AddItems("EHE.MealReadytoEat", 5)
+	itemContainer:AddItems("EHE.MealReadytoEatEHE", 5)
 end
 
 ---@param player IsoGameCharacter | IsoMovingObject
