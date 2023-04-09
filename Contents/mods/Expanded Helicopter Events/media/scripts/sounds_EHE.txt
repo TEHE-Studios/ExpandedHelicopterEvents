@@ -108,217 +108,217 @@ module Base {
 
     sound eHeli_lineM_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_1a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_1b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_1d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_1a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_1b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_1d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_2 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_2b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_2c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_2d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_2b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_2c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_2d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_3a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_3b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_3c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_3d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_3a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_3b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_3c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_3d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_4 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_4a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_4b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_4c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_4d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_4a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_4b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_4c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_4d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_5 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_5a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_5b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_5c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_5d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_5a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_5b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_5c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_5d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_6 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_6a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_6b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_6c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_6d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_6a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_6b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_6c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_6d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_7 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_7b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_7c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_7d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_7b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_7c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_7d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_8 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_8b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_8c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_8d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_8b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_8c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_8d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_9 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_9a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_9b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_9c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_9d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_9a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_9b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_9c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_9d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
         
     sound eHeli_lineM_10 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_10a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_10b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_10a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_10b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
         
     sound eHeli_lineM_11 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineM_11a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_11b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_11c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_11d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_11e.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/heli_lineM_11f.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_11a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_11b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_11c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_11d.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_11e.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
+        clip { file = media/sound/military_lines/old_lines/heli_lineM_11f.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_police_lines {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/police_lines/police_4.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_5.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_6.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_7.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_8.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_9.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_10.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_11.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_14.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_15.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_16.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_17.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_18.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_19.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_20.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_21.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_22.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_23.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_24.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_25.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_26.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_27.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_28.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_29.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_30.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_31.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_32.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_33.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_34.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_35.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_36.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_37.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_38.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_39.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/police_40.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }}
+        clip { file = media/sound/police_lines/old_lines/police_4.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_5.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_6.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_7.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_8.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_9.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_10.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_11.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_14.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_15.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_16.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_17.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_18.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_19.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_20.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_21.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_22.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_23.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_24.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_25.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_26.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_27.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_28.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_29.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_30.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_31.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_32.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_33.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_34.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_35.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_36.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_37.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_38.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_39.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/police_40.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }}
 
  sound eHeli_PoliceSpotted {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/police_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/PoliceSpotted2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }}
+        clip { file = media/sound/police_lines/old_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/PoliceSpotted2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/police_lines/old_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }}
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_2 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_3.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_3.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_4 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_4.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_4.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_5 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_5.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_5.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_6 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_6.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_6.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_7 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_7.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_7.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_8 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_8.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_8.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
         
     sound eHeli_lineF_9 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_9.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_9.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineF_10 {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/heli_lineF_10.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/heli_lineF_10.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
 
     sound eHeli_Jade_1a {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_1a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_1a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
     sound eHeli_Jade_1b {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_1b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_1b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
     sound eHeli_Jade_1c {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_1c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_1c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
 
     sound eHeli_Jade_2a {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_2a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_2a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_Jade_2b {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_2b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_2b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_Jade_2c {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_2c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_2c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
 
     sound eHeli_Jade_3a {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_3a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_3a.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_Jade_3b {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_3b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_3b.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_Jade_3c {
         category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/Jade_3c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/military_lines/old_lines/Jade_3c.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
 
 
     sound eHeli_AidDrop_1and3 {
         category = EHE: Voice Lines, loop = false, is3D = true,
         /*standby for drop*/
-        clip { file = media/sound/military_lines/Drop1A.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/military_lines/Drop1B.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/military_lines/Drop1C.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop1A.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop1B.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop1C.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
         /*keep clear emergency drop inbound*/
-        clip { file = media/sound/military_lines/Drop3A.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/military_lines/Drop3B.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/military_lines/Drop3C.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, } }
+        clip { file = media/sound/military_lines/old_lines/Drop3A.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop3B.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop3C.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, } }
 
 
     sound eHeli_AidDrop_2 {
         category = EHE: Voice Lines, loop = false, is3D = true,
         /*attention survivors, emergency supplies are being delivered*/
-        clip { file = media/sound/military_lines/Drop2A.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/military_lines/Drop2B.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/military_lines/Drop2C.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, } }
+        clip { file = media/sound/military_lines/old_lines/Drop2A.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop2B.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+        clip { file = media/sound/military_lines/old_lines/Drop2C.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, } }
 
  }
