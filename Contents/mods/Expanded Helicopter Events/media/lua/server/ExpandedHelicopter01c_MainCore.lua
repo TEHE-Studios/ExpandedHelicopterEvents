@@ -180,7 +180,6 @@ end
 ---@return number
 function eHelicopter:getDistanceToIsoObject(object)
 	if not object then print("ERR: getDistanceToIsoObject: no object or no currentPosition") return end
-	if not instanceof(object, "IsoObject") then print("ERR: getDistanceToIsoObject: object not IsoObject : "..tostring(object)) return end
 	return self and self:getDistanceToXY(object:getX(),object:getY())
 end
 
