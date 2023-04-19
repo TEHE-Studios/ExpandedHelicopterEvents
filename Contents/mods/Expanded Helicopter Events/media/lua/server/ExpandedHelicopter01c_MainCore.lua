@@ -385,7 +385,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 		for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
 	end
 	
-	for flare,_ in pairs(flareSystem.activeObjects) do table.insert(targetPool, flare) end
+	for _,flare in pairs(flareSystem.activeObjects) do table.insert(targetPool, flare) end
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
