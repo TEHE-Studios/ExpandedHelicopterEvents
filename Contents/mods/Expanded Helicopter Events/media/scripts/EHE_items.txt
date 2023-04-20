@@ -1,6 +1,16 @@
 module EHE
 {
 
+		item SamaritanCrate
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		Type = Normal,
+		DisplayName = Samaritan Supply Crate,
+		WorldObjectSprite	= EHE_supplydrops_0,
+		Icon = UH60Door,
+	}
+
 		item SignalFlare
 	{
 		DisplayCategory = Tool,
