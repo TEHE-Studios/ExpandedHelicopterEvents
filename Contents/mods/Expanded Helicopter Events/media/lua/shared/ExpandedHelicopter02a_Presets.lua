@@ -389,7 +389,7 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 	flightVolume = 750,
 	crashType = false,
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive" },
+		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive", "eHeliCrewLaughingAndDrinking" },
 	},
 }
 
@@ -424,7 +424,7 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile" },
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
 	},
