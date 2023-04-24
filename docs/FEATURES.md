@@ -65,7 +65,7 @@ _Values not found here use the default variables from the main file. Presets all
 
 ## LATE GAME:
 
-- **The Wolverines:** A group of raiders may fly into the area late in the game. Their harassment will range in severity. The friendliest raider will hover and throw trash at you, while the more hostile will fire upon you.
+- **The Wolverines:** A group of raiders may fly into the area late in the game. Their harassment will range in severity and may exclusively target zombies or players. The friendliest raider will hover and throw trash at you, while the more hostile will fire upon you.
 
 
 - **Survivors:** A group of survivors may fly around the area looking for supplies and will buzz past you.
