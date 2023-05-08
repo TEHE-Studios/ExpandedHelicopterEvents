@@ -37,6 +37,8 @@ module Base {
 
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/music/SevenTwentyBeercules.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
+        clip { file = media/sound/music/SevenTwentyTheSpark.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/HeliMusicAggressive.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
         clip { file = media/sound/music/EntryOfTheGladiators.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/CanCanMusic.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
