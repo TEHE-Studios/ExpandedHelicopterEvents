@@ -32,8 +32,9 @@
 
 - Helicopter events are registered on AEBS (radio system) just like vanilla events!
 
+- Activity Heatmap: The mod features a activity heatmap system. It tracks moving, shooting, killing of zombies, and firing a flare. Some events switch targets to whichever is "hotter".
 
-- Flares to attract events!
+- Flares: Flares do not spawn events (which would be lame), instead firing a flare is consider a very "hot" target for the above mentinoed heatmap system. Events are likely to seek out flares.
 
 ***
 
