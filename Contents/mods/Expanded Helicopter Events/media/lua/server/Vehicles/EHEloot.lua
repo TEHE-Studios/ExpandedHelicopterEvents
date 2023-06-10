@@ -44,49 +44,14 @@ local function applyLootBoxLoot()
             "x2Scope", 0.7,
 
             -- EHE --
-            "EHE.Hat_SPHMilitary", 10,
-            "EHE.Hat_SPHMilitary", 5,
-            "EHE.Hat_SPHBlack", 3,
-            "EHE.Vest_PilotSurvivalVest", 10,
-            "EHE.Vest_PilotSurvivalVest", 10,
-            "EHE.Vest_PilotSurvivalVest", 10,
             "EHE.MealReadytoEat", 10,
             "EHE.MealReadytoEat", 10,
-
-            -- SMUI --
-            "SMUIClothing.Hat_M17", 10,
-            "SMUIClothing.Hat_M17Doff", 10,
-            "SMUIClothing.Hat_M40", 10,
-            "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
-            "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
-            "SMUIClothing.NightVisionGoggles", 10,
-            "SMUIClothing.MilitaryWebbingBag", 10,
-            "SMUIClothing.MilitaryWebbing", 5,
-            "SMUIClothing.MilitaryWebbing", 5,
-            "SMUIClothing.Hat_PatrolCap", 10,
-            "SMUIClothing.Hat_PatrolCap", 10,
-            "SMUIClothing.Hat_BeretSpecial", 10,
 
             -- AZ --
             "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
             "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
             "AuthenticZClothing.AuthenticSmokeBomb", 10,
 
-            -- Firearms B41 --
-            "Base.MP5", 10,
-            "Base.M60", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.762x51Box", 10,
-            "Base.762x51Box", 10,
-            "Base.762x51Box", 10,
-            "Base.762x51Box", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
         }
     }
 
@@ -138,27 +103,8 @@ local function applyLootBoxLoot()
 
             -- EHE --
             "EHE.BanditStashBox", 1,
-            "EHE.Hat_SPHMilitary", 10,
-            "EHE.Hat_SPHBlack", 3,
-            "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
-            "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
-            "SMUIClothing.NightVisionGoggles", 10,
-            "EHE.Vest_PilotSurvivalVest", 10,
-            "EHE.Vest_PilotSurvivalVest", 10,
-            "EHE.Vest_PilotSurvivalVest", 10,
             "EHE.MealReadytoEat", 10,
             "EHE.MealReadytoEat", 10,
-
-            -- SMUI --
-            "SMUIClothing.Hat_M17", 10,
-            "SMUIClothing.Hat_M17Doff", 10,
-            "SMUIClothing.Hat_M40", 10,
-            "SMUIClothing.MilitaryWebbing", 10,
-            "SMUIClothing.MilitaryWebbing", 10,
-            "SMUIClothing.MilitaryWebbing", 10,
-            "SMUIClothing.Hat_PatrolCap", 10,
-            "SMUIClothing.Hat_PatrolCap", 10,
-            "SMUIClothing.Hat_BeretSpecial", 3,
 
             -- AZ --
             "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
@@ -168,13 +114,6 @@ local function applyLootBoxLoot()
             "AuthenticZClothing.Tshirt_PostalDude", 3,
             "AuthenticZClothing.Jacket_PostalDude", 3,
 
-            -- Firearms B41 --
-            "Base.MP5", 10,
-            "Base.M60", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
         }
     }
 
@@ -220,49 +159,13 @@ local function applyLootBoxLoot()
             "x2Scope", 0.7,
 
             -- EHE --
-            "EHE.Hat_SPHMilitary", 10,
-            "EHE.Hat_SPHMilitary", 5,
-            "EHE.Hat_SPHBlack", 3,
-            "EHE.Vest_PilotSurvivalVest", 10,
-            "EHE.Vest_PilotSurvivalVest", 10,
             "EHE.MealReadytoEat", 10,
             "EHE.MealReadytoEat", 10,
-
-
-            -- SMUI --
-            "SMUIClothing.Hat_M17", 10,
-            "SMUIClothing.Hat_M17Doff", 10,
-            "SMUIClothing.Hat_M40", 10,
-            "SMUIClothing.MilitaryWebbingBag", 10,
-            "SMUIClothing.MilitaryWebbing", 5,
-            "SMUIClothing.MilitaryWebbing", 5,
-            "SMUIClothing.Hat_PatrolCap", 10,
-            "SMUIClothing.Hat_PatrolCap", 10,
-            "SMUIClothing.Hat_BeretSpecial", 3,
-            "SMUIClothing.Hat_MilitaryHelmetNVGUP", 10,
-            "SMUIClothing.Hat_MilitaryHelmetNVGMount", 10,
-            "SMUIClothing.NightVisionGoggles", 10,
 
             -- AZ --
             "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
             "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
             "AuthenticZClothing.AuthenticSmokeBomb", 10,
-
-            -- Firearms B41 --
-            "Base.MP5", 10,
-            "Base.M60", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.Bullets9mmBox", 10,
-            "Base.762x51Box", 10,
-            "Base.762x51Box", 10,
-            "Base.762x51Box", 10,
-            "Base.762x51Box", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
-            "Base.AmmoCan762", 10,
         }
     }
 
@@ -301,24 +204,6 @@ local function applyLootBoxLoot()
             "AmmoStraps", 10,
             "AmmoStrap_Bullets", 10,
 
-            -- EHE --
-            "EHE.Hat_SPHPolice", 10,
-            "EHE.Hat_SPHPolice", 5,
-            "EHE.Vest_BlackPilotSurvivalVest", 10,
-            "EHE.Vest_BlackPilotSurvivalVest", 10,
-
-            -- SLEO --
-            "SLEOClothing.Hat_RiotHelmet", 10,
-            "SLEOClothing.Hat_PoliceHelmet", 10,
-            "SLEOClothing.Hat_PoliceM17", 10,
-            "SLEOClothing.Vest_PoliceTacticalVest", 10,
-            "SLEOClothing.Jacket_PoliceTactical", 10,
-            "SLEOClothing.Trousers_PoliceTactical", 10,
-            "SLEOClothing.TacticalGoggles", 10,
-            "SLEOClothing.Hat_PoliceBalaclava", 10,
-            "SLEOClothing.Bag_DuffelPolice", 10,
-            "SLEOClothing.Hat_PoliceBaseballCap", 10,
-            "SLEOClothing.PoliceDutyBelt", 10,
         }
     }
 
@@ -342,10 +227,6 @@ local function applyLootBoxLoot()
             "ShotgunShellsBox", 7,
             "ShotgunShellsBox", 7,
             "ShotgunShellsBox", 7,
-
-            -- EHE --
-            "EHE.Hat_SPHCivilian", 10,
-            "EHE.Hat_SPHCivilian", 5,
 
             -- AZ --
             "AuthenticZClothing.CameraDSLR", 3,
@@ -372,29 +253,8 @@ local function applyLootBoxLoot()
             "Bag_Duffelbag", 7,
 
             -- EHE--
-            "EHE.Hat_SPHCivilian", 10,
-            "EHE.Hat_SPHCivilian", 5,
             "EHE.MealReadytoEat", 10,
             "EHE.MealReadytoEat", 10,
-
-
-            -- SMUI --
-            "SMUIClothing.Hat_M17", 10,
-            "SMUIClothing.MilitaryWebbing", 10,
-            "SMUIClothing.MilitaryWebbing", 10,
-            "SMUIClothing.MilitaryWebbing", 10,
-
-            -- SLEO --
-            "SLEOClothing.Hat_RiotHelmet", 10,
-            "SLEOClothing.Hat_PoliceHelmet", 10,
-            "SLEOClothing.Vest_PoliceTacticalVest", 10,
-            "SLEOClothing.Jacket_PoliceTactical", 10,
-            "SLEOClothing.Trousers_PoliceTactical", 10,
-            "SLEOClothing.TacticalGoggles", 10,
-            "SLEOClothing.Hat_PoliceBalaclava", 10,
-            "SLEOClothing.Bag_DuffelPolice", 10,
-            "SLEOClothing.Hat_PoliceBaseballCap", 10,
-            "SLEOClothing.PoliceDutyBelt", 10,
 
             -- AZ --
             "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
