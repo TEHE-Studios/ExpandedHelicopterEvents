@@ -10,8 +10,8 @@ end
 function EHE_Recipe.FOOD(items, result, player)
 	local itemContainer = player:getInventory()
 	if not itemContainer then return end
-	itemContainer:AddItems("EHE.EmergencyWaterRation", 5)
-	itemContainer:AddItems("EHE.MealReadytoEatEHE", 5)
+	itemContainer:AddItems("EHE.EmergencyWaterRation", 4)
+	itemContainer:AddItems("EHE.MealReadytoEatEHE", 2)
 end
 
 ---@param player IsoGameCharacter | IsoMovingObject
@@ -40,7 +40,6 @@ function EHE_Recipe.STASHBOX(items, result, player)
 	itemContainer:AddItems("Cigarettes", 4)
 	itemContainer:AddItems("Lighter", 2)
 	itemContainer:AddItems("HottieZ", 13)
-	itemContainer:AddItems("EHE.ProteinBar", 5)
 end
 
 function EHE_Recipe.SURVIVORMEDICAL(items, result, player)
