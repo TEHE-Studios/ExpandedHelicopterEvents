@@ -1,0 +1,49 @@
+Sandbox_ES = {
+	Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+
+	Sandbox_ExpandedHeli_Frequency_option1 = "Nunca"
+	Sandbox_ExpandedHeli_Frequency_option2 = "Raro",
+	Sandbox_ExpandedHeli_Frequency_option3 = "Poco común",
+	Sandbox_ExpandedHeli_Frequency_option4 = "Común",
+	Sandbox_ExpandedHeli_Frequency_option5 = "Frecuente",
+	Sandbox_ExpandedHeli_Frequency_option6 = "De locos",
+
+    Sandbox_ExpandedHeli_EventJet = "Aviones",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Con qué frecuencia ocurren los eventos de Aviones.\n Los jets vuelan junto a los jugadores provocando el movimiento de la horda.",
+
+    Sandbox_ExpandedHeli_EventNews = "Noticias",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Con qué frecuencia ocurren los eventos de Noticias.\n Los helicópteros de noticias se centrarán en cualquier ciudadano que encuentren y lo seguirán durante un breve periodo de tiempo.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Policia",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Con qué frecuencia ocurren los eventos de Policias.\n La policía tomará cartas en el asunto y escoltará a los ciudadanos mientras dispara a los zombis.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militares",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Con qué frecuencia ocurren los eventos de Militares.\n El ejército avanzará por etapas: advertir a los ciudadanos, purgar a los muertos vivientes y, por último, purgar todo lo que se mueva.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Drops",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "How frequent FEMA aid drop events occur.\n FEMA will conduct aid drops early on in the apocalypse.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Supervivientes",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur.\n Survivors will only flyby on scouting missions causing horde movement.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Saqueadores",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "How frequent raider events occur.\n Raiders will hone in on survivors to torment them for some entertainment.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritanos",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur.\n Samaritans will drop off supplies to help survivors.",
+
+	Sandbox_ExpandedHeli_StartDay = "Start Day",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to.",
+	Sandbox_ExpandedHeli_StartDay_help = "This is what day into the game events occur. You will need to factor in "months into the apocalypse" settings."
+
+	Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler Duration",
+	Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "How long will the scheduler run from the start day.\n The scheduler will adjust event progression to fit this duration.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "This is how many days the scheduler will operate for."
+
+	Sandbox_ExpandedHeli_ContinueScheduling = "Continue Scheduling Forever",
+	Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Toggle this on so that the scheduler will spawn events passed the duration limit. Events will still progress through stages according to the duration but events will never stop being scheduled.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continue Scheduling: Late Game Events Only",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "When \"Continue Scheduling Forever\" is toggle on, this toggled on makes the scheduler only use late-game events.",
+
+}
