@@ -393,32 +393,13 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 	},
 }
 
-eHelicopter_PRESETS["raider_heli_harasser"] = {
-	inherit = {"raiders"},
-	hoverOnTargetDuration = {450,850},
-	speed = 2,
-	attackDelay = 1000,
-	attackSpread = 4,
-	attackHitChance = 70,
-	attackDamage = 50,
-	flightVolume = 750,
-	crashType = false,
-	hostilePreference = "IsoZombie",
-	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicAggressive", "eHeliCrewLaughingAndDrinking" },
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
-	},
-}
-
-
 eHelicopter_PRESETS["raider_heli_hostile"] = {
 	inherit = {"raiders"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
 	attackDelay = 650,
 	attackSpread = 5,
-	attackHitChance = 30,
+	attackHitChance = 7,
 	attackDamage = 10,
 	flightVolume = 750,
 	crashType = false,
