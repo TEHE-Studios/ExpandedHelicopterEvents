@@ -159,7 +159,7 @@ end
 ---@param y number
 ---@return number
 function eHelicopter:getDistanceToXY(x,y)
-	if (not x) or (not y) or (not self.currentPosition) then print("ERR: getDistanceToIsoObject: no x/y or no currentPosition") return end
+	if (not x) or (not y) or (not self.currentPosition) then print("ERR: getDistanceToIsoObject: no x/y or no currentPosition "..tostring(x).."/"..tostring(y).." "..tostring(self.currentPosition)) return end
 
 	local a = x - Vector3GetX(self.currentPosition)
 	local b = y - Vector3GetY(self.currentPosition)
