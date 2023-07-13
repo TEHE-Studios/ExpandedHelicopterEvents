@@ -1,0 +1,26 @@
+Tooltip_ES = {
+    Tooltip_dismantle_helicopterpart = "Usar un soplete y una máscara de soldar para producir metal.",
+    Tooltip_open_boxes_barehanded = "Sería más rápido con algo afilado.",
+    Tooltip_Parachute = "Se puede rasgar para hacer tela.",
+    Tooltip_EnergyBar = "Una barrita energética envasada para kits de supervivencia. Fabricada por PT&D.",
+    Tooltip_SurvivalVest = "Chaleco de supervivencia estándar para pilotos militares.",
+    Tooltip_SurvivalVestBlack = "Chaleco de supervivencia estándar para búsqueda y rescate policial.",
+    Tooltip_SPHMilitary = "Casco de helicóptero militar estándar."
+    Tooltip_SPHBlack = "Casco de helicóptero militar estándar en negro.",
+    Tooltip_SPHPolice = "Casco de helicóptero policial.",
+    Tooltip_SPHCivilian = "Casco de helicóptero usado por civiles.",
+
+    Tooltip_FlyerCDC = "Parece un folleto de advertencia sanitaria.",
+    Tooltip_FlyerMilitary = "Parece un volante de aviso de los militares.",
+    Tooltip_CivilDefense = "Parece un volante de defensa civil.",
+
+    Tooltip_WaterSealed = "Ración de agua sellada distribuida por el Gobierno de EE.UU."
+    Tooltip_WaterUnsealed = "Ración de agua abierta distribuida por el Gobierno de EE.UU." 
+
+    Tooltip_SupplyBox = "Caja de suministros del Gobierno de EE.UU"
+    Tooltip_SamaritanBox = "Caja de suministros de un grupo de samaritanos misteriorosos.",
+    Tooltip_BanditBox = "Alijo personal. Dice: 'MI MIERDA, ¡NO TOQUES!'",
+
+    Tooltip_SignalFlare = "Bengala de señalización. No prender en interiores.",
+    Tooltip_HandFlare = "Bengala. No prender en interiores."
+}

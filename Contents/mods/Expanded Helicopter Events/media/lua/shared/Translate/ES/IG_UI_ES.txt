@@ -1,22 +1,29 @@
 IG_UI_ES = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A estrellado (Fuselaje)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A estrellado (Cola)",
 
-    IGUI_VehicleNameUH1HSurvivalist = "Bell UH-1H Survivalist",
-    IGUI_VehicleNameUH1HSurvivalistCrash = "Bell UH-1H Survivalist (Estrellado)",
-    IGUI_VehicleNameUH1HSurvivalistFuselage = "Bell UH-1H Survivalist (Fuselaje)",
-    IGUI_VehicleNameUH1HSurvivalistTail = "Bell UH-1H Survivalist (Cola)",
+    IGUI_VehicleNameUH60Desert = "UH-60A Desierto",
+    IGUI_VehicleNameUH60DesertFuselage = "UH-60A Desierto estrellado (Fuselaje)",
+    IGUI_VehicleNameUH60DesertTail = "UH-60A Desierto estrellado (Cola)",
 
-    IGUI_VehicleNameBell206LBMW = "Bell 206 News",    
-    IGUI_VehicleNameBell206LBMWCrashed = "Bell 206 News (Estrellado)",
-    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 News (Fuselaje)",
-    IGUI_VehicleNameBell206LBMWTail = "Bell 206 News (Cola)",
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "UH-60A Medevac estrellado (Fuselaje)",
+    IGUI_VehicleNameUH60MedevacTail = "UH-60A Medevac estrellado (Cola)",
 
-    IGUI_VehicleNameBell206Police = "Bell 206 Police",
-    IGUI_VehicleNameBell206PoliceCrashed = "Bell 206 Police (Estrellado)",
-    IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 Police (Fuselaje)",
-    IGUI_VehicleNameBell206PoliceTail = "Bell 206 Police (Cola)",
+    IGUI_VehicleNameBell206LBMW = "Helicóptero de noticias",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Helicóptero de noticias (Fuselaje)",
+    IGUI_VehicleNameBell206LBMWTail = "Helicóptero de noticias (Cola)",
 
+    IGUI_VehicleNameBell206Police = "Police Helicopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Police Helicopter (Fuselaje)",
+    IGUI_VehicleNameBell206PoliceTail = "Helicóptero de policia (Cola)",
+
+    IGUI_VehicleNameBell206Survivalist = "Helicóptero civil",
+    
     IGUI_VehicleNameFEMASupplyDrop = "Suministro de emergencia",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Entrega de suministros samaritan",
 
-    IGUI_VehicleNameOH58Rescue = "OH-58",
-	
+    IGUI_Spent = "Spent",
+    IGUI_Lit = "Lit",
 }
