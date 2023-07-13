@@ -51,7 +51,7 @@ eHelicopter_PRESETS["military_animal_culling"] = {
 	inherit = {"military"},
 	attackDelay = 2500,
 	attackSpread = 4,
-	speed = 0.4,
+	speed = 0.5,
 	attackHitChance = 90,
 	attackDamage = 100,
 	hostilePreference = "IsoZombie",
@@ -60,8 +60,9 @@ eHelicopter_PRESETS["military_animal_culling"] = {
 	eventSoundEffects = {
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
-		["flightSound"] = "eHelicopter",
+		["flightSound"] = { "eHelicopter", "eHeliPoliceSiren" },
 	},
+	hoverOnTargetDuration = {375,575},
 }
 
 eHelicopter_PRESETS["military_patrol_quarantine"] = {

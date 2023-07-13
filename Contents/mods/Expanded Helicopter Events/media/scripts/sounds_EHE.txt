@@ -112,7 +112,6 @@ module Base {
         clip { file = media/sound/gunfire/heli_fire_impact2.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
         clip { file = media/sound/gunfire/heli_fire_impact3.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, } }
 
-
     sound eHeli_line_NewMale_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/military_lines/newHelilines/heli_actsOfVigilantismBad.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
@@ -149,7 +148,6 @@ module Base {
         category = EHE: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/military_lines/newHeliLines/heli_standbyDrop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
         clip { file = media/sound/military_lines/newHeliLines/heli_standbyDrop2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
-
 
     sound eHeli_lineM_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
