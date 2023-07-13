@@ -1,4 +1,5 @@
 DynamicRadio_EN = {
+    AEBS_AnimalCulling = "Animal culling operation launched."
 	AEBS_SupplyDrop = "Supply package inbound."
 	AEBS_Raiders = "If you can hear this, get f-"
     AEBS_SurvivorHeli = "Loot runner heading out."
