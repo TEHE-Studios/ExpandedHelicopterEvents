@@ -17,10 +17,11 @@ eHelicopter_PRESETS["military"] = {
 		["military_patrol"] = 0,
 		["military_patrol_emergency"] = 0.0066,
 		["military_recon_hover"] = 0.0070,
+		["military_animal_culling"] = 0.0100,
 		["military_patrol_quarantine"] = 0.0165,
 		["military_attack_undead_evac"] = 0.033,
 		["military_attack_undead"] = 0.066,
-		["military_attackhelicopter_gunrun"] = 0.077,
+		["military_attackhelicopter_zombies"] = 0.077,
 		["military_cargo"] = 0.1900,
 		["military_attack_all"] = 0.2145,
 	}
@@ -44,6 +45,23 @@ eHelicopter_PRESETS["military_recon_hover"] = {
 	speed = 1.5,
 	crashType = false,
 	hoverOnTargetDuration = {200,400},
+}
+
+eHelicopter_PRESETS["military_animal_culling"] = {
+	inherit = {"military"},
+	attackDelay = 2500,
+	attackSpread = 4,
+	speed = 0.4,
+	attackHitChance = 90,
+	attackDamage = 100,
+	hostilePreference = "IsoZombie",
+	announcerVoice = false,
+	dropItems = {["EHE.QuarantineFlyer"]=250},
+	eventSoundEffects = {
+		["attackSingle"] = "eHeliAlternatingShots",
+		["attackLooped"] = "eHeliAlternatingShots",
+		["flightSound"] = "eHelicopter",
+	},
 }
 
 eHelicopter_PRESETS["military_patrol_quarantine"] = {
@@ -81,7 +99,7 @@ eHelicopter_PRESETS["military_cargo"] = {
 	},
 }
 
-eHelicopter_PRESETS["military_attackhelicopter_gunrun"] = {
+eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	crashType = false,
@@ -171,7 +189,7 @@ eHelicopter_PRESETS["jet"] = {
 	},
 	crashType = false,
 	shadow = false,
-	eventMarkerIcon = "media/ui/jet.png",
+	eventMarkerIcon = "media/ui/plane.png",
 	forScheduling = true,
 	schedulingFactor = 4,
 	eventSpawnWeight = 5,
@@ -266,7 +284,7 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 }
 
 eHelicopter_PRESETS["police"] = {
-	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2},
+	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2, "police_heli_fleeing",2},
 	crashType = {"Bell206PoliceFuselage"},
 	crew = {"EHEPolicePilot", "EHEPoliceOfficer", "EHEPoliceOfficer", 75},
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
@@ -295,7 +313,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	inherit = {"police"},
 	attackDelay = 1700,
 	attackSpread = 4,
-	speed = 1.0,
+	speed = 0.7,
 	attackHitChance = 95,
 	attackDamage = 12,
 	hostilePreference = "IsoZombie",
@@ -307,15 +325,38 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	hoverOnTargetDuration = {375,575},
 }
 
+eHelicopter_PRESETS["police_heli_fleeing"] = {
+	inherit = {"police"},
+	speed = 1.5,
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+
+}
+
+eHelicopter_PRESETS["survivor_smallplane"] = {
+	crashType = false,
+	crew = {"EHESurvivorPilot", 100, 0},
+	speed = 0.7,
+	eventMarkerIcon = "media/ui/plane.png",
+	eventSoundEffects = {
+		["flightSound"] = "eSmallPropPlane",
+	},
+	forScheduling = true,
+	markerColor = {r=0.29,g=0.78,b=0.21},
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+	eventSpawnWeight = 3,
+}
 
 eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 1.0,
-	eventMarkerIcon = "media/ui/jet.png",
+	eventMarkerIcon = "media/ui/plane.png",
 	eventSoundEffects = {
-		["flightSound"] = "ePropPlane",
+		["flightSound"] = "eLargePropPlane",
 	},
 	forScheduling = true,
 	markerColor = {r=0.29,g=0.78,b=0.21},
@@ -325,9 +366,8 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	radioChatter = "AEBS_SamaritanDrop"
 }
 
-
 eHelicopter_PRESETS["survivor_heli"] = {
-	speed = 1.5,
+	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
 	eventSoundEffects = {
