@@ -6,8 +6,6 @@ local function applyLootBoxLoot()
     VehicleDistributions.UH60 = {
         rolls = 3,
         items ={
-            "Bag_ALICEpack_Army", 4,
-            "Vest_BulletArmy", 9,
             "556Clip", 3,
             "556Clip", 3,
             "556Clip", 3,
@@ -16,7 +14,6 @@ local function applyLootBoxLoot()
             "556Box", 3,
             "556Box", 3,
             "556Box", 3,
-            "Hat_Army", 3,
             "AssaultRifle", 7,
             "AssaultRifle", 7,
             "Pistol", 5,
@@ -31,18 +28,16 @@ local function applyLootBoxLoot()
             "Bullets9mm", 3,
             "Bullets9mm", 3,
             "HolsterSimple", 3,
-            "Trousers_CamoGreen", 1,
-            "Shirt_CamoGreen", 1,
-            "Jacket_ArmyCamoGreen", 1,
-            "Hat_BonnieHat_CamoGreen", 1,
-            "Hat_BeretArmy", 3,
-            "Shoes_ArmyBoots", 1,
-            "Shirt_CamoGreen", 1,
             "Radio.WalkieTalkie5", 3,
-            "HuntingKnife", 3,
-            "FirstAidKit", 3,
+            "FirstAidKit", 10,
+            "FirstAidKit", 10,
+            "FirstAidKit", 10,
             "x2Scope", 0.7,
 
+            -- MEA --
+            "MEA.ANPRC112", 10,
+            "MEA.ANPRC112", 10,
+            
             -- EHE --
             "EHE.MealReadytoEat", 10,
             "EHE.MealReadytoEat", 10,
@@ -120,8 +115,6 @@ local function applyLootBoxLoot()
     VehicleDistributions.UH60Medevac = {
         rolls = 3,
         items ={
-            "Bag_ALICEpack_Army", 4,
-            "Vest_BulletArmy", 9,
             "556Clip", 3,
             "556Clip", 3,
             "556Clip", 3,
@@ -144,23 +137,15 @@ local function applyLootBoxLoot()
             "Bullets9mm", 3,
             "Bullets9mm", 3,
             "HolsterSimple", 3,
-            "Trousers_CamoGreen", 1,
-            "Shirt_CamoGreen", 1,
-            "Jacket_ArmyCamoGreen", 1,
-            "Hat_BonnieHat_CamoGreen", 1,
-            "Hat_BeretArmy", 3,
-            "Shoes_ArmyBoots", 1,
-            "Shirt_CamoGreen", 1,
             "Radio.WalkieTalkie5", 3,
-            "HuntingKnife", 3,
             "FirstAidKit", 10,
             "FirstAidKit", 10,
             "FirstAidKit", 10,
             "x2Scope", 0.7,
 
-            -- EHE --
-            "EHE.MealReadytoEat", 10,
-            "EHE.MealReadytoEat", 10,
+            -- MEA --
+            "MEA.ANPRC112", 10,
+            "MEA.ANPRC112", 10,
 
             -- AZ --
             "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
