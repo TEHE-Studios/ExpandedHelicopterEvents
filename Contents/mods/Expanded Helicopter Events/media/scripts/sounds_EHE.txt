@@ -1,5 +1,9 @@
 module Base {
 
+    sound OpenBox {
+        category = EHE: Main, loop = false, is3D = true,
+        clip { file = media/sound/crashes_bombs_misc/OpenBox.ogg, distanceMax = 15, reverbFactor = 0.1, volume = 0.7, } }
+
     sound eHelicopter {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
@@ -26,8 +30,8 @@ module Base {
     
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
+        clip { file = media/sound/crashes_bombs_misc/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
         
     sound eAirRaid {
         category = EHE: Main, loop = true, is3D = true,
@@ -59,6 +63,10 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
+
+     sound FlareShot {
+         category = EHE: Main, loop = false, is3D = true,
+         clip { file = media/sound/gunfire/FlareShot.ogg, distanceMax = 75, reverbFactor = 0.25, volume = 2.0, } }
 
      sound eheFlare {
          category = EHE: Main, loop = false, is3D = true,
@@ -104,7 +112,7 @@ module Base {
 
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_newscaster.ogg, distanceMax = 100, reverbFactor = 0.1, volume = 0.5, } }
+        clip { file = media/sound/crashes_bombs_misc/heli_newscaster.ogg, distanceMax = 100, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eHeli_fire_impact {
         category = EHE: Main, loop = false, is3D = true,
@@ -258,13 +266,13 @@ module Base {
         clip { file = media/sound/police_lines/old_lines/police_37.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
         clip { file = media/sound/police_lines/old_lines/police_38.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
         clip { file = media/sound/police_lines/old_lines/police_39.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/old_lines/police_40.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }}
+        clip { file = media/sound/police_lines/old_lines/police_40.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, } }
 
- sound eHeli_PoliceSpotted {
-        category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/police_lines/old_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/old_lines/PoliceSpotted2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
-        clip { file = media/sound/police_lines/old_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }}
+     sound eHeli_PoliceSpotted {
+            category = EHE: Voice Lines, loop = false, is3D = true,
+            clip { file = media/sound/police_lines/old_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+            clip { file = media/sound/police_lines/old_lines/PoliceSpotted2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, }
+            clip { file = media/sound/police_lines/old_lines/PoliceSpotted1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 3.0, } }
 
     sound eHeli_lineF_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
