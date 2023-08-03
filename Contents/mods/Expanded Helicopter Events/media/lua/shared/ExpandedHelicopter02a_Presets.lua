@@ -17,7 +17,6 @@ eHelicopter_PRESETS["military"] = {
 		["military_patrol"] = 0,
 		["military_patrol_emergency"] = 0.0066,
 		["military_recon_hover"] = 0.0070,
-		["military_animal_culling"] = 0.0100,
 		["military_patrol_quarantine"] = 0.0165,
 		["military_attack_undead_evac"] = 0.033,
 		["military_attack_undead"] = 0.066,
@@ -45,24 +44,6 @@ eHelicopter_PRESETS["military_recon_hover"] = {
 	speed = 1.5,
 	crashType = false,
 	hoverOnTargetDuration = {200,400},
-}
-
-eHelicopter_PRESETS["military_animal_culling"] = {
-	inherit = {"military"},
-	attackDelay = 2500,
-	attackSpread = 4,
-	speed = 0.5,
-	attackHitChance = 90,
-	attackDamage = 100,
-	hostilePreference = "IsoZombie",
-	announcerVoice = false,
-	dropItems = {["EHE.QuarantineFlyer"]=250},
-	eventSoundEffects = {
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
-		["flightSound"] = { "eHelicopter", "eHeliPoliceSiren" },
-	},
-	hoverOnTargetDuration = {375,575},
 }
 
 eHelicopter_PRESETS["military_patrol_quarantine"] = {
