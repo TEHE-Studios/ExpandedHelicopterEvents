@@ -1,9 +1,5 @@
 module Base {
 
-    sound OpenBox {
-        category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/OpenBox.ogg, distanceMax = 15, reverbFactor = 0.1, volume = 0.7, } }
-
     sound eHelicopter {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
@@ -63,10 +59,6 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
-
-     sound FlareShot {
-         category = EHE: Main, loop = false, is3D = true,
-         clip { file = media/sound/gunfire/FlareShot.ogg, distanceMax = 75, reverbFactor = 0.25, volume = 2.0, } }
 
      sound eheFlare {
          category = EHE: Main, loop = false, is3D = true,
