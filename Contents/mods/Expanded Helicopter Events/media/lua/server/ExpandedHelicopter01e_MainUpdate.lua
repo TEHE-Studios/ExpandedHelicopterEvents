@@ -8,7 +8,7 @@ local heatMap = require "ExpandedHelicopter_HeatMap"
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end
 
-	if (self.state == "arrived" or self.state == "gotoTarget") then
+	if (self.state == "arrived" or self.state == "gotoTarget") and (self.state ~= "goHome") then
 
 		local relativeHeatMapCell = self.target and heatMap.getObjectRelativeHeatMapCell(self.target)
 		local hottestCell = heatMap.getHottestCell()
