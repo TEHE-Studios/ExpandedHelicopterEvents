@@ -1,5 +1,9 @@
 module Base {
 
+    sound OpenBox {
+        category = EHE: Main, loop = false, is3D = true,
+        clip { file = media/sound/crashes_bombs_misc/OpenBox.ogg, distanceMax = 15, reverbFactor = 0.1, volume = 0.7, } }
+
     sound eHelicopter {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
@@ -26,8 +30,8 @@ module Base {
     
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
+        clip { file = media/sound/crashes_bombs_misc/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
         
     sound eAirRaid {
         category = EHE: Main, loop = true, is3D = true,
@@ -60,9 +64,13 @@ module Base {
         clip { file = media/sound/music/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
+     sound FlareShot {
+         category = EHE: Main, loop = false, is3D = true,
+         clip { file = media/sound/gunfire/FlareShot.ogg, distanceMax = 75, reverbFactor = 0.25, volume = 2.0, } }
+
      sound eheFlare {
          category = EHE: Main, loop = false, is3D = true,
-         clip { file = media/sound/crashes_bombs_misc/flare.ogg, distanceMax = 33, reverbFactor = 0.01, volume = 0.15, } }
+         clip { file = media/sound/crashes_bombs_misc/flare.ogg, distanceMax = 33, reverbFactor = 0.01, volume = 0.05, } }
 
     sound eBomb {
         category = EHE: Main, loop = false, is3D = true,
@@ -104,50 +112,13 @@ module Base {
 
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/heli_newscaster.ogg, distanceMax = 100, reverbFactor = 0.1, volume = 0.5, } }
+        clip { file = media/sound/crashes_bombs_misc/heli_newscaster.ogg, distanceMax = 100, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eHeli_fire_impact {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/gunfire/heli_fire_impact1.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
         clip { file = media/sound/gunfire/heli_fire_impact2.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
         clip { file = media/sound/gunfire/heli_fire_impact3.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, } }
-
-    sound eHeli_line_NewMale_1 {
-        category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/newHelilines/heli_actsOfVigilantismBad.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_anyLootingPunished.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_avoidContact.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_clearTheStreets.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_doNotInterfere.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_doNotLeave.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_doNotReachOut.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_faceCoverings.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_lockAllDoors.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_faceCoverings.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_PleaseReturn.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_situationUnderControl1.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHelilines/heli_situationUnderContro2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
-
-    sound eHeli_newLines_MaleEarlyA {
-        category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/newHeliLines/heli_actsOfVigilantismBad.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_anyLootingPunished.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_situationUnderControl.ogg distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_situationUnderControl2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_clearTheStreets.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
-
-    sound eHeli_newLines_MaleEarlyA_Two {
-        category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/newHeliLines/heli_actsOfVigilantismBad.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_anyLootingPunished.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_situationUnderControl.ogg distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_situationUnderControl2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_clearTheStreets.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
-        
-    sound eHeli_newLines_MaleDropOff {
-        category = EHE: Voice Lines, loop = false, is3D = true,
-        clip { file = media/sound/military_lines/newHeliLines/heli_standbyDrop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, }
-        clip { file = media/sound/military_lines/newHeliLines/heli_standbyDrop2.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
 
     sound eHeli_lineM_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,
