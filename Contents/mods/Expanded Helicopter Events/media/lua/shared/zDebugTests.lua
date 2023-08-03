@@ -7,7 +7,7 @@ require "ExpandedHelicopter01a_MainVariables"
 Events.OnGameBoot.Add(function()
 	if EHE_DebugTests then
 		EHE_DebugTests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
-		--ISCustomDebugTestsPanel.Tests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
+		EHE_DebugTests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
 		EHE_DebugTests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
 		EHE_DebugTests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
 		EHE_DebugTests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
@@ -311,47 +311,51 @@ function CustomDebugPanel.getHumanoidsInRange()
 	end
 end
 
---[[
+
 ---- Test all announcements
 --GLOBAL DEBUG VARS
-testAllLines__ALL_LINES = {}
-testAllLines__DELAYS = {}
-testAllLines__lastDemoTime = 0
+local testAllLines = {}
+testAllLines.ALL_LINES = {}
+testAllLines.DELAYS = {}
+testAllLines.lastDemoTime = 0
 
 function CustomDebugPanel.testAllLines()
-	if #testAllLines__ALL_LINES > 0 then
-		testAllLines__ALL_LINES = {}
-		testAllLines__DELAYS = {}
-		testAllLines__lastDemoTime = 0
+	if #testAllLines.ALL_LINES > 0 then
+		testAllLines.ALL_LINES = {}
+		testAllLines.DELAYS = {}
+		testAllLines.lastDemoTime = 0
+
+		local player = getPlayer()
+		player:Say("Cancelling testAllLines")
 		return
 	end
 
 	for voiceID,voiceData in pairs(eHelicopter_announcers) do
 		if eHelicopterSandbox.config[voiceID] == true then
 			for lineID,lineData in pairs(voiceData["Lines"]) do
-				table.insert(testAllLines__ALL_LINES, lineData[2])
-				table.insert(testAllLines__DELAYS, lineData[1])
+				table.insert(testAllLines.ALL_LINES, lineData[2])
+				table.insert(testAllLines.DELAYS, lineData[1])
 			end
 		end
 	end
-	table.insert(testAllLines__ALL_LINES, "eHeli_machine_gun_fire_single")
-	table.insert(testAllLines__DELAYS, 1)
+	table.insert(testAllLines.ALL_LINES, "eHeli_machine_gun_fire_single")
+	table.insert(testAllLines.DELAYS, 1)
 end
 
 function CustomDebugPanel.testAllLinesLOOP()
-	if #testAllLines__ALL_LINES > 0 then
-		if (testAllLines__lastDemoTime < getGametimeTimestamp()) then
-			local line = testAllLines__ALL_LINES[1]
-			local delay = testAllLines__DELAYS[1]
-			testAllLines__lastDemoTime = getGametimeTimestamp()+delay
-			---@type IsoPlayer | IsoGameCharacter player
-			local player = getSpecificPlayer(0)
-			player:playSoundImpl(line)
-			table.remove(testAllLines__ALL_LINES, 1)
-			table.remove(testAllLines__DELAYS, 1)
+	if #testAllLines.ALL_LINES > 0 then
+		if (testAllLines.lastDemoTime < getTimeInMillis()) then
+			local line = testAllLines.ALL_LINES[1]
+			local delay = testAllLines.DELAYS[1]
+			testAllLines.lastDemoTime = getTimeInMillis()+delay
+			local emitter = getWorld():getFreeEmitter()
+			local player = getPlayer()
+			player:Say(line)
+			emitter:playSound(line)
+			table.remove(testAllLines.ALL_LINES, 1)
+			table.remove(testAllLines.DELAYS, 1)
 		end
 	end
 end
 
 Events.OnTick.Add(CustomDebugPanel.testAllLinesLOOP)
---]]
