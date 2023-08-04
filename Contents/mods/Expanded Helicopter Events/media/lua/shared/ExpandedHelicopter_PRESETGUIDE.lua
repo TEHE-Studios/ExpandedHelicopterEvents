@@ -175,7 +175,7 @@ end
 --- Main raiders preset - it has a `presetRandomSelection` that selects one of the presets in that table
 --- The number after the preset name accounts for "weight" for random selection.
 eHelicopter_PRESETS["raiders"] = {
-    presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1,"raider_heli_hostile",1},
+    presetRandomSelection = {"raider_heli_passive",3,"raider_heli_hostile",1},
     crashType = {"UH60GreenFuselage"},
     scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
     scrapVehicles = {"UH60GreenTail"},
@@ -199,25 +199,6 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
         ["flightSound"] = { "eMiliHeli", "eHeliMusicPassive" },
     },
 }
-
-eHelicopter_PRESETS["raider_heli_harasser"] = {
-    inherit = {"raiders"},
-    hoverOnTargetDuration = {450,850},
-    speed = 2,
-    attackDelay = 1000,
-    attackSpread = 4,
-    attackHitChance = 70,
-    attackDamage = 50,
-    flightVolume = 750,
-    crashType = false,
-    hostilePreference = "IsoZombie",
-    eventSoundEffects = {
-        ["flightSound"] = { "eMiliHeli", "eHeliMusicAggressive", "eHeliCrewLaughingAndDrinking" },
-        ["attackSingle"] = "eHeliAlternatingShots",
-        ["attackLooped"] = "eHeliAlternatingShots",
-    },
-}
-
 
 eHelicopter_PRESETS["raider_heli_hostile"] = {
     inherit = {"raiders"},

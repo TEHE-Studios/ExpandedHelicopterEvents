@@ -180,6 +180,7 @@ end
 ---@return number
 function eHelicopter:getDistanceToIsoObject(object)
 	if not object then print("ERR: getDistanceToIsoObject: no object or no currentPosition") return end
+	if not object.getX or not object.getY then print("ERR: getDistanceToIsoObject: "..tostring(object).." does not have getX/getY") return end
 	return self and self:getDistanceToXY(object:getX(),object:getY())
 end
 
@@ -382,10 +383,10 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 	if #targetPool <= 0 then
 		addActualPlayersToEIP()
-		for player,_ in pairs(EHEIsoPlayers) do table.insert(targetPool, player) end
+		for player,_ in pairs(EHEIsoPlayers) do if player then table.insert(targetPool, player) end end
 	end
 	
-	for _,flare in pairs(flareSystem.activeObjects) do table.insert(targetPool, flare) end
+	for _,flare in pairs(flareSystem.activeObjects) do if flare then table.insert(targetPool, flare) end end
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
