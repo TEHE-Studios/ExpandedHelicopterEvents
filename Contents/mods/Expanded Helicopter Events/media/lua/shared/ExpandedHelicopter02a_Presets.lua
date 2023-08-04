@@ -391,7 +391,7 @@ local function eHelicopter_dropTrash(heli)
 end
 
 eHelicopter_PRESETS["raiders"] = {
-	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_harasser",1,"raider_heli_hostile",1},
+	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_hostile",1},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
