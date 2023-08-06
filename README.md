@@ -14,3 +14,5 @@ _Links below lead directly to respective person's donation pages._
 **Jade** - Voiceover - [Ko-Fi](https://ko-fi.com/jadedp)  
 **Raven & Gabby** - Sound, Voiceover  
 **Cytt** - Models, Art - [Ko-Fi](https://ko-fi.com/cytt)  
+
+**Tiba666** - Guest Programming - is kofi allow for me here? 

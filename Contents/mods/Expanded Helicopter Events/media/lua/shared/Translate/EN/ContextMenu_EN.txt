@@ -4,6 +4,7 @@ ContextMenu_EN = {
     ContextMenu_VisorDown = "Visor Down",
 	ContextMenu_Tighten = "Tighten",
     ContextMenu_Untighten = "Untighten",
+	ContextMenu_DisassembleDropSupply = "Disassemble Supply Drop Crate",
 
     IGUI_VehiclePartHelicopterInterior = "Helicopter Interior",
 } 
