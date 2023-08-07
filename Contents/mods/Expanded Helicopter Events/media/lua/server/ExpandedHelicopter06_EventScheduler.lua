@@ -154,8 +154,12 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			eventIDsScheduled[v.preset] = true
 		end
 	end
-	
-	if (continueScheduling or (daysIntoApoc <= (SandboxVars.ExpandedHeli.StartDay+SandboxVars.ExpandedHeli.SchedulerDuration))) and (daysIntoApoc >= SandboxVars.ExpandedHeli.StartDay) then
+
+	local schedulerStartDay = SandboxVars.ExpandedHeli.StartDay or 0
+	local schedulerDuration = SandboxVars.ExpandedHeli.SchedulerDuration or 90
+
+	if (continueScheduling or (daysIntoApoc <= (schedulerStartDay+schedulerDuration))) and (daysIntoApoc >= schedulerStartDay) then
+
 		local options = {}
 
 		eHeliEvents_setEventsForScheduling()
