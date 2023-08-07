@@ -385,8 +385,15 @@ function eHelicopter:findTarget(range, DEBUGID)
 		addActualPlayersToEIP()
 		for player,_ in pairs(EHEIsoPlayers) do if player then table.insert(targetPool, player) end end
 	end
-	
-	for _,flare in pairs(flareSystem.activeObjects) do if flare then table.insert(targetPool, flare) end end
+
+	for _,flare in pairs(flareSystem.activeObjects) do
+		if flare then
+			local flareSquare = flareSystem.getFlareOuterMostSquare(flare)
+			if flareSquare then
+				table.insert(targetPool, flareSquare)
+			end
+		end
+	end
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
@@ -402,7 +409,6 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 			local hottestCell = heatMap.getHottestCell()
 			if not hottestCell and instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
-			if instanceof(p, "InventoryItem") then pSquare = flareSystem.getFlareOuterMostSquare(p) end
 
 			if pSquare then
 				local zone = pSquare:getZone()
