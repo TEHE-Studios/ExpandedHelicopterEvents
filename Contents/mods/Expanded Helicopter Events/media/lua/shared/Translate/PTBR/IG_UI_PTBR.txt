@@ -1,20 +1,30 @@
-IG_UI_PTBR = {
-										    
-    IGUI_VehicleNameBell206LBMW             = "Helic�ptero da Imprensa",    
-    IGUI_VehicleNameBell206LBMWFuselage     = "Helic�ptero da Imprensa (Fuselagem)",
-    IGUI_VehicleNameBell206LBMWTail         = "Helic�ptero da Imprensa (Cauda)",
-									        
-    IGUI_VehicleNameBell206Police           = "Helic�ptero Policial",
-    IGUI_VehicleNameBell206PoliceFuselage   = "Helic�ptero Policial (Fuselagem)",
-    IGUI_VehicleNameBell206PoliceTail       = "Helic�ptero Policial (Cauda)",
-										    
-    IGUI_VehicleNameBell206Survivalist      = "Helic�ptero Civil",
-										    
-    IGUI_VehicleNameBell206Black            = "Helic�ptero Misterioso",
-    IGUI_VehicleNameBell206BlackFuselage    = "Helic�ptero Misterioso (Fuselagem)",
-    IGUI_VehicleNameBell206BlackFuselage    = "Helic�ptero Misterioso (Cauda)",
-										    
-    IGUI_VehicleNameFEMASupplyDrop          = "Entrega de suprimentos Emerg�nciais",
-    IGUI_VehicleNameSurvivorSupplyDrop      = "Entrega de suprimentos Samaritano",
+IG_UI_PTBR = {										    
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Helicóptero UH-60A Destruído (Fuselagem)",
+    IGUI_VehicleNameUH60GreenTail = "Helicóptero UH-60A Destruído (Cauda)",
+    
+    IGUI_VehicleNameUH60Desert = "UH-60A Desert",
+    IGUI_VehicleNameUH60DesertFuselage = "Helicóptero UH-60A Desert Destruído (Fuselagem)",
+    IGUI_VehicleNameUH60DesertTail = "Helicóptero UH-60A Desert Destruído (Cauda)",
+    
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Helicóptero UH-60A Medevac Destruído (Fuselagem)",
+    IGUI_VehicleNameUH60MedevacTail = "Helicóptero UH-60A Medevac Destruído (Cauda)",
+    
+    IGUI_VehicleNameBell206LBMW = "Helicóptero da Imprensa",
+    IGUI_VehicleNameBell206LBMWFuselage = "Helicóptero da Imprensa (Fuselagem)",
+    IGUI_VehicleNameBell206LBMWTail = "Helicóptero da Imprensa (Cauda)",
+    
+    IGUI_VehicleNameBell206Police = "Helicóptero da Polícia",
+    IGUI_VehicleNameBell206PoliceFuselage = "Helicóptero da Polícia (Fuselagem)",
+    IGUI_VehicleNameBell206PoliceTail = "Helicóptero da Polícia (Cauda)",
+    
+    IGUI_VehicleNameBell206Survivalist = "Helicóptero Civil",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Suprimento de Emergência",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Suprimento dos Samaritanos",
+    
+    IGUI_Spent = "Gasto",
+    IGUI_Lit = "Aceso",
 
 }

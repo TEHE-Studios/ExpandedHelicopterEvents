@@ -4,4 +4,6 @@ ContextMenu_PTBR = {
     ContextMenu_VisorDown        = "Abaixar Viseira",
 	ContextMenu_Tighten          = "Apertar",
     ContextMenu_Untighten        = "Afrouxar",
+    
+    IGUI_VehiclePartHelicopterInterior = "Interior do Helicóptero",
 } 
