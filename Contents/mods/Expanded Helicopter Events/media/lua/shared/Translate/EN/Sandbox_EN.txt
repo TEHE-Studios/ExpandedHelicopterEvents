@@ -46,4 +46,7 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continue Scheduling: Late Game Events Only",
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "When \"Continue Scheduling Forever\" is toggle on, this toggled on makes the scheduler only use late-game events.",
 
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Weather Will Impact Events",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Whether weather will prevent events, or cause their crash.",
+
 }
