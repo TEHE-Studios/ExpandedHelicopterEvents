@@ -61,7 +61,7 @@ module EHE
         Lipids 		= 66,
         Calories 	= 1800,
         Packaged 	= TRUE,
-		ReplaceOnUse = MREWrapper,
+		ReplaceOnUse = MREWrapperEHE,
 		WorldStaticModel = MRE,
 	}
 
