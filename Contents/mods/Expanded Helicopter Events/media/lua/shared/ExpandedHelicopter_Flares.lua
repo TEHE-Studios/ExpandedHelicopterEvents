@@ -77,7 +77,7 @@ function eheFlareSystem.processLightSource(flare, x, y, z, active)
     if isServer() then return end
     --print("PROCESS LIGHT -- x"..tostring(x)..", y"..tostring(y)..", z"..tostring(z).." = "..tostring(active))
 
-    ---@type IsoLightSource|IsoLightSource
+    ---@type IsoLightSource
     local currentLight = eheFlareSystem.activeLightSources[flare:getID()]
     local ignoreUpdate = currentLight and currentLight:getX()==x and currentLight:getY()==y and currentLight:getZ()==z
 
