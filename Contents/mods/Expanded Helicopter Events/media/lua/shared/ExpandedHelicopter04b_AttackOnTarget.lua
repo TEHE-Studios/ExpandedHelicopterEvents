@@ -59,6 +59,9 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         damage = damage*2
     end
 
+    targetHostile:addHole(clothingBP)
+    targetHostile:addBlood(clothingBP, true, true, true)
+    
     if instanceof(targetHostile, "IsoPlayer") then
         --Messy process just to knock down the player effectively
         targetHostile:clearVariable("BumpFallType")
@@ -97,8 +100,6 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         end
     end
 
-    targetHostile:addHole(clothingBP)
-    targetHostile:addBlood(clothingBP, true, true, true)
 
     --splatter a few times
     local splatIterations = ZombRand(3)+1
