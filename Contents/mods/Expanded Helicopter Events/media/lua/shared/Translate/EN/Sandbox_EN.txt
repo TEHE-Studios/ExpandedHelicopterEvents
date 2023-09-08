@@ -1,12 +1,12 @@
 Sandbox_EN = {
-	Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
 
-	Sandbox_ExpandedHeli_Frequency_option1 = "Never"
-	Sandbox_ExpandedHeli_Frequency_option2 = "Rare",
-	Sandbox_ExpandedHeli_Frequency_option3 = "Uncommon",
-	Sandbox_ExpandedHeli_Frequency_option4 = "Common",
-	Sandbox_ExpandedHeli_Frequency_option5 = "Frequent",
-	Sandbox_ExpandedHeli_Frequency_option6 = "Insane",
+    Sandbox_ExpandedHeli_Frequency_option1 = "Never"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Rare",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Uncommon",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Common",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Frequent",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Insane",
 
     Sandbox_ExpandedHeli_EventJet = "Jets",
     Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur.\n Jets fly by players causing horde movement.",
@@ -32,16 +32,16 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_EventSamaritan = "Samaritans",
     Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur.\n Samaritans will drop off supplies to help survivors.",
 
-	Sandbox_ExpandedHeli_StartDay = "Start Day",
-	Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to.",
-	Sandbox_ExpandedHeli_StartDay_help = "This is what day into the game events occur. You will need to factor in "months into the apocalypse" settings."
+    Sandbox_ExpandedHeli_StartDay = "Start Day",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "The day the scheduler will start assigning events to.",
+    Sandbox_ExpandedHeli_StartDay_help = "This is what day into the game events occur. You will need to factor in "months into the apocalypse" settings."
 
-	Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler Duration",
-	Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "How long will the scheduler run from the start day.\n The scheduler will adjust event progression to fit this duration.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler Duration",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "How long will the scheduler run from the start day.\n The scheduler will adjust event progression to fit this duration.",
     Sandbox_ExpandedHeli_SchedulerDuration_help = "This is how many days the scheduler will operate for."
 
-	Sandbox_ExpandedHeli_ContinueScheduling = "Continue Scheduling Forever",
-	Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Toggle this on so that the scheduler will spawn events passed the duration limit. Events will still progress through stages according to the duration but events will never stop being scheduled.",
+    Sandbox_ExpandedHeli_ContinueScheduling = "Continue Scheduling Forever",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Toggle this on so that the scheduler will spawn events passed the duration limit. Events will still progress through stages according to the duration but events will never stop being scheduled.",
 
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continue Scheduling: Late Game Events Only",
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "When \"Continue Scheduling Forever\" is toggle on, this toggled on makes the scheduler only use late-game events.",
