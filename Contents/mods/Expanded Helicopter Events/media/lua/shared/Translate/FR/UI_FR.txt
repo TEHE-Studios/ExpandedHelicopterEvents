@@ -1,0 +1,11 @@
+UI_FR = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Événements d'hélicoptères étendus"
+    UI_Config_sandBoxMovedText = "Les options de configuration peuvent être trouvées dans les options du bac à sable.",
+    UI_Config_voiceTitle = "Packs vocaux",
+
+    UI_Config_resetEventsToolTip = "Réinitialiser les événements programmés en cas d'urgence :",
+    UI_Config_resetEvents = "Réinitialiser les événements",
+    UI_Config_eventMarkersOnToolTip1 = "Activez cette option pour activer les marqueurs d'événement.",
+    UI_Config_eventMarkersOnToolTip2 = "Remarque : Les marqueurs d'événements peuvent être déplacés.",
+    UI_Config_eventMarkersOn = "Marqueurs d'événement",
+}

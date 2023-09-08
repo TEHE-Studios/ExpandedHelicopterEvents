@@ -22,5 +22,5 @@ Tooltip_CN = {
     Tooltip_BanditBox = "私人储物箱。上面写着"MY SHIT，不许碰！",
 
     Tooltip_SignalFlare = "军用信号弹。不要在室内使用。",
-    Tooltip_SignalFlareSpent = "军用信号弹。这个已经被使用过了。"
+    Tooltip_HandFlare = "耀斑。请勿在室内生火。"
 }

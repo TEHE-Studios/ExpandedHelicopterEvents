@@ -13,4 +13,14 @@ Tooltip_TR = {
     Tooltip_FlyerCDC = "SaÄŸlÄ±k danÄ±ÅŸma broÅŸÃ¼rÃ¼ne benziyor.",
     Tooltip_FlyerMilitary = "Ordudan bir duyuru kaÄŸÄ±dÄ±.",
     Tooltip_CivilDefense = "Sivil savunmadan bir duyuru kaÄŸÄ±dÄ±.",
+
+    Tooltip_WaterSealed = "ABD Hükümeti tarafından dağıtılan Kapalı Su Oranı."
+    Tooltip_WaterUnsealed = "ABD Hükümeti tarafından dağıtılan Mühürsüz Su Oranı." 
+
+    Tooltip_SupplyBox = "ABD Hükümeti'nden Tedarik Kutusu."
+    Tooltip_SamaritanBox = "Bir grup gizemli Samiriyeli'den Tedarik Kutusu.",
+    Tooltip_BanditBox = "Kişisel saklama kutusu. "BOK'UM, DOKUNMA!",
+
+    Tooltip_SignalFlare = "İşaret fişeği. Kapalı mekanlarda ateş etmeyin.",
+    Tooltip_HandFlare = "Parlama. Kapalı mekanlarda ateş etmeyin."
 }

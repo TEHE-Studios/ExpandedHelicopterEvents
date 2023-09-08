@@ -1,12 +1,12 @@
 Sandbox_IT = {
-	Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
 
-	Sandbox_ExpandedHeli_Frequency_option1 = "Mai"
-	Sandbox_ExpandedHeli_Frequency_option2 = "Rara",
-	Sandbox_ExpandedHeli_Frequency_option3 = "Insolita",
-	Sandbox_ExpandedHeli_Frequency_option4 = "Comune",
-	Sandbox_ExpandedHeli_Frequency_option5 = "Frequente",
-	Sandbox_ExpandedHeli_Frequency_option6 = "Folle",
+    Sandbox_ExpandedHeli_Frequency_option1 = "Mai"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Rara",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Insolita",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Comune",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Frequente",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Folle",
 
     Sandbox_ExpandedHeli_EventJet = "Jet",
     Sandbox_ExpandedHeli_EventJet_tooltip = "La frequenza con cui si verificano gli eventi dei jet.\n I jet volano vicino ai giocatori causando il movimento dell'orda.",
@@ -32,18 +32,21 @@ Sandbox_IT = {
     Sandbox_ExpandedHeli_EventSamaritan = "Samaritani",
     Sandbox_ExpandedHeli_EventSamaritan_tooltip = "La frequenza con cui si verificano gli eventi dei samaritani.\n I samaritani consegnano i rifornimenti per aiutare i sopravvissuti.",
 
-	Sandbox_ExpandedHeli_StartDay = "Giorno d'Inizio",
-	Sandbox_ExpandedHeli_StartDay_tooltip = "Il giorno a cui il programma di pianificazione iniziera' ad assegnare gli eventi.",
-	Sandbox_ExpandedHeli_StartDay_help = "Questo e' il giorno in cui si verificano gli eventi del gioco. E' necessario tenere conto delle impostazioni "mesi nell'apocalisse"."
+    Sandbox_ExpandedHeli_StartDay = "Giorno d'Inizio",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Il giorno a cui il programma di pianificazione iniziera' ad assegnare gli eventi.",
+    Sandbox_ExpandedHeli_StartDay_help = "Questo e' il giorno in cui si verificano gli eventi del gioco. E' necessario tenere conto delle impostazioni "mesi nell'apocalisse"."
 
-	Sandbox_ExpandedHeli_SchedulerDuration = "Durata di Pianificazione",
-	Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Per quanto tempo il programma di pianificazione funzionera' a partire dal giorno di inizio.\n il programma regolera' la progressione degli eventi in base a questa durata.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Durata di Pianificazione",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Per quanto tempo il programma di pianificazione funzionera' a partire dal giorno di inizio.\n il programma regolera' la progressione degli eventi in base a questa durata.",
     Sandbox_ExpandedHeli_SchedulerDuration_help = "Questo e' il numero di giorni in cui il programma di pianificazione operera'."
 
-	Sandbox_ExpandedHeli_ContinueScheduling = "Continuare a pianificare per sempre",
-	Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Attivare questa opzione per far si' che il programma di pianificazione generi eventi oltre il limite di durata. Gli eventi continueranno a passare attraverso le fasi in base alla durata, ma non smetteranno mai di essere programmati.",
+    Sandbox_ExpandedHeli_ContinueScheduling = "Continuare a pianificare per sempre",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Attivare questa opzione per far si' che il programma di pianificazione generi eventi oltre il limite di durata. Gli eventi continueranno a passare attraverso le fasi in base alla durata, ma non smetteranno mai di essere programmati.",
 
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continuare a pianificare: Solo eventi di gioco avanzato",
     Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Quando si attiva "Continuare a pianificare per sempre", questa opzione fa si' che il programma di pianificazione utilizzi solo gli eventi di gioco avanzato.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Il tempo influenzerà gli eventi",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Se il tempo impedirà gli eventi o ne causerà il crollo.",
 
 }

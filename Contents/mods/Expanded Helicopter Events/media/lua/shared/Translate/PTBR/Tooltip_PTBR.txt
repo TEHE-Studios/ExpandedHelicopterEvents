@@ -5,7 +5,7 @@ Tooltip_PTBR = {
     Tooltip_EnergyBar = "Uma barra energÃ©tica para kits de SobrevivÃªncia. Frabicada pela PT&D.",
     Tooltip_SurvivalVest = "Colete de sobrevivÃªncia padrÃ£o para pilotos militares.",
     Tooltip_SurvivalVestBlack = "Colete de sobrevivÃªncia padrÃ£o para operaÃ§Ãµes de busca e salvamento policial.",
-    Tooltip_SPHMilitary = "Capacete de helicÃ³ptero militar padrÃ£o.",
+    Tooltip_SPHMilitary = "Capacete de helicÃ³ptero militar padrÃ£o."
     Tooltip_SPHBlack = "Capacete de helicÃ³ptero militar preto padrÃ£o.",
     Tooltip_SPHPolice = "Capacete de helicÃ³ptero usado pelas asas aÃ©reas da polÃ­cia.",
     Tooltip_SPHCivilian = "Capacete de helicÃ³ptero usado por pilotos civis.",
@@ -14,13 +14,13 @@ Tooltip_PTBR = {
     Tooltip_FlyerMilitary = "Parece um panfleto de aviso do exÃ©rcito.",
     Tooltip_CivilDefense = "Parece um panfleto de defesa civil.",
 
-    Tooltip_WaterSealed = "RaÃ§Ã£o de Ã¡gua selada distribuÃ­da pelo governo dos EUA.",
-    Tooltip_WaterUnsealed = "RaÃ§Ã£o de Ã¡gua aberta distribuÃ­da pelo governo dos EUA.",
+    Tooltip_WaterSealed = "RaÃ§Ã£o de Ã¡gua selada distribuÃ­da pelo governo dos EUA."
+    Tooltip_WaterUnsealed = "RaÃ§Ã£o de Ã¡gua aberta distribuÃ­da pelo governo dos EUA." 
 
-    Tooltip_SupplyBox = "Caixa de suprimentos distribuÃ­da pelo governo dos EUA.",
+    Tooltip_SupplyBox = "Caixa de suprimentos distribuÃ­da pelo governo dos EUA."
     Tooltip_SamaritanBox = "Caixa de suprimentos distribuÃ­da por um grupo de samaritanos misterioso.",
     Tooltip_BanditBox = "Caixa pessoal. Ela diz "MINHAS COISAS, NÃƒO TOQUE!",
 
     Tooltip_SignalFlare = "Sinalizador de sinais. NÃ£o acenda em ambientes fechados.",
-    Tooltip_HandFlare = "Sinalizador. NÃ£o acenda em ambientes fechados.",
+    Tooltip_HandFlare = "Sinalizador. NÃ£o acenda em ambientes fechados."
 }

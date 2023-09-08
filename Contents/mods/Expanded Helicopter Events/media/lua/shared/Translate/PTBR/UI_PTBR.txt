@@ -1,5 +1,5 @@
 UI_PTBR = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "Eventos de HelicÃ³ptero Expandidos",
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Eventos de HelicÃ³ptero Expandidos"
     UI_Config_sandBoxMovedText = "OpÃ§Ãµes de configuraÃ§Ã£o podem ser encontradas nas opÃ§Ãµes de sandbox.",
     UI_Config_voiceTitle = "Pacote de Falas",
 

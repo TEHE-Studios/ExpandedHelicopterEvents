@@ -22,5 +22,5 @@ Tooltip_PL = {
     Tooltip_BanditBox = "Osobista skrytka. Czyta „MOJE GÓWNO, NIE DOTYKAJ",
 
     Tooltip_SignalFlare = "Wojskowa flara sygnalizacyjna. Nie strzelaj w pomieszczeniu.",
-    Tooltip_SignalFlareSpent = "Wojskowa flara sygnalizacyjna. Była używana."
+    Tooltip_HandFlare = "Migotać. Nie strzelać w pomieszczeniu."
 }

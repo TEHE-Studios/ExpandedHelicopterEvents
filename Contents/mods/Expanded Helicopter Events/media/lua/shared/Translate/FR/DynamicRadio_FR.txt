@@ -1,11 +1,15 @@
 DynamicRadio_FR = {
-    AEBS_AirRaid = "RESTEZ À L'INTERIEUR ET CHERCHEZ UN ABRI",
-    AEBS_JetBombing = "Mise en place de la charge pour la purge.",
-    AEBS_JetPass = "Mise en place d'un passage de Jet.",
-    AEBS_Raiders = "Si vous entendez ceci, allez vous faire f****",
-    AEBS_SamaritanDrop = "Si quelqu'un est encore en vie, nous déposons des provisions.",
-    AEBS_SupplyDrop = "Approvisionnement en cours.",
-    AEBS_SurvivorHeli = "Des survivants courent vers le butin.",
-    AEBS_UnauthorizedEntryNews = "Activité aérienne non autorisée, intrus médiatique.",
-    AEBS_UnauthorizedEntryPolice = "Activité aérienne non autorisée, forces de l'ordre malhonnêtes.",
+    AEBS_SupplyDrop = "Approvisionnement en cours."
+    AEBS_Raiders = "Si vous entendez ceci, allez vous faire f****"
+    AEBS_SurvivorHeli = "Des survivants courent vers le butin."
+    AEBS_SamaritanDrop = "Si quelqu'un est encore en vie, nous déposons des provisions."
+    AEBS_UnauthorizedEntryPolice = "Activité aérienne non autorisée, forces de l'ordre malhonnêtes."
+    AEBS_UnauthorizedEntryNews = "Activité aérienne non autorisée, intrus médiatique."
+    AEBS_JetBombing = "Mise en place de la charge pour la purge."
+    AEBS_JetPass = "Mise en place d'un passage de Jet."
+    AEBS_AirRaid = "RESTEZ À L'INTERIEUR ET CHERCHEZ UN ABRI"
+    AEBS_HostileMilitary = "Activité aérienne détectée. Opérations militaires spéciales en cours. Bonne vitesse."
+    AEBS_PurgeMilitary = "Activité aérienne détectée. Opérations de contrôle des foules infectées en cours."
+    AEBS_PurgeCattle = "Activité aérienne détectée. Opérations d’abattage d’animaux en cours."
+    AEBS_Military = "Activité aérienne détectée. Opérations d'évacuation en cours."
 }

@@ -1,6 +1,6 @@
 DynamicRadio_ES = {
-	AEBS_SupplyDrop = "Paquete de suministros en camino."
-	AEBS_Raiders = "Si puedes escuchar esto, que te jo-"
+    AEBS_SupplyDrop = "Paquete de suministros en camino."
+    AEBS_Raiders = "Si puedes escuchar esto, que te jo-"
     AEBS_SurvivorHeli = "Saqueador saliendo."
     AEBS_SamaritanDrop = "A cualquiera que todavía esté vivo, estamos llevando suministros."
     AEBS_UnauthorizedEntryPolice = "Actividad aérea no autorizada, fuerzas policiales renegadas."
