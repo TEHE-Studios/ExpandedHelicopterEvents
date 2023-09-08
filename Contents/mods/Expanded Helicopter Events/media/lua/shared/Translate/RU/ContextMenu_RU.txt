@@ -1,7 +1,7 @@
 ContextMenu_RU = {
-    ContextMenu_VisorUp = "Поднять визор",	
-	ContextMenu_VisorDown = "Опустить визор",
-	ContextMenu_Tighten = "Застегнуть",
-	ContextMenu_Untighten = "Расстегнуть",
+    ContextMenu_VisorUp = "РџРѕРґРЅСЏС‚СЊ РІРёР·РѕСЂ",	
+	ContextMenu_VisorDown = "РћРїСѓСЃС‚РёС‚СЊ РІРёР·РѕСЂ",
+	ContextMenu_Tighten = "Р—Р°СЃС‚РµРіРЅСѓС‚СЊ",
+	ContextMenu_Untighten = "Р Р°СЃСЃС‚РµРіРЅСѓС‚СЊ",
 
 }

@@ -1,21 +1,21 @@
 IGUI_RU = {
-	IGUI_VehicleNameBell206Black = "���������� �������",
-	IGUI_VehicleNameBell206BlackFuselage = "���������� ������� (�������)",
-	IGUI_VehicleNameBell206BlackTail = "���������� ������� (�����)",
+	IGUI_VehicleNameBell206Black = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+	IGUI_VehicleNameBell206BlackFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+	IGUI_VehicleNameBell206BlackTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameBell206LBMW = "��������� �������",    
-    IGUI_VehicleNameBell206LBMWFuselage = "��������� ������� (�������)",
-    IGUI_VehicleNameBell206LBMWTail = "��������� ������� (�����)",
+	IGUI_VehicleNameBell206LBMW = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",    
+    IGUI_VehicleNameBell206LBMWFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+    IGUI_VehicleNameBell206LBMWTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameBell206Police = "����������� �������",
-    IGUI_VehicleNameBell206PoliceFuselage = "����������� ������� (�������)",
-    IGUI_VehicleNameBell206PoliceTail = "���� 206 ����������� (�����)",
+	IGUI_VehicleNameBell206Police = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+    IGUI_VehicleNameBell206PoliceFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+    IGUI_VehicleNameBell206PoliceTail = "пїЅпїЅпїЅпїЅ 206 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameBell206Survivalist = "����������� �������",
-	IGUI_VehicleNameBell206SurvivalistFuselage = "����������� ������� (�������)",
-	IGUI_VehicleNameBell206SurvivalistTail = "����������� ������� (�����)",
+	IGUI_VehicleNameBell206Survivalist = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+	IGUI_VehicleNameBell206SurvivalistFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
+	IGUI_VehicleNameBell206SurvivalistTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
 	
-	IGUI_VehicleNameFEMASupplyDrop = "���������� ������� FEMA",	
-	IGUI_VehicleNameSurvivorSupplyDrop = "���������� ������� ���������",
+	IGUI_VehicleNameFEMASupplyDrop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ FEMA",	
+	IGUI_VehicleNameSurvivorSupplyDrop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
 	
 }

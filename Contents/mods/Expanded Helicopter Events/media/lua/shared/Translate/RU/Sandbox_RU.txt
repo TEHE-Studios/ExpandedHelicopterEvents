@@ -1,41 +1,41 @@
 Sandbox_RU = {	
 	Sandbox_ExpandedHeli = "EXPANDED HELICOPTER EVENTS",
 
-	Sandbox_ExpandedHeli_Frequency_option1 = "Никогда"
-	Sandbox_ExpandedHeli_Frequency_option2 = "Очень редко",
-	Sandbox_ExpandedHeli_Frequency_option3 = "Редко",
-	Sandbox_ExpandedHeli_Frequency_option4 = "Часто",
-	Sandbox_ExpandedHeli_Frequency_option5 = "Очень часто",
-	Sandbox_ExpandedHeli_Frequency_option6 = "БЕЗУМИЕ",
+	Sandbox_ExpandedHeli_Frequency_option1 = "РќРёРєРѕРіРґР°"
+	Sandbox_ExpandedHeli_Frequency_option2 = "РћС‡РµРЅСЊ СЂРµРґРєРѕ",
+	Sandbox_ExpandedHeli_Frequency_option3 = "Р РµРґРєРѕ",
+	Sandbox_ExpandedHeli_Frequency_option4 = "Р§Р°СЃС‚Рѕ",
+	Sandbox_ExpandedHeli_Frequency_option5 = "РћС‡РµРЅСЊ С‡Р°СЃС‚Рѕ",
+	Sandbox_ExpandedHeli_Frequency_option6 = "Р‘Р•Р—РЈРњРР•",
 
-    Sandbox_ExpandedHeli_EventJet = "Реакт. самолеты",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Частота данных событий.",
+    Sandbox_ExpandedHeli_EventJet = "Р РµР°РєС‚. СЃР°РјРѕР»РµС‚С‹",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 	
-	Sandbox_ExpandedHeli_EventNews = "Журналисты",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Частота данных событий.",
+	Sandbox_ExpandedHeli_EventNews = "Р–СѓСЂРЅР°Р»РёСЃС‚С‹",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 
-    Sandbox_ExpandedHeli_EventPolice = "Полиция",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Частота данных событий.",
+    Sandbox_ExpandedHeli_EventPolice = "РџРѕР»РёС†РёСЏ",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 
-    Sandbox_ExpandedHeli_EventMilitary = "Военные",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Частота данных событий.",
+    Sandbox_ExpandedHeli_EventMilitary = "Р’РѕРµРЅРЅС‹Рµ",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 
-    Sandbox_ExpandedHeli_EventSurvivor = "Выжившие",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Частота данных событий.",
+    Sandbox_ExpandedHeli_EventSurvivor = "Р’С‹Р¶РёРІС€РёРµ",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 
-	Sandbox_ExpandedHeli_EventRaider = "Рейдеры",
-	Sandbox_ExpandedHeli_EventRaider_tooltip = "Частота данных событий.",
+	Sandbox_ExpandedHeli_EventRaider = "Р РµР№РґРµСЂС‹",
+	Sandbox_ExpandedHeli_EventRaider_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 	
-	Sandbox_ExpandedHeli_EventSamaritan = "Самаритяне",
-	Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Частота данных событий.",
+	Sandbox_ExpandedHeli_EventSamaritan = "РЎР°РјР°СЂРёС‚СЏРЅРµ",
+	Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Р§Р°СЃС‚РѕС‚Р° РґР°РЅРЅС‹С… СЃРѕР±С‹С‚РёР№.",
 	
-	Sandbox_ExpandedHeli_StartDay = "Стартовый день",
-	Sandbox_ExpandedHeli_StartDay_tooltip = "День, когда начнут появляться различные события. \nПримечание: некоторые события начинаются позже этого дня.",
+	Sandbox_ExpandedHeli_StartDay = "РЎС‚Р°СЂС‚РѕРІС‹Р№ РґРµРЅСЊ",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "Р”РµРЅСЊ, РєРѕРіРґР° РЅР°С‡РЅСѓС‚ РїРѕСЏРІР»СЏС‚СЊСЃСЏ СЂР°Р·Р»РёС‡РЅС‹Рµ СЃРѕР±С‹С‚РёСЏ. \nРџСЂРёРјРµС‡Р°РЅРёРµ: РЅРµРєРѕС‚РѕСЂС‹Рµ СЃРѕР±С‹С‚РёСЏ РЅР°С‡РёРЅР°СЋС‚СЃСЏ РїРѕР·Р¶Рµ СЌС‚РѕРіРѕ РґРЅСЏ.",
 
-	Sandbox_ExpandedHeli_CutOffDay = "Конечный день",
-	Sandbox_ExpandedHeli_CutOffDay_tooltip = "День, когда события начнут подходить к концу. \nПримечание: Некоторые события выходят за рамки этого срока.",
+	Sandbox_ExpandedHeli_CutOffDay = "РљРѕРЅРµС‡РЅС‹Р№ РґРµРЅСЊ",
+	Sandbox_ExpandedHeli_CutOffDay_tooltip = "Р”РµРЅСЊ, РєРѕРіРґР° СЃРѕР±С‹С‚РёСЏ РЅР°С‡РЅСѓС‚ РїРѕРґС…РѕРґРёС‚СЊ Рє РєРѕРЅС†Сѓ. \nРџСЂРёРјРµС‡Р°РЅРёРµ: РќРµРєРѕС‚РѕСЂС‹Рµ СЃРѕР±С‹С‚РёСЏ РІС‹С…РѕРґСЏС‚ Р·Р° СЂР°РјРєРё СЌС‚РѕРіРѕ СЃСЂРѕРєР°.",
 
-	Sandbox_ExpandedHeli_NeverEnding = "Бесконечные события",
-	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Включите эту опцию, чтобы события постоянно возобновлялись. Они по-прежнему будут прогрессировать поэтапно, но никогда не закончатся.",
+	Sandbox_ExpandedHeli_NeverEnding = "Р‘РµСЃРєРѕРЅРµС‡РЅС‹Рµ СЃРѕР±С‹С‚РёСЏ",
+	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Р’РєР»СЋС‡РёС‚Рµ СЌС‚Сѓ РѕРїС†РёСЋ, С‡С‚РѕР±С‹ СЃРѕР±С‹С‚РёСЏ РїРѕСЃС‚РѕСЏРЅРЅРѕ РІРѕР·РѕР±РЅРѕРІР»СЏР»РёСЃСЊ. РћРЅРё РїРѕ-РїСЂРµР¶РЅРµРјСѓ Р±СѓРґСѓС‚ РїСЂРѕРіСЂРµСЃСЃРёСЂРѕРІР°С‚СЊ РїРѕСЌС‚Р°РїРЅРѕ, РЅРѕ РЅРёРєРѕРіРґР° РЅРµ Р·Р°РєРѕРЅС‡Р°С‚СЃСЏ.",
 	
 }

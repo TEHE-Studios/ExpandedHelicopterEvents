@@ -5,5 +5,5 @@ ContextMenu_PTBR = {
 	ContextMenu_Tighten          = "Apertar",
     ContextMenu_Untighten        = "Afrouxar",
     
-    IGUI_VehiclePartHelicopterInterior = "Interior do Helicóptero",
+    IGUI_VehiclePartHelicopterInterior = "Interior do HelicÃ³ptero",
 } 

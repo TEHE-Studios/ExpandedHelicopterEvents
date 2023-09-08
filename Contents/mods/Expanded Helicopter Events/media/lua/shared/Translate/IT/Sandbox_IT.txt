@@ -15,7 +15,7 @@ Sandbox_IT = {
     Sandbox_ExpandedHeli_EventNews_tooltip = "La frequenza con cui si verificano gli eventi di cronaca.\n Gli elicotteri di cronaca si concentrano su qualsiasi cittadino che trovano e lo seguono per un breve periodo.",
 
     Sandbox_ExpandedHeli_EventPolice = "Polizia",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "La frequenza con cui si verificano gli eventi della polizia.\n La polizia prenderà in mano la situazione e scortera' i cittadini mentre spara agli zombi.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "La frequenza con cui si verificano gli eventi della polizia.\n La polizia prenderÃ  in mano la situazione e scortera' i cittadini mentre spara agli zombi.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Militare",
     Sandbox_ExpandedHeli_EventMilitary_tooltip = "La frequenza con cui si verificano gli eventi militari.\n L'esercito procede per fasi: avverte i cittadini, elimina i non morti e infine epura tutto cio' che si muove.",

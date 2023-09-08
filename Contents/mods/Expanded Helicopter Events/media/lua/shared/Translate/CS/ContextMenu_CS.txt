@@ -1,7 +1,7 @@
 ContextMenu_CS = {
-    ContextMenu_DownHoodie = "Kapuce dolù",
-    ContextMenu_Tighten = "Utáhnout",
+    ContextMenu_DownHoodie = "Kapuce dolÅ¯",
+    ContextMenu_Tighten = "UtÃ¡hnout",
     ContextMenu_Untighten = "Povolit",
-    ContextMenu_VisorDown = "Stínítko dolù",
-    ContextMenu_VisorUp = "Stínítko nahoru",
+    ContextMenu_VisorDown = "StÃ­nÃ­tko dolÅ¯",
+    ContextMenu_VisorUp = "StÃ­nÃ­tko nahoru",
 }

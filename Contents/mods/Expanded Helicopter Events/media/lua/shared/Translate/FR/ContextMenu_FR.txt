@@ -1,7 +1,7 @@
 ContextMenu_FR = {
     ContextMenu_DownHoodie = "Sans capuche",
-    ContextMenu_Tighten = "Serré",
-    ContextMenu_Untighten = "Lâche",
-    ContextMenu_VisorDown = "Visière baissée",
-    ContextMenu_VisorUp = "Visière relevée",
+    ContextMenu_Tighten = "SerrÃ©",
+    ContextMenu_Untighten = "LÃ¢che",
+    ContextMenu_VisorDown = "VisiÃ¨re baissÃ©e",
+    ContextMenu_VisorUp = "VisiÃ¨re relevÃ©e",
 }

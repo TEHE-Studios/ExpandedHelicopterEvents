@@ -1,8 +1,8 @@
 Recipes_RU = {
-	Recipe_Open_Supplies = "Открыть коробку",
-	Recipe_Cut_up_Parachute = "Порвать парашют на тряпки",
-	Recipe_Dismantle_Helicopter_Skirt = "Разобрать шасси",
-	Recipe_Dismantle_Main_Rotor_Blade = "Разобрать лопасть",
-	Recipe_Dismantle_Tail_Rotor_Blade = "Разобрать лопасть",
-	Recipe_Unseal_Water_Ration = "Распечатать пакет с водой"
+	Recipe_Open_Supplies = "РћС‚РєСЂС‹С‚СЊ РєРѕСЂРѕР±РєСѓ",
+	Recipe_Cut_up_Parachute = "РџРѕСЂРІР°С‚СЊ РїР°СЂР°С€СЋС‚ РЅР° С‚СЂСЏРїРєРё",
+	Recipe_Dismantle_Helicopter_Skirt = "Р Р°Р·РѕР±СЂР°С‚СЊ С€Р°СЃСЃРё",
+	Recipe_Dismantle_Main_Rotor_Blade = "Р Р°Р·РѕР±СЂР°С‚СЊ Р»РѕРїР°СЃС‚СЊ",
+	Recipe_Dismantle_Tail_Rotor_Blade = "Р Р°Р·РѕР±СЂР°С‚СЊ Р»РѕРїР°СЃС‚СЊ",
+	Recipe_Unseal_Water_Ration = "Р Р°СЃРїРµС‡Р°С‚Р°С‚СЊ РїР°РєРµС‚ СЃ РІРѕРґРѕР№"
 }
