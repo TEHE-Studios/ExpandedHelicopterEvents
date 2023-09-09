@@ -11,18 +11,18 @@ IG_UI_RU = {
     IGUI_VehicleNameUH60MedevacFuselage = "Разбитый UH-60A для медицинской эвакуации (фюзеляж)",
     IGUI_VehicleNameUH60MedevacTail = "Разбитый UH-60A для медицинской эвакуации (хвост)",
 
-    IGUI_VehicleNameBell206LBMW = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",    
-    IGUI_VehicleNameBell206LBMWFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
-    IGUI_VehicleNameBell206LBMWTail = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
+    IGUI_VehicleNameBell206LBMW = "Новости Вертолет",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Новости Вертолет (Фюзеляж)",
+    IGUI_VehicleNameBell206LBMWTail = "Новости Вертолет (Хвост)",
 
-    IGUI_VehicleNameBell206Police = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
-    IGUI_VehicleNameBell206PoliceFuselage = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅпїЅпїЅ)",
-    IGUI_VehicleNameBell206PoliceTail = "пїЅпїЅпїЅпїЅ 206 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (пїЅпїЅпїЅпїЅпїЅ)",
+    IGUI_VehicleNameBell206Police = "Полицейский вертолет",
+    IGUI_VehicleNameBell206PoliceFuselage = "Полицейский вертолет (фюзеляж)",
+    IGUI_VehicleNameBell206PoliceTail = "Полицейский вертолет (хвост)",
 
-    IGUI_VehicleNameBell206Survivalist = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+    IGUI_VehicleNameBell206Survivalist = "Гражданский вертолет",
     
-    IGUI_VehicleNameFEMASupplyDrop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ FEMA",
-    IGUI_VehicleNameSurvivorSupplyDrop = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ",
+    IGUI_VehicleNameFEMASupplyDrop = "Аварийный сброс поставок",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Самаритянский припас",
 
     IGUI_Spent = "Потраченный",
     IGUI_Lit = "Горит",

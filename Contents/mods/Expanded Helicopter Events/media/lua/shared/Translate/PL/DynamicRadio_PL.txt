@@ -1,6 +1,6 @@
 DynamicRadio_PL = {
     AEBS_SupplyDrop = "Pakiet dostaw przychodzący."
-    AEBS_Raiders = ""
+    AEBS_Raiders = "Jeśli to słyszysz, zdobądź-"
     AEBS_SurvivorHeli = "Poszukiwacz łupów wyrusza."
     AEBS_SamaritanDrop = "Każdemu, kto jeszcze żyje, niesiemy zaopatrzenie."
     AEBS_UnauthorizedEntryPolice = "Nieuprawniona działalność lotnicza, nieuczciwe organy ścigania."
