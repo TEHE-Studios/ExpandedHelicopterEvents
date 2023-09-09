@@ -1,37 +1,52 @@
 Sandbox_TR = {
-	Sandbox_ExpandedHeli = "Expanded Helicopter Events Modu",
+    Sandbox_ExpandedHeli = "Expanded Helicopter Events Modu",
 
-	Sandbox_ExpandedHeli_Frequency_option1 = "Asla"
-	Sandbox_ExpandedHeli_Frequency_option2 = "Nadir",
-	Sandbox_ExpandedHeli_Frequency_option3 = "Az",
-	Sandbox_ExpandedHeli_Frequency_option4 = "Orta",
-	Sandbox_ExpandedHeli_Frequency_option5 = "Çok",
-	Sandbox_ExpandedHeli_Frequency_option6 = "Aşırı",
+    Sandbox_ExpandedHeli_Frequency_option1 = "Asla"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Nadir",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Az",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Orta",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Ã‡ok",
+    Sandbox_ExpandedHeli_Frequency_option6 = "AÅŸÄ±rÄ±",
 
     Sandbox_ExpandedHeli_EventJet = "Jets",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Jet uçakları ne sıklıkla olacak",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Jet uÃ§aklarÄ± ne sÄ±klÄ±kla olacak",
 
-    Sandbox_ExpandedHeli_EventCivilian = "Civilians",
-    Sandbox_ExpandedHeli_EventCivilian_tooltip = "Sivil helikopter olayları ne sıklıkla olacak",
+    Sandbox_ExpandedHeli_EventNews = "Haberler",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Haber olaylarının sıklığı.\n Haber helikopterleri buldukları vatandaşlara odaklanacak ve onları kısa bir süreliğine takip edecek.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Polis",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Polis olaylarının sıklığı.\n Polis, meseleyi kendi eline alacak ve zombilere ateş ederken etraftaki vatandaşlara eşlik edecek.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Military",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Askeri helikopter olayları ne sıklıkla olacak",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Askeri helikopter olaylarÄ± ne sÄ±klÄ±kla olacak",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Yardımı Düşüyor",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA yardım dağıtım etkinliklerinin sıklığı.\n FEMA, kıyametin başlarında yardım dağıtımlarını gerçekleştirecek.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Survivors",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Kazazede olayları ne sıklıkla olacak?",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Kazazede olaylarÄ± ne sÄ±klÄ±kla olacak?",
 
     Sandbox_ExpandedHeli_EventRaider = "Raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Yağmacı olayları ne sıklıkla olacak",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "YaÄŸmacÄ± olaylarÄ± ne sÄ±klÄ±kla olacak",
 
     Sandbox_ExpandedHeli_EventSamaritan = "Samaritans",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Samaritan olayları ne sıklıkla olacak",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Samaritan olaylarÄ± ne sÄ±klÄ±kla olacak",
 
-	Sandbox_ExpandedHeli_StartDay = "Başlangıç Günü",
-	Sandbox_ExpandedHeli_StartDay_tooltip = "Helikopter olaylarının kıyametin kaçıncı gününde başlayacağını belirler. \nNot: Bazı olaylar belirlediğiniz günden daha sonra başlayabilir.",
+    Sandbox_ExpandedHeli_StartDay = "BaÅŸlangÄ±Ã§ GÃ¼nÃ¼",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Helikopter olaylarÄ±nÄ±n kÄ±yametin kaÃ§Ä±ncÄ± gÃ¼nÃ¼nde baÅŸlayacaÄŸÄ±nÄ± belirler. \nNot: BazÄ± olaylar belirlediÄŸiniz gÃ¼nden daha sonra baÅŸlayabilir.",
+    Sandbox_ExpandedHeli_StartDay_help = "Oyundaki olayların gerçekleştiği gün budur. "Kıyamete kalan aylar" ayarlarını hesaba katmanız gerekecek."
 
-	Sandbox_ExpandedHeli_CutOffDay = "Bitiş Günü",
-	Sandbox_ExpandedHeli_CutOffDay_tooltip = "Helikopter olaylarının kaçıncı güne kadar süreceğini belirler. \nNot: Bazı olaylar bu günden sonra azaltılır. Kıyametin belirli gününden sonra yaşayan çok insan kalmadığı için helikopter olaylarının olması azalır.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Zamanlayıcı Süresi",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Planlayıcı başlangıç ??gününden itibaren ne kadar süreyle çalışacak.\n Planlayıcı, etkinliğin ilerlemesini bu süreye uyacak şekilde ayarlayacak.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Bu, zamanlayıcının kaç gün boyunca çalışacağıdır."
 
-	Sandbox_ExpandedHeli_NeverEnding = "Asla Bitmeyen Olaylar",
-	Sandbox_ExpandedHeli_NeverEnding_tooltip = "Bunu işaretlerseniz helikopter olayları asla bitmez. Üstte belirlediğiniz gün ayarları devre dışı kalır. Her zaman gerçekleşebilir hale gelir.",
+    Sandbox_ExpandedHeli_ContinueScheduling = "Sonsuza Kadar Planlamaya Devam Edin",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Zamanlayıcının süre sınırını aşan olayları ortaya çıkarması için bunu açın. Etkinlikler süreye göre aşamalar halinde ilerlemeye devam edecek ancak etkinliklerin programlanması hiçbir zaman durdurulmayacaktır.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Planlamaya Devam Et: Yalnızca Oyun Sonu Etkinlikleri",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "\"Sonsuza Kadar Planlamaya Devam Et\" açık konuma getirildiğinde, bu açık konuma getirildiğinde zamanlayıcının yalnızca oyun sonu etkinliklerini kullanması sağlanır.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Hava Durumu Olayları Etkileyecek",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Hava durumu olayları engelleyecek mi, yoksa kazalara neden mi olacak?",
+
 }

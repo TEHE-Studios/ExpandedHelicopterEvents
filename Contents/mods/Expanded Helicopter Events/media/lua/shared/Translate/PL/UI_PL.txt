@@ -1,0 +1,11 @@
+UI_PL = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Rozszerzone wydarzenia helikopterowe"
+    UI_Config_sandBoxMovedText = "Opcje konfiguracji znajdziesz w opcjach piaskownicy.",
+    UI_Config_voiceTitle = "Pakiety głosowe",
+
+    UI_Config_resetEventsToolTip = "Zresetuj zaplanowane wydarzenia w sytuacji awaryjnej:",
+    UI_Config_resetEvents = "Resetuj wydarzenia",
+    UI_Config_eventMarkersOnToolTip1 = "Włącz tę opcję, aby włączyć znaczniki zdarzeń.",
+    UI_Config_eventMarkersOnToolTip2 = "Uwaga: znaczniki zdarzeń można przeciągać.",
+    UI_Config_eventMarkersOn = "Znaczniki zdarzeń",
+}

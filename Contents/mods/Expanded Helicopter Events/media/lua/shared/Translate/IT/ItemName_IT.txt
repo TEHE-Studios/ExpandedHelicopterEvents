@@ -2,15 +2,10 @@ ItemName_IT = {
     ItemName_EHE.Boilersuit_PoliceFlying = "Tuta da volo della Polizia",
     ItemName_EHE.Boilersuit_BlackFlying = "Tuta da volo nera",
     ItemName_EHE.Vest_PilotSurvivalVest = "Gilet da sopravvivenza SRU-21/P",
-    ItemName_EHE.Vest_PilotSurvivalVestTightened = "Gilet da sopravvivenza SRU-21/P (allacciato)",
     ItemName_EHE.Vest_BlackPilotSurvivalVest = "Gilet da sopravvivenza SRU-21/P nero",
-    ItemName_EHE.Vest_BlackPilotSurvivalVestTightened = "Gilet da sopravvivenza SRU-21/P nero (allacciato)",
-    ItemName_EHE.Vest_BulletPress = "Gilet antiproiettile da Cronaca",
 
     ItemName_EHE.Jacket_DenimCutoff = "Giacca di jeans smanicata",
 
-    ItemName_EHE.Hat_PressHelmet = "Casco da Cronaca",
-    ItemName_EHE.Hat_SurvivalistHelmet = "Casco da elicottero per sopravvissuti",
     ItemName_EHE.Hat_SPHPolice = "Casco da pilota SPH-3 della polizia",
     ItemName_EHE.Hat_SPHPoliceVISORUP = "Casco da pilota SPH-3 della polizia (Su)",
     ItemName_EHE.Hat_SPHMilitary = "Casco da pilota SPH-3 militare",
@@ -27,13 +22,10 @@ ItemName_IT = {
     ItemName_EHE.NoticeFlyer = "Volantino di avviso",
 
     ItemName_EHE.EmergencyWaterRation = "Razione d'acqua d'emergenza",
-    ItemName_EHE.EmergencyWaterRationOpen = "Razione d'acqua d'emergenza (aperta)",
+    ItemName_EHE.EmergencyWaterRationOpen DisplayCategory = WaterContainer = "Razione d'acqua di emergenza (Aperta)",
     ItemName_EHE.ProteinBar = "Barretta proteica",
     ItemName_EHE.MealReadytoEat = "Pasto pronto",
     ItemName_EHE.MREWrapper = "Involucro di pasto pronto",
-    ItemName_EHE.HandFlare = "Bengala",
-    ItemName_EHE.SignalFlare = "Bengala di segnalazione",
-    ItemName_EHE.FlareCharge = "Carica del bengala",
 
     ItemName_EHE.EHE_Parachute = "Paracadute abbandonato",
     ItemName_EHE.UH60Elevator = "Montacarichi UH-60 staccato",
@@ -50,12 +42,6 @@ ItemName_IT = {
     ItemName_EHE.UH1HRotorBlade1 = "Pala del rotore principale danneggiata",
     ItemName_EHE.UH1HRotorBlade2 = "Pala del rotore principale danneggiata",
     ItemName_EHE.UH1HHalfSkirt2 = "Carenatura dell'elicottero danneggiata",
-    ItemName_EHE_visibleHelis.Bell206Fuselage = "Fusoliera di Bell 206",
-    ItemName_EHE_visibleHelis.Bell206MainRotor = "Rotore principale di Bell 206",
-    ItemName_EHE_visibleHelis.Bell206TailRotor = "Rotore di coda di Bell 206",
-    ItemName_EHE_visibleHelis.UH1HFuselage = "Fusoliera di UH-1H",
-    ItemName_EHE_visibleHelis.UH1HMainRotor = "Rotore principale di UH-1H",
-    ItemName_EHE_visibleHelis.UH1HTailRotor = "Rotore di coda di UH-1H",
 
     ItemName_EHE.EmergencyFoodSupplyBox = "Cassa di rifornimento",
     ItemName_EHE.EmergencyMedicalSupplyBox = "Cassa di rifornimento",

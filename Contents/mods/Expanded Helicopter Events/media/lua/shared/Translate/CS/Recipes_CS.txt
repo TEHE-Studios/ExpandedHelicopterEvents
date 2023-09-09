@@ -1,0 +1,3 @@
+Recipe_CS = {
+    Recipe_Open_Supplies = "Otevřete Zásoby",
+}
