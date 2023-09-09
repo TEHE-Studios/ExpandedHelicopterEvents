@@ -1,0 +1,29 @@
+IG_UI_DE = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Wrack der UH-60A (Rumpf)",
+    IGUI_VehicleNameUH60GreenTail = "Wrack UH-60A (Heck)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Wüste",
+    IGUI_VehicleNameUH60DesertFuselage = "Wrack der UH-60A Desert (Rumpf)",
+    IGUI_VehicleNameUH60DesertTail = "Wrack der UH-60A Desert (Heck)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Zerstörtes UH-60A Medevac (Rumpf)",
+    IGUI_VehicleNameUH60MedevacTail = "Zerstörtes UH-60A Medevac (Heck)",
+
+    IGUI_VehicleNameBell206LBMW = "Nachrichtenhubschrauber",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Neuigkeiten Hubschrauber (Rumpf)",
+    IGUI_VehicleNameBell206LBMWTail = "Neuigkeiten Hubschrauber (Heck)",
+
+    IGUI_VehicleNameBell206Police = "Polizeihubschrauber",
+    IGUI_VehicleNameBell206PoliceFuselage = "Polizeihubschrauber (Rumpf)",
+    IGUI_VehicleNameBell206PoliceTail = "Polizeihubschrauber (Heck)",
+
+    IGUI_VehicleNameBell206Survivalist = "Zivilhubschrauber",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Notversorgungslieferung",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samariter-Vorratslieferung",
+
+    IGUI_Spent = "Ausgegeben",
+    IGUI_Lit = "Zündete",
+}
