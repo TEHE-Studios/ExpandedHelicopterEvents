@@ -1,21 +1,29 @@
-IGUI_RU = {
-	IGUI_VehicleNameBell206Black = "���������� �������",
-	IGUI_VehicleNameBell206BlackFuselage = "���������� ������� (�������)",
-	IGUI_VehicleNameBell206BlackTail = "���������� ������� (�����)",
-	
-	IGUI_VehicleNameBell206LBMW = "��������� �������",    
-    IGUI_VehicleNameBell206LBMWFuselage = "��������� ������� (�������)",
-    IGUI_VehicleNameBell206LBMWTail = "��������� ������� (�����)",
-	
-	IGUI_VehicleNameBell206Police = "����������� �������",
-    IGUI_VehicleNameBell206PoliceFuselage = "����������� ������� (�������)",
-    IGUI_VehicleNameBell206PoliceTail = "���� 206 ����������� (�����)",
-	
-	IGUI_VehicleNameBell206Survivalist = "����������� �������",
-	IGUI_VehicleNameBell206SurvivalistFuselage = "����������� ������� (�������)",
-	IGUI_VehicleNameBell206SurvivalistTail = "����������� ������� (�����)",
-	
-	IGUI_VehicleNameFEMASupplyDrop = "���������� ������� FEMA",	
-	IGUI_VehicleNameSurvivorSupplyDrop = "���������� ������� ���������",
-	
+IG_UI_RU = {
+    IGUI_VehicleNameUH60Green = "UH-60А",
+    IGUI_VehicleNameUH60GreenFuselage = "Разбитый UH-60A (фюзеляж)",
+    IGUI_VehicleNameUH60GreenTail = "Разбитый UH-60A (хвост)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Пустыня",
+    IGUI_VehicleNameUH60DesertFuselage = "Разбитый UH-60A в пустыне (фюзеляж)",
+    IGUI_VehicleNameUH60DesertTail = "Разбитый UH-60A Пустыня (Хвост)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Медицинская эвакуация",
+    IGUI_VehicleNameUH60MedevacFuselage = "Разбитый UH-60A для медицинской эвакуации (фюзеляж)",
+    IGUI_VehicleNameUH60MedevacTail = "Разбитый UH-60A для медицинской эвакуации (хвост)",
+
+    IGUI_VehicleNameBell206LBMW = "Новости Вертолет",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Новости Вертолет (Фюзеляж)",
+    IGUI_VehicleNameBell206LBMWTail = "Новости Вертолет (Хвост)",
+
+    IGUI_VehicleNameBell206Police = "Полицейский вертолет",
+    IGUI_VehicleNameBell206PoliceFuselage = "Полицейский вертолет (фюзеляж)",
+    IGUI_VehicleNameBell206PoliceTail = "Полицейский вертолет (хвост)",
+
+    IGUI_VehicleNameBell206Survivalist = "Гражданский вертолет",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Аварийный сброс поставок",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Самаритянский припас",
+
+    IGUI_Spent = "Потраченный",
+    IGUI_Lit = "Горит",
 }

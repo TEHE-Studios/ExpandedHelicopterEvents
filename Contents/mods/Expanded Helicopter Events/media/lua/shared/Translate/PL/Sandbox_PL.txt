@@ -1,39 +1,52 @@
 Sandbox_PL = {
-	Sandbox_ExpandedHeli = "Rozszerzone wydarzenia œmig³owcowe",
+    Sandbox_ExpandedHeli = "Rozszerzone wydarzenia Å›migÅ‚owcowe",
 
-	Sandbox_ExpandedHeli_Frequency_option1 = "nigdy"
-	Sandbox_ExpandedHeli_Frequency_option2 = "bardzo rzadko",
-	Sandbox_ExpandedHeli_Frequency_option3 = "rzadko",
-	Sandbox_ExpandedHeli_Frequency_option4 = "normalnie",
-	Sandbox_ExpandedHeli_Frequency_option5 = "Czêsto",
-	Sandbox_ExpandedHeli_Frequency_option6 = "Szalenie czêsto",
+    Sandbox_ExpandedHeli_Frequency_option1 = "nigdy"
+    Sandbox_ExpandedHeli_Frequency_option2 = "bardzo rzadko",
+    Sandbox_ExpandedHeli_Frequency_option3 = "rzadko",
+    Sandbox_ExpandedHeli_Frequency_option4 = "normalnie",
+    Sandbox_ExpandedHeli_Frequency_option5 = "CzÄ™sto",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Szalenie czÄ™sto",
 
     Sandbox_ExpandedHeli_EventJet = "Odrzutowce",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak czêsto wystêpuj¹ zdarzenia z odrzutowcami.\n Odrzutowce przelatuj¹ nad graczami, powoduj¹c ruchy hord.",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak czÄ™sto wystÄ™pujÄ… zdarzenia z odrzutowcami.\n Odrzutowce przelatujÄ… nad graczami, powodujÄ…c ruchy hord.",
 
-    Sandbox_ExpandedHeli_EventNews = "Reporte¿y",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Czêstotliwoœæ wydarzeñ zwi¹zanych z wiadomoœciami.\n Œmig³owce reporterów skupi¹ siê na ka¿dym znalezionym obywatelu i bêd¹ za nim pod¹¿aæ przez krótki czas.",
+    Sandbox_ExpandedHeli_EventNews = "ReporteÅ¼y",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "CzÄ™stotliwoÅ›Ä‡ wydarzeÅ„ zwiÄ…zanych z wiadomoÅ›ciami.\n ÅšmigÅ‚owce reporterÃ³w skupiÄ… siÄ™ na kaÅ¼dym znalezionym obywatelu i bÄ™dÄ… za nim podÄ…Å¼aÄ‡ przez krÃ³tki czas.",
 
     Sandbox_ExpandedHeli_EventPolice = "Policja",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak czêsto zdarzaj¹ siê zdarzenia policyjne.\n Policja weŸmie sprawy w swoje rêce i bêdzie eskortowaæ obywateli podczas strzelania do zombie.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak czÄ™sto zdarzajÄ… siÄ™ zdarzenia policyjne.\n Policja weÅºmie sprawy w swoje rÄ™ce i bÄ™dzie eskortowaÄ‡ obywateli podczas strzelania do zombie.",
+
     Sandbox_ExpandedHeli_EventMilitary = "Wojsko",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak czêsto maj¹ miejsce wydarzenia wojskowe.\n Wojsko bêdzie przechodziæ etapy: ostrzeganie obywateli,\n dostarczanie zapasów, oczyszczanie nieumar³ych, oczyszczanie wszystkiego, co siê rusza.",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak czÄ™sto majÄ… miejsce wydarzenia wojskowe.\n Wojsko bÄ™dzie przechodziÄ‡ etapy: ostrzeganie obywateli,\n dostarczanie zapasÃ³w, oczyszczanie nieumarÅ‚ych, oczyszczanie wszystkiego, co siÄ™ rusza.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Zrzuty pomocy FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Jak czÄ™sto zdarzajÄ… siÄ™ przypadki zrzutÃ³w pomocy FEMA.\n FEMA bÄ™dzie przeprowadzaÄ‡ zrzuty pomocy na poczÄ…tku apokalipsy.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Ocaleni",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak czêsto wystêpuj¹ zdarzenia ocala³ych.\n Ocaleni bêd¹ lataæ tylko podczas misji zwiadowczych, powoduj¹c ruch hordy.",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak czÄ™sto wystÄ™pujÄ… zdarzenia ocalaÅ‚ych.\n Ocaleni bÄ™dÄ… lataÄ‡ tylko podczas misji zwiadowczych, powodujÄ…c ruch hordy.",
 
     Sandbox_ExpandedHeli_EventRaider = "Bandyci",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak czêsto maj¹ miejsce zdarzenia najeŸdŸców.\n NajeŸdŸcy bêd¹ drêczyæ ocala³ych dla rozrywki.",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak czÄ™sto majÄ… miejsce zdarzenia najeÅºdÅºcÃ³w.\n NajeÅºdÅºcy bÄ™dÄ… drÄ™czyÄ‡ ocalaÅ‚ych dla rozrywki.",
 
     Sandbox_ExpandedHeli_EventSamaritan = "Samarytanie",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak czêsto zdarzaj¹ siê wydarzenia samarytañskie.\n Samarytanie przywo¿¹ zapasy, aby pomóc ocala³ym.",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak czÄ™sto zdarzajÄ… siÄ™ wydarzenia samarytaÅ„skie.\n Samarytanie przywoÅ¼Ä… zapasy, aby pomÃ³c ocalaÅ‚ym.",
 
-	Sandbox_ExpandedHeli_StartDay = "Dzieñ startowy",
-	Sandbox_ExpandedHeli_StartDay_tooltip = "Dzieñ od którego zaczn¹ siê przypisywaæ zdarzenia.",
+    Sandbox_ExpandedHeli_StartDay = "DzieÅ„ startowy",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "DzieÅ„ od ktÃ³rego zacznÄ… siÄ™ przypisywaÄ‡ zdarzenia.",
+    Sandbox_ExpandedHeli_StartDay_help = "To wÅ‚aÅ›nie w tym dniu majÄ… miejsce wydarzenia w grze. BÄ™dziesz musiaÅ‚ wziÄ…Ä‡ pod uwagÄ™ ustawienia â€miesiÄ™cy apokalipsyâ€."
 
-	Sandbox_ExpandedHeli_CutOffDay = "Czas trwania harmonogramu",
-	Sandbox_ExpandedHeli_CutOffDay_tooltip = "Jak d³ugo harmonogram bêdzie dzia³a³ od dnia startowego.\n Harmonogram dostosuje przebieg wydarzenia, aby pasowa³ do tego czasu trwania.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Czas trwania harmonogramu",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Jak dÅ‚ugo bÄ™dzie dziaÅ‚aÄ‡ program planujÄ…cy od dnia rozpoczÄ™cia.\n Program planujÄ…cy dostosuje postÄ™p wydarzenia, aby dopasowaÄ‡ go do tego czasu trwania.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Jest to liczba dni, przez ktÃ³re harmonogram bÄ™dzie dziaÅ‚aÅ‚."
 
-	Sandbox_ExpandedHeli_NeverEnding = "Kontynuuj planowanie na zawsze",
-	Sandbox_ExpandedHeli_NeverEnding_tooltip = "W³¹cz tê opcjê, aby harmonogram odradza³ wydarzenia, które przekroczy³y limit czasu trwania. Wydarzenia bêd¹ nadal przechodziæ przez etapy zgodnie z czasem trwania, ale wydarzenia nigdy nie przestan¹ byæ zaplanowane.",
+    Sandbox_ExpandedHeli_ContinueScheduling = "Kontynuuj planowanie na zawsze",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "WÅ‚Ä…cz tÄ™ opcjÄ™, aby harmonogram wyÅ›wietlaÅ‚ zdarzenia, ktÃ³re przekroczyÅ‚y limit czasu trwania. Wydarzenia bÄ™dÄ… nadal przechodziÄ‡ etapy w zaleÅ¼noÅ›ci od czasu trwania, ale nigdy nie przestanÄ… byÄ‡ zaplanowane.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Kontynuuj planowanie: tylko wydarzenia w pÃ³Åºnej fazie gry",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Gdy opcja â€Kontynuuj planowanie na zawszeâ€ jest wÅ‚Ä…czona, wÅ‚Ä…czenie tej opcji powoduje, Å¼e harmonogram korzysta tylko z wydarzeÅ„ z pÃ³Åºnej fazy gry.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Pogoda bÄ™dzie miaÅ‚a wpÅ‚yw na wydarzenia",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Czy pogoda zapobiegnie wydarzeniom, czy teÅ¼ spowoduje ich katastrofÄ™.",
+
 }

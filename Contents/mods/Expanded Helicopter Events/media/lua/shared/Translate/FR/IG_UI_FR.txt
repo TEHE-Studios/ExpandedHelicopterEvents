@@ -1,13 +1,29 @@
 IG_UI_FR = {
-    IGUI_VehicleNameBell206Black = "H�licopt�re Myst�rieux",
-    IGUI_VehicleNameBell206BlackFuselage = "H�licopt�re Myst�rieux (Tail)",
-    IGUI_VehicleNameBell206LBMW = "H�licopt�re des Infos",
-    IGUI_VehicleNameBell206LBMWFuselage = "H�licopt�re des Infos (Fuselage)",
-    IGUI_VehicleNameBell206LBMWTail = "H�licopt�re des Infos (Queue)",
-    IGUI_VehicleNameBell206Police = "H�licopt�re de Police",
-    IGUI_VehicleNameBell206PoliceFuselage = "H�licopt�re de Police (Fuselage)",
-    IGUI_VehicleNameBell206PoliceTail = "H�licopt�re de Police (Queue)",
-    IGUI_VehicleNameBell206Survivalist = "H�licopt�re de Civiles",
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A détruit (fuselage)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A détruit (queue)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Désert",
+    IGUI_VehicleNameUH60DesertFuselage = "Épave du désert de l'UH-60A (fuselage)",
+    IGUI_VehicleNameUH60DesertTail = "Épave du UH-60A Desert (queue)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Évacuation médicale",
+    IGUI_VehicleNameUH60MedevacFuselage = "Évacuation médicale de l'UH-60A détruit (fuselage)",
+    IGUI_VehicleNameUH60MedevacTail = "Évacuation médicale de l'UH-60A détruit (queue)",
+
+    IGUI_VehicleNameBell206LBMW = "Hï¿½licoptï¿½re des Infos",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Hï¿½licoptï¿½re des Infos (Fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "Hï¿½licoptï¿½re des Infos (Queue)",
+
+    IGUI_VehicleNameBell206Police = "Hï¿½licoptï¿½re de Police",
+    IGUI_VehicleNameBell206PoliceFuselage = "Hï¿½licoptï¿½re de Police (Fuselage)",
+    IGUI_VehicleNameBell206PoliceTail = "Hï¿½licoptï¿½re de Police (Queue)",
+
+    IGUI_VehicleNameBell206Survivalist = "Hï¿½licoptï¿½re de Civiles",
+    
     IGUI_VehicleNameFEMASupplyDrop = "Ravitaillement d'urgence",
     IGUI_VehicleNameSurvivorSupplyDrop = "Ravitaillement des Samaritains",
+
+    IGUI_Spent = "Dépensé",
+    IGUI_Lit = "Allumé",
 }

@@ -1,16 +1,26 @@
 Tooltip_TR = {
-    Tooltip_dismantle_helicopterpart = "Helikopter üzerinde kaynak makinesi ve kaynak maskesi kullanımı size metal verir.",
-    Tooltip_open_boxes_barehanded = "Keskin bir şey ile daha hızlı açılabilir.",
-    Tooltip_Parachute = "Yırtık Bez yapmak için parçalara ayrılabilir.",
-    Tooltip_EnergyBar = "Birleşik Krallık tarafından ithal edilmiştir.",
-    Tooltip_SurvivalVest = "Askeri pilotlar tarafından kullanılan yelek",
-    Tooltip_SurvivalVestBlack = "Polis arama-kurtarma operasyonlarında kullanılan standart yelek",
-    Tooltip_SPHMilitary = "Standart yapım askeri helikopter kaskı"
-    Tooltip_SPHBlack = "Standart yapım askeri helikopter kaskı - Siyah",
-    Tooltip_SPHPolice = "Polis helikopterlerinde kullanılan kask",
-    Tooltip_SPHCivilian = "Sivil pilotlar tarafından kullanılan kask",
+    Tooltip_dismantle_helicopterpart = "Helikopter Ã¼zerinde kaynak makinesi ve kaynak maskesi kullanÄ±mÄ± size metal verir.",
+    Tooltip_open_boxes_barehanded = "Keskin bir ÅŸey ile daha hÄ±zlÄ± aÃ§Ä±labilir.",
+    Tooltip_Parachute = "YÄ±rtÄ±k Bez yapmak iÃ§in parÃ§alara ayrÄ±labilir.",
+    Tooltip_EnergyBar = "BirleÅŸik KrallÄ±k tarafÄ±ndan ithal edilmiÅŸtir.",
+    Tooltip_SurvivalVest = "Askeri pilotlar tarafÄ±ndan kullanÄ±lan yelek",
+    Tooltip_SurvivalVestBlack = "Polis arama-kurtarma operasyonlarÄ±nda kullanÄ±lan standart yelek",
+    Tooltip_SPHMilitary = "Standart yapÄ±m askeri helikopter kaskÄ±"
+    Tooltip_SPHBlack = "Standart yapÄ±m askeri helikopter kaskÄ± - Siyah",
+    Tooltip_SPHPolice = "Polis helikopterlerinde kullanÄ±lan kask",
+    Tooltip_SPHCivilian = "Sivil pilotlar tarafÄ±ndan kullanÄ±lan kask",
 
-    Tooltip_FlyerCDC = "Sağlık danışma broşürüne benziyor.",
-    Tooltip_FlyerMilitary = "Ordudan bir duyuru kağıdı.",
-    Tooltip_CivilDefense = "Sivil savunmadan bir duyuru kağıdı.",
+    Tooltip_FlyerCDC = "SaÄŸlÄ±k danÄ±ÅŸma broÅŸÃ¼rÃ¼ne benziyor.",
+    Tooltip_FlyerMilitary = "Ordudan bir duyuru kaÄŸÄ±dÄ±.",
+    Tooltip_CivilDefense = "Sivil savunmadan bir duyuru kaÄŸÄ±dÄ±.",
+
+    Tooltip_WaterSealed = "ABD Hükümeti tarafından dağıtılan Kapalı Su Oranı."
+    Tooltip_WaterUnsealed = "ABD Hükümeti tarafından dağıtılan Mühürsüz Su Oranı." 
+
+    Tooltip_SupplyBox = "ABD Hükümeti'nden Tedarik Kutusu."
+    Tooltip_SamaritanBox = "Bir grup gizemli Samiriyeli'den Tedarik Kutusu.",
+    Tooltip_BanditBox = "Kişisel saklama kutusu. "BOK'UM, DOKUNMA!",
+
+    Tooltip_SignalFlare = "İşaret fişeği. Kapalı mekanlarda ateş etmeyin.",
+    Tooltip_HandFlare = "Parlama. Kapalı mekanlarda ateş etmeyin."
 }

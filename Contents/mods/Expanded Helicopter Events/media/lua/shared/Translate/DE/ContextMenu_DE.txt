@@ -1,0 +1,9 @@
+ContextMenu_DE = {
+    ContextMenu_DownHoodie = "Kapuze runter",
+    ContextMenu_VisorUp = "Visier hoch",
+    ContextMenu_VisorDown = "Visier herunter",
+    ContextMenu_Tighten = "Spannen",
+    ContextMenu_Untighten = "Lösen",
+
+    IGUI_VehiclePartHelicopterInterior = "Hubschrauberinnenraum",
+}

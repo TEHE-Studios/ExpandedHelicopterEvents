@@ -1,29 +1,52 @@
 Sandbox_FR = {
-    Sandbox_ExpandedHeli = "…vÈnements d'hÈlicoptËre extras",
-    Sandbox_ExpandedHeli_CutOffDay = "Jour de coupure",
-    Sandbox_ExpandedHeli_CutOffDay_tooltip = "Le jour o˘ le planificateur mettra fin aux ÈvÈnements. (Par dÈfaut : 90)",
-    Sandbox_ExpandedHeli_EventJet = "Jets",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "FrÈquence des ÈvÈnements de jets.",
-    Sandbox_ExpandedHeli_EventMilitary = "Militaire",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "FrÈquence des ÈvÈnements militaires.",
-    Sandbox_ExpandedHeli_EventNews = "Nouvelles",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "¿ quelle frÈquences les nouveaux Èvenements ont lieu.",
-    Sandbox_ExpandedHeli_EventPolice = "Police",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "¿ quelle frÈquences les Èvenements policiers ont lieu.",
-    Sandbox_ExpandedHeli_EventRaider = "Raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "¿ quelle frÈquences les Èvenements de raids ont lieu.",
-    Sandbox_ExpandedHeli_EventSamaritan = "Samaritains",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "¿ quelle frÈquences les Èvenements des samaritains ont lieu.",
-    Sandbox_ExpandedHeli_EventSurvivor = "Survivants",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "FrÈquence des ÈvÈnements de survivant.",
-    Sandbox_ExpandedHeli_Frequency_option1 = "Jamais",
+    Sandbox_ExpandedHeli = "√âv√©nements d'h√©licopt√®re extras",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Jamais"
     Sandbox_ExpandedHeli_Frequency_option2 = "Rare",
-    Sandbox_ExpandedHeli_Frequency_option3 = "Peu FrÈquent",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Peu Fr√©quent",
     Sandbox_ExpandedHeli_Frequency_option4 = "Normal",
-    Sandbox_ExpandedHeli_Frequency_option5 = "FrÈquent",
-    Sandbox_ExpandedHeli_Frequency_option6 = "ExtrÍmement frÈquent",
-    Sandbox_ExpandedHeli_NeverEnding = "…vÈnement sans fin",
-    Sandbox_ExpandedHeli_NeverEnding_tooltip = "Activez cette option pour que le planificateur renouvelle toujours les ÈvÈnements. Les ÈvÈnements continueront de progresser par Ètapes et diminueront en frÈquence, mais ne se termineront jamais.",
-    Sandbox_ExpandedHeli_StartDay = "Jour de dÈpart",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Le jour auquel le planificateur commencera ‡ affecter des ÈvÈnements. (Par dÈfaut : 90)",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Fr√©quent",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Extr√™mement fr√©quent",
+
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Fr√©quence des √©v√©nements de jets.",
+
+    Sandbox_ExpandedHeli_EventNews = "Nouvelles",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "√Ä quelle fr√©quences les nouveaux √©venements ont lieu.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Police",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "√Ä quelle fr√©quences les √©venements policiers ont lieu.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militaire",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Fr√©quence des √©v√©nements militaires.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Gouttes d'aide de la FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "√Ä quelle fr√©quence les √©v√©nements de largage d'aide de la FEMA se produisent.\n La FEMA organisera des largages d'aide au d√©but de l'apocalypse.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Survivants",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Fr√©quence des √©v√©nements de survivant.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "√Ä quelle fr√©quences les √©venements de raids ont lieu.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritains",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "√Ä quelle fr√©quences les √©venements des samaritains ont lieu.",
+
+    Sandbox_ExpandedHeli_StartDay = "Jour de d√©part",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Le jour auquel le planificateur commencera √† affecter des √©v√©nements. (Par d√©faut : 90)",
+    Sandbox_ExpandedHeli_StartDay_help = "C‚Äôest √† ce moment-l√† que se produisent les √©v√©nements du jour du jeu. Vous devrez prendre en compte les param√®tres ¬´¬†mois apr√®s le d√©but de l'apocalypse¬†¬ª."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Dur√©e du planificateur",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Combien de temps le planificateur fonctionnera-t-il √† partir du jour de d√©but.\n Le planificateur ajustera la progression de l'√©v√©nement en fonction de cette dur√©e.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "C'est le nombre de jours pendant lesquels le planificateur fonctionnera."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Continuez √† planifier pour toujours",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Activez cette option pour que le planificateur g√©n√®re des √©v√©nements d√©passant la limite de dur√©e. Les √©v√©nements progresseront toujours par √©tapes en fonction de la dur√©e mais les √©v√©nements ne cesseront jamais d'√™tre programm√©s.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continuer la programmation¬†: √©v√©nements de fin de partie uniquement",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Lorsque ¬´¬†Continuer la planification pour toujours¬†¬ª est activ√©, cela fait que le planificateur n'utilise que les √©v√©nements de fin de partie.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "La m√©t√©o aura un impact sur les √©v√©nements",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Si la m√©t√©o emp√™chera les √©v√©nements ou provoquera leur crash.",
+
 }

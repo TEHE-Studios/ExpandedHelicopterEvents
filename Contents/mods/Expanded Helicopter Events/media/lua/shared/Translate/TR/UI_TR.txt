@@ -1,0 +1,11 @@
+UI_TR = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Genişletilmiş Helikopter Etkinlikleri"
+    UI_Config_sandBoxMovedText = "Yapılandırma seçenekleri korumalı alan seçeneklerinde bulunabilir.",
+    UI_Config_voiceTitle = "Ses Paketleri",
+
+    UI_Config_resetEventsToolTip = "Acil durumda planlanmış etkinlikleri sıfırlayın:",
+    UI_Config_resetEvents = "Etkinlikleri Sıfırla",
+    UI_Config_eventMarkersOnToolTip1 = "Etkinlik işaretleyicilerini etkinleştirmek için bunu açın.",
+    UI_Config_eventMarkersOnToolTip2 = "Not: Etkinlik işaretçileri sürüklenebilir.",
+    UI_Config_eventMarkersOn = "Etkinlik İşaretleyicileri",
+}

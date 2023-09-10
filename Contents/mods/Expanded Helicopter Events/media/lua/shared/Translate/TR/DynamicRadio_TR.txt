@@ -1,3 +1,15 @@
 DynamicRadio_TR = {
-	AEBS_SupplyDrop = "Askeri yardım paketi geliyor."
+    AEBS_SupplyDrop = "Askeri yardÄ±m paketi geliyor."
+    AEBS_Raiders = "Eğer bunu duyabiliyorsan, f-"
+    AEBS_SurvivorHeli = "Ganimet kaçakçısı dışarı çıkıyor."
+    AEBS_SamaritanDrop = "Hala hayatta olan herkese malzeme götürüyoruz."
+    AEBS_UnauthorizedEntryPolice = "Yetkisiz hava faaliyeti, kanuni yaptırımlar."
+    AEBS_UnauthorizedEntryNews = "Yetkisiz hava faaliyeti, medyaya izinsiz giriş yapan kişi."
+    AEBS_JetBombing = "Temizleme girişi için yük."
+    AEBS_JetPass = "Jet pas geliyor."
+    AEBS_AirRaid = "KAPILARDA KALIN VE SIĞINAK ARAYIN"
+    AEBS_HostileMilitary = "Hava Aktivitesi Algılandı. Askeri Özel Operasyonlar Devam Ediyor. Tanrı aşkına."
+    AEBS_PurgeMilitary = "Hava Aktivitesi Algılandı. Enfekte Kalabalık Kontrol Operasyonları Devam Ediyor."
+    AEBS_PurgeCattle = "Hava Aktivitesi Algılandı. Hayvan İtlaf Çalışmaları Devam Ediyor."
+    AEBS_Military = "Hava Aktivitesi Algılandı. Tahliye Operasyonları Sürüyor."
 }

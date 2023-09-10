@@ -1,18 +1,18 @@
 ItemName_PL = {
-    DisplayName_Civilian_Helicopter_Helmet= "He≥m Lotniczy",
+    DisplayName_Civilian_Helicopter_Helmet= "He≈Çm Lotniczy",
     DisplayName_Press_Helmet = "Kask Reportera",
-    DisplayName_Police_Helicopter_Helmet = "Policyjny He≥m Lotniczy",
-    DisplayName_Deserter_Helmet = "He≥m dezertera",
-    DisplayName_Survivalist_Helicopter_Helmet= "Survivalowy He≥m Lotniczy",
+    DisplayName_Police_Helicopter_Helmet = "Policyjny He≈Çm Lotniczy",
+    DisplayName_Deserter_Helmet = "He≈Çm dezertera",
+    DisplayName_Survivalist_Helicopter_Helmet= "Survivalowy He≈Çm Lotniczy",
 
     DisplayName_Police_Pilot_Flying_Suit = "Kombinezon pilota policyjnego",
     DisplayName_Press_Bulletproof_Vest = "Dziennikarska kamizelka kuloodporna",
 
     DisplayName_Evacuation_Flyer = "Ulotka ewakuacyjna",
     DisplayName_Emergency_Flyer = "Ulotka awaryjna",
-    DisplayName_Quarantine_Flyer = "Ulotka dotyczπca kwarantanny",
+    DisplayName_Quarantine_Flyer = "Ulotka dotyczƒÖca kwarantanny",
     DisplayName_Prevention_Flyer = "Ulotka profilaktyczna",
     DisplayName_Notice_Flyer = "Ulotka informacyjna",
 
-    DisplayName_Supply_Box = "Pud≥o z zaopatrzeniem",
+    DisplayName_Supply_Box = "Pud≈Ço z zaopatrzeniem",
 }

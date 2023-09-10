@@ -1,22 +1,26 @@
 Tooltip_CS = {
-    Tooltip_SignalFlareSpent = "Vojenská signální svìtlice. Spotøebovaná.",
-    Tooltip_EnergyBar = "Energetická tyèinka balená do balíèkù pro pøeití. Vırobce: PT&D.",
-    Tooltip_Parachute = "Lze roztrhat a vytvoøit roztrhanou látku.",
-    Tooltip_SPHPolice = "Vrtulníková pøilba pouívaná policejním letectvem.",
-    Tooltip_WaterUnsealed = "Otevøenı pøídìl vody distribuovanı vládou Spojenıch státù americkıch.",
-    Tooltip_SPHMilitary = "Standardní vojenská pøilba pro vrtulníky.",
-    Tooltip_WaterSealed = "Zapeèetìné pøídìly vody distribuované vládou USA.",
-    Tooltip_FlyerCDC = "Vypadá to jako leták se zdravotním doporuèením.",
-    Tooltip_SignalFlare = "Vojenská signální svìtlice. Nestøílejte uvnitø budov.",
-    Tooltip_open_boxes_barehanded = "Bylo by rychlejší otevøít ji nìèím ostrım.",
-    Tooltip_FlyerMilitary = "Vypadá to jako leták od armády.",
-    Tooltip_SurvivalVest = "Standardní vesta pro vojenské piloty.",
-    Tooltip_SupplyBox = "Krabice se zásobami od vlády USA.",
-    Tooltip_SurvivalVestBlack = "Standardní vesta pro policejní pátrací a záchranné sloky.",
-    Tooltip_dismantle_helicopterpart = "Pøi pouití sváøeèky a sváøeèské masky lze získat kov.",
-    Tooltip_BanditBox = "Osobní schránka. Píše se na ní: Mİ VÌCI, NEŠMATEJ NA TO!",
-    Tooltip_SPHCivilian = "Pøilba pro vrtulníky pouívaná civilními piloty.",
-    Tooltip_CivilDefense = "Vypadá jako leták civilní obrany.",
-    Tooltip_SamaritanBox = "Krabice se zásobami od skupiny záhadnıch samaritánù.",
-    Tooltip_SPHBlack = "Standardní vojenská vrtulníková pøilba v èerné barvì.",
+    Tooltip_dismantle_helicopterpart = "PÅ™i pouÅ¾itÃ­ svÃ¡Å™eÄky a svÃ¡Å™eÄskÃ© masky lze zÃ­skat kov.",
+    Tooltip_open_boxes_barehanded = "Bylo by rychlejÅ¡Ã­ otevÅ™Ã­t ji nÄ›ÄÃ­m ostrÃ½m.",
+    Tooltip_Parachute = "Lze roztrhat a vytvoÅ™it roztrhanou lÃ¡tku.",
+    Tooltip_EnergyBar = "EnergetickÃ¡ tyÄinka balenÃ¡ do balÃ­ÄkÅ¯ pro pÅ™eÅ¾itÃ­. VÃ½robce: PT&D.",
+    Tooltip_SurvivalVest = "StandardnÃ­ vesta pro vojenskÃ© piloty.",
+    Tooltip_SurvivalVestBlack = "StandardnÃ­ vesta pro policejnÃ­ pÃ¡tracÃ­ a zÃ¡chrannÃ© sloÅ¾ky.",
+    Tooltip_SPHMilitary = "StandardnÃ­ vojenskÃ¡ pÅ™ilba pro vrtulnÃ­ky."
+    Tooltip_SPHBlack = "StandardnÃ­ vojenskÃ¡ vrtulnÃ­kovÃ¡ pÅ™ilba v ÄernÃ© barvÄ›.",
+    Tooltip_SPHPolice = "VrtulnÃ­kovÃ¡ pÅ™ilba pouÅ¾Ã­vanÃ¡ policejnÃ­m letectvem.",
+    Tooltip_SPHCivilian = "PÅ™ilba pro vrtulnÃ­ky pouÅ¾Ã­vanÃ¡ civilnÃ­mi piloty.",
+
+    Tooltip_FlyerCDC = "VypadÃ¡ to jako letÃ¡k se zdravotnÃ­m doporuÄenÃ­m.",
+    Tooltip_FlyerMilitary = "VypadÃ¡ to jako letÃ¡k od armÃ¡dy.",
+    Tooltip_CivilDefense = "VypadÃ¡ jako letÃ¡k civilnÃ­ obrany.",
+
+    Tooltip_WaterSealed = "ZapeÄetÄ›nÃ© pÅ™Ã­dÄ›ly vody distribuovanÃ© vlÃ¡dou USA."
+    Tooltip_WaterUnsealed = "OtevÅ™enÃ½ pÅ™Ã­dÄ›l vody distribuovanÃ½ vlÃ¡dou SpojenÃ½ch stÃ¡tÅ¯ americkÃ½ch." 
+
+    Tooltip_SupplyBox = "Krabice se zÃ¡sobami od vlÃ¡dy USA."
+    Tooltip_SamaritanBox = "Krabice se zÃ¡sobami od skupiny zÃ¡hadnÃ½ch samaritÃ¡nÅ¯.",
+    Tooltip_BanditBox = "OsobnÃ­ schrÃ¡nka. PÃ­Å¡e se na nÃ­: MÃ VÄšCI, NEÅ MATEJ NA TO!",
+
+    Tooltip_SignalFlare = "VojenskÃ¡ signÃ¡lnÃ­ svÄ›tlice. NestÅ™Ã­lejte uvnitÅ™ budov.",
+    Tooltip_HandFlare = "SvÄ›tlice. Nepalte uvnitÅ™."
 }

@@ -1,7 +1,7 @@
 Tooltip_IT = {
     Tooltip_dismantle_helicopterpart = "L'uso di una fiamma ossidrica e di una maschera da saldatore consente di ottenere il metallo.",
-    Tooltip_open_boxes_barehanded = "Sarebbe più veloce da aprire con qualcosa di affilato.",
-    Tooltip_Parachute = "Può essere strappato per ottenere del tessuto.",
+    Tooltip_open_boxes_barehanded = "Sarebbe piÃ¹ veloce da aprire con qualcosa di affilato.",
+    Tooltip_Parachute = "PuÃ² essere strappato per ottenere del tessuto.",
     Tooltip_EnergyBar = "Una barretta energetica confezionata per i kit di sopravvivenza. Prodotta da PT&D.",
     Tooltip_SurvivalVest = "Gilet di sopravvivenza standard per i piloti militari.",
     Tooltip_SurvivalVestBlack = "Gilet di sopravvivenza standard per la ricerca e il soccorso della polizia.",

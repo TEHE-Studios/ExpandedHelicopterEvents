@@ -1,12 +1,3 @@
 Recipe_IT = {
-    Recipe_Cut_up_Parachute = "Ritaglia paracadute",
-    Recipe_Dismantle_Helicopter_Skirt = "Smantella la carenatura dell'elicottero",
-    Recipe_Dismantle_Main_Rotor_Blade = "Smantella la pala del rotore principale",
-    Recipe_Dismantle_Tail_Rotor_Blade = "Smantella la pala del rotore di coda",
-    Recipe_Dismantle_UH-60_Window = "Smantella finestra dell'UH-60",
-    Recipe_Dismantle_UH-60_Door = "Smantella portellone dell'UH-60",
-    Recipe_Dismantle_UH-60_Elevator = "Smantella montacarichi dell'UH-60",
-    Recipe_Light_Flare = "Accendi bengala",
     Recipe_Open_Supplies = "Apri rifornimenti",
-    Recipe_Unseal_Water_Ration = "Apri razione d'acqua d'emergenza",
 }
