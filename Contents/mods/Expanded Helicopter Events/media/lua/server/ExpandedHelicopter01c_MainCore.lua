@@ -455,7 +455,11 @@ function eHelicopter:findTarget(range, DEBUGID)
 						table.insert(weightedTargetList, p)
 					else
 						local altTarget = self:findAlternativeTarget(pSquare)
-						if altTarget then table.insert(weightedTargetList, altTarget) end
+						if altTarget then
+							table.insert(weightedTargetList, altTarget)
+						else
+							print(" -- WARN: Unable to find altTarget.")
+						end
 					end
 				end
 			end
