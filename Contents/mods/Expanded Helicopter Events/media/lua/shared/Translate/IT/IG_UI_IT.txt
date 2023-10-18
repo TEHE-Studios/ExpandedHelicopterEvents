@@ -15,9 +15,9 @@ IG_UI_IT = {
     IGUI_VehicleNameBell206LBMWFuselage = "Elicottero del notiziario (fusoliera)",
     IGUI_VehicleNameBell206LBMWTail = "Elicottero del notiziario (coda)",
 
-    IGUI_VehicleNameBell206Police = "Elicottero della Polizia",
-    IGUI_VehicleNameBell206PoliceFuselage = "Elicottero della Polizia (fusoliera)",
-    IGUI_VehicleNameBell206PoliceTail = "Elicottero della Polizia (coda)",
+    IGUI_VehicleNameBell206Police = "Elicottero della polizia",
+    IGUI_VehicleNameBell206PoliceFuselage = "Elicottero della polizia (fusoliera)",
+    IGUI_VehicleNameBell206PoliceTail = "Elicottero della polizia (coda)",
 
     IGUI_VehicleNameBell206Survivalist = "Elicottero civile",
     
