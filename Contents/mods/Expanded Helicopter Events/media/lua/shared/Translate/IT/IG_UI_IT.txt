@@ -22,7 +22,7 @@ IG_UI_IT = {
     IGUI_VehicleNameBell206Survivalist = "Elicottero civile",
     
     IGUI_VehicleNameFEMASupplyDrop = "Rifornimenti d'emergenza",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Rifornimenti del Samaritano",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Rifornimenti dei samaritani",
 
     IGUI_Spent = "Spento",
     IGUI_Lit = "Acceso",
