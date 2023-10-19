@@ -55,5 +55,5 @@ ItemName_IT = {
     ItemName_EHE.SurvivorToiletSupplyBox = "Cassa di rifornimento",
 
     ItemName_EHE.HandFlare = "Bengala",
-    ItemName_EHE.SignalFlare = "Razzo di segnalazione",
+    ItemName_EHE.SignalFlare = "Bengala di segnalazione",
 }
