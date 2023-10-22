@@ -46,7 +46,10 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         targetHostile = getPlayerByOnlineID(targetID)
     end
 
-    if not targetHostile and getDebug() then print("ERROR: event failed to find targetHostile to process attack hit.") return end
+    if not targetHostile then
+        if getDebug() then print("ERROR: event failed to find targetHostile to process attack hit.") end
+        return
+    end
 
     local bpRandSelect = bodyPartSelection[ZombRand(#bodyPartSelection)+1]
     local bpType = BodyPartType.FromString(bpRandSelect)
