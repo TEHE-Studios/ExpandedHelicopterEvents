@@ -1,9 +1,9 @@
 ContextMenu_IT = {
-    ContextMenu_DownHoodie = "Abbassa il cappuccio",
-	ContextMenu_VisorUp = "Alza la visiera",
-    ContextMenu_VisorDown = "Abbassa la visiera",
-	ContextMenu_Tighten = "Allaccia",
-    ContextMenu_Untighten = "Slaccia",
+    ContextMenu_DownHoodie = "Cappuccio giù",
+    ContextMenu_VisorUp = "Visiera su",
+    ContextMenu_VisorDown = "Visiera giù",
+    ContextMenu_Tighten = "Stringi",
+    ContextMenu_Untighten = "Allenta",
 
-    IGUI_VehiclePartHelicopterInterior = "Interno dell'Elicottero",
-} 
+    IGUI_VehiclePartHelicopterInterior = "Interno dell'elicottero",
+}
