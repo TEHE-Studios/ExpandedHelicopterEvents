@@ -79,9 +79,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 	if not soundEmitter and (command == "setPos" or command == "play") then
 		storedLooperEvents[reusableID] = getWorld():getFreeEmitter()
 		soundEmitter = storedLooperEvents[reusableID]
-		if command=="setPos" then
-			command = "play"
-		end
+		if command=="setPos" then command = "play" end
 	end
 	if soundEmitter then
 
@@ -135,6 +133,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 					soundEmitter:stopSoundByName(sound)
 					print("---- "..sound)
 				end
+				storedLooperEventsSoundEffects[reusableID] = nil
 			end
 
 			soundEmitter:setVolumeAll(0)
@@ -145,24 +144,23 @@ end
 
 
 function clientSideEventSoundHandler.updateForPlayer(player)
-	for emitterID,timeStamp in pairs(storedLooperEventsUpdateTimes) do
-		if timeStamp~=false and timeStamp <= getGametimeTimestamp() then
+	for ID,emitter in pairs(storedLooperEvents) do
+		local timestamp = storedLooperEventsUpdateTimes[ID]
+		if timestamp~=false and timestamp <= getGametimeTimestamp() then
 			--[[DEBUG]] local printString = ""
-			---@type FMODSoundEmitter | BaseSoundEmitter emitter
-			local emitter = storedLooperEvents[emitterID]
-
-			local storedSounds = storedLooperEventsSoundEffects[emitterID]
+			local storedSounds = storedLooperEventsSoundEffects[ID]
 			if storedSounds then
 				for sound,_ in pairs(storedSounds) do
 					printString = sound..", "..printString
 					emitter:stopSoundByName(sound)
 				end
+				storedLooperEventsSoundEffects[ID] = nil
 			end
 			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
-			--[[DEBUG]] print("-- EHE: "..emitterID.." clientSideEventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
+			--[[DEBUG]] print("-- EHE: "..ID.." clientSideEventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
 			emitter:setVolumeAll(0)
 			emitter:stopAll()
-			storedLooperEventsUpdateTimes[emitterID] = false
+			storedLooperEventsUpdateTimes[ID] = false
 		end
 	end
 end
