@@ -24,6 +24,12 @@ option ExpandedHeli.ContinueSchedulingLateGameOnly
 	page = ExpandedHeli, translation = ExpandedHeli_ContinueSchedulingLateGameOnly,
 }
 
+option ExpandedHeli.AirRaidSirenEvent
+{
+	type = boolean, default = true,
+	page = ExpandedHeli, translation = ExpandedHeli_AirRaidSirenEvent,
+}
+
 option ExpandedHeli.Frequency_jet
 {
 	type = enum, numValues = 6, default = 3,
