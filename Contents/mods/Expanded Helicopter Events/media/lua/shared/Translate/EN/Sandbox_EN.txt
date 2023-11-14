@@ -8,6 +8,9 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_Frequency_option5 = "Frequent",
     Sandbox_ExpandedHeli_Frequency_option6 = "Insane",
 
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Air Raid Transition",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Choose true if you want an air raid event to signal a shift from less challenging early-game events to more hostile late-game events.",
+
     Sandbox_ExpandedHeli_EventJet = "Jets",
     Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur.\n Jets fly by players causing horde movement.",
 

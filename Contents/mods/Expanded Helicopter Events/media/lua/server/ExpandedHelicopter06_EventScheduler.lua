@@ -60,7 +60,16 @@ function eHeliEvents_setEventsForScheduling()
 	if not eventsForScheduling then
 		eventsForScheduling = {}
 		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-			if presetVars.forScheduling then
+
+			local forScheduling = presetVars.forScheduling
+
+			if forScheduling then
+				if SandboxVars.ExpandedHeli.AirRaidSirenEvent==false and presetID=="air_raid" then forScheduling = false end
+				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
+				if presetFreq and presetFreq==1 then forScheduling = false end
+			end
+
+			if forScheduling then
 				table.insert(eventsForScheduling, presetID)
 			end
 		end
