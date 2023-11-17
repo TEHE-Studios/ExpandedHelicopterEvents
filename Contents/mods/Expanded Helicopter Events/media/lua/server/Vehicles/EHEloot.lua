@@ -185,7 +185,6 @@ local function applyLootBoxLoot()
             "Shotgun", 3,
             "FirstAidKit", 3,
             "x2Scope", 0.7,
-            "Hat_SPHPolice", 10,
             "AmmoStraps", 10,
             "AmmoStrap_Bullets", 10,
 
