@@ -264,7 +264,7 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 					if part then
 
-						local partWindow = part:getWindow()
+						local partWindow = part:getChildWindow()
 						if partWindow then
 							partWindow:damage(partDamage*10)
 							targetHostile:transmitPartCondition(partWindow)
