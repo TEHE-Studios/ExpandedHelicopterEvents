@@ -1,5 +1,5 @@
 --- Chuckleberry Finn
--- Adds the context menu for InventoryContainer that can be worn.
+
 require "ISUI/ISInventoryPaneContextMenu"
 
 local clothingInventoryContainerContextFix = {}
