@@ -24,9 +24,12 @@ module Base {
         category = EHE: Main, loop = false, is3D = true, maxInstancesPerEmitter = 1,
         clip { file = media/sound/helicopter_and_planes/heavyheli_mono_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
     
+    sound eHeliPoliceWarning {
+        category = EHE: Main, loop = false, is3D = true, maxInstancesPerEmitter = 1,
+        clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = false, is3D = true, maxInstancesPerEmitter = 1,
-        clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, }
         clip { file = media/sound/crashes_bombs_misc/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
         
     sound eAirRaid {
