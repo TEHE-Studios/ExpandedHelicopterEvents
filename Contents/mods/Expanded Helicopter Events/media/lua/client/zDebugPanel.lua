@@ -1,3 +1,4 @@
+if not getDebug() then return end
 ---Global test list to add onto.
 --[[ EXAMPLE
 Events.OnGameBoot.Add(function()
