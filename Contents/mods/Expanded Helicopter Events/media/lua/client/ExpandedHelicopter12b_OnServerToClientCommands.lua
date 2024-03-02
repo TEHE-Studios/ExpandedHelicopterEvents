@@ -83,18 +83,15 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 				local storedSounds = storedLooperEventsSoundEffects[ID]
 				if storedSounds then
 					for sound,ref in pairs(storedSounds) do
-						print("STORED SOUND: ", sound, " - ", ref)
 						if not emitter:isPlaying(ref) then
-							printString = sound..", "..printString
+							--printString = sound..", "..printString
 							storedLooperEventsSoundEffects[ID][sound] = emitter:playSound(sound)
 							emitter:tick()
 						end
 					end
 				end
 
-				if printString~="" then
-					print("-- EHE: "..ID.." clientSideEventSoundHandler: update received; playing sound(s): "..printString)
-				end
+				--if getDebug() and printString~="" then print("-- EHE: "..ID.." clientSideEventSoundHandler: update received; playing sound(s): "..printString) end
 			end
 		end
 	end
@@ -115,12 +112,14 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 	end
 	if soundEmitter then
 
+		--[[
 		if command ~= "setPos" then
 			local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:".." - "..tostring(reusableID)
 			if DATA and type(DATA)=="table" then for k,v in pairs(DATA) do emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")" end
 			else emitterDebugText = emitterDebugText.." - /!\\ (DATA = "..tostring(DATA)..")" end
 			print(emitterDebugText)
 		end
+		--]]
 
 		storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
 
@@ -129,7 +128,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 			if command == "play" then
 				local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
 				if soundRef and soundEmitter:isPlaying(soundRef) then
-					print("-- warn: soundEmitter is already playing \`"..DATA.soundEffect.."\`")
+					--print("-- warn: soundEmitter is already playing \`"..DATA.soundEffect.."\`")
 					--local square = getSquare(DATA.x, DATA.y, DATA.z)
 				else
 					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
