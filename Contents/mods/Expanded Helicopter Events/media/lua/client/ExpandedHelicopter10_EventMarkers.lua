@@ -224,7 +224,7 @@ end
 
 
 function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY, color)
-	print(" --- marker new: eventID:"..eventID..": tex:"..icon.." d:"..duration.." x/y:"..posX..","..posY.." "..tostring(player).." screen:"..screenX..","..screenY)
+	--print(" --- marker new: eventID:"..eventID..": tex:"..icon.." d:"..duration.." x/y:"..posX..","..posY.." "..tostring(player).." screen:"..screenX..","..screenY)
 	local o = {}
 	o = ISUIElement:new(screenX, screenY, 1, 1)
 	setmetatable(o, self)
