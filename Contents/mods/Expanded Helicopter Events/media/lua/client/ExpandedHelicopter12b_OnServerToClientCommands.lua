@@ -53,7 +53,7 @@ function eventShadowHandler.updateForPlayer(player)
 	if not storedShadows then return end
 	for shadowID,_ in pairs(storedShadows) do
 		if storedShadowsUpdateTimes and storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
-			print("-- EHE: WARN: eventShadowHandler.updateForPlayer: no update received")
+			--print("-- EHE: WARN: eventShadowHandler.updateForPlayer: no update received")
 			---@type WorldMarkers.GridSquareMarker
 			local shadow = storedShadows[shadowID]
 			shadow:setAlpha(0)
@@ -69,6 +69,16 @@ local storedLooperEventsSoundEffects = {}
 local storedLooperEventsUpdateTimes = {}
 
 local clientSideEventSoundHandler = {}
+
+
+---@param emitter BaseSoundEmitter | FMODSoundEmitter
+function clientSideEventSoundHandler.playSound(emitter, soundEffect, x, y, z)
+
+	print(emitter:hasSoundsToStart())
+
+	if emitter:isPlaying(soundEffect) then return end
+	emitter:playSound(soundEffect, x, y, z)
+end
 
 function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
@@ -101,11 +111,23 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 				else
 					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
 					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = true
-					soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
+
+					clientSideEventSoundHandler.playSound(soundEmitter, DATA.soundEffect, DATA.x, DATA.y, DATA.z)
 				end
 			end
 
-			if command == "setPos" then soundEmitter:setPos(DATA.x,DATA.y,DATA.z) end
+			if command == "setPos" then
+
+				local storedSounds = storedLooperEventsSoundEffects[reusableID]
+
+				if storedSounds then
+					for sound,_ in pairs(storedSounds) do
+						clientSideEventSoundHandler.playSound(soundEmitter, sound, DATA.x, DATA.y, DATA.z)
+					end
+				end
+
+				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
+			end
 
 			if command == "stop" then
 				if DATA and DATA.soundEffect then
@@ -138,37 +160,13 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 
 			soundEmitter:setVolumeAll(0)
 			soundEmitter:stopAll()
+
+			for ID,emitter in pairs(storedLooperEvents) do if emitter == soundEmitter or ID == reusableID then storedLooperEvents[ID] = nil end end
 		end
 	end
 end
 
 
-function clientSideEventSoundHandler.updateForPlayer(player)
-	for ID,emitter in pairs(storedLooperEvents) do
-		local timestamp = storedLooperEventsUpdateTimes[ID]
-		if timestamp~=false then
-			if timestamp >= getGametimeTimestamp() then
-
-				--[[DEBUG]] local printString = ""
-
-				local storedSounds = storedLooperEventsSoundEffects[ID]
-				if storedSounds then
-					for sound,_ in pairs(storedSounds) do
-						if not emitter:isPlaying(sound) then
-							printString = sound..", "..printString
-							emitter:playSound(sound)
-						end
-					end
-				end
-
-				if printString~="" then
-					print("-- EHE: "..ID.." clientSideEventSoundHandler.updateForPlayer: update received; playing sound: "..printString)
-				end
-			end
-		end
-	end
-end
-Events.OnPlayerUpdate.Add(clientSideEventSoundHandler.updateForPlayer)
 
 
 function eventMarkerHandler.updateForPlayer(player)
@@ -182,7 +180,7 @@ function eventMarkerHandler.updateForPlayer(player)
 				local currentTimeMS = getTimeInMillis()
 				local expireTime = eventMarkerHandler.expirations[player][id]
 				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then
-					print("-- EHE: eventMarkerHandler.updateForPlayer: no update received; stopping marker. ")
+					--print("-- EHE: eventMarkerHandler.updateForPlayer: no update received; stopping marker. ")
 					eventMarkerHandler.markers[player][id] = nil
 					eventMarkerHandler.expirations[player][id] = nil
 					marker:setDuration(0)
