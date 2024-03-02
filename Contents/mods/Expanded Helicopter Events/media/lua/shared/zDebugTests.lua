@@ -1,3 +1,5 @@
+if not getDebug() then return end
+
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"
 require "ExpandedHelicopter00a_Util"
