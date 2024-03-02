@@ -73,12 +73,10 @@ local clientSideEventSoundHandler = {}
 
 ---@param emitter BaseSoundEmitter | FMODSoundEmitter
 function clientSideEventSoundHandler.playSound(emitter, soundEffect, x, y, z)
-
-	print(emitter:hasSoundsToStart())
-
-	if emitter:isPlaying(soundEffect) then return end
+	--if emitter:isPlaying(soundEffect) then print(" ~~ Playing: ", soundEffect, " - ",x,",",y,",",z) return end
 	emitter:playSound(soundEffect, x, y, z)
 end
+
 
 function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
