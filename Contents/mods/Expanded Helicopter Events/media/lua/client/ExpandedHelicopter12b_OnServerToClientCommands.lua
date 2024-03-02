@@ -146,21 +146,25 @@ end
 function clientSideEventSoundHandler.updateForPlayer(player)
 	for ID,emitter in pairs(storedLooperEvents) do
 		local timestamp = storedLooperEventsUpdateTimes[ID]
-		if timestamp~=false and timestamp <= getGametimeTimestamp() then
-			--[[DEBUG]] local printString = ""
-			local storedSounds = storedLooperEventsSoundEffects[ID]
-			if storedSounds then
-				for sound,_ in pairs(storedSounds) do
-					printString = sound..", "..printString
-					emitter:stopSoundByName(sound)
+		if timestamp~=false then
+			if timestamp >= getGametimeTimestamp() then
+
+				--[[DEBUG]] local printString = ""
+
+				local storedSounds = storedLooperEventsSoundEffects[ID]
+				if storedSounds then
+					for sound,_ in pairs(storedSounds) do
+						if not emitter:isPlaying(sound) then
+							printString = sound..", "..printString
+							emitter:playSound(sound)
+						end
+					end
 				end
-				storedLooperEventsSoundEffects[ID] = nil
+
+				if printString~="" then
+					print("-- EHE: "..ID.." clientSideEventSoundHandler.updateForPlayer: update received; playing sound: "..printString)
+				end
 			end
-			--[[DEBUG]] if printString~="" then printString = "\n --- stopped: "..printString end
-			--[[DEBUG]] print("-- EHE: "..ID.." clientSideEventSoundHandler.updateForPlayer: no update received; stopping sound. "..printString)
-			emitter:setVolumeAll(0)
-			emitter:stopAll()
-			storedLooperEventsUpdateTimes[ID] = false
 		end
 	end
 end
