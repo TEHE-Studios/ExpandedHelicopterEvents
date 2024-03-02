@@ -64,6 +64,7 @@ function eventShadowHandler.updateForPlayer(player)
 end
 Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
+
 local storedLooperEvents = {}
 local storedLooperEventsSoundEffects = {}
 local storedLooperEventsUpdateTimes = {}
@@ -71,13 +72,34 @@ local storedLooperEventsUpdateTimes = {}
 local clientSideEventSoundHandler = {}
 
 
----@param emitter BaseSoundEmitter | FMODSoundEmitter
-function clientSideEventSoundHandler.playSound(emitter, soundEffect, x, y, z)
+function clientSideEventSoundHandler.updateForPlayer(player)
+	for ID,emitter in pairs(storedLooperEvents) do
+		local timestamp = storedLooperEventsUpdateTimes[ID]
+		if timestamp~=false then
+			if timestamp >= getGametimeTimestamp() then
 
-	if emitter:isPlaying(soundEffect) then else
-		emitter:playSound(soundEffect, x, y, z)
+				--[[DEBUG]] local printString = ""
+
+				local storedSounds = storedLooperEventsSoundEffects[ID]
+				if storedSounds then
+					for sound,ref in pairs(storedSounds) do
+						print("STORED SOUND: ", sound, " - ", ref)
+						if not emitter:isPlaying(ref) then
+							printString = sound..", "..printString
+							storedLooperEventsSoundEffects[ID][sound] = emitter:playSound(sound)
+							emitter:tick()
+						end
+					end
+				end
+
+				if printString~="" then
+					print("-- EHE: "..ID.." clientSideEventSoundHandler: update received; playing sound(s): "..printString)
+				end
+			end
+		end
 	end
 end
+Events.OnPlayerUpdate.Add(clientSideEventSoundHandler.updateForPlayer)
 
 
 function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
@@ -105,55 +127,46 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 		if not DATA then print(" --WARN: Command has a data of nil!")
 		else
 			if command == "play" then
-				if soundEmitter:isPlaying(DATA.soundEffect) then
+				local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
+				if soundRef and soundEmitter:isPlaying(soundRef) then
 					print("-- warn: soundEmitter is already playing \`"..DATA.soundEffect.."\`")
 					--local square = getSquare(DATA.x, DATA.y, DATA.z)
 				else
 					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
-					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = true
-
-					clientSideEventSoundHandler.playSound(soundEmitter, DATA.soundEffect, DATA.x, DATA.y, DATA.z)
+					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
+					soundEmitter:tick()
 				end
 			end
 
 			if command == "setPos" then
-
-				local storedSounds = storedLooperEventsSoundEffects[reusableID]
-
-				if storedSounds then
-					for sound,_ in pairs(storedSounds) do
-						clientSideEventSoundHandler.playSound(soundEmitter, sound, DATA.x, DATA.y, DATA.z)
-					end
-				end
-
 				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
 			end
 
 			if command == "stop" then
 				if DATA and DATA.soundEffect then
 					if type(DATA.soundEffect)=="table" then
-						print("--soundEffect set:")
+						--print("--soundEffect set:")
 						for _,sound in pairs(DATA.soundEffect) do
-							print("---stop:".." - "..sound)
-							soundEmitter:stopSoundByName(sound)
+							--print("---stop:".." - "..sound)
+							local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][sound]
+							soundEmitter:stopSoundLocal(soundRef)
 						end
 					else
-						print("--stop:".." - "..tostring(DATA.soundEffect))
-						soundEmitter:stopSoundByName(DATA.soundEffect)
+						--print("--stop:".." - "..tostring(DATA.soundEffect))
+						local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
+						soundEmitter:stopSoundLocal(soundRef)
 					end
 				end
 			end
 		end
 
 		if command == "stopAll" then
-
-			print("-- emitter: "..tostring(reusableID).." -stopAll:")
-
+			--print("-- emitter: "..tostring(reusableID).." -stopAll:")
 			local storedSounds = storedLooperEventsSoundEffects[reusableID]
 			if storedSounds then
-				for sound,_ in pairs(storedSounds) do
-					soundEmitter:stopSoundByName(sound)
-					print("---- "..sound)
+				for sound,ref in pairs(storedSounds) do
+					soundEmitter:stopSoundLocal(ref)
+					--print("---- "..sound)
 				end
 				storedLooperEventsSoundEffects[reusableID] = nil
 			end
