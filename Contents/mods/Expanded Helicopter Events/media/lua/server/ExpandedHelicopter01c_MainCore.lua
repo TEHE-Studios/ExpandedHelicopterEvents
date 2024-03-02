@@ -641,6 +641,28 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 end
 
 
+function eHelicopter:playFlightSounds()
+
+	eventSoundHandler:playEventSound(self,"flightSound", nil, true)
+
+	if self.squareOfOrigin then eventSoundHandler:playEventSound(self,"soundAtEventOrigin", self.squareOfOrigin, true, false) end
+
+	if self.formationFollowingHelis then
+		for heli,_ in pairs(self.formationFollowingHelis) do
+			---@type eHelicopter
+			local followingHeli = heli
+			if followingHeli then
+				local randSoundDelay = ZombRand(5,15)
+				if self.squareOfOrigin then
+					eventSoundHandler:playEventSound(followingHeli, "soundAtEventOrigin", self.squareOfOrigin, true, false, randSoundDelay)
+				end
+				eventSoundHandler:playEventSound(followingHeli, "flightSound", nil, true, false, randSoundDelay)
+			end
+		end
+	end
+end
+
+
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)
 
@@ -675,12 +697,10 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	self:initPos(self.target, self.randomEdgeStart)
 	self.preflightDistance = self:getDistanceToVector(self.targetPosition)
 
-	---TODO: Confirm formations work in MP
+	--TODO: Confirm formations work in MP
 	--self:formationInit()
-	eventSoundHandler:playEventSound(self,"flightSound", nil, true)
-
-	local currentSquare = self:getIsoGridSquare()
-	eventSoundHandler:playEventSound(self,"soundAtEventOrigin", currentSquare, true, false)
+	self.squareOfOrigin = self:getIsoGridSquare()
+	self:playFlightSounds()
 	
 	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
 		if #self.hoverOnTargetDuration >= 2 then
@@ -706,9 +726,6 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		local followingHeli = heli
 		if followingHeli then
 			followingHeli.attackDistance = self.attackDistance
-			local randSoundDelay = ZombRand(5,15)
-			eventSoundHandler:playEventSound(followingHeli, "soundAtEventOrigin", currentSquare, true, false, randSoundDelay)
-			eventSoundHandler:playEventSound(followingHeli, "flightSound", nil, true, false, randSoundDelay)
 			if not blockCrashing then
 				followingHeli:applyCrashChance()
 			end
