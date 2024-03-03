@@ -1,4 +1,4 @@
-if not getDebug() then return end
+if isClient() and not getDebug() then return end
 
 require "zDebugPanel"
 require "ExpandedHelicopter00f_WeatherImpact"

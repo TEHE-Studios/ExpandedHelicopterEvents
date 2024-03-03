@@ -1,4 +1,5 @@
-if not getDebug() then return end
+if isClient() and not getDebug() then return end
+
 ---Global test list to add onto.
 --[[ EXAMPLE
 Events.OnGameBoot.Add(function()
