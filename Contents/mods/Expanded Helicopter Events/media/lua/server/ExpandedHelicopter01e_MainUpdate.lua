@@ -24,7 +24,7 @@ function eHelicopter:updateEvent()
 			if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
 			if (not self.trueTarget) then print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()") end
 
-			--[[DEBUG]] print("EHE: "..self:heliToString().."  -no target + arrived")
+			--[[DEBUG]] print(" - EHE: ERR: "..self:heliToString().." -no target + arrived")
 
 			self.trueTarget = self:findTarget(self.attackDistance*4, "update")
 			self.target = self.trueTarget
@@ -222,6 +222,7 @@ end
 
 function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
 	local currentSquare = self:getIsoGridSquare()
+	if not currentSquare then print(" - EHE: ERR: updateSubFunctions: no square for subfunctions") return end
 	--Wake up (Wake up) / Grab a brush and put a little make-up
 	for character,value in pairs(EHEIsoPlayers) do
 		---@type IsoGameCharacter p
@@ -233,7 +234,11 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 			end
 
 			if self:getDistanceToIsoObject(p) < distanceImpact then
-				p:forceAwake()
+				if isServer() then
+					sendServerCommand("flyOver", "wakeUp", {})
+				else
+					p:forceAwake()
+				end
 			end
 		end
 	end

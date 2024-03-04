@@ -216,6 +216,8 @@ local function onServerCommand(_module, _command, _data)
 	--	print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
 	--end
 
+	if _module == "flyOver" and _command == "wakeUp" then getPlayer():forceAwake() end
+
 	if _module == "flare" and _command == "updateClient" then
 		if _data.soundEffect and _data.coords.x and _data.coords.y and _data.coords.z then
 			getWorld():getFreeEmitter():playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z)

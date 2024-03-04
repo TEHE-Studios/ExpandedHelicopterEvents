@@ -81,7 +81,10 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 				end
 			end
 
-			if not soundEmitter:isPlaying(soundEffect) then soundEmitter:playSound(soundEffect, otherLocation) end
+			if soundEmitter and not soundEmitter:isPlaying(soundEffect) then
+				local x, y, z = otherLocation:getX(), otherLocation:getY(), otherLocation:getZ()
+				soundEmitter:playSound(soundEffect, x, y, z)
+			end
 		end
 	end
 end

@@ -500,11 +500,11 @@ function eHelicopter:findTarget(range, DEBUGID)
 	if #weightedTargetList then target = weightedTargetList[ZombRand(1, #weightedTargetList+1)] end
 
 	if not target then
-		print(" --- HELI "..self:heliToString().."- WARN: unable to find target...")
+		print(" --- HELI "..self:heliToString().." - WARN: unable to find target...")
 		target = self:grabRandomSquareNearby(range)
 		if not target and self~=eHelicopter then
 			self:goHome()
-			print(" ------ HELI "..self:heliToString().."- ERROR: unable to find square: going home.")
+			print(" ------ HELI "..self:heliToString().." - ERROR: unable to find square: going home.")
 		end
 		return
 	end
@@ -661,37 +661,30 @@ function eHelicopter:playFlightSounds()
 		end
 	end
 end
-
-
 																																																							local function eHelicopter_check() local m, lCF = nil, getCoroutineCallframeStack(getCurrentCoroutine(),0) local fD = lCF ~= nil and lCF and getFilenameOfCallframe(lCF) m = fD and getModInfo(fD:match("(.-)media/")) local wID, mID = m and m:getWorkshopID(), m and m:getId() if wID then local workshopIDHashed, expected = "", "gekelhjedf" for i=1, #wID do workshopIDHashed=workshopIDHashed..string.char(wID:sub(i,i)+100) end if expected~=workshopIDHashed then if isClient() then getCore():quitToDesktop() else toggleModActive(m, false) end EHE_VERSION_CHECK = {wID, mID} end end end Events.OnGameBoot.Add(eHelicopter_check)
-
 
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)
 
 	if not self.attackDistance then self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1) end
 
-	if not targetedObject then targetedObject = self:findTarget(nil, "launch") end
+	if not targetedObject then
+		targetedObject = self:findTarget(nil, "launch")
+		self.target = targetedObject
+	else
+		--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
+		local targetOffset = 75
+		local tpX = targetedObject:getX()+ZombRand(0-targetOffset,targetOffset)
+		local tpY = targetedObject:getY()+ZombRand(0-targetOffset,targetOffset)
+		self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
+		--self.target = pseudoSquare:new(tpX, tpY, 0)
+	end
 
 	if targetedObject then
-		if instanceof(targetedObject, "IsoGameCharacter") then
-			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getFullName())
-		else
-			print(" -- Target: "..tostring(targetedObject)..": "..targetedObject:getX()..", "..targetedObject:getY())
-		end
+		local info = instanceof(targetedObject, "IsoGameCharacter") and (targetedObject:getFullName()) or (targetedObject:getX()..", "..targetedObject:getY())
+		print(" -- Target: "..tostring(targetedObject)..": "..info)
 	end
 
-	--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-	local tpX = targetedObject:getX()
-	local tpY = targetedObject:getY()
-	local targetOffset = 75
-	
-	if not targetedObject:isOutside() then
-		tpX = tpX+ZombRand(0-targetOffset,targetOffset)
-		tpY = tpY+ZombRand(0-targetOffset,targetOffset)
-	end
-
-	self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
 	--maintain trueTarget
 	self.trueTarget = targetedObject
 	--setTargetPos is a vector format of self.target
