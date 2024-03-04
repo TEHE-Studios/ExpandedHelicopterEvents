@@ -505,8 +505,8 @@ function eHelicopter:findTarget(range, DEBUGID)
 		if not target and self~=eHelicopter then
 			self:goHome()
 			print(" ------ HELI "..self:heliToString().." - ERROR: unable to find square: going home.")
+			return
 		end
-		return
 	end
 
 	return target
