@@ -214,7 +214,7 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 				collateral = true
 				targetHostile = targetVehicle
 			else
-				if (targetSquare:isVehicleIntersecting()) then
+				if targetSquare and (targetSquare:isVehicleIntersecting()) then
 					local vehicle = getVehiclesIntersecting(targetSquare, true)
 					if vehicle then
 						HIT = true
