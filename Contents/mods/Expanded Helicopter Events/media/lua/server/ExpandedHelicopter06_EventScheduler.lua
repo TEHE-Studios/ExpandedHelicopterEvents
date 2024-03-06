@@ -208,7 +208,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
 				if presetFreq then
 					freq = presetFreq-1
-					if freq == 5 then freq = 25 end
+					if freq == 5 then freq = 50 end
 				end
 
 				freq = freqOverride or freq
@@ -269,13 +269,9 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 
-			if startTime > 24 then
-				startTime = startTime-24
-			end
+			if startTime > 24 then startTime = startTime-24 end
 
-			if not noPrint==true then
-				print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]")
-			end
+			if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
 			eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
 		end
 	end
