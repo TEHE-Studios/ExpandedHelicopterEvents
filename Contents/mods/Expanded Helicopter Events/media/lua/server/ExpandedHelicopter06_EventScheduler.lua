@@ -259,20 +259,28 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 		local selectedPresetID = options[ZombRand(#options)+1]
 		if selectedPresetID and (selectedPresetID ~= false) then
+
+			local freq = SandboxVars.ExpandedHeli["Frequency_"..selectedPresetID]
+			local insane = (freqOverride or freq) == 6
+
 			local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
 			local startDay, cutOffDay = fetchStartDayAndCutOffDay(selectedPreset)
 
-			local dayOffset = {0,0,0,1,1,2}
-			dayOffset = dayOffset[ZombRand(#dayOffset)+1]
+			local iterations = insane and 4 or 1
 
-			local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
-			local startTime = ZombRand(flightHours[1],flightHours[2]+1)
+			for i=1, iterations do
+				local dayOffset = {0,0,0,1,1,2}
+				dayOffset = dayOffset[ZombRand(#dayOffset)+1]
 
-			if startTime > 24 then startTime = startTime-24 end
+				local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
+				local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 
-			if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
-			eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
+				if startTime > 24 then startTime = startTime-24 end
+
+				if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
+				eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
+			end
 		end
 	end
 end

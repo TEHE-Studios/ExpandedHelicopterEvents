@@ -217,7 +217,7 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 			end
 		end
 		print("======================================")
-		print("HeliEvents_SchedulerUnitTest: FREQ:"..freq)
+		print("HeliEvents_SchedulerUnitTest: FREQ: "..getText("Sandbox_ExpandedHeli_Frequency_option"..freq))
 		print("--------------------------------------")
 		local totalTimes= 0
 		for preset,times in pairs(testsRan) do
