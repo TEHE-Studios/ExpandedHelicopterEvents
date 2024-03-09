@@ -634,6 +634,9 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 		--[DEBUG]] print(" ---- dayOfLastCrash:"..dayOfLastCrash.." | daysSinceCrashImpact:"..math.floor(daysSinceCrashImpact))
 	end
 
+	local crashChanceMulti = SandboxVars.ExpandedHeli.CrashChanceMulti or 1
+	crashChance = crashChance * crashChanceMulti
+
 	if self.crashType and (not self.crashing) and (ZombRand(0,501) <= crashChance) then
 		self.crashing = true
 	end

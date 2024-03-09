@@ -30,6 +30,12 @@ option ExpandedHeli.WeatherImpactsEvents
 	page = ExpandedHeli, translation = ExpandedHeli_WeatherImpactsEvents,
 }
 
+option ExpandedHeli.CrashChanceMulti
+{
+	type = double, min = 0, max = 1000, default = 1,
+	page = ExpandedHeli, translation = ExpandedHeli_CrashChanceMulti,
+}
+
 option ExpandedHeli.AirRaidSirenEvent
 {
 	type = boolean, default = true,
