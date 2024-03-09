@@ -5,7 +5,10 @@ local function HelicopterSandboxOptions(EVENT)
 	SandboxVars.Helicopter = 1
 
 	local gameTime = getGameTime()
-	gameTime:setHelicopterDay(999999999)
+	local nightsSurvived = gameTime:getNightsSurvived()
+	local currentHelicopterDay = gameTime:getHelicopterDay1()
+	local later = math.max(nightsSurvived, currentHelicopterDay) + 6
+	gameTime:setHelicopterDay(later)
 	gameTime:setHelicopterStartHour(0)
 	gameTime:setHelicopterEndHour(0)
 

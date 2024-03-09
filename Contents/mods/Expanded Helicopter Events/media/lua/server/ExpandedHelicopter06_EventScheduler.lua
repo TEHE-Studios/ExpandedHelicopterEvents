@@ -269,6 +269,8 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 			local iterations = insane and 4 or 1
 
+			local latestStartDay
+
 			for i=1, iterations do
 				local dayOffset = {0,0,0,1,1,2}
 				dayOffset = dayOffset[ZombRand(#dayOffset)+1]
@@ -279,7 +281,16 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				if startTime > 24 then startTime = startTime-24 end
 
 				if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
+
+				latestStartDay = math.max(nextStartDay, latestStartDay)
+
 				eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
+			end
+
+			if latestStartDay then
+				---Push vanilla event down the calendar.
+				local pushVanillaDay = math.max(GT:getHelicopterDay1(),latestStartDay+3)
+				GT:setHelicopterDay(pushVanillaDay)
 			end
 		end
 	end
