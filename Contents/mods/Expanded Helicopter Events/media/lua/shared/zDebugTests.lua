@@ -168,7 +168,7 @@ function CustomDebugPanel.launchHeliTest(presetID, player, moveCloser, crashIt)
 	if isClient() then
 		sendClientCommand("CustomDebugPanel", "launchHeliTest", {presetID=presetID,moveCloser=moveCloser,crashIt=crashIt})
 	else
-		print("launchHeliTest: isClient():"..tostring(isClient())..", isServer():"..tostring(isServer()))
+		--print("launchHeliTest: isClient():"..tostring(isClient())..", isServer():"..tostring(isServer()))
 		---@type eHelicopter heli
 		local heli = getFreeHelicopter(presetID)
 		print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))

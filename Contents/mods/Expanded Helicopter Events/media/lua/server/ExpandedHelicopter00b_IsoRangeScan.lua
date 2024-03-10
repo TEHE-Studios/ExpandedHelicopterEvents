@@ -1,6 +1,8 @@
 ---This is an utility function meant for large scale scans of isoGridSquares around a given IsoObject.
 ---The scans are done fractally - that is to say from a center (or centers) outward to fill a larger area.
 
+local pseudoSquare = require "ExpandedHelicopter00a_psuedoSquare"
+
 ---@param center IsoGameCharacter
 function recursiveGetSquare(center)
 	if not center then
@@ -167,9 +169,9 @@ function getIsoRange(center, range, fractalOffset)
 			end
 
 			---@type IsoGridSquare square
-			local square = getCell():getOrCreateGridSquare(currentX, currentY, 0)
+			local square = getSquare(currentX, currentY, 0)
 			--[DEBUG]] getWorldMarkers():addGridSquareMarker(square, 0.8, fractalOffset-1, 0, false, 0.5)
-			table.insert(squares, square)
+			if square then table.insert(squares, square) end
 		end
 	end
 	--[[DEBUG

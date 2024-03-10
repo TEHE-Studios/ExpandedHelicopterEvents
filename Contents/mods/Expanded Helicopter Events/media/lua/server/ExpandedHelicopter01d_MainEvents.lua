@@ -5,6 +5,8 @@ require "ExpandedHelicopter00a_Util"
 --Heli goes down
 
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
+local pseudoSquare = require "ExpandedHelicopter00a_psuedoSquare"
+
 
 function eHelicopter:crash()
 
@@ -30,7 +32,7 @@ function eHelicopter:crash()
 		local heliX, heliY, _ = self:getXYZAsInt()
 
 		local returned_sq
-		local square = getCell():getOrCreateGridSquare(heliX, heliY, 0)
+		local square = getSquare(heliX, heliY, 0) or pseudoSquare:new(heliX, heliY, 0)
 		if square then
 			---@type IsoGridSquare
 			returned_sq = getOutsideSquareFromAbove_vehicle(square)
@@ -231,7 +233,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	end
 
 	local returned_sq
-	local square = getCell():getOrCreateGridSquare(heliX, heliY, 0)
+	local square = getSquare(heliX, heliY, 0) or pseudoSquare:new(heliX, heliY, 0)
 	if square then
 		---@type IsoGridSquare
 		returned_sq = getOutsideSquareFromAbove_vehicle(square)

@@ -90,8 +90,19 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 						end
 					end
 				end
-
 				--if getDebug() and printString~="" then print("-- EHE: "..ID.." clientSideEventSoundHandler: update received; playing sound(s): "..printString) end
+
+			else
+				local storedSounds = storedLooperEventsSoundEffects[ID]
+				if storedSounds then
+					for sound,ref in pairs(storedSounds) do
+						if not emitter:isPlaying(ref) then
+							storedLooperEventsSoundEffects[ID][sound] = emitter:stopSoundLocal(ref)
+							emitter:tick()
+						end
+					end
+				end
+
 			end
 		end
 	end
@@ -160,17 +171,14 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 		end
 
 		if command == "stopAll" then
-			--print("-- emitter: "..tostring(reusableID).." -stopAll:")
 			local storedSounds = storedLooperEventsSoundEffects[reusableID]
 			if storedSounds then
 				for sound,ref in pairs(storedSounds) do
 					soundEmitter:stopSoundLocal(ref)
-					--print("---- "..sound)
 				end
 				storedLooperEventsSoundEffects[reusableID] = nil
 			end
 
-			soundEmitter:setVolumeAll(0)
 			soundEmitter:stopAll()
 
 			for ID,emitter in pairs(storedLooperEvents) do if emitter == soundEmitter or ID == reusableID then storedLooperEvents[ID] = nil end end

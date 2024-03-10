@@ -20,4 +20,8 @@ function pseudoSquare:getZ() return self.z end
 
 function pseudoSquare:getSquare() return getSquare(self.x, self.y, self.z) end
 
+function pseudoSquare:isOutside() return true end
+
+function pseudoSquare:getClass() return { getSimpleName = function() return "pseudoSquare" end } end
+
 return pseudoSquare

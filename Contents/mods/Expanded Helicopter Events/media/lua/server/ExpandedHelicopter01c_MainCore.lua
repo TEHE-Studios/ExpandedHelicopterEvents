@@ -3,6 +3,8 @@ require "ExpandedHelicopter00a_Util"
 require "ExpandedHelicopter00b_IsoRangeScan"
 local flareSystem = require "ExpandedHelicopter_Flares"
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
+local pseudoSquare = require "ExpandedHelicopter00a_psuedoSquare"
+
 
 ALL_HELICOPTERS = {}
 
@@ -113,9 +115,7 @@ end
 
 ---@return int, int, int XYZ of eHelicopter
 function eHelicopter:getXYZAsInt()
-	if not self.currentPosition then
-		return
-	end
+	if not self.currentPosition then return end
 
 	local ehX = math.floor(Vector3GetX(self.currentPosition) + 0.5)
 	local ehY = math.floor(Vector3GetY(self.currentPosition) + 0.5)
@@ -128,11 +128,17 @@ end
 ---@return IsoGridSquare of eHelicopter
 function eHelicopter:getIsoGridSquare()
 	local ehX, ehY, _ = self:getXYZAsInt()
-
 	if not ehX or not ehY then return end
+	local square = getSquare(ehX, ehY, 0)
+	return square
+end
 
-	local square = getCell():getOrCreateGridSquare(ehX, ehY, 0)
 
+---@return IsoGridSquare|table square or pseudoSquare (table) of eHelicopter
+function eHelicopter:getIsoGridOrPseudoSquare()
+	local ehX, ehY, _ = self:getXYZAsInt()
+	if not ehX or not ehY then return end
+	local square = getSquare(ehX, ehY, 0) or pseudoSquare:new(ehX, ehY, 0)
 	return square
 end
 
@@ -344,18 +350,11 @@ function eHelicopter:findAlternativeTarget(character)
 	local xOffset = ZombRand(55,80)
 	local yOffset = ZombRand(55,80)
 
-	if ZombRand(101) <= 50 then
-		yOffset=0-yOffset
-	end
-	if ZombRand(101) <= 50 then
-		yOffset=0-yOffset
-	end
+	if ZombRand(101) <= 50 then yOffset=0-yOffset end
+	if ZombRand(101) <= 50 then yOffset=0-yOffset end
 
-	local square = getCell():getOrCreateGridSquare(x+xOffset, y+yOffset, 0)
-
-	if square then
-		return square
-	end
+	local square = getSquare(x+xOffset, y+yOffset, 0) or pseudoSquare:new(x+xOffset, y+yOffset, 0)
+	if square then return square end
 
 	return false
 end
@@ -375,7 +374,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	for i=1, #heatMap.cellsIDs do
 		local heatCell = heatMap.cells[heatMap.cellsIDs[i]]
 		---weigh list by hottest to coldest
-		local cSquare = getCell():getOrCreateGridSquare(heatCell.centerX,heatCell.centerY,0)
+		local cSquare = getSquare(heatCell.centerX,heatCell.centerY,0) or pseudoSquare:new(heatCell.centerX, heatCell.centerY, 0)
 		if cSquare and ( (not range) or (range and self:getDistanceToIsoObject(cSquare) <= range) ) then
 			for n=0, (cellsSize-i)+1 do table.insert(targetPool, cSquare) end
 		end
@@ -532,7 +531,7 @@ function eHelicopter:grabRandomSquareNearby(range)
 		yShift = 0-yShift
 	end
 
-	local square =  getCell():getOrCreateGridSquare(x+xShift,y+yShift, 0)
+	local square =  getSquare(x+xShift,y+yShift, 0) or pseudoSquare:new(x+xShift, y+yShift, 0)
 
 	return square
 end
@@ -640,7 +639,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	if self.crashType and (not self.crashing) and (ZombRand(0,501) <= crashChance) then
 		self.crashing = true
 	end
-	--[[DEBUG]] print(" --- "..self:heliToString().." crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
+	----[[DEBUG]] print(" --- "..self:heliToString().." crashChance:"..crashChance.." crashing:"..tostring(self.crashing))
 end
 
 
@@ -679,7 +678,8 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		local targetOffset = 75
 		local tpX = targetedObject:getX()+ZombRand(0-targetOffset,targetOffset)
 		local tpY = targetedObject:getY()+ZombRand(0-targetOffset,targetOffset)
-		self.target = getCell():getOrCreateGridSquare(tpX, tpY, 0)
+		local square = getSquare(tpX, tpY, 0) or pseudoSquare:new(tpX, tpY, 0)
+		if square then self.target = square end
 		--self.target = pseudoSquare:new(tpX, tpY, 0)
 	end
 
@@ -698,7 +698,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 
 	--TODO: Confirm formations work in MP
 	--self:formationInit()
-	self.squareOfOrigin = self:getIsoGridSquare()
+	self.squareOfOrigin = self:getIsoGridOrPseudoSquare()
 	self:playFlightSounds()
 	
 	if self.hoverOnTargetDuration and type(self.hoverOnTargetDuration) == "table" then
@@ -748,7 +748,10 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		if eventFunction then eventFunction(self) end
 	end
 
-	print(" -- EHE: LAUNCH: "..self:heliToString().." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
+	print(" -- EHE: LAUNCH: "..self:heliToString()..
+			" day:"..getGameTime():getNightsSurvived()..
+			" hour:"..getGameTime():getHour()..
+			" crashing:"..tostring(self.crashing))
 end
 
 
@@ -757,7 +760,7 @@ function eHelicopter:goHome()
 	self.state = "goHome"
 	self.hoverOnTargetDuration = 0
 
-	local selfSquare = self:getIsoGridSquare()
+	local selfSquare = self:getIsoGridOrPseudoSquare()
 
 	if not selfSquare then
 		print(" --- HELI "..self:heliToString()..": unable to go home; unlaunching.")

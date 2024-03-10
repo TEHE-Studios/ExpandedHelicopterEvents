@@ -4,6 +4,8 @@ require "ExpandedHelicopter01f_ShadowSystem"
 
 local eventSoundHandler = require "ExpandedHelicopter01b_Sounds"
 local heatMap = require "ExpandedHelicopter_HeatMap"
+local pseudoSquare = require "ExpandedHelicopter00a_psuedoSquare"
+
 
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end
@@ -76,9 +78,13 @@ function eHelicopter:updateEvent()
 					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
 				end
 				--set target to square from calculated offset
-				self.target = getCell():getOrCreateGridSquare(tx,ty,0)
-
-				--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -roaming + set target to random square")
+				local square = getSquare(tx,ty,0) or pseudoSquare:new(tx, ty, 0)
+				if square then
+					self.target = square
+					--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -roaming + set target to random square")
+				else
+					--[[DEBUG]] print(" -- EHE: WARN: "..self:heliToString().."  -roaming + no square set!")
+				end
 			end
 		end
 
@@ -167,7 +173,7 @@ function eHelicopter:updateEvent()
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnHover"]
 				if eventFunction then
-					--[[DEBUG]] self:hoverAndFlyOverReport(" - HOVERING OVER TARGET "..tostring(self.target))
+					--[[DEBUG]] self:hoverAndFlyOverReport(" - HOVERING OVER TARGET :")
 					eventFunction(self)
 				end
 			end
@@ -222,7 +228,7 @@ end
 
 function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
 	local currentSquare = self:getIsoGridSquare()
-	if not currentSquare then print(" - EHE: ERR: updateSubFunctions: no square for subfunctions") return end
+	if not currentSquare then return end
 	--Wake up (Wake up) / Grab a brush and put a little make-up
 	for character,value in pairs(EHEIsoPlayers) do
 		---@type IsoGameCharacter p
@@ -278,9 +284,10 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 	if self.flightVolume>0 then
 		local volumeFactor = 1
-		local zoneType = currentSquare:getZoneType()
-		if (zoneType == "Forest") or (zoneType == "DeepForest") then
-			volumeFactor = 0.75
+
+		if instanceof(currentSquare, "IsoGridSquare") then
+			local zoneType = currentSquare:getZoneType()
+			if (zoneType == "Forest") or (zoneType == "DeepForest") then volumeFactor = 0.75 end
 		end
 
 		local heliX, heliY = currentSquare:getX(), currentSquare:getY()

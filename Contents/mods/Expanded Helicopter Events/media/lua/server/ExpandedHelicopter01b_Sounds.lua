@@ -56,9 +56,9 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 	end
 
 	--if otherlocation provided use it; if not use heli
-	otherLocation = otherLocation or heli:getIsoGridSquare()
+	otherLocation = otherLocation or heli:getIsoGridOrPseudoSquare()
 
-	--if getDebug() then print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent])..", isServer:"..tostring(isServer())..", isClient:"..tostring(isClient()).." HELI:"..heli.ID..", soundEvent:"..tostring(soundEvent).." soundEffect="..tostring(soundEffect)) end
+	--if getDebug() then print(" -- looperEvent:"..tostring(heli.looperEventIDs[soundEvent]).." HELI:"..heli.ID..", soundEvent:"..tostring(soundEvent).." soundEffect="..tostring(soundEffect)) end
 
 	if isServer() then
 		local heliX, heliY, heliZ = heli:getXYZAsInt()
@@ -149,7 +149,7 @@ function eventSoundHandler:stopAllHeldEventSounds(heli)
 		end
 	end
 	heli.delayedEventSounds = {}
-	--[[DEBUG]] print(" - EHE: stopAllHeldEventSounds for "..heli:heliToString())
+	--[[DEBUG]] print(" --- EHE: stopAllHeldEventSounds for "..heli:heliToString())
 end
 
 return eventSoundHandler
