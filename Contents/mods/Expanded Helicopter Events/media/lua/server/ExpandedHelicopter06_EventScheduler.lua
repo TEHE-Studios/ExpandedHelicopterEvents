@@ -267,7 +267,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
 			local startDay, cutOffDay = fetchStartDayAndCutOffDay(selectedPreset)
 
-			local iterations = insane and 4 or 1
+			local iterations = insane and 10 or 1
 
 			local latestStartDay
 
