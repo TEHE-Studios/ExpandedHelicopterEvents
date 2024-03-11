@@ -282,7 +282,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 				if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
 
-				latestStartDay = math.max(nextStartDay, latestStartDay)
+				latestStartDay = math.max(nextStartDay, (latestStartDay or 0))
 
 				eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
 			end
