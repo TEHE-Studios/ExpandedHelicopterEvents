@@ -90,7 +90,16 @@ end
 
 
 
-local vehicleParts
+local vehicleParts = {
+	"Battery", "BrakeFrontLeft", "BrakeFrontRight", "BrakeRearLeft", "BrakeRearRight",
+	"DoorFrontLeft", "DoorFrontRight", "DoorRearLeft", "DoorRearRight",
+	"Engine", "GasTank", "HeadlightLeft", "HeadlightRight", "EngineDoor", "Muffler",
+	"SuspensionFrontLeft","SuspensionFrontRight","SuspensionRearLeft","SuspensionRearRight",
+	"TireFrontLeft","TireFrontRight","TireRearLeft","TireRearRight",
+	"WindowFrontLeft","WindowFrontRight","WindowRearLeft","WindowRearRight",
+	"WindshieldRear","Windshield","TruckBed"
+	}
+
 ---@param vehicle BaseVehicle
 ---@param partById string
 local function returnValidPartById(vehicle, partById)
@@ -232,19 +241,9 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 				local targetZones = {"tires","tires","tires","tires","GasTank","Engine","random"}
 
 				if collateral then
-					if not vehicleParts then
-						vehicleParts = {}
-						for partName,_ in pairs(ISCarMechanicsOverlay.PartList) do
-							table.insert(vehicleParts, partName)
-						end
-					end
-					for _,partName in pairs(vehicleParts) do
-						table.insert(targetZones, partName)
-					end
+					for _,partName in pairs(vehicleParts) do table.insert(targetZones, partName) end
 				else
-					for i=0, 6 do
-						table.insert(targetZones, "tires")
-					end
+					for i=0, 6 do table.insert(targetZones, "tires") end
 				end
 
 				local selectedZone = targetZones[ZombRand(#targetZones)+1]
