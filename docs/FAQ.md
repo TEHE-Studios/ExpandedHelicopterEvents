@@ -21,42 +21,7 @@ Applying the mod to an ongoing save will use default settings for events. By def
 The mod will force the vanilla event to not appear. It can still be launched with '/chopper' if you wish. If it does appear without prompt please let us know.
 ***
 
-**I'm hosting a multiplayer server, how do I configure EHE for my game?**  
-Whether you're playing a co-op, local dedicated or rented server, at this point in time you need to manually add the sandbox options for EHE to your save.
-
-1. Navigate to "C:\Users%username%\Zomboid\Server". Open the "config_SandboxVars.lua" with the text editor of your choice, and scroll to the bottom of the document.
-
-2. Add the mod's sandbox options to your existing settings. _Double check to make sure it doesn't already exist!_
-
-**Default Sandbox Config**  
-```lua
-ExpandedHeli = {
-        SchedulerDuration = 90,
-        StartDay = 1,
-        ContinueScheduling = false,
-        ContinueSchedulingLateGameOnly = true,
-        -- Frequencies: 1="Never", 2="Rare", 3="Uncommon", 4="Common", 5="Frequent", 6="Insane"
-        Frequency_jet = 3,
-        Frequency_police = 3,
-        Frequency_news_chopper = 3,
-        Frequency_military = 3,
-        Frequency_FEMA_drop = 3,
-        Frequency_samaritan_drop = 3,
-        Frequency_survivor_heli = 3,
-        Frequency_raiders = 3,
-    },
-```
-
-**Additional config options for the [Super Weird](https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162) sub-mod:**  
-_These go inside of the { } above._
-```lua
-        Frequency_IRS = 3,
-        Frequency_Spiffocopter = 3,
-        Frequency_TISCreamery = 3,
-        Frequency_UFO = 3,
-```
-
-**Frequencies:** _Also included in the above config example as a comment._
+**I am editing the sandbox values in my ini file, what are the corresponding vslues to frequencies?**
 ```lua
 	1 = "Never"
 	2 = "Rare"
@@ -65,7 +30,6 @@ _These go inside of the { } above._
 	5 = "Frequent"
 	6 = "Insane"
 ```
-_Ensure that your formatting is correct, the document should end with a "}"._
 ***
 
 **What are the custom sandbox options? What do they mean?**
