@@ -20,7 +20,7 @@ Sandbox_FR = {
     Sandbox_ExpandedHeli_EventMilitary = "Militaire",
     Sandbox_ExpandedHeli_EventMilitary_tooltip = "Fréquence des événements militaires.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "Gouttes d'aide de la FEMA",
+    Sandbox_ExpandedHeli_EventFEMA = "Drops d'Aide de la FEMA",
     Sandbox_ExpandedHeli_EventFEMA_tooltip = "À quelle fréquence les événements de largage d'aide de la FEMA se produisent.\n La FEMA organisera des largages d'aide au début de l'apocalypse.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Survivants",
@@ -49,4 +49,9 @@ Sandbox_FR = {
     Sandbox_ExpandedHeli_WeatherImpactsEvents = "La météo aura un impact sur les événements",
     Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Si la météo empêchera les événements ou provoquera leur crash.",
 
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicateur de Chances de Crash",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Ceci est multiplié par le risque de crash, 0 empêchera tous les crashs.",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Transition des Raids Aeriens",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Choisissez vrai si vous souhaitez qu'un événement d'alerte aérienne signale un passage d'événements de début de jeu moins difficiles à des événements de fin de jeu plus hostiles.",
 }
