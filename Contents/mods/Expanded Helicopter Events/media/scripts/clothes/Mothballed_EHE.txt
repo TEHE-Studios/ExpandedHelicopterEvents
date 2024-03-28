@@ -6,7 +6,6 @@ module EHE
 		Type = Clothing,
 		ClothingItem = Hat_PressHelmet,
 		BodyLocation = Hat,
-		Icon = PressHelmet,
 		BloodLocation = FullHelmet,
         Weight = 1.5,
         OBSOLETE = true,
@@ -32,9 +31,7 @@ module EHE
         Type = Clothing,
         ClothingItem = Vest_BulletPress,
         BodyLocation = TorsoExtra,
-        Icon = PressVest,
         BloodLocation = ShirtNoSleeves,
-		WorldStaticModel = BulletVest_Ground,
 		OBSOLETE = true,
     }
 

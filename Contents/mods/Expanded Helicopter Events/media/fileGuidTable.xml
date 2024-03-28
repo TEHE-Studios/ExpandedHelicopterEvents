@@ -54,16 +54,6 @@
 	</files>
 
 	<files>
-	<path>media/clothing/clothingItems/Vest_BulletPress.xml</path>
-	<guid>efc9fca0-d052-4ef4-b67c-589c619a3ad6</guid>
-	</files>
-
-	<files>
-	<path>media/clothing/clothingItems/Hat_PressHelmet.xml</path>
-	<guid>09c1761a-6cfd-4a65-8e19-bb2ea82a49b1</guid>
-	</files>
-
-	<files>
 	<path>media/clothing/clothingItems/Jacket_DenimCutoff.xml</path>
 	<guid>bf9cc65d-1767-4661-9ad4-db7ac0082f32</guid>
 	</files>
