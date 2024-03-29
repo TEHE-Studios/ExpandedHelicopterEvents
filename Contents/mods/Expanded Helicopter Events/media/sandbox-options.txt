@@ -15,8 +15,8 @@ option ExpandedHeli.SchedulerDuration
 option ExpandedHeli.ContinueSchedulingEvents
 {
 	type = enum, numValues = 3, default = 1,
-	page = ExpandedHeli, translation = ExpandedHeli_ContScheduling,
-	valueTranslation = ExpandedHeli_ContinueSchedulingEvents,
+	page = ExpandedHeli, translation = ContinueSchedulingEvents,
+	valueTranslation = ExpandedHeli_ContScheduling,
 }
 
 option ExpandedHeli.WeatherImpactsEvents
