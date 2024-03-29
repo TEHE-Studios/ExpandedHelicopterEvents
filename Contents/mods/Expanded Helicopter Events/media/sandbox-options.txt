@@ -12,16 +12,11 @@ option ExpandedHeli.SchedulerDuration
 	page = ExpandedHeli, translation = ExpandedHeli_SchedulerDuration,
 }
 
-option ExpandedHeli.ContinueScheduling
+option ExpandedHeli.ContinueSchedulingEvents
 {
-	type = boolean, default = false,
-	page = ExpandedHeli, translation = ExpandedHeli_ContinueScheduling,
-}
-
-option ExpandedHeli.ContinueSchedulingLateGameOnly
-{
-	type = boolean, default = true,
-	page = ExpandedHeli, translation = ExpandedHeli_ContinueSchedulingLateGameOnly,
+	type = enum, numValues = 3, default = 1,
+	page = ExpandedHeli, translation = ExpandedHeli_ContScheduling,
+	valueTranslation = ExpandedHeli_ContinueSchedulingEvents,
 }
 
 option ExpandedHeli.WeatherImpactsEvents

@@ -41,11 +41,12 @@ Sandbox_EN = {
     Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler Duration",
     Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "How many days the scheduler run from the start day.<br>The scheduler will adjust event progression to fit this duration.",
 
-    Sandbox_ExpandedHeli_ContinueScheduling = "Continue Scheduling Forever",
-    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Toggle this on so that the scheduler will spawn events passed the duration limit. Events will still progress through stages according to the duration but events will never stop being scheduled.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continue Scheduling Events Beyond Duration",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normally the scheduler ends at the duration limit, toggling this on continues to schedule events beyond the duration. Events will still progress through stages according to the duration but events will never stop being scheduled.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continue Scheduling: Late Game Events Only",
-    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "When \"Continue Scheduling Forever\" is toggle on, this toggled on makes the scheduler only use late-game events.",
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "No Continued Scheduling"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continue Scheduling: All Events",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continue Scheduling: Late-Game Only",
 
     Sandbox_ExpandedHeli_WeatherImpactsEvents = "Weather Will Impact Events",
     Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Whether weather will prevent events, or cause their crash.",

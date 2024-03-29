@@ -148,12 +148,36 @@ function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
 end
 
 
+function eHeliEvent_determineContinuation()
+	local continue = SandboxVars.ExpandedHeli.ContinueSchedulingEvents
+	-- 1=No, 2=All, 3=Late-Game
+
+	---safely handle old sandbox options
+	local oldContinue = SandboxVars.ExpandedHeli.ContinueScheduling~=nil
+	if oldContinue then
+		continue = oldContinue==true and 2 or 1
+		SandboxVars.ExpandedHeli.ContinueScheduling = nil
+	end
+
+	local oldContinueLG = SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly~=nil
+	if oldContinueLG then
+		continue = oldContinueLG==true and 3 or 1
+		SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly = nil
+	end
+
+	if oldContinue or oldContinueLG then
+		SandboxVars.ExpandedHeli.ContinueSchedulingEvents = continue
+	end
+
+	return continue>1, continue>=3
+end
+
+
 function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 	local GT = getGameTime()
 	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
 	currentHour = currentHour or GT:getHour()
-	local continueScheduling = SandboxVars.ExpandedHeli.ContinueScheduling
-	local csLateGameOnly = SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly
+	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
 	local globalModData = getExpandedHeliEventsModData()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
 

@@ -1,7 +1,7 @@
 --Overrides vanilla helicopter frequency on game boot
 local function HelicopterSandboxOptions(EVENT)
 	EVENT = EVENT or "ERROR-NoEventID"
-	local text = "EHE: ("..EVENT..")  Disabling vanilla helicopter. Adding items to WorldItemRemovalList."
+	local text = "----------------------------\nEHE: ("..EVENT..")  Disabling vanilla helicopter. Adding items to WorldItemRemovalList."
 	SandboxVars.Helicopter = 1
 
 	local gameTime = getGameTime()
@@ -22,17 +22,16 @@ local function HelicopterSandboxOptions(EVENT)
 	local core = getCore()
 	text = text.."\n    GAME-MODE: "..(isIngameState() and "Main-Menu" or core:getGameMode()).."  "..core:getVersion()..(getDebug() and " (DEBUG)" or "")
 
-
 	local heliValue = SandboxVars.Helicopter
 	local day, startHr, endHr = gameTime:getHelicopterDay(), gameTime:getHelicopterStartHour(), gameTime:getHelicopterEndHour()
 
-	if getDebug() then text = text.."\n    DEBUG: Vanilla Helicopter: ("..heliValue..")  day:"..day.." startHr:"..startHr.." endHr"..endHr end
+	if getDebug() or isServer() then text = text.."\n    DEBUG: Vanilla Helicopter: ("..heliValue..")  day:"..day.." startHr:"..startHr.." endHr"..endHr end
 
 	text = text.."\n    Current Day:"..gameTime:getNightsSurvived().." Hour:"..gameTime:getHour()
 	text = text.."\n    EHE-Sandbox Options:"
 	for k,v in pairs(SandboxVars.ExpandedHeli) do text = text.."\n       "..tostring(k).." = "..tostring(v) end
 
-	print(text.."\n")
+	print(text.."\n----------------------------")
 end
 
 --Events.OnGameStart.Add(function() HelicopterSandboxOptions("OnGameStart") end)
