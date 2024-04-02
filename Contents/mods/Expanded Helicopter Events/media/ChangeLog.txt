@@ -1,0 +1,34 @@
+[ 3/17/24 - Last Foreseeable Update Pre-B42 ]
+- Fix: sounds getting stuck.
+- Fix: Events unable to find target (getting stuck).
+- Fix: Events failing to damage zombies (bullet hole error).
+- Fix: Issue with events attacking cars.
+- Fix: Broken helmet on raiders.
+
+- New Sandbox Option: Crash Chance multiplier, chance of 0 turns off crashes.
+- New Sandbox Option: Toggle for Air-Raid "transition" event.
+
+- Tweak: Flyers say "read" instead of "read map".
+- Tweak: "Insane Frequency" now several times more intense.
+- Tweak: Tooltips for sandbox options.
+- Tweak: Shorter/smaller sound clips.
+
+- Misc: New badass art.
+- Misc: Deleted 'dead' files.
+[ ------ ]
+
+
+[ 3/17/24 - Hotfix ]
+- Removed debug stuff.
+[ ------ ]
+
+
+[ 3/21/24 - FR ]
+- Updated French translation. (Credit: Inkredibehl)
+[ ------ ]
+
+
+[ 4/2/24 - Hot Fix 2 ]
+- Removed: 'looping' sound files, this may can sound-stutter on poor connections.
+- Removed: Press items leftover files (Fixes compatibility with G.E.A.R.)
+[ ------ ]
