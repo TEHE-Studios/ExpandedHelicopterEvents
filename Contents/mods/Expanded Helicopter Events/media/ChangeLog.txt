@@ -28,7 +28,9 @@
 [ ------ ]
 
 
-[ 4/2/24 - Hot Fix 2 ]
-- Removed: 'looping' sound files, this may can sound-stutter on poor connections.
+[ 4/2/24 - Sound Fix 2: Sad Boogaloo ]
+- Removed: 'looping' sound files, this may cause sound-stutter on poor connections.
 - Removed: Press items leftover files (Fixes compatibility with G.E.A.R.)
+- Improved: Zone-Type checks for the HeatMap and Targeting work off ground level squares to avoid typing issues.
+- Tweaked: Zone-Type checks for the HeatMap and Targeting account for zombie intensity.
 [ ------ ]
