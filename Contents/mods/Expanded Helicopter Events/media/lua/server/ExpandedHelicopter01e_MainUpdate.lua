@@ -285,12 +285,14 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	if self.flightVolume>0 then
 		local volumeFactor = 1
 
+		local heliX, heliY = currentSquare:getX(), currentSquare:getY()
+
 		if instanceof(currentSquare, "IsoGridSquare") then
-			local zoneType = currentSquare:getZoneType()
-			if (zoneType == "Forest") or (zoneType == "DeepForest") then volumeFactor = 0.75 end
+			local soundSquare = getSquare(heliX, heliY, 0)
+			local zoneType = soundSquare and soundSquare:getZoneType()
+			if zoneType and ((zoneType == "Forest") or (zoneType == "DeepForest")) then volumeFactor = 0.75 end
 		end
 
-		local heliX, heliY = currentSquare:getX(), currentSquare:getY()
 		local radius, volume = (self.flightVolume*2)*volumeFactor, self.flightVolume*volumeFactor
 		getWorldSoundManager():addSound(nil, heliX, heliY, 0, radius, volume, true, 20, 5)
 	end
