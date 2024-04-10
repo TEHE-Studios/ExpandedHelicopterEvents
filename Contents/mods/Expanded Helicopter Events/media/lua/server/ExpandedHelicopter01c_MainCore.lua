@@ -178,7 +178,9 @@ end
 ---@return number
 function eHelicopter:getDistanceToVector(vector)
 	if not vector then print("ERR: getDistanceToVector: no vector or no currentPosition") return end
-	return self:getDistanceToXY(Vector3GetX(vector),Vector3GetY(vector))
+	local x, y = Vector3GetX(vector), Vector3GetY(vector)
+	if not x or not y then print("ERR: getDistanceToVector: vector cannot produce x/y") return end
+	return self:getDistanceToXY(x,y)
 end
 
 
