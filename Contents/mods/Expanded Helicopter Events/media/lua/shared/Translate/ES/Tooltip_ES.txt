@@ -1,18 +1,18 @@
 Tooltip_ES = {
-    Tooltip_dismantle_helicopterpart = "Usar un soplete y una mÃ¡scara de soldar para producir metal.",
+    Tooltip_dismantle_helicopterpart = "El uso de un soplete y una mÃ¡scara de soldador producirÃ¡ metal.",
     Tooltip_open_boxes_barehanded = "SerÃ­a mÃ¡s rÃ¡pido con algo afilado.",
-    Tooltip_Parachute = "Se puede rasgar para hacer tela.",
-    Tooltip_EnergyBar = "Una barrita energÃ©tica envasada para kits de supervivencia. Fabricada por PT&D.",
+    Tooltip_Parachute = "Se puede rasgar para conseguir tela rasgada.",
+    Tooltip_EnergyBar = "Una barrita energÃ©tica empaquetada para kits de supervivencia. Fabricada por PT&D.",
     Tooltip_SurvivalVest = "Chaleco de supervivencia estÃ¡ndar para pilotos militares.",
     Tooltip_SurvivalVestBlack = "Chaleco de supervivencia estÃ¡ndar para bÃºsqueda y rescate policial.",
     Tooltip_SPHMilitary = "Casco de helicÃ³ptero militar estÃ¡ndar."
-    Tooltip_SPHBlack = "Casco de helicÃ³ptero militar estÃ¡ndar en negro.",
+    Tooltip_SPHBlack = "Casco de helicÃ³ptero militar estÃ¡ndar negro.",
     Tooltip_SPHPolice = "Casco de helicÃ³ptero policial.",
     Tooltip_SPHCivilian = "Casco de helicÃ³ptero usado por civiles.",
 
     Tooltip_FlyerCDC = "Parece un folleto de advertencia sanitaria.",
-    Tooltip_FlyerMilitary = "Parece un volante de aviso de los militares.",
-    Tooltip_CivilDefense = "Parece un volante de defensa civil.",
+    Tooltip_FlyerMilitary = "Parece un folleto de aviso de los militares.",
+    Tooltip_CivilDefense = "Parece un folleto de defensa civil.",
 
     Tooltip_WaterSealed = "RaciÃ³n de agua sellada distribuida por el Gobierno de EE.UU."
     Tooltip_WaterUnsealed = "RaciÃ³n de agua abierta distribuida por el Gobierno de EE.UU." 

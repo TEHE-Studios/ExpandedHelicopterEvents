@@ -3,9 +3,9 @@ IG_UI_ES = {
     IGUI_VehicleNameUH60GreenFuselage = "UH-60A estrellado (Fuselaje)",
     IGUI_VehicleNameUH60GreenTail = "UH-60A estrellado (Cola)",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A Desierto",
-    IGUI_VehicleNameUH60DesertFuselage = "UH-60A Desierto estrellado (Fuselaje)",
-    IGUI_VehicleNameUH60DesertTail = "UH-60A Desierto estrellado (Cola)",
+    IGUI_VehicleNameUH60Desert = "UH-60A DesÃ©rtico",
+    IGUI_VehicleNameUH60DesertFuselage = "UH-60A DesÃ©rtico estrellado (Fuselaje)",
+    IGUI_VehicleNameUH60DesertTail = "UH-60A DesÃ©rtico estrellado (Cola)",
 
     IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
     IGUI_VehicleNameUH60MedevacFuselage = "UH-60A Medevac estrellado (Fuselaje)",
@@ -15,15 +15,15 @@ IG_UI_ES = {
     IGUI_VehicleNameBell206LBMWFuselage = "HelicÃ³ptero de noticias (Fuselaje)",
     IGUI_VehicleNameBell206LBMWTail = "HelicÃ³ptero de noticias (Cola)",
 
-    IGUI_VehicleNameBell206Police = "Police Helicopter",
-    IGUI_VehicleNameBell206PoliceFuselage = "Police Helicopter (Fuselaje)",
+    IGUI_VehicleNameBell206Police = "HelicÃ³ptero de policia",
+    IGUI_VehicleNameBell206PoliceFuselage = "HelicÃ³ptero de policia (Fuselaje)",
     IGUI_VehicleNameBell206PoliceTail = "HelicÃ³ptero de policia (Cola)",
 
     IGUI_VehicleNameBell206Survivalist = "HelicÃ³ptero civil",
     
     IGUI_VehicleNameFEMASupplyDrop = "Suministro de emergencia",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Entrega de suministros samaritan",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Entrega de suministros de supervivientes",
 
-    IGUI_Spent = "Spent",
-    IGUI_Lit = "Lit",
+    IGUI_Spent = "Gastado",
+    IGUI_Lit = "Iluminado",
 }
