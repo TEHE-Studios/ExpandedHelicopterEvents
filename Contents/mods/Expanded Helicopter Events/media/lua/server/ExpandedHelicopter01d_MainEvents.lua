@@ -245,7 +245,12 @@ function eHelicopter:dropCarePackage(fuzz)
 
 	if returned_sq then
 		local extraFunctions = {"applyFlaresToEvent"}
-
+		if self.addedFunctionsToEvents then
+			local eventFunction = self.currentPresetID.."OnDrop"--self.addedFunctionsToEvents["OnCrash"]
+			if eventFunction then
+				table.insert(extraFunctions, eventFunction)
+			end
+		end
 		SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
