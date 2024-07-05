@@ -91,18 +91,20 @@ function heatMap.adjustByZone(x, y)
     local intensity = 0.7
     if square then
         local zone = square:getZone()
-        if zone then
-            local zoneType = zone:getType()
-            if zoneType then
-                if (zoneType == "DeepForest") then intensity = 0.3
-                elseif (zoneType == "Forest" or zoneType == "Vegitation") then intensity = 0.4
-                elseif (zoneType == "FarmLand") then intensity = 0.5
-                elseif (zoneType == "Farm") then intensity = 0.6
-                elseif (zoneType == "TrailerPark" or zoneType == "Nav") then intensity = 0.9
-                elseif (zoneType == "TownZone") then intensity = 1
-                end
+
+        local zoneType = zone and zone:getType()
+        if zoneType then
+            if (zoneType == "DeepForest") then intensity = 0.3
+            elseif (zoneType == "Forest" or zoneType == "Vegitation") then intensity = 0.4
+            elseif (zoneType == "FarmLand") then intensity = 0.5
+            elseif (zoneType == "Farm") then intensity = 0.6
+            elseif (zoneType == "TrailerPark" or zoneType == "Nav") then intensity = 0.9
+            elseif (zoneType == "TownZone") then intensity = 1
             end
         end
+
+        local zombieIntensity = zone and zone:getZombieDensity()
+        if zombieIntensity then intensity = intensity + (zombieIntensity/100) end
     end
 
     return intensity

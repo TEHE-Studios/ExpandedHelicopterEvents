@@ -30,14 +30,13 @@ CustomDebugPanel.TOGGLE_ALL_CRASH = false
 ---TEST FUNCTIONS:
 
 function CustomDebugPanel.TemporaryTest()
-	print("EHE: Checking vanilla helicopter. Adding items to WorldItemRemovalList.")
-	print("getHelicopterDay: "..getGameTime():getHelicopterDay())
-	print("getHelicopterStartHour: "..getGameTime():getHelicopterStartHour())
-	print("getHelicopterEndHour: "..getGameTime():getHelicopterEndHour())
-	print("getOptionByName: "..getSandboxOptions():getOptionByName("Helicopter"):getValue())
-	print("SandboxVars.Helicopter: "..SandboxVars.Helicopter)
-	print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
-
+	--print("EHE: Checking vanilla helicopter. Adding items to WorldItemRemovalList.")
+	--print("getHelicopterDay: "..getGameTime():getHelicopterDay())
+	--print("getHelicopterStartHour: "..getGameTime():getHelicopterStartHour())
+	--print("getHelicopterEndHour: "..getGameTime():getHelicopterEndHour())
+	--print("getOptionByName: "..getSandboxOptions():getOptionByName("Helicopter"):getValue())
+	--print("SandboxVars.Helicopter: "..SandboxVars.Helicopter)
+	--print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
 	print("SchedulerDuration: "..tostring(SandboxVars.ExpandedHeli.SchedulerDuration))
 	print("ContinueScheduling: "..tostring(SandboxVars.ExpandedHeli.ContinueScheduling))
 	print("ContinueSchedulingLateGameOnly: "..tostring(SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly))
@@ -88,17 +87,28 @@ function CustomDebugPanel.checkSquare()
 	---@type IsoMovingObject | IsoGameCharacter | IsoPlayer
 	local player = getSpecificPlayer(0)
 	local square = player:getSquare()
+	if not square then print("square is null") return end
+	print("square:isOutside() : ", square:isOutside())
+	print("square:isSolidFloor() : ", square:isSolidFloor())
+	print("square:getRoomID()==-1 : ", square:getRoomID()==-1)
+	print("square:isSolid() : ", square:isSolid())
+	print("square:isSolidTrans() : ", square:isSolidTrans())
+	print("square:getZoneType() : ", square:getZoneType())
 
-	if not square then
-		print("square is null")
-		return
+	local zonePrint = ""
+	local zones = getWorld():getMetaGrid():getZonesAt(square:getX(), square:getY(), 0)
+	if zones then
+		for i = zones:size(),1,-1 do
+			---@type IsoMetaGrid.Zone
+			local zone = zones:get(i-1)
+			if zone then
+
+				zonePrint = zonePrint .. zone:getType() .. "("..zone:getOriginalName()..")"..", " .. "(d:"..zone:getZombieDensity()..")"
+			end
+		end
 	end
 
-	print("square:isOutside() : "..tostring(square:isOutside()))
-	print("square:isSolidFloor() : "..tostring(square:isSolidFloor()))
-	print("square:getRoomID()==-1 : "..tostring(square:getRoomID()==-1))
-	print("square:isSolid() : "..tostring(square:isSolid()))
-	print("square:isSolidTrans() : "..tostring(square:isSolidTrans()))
+	print("ZONE SCAN: ", zonePrint)
 end
 
 

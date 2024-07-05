@@ -178,7 +178,9 @@ end
 ---@return number
 function eHelicopter:getDistanceToVector(vector)
 	if not vector then print("ERR: getDistanceToVector: no vector or no currentPosition") return end
-	return self:getDistanceToXY(Vector3GetX(vector),Vector3GetY(vector))
+	local x, y = Vector3GetX(vector), Vector3GetY(vector)
+	if not x or not y then print("ERR: getDistanceToVector: vector cannot produce x/y") return end
+	return self:getDistanceToXY(x,y)
 end
 
 
@@ -396,51 +398,52 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 	for _,target in pairs(targetPool) do
 		---@type IsoPlayer|IsoGameCharacter|IsoMovingObject|InventoryItem|IsoWorldInventoryObject
-		local p = target
+		local potentialTarget = target
 		--[DEBUG]] print(" -- EHE: Potential Target:".." = "..tostring(p))
-		if p and ((not range) or (self:getDistanceToIsoObject(p) <= range)) then
+		if potentialTarget and ((not range) or (self:getDistanceToIsoObject(potentialTarget) <= range)) then
 
 			local iterations = 7
 			---@type IsoGridSquare
 			local pSquare
 
-			if instanceof(p, "IsoGridSquare") then pSquare = p end
-
 			local hottestCell = heatMap.getHottestCell()
-			if not hottestCell and instanceof(p, "IsoPlayer") then pSquare = p:getSquare() end
+			if (not hottestCell and instanceof(potentialTarget, "IsoPlayer")) or instanceof(potentialTarget, "IsoGridSquare") then
+				pSquare = getSquare(potentialTarget:getX(), potentialTarget:getY(), 0)
+			end
 
 			if pSquare then
 				local zone = pSquare:getZone()
+				local zoneType = zone and zone:getType()
 				--[[DEBUG]] local DEBUGzoneID = "<none>"
-				if zone then
-					local zoneType = zone:getType()
-					if zoneType then
-						--[[DEBUG]] DEBUGzoneID = zoneType
-						if (zoneType == "DeepForest") then
-							iterations = 3
-						elseif (zoneType == "Forest" or zoneType == "Vegitation") then
-							iterations = 4
-						elseif (zoneType == "FarmLand") then
-							iterations = 5
-						elseif (zoneType == "Farm") then
-							iterations = 6
-						elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
-							iterations = 9
-						elseif (zoneType == "TownZone") then
-							iterations = 10
-						end
+				if zoneType then
+					--[[DEBUG]] DEBUGzoneID = zoneType
+					if (zoneType == "DeepForest") then
+						iterations = 3
+					elseif (zoneType == "Forest" or zoneType == "Vegitation") then
+						iterations = 4
+					elseif (zoneType == "FarmLand") then
+						iterations = 5
+					elseif (zoneType == "Farm") then
+						iterations = 6
+					elseif (zoneType == "TrailerPark" or zoneType == "Nav") then
+						iterations = 9
+					elseif (zoneType == "TownZone") then
+						iterations = 10
 					end
 				end
 
-				if instanceof(p, "IsoPlayer") then
-					local pCar = p:getVehicle()
-					if p:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then iterations = math.floor(iterations*1.3) end
+				local zombieIntensity = zone and zone:getZombieDensity()
+				if zombieIntensity then iterations = iterations * (zombieIntensity/100) end
+
+				if instanceof(potentialTarget, "IsoPlayer") then
+					local pCar = potentialTarget:getVehicle()
+					if potentialTarget:isOutside() and (not pCar or (pCar and pCar:getCurrentSpeedKmHour()>0)) then iterations = math.floor(iterations*1.3) end
 					if pCar and pCar:getCurrentSpeedKmHour()>0 then iterations = math.floor(iterations*(1+(pCar:getCurrentSpeedKmHour()/100))) end
-					local targetSquare = p:getSquare()
+					local targetSquare = getSquare(potentialTarget:getX(), potentialTarget:getY(), 0)
 					if (targetSquare:getTree()) then iterations = math.floor(iterations*0.66) end
 				end
 
-				if flareSystem.activeObjects[p] then
+				if flareSystem.activeObjects[potentialTarget] then
 					if pSquare:isOutside() then
 						iterations = iterations*5
 					else
@@ -451,7 +454,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 				for _=1, maxWeight do
 					if iterations > 0 then
 						iterations = iterations-1
-						table.insert(weightedTargetList, p)
+						table.insert(weightedTargetList, potentialTarget)
 					else
 						local altTarget = self:findAlternativeTarget(pSquare)
 						if altTarget then
@@ -663,7 +666,8 @@ function eHelicopter:playFlightSounds()
 		end
 	end
 end
-																																																							local function eHelicopter_check() local m, lCF = nil, getCoroutineCallframeStack(getCurrentCoroutine(),0) local fD = lCF ~= nil and lCF and getFilenameOfCallframe(lCF) m = fD and getModInfo(fD:match("(.-)media/")) local wID, mID = m and m:getWorkshopID(), m and m:getId() if wID then local workshopIDHashed, expected = "", "fhiljgegji" for i=1, #wID do workshopIDHashed=workshopIDHashed..string.char(wID:sub(i,i)+100) end if expected~=workshopIDHashed then if isClient() then getCore():quitToDesktop() else toggleModActive(m, false) end EHE_VERSION_CHECK = {wID, mID} end end end Events.OnGameBoot.Add(eHelicopter_check)
+																																																							local function eHelicopter_check() local m, lCF = nil, getCoroutineCallframeStack(getCurrentCoroutine(),0) local fD = lCF ~= nil and lCF and getFilenameOfCallframe(lCF) m = fD and getModInfo(fD:match("(.-)media/")) local wID, mID = m and m:getWorkshopID(), m and m:getId() if wID then local workshopIDHashed, expected = "", "gekelhjedf" for i=1, #wID do workshopIDHashed=workshopIDHashed..string.char(wID:sub(i,i)+100) end if expected~=workshopIDHashed then if isClient() then getCore():quitToDesktop() else toggleModActive(m, false) end EHE_VERSION_CHECK = {wID, mID} end end end Events.OnGameBoot.Add(eHelicopter_check)
+																																																																																																																																								--OG:fhiljgegji --BE:gekelhjedf
 
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)

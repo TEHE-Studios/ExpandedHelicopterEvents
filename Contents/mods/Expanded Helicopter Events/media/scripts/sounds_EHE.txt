@@ -1,27 +1,27 @@
 module Base {
 
     sound eHelicopter {
-        category = EHE: Main, loop = true, is3D = true,
+        category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eJetFlight {
-        category = EHE: Main, loop = true, is3D = true,
+        category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicopter_and_planes/jet_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eLargePropPlane {
-        category = EHE: Main, loop = true, is3D = true,
+        category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicopter_and_planes/propplane.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eSmallPropPlane {
-        category = EHE: Main, loop = true, is3D = true,
+        category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicopter_and_planes/Cessna.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eMiliHeli {
-        category = EHE: Main, loop = true, is3D = true,
+        category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicopter_and_planes/militaryheli_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
     
     sound eMiliHeliCargo {
-        category = EHE: Main, loop = true, is3D = true,
+        category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heavyheli_mono_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
     
     sound eHeliPoliceWarning {
