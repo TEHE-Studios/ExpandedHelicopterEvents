@@ -24,6 +24,6 @@ IG_UI_FR = {
     IGUI_VehicleNameFEMASupplyDrop = "Ravitaillement d'urgence",
     IGUI_VehicleNameSurvivorSupplyDrop = "Ravitaillement des Samaritains",
 
-    IGUI_Spent = "Utilisée",
-    IGUI_Lit = "Allumée",
+    IGUI_Spent = "",
+    IGUI_Lit = "",
 }
