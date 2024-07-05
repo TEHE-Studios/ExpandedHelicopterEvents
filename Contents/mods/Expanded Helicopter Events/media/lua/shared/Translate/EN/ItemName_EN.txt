@@ -25,7 +25,7 @@ ItemName_EN = {
     ItemName_EHE.EmergencyWaterRationOpen DisplayCategory = WaterContainer = "Emergency Water Ration (Open)",
     ItemName_EHE.ProteinBar = "Protein Bar",
     ItemName_EHE.MealReadytoEat = "MRE",
-    ItemName_EHE.MREWrapper = "MRE Wrapper",
+    ItemName_EHE.MREWrapperEHE = "MRE Wrapper",
 
     ItemName_EHE.EHE_Parachute = "Dropped Parachute",
     ItemName_EHE.UH60Elevator = "Detached UH-60 Elevator",
