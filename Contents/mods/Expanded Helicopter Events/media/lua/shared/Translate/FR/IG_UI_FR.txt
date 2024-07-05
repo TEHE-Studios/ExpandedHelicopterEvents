@@ -7,13 +7,13 @@ IG_UI_FR = {
     IGUI_VehicleNameUH60DesertFuselage = "Épave de l'UH-60A désert (fuselage)",
     IGUI_VehicleNameUH60DesertTail = "Épave du UH-60A désert (queue)",
 
-    IGUI_VehicleNameUH60Medevac = "UH-60A Évacuation médicale",
-    IGUI_VehicleNameUH60MedevacFuselage = "Épave de l'UH-60A Évacuation médicale (fuselage)",
-    IGUI_VehicleNameUH60MedevacTail = "Épave de l'UH-60A Évacuation médicale (queue)",
+    IGUI_VehicleNameUH60Medevac = "UH-60A évacuation médicale",
+    IGUI_VehicleNameUH60MedevacFuselage = "Épave de l'UH-60A évacuation médicale (fuselage)",
+    IGUI_VehicleNameUH60MedevacTail = "Épave de l'UH-60A évacuation médicale (queue)",
 
-    IGUI_VehicleNameBell206LBMW = "Hélicoptère des Infos",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Hélicoptère des Infos (fuselage)",
-    IGUI_VehicleNameBell206LBMWTail = "Hélicoptère des Infos (queue)",
+    IGUI_VehicleNameBell206LBMW = "Hélicoptère des infos",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Hélicoptère des infos (fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "Hélicoptère des infos (queue)",
 
     IGUI_VehicleNameBell206Police = "Hélicoptère de police",
     IGUI_VehicleNameBell206PoliceFuselage = "Hélicoptère de police (fuselage)",
@@ -24,6 +24,6 @@ IG_UI_FR = {
     IGUI_VehicleNameFEMASupplyDrop = "Ravitaillement d'urgence",
     IGUI_VehicleNameSurvivorSupplyDrop = "Ravitaillement des Samaritains",
 
-    IGUI_Spent = "Utilisé",
-    IGUI_Lit = "Allumé",
+    IGUI_Spent = "Utilisée",
+    IGUI_Lit = "Allumée",
 }
