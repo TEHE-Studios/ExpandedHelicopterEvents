@@ -1,9 +1,9 @@
 ContextMenu_FR = {
-    ContextMenu_DownHoodie = "Sans capuche",
-    ContextMenu_VisorUp = "Visière relevée",
-    ContextMenu_VisorDown = "Visière baissée",
-    ContextMenu_Tighten = "Serré",
-    ContextMenu_Untighten = "Lâche",
+    ContextMenu_DownHoodie = "Retirer la capuche",
+    ContextMenu_VisorUp = "Relever la visière",
+    ContextMenu_VisorDown = "Baisser la visière",
+    ContextMenu_Tighten = "Porter serré",
+    ContextMenu_Untighten = "Porter lâche",
 
     IGUI_VehiclePartHelicopterInterior = "Intérieur de l'hélicoptère",
 }
