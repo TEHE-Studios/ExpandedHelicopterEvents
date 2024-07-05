@@ -4,7 +4,7 @@ ItemName_FR = {
     ItemName_EHE.Vest_PilotSurvivalVest = "Gilet de survie SRU-21/P",
     ItemName_EHE.Vest_BlackPilotSurvivalVest = "Gilet de survie noir SRU-21/P",
 
-    ItemName_EHE.Jacket_DenimCutoff = "Veste en jean coupée",
+    ItemName_EHE.Jacket_DenimCutoff = "Veste en jean à manches courtes",
 
     ItemName_EHE.Hat_SPHPolice = "Casque de pilote de police SPH-3",
     ItemName_EHE.Hat_SPHPoliceVISORUP = "Casque de pilote de police SPH-3 (visière relevée)",
@@ -25,7 +25,7 @@ ItemName_FR = {
     ItemName_EHE.EmergencyWaterRationOpen DisplayCategory = WaterContainer = "Ration d'eau d'urgence (ouverte)",
     ItemName_EHE.ProteinBar = "Barre protéinée",
     ItemName_EHE.MealReadytoEat = "MRE",
-    ItemName_EHE.MREWrapper = "Emballage de MRE",
+    ItemName_EHE.MREWrapperEHE = "Emballage de MRE",
 
     ItemName_EHE.EHE_Parachute = "Parachute déployé",
     ItemName_EHE.UH60Elevator = "Élévateur UH-60 détaché",
@@ -53,4 +53,7 @@ ItemName_FR = {
     ItemName_EHE.SurvivorSeedSupplyBox = "Boîte d'approvisionnement",
     ItemName_EHE.SurvivorCanningSupplyBox = "Boîte d'approvisionnement",
     ItemName_EHE.SurvivorToiletSupplyBox = "Boîte d'approvisionnement",
+
+    ItemName_EHE.HandFlare = "Fusée éclairante",
+    ItemName_EHE.SignalFlare = "Fusée de détresse",
 }
