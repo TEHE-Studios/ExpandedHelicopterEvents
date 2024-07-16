@@ -1,2 +1,2 @@
-local function printVersionInfo() print("Expanded Helicopter Events: APRIL_10_SFX2_PRE_B42") end
+local function printVersionInfo() print("Expanded Helicopter Events: JULY 16_PRE_B42_DUST_OFF") end
 Events.OnGameBoot.Add(printVersionInfo)
