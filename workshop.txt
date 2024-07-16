@@ -35,5 +35,8 @@ description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/discus
 description=
 description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/README.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/steamToGithub.png[/img][/url]
 description=
+description=
+description=[h3]Copyright 2023 shark, Chuckleberry Finn, and TEHE Studios. This item is not authorized for posting on Steam, except under the Steam account named shark.[/h3]
+description=
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
