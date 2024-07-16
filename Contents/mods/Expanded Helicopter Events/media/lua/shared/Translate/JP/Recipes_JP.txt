@@ -1,0 +1,3 @@
+Recipe_JP = {
+    Recipe_Open_Supplies = "救援物資を開ける",
+}
