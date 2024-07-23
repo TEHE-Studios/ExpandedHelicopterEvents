@@ -58,7 +58,7 @@ Events.OnGameBoot.Add(SpawnerTEMP.setDictionary)
 ---=-=-=-=-=-=-=-=-=-=-=-=-
 
 function SpawnerTEMP.getOrSetPendingSpawnsList()
-	local modData = getExpandedHeliEventsModData()
+	local modData = getExpandedHeliEventsModData and getExpandedHeliEventsModData()
 	if not modData.FarSquarePendingSpawns then modData.FarSquarePendingSpawns = {} end
 	return modData.FarSquarePendingSpawns
 end
