@@ -64,41 +64,6 @@ module Base
 		scale = 1.0,
 	}
 
-		model MRE
-	{
-		mesh = WorldItems/MRE,
-		texture = WorldItems/MRE,
-		scale = 1.0,
-	}
-
-		model MREWrapper
-	{
-		mesh = WorldItems/MREWrapper,
-		texture = WorldItems/MRE,
-		scale = 1.0,
-	}
-
-		model EnergyBar
-	{
-		mesh = WorldItems/EnergyBar,
-		texture = WorldItems/EnergyBar,
-		scale = 1.0,
-	}
-
-		model EmergencyWaterRation
-	{
-		mesh = WorldItems/EmergencyWaterRation,
-		texture = WorldItems/EmergencyWaterRation,
-		scale = 1.0,
-	}
-
-		model EmergencyWaterRationOpen
-	{
-		mesh = WorldItems/EmergencyWaterRation,
-		texture = WorldItems/EmergencyWaterRationOpen,
-		scale = 1.0,
-	}
-
 		model Parachute
 	{
 		mesh = WorldItems/Parachute,
@@ -162,66 +127,4 @@ module Base
 		scale = 1.0,
 	}
 
-		model Bell206RotorBlade1
-	{
-		mesh = WorldItems/Bell206RotorBlade1,
-		texture = WorldItems/Bell206RotorBlade,
-		scale = 1.0,
-	}
-
-		model Bell206RotorBlade2
-	{
-		mesh = WorldItems/Bell206RotorBlade2,
-		texture = WorldItems/Bell206RotorBlade,
-		scale = 1.0,
-	}
-
-		model UH1HRotorBlade1
-	{
-		mesh = WorldItems/UH1HRotorBlade1,
-		texture = WorldItems/UH1HRotorBlade,
-		scale = 1.0,
-	}
-	
-		model UH1HRotorBlade2
-	{
-		mesh = WorldItems/UH1HRotorBlade2,
-		texture = WorldItems/UH1HRotorBlade,
-		scale = 1.0,
-	}
-	
-		model UH1HHalfSkirt
-	{
-		mesh = WorldItems/UH1HHalfSkirt,
-		texture = WorldItems/UH1HHalfSkirt,
-		scale = 1.0,
-	}
-
-		model Bell206HalfSkirt
-	{
-		mesh = WorldItems/Bell206HalfSkirt,
-		texture = WorldItems/Bell206HalfSkirt,
-		scale = 1.0,
-	}
-
-		model Bell206TailBlade
-	{
-		mesh = WorldItems/Bell206TailBlade,
-		texture = WorldItems/Bell206TailBlade,
-		scale = 1.0,
-	}
-
-		model PilotSurvivalVest_Ground
-	{
-		mesh = WorldItems/SRUVest_WorldItem,
-		texture = WorldItems/SRUVest,
-		scale = 1.0,
-	}
-		
-		model BlackPilotSurvivalVest_Ground
-	{
-		mesh = WorldItems/PilotSurvivalVest_WorldItem,
-		texture = WorldItems/BlackPilotSurvivalVest,
-		scale = 1.0,
-	}
 }

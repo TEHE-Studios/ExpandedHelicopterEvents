@@ -1,0 +1,54 @@
+module Base
+{
+	model Vehicle_Bell206Tail
+	{
+		mesh = vehicles/Vehicle_Bell206Tail,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle Bell206LBMWTail
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_Bell206Tail,
+			scale = 3.1100,
+			offset = 0.0000 -0.0161 0.1093,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_Bell206LBMWDamaged,
+		}
+
+		textureMask = Vehicle_Bell206LBMW_mask,
+		extents = 0.3923 0.4630 1.2090,
+		mass = 300,
+		physicsChassisShape = 0.3859 0.4630 1.2283,
+		centerOfMassOffset = 0.0000 0.2219 -0.0032,
+		shadowExtents = 0.1962 1.2862,
+		shadowOffset = 0.0675 0.0032,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+
+		attachment trailer
+		{
+			offset = 0.0000 0.0000 -0.7717,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 0.0000 0.6238,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	}
+}
