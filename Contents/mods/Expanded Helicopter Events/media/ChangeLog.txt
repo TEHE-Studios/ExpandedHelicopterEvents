@@ -34,3 +34,13 @@
 - Improved: Zone-Type checks for the HeatMap and Targeting work off ground level squares to avoid typing issues.
 - Tweaked: Zone-Type checks for the HeatMap and Targeting account for zombie intensity.
 [ ------ ]
+
+[ 8/29/24 ]
+- Update ES translation.
+- Update FR translation.
+- Update EN translation.
+- Update JP translation.
+- Tweak: getDistanceToVector to avoid edge case errors.
+- Add `OnDrop` sub-event.
+- Made obsolete items *more* obsolete.
+[ ------ ]
