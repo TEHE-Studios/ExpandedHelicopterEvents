@@ -2,7 +2,7 @@ module Base
 {
 	model Vehicle_FEMASupplyDrop
 	{
-		mesh = vehicles/Vehicle_FEMASupplyDrop,
+		mesh = vehicles/old_dev/Vehicle_FEMASupplyDrop,
 		shader = vehicle_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
@@ -25,7 +25,7 @@ module Base
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_FEMASupplyDrop,
+			texture = Vehicles/old_dev/Vehicle_FEMASupplyDrop,
 		}
 
 		textureMask = Vehicle_FEMASupplyDrop_mask,
