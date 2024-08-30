@@ -42,5 +42,5 @@
 - Update JP translation.
 - Tweak: getDistanceToVector to avoid edge case errors.
 - Add `OnDrop` sub-event.
-- Made obsolete items *more* obsolete.
+- Removed deprecated assets as a lot of things were added to B42 (Clothing, flares, MRE's, emergency water rations, old vehicle debris.)
 [ ------ ]
