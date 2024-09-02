@@ -22,6 +22,7 @@ Events.OnInitGlobalModData.Add(heatMap.initModData)
 
 
 function heatMap.getHottestCell()
+    if #heatMap.cellsID <= 0 then return end
     heatMap.sortCellsByHeat()
     local hottestCell = heatMap.cells[heatMap.cellsIDs[1]]
     return hottestCell
@@ -38,6 +39,7 @@ end
 
 
 function heatMap.sortCellsByHeat()
+    if #heatMap.cellsID <= 0 then return end
     table.sort(heatMap.cellsIDs, function(a,b) return heatMap.cells[a].heatLevel > heatMap.cells[b].heatLevel end)
 end
 

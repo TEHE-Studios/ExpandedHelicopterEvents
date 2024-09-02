@@ -373,12 +373,14 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 	heatMap.sortCellsByHeat()
 	local cellsSize = #heatMap.cellsIDs
-	for i=1, #heatMap.cellsIDs do
-		local heatCell = heatMap.cells[heatMap.cellsIDs[i]]
-		---weigh list by hottest to coldest
-		local cSquare = getSquare(heatCell.centerX,heatCell.centerY,0) or pseudoSquare:new(heatCell.centerX, heatCell.centerY, 0)
-		if cSquare and ( (not range) or (range and self:getDistanceToIsoObject(cSquare) <= range) ) then
-			for n=0, (cellsSize-i)+1 do table.insert(targetPool, cSquare) end
+	if cellsSize > 0 then
+		for i=1, #heatMap.cellsIDs do
+			local heatCell = heatMap.cells[heatMap.cellsIDs[i]]
+			---weigh list by hottest to coldest
+			local cSquare = getSquare(heatCell.centerX,heatCell.centerY,0) or pseudoSquare:new(heatCell.centerX, heatCell.centerY, 0)
+			if cSquare and ( (not range) or (range and self:getDistanceToIsoObject(cSquare) <= range) ) then
+				for n=0, (cellsSize-i)+1 do table.insert(targetPool, cSquare) end
+			end
 		end
 	end
 
