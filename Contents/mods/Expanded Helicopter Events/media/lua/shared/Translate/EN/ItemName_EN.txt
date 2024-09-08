@@ -22,7 +22,7 @@ ItemName_EN = {
     ItemName_EHE.NoticeFlyer = "Notice Flyer",
 
     ItemName_EHE.EmergencyWaterRation = "Emergency Water Ration",
-    ItemName_EHE.EmergencyWaterRationOpen DisplayCategory = WaterContainer = "Emergency Water Ration (Open)",
+    ItemName_EHE.EmergencyWaterRationOpen = "Emergency Water Ration (Open)",
     ItemName_EHE.ProteinBar = "Protein Bar",
     ItemName_EHE.MealReadytoEat = "MRE",
     ItemName_EHE.MREWrapperEHE = "MRE Wrapper",
