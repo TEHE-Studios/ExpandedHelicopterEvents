@@ -35,7 +35,7 @@
 - Tweaked: Zone-Type checks for the HeatMap and Targeting account for zombie intensity.
 [ ------ ]
 
-[ 8/29/24 ]
+[ 9/27/24 ]
 - Update ES translation.
 - Update FR translation.
 - Update EN translation.
@@ -43,4 +43,6 @@
 - Tweak: getDistanceToVector to avoid edge case errors.
 - Add `OnDrop` sub-event.
 - Made obsolete items *more* obsolete.
+- Fixes issues with heatmap when cells aren't tracked.
+- Removed debug print for CanOpenBoxes tag.
 [ ------ ]
