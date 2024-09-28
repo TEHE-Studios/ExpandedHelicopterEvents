@@ -106,7 +106,6 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 	--Load preset vars
 	self:loadVarsFrom(preset, "presetLoad:"..tostring(recursiveID))
 
-	--[[DEBUG]] local rpcText
 	if preset.presetRandomSelection then
 		local randSelect = self:randomSelectPreset(preset)
 		if not randSelect then
@@ -141,10 +140,8 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 	end
 
 	if not preset then print("ERROR: recursivePresetCheck failed : present became nil.") return end
-	
+
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
-		--[[DEBUG]] rpcText = rpcText.."\n -- EHE: progression/selection: found; recursive: "..iteration
-		--[[DEBUG]] print(rpcText)
 		local presetID
 		for id,vars in pairs(eHelicopter_PRESETS) do
 			if vars == preset then
