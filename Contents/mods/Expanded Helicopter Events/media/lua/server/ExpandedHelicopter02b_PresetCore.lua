@@ -150,9 +150,8 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 		end
 		return self:recursivePresetCheck(preset,iteration+1, presetID)
 	end
-
-	--[[DEBUG]] if iteration >= 4 then rpcText = rpcText.."\n -- EHE: ERR: progression/selection: high recursive iteration: "..iteration end
-	--[[DEBUG]] if rpcText then print(rpcText) end
+	
+	--[[DEBUG]]print("-- EHE: ERR: progression/selection: high recursive iteration: "..tostring(iteration))
 
 	return preset
 end
