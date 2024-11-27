@@ -46,3 +46,7 @@
 - Fixes issues with heatmap when cells aren't tracked.
 - Removed debug print for CanOpenBoxes tag.
 [ ------ ]
+
+[ 11/27/24 ]
+- Sound Test - found a possible error is the update function.
+[ ------ ]
