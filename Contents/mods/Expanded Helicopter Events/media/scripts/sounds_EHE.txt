@@ -1,49 +1,49 @@
 module Base {
 
     sound eHelicopter {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eJetFlight {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/jet_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eLargePropPlane {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/propplane.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eSmallPropPlane {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/Cessna.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eMiliHeli {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/militaryheli_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
     
     sound eMiliHeliCargo {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heavyheli_mono_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
     
     sound eHeliPoliceWarning {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eHeliPoliceSiren {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
         
     sound eAirRaid {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/siren.ogg, distanceMax = 5100, reverbFactor = 0.1, volume = 0.035, } }
 
     sound eHeliMusicPassive {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/banjo-romp-Caffeine_Creek_Band.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/happy-brithday-tuba-Nesrality.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/HowdyDoodyTime.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
     sound eHeliMusicAggressive {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/SevenTwentyBeercules.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
         clip { file = media/sound/music/SevenTwentyTheSpark.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/HeliMusicAggressive.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
@@ -51,7 +51,7 @@ module Base {
         clip { file = media/sound/music/CanCanMusic.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
     sound eHeliCrewLaughingAndDrinking {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/HeliLaughingDrinking.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 0.7, } }
 
      sound eHeliDumpTrash {
@@ -59,7 +59,7 @@ module Base {
          clip { file = media/sound/crashes_bombs_misc/dumpingTrash.ogg, distanceMax = 80, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eHeliMusicHostile {
-        category = EHE: Main, loop = false, is3D = true,
+        category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
