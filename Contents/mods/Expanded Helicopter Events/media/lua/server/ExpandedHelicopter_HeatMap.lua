@@ -120,7 +120,7 @@ function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
 
     intensity = intensity * heatMap.adjustByZone(x, y)
 
-    if getDebug() then print("heatMap: "..type.."  x:"..x..", y:"..y) end
+    --if getDebug() then print("heatMap: "..type.."  x:"..x..", y:"..y) end
 
     local cellID = "x:"..math.floor(x/300).."|y:"..math.floor(y/300)
 
