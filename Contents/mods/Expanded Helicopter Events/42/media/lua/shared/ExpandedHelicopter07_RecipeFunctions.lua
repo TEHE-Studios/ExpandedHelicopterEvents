@@ -119,7 +119,7 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 	if ran then return else ran = true end
 	---Adds "CanOpenBoxes" tag to scripts for type
 	local allItems = ScriptManager.instance:getAllItems()
-	local debugText = "EHE: Added Tag 'CanOpenBoxes' to: "
+	--local debugText = "EHE: Added Tag 'CanOpenBoxes' to: "
 
 	for i=0, allItems:size()-1 do
 		---@type Item
@@ -146,11 +146,11 @@ function EHE_Recipe.addCanOpenBoxesTagToTypesThatCan()
 		end
 
 		if addCanOpenBoxesTag then
-			debugText = debugText..itemFullName..", "
+			--debugText = debugText..itemFullName..", "
 			itemScript:DoParam("Tags = "..tagString..";CanOpenBoxes")
 		end
 	end
-	print(debugText)
+	--print(debugText)
 end
 
 Events.OnGameBoot.Add(EHE_Recipe.addCanOpenBoxesTagToTypesThatCan)

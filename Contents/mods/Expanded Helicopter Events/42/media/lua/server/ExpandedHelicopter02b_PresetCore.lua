@@ -106,32 +106,42 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 	--Load preset vars
 	self:loadVarsFrom(preset, "presetLoad:"..tostring(recursiveID))
 
-	--[[DEBUG]] local rpcText
 	if preset.presetRandomSelection then
-		preset = self:randomSelectPreset(preset)
-		local presetID
-		for id,vars in pairs(eHelicopter_PRESETS) do
-			if vars == preset then
-				presetID = id
+		local randSelect = self:randomSelectPreset(preset)
+		if not randSelect then
+			print("ERROR: Preset:",preset," failed `randomSelectPreset`.")
+		else
+			preset = randSelect
+
+			local presetID
+			for id,vars in pairs(eHelicopter_PRESETS) do
+				if vars == preset then
+					presetID = id
+				end
 			end
+			self:loadVarsFrom(preset, "-- presetRand:"..tostring(presetID))
 		end
-		self:loadVarsFrom(preset, "-- presetRand:"..tostring(presetID))
 	end
 
 	if preset.presetProgression then
-		preset = self:progressionSelectPreset(preset)
-		local presetID
-		for id,vars in pairs(eHelicopter_PRESETS) do
-			if vars == preset then
-				presetID = id
+		local progressSelect = self:progressionSelectPreset(preset)
+		if not progressSelect then
+			print("ERROR: Preset:",preset," failed `progressionSelectPreset`.")
+		else
+			preset = progressSelect
+			local presetID
+			for id,vars in pairs(eHelicopter_PRESETS) do
+				if vars == preset then
+					presetID = id
+				end
 			end
+			self:loadVarsFrom(preset, "-- presetProg:"..tostring(presetID))
 		end
-		self:loadVarsFrom(preset, "-- presetProg:"..tostring(presetID))
 	end
 
+	if not preset then print("ERROR: recursivePresetCheck failed : present became nil.") return end
+
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
-		--[[DEBUG]] rpcText = rpcText.."\n -- EHE: progression/selection: found; recursive: "..iteration
-		--[[DEBUG]] print(rpcText)
 		local presetID
 		for id,vars in pairs(eHelicopter_PRESETS) do
 			if vars == preset then
@@ -140,9 +150,8 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 		end
 		return self:recursivePresetCheck(preset,iteration+1, presetID)
 	end
-
-	--[[DEBUG]] if iteration >= 4 then rpcText = rpcText.."\n -- EHE: ERR: progression/selection: high recursive iteration: "..iteration end
-	--[[DEBUG]] if rpcText then print(rpcText) end
+	
+	--[[DEBUG]]print("-- EHE: ERR: progression/selection: high recursive iteration: "..tostring(iteration))
 
 	return preset
 end

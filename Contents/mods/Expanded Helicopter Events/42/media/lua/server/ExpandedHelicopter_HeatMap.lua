@@ -22,6 +22,7 @@ Events.OnInitGlobalModData.Add(heatMap.initModData)
 
 
 function heatMap.getHottestCell()
+    if heatMap.cellsIDs and #heatMap.cellsIDs <= 0 then return end
     heatMap.sortCellsByHeat()
     local hottestCell = heatMap.cells[heatMap.cellsIDs[1]]
     return hottestCell
@@ -38,6 +39,7 @@ end
 
 
 function heatMap.sortCellsByHeat()
+    if heatMap.cellsIDs and #heatMap.cellsIDs <= 0 then return end
     table.sort(heatMap.cellsIDs, function(a,b) return heatMap.cells[a].heatLevel > heatMap.cells[b].heatLevel end)
 end
 
@@ -118,7 +120,7 @@ function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
 
     intensity = intensity * heatMap.adjustByZone(x, y)
 
-    if getDebug() then print("heatMap: "..type.."  x:"..x..", y:"..y) end
+    --if getDebug() then print("heatMap: "..type.."  x:"..x..", y:"..y) end
 
     local cellID = "x:"..math.floor(x/300).."|y:"..math.floor(y/300)
 
