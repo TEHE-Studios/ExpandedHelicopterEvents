@@ -12,37 +12,37 @@ Sandbox_CN = {
     Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "开启后，空袭事件将作为信号，标志着游戏从较低挑战的早期阶段过渡到更具威胁的后期阶段。",
 
     Sandbox_ExpandedHeli_EventJet = "喷气式飞机",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "喷气式飞机出现的频率。",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "喷气式飞机出现的频率。<br>喷气式飞机飞过玩家上空，引起尸群移动。",
 
     Sandbox_ExpandedHeli_EventNews = "新闻直升机",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "新闻直升机出现的频率。\n新闻直升机会追踪发现的幸存者，并短暂跟随他们。",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "新闻直升机出现的频率。<br>新闻直升机会追踪发现的幸存者，并短暂跟随他们。",
 
     Sandbox_ExpandedHeli_EventPolice = "警方直升机",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "警方直升机出现的频率。\n警方将介入并护送幸存者，同时向丧尸开火。",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "警方直升机出现的频率。<br>警方将介入并护送幸存者，同时向丧尸开火。",
 
     Sandbox_ExpandedHeli_EventMilitary = "军方直升机",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "军方直升机出现的频率。\n军方行动将经历多个阶段：先警告幸存者，然后清剿丧尸，最终消灭所有可移动目标。",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "军方直升机出现的频率。<br>军方行动将经历多个阶段：先警告幸存者，然后清剿丧尸，最终消灭所有可移动目标。",
 
     Sandbox_ExpandedHeli_EventFEMA = "FEMA 空投援助",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA 空投援助事件发生的频率。\nFEMA 将在灾难初期进行物资空投。",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA 空投援助事件发生的频率。<br>FEMA 将在灾难初期进行物资空投。",
 
     Sandbox_ExpandedHeli_EventSurvivor = "幸存者直升机",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "幸存者直升机出现的频率。\n他们仅执行侦察任务，可能引发尸群移动。",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "幸存者直升机出现的频率。<br>他们仅执行侦察任务，可能引发尸群移动。",
 
     Sandbox_ExpandedHeli_EventRaider = "劫掠直升机",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "劫掠直升机出现的频率。\n掠夺者会追踪幸存者，并对其进行骚扰或攻击。",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "劫掠直升机出现的频率。<br>掠夺者会追踪幸存者，并对其进行骚扰或攻击。",
 
     Sandbox_ExpandedHeli_EventSamaritan = "撒马利坦协会直升机",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "撒马利坦协会直升机出现的频率。\n他们会投放物资，帮助幸存者。",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "撒马利坦协会直升机出现的频率。<br>他们会投放物资，帮助幸存者。",
 
     Sandbox_ExpandedHeli_StartDay = "事件开始日期",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "事件将在游戏第几天开始发生。\n请结合‘世界末日已持续几个月’的设定进行调整。",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "事件将在游戏第几天开始发生。<br>请结合‘世界末日已持续几个月’的设定进行调整。",
 
     Sandbox_ExpandedHeli_SchedulerDuration = "事件调度持续时间",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "从开始日期起，事件调度持续的天数。\n调度系统会根据设定调整事件的推进速度。",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "从开始日期起，事件调度持续的天数。<br>调度系统会根据设定调整事件的推进速度。",
 
     Sandbox_ExpandedHeli_ContinueSchedulingEvents = "超出持续时间继续调度事件",
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "默认情况下，事件调度会在持续时间结束后停止。\n开启此选项后，事件会继续发生，但仍会按照设定的阶段推进。",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "默认情况下，事件调度会在持续时间结束后停止。<br>开启此选项后，事件会继续发生，但仍会按照设定的阶段推进。",
 
     Sandbox_ExpandedHeli_ContScheduling_option1 = "不继续调度",
     Sandbox_ExpandedHeli_ContScheduling_option2 = "继续调度：所有事件",
@@ -52,5 +52,5 @@ Sandbox_CN = {
     Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "天气是否会影响事件的发生，或导致事件坠毁。",
 
     Sandbox_ExpandedHeli_CrashChanceMulti = "坠毁概率倍率",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "此值会乘以坠毁概率。\n设为 0 可完全防止坠毁。",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "此值会乘以坠毁概率。<br>设为 0 可完全防止坠毁。",
 }
