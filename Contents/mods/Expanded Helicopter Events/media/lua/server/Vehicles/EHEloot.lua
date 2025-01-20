@@ -7,67 +7,15 @@ local function applyLootBoxLoot()
         rolls = 3,
         items ={
             "556Clip", 3,
-            "556Carton", 3,
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
             "AssaultRifle", 7,
-            "Pistol", 5,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "Bullets9mm", 3,
-            "Base.WalkieTalkie5", 3,
-            "FirstAidKit_Military", 10,
-            "CanteenMilitaryFull", 10,
-            "FlashLight_Anglehead_Army", 10,
-            
-            -- MEA --
-            "MEA.ANPRC112", 10,
-            
-            -- AZ --
-            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
-            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
-            "AuthenticZClothing.AuthenticSmokeBomb", 10,
-
-        }
-    }
-
-    VehicleDistributions.UH60Medevac = {
-        rolls = 3,
-        items ={
-            "556Clip", 3,
-            "556Carton", 3,
             "AssaultRifle", 7,
-            "Pistol", 5,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "Bullets9mm", 3,
-            "Base.WalkieTalkie5", 3,
-            "FirstAidKit_Military", 10,
-            "CanteenMilitaryFull", 10,
-            
-            -- MEA --
-            "MEA.ANPRC112", 10,
-            
-            -- AZ --
-            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
-            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
-            "AuthenticZClothing.AuthenticSmokeBomb", 10,
-
-        }
-    }
-
-    VehicleDistributions.Bell206PoliceSeat = {
-        rolls = 3,
-        items ={
-            "Vest_BulletPolice", 9,
-            "556Clip", 3,
-            "556Clip", 3,
-            "556Clip", 3,
-            "556Carton", 3,
-            "556Carton", 3,
-            "556Carton", 3,
-            "556Carton", 3,
-            "556Carton", 3,
             "Pistol", 5,
             "Pistol", 5,
             "Pistol", 5,
@@ -80,7 +28,157 @@ local function applyLootBoxLoot()
             "Bullets9mm", 3,
             "Bullets9mm", 3,
             "HolsterSimple", 3,
-            "Base.WalkieTalkie3", 3,
+            "Radio.WalkieTalkie5", 3,
+            "FirstAidKit", 10,
+            "FirstAidKit", 10,
+            "FirstAidKit", 10,
+            "x2Scope", 0.7,
+
+            -- MEA --
+            "MEA.ANPRC112", 10,
+            "MEA.ANPRC112", 10,
+            
+            -- EHE --
+            "EHE.MealReadytoEat", 10,
+            "EHE.MealReadytoEat", 10,
+
+            -- AZ --
+            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+            "AuthenticZClothing.AuthenticSmokeBomb", 10,
+
+        }
+    }
+
+
+    VehicleDistributions.RaiderCargo = {
+        rolls = 3,
+        items ={
+            "Bag_ALICEpack_Army", 4,
+            "Vest_BulletArmy", 9,
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "AssaultRifle", 7,
+            "AssaultRifle", 7,
+            "Pistol", 5,
+            "Pistol", 5,
+            "Pistol", 5,
+            "9mmClip", 3,
+            "9mmClip", 3,
+            "9mmClip", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "HolsterSimple", 3,
+            "Trousers_CamoGreen", 1,
+            "Shirt_CamoGreen", 1,
+            "Jacket_ArmyCamoGreen", 1,
+            "Shoes_ArmyBoots", 1,
+            "Shirt_CamoGreen", 1,
+            "Radio.WalkieTalkie5", 3,
+            "HuntingKnife", 3,
+            "FirstAidKit", 3,
+            "x2Scope", 0.7,
+            "HottieZ", 10,
+            "HottieZ", 10,
+            "AmmoStraps", 10,
+            "AmmoStrap_Bullets", 10,
+            "Speaker", 10,
+            "Speaker", 10,
+            "ElectronicsScrap", 10,
+            "ElectronicsScrap", 10,
+
+            -- EHE --
+            "EHE.BanditStashBox", 1,
+            "EHE.MealReadytoEat", 10,
+            "EHE.MealReadytoEat", 10,
+
+            -- AZ --
+            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+            "AuthenticZClothing.AuthenticSmokeBomb", 10,
+            "AuthenticZClothing.Tshirt_Rock2", 3,
+            "AuthenticZClothing.Tshirt_PostalDude", 3,
+            "AuthenticZClothing.Jacket_PostalDude", 3,
+
+        }
+    }
+
+    VehicleDistributions.UH60Medevac = {
+        rolls = 3,
+        items ={
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "AssaultRifle", 7,
+            "AssaultRifle", 7,
+            "Pistol", 5,
+            "Pistol", 5,
+            "Pistol", 5,
+            "9mmClip", 3,
+            "9mmClip", 3,
+            "9mmClip", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "HolsterSimple", 3,
+            "Radio.WalkieTalkie5", 3,
+            "FirstAidKit", 10,
+            "FirstAidKit", 10,
+            "FirstAidKit", 10,
+            "x2Scope", 0.7,
+
+            -- MEA --
+            "MEA.ANPRC112", 10,
+            "MEA.ANPRC112", 10,
+
+            -- AZ --
+            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
+            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
+            "AuthenticZClothing.AuthenticSmokeBomb", 10,
+        }
+    }
+
+    VehicleDistributions.Bell206PoliceSeat = {
+        rolls = 3,
+        items ={
+            "Vest_BulletPolice", 9,
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Clip", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "556Box", 3,
+            "Pistol", 5,
+            "Pistol", 5,
+            "Pistol", 5,
+            "9mmClip", 3,
+            "9mmClip", 3,
+            "9mmClip", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "Bullets9mm", 3,
+            "HolsterSimple", 3,
+            "Radio.WalkieTalkie3", 3,
             "AssaultRifle2", 10,
             "AssaultRifle2", 3,
             "Shotgun", 10,
@@ -111,11 +209,9 @@ local function applyLootBoxLoot()
             "FirstAidKit", 5,
             "Shotgun", 5,
             "Shotgun", 3,
-            "ShotgunShellsCarton", 7,
-            "ShotgunShellsCarton", 7,
-            "ShotgunShellsCarton", 7,
-            "CameraExpensive", 7,
-            "CameraExpensive", 7,
+            "ShotgunShellsBox", 7,
+            "ShotgunShellsBox", 7,
+            "ShotgunShellsBox", 7,
 
             -- AZ --
             "AuthenticZClothing.CameraDSLR", 3,
@@ -141,11 +237,80 @@ local function applyLootBoxLoot()
             "FirstAidKit", 5,
             "Bag_Duffelbag", 7,
 
+            -- EHE--
+            "EHE.MealReadytoEat", 10,
+            "EHE.MealReadytoEat", 10,
+
             -- AZ --
             "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
             "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
             "AuthenticZClothing.AuthenticSmokeBomb", 10,
 
+        }
+    }
+
+    VehicleDistributions.FEMASupplyDrop = {
+        rolls = 50,
+        items ={
+            "EHE.EmergencyMedicalSupplyBox", 2,
+            "EHE.EmergencySurvivalSupplyBox", 1,
+            "EHE.EmergencyFoodSupplyBox", 2,
+
+            "EHE.EmergencyMedicalSupplyBox", 2,
+            "EHE.EmergencySurvivalSupplyBox", 1,
+            "EHE.EmergencyFoodSupplyBox", 2,
+
+            "EHE.EmergencyMedicalSupplyBox", 2,
+            "EHE.EmergencySurvivalSupplyBox", 1,
+            "EHE.EmergencyFoodSupplyBox", 2,
+
+            "EHE.EmergencyMedicalSupplyBox", 2,
+            "EHE.EmergencySurvivalSupplyBox", 1,
+            "EHE.EmergencyFoodSupplyBox", 2,
+
+            "EHE.EmergencyMedicalSupplyBox", 2,
+            "EHE.EmergencySurvivalSupplyBox", 1,
+            "EHE.EmergencyFoodSupplyBox", 2,
+        }
+    }
+
+    VehicleDistributions.SurvivorSupplyDrop = {
+        rolls = 50,
+        items ={
+            "EHE.SurvivorMedicalSupplyBox", 1,
+            "EHE.SurvivorToiletSupplyBox", 2,
+            "EHE.SurvivorFoodSupplyBox", 1,
+            "EHE.SurvivorFishingSupplyBox", 1,
+            "EHE.SurvivorCanningSupplyBox", 1,
+            "EHE.SurvivorSeedSupplyBox", 1,
+
+            "EHE.SurvivorMedicalSupplyBox", 1,
+            "EHE.SurvivorToiletSupplyBox", 2,
+            "EHE.SurvivorFoodSupplyBox", 1,
+            "EHE.SurvivorFishingSupplyBox", 1,
+            "EHE.SurvivorCanningSupplyBox", 1,
+            "EHE.SurvivorSeedSupplyBox", 1,
+
+            "EHE.SurvivorMedicalSupplyBox", 1,
+            "EHE.SurvivorToiletSupplyBox", 1,
+            "EHE.SurvivorFoodSupplyBox", 1,
+            "EHE.SurvivorFishingSupplyBox", 1,
+            "EHE.SurvivorCanningSupplyBox", 1,
+            "EHE.SurvivorSeedSupplyBox", 1,
+
+            "EHE.SurvivorMedicalSupplyBox", 1,
+            "EHE.SurvivorToiletSupplyBox", 1,
+            "EHE.SurvivorFoodSupplyBox", 1,
+            "EHE.SurvivorFishingSupplyBox", 1,
+            "EHE.SurvivorCanningSupplyBox", 1,
+            "EHE.SurvivorSeedSupplyBox", 1,
+
+            "EHE.SurvivorMedicalSupplyBox", 1,
+            "EHE.SurvivorToiletSupplyBox", 1,
+            "EHE.SurvivorFoodSupplyBox", 1,
+            "EHE.SurvivorFishingSupplyBox", 1,
+            "EHE.SurvivorCanningSupplyBox", 1,
+            "EHE.SurvivorSeedSupplyBox", 1,
         }
     }
 
@@ -172,6 +337,10 @@ local function applyLootBoxLoot()
         SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
     }
 
+    --Supply Drop
+    VehicleDistributions.FEMASupplyDrop = { TruckBed = VehicleDistributions.FEMASupplyDrop; }
+    VehicleDistributions.SurvivorSupplyDrop = { TruckBed = VehicleDistributions.SurvivorSupplyDrop; }
+
     --Distribution
     distributionTable["UH60GreenFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
     distributionTable["UH60DesertFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
@@ -180,6 +349,10 @@ local function applyLootBoxLoot()
     distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
     distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
     distributionTable["Bell206BlackFuselage"] = { Normal = VehicleDistributions.Bell206Black; }
+
+    -- Supply Drops
+    distributionTable["FEMASupplyDrop"] = { Normal = VehicleDistributions.FEMASupplyDrop; }
+    distributionTable["SurvivorSupplyDrop"] = { Normal = VehicleDistributions.SurvivorSupplyDrop; }
 
 end
 
