@@ -45,6 +45,7 @@
 - Removed debug print for CanOpenBoxes tag.
 [ ------ ]
 
-[ 11/27/24 ]
-- Sound Test - found a possible error is the update function.
+[ 1/19/25 ]
+- Infamous Sound-Bug Fix v3? v4? - there was a typo in the update function.
+- FINAL UPDATE for B41- pending serious issues or bugs.
 [ ------ ]
