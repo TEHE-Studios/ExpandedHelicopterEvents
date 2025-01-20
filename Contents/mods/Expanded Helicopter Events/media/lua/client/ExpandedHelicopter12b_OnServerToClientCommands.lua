@@ -153,11 +153,13 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 							--print("---stop:".." - "..sound)
 							local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][sound]
 							soundEmitter:stopSoundLocal(soundRef)
+							soundEmitter:tick()
 						end
 					else
 						--print("--stop:".." - "..tostring(DATA.soundEffect))
 						local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
 						soundEmitter:stopSoundLocal(soundRef)
+						soundEmitter:tick()
 					end
 				end
 			end
@@ -173,6 +175,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 			end
 
 			soundEmitter:stopAll()
+			soundEmitter:tick()
 
 			for ID,emitter in pairs(storedLooperEvents) do if emitter == soundEmitter or ID == reusableID then storedLooperEvents[ID] = nil end end
 		end
