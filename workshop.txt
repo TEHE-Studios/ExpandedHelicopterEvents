@@ -4,6 +4,7 @@ title=[B41] Expanded Helicopter Events
 description=[H1][i]This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.[/i][/H1]
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
+description=[img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/refs/heads/41_legacy/images/done.png[/img]
 description=
 description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/refs/heads/41_legacy/images/FAQ.png[/img][/url]
 description=
