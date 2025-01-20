@@ -5,11 +5,11 @@ description=[H1][i]This mod replaces the vanilla helicopter event with a more dy
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FAQ.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/refs/heads/41_legacy/images/FAQ.png[/img][/url]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FEATURES.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/refs/heads/41_legacy/images/FEATURES.png[/img][/url]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/GITHUB.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/refs/heads/41_legacy/images/GITHUB.png[/img][/url]
 description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
@@ -17,7 +17,7 @@ description=[img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunit
 description=
 description=
 description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
-description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]SMUI[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]SLEO[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
+description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
 description=
 description=
 description=[h1][b]If you're having an issue or encountering errors:[/b][/h1]
