@@ -1,0 +1,68 @@
+module Base
+{
+	model Vehicle_FEMASupplyDrop
+	{
+		mesh = vehicles/Vehicle_FEMASupplyDrop,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle FEMASupplyDrop
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_FEMASupplyDrop,
+			scale = 1.4000,
+			offset = 0.0000 0.1143 -0.0143,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_FEMASupplyDrop,
+		}
+
+		textureMask = Vehicle_FEMASupplyDrop_mask,
+		extents = 1.0286 0.4571 1.1286,
+		mass = 550,
+		physicsChassisShape = 1.0000 0.4571 1.1000,
+		centerOfMassOffset = 0.0000 0.2286 -0.0143,
+		shadowExtents = 0.9927 1.0915,
+		shadowOffset = 0.0000 -0.0117,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+
+		area TruckBed
+		{
+			xywh = 0.0000 0.0000 2.4714 2.5429,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			container
+			{
+				capacity = 300,
+			}
+		}
+
+		attachment trailer
+		{
+			offset = 0.5071 -0.3357 0.0000,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = -0.5071 -0.3643 0.0000,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+}

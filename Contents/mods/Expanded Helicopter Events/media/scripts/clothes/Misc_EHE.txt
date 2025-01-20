@@ -1,0 +1,68 @@
+module EHE
+{		
+	    item Boilersuit_PoliceFlying
+    {
+        DisplayCategory = Clothing,
+        Type = Clothing,
+        DisplayName = Police Flying Suit,
+        ClothingItem = Suit_PoliceFlying,
+        BodyLocation = FullSuit,
+        Icon = PoliceFlying,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 10,
+        Insulation = 0.75,
+        WindResistance = 0.55,
+        FabricType = Cotton,
+        WorldStaticModel = BoilerSuit_Ground,
+    }
+
+    	item Boilersuit_BlackFlying
+    {
+        DisplayCategory = Clothing,
+        Type = Clothing,
+        DisplayName = Black Flying Suit,
+        ClothingItem = Suit_BlackFlying,
+        BodyLocation = FullSuit,
+        Icon = BlackFlying,
+        BloodLocation = Trousers;Jumper,
+        RunSpeedModifier = 0.9,
+        ScratchDefense = 10,
+        Insulation = 0.75,
+        WindResistance = 0.55,
+        FabricType = Cotton,
+        WorldStaticModel = BoilerSuit_Ground,
+    }
+	   
+    	item Vest_PilotSurvivalVest
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        CanBeEquipped = EHEPilotVest,
+        DisplayName = SRU-21/P Survival Vest,
+        ClothingItem = Vest_PilotSurvivalVest,
+        BodyLocation = EHEPilotVest,
+        Icon = PilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVest,
+		WorldStaticModel = PilotSurvivalVest_Ground,
+        
+    }
+
+    	item Vest_BlackPilotSurvivalVest
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        DisplayName = Black SRU-21/P Survival Vest,
+        CanBeEquipped = EHEPilotVest,
+        ClothingItem = Vest_BlackPilotSurvivalVest,
+        BodyLocation = EHEPilotVest,
+        Icon = BlackPilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+        
+    }
+}

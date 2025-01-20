@@ -1,0 +1,73 @@
+module EHE
+{		
+    item Hat_PressHelmet
+	{   
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		ClothingItem = Hat_PressHelmet,
+		BodyLocation = Hat,
+		Icon = PressHelmet,
+		BloodLocation = FullHelmet,
+        Weight = 1.5,
+        OBSOLETE = true,
+    }
+
+
+	item Hat_SurvivalistHelmet
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		ClothingItem = Hat_SurvivalistHelmet,
+		BodyLocation = Hat,
+		Icon = SurvivalistHelmet,
+		BloodLocation = FullHelmet,
+        Weight = 1.5,
+        OBSOLETE = true,
+    }
+
+
+    item Vest_BulletPress
+    {
+        DisplayCategory = Clothing,
+        Type = Clothing,
+        ClothingItem = Vest_BulletPress,
+        BodyLocation = TorsoExtra,
+        Icon = PressVest,
+        BloodLocation = ShirtNoSleeves,
+		WorldStaticModel = BulletVest_Ground,
+		OBSOLETE = true,
+    }
+
+
+    item Vest_PilotSurvivalVestTightened
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        CanBeEquipped = EHEPilotVest,
+        ClothingItem = Vest_PilotSurvivalVestTightened,
+        BodyLocation = EHEPilotVest,
+        Icon = PilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVest,
+		WorldStaticModel = PilotSurvivalVest_Ground,
+		OBSOLETE = true,
+    }
+    
+    item Vest_BlackPilotSurvivalVestTightened
+    {
+        DisplayCategory = Clothing,
+        Type = Container,
+        Capacity = 3,
+        CanBeEquipped = EHEPilotVest,
+        DisplayName = Black SRU-21/P Survival Vest,
+        ClothingItem = Vest_BlackPilotSurvivalVestTightened,
+        BodyLocation = EHEPilotVest,
+        Icon = BlackPilotSurvivalVest,
+        BloodLocation = ShirtNoSleeves,
+        Tooltip = Tooltip_SurvivalVestBlack,
+		WorldStaticModel = BlackPilotSurvivalVest_Ground,
+		OBSOLETE = true,
+    }
+    
+}
