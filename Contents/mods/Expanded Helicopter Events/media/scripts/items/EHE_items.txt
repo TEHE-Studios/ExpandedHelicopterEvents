@@ -190,7 +190,7 @@ module EHE
 		DisplayCategory = Junk,
 		Weight = 10,
 		Type = Normal,
-		WorldStaticModel = UH1HHalfSkirt2,
+		WorldStaticModel = UH1HHalfSkirt,
 		DisplayName = Mangled Helicopter Skirt,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = 206halfskirt,

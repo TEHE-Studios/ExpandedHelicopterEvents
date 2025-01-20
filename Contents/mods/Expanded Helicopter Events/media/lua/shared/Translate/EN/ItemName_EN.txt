@@ -2,7 +2,6 @@ ItemName_EN = {
     ItemName_EHE.Boilersuit_PoliceFlying = "Police Flying Suit",
     ItemName_EHE.Boilersuit_BlackFlying = "Black Flying Suit",
     ItemName_EHE.Vest_PilotSurvivalVest = "SRU-21/P Survival Vest",
-    ItemName_EHE.Vest_BlackPilotSurvivalVest = "Black SRU-21/P Survival Vest",
 
     ItemName_EHE.Jacket_DenimCutoff = "Cutoff Denim Jacket",
 

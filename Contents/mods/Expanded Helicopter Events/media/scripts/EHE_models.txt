@@ -178,14 +178,14 @@ module Base
 
 		model UH1HRotorBlade1
 	{
-		mesh = WorldItems/UH1HRotorBlade1,
+		mesh = WorldItems/UH1HRotorBlade,
 		texture = WorldItems/UH1HRotorBlade,
 		scale = 1.0,
 	}
 	
 		model UH1HRotorBlade2
 	{
-		mesh = WorldItems/UH1HRotorBlade2,
+		mesh = WorldItems/UH1HRotorBlade,
 		texture = WorldItems/UH1HRotorBlade,
 		scale = 1.0,
 	}
@@ -217,11 +217,5 @@ module Base
 		texture = WorldItems/SRUVest,
 		scale = 1.0,
 	}
-		
-		model BlackPilotSurvivalVest_Ground
-	{
-		mesh = WorldItems/PilotSurvivalVest_WorldItem,
-		texture = WorldItems/BlackPilotSurvivalVest,
-		scale = 1.0,
-	}
+
 }

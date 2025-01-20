@@ -9,8 +9,8 @@
 		<m_items> <!-- Police Helicopter Helmet -->
 			<itemGUID>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</itemGUID>
 		</m_items>
-		<m_items> <!-- Black Pilot Survival Vest -->
-			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
+		<m_items> <!-- Survival Vest -->
+			<itemGUID>51f662ec-b2b2-48a1-9971-4566c40fc0f4</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -38,8 +38,8 @@
 		<m_items> <!-- Police Helicopter Helmet -->
 			<itemGUID>b3a2ad9d-72fd-4c97-8ed5-ca5e0e2be098</itemGUID>
 		</m_items>
-		<m_items> <!-- Black Pilot Survival Vest -->
-			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
+		<m_items> <!-- Survival Vest -->
+			<itemGUID>51f662ec-b2b2-48a1-9971-4566c40fc0f4</itemGUID>
 		</m_items>
 		<m_items> <!-- Long Socks -->
 			<itemGUID>fb86bd5f-1931-4b24-a5d7-bd6a43769991</itemGUID>
@@ -438,7 +438,7 @@
 			<itemGUID>6067cc54-e9f1-4731-a163-ba8f9d55bc03</itemGUID>
 		</m_items>
 		<m_items> <!-- Black Pilot Survival Vest-->
-			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
+			<itemGUID>51f662ec-b2b2-48a1-9971-4566c40fc0f4</itemGUID>
 		</m_items>
 		<m_items> <!-- Military Bulletproof Vest -->
 			<itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
@@ -565,9 +565,6 @@
 		</m_items>
 		<m_items> <!-- Jacket -->
 			<itemGUID>9e094ca7-29b4-4c7d-ae70-597fa4c8a330</itemGUID>
-		</m_items>
-		<m_items> <!-- Black Pilot Survival Vest -->
-			<itemGUID>9e2690d2-4cf0-4572-a403-2b27d011d2a3</itemGUID>
 		</m_items>
 		<m_items> <!-- Military Pilot Survival Vest -->
 		<probability>0.5</probability>
