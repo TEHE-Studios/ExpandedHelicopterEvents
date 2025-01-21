@@ -1,5 +1,4 @@
 version=1
-id=2458631365
 title=Expanded Helicopter Events
 description=[H1][i]This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.[/i][/H1]
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
