@@ -148,8 +148,8 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 	if instanceof(targetHostile, "IsoGameCharacter") then
 		--IsoGameCharacter:getMoveSpeed() doesn't seem to work on IsoPlayers (works on IsoZombie)
-		local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLx())
-		local getysubly = math.abs(targetHostile:getY()-targetHostile:getLy())
+		local getxsublx = math.abs(targetHostile:getX()-targetHostile:getLastX())
+		local getysubly = math.abs(targetHostile:getY()-targetHostile:getLastY())
 		--floors float to 1000ths place decimal
 		hostileVelocity = math.floor(math.sqrt((getxsublx * getxsublx + getysubly * getysubly)) * 1000) / 1000
 
