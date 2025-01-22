@@ -1,0 +1,53 @@
+VERSION = 1,
+
+option ExpandedHeli.Frequency_IRS
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventIRS,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_Spiffocopter
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventSpiffocopter,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_TISCreamery
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventTISCreamery,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_UFO
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventUFO,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
+option ExpandedHeli.Frequency_SandyClaws
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventSandyClaws,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
+option ExpandedHeli.Frequency_AttackOfTheStrippers
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventAttackOfTheStrippers,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
+option ExpandedHeli.Frequency_Helikopter
+{
+	type = enum, numValues = 6, default = 1,
+	page = ExpandedHeli, translation = ExpandedHeli_EventHelikopter,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+option ExpandedHeli.Frequency_BuffCorrell
+{
+	type = enum, numValues = 6, default = 1,
+	page = ExpandedHeli, translation = ExpandedHeli_EventBuffCorrell,
+	valueTranslation = ExpandedHeli_Frequency,
+}

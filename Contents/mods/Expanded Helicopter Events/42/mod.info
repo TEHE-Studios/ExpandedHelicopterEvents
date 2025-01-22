@@ -2,4 +2,5 @@ name=Expanded Helicopter Events
 id=ExpandedHelicopterEvents
 description=This mod replaces the vanilla helicopter event with a more dynamic suite of events which are both challenging and fair.
 poster=poster.png
-versionMin=42.00
+versionMin=42.0
+author=Shark & Chuckleberry Finn

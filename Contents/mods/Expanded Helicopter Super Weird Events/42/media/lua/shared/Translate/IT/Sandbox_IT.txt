@@ -1,0 +1,27 @@
+Sandbox_IT = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "La frequenza con cui Spiffo festeggia il suo compleanno.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Le cremerie di Indiestone",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "La frequenza con cui RJ viene a fare visita.",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "La frequenza con cui si evita di pagare le tasse.",
+
+    Sandbox_ExpandedHeli_EventUFO = "UFO",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "La frequenza con cui si vuole credere.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Babbo Nachele",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "La frequenza con cui si vuole rapire Babbo Nachele e picchiarlo con un bastone.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Attacco delle spogliarelliste",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "La frequenza con cui si vuole divertirsi.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (copyright)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "La frequenza con cui si vuole HELIKOPTER, HELIKOPTER. (copyright)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (copyright)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "La frequenza con cui si ha voglia di ballare. (copyright)",
+
+}

@@ -1,0 +1,45 @@
+
+module SWH
+{
+
+        item TenFortyForm
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = IRS 1040 Form,
+		Icon = 1040,
+		/*Tooltip = Tooltip_FlyerMilitary,*/
+		/*media/ui/content/1040form.png,*/
+		Map = SWH_Form1040,
+		WorldStaticModel = 1040_WorldItem,
+	}
+
+        item SpiffoInvite
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = Invitation,
+		Icon = spiffoinvite,
+		/*Tooltip = Tooltip_FlyerMilitary,*/
+		/*media/ui/content/SpiffoInvite.png,*/
+		Map = SWH_SpiffoInvite,
+		WorldStaticModel = SpiffoInvite_WorldItem,
+	}
+
+
+        item StrangeNewspaper
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = Strange Newspaper,
+		Icon = StrangeNewspaper,
+		/*Tooltip = Tooltip_FlyerMilitary,*/
+		/*media/ui/content/StrangeNewspaper.png,*/
+		Map = SWH_StrangeNewspaper,
+		WorldStaticModel = Newspaper_Ground,
+	}
+
+}

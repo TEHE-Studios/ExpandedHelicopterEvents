@@ -1,0 +1,3 @@
+DynamicRadio_IT = {
+	AEBS_buffcorrell = "yeah, cosa succede? È il tuo amico Buffcorrell, di nuovo qui qui qui qui all'opera con alcune cover musicali protette dal diritto d'autore, ma non è nulla di cui preoccuparsi, a meno che tu non sia uno streamer di Twitch. esk. esk. esk esk. prepaaaaaaariamociiiii e. andiamo."
+}

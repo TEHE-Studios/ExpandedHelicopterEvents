@@ -1,0 +1,7 @@
+[ ALERT_CONFIG ]
+link1 = GITHUB = https://github.com/TEHE-Studios/ExpandedHelicopterEvents,
+[ ------ ]
+
+[ B24 - Initial ]
+- Initial B42 update.
+[ ------ ]

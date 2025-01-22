@@ -1,0 +1,9 @@
+module SWH
+{
+    item SpiffoSkin
+	{
+	Type = Clothing,
+	ClothingItem = SpiffoSkin,
+	BodyLocation=TankTop,
+	}
+}

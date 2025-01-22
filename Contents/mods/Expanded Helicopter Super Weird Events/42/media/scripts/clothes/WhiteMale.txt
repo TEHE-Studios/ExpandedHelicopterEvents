@@ -1,0 +1,9 @@
+module SWH
+{
+    item WhiteMale
+	{
+	Type = Clothing,
+	ClothingItem = WhiteMale,
+	BodyLocation=TankTop,
+	}
+}

@@ -1,0 +1,1 @@
+Events.OnGameBoot.Add(print("Super-Weird Helicopter Events: AUG_03_23"))

@@ -1,0 +1,56 @@
+module Base
+{
+	model Vehicle_SpiffoBurger
+	{
+		mesh = vehicles/SWH/Vehicle_SpiffoBurger,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle SpiffoBurger
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_SpiffoBurger,
+			scale = 6.3400,
+			offset = 0.0000 -0.0110 0.0000,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/SWH/Vehicle_SpiffoBurger,
+		}
+
+		textureMask = Vehicle_SpiffoBurger_mask,
+		extents = 0.2965 0.1356 0.2902,
+		mass = 200,
+		physicsChassisShape = 0.2839 0.1356 0.2776,
+		centerOfMassOffset = 0.0000 0.0694 0.0000,
+		shadowExtents = 0.1807 0.1883,
+		shadowOffset = 0.0000 0.0000,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+
+		area TruckBed
+		{
+			xywh = 0.0000 0.0000 2.4637 2.5394,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			container
+			{
+				capacity = 300,
+			}
+		}
+	}
+}

@@ -1,0 +1,233 @@
+module Base {
+
+	sound icecreamAlarm {
+		category = Vehicle, loop = true,
+		clip { file = media/sound/vehicle_cream1.ogg, distanceMin = 10, distanceMax = 20, reverbFactor = 0.1,} }
+
+	sound icecreamWall {
+		category = Vehicle, loop = true,
+		clip { file = media/sound/vehicle_cream2.ogg, distanceMin = 10, distanceMax = 20, reverbFactor = 0.1, } }
+
+	sound icecreamYelp {
+		category = Vehicle,	loop = true,
+		clip { file = media/sound/vehicle_cream3.ogg, distanceMin = 10, distanceMax = 20, reverbFactor = 0.1, } }
+
+    sound IceCreamFlyBy {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/vehicle_cream1.ogg, distanceMax = 500, volume = 2.0, reverbFactor = 0.1, }
+        clip { file = media/sound/vehicle_cream2.ogg, distanceMax = 500, volume = 2.0, reverbFactor = 0.1, }
+        clip { file = media/sound/vehicle_cream3.ogg, distanceMax = 500, volume = 2.0, reverbFactor = 0.1, }
+        clip { file = media/sound/vehicle_cream4.ogg, distanceMax = 500, volume = 2.0, reverbFactor = 0.1, } }
+
+    sound sockThiefSniff {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/sniff.ogg, distanceMax = 30, volume = 1.0, reverbFactor = 0.1, } }
+
+    sound AlienUFOFlight {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/alien_ufo_flight.ogg, distanceMax = 500, volume = 0.4, reverbFactor = 0.1, } }
+
+    /*credit: Austin Lim, https://www.youtube.com/watch?v=uWV-iwIists*/
+    sound RedNeckAlienUFOFlight {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/redneckUFO.ogg, distanceMax = 500, volume = 0.4, reverbFactor = 0.1, } }
+
+    sound buffcorrell {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/buffcorrellKelisMilkshake.ogg, distanceMax = 750, volume = 2.0 }
+        clip { file = media/sound/buffcorrellAHATakeOnMe.ogg, distanceMax = 750, volume = 2.0 }
+        clip { file = media/sound/buffcorrellCranberriesZombie.ogg, distanceMax = 750, volume = 2.0 }
+        clip { file = media/sound/buffcorrellEvanescenceWakeMeUpInside.ogg, distanceMax = 750, volume = 2.0 }
+        clip { file = media/sound/buffcorrellFriendsThemeSong.ogg, distanceMax = 750, volume = 2.0 } }
+
+    sound JangleBalls {
+       category = Vehicle, loop = true, is3D = true,
+       clip { file = media/sound/jangleballs.ogg, distanceMax = 750, reverbFactor = 0.1, } }
+
+    sound Helikopter {
+       category = Vehicle, loop = true, is3D = true,
+       clip { file = media/sound/Helikopter.ogg, distanceMax = 750, reverbFactor = 0.1, } }
+
+	sound PAWS1 {
+		category = Vehicle, loop = true,
+		clip { file = media/sound/PAWS1.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
+
+	sound PAWS2 {
+	    category = Vehicle, loop = true,
+		clip { file = media/sound/PAWS2.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
+
+
+	sound airraid {
+	    category = Vehicle, loop = true, clip
+		{ file = media/sound/airraid.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
+
+
+	sound ZombieLick {
+		category = Zombie, loop = false, is3D = true,
+		clip { file = media/sound/lick.wav, distanceMax = 10, volume = 1.0, reverbFactor = 0.1, } }
+
+
+    sound assBlastUSA {
+        category = EHE-Weird: Voice Lines, loop = true, is3D = true,
+        clip { file = media/sound/assblastusa.ogg, distanceMax = 750, volume = 0.5, reverbFactor = 0.1, } }
+
+
+    sound IRS1 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS1.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS2 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS2.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS3 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS3.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS4 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS4.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS5 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS5.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS6 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS6.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS7 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS7.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS8 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS8.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS9 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS9.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound IRS10 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/IRS10.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+
+    sound AlienAck {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/AlienAck1.ogg, distanceMax = 300, volume = 0.06, reverbFactor = 0.1, }
+        clip { file = media/sound/AlienAck2.ogg, distanceMax = 300, volume = 0.06, reverbFactor = 0.1, }
+        clip { file = media/sound/AlienAck3.ogg, distanceMax = 300, volume = 0.06, reverbFactor = 0.1, } }
+
+    sound AlienFratAck {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/fratack1.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack2.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack3.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack4.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack5.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack6.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack7.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack8.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack9.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/fratack10.ogg, distanceMax = 300, volume = 1.0, reverbFactor = 0.1, } }
+
+    sound SpiffoGiggle {
+        category = Zombie, loop = false, is3D = true,
+        clip { file = media/sound/spiffo_giggle1.ogg, distanceMax = 10, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/spiffo_giggle2.ogg, distanceMax = 10, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/spiffo_giggle3.ogg, distanceMax = 10, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/spiffo_giggle4.ogg, distanceMax = 10, volume = 1.0, reverbFactor = 0.1, }
+        clip { file = media/sound/spiffo_giggle5.ogg, distanceMax = 10, volume = 1.0, reverbFactor = 0.1, } }
+
+
+    sound Spiffo1 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo1.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo2 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo2.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo3 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo3.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo4 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo4.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo5 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo5.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo6 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo6.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo7 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo7.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo8 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo8.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo9 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo9.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo10 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo10.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo11 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo11.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo12 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo12.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo13 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo13.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo14 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo14.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo15 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo15.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo16 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo16.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo17 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo17.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo18 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo18.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo19 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo19.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo20 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo20.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo21 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo21.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+    sound Spiffo22 {
+        category = EHE-Weird: Voice Lines, loop = false, is3D = true,
+        clip { file = media/sound/Spiffo22.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
+
+      
+ }

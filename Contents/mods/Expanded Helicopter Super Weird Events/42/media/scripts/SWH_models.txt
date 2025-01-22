@@ -1,0 +1,47 @@
+module Base
+{
+	    model 1040_WorldItem
+	{
+		mesh = WorldItems/SheetOfPaper,
+		texture = WorldItems/1040,
+		scale = 0.02,
+	}
+
+		model SpiffoInvite_WorldItem
+	{
+		mesh = WorldItems/SheetOfPaper,
+		texture = WorldItems/SpiffoInvite,
+		scale = 0.02,
+	}
+
+		model SpiffoBox_WorldItem
+	{
+		mesh = WorldItems/SupplyBox,
+		texture = WorldItems/SpiffoBox,
+		scale = 1.00,
+	}
+
+		model IceCreamBox_WorldItem
+	{
+		mesh = WorldItems/SupplyBox,
+		texture = WorldItems/IceCreamBox,
+		scale = 1.00,
+	}
+	
+	    model Marla
+    {
+        mesh = weapons/2handed/Marla,
+		texture = weapons/2handed/Marla
+    }	
+	
+	    model AlienBlaster
+    {
+        mesh = Weapons/1Handed/AlienBlaster,
+        texture = Weapons/1Handed/AlienBlaster,
+        attachment world
+        		{
+        			rotate = 0.0000 -90.0000 0.0000,
+        		}
+    }
+
+}

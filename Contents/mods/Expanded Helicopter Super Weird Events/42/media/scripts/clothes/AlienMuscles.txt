@@ -1,0 +1,10 @@
+module SWH
+{
+    item AlienSkin
+	{
+	Type = Clothing,
+	ClothingItem = AlienMuscles,
+	CanHaveHoles = False,
+	BodyLocation= Jacket,
+	}
+}

@@ -1,0 +1,7 @@
+name=Expanded Helicopter Events: Twitch Integration
+id=EHETwitchIntegration
+description=This mod utilizes the numpad keys 1-9 to activate helicopter events - intended for streamers.
+poster=poster.png
+require=\ExpandedHelicopterEvents
+versionMin=42.0
+author=Shark & Chuckleberry Finn
