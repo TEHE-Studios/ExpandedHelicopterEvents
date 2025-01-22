@@ -1,16 +1,6 @@
 module EHE
 {
 
-		item SamaritanCrate
-	{
-		DisplayCategory = Junk,
-		Weight = 25,
-		Type = Normal,
-		DisplayName = Samaritan Supply Crate,
-		WorldObjectSprite	= EHE_supplydrops_0,
-		Icon = UH60Door,
-	}
-
 		item SignalFlare
 	{
 		DisplayCategory = Tool,
@@ -172,40 +162,4 @@ module EHE
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = 206halfskirt,
 	}
-
-		item UH1HRotorBlade1
-	{
-		DisplayCategory = Junk,
-		Weight = 15,
-		Type = Normal,
-		WorldStaticModel = UH1HRotorBlade1,
-		DisplayName = Mangled Main Rotor Blade,
-		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = Rotorblade1,
-	}
-
-		item UH1HRotorBlade2
-	{
-		DisplayCategory = Junk,
-		Weight = 15,
-		Type = Normal,
-		WorldStaticModel = UH1HRotorBlade2,
-		DisplayName = Mangled Main Rotor Blade,
-		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = Rotorblade2,
-	}
-
-		item UH1HHalfSkirt2
-	{
-		DisplayCategory = Junk,
-		Weight = 10,
-		Type = Normal,
-		WorldStaticModel = UH1HHalfSkirt2,
-		DisplayName = Mangled Helicopter Skirt,
-		Tooltip = Tooltip_dismantle_helicopterpart,
-		Icon = 206halfskirt,
-	}
-
-
-
 }
