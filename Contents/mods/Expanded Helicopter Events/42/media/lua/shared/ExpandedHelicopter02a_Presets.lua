@@ -138,19 +138,82 @@ eHelicopter_PRESETS["military_attack_all"] = {
 	radioChatter = "AEBS_HostileMilitary",
 }
 
+local function eHelicopter_dropSupplies(heli)
 
-eHelicopter_PRESETS["FEMA_drop"] = {
+	local heliX, heliY, _ = heli:getXYZAsInt()
+	local SuppliesItems = {"556Carton","556Carton","556Carton","556Carton"}
+
+	local moreSuppliesItems = {"556Carton","556Carton","WaterRationCan_Box",}
+	local iterations = 10
+	for i=1, iterations do
+		local SuppliesType = moreSuppliesItems[(ZombRand(#moreSuppliesItems)+1)]
+		table.insert(moreSuppliesItems, SuppliesType)
+		table.insert(SuppliesItems, SuppliesType)
+	end
+	
+	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
+	soundEmitter:playSound("eHeliDumpSupplies", heliX, heliY, 0)
+
+	for _,SuppliesType in pairs(SuppliesItems) do
+		heliY = heliY+ZombRand(-3,3)
+		heliX = heliX+ZombRand(-3,3)
+		SpawnerTEMP.spawnItem(SuppliesType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+	end
+end
+
+function eHelicopter_dropCrewOff(heli)
+	if not heli then
+		return
+	end
+
+	local x, y, z = heli:getXYZAsInt()
+	local xOffset = ZombRand(20,35)
+	local yOffset = ZombRand(20,35)
+
+	local trueTarget = heli.trueTarget
+	if trueTarget then
+		local tX, tY = trueTarget:getX(), trueTarget:getY()
+		xOffset=math.max(0,xOffset-tX)
+		yOffset=math.max(0,yOffset-tY)
+	end
+
+	if ZombRand(101) <= 50 then
+		xOffset=0-xOffset
+	end
+	if ZombRand(101) <= 50 then
+		yOffset=0-yOffset
+	end
+
+	x = x+xOffset
+	y = y+yOffset
+
+	--[[DEBUG]] print("SWH: DEBUG: eHelicopter_dropCrewOff: "..x..","..y)
+	--for k,v in pairs(heli.crew) do print(" -- k:"..tostring(k).." -- ("..tostring(v)..")") end
+
+	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crew.png", 750, x, y)
+	heli:spawnCrew(x, y, 0)
+	heli.addedFunctionsToEvents.OnHover = false
+end
+
+eHelicopter_PRESETS["speedball_drop"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	forScheduling = true,
 	crashType = {"UH60MedevacFuselage"},
-	hoverOnTargetDuration = 500,
-	dropPackages = {"FEMASupplyDrop"},
-	dropItems = {["EHE.QuarantineFlyer"]=150},
+	hoverOnTargetDuration = 800,
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropSupplies},
 	speed = 0.9,
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
+	attackDelay = 44,
+	attackSpread = 5,
+	attackSplash = 2,
+	attackHitChance = 70,
+	attackDamage = 100,
+	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
+		["attackSingle"] = "eHeliAlternatingShots",
+		["attackLooped"] = "eHeliAlternatingShots",
 		["foundTarget"] = "eHeli_AidDrop_2",
 		["droppingPackage"] = "eHeli_AidDrop_1and3",
 	},
@@ -160,6 +223,43 @@ eHelicopter_PRESETS["FEMA_drop"] = {
 	eventCutOffDayFactor = 0.2145,
 }
 
+eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	forScheduling = true,
+	crashType = {"UH60MedevacFuselage"},
+	hoverOnTargetDuration = 800,
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropSupplies},
+	speed = 0.9,
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
+	scrapVehicles = {"UH60GreenTail"},
+	attackDelay = 44,
+	attackSpread = 5,
+	attackSplash = 2,
+	attackHitChance = 70,
+	attackDamage = 100,
+	hostilePreference = "IsoGameCharacter",
+	eventSoundEffects = {
+		["attackSingle"] = "eHeliAlternatingShots",
+		["attackLooped"] = "eHeliAlternatingShots",
+		["foundTarget"] = "eHeli_AidDrop_2",
+		["droppingPackage"] = "eHeli_AidDrop_1and3",
+	},
+	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff},
+	crew = 
+    {"ArmyCamoGreen",100,0,
+    "ArmyCamoGreen",100,0,
+    "ArmyCamoGreen",100,0,
+    "ArmyCamoGreen",100,0,
+	"ArmyCamoGreen",100,0,
+	"ArmyCamoGreen",100,0, 
+	"ArmyCamoGreen",100,0,
+	"ArmyCamoGreen",100,0,},
+	radioChatter = "AEBS_SupplyDrop",
+	eventStartDayFactor = 0.034,
+	eventCutOffDayFactor = 0.2145,
+}
 
 eHelicopter_PRESETS["jet"] = {
 	speed = 15,
