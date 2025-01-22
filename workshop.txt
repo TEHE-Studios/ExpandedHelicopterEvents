@@ -12,11 +12,20 @@ description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]h
 description=
 description=
 description=[h2]Check out the sub-mods:[/h2]
-description=[img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/TEHE-Studios/SuperWeirdHelicopterEvents/main/images/poster_s.png[/img][/url][img]https://i.imgur.com/YumCnsY.png[/img][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEventsTwitchIntegration/main/images/poster_s.png[/img][/url]
+description=[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/super_weird_images/poster_s.png[/img][/url]
+description=This sub-mod is not meant for a standard Zomboid experience! Enemies will sprint/do things that standard zombies do not - they are however balanced. [b]Back up your saves if you're uncertain![/b]
+description=
+description=[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/twitch_images/poster_s.png[/img][/url]
+description=The mod is intended for streamers who would like their viewers to spawn events.
+description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
+description=After which you can tie numpad presses to your chosen streaming program.
+description=
+description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Touch-portal[/b][/url][/h3]
+description=Let us know if other programs allow for Twitch Event integration!
 description=
 description=
 description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
-description=[h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2530389024][b]SMUI[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2616752828][b]SLEO[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url] [img]https://i.imgur.com/YumCnsY.png[/img] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
+description= [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
 description=
 description=
 description=[h1][b]If you're having an issue or encountering errors:[/b][/h1]
@@ -27,7 +36,7 @@ description=[quote]`C:\Users\<username>\Zomboid\console.txt`[/quote]
 description=The preferred method of reporting issues is through our github's [url=https://github.com/sharkster91/ExpandedHelicopterEvents/issues]issues[/url] page. Alternatively, you can use [url=https://pastebin.com/]pastebin[/url] and share the link in a comment below.
 description=
 description=
-description=[img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][img]https://i.imgur.com/AH72i9j.png[/img][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/SUPPORT.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/supportLogo_sm.png[/img][/url]
+description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/SUPPORT.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/supportLogo_sm.png[/img][/url]
 description=
 description=
 description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/discussions][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/steamToGithub2.png[/img][/url]
@@ -35,7 +44,7 @@ description=
 description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/README.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/steamToGithub.png[/img][/url]
 description=
 description=
-description=[h3]Copyright 2023 shark, Chuckleberry Finn, and TEHE Studios. This item is not authorized for posting on Steam, except under the Steam account named shark.[/h3]
+description=[h3]Copyright 2023 shark, Chuckleberry Finn, and TEHE Studios. This item is not authorized for posting on Steam, except under the Steam account named shark, and/or Chuckleberry Finn.[/h3]
 description=
 tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
 visibility=public
