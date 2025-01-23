@@ -2,13 +2,16 @@
 EHEIsoPlayers = {}
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
-function addToEIP(playerObject)
+function addToEIP(pNum, playerObject)
 	if not playerObject then return end
-	if playerObject:getX() < 1 or playerObject:getY() < 1 then print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getFullName()) return end
+	if playerObject:getX() < 1 or playerObject:getY() < 1 then
+		print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getUsername())
+		return
+	end
 	if playerObject:isDead() then return end
 
 	if not EHEIsoPlayers[playerObject] then
-		print(" -- EHE: IsoPlayers adding:"..playerObject:getFullName())
+		print(" -- EHE: IsoPlayers adding:"..playerObject:getUsername())
 		EHEIsoPlayers[playerObject] = true
 	end
 end
@@ -16,7 +19,7 @@ end
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function removeFromEIP(playerObject)
 	if EHEIsoPlayers[playerObject] then
-		print(" -- EHE: IsoPlayers removing:"..playerObject:getFullName())
+		print(" -- EHE: IsoPlayers removing:"..playerObject:getUsername())
 		EHEIsoPlayers[playerObject] = nil
 	end
 end
@@ -37,9 +40,9 @@ function getActualPlayers()
 	end
 
 	local cleanedPlayerList = {}
-	--print("--getActualPlayers: ")
+	print("--getActualPlayers: ")
 	for playerObj,_ in pairs(players) do
-		--print(" --"..playerObj:getUsername())
+		print(" --"..tostring(playerObj)..", "..playerObj:getUsername())
 		table.insert(cleanedPlayerList, playerObj)
 	end
 
@@ -48,10 +51,10 @@ end
 
 function addActualPlayersToEIP()
 	local playersOnline = getActualPlayers()
-	for _,playerObj in pairs(playersOnline) do addToEIP(playerObj) end
+	for _,playerObj in pairs(playersOnline) do addToEIP(playerObj:getPlayerNum(), playerObj) end
 end
 
-Events.OnCreateLivingCharacter.Add(addToEIP)
+Events.OnCreatePlayer.Add(addToEIP)
 Events.OnCharacterDeath.Add(removeFromEIP)
 
 
