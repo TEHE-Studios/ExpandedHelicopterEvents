@@ -4,28 +4,38 @@ description=[H1][i]This mod replaces the vanilla helicopter event with a more dy
 description=[H3]Furthermore, the mod is designed as a framework and can be easily expandable and modifiable in itself.*[/h3]
 description=
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FAQ.png[/img][/url]
+description=[table]
+description=[tr]
+description=[th][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FAQ.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FAQ.png[/img][/url][/th]
+description=[th][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FEATURES.png[/img][/url][/th]
+description=[th][url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/GITHUB.png[/img][/url][/th]
+description=[/tr]
+description=[/table]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents/blob/main/docs/FEATURES.md][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/FEATURES.png[/img][/url]
 description=
-description=[url=https://github.com/TEHE-Studios/ExpandedHelicopterEvents][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/GITHUB.png[/img][/url]
-description=
-description=
-description=[h2]Check out the sub-mods:[/h2]
-description=[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2580001162][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/super_weird_images/poster_s.png[/img][/url]
-description=This sub-mod is not meant for a standard Zomboid experience! Enemies will sprint/do things that standard zombies do not - they are however balanced. [b]Back up your saves if you're uncertain![/b]
-description=
-description=[url=https://steamcommunity.com/sharedfiles/filedetails/?id=2589034501][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/twitch_images/poster_s.png[/img][/url]
-description=The mod is intended for streamers who would like their viewers to spawn events.
+description=[h2]Included Sub-Mods:[/h2]
+description=[table]
+description=[tr]
+description=[td][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/super_weird_images/poster_s.png[/img][/td]
+description=[td]This sub-mod is not meant for a standard Zomboid experience! Enemies will sprint/do things that standard zombies do not - they are however balanced. [b]Back up your saves if you're uncertain![/b][/td]
+description=[/tr]
+description=[tr]
+description=[td][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/twitch_images/poster_s.png[/img][/td]
+description=[td]The mod is intended for streamers who would like their viewers to spawn events.
 description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu.
 description=After which you can tie numpad presses to your chosen streaming program.
 description=
 description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Touch-portal[/b][/url][/h3]
-description=Let us know if other programs allow for Twitch Event integration!
+description=Let us know if other programs allow for Twitch Event integration![/td]
+description=[/tr]
+description=[/table]
 description=
 description=
 description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
-description= [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url] [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]
+description=[table][tr]
+description=[th][h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h2]  [/th]
+description=[th][h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]  [/th]
+description=[/tr][/table]
 description=
 description=
 description=[h1][b]If you're having an issue or encountering errors:[/b][/h1]
