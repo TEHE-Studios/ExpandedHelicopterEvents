@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outfitManager>
+
+<m_MaleOutfits>
+    <m_Name>EHE_HelicopterPilot</m_Name>
+    <m_Guid>6708173b-2504-48d2-a7ce-8b59b1c1ba25</m_Guid>
+    <m_Top>false</m_Top>
+    <m_Pants>false</m_Pants>
+    <m_AllowPantsHue>false</m_AllowPantsHue>
+    <m_AllowTopTint>false</m_AllowTopTint>
+    <m_AllowTShirtDecal>false</m_AllowTShirtDecal>
+    <m_items>
+        <!-- SPH Helmet -->
+        <itemGUID>28c04952-0f67-45fa-a325-2288b032fe5d</itemGUID>
+    </m_items>
+	<m_items>
+        <!-- Dog Tags - Male -->
+        <itemGUID>49c8541a-7929-4752-bac3-4e303c9b9baf</itemGUID>
+    </m_items>
+	<m_items>
+        <!-- Army T-Shirt -->
+        <itemGUID>0cc9f034-1d90-4f4c-9b17-e1dcf008b356</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- ALICE Webbing -->
+        <itemGUID>f5927b83-59b0-467c-a9be-912ec5813909</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- CWU-27/P -->
+        <itemGUID>25b7d5d3-c92f-4aaa-8fe7-a8563871621c</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- Black Socks -->
+        <itemGUID>56d487e0-b329-45cd-8b35-8463491891fa</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- Army Boots -->
+        <itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+    </m_items>
+</m_MaleOutfits>
+
+<m_MaleOutfits>
+    <m_Name>EHE_Soldier</m_Name>
+    <m_Guid>0b9be4e2-c6fd-4290-b489-c06a7f601a44</m_Guid>
+    <m_Top>false</m_Top>
+    <m_Pants>false</m_Pants>
+    <m_AllowPantsHue>false</m_AllowPantsHue>
+    <m_AllowTopTint>false</m_AllowTopTint>
+    <m_AllowTShirtDecal>false</m_AllowTShirtDecal>
+    <m_items>
+        <!-- PASGT Helmet -->
+        <itemGUID>9709be80-dbd9-4f98-90a6-aaab8e87cd28</itemGUID>
+    </m_items>
+	<m_items>
+        <!-- PASGT Vest -->
+        <itemGUID>1a437dbb-cee9-4013-8e8a-e158acf98b62</itemGUID>
+    </m_items>
+	<m_items>
+        <!-- Dog Tags - Male -->
+        <itemGUID>49c8541a-7929-4752-bac3-4e303c9b9baf</itemGUID>
+    </m_items>
+	<m_items>
+        <!-- Army T-Shirt -->
+        <itemGUID>0cc9f034-1d90-4f4c-9b17-e1dcf008b356</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- ALICE Webbing -->
+        <itemGUID>f5927b83-59b0-467c-a9be-912ec5813909</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- Woodland Jacket -->
+        <itemGUID>b0d642f6-eb11-456c-aeb0-1b190b29a364</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- Woodland Pants -->
+        <itemGUID>d325b65d-497d-4c77-8919-74a65172cb94</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- Black Socks -->
+        <itemGUID>56d487e0-b329-45cd-8b35-8463491891fa</itemGUID>
+    </m_items>
+    <m_items>
+        <!-- Army Boots -->
+        <itemGUID>227cb2d5-05a5-44ed-872d-ac4ca16e80bc</itemGUID>
+    </m_items>
+</m_MaleOutfits>
+
+</outfitManager>
