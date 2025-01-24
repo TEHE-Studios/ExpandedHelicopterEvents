@@ -5,7 +5,7 @@ eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 eHelicopter_PRESETS["military"] = {
 	announcerVoice = true,
 	forScheduling = true,
-	crew = {"EHEMilitaryPilot", "EHESoldier", 75, "EHESoldier", 50},
+	crew = {"EHE_HelicopterPilot", "EHE_Soldier", 75, "EHE_Soldier", 50},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
@@ -143,7 +143,7 @@ local function eHelicopter_dropSupplies(heli)
 	local heliX, heliY, _ = heli:getXYZAsInt()
 	local SuppliesItems = {"556Carton","556Carton","556Carton","556Carton"}
 
-	local moreSuppliesItems = {"556Carton","556Carton","WaterRationCan_Box",}
+	local moreSuppliesItems = {"556Carton","556Carton","556Carton",}
 	local iterations = 10
 	for i=1, iterations do
 		local SuppliesType = moreSuppliesItems[(ZombRand(#moreSuppliesItems)+1)]
@@ -229,7 +229,7 @@ eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
 	forScheduling = true,
 	crashType = {"UH60MedevacFuselage"},
 	hoverOnTargetDuration = 800,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropSupplies},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
 	speed = 0.9,
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
@@ -243,19 +243,18 @@ eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
 		["foundTarget"] = "eHeli_AidDrop_2",
-		["droppingPackage"] = "eHeli_AidDrop_1and3",
 	},
 	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff},
 	crew = 
-    {"ArmyCamoGreen",100,0,
-    "ArmyCamoGreen",100,0,
-    "ArmyCamoGreen",100,0,
-    "ArmyCamoGreen",100,0,
-	"ArmyCamoGreen",100,0,
-	"ArmyCamoGreen",100,0, 
-	"ArmyCamoGreen",100,0,
-	"ArmyCamoGreen",100,0,},
+    {"EHE_Soldier",100,0,
+    "EHE_Soldier",100,0,
+    "EHE_Soldier",100,0,
+    "EHE_Soldier",100,0,
+	"EHE_Soldier",100,0,
+	"EHE_Soldier",100,0, 
+	"EHE_Soldier",100,0,
+	"EHE_Soldier",100,0,},
 	radioChatter = "AEBS_SupplyDrop",
 	eventStartDayFactor = 0.034,
 	eventCutOffDayFactor = 0.2145,
