@@ -1,5 +1,6 @@
 [ ALERT_CONFIG ]
 link1 = Expanded Helicopter Events GitHub = https://github.com/TEHE-Studios/ExpandedHelicopterEvents,
+link2 = Test = https://google.com
 [ ------ ]
 
 [ B24 - Initial ]
