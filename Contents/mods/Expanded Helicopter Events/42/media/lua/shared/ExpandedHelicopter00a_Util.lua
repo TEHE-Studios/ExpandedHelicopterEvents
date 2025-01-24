@@ -254,7 +254,7 @@ function applyFlaresToEvent(vehicle)
 		local sq = getSquare(x+ZombRand(-2,3), y+ZombRand(-2,3), z)
 		if sq then
 			---@type InventoryItem
-			local flare = InventoryItemFactory.CreateItem("EHE.HandFlare")
+			local flare = instanceItem("EHE.HandFlare")
 			flare:getModData()["flareLit"] = true
 			flareSystem.activateFlare(flare, flareSystem.Duration)
 			sq:AddWorldInventoryItem(flare, 0, 0, 0)
