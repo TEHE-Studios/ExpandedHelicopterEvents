@@ -58,4 +58,6 @@ FINAL FINAL UPDATE for B41: (Save for hotfixes)
 - Issues with missing meshes/textures should be fixed.
 - Clothing that was previously removed should de-spawn now.
 - Adjusted some zombie outfits that tried using removed items.
+
+HOTFIX 1: Fixes TR encoding, thanks to VVentos!
 [ ------ ]
