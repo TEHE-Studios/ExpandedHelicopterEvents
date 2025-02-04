@@ -1,0 +1,29 @@
+IG_UI_UA = {
+    IGUI_VehicleNameUH60Green = "УХ-60А",
+    IGUI_VehicleNameUH60GreenFuselage = "Розбитий UH-60A (фюзеляж)",
+    IGUI_VehicleNameUH60GreenTail = "Розбитий UH-60A (хвостове)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Пустеля",
+    IGUI_VehicleNameUH60DesertFuselage = "Розбитий UH-60A Desert (фюзеляж)",
+    IGUI_VehicleNameUH60DesertTail = "Розбитий UH-60A Desert (хвіст)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Розбитий UH-60A Medevac (фюзеляж)",
+    IGUI_VehicleNameUH60MedevacTail = "Розбитий UH-60A Medevac (хвостовий)",
+
+    IGUI_VehicleNameBell206LBMW = "Новини Вертоліт",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Новини вертоліт (фюзеляж)",
+    IGUI_VehicleNameBell206LBMWTail = "News Helicopter (хвіст)",
+
+    IGUI_VehicleNameBell206Police = "Поліцейський вертоліт",
+    IGUI_VehicleNameBell206PoliceFuselage = "Поліцейський вертоліт (фюзеляж)",
+    IGUI_VehicleNameBell206PoliceTail = "Поліцейський вертоліт (хвіст)",
+
+    IGUI_VehicleNameBell206Survivalist = "Цивільний вертоліт",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Аварійне постачання",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
+
+    IGUI_Spent = "Витрачено",
+    IGUI_Lit = "Літ",
+}

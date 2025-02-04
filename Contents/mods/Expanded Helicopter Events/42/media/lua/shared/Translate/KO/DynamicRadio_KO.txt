@@ -1,0 +1,15 @@
+DynamicRadio_KO = {
+    AEBS_SupplyDrop = "공급 패키지가 입고되었습니다."
+    AEBS_Raiders = "이 말이 들린다면 꺼져라"
+    AEBS_SurvivorHeli = "전리품 주자가 출발합니다."
+    AEBS_SamaritanDrop = "아직 살아있는 사람들에게는 우리는 보급품을 가져다주고 있습니다."
+    AEBS_UnauthorizedEntryPolice = "허가받지 않은 항공 활동, 불법적인 법 집행."
+    AEBS_UnauthorizedEntryNews = "허가받지 않은 항공 활동, 언론 불법 침입."
+    AEBS_JetBombing = "퍼지를 위한 탑재물이 들어오고 있습니다."
+    AEBS_JetPass = "제트 패스 입국."
+    AEBS_AirRaid = "집 안에 머물러 피난처를 찾으세요"
+    AEBS_HostileMilitary = "공중 활동 감지됨. 군사 특수 작전 진행 중. 행운을 빕니다."
+    AEBS_PurgeMilitary = "공기 활동 감지됨. 감염된 군중 통제 작업 진행 중."
+    AEBS_PurgeCattle = "공중 활동 감지. 동물 도태 작업 진행 중."
+    AEBS_Military = "공중 활동 감지됨. 대피 작업 진행 중."
+}

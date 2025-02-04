@@ -1,0 +1,29 @@
+IG_UI_HU = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Összetört UH-60A (törzs)",
+    IGUI_VehicleNameUH60GreenTail = "Összetört UH-60A (farok)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A sivatag",
+    IGUI_VehicleNameUH60DesertFuselage = "Összetört UH-60A sivatag (törzs)",
+    IGUI_VehicleNameUH60DesertTail = "Összetört UH-60A sivatag (farok)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Összetört UH-60A Medevac (törzs)",
+    IGUI_VehicleNameUH60MedevacTail = "Összetört UH-60A Medevac (farok)",
+
+    IGUI_VehicleNameBell206LBMW = "Hírek Helikopter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Hírhelikopter (törzs)",
+    IGUI_VehicleNameBell206LBMWTail = "Hírek Helikopter (farok)",
+
+    IGUI_VehicleNameBell206Police = "Rendőrségi helikopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Rendőrségi helikopter (törzs)",
+    IGUI_VehicleNameBell206PoliceTail = "Rendőrségi helikopter (farok)",
+
+    IGUI_VehicleNameBell206Survivalist = "Civil helikopter",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Sürgősségi ellátás",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
+
+    IGUI_Spent = "Költött",
+    IGUI_Lit = "Megvilágított",
+}

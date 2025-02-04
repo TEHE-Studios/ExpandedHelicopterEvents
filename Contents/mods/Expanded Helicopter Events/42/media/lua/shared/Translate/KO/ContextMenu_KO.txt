@@ -1,0 +1,9 @@
+ContextMenu_KO = {
+    ContextMenu_DownHoodie = "후드 다운",
+    ContextMenu_VisorUp = "바이저 업",
+    ContextMenu_VisorDown = "바이저 다운",
+    ContextMenu_Tighten = "죄다",
+    ContextMenu_Untighten = "풀다",
+
+    IGUI_VehiclePartHelicopterInterior = "헬리콥터 내부",
+}

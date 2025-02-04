@@ -1,0 +1,26 @@
+Tooltip_KO = {
+    Tooltip_dismantle_helicopterpart = "송풍기와 용접 마스크를 사용하면 금속을 얻을 수 있습니다.",
+    Tooltip_open_boxes_barehanded = "날카로운 것으로 여는 게 더 빠르겠죠.",
+    Tooltip_Parachute = "찢어서 찢어진 천을 만들 수도 있습니다.",
+    Tooltip_EnergyBar = "생존 키트를 위해 포장된 에너지 바. PT&D에서 제조.",
+    Tooltip_SurvivalVest = "군 조종사를 위한 표준형 생존 조끼입니다.",
+    Tooltip_SurvivalVestBlack = "경찰 수색 및 구조를 위한 표준형 생존 조끼입니다.",
+    Tooltip_SPHMilitary = "표준 규격의 군용 헬리콥터 헬멧입니다."
+    Tooltip_SPHBlack = "검은색의 표준 군용 헬리콥터 헬멧입니다.",
+    Tooltip_SPHPolice = "경찰 항공대가 사용하는 헬리콥터 헬멧입니다.",
+    Tooltip_SPHCivilian = "민간 조종사가 사용하는 헬리콥터 헬멧.",
+
+    Tooltip_FlyerCDC = "건강 권고 전단지처럼 보이네요.",
+    Tooltip_FlyerMilitary = "군대에서 배포한 공지문처럼 보입니다.",
+    Tooltip_CivilDefense = "민방위 홍보물인 것 같네요.",
+
+    Tooltip_WaterSealed = "미국 정부가 배포한 밀봉된 물 배급품입니다."
+    Tooltip_WaterUnsealed = "미국 정부가 배포한 밀봉되지 않은 물 배급량입니다." 
+
+    Tooltip_SupplyBox = "미국 정부의 공급 상자."
+    Tooltip_SamaritanBox = "신비한 사마리아인 집단이 보낸 보급 상자입니다.",
+    Tooltip_BanditBox = "개인 보관함. 읽기"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "신호탄. 실내에서는 발사하지 마세요.",
+    Tooltip_HandFlare = "플레어. 실내에서는 발사하지 마세요."
+}

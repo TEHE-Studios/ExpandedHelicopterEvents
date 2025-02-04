@@ -1,0 +1,3 @@
+Recipe_KO = {
+    Recipe_Open_Supplies = "오픈서플라이",
+}

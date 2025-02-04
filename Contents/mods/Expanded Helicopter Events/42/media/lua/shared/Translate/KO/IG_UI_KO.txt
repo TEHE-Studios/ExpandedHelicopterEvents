@@ -1,0 +1,29 @@
+IG_UI_KO = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "파괴된 UH-60A (동체)",
+    IGUI_VehicleNameUH60GreenTail = "난파된 UH-60A (꼬리)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A 사막",
+    IGUI_VehicleNameUH60DesertFuselage = "난파된 UH-60A 사막 (동체)",
+    IGUI_VehicleNameUH60DesertTail = "난파된 UH-60A 사막(꼬리)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A 의료후송",
+    IGUI_VehicleNameUH60MedevacFuselage = "파괴된 UH-60A Medevac (동체)",
+    IGUI_VehicleNameUH60MedevacTail = "난파된 UH-60A Medevac (꼬리)",
+
+    IGUI_VehicleNameBell206LBMW = "뉴스 헬리콥터",    
+    IGUI_VehicleNameBell206LBMWFuselage = "뉴스 헬리콥터(동체)",
+    IGUI_VehicleNameBell206LBMWTail = "뉴스 헬리콥터(꼬리)",
+
+    IGUI_VehicleNameBell206Police = "경찰 헬리콥터",
+    IGUI_VehicleNameBell206PoliceFuselage = "경찰 헬리콥터(동체)",
+    IGUI_VehicleNameBell206PoliceTail = "경찰 헬리콥터 (꼬리)",
+
+    IGUI_VehicleNameBell206Survivalist = "민간 헬리콥터",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "긴급 물품 투하",
+    IGUI_VehicleNameSurvivorSupplyDrop = "사마리아인 공급 드롭",
+
+    IGUI_Spent = "소비하다",
+    IGUI_Lit = "문학",
+}

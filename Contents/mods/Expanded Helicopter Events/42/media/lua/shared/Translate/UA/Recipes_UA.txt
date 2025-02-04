@@ -1,0 +1,3 @@
+Recipe_UA = {
+    Recipe_Open_Supplies = "Відкрийте Постачання",
+}

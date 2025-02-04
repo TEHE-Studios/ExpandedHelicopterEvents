@@ -1,0 +1,9 @@
+ContextMenu_UA = {
+    ContextMenu_DownHoodie = "капот вниз",
+    ContextMenu_VisorUp = "Visor Up",
+    ContextMenu_VisorDown = "Козирок вниз",
+    ContextMenu_Tighten = "Затягніть",
+    ContextMenu_Untighten = "Розтягніть",
+
+    IGUI_VehiclePartHelicopterInterior = "Інтер'єр вертольота",
+}

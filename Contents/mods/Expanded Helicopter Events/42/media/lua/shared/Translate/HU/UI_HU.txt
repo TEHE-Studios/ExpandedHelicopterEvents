@@ -1,0 +1,11 @@
+UI_HU = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Kibővített helikopteres események"
+    UI_Config_sandBoxMovedText = "A konfigurációs beállítások a sandbox opciókban találhatók.",
+    UI_Config_voiceTitle = "Hangcsomagok",
+
+    UI_Config_resetEventsToolTip = "Ütemezett események visszaállítása vészhelyzet esetén:",
+    UI_Config_resetEvents = "Események visszaállítása",
+    UI_Config_eventMarkersOnToolTip1 = "Kapcsolja be ezt az eseményjelzők engedélyezéséhez.",
+    UI_Config_eventMarkersOnToolTip2 = "Megjegyzés: Az eseményjelzők húzhatók.",
+    UI_Config_eventMarkersOn = "Eseményjelzők",
+}
