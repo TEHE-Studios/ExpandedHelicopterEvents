@@ -1,0 +1,9 @@
+ContextMenu_HU = {
+    ContextMenu_DownHoodie = "Hood Down",
+    ContextMenu_VisorUp = "Visor Up",
+    ContextMenu_VisorDown = "Visor le",
+    ContextMenu_Tighten = "HĂşzza meg",
+    ContextMenu_Untighten = "Oldja meg",
+
+    IGUI_VehiclePartHelicopterInterior = "Helikopter belseje",
+}

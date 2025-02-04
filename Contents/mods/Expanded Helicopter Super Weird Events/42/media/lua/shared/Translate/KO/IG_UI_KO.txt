@@ -1,0 +1,18 @@
+IG_UI_KO = {
+    IGUI_VehicleNameUFO = "미확인 비행 물체",
+
+    IGUI_VehicleNameBell206Spiffo = "스피포 포스 원",
+    IGUI_VehicleNameBell206SpiffoCrashed = "스피포 포스 원(추락)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "스피포 포스 원(동체)",
+    IGUI_VehicleNameBell206SpiffoTail = "스피포 포스 원(꼬리)",
+    IGUI_VehicleNameTISIceCreamTruck = "아이스크림 트럭",
+
+    IGUI_VehicleNameRoflCopter = "오류: 차원 간 이상 현상",
+
+    IGUI_VehicleNameBell206IRS = "벨 206 IRS 에디션",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (추락)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition(동체)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (꼬리)",
+
+    IGUI_VehicleNameSpiffoBurger = "스피포 케어 패키지",
+}

@@ -1,0 +1,56 @@
+Sandbox_FI = {
+    Sandbox_ExpandedHeli = "Laajennetut helikopteritapahtumat",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Ei koskaan"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Harvinainen",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Melko harvinaista",
+    Sandbox_ExpandedHeli_Frequency_option4 = "YleistÃ¤",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Usein",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Hullu",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "IlmahyÃ¶kkÃ¤ysten siirto",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Valitse tosi, jos haluat ilmahyÃ¶kkÃ¤ystapahtuman merkkinÃ¤ siirtymisestÃ¤ vÃ¤hemmÃ¤n haastavista varhaisista pelitapahtumista vihamielisempiin myÃ¶hÃ¤isen pelin tapahtumiin.",
+
+    Sandbox_ExpandedHeli_EventJet = "Suihkukoneet",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Kuinka usein suihkutapahtumia tapahtuu.<br>Suihkukoneet lentÃ¤vÃ¤t pelaajien ohi aiheuttaen laumaliikettÃ¤.",
+
+    Sandbox_ExpandedHeli_EventNews = "Uutiset",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Kuinka usein uutistapahtumat tapahtuvat.<br>Uutiskopterit hiovat lÃ¶ytÃ¤mÃ¤nsÃ¤ kansalaisen ja seuraavat heitÃ¤ lyhyen aikaa.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Valvoa",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Kuinka usein poliisitapahtumia tapahtuu.<br>Poliisi ottaa asiat omiin kÃ¤siinsÃ¤ ja saattaa kansalaisia â€‹â€‹ympÃ¤riinsÃ¤ ampuessaan zombeja.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Sotilaallinen",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Kuinka usein sotilaallisia tapahtumia tapahtuu.<br>Armeija etenee vaiheittain: varoittaa kansalaisia, puhdistaa epÃ¤kuolleet ja lopulta puhdistaa kaikki, mikÃ¤ liikkuu.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Drops",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Kuinka usein FEMA:n avunpudotustapahtumia esiintyy.<br>FEMA suorittaa avun pudotuksia maailmanlopun varhaisessa vaiheessa.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "SelviytyjÃ¤t",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Kuinka usein selviytymistapahtumia esiintyy.<br>EloonjÃ¤Ã¤neet lentÃ¤vÃ¤t ohi vain partiotehtÃ¤vissÃ¤, jotka aiheuttavat laumaliikettÃ¤.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Raider-tapahtumien tiheys.<br>RyÃ¶stÃ¤jÃ¤t hiovat selviytyjiÃ¤ kiusatakseen heitÃ¤ viihteen vuoksi.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samarialaiset",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Kuinka usein samarialaisia â€‹â€‹tapahtumia tapahtuu.<br>Samarialaiset luovuttavat tarvikkeita auttaakseen selviytyjiÃ¤.",
+
+    Sandbox_ExpandedHeli_StartDay = "AloituspÃ¤ivÃ¤",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "NÃ¤in tapahtuu pelipÃ¤ivÃ¤nÃ¤. Sinun tulee ottaa huomioon"months into the apocalypse"asetukset.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Aikataulun kesto",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Kuinka monta pÃ¤ivÃ¤Ã¤ ajastin on kÃ¤ynnissÃ¤ aloituspÃ¤ivÃ¤stÃ¤.<br>Ajoitus sÃ¤Ã¤tÃ¤Ã¤ tapahtuman etenemistÃ¤ tÃ¤hÃ¤n kestoon sopivaksi.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Jatka keston ylittÃ¤vien tapahtumien ajoittamista",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normaalisti ajoitus pÃ¤Ã¤ttyy kestorajaan, ja tÃ¤mÃ¤n kytkeminen pÃ¤Ã¤lle jatkaa tapahtumien ajoittamista keston jÃ¤lkeen. Tapahtumat etenevÃ¤t edelleen vaiheittain keston mukaan, mutta tapahtumat eivÃ¤t koskaan lopu aikataulusta.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Ei jatkuvaa aikataulutusta"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Jatka aikataulutusta: Kaikki tapahtumat",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Jatka aikataulutusta: Vain myÃ¶hÃ¤Ã¤n peli",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "SÃ¤Ã¤ vaikuttaa tapahtumiin",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "EstÃ¤Ã¤kÃ¶ sÃ¤Ã¤ tapahtumat vai aiheuttaako niiden kaatumisen.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "TÃ¶rmÃ¤ysmahdollisuuden kerroin",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "TÃ¤mÃ¤ kerrotaan tÃ¶rmÃ¤ysmahdollisuutta vastaan, 0 estÃ¤Ã¤ kaatumiset yhdessÃ¤.",
+}

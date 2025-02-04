@@ -1,0 +1,29 @@
+IG_UI_NL = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Verwoeste UH-60A (romp)",
+    IGUI_VehicleNameUH60GreenTail = "Verwoeste UH-60A (staart)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Woestijn",
+    IGUI_VehicleNameUH60DesertFuselage = "Verwoeste UH-60A Desert (romp)",
+    IGUI_VehicleNameUH60DesertTail = "Verwoeste UH-60A Desert (staart)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Verwoeste UH-60A Medevac (romp)",
+    IGUI_VehicleNameUH60MedevacTail = "Verwoeste UH-60A Medevac (staart)",
+
+    IGUI_VehicleNameBell206LBMW = "Nieuws Helikopter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Nieuws Helikopter (Romp)",
+    IGUI_VehicleNameBell206LBMWTail = "Nieuws Helikopter (staart)",
+
+    IGUI_VehicleNameBell206Police = "Politiehelikopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Politiehelikopter (romp)",
+    IGUI_VehicleNameBell206PoliceTail = "Politiehelikopter (staart)",
+
+    IGUI_VehicleNameBell206Survivalist = "Civiele helikopter",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Noodvoorziening drop",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritaanse bevoorradingsdrop",
+
+    IGUI_Spent = "Uitgegeven",
+    IGUI_Lit = "Verlicht",
+}

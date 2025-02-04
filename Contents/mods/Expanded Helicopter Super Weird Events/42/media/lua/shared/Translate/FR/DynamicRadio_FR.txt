@@ -1,0 +1,3 @@
+DynamicRadio_FR = {
+	AEBS_buffcorrell = "Ouais, qu'est-ce qui se passe, c'est ton pote Buffcorrell qui recommence avec des reprises de musiques protégées par le droit d'auteur, mais ce n'est rien d'autre qu'un chicken wang, à moins que tu ne sois un streamer Twitch. Esk. Esk. Esk esk. Leeeeeeeeeet, préparez-vous et partez."
+}

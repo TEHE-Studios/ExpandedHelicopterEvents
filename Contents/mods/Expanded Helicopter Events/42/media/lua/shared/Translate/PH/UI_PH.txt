@@ -1,0 +1,11 @@
+UI_PH = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Pinalawak na Mga Kaganapan sa Helicopter"
+    UI_Config_sandBoxMovedText = "Ang mga opsyon sa pagsasaayos ay matatagpuan sa mga opsyon sa sandbox.",
+    UI_Config_voiceTitle = "Mga Voice Pack",
+
+    UI_Config_resetEventsToolTip = "I-reset ang mga nakaiskedyul na kaganapan sa kaso ng emergency:",
+    UI_Config_resetEvents = "I-reset ang Mga Kaganapan",
+    UI_Config_eventMarkersOnToolTip1 = "I-toggle ito upang paganahin ang mga marker ng kaganapan.",
+    UI_Config_eventMarkersOnToolTip2 = "Tandaan: Maaaring i-drag ang mga marker ng kaganapan.",
+    UI_Config_eventMarkersOn = "Mga Marka ng Kaganapan",
+}

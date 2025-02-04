@@ -1,0 +1,26 @@
+Tooltip_TH = {
+    Tooltip_dismantle_helicopterpart = "การใช้ไฟเป่าแก๊สและหน้ากากเชื่อมจะทำให้ได้โลหะ",
+    Tooltip_open_boxes_barehanded = "น่าจะเปิดได้เร็วกว่าถ้าใช้ของมีคม",
+    Tooltip_Parachute = "สามารถฉีกเป็นชิ้นผ้าขาดได้",
+    Tooltip_EnergyBar = "บาร์พลังงานบรรจุในกล่องอุปกรณ์เอาตัวรอด ผลิตโดย PT&D",
+    Tooltip_SurvivalVest = "เสื้อกั๊กเอาตัวรอดแบบมาตรฐานสำหรับนักบินทหาร",
+    Tooltip_SurvivalVestBlack = "เสื้อกั๊กช่วยชีวิตแบบมาตรฐานสำหรับการค้นหาและกู้ภัยของตำรวจ",
+    Tooltip_SPHMilitary = "หมวกเฮลิคอปเตอร์ทหารแบบมาตรฐาน"
+    Tooltip_SPHBlack = "หมวกเฮลิคอปเตอร์ทหารแบบมาตรฐานสีดำ",
+    Tooltip_SPHPolice = "หมวกเฮลิคอปเตอร์ที่กองบินตำรวจใช้",
+    Tooltip_SPHCivilian = "หมวกเฮลิคอปเตอร์ที่นักบินพลเรือนใช้",
+
+    Tooltip_FlyerCDC = "มีลักษณะเหมือนใบปลิวคำแนะนำด้านสุขภาพ",
+    Tooltip_FlyerMilitary = "มีลักษณะเหมือนแผ่นพับประกาศจากกองทหาร",
+    Tooltip_CivilDefense = "มีลักษณะเหมือนเครื่องบินป้องกันพลเรือน",
+
+    Tooltip_WaterSealed = "น้ำบรรจุปิดผนึกที่รัฐบาลสหรัฐอเมริกาแจกจ่าย"
+    Tooltip_WaterUnsealed = "น้ำไม่ปิดผนึกที่รัฐบาลสหรัฐอเมริกาแจกจ่าย" 
+
+    Tooltip_SupplyBox = "กล่องอุปกรณ์จากรัฐบาลสหรัฐอเมริกา"
+    Tooltip_SamaritanBox = "กล่องเสบียงจากกลุ่มผู้ใจบุญลึกลับ",
+    Tooltip_BanditBox = "กล่องเก็บของส่วนตัว อ่าน..."MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "สัญญาณไฟห้ามจุดในที่ร่ม",
+    Tooltip_HandFlare = "เปลวไฟ ห้ามจุดไฟในที่ร่ม"
+}

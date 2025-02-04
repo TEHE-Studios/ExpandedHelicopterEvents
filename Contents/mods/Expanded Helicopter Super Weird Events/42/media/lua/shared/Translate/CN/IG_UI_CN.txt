@@ -1,0 +1,18 @@
+IG_UI_CN = {
+    IGUI_VehicleNameUFO = "飞碟",
+
+    IGUI_VehicleNameBell206Spiffo = "斯皮弗力量一号",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One（坠毁）",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One（机身）",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One（尾部）",
+    IGUI_VehicleNameTISIceCreamTruck = "冰淇淋车",
+
+    IGUI_VehicleNameRoflCopter = "错误：跨维度异常",
+
+    IGUI_VehicleNameBell206IRS = "贝尔 206 IRS 版",
+    IGUI_VehicleNameBell206IRSCrashed = "贝尔 206 IRS 版（坠毁）",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS 版（机身）",
+    IGUI_VehicleNameBell206IRSTail = "贝尔 206 IRS 版（尾部）",
+
+    IGUI_VehicleNameSpiffoBurger = "Spiffo 的护理包",
+}

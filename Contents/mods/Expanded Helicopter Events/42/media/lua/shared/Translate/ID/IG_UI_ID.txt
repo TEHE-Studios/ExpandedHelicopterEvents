@@ -1,0 +1,29 @@
+IG_UI_ID = {
+    IGUI_VehicleNameUH60Green = "Pesawat UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Badan pesawat UH-60A yang hancur",
+    IGUI_VehicleNameUH60GreenTail = "Bangkai UH-60A (Ekor)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Gurun",
+    IGUI_VehicleNameUH60DesertFuselage = "Bangkai Pesawat UH-60A Desert (Badan Pesawat)",
+    IGUI_VehicleNameUH60DesertTail = "Bangkai UH-60A Desert (Ekor)",
+
+    IGUI_VehicleNameUH60Medevac = "Evakuasi Medis UH-60A",
+    IGUI_VehicleNameUH60MedevacFuselage = "Pesawat Medevac UH-60A yang Hancur (Badan Pesawat)",
+    IGUI_VehicleNameUH60MedevacTail = "Bangkai Kapal Medevac UH-60A (Ekor)",
+
+    IGUI_VehicleNameBell206LBMW = "Berita Helikopter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Berita Helikopter (Badan Pesawat)",
+    IGUI_VehicleNameBell206LBMWTail = "Berita Helikopter (Ekor)",
+
+    IGUI_VehicleNameBell206Police = "Helikopter Polisi",
+    IGUI_VehicleNameBell206PoliceFuselage = "Helikopter Polisi (Badan Pesawat)",
+    IGUI_VehicleNameBell206PoliceTail = "Helikopter Polisi (Ekor)",
+
+    IGUI_VehicleNameBell206Survivalist = "Helikopter Sipil",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Penurunan Pasokan Darurat",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Penurunan Pasokan Samaria",
+
+    IGUI_Spent = "Dihabiskan",
+    IGUI_Lit = "Menyala",
+}

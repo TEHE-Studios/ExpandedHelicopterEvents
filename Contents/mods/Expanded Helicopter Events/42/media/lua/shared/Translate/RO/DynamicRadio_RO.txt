@@ -1,0 +1,15 @@
+DynamicRadio_RO = {
+    AEBS_SupplyDrop = "Pachet de aprovizionare inbound."
+    AEBS_Raiders = "Dacă auzi asta, f-"
+    AEBS_SurvivorHeli = "Loot Runner pleacă."
+    AEBS_SamaritanDrop = "Oricui este încă în viață, aducem provizii."
+    AEBS_UnauthorizedEntryPolice = "Activitate aeriană neautorizată, forță de aplicare a legii."
+    AEBS_UnauthorizedEntryNews = "Activitate aeriană neautorizată, pătrunzător al presei."
+    AEBS_JetBombing = "Sarcină utilă pentru purjare la intrare."
+    AEBS_JetPass = "Jet pass inbound."
+    AEBS_AirRaid = "RĂMÂNI ÎN UȘI ȘI CAUTĂ Adăpost"
+    AEBS_HostileMilitary = "Activitatea aerului a fost detectată. Operațiuni militare speciale în curs. Dumnezeule."
+    AEBS_PurgeMilitary = "Activitatea aerului a fost detectată. Operațiuni de control al mulțimilor infectate în desfășurare."
+    AEBS_PurgeCattle = "Activitatea aerului a fost detectată. Operațiuni de sacrificare a animalelor în curs."
+    AEBS_Military = "Activitatea aerului a fost detectată. Operațiuni de evacuare în curs."
+}

@@ -1,0 +1,56 @@
+Sandbox_CH = {
+    Sandbox_ExpandedHeli = "擴大直升機活動",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "絕不"
+    Sandbox_ExpandedHeli_Frequency_option2 = "稀有的",
+    Sandbox_ExpandedHeli_Frequency_option3 = "罕見",
+    Sandbox_ExpandedHeli_Frequency_option4 = "常見的",
+    Sandbox_ExpandedHeli_Frequency_option5 = "頻繁",
+    Sandbox_ExpandedHeli_Frequency_option6 = "瘋狂的",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "空襲過渡",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "如果您希望空襲事件標誌著遊戲早期較不具挑戰性的事件轉變為遊戲後期更具敵意的事件，請選擇 true。",
+
+    Sandbox_ExpandedHeli_EventJet = "噴射機",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "噴射事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventNews = "訊息",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "新聞事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventPolice = "警察",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "警察事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventMilitary = "軍隊",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "軍事事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA 援助下降",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA 援助空投活動發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "倖存者",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "倖存者事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventRaider = "攻略",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "襲擊者事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "撒瑪利亞人",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "撒瑪利亞人事件發生的頻率。",
+
+    Sandbox_ExpandedHeli_StartDay = "開始日",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "這就是遊戲事件發生的那天的情況。你需要考慮"months into the apocalypse"設定.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "調度程序持續時間",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "調度程序從開始日開始運行多少天。",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "繼續安排超出持續時間的活動",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "通常，調度程序會在持續時間限制時結束，啟用此功能可繼續安排持續時間以外的事件。活動仍將根據持續時間分階段進行，但活動永遠不會停止安排。",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "沒有繼續安排"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "繼續安排：所有活動",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "繼續安排：僅限遊戲後期",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "天氣會影響活動",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "天氣是否會阻礙賽事，或導致賽事失敗。",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "碰撞機率乘數",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "這是與崩潰幾率相乘的，0 將防止所有崩潰。",
+}

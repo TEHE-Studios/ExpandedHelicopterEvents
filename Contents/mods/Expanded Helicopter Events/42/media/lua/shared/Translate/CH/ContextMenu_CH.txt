@@ -1,0 +1,9 @@
+ContextMenu_CH = {
+    ContextMenu_DownHoodie = "風帽放下",
+    ContextMenu_VisorUp = "遮陽板升起",
+    ContextMenu_VisorDown = "遮陽板放下",
+    ContextMenu_Tighten = "擰緊",
+    ContextMenu_Untighten = "鬆開",
+
+    IGUI_VehiclePartHelicopterInterior = "直升機內部",
+}

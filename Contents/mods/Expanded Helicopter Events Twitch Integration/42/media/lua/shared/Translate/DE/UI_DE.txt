@@ -1,0 +1,11 @@
+UI_DE = {
+    UI_Config_twitchIntegrationText = "Twitch-Integration",
+    UI_Config_twitchIntegrationToolTip1 = "Für eine nahtlose Integration ist Streamdeck oder ein ähnliches Programm erforderlich.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternativ können Sie die Nummernblocktasten auch manuell verwenden.",
+    UI_Config_twitchIntegrationOnly = "Ereignisse außerhalb der Twitch-Integration deaktivieren",
+    UI_Config_twitchStreamerTargeted = "Nur als Koop-Host anvisieren",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Stunden im Spiel, bevor Ereignisse eintreten können",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Wie viele Spielstunden vor Ereignissen zulässig sind.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Wie viele Spielstunden müssen zwischen den Ereignissen vergehen?"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Wie viele Spielstunden müssen zwischen Ereignissen vergehen."
+}

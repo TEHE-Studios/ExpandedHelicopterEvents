@@ -1,0 +1,3 @@
+DynamicRadio_PL = {
+	AEBS_buffcorrell = "tak, co tam słychać? To twój kumpel buffcorrell, znowu to samo, znowu to samo, z kilkoma coverami chronionymi prawem autorskim, ale to nic innego jak kurczakowy wang, chyba że jesteś streamerem na Twitchu. esk. esk. esk. leeeeeeeeeet ogarnij się i. idź."
+}

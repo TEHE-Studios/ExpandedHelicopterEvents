@@ -1,0 +1,3 @@
+Recipe_RO = {
+    Recipe_Open_Supplies = "Deschideți consumabile",
+}

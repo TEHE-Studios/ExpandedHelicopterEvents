@@ -1,0 +1,11 @@
+UI_PT = {
+    UI_Config_twitchIntegrationText = "Integração Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "O Stream Deck ou um programa similar é necessário para uma integração perfeita.",
+    UI_Config_twitchIntegrationToolTip2 = "Como alternativa, você pode usar as teclas do teclado numérico manualmente.",
+    UI_Config_twitchIntegrationOnly = "Desabilitar eventos fora da integração do Twitch",
+    UI_Config_twitchStreamerTargeted = "Somente host cooperativo de destino",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Horas no jogo antes que os eventos possam ocorrer",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Quantas horas de jogo antes dos eventos são permitidas.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Quantas horas de jogo devem passar entre os eventos"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Quantas horas de jogo devem passar entre os eventos."
+}

@@ -1,0 +1,56 @@
+Sandbox_TH = {
+    Sandbox_ExpandedHeli = "กิจกรรมเฮลิคอปเตอร์ขยาย",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "ไม่เคย"
+    Sandbox_ExpandedHeli_Frequency_option2 = "หายาก",
+    Sandbox_ExpandedHeli_Frequency_option3 = "ไม่ธรรมดา",
+    Sandbox_ExpandedHeli_Frequency_option4 = "ทั่วไป",
+    Sandbox_ExpandedHeli_Frequency_option5 = "บ่อย",
+    Sandbox_ExpandedHeli_Frequency_option6 = "บ้า",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "การเปลี่ยนผ่านการโจมตีทางอากาศ",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "เลือกจริงหากคุณต้องการให้เหตุการณ์โจมตีทางอากาศเป็นสัญญาณการเปลี่ยนแปลงจากเหตุการณ์ในช่วงต้นเกมที่ท้าทายน้อยกว่าไปเป็นเหตุการณ์ในช่วงท้ายเกมที่เป็นศัตรูมากขึ้น",
+
+    Sandbox_ExpandedHeli_EventJet = "เครื่องบินเจ็ต",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "เหตุการณ์เครื่องบินเจ็ตเกิดขึ้นบ่อยแค่ไหน<br>เครื่องบินเจ็ตบินผ่านผู้เล่นทำให้ฝูงศัตรูเคลื่อนตัว",
+
+    Sandbox_ExpandedHeli_EventNews = "ข่าว",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "เหตุการณ์ข่าวเกิดขึ้นบ่อยแค่ไหน นักข่าวจะมุ่งเป้าไปที่ประชาชนทุกคนที่พบและติดตามพวกเขาไปชั่วระยะเวลาสั้นๆ",
+
+    Sandbox_ExpandedHeli_EventPolice = "ตำรวจ",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "เหตุการณ์ตำรวจเกิดขึ้นบ่อยแค่ไหน<br>ตำรวจจะดำเนินการด้วยตนเองและคุ้มกันประชาชนไปพร้อมๆ กับยิงซอมบี้",
+
+    Sandbox_ExpandedHeli_EventMilitary = "ทหาร",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "เหตุการณ์ทางทหารเกิดขึ้นบ่อยแค่ไหน กองทัพจะผ่านขั้นตอนต่างๆ ดังนี้ เตือนประชาชน กำจัดพวกอันเดด และสุดท้าย กำจัดทุกสิ่งที่เคลื่อนไหว",
+
+    Sandbox_ExpandedHeli_EventFEMA = "ความช่วยเหลือจาก FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA จะดำเนินการมอบความช่วยเหลือบ่อยเพียงใดในช่วงเริ่มต้นของวิกฤตการณ์",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "ผู้รอดชีวิต",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "เหตุการณ์ผู้รอดชีวิตเกิดขึ้นบ่อยแค่ไหน<br>ผู้รอดชีวิตจะบินผ่านเฉพาะภารกิจสอดแนมเท่านั้น ซึ่งจะทำให้ฝูงศัตรูเคลื่อนตัว",
+
+    Sandbox_ExpandedHeli_EventRaider = "โจรบุก",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "เหตุการณ์ผู้บุกรุกเกิดขึ้นบ่อยแค่ไหน ผู้บุกรุกจะมุ่งเป้าไปที่ผู้รอดชีวิตเพื่อทรมานพวกเขาเพื่อความบันเทิง",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "ชาวสะมาเรีย",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "เหตุการณ์ซามาริตันเกิดขึ้นบ่อยแค่ไหน<br>ชาวซามาริตันจะนำสิ่งของมาแจกเพื่อช่วยเหลือผู้รอดชีวิต",
+
+    Sandbox_ExpandedHeli_StartDay = "วันเริ่มต้น",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "นี่คือเหตุการณ์ที่เกิดขึ้นในเกมในแต่ละวัน คุณจะต้องคำนึงถึง"months into the apocalypse"การตั้งค่า.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "ระยะเวลาการจัดกำหนดการ",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "ตัวกำหนดตารางการทำงานมีเวลาทำงานกี่วันนับจากวันเริ่มต้น<br>ตัวกำหนดตารางการทำงานจะปรับความคืบหน้าของเหตุการณ์ให้พอดีกับช่วงเวลานี้",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "ดำเนินการจัดกำหนดการกิจกรรมต่อหลังจากสิ้นสุดระยะเวลา",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "โดยปกติตัวกำหนดเวลาจะสิ้นสุดเมื่อถึงระยะเวลาที่กำหนด หากเปิดใช้งานตัวกำหนดเวลานี้ ตัวกำหนดเวลาจะยังคงดำเนินต่อเมื่อเหตุการณ์เกินระยะเวลาที่กำหนด เหตุการณ์จะยังคงดำเนินต่อไปตามขั้นตอนต่างๆ ตามระยะเวลา แต่เหตุการณ์จะไม่หยุดถูกกำหนดเวลา",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "ไม่มีการจัดกำหนดการต่อเนื่อง"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "ดำเนินการจัดกำหนดการต่อ: กิจกรรมทั้งหมด",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "ดำเนินการจัดตารางต่อ: ช่วงท้ายเกมเท่านั้น",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "สภาพอากาศจะมีผลกระทบต่อเหตุการณ์ต่างๆ",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "ไม่ว่าสภาพอากาศจะขัดขวางเหตุการณ์หรือทำให้เกิดอุบัติเหตุหรือไม่",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "ตัวคูณโอกาสการชน",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "ค่านี้จะคูณกับโอกาสเกิดการขัดข้อง โดยค่า 0 จะป้องกันไม่ให้เกิดการขัดข้องทั้งหมด",
+}

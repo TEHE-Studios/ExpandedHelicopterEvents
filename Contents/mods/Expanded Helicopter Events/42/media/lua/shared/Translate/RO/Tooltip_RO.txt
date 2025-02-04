@@ -1,0 +1,26 @@
+Tooltip_RO = {
+    Tooltip_dismantle_helicopterpart = "Folosirea unui pistolet și a unei măști de sudură va produce metal.",
+    Tooltip_open_boxes_barehanded = "Ar fi mai rapid să se deschidă cu ceva ascuțit.",
+    Tooltip_Parachute = "Poate fi rupt pentru a face pânză ruptă.",
+    Tooltip_EnergyBar = "Un baton energetic ambalat pentru truse de supraviețuire. Fabricat de PT&D.",
+    Tooltip_SurvivalVest = "Vestă standard de supraviețuire pentru piloții militari.",
+    Tooltip_SurvivalVestBlack = "Vestă standard de supraviețuire pentru căutarea și salvarea poliției.",
+    Tooltip_SPHMilitary = "Casca standard pentru elicopter militar."
+    Tooltip_SPHBlack = "Casca standard pentru elicopter militar de culoare neagră.",
+    Tooltip_SPHPolice = "Cască de elicopter folosită de aripile aeriene ale poliției.",
+    Tooltip_SPHCivilian = "Cască de elicopter folosită de piloții civili.",
+
+    Tooltip_FlyerCDC = "Arată ca un fluturaș cu recomandări de sănătate.",
+    Tooltip_FlyerMilitary = "Arată ca un pliant de notificare de la armată.",
+    Tooltip_CivilDefense = "Arată ca un fluturaș de apărare civilă.",
+
+    Tooltip_WaterSealed = "Sealed Water Ration distribuită de Guvernul SUA."
+    Tooltip_WaterUnsealed = "Rație de apă nesigilată distribuită de guvernul SUA." 
+
+    Tooltip_SupplyBox = "Cutie de aprovizionare de la Guvernul SUA."
+    Tooltip_SamaritanBox = "Cutie de aprovizionare de la un grup de samariteni misterioși.",
+    Tooltip_BanditBox = "Cutie personală. Citeste"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Flare de semnalizare. Nu trageți în interior.",
+    Tooltip_HandFlare = "Flare. Nu trageți în interior."
+}

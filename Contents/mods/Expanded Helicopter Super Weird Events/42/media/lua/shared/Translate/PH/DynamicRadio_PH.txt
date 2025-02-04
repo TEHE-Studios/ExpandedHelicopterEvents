@@ -1,0 +1,3 @@
+DynamicRadio_PH = {
+	AEBS_buffcorrell = "yeah what's poppin' it's your boy buffcorrell back at it at it again with some copyrighted music covers, but ain't no thang but a chicken wang, maliban kung isa kang twitch streamer. esk. esk. esk esk. leeeeeeeeeet's get reeeady and. pumunta ka."
+}

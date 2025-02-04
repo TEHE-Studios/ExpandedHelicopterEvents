@@ -1,0 +1,18 @@
+IG_UI_FR = {
+    IGUI_VehicleNameUFO = "Objet volant non identifié",
+
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (Crash)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (fuselage)",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (Queue)",
+    IGUI_VehicleNameTISIceCreamTruck = "Camion de glaces",
+
+    IGUI_VehicleNameRoflCopter = "ERREUR : Anomalie interdimensionnelle",
+
+    IGUI_VehicleNameBell206IRS = "Édition IRS de la cloche 206",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (accidenté)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 Édition IRS (Fuselage)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (Queue)",
+
+    IGUI_VehicleNameSpiffoBurger = "Le colis de Spiffo",
+}

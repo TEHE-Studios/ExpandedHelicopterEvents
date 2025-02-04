@@ -1,0 +1,11 @@
+UI_CA = {
+    UI_Config_twitchIntegrationText = "Integració de Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "Es requereix una plataforma de reproducció o un programa similar per a una integració perfecta.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternativament, podeu utilitzar les tecles del teclat numèric manualment.",
+    UI_Config_twitchIntegrationOnly = "Desactiva els esdeveniments fora de la integració de Twitch",
+    UI_Config_twitchStreamerTargeted = "Només l'amfitrió cooperatiu objectiu",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Hores dins del joc abans que es puguin produir els esdeveniments",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Quantes hores de joc abans dels esdeveniments es permeten.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Quantes hores de joc han de passar entre esdeveniments"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Quantes hores de joc han de passar entre esdeveniments."
+}

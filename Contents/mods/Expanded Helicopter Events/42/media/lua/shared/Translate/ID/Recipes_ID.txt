@@ -1,0 +1,3 @@
+Recipe_ID = {
+    Recipe_Open_Supplies = "Persediaan Terbuka",
+}

@@ -4,7 +4,7 @@
 AR/*.txt text working-tree-encoding=cp1252 encoding=utf-8,
 CA/*.txt text working-tree-encoding=ISO-8859-15 encoding=utf-8,
 CS/*.txt text working-tree-encoding=cp1250 encoding=utf-8,
-KO/*.txt text working-tree-encoding=utf-16 encoding=utf-8,
+KO/*.txt text working-tree-encoding=utf-16BE encoding=utf-8,
 
 AF/*.txt text working-tree-encoding=utf-8 encoding=utf-8,
 CH/*.txt text working-tree-encoding=utf-8 encoding=utf-8,

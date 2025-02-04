@@ -1,0 +1,5 @@
+UI_PL = {
+    UI_Intro1 = "TO SĄ CZASY KOŃCOWE",
+    UI_Intro2 = "JEDNAK NIE ZADEKLAROWAŁEŚ CAŁKOWITEGO DOCHODU BRUTTO",
+    UI_Intro3 = "Oto jak można było uniknąć płacenia podatków",
+}

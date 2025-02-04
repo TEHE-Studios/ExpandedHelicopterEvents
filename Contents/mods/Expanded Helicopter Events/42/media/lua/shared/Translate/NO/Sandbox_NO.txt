@@ -1,0 +1,56 @@
+Sandbox_NO = {
+    Sandbox_ExpandedHeli = "Utvidede helikopterarrangementer",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Aldri"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Sjelden",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Uvanlig",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Vanlig",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Hyppig",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Sinnsyk",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Flyangrepsovergang",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Velg sant hvis du vil at en luftangrepshendelse skal signalisere et skifte fra mindre utfordrende begivenheter i tidlig spill til mer fiendtlige hendelser i slutten av spillet.",
+
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Hvor hyppige jethendelser forekommer.<br>Jets flyr forbi spillere og forÃ¥rsaker hordebevegelser.",
+
+    Sandbox_ExpandedHeli_EventNews = "Nyheter",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Hvor hyppige nyhetshendelser oppstÃ¥r.<br>Nyhetschoppere vil finpusse alle innbyggere de finner og fÃ¸lge dem rundt i en kort stund.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Politi",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Hvor hyppige politiarrangementer forekommer.<br>Politiet vil ta saken i egne hender og eskortere borgere rundt mens de skyter mot zombier.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "MilitÃ¦r",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Hvor hyppige militÃ¦re hendelser forekommer.<br>MilitÃ¦ret vil gÃ¥ gjennom stadier: advare innbyggerne, rense de vandÃ¸de, og til slutt rense alt som beveger seg.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Drops",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Hvor hyppige hendelser med FEMA-bistandsfall forekommer.<br>FEMA vil gjennomfÃ¸re hjelpetiltak tidlig i apokalypsen.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Overlevende",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Hvor hyppige overlevende hendelser forekommer.<br>Overlevende vil bare fly forbi pÃ¥ speideroppdrag som forÃ¥rsaker hordebevegelser.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Hvor hyppige raider-begivenheter forekommer.<br>Raiders vil finpusse overlevende for Ã¥ plage dem for litt underholdning.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "samaritaner",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Hvor hyppige samaritanhendelser forekommer.<br>Samaritaner vil levere forsyninger for Ã¥ hjelpe overlevende.",
+
+    Sandbox_ExpandedHeli_StartDay = "Startdag",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Dette er hva dagen inn i spillet hendelser inntreffer. Du mÃ¥ ta hensyn"months into the apocalypse"innstillinger.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Planleggerens varighet",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Hvor mange dager planleggeren kjÃ¸rer fra startdagen.<br>Planleggingen vil justere aktivitetsprogresjonen for Ã¥ passe til denne varigheten.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Fortsett Ã¥ planlegge hendelser utover varighet",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normalt slutter planleggeren ved varighetsgrensen, og Ã¥ slÃ¥ denne pÃ¥ fortsetter Ã¥ planlegge hendelser utover varigheten. Arrangementer vil fortsatt gÃ¥ gjennom stadier i henhold til varigheten, men hendelser vil aldri slutte Ã¥ bli planlagt.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Ingen fortsatt planlegging"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Fortsett planlegging: Alle arrangementer",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Fortsett planlegging: Kun sent i spillet",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "VÃ¦ret vil pÃ¥virke hendelsene",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Om vÃ¦ret vil forhindre hendelser, eller forÃ¥rsake krasj.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Crash Chance Multiplikator",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Dette multipliseres med krasj sjanse, 0 vil forhindre krasj sammen.",
+}

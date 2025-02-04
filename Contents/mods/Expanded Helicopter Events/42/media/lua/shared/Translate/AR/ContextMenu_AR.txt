@@ -1,0 +1,9 @@
+ContextMenu_AR = {
+    ContextMenu_DownHoodie = "Capucha abajo",
+    ContextMenu_VisorUp = "Visera hacia arriba",
+    ContextMenu_VisorDown = "Visera abajo",
+    ContextMenu_Tighten = "Apretar",
+    ContextMenu_Untighten = "Aflojar",
+
+    IGUI_VehiclePartHelicopterInterior = "Interior del helicÃ³ptero",
+}

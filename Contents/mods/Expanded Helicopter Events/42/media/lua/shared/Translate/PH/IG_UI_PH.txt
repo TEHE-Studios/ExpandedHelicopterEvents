@@ -1,0 +1,29 @@
+IG_UI_PH = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Nawasak na UH-60A (Fuselage)",
+    IGUI_VehicleNameUH60GreenTail = "Wrecked UH-60A (Tail)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Disyerto",
+    IGUI_VehicleNameUH60DesertFuselage = "Nawasak na UH-60A Desert (Fuselage)",
+    IGUI_VehicleNameUH60DesertTail = "Nawasak na UH-60A Desert (Tail)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Wrecked UH-60A Medevac (Fuselage)",
+    IGUI_VehicleNameUH60MedevacTail = "Wrecked UH-60A Medevac (Butot)",
+
+    IGUI_VehicleNameBell206LBMW = "Balita Helicopter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "News Helicopter (Fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "News Helicopter (Tail)",
+
+    IGUI_VehicleNameBell206Police = "Helicopter ng pulisya",
+    IGUI_VehicleNameBell206PoliceFuselage = "Police Helicopter (Fuselage)",
+    IGUI_VehicleNameBell206PoliceTail = "Police Helicopter (Butot)",
+
+    IGUI_VehicleNameBell206Survivalist = "Sibilyang Helicopter",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Emergency Supply Drop",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
+
+    IGUI_Spent = "Ginastos",
+    IGUI_Lit = "Lit",
+}

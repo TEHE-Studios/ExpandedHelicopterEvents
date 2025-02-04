@@ -1,0 +1,3 @@
+Recipe_FI = {
+    Recipe_Open_Supplies = "Avaa Tarvikkeet",
+}

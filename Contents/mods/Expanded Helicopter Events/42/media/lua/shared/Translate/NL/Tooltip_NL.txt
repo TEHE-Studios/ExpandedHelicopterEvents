@@ -1,0 +1,26 @@
+Tooltip_NL = {
+    Tooltip_dismantle_helicopterpart = "Bij gebruik van een brander en een lasmasker ontstaat er metaal.",
+    Tooltip_open_boxes_barehanded = "Sneller te openen met iets scherps.",
+    Tooltip_Parachute = "Kan worden gescheurd tot een gescheurde stof.",
+    Tooltip_EnergyBar = "Een energiereep verpakt voor survivalkits. Geproduceerd door PT&D.",
+    Tooltip_SurvivalVest = "Standaard overlevingsvest voor militaire piloten.",
+    Tooltip_SurvivalVestBlack = "Standaard overlevingsvest voor zoek- en reddingsacties door de politie.",
+    Tooltip_SPHMilitary = "Standaardhelm voor militaire helikopters."
+    Tooltip_SPHBlack = "Standaard militaire helikopterhelm in het zwart.",
+    Tooltip_SPHPolice = "Helikopterhelm gebruikt door de luchtmacht van de politie.",
+    Tooltip_SPHCivilian = "Helikopterhelm voor gebruik door burgerpiloten.",
+
+    Tooltip_FlyerCDC = "Het lijkt op een gezondheidswaarschuwingsflyer.",
+    Tooltip_FlyerMilitary = "Lijkt op een mededelingenfolder van het leger.",
+    Tooltip_CivilDefense = "Lijkt op een flyer van de burgerbescherming.",
+
+    Tooltip_WaterSealed = "Verzegeld waterrantsoen, verstrekt door de Amerikaanse overheid."
+    Tooltip_WaterUnsealed = "Onverzegelde waterrantsoenen, uitgedeeld door de Amerikaanse overheid." 
+
+    Tooltip_SupplyBox = "Bevoorradingsdoos van de Amerikaanse overheid."
+    Tooltip_SamaritanBox = "Voorraaddoos van een groep mysterieuze Samaritanen.",
+    Tooltip_BanditBox = "Persoonlijke stash box. Leest"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Signaalfakkel. Niet binnenshuis afvuren.",
+    Tooltip_HandFlare = "Vuurpijlen. Niet binnenshuis afvuren."
+}

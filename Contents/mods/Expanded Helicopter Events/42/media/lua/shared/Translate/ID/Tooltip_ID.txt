@@ -1,0 +1,26 @@
+Tooltip_ID = {
+    Tooltip_dismantle_helicopterpart = "Penggunaan obor las dan masker las akan menghasilkan logam.",
+    Tooltip_open_boxes_barehanded = "Akan lebih cepat dibuka dengan sesuatu yang tajam.",
+    Tooltip_Parachute = "Dapat dirobek menjadi kain robek.",
+    Tooltip_EnergyBar = "Batangan energi yang dikemas untuk perlengkapan bertahan hidup. Diproduksi oleh PT&D.",
+    Tooltip_SurvivalVest = "Rompi bertahan hidup standar untuk pilot militer.",
+    Tooltip_SurvivalVestBlack = "Rompi penyelamat standar untuk operasi pencarian dan penyelamatan polisi.",
+    Tooltip_SPHMilitary = "Helm helikopter militer standar."
+    Tooltip_SPHBlack = "Helm helikopter militer standar berwarna hitam.",
+    Tooltip_SPHPolice = "Helm helikopter yang digunakan oleh kesatuan udara polisi.",
+    Tooltip_SPHCivilian = "Helm helikopter yang digunakan oleh pilot sipil.",
+
+    Tooltip_FlyerCDC = "Tampak seperti brosur nasihat kesehatan.",
+    Tooltip_FlyerMilitary = "Kelihatannya seperti selebaran pemberitahuan dari militer.",
+    Tooltip_CivilDefense = "Tampak seperti brosur pertahanan sipil.",
+
+    Tooltip_WaterSealed = "Jatah Air Tertutup yang didistribusikan oleh Pemerintah AS."
+    Tooltip_WaterUnsealed = "Jatah Air Terbuka yang didistribusikan oleh Pemerintah AS." 
+
+    Tooltip_SupplyBox = "Kotak Perlengkapan dari Pemerintah AS."
+    Tooltip_SamaritanBox = "Kotak Perlengkapan dari sekelompok orang Samaria yang misterius.",
+    Tooltip_BanditBox = "Kotak penyimpanan pribadi. Bacaan"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Suar sinyal. Jangan tembak di dalam ruangan.",
+    Tooltip_HandFlare = "Suar. Jangan tembak di dalam ruangan."
+}

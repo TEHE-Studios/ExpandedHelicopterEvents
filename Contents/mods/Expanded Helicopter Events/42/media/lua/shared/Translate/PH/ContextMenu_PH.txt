@@ -1,0 +1,9 @@
+ContextMenu_PH = {
+    ContextMenu_DownHoodie = "Hood Down",
+    ContextMenu_VisorUp = "Nakataas ang visor",
+    ContextMenu_VisorDown = "Nakababa ang Visor",
+    ContextMenu_Tighten = "Higpitan",
+    ContextMenu_Untighten = "Alisin ang higpit",
+
+    IGUI_VehiclePartHelicopterInterior = "Panloob ng Helicopter",
+}

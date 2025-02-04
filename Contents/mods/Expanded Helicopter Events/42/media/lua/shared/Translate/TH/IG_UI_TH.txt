@@ -1,0 +1,29 @@
+IG_UI_TH = {
+    IGUI_VehicleNameUH60Green = "ยูเอช-60เอ",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A ที่พังเสียหาย (ลำตัวเครื่อง)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A ที่พัง (ส่วนหาง)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A ทะเลทราย",
+    IGUI_VehicleNameUH60DesertFuselage = "ซากเครื่องบิน UH-60A ทะเลทราย (ลำตัวเครื่องบิน)",
+    IGUI_VehicleNameUH60DesertTail = "ซาก UH-60A ทะเลทราย (ส่วนหาง)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A ยานพยาบาล",
+    IGUI_VehicleNameUH60MedevacFuselage = "เครื่องบิน UH-60A Medevac ที่พังเสียหาย (ลำตัวเครื่องบิน)",
+    IGUI_VehicleNameUH60MedevacTail = "เครื่องบิน UH-60A Medevac ที่พังเสียหาย (ส่วนหาง)",
+
+    IGUI_VehicleNameBell206LBMW = "ข่าวเฮลิคอปเตอร์",    
+    IGUI_VehicleNameBell206LBMWFuselage = "ข่าวเฮลิคอปเตอร์ (ลำตัว)",
+    IGUI_VehicleNameBell206LBMWTail = "ข่าวเฮลิคอปเตอร์ (หาง)",
+
+    IGUI_VehicleNameBell206Police = "เฮลิคอปเตอร์ตำรวจ",
+    IGUI_VehicleNameBell206PoliceFuselage = "เฮลิคอปเตอร์ตำรวจ (ลำตัว)",
+    IGUI_VehicleNameBell206PoliceTail = "เฮลิคอปเตอร์ตำรวจ (หาง)",
+
+    IGUI_VehicleNameBell206Survivalist = "เฮลิคอปเตอร์พลเรือน",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "การส่งเสบียงฉุกเฉิน",
+    IGUI_VehicleNameSurvivorSupplyDrop = "การส่งเสบียงของชาวซามาริตัน",
+
+    IGUI_Spent = "ค่าใช้จ่าย",
+    IGUI_Lit = "ลิต",
+}

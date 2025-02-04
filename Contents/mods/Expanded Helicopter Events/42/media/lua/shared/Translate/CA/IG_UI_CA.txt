@@ -1,0 +1,29 @@
+IG_UI_CA = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A destrossat (fuselatge)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A destrossat (cua)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Desert",
+    IGUI_VehicleNameUH60DesertFuselage = "Desert UH-60A destrossat (fuselatge)",
+    IGUI_VehicleNameUH60DesertTail = "Desert UH-60A destrossat (cua)",
+
+    IGUI_VehicleNameUH60Medevac = "EvacuaciÃ³ mÃ¨dica UH-60A",
+    IGUI_VehicleNameUH60MedevacFuselage = "EvacuaciÃ³ mÃ¨dica UH-60A destrossada (fuselatge)",
+    IGUI_VehicleNameUH60MedevacTail = "EvacuaciÃ³ mÃ¨dica UH-60A destrossada (cua)",
+
+    IGUI_VehicleNameBell206LBMW = "NotÃ­cies HelicÃ²pter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "NotÃ­cies HelicÃ²pter (fuselatge)",
+    IGUI_VehicleNameBell206LBMWTail = "NotÃ­cies Helicopter (Tail)",
+
+    IGUI_VehicleNameBell206Police = "HelicÃ²pter de la Policia",
+    IGUI_VehicleNameBell206PoliceFuselage = "HelicÃ²pter de la policia (fuselatge)",
+    IGUI_VehicleNameBell206PoliceTail = "HelicÃ²pter de la policia (cua)",
+
+    IGUI_VehicleNameBell206Survivalist = "HelicÃ²pter civil",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Caiguda de subministrament d'emergÃ¨ncia",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Gota de subministrament samaritana",
+
+    IGUI_Spent = "Esgotat",
+    IGUI_Lit = "EncÃ¨s",
+}

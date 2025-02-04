@@ -1,0 +1,11 @@
+UI_RU = {
+    UI_Config_twitchIntegrationText = "Интеграция с Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "Для бесшовной интеграции требуется Stream Deck или аналогичная программа.",
+    UI_Config_twitchIntegrationToolTip2 = "Кроме того, вы можете вручную использовать клавиши цифровой клавиатуры.",
+    UI_Config_twitchIntegrationOnly = "Отключить события вне интеграции с Twitch",
+    UI_Config_twitchStreamerTargeted = "Только для кооперативного хоста",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Внутриигровые часы до того, как могут произойти события",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Сколько игровых часов разрешено до начала событий?",
+    UI_Config_twitchHoursDelayBetweenEvents = "Сколько игровых часов должно пройти между событиями?"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Сколько игровых часов должно пройти между событиями."
+}

@@ -1,0 +1,56 @@
+Sandbox_AR = {
+    Sandbox_ExpandedHeli = "Eventos de helicÃ³pteros ampliados",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Nunca"
+    Sandbox_ExpandedHeli_Frequency_option2 = "ExtraÃ±o",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Poco comÃºn",
+    Sandbox_ExpandedHeli_Frequency_option4 = "ComÃºn",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Frecuente",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Loco",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "TransiciÃ³n de ataque aÃ©reo",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Elige verdadero si quieres que un evento de ataque aÃ©reo indique un cambio de eventos menos desafiantes al principio del juego a eventos mÃ¡s hostiles al final del juego.",
+
+    Sandbox_ExpandedHeli_EventJet = "Chorros",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Con quÃ© frecuencia ocurren los eventos de jet.<br>Los jets vuelan junto a los jugadores, lo que provoca el movimiento de la horda.",
+
+    Sandbox_ExpandedHeli_EventNews = "Noticias",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Con quÃ© frecuencia ocurren los acontecimientos noticiosos.<br>Los helicÃ³pteros de noticias se centrarÃ¡n en cualquier ciudadano que encuentren y lo seguirÃ¡n durante un breve periodo de tiempo.",
+
+    Sandbox_ExpandedHeli_EventPolice = "PolicÃ­a",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Con quÃ© frecuencia ocurren los eventos policiales.<br>La policÃ­a tomarÃ¡ el asunto en sus manos y escoltarÃ¡ a los ciudadanos mientras dispara contra los zombis.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militar",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Con quÃ© frecuencia ocurren los eventos militares.<br>El ejÃ©rcito progresarÃ¡ a travÃ©s de etapas: advertir a los ciudadanos, purgar a los no muertos y, finalmente, purgar todo lo que se mueva.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Lanzamientos de ayuda de FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Con quÃ© frecuencia ocurren los eventos de lanzamiento de ayuda de FEMA.<br>FEMA realizarÃ¡ lanzamientos de ayuda al comienzo del apocalipsis.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Sobrevivientes",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Con quÃ© frecuencia ocurren los eventos de supervivencia.<br>Los sobrevivientes solo volarÃ¡n en misiones de exploraciÃ³n, lo que provocarÃ¡ el movimiento de la horda.",
+
+    Sandbox_ExpandedHeli_EventRaider = "asaltantes",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Con quÃ© frecuencia ocurren los eventos de los asaltantes.<br>Los asaltantes se concentrarÃ¡n en los sobrevivientes para atormentarlos y asÃ­ divertirse.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritanos",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Con quÃ© frecuencia ocurren los eventos samaritanos.<br>Los samaritanos dejarÃ¡n suministros para ayudar a los sobrevivientes.",
+
+    Sandbox_ExpandedHeli_StartDay = "DÃ­a de inicio",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Esto es lo que ocurre durante el dÃ­a en el juego. DeberÃ¡s tener en cuenta"months into the apocalypse"ajustes.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "DuraciÃ³n del programador",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "CuÃ¡ntos dÃ­as se ejecuta el programador desde el dÃ­a de inicio.<br>El programador ajustarÃ¡ la progresiÃ³n del evento para adaptarse a esta duraciÃ³n.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continuar programando eventos mÃ¡s allÃ¡ de la duraciÃ³n",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normalmente, el programador finaliza en el lÃ­mite de duraciÃ³n. Si activa esta opciÃ³n, continuarÃ¡ programando eventos mÃ¡s allÃ¡ de la duraciÃ³n. Los eventos seguirÃ¡n avanzando por etapas segÃºn la duraciÃ³n, pero nunca dejarÃ¡n de programarse.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Sin programaciÃ³n continua"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continuar programando: Todos los eventos",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continuar con la programaciÃ³n: solo juegos finales",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "El clima afectarÃ¡ los eventos",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Si el clima impedirÃ¡ que se produzcan eventos o provocarÃ¡ su colapso.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicador de probabilidad de choque",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Esto se multiplica por la probabilidad de fallos, 0 evitarÃ¡ fallos por completo.",
+}

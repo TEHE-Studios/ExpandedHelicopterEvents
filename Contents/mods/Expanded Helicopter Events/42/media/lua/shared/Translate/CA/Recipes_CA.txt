@@ -1,0 +1,3 @@
+Recipe_CA = {
+    Recipe_Open_Supplies = "Subministraments oberts",
+}

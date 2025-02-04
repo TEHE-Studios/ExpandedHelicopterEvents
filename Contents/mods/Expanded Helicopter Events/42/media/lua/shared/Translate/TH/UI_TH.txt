@@ -1,0 +1,11 @@
+UI_TH = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "กิจกรรมเฮลิคอปเตอร์ขยาย"
+    UI_Config_sandBoxMovedText = "ตัวเลือกการกำหนดค่าสามารถพบได้ในตัวเลือกแซนด์บ็อกซ์",
+    UI_Config_voiceTitle = "แพ็คเสียง",
+
+    UI_Config_resetEventsToolTip = "รีเซ็ตเหตุการณ์ที่กำหนดไว้ในกรณีฉุกเฉิน:",
+    UI_Config_resetEvents = "รีเซ็ตเหตุการณ์",
+    UI_Config_eventMarkersOnToolTip1 = "เปิดใช้งานสิ่งนี้เพื่อเปิดใช้งานตัวทำเครื่องหมายเหตุการณ์",
+    UI_Config_eventMarkersOnToolTip2 = "หมายเหตุ: สามารถลากเครื่องหมายเหตุการณ์ได้",
+    UI_Config_eventMarkersOn = "เครื่องหมายเหตุการณ์",
+}

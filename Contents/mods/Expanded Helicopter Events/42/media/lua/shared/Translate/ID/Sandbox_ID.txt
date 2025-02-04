@@ -1,0 +1,56 @@
+Sandbox_ID = {
+    Sandbox_ExpandedHeli = "Acara Helikopter yang Diperluas",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Tidak pernah"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Langka",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Luar biasa",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Umum",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Sering",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Gila",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Transisi Serangan Udara",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Pilih benar jika Anda ingin peristiwa serangan udara memberi sinyal peralihan dari peristiwa awal permainan yang kurang menantang ke peristiwa akhir permainan yang lebih bermusuhan.",
+
+    Sandbox_ExpandedHeli_EventJet = "Pesawat jet",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Seberapa sering peristiwa jet terjadi.<br>Jet terbang melewati pemain yang menyebabkan pergerakan gerombolan.",
+
+    Sandbox_ExpandedHeli_EventNews = "Berita",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Seberapa sering peristiwa berita terjadi.<br>Helikopter berita akan fokus pada setiap warga negara yang mereka temukan dan mengikuti mereka selama beberapa saat.",
+
+    Sandbox_ExpandedHeli_EventPolice = "POLISI",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Seberapa sering kejadian Kepolisian terjadi.<br>Polisi akan menangani masalah ini sendiri dan mengawal warga sambil menembaki zombi.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militer",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Seberapa sering peristiwa militer terjadi.<br>Militer akan maju melalui tahapan: memperingatkan warga, membersihkan mayat hidup, lalu akhirnya membersihkan apa pun yang bergerak.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Bantuan FEMA Turun",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Seberapa sering peristiwa penyerahan bantuan FEMA terjadi.<br>FEMA akan melaksanakan penyerahan bantuan pada awal kiamat.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Korban selamat",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Seberapa sering peristiwa penyintas terjadi.<br>Para penyintas hanya akan terbang lewat pada misi pengintaian yang menyebabkan pergerakan gerombolan.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Perampok",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Seberapa sering peristiwa perampokan terjadi.<br>Perampok akan menargetkan korban untuk menyiksa mereka demi hiburan.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Orang Samaria",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Seberapa sering peristiwa Samaria terjadi.<br>Orang Samaria akan mengantarkan perlengkapan untuk membantu para penyintas.",
+
+    Sandbox_ExpandedHeli_StartDay = "Hari Mulai",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Ini adalah kejadian yang terjadi pada hari pertama permainan. Anda perlu memperhitungkan"months into the apocalypse"pengaturan.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Durasi Penjadwal",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Berapa hari penjadwal berjalan dari hari mulai.<br>Penjadwal akan menyesuaikan perkembangan acara agar sesuai dengan durasi ini.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Lanjutkan Penjadwalan Acara Melebihi Durasi",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Biasanya penjadwal berakhir pada batas durasi, mengaktifkannya akan terus menjadwalkan acara di luar durasi. Acara akan tetap berlanjut melalui tahapan sesuai durasi, tetapi acara tidak akan pernah berhenti dijadwalkan.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Tidak Ada Penjadwalan Lanjutan"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Lanjutkan Penjadwalan: Semua Acara",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Lanjutkan Penjadwalan: Hanya di Akhir Permainan",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Cuaca Akan Mempengaruhi Acara",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Apakah cuaca akan mencegah terjadinya suatu peristiwa, atau menyebabkan terjadinya kecelakaan.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Pengganda Peluang Kecelakaan",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Ini dikalikan dengan kemungkinan terjadinya kecelakaan, 0 akan mencegah terjadinya kecelakaan sama sekali.",
+}

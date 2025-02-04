@@ -1,0 +1,27 @@
+Sandbox_RU = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Спиффо",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Как часто Спиффо празднует свой день рождения.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Индистоунские молочные заводы",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Как часто RJ приезжает в гости.",
+
+    Sandbox_ExpandedHeli_EventIRS = "Налоговая служба",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Как часто вы уклоняетесь от уплаты налогов.",
+
+    Sandbox_ExpandedHeli_EventUFO = "НЛО",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Как часто вам хочется верить.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Песчаные Когти",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Как часто вы хотите похищать Сэнди Клоуза и избивать его палкой.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Атака стриптизерш",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Как часто вы хотите хорошо проводить время.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Вертолет (защищен авторским правом)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Как часто вы хотите ВЕРТОЛЕТ, ВЕРТОЛЕТ. (Защищено авторским правом)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Бафф Коррелл (авторское право)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Как часто вам просто хочется танцевать. (Защищено авторским правом)",
+
+}

@@ -1,0 +1,11 @@
+UI_JP = {
+    UI_Config_twitchIntegrationText = "Twitch 統合",
+    UI_Config_twitchIntegrationToolTip1 = "シームレスな統合には、ストリーム デッキまたは同様のプログラムが必要です。",
+    UI_Config_twitchIntegrationToolTip2 = "あるいは、テンキーのキーを手動で使用することもできます。",
+    UI_Config_twitchIntegrationOnly = "Twitch統合外のイベントを無効にする",
+    UI_Config_twitchStreamerTargeted = "対象協力ホストのみ",
+    UI_Config_twitchHoursBeforeEventsAllowed = "イベント発生前のゲーム内時間",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "イベント前に許可されるゲーム内時間数。",
+    UI_Config_twitchHoursDelayBetweenEvents = "イベント間のゲーム内時間はどれくらい経過する必要があるか"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "イベント間に経過する必要があるゲーム内時間数。"
+}

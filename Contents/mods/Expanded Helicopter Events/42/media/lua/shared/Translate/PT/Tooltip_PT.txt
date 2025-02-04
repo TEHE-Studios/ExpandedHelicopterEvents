@@ -1,0 +1,26 @@
+Tooltip_PT = {
+    Tooltip_dismantle_helicopterpart = "O uso de um maÃ§arico e uma mÃ¡scara de solda produzirÃ¡ metal.",
+    Tooltip_open_boxes_barehanded = "Seria mais rÃ¡pido abrir com algo afiado.",
+    Tooltip_Parachute = "Pode ser rasgado para fazer tecido rasgado.",
+    Tooltip_EnergyBar = "Uma barra energÃ©tica embalada para kits de sobrevivÃªncia. Fabricada pela PT&D.",
+    Tooltip_SurvivalVest = "Colete de sobrevivÃªncia padrÃ£o para pilotos militares.",
+    Tooltip_SurvivalVestBlack = "Colete de sobrevivÃªncia padrÃ£o para busca e resgate policial.",
+    Tooltip_SPHMilitary = "Capacete padrÃ£o para helicÃ³ptero militar."
+    Tooltip_SPHBlack = "Capacete de helicÃ³ptero militar padrÃ£o em preto.",
+    Tooltip_SPHPolice = "Capacete de helicÃ³ptero usado pelas unidades aÃ©reas da polÃ­cia.",
+    Tooltip_SPHCivilian = "Capacete de helicÃ³ptero usado por pilotos civis.",
+
+    Tooltip_FlyerCDC = "Parece um folheto de aviso de saÃºde.",
+    Tooltip_FlyerMilitary = "Parece um folheto de aviso do exÃ©rcito.",
+    Tooltip_CivilDefense = "Parece um panfleto da defesa civil.",
+
+    Tooltip_WaterSealed = "RaÃ§Ã£o de Ã¡gua selada distribuÃ­da pelo governo dos EUA."
+    Tooltip_WaterUnsealed = "RaÃ§Ã£o de Ã¡gua sem lacre distribuÃ­da pelo governo dos EUA." 
+
+    Tooltip_SupplyBox = "Caixa de suprimentos do governo dos EUA."
+    Tooltip_SamaritanBox = "Caixa de suprimentos de um grupo de samaritanos misteriosos.",
+    Tooltip_BanditBox = "Caixa de armazenamento pessoal. LÃª"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Sinalizador de sinalizaÃ§Ã£o. NÃ£o atire em ambientes fechados.",
+    Tooltip_HandFlare = "Sinalizador. NÃ£o atire em ambientes fechados."
+}

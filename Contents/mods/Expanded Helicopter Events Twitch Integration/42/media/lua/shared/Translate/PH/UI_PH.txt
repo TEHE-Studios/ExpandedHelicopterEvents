@@ -1,0 +1,11 @@
+UI_PH = {
+    UI_Config_twitchIntegrationText = "Pagsasama ng Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "Ang stream deck o isang katulad na programa ay kinakailangan para sa tuluy-tuloy na pagsasama.",
+    UI_Config_twitchIntegrationToolTip2 = "Bilang kahalili, maaari mong gamitin nang manu-mano ang mga numpad key.",
+    UI_Config_twitchIntegrationOnly = "Huwag paganahin ang mga kaganapan sa labas ng pagsasama ng twitch",
+    UI_Config_twitchStreamerTargeted = "Target na co-op host lang",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Mga Oras ng In-game Bago Maganap ang Mga Kaganapan",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Ilang oras sa laro bago pinapayagan ang mga kaganapan.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Ilang oras ng in-game ang dapat pumasa sa pagitan ng mga kaganapan"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Ilang oras ng in-game ang dapat pumasa sa pagitan ng mga kaganapan."
+}

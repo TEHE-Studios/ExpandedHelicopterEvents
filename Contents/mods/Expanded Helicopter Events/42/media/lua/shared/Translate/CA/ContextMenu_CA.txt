@@ -1,0 +1,9 @@
+ContextMenu_CA = {
+    ContextMenu_DownHoodie = "Caputxa cap avall",
+    ContextMenu_VisorUp = "Visera amunt",
+    ContextMenu_VisorDown = "Visera cap avall",
+    ContextMenu_Tighten = "Apretar",
+    ContextMenu_Untighten = "Desestreneu",
+
+    IGUI_VehiclePartHelicopterInterior = "Interior de l'helicÃ²pter",
+}

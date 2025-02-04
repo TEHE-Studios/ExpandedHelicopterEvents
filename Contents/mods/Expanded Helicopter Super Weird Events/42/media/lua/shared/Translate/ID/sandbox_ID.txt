@@ -1,0 +1,27 @@
+Sandbox_ID = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Bahasa Inggris Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Seberapa sering Spiffo merayakan ulang tahunnya.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Pabrik Krim Indiestone",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Seberapa sering RJ datang berkunjung.",
+
+    Sandbox_ExpandedHeli_EventIRS = "pajak pajak",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Seberapa sering Anda menghindari membayar pajak.",
+
+    Sandbox_ExpandedHeli_EventUFO = "benda terbang aneh",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Seberapa sering Anda ingin percaya.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Cakar Pasir",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Seberapa sering Anda ingin menculik Sandy Claws dan memukulinya dengan tongkat.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Serangan Para Penari Telanjang",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Seberapa sering Anda ingin bersenang-senang.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (Hak Cipta)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Seberapa sering Anda ingin HELIKOPTER, HELIKOPTER. (Hak Cipta)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (Hak Cipta)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Seberapa sering Anda hanya ingin menari. (Hak Cipta)",
+
+}

@@ -1,0 +1,3 @@
+DynamicRadio_TR = {
+	AEBS_buffcorrell = "evet neler oluyor, senin oğlan Buffcorrell yine aynı şeyi yapıyor, telif hakkıyla korunan müzik cover'larıyla yine aynı şeyi yapıyor, ama bunlar tavuk wang'ından başka bir şey değil, tabii eğer bir Twitch yayıncısı değilseniz. esk. esk. esk. leeeeeeeeet'ler hazır olun ve. gidin."
+}

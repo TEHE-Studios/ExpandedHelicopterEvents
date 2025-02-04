@@ -1,0 +1,27 @@
+Sandbox_RO = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Cât de des își sărbătorește Spiffo ziua de naștere.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Creameriile Indiestone",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Cât de des vine RJ să facă o vizită.",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Cât de des evitați să vă plătiți impozitele.",
+
+    Sandbox_ExpandedHeli_EventUFO = "OZN",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Cât de des vrei să crezi.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Gheare de nisip",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Cât de des vrei să-i răpi pe Sandy Claws și să-l bati cu un băț.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Atacul Strippers-ului",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Cât de des vrei să te distrezi.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (cu drepturi de autor)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Cât de des vrei să HELIKOPTER, HELIKOPTER. (cu drepturi de autor)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (cu drepturi de autor)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Cât de des vrei să dansezi. (cu drepturi de autor)",
+
+}

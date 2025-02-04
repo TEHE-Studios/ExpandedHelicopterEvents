@@ -1,0 +1,27 @@
+Sandbox_HU = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Milyen gyakran ünnepli Spiffo a születésnapját.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Az Indiestone Creameries",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Milyen gyakran jön RJ látogatóba.",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Milyen gyakran kerüli el az adófizetést.",
+
+    Sandbox_ExpandedHeli_EventUFO = "ufó",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Milyen gyakran akarsz hinni.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy Claws",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Milyen gyakran akarja elrabolni a Sandy Claws-t és megverni egy bottal.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "A sztriptíztáncosok támadása",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Milyen gyakran szeretné jól érezni magát.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (szerzői jogvédelem alatt áll)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Milyen gyakran szeretne HELIKOPTER, HELIKOPTER. (Szerzői jogvédelem alatt áll)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (szerzői jogvédelem alatt)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Milyen gyakran szeretne táncolni. (Szerzői jogvédelem alatt áll)",
+
+}

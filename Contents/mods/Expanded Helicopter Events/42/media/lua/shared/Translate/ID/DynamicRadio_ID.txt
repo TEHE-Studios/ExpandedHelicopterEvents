@@ -1,0 +1,15 @@
+DynamicRadio_ID = {
+    AEBS_SupplyDrop = "Paket perbekalan sudah masuk."
+    AEBS_Raiders = "Jika Anda bisa mendengar ini, pergilah"
+    AEBS_SurvivorHeli = "Pelari rampasan berangkat."
+    AEBS_SamaritanDrop = "Bagi siapa pun yang masih hidup, kami bawakan perbekalan."
+    AEBS_UnauthorizedEntryPolice = "Aktivitas udara yang tidak sah, penegakan hukum yang nakal."
+    AEBS_UnauthorizedEntryNews = "Aktivitas udara tanpa izin, penyusup media."
+    AEBS_JetBombing = "Muatan untuk pembersihan masuk."
+    AEBS_JetPass = "Tiket jet masuk."
+    AEBS_AirRaid = "TETAPLAH DI PINTU DAN CARI TEMPAT BERLINDUNG"
+    AEBS_HostileMilitary = "Aktivitas Udara Terdeteksi. Operasi Khusus Militer Sedang Berlangsung. Semoga berhasil."
+    AEBS_PurgeMilitary = "Aktivitas Udara Terdeteksi. Operasi Pengendalian Massa yang Terinfeksi Sedang Berlangsung."
+    AEBS_PurgeCattle = "Aktivitas Udara Terdeteksi. Operasi Pemusnahan Hewan Sedang Berlangsung."
+    AEBS_Military = "Aktivitas Udara Terdeteksi. Operasi Evakuasi Sedang Berlangsung."
+}

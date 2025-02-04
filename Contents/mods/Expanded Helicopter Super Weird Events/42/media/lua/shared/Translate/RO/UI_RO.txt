@@ -1,0 +1,5 @@
+UI_RO = {
+    UI_Intro1 = "ACESTE SUNT VEMILE DE Sfârșit",
+    UI_Intro2 = "CU toate acestea, NU AȚI EUCUT SĂ DECLARAȚI TOTUL VENITUL BRUT",
+    UI_Intro3 = "AȘA AȚI COMVIT EVAZIUNE FISCALĂ",
+}

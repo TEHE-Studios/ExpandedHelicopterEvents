@@ -1,0 +1,11 @@
+UI_ID = {
+    UI_Config_twitchIntegrationText = "Integrasi Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "Stream deck atau program serupa diperlukan untuk integrasi yang mulus.",
+    UI_Config_twitchIntegrationToolTip2 = "Atau, Anda dapat menggunakan tombol numpad secara manual.",
+    UI_Config_twitchIntegrationOnly = "Nonaktifkan acara di luar integrasi Twitch",
+    UI_Config_twitchStreamerTargeted = "Targetkan hanya tuan rumah co-op",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Jam Dalam Game Sebelum Peristiwa Dapat Terjadi",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Berapa jam dalam permainan sebelum acara diperbolehkan.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Berapa jam dalam game yang harus dilewati di antara acara?"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Berapa jam dalam permainan yang harus berlalu di antara acara."
+}

@@ -1,0 +1,3 @@
+DynamicRadio_NL = {
+	AEBS_buffcorrell = "ja wat is er aan de hand, het is jouw jongen buffcorrell, ga er weer mee aan de slag met wat auteursrechtelijk beschermde muziekcovers, maar het is niets meer dan een chicken wang, tenzij je een twitch-streamer bent. esk. esk. esk esk. leeeeeeeeeet's get reeedy and. go."
+}

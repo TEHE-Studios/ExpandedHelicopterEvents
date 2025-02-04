@@ -1,0 +1,27 @@
+Sandbox_CS = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Jak často Spiffo slaví narozeniny.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Creameries",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Jak často RJ přichází na návštěvu.",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Jak často se vyhýbáte placení daní.",
+
+    Sandbox_ExpandedHeli_EventUFO = "UFO",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Jak často chcete věřit.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy Claws",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Jak často chcete unést Sandy Claws a mlátit ho holí.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Útok striptérů",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Jak často se chcete dobře bavit.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (chráněné autorským právem)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Jak často chcete VRTULNÍK, HELIKOPTÉR. (chráněno autorským právem)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (chráněno autorským právem)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Jak často chcete jen tančit. (chráněno autorským právem)",
+
+}

@@ -1,0 +1,3 @@
+Recipe_PT = {
+    Recipe_Open_Supplies = "Fontes abertas",
+}

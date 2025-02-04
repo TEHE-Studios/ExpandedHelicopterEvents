@@ -1,0 +1,18 @@
+IG_UI_DA = {
+    IGUI_VehicleNameUFO = "Uidentificeret flyvende objekt",
+
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (styrtet)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (Fuselage)",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (hale)",
+    IGUI_VehicleNameTISIceCreamTruck = "Isvogn",
+
+    IGUI_VehicleNameRoflCopter = "FEJL: Interdimensional anomali",
+
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS udgave",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (krasket)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (Fuselage)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (hale)",
+
+    IGUI_VehicleNameSpiffoBurger = "Spiffos Plejepakke",
+}

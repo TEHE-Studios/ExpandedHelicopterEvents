@@ -1,0 +1,5 @@
+UI_TR = {
+    UI_Intro1 = "BUNLAR SON ZAMANLARDIR",
+    UI_Intro2 = "ANCAK TÜM BRÜT GELİRİNİZİ BEYAN ETMEYİ BAŞARAMADINIZ",
+    UI_Intro3 = "VERGİ KAÇIRMA İŞİNİ BÖYLE YAPTIN",
+}

@@ -1,0 +1,26 @@
+Tooltip_PH = {
+    Tooltip_dismantle_helicopterpart = "Ang paggamit ng blowtorch at welding mask ay magbubunga ng metal.",
+    Tooltip_open_boxes_barehanded = "Mas mabilis magbukas gamit ang matalim na bagay.",
+    Tooltip_Parachute = "Maaaring punitin para gawing punit na tela.",
+    Tooltip_EnergyBar = "Isang energy bar na nakabalot para sa mga survival kit. Ginawa ng PT&D.",
+    Tooltip_SurvivalVest = "Standard issue survival vest para sa mga piloto ng militar.",
+    Tooltip_SurvivalVestBlack = "Standard issue survival vest para sa paghahanap at pagsagip ng pulisya.",
+    Tooltip_SPHMilitary = "Standard issue military helicopter helmet."
+    Tooltip_SPHBlack = "Standard issue military helicopter helmet in black.",
+    Tooltip_SPHPolice = "Helicopter helmet na ginagamit ng police air wings.",
+    Tooltip_SPHCivilian = "Helicopter helmet na ginagamit ng mga sibilyang piloto.",
+
+    Tooltip_FlyerCDC = "Mukhang isang health advisory flyer.",
+    Tooltip_FlyerMilitary = "Parang notice flyer mula sa militar.",
+    Tooltip_CivilDefense = "Parang civil defense flyer.",
+
+    Tooltip_WaterSealed = "Sealed Water Ration na ibinahagi ng US Government."
+    Tooltip_WaterUnsealed = "Unsealed Water Ration na ibinahagi ng US Government." 
+
+    Tooltip_SupplyBox = "Supply Box mula sa US Government."
+    Tooltip_SamaritanBox = "Supply Box mula sa isang grupo ng mga mahiwagang samaritano.",
+    Tooltip_BanditBox = "Personal na itago na kahon. Nagbabasa"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Sumiklab ang signal. Huwag magpaputok sa loob ng bahay.",
+    Tooltip_HandFlare = "Sumiklab. Huwag magpaputok sa loob ng bahay."
+}

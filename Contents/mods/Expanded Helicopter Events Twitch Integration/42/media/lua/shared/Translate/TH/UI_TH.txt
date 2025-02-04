@@ -1,0 +1,11 @@
+UI_TH = {
+    UI_Config_twitchIntegrationText = "การบูรณาการ Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "ต้องใช้ Stream Deck หรือโปรแกรมที่คล้ายกันเพื่อให้บูรณาการได้อย่างราบรื่น",
+    UI_Config_twitchIntegrationToolTip2 = "นอกจากนี้คุณยังสามารถใช้ปุ่มตัวเลขด้วยตนเองได้",
+    UI_Config_twitchIntegrationOnly = "ปิดใช้งานกิจกรรมนอกการรวม Twitch",
+    UI_Config_twitchStreamerTargeted = "เป้าหมายโฮสต์สหกรณ์เท่านั้น",
+    UI_Config_twitchHoursBeforeEventsAllowed = "ในเกมก่อนเหตุการณ์จะเกิดขึ้นได้หลายชั่วโมง",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "มีเวลาเล่นเกมกี่ชั่วโมงก่อนที่กิจกรรมจะอนุญาต",
+    UI_Config_twitchHoursDelayBetweenEvents = "ต้องใช้เวลากี่ชั่วโมงในเกมระหว่างกิจกรรม"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "ต้องใช้เวลาในเกมกี่ชั่วโมงถึงจะผ่านแต่ละกิจกรรมได้"
+}

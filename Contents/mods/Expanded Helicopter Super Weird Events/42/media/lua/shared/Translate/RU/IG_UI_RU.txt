@@ -1,0 +1,18 @@
+IG_UI_RU = {
+    IGUI_VehicleNameUFO = "Неопознанный летающий объект",
+
+    IGUI_VehicleNameBell206Spiffo = "Спиффо Форс Один",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (разбился)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (Фюзеляж)",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (Хвост)",
+    IGUI_VehicleNameTISIceCreamTruck = "Грузовик с мороженым",
+
+    IGUI_VehicleNameRoflCopter = "ОШИБКА: Межпространственная аномалия",
+
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS издание",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (разбитый)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (фюзеляж)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (хвост)",
+
+    IGUI_VehicleNameSpiffoBurger = "Пакет услуг Spiffo",
+}

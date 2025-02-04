@@ -1,0 +1,29 @@
+IG_UI_AR = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A destrozado (Fuselaje)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A destrozado (cola)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Desierto",
+    IGUI_VehicleNameUH60DesertFuselage = "AviÃ³n UH-60A destrozado en el desierto (Fuselaje)",
+    IGUI_VehicleNameUH60DesertTail = "AviÃ³n UH-60A destrozado en el desierto (cola)",
+
+    IGUI_VehicleNameUH60Medevac = "AviÃ³n de evacuaciÃ³n mÃ©dica UH-60A",
+    IGUI_VehicleNameUH60MedevacFuselage = "AviÃ³n de evacuaciÃ³n mÃ©dica UH-60A destrozado (fuselaje)",
+    IGUI_VehicleNameUH60MedevacTail = "AviÃ³n de evacuaciÃ³n mÃ©dica UH-60A averiado (cola)",
+
+    IGUI_VehicleNameBell206LBMW = "HelicÃ³ptero de noticias",    
+    IGUI_VehicleNameBell206LBMWFuselage = "HelicÃ³ptero de noticias (Fuselaje)",
+    IGUI_VehicleNameBell206LBMWTail = "HelicÃ³ptero de noticias (cola)",
+
+    IGUI_VehicleNameBell206Police = "HelicÃ³ptero policial",
+    IGUI_VehicleNameBell206PoliceFuselage = "HelicÃ³ptero policial (Fuselaje)",
+    IGUI_VehicleNameBell206PoliceTail = "HelicÃ³ptero policial (cola)",
+
+    IGUI_VehicleNameBell206Survivalist = "HelicÃ³ptero civil",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Lanzamiento de suministros de emergencia",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Entrega de suministros de Samaritan",
+
+    IGUI_Spent = "Gastado",
+    IGUI_Lit = "Iluminado",
+}

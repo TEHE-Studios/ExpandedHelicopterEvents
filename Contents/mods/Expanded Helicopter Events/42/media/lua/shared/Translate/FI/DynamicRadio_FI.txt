@@ -1,0 +1,15 @@
+DynamicRadio_FI = {
+    AEBS_SupplyDrop = "Toimita paketti saapuvaksi."
+    AEBS_Raiders = "Jos kuulet tÃ¤mÃ¤n, ota f-"
+    AEBS_SurvivorHeli = "Loot runner lÃ¤hdÃ¶ssÃ¤ ulos."
+    AEBS_SamaritanDrop = "Kaikille, jotka ovat vielÃ¤ elossa, tuomme tarvikkeita."
+    AEBS_UnauthorizedEntryPolice = "Luvaton lentotoiminta, roisto lainvalvonta."
+    AEBS_UnauthorizedEntryNews = "Luvaton lentotoiminta, median loukkaaja."
+    AEBS_JetBombing = "HyÃ¶tykuorma saapuvan puhdistuksen yhteydessÃ¤."
+    AEBS_JetPass = "Jet pass sisÃ¤Ã¤n."
+    AEBS_AirRaid = "PYSY OVESSA JA ETSI SUOJA"
+    AEBS_HostileMilitary = "Ilmatoiminta havaittu. Sotilaalliset erikoisoperaatiot kÃ¤ynnissÃ¤. Luojan nopeus."
+    AEBS_PurgeMilitary = "Ilmatoiminta havaittu. Tartunnan saaneen joukon valvontatoimet kÃ¤ynnissÃ¤."
+    AEBS_PurgeCattle = "Ilmatoiminta havaittu. ElÃ¤inten teurastustoimet kÃ¤ynnissÃ¤."
+    AEBS_Military = "Ilmatoiminta havaittu. Evakuointioperaatiot kÃ¤ynnissÃ¤."
+}

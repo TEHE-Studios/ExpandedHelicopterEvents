@@ -1,0 +1,5 @@
+UI_CS = {
+    UI_Intro1 = "TOTO JSOU ČASY KONCE",
+    UI_Intro2 = "VŠAK JSTE NEPŘIHLÁSILI CELÝ SVŮJ HRUBÝ PŘÍJEM",
+    UI_Intro3 = "TAK JSTE SE DOPOUŠTĚLI DAŇOVÉHO ÚNIKU",
+}

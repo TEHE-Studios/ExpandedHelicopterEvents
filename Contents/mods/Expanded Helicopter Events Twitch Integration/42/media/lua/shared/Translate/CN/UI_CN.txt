@@ -1,0 +1,11 @@
+UI_CN = {
+    UI_Config_twitchIntegrationText = "Twitch 集成",
+    UI_Config_twitchIntegrationToolTip1 = "需要 Stream deck 或类似的程序来实现无缝集成。",
+    UI_Config_twitchIntegrationToolTip2 = "或者，您可以手动使用数字键盘键。",
+    UI_Config_twitchIntegrationOnly = "禁用 twitch 集成之外的事件",
+    UI_Config_twitchStreamerTargeted = "仅针对合作社主机",
+    UI_Config_twitchHoursBeforeEventsAllowed = "游戏中事件发生前的几个小时",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "活动开始前允许有多少个游戏小时。",
+    UI_Config_twitchHoursDelayBetweenEvents = "活动之间必须间隔多少游戏时间"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "两次活动之间必须经过多少个游戏小时。"
+}

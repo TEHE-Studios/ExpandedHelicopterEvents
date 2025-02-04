@@ -1,0 +1,15 @@
+DynamicRadio_DA = {
+    AEBS_SupplyDrop = "Levere pakke indgÃ¥ende."
+    AEBS_Raiders = "Hvis du kan hÃ¸re dette, sÃ¥ fÃ¥ f-"
+    AEBS_SurvivorHeli = "Loot runner pÃ¥ vej ud."
+    AEBS_SamaritanDrop = "Til enhver, der stadig er i live, bringer vi forsyninger."
+    AEBS_UnauthorizedEntryPolice = "Uautoriseret luftaktivitet, falsk retshÃ¥ndhÃ¦velse."
+    AEBS_UnauthorizedEntryNews = "Uautoriseret luftaktivitet, medieovertrÃ¦der."
+    AEBS_JetBombing = "Nyttelast til indgÃ¥ende rensning."
+    AEBS_JetPass = "Jetpas indgÃ¥ende."
+    AEBS_AirRaid = "BLIV I DÃ˜RE OG SÃ˜G LY"
+    AEBS_HostileMilitary = "Luftaktivitet registreret. MilitÃ¦re specialoperationer i gang. Godspeed."
+    AEBS_PurgeMilitary = "Luftaktivitet registreret. Inficerede Crowd Control-operationer i gang."
+    AEBS_PurgeCattle = "Luftaktivitet registreret. Dyreaflivning er i gang."
+    AEBS_Military = "Luftaktivitet registreret. Evakueringsoperationer i gang."
+}

@@ -1,0 +1,29 @@
+IG_UI_NO = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Ã˜delagt UH-60A (flykropp)",
+    IGUI_VehicleNameUH60GreenTail = "Ã˜delagt UH-60A (hale)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Ã¸rkenen",
+    IGUI_VehicleNameUH60DesertFuselage = "Ã˜delagt UH-60A-Ã¸rken (flykropp)",
+    IGUI_VehicleNameUH60DesertTail = "Ã˜delagt UH-60A-Ã¸rken (hale)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Havarerte UH-60A Medevac (flykropp)",
+    IGUI_VehicleNameUH60MedevacTail = "Ã˜delagt UH-60A Medevac (hale)",
+
+    IGUI_VehicleNameBell206LBMW = "Nyheter Helicopter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Nyhetshelikopter (flykropp)",
+    IGUI_VehicleNameBell206LBMWTail = "Nyhetshelikopter (hale)",
+
+    IGUI_VehicleNameBell206Police = "Politihelikopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Politihelikopter (flykropp)",
+    IGUI_VehicleNameBell206PoliceTail = "Politihelikopter (hale)",
+
+    IGUI_VehicleNameBell206Survivalist = "Sivilt helikopter",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "NÃ¸dforsyningsfall",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
+
+    IGUI_Spent = "Brukt",
+    IGUI_Lit = "Tent",
+}

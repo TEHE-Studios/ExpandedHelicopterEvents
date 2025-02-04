@@ -1,0 +1,26 @@
+Tooltip_NO = {
+    Tooltip_dismantle_helicopterpart = "Bruk av blÃ¥selampe og sveisemaske vil gi metall.",
+    Tooltip_open_boxes_barehanded = "Ville vÃ¦rt raskere Ã¥ Ã¥pne med noe skarpt.",
+    Tooltip_Parachute = "Kan rives opp for Ã¥ lage revet tÃ¸y.",
+    Tooltip_EnergyBar = "En energibar pakket for overlevelsessett. Produsert av PT&D.",
+    Tooltip_SurvivalVest = "Overlevelsesvest med standard utgave for militÃ¦rpiloter.",
+    Tooltip_SurvivalVestBlack = "Standard utstedt redningsvest for politiets sÃ¸k og redning.",
+    Tooltip_SPHMilitary = "Standard utstedt militÃ¦r helikopterhjelm."
+    Tooltip_SPHBlack = "Standard utgave militÃ¦rhelikopterhjelm i svart.",
+    Tooltip_SPHPolice = "Helikopterhjelm brukt av politiets luftvinger.",
+    Tooltip_SPHCivilian = "Helikopterhjelm brukt av sivile piloter.",
+
+    Tooltip_FlyerCDC = "Ser ut som en helseveiledning.",
+    Tooltip_FlyerMilitary = "Ser ut som et varselblad fra militÃ¦ret.",
+    Tooltip_CivilDefense = "Ser ut som en sivilforsvarsflyer.",
+
+    Tooltip_WaterSealed = "Forseglet vannrasjon distribuert av den amerikanske regjeringen."
+    Tooltip_WaterUnsealed = "Uforseglet vannrasjon distribuert av den amerikanske regjeringen." 
+
+    Tooltip_SupplyBox = "Forsyningsboks fra den amerikanske regjeringen."
+    Tooltip_SamaritanBox = "Supply Box fra en gruppe mystiske samaritaner.",
+    Tooltip_BanditBox = "Personlig oppbevaringsboks. Leser"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Signalisering av bluss. Ikke fyr innendÃ¸rs.",
+    Tooltip_HandFlare = "Flare. Ikke fyr innendÃ¸rs."
+}

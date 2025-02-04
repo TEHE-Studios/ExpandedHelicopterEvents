@@ -1,0 +1,15 @@
+DynamicRadio_CA = {
+    AEBS_SupplyDrop = "Paquet de subministrament entrant."
+    AEBS_Raiders = "Si pots escoltar aixÃ², fes-ho"
+    AEBS_SurvivorHeli = "Un corredor de botÃ­ sortint."
+    AEBS_SamaritanDrop = "A tots els que encara viuen, portem subministraments."
+    AEBS_UnauthorizedEntryPolice = "Activitat aÃ¨ria no autoritzada, aplicaciÃ³ de la llei canalla."
+    AEBS_UnauthorizedEntryNews = "Activitat aÃ¨ria no autoritzada, intruso de mitjans."
+    AEBS_JetBombing = "CÃ rrega Ãºtil per a la purga entrant."
+    AEBS_JetPass = "Jet pass entrant."
+    AEBS_AirRaid = "QUEDEU A LES PORTES I BUSQUEU REFUG"
+    AEBS_HostileMilitary = "Activitat aÃ¨ria detectada. Operacions militars especials en curs. Bondat."
+    AEBS_PurgeMilitary = "Activitat aÃ¨ria detectada. Operacions de control de multituds infectades en curs."
+    AEBS_PurgeCattle = "Activitat aÃ¨ria detectada. Operacions de sacrifici d'animals en curs."
+    AEBS_Military = "Activitat aÃ¨ria detectada. Operacions d'evacuaciÃ³ en curs."
+}

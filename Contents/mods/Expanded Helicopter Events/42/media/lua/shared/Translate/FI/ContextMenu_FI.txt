@@ -1,0 +1,9 @@
+ContextMenu_FI = {
+    ContextMenu_DownHoodie = "Huppu alas",
+    ContextMenu_VisorUp = "Visiiri ylÃ¶s",
+    ContextMenu_VisorDown = "Visiiri alas",
+    ContextMenu_Tighten = "KiristÃ¤",
+    ContextMenu_Untighten = "Avaa kiristys",
+
+    IGUI_VehiclePartHelicopterInterior = "Helikopterin sisÃ¤tilat",
+}

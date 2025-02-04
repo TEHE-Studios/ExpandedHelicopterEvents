@@ -1,0 +1,11 @@
+UI_NO = {
+    UI_Config_twitchIntegrationText = "Twitch-integrasjon",
+    UI_Config_twitchIntegrationToolTip1 = "Streamdekk eller et lignende program kreves for sømløs integrasjon.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternativt kan du bruke talltastene manuelt.",
+    UI_Config_twitchIntegrationOnly = "Deaktiver hendelser utenfor twitch-integrering",
+    UI_Config_twitchStreamerTargeted = "Mål co-op vert",
+    UI_Config_twitchHoursBeforeEventsAllowed = "I spillet timer før hendelser kan inntreffe",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hvor mange timer i spillet før arrangementer er tillatt.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Hvor mange timer i spillet må gå mellom hendelser"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hvor mange timer i spillet må gå mellom hendelser."
+}

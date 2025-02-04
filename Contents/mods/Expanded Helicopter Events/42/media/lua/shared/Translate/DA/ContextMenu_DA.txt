@@ -1,0 +1,9 @@
+ContextMenu_DA = {
+    ContextMenu_DownHoodie = "HÃ¦tte ned",
+    ContextMenu_VisorUp = "Visir op",
+    ContextMenu_VisorDown = "Visir ned",
+    ContextMenu_Tighten = "Stramme",
+    ContextMenu_Untighten = "LÃ¸sn",
+
+    IGUI_VehiclePartHelicopterInterior = "Helikopter interiÃ¸r",
+}

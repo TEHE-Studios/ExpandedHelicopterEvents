@@ -1,0 +1,3 @@
+DynamicRadio_CH = {
+	AEBS_buffcorrell = "是的，流行什麼，你的男孩 buffcorrell 又回來了，帶著一些受版權保護的音樂封面，但除非你是一個 twitch 流媒體，否則它只不過是一個雞王。艾斯克艾斯克埃斯克 埃斯克。讓我們做好準備。去。"
+}

@@ -1,0 +1,3 @@
+Recipe_TH = {
+    Recipe_Open_Supplies = "เปิดซัพพลาย",
+}

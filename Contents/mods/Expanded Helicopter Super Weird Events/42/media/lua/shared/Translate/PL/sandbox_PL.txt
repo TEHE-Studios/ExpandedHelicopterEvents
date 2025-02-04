@@ -1,0 +1,27 @@
+Sandbox_PL = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Jak często Spiffo świętuje swoje urodziny.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Lodziarnie Indiestone",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Jak często RJ przychodzi z wizytą.",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Jak często unikasz płacenia podatków.",
+
+    Sandbox_ExpandedHeli_EventUFO = "UFO",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Jak często chcesz wierzyć.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy Claws",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Jak często chcesz porwać Sandy Claws i pobić go kijem?",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Atak Striptizerek",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Jak często chcesz się dobrze bawić.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (prawa autorskie)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Jak często chcesz latać HELIKOPTEREM, HELIKOPTEREM. (Prawa autorskie)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (prawa autorskie)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Jak często po prostu chcesz tańczyć. (Prawa autorskie)",
+
+}

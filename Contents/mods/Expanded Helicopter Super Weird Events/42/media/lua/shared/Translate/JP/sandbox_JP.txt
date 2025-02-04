@@ -1,0 +1,27 @@
+Sandbox_JP = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "スピッフォ",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "スピッフォが誕生日をどれほど頻繁に祝うか。",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "インディストーン クリーマリーズ",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ がどれくらいの頻度で訪問してくるか。",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "税金の支払いをどのくらいの頻度で避けているか。",
+
+    Sandbox_ExpandedHeli_EventUFO = "未確認飛行物体",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "どのくらいの頻度で信じたいか。",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "サンディ・クローズ",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "サンディ・クローズを誘拐して棒で殴りたくなる頻度はどれくらいですか。",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "ストリッパーの攻撃",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "どれくらいの頻度で楽しい時間を過ごしたいか。",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "ヘリコプター（著作権あり）",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "どのくらいの頻度でヘリコプターを使いたいですか、ヘリコプター。(著作権所有)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "バフ・コレル（著作権所有）",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "どれだけ頻繁に踊りたくなるか。(著作権所有)",
+
+}

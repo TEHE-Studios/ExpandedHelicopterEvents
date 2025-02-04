@@ -1,0 +1,15 @@
+DynamicRadio_PH = {
+    AEBS_SupplyDrop = "Papasok na package ng supply."
+    AEBS_Raiders = "Kung naririnig mo ito, kumuha ka ng f-"
+    AEBS_SurvivorHeli = "Loot runner na papalabas."
+    AEBS_SamaritanDrop = "Sa sinumang nabubuhay pa, nagdadala kami ng mga suplay."
+    AEBS_UnauthorizedEntryPolice = "Hindi awtorisadong aktibidad sa himpapawid, rogue na pagpapatupad ng batas."
+    AEBS_UnauthorizedEntryNews = "Hindi awtorisadong aktibidad sa hangin, lumalabag sa media."
+    AEBS_JetBombing = "Payload para sa purge papasok."
+    AEBS_JetPass = "Papasok na jet pass."
+    AEBS_AirRaid = "MANATILI SA MGA PINTO AT MAGHAHANAP NG SIlungan"
+    AEBS_HostileMilitary = "Natukoy ang Aktibidad sa Hangin. Nagsisimula ang Mga Espesyal na Operasyon ng Militar. Godspeed."
+    AEBS_PurgeMilitary = "Natukoy ang Aktibidad sa Hangin. Isinasagawa ang Infected Crowd Control Operations."
+    AEBS_PurgeCattle = "Natukoy ang Aktibidad sa Hangin. Nagaganap ang Mga Pagpapatakbo ng Paghukay ng Hayop."
+    AEBS_Military = "Natukoy ang Aktibidad sa Hangin. Isinasagawa ang mga Operasyon ng Paglisan."
+}

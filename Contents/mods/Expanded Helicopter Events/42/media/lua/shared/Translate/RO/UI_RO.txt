@@ -1,0 +1,11 @@
+UI_RO = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Evenimente extinse cu elicoptere"
+    UI_Config_sandBoxMovedText = "Opțiunile de configurare pot fi găsite în opțiunile sandbox.",
+    UI_Config_voiceTitle = "Pachete de voce",
+
+    UI_Config_resetEventsToolTip = "Resetați evenimentele programate în caz de urgență:",
+    UI_Config_resetEvents = "Resetează evenimente",
+    UI_Config_eventMarkersOnToolTip1 = "Activați această opțiune pentru a activa marcatorii de evenimente.",
+    UI_Config_eventMarkersOnToolTip2 = "Notă: Markerii evenimentelor pot fi trageți.",
+    UI_Config_eventMarkersOn = "Marcatori de evenimente",
+}

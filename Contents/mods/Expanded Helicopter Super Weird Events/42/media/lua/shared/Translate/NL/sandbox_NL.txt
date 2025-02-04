@@ -1,0 +1,27 @@
+Sandbox_NL = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Hoe vaak Spiffo zijn verjaardag viert.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "De Indiestone-zuivelfabrieken",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Hoe vaak RJ op bezoek komt.",
+
+    Sandbox_ExpandedHeli_EventIRS = "Belastingdienst",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Hoe vaak u belasting ontduikt.",
+
+    Sandbox_ExpandedHeli_EventUFO = "UFO",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Hoe vaak je het ook wilt geloven.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Zandige Klauwen",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Hoe vaak wil je Sandy Claws ontvoeren en hem met een stok slaan?",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Aanval van de strippers",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Hoe vaak je een leuke tijd wilt hebben.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (Auteursrechtelijk beschermd)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Hoe vaak u wilt HELIKOPTER, HELIKOPTER. (Auteursrechtelijk beschermd)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (auteursrechtelijk beschermd)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Hoe vaak wil je gewoon dansen? (Auteursrechtelijk beschermd)",
+
+}

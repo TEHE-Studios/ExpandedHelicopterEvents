@@ -1,0 +1,15 @@
+DynamicRadio_NL = {
+    AEBS_SupplyDrop = "Leveringspakket binnen."
+    AEBS_Raiders = "Als je dit kunt horen, ga dan naar de f-"
+    AEBS_SurvivorHeli = "De plunderaar gaat op pad."
+    AEBS_SamaritanDrop = "Voor iedereen die nog leeft, brengen wij voorraden."
+    AEBS_UnauthorizedEntryPolice = "Ongeautoriseerde luchtactiviteiten, malafide wetshandhaving."
+    AEBS_UnauthorizedEntryNews = "Ongeautoriseerde luchtactiviteiten, media-inbreuk."
+    AEBS_JetBombing = "Payload voor purge binnenkomend."
+    AEBS_JetPass = "Jetpass binnenkomend."
+    AEBS_AirRaid = "BLIJF BINNEN EN ZOEK EEN SCHUILPLAATS"
+    AEBS_HostileMilitary = "Luchtactiviteit gedetecteerd. Militaire speciale operaties gaande. Godspeed."
+    AEBS_PurgeMilitary = "Luchtactiviteit gedetecteerd. Infectiebestrijdingsoperaties gaande."
+    AEBS_PurgeCattle = "Luchtactiviteit gedetecteerd. Dierenruimingsoperaties gaande."
+    AEBS_Military = "Luchtactiviteit gedetecteerd. Evacuatie-operaties gaande."
+}

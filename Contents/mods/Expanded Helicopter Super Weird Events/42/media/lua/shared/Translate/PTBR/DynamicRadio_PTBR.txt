@@ -1,0 +1,3 @@
+DynamicRadio_PTBR = {
+	AEBS_buffcorrell = "sim, o que está rolando é o seu garoto Buffcorrell de volta com alguns covers de músicas protegidas por direitos autorais, mas não passa de um pau de galinha, a menos que você seja um streamer do Twitch. esk. esk. esk. esk. Leeeeeeeeeeet, preparem-se e. vão."
+}

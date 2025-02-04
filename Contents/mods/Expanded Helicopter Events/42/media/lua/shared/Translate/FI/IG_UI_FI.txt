@@ -1,0 +1,29 @@
+IG_UI_FI = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Haaksirikkoutunut UH-60A (runko)",
+    IGUI_VehicleNameUH60GreenTail = "Haaksirikkoutunut UH-60A (hÃ¤ntÃ¤)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A autiomaa",
+    IGUI_VehicleNameUH60DesertFuselage = "Haaksirikkoutunut UH-60A aavikko (runko)",
+    IGUI_VehicleNameUH60DesertTail = "Haaksirikkoutunut UH-60A aavikko (hÃ¤ntÃ¤)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Haaksirikkoutunut UH-60A Medevac (runko)",
+    IGUI_VehicleNameUH60MedevacTail = "Haaksirikkoutunut UH-60A Medevac (hÃ¤ntÃ¤)",
+
+    IGUI_VehicleNameBell206LBMW = "Uutiset Helikopteri",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Uutishelikopteri (runko)",
+    IGUI_VehicleNameBell206LBMWTail = "Uutishelikopteri (hÃ¤ntÃ¤)",
+
+    IGUI_VehicleNameBell206Police = "Poliisi helikopteri",
+    IGUI_VehicleNameBell206PoliceFuselage = "Poliisihelikopteri (runko)",
+    IGUI_VehicleNameBell206PoliceTail = "Poliisihelikopteri (hÃ¤ntÃ¤)",
+
+    IGUI_VehicleNameBell206Survivalist = "Siviilihelikopteri",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "HÃ¤tÃ¤tarvikkeiden pudotus",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samarialainen tarjonnan lasku",
+
+    IGUI_Spent = "KÃ¤ytetty",
+    IGUI_Lit = "Lit",
+}

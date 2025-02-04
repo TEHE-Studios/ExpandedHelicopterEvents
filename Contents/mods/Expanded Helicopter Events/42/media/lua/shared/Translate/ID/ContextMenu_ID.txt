@@ -1,0 +1,9 @@
+ContextMenu_ID = {
+    ContextMenu_DownHoodie = "Kap Mesin Turun",
+    ContextMenu_VisorUp = "Visor Naik",
+    ContextMenu_VisorDown = "Visor Turun",
+    ContextMenu_Tighten = "Mengencangkan",
+    ContextMenu_Untighten = "Melonggarkan",
+
+    IGUI_VehiclePartHelicopterInterior = "Interior Helikopter",
+}

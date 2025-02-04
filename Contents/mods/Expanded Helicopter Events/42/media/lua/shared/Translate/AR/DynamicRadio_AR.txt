@@ -1,0 +1,15 @@
+DynamicRadio_AR = {
+    AEBS_SupplyDrop = "Paquete de suministro entrante."
+    AEBS_Raiders = "Si puedes escuchar esto, vete a la mierda."
+    AEBS_SurvivorHeli = "El corredor del botÃ­n se dirige hacia la salida."
+    AEBS_SamaritanDrop = "A todos aquellos que aÃºn estÃ¡n vivos, les llevaremos suministros."
+    AEBS_UnauthorizedEntryPolice = "Actividad aÃ©rea no autorizada, aplicaciÃ³n de la ley deshonesta."
+    AEBS_UnauthorizedEntryNews = "Actividad aÃ©rea no autorizada, intruso en los medios de comunicaciÃ³n."
+    AEBS_JetBombing = "Carga Ãºtil para purga entrante."
+    AEBS_JetPass = "Pase de jet entrante."
+    AEBS_AirRaid = "PERMANECER DENTRO DE CASAS Y BUSCAR REFUGIO"
+    AEBS_HostileMilitary = "Se ha detectado actividad aÃ©rea. Se estÃ¡n llevando a cabo operaciones militares especiales. Â¡Buena suerte!"
+    AEBS_PurgeMilitary = "Se detectÃ³ actividad aÃ©rea. Se estÃ¡n llevando a cabo operaciones de control de multitudes infectadas."
+    AEBS_PurgeCattle = "Se detectÃ³ actividad aÃ©rea. Se estÃ¡n llevando a cabo operaciones de sacrificio de animales."
+    AEBS_Military = "Se detectÃ³ actividad aÃ©rea. Operaciones de evacuaciÃ³n en curso."
+}

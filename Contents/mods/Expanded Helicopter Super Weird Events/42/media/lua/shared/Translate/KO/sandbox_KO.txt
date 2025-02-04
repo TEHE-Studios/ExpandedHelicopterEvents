@@ -1,0 +1,27 @@
+Sandbox_KO = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "스피포",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "스피포가 얼마나 자주 생일을 축하하는지.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "인디스톤 크리메리",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ가 방문하는 빈도는?",
+
+    Sandbox_ExpandedHeli_EventIRS = "국세청",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "세금 납부를 얼마나 자주 회피하는가.",
+
+    Sandbox_ExpandedHeli_EventUFO = "미확인 비행물체(UFO)",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "얼마나 자주 믿고 싶은가.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "샌디 클로스",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "샌디 클로우즈를 납치해서 막대기로 때리고 싶은 빈도는?",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "스트리퍼의 공격",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "얼마나 자주 즐거운 시간을 보내고 싶습니까?",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "헬리콥터(저작권 보호)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "HELIKOPTER, HELIKOPTER를 얼마나 자주 이용하고 싶으신가요? (저작권 보호)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "버프 코렐(저작권)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "얼마나 자주 그냥 춤추고 싶은지. (저작권 있음)",
+
+}

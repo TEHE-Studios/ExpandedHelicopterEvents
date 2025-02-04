@@ -1,0 +1,11 @@
+UI_KO = {
+    UI_Config_twitchIntegrationText = "트위치 통합",
+    UI_Config_twitchIntegrationToolTip1 = "원활한 통합을 위해서는 스트림 데크나 유사한 프로그램이 필요합니다.",
+    UI_Config_twitchIntegrationToolTip2 = "혹은 숫자패드 키를 수동으로 사용할 수도 있습니다.",
+    UI_Config_twitchIntegrationOnly = "트위치 통합 외부에서 이벤트 비활성화",
+    UI_Config_twitchStreamerTargeted = "타겟 협동 호스트만",
+    UI_Config_twitchHoursBeforeEventsAllowed = "이벤트가 발생하기 전 게임 내 시간",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "이벤트가 시작되기 전까지 게임 내에서 허용되는 시간은 얼마인가요?",
+    UI_Config_twitchHoursDelayBetweenEvents = "이벤트 사이에 게임 내 시간은 얼마나 지나야 합니까?"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "이벤트 사이에 게임 내 시간이 얼마나 지나야 합니까?"
+}

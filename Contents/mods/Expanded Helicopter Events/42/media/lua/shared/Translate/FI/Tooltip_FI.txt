@@ -1,0 +1,26 @@
+Tooltip_FI = {
+    Tooltip_dismantle_helicopterpart = "Puhalluspolttimen ja hitsausmaskin kÃ¤yttÃ¶ tuottaa metallia.",
+    Tooltip_open_boxes_barehanded = "Olisi nopeampi avata jollain terÃ¤vÃ¤llÃ¤.",
+    Tooltip_Parachute = "Voidaan repiÃ¤ repeytyneeksi kankaaksi.",
+    Tooltip_EnergyBar = "Energiapatukka, joka on pakattu selviytymissarjoihin. Valmistaja PT&D.",
+    Tooltip_SurvivalVest = "Vakiovarusteena oleva selviytymisliivi sotilaslentÃ¤jille.",
+    Tooltip_SurvivalVestBlack = "Tavallinen selviytymisliivi poliisin etsintÃ¤Ã¤n ja pelastamiseen.",
+    Tooltip_SPHMilitary = "Sotilashelikopterin vakiokypÃ¤rÃ¤."
+    Tooltip_SPHBlack = "Sotilashelikopterin vakiokypÃ¤rÃ¤ mustana.",
+    Tooltip_SPHPolice = "Poliisin ilmasiipien kÃ¤yttÃ¤mÃ¤ helikopterikypÃ¤rÃ¤.",
+    Tooltip_SPHCivilian = "SiviililentÃ¤jien kÃ¤yttÃ¤mÃ¤ helikopterikypÃ¤rÃ¤.",
+
+    Tooltip_FlyerCDC = "NÃ¤yttÃ¤Ã¤ terveysneuvotteelta.",
+    Tooltip_FlyerMilitary = "NÃ¤yttÃ¤Ã¤ armeijan ilmoituslehtiseltÃ¤.",
+    Tooltip_CivilDefense = "NÃ¤yttÃ¤Ã¤ vÃ¤estÃ¶nsuojelulehdeltÃ¤.",
+
+    Tooltip_WaterSealed = "Yhdysvaltain hallituksen jakama Sealed Water Ration."
+    Tooltip_WaterUnsealed = "Yhdysvaltain hallituksen jakama suljetun vesiannoksen." 
+
+    Tooltip_SupplyBox = "Tarvikelaatikko Yhdysvaltain hallitukselta."
+    Tooltip_SamaritanBox = "Supply Box ryhmÃ¤ltÃ¤ salaperÃ¤isiÃ¤ samarialaisia.",
+    Tooltip_BanditBox = "HenkilÃ¶kohtainen sÃ¤ilytyslaatikko. Lukee"MY SHIT, DONT TOUCH!",
+
+    Tooltip_SignalFlare = "Merkkivalo. Ã„lÃ¤ polta sisÃ¤tiloissa.",
+    Tooltip_HandFlare = "Leimahdus. Ã„lÃ¤ polta sisÃ¤tiloissa."
+}

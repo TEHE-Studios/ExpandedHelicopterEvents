@@ -1,0 +1,3 @@
+DynamicRadio_CA = {
+	AEBS_buffcorrell = "sí, què és el que està fent, és que el teu noi s'ho torna a fer amb algunes portades de música amb drets d'autor, però no és més que un pollastre, tret que siguis un streamer de contracció. esk. esk. esk esk. leeeeeeeeeet es posen a punt i. anar."
+}

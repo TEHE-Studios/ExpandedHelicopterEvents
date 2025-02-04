@@ -1,0 +1,3 @@
+DynamicRadio_CS = {
+	AEBS_buffcorrell = "jo, co to poppin', je to tvůj chlapec, který se na to znovu vrací s nějakými autorskými právy chráněnými hudebními covery, ale není to thang, ale slepičí wang, pokud nejste twitch streamer. esk. esk. esk esk. leeeeeeeeeet se rozzlobí a. jít."
+}

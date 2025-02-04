@@ -1,0 +1,3 @@
+DynamicRadio_HU = {
+	AEBS_buffcorrell = "igen, ami pompázik, az a te fiúd buffcorrell, és nézd meg újra, néhány szerzői joggal védett zenei borítóval, de ez nem csak egy csirkefogó, hacsak nem twitch streamer vagy. esk. esk. esk esk. leeeeeeeeeet's get reeeady és. megy."
+}

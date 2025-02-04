@@ -1,0 +1,56 @@
+Sandbox_CA = {
+    Sandbox_ExpandedHeli = "Esdeveniments d'helicÃ²pters ampliats",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Mai"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Rar",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Poc comÃº",
+    Sandbox_ExpandedHeli_Frequency_option4 = "ComÃº",
+    Sandbox_ExpandedHeli_Frequency_option5 = "FreqÃ¼ent",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Boig",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "TransiciÃ³ dels atacs aeris",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Trieu true si voleu que un esdeveniment d'atac aeri indiqui un canvi d'esdeveniments d'inici de joc menys desafiants a esdeveniments de final de joc mÃ©s hostils.",
+
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments de jet.<br>Els jets volen pels jugadors i provoquen el moviment de les hordes.",
+
+    Sandbox_ExpandedHeli_EventNews = "NotÃ­cies",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments informatius.<br>Els helicÃ²pters de notÃ­cies s'atendran a qualsevol ciutadÃ  que trobin i els seguiran durant una estona curta.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Policia",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments policials.<br>La policia es farÃ  cÃ rrec dels assumptes i acompanyarÃ  els ciutadans mentre dispara als zombis.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militars",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments militars.<br>L'exÃ¨rcit avanÃ§arÃ  per etapes: aviseu els ciutadans, purgeu els no-morts i, finalment, purgueu qualsevol cosa que es mogui.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Gotes d'ajuda de FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments de caiguda d'ajuda de FEMA.<br>FEMA realitzarÃ  baixades d'ajuda al principi de l'apocalipsi.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Supervivents",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments dels supervivents.<br>Els supervivents nomÃ©s volaran en missions d'exploraciÃ³ que provoquen moviments d'hordes.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments dels raiders.<br>Els raiders s'enfocaran en els supervivents per turmentar-los per a una mica d'entreteniment.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritans",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Amb quina freqÃ¼Ã¨ncia es produeixen els esdeveniments samaritans.<br>Els samaritans deixaran subministraments per ajudar els supervivents.",
+
+    Sandbox_ExpandedHeli_StartDay = "Dia d'inici",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "AixÃ² Ã©s el que ocorren els esdeveniments del dia del joc. Haureu de tenir en compte"months into the apocalypse"configuracions.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Durada del programador",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Quants dies s'executa el programador des del dia d'inici.<br>El programador ajustarÃ  la progressiÃ³ de l'esdeveniment per adaptar-se a aquesta durada.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continueu programant esdeveniments mÃ©s enllÃ  de la durada",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normalment, el programador acaba amb el lÃ­mit de durada, activant aquesta opciÃ³ continua programant esdeveniments mÃ©s enllÃ  de la durada. Els esdeveniments seguiran avanÃ§ant per etapes segons la durada, perÃ² els esdeveniments mai deixaran de programar-se.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Sense programaciÃ³ continuada"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continuar programant: Tots els esdeveniments",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continuar programant: nomÃ©s per a finals de joc",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "El temps afectarÃ  els esdeveniments",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Si el temps evitarÃ  els esdeveniments o provocarÃ  el seu accident.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicador de probabilitats de bloqueig",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "AixÃ² es multiplica per la possibilitat d'accident, 0 evitarÃ  que es produeixin bloquejos.",
+}

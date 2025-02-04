@@ -1,0 +1,56 @@
+Sandbox_NL = {
+    Sandbox_ExpandedHeli = "Uitgebreide helikopterevenementen",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Nooit"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Zeldzaam",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Ongewoon",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Gewoon",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Vaak voorkomend",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Gestoord",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Luchtaanval overgang",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Selecteer 'waar' als je wilt dat een luchtaanvalgebeurtenis een verschuiving aangeeft van minder uitdagende gebeurtenissen in het begin van het spel naar meer vijandige gebeurtenissen in het einde van het spel.",
+
+    Sandbox_ExpandedHeli_EventJet = "Straaljagers",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Hoe vaak straaljagers voorkomen.<br>Straaljagers vliegen langs spelers en veroorzaken hordebewegingen.",
+
+    Sandbox_ExpandedHeli_EventNews = "Nieuws",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Hoe vaak nieuwsgebeurtenissen voorkomen.<br>Nieuwshelicopters richten zich op elke burger die ze tegenkomen en volgen hem of haar een tijdje.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Politie",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Hoe vaak vinden er politieacties plaats?<br>De politie neemt het heft in eigen handen en begeleidt burgers terwijl ze op zombies schieten.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militair",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Hoe vaak militaire gebeurtenissen plaatsvinden.<br>Het leger doorloopt verschillende fasen: burgers waarschuwen, de ondoden zuiveren en uiteindelijk alles zuiveren wat beweegt.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA-hulp daalt",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Hoe vaak FEMA hulpgoederen dropt.<br>FEMA zal al vroeg in de apocalyps hulpgoederen droppen.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Overlevenden",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Hoe vaak overlevendengebeurtenissen voorkomen.<br>Overlevenden vliegen alleen langs tijdens verkenningsmissies, waardoor de horde zich verplaatst.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Overvallers",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Hoe vaak raider-gebeurtenissen voorkomen.<br>Raiders richten zich op overlevenden om ze te kwellen voor wat vermaak.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritanen",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Hoe vaak Samaritanengebeurtenissen voorkomen.<br>Samaritanen brengen voorraden om overlevenden te helpen.",
+
+    Sandbox_ExpandedHeli_StartDay = "Startdag",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Dit is wat er op de dag in het spel gebeurt. Je moet rekening houden met"months into the apocalypse"instellingen.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler-duur",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Hoeveel dagen de scheduler vanaf de startdag wordt uitgevoerd.<br>De scheduler past de voortgang van gebeurtenissen aan deze duur aan.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Blijf evenementen plannen die langer duren dan de tijdsduur",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normaal gesproken eindigt de scheduler bij de duurlimiet, door dit aan te zetten worden events gepland na de duur. Events zullen nog steeds door de fasen heengaan volgens de duur, maar events zullen nooit stoppen met gepland worden.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Geen doorlopende planning"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Doorgaan met plannen: Alle evenementen",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Doorgaan met plannen: alleen late-game",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Het weer heeft invloed op gebeurtenissen",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Of het weer de gebeurtenissen zal verhinderen of juist zal laten mislukken.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Crashkansvermenigvuldiger",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Vermenigvuldig dit met de kans op een crash. Bij een waarde van 0 worden crashes helemaal voorkomen.",
+}

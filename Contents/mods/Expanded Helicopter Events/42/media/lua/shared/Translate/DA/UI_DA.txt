@@ -1,0 +1,11 @@
+UI_DA = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Udvidede Helicopter Events"
+    UI_Config_sandBoxMovedText = "Konfigurationsmuligheder kan findes i sandkasseindstillinger.",
+    UI_Config_voiceTitle = "Stemmepakker",
+
+    UI_Config_resetEventsToolTip = "Nulstil planlagte hÃ¦ndelser i nÃ¸dstilfÃ¦lde:",
+    UI_Config_resetEvents = "Nulstil begivenheder",
+    UI_Config_eventMarkersOnToolTip1 = "SlÃ¥ dette til for at aktivere begivenhedsmarkÃ¸rer.",
+    UI_Config_eventMarkersOnToolTip2 = "BemÃ¦rk: BegivenhedsmarkÃ¸rer kan trÃ¦kkes.",
+    UI_Config_eventMarkersOn = "BegivenhedsmarkÃ¸rer",
+}

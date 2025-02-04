@@ -1,0 +1,27 @@
+Sandbox_PH = {
+
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Gaano kadalas ipinagdiriwang ni Spiffo ang kanyang kaarawan.",
+
+    Sandbox_ExpandedHeli_EventTISCreamery = "Ang Indiestone Creameries",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Gaano kadalas bumisita si RJ.",
+
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Gaano kadalas mo iniiwasan ang pagbabayad ng iyong mga buwis.",
+
+    Sandbox_ExpandedHeli_EventUFO = "UFO",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Gaano kadalas mo gustong maniwala.",
+
+    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy Claws",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Gaano kadalas mo gustong agawin ang Sandy Claws at bugbugin siya ng isang stick.",
+
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Pag-atake ng The Strippers",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Gaano kadalas mo gustong magsaya.",
+
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (Copyrighted)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Gaano kadalas mo gustong mag-HELIKOPTER, HELIKOPTER. (May copyright)",
+
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (Copyrighted)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Gaano kadalas mo lang gustong sumayaw. (May copyright)",
+
+}

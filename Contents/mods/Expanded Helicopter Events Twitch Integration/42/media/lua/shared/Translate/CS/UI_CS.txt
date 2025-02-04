@@ -1,0 +1,11 @@
+UI_CS = {
+    UI_Config_twitchIntegrationText = "Integrace Twitch",
+    UI_Config_twitchIntegrationToolTip1 = "Pro bezproblémovou integraci je vyžadován streamovací balíček nebo podobný program.",
+    UI_Config_twitchIntegrationToolTip2 = "Případně můžete použít numerické klávesy ručně.",
+    UI_Config_twitchIntegrationOnly = "Zakázat události mimo integraci twitch",
+    UI_Config_twitchStreamerTargeted = "Cílový kooperativní hostitel pouze",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Hodiny ve hře, než mohou nastat události",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Kolik hodin ve hře před událostmi je povoleno.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Kolik hodin ve hře musí uplynout mezi událostmi"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Kolik hodin ve hře musí uplynout mezi událostmi."
+}
