@@ -1,29 +1,29 @@
 IG_UI_TR = {
     IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "Harap UH-60A (Gövde)",
-    IGUI_VehicleNameUH60GreenTail = "Enkaz UH-60A (Kuyruk)",
+    IGUI_VehicleNameUH60GreenFuselage = "Enkaz Halinde UH-60A (GÃ¶vde)",
+    IGUI_VehicleNameUH60GreenTail = "Harap UH-60A (Kuyruk)",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A Çölü",
-    IGUI_VehicleNameUH60DesertFuselage = "Enkaz UH-60A Çölü (Gövde)",
-    IGUI_VehicleNameUH60DesertTail = "Enkaz UH-60A Çölü (Kuyruk)",
+    IGUI_VehicleNameUH60Desert = "UH-60A Ã‡Ã¶l",
+    IGUI_VehicleNameUH60DesertFuselage = "Enkaz Halinde UH-60A Ã‡Ã¶l (GÃ¶vde)",
+    IGUI_VehicleNameUH60DesertTail = "Enkaz Halinde UH-60A Ã‡Ã¶l (Kuyruk)",
 
-    IGUI_VehicleNameUH60Medevac = "UH-60A Tıbbi Vakum",
-    IGUI_VehicleNameUH60MedevacFuselage = "Enkaz UH-60A Medevac (Gövde)",
-    IGUI_VehicleNameUH60MedevacTail = "Enkaz UH-60A Medevac (Kuyruk)",
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Enkaz Halinde UH-60A Medevac (GÃ¶vde)",
+    IGUI_VehicleNameUH60MedevacTail = "Enkaz Halinde UH-60A Medevac (Kuyruk)",
 
-    IGUI_VehicleNameBell206LBMW = "Bell 206 YayÄ±n Helikopteri",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 YayÄ±n Helikopteri (GÃ¶vde)",
-    IGUI_VehicleNameBell206LBMWTail = "Bell 206 YayÄ±n Helikopteri (Kuyruk)",
+    IGUI_VehicleNameBell206LBMW = "Haber Helikopteri",
+    IGUI_VehicleNameBell206LBMWFuselage = "Haber Helikopteri (GÃ¶vde)",
+    IGUI_VehicleNameBell206LBMWTail = "Haber Helikopteri (Kuyruk)",
 
-    IGUI_VehicleNameBell206Police = "Bell 206 Polis Helikopteri",
-    IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 Polis Helikopteri (GÃ¶vde)",
-    IGUI_VehicleNameBell206PoliceTail = "Bell 206 Polis Helikopteri (Kuyruk)",
+    IGUI_VehicleNameBell206Police = "Polis Helikopteri",
+    IGUI_VehicleNameBell206PoliceFuselage = "Polis Helikopteri (GÃ¶vde)",
+    IGUI_VehicleNameBell206PoliceTail = "Polis Helikopteri (Kuyruk)",
 
-    IGUI_VehicleNameBell206Survivalist = "Bell 206 Survivalist",
-    
-    IGUI_VehicleNameFEMASupplyDrop = "Acil YardÄ±m Paketi",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan YardÄ±m Paketi",
+    IGUI_VehicleNameBell206Survivalist = "Sivil Helikopter",
 
-    IGUI_Spent = "Harcanan",
-    IGUI_Lit = "Aydınlatılmış",
+    IGUI_VehicleNameFEMASupplyDrop = "Acil Durum Ä°kmal DesteÄŸi",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Ä°kmal DesteÄŸi",
+
+    IGUI_Spent = "HarcandÄ±",
+    IGUI_Lit = "AydÄ±nlÄ±k",
 }
