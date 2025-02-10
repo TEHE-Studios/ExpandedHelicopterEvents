@@ -9,6 +9,7 @@ require "ExpandedHelicopter01a_MainVariables"
 Events.OnGameBoot.Add(function()
 	if EHE_DebugTests then
 		EHE_DebugTests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
+		EHE_DebugTests["Current Events"] = CustomDebugPanel.eHeliCurrentEvents
 		EHE_DebugTests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
 		EHE_DebugTests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
 		EHE_DebugTests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
@@ -133,6 +134,7 @@ function CustomDebugPanel.ToggleAllCrash()
 	else
 		CustomDebugPanel.TOGGLE_ALL_CRASH = true
 	end
+	getPlayer():Say("EHE: DEBUG: TOGGLE_ALL_CRASH = "..tostring(CustomDebugPanel.TOGGLE_ALL_CRASH))
 	print("EHE: DEBUG: TOGGLE_ALL_CRASH = "..tostring(CustomDebugPanel.TOGGLE_ALL_CRASH))
 end
 
@@ -237,6 +239,14 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 		print("--- TOTAL EVENTS: "..totalTimes)
 		print("======================================")
 	end
+end
+
+
+--- Check eHeliEvent within eHeliEventsOnSchedule
+function CustomDebugPanel.eHeliCurrentEvents()
+	local currentSetting = CustomDebugPanel.currentEventsView or false
+	CustomDebugPanel.currentEventsView = (not currentSetting)
+	getPlayer():Say("EHE: DEBUG: CustomDebugPanel.currentEventsView = "..tostring(CustomDebugPanel.currentEventsView))
 end
 
 

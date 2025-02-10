@@ -50,14 +50,16 @@
 - FINAL UPDATE for B41- pending serious issues or bugs.
 [ ------ ]
 
-[ 1/20/25 ]
+[ 2/9/25 ]
 - Prior Update: Infamous Sound-Bug Fix v3? v4? - there was a typo in the update function.
 
-FINAL FINAL UPDATE for B41: (Save for hotfixes)
+1/20/25 - FINAL FINAL UPDATE for B41: (Except for hotfixes)
 - There was an issue with file management caused by 42 development.
 - Issues with missing meshes/textures should be fixed.
 - Clothing that was previously removed should de-spawn now.
 - Adjusted some zombie outfits that tried using removed items.
 
-HOTFIX 1: Fixes TR encoding, thanks to VVentos!
+HOTFIX 1:
+- Fixes TR encoding, thanks to VVentos!
+- Change to sound update code.
 [ ------ ]

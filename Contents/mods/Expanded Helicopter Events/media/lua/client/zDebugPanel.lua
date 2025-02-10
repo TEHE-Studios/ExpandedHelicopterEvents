@@ -13,7 +13,8 @@ end)
 require "DebugUIs/DebugMenu/ISDebugMenu"
 
 EHE_DebugTests = EHE_DebugTests or {}
-
+--self.currentEventsView
+---@type ISPanel
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 
 
@@ -39,6 +40,40 @@ function EHE_DebugTestWindow.OnOpenPanel()
 	end
 end
 
+function EHE_DebugTestWindow:render()
+	if CustomDebugPanel.currentEventsView then
+
+		self:drawText("getGametimeTimestamp: "..getGametimeTimestamp(), self.width+24, 0, 1, 1, 1, 1, UIFont.Medium)
+		local yShift = 0
+		for _,helicopter in ipairs(ALL_HELICOPTERS) do
+			---@type eHelicopter heli
+			local heli = helicopter
+			if heli then
+				local eventID = heli.ID
+				local soundEmitter = storedLooperEvents[eventID] and "emitter" or "NO emitter"
+				self:drawText("event: "..heli:heliToString().."   "..soundEmitter, self.width+24, 48+yShift, 1, 1, 1, 1, UIFont.Medium)
+				if soundEmitter then
+
+					local lastUpdateTime = soundEmitter and storedLooperEventsUpdateTimes[eventID]
+					if lastUpdateTime then
+						yShift = yShift+32
+						self:drawText("     lastUpdateTime: "..lastUpdateTime, self.width+24, 48+yShift, 1, 1, 1, 1, UIFont.Small)
+					end
+
+					local storedSounds = soundEmitter and storedLooperEventsSoundEffects[eventID]
+					if storedSounds then
+						for sound,ref in pairs(storedSounds) do
+							yShift = yShift+32
+							self:drawText("         sound: "..sound.."  ("..tostring(ref)..")", self.width+24, 48+yShift, 1, 1, 1, 1, UIFont.Small)
+						end
+					end
+				end
+				yShift = yShift+32
+			end
+		end
+	end
+	ISPanel.render(self)
+end
 
 function EHE_DebugTestWindow:initialise()
 	ISPanel.initialise(self)

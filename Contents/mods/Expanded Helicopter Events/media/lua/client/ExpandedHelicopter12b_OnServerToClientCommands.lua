@@ -65,23 +65,21 @@ end
 Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
 
-local storedLooperEvents = {}
-local storedLooperEventsSoundEffects = {}
-local storedLooperEventsUpdateTimes = {}
-
 local clientSideEventSoundHandler = {}
-
+storedLooperEvents = {}
+storedLooperEventsSoundEffects = {}
+storedLooperEventsUpdateTimes = {}
 
 function clientSideEventSoundHandler.updateForPlayer(player)
 	for ID,emitter in pairs(storedLooperEvents) do
 		local timestamp = storedLooperEventsUpdateTimes[ID]
 		if timestamp~=false then
 			if timestamp >= getGametimeTimestamp() then
-
 				local storedSounds = storedLooperEventsSoundEffects[ID]
 				if storedSounds then
 					for sound,ref in pairs(storedSounds) do
 						if not emitter:isPlaying(ref) then
+							print("   -sound: ", sound, " ("..ref..")")
 							storedLooperEventsSoundEffects[ID][sound] = emitter:playSound(sound)
 							emitter:tick()
 						end
@@ -90,13 +88,16 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 			else
 				local storedSounds = storedLooperEventsSoundEffects[ID]
 				if storedSounds then
-					for sound,ref in pairs(storedSounds) do
+					for sound,ref in pairs(storedSound0s) do
+						print("   -sound: ", sound, " ("..ref..")")
 						storedLooperEventsSoundEffects[ID][sound] = emitter:stopSoundLocal(ref)
 						emitter:tick()
 					end
 				end
 
 			end
+		else
+			print("storedLoopSound: ", ID, "    dead")
 		end
 	end
 end
@@ -125,7 +126,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 		end
 		--]]
 
-		storedLooperEventsUpdateTimes[reusableID] = getTimeInMillis()
+		storedLooperEventsUpdateTimes[reusableID] = getGametimeTimestamp()+100
 
 		if not DATA then --print(" --WARN: Command has a data of nil!")
 		else
@@ -174,10 +175,16 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 				storedLooperEventsSoundEffects[reusableID] = nil
 			end
 
+			soundEmitter:setVolumeAll(0)
 			soundEmitter:stopAll()
 			soundEmitter:tick()
 
-			for ID,emitter in pairs(storedLooperEvents) do if emitter == soundEmitter or ID == reusableID then storedLooperEvents[ID] = nil end end
+			for ID,emitter in pairs(storedLooperEvents) do
+				if emitter == soundEmitter or ID == reusableID then
+					storedLooperEvents[ID] = nil
+					storedLooperEventsUpdateTimes[ID] = nil
+				end
+			end
 		end
 	end
 end
@@ -244,7 +251,8 @@ local function onServerCommand(_module, _command, _data)
 		heliEventAttackHitOnIsoGameCharacter(_data.damage, _data.targetType, _data.targetID)
 
 	elseif _module == "sendLooper" then
-		storedLooperEventsUpdateTimes[_data.reusableID] = getGametimeTimestamp()+100
+
+		if _command ~= "setPos" then print("_data.reusableID: ", _data.reusableID, "  cmd:",_command,"  sound:", _data.soundEffect, " loc:", _data.coords and _data.coords.x..",".._data.coords.y) end
 
 		if _command == "play" then
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID,
