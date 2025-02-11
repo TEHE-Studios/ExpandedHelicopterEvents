@@ -53,7 +53,6 @@ function eventShadowHandler.updateForPlayer(player)
 	if not storedShadows then return end
 	for shadowID,_ in pairs(storedShadows) do
 		if storedShadowsUpdateTimes and storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
-			--print("-- EHE: WARN: eventShadowHandler.updateForPlayer: no update received")
 			---@type WorldMarkers.GridSquareMarker
 			local shadow = storedShadows[shadowID]
 			shadow:setAlpha(0)
@@ -70,6 +69,32 @@ storedLooperEvents = {}
 storedLooperEventsSoundEffects = {}
 storedLooperEventsUpdateTimes = {}
 
+
+---@param emitter BaseSoundEmitter | FMODSoundEmitter
+---@param player IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer
+function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x, y, z)
+
+	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
+	local maxDistance = 750
+	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
+	local volume = math.max(0, 1 - (euclideanDist / maxDistance))
+
+	emitter:setVolumeAll(volume)
+
+	local angle = math.atan2(y - pY, x - pX)
+	local emitterDist = 3
+	local sound_x = pX + emitterDist * math.cos(angle)
+	local sound_y = pY + emitterDist * math.sin(angle)
+	local sound_z = pZ
+
+	emitter:setPos(sound_x, sound_y, sound_z)
+
+	emitter:tick()
+
+	return getSquare(sound_x, sound_y, sound_z), volume
+end
+
+
 function clientSideEventSoundHandler.updateForPlayer(player)
 	for ID,emitter in pairs(storedLooperEvents) do
 		local timestamp = storedLooperEventsUpdateTimes[ID]
@@ -79,8 +104,7 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 				if storedSounds then
 					for sound,ref in pairs(storedSounds) do
 						if not emitter:isPlaying(ref) then
-							print("   -sound: ", sound, " ("..ref..")")
-							storedLooperEventsSoundEffects[ID][sound] = emitter:playSound(sound)
+							storedLooperEventsSoundEffects[ID][sound] = emitter:playSoundImpl(sound)
 							emitter:tick()
 						end
 					end
@@ -89,15 +113,12 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 				local storedSounds = storedLooperEventsSoundEffects[ID]
 				if storedSounds then
 					for sound,ref in pairs(storedSound0s) do
-						print("   -sound: ", sound, " ("..ref..")")
-						storedLooperEventsSoundEffects[ID][sound] = emitter:stopSoundLocal(ref)
-						emitter:tick()
+						storedLooperEventsSoundEffects[ID][sound] = emitter:stopSound(ref)
 					end
 				end
-
+				emitter:setVolumeAll(0)
+				emitter:tick()
 			end
-		else
-			print("storedLoopSound: ", ID, "    dead")
 		end
 	end
 end
@@ -106,8 +127,6 @@ Events.OnPlayerUpdate.Add(clientSideEventSoundHandler.updateForPlayer)
 
 function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command)
 
-	--if getDebug() then print(" EHE:handleLooperEvent: "..reusableID.."  command:"..command) end
-	
 	---@type BaseSoundEmitter | FMODSoundEmitter
 	local soundEmitter = storedLooperEvents[reusableID]
 	if not soundEmitter and (command == "setPos" or command == "play") then
@@ -117,49 +136,47 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 	end
 	if soundEmitter then
 
-		--[[
-		if command ~= "setPos" then
-			local emitterDebugText = "--loopedSound: "..getClientUsername().." ["..command.."]:".." - "..tostring(reusableID)
-			if DATA and type(DATA)=="table" then for k,v in pairs(DATA) do emitterDebugText = emitterDebugText.." - ("..k.."="..tostring(v)..")" end
-			else emitterDebugText = emitterDebugText.." - /!\\ (DATA = "..tostring(DATA)..")" end
-			print(emitterDebugText)
+		if getDebug() and command ~= "setPos" then
+			print("_data.reusableID: ", reusableID, "  cmd:",command,"  sound:", DATA.soundEffect, " loc:", DATA.x,",",DATA.y)
+			getPlayer():Say("   _data.reusableID:: "..tostring(reusableID).." cmd:"..tostring(command).."  sound:"..tostring(DATA.soundEffect).." loc:"..tostring(DATA.x)..","..tostring(DATA.y))
 		end
-		--]]
 
 		storedLooperEventsUpdateTimes[reusableID] = getGametimeTimestamp()+100
 
-		if not DATA then --print(" --WARN: Command has a data of nil!")
+		if not DATA then
 		else
 			if command == "play" then
 				local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
 				if soundRef and soundEmitter:isPlaying(soundRef) then
-					--print("-- warn: soundEmitter is already playing \`"..DATA.soundEffect.."\`")
-					--local square = getSquare(DATA.x, DATA.y, DATA.z)
 				else
 					storedLooperEventsSoundEffects[reusableID] = storedLooperEventsSoundEffects[reusableID] or {}
-					storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = soundEmitter:playSound(DATA.soundEffect, DATA.x, DATA.y, DATA.z)
-					soundEmitter:tick()
+
+					local sq, vol = clientSideEventSoundHandler.attenuateEmitterToPlayer(getPlayer(), soundEmitter, DATA.x, DATA.y, DATA.z)
+					if sq then
+						storedLooperEventsSoundEffects[reusableID][DATA.soundEffect] = soundEmitter:playSoundImpl(DATA.soundEffect, sq)
+						soundEmitter:setVolumeAll(vol)
+						soundEmitter:tick()
+					end
+
 				end
 			end
 
 			if command == "setPos" then
-				soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
+				clientSideEventSoundHandler.attenuateEmitterToPlayer(getPlayer(), soundEmitter, DATA.x,DATA.y,DATA.z)
+				--soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
 			end
 
 			if command == "stop" then
 				if DATA and DATA.soundEffect then
 					if type(DATA.soundEffect)=="table" then
-						--print("--soundEffect set:")
 						for _,sound in pairs(DATA.soundEffect) do
-							--print("---stop:".." - "..sound)
 							local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][sound]
-							soundEmitter:stopSoundLocal(soundRef)
+							soundEmitter:stopSound(soundRef)
 							soundEmitter:tick()
 						end
 					else
-						--print("--stop:".." - "..tostring(DATA.soundEffect))
 						local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
-						soundEmitter:stopSoundLocal(soundRef)
+						soundEmitter:stopSound(soundRef)
 						soundEmitter:tick()
 					end
 				end
@@ -170,14 +187,14 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 			local storedSounds = storedLooperEventsSoundEffects[reusableID]
 			if storedSounds then
 				for sound,ref in pairs(storedSounds) do
-					soundEmitter:stopSoundLocal(ref)
+					soundEmitter:stopSound(ref)
 				end
 				storedLooperEventsSoundEffects[reusableID] = nil
 			end
 
 			soundEmitter:setVolumeAll(0)
-			soundEmitter:stopAll()
 			soundEmitter:tick()
+			--soundEmitter:stopAll()
 
 			for ID,emitter in pairs(storedLooperEvents) do
 				if emitter == soundEmitter or ID == reusableID then
@@ -203,7 +220,6 @@ function eventMarkerHandler.updateForPlayer(player)
 				local currentTimeMS = getTimeInMillis()
 				local expireTime = eventMarkerHandler.expirations[player][id]
 				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then
-					--print("-- EHE: eventMarkerHandler.updateForPlayer: no update received; stopping marker. ")
 					eventMarkerHandler.markers[player][id] = nil
 					eventMarkerHandler.expirations[player][id] = nil
 					marker:setDuration(0)
@@ -219,19 +235,15 @@ Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 local eheFlareSystem = require "ExpandedHelicopter_Flares"
 -- sendServerCommand(module, command, player, args) end -- to client
 local function onServerCommand(_module, _command, _data)
-	--clientside
-
-	--if getDebug() and _module=="sendLooper" and _command~="setPos" then
-	--	local dataText = "{"
-	--	for k,v in pairs(_data) do dataText = dataText..tostring(k).."="..tostring(v)..", " end
-	--	print("_module:".._module.."  _command:".._command.."  _data:"..dataText.."}")
-	--end
 
 	if _module == "flyOver" and _command == "wakeUp" then getPlayer():forceAwake() end
 
 	if _module == "flare" and _command == "updateClient" then
 		if _data.soundEffect and _data.coords.x and _data.coords.y and _data.coords.z then
-			getWorld():getFreeEmitter():playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z)
+			local sq = getSquare(_data.coords.x, _data.coords.y, _data.coords.z)
+			if sq then
+				getWorld():getFreeEmitter():playSoundImpl(_data.soundEffect, sq)
+			end
 		end
 
 		if _data.flare then
@@ -252,14 +264,17 @@ local function onServerCommand(_module, _command, _data)
 
 	elseif _module == "sendLooper" then
 
-		if _command ~= "setPos" then print("_data.reusableID: ", _data.reusableID, "  cmd:",_command,"  sound:", _data.soundEffect, " loc:", _data.coords and _data.coords.x..",".._data.coords.y) end
-
 		if _command == "play" then
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID,
 					{soundEffect=_data.soundEffect, x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
 
 		elseif _command == "playOnce" then
-			getWorld():getFreeEmitter():playSound(_data.soundEffect, _data.coords.x, _data.coords.y, _data.coords.z)
+
+			local emitter = getWorld():getFreeEmitter()
+			local sq = clientSideEventSoundHandler.attenuateEmitterToPlayer(getPlayer(), emitter, _data.coords.x, _data.coords.y, _data.coords.z)
+			if sq and emitter then
+				emitter:playSoundImpl(_data.soundEffect, sq)
+			end
 
 		elseif _command == "setPos" then
 			clientSideEventSoundHandler:handleLooperEvent(_data.reusableID, {x=_data.coords.x, y=_data.coords.y, z=_data.coords.z}, _command)
