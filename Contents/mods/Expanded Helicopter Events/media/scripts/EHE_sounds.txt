@@ -2,7 +2,7 @@ module Base {
 
     sound eHelicopter {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/helicopter_and_planes/heli_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eJetFlight {
         category = EHE: Main, loop = true, is3D = true,
@@ -26,11 +26,11 @@ module Base {
     
     sound eHeliPoliceWarning {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/crashes_bombs_misc/policeemergencywarning.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eHeliPoliceSiren {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/policehelicoptersiren.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/crashes_bombs_misc/policehelicoptersiren.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
         
     sound eAirRaid {
         category = EHE: Main, loop = true, is3D = true,
@@ -38,17 +38,17 @@ module Base {
 
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/music/banjo-romp-Caffeine_Creek_Band.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
-        clip { file = media/sound/music/happy-brithday-tuba-Nesrality.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
+        clip { file = media/sound/music/banjo-romp-Caffeine_Creek_Band.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
+        clip { file = media/sound/music/happy-brithday-tuba-Nesrality.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/HowdyDoodyTime.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
 
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/music/SevenTwentyBeercules.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
-        clip { file = media/sound/music/SevenTwentyTheSpark.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
-        clip { file = media/sound/music/HeliMusicAggressive.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7,}
-        clip { file = media/sound/music/EntryOfTheGladiators.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
-        clip { file = media/sound/music/CanCanMusic.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
+        clip { file = media/sound/music/SevenTwentyBeercules.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7,}
+        clip { file = media/sound/music/SevenTwentyTheSpark.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
+        clip { file = media/sound/music/HeliMusicAggressive.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7,}
+        clip { file = media/sound/music/EntryOfTheGladiators.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
+        clip { file = media/sound/music/CanCanMusic.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, } }
 
     sound eHeliCrewLaughingAndDrinking {
         category = EHE: Main, loop = true, is3D = true,
@@ -60,8 +60,8 @@ module Base {
 
     sound eHeliMusicHostile {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/music/GoryGory.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, }
-        clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 650, reverbFactor = 0.1, volume = 0.7, } }
+        clip { file = media/sound/music/GoryGory.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
+        clip { file = media/sound/music/RideOfTheValkyries.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, } }
 
      sound eheFlare {
          category = EHE: Main, loop = false, is3D = true,
