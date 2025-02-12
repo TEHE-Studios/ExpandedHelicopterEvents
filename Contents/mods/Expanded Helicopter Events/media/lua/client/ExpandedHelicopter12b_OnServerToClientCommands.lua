@@ -78,7 +78,7 @@ function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x
 	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
 	maxDistance = maxDistance or (eheBounds.threshold * 0.8)
 
-	local volume
+	local volume = 0
 	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
 	local peakDist = maxDistance / 3
 
@@ -103,9 +103,7 @@ function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x
 	local sound_x = pX + emitterDist * math.cos(angle)
 	local sound_y = pY + emitterDist * math.sin(angle)
 	local sound_z = pZ
-
 	emitter:setPos(sound_x, sound_y, sound_z)
-
 	emitter:tick()
 
 	return getSquare(sound_x, sound_y, sound_z), volume
