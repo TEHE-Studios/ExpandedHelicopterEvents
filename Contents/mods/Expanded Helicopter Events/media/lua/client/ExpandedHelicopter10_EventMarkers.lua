@@ -7,7 +7,7 @@ EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 
 EHE_EventMarker.iconSize = 96
 EHE_EventMarker.clickableSize = 45
-EHE_EventMarker.maxRange = 500
+EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
 
 function EHE_EventMarker:initialise()
 	ISUIElement.initialise(self)
