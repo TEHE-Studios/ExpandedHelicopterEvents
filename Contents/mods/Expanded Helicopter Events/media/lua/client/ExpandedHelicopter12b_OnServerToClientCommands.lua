@@ -66,19 +66,36 @@ Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
 
 local clientSideEventSoundHandler = {}
 storedLooperEvents = {}
+storedLooperEventsLocations = {}
 storedLooperEventsSoundEffects = {}
 storedLooperEventsUpdateTimes = {}
 
 
 ---@param emitter BaseSoundEmitter | FMODSoundEmitter
 ---@param player IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer
-function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x, y, z)
+function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x, y, z, maxDistance)
 
 	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
-	local maxDistance = 750
+	maxDistance = maxDistance or (eheBounds.threshold * 0.8)
+
+	local volume
+	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
+	local peakDist = maxDistance / 3
+
+	if euclideanDist <= 0 or euclideanDist >= maxDistance then return 0 end  -- Volume is 0 at the start and end
+	local t = euclideanDist / peakDist
+	if euclideanDist < peakDist then
+		volume = t * t
+	else
+		local fadeT = (euclideanDist - peakDist) / (maxDistance - peakDist)
+		volume = (1 - fadeT) * (1 - fadeT)
+	end
+--[[
+	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
+	maxDistance = maxDistance or (eheBounds.threshold * 0.8)
 	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
 	local volume = math.max(0, 1 - (euclideanDist / maxDistance))
-
+--]]
 	emitter:setVolumeAll(volume)
 
 	local angle = math.atan2(y - pY, x - pX)
@@ -94,7 +111,6 @@ function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x
 	return getSquare(sound_x, sound_y, sound_z), volume
 end
 
-
 function clientSideEventSoundHandler.updateForPlayer(player)
 	for ID,emitter in pairs(storedLooperEvents) do
 		local timestamp = storedLooperEventsUpdateTimes[ID]
@@ -104,20 +120,24 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 				if storedSounds then
 					for sound,ref in pairs(storedSounds) do
 						if not emitter:isPlaying(ref) then
-							storedLooperEventsSoundEffects[ID][sound] = emitter:playSoundImpl(sound)
-							emitter:tick()
+
+							local loc = storedLooperEventsLocations[ID]
+							if not loc then
+								for _,helicopter in ipairs(ALL_HELICOPTERS) do
+									---@type eHelicopter heli
+									local heli = helicopter
+									if heli and heli.ID and heli.ID == ID then
+										local ehX, ehY, ehZ = heli:getXYZAsInt()
+										loc = {x=ehX, y=ehY, z=ehZ}
+									end
+								end
+							end
+							clientSideEventSoundHandler:handleLooperEvent(ID, {soundEffect=sound, x=loc.x, y=loc.y, z=loc.z}, "play")
 						end
 					end
 				end
 			else
-				local storedSounds = storedLooperEventsSoundEffects[ID]
-				if storedSounds then
-					for sound,ref in pairs(storedSound0s) do
-						storedLooperEventsSoundEffects[ID][sound] = emitter:stopSound(ref)
-					end
-				end
-				emitter:setVolumeAll(0)
-				emitter:tick()
+				clientSideEventSoundHandler:handleLooperEvent(ID, nil, "stopAll")
 			end
 		end
 	end
@@ -136,10 +156,12 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 	end
 	if soundEmitter then
 
+		--[[
 		if getDebug() and command ~= "setPos" then
-			print("_data.reusableID: ", reusableID, "  cmd:",command,"  sound:", DATA.soundEffect, " loc:", DATA.x,",",DATA.y)
-			getPlayer():Say("   _data.reusableID:: "..tostring(reusableID).." cmd:"..tostring(command).."  sound:"..tostring(DATA.soundEffect).." loc:"..tostring(DATA.x)..","..tostring(DATA.y))
+			print("_data.reusableID: ", reusableID, "  cmd:",command,"  sound:", DATA and DATA.soundEffect, " loc:", DATA.x,",",DATA.y)
+			getPlayer():Say("   _data.reusableID:: "..tostring(reusableID).." cmd:"..tostring(command).."  sound:"..tostring(DATA and DATA.soundEffect).." loc:"..tostring(DATA.x)..","..tostring(DATA.y))
 		end
+		--]]
 
 		storedLooperEventsUpdateTimes[reusableID] = getGametimeTimestamp()+100
 
@@ -163,6 +185,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 
 			if command == "setPos" then
 				clientSideEventSoundHandler.attenuateEmitterToPlayer(getPlayer(), soundEmitter, DATA.x,DATA.y,DATA.z)
+				storedLooperEventsLocations[reusableID] = {x=DATA.x, y=DATA.y, z=DATA.z}
 				--soundEmitter:setPos(DATA.x,DATA.y,DATA.z)
 			end
 
@@ -184,24 +207,15 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 		end
 
 		if command == "stopAll" then
-			local storedSounds = storedLooperEventsSoundEffects[reusableID]
-			if storedSounds then
-				for sound,ref in pairs(storedSounds) do
-					soundEmitter:stopSound(ref)
-				end
-				storedLooperEventsSoundEffects[reusableID] = nil
-			end
 
 			soundEmitter:setVolumeAll(0)
+			soundEmitter:stopAll()
 			soundEmitter:tick()
-			--soundEmitter:stopAll()
 
-			for ID,emitter in pairs(storedLooperEvents) do
-				if emitter == soundEmitter or ID == reusableID then
-					storedLooperEvents[ID] = nil
-					storedLooperEventsUpdateTimes[ID] = nil
-				end
-			end
+			storedLooperEvents[reusableID] = nil
+			storedLooperEventsSoundEffects[reusableID] = nil
+			storedLooperEventsUpdateTimes[reusableID] = nil
+			storedLooperEventsLocations[reusableID] = nil
 		end
 	end
 end
@@ -271,9 +285,17 @@ local function onServerCommand(_module, _command, _data)
 		elseif _command == "playOnce" then
 
 			local emitter = getWorld():getFreeEmitter()
-			local sq = clientSideEventSoundHandler.attenuateEmitterToPlayer(getPlayer(), emitter, _data.coords.x, _data.coords.y, _data.coords.z)
+
+			local maxDistance = nil
+			if _data.soundEffect == "eAirRaid" or _data.soundEffect == "eCarpetBomb" or _data.soundEffect == "eBomb" then
+				maxDistance = 5000
+			end
+
+			local sq, vol = clientSideEventSoundHandler.attenuateEmitterToPlayer(getPlayer(), emitter, _data.coords.x, _data.coords.y, _data.coords.z, maxDistance)
 			if sq and emitter then
 				emitter:playSoundImpl(_data.soundEffect, sq)
+				if vol then emitter:setVolumeAll(vol) end
+				emitter:tick()
 			end
 
 		elseif _command == "setPos" then
