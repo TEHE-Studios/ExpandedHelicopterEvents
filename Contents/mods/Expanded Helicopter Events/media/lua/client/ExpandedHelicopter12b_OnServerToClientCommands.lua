@@ -83,7 +83,7 @@ function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x
 	emitter:setVolumeAll(volume)
 
 	local angle = math.atan2(y - pY, x - pX)
-	local emitterDist = 3
+	local emitterDist = 2
 	local sound_x = pX + emitterDist * math.cos(angle)
 	local sound_y = pY + emitterDist * math.sin(angle)
 	local sound_z = pZ
