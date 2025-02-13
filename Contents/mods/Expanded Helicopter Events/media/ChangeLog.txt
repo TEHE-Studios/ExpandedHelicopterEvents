@@ -61,5 +61,6 @@
 
 HOTFIX 1:
 - Fixes TR encoding, thanks to VVentos!
-- Change to sound update code.
+- Most likely fixed the audio sound stuck issue. :D
+-- Added new logic for sounds in network using attenuation.
 [ ------ ]
