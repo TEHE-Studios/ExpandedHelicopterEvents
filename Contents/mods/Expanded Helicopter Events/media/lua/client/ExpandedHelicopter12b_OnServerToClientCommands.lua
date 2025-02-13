@@ -74,28 +74,12 @@ storedLooperEventsUpdateTimes = {}
 ---@param emitter BaseSoundEmitter | FMODSoundEmitter
 ---@param player IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer
 function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x, y, z, maxDistance)
-
-	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
-	maxDistance = maxDistance or (eheBounds.threshold * 0.8)
-
-	local volume = 0
-	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
-	local peakDist = maxDistance / 3
-
-	if euclideanDist <= 0 or euclideanDist >= maxDistance then return 0 end  -- Volume is 0 at the start and end
-	local t = euclideanDist / peakDist
-	if euclideanDist < peakDist then
-		volume = t * t
-	else
-		local fadeT = (euclideanDist - peakDist) / (maxDistance - peakDist)
-		volume = (1 - fadeT) * (1 - fadeT)
-	end
---[[
+	
 	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
 	maxDistance = maxDistance or (eheBounds.threshold * 0.8)
 	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
 	local volume = math.max(0, 1 - (euclideanDist / maxDistance))
---]]
+
 	emitter:setVolumeAll(volume)
 
 	local angle = math.atan2(y - pY, x - pX)
@@ -108,6 +92,7 @@ function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x
 
 	return getSquare(sound_x, sound_y, sound_z), volume
 end
+
 
 function clientSideEventSoundHandler.updateForPlayer(player)
 	for ID,emitter in pairs(storedLooperEvents) do
