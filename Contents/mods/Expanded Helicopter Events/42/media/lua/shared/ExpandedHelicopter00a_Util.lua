@@ -2,16 +2,13 @@
 EHEIsoPlayers = {}
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
-function addToEIP(pNum, playerObject)
+function addToEIP(playerObject)
 	if not playerObject then return end
-	if playerObject:getX() < 1 or playerObject:getY() < 1 then
-		print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getUsername())
-		return
-	end
+	if playerObject:getX() < 1 or playerObject:getY() < 1 then print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1:"..playerObject:getFullName()) return end
 	if playerObject:isDead() then return end
 
 	if not EHEIsoPlayers[playerObject] then
-		print(" -- EHE: IsoPlayers adding:"..playerObject:getUsername())
+		print(" -- EHE: IsoPlayers adding:"..playerObject:getFullName())
 		EHEIsoPlayers[playerObject] = true
 	end
 end
@@ -19,7 +16,7 @@ end
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function removeFromEIP(playerObject)
 	if EHEIsoPlayers[playerObject] then
-		print(" -- EHE: IsoPlayers removing:"..playerObject:getUsername())
+		print(" -- EHE: IsoPlayers removing:"..playerObject:getFullName())
 		EHEIsoPlayers[playerObject] = nil
 	end
 end
@@ -40,9 +37,9 @@ function getActualPlayers()
 	end
 
 	local cleanedPlayerList = {}
-	print("--getActualPlayers: ")
+	--print("--getActualPlayers: ")
 	for playerObj,_ in pairs(players) do
-		print(" --"..tostring(playerObj)..", "..playerObj:getUsername())
+		--print(" --"..playerObj:getUsername())
 		table.insert(cleanedPlayerList, playerObj)
 	end
 
@@ -51,10 +48,10 @@ end
 
 function addActualPlayersToEIP()
 	local playersOnline = getActualPlayers()
-	for _,playerObj in pairs(playersOnline) do addToEIP(playerObj:getPlayerNum(), playerObj) end
+	for _,playerObj in pairs(playersOnline) do addToEIP(playerObj) end
 end
 
-Events.OnCreatePlayer.Add(addToEIP)
+Events.OnCreateLivingCharacter.Add(addToEIP)
 Events.OnCharacterDeath.Add(removeFromEIP)
 
 
@@ -63,7 +60,7 @@ eheBounds.MAX_X = false
 eheBounds.MIN_X = false
 eheBounds.MAX_Y = false
 eheBounds.MIN_Y = false
-eheBounds.threshold = 500
+eheBounds.threshold = 1000
 
 ---Sets a min/max X/Y around all the players
 function setDynamicGlobalXY()
@@ -254,7 +251,7 @@ function applyFlaresToEvent(vehicle)
 		local sq = getSquare(x+ZombRand(-2,3), y+ZombRand(-2,3), z)
 		if sq then
 			---@type InventoryItem
-			local flare = instanceItem("EHE.HandFlare")
+			local flare = InventoryItemFactory.CreateItem("EHE.HandFlare")
 			flare:getModData()["flareLit"] = true
 			flareSystem.activateFlare(flare, flareSystem.Duration)
 			sq:AddWorldInventoryItem(flare, 0, 0, 0)
