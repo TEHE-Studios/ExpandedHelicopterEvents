@@ -34,7 +34,7 @@ function CustomDebugPanel.TemporaryTest()
 	local object = IsoObject.new(sq, "overlay_blood_wall_01_3")
 	--sq:AddTileObject(IsoObject.new(sq, "overlay_blood_wall_01_3"));
 	object:setSpriteModelName("SupplyBox")
-	print("OBJECT TEST")
+	print("OBJECT TEST ", object)
 	--print("EHE: Checking vanilla helicopter. Adding items to WorldItemRemovalList.")
 	--print("getHelicopterDay: "..getGameTime():getHelicopterDay())
 	--print("getHelicopterStartHour: "..getGameTime():getHelicopterStartHour())
