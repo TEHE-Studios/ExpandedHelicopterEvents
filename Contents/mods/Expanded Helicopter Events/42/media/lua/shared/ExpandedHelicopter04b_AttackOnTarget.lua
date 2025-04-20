@@ -47,7 +47,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
     end
 
     if not targetHostile then
-        if getDebug() then print("ERROR: event failed to find targetHostile to process attack hit.") end
+        if getDebug() then print("ERROR: event failed to find targetHostile to process attack hit.  targetID:", targetID, " targetType:", targetType) end
         return
     end
 
