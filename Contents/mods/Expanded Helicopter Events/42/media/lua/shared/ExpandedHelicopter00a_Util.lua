@@ -1,14 +1,20 @@
 ---IsoPlayer are player entities but also NPCs (from mods)
 EHEIsoPlayers = {}
 
----@param playerObject IsoPlayer | IsoGameCharacter
+---@param playerObject IsoPlayer | IsoGameCharacter | IsoAnimal
 function addToEIP(playerObject)
 	if not playerObject then return end
-	if playerObject:getX() < 1 or playerObject:getY() < 1 then print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1: ", playerObject:getFullName()) return end
+
+	if playerObject:getX() < 1 or playerObject:getY() < 1 then
+		local nameForDebug = playerObject:isAnimal() and tostring(playerObject) or playerObject:getFullName()
+		print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1: ", nameForDebug)
+		return
+	end
 	if playerObject:isDead() then return end
 
 	if not EHEIsoPlayers[playerObject] then
-		print(" -- EHE: IsoPlayers adding:"..playerObject:getFullName())
+		local nameForDebug = playerObject:isAnimal() and tostring(playerObject) or playerObject:getFullName()
+		print(" -- EHE: IsoPlayers adding:"..nameForDebug)
 		EHEIsoPlayers[playerObject] = true
 	end
 end
@@ -16,7 +22,8 @@ end
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function removeFromEIP(playerObject)
 	if EHEIsoPlayers[playerObject] then
-		print(" -- EHE: IsoPlayers removing:"..playerObject:getFullName())
+		local nameForDebug = playerObject:isAnimal() and tostring(playerObject) or playerObject:getFullName()
+		print(" -- EHE: IsoPlayers removing:"..nameForDebug)
 		EHEIsoPlayers[playerObject] = nil
 	end
 end
