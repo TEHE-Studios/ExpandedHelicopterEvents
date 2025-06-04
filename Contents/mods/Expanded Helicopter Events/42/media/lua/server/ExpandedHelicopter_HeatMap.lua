@@ -18,7 +18,6 @@ function heatMap.initModData(isNewGame)
 
     heatMap.events = ModData.getOrCreate("heatMap_events")
 end
-Events.OnInitGlobalModData.Add(heatMap.initModData)
 
 
 function heatMap.getHottestCell()
@@ -84,7 +83,7 @@ function heatMap.coolOff()
     end
     if getDebug() then heatMap.sortCellsByHeat() end
 end
-Events.EveryHours.Add(heatMap.coolOff)
+
 
 
 function heatMap.adjustByZone(x, y)
@@ -164,7 +163,7 @@ function heatMap.EHE_OnActivateFlare(flare)
         if flareSq and flareSq:isOutside() then heatMap.registerEventByObject(flareSq, 100, "activatedFlare") end
     end
 end
-Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
+
 
 
 ---@param zombie IsoZombie|IsoGameCharacter|IsoMovingObject|IsoObject
@@ -173,14 +172,12 @@ Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)
 function heatMap.OnHitZombie(zombie, player, bodyPart, weapon)
     if zombie:isOutside() or player:isOutside() then heatMap.registerEventByObject(player, 10, "zombieHit") end
 end
-Events.OnHitZombie.Add(heatMap.OnHitZombie)
 
 
 ---@param zombie IsoZombie|IsoGameCharacter|IsoMovingObject|IsoObject
 function heatMap.OnZombieDead(zombie)
     if zombie:isOutside() then heatMap.registerEventByObject(zombie, 20, "zombieKilled") end
 end
-Events.OnZombieDead.Add(heatMap.OnZombieDead)
 
 
 local onceEveryList, soManyTicks = {}, 100
@@ -194,7 +191,6 @@ function heatMap.OnPlayerMove(player)
         heatMap.registerEventByObject(player, 1, "playerMove")
     end
 end
-Events.OnPlayerMove.Add(heatMap.OnPlayerMove)
 
 
 ---@param player IsoPlayer|IsoGameCharacter|IsoMovingObject|IsoObject
@@ -202,7 +198,6 @@ function heatMap.OnPlayerDeath(player)
     if not player:isOutside() then return end
     heatMap.registerEventByObject(player, 20, "playerDeath")
 end
-Events.OnPlayerDeath.Add(heatMap.OnPlayerDeath)
 
 
 ---@param player IsoPlayer|IsoGameCharacter|IsoMovingObject|IsoObject
@@ -220,8 +215,6 @@ function heatMap.OnWeaponSwing(player,weapon)
         end
     end
 end
-Events.OnWeaponSwing.Add(heatMap.OnWeaponSwing)
-
 
 
 return heatMap
