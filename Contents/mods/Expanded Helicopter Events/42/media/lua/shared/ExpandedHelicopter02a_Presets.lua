@@ -1,6 +1,6 @@
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
---- SEE FILE: ExpandedHelicopter_PRESETGUIDE.lua FOR INSTRUCTIONS AND HELP MAKING A SUB-MOD ---
+local subEvents = require("ExpandedHelicopter02b_PresetSubEvents.lua")
 
 eHelicopter_PRESETS["military"] = {
 	announcerVoice = true,
@@ -101,99 +101,19 @@ eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
 	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
 }
 
-local function hostilePredicateCivilian(target)
-	if not target then return end
-	local nonCivScore = 0
-	---@type IsoPlayer|IsoGameCharacter
-	local player = target
-	local wornItems = player:getWornItems()
-	if wornItems then
-		for i=0, wornItems:size()-1 do
-			---@type InventoryItem
-			local item = wornItems:get(i):getItem()
-			if item then
-				if string.match(string.lower(item:getFullType()),"army")
-						or string.match(string.lower(item:getFullType()),"military")
-						or string.match(string.lower(item:getFullType()),"riot")
-						or string.match(string.lower(item:getFullType()),"police")
-						or item:getTags():contains("Police")
-						or item:getTags():contains("Military") then
-					nonCivScore = nonCivScore+1
-				end
-			end
-		end
-	end
-	return nonCivScore<3
-end
+
 
 eHelicopter_PRESETS["military_attack_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	markerColor = {r=0.96,g=0.21,b=0.21},
 	hostilePreference = "IsoGameCharacter",
-	hostilePredicate = hostilePredicateCivilian,
+	hostilePredicate = subEvents.hostilePredicateCivilian,
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
 	radioChatter = "AEBS_HostileMilitary",
 }
-
-local function eHelicopter_dropSupplies(heli)
-
-	local heliX, heliY, _ = heli:getXYZAsInt()
-	local SuppliesItems = {"556Carton","556Carton","556Carton","556Carton"}
-
-	local moreSuppliesItems = {"556Carton","556Carton","556Carton",}
-	local iterations = 10
-	for i=1, iterations do
-		local SuppliesType = moreSuppliesItems[(ZombRand(#moreSuppliesItems)+1)]
-		table.insert(moreSuppliesItems, SuppliesType)
-		table.insert(SuppliesItems, SuppliesType)
-	end
-	
-	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
-	soundEmitter:playSound("eHeliDumpSupplies", heliX, heliY, 0)
-
-	for _,SuppliesType in pairs(SuppliesItems) do
-		heliY = heliY+ZombRand(-3,3)
-		heliX = heliX+ZombRand(-3,3)
-		SpawnerTEMP.spawnItem(SuppliesType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
-	end
-end
-
-function eHelicopter_dropCrewOff(heli)
-	if not heli then
-		return
-	end
-
-	local x, y, z = heli:getXYZAsInt()
-	local xOffset = ZombRand(20,35)
-	local yOffset = ZombRand(20,35)
-
-	local trueTarget = heli.trueTarget
-	if trueTarget then
-		local tX, tY = trueTarget:getX(), trueTarget:getY()
-		xOffset=math.max(0,xOffset-tX)
-		yOffset=math.max(0,yOffset-tY)
-	end
-
-	if ZombRand(101) <= 50 then
-		xOffset=0-xOffset
-	end
-	if ZombRand(101) <= 50 then
-		yOffset=0-yOffset
-	end
-
-	x = x+xOffset
-	y = y+yOffset
-
-	--[[DEBUG]] print("SWH: DEBUG: eHelicopter_dropCrewOff: "..x..","..y)
-	--for k,v in pairs(heli.crew) do print(" -- k:"..tostring(k).." -- ("..tostring(v)..")") end
-
-	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crew.png", 750, x, y)
-	heli:spawnCrew(x, y, 0)
-	heli.addedFunctionsToEvents.OnHover = false
-end
 
 eHelicopter_PRESETS["speedball_drop"] = {
 	inherit = {"military"},
@@ -201,7 +121,7 @@ eHelicopter_PRESETS["speedball_drop"] = {
 	forScheduling = true,
 	crashType = {"UH60MedevacFuselage"},
 	hoverOnTargetDuration = 800,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropSupplies},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropSupplies},
 	speed = 0.9,
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
@@ -229,7 +149,7 @@ eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
 	forScheduling = true,
 	crashType = {"UH60MedevacFuselage"},
 	hoverOnTargetDuration = 800,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
 	speed = 0.9,
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
@@ -245,7 +165,7 @@ eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
 		["foundTarget"] = "eHeli_AidDrop_2",
 	},
 	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropCrewOff},
 	crew = 
     {"EHE_Soldier",100,0,
     "EHE_Soldier",100,0,
@@ -304,23 +224,12 @@ eHelicopter_PRESETS["air_raid"] = {
 }
 
 
-local function eHelicopter_jetBombing(heli)
-	local heliX, heliY, _ = heli:getXYZAsInt()
-	local cell = getCell()
-	local vehiclesInCell = cell:getVehicles()
-	for i=0, vehiclesInCell:size()-1 do
-		---@type BaseVehicle
-		local vehicle = vehiclesInCell:get(i)
-		if vehicle and vehicle:isAlarmed() then
-			vehicle:triggerAlarm()
-		end
-	end
-end
+
 
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
-	addedFunctionsToEvents = {["OnLaunch"] = eHelicopter_jetBombing},
+	addedFunctionsToEvents = {["OnLaunch"] = subEvents.eHelicopter_jetBombing},
 
 	eventSoundEffects = {
 		["flightSound"] = "eJetFlight",
@@ -463,38 +372,12 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	radioChatter = "AEBS_SurvivorHeli",
 }
 
-
-local function eHelicopter_dropTrash(heli)
-
-	local heliX, heliY, _ = heli:getXYZAsInt()
-	local trashItems = {"WhiskeyEmpty","SmashedBottle","BeerEmpty","BeerEmpty"}
-
-	local moreTrashItems = {"SmashedBottle","SmashedBottle","SmashedBottle","SmashedBottle",
-							"MayonnaiseEmpty","Pop3Empty","Pop2Empty","Pop3Empty","WhiskeyEmpty",
-							"BeerCanEmpty","BeerCanEmpty","BeerCanEmpty","BeerCanEmpty","BeerEmpty"}
-	local iterations = 10
-	for i=1, iterations do
-		local trashType = moreTrashItems[(ZombRand(#moreTrashItems)+1)]
-		table.insert(moreTrashItems, trashType)
-		table.insert(trashItems, trashType)
-	end
-	
-	local soundEmitter = getWorld():getFreeEmitter(heliX, heliY, 0)
-	soundEmitter:playSound("eHeliDumpTrash", heliX, heliY, 0)
-
-	for _,trashType in pairs(trashItems) do
-		heliY = heliY+ZombRand(-3,3)
-		heliX = heliX+ZombRand(-3,3)
-		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
-	end
-end
-
 eHelicopter_PRESETS["raiders"] = {
 	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_hostile",1},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
 	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
 	forScheduling = true,
 	markerColor = {r=0.96,g=0.39,b=0.21},

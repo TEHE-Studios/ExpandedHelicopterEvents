@@ -22,10 +22,8 @@ function stringyUtil.PositionToId(x, y ,z)
 end
 ---===---===---===---===---===---===---
 
---TODO: DELETE THIS FILE AFTER CAPI IS MADE PUBLIC
 SpawnerTEMP = {}
 
----=-=-=-=-=-=-=-=-=-=-=-=-[TEMPORARY STOPGAP]-=-=-=-=-=-=-=-=---
 SpawnerTEMP.functionDictionary = {}
 
 function SpawnerTEMP.fetchFromDictionary(ID)
