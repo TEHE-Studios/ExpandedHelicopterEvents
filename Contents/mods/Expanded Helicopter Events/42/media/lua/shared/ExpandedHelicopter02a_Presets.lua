@@ -101,8 +101,6 @@ eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
 	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
 }
 
-
-
 eHelicopter_PRESETS["military_attack_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
@@ -125,18 +123,6 @@ eHelicopter_PRESETS["speedball_drop"] = {
 	speed = 0.9,
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
-	attackDelay = 44,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
-	hostilePreference = "IsoZombie",
-	eventSoundEffects = {
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
-		["foundTarget"] = "eHeli_AidDrop_2",
-		["droppingPackage"] = "eHeli_AidDrop_1and3",
-	},
 	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
 	radioChatter = "AEBS_SupplyDrop",
 	eventStartDayFactor = 0.034,
@@ -149,21 +135,9 @@ eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
 	forScheduling = true,
 	crashType = {"UH60MedevacFuselage"},
 	hoverOnTargetDuration = 800,
-	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
 	speed = 0.9,
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
-	attackDelay = 44,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
-	hostilePreference = "IsoGameCharacter",
-	eventSoundEffects = {
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
-		["foundTarget"] = "eHeli_AidDrop_2",
-	},
 	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropCrewOff},
 	crew = 
@@ -223,9 +197,6 @@ eHelicopter_PRESETS["air_raid"] = {
 	radioChatter = "AEBS_AirRaid",
 }
 
-
-
-
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
 	doNotListForTwitchIntegration = true,
@@ -274,7 +245,7 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 }
 
 eHelicopter_PRESETS["police"] = {
-	presetRandomSelection = {"police_heli_emergency",3, "police_heli_firing",2, "police_heli_fleeing",2},
+	presetRandomSelection = {"police_heli_emergency",3, "police_heli_hovering",2, "police_heli_firing",2, "police_heli_fleeing",2},
 	crashType = {"Bell206PoliceFuselage"},
 	crew = {"EHEPolicePilot", "EHEPoliceOfficer", "EHEPoliceOfficer", 75},
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
@@ -313,6 +284,15 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 		["flightSound"] = { "eHelicopter", "eHeliPoliceWarning" },
 	},
 	hoverOnTargetDuration = {375,575},
+}
+
+eHelicopter_PRESETS["police_heli_hovering"] = {
+	inherit = {"police"},
+	speed = 1.5,
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	hoverOnTargetDuration = {800,1000},
 }
 
 eHelicopter_PRESETS["police_heli_fleeing"] = {
@@ -386,11 +366,10 @@ eHelicopter_PRESETS["raiders"] = {
 	radioChatter = "AEBS_Raiders",
 }
 
-
 eHelicopter_PRESETS["raider_heli_passive"] = {
 	inherit = {"raiders"},
 	speed = 0.5,
-	flightVolume = 750,
+	flightVolume = 1500,
 	crashType = false,
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive", "eHeliCrewLaughingAndDrinking" },
@@ -404,8 +383,8 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 	attackDelay = 650,
 	attackSpread = 5,
 	attackHitChance = 7,
-	attackDamage = 10,
-	flightVolume = 750,
+	attackDamage = 70,
+	flightVolume = 1500,
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 	eventSoundEffects = {
