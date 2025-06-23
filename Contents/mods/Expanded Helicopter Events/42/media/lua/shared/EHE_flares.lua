@@ -239,35 +239,36 @@ LuaEventManager.AddEvent("EHE_OnActivateFlare")
 ---RECIPE STUFF
 EHE_Recipe = EHE_Recipe or {}
 
----@param player IsoGameCharacter|IsoPlayer|IsoMovingObject
----@param result InventoryItem|IsoObject
-function EHE_Recipe.onFlareLight(recipe, result, player)
+---@param character IsoGameCharacter|IsoPlayer|IsoMovingObject
+function EHE_Recipe.onFlareLight(craftRecipeData, character)
     local flare
 
-    for i=0, recipe:size()-1 do
+    local items = craftRecipeData:getAllConsumedItems()
+    for i=0,items:size() - 1 do
         ---@type InventoryItem
-        local item = recipe:get(i)
+        local item = items:get(i)
         if eheFlareSystem.getFlareTypes()[item:getFullType()]=="EHEFlare" then
             flare = item
             item:setName(getText("IGUI_Lit").." "..item:getScriptItem():getDisplayName())
+
         elseif eheFlareSystem.flareTypes[item:getFullType()]=="EHESignalFlare" then
             item:setCondition(0)
             item:setName(getText("IGUI_Spent").." "..item:getScriptItem():getDisplayName())
-            if not player:isOutside() then
-                local pSquare = player:getSquare()
-                IsoFireManager.StartFire(getCell(), pSquare, true, 5, 20)
+            character:getInventory():DoRemoveItem(item)
+
+            local flareCharge = "EHE.FlareCharge"
+            character:getSquare():AddWorldInventoryItem(flareCharge, 0, 0, 0)
+            flareCharge:getWorldItem():transmitCompleteItemToServer()
+
+            if not character:isOutside() then
+                local pSquare = getSquare(character:getX()+ZombRand(-2,2), character:getY()+ZombRand(-2,2), 0)
+                if pSquare then
+                    IsoFireManager.StartFire(getCell(), pSquare, true, 5, 20)
+                end
             end
         end
     end
 
-    if eheFlareSystem.getFlareTypes()[result:getFullType()]=="EHEFlare" then
-        flare = flare or result
-        if result==flare then
-            player:getInventory():DoRemoveItem(result)
-            player:getSquare():AddWorldInventoryItem(result, 0, 0, 0)
-            result:getWorldItem():transmitCompleteItemToServer()
-        end
-    end
     flare:getModData()["flareLit"] = true
     eheFlareSystem.activateFlare(flare, eheFlareSystem.Duration)
 end

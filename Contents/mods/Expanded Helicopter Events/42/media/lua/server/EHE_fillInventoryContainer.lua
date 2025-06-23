@@ -7,15 +7,17 @@
 
 --- This was written to fill container items like bags which are created through functions.
 
+local fillInventoryContainer = {}
+
 ---@type string string
-local function stringIsNullOrEmpty(text)
+function fillInventoryContainer.stringIsNullOrEmpty(text)
 	return (text==nil or string.len(text)==0)
 end
 
 
 ---@param inventoryContainer InventoryContainer | InventoryItem
 ---@param player IsoGameCharacter | IsoMovingObject
-function rollInventoryContainer(inventoryContainer, player)
+function fillInventoryContainer.roll(inventoryContainer, player)
 	local itemType = inventoryContainer:getType()
 	local itemContainer = inventoryContainer:getInventory()
 	local itemContainerDistribution = Distributions[1][itemType]
@@ -77,12 +79,12 @@ function rollInventoryContainer(inventoryContainer, player)
 
 					local maxMapIteration = 0
 					
-					if createdItem:getType()=="Map" and not stringIsNullOrEmpty(createdItem:getMapID()) and itemContainerDistribution.maxMap and itemContainerDistribution.maxMap > 0 then
+					if createdItem:getType()=="Map" and not fillInventoryContainer.stringIsNullOrEmpty(createdItem:getMapID()) and itemContainerDistribution.maxMap and itemContainerDistribution.maxMap > 0 then
 						local maxMapCount = 0
 
 						for iteration=0, itemContainer:getItems():size() do
 							local maxMapItem = itemContainer:getItems():get(iteration)
-							if not stringIsNullOrEmpty(maxMapItem:getMap()) then
+							if not fillInventoryContainer.stringIsNullOrEmpty(maxMapItem:getMap()) then
 								maxMapCount = maxMapCount+1
 							end
 						end
@@ -93,7 +95,7 @@ function rollInventoryContainer(inventoryContainer, player)
 					end
 
 					if itemContainerDistribution.stashChance then
-						if itemContainerDistribution.stashChance > 0 and not stringIsNullOrEmpty(createdItem:getMap()) then
+						if itemContainerDistribution.stashChance > 0 and not fillInventoryContainer.stringIsNullOrEmpty(createdItem:getMap()) then
 							createdItem:setStashChance(itemContainerDistribution.stashChance)
 						end
 					end
@@ -128,3 +130,5 @@ function rollInventoryContainer(inventoryContainer, player)
 		end
 	end
 end
+
+return fillInventoryContainer
