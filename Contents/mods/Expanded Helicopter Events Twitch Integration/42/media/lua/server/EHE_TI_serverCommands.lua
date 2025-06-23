@@ -1,4 +1,4 @@
-require "EHE_TwitchIntegration00_ScheduleOverrides"
+require "EHE_TI_scheduleOverrides"
 
 local function onCommand(_module, _command, _player, _event)
 

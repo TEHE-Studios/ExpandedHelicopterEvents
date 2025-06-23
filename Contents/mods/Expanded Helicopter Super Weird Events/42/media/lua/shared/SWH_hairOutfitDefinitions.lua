@@ -1,3 +1,5 @@
+require "Definitions/HairOutfitDefinitions.lua"
+
 HairOutfitDefinitions = HairOutfitDefinitions or {};
 -- To Dos add more comments on hair colors. 
 

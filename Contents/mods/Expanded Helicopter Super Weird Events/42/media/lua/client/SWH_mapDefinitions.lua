@@ -1,4 +1,4 @@
-require 'Maps/ISMapDefinitions'
+require 'ISUI/Maps/ISMapDefinitions.lua'
 
 local MINZ = 0
 local MAXZ = 24

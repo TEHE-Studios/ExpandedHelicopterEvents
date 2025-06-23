@@ -1,7 +1,7 @@
+require "Vehicles/VehicleDistributions.lua"
+
 -- pull the vehicle distributions into a local table
 local distributionTable = VehicleDistributions[1]
-
-
 
 VehicleDistributions.Bell206IRSSeat = {
     rolls = 2,
