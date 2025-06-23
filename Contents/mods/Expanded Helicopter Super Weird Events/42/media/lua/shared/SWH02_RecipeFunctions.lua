@@ -1,4 +1,4 @@
-require "ExpandedHelicopter07_RecipeFunctions"
+require "EHE_recipeFunctions"
 
 ---@param player IsoGameCharacter | IsoMovingObject
 function EHE_Recipe.BURGERBOX(recipe, result, player)

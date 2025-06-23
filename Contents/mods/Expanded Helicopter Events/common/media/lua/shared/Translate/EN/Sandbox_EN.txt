@@ -1,0 +1,56 @@
+Sandbox_EN = {
+    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Never"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Rare",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Uncommon",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Common",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Frequent",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Insane",
+
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Air Raid Transition",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Choose true if you want an air raid event to signal a shift from less challenging early-game events to more hostile late-game events.",
+
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "How frequent jet events occur.<br>Jets fly by players causing horde movement.",
+
+    Sandbox_ExpandedHeli_EventNews = "News",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "How frequent news events occur.<br>News choppers will hone in on any citizen they find and follow them around for a short time.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Police",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "How frequent Police events occur.<br>The police will take matters into their own hands and escort citizens around while firing on zombies.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Military",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "How frequent military events occur.<br>The military will progress through stages: warn citizens, purge the undead, then ultimately purge anything that moves.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Drops",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "How frequent FEMA aid drop events occur.<br>FEMA will conduct aid drops early on in the apocalypse.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Survivors",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "How frequent survivor events occur.<br>Survivors will only flyby on scouting missions causing horde movement.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "How frequent raider events occur.<br>Raiders will hone in on survivors to torment them for some entertainment.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritans",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "How frequent samaritan events occur.<br>Samaritans will drop off supplies to help survivors.",
+
+    Sandbox_ExpandedHeli_StartDay = "Start Day",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "This is what day into the game events occur. You will need to factor in "months into the apocalypse" settings.",
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler Duration",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "How many days the scheduler will run from the start day.<br>The scheduler will adjust event progression to fit this duration.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continue Scheduling Events Beyond Duration",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normally the scheduler ends at the duration limit, toggling this on continues to schedule events beyond the duration.<br>Events will still progress through stages according to the duration but events will never stop being scheduled.",
+
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "No Continued Scheduling"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continue Scheduling: All Events",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continue Scheduling: Late-Game Only",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Weather Will Impact Events",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Whether weather will prevent events, or cause their crash.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Crash Chance Multiplier",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "This is multiplied against crash chance, 0 will prevent crashes all together.",
+}

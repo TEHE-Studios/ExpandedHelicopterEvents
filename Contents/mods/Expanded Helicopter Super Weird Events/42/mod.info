@@ -1,7 +1,8 @@
 name=Expanded Helicopter Events: Super Weird Edition!
 id=WeirdExpandedHelicopterEvents
-description=Yes.
+description=Super Weird Events! Aliens, Wacky People, Tax men!
 poster=poster.png
 require=\ExpandedHelicopterEvents
 versionMin=42.0
+icon=icon.png
 author=Shark & Chuckleberry Finn

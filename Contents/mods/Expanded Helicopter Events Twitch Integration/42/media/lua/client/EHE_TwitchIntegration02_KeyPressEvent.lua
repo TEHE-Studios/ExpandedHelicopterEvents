@@ -1,4 +1,4 @@
-require "ExpandedHelicopter00a_Util"
+require "EHE_util"
 
 local twitchKeys = {
 	["KP_1"]="Numpad1",["KP_2"]="Numpad2",["KP_3"]="Numpad3",

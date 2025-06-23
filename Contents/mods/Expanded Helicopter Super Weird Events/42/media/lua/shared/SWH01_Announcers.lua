@@ -1,4 +1,4 @@
-require "ExpandedHelicopter03a_Announcers"
+require "EHE_announcers"
 
 eHelicopter_announcers = eHelicopter_announcers or {}
 

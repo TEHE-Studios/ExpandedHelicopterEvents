@@ -1,5 +1,5 @@
-require "ExpandedHelicopter02a_Presets"
-require "ExpandedHelicopter09_EasyConfigOptions"
+require "EHE_presets"
+require "EHE_easyConfigOptions"
 
 twitchIntegrationPresets = {"NONE"}
 function generateTwitchIntegrationPresets()

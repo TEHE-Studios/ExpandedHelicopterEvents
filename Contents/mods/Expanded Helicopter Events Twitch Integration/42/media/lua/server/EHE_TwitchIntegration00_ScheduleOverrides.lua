@@ -1,4 +1,4 @@
-require "ExpandedHelicopter06_EventScheduler"
+require "EHE_eventScheduler"
 
 local EHETI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
 function eHeliEvent_ScheduleNew(startDay, startTime, preset)
