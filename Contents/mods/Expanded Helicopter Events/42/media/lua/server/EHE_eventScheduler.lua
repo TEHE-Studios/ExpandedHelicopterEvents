@@ -87,7 +87,7 @@ function eHeliEvents_OnGameStart()
 		globalModData.EventsOnSchedule = {}
 		globalModData.DaysBeforeApoc = false
 		globalModData.DayOfLastCrash = false
-		local spawnerList = SpawnerTEMP.getOrSetPendingSpawnsList()
+		local spawnerList = EHE_spawner.getOrSetPendingSpawnsList()
 		spawnerList = {}
 		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
 		local resetEvents = EHE.menu["resetEvents"]

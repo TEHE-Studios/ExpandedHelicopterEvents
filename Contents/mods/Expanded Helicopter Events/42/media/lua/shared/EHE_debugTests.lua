@@ -3,7 +3,7 @@ if isClient() and not getDebug() then return end
 require "EHE_debugPanel"
 require "EHE_weatherImpact"
 require "EHE_util"
-require "EHE_IsoRangeScan"
+local isoRangeScan = require "EHE_IsoRangeScan"
 require "EHE_mainVariables"
 
 Events.OnGameBoot.Add(function()
@@ -273,7 +273,7 @@ end
 --- Raise the dead
 function CustomDebugPanel.raiseTheDead()
 	local player = getSpecificPlayer(0)
-	local squaresInRange = getIsoRange(player, 15)
+	local squaresInRange = isoRangeScan.getIsoRange(player, 15)
 	local reanimated=0
 
 	if not squaresInRange then
@@ -303,7 +303,7 @@ end
 --- Test getHumanoidsInFractalRange
 function CustomDebugPanel.getHumanoidsInFractalRange()
 	local player = getSpecificPlayer(0)
-	local fractalObjectsFound = getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
+	local fractalObjectsFound = isoRangeScan.getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
 
 	---debug: list type found
 	print("-----[ getHumanoidsInFractalRange ]-----")
@@ -317,7 +317,7 @@ end
 --- Test getHumanoidsInRange
 function CustomDebugPanel.getHumanoidsInRange()
 	local player = getSpecificPlayer(0)
-	local objectsFound = getHumanoidsInRange(player, 1, "IsoZombie")
+	local objectsFound = isoRangeScan.getHumanoidsInRange(player, 1, "IsoZombie")
 
 	---debug: list type found
 	print("-----[ getHumanoidsInRange ]-----")

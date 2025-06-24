@@ -1,6 +1,6 @@
 require "EHE_weatherImpact"
 require "EHE_util"
-require "EHE_IsoRangeScan"
+local isoRangeScan = require "EHE_IsoRangeScan"
 local flareSystem = require "EHE_flares"
 local eventSoundHandler = require "EHE_sounds"
 local pseudoSquare = require "EHE_psuedoSquare"
@@ -323,7 +323,7 @@ function eHelicopter:findAlternativeTarget(character)
 		return false
 	end
 	local newTargets = {}
-	local fractalCenters = getIsoRange(character, 1, 50)
+	local fractalCenters = isoRangeScan.getIsoRange(character, 1, 50)
 
 	for _,square in pairs(fractalCenters) do
 		---@type IsoCell

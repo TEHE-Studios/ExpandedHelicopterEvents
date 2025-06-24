@@ -22,40 +22,40 @@ function stringyUtil.PositionToId(x, y ,z)
 end
 ---===---===---===---===---===---===---
 
-SpawnerTEMP = {}
+EHE_spawner = {}
 
-SpawnerTEMP.functionDictionary = {}
+EHE_spawner.functionDictionary = {}
 
-function SpawnerTEMP.fetchFromDictionary(ID)
+function EHE_spawner.fetchFromDictionary(ID)
 	if ID then
-		if SpawnerTEMP.functionDictionary[ID] then
-			return SpawnerTEMP.functionDictionary[ID]
+		if EHE_spawner.functionDictionary[ID] then
+			return EHE_spawner.functionDictionary[ID]
 		end
 	end
 end
 
-function SpawnerTEMP.setDictionary()
-	SpawnerTEMP.functionDictionary.getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle
-	SpawnerTEMP.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
-	SpawnerTEMP.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
-	SpawnerTEMP.functionDictionary.applyFlaresToEvent = applyFlaresToEvent
-	SpawnerTEMP.functionDictionary.ageInventoryItem = ageInventoryItem
-	SpawnerTEMP.functionDictionary.applyDeathOrCrawlerToCrew = applyDeathOrCrawlerToCrew
-	SpawnerTEMP.functionDictionary.applyParachuteToCarePackage = applyParachuteToCarePackage
+function EHE_spawner.setDictionary()
+	EHE_spawner.functionDictionary.getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle
+	EHE_spawner.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
+	EHE_spawner.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
+	EHE_spawner.functionDictionary.applyFlaresToEvent = applyFlaresToEvent
+	EHE_spawner.functionDictionary.ageInventoryItem = ageInventoryItem
+	EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = applyDeathOrCrawlerToCrew
+	EHE_spawner.functionDictionary.applyParachuteToCarePackage = applyParachuteToCarePackage
 
 	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 		local presetAddedFunc = presetVars["addedFunctionsToEvents"]
 		if presetAddedFunc then
 			for eventID,func in pairs(presetAddedFunc) do
-				SpawnerTEMP.functionDictionary[presetID..eventID] = func
+				EHE_spawner.functionDictionary[presetID..eventID] = func
 			end
 		end
 	end
 end
-Events.OnGameBoot.Add(SpawnerTEMP.setDictionary)
+Events.OnGameBoot.Add(EHE_spawner.setDictionary)
 ---=-=-=-=-=-=-=-=-=-=-=-=-
 
-function SpawnerTEMP.getOrSetPendingSpawnsList()
+function EHE_spawner.getOrSetPendingSpawnsList()
 	local modData = getExpandedHeliEventsModData and getExpandedHeliEventsModData()
 	if not modData.FarSquarePendingSpawns then modData.FarSquarePendingSpawns = {} end
 	return modData.FarSquarePendingSpawns
@@ -69,7 +69,7 @@ end
 ---@param extraFunctions table
 ---@param extraParam any
 ---@param processSquare function
-function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, processSquare)
+function EHE_spawner.spawnItem(itemType, x, y, z, extraFunctions, extraParam, processSquare)
 	if not itemType then
 		return
 	end
@@ -81,7 +81,7 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 
 		if currentSquare then
 			if processSquare then
-				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+				local func = EHE_spawner.fetchFromDictionary(processSquare)
 				if func then
 					currentSquare = func(currentSquare)
 				end
@@ -92,10 +92,10 @@ function SpawnerTEMP.spawnItem(itemType, x, y, z, extraFunctions, extraParam, pr
 			--x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 			local item = currentSquare:AddWorldInventoryItem(itemType, 0, 0, 0)
 			if item and extraFunctions then
-				SpawnerTEMP.processExtraFunctionsOnto(item,extraFunctions)
+				EHE_spawner.processExtraFunctionsOnto(item,extraFunctions)
 			end
 		else
-			SpawnerTEMP.setToSpawn("Item", itemType, x, y, z, extraFunctions, extraParam, processSquare)
+			EHE_spawner.setToSpawn("Item", itemType, x, y, z, extraFunctions, extraParam, processSquare)
 		end
 	end
 end
@@ -107,7 +107,7 @@ end
 ---@param extraFunctions table
 ---@param extraParam any
 ---@param processSquare function
-function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+function EHE_spawner.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
 	if not vehicleType then
 		return
 	end
@@ -119,7 +119,7 @@ function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPar
 
 		if currentSquare then
 			if processSquare then
-				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+				local func = EHE_spawner.fetchFromDictionary(processSquare)
 				if func then
 					currentSquare = func(currentSquare)
 				end
@@ -129,10 +129,10 @@ function SpawnerTEMP.spawnVehicle(vehicleType, x, y, z, extraFunctions, extraPar
 		if currentSquare then
 			local vehicle = addVehicleDebug(vehicleType, IsoDirections.getRandom(), nil, currentSquare)
 			if vehicle then
-				SpawnerTEMP.processExtraFunctionsOnto(vehicle,extraFunctions)
+				EHE_spawner.processExtraFunctionsOnto(vehicle,extraFunctions)
 			end
 		else
-			SpawnerTEMP.setToSpawn("Vehicle", vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
+			EHE_spawner.setToSpawn("Vehicle", vehicleType, x, y, z, extraFunctions, extraParam, processSquare)
 		end
 	end
 end
@@ -144,7 +144,7 @@ end
 ---@param extraFunctions table
 ---@param femaleChance number extraParam for other spawners; 0-100
 ---@param processSquare function
-function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+function EHE_spawner.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
 	if not outfitID then
 		return
 	end
@@ -156,7 +156,7 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 
 		if currentSquare then
 			if processSquare then
-				local func = SpawnerTEMP.fetchFromDictionary(processSquare)
+				local func = EHE_spawner.fetchFromDictionary(processSquare)
 				if func then
 					currentSquare = func(currentSquare)
 				end
@@ -167,10 +167,10 @@ function SpawnerTEMP.spawnZombie(outfitID, x, y, z, extraFunctions, femaleChance
 			x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
 			local zombies = addZombiesInOutfit(x, y, z, 1, outfitID, femaleChance)
 			if zombies and zombies:size()>0 then
-				SpawnerTEMP.processExtraFunctionsOnto(zombies, extraFunctions)
+				EHE_spawner.processExtraFunctionsOnto(zombies, extraFunctions)
 			end
 		else
-			SpawnerTEMP.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
+			EHE_spawner.setToSpawn("Zombie", outfitID, x, y, z, extraFunctions, femaleChance, processSquare)
 		end
 	end
 end
@@ -180,11 +180,11 @@ if not isClient() then
 
 	---@param spawned IsoObject | ArrayList
 	---@param functions table table of functions
-	function SpawnerTEMP.processExtraFunctionsOnto(spawned,functions)
+	function EHE_spawner.processExtraFunctionsOnto(spawned,functions)
 		if spawned and functions and (type(functions)=="table") then
 			for k,funcID in pairs(functions) do
 				--print("EHE: DEBUG: processExtraFunctionsOnto: "..funcID)
-				local func = SpawnerTEMP.fetchFromDictionary(funcID)
+				local func = EHE_spawner.fetchFromDictionary(funcID)
 				if func then
 					func(spawned)
 				end
@@ -193,14 +193,14 @@ if not isClient() then
 	end
 
 
-	---@param spawnFuncType string This string is concated to the end of 'SpawnerTEMP.spawn' to run a corresponding function.
+	---@param spawnFuncType string This string is concated to the end of 'EHE_spawner.spawn' to run a corresponding function.
 	---@param objectType string Module.Type for Items and Vehicles, OutfitID for Zombies
 	---@param x number
 	---@param y number
 	---@param z number
 	---@param funcsToApply table Table of functions which gets applied on the results of whatever is spawned.
-	function SpawnerTEMP.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
-		local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
+	function EHE_spawner.setToSpawn(spawnFuncType, objectType, x, y, z, funcsToApply, extraParam, processSquare)
+		local farSquarePendingSpawns = EHE_spawner.getOrSetPendingSpawnsList()
 		local positionID = stringyUtil.PositionToId(x, y ,z)
 		if not farSquarePendingSpawns[positionID] then
 			farSquarePendingSpawns[positionID] = {}
@@ -222,8 +222,8 @@ if not isClient() then
 
 
 	---@param square IsoGridSquare
-	function SpawnerTEMP.parseSquare(square)
-		local farSquarePendingSpawns = SpawnerTEMP.getOrSetPendingSpawnsList()
+	function EHE_spawner.parseSquare(square)
+		local farSquarePendingSpawns = EHE_spawner.getOrSetPendingSpawnsList()
 		local positionID = stringyUtil.SquareToId(square)
 		local pendingItems = farSquarePendingSpawns[positionID]
 
@@ -237,14 +237,14 @@ if not isClient() then
 		for key,entry in pairs(pendingItems) do
 			local shiftedSquare = square
 			if entry.processSquare then
-				local func = SpawnerTEMP.fetchFromDictionary(entry.processSquare)
+				local func = EHE_spawner.fetchFromDictionary(entry.processSquare)
 				if func then
 					shiftedSquare = func(shiftedSquare)
 				end
 			end
 
 			if shiftedSquare then
-				local spawnFunc = SpawnerTEMP["spawn"..entry.spawnFuncType]
+				local spawnFunc = EHE_spawner["spawn"..entry.spawnFuncType]
 
 				if spawnFunc then
 					local spawnedObject = spawnFunc(entry.objectType, entry.x, entry.y, entry.z, entry.funcsToApply, entry.extraParam)
@@ -254,6 +254,6 @@ if not isClient() then
 		end
 		farSquarePendingSpawns[positionID] = nil
 	end
-	Events.LoadGridsquare.Add(SpawnerTEMP.parseSquare)
+	Events.LoadGridsquare.Add(EHE_spawner.parseSquare)
 
 end

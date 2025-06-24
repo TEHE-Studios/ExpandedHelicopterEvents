@@ -1,4 +1,4 @@
-require "EHE_spawnerAPI"
+require "EHE_spawner"
 require "EHE_shadowSystem"
 require "EHE_eventMarkerHandler"
 require "EHE_util"
@@ -11,10 +11,9 @@ local function copyAgainst(tableA,tableB)
 end
 
 ---Credit to Konijima (Konijima#9279) for clearing up networking :thumbsup:
-LuaEventManager.AddEvent("EHE_ClientModDataReady") -- p1: isNewGame
---triggerEvent("EHE_ClientModDataReady", false) send change if any
+LuaEventManager.AddEvent("EHE_ClientModDataReady")
 
-local ExpandedHeliEventsModData --.EventsOnSchedule = {} --.DayOfLastCrash = 0 --.DaysBeforeApoc = 0
+local ExpandedHeliEventsModData
 local function receiveGlobalModData(name, data)
 	if name == "ExpandedHelicopterEvents" then
 		copyAgainst(ExpandedHeliEventsModData,data)

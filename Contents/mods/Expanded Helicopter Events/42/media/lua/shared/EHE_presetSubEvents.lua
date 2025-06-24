@@ -1,5 +1,5 @@
 require "EHE_eventMarkerHandler"
-require "EHE_spawnerAPI"
+require "EHE_spawner"
 
 local subEvents = {}
 
@@ -62,7 +62,7 @@ function subEvents.eHelicopter_dropSupplies(heli)
 	for _,SuppliesType in pairs(SuppliesItems) do
 		heliY = heliY+ZombRand(-3,3)
 		heliX = heliX+ZombRand(-3,3)
-		SpawnerTEMP.spawnItem(SuppliesType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+		EHE_spawner.spawnItem(SuppliesType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 	end
 end
 
@@ -123,7 +123,7 @@ function subEvents.eHelicopter_dropTrash(heli)
 	for _,trashType in pairs(trashItems) do
 		heliY = heliY+ZombRand(-3,3)
 		heliX = heliX+ZombRand(-3,3)
-		SpawnerTEMP.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+		EHE_spawner.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 	end
 end
 

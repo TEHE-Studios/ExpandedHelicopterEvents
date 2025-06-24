@@ -1,5 +1,4 @@
-require "EHE_IsoRangeScan"
-
+local isoRangeScan = require "EHE_IsoRangeScan"
 local eventSoundHandler = require "EHE_sounds"
 
 local function compressTableOfNils(table)
@@ -224,7 +223,7 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 				targetHostile = targetVehicle
 			else
 				if targetSquare and (targetSquare:isVehicleIntersecting()) then
-					local vehicle = getVehiclesIntersecting(targetSquare, true)
+					local vehicle = isoRangeScan.getVehiclesIntersecting(targetSquare, true)
 					if vehicle then
 						HIT = true
 						collateral = true
@@ -328,7 +327,7 @@ function eHelicopter:attackScan(location, targetType)
 		return {}
 	end
 
-	local fractalObjectsFound = getHumanoidsInFractalRange(location, self.attackScope, self.attackSpread, targetType, self.hostilePredicate)
+	local fractalObjectsFound = isoRangeScan.getHumanoidsInFractalRange(location, self.attackScope, self.attackSpread, targetType, self.hostilePredicate)
 	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do

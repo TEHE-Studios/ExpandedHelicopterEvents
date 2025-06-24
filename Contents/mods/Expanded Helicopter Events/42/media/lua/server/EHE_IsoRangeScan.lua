@@ -1,21 +1,12 @@
 ---This is an utility function meant for large scale scans of isoGridSquares around a given IsoObject.
----The scans are done fractally - that is to say from a center (or centers) outward to fill a larger area.
-
-local pseudoSquare = require "EHE_psuedoSquare"
+---The scans are done from center (or centers) outward to fill a larger area.
+local isoRangeScan = {}
 
 ---@param center IsoGameCharacter
-function recursiveGetSquare(center)
-	if not center then
-		return nil
-	end
-
-	if instanceof(center, "IsoGameCharacter") and center:getVehicle() then
-		center = center:getVehicle()
-	end
-
-	if not instanceof(center, "IsoGridSquare") then
-		center = center:getSquare()
-	end
+function isoRangeScan.recursiveGetSquare(center)
+	if not center then return nil end
+	if instanceof(center, "IsoGameCharacter") and center:getVehicle() then center = center:getVehicle() end
+	if not instanceof(center, "IsoGridSquare") then center = center:getSquare() end
 
 	return center
 end
@@ -24,23 +15,19 @@ end
 ---@param square IsoGridSquare
 ---@param returnFirst boolean
 ---@return table|BaseVehicle table of BaseVehicles or just 1 BaseVehicle
-function getVehiclesIntersecting(square, returnFirst)
+function isoRangeScan.getVehiclesIntersecting(square, returnFirst)
 	local vehicles = getCell():getVehicles()
 	local intersectingVehicles = {}
 	for v=0, vehicles:size()-1 do
 		---@type BaseVehicle
 		local vehicle = vehicles:get(v)
 		if vehicle:isIntersectingSquare(square:getX(),square:getY(),square:getZ()) then
-			if returnFirst then
-				return vehicle
-			end
+			if returnFirst then return vehicle end
 			table.insert(intersectingVehicles, vehicle)
 		end
 	end
 
-	if #intersectingVehicles==1 then
-		return intersectingVehicles[1]
-	end
+	if #intersectingVehicles==1 then return intersectingVehicles[1] end
 
 	return intersectingVehicles
 end
@@ -49,15 +36,11 @@ end
 ---@param center IsoObject|IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param lookForType string
-function getHumanoidsInRange(center, range, lookForType, predicateFunction)
+function isoRangeScan.getHumanoidsInRange(center, range, lookForType, predicateFunction)
 
-	if center then
-		center = recursiveGetSquare(center)
-	else
-		return {}
-	end
+	if center then center = isoRangeScan.recursiveGetSquare(center) else return {} end
 
-	local squaresInRange = getIsoRange(center, range)
+	local squaresInRange = isoRangeScan.getIsoRange(center, range)
 	local objectsFound = {}
 
 	for sq=1, #squaresInRange do
@@ -87,22 +70,18 @@ end
 ---@param fractalRange number number of rows, made up of `range`, from the center range
 ---@param lookForType string
 ---@param predicateFunction function
-function getHumanoidsInFractalRange(center, range, fractalRange, lookForType, predicateFunction)
+function isoRangeScan.getHumanoidsInFractalRange(center, range, fractalRange, lookForType, predicateFunction)
 
-	if center then
-		center = recursiveGetSquare(center)
-	else
-		return {}
-	end
+	if center then center = isoRangeScan.recursiveGetSquare(center) else return {} end
 
 	--range and fractalRange are flipped in the parameters here because:
 	-- "fractalRange" represents the number of rows from center out but with an offset of "range" instead
-	local fractalCenters = getIsoRange(center, fractalRange, range)
+	local fractalCenters = isoRangeScan.getIsoRange(center, fractalRange, range)
 	local fractalObjectsFound = {}
 	---print("getHumanoidsInFractalRange: centers found: "..#fractalCenters)
 	--pass through each "center square" found
 	for i=1, #fractalCenters do
-		local objectsFound = getHumanoidsInRange(fractalCenters[i], range, lookForType, predicateFunction)
+		local objectsFound = isoRangeScan.getHumanoidsInRange(fractalCenters[i], range, lookForType, predicateFunction)
 		---print(" fractal center "..i..":  "..#objectsFound)
 		--store a list of objectsFound within the fractalObjectsFound list
 		table.insert(fractalObjectsFound, objectsFound)
@@ -116,21 +95,12 @@ end
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param fractalOffset number fractal offset - spreads out squares by this number
 ---@return table of IsoGridSquare
-function getIsoRange(center, range, fractalOffset)
+function isoRangeScan.getIsoRange(center, range, fractalOffset)
 
-	if center and center~= false then
-		center = recursiveGetSquare(center)
-	end
+	if center and center~= false then center = isoRangeScan.recursiveGetSquare(center) end
+	if not center then return {} end
 
-	if not center then
-		return {}
-	end
-
-	if not fractalOffset then
-		fractalOffset = 1
-	else
-		fractalOffset = (fractalOffset*2)+1
-	end
+	if not fractalOffset then fractalOffset = 1 else fractalOffset = (fractalOffset*2)+1 end
 
 	--true center
 	local centerX, centerY = center:getX(), center:getY()
@@ -184,3 +154,5 @@ function getIsoRange(center, range, fractalOffset)
 	]]
 	return squares
 end
+
+return isoRangeScan

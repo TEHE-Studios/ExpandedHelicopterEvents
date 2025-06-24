@@ -195,7 +195,7 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 		end
 
 		if zombie:isOnFloor() then
-			local squaresInRange = getIsoRange(zombie, 1)
+			local squaresInRange = isoRangeScan.getIsoRange(zombie, 1)
 			for k,sq in pairs(squaresInRange) do
 				---@type IsoGridSquare
 				local square = sq
@@ -281,7 +281,7 @@ end
 function eHelicopter_zombieAI.reviveAI(AI_ID,location)
 	if not AI_ID or not location then return end
 
-	local squaresInRange = getIsoRange(location, 3)
+	local squaresInRange = isoRangeScan.getIsoRange(location, 3)
 	for sq=1, #squaresInRange do
 		---@type IsoGridSquare
 		local square = squaresInRange[sq]

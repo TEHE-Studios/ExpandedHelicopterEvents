@@ -36,6 +36,4 @@ function paperContext.addInventoryItemContext(playerID, context, items)
     end
 end
 
-Events.OnFillInventoryObjectContextMenu.Add(paperContext.addInventoryItemContext)
-
 return paperContext

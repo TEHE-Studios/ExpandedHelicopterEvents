@@ -311,6 +311,6 @@ end
 ---@param vehicle BaseVehicle
 function applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		SpawnerTEMP.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, "getOutsideSquareFromAbove")
+		EHE_spawner.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, "getOutsideSquareFromAbove")
 	end
 end

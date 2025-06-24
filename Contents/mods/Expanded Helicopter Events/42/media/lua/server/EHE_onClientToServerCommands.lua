@@ -3,7 +3,7 @@ LuaEventManager.AddEvent("EHE_ServerModDataReady")
 local function onServerModDataReady(isNewGame) sendServerCommand("EHE_ServerModData", "severModData_received", {}) end
 Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
-require "EHE_spawnerAPI"
+require "EHE_spawner"
 require "EHE_shadowSystem"
 local eheFlareSystem = require "EHE_flares"
 
@@ -30,13 +30,13 @@ local function onClientCommand(_module, _command, _player, _data)
 		if _command == "spawnZombie" then
 			--print("--spawnZombie")
 			--_dataA = player, _data = args
-			SpawnerTEMP.spawnZombie(_data.outfitID, _data.x, _data.y, _data.z, _data.extraFunctions, _data.femaleChance, _data.processSquare)
+			EHE_spawner.spawnZombie(_data.outfitID, _data.x, _data.y, _data.z, _data.extraFunctions, _data.femaleChance, _data.processSquare)
 		elseif _command == "spawnVehicle" then
 			--print("--spawnVehicle")
-			SpawnerTEMP.spawnVehicle(_data.vehicleType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
+			EHE_spawner.spawnVehicle(_data.vehicleType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
 		elseif _command == "spawnItem" then
 			--print("--spawnItem")
-			SpawnerTEMP.spawnItem(_data.itemType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
+			EHE_spawner.spawnItem(_data.itemType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
 		end
 	end
 end

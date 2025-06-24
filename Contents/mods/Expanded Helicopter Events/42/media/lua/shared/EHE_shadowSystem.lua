@@ -19,7 +19,7 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
 		end
 		local outsideSquare
 		if square then
-			outsideSquare = getOutsideSquareFromAbove(square) or square
+			outsideSquare = square--getOutsideSquareFromAbove(square) or square
 		end
 
 		if not texture or not x or not y or not z then

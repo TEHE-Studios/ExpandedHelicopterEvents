@@ -1,5 +1,4 @@
 local heatMap = require "EHE_heatMap"
-
 Events.OnInitGlobalModData.Add(heatMap.initModData)
 Events.EveryHours.Add(heatMap.coolOff)
 Events.EHE_OnActivateFlare.Add(heatMap.EHE_OnActivateFlare)

@@ -1,6 +1,6 @@
 require "EHE_mainCore"
 require "EHE_mainVariables"
-require "EHE_spawnerAPI"
+require "EHE_spawner"
 require "EHE_util"
 --Heli goes down
 
@@ -54,7 +54,7 @@ function eHelicopter:crash()
 				end
 			end
 
-			SpawnerTEMP.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+			EHE_spawner.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 
 			self.crashType = false
 			self.state = "crashed"
@@ -139,7 +139,7 @@ function eHelicopter:spawnCrew(x, y, z)
 				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			SpawnerTEMP.spawnZombie(outfitID, x, y, 0, onSpawnCrewEvents, femaleChance, "getOutsideSquareFromAbove")
+			EHE_spawner.spawnZombie(outfitID, x, y, 0, onSpawnCrewEvents, femaleChance, "getOutsideSquareFromAbove")
 
 		end
 	end
@@ -201,7 +201,7 @@ function eHelicopter:dropItem(type, fuzz)
 		heliY = heliY+ZombRand(min,max)
 	end
 
-	SpawnerTEMP.spawnItem(type, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+	EHE_spawner.spawnItem(type, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 end
 
 
@@ -251,7 +251,7 @@ function eHelicopter:dropCarePackage(fuzz)
 				table.insert(extraFunctions, eventFunction)
 			end
 		end
-		SpawnerTEMP.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+		EHE_spawner.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
 		addSound(nil, heliX, heliY, 0, 200, 150)
@@ -290,7 +290,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				SpawnerTEMP.spawnItem(partType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+				EHE_spawner.spawnItem(partType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
 			end
 		end
 	end
@@ -317,7 +317,7 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				SpawnerTEMP.spawnVehicle(partType, heliX, heliY, 0, nil, nil, "getOutsideSquareFromAbove")
+				EHE_spawner.spawnVehicle(partType, heliX, heliY, 0, nil, nil, "getOutsideSquareFromAbove")
 			end
 		end
 	end

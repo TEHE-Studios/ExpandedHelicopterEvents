@@ -2,7 +2,6 @@ require "radio/ISWeatherChannel"
 require "EHE_weatherImpact"
 
 --- "loadThisAfter" was added to fix issues with Save Our Station
-
 Events.OnGameBoot.Add(function() Translator.loadFiles() end)
 
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
@@ -46,5 +45,3 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		WeatherChannel.AddFuzz(c, _bc);
 	end
 end
-
-return EHE_WeatherChannel_FillBroadcast
