@@ -1,21 +1,34 @@
 module Base
 {
-    model HandFlare { mesh = WorldItems/HandFlare, texture = WorldItems/HandFlare, scale = 0.02,}
-    model PAVFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/PAVPaper, scale = 0.02,}
-    model QuarantineFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/QuarantinePaper, scale = 0.02,}
-    model NoticeFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/NoticePaper, scale = 0.02,}
-    model EmergencyFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/EmergencyPaper, scale = 0.02,}
-    model EvacuationFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/EvacuationPaper, scale = 0.02,}
-    model SupplyBox { mesh = WorldItems/SupplyBox, texture = WorldItems/SupplyBox, scale = 1.0,}
-    model SurvivorSupplyBox { mesh = WorldItems/SupplyBox, texture = WorldItems/SurvivorSupplyBox, scale = 1.0,}
-    model BanditBox { mesh = WorldItems/SupplyBox, texture = WorldItems/SurvivorSupplyBox, scale = 1.0,}
-    model Parachute { mesh = WorldItems/Parachute, texture = WorldItems/Parachute, scale = 1.0,}
-    model UH60ElevatorGreen { mesh = WorldItems/UH60Elevator, texture = WorldItems/UH60Green, scale = 1.0,}
-    model UH60Elevator { mesh = WorldItems/UH60Elevator, texture = WorldItems/UH60Green, scale = 1.0,}
-    model UH60ElevatorDesert { mesh = WorldItems/UH60Elevator, texture = WorldItems/UH60Desert, scale = 1.0,}
-    model UH60WindowGreen { mesh = WorldItems/UH60CrewWindow, texture = WorldItems/UH60Green, scale = 1.0,}
-    model UH60WindowDesert { mesh = WorldItems/UH60CrewWindow, texture = WorldItems/UH60Desert, scale = 1.0,}
-    model UH60DoorGreen { mesh = WorldItems/UH60Door, texture = WorldItems/UH60Green, scale = 1.0,}
-    model UH60DoorMedevac { mesh = WorldItems/UH60Door, texture = WorldItems/UH60Medevac, scale = 1.0,}
-    model UH60DoorDesert { mesh = WorldItems/UH60Door, texture = WorldItems/UH60Desert, scale = 1.0,}
+    model HandFlare { mesh = WorldItems/HandFlare, texture = WorldItems/HandFlare, scale = 0.02, }
+
+    model PAVFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/PAVPaper, scale = 0.02, }
+    model QuarantineFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/QuarantinePaper, scale = 0.02, }
+    model NoticeFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/NoticePaper, scale = 0.02, }
+    model EmergencyFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/EmergencyPaper, scale = 0.02, }
+    model EvacuationFlyer { mesh = WorldItems/SheetOfPaper, texture = WorldItems/EvacuationPaper, scale = 0.02, }
+
+    model SupplyBox { mesh = WorldItems/SupplyBox, texture = WorldItems/SupplyBox, scale = 1.0, }
+    model SurvivorSupplyBox { mesh = WorldItems/SupplyBox, texture = WorldItems/SurvivorSupplyBox, scale = 1.0, }
+    model BanditBox { mesh = WorldItems/SupplyBox, texture = WorldItems/BanditBox, scale = 1.0, }
+
+    model Parachute { mesh = WorldItems/Parachute, texture = WorldItems/Parachute, scale = 1.0, }
+
+    model UH60ElevatorGreen { mesh = WorldItems/UH60Elevator, texture = vehicles/military/Vehicle_UH60Green_Crash, scale = 1.0, }
+    model UH60Elevator { mesh = WorldItems/UH60Elevator, texture = vehicles/military/Vehicle_UH60Green_Crash, scale = 1.0, }
+    model UH60ElevatorDesert { mesh = WorldItems/UH60Elevator, texture = vehicles/military/Vehicle_UH60Desert_Crash, scale = 1.0, }
+    model UH60WindowGreen { mesh = WorldItems/UH60CrewWindow, texture = vehicles/military/Vehicle_UH60Green_Crash, scale = 1.0, }
+    model UH60WindowDesert { mesh = WorldItems/UH60CrewWindow, texture = vehicles/military/Vehicle_UH60Desert_Crash, scale = 1.0, }
+    model UH60DoorGreen { mesh = WorldItems/UH60Door, texture = vehicles/military/Vehicle_UH60Green_Crash, scale = 1.0, }
+    model UH60DoorMedevac { mesh = WorldItems/UH60Door, texture = vehicles/military/Vehicle_UH60Medevac_Crash, scale = 1.0, }
+    model UH60DoorDesert { mesh = WorldItems/UH60Door, texture = vehicles/military/Vehicle_UH60Desert_Crash, scale = 1.0, }
+
+    /*Would be a good idea for the models below to utilize the vehicle textures as above does*/
+    model Bell206RotorBlade1 { mesh = WorldItems/Bell206RotorBlade1, texture = WorldItems/Bell206RotorBlade, scale = 1.0, }
+    model Bell206RotorBlade2 { mesh = WorldItems/Bell206RotorBlade2, texture = WorldItems/Bell206RotorBlade, scale = 1.0, }
+    model UH1HRotorBlade1 { mesh = WorldItems/UH1HRotorBlade, texture = WorldItems/UH1HRotorBlade, scale = 1.0, }
+    model UH1HRotorBlade2 { mesh = WorldItems/UH1HRotorBlade, texture = WorldItems/UH1HRotorBlade, scale = 1.0, }
+    model UH1HHalfSkirt { mesh = WorldItems/UH1HHalfSkirt, texture = WorldItems/UH1HHalfSkirt, scale = 1.0, }
+    model Bell206HalfSkirt { mesh = WorldItems/Bell206HalfSkirt, texture = WorldItems/Bell206HalfSkirt, scale = 1.0, }
+    model Bell206TailBlade { mesh = WorldItems/Bell206TailBlade, texture = WorldItems/Bell206TailBlade, scale = 1.0, }
 }
