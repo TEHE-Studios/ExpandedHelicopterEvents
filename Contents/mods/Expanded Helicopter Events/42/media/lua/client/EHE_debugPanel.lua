@@ -16,6 +16,40 @@ EHE_DebugTests = EHE_DebugTests or {}
 
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 
+function EHE_DebugTestWindow:render()
+	ISPanel.render(self)
+
+	local globalModData = getExpandedHeliEventsModData_Client()
+	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
+
+		local GT = getGameTime()
+		local currentDay, currentHour = GT:getNightsSurvived(), GT:getHour()
+		local textToDisplay = "currentDay: "..currentDay.." currentHour:"..currentHour.."\n"
+
+		for k,v in pairs(globalModData.EventsOnSchedule) do
+
+			textToDisplay = textToDisplay.."   \["..k.."\]"
+			if type(v)=="table" then
+				for kk,vv in pairs(v) do
+					textToDisplay = textToDisplay.."  "..kk..":"..tostring(vv)
+				end
+			else
+				textToDisplay = textToDisplay.." = "..v
+			end
+			textToDisplay = textToDisplay.."\n"
+		end
+
+		local font = UIFont.AutoNormSmall
+		local tm = getTextManager()
+		local width = tm:MeasureStringX(font,textToDisplay.."   ")
+		local height = tm:MeasureStringY(font,textToDisplay.."   ")
+
+		self:drawRect(self.width+5, 0, width+20, height, 0.65, 0, 0, 0)
+		self:drawText(textToDisplay, self.width+15, 5, 1,1,1,1, UIFont.AutoNormSmall)
+	else
+		self:drawText("No Events On Schedule", self.width+10, 5, 1,1,1,1, UIFont.AutoNormSmall)
+	end
+end
 
 function EHE_DebugTestWindow.OnOpenPanel()
 

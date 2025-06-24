@@ -8,7 +8,6 @@ require "EHE_mainVariables"
 
 Events.OnGameBoot.Add(function()
 	if EHE_DebugTests then
-		EHE_DebugTests["Check Schedule"] = CustomDebugPanel.eHeliEventsOnSchedule
 		EHE_DebugTests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
 		EHE_DebugTests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
 		EHE_DebugTests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
@@ -242,30 +241,6 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 		end
 		print("--- TOTAL EVENTS: "..totalTimes)
 		print("======================================")
-	end
-end
-
-
---- Check eHeliEvent within eHeliEventsOnSchedule
-function CustomDebugPanel.eHeliEventsOnSchedule()
-
-	local GT = getGameTime()
-	local globalModData = getExpandedHeliEventsModData()
-	local nightsSurvived = tostring(GT:getNightsSurvived())
-	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
-	local hour = tostring(GT:getHour())
-	local eventsScheduled = false
-	print("--- eHeliEventsOnSchedule: ".." daysIntoApoc: "..daysIntoApoc.."  nights-surv: "..nightsSurvived.."  hr: "..hour)
-
-	for k,v in pairs(globalModData.EventsOnSchedule) do
-		eventsScheduled = true
-		local text = "------ \["..k.."\]"
-		if type(v)=="table" then for kk,vv in pairs(v) do text = text.."  "..string.sub(kk, 1, 1)..":"..tostring(vv) end
-		else text = text.." = "..v end
-		print(text)
-	end
-	if not eventsScheduled then
-		print("------ \[0\]  No Events Schedule")
 	end
 end
 
