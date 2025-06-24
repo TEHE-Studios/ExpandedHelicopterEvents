@@ -4,7 +4,7 @@ module SWH
 	item SpiffoBurgersBox
 	{
 		Weight			=	6.3,
-		Icon			=	SupplyBox_blank,
+		Icon			=	EHE/supplyBox/blank,
 		DisplayName		=	Spiffo Box,
 		WorldStaticModel = SpiffoBox_WorldItem,
 		Tags = EHESupplyBox,
@@ -13,7 +13,7 @@ module SWH
 	item IceCreamBox
 	{
 		Weight			=	6.3,
-		Icon			=	SupplyBox_blank,
+		Icon			=	EHE/supplyBox/blank,
 		DisplayName		=	Half-Frozen Box,
 		WorldStaticModel = IceCreamBox_WorldItem,
 		Tags = EHESupplyBox,
