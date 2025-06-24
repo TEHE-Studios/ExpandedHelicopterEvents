@@ -116,36 +116,18 @@ VehicleDistributions.UFORedneckTrunk = {
 VehicleDistributions.TISTrunk = {
     rolls = 6,
     items ={
-        "SWH.IceCreamBox", 10,
-        "SWH.IceCreamBox", 10,
-        "SWH.IceCreamBox", 10,
-        "Base.IcecreamMelted", 10,
-        "Base.IcecreamMelted", 10,
+        "SWH.SWH_IceCreamBox", 10,
+        "SWH.SWH_IceCreamBox", 10,
+        "SWH.SWH_IceCreamBox", 10,
+        "Base.SWH_IceCreamBox", 10,
+        "Base.SWH_IceCreamBox", 10,
     }
 }
 
 VehicleDistributions.SpiffoBurger = {
-    rolls = 50,
+    rolls = 18,
     items ={
-        "SWH.SpiffoDolls", 10,
-        "SWH.SpiffoMerchandise", 10,
-        "SWH.BurgerBox", 10,
-
-        "SWH.SpiffoDolls", 10,
-        "SWH.SpiffoMerchandise", 10,
-        "SWH.BurgerBox", 10,
-
-        "SWH.SpiffoDolls", 10,
-        "SWH.SpiffoMerchandise", 10,
-        "SWH.BurgerBox", 10,
-
-        "SWH.SpiffoDolls", 10,
-        "SWH.SpiffoMerchandise", 10,
-        "SWH.BurgerBox", 10,
-
-        "SWH.SpiffoDolls", 10,
-        "SWH.SpiffoMerchandise", 10,
-        "SWH.BurgerBox", 10,
+        "SWH.SWH_SpiffoBox", 25,
     }
 }
 

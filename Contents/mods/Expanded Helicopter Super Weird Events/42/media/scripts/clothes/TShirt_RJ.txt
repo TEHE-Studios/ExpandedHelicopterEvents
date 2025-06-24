@@ -4,6 +4,7 @@ module SWH
 	{
 		Type = Clothing,
 		DisplayName = RJ's Favorite Shirt,
+		DisplayCategory = Clothing,
 		ClothingItem = TShirt_RJ,
 		BodyLocation = ShortSleeveShirt,
 		Icon = ShirtAthleticRed,

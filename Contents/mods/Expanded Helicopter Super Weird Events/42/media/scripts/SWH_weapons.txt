@@ -2,6 +2,7 @@ module SWH
 {
     item AlienBlaster
     {
+        DisplayCategory = Weapon,
         ImpactSound	=	null,
         MaxRange	=	6,
         WeaponSprite	=	AlienBlaster,

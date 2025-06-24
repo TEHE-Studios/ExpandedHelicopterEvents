@@ -1,0 +1,24 @@
+module SWH
+{
+
+	item SWH_SpiffoBox
+	{
+        DisplayCategory = Container,
+        Weight = 6.3,
+        Icon = EHE/supplyBox/default,
+        DisplayName = Spiffo Box,
+        WorldStaticModel = SpiffoBox_WorldItem,
+        Tags = EHESupplyBox,
+	}
+
+	item SWH_IceCreamBox
+	{
+		DisplayCategory = Container,
+		Weight = 6.3,
+		Icon = EHE/supplyBox/default,
+		DisplayName = Half-Frozen Box,
+		WorldStaticModel = IceCreamBox_WorldItem,
+		Tags = EHESupplyBox,
+	}
+
+}

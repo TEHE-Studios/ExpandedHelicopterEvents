@@ -4,6 +4,7 @@ module SWH
     {
         Type = Clothing,
         DisplayName = Strange Sneakers,
+        DisplayCategory = Clothing,
         ClothingItem = Shoes_RedTrainers,
         BodyLocation = Shoes,
         BloodLocation = Shoes,

@@ -15,7 +15,7 @@ module EHE
 	{
 		DisplayCategory = Container,
 		Weight			=	6.3,
-		Icon			=	EHE/supplyBox/blank,
+		Icon			=	EHE/supplyBox/default,
 		DisplayName		=	Supply Box,
 		Tooltip = Tooltip_BanditBox,
 		WorldStaticModel = BanditBox,
