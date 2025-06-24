@@ -1,29 +1,18 @@
 require "EHE_recipeFunctions"
 
----@param player IsoGameCharacter | IsoMovingObject
-function EHE_Recipe.BURGERBOX(recipe, result, player)
-	local meats = player:getInventory():AddItems("Base.MeatPatty", 50)
-	for i=0, meats:size()-1 do
-		local meat = meats:get(i)
-		if meat then
-			meat:setAutoAge()
-		end
+EHE_Recipe.supplyResults.spiffoBurgers = { ["Base.MeatPatty"] = 50, }
+EHE_Recipe.supplyResults.spiffoMerch = { ["Base.Tshirt_SpiffoDECAL"] = 10, ["Base.Spiffo"] = 6, }
+EHE_Recipe.supplyResults.spiffoCostume = { ["Base.SpiffoSuit"] = 1, ["Base.Hat_Spiffo"] = 1, ["Base.SpiffoTail"] = 1, }
+EHE_Recipe.supplyResults.icecream = { ["Base.IcecreamMelted"] = 29, }
+
+EHE_Recipe.boxToResults["EHE.SpiffoBurgersBox"] = { "spiffoBurgers", "spiffoMerch", "spiffoCostume" }
+EHE_Recipe.boxToResults["EHE.IceCreamBox"] = { "icecream"}
+
+EHE_Recipe.boxToAdditionalFunc["EHE.SpiffoBurgersBox"] = "ageBurgers"
+
+function EHE_Recipe.ageBurgers(items)
+	for i=0, items:size()-1 do
+		local meat = items:get(i)
+		if meat then meat:setAutoAge() end
 	end
 end
-
-
-function EHE_Recipe.MERCHBOX(recipe, result, player)
-	player:getInventory():AddItems("Base.Tshirt_SpiffoDECAL", 10)
-	player:getInventory():AddItems("Base.Spiffo", 20)
-end
-
-function EHE_Recipe.COSTUMEBOX(recipe, result, player)
-	player:getInventory():AddItems("Base.SpiffoSuit", 4)
-	player:getInventory():AddItems("Base.Hat_Spiffo", 4)
-	player:getInventory():AddItems("Base.SpiffoTail", 4)
-end
-
-function EHE_Recipe.ICECREAMBOX(recipe, result, player)
-	player:getInventory():AddItems("Base.IcecreamMelted", 29)
-end
-

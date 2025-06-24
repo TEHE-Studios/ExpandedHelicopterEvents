@@ -1,8 +1,7 @@
-
 module SWH
 {
 
-        item TenFortyForm
+    item TenFortyForm
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
@@ -15,7 +14,7 @@ module SWH
 		WorldStaticModel = 1040_WorldItem,
 	}
 
-        item SpiffoInvite
+    item SpiffoInvite
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
@@ -29,7 +28,7 @@ module SWH
 	}
 
 
-        item StrangeNewspaper
+    item StrangeNewspaper
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,

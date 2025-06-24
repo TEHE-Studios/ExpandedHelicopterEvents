@@ -23,36 +23,63 @@ function EHE_Recipe.dismantleHeliPart(craftRecipeData, character)
 end
 
 
-EHE_Recipe.supplyResults = {
-	FEMA_food = { ["EHE.EmergencyWaterRation"] = 4, ["EHE.MealReadytoEatEHE"] = 2, },
+EHE_Recipe.supplyResults = {}
 
-	FEMA_medical = { ["Base.Hat_SurgicalMask"] = 6, ["Base.Gloves_Surgical"] = 6, ["Base.FirstAidKit"] = 1, },
+EHE_Recipe.supplyResults.FEMA_food = {
+	["EHE.EmergencyWaterRation"] = 4, ["EHE.MealReadytoEatEHE"] = 2, }
 
-	FEMA_survival = { ["Base.Torch"] = 2, ["Base.Battery"] = 12, ["Base.RadioBlack"] = 2, ["EHE.HandFlare"] = 2, },
+EHE_Recipe.supplyResults.FEMA_medical = {
+	["Base.Hat_SurgicalMask"] = 6, ["Base.Gloves_Surgical"] = 6, ["Base.FirstAidKit"] = 1, }
 
-	banditStash = { ["Base.Whiskey"] = 2, ["Base.CigaretteCarton"] = 2, ["Base.CigarettePack"] = 5, ["Lighter"] = 2, ["HottieZ"] = 13, },
+EHE_Recipe.supplyResults.FEMA_survival = {
+	["Base.Torch"] = 2, ["Base.Battery"] = 12, ["Base.RadioBlack"] = 2, ["EHE.HandFlare"] = 2, }
 
-	survivor_medical = { ["EHE.HandFlare"] = 2, ["Base.Hat_SurgicalMask"] = 2, ["Base.Gloves_Surgical"] = 2, ["Base.FirstAidKit"] = 1, },
+EHE_Recipe.supplyResults.banditStash = {
+	["Base.Whiskey"] = 2, ["Base.CigaretteCarton"] = 2, ["Base.CigarettePack"] = 5, ["Lighter"] = 2, ["HottieZ"] = 13, }
 
-	survivor_food = { ["Base.CannedPotato"] = 2, ["Base.CannedCarrots"] = 2, ["Base.CannedCabbage"] = 2,
-					  ["Base.CannedTomato"] = 2, ["Base.CannedBroccoli"] = 2, },
+EHE_Recipe.supplyResults.survivor_medical = {
+	["EHE.HandFlare"] = 2, ["Base.Hat_SurgicalMask"] = 2, ["Base.Gloves_Surgical"] = 2, ["Base.FirstAidKit"] = 1, }
 
-	survivor_seeds = { ["Base.Fertilizer"] = 3, ["Base.CabbageBagSeed2"] = 3, ["Base.PotatoBagSeed2"] = 3,
-					   ["Base.BroccoliBagSeed2"] = 3, ["Base.TomatoBagSeed2"] = 3, ["Base.CarrotBagSeed2"] = 3, },
+EHE_Recipe.supplyResults.survivor_food = {
+	["Base.CannedPotato"] = 2, ["Base.CannedCarrots"] = 2, ["Base.CannedCabbage"] = 2,
+	["Base.CannedTomato"] = 2, ["Base.CannedBroccoli"] = 2, }
 
-	survivor_toilet = { ["Base.ToiletPaper"] = 10, },
+EHE_Recipe.supplyResults.survivor_seeds = {
+	["Base.Fertilizer"] = 3, ["Base.CabbageBagSeed2"] = 3, ["Base.PotatoBagSeed2"] = 3, ["Base.BroccoliBagSeed2"] = 3,
+	["Base.TomatoBagSeed2"] = 3, ["Base.CarrotBagSeed2"] = 3, }
 
-	survivor_fishing = { ["Base.FishingRod"] = 3, ["Base.FishingLine"] = 3, ["Base.FishingTackle"] = 3, ["Base.FishingNet"] = 4, },
+EHE_Recipe.supplyResults.survivor_toilet = {
+	["Base.ToiletPaper"] = 10, }
 
-	survivor_canning = { ["Base.BoxOfJars"] = 2, ["Base.Sugar"] = 1, ["Base.Vinegar"] = 1, },
-}
+EHE_Recipe.supplyResults.survivor_fishing = {
+	["Base.FishingRod"] = 3, ["Base.FishingLine"] = 3, ["Base.FishingTackle"] = 3, ["Base.FishingNet"] = 4, }
+
+EHE_Recipe.supplyResults.survivor_canning = {
+	["Base.BoxOfJars"] = 2, ["Base.Sugar"] = 1, ["Base.Vinegar"] = 1, }
 
 
-EHE_Recipe.boxToResults = {
-	["EHE.EmergencySupplyBox"] = { "FEMA_food", "FEMA_medical", "FEMA_survival" },
-	["EHE.BanditStashBox"] = { "banditStash" },
-	["EHE.SurvivorSupplyBox"] = { "survivor_medical", "survivor_food", "survivor_seeds", "survivor_toilet", "survivor_fishing", "survivor_canning"},
-}
+EHE_Recipe.boxToResults = {}
+
+EHE_Recipe.boxToResults["EHE.EmergencySupplyBox"] = { "FEMA_food", "FEMA_medical", "FEMA_survival" }
+EHE_Recipe.boxToResults["EHE.BanditStashBox"] = { "banditStash" }
+EHE_Recipe.boxToResults["EHE.SurvivorSupplyBox"] = { "survivor_medical", "survivor_food", "survivor_seeds", "survivor_toilet", "survivor_fishing", "survivor_canning"}
+
+
+EHE_Recipe.boxToAdditionalFunc = {}
+
+EHE_Recipe.boxToAdditionalFunc["EHE.EmergencySupplyBox"] = "fillBags"
+EHE_Recipe.boxToAdditionalFunc["EHE.SurvivorSupplyBox"] = "fillBags"
+
+
+function EHE_Recipe.fillBags(items, character)
+	local first = items:get(0)
+	if not instanceof(first, "InventoryContainer") then return end
+
+	for i=0, items:size()-1 do
+		local bag = items:get(i)
+		if bag then ehefillInventoryContainer.roll(bag, character) end
+	end
+end
 
 
 function EHE_Recipe.openSupplyBox(craftRecipeData, character)
@@ -72,16 +99,8 @@ function EHE_Recipe.openSupplyBox(craftRecipeData, character)
 
 			for itm,qty in pairs(results) do
 				local itms = itemContainer:AddItems(itm, qty)
-
-				local first = itms:get(0)
-				if instanceof(first, "InventoryContainer") then
-					for ii=0, itms:size()-1 do
-						local bag = itms:get(ii)
-						if bag then
-							ehefillInventoryContainer.roll(bag, character)
-						end
-					end
-				end
+				local addFunc = EHE_Recipe.boxToAdditionalFunc[i_type]
+				if addFunc then addFunc(itms) end
 			end
 		end
 	end

@@ -11,7 +11,7 @@ module EHE
 		/*Tooltip:Tooltip_open_boxes_barehanded,*/
 		inputs
 		{
-			item 1 [EHE.EmergencySupplyBox;EHE.BanditStashBox;EHE.SurvivorSupplyBox],
+			item 1 tags[EHESupplyBox],
 		}
 	}
 
