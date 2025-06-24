@@ -1,3 +1,3 @@
 DynamicRadio_AR = {
-	AEBS_buffcorrell = "S√≠, lo que est√° pasando es que tu chico Buffcorrell est√° de vuelta, de nuevo, con algunas versiones de m√∫sica con derechos de autor, pero no es nada m√°s que un pollo wang, a menos que seas un transmisor de Twitch. esk. esk. esk esk. Leeeeeeeeeeet, prep√°rense y. vamos."
+	AEBS_buffcorrell = "SÌ, øquÈ es lo que est· de nuevo? Esk. Esk. Esk esk. Leeeeeeeeeet's Get Reeeady y. ir."
 }

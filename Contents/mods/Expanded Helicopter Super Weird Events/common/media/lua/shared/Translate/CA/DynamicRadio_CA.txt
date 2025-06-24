@@ -1,3 +1,3 @@
 DynamicRadio_CA = {
-	AEBS_buffcorrell = "s√≠, qu√® √©s el que est√† fent, √©s que el teu noi s'ho torna a fer amb algunes portades de m√∫sica amb drets d'autor, per√≤ no √©s m√©s que un pollastre, tret que siguis un streamer de contracci√≥. esk. esk. esk esk. leeeeeeeeeet es posen a punt i. anar."
+	AEBS_buffcorrell = "SÌ, quË Ès el que Poppin Ès el teu noi Buffcorrell, hi torna a tenir algunes fundes de m˙sica amb drets d'autor, perÚ no Ès un thatg, sinÛ un wang de pollastre, tret que siguis un retret de Twitch. Esk. Esk. Esk Esk. Leeeeeeeeeet's Get Reeeady i. anar."
 }

@@ -1,26 +1,26 @@
 Tooltip_FR = {
-    Tooltip_dismantle_helicopterpart = "L'utilisation d'un chalumeau et d'un masque de soudage produira du métal.",
-    Tooltip_open_boxes_barehanded = "Ce serait plus rapide à ouvrir avec quelque chose de pointu.",
+    Tooltip_dismantle_helicopterpart = "L'utilisation d'un masque de soufflage et de soudage donnera du métal.",
+    Tooltip_open_boxes_barehanded = "Serait plus rapide d'ouvrir avec quelque chose de net.",
     Tooltip_Parachute = "Peut être déchiré pour faire du tissu déchiré.",
-    Tooltip_EnergyBar = "Une barre énergétique conditionnée pour les kits de survie. Fabriqué par PT&D.",
-    Tooltip_SurvivalVest = "Veste de survie standard pour pilotes militaires.",
-    Tooltip_SurvivalVestBlack = "Veste de survie standard pour la recherche et sauvetage de la police.",
+    Tooltip_EnergyBar = "Une barre d'énergie emballée pour les kits de survie. Fabriqué par Pt & D.",
+    Tooltip_SurvivalVest = "Viete de survie standard pour les pilotes militaires.",
+    Tooltip_SurvivalVestBlack = "Viete de survie à l'émission standard pour la recherche et le sauvetage de la police.",
     Tooltip_SPHMilitary = "Casque d'hélicoptère militaire standard."
     Tooltip_SPHBlack = "Casque d'hélicoptère militaire standard en noir.",
-    Tooltip_SPHPolice = "Casque d'hélicoptère utilisé par les forces aériennes de la police.",
+    Tooltip_SPHPolice = "Casque d'hélicoptère utilisé par les ailes aériennes de la police.",
     Tooltip_SPHCivilian = "Casque d'hélicoptère utilisé par les pilotes civils.",
 
-    Tooltip_FlyerCDC = "On dirait un dépliant sur des conseils sanitaires.",
-    Tooltip_FlyerMilitary = "On dirait un dépliant d'instructions de l'Armée.",
+    Tooltip_FlyerCDC = "Ressemble à un dépliant consultatif en santé.",
+    Tooltip_FlyerMilitary = "Ressemble à un dépliant d'avis de l'armée.",
     Tooltip_CivilDefense = "On dirait un dépliant de la défense civile.",
 
-    Tooltip_WaterSealed = "Ration d'eau scellée distribuée par le gouvernement Américain."
-    Tooltip_WaterUnsealed = "Ration d'eau non scellée distribuée par le gouvernement Américain." 
+    Tooltip_WaterSealed = "Ration de l'eau scellée distribuée par le gouvernement américain."
+    Tooltip_WaterUnsealed = "Ration de l'eau non scellée distribuée par le gouvernement américain." 
 
-    Tooltip_SupplyBox = "Boîte d'approvisionnement du gouvernement Américain."
-    Tooltip_SamaritanBox = "Boîte de ravitaillement d'un groupe de mystérieux samaritains.",
-    Tooltip_BanditBox = "Boîte de rangement personnelle. Vous pouvez y lire 'C'EST À MOI, PAS TOUCHE !'",
+    Tooltip_SupplyBox = "Boîte de fourniture du gouvernement américain."
+    Tooltip_SamaritanBox = "Boîte de fourniture d'un groupe de mystérieux Samaritains.",
+    Tooltip_BanditBox = "Boîte de cachette personnelle. Lecture"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Fusée de signalisation militaire. Ne tirez pas à l'intérieur.",
-    Tooltip_HandFlare = "Fusée éclairante. Ne l'utilisez pas à l’intérieur."
+    Tooltip_SignalFlare = "Flare de signalisation. Ne tirez pas à l'intérieur.",
+    Tooltip_HandFlare = "Éclater. Ne tirez pas à l'intérieur."
 }

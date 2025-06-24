@@ -1,29 +1,29 @@
 IG_UI_JP = {
-    IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "破損した UH-60A (機体部)",
-    IGUI_VehicleNameUH60GreenTail = "破損した UH-60A (尾部)",
+    IGUI_VehicleNameUH60Green = "uh-60a",
+    IGUI_VehicleNameUH60GreenFuselage = "難破したUH-60A（胴体）",
+    IGUI_VehicleNameUH60GreenTail = "難破したUH-60A（尾）",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A 砂漠迷彩",
-    IGUI_VehicleNameUH60DesertFuselage = "破損した UH-60A 砂漠迷彩 (機体部)",
-    IGUI_VehicleNameUH60DesertTail = "破損した UH-60A 砂漠迷彩 (尾部)",
+    IGUI_VehicleNameUH60Desert = "uh-60a砂漠",
+    IGUI_VehicleNameUH60DesertFuselage = "難破したUH-60A砂漠（胴体）",
+    IGUI_VehicleNameUH60DesertTail = "難破したUH-60A砂漠（尾）",
 
-    IGUI_VehicleNameUH60Medevac = "UH-60A 救助用ヘリ",
-    IGUI_VehicleNameUH60MedevacFuselage = "破損した UH-60A 救助用ヘリ (機体部)",
-    IGUI_VehicleNameUH60MedevacTail = "破損した UH-60A 救助用ヘリ (尾部)",
+    IGUI_VehicleNameUH60Medevac = "uh-60a medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "難破したUH-60A Medevac（胴体）",
+    IGUI_VehicleNameUH60MedevacTail = "難破したUH-60A Medevac（尾）",
 
-    IGUI_VehicleNameBell206LBMW = "Bell 206 報道用ヘリ",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 報道用ヘリ (機体部)",
-    IGUI_VehicleNameBell206LBMWTail = "Bell 206 報道用ヘリ (尾部)",
+    IGUI_VehicleNameBell206LBMW = "ニュースヘリコプター",    
+    IGUI_VehicleNameBell206LBMWFuselage = "ニュースヘリコプター（胴体）",
+    IGUI_VehicleNameBell206LBMWTail = "ニュースヘリコプター（テール）",
 
-    IGUI_VehicleNameBell206Police = "Bell 206 警察用ヘリ",
-    IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 警察用ヘリ (機体部)",
-    IGUI_VehicleNameBell206PoliceTail = "Bell 206 警察用ヘリ (尾部)",
+    IGUI_VehicleNameBell206Police = "警察ヘリコプター",
+    IGUI_VehicleNameBell206PoliceFuselage = "警察ヘリコプター（胴体）",
+    IGUI_VehicleNameBell206PoliceTail = "警察ヘリコプター（尾）",
 
-    IGUI_VehicleNameBell206Survivalist = "Bell 206 民間用ヘリ",
+    IGUI_VehicleNameBell206Survivalist = "民間ヘリコプター",
     
-    IGUI_VehicleNameFEMASupplyDrop = "FEMA救援物資",
-    IGUI_VehicleNameSurvivorSupplyDrop = "サマリタン協会の救援物資",
+    IGUI_VehicleNameFEMASupplyDrop = "緊急供給ドロップ",
+    IGUI_VehicleNameSurvivorSupplyDrop = "サマリア人の供給ドロップ",
 
-    IGUI_Spent = "Spent",
-    IGUI_Lit = "Lit",
+    IGUI_Spent = "過ごした",
+    IGUI_Lit = "点灯",
 }

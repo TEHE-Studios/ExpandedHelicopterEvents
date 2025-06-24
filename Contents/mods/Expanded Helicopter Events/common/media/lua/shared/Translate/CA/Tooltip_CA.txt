@@ -1,26 +1,26 @@
 Tooltip_CA = {
-    Tooltip_dismantle_helicopterpart = "L'Ãºs d'un bufador i mÃ scara de soldadura produirÃ  metall.",
-    Tooltip_open_boxes_barehanded = "Seria mÃ©s rÃ pid obrir amb alguna cosa nÃ­tida.",
-    Tooltip_Parachute = "Es pot trencar per fer un drap trencat.",
-    Tooltip_EnergyBar = "Una barra energÃ¨tica envasada per a kits de supervivÃ¨ncia. Fabricat per PT&D.",
-    Tooltip_SurvivalVest = "Armilla de supervivÃ¨ncia estÃ ndard per a pilots militars.",
-    Tooltip_SurvivalVestBlack = "Armilla de supervivÃ¨ncia estÃ ndard per a la recerca i rescat policial.",
-    Tooltip_SPHMilitary = "Casc d'helicÃ²pter militar d'ediciÃ³ estÃ ndard."
-    Tooltip_SPHBlack = "Casc d'helicÃ²pter militar d'ediciÃ³ estÃ ndard en negre.",
-    Tooltip_SPHPolice = "Casc d'helicÃ²pter utilitzat per les ales aÃ¨ries de la policia.",
-    Tooltip_SPHCivilian = "Casc d'helicÃ²pter utilitzat per pilots civils.",
+    Tooltip_dismantle_helicopterpart = "L?�s d?una m�scara de soldadura i de soldadura produir� metall.",
+    Tooltip_open_boxes_barehanded = "Seria m�s r�pid obrir -se amb alguna cosa n�tida.",
+    Tooltip_Parachute = "Es pot arrencar per fer un drap arrencat.",
+    Tooltip_EnergyBar = "Una barra d?energia envasada per a kits de superviv�ncia. Fabricat per PT & D.",
+    Tooltip_SurvivalVest = "Emissi� est�ndard armilla de superviv�ncia per a pilots militars.",
+    Tooltip_SurvivalVestBlack = "Problema est�ndard de superviv�ncia per a la cerca i rescat de la policia.",
+    Tooltip_SPHMilitary = "Casc de l?helic�pter militar d?emissi� est�ndard."
+    Tooltip_SPHBlack = "Casc de l'helic�pter militar d'emissi� est�ndard en negre.",
+    Tooltip_SPHPolice = "Casc helic�pter utilitzat per les ales aeris de la policia.",
+    Tooltip_SPHCivilian = "Casc helic�pter utilitzat per pilots civils.",
 
-    Tooltip_FlyerCDC = "Sembla un fullet d'assessorament sanitari.",
-    Tooltip_FlyerMilitary = "Sembla un fullet d'avÃ­s de l'exÃ¨rcit.",
-    Tooltip_CivilDefense = "Sembla un fullet de defensa civil.",
+    Tooltip_FlyerCDC = "Sembla un volant d?assessorament per a la salut.",
+    Tooltip_FlyerMilitary = "Sembla un volant de l'av�s de l'ex�rcit.",
+    Tooltip_CivilDefense = "Sembla un volant de defensa civil.",
 
-    Tooltip_WaterSealed = "RaciÃ³ d'aigua segellada distribuÃ¯da pel govern dels EUA."
-    Tooltip_WaterUnsealed = "RaciÃ³ d'aigua sense segellar distribuÃ¯da pel govern dels EUA." 
+    Tooltip_WaterSealed = "Raci� d?aigua segellada distribu�da pel govern dels Estats Units."
+    Tooltip_WaterUnsealed = "Raci� de l'aigua no segellada distribu�da pel govern dels Estats Units." 
 
-    Tooltip_SupplyBox = "Caixa de subministrament del govern dels EUA."
-    Tooltip_SamaritanBox = "Caixa de subministraments d'un grup de misteriosos samaritans.",
-    Tooltip_BanditBox = "Caixa personal. Llegeix"MY SHIT, DONT TOUCH!",
+    Tooltip_SupplyBox = "Box del govern dels Estats Units."
+    Tooltip_SamaritanBox = "Box de subministrament d?un grup de misteriosos samaritans.",
+    Tooltip_BanditBox = "Caixa personal. Lectures"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Bengala de senyalitzaciÃ³. No feu foc a l'interior.",
-    Tooltip_HandFlare = "Flare. No feu foc a l'interior."
+    Tooltip_SignalFlare = "Flare de senyalitzaci�. No dispareu a l?interior.",
+    Tooltip_HandFlare = "Flaire. No dispareu a l?interior."
 }

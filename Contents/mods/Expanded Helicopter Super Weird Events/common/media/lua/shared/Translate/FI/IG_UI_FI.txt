@@ -7,12 +7,12 @@ IG_UI_FI = {
     IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (häntä)",
     IGUI_VehicleNameTISIceCreamTruck = "Jäätelöauto",
 
-    IGUI_VehicleNameRoflCopter = "VIRHE: Moniulotteinen poikkeama",
+    IGUI_VehicleNameRoflCopter = "Virhe: moniulotteinen poikkeavuus",
 
     IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
     IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (kaatunut)",
-    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (runko)",
-    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (Tail)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS -versio (runko)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (häntä)",
 
     IGUI_VehicleNameSpiffoBurger = "Spiffon hoitopaketti",
 }

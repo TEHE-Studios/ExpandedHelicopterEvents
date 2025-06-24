@@ -1,11 +1,11 @@
 UI_CS = {
-    UI_Config_twitchIntegrationText = "Integrace Twitch",
-    UI_Config_twitchIntegrationToolTip1 = "Pro bezproblÃ©movou integraci je vyÅ¾adovÃ¡n streamovacÃ­ balÃ­Äek nebo podobnÃ½ program.",
-    UI_Config_twitchIntegrationToolTip2 = "PÅ™Ã­padnÄ› mÅ¯Å¾ete pouÅ¾Ã­t numerickÃ© klÃ¡vesy ruÄnÄ›.",
-    UI_Config_twitchIntegrationOnly = "ZakÃ¡zat udÃ¡losti mimo integraci twitch",
-    UI_Config_twitchStreamerTargeted = "CÃ­lovÃ½ kooperativnÃ­ hostitel pouze",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Hodiny ve hÅ™e, neÅ¾ mohou nastat udÃ¡losti",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Kolik hodin ve hÅ™e pÅ™ed udÃ¡lostmi je povoleno.",
-    UI_Config_twitchHoursDelayBetweenEvents = "Kolik hodin ve hÅ™e musÃ­ uplynout mezi udÃ¡lostmi"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Kolik hodin ve hÅ™e musÃ­ uplynout mezi udÃ¡lostmi."
+    UI_Config_twitchIntegrationText = "Twitch Integration",
+    UI_Config_twitchIntegrationToolTip1 = "Pro bezproblémovou integraci je vyadován paluba streamu nebo podobnı program.",
+    UI_Config_twitchIntegrationToolTip2 = "Pøípadnì mùete pouít klíèe NUMPAD ruènì.",
+    UI_Config_twitchIntegrationOnly = "Zakázat události mimo integraci Twitch",
+    UI_Config_twitchStreamerTargeted = "Pouze hostitele Target Co-op",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Pøed událostmi ve høe",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Kolik hodin ve høe pøed událostmi jsou povoleny.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Kolik hodin ve høe musí projít mezi událostmi"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Kolik her ve høe musí projít mezi událostmi."
 }

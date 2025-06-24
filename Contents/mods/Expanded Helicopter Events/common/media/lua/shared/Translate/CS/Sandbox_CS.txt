@@ -1,52 +1,56 @@
 Sandbox_CS = {
-    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+    Sandbox_ExpandedHeli = "Rozšíøené události vrtulníku",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Nikdy"
-    Sandbox_ExpandedHeli_Frequency_option2 = "VzÃ¡cnÄ›",
-    Sandbox_ExpandedHeli_Frequency_option3 = "ObÄas",
-    Sandbox_ExpandedHeli_Frequency_option4 = "ÄŒastÃ©",
-    Sandbox_ExpandedHeli_Frequency_option5 = "Velmi ÄastÃ©",
-    Sandbox_ExpandedHeli_Frequency_option6 = "Å Ã­lenÃ©",
+    Sandbox_ExpandedHeli_Frequency_option2 = "Vzácnı",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Neobvyklé",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Spoleènı",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Èasté",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Šílenı",
 
-    Sandbox_ExpandedHeli_EventJet = "TryskÃ¡Äe",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak Äasto dochÃ¡zÃ­ k udÃ¡lostem s tryskÃ¡Äi.\n TryskÃ¡Äe prolÃ©tÃ¡vajÃ­ kolem hrÃ¡ÄÅ¯ a zpÅ¯sobujÃ­ pohyb hord zombie.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Pøechod nájezdu na vzduch",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Vyberte si pravdu, pokud chcete, aby událost Air RAID signalizovala posun z ménì nároènıch událostí v rané høe k nepøátelnìjším pozdním herním událostem.",
 
-    Sandbox_ExpandedHeli_EventNews = "ZpravodajstvÃ­",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Jak Äasto dochÃ¡zÃ­ ke zpravodajskÃ½m udÃ¡lostem.\n ZpravodajskÃ© vrtulnÃ­ky se zamÄ›Å™Ã­ na kaÅ¾dÃ©ho obÄana, kterÃ©ho najdou, a krÃ¡tce ho sledujÃ­.",
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak se objevují èasté tryskové události. <Br> Jets létají hráèi zpùsobující pohyb hordy.",
 
-    Sandbox_ExpandedHeli_EventPolice = "Policie",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak Äasto dochÃ¡zÃ­ k policejnÃ­m udÃ¡lostem.\n Policie vezme vÄ›ci do svÃ½ch rukou a bude doprovÃ¡zet obÄany, zatÃ­mco bude stÅ™Ã­let na zombie.",
+    Sandbox_ExpandedHeli_EventNews = "Zprávy",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Jak se objevují èasté zpravodajské události.",
 
-    Sandbox_ExpandedHeli_EventMilitary = "ArmÃ¡da",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak Äasto dochÃ¡zÃ­ k vojenskÃ½m udÃ¡lostem.\n Vojsko bude postupovat po etapÃ¡ch: varovat obÄany, likvidovat nemrtvÃ© a nakonec likvidovat vÅ¡e, co se hÃ½be.",
+    Sandbox_ExpandedHeli_EventPolice = "POLICIE",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak èasté se objevují policejní události.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "Pomoc agentury FEMA",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Jak Äasto dochÃ¡zÃ­ k pÅ™edÃ¡vÃ¡nÃ­ pomoci FEMA.\n FEMA bude provÃ¡dÄ›t shazovÃ¡nÃ­ zÃ¡sob na poÄÃ¡tku apokalypsy.",
+    Sandbox_ExpandedHeli_EventMilitary = "Váleènı",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak èasté se vyskytují vojenské události.",
 
-    Sandbox_ExpandedHeli_EventSurvivor = "PÅ™eÅ¾ivÅ¡Ã­",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak Äasto dochÃ¡zÃ­ k udÃ¡lostem s pÅ™eÅ¾ivÅ¡Ã­mi.\n PÅ™eÅ¾ivÅ¡Ã­ prolÃ©tajÃ­ pouze pÅ™i prÅ¯zkumnÃ½ch misÃ­ch, kterÃ© zpÅ¯sobujÃ­ pohyb zombie.",
+    Sandbox_ExpandedHeli_EventFEMA = "Aid FEMA klesá",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Jak èasté se objevují události FEMA AID AIST. <Br> FEMA bude provádìt pokles pomoci brzy v apokalypse.",
 
-    Sandbox_ExpandedHeli_EventRaider = "NÃ¡jezdnÃ­ci",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak Äasto dochÃ¡zÃ­ k udÃ¡lostem s nÃ¡jezdnÃ­ky.\n NÃ¡jezdnÃ­ci se soustÅ™edÃ­ na pÅ™eÅ¾ivÅ¡Ã­, aby je pro pobavenÃ­ potrÃ¡pili.",
+    Sandbox_ExpandedHeli_EventSurvivor = "Pozùstalí",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak èasté události Survivor dochází. <Br> Pozùstalí budou létat pouze na skautskıch misích zpùsobujícími pohyb hordy.",
 
-    Sandbox_ExpandedHeli_EventSamaritan = "SamaritÃ¡ni",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak Äasto dochÃ¡zÃ­ k samaritÃ¡nskÃ½m akcÃ­m.\n SamaritÃ¡ni pÅ™edÃ¡vajÃ­ zÃ¡soby na pomoc pÅ™eÅ¾ivÅ¡Ã­m.",
+    Sandbox_ExpandedHeli_EventRaider = "Lupièi",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak èasté se objevují události Raider.",
 
-    Sandbox_ExpandedHeli_StartDay = "PoÄÃ¡teÄnÃ­ den",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Den, od kterÃ©ho plÃ¡novaÄ zaÄÃ­nÃ¡ pÅ™iÅ™azovat udÃ¡losti.",
-    Sandbox_ExpandedHeli_StartDay_help = "V tento den se odehrÃ¡vajÃ­ udÃ¡losti ve hÅ™e. Budete muset zapoÄÃ­tat nastavenÃ­ â€mÄ›sÃ­cÅ¯ do apokalypsyâ€œ."
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritané",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak èasté se vyskytují Samaritánské události.",
 
-    Sandbox_ExpandedHeli_SchedulerDuration = "Doba trvÃ¡nÃ­ plÃ¡novaÄe",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Jak dlouho pobÄ›Å¾Ã­ plÃ¡novaÄ od poÄÃ¡teÄnÃ­ho dne.\n PlÃ¡novaÄ upravÃ­ prÅ¯bÄ›h udÃ¡losti tak, aby odpovÃ­dal tÃ©to dÃ©lce.",
-    Sandbox_ExpandedHeli_SchedulerDuration_help = "To je poÄet dnÃ­, po kterÃ© bude plÃ¡novaÄ fungovat."
+    Sandbox_ExpandedHeli_StartDay = "Den startu",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "To je to, jakı den do herních událostí dochází. Budete muset zohlednit"months into the apocalypse"Nastavení.",
 
-    Sandbox_ExpandedHeli_ContinueScheduling = "PokraÄujte v plÃ¡novÃ¡nÃ­ navÅ¾dy",
-    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "ZapnÄ›te toto, aby plÃ¡novaÄ vytvoÅ™il udÃ¡losti, kterÃ© pÅ™ekroÄily limit trvÃ¡nÃ­. UdÃ¡losti budou stÃ¡le prochÃ¡zet fÃ¡zemi podle doby trvÃ¡nÃ­, ale udÃ¡losti se nikdy nepÅ™estanou plÃ¡novat.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Doba trvání plánovaèe",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Kolik dní bude plánovaè spuštìn od dne startu.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "PokraÄovat v plÃ¡novÃ¡nÃ­: Pouze pozdnÃ­ hernÃ­ udÃ¡losti",
-    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "KdyÅ¾ je zapnuto \"PokraÄovat v plÃ¡novÃ¡nÃ­ navÅ¾dy\", toto pÅ™epnutÃ­ zpÅ¯sobÃ­, Å¾e plÃ¡novaÄ bude pouÅ¾Ã­vat pouze udÃ¡losti pozdnÃ­ hry.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Pokraèujte v plánování událostí po dobu trvání",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normálnì plánovaè konèí po limitu trvání a pøepínání nadále nadále naplánuje události po dobu trvání.",
 
-    Sandbox_ExpandedHeli_WeatherImpactsEvents = "PoÄasÃ­ ovlivnÃ­ udÃ¡losti",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Zda poÄasÃ­ zabrÃ¡nÃ­ udÃ¡lostem, nebo zpÅ¯sobÃ­ jejich havÃ¡rii.",
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "ádné pokraèující plánování"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Pokraèovat v plánování: Všechny události",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Pokraèujte v plánování: Pouze pozdní hra",
 
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Poèasí ovlivní události",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Zda poèasí zabrání událostem, nebo zpùsobí jejich havárii.",
+
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplikátor šance na havárii",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Toto je znásobeno proti náhodì Crash, 0 zabrání nehodám dohromady.",
 }

@@ -1,11 +1,11 @@
 UI_NO = {
     UI_ConfigMODID_ExpandedHelicopterEvents = "Utvidede helikopterarrangementer"
-    UI_Config_sandBoxMovedText = "Konfigurasjonsalternativer finnes i sandkassealternativer.",
+    UI_Config_sandBoxMovedText = "Konfigurasjonsalternativer finner du i sandkassealternativer.",
     UI_Config_voiceTitle = "Stemmepakker",
 
-    UI_Config_resetEventsToolTip = "Tilbakestill planlagte hendelser i nÃ¸dstilfeller:",
+    UI_Config_resetEventsToolTip = "Tilbakestill planlagte hendelser i nødstilfeller:",
     UI_Config_resetEvents = "Tilbakestill hendelser",
-    UI_Config_eventMarkersOnToolTip1 = "SlÃ¥ denne pÃ¥ for Ã¥ aktivere hendelsesmarkÃ¸rer.",
-    UI_Config_eventMarkersOnToolTip2 = "Merk: HendelsesmarkÃ¸rer kan dras.",
-    UI_Config_eventMarkersOn = "BegivenhetsmarkÃ¸rer",
+    UI_Config_eventMarkersOnToolTip1 = "Veksler dette på for å aktivere arrangementsmarkører.",
+    UI_Config_eventMarkersOnToolTip2 = "Merk: Hendelsesmarkører kan dras.",
+    UI_Config_eventMarkersOn = "Hendelsesmarkører",
 }

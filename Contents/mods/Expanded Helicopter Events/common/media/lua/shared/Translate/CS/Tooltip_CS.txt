@@ -1,26 +1,26 @@
 Tooltip_CS = {
-    Tooltip_dismantle_helicopterpart = "PÅ™i pouÅ¾itÃ­ svÃ¡Å™eÄky a svÃ¡Å™eÄskÃ© masky lze zÃ­skat kov.",
-    Tooltip_open_boxes_barehanded = "Bylo by rychlejÅ¡Ã­ otevÅ™Ã­t ji nÄ›ÄÃ­m ostrÃ½m.",
-    Tooltip_Parachute = "Lze roztrhat a vytvoÅ™it roztrhanou lÃ¡tku.",
-    Tooltip_EnergyBar = "EnergetickÃ¡ tyÄinka balenÃ¡ do balÃ­ÄkÅ¯ pro pÅ™eÅ¾itÃ­. VÃ½robce: PT&D.",
-    Tooltip_SurvivalVest = "StandardnÃ­ vesta pro vojenskÃ© piloty.",
-    Tooltip_SurvivalVestBlack = "StandardnÃ­ vesta pro policejnÃ­ pÃ¡tracÃ­ a zÃ¡chrannÃ© sloÅ¾ky.",
-    Tooltip_SPHMilitary = "StandardnÃ­ vojenskÃ¡ pÅ™ilba pro vrtulnÃ­ky."
-    Tooltip_SPHBlack = "StandardnÃ­ vojenskÃ¡ vrtulnÃ­kovÃ¡ pÅ™ilba v ÄernÃ© barvÄ›.",
-    Tooltip_SPHPolice = "VrtulnÃ­kovÃ¡ pÅ™ilba pouÅ¾Ã­vanÃ¡ policejnÃ­m letectvem.",
-    Tooltip_SPHCivilian = "PÅ™ilba pro vrtulnÃ­ky pouÅ¾Ã­vanÃ¡ civilnÃ­mi piloty.",
+    Tooltip_dismantle_helicopterpart = "Pouití foukací a svaøovací masky pøinese kov.",
+    Tooltip_open_boxes_barehanded = "Bylo by rychlejší otevøít se nìèím ostrım.",
+    Tooltip_Parachute = "Mùe bıt roztrháno, aby se roztrhanı hadøík.",
+    Tooltip_EnergyBar = "Energetickı bar zabalenı pro soupravy pro pøeití. Vyrobeno PT&D.",
+    Tooltip_SurvivalVest = "Standardní vydání Vesta pro pøeití vojenskıch pilotù.",
+    Tooltip_SurvivalVestBlack = "Standardní vydání Vesta pro pøeití pro policejní pátrání a záchranu.",
+    Tooltip_SPHMilitary = "Standardní vydání vojenské helmy vrtulníku."
+    Tooltip_SPHBlack = "Standardní vydání vojenské helmy vrtulníku v èerné barvì.",
+    Tooltip_SPHPolice = "Helma vrtulníku pouívané policejními vzduchovımi køídly.",
+    Tooltip_SPHCivilian = "Helma vrtulníku pouívané civilními piloty.",
 
-    Tooltip_FlyerCDC = "VypadÃ¡ to jako letÃ¡k se zdravotnÃ­m doporuÄenÃ­m.",
-    Tooltip_FlyerMilitary = "VypadÃ¡ to jako letÃ¡k od armÃ¡dy.",
-    Tooltip_CivilDefense = "VypadÃ¡ jako letÃ¡k civilnÃ­ obrany.",
+    Tooltip_FlyerCDC = "Vypadá to jako leták na zdraví.",
+    Tooltip_FlyerMilitary = "Vypadá to jako leták z armády.",
+    Tooltip_CivilDefense = "Vypadá to jako leták civilní obrany.",
 
-    Tooltip_WaterSealed = "ZapeÄetÄ›nÃ© pÅ™Ã­dÄ›ly vody distribuovanÃ© vlÃ¡dou USA."
-    Tooltip_WaterUnsealed = "OtevÅ™enÃ½ pÅ™Ã­dÄ›l vody distribuovanÃ½ vlÃ¡dou SpojenÃ½ch stÃ¡tÅ¯ americkÃ½ch." 
+    Tooltip_WaterSealed = "Uzavøené pøídìly vody distribuované vládou USA."
+    Tooltip_WaterUnsealed = "Unreseated Water Gartion distribuované vládou USA." 
 
-    Tooltip_SupplyBox = "Krabice se zÃ¡sobami od vlÃ¡dy USA."
-    Tooltip_SamaritanBox = "Krabice se zÃ¡sobami od skupiny zÃ¡hadnÃ½ch samaritÃ¡nÅ¯.",
-    Tooltip_BanditBox = "OsobnÃ­ schrÃ¡nka. PÃ­Å¡e se na nÃ­: MÃ VÄšCI, NEÅ MATEJ NA TO!",
+    Tooltip_SupplyBox = "Supply Box od vlády USA."
+    Tooltip_SamaritanBox = "Supply Box ze skupiny tajemnıch Samaritánù.",
+    Tooltip_BanditBox = "Osobní krabièka. Ètení"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "VojenskÃ¡ signÃ¡lnÃ­ svÄ›tlice. NestÅ™Ã­lejte uvnitÅ™ budov.",
-    Tooltip_HandFlare = "SvÄ›tlice. Nepalte uvnitÅ™."
+    Tooltip_SignalFlare = "Signalizaèní svìtlice. Neøíkejte uvnitø.",
+    Tooltip_HandFlare = "Svìtlice. Neøíkejte uvnitø."
 }

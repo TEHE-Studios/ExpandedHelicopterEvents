@@ -1,9 +1,9 @@
 ContextMenu_NL = {
-    ContextMenu_DownHoodie = "Kap omlaag",
-    ContextMenu_VisorUp = "Vizier omhoog",
-    ContextMenu_VisorDown = "Vizier omlaag",
-    ContextMenu_Tighten = "Vastdraaien",
-    ContextMenu_Untighten = "Losdraaien",
+    ContextMenu_DownHoodie = "Afzetten",
+    ContextMenu_VisorUp = "Vizier op",
+    ContextMenu_VisorDown = "Visor Down Down",
+    ContextMenu_Tighten = "Aanhalen",
+    ContextMenu_Untighten = "Ongunstig",
 
     IGUI_VehiclePartHelicopterInterior = "Helikopter interieur",
 }

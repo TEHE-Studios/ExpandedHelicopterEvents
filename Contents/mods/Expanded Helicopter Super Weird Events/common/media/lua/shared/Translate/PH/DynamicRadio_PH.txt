@@ -1,3 +1,3 @@
 DynamicRadio_PH = {
-	AEBS_buffcorrell = "yeah what's poppin' it's your boy buffcorrell back at it at it again with some copyrighted music covers, but ain't no thang but a chicken wang, maliban kung isa kang twitch streamer. esk. esk. esk esk. leeeeeeeeeet's get reeeady and. pumunta ka."
+	AEBS_buffcorrell = "Yeah ano ang poppin 'Ito ang iyong batang Buffcorrell pabalik sa ito muli dito kasama ang ilang mga copyrighted music cover, ngunit hindi ito thang ngunit isang manok wang, maliban kung ikaw ay isang twitch streamer. Esk. Esk. Esk Esk. Leeeeeeeeeet's Get Reeeady and. Pumunta ka na"
 }

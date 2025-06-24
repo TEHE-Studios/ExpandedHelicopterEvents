@@ -1,9 +1,9 @@
 ContextMenu_DA = {
-    ContextMenu_DownHoodie = "HÃ¦tte ned",
+    ContextMenu_DownHoodie = "Hætte ned",
     ContextMenu_VisorUp = "Visir op",
-    ContextMenu_VisorDown = "Visir ned",
+    ContextMenu_VisorDown = "Visir nede",
     ContextMenu_Tighten = "Stramme",
-    ContextMenu_Untighten = "LÃ¸sn",
+    ContextMenu_Untighten = "Ubesættet",
 
-    IGUI_VehiclePartHelicopterInterior = "Helikopter interiÃ¸r",
+    IGUI_VehiclePartHelicopterInterior = "Helikopterinteriør",
 }

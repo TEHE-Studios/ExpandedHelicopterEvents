@@ -1,11 +1,11 @@
 UI_NL = {
     UI_ConfigMODID_ExpandedHelicopterEvents = "Uitgebreide helikopterevenementen"
-    UI_Config_sandBoxMovedText = "Configuratieopties vindt u in de sandboxopties.",
-    UI_Config_voiceTitle = "Stempakketten",
+    UI_Config_sandBoxMovedText = "Configuratie -opties zijn te vinden in sandbox -opties.",
+    UI_Config_voiceTitle = "Spraakpakketten",
 
-    UI_Config_resetEventsToolTip = "Geplande gebeurtenissen resetten in geval van nood:",
-    UI_Config_resetEvents = "Gebeurtenissen resetten",
+    UI_Config_resetEventsToolTip = "Reset geplande evenementen in geval van nood:",
+    UI_Config_resetEvents = "Reset evenementen",
     UI_Config_eventMarkersOnToolTip1 = "Schakel dit in om gebeurtenismarkeringen in te schakelen.",
-    UI_Config_eventMarkersOnToolTip2 = "Let op: Gebeurtenismarkeringen kunnen worden versleept.",
-    UI_Config_eventMarkersOn = "Gebeurtenismarkeringen",
+    UI_Config_eventMarkersOnToolTip2 = "Opmerking: evenementenmarkeringen kunnen worden gesleept.",
+    UI_Config_eventMarkersOn = "Evenementmarkeringen",
 }

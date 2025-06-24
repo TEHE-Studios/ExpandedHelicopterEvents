@@ -2,17 +2,17 @@ IG_UI_NO = {
     IGUI_VehicleNameUFO = "Uidentifisert flygende objekt",
 
     IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
-    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (krasj)",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (krasjet)",
     IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (flykropp)",
     IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (hale)",
     IGUI_VehicleNameTISIceCreamTruck = "Iskrembil",
 
-    IGUI_VehicleNameRoflCopter = "FEIL: Interdimensjonal anomali",
+    IGUI_VehicleNameRoflCopter = "Feil: Interdimensjonal anomali",
 
-    IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (krasj)",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS -utgave",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (krasjet)",
     IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (flykropp)",
     IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (hale)",
 
-    IGUI_VehicleNameSpiffoBurger = "Spiffos pleiepakke",
+    IGUI_VehicleNameSpiffoBurger = "Spiffos omsorgspakke",
 }

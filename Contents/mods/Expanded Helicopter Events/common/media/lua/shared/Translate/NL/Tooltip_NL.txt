@@ -1,26 +1,26 @@
 Tooltip_NL = {
-    Tooltip_dismantle_helicopterpart = "Bij gebruik van een brander en een lasmasker ontstaat er metaal.",
-    Tooltip_open_boxes_barehanded = "Sneller te openen met iets scherps.",
-    Tooltip_Parachute = "Kan worden gescheurd tot een gescheurde stof.",
-    Tooltip_EnergyBar = "Een energiereep verpakt voor survivalkits. Geproduceerd door PT&D.",
-    Tooltip_SurvivalVest = "Standaard overlevingsvest voor militaire piloten.",
-    Tooltip_SurvivalVestBlack = "Standaard overlevingsvest voor zoek- en reddingsacties door de politie.",
-    Tooltip_SPHMilitary = "Standaardhelm voor militaire helikopters."
-    Tooltip_SPHBlack = "Standaard militaire helikopterhelm in het zwart.",
-    Tooltip_SPHPolice = "Helikopterhelm gebruikt door de luchtmacht van de politie.",
-    Tooltip_SPHCivilian = "Helikopterhelm voor gebruik door burgerpiloten.",
+    Tooltip_dismantle_helicopterpart = "Het gebruik van een brander en lasmasker levert metaal op.",
+    Tooltip_open_boxes_barehanded = "Zou sneller openen met iets scherp.",
+    Tooltip_Parachute = "Kan worden verscheurd om gescheurde doek te maken.",
+    Tooltip_EnergyBar = "Een energiebalk verpakt voor overlevingskits. Vervaardigd door PT & d.",
+    Tooltip_SurvivalVest = "Standaard probleemoverlevingsvest voor militaire piloten.",
+    Tooltip_SurvivalVestBlack = "Standaard uitgifte overlevingsvest voor zoek- en redding van politie.",
+    Tooltip_SPHMilitary = "Standaard uitgave Militaire helikopterhelm."
+    Tooltip_SPHBlack = "Standaard uitgave Militaire helikopterhelm in zwart.",
+    Tooltip_SPHPolice = "Helikopterhelm gebruikt door politie -luchtvleugels.",
+    Tooltip_SPHCivilian = "Helikopterhelm gebruikt door civiele piloten.",
 
-    Tooltip_FlyerCDC = "Het lijkt op een gezondheidswaarschuwingsflyer.",
-    Tooltip_FlyerMilitary = "Lijkt op een mededelingenfolder van het leger.",
-    Tooltip_CivilDefense = "Lijkt op een flyer van de burgerbescherming.",
+    Tooltip_FlyerCDC = "Ziet eruit als een gezondheidsadviesflyer.",
+    Tooltip_FlyerMilitary = "Ziet eruit als een opzegtermijn van het leger.",
+    Tooltip_CivilDefense = "Ziet eruit als een civiele verdedigingsflyer.",
 
-    Tooltip_WaterSealed = "Verzegeld waterrantsoen, verstrekt door de Amerikaanse overheid."
-    Tooltip_WaterUnsealed = "Onverzegelde waterrantsoenen, uitgedeeld door de Amerikaanse overheid." 
+    Tooltip_WaterSealed = "Verzegelde waterrantsoen verspreid door de Amerikaanse regering."
+    Tooltip_WaterUnsealed = "Onverwijderde waterrantsoen verspreid door de Amerikaanse regering." 
 
-    Tooltip_SupplyBox = "Bevoorradingsdoos van de Amerikaanse overheid."
-    Tooltip_SamaritanBox = "Voorraaddoos van een groep mysterieuze Samaritanen.",
-    Tooltip_BanditBox = "Persoonlijke stash box. Leest"MY SHIT, DONT TOUCH!",
+    Tooltip_SupplyBox = "Bevoorrading doos van de Amerikaanse overheid."
+    Tooltip_SamaritanBox = "Leveringskist van een groep mysterieuze Samaritanen.",
+    Tooltip_BanditBox = "Persoonlijke voorraaddoos. Leest"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Signaalfakkel. Niet binnenshuis afvuren.",
-    Tooltip_HandFlare = "Vuurpijlen. Niet binnenshuis afvuren."
+    Tooltip_SignalFlare = "Signalering van flare. Vuur niet binnenshuis.",
+    Tooltip_HandFlare = "Gloed. Vuur niet binnenshuis."
 }

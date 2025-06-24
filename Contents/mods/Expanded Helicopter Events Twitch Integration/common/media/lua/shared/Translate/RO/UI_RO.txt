@@ -1,10 +1,10 @@
 UI_RO = {
     UI_Config_twitchIntegrationText = "Integrarea Twitch",
-    UI_Config_twitchIntegrationToolTip1 = "Pentru o integrare perfectă este necesar un pachet de flux sau un program similar.",
-    UI_Config_twitchIntegrationToolTip2 = "Alternativ, puteți utiliza manual tastele tastaturii numerice.",
-    UI_Config_twitchIntegrationOnly = "Dezactivează evenimentele din afara integrării twitch",
-    UI_Config_twitchStreamerTargeted = "Numai gazda co-op vizată",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Ore în joc înainte ca evenimentele să poată avea loc",
+    UI_Config_twitchIntegrationToolTip1 = "Puntea fluxului sau un program similar este necesar pentru integrarea perfectă.",
+    UI_Config_twitchIntegrationToolTip2 = "În mod alternativ, puteți utiliza manual tastele Numpad.",
+    UI_Config_twitchIntegrationOnly = "Dezactivați evenimentele în afara integrării Twitch",
+    UI_Config_twitchStreamerTargeted = "Varct cooperation numai gazdă",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Cu câteva ore în joc înainte de a se produce evenimente",
     UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Câte ore în joc înainte de evenimente sunt permise.",
     UI_Config_twitchHoursDelayBetweenEvents = "Câte ore în joc trebuie să treacă între evenimente"
     UI_Config_twitchHoursDelayBetweenEventsTooltip = "Câte ore în joc trebuie să treacă între evenimente."

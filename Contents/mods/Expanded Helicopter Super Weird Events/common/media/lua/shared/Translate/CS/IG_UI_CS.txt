@@ -1,18 +1,18 @@
 IG_UI_CS = {
-    IGUI_VehicleNameUFO = "Neidentifikovan√Ω l√©taj√≠c√≠ objekt",
+    IGUI_VehicleNameUFO = "Neidentifikovan˝ lÈtajÌcÌ objekt",
 
     IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
-    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (havarovan√Ω)",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (havaroval)",
     IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (trup)",
     IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (ocas)",
-    IGUI_VehicleNameTISIceCreamTruck = "Zmrzlinov√Ω v≈Øz",
+    IGUI_VehicleNameTISIceCreamTruck = "Zmrzlinov˝ v˘z",
 
-    IGUI_VehicleNameRoflCopter = "CHYBA: Interdimenzion√°ln√≠ anom√°lie",
+    IGUI_VehicleNameRoflCopter = "Chyba: Interdimenzion·lnÌ anom·lie",
 
-    IGUI_VehicleNameBell206IRS = "Vyd√°n√≠ Bell 206 IRS",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (havarovan√Ω)",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (havarov·no)",
     IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (trup)",
-    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (ocas)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (Tail)",
 
-    IGUI_VehicleNameSpiffoBurger = "Spiffo bal√≠ƒçek p√©ƒçe",
+    IGUI_VehicleNameSpiffoBurger = "BalÌËek pÈËe Spiffo",
 }

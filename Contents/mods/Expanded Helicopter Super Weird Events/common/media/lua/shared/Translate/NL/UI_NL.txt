@@ -1,5 +1,5 @@
 UI_NL = {
-    UI_Intro1 = "DIT ZIJN DE EINDTIJDEN",
-    UI_Intro2 = "U HEBT ECHTER NIET UW GEHELE BRUTO-INKOMEN OPGEGEVEN",
-    UI_Intro3 = "ZO HEB JE BELASTINGONTDUIKING GEPLEID",
+    UI_Intro1 = "Dit zijn de eindtijd",
+    UI_Intro2 = "U hebt echter niet uw volledige bruto -inkomen aangegeven",
+    UI_Intro3 = "Dit is hoe u belastingontduiking heeft begaan",
 }

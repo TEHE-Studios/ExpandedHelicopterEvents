@@ -1,11 +1,11 @@
 UI_FI = {
     UI_ConfigMODID_ExpandedHelicopterEvents = "Laajennetut helikopteritapahtumat"
-    UI_Config_sandBoxMovedText = "Asetusvaihtoehdot lÃ¶ytyvÃ¤t hiekkalaatikon asetuksista.",
-    UI_Config_voiceTitle = "Ã„Ã¤nipaketit",
+    UI_Config_sandBoxMovedText = "Konfigurointivaihtoehdot löytyvät hiekkalaatikkoasetuksista.",
+    UI_Config_voiceTitle = "Äänipakkaukset",
 
-    UI_Config_resetEventsToolTip = "Nollaa ajoitetut tapahtumat hÃ¤tÃ¤tilanteessa:",
-    UI_Config_resetEvents = "Nollaa tapahtumat",
-    UI_Config_eventMarkersOnToolTip1 = "Ota tÃ¤mÃ¤ kÃ¤yttÃ¶Ã¶n ottaaksesi tapahtumamerkit kÃ¤yttÃ¶Ã¶n.",
-    UI_Config_eventMarkersOnToolTip2 = "Huomautus: TapahtumamerkkejÃ¤ voidaan vetÃ¤Ã¤.",
+    UI_Config_resetEventsToolTip = "Nollaa suunnitellut tapahtumat hätätilanteessa:",
+    UI_Config_resetEvents = "Palauta tapahtumat",
+    UI_Config_eventMarkersOnToolTip1 = "Vaihda tämä päälle tapahtumamerkkien mahdollistamiseksi.",
+    UI_Config_eventMarkersOnToolTip2 = "HUOMAUTUS: Tapahtumamerkkejä voidaan vetää.",
     UI_Config_eventMarkersOn = "Tapahtumamerkit",
 }

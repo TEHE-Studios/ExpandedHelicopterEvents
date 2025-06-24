@@ -1,11 +1,11 @@
 UI_NL = {
-    UI_Config_twitchIntegrationText = "Twitch-integratie",
-    UI_Config_twitchIntegrationToolTip1 = "Voor een naadloze integratie is Stream Deck of een soortgelijk programma vereist.",
-    UI_Config_twitchIntegrationToolTip2 = "U kunt er ook voor kiezen om de toetsen op het numerieke toetsenbord handmatig te gebruiken.",
-    UI_Config_twitchIntegrationOnly = "Gebeurtenissen buiten de Twitch-integratie uitschakelen",
-    UI_Config_twitchStreamerTargeted = "Alleen gericht op co-op-host",
+    UI_Config_twitchIntegrationText = "Twitch -integratie",
+    UI_Config_twitchIntegrationToolTip1 = "Streamdek of een soortgelijk programma is vereist voor naadloze integratie.",
+    UI_Config_twitchIntegrationToolTip2 = "Als alternatief kunt u de Numpad -toetsen handmatig gebruiken.",
+    UI_Config_twitchIntegrationOnly = "Gebeurtenissen uitschakelen buiten de Twitch -integratie",
+    UI_Config_twitchStreamerTargeted = "Target co-op host alleen",
     UI_Config_twitchHoursBeforeEventsAllowed = "In-game uren voordat gebeurtenissen kunnen plaatsvinden",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hoeveel in-game uren vóór evenementen zijn toegestaan?",
-    UI_Config_twitchHoursDelayBetweenEvents = "Hoeveel in-game uren moeten er tussen evenementen zitten?"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hoeveel in-game uren moeten er tussen evenementen zitten?"
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hoeveel in-game uren voordat evenementen zijn toegestaan.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Hoeveel uren in de game moeten tussen de gebeurtenissen passeren"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hoeveel uren in het spel moeten tussen gebeurtenissen gaan."
 }

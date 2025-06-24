@@ -1,58 +1,56 @@
 Sandbox_ES = {
-    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+    Sandbox_ExpandedHeli = "Eventos de helicópteros expandidos",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Nunca"
-    Sandbox_ExpandedHeli_Frequency_option2 = "Raro",
+    Sandbox_ExpandedHeli_Frequency_option2 = "Extraño",
     Sandbox_ExpandedHeli_Frequency_option3 = "Poco común",
     Sandbox_ExpandedHeli_Frequency_option4 = "Común",
     Sandbox_ExpandedHeli_Frequency_option5 = "Frecuente",
-    Sandbox_ExpandedHeli_Frequency_option6 = "Demente",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Loco",
 
-    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Transición de Incursión Aérea",
-    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Escoge verdadero si quieres que las incursiones aéreas sean poco desafiantes al comienzo del juego y que progresivamente sean más hostiles conforme avanzas.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Transición Air Raid",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Elija True si desea que un evento Air Raid indique un cambio de eventos de juego temprano menos desafiantes a eventos más hostiles del juego tardío.",
 
-    Sandbox_ExpandedHeli_EventJet = "Cazas",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Con qué frecuencia ocurren los eventos de Cazas.\n Los cazas vuelan por encima de los jugadores, provocando un movimiento de hordas.",
+    Sandbox_ExpandedHeli_EventJet = "Chorros",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Cómo ocurren los eventos de chorro frecuentes. <Br> Los aviones vuelan por los jugadores que causan el movimiento de la Horda.",
 
     Sandbox_ExpandedHeli_EventNews = "Noticias",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Con qué frecuencia ocurren los eventos de Noticias.\n Los helicópteros de noticias se centrarán en cualquier ciudadano que encuentren y lo seguirán durante un breve periodo de tiempo.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Cómo ocurren los eventos de noticias frecuentes. <Br> Los helicópteros de noticias perfeccionarán a cualquier ciudadano que encuentren y los sigan por un corto tiempo.",
 
-    Sandbox_ExpandedHeli_EventPolice = "Policia",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Con qué frecuencia ocurren los eventos de Policias.\n La policía tomará cartas en el asunto y escoltará a los ciudadanos mientras dispara a los zombis.",
+    Sandbox_ExpandedHeli_EventPolice = "Policía",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Cómo ocurren los eventos policiales frecuentes. <Br> La policía tomará el asunto en sus propias manos y escoltas a los ciudadanos mientras dispara a los zombis.",
 
-    Sandbox_ExpandedHeli_EventMilitary = "Militares",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Con qué frecuencia ocurren los eventos de Militares.\n El ejército avanzará por diversas etapas: advertir a los ciudadanos, purgar a los muertos vivientes y, por último, purgar todo lo que se mueva.",
+    Sandbox_ExpandedHeli_EventMilitary = "Militar",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Cómo ocurren los eventos militares frecuentes. <Br> Los militares progresarán a través de etapas: advierte a los ciudadanos, purga a los muertos vivientes y luego purga cualquier cosa que se mueva.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "Suministros de FEMA",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Con qué frecuencia ocurren los eventos de entrega de suministros de FEMA.\n FEMA entregará suministros por aire al comienzo del apocalipsis.",
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid gots",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Cómo ocurren los eventos de caída de ayuda FEMA frecuentes. <Br> FEMA realizará gotas de ayuda desde el principio en el apocalipsis.",
 
-    Sandbox_ExpandedHeli_EventSurvivor = "Supervivientes",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Con qué frecuencia ocurren los eventos de supervivientes.\n Los supervivientes solo volarán por encima en misiones de exploración, causando movimiento de hordas.",
+    Sandbox_ExpandedHeli_EventSurvivor = "Sobrevivientes",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Cómo ocurren los eventos de sobrevivientes frecuentes. <Br> Los sobrevivientes solo volarán en misiones de exploración que causan el movimiento de la horda.",
 
-    Sandbox_ExpandedHeli_EventRaider = "Saqueadores",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Con qué frecuencia ocurren los eventos de saqueadores.\n Los saqueadores seguirán a los supervivientes para atormentarles y entretenerse.",
+    Sandbox_ExpandedHeli_EventRaider = "Asaltantes",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Cómo ocurren los eventos frecuentes de Raider. <Br> Los asaltantes se perfeccionarán a los sobrevivientes para atormentarlos para algún entretenimiento.",
 
     Sandbox_ExpandedHeli_EventSamaritan = "Samaritanos",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Con qué frecuencia ocurren los eventos de samaritanos.\n Los samaritanos entregarán suministros para ayudar a los supervivientes.",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Cómo ocurren los eventos samaritanos frecuentes. <Br> samaritanos dejarán suministros para ayudar a los sobrevivientes.",
 
-    Sandbox_ExpandedHeli_StartDay = "Día de inicio",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "El día en el que el planificador comenzará a asignar eventos.",
-    Sandbox_ExpandedHeli_StartDay_help = "El día en el que los eventos de juego ocurrirán. Tendrás que tener en cuenta la configuración de "Meses en el apocalipsis"."
+    Sandbox_ExpandedHeli_StartDay = "Inicio Día",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Esto es lo que ocurren el día en el juego. Tendrás que tener en cuenta"months into the apocalypse"ajustes.",
 
-    Sandbox_ExpandedHeli_SchedulerDuration = "Duración de planificador",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Por cuánto tiempo estará el planificador activo desde el primer día.\n El planificador ajustará la progresión de eventos según esta configuración.",
-    Sandbox_ExpandedHeli_SchedulerDuration_help = "La cantidad de días por las que el planificador trabajará.."
+    Sandbox_ExpandedHeli_SchedulerDuration = "Duración del planificador",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Cuántos días el planificador se ejecutará desde el día de inicio. <Br> El programador ajustará la progresión del evento para que se ajuste a esta duración.",
 
-    Sandbox_ExpandedHeli_ContinueScheduling = "Continuar la planificación para siempre",
-    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Activa esto para que el planificador genere eventos tras pasar el límite de duración. Los eventos seguirán avanzando según etapas de acorde a la duración de los eventos pero nunca dejarán de ser planificados.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continuar programando eventos más allá de la duración",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normalmente, el planificador termina en el límite de duración, alternando esto continúa programando eventos más allá de la duración. Los eventos <Br> aún progresarán a través de las etapas de acuerdo con la duración, pero los eventos nunca dejarán de ser programados.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continuar la planificación: Solo eventos de juego tardío",
-    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Cuando "Continuar la planificación para siempre" está activado, este botón hace que el planificador solo use eventos de juego tardío.",
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "No continuó programando"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continuar programando: todos los eventos",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continuar programando: solo el juego tardío",
 
-    Sandbox_ExpandedHeli_WeatherImpactsEvents = "El clima afectará a los eventos",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Si el clima impedirá que los eventos sucedan, o que puedan provocar su colapso.",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "El clima afectará los eventos",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Si el clima evitará eventos o causará su choque.",
 
-    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicador de probabilidad de accidentes",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Esto se multiplica a la probabilidad de accidentes. 0 evitará que haya accidentes en cualquier caso.",
-
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicador de la oportunidad de choque",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Esto se multiplica contra Crash Chance, 0 evitará que los accidentes sean todos juntos.",
 }

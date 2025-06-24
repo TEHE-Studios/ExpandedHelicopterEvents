@@ -1,5 +1,5 @@
 UI_DE = {
     UI_Intro1 = "Dies sind die Endzeiten",
-    UI_Intro2 = "Sie haben jedoch versäumt, Ihr gesamtes Bruttoeinkommen anzugeben",
-    UI_Intro3 = "SO HABEN SIE STEUERHINTERZIEHUNG BEGANGEN",
+    UI_Intro2 = "Sie haben jedoch nicht Ihr gesamtes Bruttoeinkommen erklärt",
+    UI_Intro3 = "So haben Sie Steuerhinterziehung begangen",
 }

@@ -1,56 +1,56 @@
 Sandbox_UA = {
-    Sandbox_ExpandedHeli = "Розширені вертолітні події",
+    Sandbox_ExpandedHeli = "Розширені події вертольотів",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Ніколи"
     Sandbox_ExpandedHeli_Frequency_option2 = "Рідкісний",
-    Sandbox_ExpandedHeli_Frequency_option3 = "Нечасто",
-    Sandbox_ExpandedHeli_Frequency_option4 = "Поширений",
-    Sandbox_ExpandedHeli_Frequency_option5 = "часті",
-    Sandbox_ExpandedHeli_Frequency_option6 = "божевільний",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Незвичайний",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Загальний",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Часто",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Божевільний",
 
-    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Перехід повітряного нальоту",
-    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Виберіть «true», якщо ви хочете, щоб повітряний наліт сигналізував про перехід від менш складних подій на початку гри до більш ворожих подій наприкінці гри.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Перехід повітряного рейду",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Виберіть True, якщо ви хочете, щоб подія Air Raid сигналізувала про перехід від менш складних подій ранньої гри до більш ворожих подій пізньої гри.",
 
-    Sandbox_ExpandedHeli_EventJet = "Реактивні",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Частота реактивних подій.<br>Реактивні літаки пролітають повз гравців, викликаючи рух орди.",
+    Sandbox_ExpandedHeli_EventJet = "Струмені",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Як відбуваються часті реактивні події.",
 
     Sandbox_ExpandedHeli_EventNews = "Новини",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Наскільки часто відбуваються події в новинах.<br>Чопери новин виявляють будь-якого громадянина, якого вони знайдуть, і слідкують за ним протягом короткого часу.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Як відбуваються часті новинні події.",
 
     Sandbox_ExpandedHeli_EventPolice = "Поліція",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Як часто відбуваються поліцейські події.<br>Поліція візьме справу у свої руки та супроводжуватиме громадян, стріляючи по зомбі.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Як відбуваються часті поліцейські події.",
 
-    Sandbox_ExpandedHeli_EventMilitary = "військовий",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Наскільки часто відбуваються військові події.<br>Військові проходитимуть поетапно: попереджають громадян, очищають нежить, а потім, зрештою, очищають усе, що рухається.",
+    Sandbox_ExpandedHeli_EventMilitary = "Військовий",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Як відбуваються часті військові події.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Drops",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Наскільки часто трапляються випадки надання допомоги FEMA.<br>FEMA здійснюватиме надання допомоги на початку апокаліпсису.",
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Crops",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Як відбуваються часті події краплі FEMA.",
 
-    Sandbox_ExpandedHeli_EventSurvivor = "Вижили",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Наскільки часто трапляються випадки виживання.<br>Вижилі пролітають лише під час розвідувальних місій, викликаючи рух орди.",
+    Sandbox_ExpandedHeli_EventSurvivor = "Вцілілі",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Як відбуваються часті події, що вижили.",
 
     Sandbox_ExpandedHeli_EventRaider = "Рейдери",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Наскільки часто відбуваються рейдерські події.<br>Рейдери будуть відточувати тих, хто вижив, щоб мучити їх заради розваги.",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Як відбуваються часті події Raider.",
 
-    Sandbox_ExpandedHeli_EventSamaritan = "Самаритяни",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Наскільки часто трапляються самаритяни.<br>Самаряни доставлять припаси, щоб допомогти тим, хто вижив.",
+    Sandbox_ExpandedHeli_EventSamaritan = "Самаряни",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Як відбуваються часті події самаряни.",
 
-    Sandbox_ExpandedHeli_StartDay = "День старту",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Це день початку гри. Вам потрібно буде врахувати"months into the apocalypse"налаштування.",
+    Sandbox_ExpandedHeli_StartDay = "Почати день",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Це те, що відбуваються в ігрові події. Вам потрібно буде врахувати"months into the apocalypse"Налаштування.",
 
     Sandbox_ExpandedHeli_SchedulerDuration = "Тривалість планувальника",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Скільки днів планувальник працює від дня початку.<br>Планувальник налаштує хід подій відповідно до цієї тривалості.",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Скільки днів планувальник буде працювати з початку дня.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Продовжуйте планувати події поза тривалістю",
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Зазвичай планувальник закінчується після обмеження тривалості, якщо ввімкнути це, планування подій продовжується після закінчення тривалості. Події все ще проходитимуть через етапи відповідно до тривалості, але події ніколи не припинятимуть плануватися.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Продовжуйте планувати події за межами тривалості",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Зазвичай планувальник закінчується обмеженням тривалості, перемикаючи це, продовжує планувати події за межі тривалості.",
 
-    Sandbox_ExpandedHeli_ContScheduling_option1 = "Без продовження планування"
-    Sandbox_ExpandedHeli_ContScheduling_option2 = "Продовжити планування: усі події",
-    Sandbox_ExpandedHeli_ContScheduling_option3 = "Продовжити планування: лише пізня гра",
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Немає продовження планування"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Продовження планування: Усі події",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Продовжуйте планування: Тільки пізня гра",
 
     Sandbox_ExpandedHeli_WeatherImpactsEvents = "Погода вплине на події",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Чи завадить погода подіям, чи спричинить їх збій.",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Незалежно від того, чи буде погода запобігти подіям, чи спричинить їх аварію.",
 
-    Sandbox_ExpandedHeli_CrashChanceMulti = "Множник шансів аварії",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Це множиться на ймовірність збою, 0 запобіжить збоям разом.",
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Мультиплікатор шансів аварії",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Це множиться на випадок аварії, 0 запобігає збоям разом.",
 }

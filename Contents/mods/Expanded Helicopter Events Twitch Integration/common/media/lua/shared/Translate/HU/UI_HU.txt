@@ -1,11 +1,11 @@
 UI_HU = {
-    UI_Config_twitchIntegrationText = "Twitch integráció",
-    UI_Config_twitchIntegrationToolTip1 = "Stream deck vagy hasonló program szükséges a zökkenőmentes integrációhoz.",
-    UI_Config_twitchIntegrationToolTip2 = "Alternatív megoldásként használhatja a számbillentyűket manuálisan is.",
-    UI_Config_twitchIntegrationOnly = "A twitch integráción kívüli események letiltása",
-    UI_Config_twitchStreamerTargeted = "Csak megcélzott szövetkezeti házigazda",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Játékon belüli órák az események bekövetkezése előtt",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hány játékon belüli órával az események előtt engedélyezett.",
-    UI_Config_twitchHoursDelayBetweenEvents = "Hány játékon belüli órának kell eltelnie az események között"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hány játékon belüli órának kell eltelnie az események között."
+    UI_Config_twitchIntegrationText = "Rángatózás integráció",
+    UI_Config_twitchIntegrationToolTip1 = "Stream fedélzetre vagy hasonló programra van szükség a zökkenőmentes integrációhoz.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternatív megoldásként a NumPad Keys manuálisan is használhatja.",
+    UI_Config_twitchIntegrationOnly = "Tiltsa le az eseményeket a Twitch -integráción kívül",
+    UI_Config_twitchStreamerTargeted = "Cél Co-op Host",
+    UI_Config_twitchHoursBeforeEventsAllowed = "A játékon belüli órákkal, mielőtt események történhetnek",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hány játékon belüli órával az események engedélyezése előtt.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Hány játékon belüli órát kell átadnia az események között"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hány játékon belüli órát kell átadnia az események között."
 }

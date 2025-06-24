@@ -1,29 +1,29 @@
 IG_UI_IT = {
-    IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "UH-60A distrutto (fusoliera)",
-    IGUI_VehicleNameUH60GreenTail = "UH-60A distrutto (coda)",
+    IGUI_VehicleNameUH60Green = "Uh-60a",
+    IGUI_VehicleNameUH60GreenFuselage = "Distrutto UH-60a (fuselia)",
+    IGUI_VehicleNameUH60GreenTail = "Distrutto uh-60a (coda)",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A Desert",
-    IGUI_VehicleNameUH60DesertFuselage = "UH-60A Desert distrutto (fusoliera)",
-    IGUI_VehicleNameUH60DesertTail = "UH-60A Desert distrutto (coda)",
+    IGUI_VehicleNameUH60Desert = "Deserto UH-60A",
+    IGUI_VehicleNameUH60DesertFuselage = "Desert UH-60A distrutto (fuselage)",
+    IGUI_VehicleNameUH60DesertTail = "Deserto UH-60A distrutto (coda)",
 
     IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
-    IGUI_VehicleNameUH60MedevacFuselage = "UH-60A Medevac distrutto (fusoliera)",
-    IGUI_VehicleNameUH60MedevacTail = "UH-60A Medevac distrutto (coda)",
+    IGUI_VehicleNameUH60MedevacFuselage = "MEDEVAC UH-60A distrutto (Fuselage)",
+    IGUI_VehicleNameUH60MedevacTail = "Suddivido UH-60A Medevac (coda)",
 
-    IGUI_VehicleNameBell206LBMW = "Elicottero del notiziario",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Elicottero del notiziario (fusoliera)",
-    IGUI_VehicleNameBell206LBMWTail = "Elicottero del notiziario (coda)",
+    IGUI_VehicleNameBell206LBMW = "Elicottero di notizie",    
+    IGUI_VehicleNameBell206LBMWFuselage = "NEWS Helicopter (Fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "NEWS Helicopter (Tail)",
 
     IGUI_VehicleNameBell206Police = "Elicottero della polizia",
-    IGUI_VehicleNameBell206PoliceFuselage = "Elicottero della polizia (fusoliera)",
+    IGUI_VehicleNameBell206PoliceFuselage = "Elicottero della polizia (Fuselage)",
     IGUI_VehicleNameBell206PoliceTail = "Elicottero della polizia (coda)",
 
     IGUI_VehicleNameBell206Survivalist = "Elicottero civile",
     
-    IGUI_VehicleNameFEMASupplyDrop = "Rifornimenti d'emergenza",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Rifornimenti dei samaritani",
+    IGUI_VehicleNameFEMASupplyDrop = "Drop di alimentazione di emergenza",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Drop di rifornimento samaritano",
 
-    IGUI_Spent = "Spento",
+    IGUI_Spent = "Speso",
     IGUI_Lit = "Acceso",
 }

@@ -1,5 +1,5 @@
 UI_ID = {
-    UI_Intro1 = "INI ADALAH AKHIR ZAMAN",
-    UI_Intro2 = "NAMUN ANDA GAGAL UNTUK MENYAMPAIKAN SELURUH PENGHASILAN KOTOR ANDA",
-    UI_Intro3 = "INILAH CARA ANDA MELAKUKAN PENGHINDARAN PAJAK",
+    UI_Intro1 = "Ini adalah akhir zaman",
+    UI_Intro2 = "Bagaimanapun Anda gagal menyatakan seluruh pendapatan kotor Anda",
+    UI_Intro3 = "Beginilah cara Anda melakukan penggelapan pajak",
 }

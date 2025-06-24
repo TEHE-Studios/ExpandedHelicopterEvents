@@ -1,26 +1,26 @@
 Tooltip_RO = {
-    Tooltip_dismantle_helicopterpart = "Folosirea unui pistolet și a unei măști de sudură va produce metal.",
+    Tooltip_dismantle_helicopterpart = "Utilizarea unei mască de suflare și de sudare va produce metal.",
     Tooltip_open_boxes_barehanded = "Ar fi mai rapid să se deschidă cu ceva ascuțit.",
-    Tooltip_Parachute = "Poate fi rupt pentru a face pânză ruptă.",
-    Tooltip_EnergyBar = "Un baton energetic ambalat pentru truse de supraviețuire. Fabricat de PT&D.",
-    Tooltip_SurvivalVest = "Vestă standard de supraviețuire pentru piloții militari.",
-    Tooltip_SurvivalVestBlack = "Vestă standard de supraviețuire pentru căutarea și salvarea poliției.",
-    Tooltip_SPHMilitary = "Casca standard pentru elicopter militar."
-    Tooltip_SPHBlack = "Casca standard pentru elicopter militar de culoare neagră.",
-    Tooltip_SPHPolice = "Cască de elicopter folosită de aripile aeriene ale poliției.",
-    Tooltip_SPHCivilian = "Cască de elicopter folosită de piloții civili.",
+    Tooltip_Parachute = "Poate fi sfâșiat pentru a face pânză ruptă.",
+    Tooltip_EnergyBar = "O bară energetică ambalată pentru kituri de supraviețuire. Fabricat de Pt & d.",
+    Tooltip_SurvivalVest = "Vestă de supraviețuire a emisiilor standard pentru piloții militari.",
+    Tooltip_SurvivalVestBlack = "Veșta de supraviețuire a emisiunii standard pentru căutarea și salvarea poliției.",
+    Tooltip_SPHMilitary = "Casca elicopterului militar standard."
+    Tooltip_SPHBlack = "Emisiune standard casca elicopterului militar în negru.",
+    Tooltip_SPHPolice = "Casca de elicopter folosită de aripi de aer al poliției.",
+    Tooltip_SPHCivilian = "Casca de elicopter folosită de piloții civili.",
 
-    Tooltip_FlyerCDC = "Arată ca un fluturaș cu recomandări de sănătate.",
-    Tooltip_FlyerMilitary = "Arată ca un pliant de notificare de la armată.",
-    Tooltip_CivilDefense = "Arată ca un fluturaș de apărare civilă.",
+    Tooltip_FlyerCDC = "Pare un pliant pentru consultanță pentru sănătate.",
+    Tooltip_FlyerMilitary = "Pare un pliant de notificare din partea armatei.",
+    Tooltip_CivilDefense = "Pare un fluturaș de apărare civilă.",
 
-    Tooltip_WaterSealed = "Sealed Water Ration distribuită de Guvernul SUA."
-    Tooltip_WaterUnsealed = "Rație de apă nesigilată distribuită de guvernul SUA." 
+    Tooltip_WaterSealed = "Rație de apă sigilată distribuită de guvernul SUA."
+    Tooltip_WaterUnsealed = "Rație de apă nesemiată distribuită de guvernul SUA." 
 
-    Tooltip_SupplyBox = "Cutie de aprovizionare de la Guvernul SUA."
-    Tooltip_SamaritanBox = "Cutie de aprovizionare de la un grup de samariteni misterioși.",
-    Tooltip_BanditBox = "Cutie personală. Citeste"MY SHIT, DONT TOUCH!",
+    Tooltip_SupplyBox = "Cutie de aprovizionare de la guvernul SUA."
+    Tooltip_SamaritanBox = "Cutie de aprovizionare dintr -un grup de samariteni misterioși.",
+    Tooltip_BanditBox = "Cutie personală Stash. Citește"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Flare de semnalizare. Nu trageți în interior.",
-    Tooltip_HandFlare = "Flare. Nu trageți în interior."
+    Tooltip_SignalFlare = "Semnalizare flacără. Nu trageți în interior.",
+    Tooltip_HandFlare = "Flacără. Nu trageți în interior."
 }

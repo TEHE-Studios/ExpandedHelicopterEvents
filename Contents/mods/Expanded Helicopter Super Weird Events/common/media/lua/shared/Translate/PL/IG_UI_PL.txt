@@ -5,14 +5,14 @@ IG_UI_PL = {
     IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (rozbity)",
     IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (kadłub)",
     IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (ogon)",
-    IGUI_VehicleNameTISIceCreamTruck = "Samochód z lodami",
+    IGUI_VehicleNameTISIceCreamTruck = "Ciężarówka z lodami",
 
-    IGUI_VehicleNameRoflCopter = "BŁĄD: Anomalia międzywymiarowa",
+    IGUI_VehicleNameRoflCopter = "Błąd: anomalia międzywymiarowa",
 
-    IGUI_VehicleNameBell206IRS = "Bell 206 wydanie IRS",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
     IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (rozbity)",
-    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (kadłub)",
-    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (ogon)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (Fuselage)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (Tail)",
 
-    IGUI_VehicleNameSpiffoBurger = "Pakiet pielęgnacyjny Spiffo",
+    IGUI_VehicleNameSpiffoBurger = "Pakiet opieki Spiffo",
 }

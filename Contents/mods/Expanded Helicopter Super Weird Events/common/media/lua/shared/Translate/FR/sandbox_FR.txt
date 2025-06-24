@@ -3,25 +3,25 @@ Sandbox_FR = {
     Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
     Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "À quelle fréquence Spiffo célèbre son anniversaire.",
 
-    Sandbox_ExpandedHeli_EventTISCreamery = "Les crèmeries d'Indiestone",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "À quelle fréquence RJ vient rendre visite.",
+    Sandbox_ExpandedHeli_EventTISCreamery = "Les crémeries indisticulées",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "À quelle fréquence RJ vient de visiter une visite.",
 
     Sandbox_ExpandedHeli_EventIRS = "IRS",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "À quelle fréquence évitez-vous de payer vos impôts?",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "À quelle fréquence vous évitez de payer vos impôts.",
 
     Sandbox_ExpandedHeli_EventUFO = "OVNI",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "À quelle fréquence voulez-vous croire.",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "À quelle fréquence vous voulez croire.",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "Griffes de sable",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "À quelle fréquence souhaitez-vous kidnapper Sandy Claws et le battre avec un bâton.",
+    Sandbox_ExpandedHeli_EventSandyClaws = "Griffes sablonneuses",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "À quelle fréquence vous voulez enlever les griffes sablonneuses et le battre avec un bâton.",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "L'attaque des stripteaseuses",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "À quelle fréquence souhaitez-vous passer un bon moment.",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Attaque des strippées",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "À quelle fréquence vous voulez passer un bon moment.",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "Hélicoptère (Copyright)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "À quelle fréquence souhaitez-vous utiliser HELIKOPTER, HELIKOPTER. (Copyright)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (protégé par le droit d'auteur)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "À quelle fréquence vous voulez hélikopter, helikopter. (Protégé par le droit d'auteur)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (Droits d'auteur)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "À quelle fréquence avez-vous simplement envie de danser. (Droits d'auteur)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (protégé par le droit d'auteur)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "À quelle fréquence vous voulez juste danser. (Protégé par le droit d'auteur)",
 
 }

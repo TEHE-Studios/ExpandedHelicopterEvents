@@ -1,9 +1,9 @@
 ContextMenu_FI = {
-    ContextMenu_DownHoodie = "Huppu alas",
-    ContextMenu_VisorUp = "Visiiri ylÃ¶s",
+    ContextMenu_DownHoodie = "Keittää",
+    ContextMenu_VisorUp = "Visiirillä",
     ContextMenu_VisorDown = "Visiiri alas",
-    ContextMenu_Tighten = "KiristÃ¤",
-    ContextMenu_Untighten = "Avaa kiristys",
+    ContextMenu_Tighten = "Kiristää",
+    ContextMenu_Untighten = "Kiehtoa",
 
-    IGUI_VehiclePartHelicopterInterior = "Helikopterin sisÃ¤tilat",
+    IGUI_VehiclePartHelicopterInterior = "Helikopterin sisustus",
 }

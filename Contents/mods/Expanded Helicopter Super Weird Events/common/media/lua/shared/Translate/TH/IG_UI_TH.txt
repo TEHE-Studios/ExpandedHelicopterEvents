@@ -1,18 +1,18 @@
 IG_UI_TH = {
-    IGUI_VehicleNameUFO = "วัตถุบินที่ไม่สามารถระบุได้",
+    IGUI_VehicleNameUFO = "วัตถุบินที่ไม่ปรากฏชื่อ",
 
-    IGUI_VehicleNameBell206Spiffo = "สปิฟโฟ ฟอร์ซ วัน",
-    IGUI_VehicleNameBell206SpiffoCrashed = "เครื่องบิน Spiffo Force One (ตก)",
-    IGUI_VehicleNameBell206SpiffoFuselage = "สปิฟโฟ ฟอร์ซ วัน (ลำตัว)",
-    IGUI_VehicleNameBell206SpiffoTail = "สปิฟโฟ ฟอร์ซ วัน (หาง)",
-    IGUI_VehicleNameTISIceCreamTruck = "รถขายไอศกรีม",
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (ชน)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (ลำตัว)",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (หาง)",
+    IGUI_VehicleNameTISIceCreamTruck = "รถบรรทุกไอศครีม",
 
     IGUI_VehicleNameRoflCopter = "ข้อผิดพลาด: ความผิดปกติระหว่างมิติ",
 
-    IGUI_VehicleNameBell206IRS = "เบลล์ 206 ไออาร์เอส เอดิชั่น",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (ขัดข้อง)",
-    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (ตัวเครื่อง)",
-    IGUI_VehicleNameBell206IRSTail = "เบลล์ 206 ไออาร์เอส เอดิชั่น (ท้าย)",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (ชน)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (ลำตัว)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (หาง)",
 
-    IGUI_VehicleNameSpiffoBurger = "แพ็คเกจดูแลของ Spiffo",
+    IGUI_VehicleNameSpiffoBurger = "แพ็คเกจการดูแลของ Spiffo",
 }

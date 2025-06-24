@@ -1,3 +1,3 @@
 DynamicRadio_DA = {
-	AEBS_buffcorrell = "ja, hvad er det, der popper, det er din dreng, buffcorrell back at it at it at it igen med nogle ophavsretligt beskyttede musikcovers, men det er ikke ingen thang men en kylling wang, medmindre du er en twitch streamer. esk. esk. esk esk. leeeeeeeeet's get reeeady og. gå."
+	AEBS_buffcorrell = "Ja, hvad er Poppin 'Det er din dreng Buffcorrell tilbage på det på det igen med nogle copyright -beskyttede musikomslag, men er ikke noget, men en kylling Wang, medmindre du er en Twitch -streamer. Esk. Esk. Esk Esk. leeeeeeeeeet's get reeeady og. gå."
 }

@@ -1,11 +1,11 @@
 UI_PTBR = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "Eventos de HelicÃ³ptero Expandidos"
-    UI_Config_sandBoxMovedText = "OpÃ§Ãµes de configuraÃ§Ã£o podem ser encontradas nas opÃ§Ãµes de sandbox.",
-    UI_Config_voiceTitle = "Pacote de Falas",
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Eventos expandidos de helicóptero"
+    UI_Config_sandBoxMovedText = "As opções de configuração podem ser encontradas nas opções de sandbox.",
+    UI_Config_voiceTitle = "Pacotes de voz",
 
-    UI_Config_resetEventsToolTip = "Reinicie eventos agendados em caso de emergÃªncia:",
-    UI_Config_resetEvents = "Reiniciar Eventos",
-    UI_Config_eventMarkersOnToolTip1 = "Ative isso para habilitar marcadores de eventos.",
-    UI_Config_eventMarkersOnToolTip2 = "Dica: Marcadores de eventos podem ser arrastados.",
-    UI_Config_eventMarkersOn = "Marcadores de Eventos",
+    UI_Config_resetEventsToolTip = "Redefinir eventos agendados em caso de emergência:",
+    UI_Config_resetEvents = "Redefinir eventos",
+    UI_Config_eventMarkersOnToolTip1 = "Ative isso para ativar marcadores de eventos.",
+    UI_Config_eventMarkersOnToolTip2 = "Nota: Os marcadores de eventos podem ser arrastados.",
+    UI_Config_eventMarkersOn = "Marcadores de eventos",
 }

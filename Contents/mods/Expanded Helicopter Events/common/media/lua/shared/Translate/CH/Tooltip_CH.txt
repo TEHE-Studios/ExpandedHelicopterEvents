@@ -1,26 +1,26 @@
 Tooltip_CH = {
-    Tooltip_dismantle_helicopterpart = "使用噴燈和焊接面罩會產生金屬。",
+    Tooltip_dismantle_helicopterpart = "使用大燈和焊接面膜將產生金屬。",
     Tooltip_open_boxes_barehanded = "用尖銳的東西打開會更快。",
-    Tooltip_Parachute = "可以撕碎製成破布。",
-    Tooltip_EnergyBar = "為生存工具包包裝的能量棒。由 PT&D 製造。",
-    Tooltip_SurvivalVest = "軍事飛行員的標準救生背心。",
-    Tooltip_SurvivalVestBlack = "警察搜救用的標準救生背心。",
-    Tooltip_SPHMilitary = "標準軍用直升機頭盔。"
-    Tooltip_SPHBlack = "標準軍用直升機頭盔為黑色。",
-    Tooltip_SPHPolice = "警察航空聯隊使用的直升機頭盔。",
-    Tooltip_SPHCivilian = "民航飛行員使用的直升機頭盔。",
+    Tooltip_Parachute = "可以被撕下來製作撕裂的布。",
+    Tooltip_EnergyBar = "包裝的能量棒，用於生存套件。由Pt＆d製造。",
+    Tooltip_SurvivalVest = "軍事飛行員的標準問題生存背心。",
+    Tooltip_SurvivalVestBlack = "標準問題生存背心用於警察搜救。",
+    Tooltip_SPHMilitary = "標準問題軍用直升機頭盔。"
+    Tooltip_SPHBlack = "標準發行的黑色軍用直升機頭盔。",
+    Tooltip_SPHPolice = "警察翼使用的直升機頭盔。",
+    Tooltip_SPHCivilian = "民用飛行員使用的直升機頭盔。",
 
-    Tooltip_FlyerCDC = "看起來像一張健康諮詢傳單。",
-    Tooltip_FlyerMilitary = "看起來像是軍事部門的通知傳單。",
-    Tooltip_CivilDefense = "看起來像是民防傳單。",
+    Tooltip_FlyerCDC = "看起來像是健康諮詢傳單。",
+    Tooltip_FlyerMilitary = "看起來像軍隊的通知傳單。",
+    Tooltip_CivilDefense = "看起來像民防傳單。",
 
-    Tooltip_WaterSealed = "美國政府分發的密封水配給。"
-    Tooltip_WaterUnsealed = "美國政府分發的未密封水配給。" 
+    Tooltip_WaterSealed = "密封的水配給由美國政府分發。"
+    Tooltip_WaterUnsealed = "美國政府分發的未密封水評估。" 
 
-    Tooltip_SupplyBox = "來自美國政府的補給箱。"
-    Tooltip_SamaritanBox = "來自一群神秘撒瑪利亞人的補給箱。",
-    Tooltip_BanditBox = "個人收納盒。閱讀"MY SHIT, DONT TOUCH!",
+    Tooltip_SupplyBox = "美國政府的供應箱。"
+    Tooltip_SamaritanBox = "來自一群神秘的撒瑪利亞人的供應箱。",
+    Tooltip_BanditBox = "個人藏匿盒。閱讀"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "信號彈。請勿在室內生火。",
-    Tooltip_HandFlare = "耀斑。請勿在室內生火。"
+    Tooltip_SignalFlare = "信號耀斑。不要在室內開火。",
+    Tooltip_HandFlare = "耀斑。不要在室內開火。"
 }

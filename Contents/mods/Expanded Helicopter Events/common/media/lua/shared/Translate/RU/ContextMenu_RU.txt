@@ -1,9 +1,9 @@
 ContextMenu_RU = {
-    ContextMenu_DownHoodie = "Капюшон вниз",
-    ContextMenu_VisorUp = "Поднять визор",
-    ContextMenu_VisorDown = "Опустить визор",
-    ContextMenu_Tighten = "Застегнуть",
-    ContextMenu_Untighten = "Расстегнуть",
+    ContextMenu_DownHoodie = "Капюшона вниз",
+    ContextMenu_VisorUp = "Козырька вверх",
+    ContextMenu_VisorDown = "Козырька вниз",
+    ContextMenu_Tighten = "Затянуть",
+    ContextMenu_Untighten = "Унылый",
 
-    IGUI_VehiclePartHelicopterInterior = "Вертолет Интерьер",
+    IGUI_VehiclePartHelicopterInterior = "Вертолет интерьер",
 }

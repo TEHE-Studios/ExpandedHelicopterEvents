@@ -1,26 +1,26 @@
 Tooltip_PL = {
-    Tooltip_dismantle_helicopterpart = "Użycie palnika i maski spawalniczej spowoduje powstanie metalu.",
-    Tooltip_open_boxes_barehanded = "Szybciej byłoby otworzyć coś ostrego.",
-    Tooltip_Parachute = "Można go podrzeć, aby zrobić podartą szmatkę.",
-    Tooltip_EnergyBar = "Baton energetyczny pakowany do zestawów survivalowych. Wyprodukowane przez PT&D.",
-    Tooltip_SurvivalVest = "Standardowa kamizelka ratunkowa dla pilotów wojskowych.",
-    Tooltip_SurvivalVestBlack = "Standardowa kamizelka ratunkowa do policyjnego poszukiwania i ratownictwa.",
-    Tooltip_SPHMilitary = "Standardowy hełm wojskowy."
-    Tooltip_SPHBlack = "Standardowy hełm wojskowy w kolorze czarnym.",
-    Tooltip_SPHPolice = "Hełm używany przez pilotów policji.",
-    Tooltip_SPHCivilian = "Hełm używany przez pilotów cywilnych.",
+    Tooltip_dismantle_helicopterpart = "Zastosowanie lampy lampy i maski spawalniczej da metal.",
+    Tooltip_open_boxes_barehanded = "Byłoby szybciej otwarcie z czymś ostrym.",
+    Tooltip_Parachute = "Można je rozdartić, aby zrobić podartych tkaniny.",
+    Tooltip_EnergyBar = "Pasek energetyczny pakowany do zestawów przetrwania. Wyprodukowane przez PT&D.",
+    Tooltip_SurvivalVest = "Standardowa kamizelka przetrwania dla pilotów wojskowych.",
+    Tooltip_SurvivalVestBlack = "Standardowa kamizelka przetrwania w celu poszukiwania i ratowania policji.",
+    Tooltip_SPHMilitary = "Wydanie standardowe hełm wojskowy helikopter."
+    Tooltip_SPHBlack = "Wydanie standardowe hełm wojskowy helikopter w kolorze czarnym.",
+    Tooltip_SPHPolice = "Hełm helikopterowy używany przez policyjne skrzydła powietrzne.",
+    Tooltip_SPHCivilian = "Hełm helikoptera używany przez cywilnych pilotów.",
 
-    Tooltip_FlyerCDC = "Wygląda na ulotkę informacyjną dotyczącą zdrowia.",
-    Tooltip_FlyerMilitary = "Wygląda na ulotkę wojskową.",
+    Tooltip_FlyerCDC = "Wygląda jak ulotka doradcza ds. Zdrowia.",
+    Tooltip_FlyerMilitary = "Wygląda jak ulotka zawiadomienia z wojska.",
     Tooltip_CivilDefense = "Wygląda jak ulotka obrony cywilnej.",
 
-    Tooltip_WaterSealed = "Zamknięta Racja Wody rozprowadzana przez rząd USA."
-    Tooltip_WaterUnsealed = "Nieuszczelniona racja wody rozprowadzana przez rząd USA." 
+    Tooltip_WaterSealed = "Uszczelniona racja wodna dystrybuowana przez rząd USA."
+    Tooltip_WaterUnsealed = "Niespodziewana racja wody dystrybuowana przez rząd USA." 
 
-    Tooltip_SupplyBox = "Pudełko z zaopatrzeniem od rządu USA."
-    Tooltip_SamaritanBox = "Pudełko z zaopatrzeniem od grupy tajemniczych samarytan.",
-    Tooltip_BanditBox = "Osobista skrytka. Czyta „MOJE GÓWNO, NIE DOTYKAJ",
+    Tooltip_SupplyBox = "Pudełko podaży od rządu USA."
+    Tooltip_SamaritanBox = "Pudełko dostaw z grupy tajemniczych Samarytan.",
+    Tooltip_BanditBox = "Osobisty skrytka. Czyta"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Wojskowa flara sygnalizacyjna. Nie strzelaj w pomieszczeniu.",
-    Tooltip_HandFlare = "Migotać. Nie strzelać w pomieszczeniu."
+    Tooltip_SignalFlare = "Flary sygnalizacyjne. Nie strzelaj w pomieszczeniu.",
+    Tooltip_HandFlare = "Migotać. Nie strzelaj w pomieszczeniu."
 }

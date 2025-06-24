@@ -1,26 +1,26 @@
 Tooltip_TR = {
-    Tooltip_dismantle_helicopterpart = "Bir kaynak aleti ve kaynak maskesini kullanmak metal elde etmenizi saÄŸlar.",
-    Tooltip_open_boxes_barehanded = "Keskin bir ÅŸeyle aÃ§mak daha hÄ±zlÄ± olur.",
-    Tooltip_Parachute = "YÄ±rtÄ±lmÄ±ÅŸ kumaÅŸ yapmak iÃ§in parÃ§alanabilir.",
-    Tooltip_EnergyBar = "Hayatta kalma kitleri iÃ§in paketlenmiÅŸ bir enerji barÄ±. PT&D tarafÄ±ndan Ã¼retilmiÅŸtir.",
-    Tooltip_SurvivalVest = "Askeri pilotlar iÃ§in standart hayatta kalma yeleÄŸi.",
-    Tooltip_SurvivalVestBlack = "Polis arama ve kurtarma iÃ§in standart hayatta kalma yeleÄŸi.",
-    Tooltip_SPHMilitary = "Askeri helikopterler iÃ§in standart miÄŸfer.",
-    Tooltip_SPHBlack = "Siyah renkli askeri helikopter miÄŸferi.",
-    Tooltip_SPHPolice = "Polis hava kanatlarÄ± tarafÄ±ndan kullanÄ±lan helikopter miÄŸferi.",
-    Tooltip_SPHCivilian = "Sivil pilotlar tarafÄ±ndan kullanÄ±lan helikopter miÄŸferi.",
+    Tooltip_dismantle_helicopterpart = "Blowtorch ve kaynak maskesi kullanımı metal verecektir.",
+    Tooltip_open_boxes_barehanded = "Keskin bir şeyle açmak daha hızlı olurdu.",
+    Tooltip_Parachute = "Yırtık bez yapmak için yırtılabilir.",
+    Tooltip_EnergyBar = "Hayatta kalma kitleri için paketlenmiş bir enerji çubuğu. PT&D tarafından üretilmiştir.",
+    Tooltip_SurvivalVest = "Askeri pilotlar için standart sorun hayatta kalma yeleği.",
+    Tooltip_SurvivalVestBlack = "Polis arama ve kurtarma için standart sorun hayatta kalma yeleği.",
+    Tooltip_SPHMilitary = "Standart sorun askeri helikopter kaskı."
+    Tooltip_SPHBlack = "Standart sorun askeri helikopter kask siyah.",
+    Tooltip_SPHPolice = "Polis hava kanatları tarafından kullanılan helikopter kaskı.",
+    Tooltip_SPHCivilian = "Sivil pilotlar tarafından kullanılan helikopter kaskı.",
 
-    Tooltip_FlyerCDC = "Bir saÄŸlÄ±k uyarÄ±sÄ± el ilanÄ±na benziyor.",
-    Tooltip_FlyerMilitary = "Askeriyeden bir duyuru el ilanÄ±na benziyor.",
-    Tooltip_CivilDefense = "Bir sivil savunma el ilanÄ±na benziyor.",
+    Tooltip_FlyerCDC = "Sağlık danışma broşürüne benziyor.",
+    Tooltip_FlyerMilitary = "Ordudan bir ilan broşürü gibi görünüyor.",
+    Tooltip_CivilDefense = "Sivil savunma broşürüne benziyor.",
 
-    Tooltip_WaterSealed = "ABD HÃ¼kÃ¼meti tarafÄ±ndan daÄŸÄ±tÄ±lan mÃ¼hÃ¼rlÃ¼ su rasyonu.",
-    Tooltip_WaterUnsealed = "ABD HÃ¼kÃ¼meti tarafÄ±ndan daÄŸÄ±tÄ±lan mÃ¼hÃ¼rsÃ¼z su rasyonu.",
+    Tooltip_WaterSealed = "ABD hükümeti tarafından dağıtılan mühürlü su rasyonu."
+    Tooltip_WaterUnsealed = "ABD Hükümeti tarafından dağıtılan mühürsüz su rasyonu." 
 
-    Tooltip_SupplyBox = "ABD HÃ¼kÃ¼meti tarafÄ±ndan verilen malzeme kutusu.",
-    Tooltip_SamaritanBox = "Gizemli bir samaritandan gelen malzeme kutusu.",
-    Tooltip_BanditBox = "KiÅŸisel gizli kutu. Ãœzerinde 'MY SHIT, DONT TOUCH!' yazÄ±yor.",
+    Tooltip_SupplyBox = "ABD hükümetinden tedarik kutusu."
+    Tooltip_SamaritanBox = "Gizemli Samaritans grubundan tedarik kutusu.",
+    Tooltip_BanditBox = "Kişisel saklama kutusu. Okuma"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Ä°ÅŸaret fiÅŸeÄŸi. Ä°Ã§eride ateÅŸ etmeyin.",
-    Tooltip_HandFlare = "FiÅŸek. Ä°Ã§eride ateÅŸ etmeyin."
+    Tooltip_SignalFlare = "Sinyal parlaması. İç mekanda ateş etmeyin.",
+    Tooltip_HandFlare = "Parlama. İç mekanda ateş etmeyin."
 }

@@ -1,6 +1,6 @@
 module EHE
 {
-        item EvacuationFlyer
+    item EvacuationFlyer
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
@@ -13,7 +13,7 @@ module EHE
 	}
 
 
-	    item PreventionFlyer
+    item PreventionFlyer
     {
         DisplayCategory = Literature,
         Weight = 0.1,
@@ -26,7 +26,7 @@ module EHE
     }
 
 
-	    item EmergencyFlyer
+    item EmergencyFlyer
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
@@ -39,7 +39,7 @@ module EHE
 	}
 
 
-		item QuarantineFlyer
+    item QuarantineFlyer
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
@@ -51,7 +51,7 @@ module EHE
 		WorldStaticModel = EmergencyFlyer,
 	}
 
-		item NoticeFlyer
+    item NoticeFlyer
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,

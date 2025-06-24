@@ -1,26 +1,26 @@
 Tooltip_ID = {
-    Tooltip_dismantle_helicopterpart = "Penggunaan obor las dan masker las akan menghasilkan logam.",
+    Tooltip_dismantle_helicopterpart = "Penggunaan blowtorch dan topeng pengelasan akan menghasilkan logam.",
     Tooltip_open_boxes_barehanded = "Akan lebih cepat dibuka dengan sesuatu yang tajam.",
-    Tooltip_Parachute = "Dapat dirobek menjadi kain robek.",
-    Tooltip_EnergyBar = "Batangan energi yang dikemas untuk perlengkapan bertahan hidup. Diproduksi oleh PT&D.",
-    Tooltip_SurvivalVest = "Rompi bertahan hidup standar untuk pilot militer.",
-    Tooltip_SurvivalVestBlack = "Rompi penyelamat standar untuk operasi pencarian dan penyelamatan polisi.",
-    Tooltip_SPHMilitary = "Helm helikopter militer standar."
-    Tooltip_SPHBlack = "Helm helikopter militer standar berwarna hitam.",
-    Tooltip_SPHPolice = "Helm helikopter yang digunakan oleh kesatuan udara polisi.",
-    Tooltip_SPHCivilian = "Helm helikopter yang digunakan oleh pilot sipil.",
+    Tooltip_Parachute = "Bisa dihancurkan untuk membuat kain robek.",
+    Tooltip_EnergyBar = "Bilah energi yang dikemas untuk kit survival. Diproduksi oleh Pt & d.",
+    Tooltip_SurvivalVest = "Rompi Kelangsungan Hidup Masalah Standar untuk Pilot Militer.",
+    Tooltip_SurvivalVestBlack = "Masalah standar bertahan hidup untuk pencarian dan penyelamatan polisi.",
+    Tooltip_SPHMilitary = "Helm Helikopter Militer Standar."
+    Tooltip_SPHBlack = "Helm Helikopter Militer Standar Helik Hitam.",
+    Tooltip_SPHPolice = "Helikopter helm yang digunakan oleh sayap udara polisi.",
+    Tooltip_SPHCivilian = "Helikopter Helm yang Digunakan oleh Pilot Sipil.",
 
-    Tooltip_FlyerCDC = "Tampak seperti brosur nasihat kesehatan.",
-    Tooltip_FlyerMilitary = "Kelihatannya seperti selebaran pemberitahuan dari militer.",
-    Tooltip_CivilDefense = "Tampak seperti brosur pertahanan sipil.",
+    Tooltip_FlyerCDC = "Sepertinya selebaran penasihat kesehatan.",
+    Tooltip_FlyerMilitary = "Sepertinya selebaran pemberitahuan dari militer.",
+    Tooltip_CivilDefense = "Sepertinya selebaran pertahanan sipil.",
 
-    Tooltip_WaterSealed = "Jatah Air Tertutup yang didistribusikan oleh Pemerintah AS."
-    Tooltip_WaterUnsealed = "Jatah Air Terbuka yang didistribusikan oleh Pemerintah AS." 
+    Tooltip_WaterSealed = "Jatah air tertutup didistribusikan oleh pemerintah AS."
+    Tooltip_WaterUnsealed = "Jatah air yang tidak disegel didistribusikan oleh pemerintah AS." 
 
-    Tooltip_SupplyBox = "Kotak Perlengkapan dari Pemerintah AS."
-    Tooltip_SamaritanBox = "Kotak Perlengkapan dari sekelompok orang Samaria yang misterius.",
-    Tooltip_BanditBox = "Kotak penyimpanan pribadi. Bacaan"MY SHIT, DONT TOUCH!",
+    Tooltip_SupplyBox = "Kotak pasokan dari pemerintah AS."
+    Tooltip_SamaritanBox = "Kotak pasokan dari sekelompok orang Samaria yang misterius.",
+    Tooltip_BanditBox = "Kotak simpanan pribadi. Berbunyi"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Suar sinyal. Jangan tembak di dalam ruangan.",
-    Tooltip_HandFlare = "Suar. Jangan tembak di dalam ruangan."
+    Tooltip_SignalFlare = "Sambungan pensinyalan. Jangan menembak di dalam ruangan.",
+    Tooltip_HandFlare = "Suar. Jangan menembak di dalam ruangan."
 }

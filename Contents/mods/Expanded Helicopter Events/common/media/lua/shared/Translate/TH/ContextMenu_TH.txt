@@ -1,9 +1,9 @@
 ContextMenu_TH = {
-    ContextMenu_DownHoodie = "ฮู้ดดาวน์",
-    ContextMenu_VisorUp = "บังตาขึ้น",
-    ContextMenu_VisorDown = "บังตาเปิดลง",
+    ContextMenu_DownHoodie = "ฮูดลง",
+    ContextMenu_VisorUp = "บังเอิญขึ้น",
+    ContextMenu_VisorDown = "หมวกลง",
     ContextMenu_Tighten = "ขัน",
-    ContextMenu_Untighten = "คลายให้แน่น",
+    ContextMenu_Untighten = "ไม่กระชับ",
 
     IGUI_VehiclePartHelicopterInterior = "ภายในเฮลิคอปเตอร์",
 }

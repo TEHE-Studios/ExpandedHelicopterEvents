@@ -1,5 +1,5 @@
 UI_PH = {
-    UI_Intro1 = "ITO ANG MGA END-TIMES",
-    UI_Intro2 = "GAANO MAN KA NAGBIGO NA IDEKLARA ANG IYONG BUONG GROSS INCOME",
-    UI_Intro3 = "GANITO KA NAG-COMMIT NG TAX EVASION",
+    UI_Intro1 = "Ito ang mga end-time",
+    UI_Intro2 = "Gayunpaman nabigo kang ipahayag ang iyong buong kita ng gross",
+    UI_Intro3 = "Ito ay kung paano ka nakagawa ng pag -iwas sa buwis",
 }

@@ -1,5 +1,5 @@
 Sandbox_HU = {
-    Sandbox_ExpandedHeli = "Kibővített helikopteres események",
+    Sandbox_ExpandedHeli = "Bővített helikopteres események",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Soha"
     Sandbox_ExpandedHeli_Frequency_option2 = "Ritka",
@@ -8,49 +8,49 @@ Sandbox_HU = {
     Sandbox_ExpandedHeli_Frequency_option5 = "Gyakori",
     Sandbox_ExpandedHeli_Frequency_option6 = "Őrült",
 
-    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Légitámadás átmenet",
-    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Válassza a true értéket, ha azt szeretné, hogy egy légitámadási esemény jelezze a váltást a kevésbé kihívást jelentő korai eseményekről az ellenségesebb késői eseményekre.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Légi raid átmenet",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Válassza az igazot, ha azt akarja, hogy egy Air Raid esemény jelezze a kevésbé kihívást jelentő korai játék eseményekről az ellenségesebb késői játék eseményekre való áttérést.",
 
     Sandbox_ExpandedHeli_EventJet = "Fúvókák",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Milyen gyakran fordulnak elő sugárhajtású események.<br>A repülőgépek hordamozgást okozva elrepülnek a játékosok mellett.",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Milyen gyakran fordulnak elő a sugárhajtású események.",
 
     Sandbox_ExpandedHeli_EventNews = "Hír",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Milyen gyakran fordulnak elő híresemények.<br>A hírszaggatók minden talált polgárt élesítenek, és rövid ideig követik őket.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Milyen gyakran fordulnak elő a híres események.",
 
     Sandbox_ExpandedHeli_EventPolice = "Rendőrség",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Milyen gyakran fordulnak elő rendőri események.<br>A rendőrség a saját kezébe veszi a dolgokat, és körbekíséri az állampolgárokat, miközben zombikra lő.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Milyen gyakran fordul elő a rendőrségi események.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Katonai",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Milyen gyakran fordulnak elő katonai események.<br>A katonaság szakaszokon keresztül halad: figyelmezteti a polgárokat, megtisztítja az élőhalottakat, majd végül mindent, ami mozog.",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Milyen gyakori katonai események fordulnak elő. <Br> A katonaság a szakaszokon keresztül halad előre: figyelmezteti a polgárokat, tisztítsa meg az élőholtat, majd végül tisztítsa meg bármit, ami mozog.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "FEMA segélycseppek",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Milyen gyakran fordulnak elő a FEMA segélyleadási eseményei.<br>A FEMA az apokalipszis korai szakaszában fog segélyt adni.",
+    Sandbox_ExpandedHeli_EventFEMA = "A FEMA segélye csepp",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Milyen gyakran fordulnak elő a FEMA Aid Drop események.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Túlélők",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Milyen gyakran fordulnak elő túlélő események.<br>A túlélők csak hordamozgást okozó felderítő küldetések során repülnek el.",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Milyen gyakran fordulnak elő a túlélő események. <BR> A túlélők csak a horda mozgást okozó cserkészek cseréjén repülnek.",
 
     Sandbox_ExpandedHeli_EventRaider = "Raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Milyen gyakran fordulnak elő portyázó események.<br>A portyázók a túlélőket élesítik, hogy szórakoztatás céljából megkínozzák őket.",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Milyen gyakran fordulnak elő a Raider események.",
 
-    Sandbox_ExpandedHeli_EventSamaritan = "szamaritánusok",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Milyen gyakran fordulnak elő szamaritánus események.<br>A szamaritánusok szállítmányokat adnak le a túlélők megsegítésére.",
+    Sandbox_ExpandedHeli_EventSamaritan = "Szamaritánusok",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Milyen gyakran fordulnak elő a szamaritánus események. <BR> A szamaritánusok elhagyják a készleteket, hogy segítsék a túlélőket.",
 
-    Sandbox_ExpandedHeli_StartDay = "Kezdő nap",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Így történnek a játéknapi események. Be kell számolnia"months into the apocalypse"beállításokat.",
+    Sandbox_ExpandedHeli_StartDay = "Kezdőnap",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Ez az, ami a játék eseményeiben történik. Be kell számolnia"months into the apocalypse"beállítások.",
 
     Sandbox_ExpandedHeli_SchedulerDuration = "Ütemező időtartama",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Hány napig fut az ütemező a kezdő naptól számítva.<br>Az ütemező ehhez az időtartamhoz igazítja az esemény előrehaladását.",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Hány napon fut az ütemező a kezdési naptól.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Az időtartamon túli események ütemezésének folytatása",
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normális esetben az ütemező az időtartam határánál ér véget, és ennek bekapcsolása az időtartamon túl is ütemezi az eseményeket. Az események továbbra is szakaszonként haladnak az időtartamnak megfelelően, de az események ütemezése soha nem áll le.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Folytassa az események ütemezését az időtartamon túl",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Általában az ütemező az időtartam -határon ér véget, és ezt tovább folytatja az események időtartamon túlmutató ütemezésének ütemezése. <BR> Az események továbbra is az időtartam szerint fejlődnek, de az események soha nem állítják le az ütemezést.",
 
     Sandbox_ExpandedHeli_ContScheduling_option1 = "Nincs folyamatos ütemezés"
-    Sandbox_ExpandedHeli_ContScheduling_option2 = "Ütemezés folytatása: Minden esemény",
-    Sandbox_ExpandedHeli_ContScheduling_option3 = "Ütemezés folytatása: Csak a játék végén",
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Folytassa az ütemezést: Minden esemény",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Folytassa az ütemezést: Csak késői játék",
 
-    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Az időjárás hatással lesz az eseményekre",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Hogy az időjárás megakadályozza-e az eseményeket, vagy okozza-e az összeomlást.",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Az időjárás befolyásolja az eseményeket",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Függetlenül attól, hogy az időjárás megakadályozza -e az eseményeket, vagy okozhatja -e összeomlásukat.",
 
-    Sandbox_ExpandedHeli_CrashChanceMulti = "Összeomlási esély szorzó",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Ezt megszorozzuk az összeomlás esélyével, a 0 együttesen megakadályozza az összeomlásokat.",
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Crash Chance szorzó",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Ezt megsokszorozják a Crash Chance ellen, a 0 az összeomlásokat együtt akadályozza meg.",
 }

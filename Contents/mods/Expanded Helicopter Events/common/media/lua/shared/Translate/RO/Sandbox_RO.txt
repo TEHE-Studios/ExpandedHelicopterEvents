@@ -1,56 +1,56 @@
 Sandbox_RO = {
-    Sandbox_ExpandedHeli = "Evenimente extinse cu elicoptere",
+    Sandbox_ExpandedHeli = "Evenimente elicopter extinse",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Nu"
     Sandbox_ExpandedHeli_Frequency_option2 = "Rar",
-    Sandbox_ExpandedHeli_Frequency_option3 = "Mai puțin frecvente",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Neobișnuit",
     Sandbox_ExpandedHeli_Frequency_option4 = "Comun",
     Sandbox_ExpandedHeli_Frequency_option5 = "Frecvent",
     Sandbox_ExpandedHeli_Frequency_option6 = "Nebun",
 
-    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Tranziția raidului aerian",
-    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Alegeți adevărat dacă doriți ca un eveniment de raid aerian să semnaleze o trecere de la evenimente mai puțin provocatoare de la începutul jocului la evenimente mai ostile de la sfârșitul jocului.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Tranziție de raid aerian",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Alegeți True dacă doriți un eveniment Air Raid pentru a semnala o trecere de la evenimente mai puțin provocatoare de joc timpuriu la evenimente mai ostile de joc târziu.",
 
-    Sandbox_ExpandedHeli_EventJet = "Jeturi",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Cât de des apar evenimentele cu jet.<br>Avioanele zboară de jucători provocând mișcarea hoardelor.",
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Cât de frecvente apar evenimente cu jet. <Br> Jets zboară prin jucători care provoacă mișcare a hoardei.",
 
     Sandbox_ExpandedHeli_EventNews = "Ştiri",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Cât de des apar evenimentele de știri.<br>Elicopterele de știri se vor concentra asupra oricărui cetățean pe care îl găsesc și îl vor urmări pentru o perioadă scurtă de timp.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Cât de frecvente se produc evenimente de știri. <Br> Choppers de știri vor înlătura orice cetățean pe care îl găsesc și îi vor urmări pentru o perioadă scurtă de timp.",
 
     Sandbox_ExpandedHeli_EventPolice = "Poliţie",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Cât de des au loc evenimentele poliției.<br>Poliția își va lua lucrurile în propriile mâini și va escorta cetățenii în timp ce trage în zombi.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Cât de frecvente apar evenimente de poliție. <Br> Poliția va lua lucrurile în propriile mâini și va escorta cetățenii în timp ce trăgeau pe zombi.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Militar",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Cât de des au loc evenimentele militare.<br>Armata va progresa prin etape: avertizează cetățenii, epurează strigoii, apoi epurează în cele din urmă orice se mișcă.",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Cât de frecvente au loc evenimente militare. <Br> militarii vor progresa prin etape: avertizați cetățenii, curățați strigoi, apoi, în cele din urmă, va curăța orice se mișcă.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "Picături de ajutor FEMA",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Cât de des au loc evenimentele de reducere a ajutorului FEMA.<br>FEMA va efectua reduceri de ajutor la începutul apocalipsei.",
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA AID PRODS",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Cât de frecvente apar evenimente de cădere de ajutor FEMA. <Br> FEMA va efectua căderi de ajutor mai devreme în apocalipsă.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Supraviețuitori",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Cât de des au loc evenimentele supraviețuitorilor.<br>Supraviețuitorii vor zbura doar în misiunile de cercetare care provoacă mișcarea hoardelor.",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Cât de frecvente apar evenimente de supraviețuitor. <Br> Supraviețuitorii vor zbura doar în misiunile de cercetare care provoacă mișcare a hoardei.",
 
     Sandbox_ExpandedHeli_EventRaider = "Raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Cât de des au loc evenimentele raider.<br>Raiders se vor concentra pe supraviețuitori pentru a-i chinui pentru un pic de divertisment.",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Cât de frecvente apar evenimente Raider. <Br> Raiders vor fi înlăturați pentru a -i chinui pentru a -i chinui pentru un anumit divertisment.",
 
-    Sandbox_ExpandedHeli_EventSamaritan = "samaritenii",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Cât de frecvente apar evenimentele samaritene.<br>Samaritenii vor lăsa provizii pentru a ajuta supraviețuitorii.",
+    Sandbox_ExpandedHeli_EventSamaritan = "Samariteni",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Cât de frecvente apar evenimente samaritene. <Br> samaritenii vor renunța la livrări pentru a ajuta supraviețuitorii.",
 
-    Sandbox_ExpandedHeli_StartDay = "Ziua de început",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Acesta este ceea ce au loc evenimentele din ziua de început de joc. Va trebui să luați în considerare"months into the apocalypse"setări.",
+    Sandbox_ExpandedHeli_StartDay = "Începe ziua",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Aceasta este cea în care se întâmplă evenimente în joc. Va trebui să luați în considerare"months into the apocalypse"setări.",
 
-    Sandbox_ExpandedHeli_SchedulerDuration = "Durata programatorului",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Câte zile rulează programatorul din ziua de începere.<br>Planificatorul va ajusta progresia evenimentului pentru a se potrivi cu această durată.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Durata planificatorului",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Câte zile va rula programatorul din ziua de început. <Br> Programatorul va ajusta progresia evenimentului pentru a se potrivi cu această durată.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continuați programarea evenimentelor dincolo de durată",
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "În mod normal, programatorul se termină la limita de durată, activând aceasta, continuă să programeze evenimente dincolo de această durată. Evenimentele vor progresa în continuare prin etape în funcție de durată, dar evenimentele nu vor înceta niciodată să fie programate.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Continuați planificarea evenimentelor dincolo de durată",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "În mod normal, planificatorul se încheie la limita de durată, comutarea acestui lucru continuă să programeze evenimente dincolo de durată. <Br> Evenimentele vor progresa în etape în funcție de durată, dar evenimentele nu vor înceta niciodată să fie programate.",
 
     Sandbox_ExpandedHeli_ContScheduling_option1 = "Fără programare continuă"
-    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continuați programarea: Toate evenimentele",
-    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continuați programarea: numai joc târziu",
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Continuați planificarea: toate evenimentele",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Continuați planificarea: numai jocul târziu",
 
-    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Vremea va afecta evenimentele",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Dacă vremea va preveni evenimentele sau va provoca prăbușirea acestora.",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Vremea va avea impact asupra evenimentelor",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Indiferent dacă vremea va preveni evenimentele sau va provoca prăbușirea lor.",
 
-    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicatorul șanselor de accidentare",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Acest lucru este înmulțit față de șansa de blocare, 0 va preveni blocările toate împreună.",
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplicator de șanse de prăbușire",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Acest lucru este înmulțit împotriva Crash Chance, 0 va preveni prăbușirile împreună.",
 }

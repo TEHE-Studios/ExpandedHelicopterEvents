@@ -1,11 +1,11 @@
 UI_UA = {
     UI_Config_twitchIntegrationText = "Інтеграція Twitch",
-    UI_Config_twitchIntegrationToolTip1 = "Для безпроблемної інтеграції потрібна програма Stream Deck або подібна програма.",
-    UI_Config_twitchIntegrationToolTip2 = "Крім того, ви можете використовувати клавіші цифрової клавіатури вручну.",
-    UI_Config_twitchIntegrationOnly = "Вимкніть події поза інтеграцією twitch",
-    UI_Config_twitchStreamerTargeted = "Лише цільовий хост кооперативу",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Години в грі до початку подій",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Скільки годин у грі до подій дозволено.",
-    UI_Config_twitchHoursDelayBetweenEvents = "Скільки годин гри має пройти між подіями"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Скільки годин гри має пройти між подіями."
+    UI_Config_twitchIntegrationToolTip1 = "Потокова колода або подібна програма необхідна для безшовної інтеграції.",
+    UI_Config_twitchIntegrationToolTip2 = "Крім того, ви можете використовувати клавіші Numpad вручну.",
+    UI_Config_twitchIntegrationOnly = "Вимкнути події поза інтеграцією Twitch",
+    UI_Config_twitchStreamerTargeted = "Тільки цільовий кооперативний хост",
+    UI_Config_twitchHoursBeforeEventsAllowed = "В грі години до того, як можуть відбуватися події",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Скільки в грі годин до дозволу подій.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Скільки годин у грі повинно пройти між подіями"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Скільки годин у грі повинно пройти між подіями."
 }

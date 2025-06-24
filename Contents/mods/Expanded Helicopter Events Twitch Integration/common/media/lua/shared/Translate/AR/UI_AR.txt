@@ -1,11 +1,11 @@
 UI_AR = {
-    UI_Config_twitchIntegrationText = "Integración con Twitch",
-    UI_Config_twitchIntegrationToolTip1 = "Se requiere Stream deck o un programa similar para una integración perfecta.",
-    UI_Config_twitchIntegrationToolTip2 = "Alternativamente, puede utilizar las teclas del teclado numérico manualmente.",
-    UI_Config_twitchIntegrationOnly = "Deshabilitar eventos fuera de la integración de Twitch",
-    UI_Config_twitchStreamerTargeted = "Solo para el anfitrión de la cooperativa de destino",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Horas en el juego antes de que puedan ocurrir los eventos",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "¿Cuántas horas de juego antes de los eventos están permitidas?",
-    UI_Config_twitchHoursDelayBetweenEvents = "¿Cuántas horas de juego deben pasar entre eventos?"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "¿Cuántas horas de juego deben transcurrir entre eventos?"
+    UI_Config_twitchIntegrationText = "Integraci�n de contracci�n",
+    UI_Config_twitchIntegrationToolTip1 = "Se requiere un mazo de transmisi�n o un programa similar para la integraci�n perfecta.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternativamente, puede usar las teclas Numpad manualmente.",
+    UI_Config_twitchIntegrationOnly = "Deshabilitar eventos fuera de la integraci�n de Twitch",
+    UI_Config_twitchStreamerTargeted = "Target Co-op host solamente",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Horas en el juego antes de que puedan ocurrir eventos",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Cu�ntas horas en el juego antes de que se permitan eventos.",
+    UI_Config_twitchHoursDelayBetweenEvents = "�Cu�ntas horas en el juego deben pasar entre eventos?"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "�Cu�ntas horas en el juego deben pasar entre eventos?"
 }

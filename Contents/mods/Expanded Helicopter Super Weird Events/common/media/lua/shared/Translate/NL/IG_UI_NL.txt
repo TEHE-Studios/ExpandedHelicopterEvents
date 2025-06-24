@@ -1,18 +1,18 @@
 IG_UI_NL = {
-    IGUI_VehicleNameUFO = "Onbekend vliegend object",
+    IGUI_VehicleNameUFO = "Niet -geïdentificeerd vliegend object",
 
-    IGUI_VehicleNameBell206Spiffo = "Spiffo Force Een",
-    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (neergestort)",
-    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (Romp)",
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (gecrasht)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (romp)",
     IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (staart)",
-    IGUI_VehicleNameTISIceCreamTruck = "IJscowagen",
+    IGUI_VehicleNameTISIceCreamTruck = "IJswagen",
 
-    IGUI_VehicleNameRoflCopter = "FOUT: Interdimensionale anomalie",
+    IGUI_VehicleNameRoflCopter = "Fout: interdimensionale anomalie",
 
-    IGUI_VehicleNameBell206IRS = "Bell 206 IRS-editie",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS-editie (gecrasht)",
-    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (romp)",
-    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS-editie (staart)",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS -editie",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS -editie (gecrasht)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS -editie (romp)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS -editie (staart)",
 
-    IGUI_VehicleNameSpiffoBurger = "Spiffo's verzorgingspakket",
+    IGUI_VehicleNameSpiffoBurger = "Spiffo's zorgpakket",
 }

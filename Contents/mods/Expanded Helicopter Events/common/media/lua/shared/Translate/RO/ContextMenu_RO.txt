@@ -1,9 +1,9 @@
 ContextMenu_RO = {
-    ContextMenu_DownHoodie = "Capota jos",
-    ContextMenu_VisorUp = "Vizor sus",
-    ContextMenu_VisorDown = "Vizorul în jos",
+    ContextMenu_DownHoodie = "Hood Down",
+    ContextMenu_VisorUp = "Vizieră",
+    ContextMenu_VisorDown = "Vizieră în jos",
     ContextMenu_Tighten = "Strânge",
-    ContextMenu_Untighten = "Desfaceți",
+    ContextMenu_Untighten = "Neîndeplinit",
 
     IGUI_VehiclePartHelicopterInterior = "Interiorul elicopterului",
 }

@@ -1,18 +1,18 @@
 IG_UI_CH = {
     IGUI_VehicleNameUFO = "飛碟",
 
-    IGUI_VehicleNameBell206Spiffo = "斯皮福一號力量",
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
     IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One（墜毀）",
     IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One（機身）",
-    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One（尾部）",
-    IGUI_VehicleNameTISIceCreamTruck = "冰淇淋車",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One（尾巴）",
+    IGUI_VehicleNameTISIceCreamTruck = "冰淇淋卡車",
 
-    IGUI_VehicleNameRoflCopter = "錯誤：跨維度異常",
+    IGUI_VehicleNameRoflCopter = "錯誤：二維異常",
 
-    IGUI_VehicleNameBell206IRS = "貝爾 206 IRS 版",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS 版（已墜毀）",
-    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS 版（機身）",
-    IGUI_VehicleNameBell206IRSTail = "貝爾 206 IRS 版（尾）",
+    IGUI_VehicleNameBell206IRS = "貝爾206 IRS版",
+    IGUI_VehicleNameBell206IRSCrashed = "貝爾206 IRS版（崩潰）",
+    IGUI_VehicleNameBell206IRSFuselage = "貝爾206 IRS版（機身）",
+    IGUI_VehicleNameBell206IRSTail = "貝爾206 IRS版（尾巴）",
 
-    IGUI_VehicleNameSpiffoBurger = "Spiffo 的護理包",
+    IGUI_VehicleNameSpiffoBurger = "Spiffo的護理包",
 }

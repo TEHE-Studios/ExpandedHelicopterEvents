@@ -1,27 +1,27 @@
 Sandbox_CA = {
 
     Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
-    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Amb quina freq√º√®ncia Spiffo celebra el seu aniversari.",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "La freq¸Ëncia de Spiffo celebra el seu aniversari.",
 
     Sandbox_ExpandedHeli_EventTISCreamery = "The Indiestone Creameries",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Amb quina freq√º√®ncia ve RJ a fer una visita.",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Quina freq¸Ëncia arriba a fer una visita.",
 
-    Sandbox_ExpandedHeli_EventIRS = "IRS",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "Amb quina freq√º√®ncia eviteu pagar els vostres impostos.",
+    Sandbox_ExpandedHeli_EventIRS = "Irs",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "La freq¸Ëncia que eviteu pagar els vostres impostos.",
 
-    Sandbox_ExpandedHeli_EventUFO = "OVNI",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "Amb quina freq√º√®ncia vols creure.",
+    Sandbox_ExpandedHeli_EventUFO = "OvÚlica",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Quina freq¸Ëncia voleu creure.",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "Urpes de sorra",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Amb quina freq√º√®ncia vols segrestar els Sandy Claws i colpejar-lo amb un pal.",
+    Sandbox_ExpandedHeli_EventSandyClaws = "Arpes sorrenques",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "La freq¸Ëncia que voleu segrestar les urpes sorrenques i colpejar -lo amb un pal.",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "L'atac de les strippers",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Amb quina freq√º√®ncia vols passar-ho b√©.",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Atac dels despulladors",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Quina freq¸Ëncia voleu passar una bona estona.",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "Heli√≤pter (copyright)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Amb quina freq√º√®ncia vols HELIKOPTER, HELIKOPTER. (Dret d'autor)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (Copyright)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "La freq¸Ëncia que voleu Helikopter, Helikopter. (Copyright)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (copyright)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Amb quina freq√º√®ncia nom√©s vols ballar. (Dret d'autor)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (amb copyright)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "La freq¸Ëncia que nomÈs voleu ballar. (Copyright)",
 
 }

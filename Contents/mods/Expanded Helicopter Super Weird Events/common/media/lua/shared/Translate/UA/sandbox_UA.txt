@@ -1,27 +1,27 @@
 Sandbox_UA = {
 
-    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
-    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Як часто Спіффо святкує свій день народження.",
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Шпиль",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Як часто Спіффо відзначає свій день народження.",
 
-    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Creameries",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Як часто RJ приходить у гості.",
+    Sandbox_ExpandedHeli_EventTISCreamery = "Індистотонні вершки",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Як часто приходить RJ, щоб відвідати.",
 
     Sandbox_ExpandedHeli_EventIRS = "IRS",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "Як часто ви уникаєте сплати податків.",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Наскільки часто ви уникаєте сплати податків.",
 
     Sandbox_ExpandedHeli_EventUFO = "НЛО",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "Як часто ви хочете вірити.",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Наскільки часто ви хочете повірити.",
 
     Sandbox_ExpandedHeli_EventSandyClaws = "Піщані кігті",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Як часто ви хочете викрадати Піщаних пазурів і бити його палицею.",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Наскільки часто ви хочете викрасти піщані кігті і бити його палицею.",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Атака стриптизерок",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Як часто ви хочете добре проводити час.",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Атака стриптизерів",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Наскільки часто ви хочете добре провести час.",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "Гелікоптер (захищено авторським правом)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Як часто ви хочете ГЕЛІКОПТЕР, ГЕЛІКОПТЕР. (Захищено авторським правом)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Гелікоптер (захищений авторським правом)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Як часто ви хочете до Гелікоптера, Гелікоптера. (Захищений авторським правом)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "Бафф Коррелл (захищено авторським правом)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Як часто вам просто хочеться танцювати. (Захищено авторським правом)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Бафф Коррелл (захищений авторським правом)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Як часто ви хочете танцювати. (Захищений авторським правом)",
 
 }

@@ -1,29 +1,29 @@
 IG_UI_CS = {
     IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "Havarovanďż˝ UH-60A (trup)",
-    IGUI_VehicleNameUH60GreenTail = "Havarovanďż˝ UH-60A (ocas)",
+    IGUI_VehicleNameUH60GreenFuselage = "Zni�en� UH-60A (trup)",
+    IGUI_VehicleNameUH60GreenTail = "Zni�en� UH-60A (ocas)",
 
-    IGUI_VehicleNameUH60Desert = "Pouďż˝tnďż˝ UH-60A",
-    IGUI_VehicleNameUH60DesertFuselage = "Havarovanďż˝ pouďż˝tnďż˝ UH-60A (trup)",
-    IGUI_VehicleNameUH60DesertTail = "Havarovanďż˝ pouďż˝tnďż˝ UH-60A (ocas)",
+    IGUI_VehicleNameUH60Desert = "UH-60A pou�t�",
+    IGUI_VehicleNameUH60DesertFuselage = "Zni�en� pou�� UH-60A (trup)",
+    IGUI_VehicleNameUH60DesertTail = "Zlep�en� pou�� UH-60A (ocas)",
 
-    IGUI_VehicleNameUH60Medevac = "Zdravotnickďż˝ UH-60A",
-    IGUI_VehicleNameUH60MedevacFuselage = "Havarovanďż˝ zdravotnickďż˝ UH-60A (trup)",
-    IGUI_VehicleNameUH60MedevacTail = "Havarovanďż˝ zdravotnickďż˝ UH-60A (ocas)",
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Zni�en� UH-60A Medevac (trup)",
+    IGUI_VehicleNameUH60MedevacTail = "Zni�en� UH-60A Medevac (ocas)",
 
-    IGUI_VehicleNameBell206LBMW = "Zpravodajskďż˝ vrtulnďż˝k",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Zpravodajskďż˝ vrtulnďż˝k (trup)",
-    IGUI_VehicleNameBell206LBMWTail = "Zpravodajskďż˝ vrtulnďż˝k (ocas)",
+    IGUI_VehicleNameBell206LBMW = "Zpravodajsk� vrtuln�k",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Novin��sk� vrtuln�k (trup)",
+    IGUI_VehicleNameBell206LBMWTail = "Novin��sk� vrtuln�k (ocas)",
 
-    IGUI_VehicleNameBell206Police = "Policejnďż˝ vrtulnďż˝k",
-    IGUI_VehicleNameBell206PoliceFuselage = "Policejnďż˝ vrtulnďż˝k (trup)",
-    IGUI_VehicleNameBell206PoliceTail = "Policejnďż˝ vrtulnďż˝k (ocas)",
+    IGUI_VehicleNameBell206Police = "Policejn� vrtuln�k",
+    IGUI_VehicleNameBell206PoliceFuselage = "Policejn� vrtuln�k (trup)",
+    IGUI_VehicleNameBell206PoliceTail = "Policejn� vrtuln�k (ocas)",
 
-    IGUI_VehicleNameBell206Survivalist = "Civilnďż˝ vrtulnďż˝k",
+    IGUI_VehicleNameBell206Survivalist = "Civiln� vrtuln�k",
     
-    IGUI_VehicleNameFEMASupplyDrop = "Shozenďż˝ nouzovďż˝ zďż˝soby",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritďż˝nskďż˝ dodďż˝vka zďż˝sob",
+    IGUI_VehicleNameFEMASupplyDrop = "Pokles nouzov� z�soby",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samarit�nsk� z�sobovac� pokles",
 
-    IGUI_Spent = "Utraceno",
+    IGUI_Spent = "Str�ven�",
     IGUI_Lit = "Lit",
 }

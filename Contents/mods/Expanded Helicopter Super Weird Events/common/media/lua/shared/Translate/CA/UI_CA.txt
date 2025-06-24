@@ -1,5 +1,5 @@
 UI_CA = {
-    UI_Intro1 = "AQUESTS S√ìN ELS FINS DELS TEMPS",
-    UI_Intro2 = "NO obstant aix√≤, NO HEU DE DECLARAR TOT ELS VOSUS INGRESOS BRUTS",
-    UI_Intro3 = "AIX√ç HAS COMET EVASION FISCAL",
+    UI_Intro1 = "Aquests sÛn els temps finals",
+    UI_Intro2 = "No obstant aixÚ, no heu declarat els vostres ingressos bruts",
+    UI_Intro3 = "AixÌ Ès com heu comËs evasiÛ fiscal",
 }

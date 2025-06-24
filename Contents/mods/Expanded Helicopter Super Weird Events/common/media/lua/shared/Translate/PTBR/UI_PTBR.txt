@@ -1,5 +1,5 @@
 UI_PTBR = {
-    UI_Intro1 = "ESTE É O FIM DOS TEMPOS",
-    UI_Intro2 = "NO ENTANTO VOCÊ NÃO DECLAROU TODA A SUA RENDA BRUTA",
-    UI_Intro3 = "É ASSIM QUE VOCÊ COMETEU SOLUÇÃO FISCAL",
+    UI_Intro1 = "Estes são os tempos finais",
+    UI_Intro2 = "No entanto, você não declarou toda a sua renda bruta",
+    UI_Intro3 = "É assim que você cometeu evasão fiscal",
 }

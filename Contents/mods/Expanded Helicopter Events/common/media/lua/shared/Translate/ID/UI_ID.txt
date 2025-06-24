@@ -1,11 +1,11 @@
 UI_ID = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "Acara Helikopter yang Diperluas"
-    UI_Config_sandBoxMovedText = "Pilihan konfigurasi dapat ditemukan di opsi kotak pasir.",
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Acara helikopter yang diperluas"
+    UI_Config_sandBoxMovedText = "Opsi konfigurasi dapat ditemukan di opsi kotak pasir.",
     UI_Config_voiceTitle = "Paket Suara",
 
-    UI_Config_resetEventsToolTip = "Atur ulang acara terjadwal jika terjadi keadaan darurat:",
-    UI_Config_resetEvents = "Atur Ulang Acara",
-    UI_Config_eventMarkersOnToolTip1 = "Aktifkan ini untuk mengaktifkan penanda peristiwa.",
-    UI_Config_eventMarkersOnToolTip2 = "Catatan: Penanda peristiwa dapat diseret.",
-    UI_Config_eventMarkersOn = "Penanda Acara",
+    UI_Config_resetEventsToolTip = "Reset Acara Terjadwal Jika terjadi keadaan darurat:",
+    UI_Config_resetEvents = "Acara Reset",
+    UI_Config_eventMarkersOnToolTip1 = "Aktifkan ini untuk mengaktifkan penanda acara.",
+    UI_Config_eventMarkersOnToolTip2 = "Catatan: Penanda acara dapat diseret.",
+    UI_Config_eventMarkersOn = "Penanda acara",
 }

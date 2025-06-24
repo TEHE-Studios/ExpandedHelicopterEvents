@@ -3,27 +3,27 @@ IG_UI_CA = {
     IGUI_VehicleNameUH60GreenFuselage = "UH-60A destrossat (fuselatge)",
     IGUI_VehicleNameUH60GreenTail = "UH-60A destrossat (cua)",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A Desert",
-    IGUI_VehicleNameUH60DesertFuselage = "Desert UH-60A destrossat (fuselatge)",
-    IGUI_VehicleNameUH60DesertTail = "Desert UH-60A destrossat (cua)",
+    IGUI_VehicleNameUH60Desert = "Desert UH-60A",
+    IGUI_VehicleNameUH60DesertFuselage = "Desert de UH-60A destrossat (fuselatge)",
+    IGUI_VehicleNameUH60DesertTail = "Desert desert UH-60A (cua) destrossat",
 
-    IGUI_VehicleNameUH60Medevac = "EvacuaciÃ³ mÃ¨dica UH-60A",
-    IGUI_VehicleNameUH60MedevacFuselage = "EvacuaciÃ³ mÃ¨dica UH-60A destrossada (fuselatge)",
-    IGUI_VehicleNameUH60MedevacTail = "EvacuaciÃ³ mÃ¨dica UH-60A destrossada (cua)",
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "UH-60A Medevac (fuselatge)",
+    IGUI_VehicleNameUH60MedevacTail = "UH-60A Medevac (cua) destrossat",
 
-    IGUI_VehicleNameBell206LBMW = "NotÃ­cies HelicÃ²pter",    
-    IGUI_VehicleNameBell206LBMWFuselage = "NotÃ­cies HelicÃ²pter (fuselatge)",
-    IGUI_VehicleNameBell206LBMWTail = "NotÃ­cies Helicopter (Tail)",
+    IGUI_VehicleNameBell206LBMW = "Not�cies Helic�pter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Not�cies Helic�pter (Fuselatge)",
+    IGUI_VehicleNameBell206LBMWTail = "Not�cies Helic�pter (Tail)",
 
-    IGUI_VehicleNameBell206Police = "HelicÃ²pter de la Policia",
-    IGUI_VehicleNameBell206PoliceFuselage = "HelicÃ²pter de la policia (fuselatge)",
-    IGUI_VehicleNameBell206PoliceTail = "HelicÃ²pter de la policia (cua)",
+    IGUI_VehicleNameBell206Police = "Helic�pter de la policia",
+    IGUI_VehicleNameBell206PoliceFuselage = "Helic�pter de la policia (fuselatge)",
+    IGUI_VehicleNameBell206PoliceTail = "Helic�pter de la policia (cua)",
 
-    IGUI_VehicleNameBell206Survivalist = "HelicÃ²pter civil",
+    IGUI_VehicleNameBell206Survivalist = "Helic�pter civil",
     
-    IGUI_VehicleNameFEMASupplyDrop = "Caiguda de subministrament d'emergÃ¨ncia",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Gota de subministrament samaritana",
+    IGUI_VehicleNameFEMASupplyDrop = "Caiguda de subministrament d?emerg�ncia",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Caiguda de subministrament samaritan",
 
-    IGUI_Spent = "Esgotat",
-    IGUI_Lit = "EncÃ¨s",
+    IGUI_Spent = "Passat",
+    IGUI_Lit = "Il�luminat",
 }

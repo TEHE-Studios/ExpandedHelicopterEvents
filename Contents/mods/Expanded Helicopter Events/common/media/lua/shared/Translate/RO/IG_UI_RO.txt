@@ -1,29 +1,29 @@
 IG_UI_RO = {
     IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "UH-60A distrus (fuselaj)",
-    IGUI_VehicleNameUH60GreenTail = "UH-60A distrus (coada)",
+    IGUI_VehicleNameUH60GreenFuselage = "UH-60A naufragiat (fuselaj)",
+    IGUI_VehicleNameUH60GreenTail = "UH-60A naufragiat (coadă)",
 
     IGUI_VehicleNameUH60Desert = "UH-60A Desert",
-    IGUI_VehicleNameUH60DesertFuselage = "Desert UH-60A distrus (fuselaj)",
-    IGUI_VehicleNameUH60DesertTail = "Desert UH-60A distrus (coada)",
+    IGUI_VehicleNameUH60DesertFuselage = "Desertul UH-60A naufragiat (fuselaj)",
+    IGUI_VehicleNameUH60DesertTail = "Desert UH-60A naufragiat (coadă)",
 
     IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
-    IGUI_VehicleNameUH60MedevacFuselage = "UH-60A Medevac distrus (fuselaj)",
-    IGUI_VehicleNameUH60MedevacTail = "UH-60A distrus Medevac (coadă)",
+    IGUI_VehicleNameUH60MedevacFuselage = "UH-60A MEDEVAC (fuselaj)",
+    IGUI_VehicleNameUH60MedevacTail = "UH-60A MEDEVAC (coadă)",
 
-    IGUI_VehicleNameBell206LBMW = "Noutăți Elicopter",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Noutăți elicopter (fuselaj)",
+    IGUI_VehicleNameBell206LBMW = "Elicopter de știri",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Elicopter de știri (fuselaj)",
     IGUI_VehicleNameBell206LBMWTail = "Elicopter de știri (coadă)",
 
-    IGUI_VehicleNameBell206Police = "Elicopter de poliție",
-    IGUI_VehicleNameBell206PoliceFuselage = "Elicopter de poliție (fuselaj)",
-    IGUI_VehicleNameBell206PoliceTail = "Elicopter de poliție (coada)",
+    IGUI_VehicleNameBell206Police = "Elicopterul poliției",
+    IGUI_VehicleNameBell206PoliceFuselage = "Elicopterul poliției (fuselaj)",
+    IGUI_VehicleNameBell206PoliceTail = "Elicopterul poliției (coadă)",
 
-    IGUI_VehicleNameBell206Survivalist = "Elicopter civil",
+    IGUI_VehicleNameBell206Survivalist = "Elicopterul civil",
     
     IGUI_VehicleNameFEMASupplyDrop = "Scădere de aprovizionare de urgență",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Picătură de aprovizionare pentru samaritean",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritean SPRINDY SPORND",
 
-    IGUI_Spent = "petrecut",
-    IGUI_Lit = "Lit",
+    IGUI_Spent = "A petrecut",
+    IGUI_Lit = "Aprins",
 }

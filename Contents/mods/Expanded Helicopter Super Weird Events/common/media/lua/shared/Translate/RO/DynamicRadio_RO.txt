@@ -1,3 +1,3 @@
 DynamicRadio_RO = {
-	AEBS_buffcorrell = "da, ce se întâmplă, e băiatul tău, buffcorrell, din nou, cu niște cover-uri de muzică protejate prin drepturi de autor, dar nu este decât un chicken wang, cu excepția cazului în care ești un streamer twitch. esk. esk. esk esk. leeeeeeeeeet's get reeeapy și. merge."
+	AEBS_buffcorrell = "Da, ce este poppin ', băiatul tău buffcorrell din nou, din nou, cu niște copertine de muzică protejată de drepturi de autor, dar nu este nu decât un fel de pui, cu excepția cazului în care ești un streamer twitch. ESK. ESK. ESK ESK. Leeeeeeeeeet a devenit reeady și. merge."
 }

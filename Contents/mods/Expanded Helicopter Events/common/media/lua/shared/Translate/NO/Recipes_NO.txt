@@ -1,3 +1,3 @@
 Recipe_NO = {
-    Recipe_Open_Supplies = "Ã…pne rekvisita",
+    Recipe_Open_Supplies = "Åpne forsyninger",
 }

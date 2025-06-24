@@ -1,5 +1,5 @@
 UI_FI = {
-    UI_Intro1 = "NÄMÄ ON LOPUN AIKAT",
-    UI_Intro2 = "KUIN ET ET ILMOITTAA KOKO BRUTTOTULOSIASI",
-    UI_Intro3 = "TÄMÄN SITÄ SITOIT VERONVÄLTÖN",
+    UI_Intro1 = "Nämä ovat loppuaikoja",
+    UI_Intro2 = "Et kuitenkaan ole ilmoittanut koko bruttotulosi",
+    UI_Intro3 = "Näin teit veronkierron",
 }

@@ -4,24 +4,24 @@ Sandbox_FI = {
     Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Kuinka usein Spiffo juhlii syntymäpäiväänsä.",
 
     Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Creameries",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Kuinka usein RJ tulee käymään.",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Kuinka usein RJ tulee käyntiin.",
 
     Sandbox_ExpandedHeli_EventIRS = "IRS",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "Kuinka usein vältät verojen maksamisen.",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Kuinka usein vältät verojen maksamista.",
 
     Sandbox_ExpandedHeli_EventUFO = "ufo",
     Sandbox_ExpandedHeli_EventUFO_tooltip = "Kuinka usein haluat uskoa.",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy Claws",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Kuinka usein haluat siepata Sandy Clawsin ja lyödä häntä kepillä.",
+    Sandbox_ExpandedHeli_EventSandyClaws = "Hiekkaranat",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Kuinka usein haluat siepata hiekkakynnet ja lyö hänet sauvalla.",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Strippaajien hyökkäys",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Stripparien hyökkäys",
     Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Kuinka usein haluat pitää hauskaa.",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (tekijänoikeuksilla suojattu)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Kuinka usein haluat HELIKOPTER, HELIKOPTER. (Tekijänoikeudella suojattu)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (tekijänoikeuksien alainen)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Kuinka usein haluat helikopterin, helikopterin. (Tekijänoikeuksien alainen)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (tekijänoikeuksilla suojattu)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Kuinka usein haluat vain tanssia. (Tekijänoikeudella suojattu)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (tekijänoikeuksien alainen)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Kuinka usein haluat vain tanssia. (Tekijänoikeuksien alainen)",
 
 }

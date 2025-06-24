@@ -1,9 +1,9 @@
 ContextMenu_TR = {
-    ContextMenu_DownHoodie = "KapÅŸon KapalÄ±",
-    ContextMenu_VisorUp = "KaskÄ±n CamÄ± AÃ§Ä±k",
-    ContextMenu_VisorDown = "KaskÄ±n CamÄ± KapalÄ±",
-    ContextMenu_Tighten = "SÄ±k",
-    ContextMenu_Untighten = "GevÅŸet",
+    ContextMenu_DownHoodie = "Kaplamak",
+    ContextMenu_VisorUp = "Vizör",
+    ContextMenu_VisorDown = "Vizör",
+    ContextMenu_Tighten = "Sıkmak",
+    ContextMenu_Untighten = "Zorlamak",
 
-    IGUI_VehiclePartHelicopterInterior = "Helikopterin Ä°Ã§i",
+    IGUI_VehiclePartHelicopterInterior = "Helikopter iç",
 }

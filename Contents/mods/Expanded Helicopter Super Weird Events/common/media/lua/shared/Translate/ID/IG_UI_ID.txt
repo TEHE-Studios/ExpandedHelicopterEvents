@@ -1,18 +1,18 @@
 IG_UI_ID = {
-    IGUI_VehicleNameUFO = "Objek Terbang Tak Dikenal",
+    IGUI_VehicleNameUFO = "Objek terbang yang tidak dikenal",
 
-    IGUI_VehicleNameBell206Spiffo = "Spiffo Kekuatan Satu",
-    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (Jatuh)",
-    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (Badan Pesawat)",
-    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (Ekor)",
-    IGUI_VehicleNameTISIceCreamTruck = "Truk Es Krim",
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force One",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (jatuh)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (badan pesawat)",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (ekor)",
+    IGUI_VehicleNameTISIceCreamTruck = "Truk es krim",
 
-    IGUI_VehicleNameRoflCopter = "KESALAHAN: Anomali Interdimensi",
+    IGUI_VehicleNameRoflCopter = "Kesalahan: Anomali interdimensional",
 
-    IGUI_VehicleNameBell206IRS = "Bell 206 Edisi IRS",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 Edisi IRS (Jatuh)",
-    IGUI_VehicleNameBell206IRSFuselage = "Edisi Bell 206 IRS (Badan Pesawat)",
-    IGUI_VehicleNameBell206IRSTail = "Bell 206 Edisi IRS (Ekor)",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (jatuh)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (badan pesawat)",
+    IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (Tail)",
 
     IGUI_VehicleNameSpiffoBurger = "Paket Perawatan Spiffo",
 }

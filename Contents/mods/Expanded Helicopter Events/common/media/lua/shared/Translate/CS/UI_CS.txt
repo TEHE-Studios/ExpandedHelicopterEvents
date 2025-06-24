@@ -1,11 +1,11 @@
 UI_CS = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "RozÅ¡Ã­Å™enÃ© akce vrtulnÃ­kÅ¯"
-    UI_Config_sandBoxMovedText = "MoÅ¾nosti konfigurace naleznete v moÅ¾nostech karantÃ©ny.",
-    UI_Config_voiceTitle = "HlasovÃ© balÃ­Äky",
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Rozšíøené události vrtulníku"
+    UI_Config_sandBoxMovedText = "Monosti konfigurace najdete v monostech karantény.",
+    UI_Config_voiceTitle = "Hlasové balíèky",
 
-    UI_Config_resetEventsToolTip = "ResetovÃ¡nÃ­ naplÃ¡novanÃ½ch udÃ¡lostÃ­ v pÅ™Ã­padÄ› nouze:",
-    UI_Config_resetEvents = "Obnovit udÃ¡losti",
-    UI_Config_eventMarkersOnToolTip1 = "ZapnutÃ­m tÃ©to moÅ¾nosti povolÃ­te znaÄky udÃ¡lostÃ­.",
-    UI_Config_eventMarkersOnToolTip2 = "PoznÃ¡mka: ZnaÄky udÃ¡lostÃ­ lze pÅ™etÃ¡hnout.",
-    UI_Config_eventMarkersOn = "ZnaÄky udÃ¡lostÃ­",
+    UI_Config_resetEventsToolTip = "Resetujte naplánované události v pøípadì nouze:",
+    UI_Config_resetEvents = "Resetování událostí",
+    UI_Config_eventMarkersOnToolTip1 = "Pøepnìte to a povolte znaèky událostí.",
+    UI_Config_eventMarkersOnToolTip2 = "Poznámka: Znaèky událostí lze pøetáhnout.",
+    UI_Config_eventMarkersOn = "Znaèky událostí",
 }

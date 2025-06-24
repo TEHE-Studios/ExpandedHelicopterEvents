@@ -1,26 +1,26 @@
 Tooltip_HU = {
-    Tooltip_dismantle_helicopterpart = "Fújópisztoly és hegesztőmaszk használata fémet eredményez.",
-    Tooltip_open_boxes_barehanded = "Gyorsabb lenne valami élessel kinyitni.",
-    Tooltip_Parachute = "Feltéphető, így szakadt ruha készíthető.",
-    Tooltip_EnergyBar = "Túlélőkészletekhez csomagolt energiarúd. A PT&D gyártója.",
-    Tooltip_SurvivalVest = "Standard kiadású túlélőmellény katonai pilóták számára.",
-    Tooltip_SurvivalVestBlack = "Szabványos túlélőmellény rendőrségi kutatáshoz és mentéshez.",
-    Tooltip_SPHMilitary = "Szabványos katonai helikopter sisak."
-    Tooltip_SPHBlack = "Szabványos katonai helikopter sisak fekete színben.",
-    Tooltip_SPHPolice = "A rendőrség légiszárnyai által használt helikopter sisak.",
-    Tooltip_SPHCivilian = "A civil pilóták által használt helikopter sisak.",
+    Tooltip_dismantle_helicopterpart = "A Blowtorch és a hegesztő maszk használata fémet eredményez.",
+    Tooltip_open_boxes_barehanded = "Gyorsabb lenne, ha valami élessel kinyílik.",
+    Tooltip_Parachute = "Szakítható, hogy szakadt ruhát készítsen.",
+    Tooltip_EnergyBar = "A túlélési készletekhez csomagolt energia bár. A PT&D gyártása.",
+    Tooltip_SurvivalVest = "Szabványos kiadású túlélési mellény a katonai pilóták számára.",
+    Tooltip_SurvivalVestBlack = "Szabványos kiadású túlélési mellény a rendõrségi kutatáshoz és mentéshez.",
+    Tooltip_SPHMilitary = "Szabványos kiadás katonai helikopter sisak."
+    Tooltip_SPHBlack = "Szabványos kiadású katonai helikopter sisak.",
+    Tooltip_SPHPolice = "Helikopter sisak, amelyet a rendőrségi légszárnyak használnak.",
+    Tooltip_SPHCivilian = "Helikopter sisak, amelyet a polgári pilóták használnak.",
 
-    Tooltip_FlyerCDC = "Úgy néz ki, mint egy egészségügyi tájékoztató szórólap.",
-    Tooltip_FlyerMilitary = "Úgy néz ki, mint egy szórólap a katonaságtól.",
+    Tooltip_FlyerCDC = "Úgy néz ki, mint egy egészségügyi tanácsadó szórólap.",
+    Tooltip_FlyerMilitary = "Úgy néz ki, mint a katonaság értesítési szórólapja.",
     Tooltip_CivilDefense = "Úgy néz ki, mint egy polgári védelmi szórólap.",
 
-    Tooltip_WaterSealed = "Az Egyesült Államok kormánya által forgalmazott Sealed Water Ration."
-    Tooltip_WaterUnsealed = "Az Egyesült Államok kormánya által terjesztett lezáratlan vízadag." 
+    Tooltip_WaterSealed = "Az Egyesült Államok kormánya által elosztott lezárt vízhatás."
+    Tooltip_WaterUnsealed = "Az Egyesült Államok kormánya által elosztott zárt vízi adag." 
 
-    Tooltip_SupplyBox = "Ellátó doboz az Egyesült Államok kormányától."
-    Tooltip_SamaritanBox = "Ellátási doboz titokzatos szamaritánusok csoportjától.",
-    Tooltip_BanditBox = "Személyes tárolódoboz. Olvas"MY SHIT, DONT TOUCH!",
+    Tooltip_SupplyBox = "Az Egyesült Államok kormányának ellátó doboza."
+    Tooltip_SamaritanBox = "Szolgáltató doboz a titokzatos szamaritánok csoportjából.",
+    Tooltip_BanditBox = "Személyes ütköző doboz. Olvasható"MY SHIT, DONT TOUCH!",
 
-    Tooltip_SignalFlare = "Jelző fáklya. Tilos beltérben tüzelni.",
-    Tooltip_HandFlare = "Fellobbanás. Tilos beltérben tüzelni."
+    Tooltip_SignalFlare = "Jelző fáklya. Ne lőjön beltérben.",
+    Tooltip_HandFlare = "Fellobbanás. Ne lőjön beltérben."
 }

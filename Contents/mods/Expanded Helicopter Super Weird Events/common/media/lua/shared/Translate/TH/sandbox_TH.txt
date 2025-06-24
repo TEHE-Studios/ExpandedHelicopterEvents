@@ -1,27 +1,27 @@
 Sandbox_TH = {
 
-    Sandbox_ExpandedHeli_EventSpiffocopter = "สปิฟโฟ",
-    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Spiffo เฉลิมฉลองวันเกิดของเขาบ่อยแค่ไหน",
+    Sandbox_ExpandedHeli_EventSpiffocopter = "สปิฟฟ์",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Spiffo ฉลองวันเกิดของเขาบ่อยแค่ไหน",
 
-    Sandbox_ExpandedHeli_EventTISCreamery = "อินดี้สโตนครีมเมอรี่",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ มาเยี่ยมบ่อยแค่ไหน",
+    Sandbox_ExpandedHeli_EventTISCreamery = "creameries indiestone",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ มาเยี่ยมชมบ่อยแค่ไหน",
 
-    Sandbox_ExpandedHeli_EventIRS = "กรมสรรพากร",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "คุณหลีกเลี่ยงการจ่ายภาษีบ่อยเพียงใด",
+    Sandbox_ExpandedHeli_EventIRS = "IRS",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "คุณหลีกเลี่ยงการจ่ายภาษีบ่อยแค่ไหน",
 
     Sandbox_ExpandedHeli_EventUFO = "ยูเอฟโอ",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "คุณอยากจะเชื่อบ่อยแค่ไหน",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "คุณอยากเชื่อบ่อยแค่ไหน",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "แซนดี้ คลอว์",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "คุณอยากจะลักพาตัวแซนดี้คลอว์และตีเขาด้วยไม้บ่อยแค่ไหน",
+    Sandbox_ExpandedHeli_EventSandyClaws = "กรงเล็บทราย",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "คุณต้องการลักพาตัวกรงเล็บทรายบ่อยแค่ไหนและทุบตีเขาด้วยไม้เท้า",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "การโจมตีของเหล่าสตริปเปอร์",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "คุณอยากมีความสุขบ่อยแค่ไหน",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "การโจมตีของนักเต้นระบำ",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "คุณต้องการมีช่วงเวลาที่ดีแค่ไหน",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "เฮลิคอปเตอร์ (มีลิขสิทธิ์)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "ต้องการขึ้น HELIKOPTER บ่อยแค่ไหน HELIKOPTER. (มีลิขสิทธิ์)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (ลิขสิทธิ์)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "คุณต้องการ Helikopter บ่อยแค่ไหน Helikopter (ลิขสิทธิ์)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "บัฟฟ์ คอร์เรลล์ (ลิขสิทธิ์)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "คุณอยากเต้นบ่อยแค่ไหน (มีลิขสิทธิ์)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (ลิขสิทธิ์)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "คุณแค่อยากเต้นบ่อยแค่ไหน (ลิขสิทธิ์)",
 
 }

@@ -1,11 +1,11 @@
 UI_TR = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "GeniÅŸletilmiÅŸ Helikopter Etkinlikleri",
-    UI_Config_sandBoxMovedText = "YapÄ±landÄ±rma seÃ§enekleri sandbox seÃ§eneklerinde bulunabilir.",
-    UI_Config_voiceTitle = "Ses Paketleri",
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Genişletilmiş helikopter olayları"
+    UI_Config_sandBoxMovedText = "Yapılandırma seçenekleri Sandbox seçeneklerinde bulunabilir.",
+    UI_Config_voiceTitle = "Sesli paketler",
 
-    UI_Config_resetEventsToolTip = "Acil durumda planlanmÄ±ÅŸ etkinlikleri sÄ±fÄ±rla:",
-    UI_Config_resetEvents = "Etkinlikleri SÄ±fÄ±rla",
-    UI_Config_eventMarkersOnToolTip1 = "Etkinlik iÅŸaretÃ§ilerini etkinleÅŸtirmek iÃ§in bunu aÃ§Ä±n.",
-    UI_Config_eventMarkersOnToolTip2 = "Not: Etkinlik iÅŸaretÃ§ileri sÃ¼rÃ¼klenebilir.",
-    UI_Config_eventMarkersOn = "Etkinlik Ä°ÅŸaretÃ§ileri",
+    UI_Config_resetEventsToolTip = "Acil durumda planlanan olayları sıfırlayın:",
+    UI_Config_resetEvents = "Olayları Sıfırla",
+    UI_Config_eventMarkersOnToolTip1 = "Olay işaretleyicilerini etkinleştirmek için bunu açın.",
+    UI_Config_eventMarkersOnToolTip2 = "Not: Olaylar belirteçleri sürüklenebilir.",
+    UI_Config_eventMarkersOn = "Olay İşaretleri",
 }

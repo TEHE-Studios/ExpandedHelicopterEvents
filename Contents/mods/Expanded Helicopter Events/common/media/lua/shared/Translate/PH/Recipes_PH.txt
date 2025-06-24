@@ -1,3 +1,3 @@
 Recipe_PH = {
-    Recipe_Open_Supplies = "Buksan ang Mga Kagamitan",
+    Recipe_Open_Supplies = "Bukas na mga gamit",
 }

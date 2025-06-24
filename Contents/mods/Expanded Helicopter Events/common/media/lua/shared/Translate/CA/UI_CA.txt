@@ -1,11 +1,11 @@
 UI_CA = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "Esdeveniments d'helicÃ²pters ampliats"
-    UI_Config_sandBoxMovedText = "Les opcions de configuraciÃ³ es poden trobar a les opcions sandbox.",
-    UI_Config_voiceTitle = "Paquets de veu",
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Esdeveniments helic�pters ampliats"
+    UI_Config_sandBoxMovedText = "Les opcions de configuraci� es poden trobar a les opcions de Sandbox.",
+    UI_Config_voiceTitle = "Packs de veu",
 
-    UI_Config_resetEventsToolTip = "Restableix els esdeveniments programats en cas d'emergÃ¨ncia:",
-    UI_Config_resetEvents = "Restableix els esdeveniments",
-    UI_Config_eventMarkersOnToolTip1 = "Activa aquesta opciÃ³ per activar els marcadors d'esdeveniments.",
-    UI_Config_eventMarkersOnToolTip2 = "Nota: els marcadors d'esdeveniments es poden arrossegar.",
+    UI_Config_resetEventsToolTip = "Restableix els esdeveniments programats en cas d?emerg�ncia:",
+    UI_Config_resetEvents = "Restablir esdeveniments",
+    UI_Config_eventMarkersOnToolTip1 = "Comenceu -ho per habilitar els marcadors d'esdeveniments.",
+    UI_Config_eventMarkersOnToolTip2 = "Nota: es poden arrossegar els marcadors d'esdeveniments.",
     UI_Config_eventMarkersOn = "Marcadors d'esdeveniments",
 }

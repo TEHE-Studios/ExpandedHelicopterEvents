@@ -1,18 +1,18 @@
 IG_UI_JP = {
     IGUI_VehicleNameUFO = "ユーフォー",
 
-    IGUI_VehicleNameBell206Spiffo = "スピフォ フォースワン",
-    IGUI_VehicleNameBell206SpiffoCrashed = "スピッフォ フォースワン (墜落)",
-    IGUI_VehicleNameBell206SpiffoFuselage = "スピッフォ フォースワン（胴体）",
-    IGUI_VehicleNameBell206SpiffoTail = "スピッフォ フォースワン（尾）",
+    IGUI_VehicleNameBell206Spiffo = "Spiffo Force 1",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One（クラッシュ）",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One（胴体）",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One（尾）",
     IGUI_VehicleNameTISIceCreamTruck = "アイスクリームトラック",
 
-    IGUI_VehicleNameRoflCopter = "エラー: 次元間異常",
+    IGUI_VehicleNameRoflCopter = "エラー：次元間異常",
 
-    IGUI_VehicleNameBell206IRS = "ベル 206 IRS エディション",
-    IGUI_VehicleNameBell206IRSCrashed = "ベル 206 IRS エディション (クラッシュ)",
-    IGUI_VehicleNameBell206IRSFuselage = "ベル 206 IRS エディション (胴体)",
-    IGUI_VehicleNameBell206IRSTail = "ベル 206 IRS エディション (テール)",
+    IGUI_VehicleNameBell206IRS = "ベル206 IRSエディション",
+    IGUI_VehicleNameBell206IRSCrashed = "ベル206 IRSエディション（クラッシュ）",
+    IGUI_VehicleNameBell206IRSFuselage = "ベル206 IRSエディション（胴体）",
+    IGUI_VehicleNameBell206IRSTail = "ベル206 IRSエディション（テール）",
 
-    IGUI_VehicleNameSpiffoBurger = "スピフォのケアパッケージ",
+    IGUI_VehicleNameSpiffoBurger = "Spiffoのケアパッケージ",
 }

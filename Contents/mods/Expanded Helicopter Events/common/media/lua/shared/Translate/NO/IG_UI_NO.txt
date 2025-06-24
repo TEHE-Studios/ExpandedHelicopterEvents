@@ -1,27 +1,27 @@
 IG_UI_NO = {
     IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "Ã˜delagt UH-60A (flykropp)",
-    IGUI_VehicleNameUH60GreenTail = "Ã˜delagt UH-60A (hale)",
+    IGUI_VehicleNameUH60GreenFuselage = "Vraket UH-60A (flykropp)",
+    IGUI_VehicleNameUH60GreenTail = "Vraket uh-60a (hale)",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A Ã¸rkenen",
-    IGUI_VehicleNameUH60DesertFuselage = "Ã˜delagt UH-60A-Ã¸rken (flykropp)",
-    IGUI_VehicleNameUH60DesertTail = "Ã˜delagt UH-60A-Ã¸rken (hale)",
+    IGUI_VehicleNameUH60Desert = "UH-60A ørken",
+    IGUI_VehicleNameUH60DesertFuselage = "Vraket uh-60a ørken (flykropp)",
+    IGUI_VehicleNameUH60DesertTail = "Vraket UH-60A Desert (hale)",
 
     IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
-    IGUI_VehicleNameUH60MedevacFuselage = "Havarerte UH-60A Medevac (flykropp)",
-    IGUI_VehicleNameUH60MedevacTail = "Ã˜delagt UH-60A Medevac (hale)",
+    IGUI_VehicleNameUH60MedevacFuselage = "Vraket UH-60A Medevac (flykropp)",
+    IGUI_VehicleNameUH60MedevacTail = "Vraket UH-60A medevac (hale)",
 
-    IGUI_VehicleNameBell206LBMW = "Nyheter Helicopter",    
+    IGUI_VehicleNameBell206LBMW = "Nyhetshelikopter",    
     IGUI_VehicleNameBell206LBMWFuselage = "Nyhetshelikopter (flykropp)",
     IGUI_VehicleNameBell206LBMWTail = "Nyhetshelikopter (hale)",
 
-    IGUI_VehicleNameBell206Police = "Politihelikopter",
-    IGUI_VehicleNameBell206PoliceFuselage = "Politihelikopter (flykropp)",
-    IGUI_VehicleNameBell206PoliceTail = "Politihelikopter (hale)",
+    IGUI_VehicleNameBell206Police = "Politiets helikopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Politiets helikopter (flykropp)",
+    IGUI_VehicleNameBell206PoliceTail = "Politiets helikopter (hale)",
 
-    IGUI_VehicleNameBell206Survivalist = "Sivilt helikopter",
+    IGUI_VehicleNameBell206Survivalist = "Civilian Helicopter",
     
-    IGUI_VehicleNameFEMASupplyDrop = "NÃ¸dforsyningsfall",
+    IGUI_VehicleNameFEMASupplyDrop = "Nødforsyningsfall",
     IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
 
     IGUI_Spent = "Brukt",

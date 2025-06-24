@@ -1,56 +1,56 @@
 Sandbox_DA = {
-    Sandbox_ExpandedHeli = "Udvidede Helicopter Events",
+    Sandbox_ExpandedHeli = "Udvidede helikopterbegivenheder",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Aldrig"
-    Sandbox_ExpandedHeli_Frequency_option2 = "SjÃ¦lden",
+    Sandbox_ExpandedHeli_Frequency_option2 = "Sjælden",
     Sandbox_ExpandedHeli_Frequency_option3 = "Ualmindelig",
-    Sandbox_ExpandedHeli_Frequency_option4 = "FÃ¦lles",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Fælles",
     Sandbox_ExpandedHeli_Frequency_option5 = "Hyppig",
     Sandbox_ExpandedHeli_Frequency_option6 = "Sindssyg",
 
-    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Overgang til luftangreb",
-    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "VÃ¦lg sand, hvis du vil have en luftangrebsbegivenhed for at signalere et skift fra mindre udfordrende begivenheder i det tidlige spil til mere fjendtlige begivenheder i det sene spil.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Luftangrebsovergang",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Vælg sandt, hvis du vil have en Air Raid-begivenhed til at signalere et skift fra mindre udfordrende begivenheder med tidlige spil til mere fjendtlige begivenheder med sent spil.",
 
     Sandbox_ExpandedHeli_EventJet = "Jets",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Hvor hyppige jethÃ¦ndelser forekommer.<br>Jets flyver forbi spillere og forÃ¥rsager hordebevÃ¦gelser.",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Hvor hyppige jetbegivenheder forekommer. <Br> Jets flyver af spillere, der forårsager horde bevægelse.",
 
     Sandbox_ExpandedHeli_EventNews = "Nyheder",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Hvor hyppige nyhedshÃ¦ndelser opstÃ¥r.<br>Nyhedsophuggere vil gribe ind pÃ¥ enhver borger, de finder, og fÃ¸lge dem rundt i kort tid.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Hvor hyppige nyhedsbegivenheder forekommer. <Br> Nyhedschoppere vil finpudse på enhver borger, de finder, og følg dem rundt i kort tid.",
 
     Sandbox_ExpandedHeli_EventPolice = "Politi",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Hvor hyppige politibegivenheder forekommer.<br>Politiet vil tage sagen i egen hÃ¥nd og eskortere borgere rundt, mens de skyder pÃ¥ zombier.",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Hvor hyppige politiarrangementer forekommer. <Br> Politiet vil tage sagerne i deres egne hænder og eskortere borgere rundt, mens de fyrer på zombier.",
 
-    Sandbox_ExpandedHeli_EventMilitary = "MilitÃ¦r",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Hvor hyppige militÃ¦re begivenheder forekommer.<br>MilitÃ¦ret vil udvikle sig gennem stadier: advare borgere, udrens de udÃ¸de, og udrens i sidste ende alt, der bevÃ¦ger sig.",
+    Sandbox_ExpandedHeli_EventMilitary = "Militær",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Hvor hyppige militære begivenheder forekommer. <Br> Militæret vil komme videre gennem faser: advare borgere, rense de udøde og derefter i sidste ende rense alt, hvad der bevæger sig.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "FEMA Aid Drops",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Hvor hyppige hÃ¦ndelser med FEMA-bistandstab forekommer.<br>FEMA vil gennemfÃ¸re nÃ¸dhjÃ¦lp tidligt i apokalypsen.",
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA -bistand falder",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Hvor hyppige FEMA Aid Drop -begivenheder forekommer. <Br> FEMA vil gennemføre hjælpedele tidligt i apokalypsen.",
 
     Sandbox_ExpandedHeli_EventSurvivor = "Overlevende",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Hvor hyppige overlevende begivenheder forekommer.<br>Overlevende vil kun flyve forbi pÃ¥ spejdermissioner, der forÃ¥rsager hordebevÃ¦gelser.",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Hvor hyppige overlevelsesbegivenheder forekommer. <Br> overlevende vil kun flyby på spejderopgaver, der forårsager horde bevægelse.",
 
     Sandbox_ExpandedHeli_EventRaider = "Raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Hvor hyppige raider-begivenheder forekommer.<br>Raiders vil gribe ind pÃ¥ overlevende for at plage dem for lidt underholdning.",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Hvor hyppige Raider -begivenheder forekommer. <Br> Raiders vil finpudse på overlevende for at plage dem for noget underholdning.",
 
-    Sandbox_ExpandedHeli_EventSamaritan = "samaritanere",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Hvor hyppigt forekommer samaritanerbegivenheder.<br>Samaritanerne vil aflevere forsyninger for at hjÃ¦lpe overlevende.",
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritaner",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Hvor hyppige samaritanske begivenheder forekommer. <Br> Samaritaner vil aflevere forsyninger for at hjælpe de overlevende.",
 
     Sandbox_ExpandedHeli_StartDay = "Start dag",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Dette er, hvad dagen ind i spillet hÃ¦ndelser finder sted. Du skal tage hÃ¸jde for"months into the apocalypse"indstillinger.",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Dette er, hvad dag i spillet begivenheder forekommer. Du bliver nødt til at tage højde for"months into the apocalypse"Indstillinger.",
 
-    Sandbox_ExpandedHeli_SchedulerDuration = "PlanlÃ¦ggerens varighed",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Hvor mange dage planlÃ¦ggeren kÃ¸rer fra startdagen.<br>PlanlÃ¦ggeren justerer hÃ¦ndelsesforlÃ¸bet, sÃ¥ det passer til denne varighed.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Planlægningsvarighed",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Hvor mange dage vil planlæggeren køre fra startdagen. <Br> Scheduleren justerer begivenhedsprogression for at passe til denne varighed.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "FortsÃ¦t med at planlÃ¦gge begivenheder ud over varighed",
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normalt slutter planlÃ¦ggeren ved varighedsgrÃ¦nsen, hvis denne slÃ¥s til, fortsÃ¦tter planlÃ¦gningen af â€‹â€‹begivenheder ud over varigheden. Begivenheder vil stadig gÃ¥ gennem stadier i henhold til varigheden, men begivenheder stopper aldrig med at blive planlagt.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Fortsæt med at planlægge begivenheder ud over varigheden",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Normalt slutter planlæggeren ved varighedsgrænsen, idet det skyder dette på fortsætter med at planlægge begivenheder ud over varigheden. <Br> -begivenheder vil stadig komme videre gennem faser i henhold til varigheden, men begivenheder vil aldrig stoppe med at blive planlagt.",
 
-    Sandbox_ExpandedHeli_ContScheduling_option1 = "Ingen fortsat planlÃ¦gning"
-    Sandbox_ExpandedHeli_ContScheduling_option2 = "FortsÃ¦t planlÃ¦gning: Alle begivenheder",
-    Sandbox_ExpandedHeli_ContScheduling_option3 = "FortsÃ¦t planlÃ¦gning: Kun til sent spil",
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Ingen fortsat planlægning"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Fortsæt planlægningen: Alle begivenheder",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Fortsæt med at planlægge: Kun sent på spillet",
 
-    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Vejret vil pÃ¥virke begivenhederne",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Om vejret vil forhindre begivenheder eller forÃ¥rsage deres styrt.",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Vejret vil påvirke begivenheder",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Om vejret vil forhindre begivenheder eller forårsage deres nedbrud.",
 
-    Sandbox_ExpandedHeli_CrashChanceMulti = "Crash Chance multiplikator",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Dette ganges med crash chance, 0 vil forhindre nedbrud alle sammen.",
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Crash Chance Multiplier",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Dette multipliceres mod crash -chance, 0 forhindrer nedbrud sammen.",
 }

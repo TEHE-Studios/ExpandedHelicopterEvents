@@ -1,5 +1,5 @@
 UI_ES = {
-    UI_Intro1 = "Estos son los tiempos finales",
-    UI_Intro2 = "SIN EMBARGO, USTED NO PUDO DECLARAR TODOS SUS INGRESOS BRUTOS",
-    UI_Intro3 = "Así es como cometiste una EVASIÓN FISCAL",
+    UI_Intro1 = "Estos son los finales finales",
+    UI_Intro2 = "Sin embargo, no ha declarado todo su ingreso bruto",
+    UI_Intro3 = "Así es como cometió evasión fiscal",
 }

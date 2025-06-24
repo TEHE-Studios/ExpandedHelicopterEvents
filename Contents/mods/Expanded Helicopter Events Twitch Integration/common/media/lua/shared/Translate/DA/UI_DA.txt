@@ -1,11 +1,11 @@
 UI_DA = {
-    UI_Config_twitchIntegrationText = "Twitch-integration",
-    UI_Config_twitchIntegrationToolTip1 = "Stream deck eller et lignende program er påkrævet for problemfri integration.",
-    UI_Config_twitchIntegrationToolTip2 = "Alternativt kan du bruge de numeriske taster manuelt.",
-    UI_Config_twitchIntegrationOnly = "Deaktiver begivenheder uden for twitch-integration",
-    UI_Config_twitchStreamerTargeted = "Kun mål co-op vært",
-    UI_Config_twitchHoursBeforeEventsAllowed = "In-game timer før begivenheder kan finde sted",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hvor mange timer i spillet før begivenheder er tilladt.",
-    UI_Config_twitchHoursDelayBetweenEvents = "Hvor mange timer i spillet skal der gå mellem begivenheder"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hvor mange timer i spillet skal der gå mellem begivenheder."
+    UI_Config_twitchIntegrationText = "Twitch Integration",
+    UI_Config_twitchIntegrationToolTip1 = "Streamdæk eller et lignende program er påkrævet til problemfri integration.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternativt kan du bruge numpad -tasterne manuelt.",
+    UI_Config_twitchIntegrationOnly = "Deaktiver begivenheder uden for Twitch Integration",
+    UI_Config_twitchStreamerTargeted = "Mål kun co-op vært",
+    UI_Config_twitchHoursBeforeEventsAllowed = "I spillet timer før begivenheder kan forekomme",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Hvor mange i spillet timer før begivenheder er tilladt.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Hvor mange timer i spillet skal passere mellem begivenheder"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Hvor mange timer i spillet skal passere mellem begivenheder."
 }

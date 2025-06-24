@@ -1,9 +1,9 @@
 ContextMenu_PT = {
-    ContextMenu_DownHoodie = "Capuz abaixado",
-    ContextMenu_VisorUp = "Viseira para cima",
-    ContextMenu_VisorDown = "Viseira abaixada",
+    ContextMenu_DownHoodie = "Hood para baixo",
+    ContextMenu_VisorUp = "Viseira",
+    ContextMenu_VisorDown = "Viseira para baixo",
     ContextMenu_Tighten = "Apertar",
-    ContextMenu_Untighten = "Desapertar",
+    ContextMenu_Untighten = "Não ligado",
 
-    IGUI_VehiclePartHelicopterInterior = "Interior do helicÃ³ptero",
+    IGUI_VehiclePartHelicopterInterior = "Interior de helicóptero",
 }

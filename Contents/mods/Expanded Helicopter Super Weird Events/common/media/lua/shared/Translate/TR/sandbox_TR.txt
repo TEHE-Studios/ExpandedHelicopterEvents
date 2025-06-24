@@ -1,27 +1,27 @@
 Sandbox_TR = {
 
-    Sandbox_ExpandedHeli_EventSpiffocopter = "Şifon",
-    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Spiffo doğum gününü ne sıklıkla kutluyor?",
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Cüretkar",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Spiffo doğum gününü ne kadar sık ​​kutluyor.",
 
-    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Krema Fabrikaları",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ ne sıklıkla ziyarete geliyor.",
+    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Kremileri",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ'nin ne kadar sık ​​ziyarete gelmesi.",
 
     Sandbox_ExpandedHeli_EventIRS = "IRS",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "Vergilerinizi ödemekten ne sıklıkla kaçınıyorsunuz?",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Vergilerinizi ödemekten ne kadar kaçınırsınız.",
 
     Sandbox_ExpandedHeli_EventUFO = "UFO",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "Ne kadar sıklıkla inanmak isterseniz isteyin.",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Ne sıklıkta inanmak istiyorsun.",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "Kumlu Pençeler",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Sandy Claws'ı ne sıklıkla kaçırıp sopayla dövmek istiyorsunuz.",
+    Sandbox_ExpandedHeli_EventSandyClaws = "Kumlu pençeler",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Sandy pençelerini ne kadar sık ​​kaçırmak ve onu bir çubukla dövmek istersiniz.",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Stripperların Saldırısı",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Ne sıklıkla iyi vakit geçirmek istiyorsunuz.",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Striptizcilerin saldırısı",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Ne kadar sık ​​vakit geçirmek istersiniz.",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (Telif Hakkı)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "HELİKOPTER, HELİKOPTER'e ne sıklıkla binmek istiyorsunuz? (Telif hakkı saklıdır)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helenikopter (telif hakkıyla korunan)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Helenkopter, Helenikopter için ne sıklıkta. (Telif hakkıyla korunan)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (Telif Hakkı)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Ne sıklıkla sadece dans etmek istiyorsunuz? (Telif Hakkı)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (telif hakkıyla korunan)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Ne kadar sık ​​sadece dans etmek istiyorsun. (Telif hakkıyla korunan)",
 
 }

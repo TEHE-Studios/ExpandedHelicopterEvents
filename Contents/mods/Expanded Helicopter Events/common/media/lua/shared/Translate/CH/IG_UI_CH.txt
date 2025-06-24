@@ -1,28 +1,28 @@
 IG_UI_CH = {
     IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "失事的 UH-60A（機身）",
-    IGUI_VehicleNameUH60GreenTail = "墜毀的 UH-60A（尾部）",
+    IGUI_VehicleNameUH60GreenFuselage = "破壞了UH-60A（機身）",
+    IGUI_VehicleNameUH60GreenTail = "破壞了UH-60A（尾巴）",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A 沙漠",
-    IGUI_VehicleNameUH60DesertFuselage = "失事的 UH-60A 沙漠（機身）",
-    IGUI_VehicleNameUH60DesertTail = "失事的 UH-60A 沙漠直升機（尾部）",
+    IGUI_VehicleNameUH60Desert = "UH-60A沙漠",
+    IGUI_VehicleNameUH60DesertFuselage = "破壞了UH-60A沙漠（機身）",
+    IGUI_VehicleNameUH60DesertTail = "破壞了UH-60A沙漠（尾巴）",
 
-    IGUI_VehicleNameUH60Medevac = "UH-60A 醫療直升機",
-    IGUI_VehicleNameUH60MedevacFuselage = "失事的 UH-60A 醫療後送機（機身）",
-    IGUI_VehicleNameUH60MedevacTail = "失事的 UH-60A 醫療後送機（尾部）",
+    IGUI_VehicleNameUH60Medevac = "UH-60A MEDEVAC",
+    IGUI_VehicleNameUH60MedevacFuselage = "破壞了UH-60A MEDEVAC（機身）",
+    IGUI_VehicleNameUH60MedevacTail = "破壞了UH-60A MEDEVAC（尾巴）",
 
     IGUI_VehicleNameBell206LBMW = "新聞直升機",    
     IGUI_VehicleNameBell206LBMWFuselage = "新聞直升機（機身）",
-    IGUI_VehicleNameBell206LBMWTail = "新聞直升機（尾部）",
+    IGUI_VehicleNameBell206LBMWTail = "新聞直升機（尾巴）",
 
-    IGUI_VehicleNameBell206Police = "警用直升機",
-    IGUI_VehicleNameBell206PoliceFuselage = "警用直升機（機身）",
-    IGUI_VehicleNameBell206PoliceTail = "警用直升機（尾部）",
+    IGUI_VehicleNameBell206Police = "警察直升機",
+    IGUI_VehicleNameBell206PoliceFuselage = "警察直升機（機身）",
+    IGUI_VehicleNameBell206PoliceTail = "警察直升機（尾巴）",
 
-    IGUI_VehicleNameBell206Survivalist = "民用直升機",
+    IGUI_VehicleNameBell206Survivalist = "平民直升機",
     
-    IGUI_VehicleNameFEMASupplyDrop = "緊急空投物資",
-    IGUI_VehicleNameSurvivorSupplyDrop = "撒瑪利亞人物資空投",
+    IGUI_VehicleNameFEMASupplyDrop = "緊急供應下降",
+    IGUI_VehicleNameSurvivorSupplyDrop = "撒瑪利亞供應下降",
 
     IGUI_Spent = "花費",
     IGUI_Lit = "點燃",

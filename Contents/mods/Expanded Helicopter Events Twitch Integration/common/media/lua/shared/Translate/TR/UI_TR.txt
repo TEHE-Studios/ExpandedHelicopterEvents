@@ -1,11 +1,11 @@
 UI_TR = {
     UI_Config_twitchIntegrationText = "Twitch Entegrasyonu",
-    UI_Config_twitchIntegrationToolTip1 = "Kusursuz entegrasyon için Stream Deck veya benzeri bir programa ihtiyaç vardır.",
-    UI_Config_twitchIntegrationToolTip2 = "Alternatif olarak sayısal tuş takımını manuel olarak da kullanabilirsiniz.",
-    UI_Config_twitchIntegrationOnly = "Twitch entegrasyonunun dışındaki etkinlikleri devre dışı bırak",
-    UI_Config_twitchStreamerTargeted = "Yalnızca hedef kooperatif sunucusu",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Olayların Gerçekleşmesinden Önceki Oyun İçi Saatler",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Etkinlikler başlamadan önce oyun içinde kaç saat geçirileceği.",
-    UI_Config_twitchHoursDelayBetweenEvents = "Etkinlikler arasında oyun içinde kaç saat geçmesi gerekiyor?"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Etkinlikler arasında oyun içinde kaç saat geçmesi gerekiyor?"
+    UI_Config_twitchIntegrationToolTip1 = "Sakatsız entegrasyon için akış güvertesi veya benzer bir program gereklidir.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternatif olarak, Numpad anahtarlarını manuel olarak kullanabilirsiniz.",
+    UI_Config_twitchIntegrationOnly = "Twitch entegrasyonu dışındaki olayları devre dışı bırakın",
+    UI_Config_twitchStreamerTargeted = "Yalnızca hedef kooperatif ana bilgisayar",
+    UI_Config_twitchHoursBeforeEventsAllowed = "Olaylar gerçekleşmeden önce oyun içi",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Olaylara izin verilmeden kaç saat önce.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Olaylar arasında kaç oyun içi saat geçmeli"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Olaylar arasında kaç tane oyun içi saat geçmesi gerekiyor."
 }

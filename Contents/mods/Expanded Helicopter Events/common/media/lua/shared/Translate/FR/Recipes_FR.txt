@@ -1,11 +1,3 @@
 Recipe_FR = {
-	Recipe_Open_Supplies = "Ouvrir la boîte de provisions",
-	Recipe_light_Flare = "Allumer la fusée",
-	Recipe_Dismantle_Helicopter_Skirt = "Démanteler la demi-jupe",
-	Recipe_Dismantle_Main_Rotor_Blade = "Démanteler la pale du rotor principal",
-	Recipe_Dismantle_Tail_Rotor_Blade = "Démanteler la pale du rotor de la queue",
-	Recipe_Dismantle_UH-60_Door = "Démanteler la porte",
-	Recipe_Dismantle_UH-60_Window = "Démanteler la fenêtre",
-	Recipe_Dismantle_UH-60_Elevator = "Démanteler l'élévateur",
-	Recipe_Cut_up_Parachute = "Déchirer le parachute",
+    Recipe_Open_Supplies = "Ouvrir les fournitures",
 }

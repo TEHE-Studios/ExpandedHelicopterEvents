@@ -1,3 +1,3 @@
 DynamicRadio_ID = {
-	AEBS_buffcorrell = "ya apa kabar nih? itu cowok lu buffcorrell kembali lagi dengan beberapa cover musik berhak cipta, tapi bukan apa-apa selain ayam goreng, kecuali lu streamer twitch. esk. esk. esk esk. ayo cepat dan berangkat."
+	AEBS_buffcorrell = "ya apa poppin 'itu anak laki -laki Anda, Buffcorrell kembali melakukannya lagi dengan beberapa sampul musik yang dilindungi hak cipta, tetapi tidak ada yang terjadi tetapi seekor ayam, kecuali jika Anda adalah streamer Twitch. Esk. Esk. Esk Esk. Leeeeeeeeeeet mendapatkan reeeady dan. pergi."
 }

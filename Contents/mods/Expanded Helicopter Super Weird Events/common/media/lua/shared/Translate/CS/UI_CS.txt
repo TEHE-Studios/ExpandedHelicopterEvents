@@ -1,5 +1,5 @@
 UI_CS = {
-    UI_Intro1 = "TOTO JSOU ÄŒASY KONCE",
-    UI_Intro2 = "VÅ AK JSTE NEPÅ˜IHLÃSILI CELÃ SVÅ®J HRUBÃ PÅ˜ÃJEM",
-    UI_Intro3 = "TAK JSTE SE DOPOUÅ TÄšLI DAÅ‡OVÃ‰HO ÃšNIKU",
+    UI_Intro1 = "To jsou koncové èasy",
+    UI_Intro2 = "Nepodaøilo se vám však vyhlásit celı hrubı pøíjem",
+    UI_Intro3 = "Takto jste se dopustili daòovıch únikù",
 }

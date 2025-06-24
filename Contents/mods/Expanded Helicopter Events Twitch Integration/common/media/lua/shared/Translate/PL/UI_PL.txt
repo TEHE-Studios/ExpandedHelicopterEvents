@@ -1,11 +1,11 @@
 UI_PL = {
-    UI_Config_twitchIntegrationText = "Integracja z Twitchem",
-    UI_Config_twitchIntegrationToolTip1 = "Do bezproblemowej integracji wymagany jest program Stream Deck lub podobny.",
-    UI_Config_twitchIntegrationToolTip2 = "Alternatywnie możesz użyć ręcznie klawiszy numerycznych.",
+    UI_Config_twitchIntegrationText = "Integracja Twitcha",
+    UI_Config_twitchIntegrationToolTip1 = "Talia strumieniowa lub podobny program jest wymagany do bezproblemowej integracji.",
+    UI_Config_twitchIntegrationToolTip2 = "Alternatywnie możesz ręcznie używać klawiszy Numpad.",
     UI_Config_twitchIntegrationOnly = "Wyłącz zdarzenia poza integracją Twitch",
-    UI_Config_twitchStreamerTargeted = "Tylko gospodarz kooperacji docelowej",
-    UI_Config_twitchHoursBeforeEventsAllowed = "Godziny w grze przed wystąpieniem wydarzeń",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Ile godzin w grze jest dozwolonych przed wydarzeniami.",
-    UI_Config_twitchHoursDelayBetweenEvents = "Ile godzin gry musi upłynąć pomiędzy wydarzeniami"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Ile godzin gry musi upłynąć pomiędzy wydarzeniami."
+    UI_Config_twitchStreamerTargeted = "Tylko docelowy host kooperacyjny",
+    UI_Config_twitchHoursBeforeEventsAllowed = "W grze kilka godzin przed wydarzeniami może",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "Ile godzin w grze przed wydarzeniami jest dozwolone.",
+    UI_Config_twitchHoursDelayBetweenEvents = "Ile godzin w grze musi minąć między wydarzeniami"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "Ile godzin w grze musi minąć między wydarzeniami."
 }

@@ -1,11 +1,11 @@
 UI_CH = {
-    UI_Config_twitchIntegrationText = "Twitch 集成",
-    UI_Config_twitchIntegrationToolTip1 = "需要 Stream deck 或類似的程式來實現無縫整合。",
-    UI_Config_twitchIntegrationToolTip2 = "或者，您可以手動使用數字鍵盤鍵。",
-    UI_Config_twitchIntegrationOnly = "停用 twitch 整合之外的事件",
-    UI_Config_twitchStreamerTargeted = "僅針對合作社主機",
-    UI_Config_twitchHoursBeforeEventsAllowed = "遊戲中事件發生前的幾個小時",
-    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "活動開始前允許有多少個遊戲小時。",
-    UI_Config_twitchHoursDelayBetweenEvents = "活動之間必須間隔多少遊戲時間"
-    UI_Config_twitchHoursDelayBetweenEventsTooltip = "事件之間必須經過多少遊戲時間。"
+    UI_Config_twitchIntegrationText = "抽搐集成",
+    UI_Config_twitchIntegrationToolTip1 = "無縫集成需要流甲板或類似程序。",
+    UI_Config_twitchIntegrationToolTip2 = "另外，您可以手動使用NumPad鍵。",
+    UI_Config_twitchIntegrationOnly = "禁用Twitch集成以外的事件",
+    UI_Config_twitchStreamerTargeted = "僅目標合作主機",
+    UI_Config_twitchHoursBeforeEventsAllowed = "發生事件發生前的遊戲數小時",
+    UI_Config_twitchHoursBeforeEventsAllowedTooltip = "允許比賽前幾個小時。",
+    UI_Config_twitchHoursDelayBetweenEvents = "事件之間必須經過多少個遊戲中的小時"
+    UI_Config_twitchHoursDelayBetweenEventsTooltip = "事件之間必須經過多少個遊戲中的小時。"
 }

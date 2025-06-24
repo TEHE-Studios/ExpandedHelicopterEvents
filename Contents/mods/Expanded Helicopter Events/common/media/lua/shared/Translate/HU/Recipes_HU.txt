@@ -1,3 +1,3 @@
 Recipe_HU = {
-    Recipe_Open_Supplies = "Nyissa meg a Kellékek elemet",
+    Recipe_Open_Supplies = "Nyitott kellékek",
 }

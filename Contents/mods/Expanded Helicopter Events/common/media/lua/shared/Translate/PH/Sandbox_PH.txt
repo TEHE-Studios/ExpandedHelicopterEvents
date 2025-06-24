@@ -1,56 +1,56 @@
 Sandbox_PH = {
-    Sandbox_ExpandedHeli = "Pinalawak na Mga Kaganapan sa Helicopter",
+    Sandbox_ExpandedHeli = "Pinalawak na mga kaganapan sa helikopter",
 
     Sandbox_ExpandedHeli_Frequency_option1 = "Hindi kailanman"
     Sandbox_ExpandedHeli_Frequency_option2 = "Bihira",
-    Sandbox_ExpandedHeli_Frequency_option3 = "Hindi karaniwan",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Hindi pangkaraniwan",
     Sandbox_ExpandedHeli_Frequency_option4 = "Karaniwan",
     Sandbox_ExpandedHeli_Frequency_option5 = "Madalas",
-    Sandbox_ExpandedHeli_Frequency_option6 = "Nakakabaliw",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Mabaliw",
 
-    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Air Raid Transition",
-    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Pumili ng true kung gusto mo ang isang air raid event na magpahiwatig ng pagbabago mula sa hindi gaanong mapaghamong mga event sa maagang laro patungo sa mas masasamang kaganapan sa huli na laro.",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent = "Paglilipat ng Air Raid",
+    Sandbox_ExpandedHeli_AirRaidSirenEvent_tooltip = "Piliin ang Totoo kung nais mo ng isang kaganapan sa pag-raid ng hangin upang mag-signal ng isang paglipat mula sa hindi gaanong mapaghamong mga kaganapan sa maagang laro upang mas magalit na mga kaganapan sa huli-laro.",
 
-    Sandbox_ExpandedHeli_EventJet = "Mga jet",
-    Sandbox_ExpandedHeli_EventJet_tooltip = "Gaano kadalas naganap ang mga jet event.<br>Ang mga jet ay lumilipad ng mga manlalaro na nagdudulot ng paggalaw ng horde.",
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Gaano kadalas naganap ang mga kaganapan sa jet.",
 
     Sandbox_ExpandedHeli_EventNews = "Balita",
-    Sandbox_ExpandedHeli_EventNews_tooltip = "Gaano kadalas naganap ang mga kaganapan sa balita.<br>Ang mga chopper ng balita ay hahanapin ang sinumang mamamayan na kanilang mahahanap at susundan sila sa loob ng maikling panahon.",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Gaano kadalas ang mga kaganapan sa balita.",
 
-    Sandbox_ExpandedHeli_EventPolice = "Pulis",
-    Sandbox_ExpandedHeli_EventPolice_tooltip = "Gaano kadalas mangyari ang mga kaganapan sa Pulis.<br>Ang mga pulis ang magdadala ng mga bagay sa kanilang sariling mga kamay at i-escort ang mga mamamayan sa paligid habang nagpapaputok ng mga zombie.",
+    Sandbox_ExpandedHeli_EventPolice = "Pulisya",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Gaano kadalas naganap ang mga kaganapan sa pulisya.",
 
     Sandbox_ExpandedHeli_EventMilitary = "Militar",
-    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Gaano kadalas mangyari ang mga kaganapang militar.<br>Ang militar ay uunlad sa mga yugto: babalaan ang mga mamamayan, linisin ang mga undead, pagkatapos ay i-purge ang anumang gumagalaw.",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Gaano kadalas ang mga kaganapan sa militar.",
 
-    Sandbox_ExpandedHeli_EventFEMA = "Ang FEMA Aid Drops",
-    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Gaano kadalas mangyari ang mga kaganapan sa pagbaba ng tulong ng FEMA.<br>Magsasagawa ang FEMA ng mga pagbaba ng tulong nang maaga sa apocalypse.",
+    Sandbox_ExpandedHeli_EventFEMA = "Bumaba ang tulong ng FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Gaano kadalas ang mga kaganapan sa pagbagsak ng tulong ng FEMA.",
 
-    Sandbox_ExpandedHeli_EventSurvivor = "Mga nakaligtas",
-    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Gaano kadalas mangyari ang mga survivor event.<br>Ang mga survivor ay lilipad lamang sa mga scouting mission na nagdudulot ng paggalaw ng horde.",
+    Sandbox_ExpandedHeli_EventSurvivor = "Nakaligtas",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Gaano kadalas ang nagaganap na mga kaganapan sa nakaligtas.",
 
-    Sandbox_ExpandedHeli_EventRaider = "Mga raiders",
-    Sandbox_ExpandedHeli_EventRaider_tooltip = "Gaano kadalas mangyari ang mga kaganapan sa raider.<br>Ang mga raider ay hahanapin ang mga nakaligtas upang pahirapan sila para sa ilang libangan.",
+    Sandbox_ExpandedHeli_EventRaider = "Raiders",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Gaano kadalas naganap ang mga kaganapan sa raider.",
 
-    Sandbox_ExpandedHeli_EventSamaritan = "mga Samaritano",
-    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Gaano kadalas mangyari ang mga samaritan na kaganapan.<br>Ang mga Samaritano ay magdadala ng mga supply para tulungan ang mga nakaligtas.",
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritano",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Gaano kadalas naganap ang mga kaganapan sa Samaritan.",
 
-    Sandbox_ExpandedHeli_StartDay = "Araw ng Pagsisimula",
-    Sandbox_ExpandedHeli_StartDay_tooltip = "Ito ay kung anong araw sa mga kaganapan sa laro na nagaganap. Kakailanganin mong mag-factor in"months into the apocalypse"mga setting.",
+    Sandbox_ExpandedHeli_StartDay = "Simula ng araw",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Ito ang nangyayari sa mga kaganapan sa laro. Kailangan mong mag -factor sa"months into the apocalypse"Mga setting.",
 
-    Sandbox_ExpandedHeli_SchedulerDuration = "Tagal ng Scheduler",
-    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Ilang araw tumakbo ang scheduler mula sa araw ng pagsisimula.<br>Aayusin ng scheduler ang pag-usad ng kaganapan upang magkasya sa tagal na ito.",
+    Sandbox_ExpandedHeli_SchedulerDuration = "Tagal ng iskedyul",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Ilang araw ang tatakbo ng scheduler mula sa araw ng pagsisimula.",
 
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Magpatuloy sa Pag-iiskedyul ng Mga Kaganapang Lampas sa Tagal",
-    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Karaniwang nagtatapos ang scheduler sa limitasyon ng tagal, ang pag-toggle nito ay patuloy na mag-iskedyul ng mga kaganapan na lampas sa tagal. Ang mga kaganapan ay uunlad pa rin sa mga yugto ayon sa tagal ngunit ang mga kaganapan ay hindi titigil sa pag-iskedyul.",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents = "Ipagpatuloy ang pag -iskedyul ng mga kaganapan na lampas sa tagal",
+    Sandbox_ExpandedHeli_ContinueSchedulingEvents_tooltip = "Karaniwan ang scheduler ay nagtatapos sa limitasyon ng tagal, ang pag -toggling nito ay patuloy na mag -iskedyul ng mga kaganapan na lampas sa tagal.",
 
-    Sandbox_ExpandedHeli_ContScheduling_option1 = "Walang Patuloy na Pag-iiskedyul"
-    Sandbox_ExpandedHeli_ContScheduling_option2 = "Magpatuloy sa Pag-iiskedyul: Lahat ng Kaganapan",
-    Sandbox_ExpandedHeli_ContScheduling_option3 = "Magpatuloy sa Pag-iiskedyul: Late-Game Lang",
+    Sandbox_ExpandedHeli_ContScheduling_option1 = "Walang patuloy na pag -iskedyul"
+    Sandbox_ExpandedHeli_ContScheduling_option2 = "Magpatuloy sa pag -iskedyul: Lahat ng mga kaganapan",
+    Sandbox_ExpandedHeli_ContScheduling_option3 = "Magpatuloy sa pag-iskedyul: Late-game lamang",
 
-    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Ang Panahon ay Makakaapekto sa Mga Kaganapan",
-    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Kung pipigilan ng panahon ang mga kaganapan, o magiging sanhi ng kanilang pag-crash.",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Ang panahon ay makakaapekto sa mga kaganapan",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Pipigilan man ang panahon ng mga kaganapan, o maging sanhi ng kanilang pag -crash.",
 
-    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplier ng Crash Chance",
-    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Ito ay pinarami laban sa pagkakataon ng pag-crash, 0 ay mapipigilan ang lahat ng mga pag-crash.",
+    Sandbox_ExpandedHeli_CrashChanceMulti = "Multiplier ng pag -crash",
+    Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "Ito ay pinarami laban sa pag -crash ng pagkakataon, 0 ay maiiwasan ang mga pag -crash nang magkasama.",
 }

@@ -1,9 +1,9 @@
 ContextMenu_CS = {
-    ContextMenu_DownHoodie = "Kapuce dol≈Ø",
-    ContextMenu_VisorUp = "St√≠n√≠tko nahoru",
-    ContextMenu_VisorDown = "St√≠n√≠tko dol≈Ø",
-    ContextMenu_Tighten = "Ut√°hnout",
-    ContextMenu_Untighten = "Povolit",
+    ContextMenu_DownHoodie = "Hood Down",
+    ContextMenu_VisorUp = "HledÌ",
+    ContextMenu_VisorDown = "HledÌ",
+    ContextMenu_Tighten = "Ut·hnÏte",
+    ContextMenu_Untighten = "Unterickend",
 
-    IGUI_VehiclePartHelicopterInterior = "Interi√©r vrtuln√≠ku",
+    IGUI_VehiclePartHelicopterInterior = "InteriÈr vrtulnÌku",
 }

@@ -1,29 +1,29 @@
 IG_UI_FR = {
     IGUI_VehicleNameUH60Green = "UH-60A",
-    IGUI_VehicleNameUH60GreenFuselage = "Épave de l'UH-60A (fuselage)",
-    IGUI_VehicleNameUH60GreenTail = "Épave de l'UH-60A (queue)",
+    IGUI_VehicleNameUH60GreenFuselage = "Naufragé UH-60A (fuselage)",
+    IGUI_VehicleNameUH60GreenTail = "Détruit uh-60a (queue)",
 
-    IGUI_VehicleNameUH60Desert = "UH-60A désert",
-    IGUI_VehicleNameUH60DesertFuselage = "Épave de l'UH-60A désert (fuselage)",
-    IGUI_VehicleNameUH60DesertTail = "Épave du UH-60A désert (queue)",
+    IGUI_VehicleNameUH60Desert = "Désert UH-60A",
+    IGUI_VehicleNameUH60DesertFuselage = "Désert uh-60a détruit (fuselage)",
+    IGUI_VehicleNameUH60DesertTail = "Désert du désert UH-60A (queue)",
 
-    IGUI_VehicleNameUH60Medevac = "UH-60A évacuation médicale",
-    IGUI_VehicleNameUH60MedevacFuselage = "Épave de l'UH-60A évacuation médicale (fuselage)",
-    IGUI_VehicleNameUH60MedevacTail = "Épave de l'UH-60A évacuation médicale (queue)",
+    IGUI_VehicleNameUH60Medevac = "UH-60A MedEvac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Détruit uh-60a medevac (fuselage)",
+    IGUI_VehicleNameUH60MedevacTail = "Détruit uh-60a medevac (queue)",
 
-    IGUI_VehicleNameBell206LBMW = "Hélicoptère des infos",    
-    IGUI_VehicleNameBell206LBMWFuselage = "Hélicoptère des infos (fuselage)",
-    IGUI_VehicleNameBell206LBMWTail = "Hélicoptère des infos (queue)",
+    IGUI_VehicleNameBell206LBMW = "Hélicoptère de nouvelles",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Hélicoptère de nouvelles (fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "Hélicoptère de nouvelles (queue)",
 
     IGUI_VehicleNameBell206Police = "Hélicoptère de police",
     IGUI_VehicleNameBell206PoliceFuselage = "Hélicoptère de police (fuselage)",
     IGUI_VehicleNameBell206PoliceTail = "Hélicoptère de police (queue)",
 
-    IGUI_VehicleNameBell206Survivalist = "Hélicoptère de civils",
+    IGUI_VehicleNameBell206Survivalist = "Hélicoptère civil",
     
-    IGUI_VehicleNameFEMASupplyDrop = "Ravitaillement d'urgence",
-    IGUI_VehicleNameSurvivorSupplyDrop = "Ravitaillement des Samaritains",
+    IGUI_VehicleNameFEMASupplyDrop = "Baisse de l'alimentation d'urgence",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Baisse de l'alimentation samaritaine",
 
-    IGUI_Spent = "",
-    IGUI_Lit = "",
+    IGUI_Spent = "Dépensé",
+    IGUI_Lit = "Éclairé",
 }

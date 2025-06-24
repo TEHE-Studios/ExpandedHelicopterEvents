@@ -1,9 +1,9 @@
 ContextMenu_CA = {
-    ContextMenu_DownHoodie = "Caputxa cap avall",
-    ContextMenu_VisorUp = "Visera amunt",
-    ContextMenu_VisorDown = "Visera cap avall",
-    ContextMenu_Tighten = "Apretar",
-    ContextMenu_Untighten = "Desestreneu",
+    ContextMenu_DownHoodie = "Caputxa",
+    ContextMenu_VisorUp = "Visor",
+    ContextMenu_VisorDown = "Visora ??cap avall",
+    ContextMenu_Tighten = "Estirar",
+    ContextMenu_Untighten = "Desferdre",
 
-    IGUI_VehiclePartHelicopterInterior = "Interior de l'helicÃ²pter",
+    IGUI_VehiclePartHelicopterInterior = "Interior helic�pter",
 }

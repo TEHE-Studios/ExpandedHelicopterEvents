@@ -1,31 +1,9 @@
 ItemName_EN = {
-    ItemName_EHE.Boilersuit_PoliceFlying = "Police Flying Suit",
-    ItemName_EHE.Boilersuit_BlackFlying = "Black Flying Suit",
-    ItemName_EHE.Vest_PilotSurvivalVest = "SRU-21/P Survival Vest",
-    ItemName_EHE.Vest_BlackPilotSurvivalVest = "Black SRU-21/P Survival Vest",
-
-    ItemName_EHE.Jacket_DenimCutoff = "Cutoff Denim Jacket",
-
-    ItemName_EHE.Hat_SPHPolice = "Police SPH-3 Pilot Helmet",
-    ItemName_EHE.Hat_SPHPoliceVISORUP = "Police SPH-3 Pilot Helmet (Up)",
-    ItemName_EHE.Hat_SPHMilitary = "Military SPH-3 Pilot Helmet",
-    ItemName_EHE.Hat_SPHMilitaryVISORUP = "Military SPH-3 Pilot Helmet (Up)",
-    ItemName_EHE.Hat_SPHBlack = "Black SPH-3 Pilot Helmet",
-    ItemName_EHE.Hat_SPHBlackVISORUP = "Black SPH-3 Pilot Helmet (Up)",
-    ItemName_EHE.Hat_SPHCivilian = "SPH-3 Pilot Helmet",
-    ItemName_EHE.Hat_SPHCivilianVISORUP = "SPH-3 Pilot Helmet (Up)",
-
     ItemName_EHE.EvacuationFlyer = "Evacuation Flyer",
     ItemName_EHE.PreventionFlyer = "Prevention Flyer",
     ItemName_EHE.EmergencyFlyer = "Emergency Flyer",
     ItemName_EHE.QuarantineFlyer = "Quarantine Flyer",
     ItemName_EHE.NoticeFlyer = "Notice Flyer",
-
-    ItemName_EHE.EmergencyWaterRation = "Emergency Water Ration",
-    ItemName_EHE.EmergencyWaterRationOpen = "Emergency Water Ration (Open)",
-    ItemName_EHE.ProteinBar = "Protein Bar",
-    ItemName_EHE.MealReadytoEat = "MRE",
-    ItemName_EHE.MREWrapperEHE = "MRE Wrapper",
 
     ItemName_EHE.EHE_Parachute = "Dropped Parachute",
     ItemName_EHE.UH60Elevator = "Detached UH-60 Elevator",
@@ -43,14 +21,7 @@ ItemName_EN = {
     ItemName_EHE.UH1HRotorBlade2 = "Mangled Main Rotor Blade",
     ItemName_EHE.UH1HHalfSkirt2 = "Mangled Helicopter Skirt",
 
-    ItemName_EHE.EmergencyFoodSupplyBox = "Supply Box",
-    ItemName_EHE.EmergencyMedicalSupplyBox = "Supply Box",
-    ItemName_EHE.EmergencySurvivalSupplyBox = "Supply Box",
+    ItemName_EHE.EmergencySupplyBox = "Supply Box",
     ItemName_EHE.BanditStashBox = "Supply Box",
-    ItemName_EHE.SurvivorFoodSupplyBox = "Supply Box",
-    ItemName_EHE.SurvivorMedicalSupplyBox = "Supply Box",
-    ItemName_EHE.SurvivorFishingSupplyBox = "Supply Box",
-    ItemName_EHE.SurvivorSeedSupplyBox = "Supply Box",
-    ItemName_EHE.SurvivorCanningSupplyBox = "Supply Box",
-    ItemName_EHE.SurvivorToiletSupplyBox = "Supply Box",
+    ItemName_EHE.SurvivorSupplyBox = "Supply Box",
 }

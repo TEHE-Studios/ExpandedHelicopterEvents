@@ -1,11 +1,11 @@
 UI_CH = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "擴大直升機活動"
+    UI_ConfigMODID_ExpandedHelicopterEvents = "擴大的直升機事件"
     UI_Config_sandBoxMovedText = "配置選項可以在沙盒選項中找到。",
     UI_Config_voiceTitle = "語音包",
 
-    UI_Config_resetEventsToolTip = "緊急情況下重置預定的活動：",
+    UI_Config_resetEventsToolTip = "在緊急情況下重置計劃的事件：",
     UI_Config_resetEvents = "重置事件",
-    UI_Config_eventMarkersOnToolTip1 = "開啟此選項以啟用事件標記。",
-    UI_Config_eventMarkersOnToolTip2 = "注意：事件標記可以拖曳。",
+    UI_Config_eventMarkersOnToolTip1 = "將其切換為啟用事件標記。",
+    UI_Config_eventMarkersOnToolTip2 = "注意：可以拖動事件標記。",
     UI_Config_eventMarkersOn = "事件標記",
 }

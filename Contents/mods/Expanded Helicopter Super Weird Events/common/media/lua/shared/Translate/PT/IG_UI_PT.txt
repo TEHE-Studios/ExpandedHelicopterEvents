@@ -1,18 +1,18 @@
 IG_UI_PT = {
     IGUI_VehicleNameUFO = "Objeto voador não identificado",
 
-    IGUI_VehicleNameBell206Spiffo = "Spiffo Força Um",
-    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (Crashed)",
-    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (Fuselagem)",
-    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Força Um (Cauda)",
+    IGUI_VehicleNameBell206Spiffo = "Spiffo force um",
+    IGUI_VehicleNameBell206SpiffoCrashed = "Spiffo Force One (caiu)",
+    IGUI_VehicleNameBell206SpiffoFuselage = "Spiffo Force One (fuselagem)",
+    IGUI_VehicleNameBell206SpiffoTail = "Spiffo Force One (cauda)",
     IGUI_VehicleNameTISIceCreamTruck = "Caminhão de sorvete",
 
-    IGUI_VehicleNameRoflCopter = "ERRO: Anomalia Interdimensional",
+    IGUI_VehicleNameRoflCopter = "Erro: anomalia interdimensional",
 
-    IGUI_VehicleNameBell206IRS = "Bell 206 Edição IRS",
-    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (quebrado)",
-    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (Fuselagem)",
+    IGUI_VehicleNameBell206IRS = "Bell 206 IRS Edition",
+    IGUI_VehicleNameBell206IRSCrashed = "Bell 206 IRS Edition (Crashed)",
+    IGUI_VehicleNameBell206IRSFuselage = "Bell 206 IRS Edition (fuselagem)",
     IGUI_VehicleNameBell206IRSTail = "Bell 206 IRS Edition (cauda)",
 
-    IGUI_VehicleNameSpiffoBurger = "Pacote de cuidados do Spiffo",
+    IGUI_VehicleNameSpiffoBurger = "Pacote de cuidados de Spiffo",
 }

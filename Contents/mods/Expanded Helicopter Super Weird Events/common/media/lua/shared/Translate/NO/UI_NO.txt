@@ -1,5 +1,5 @@
 UI_NO = {
-    UI_Intro1 = "DETTE ER ENDETIDEN",
-    UI_Intro2 = "MEN DU IKKE ERKLÆREDE HELE DIN BRUTTOINNTEKT",
-    UI_Intro3 = "SLIK HAR DU BEGIFT SKATTEUNDRAGELSE",
+    UI_Intro1 = "Dette er slutttidene",
+    UI_Intro2 = "Men du klarte imidlertid ikke å erklære hele bruttoinntekten",
+    UI_Intro3 = "Slik begikk du skatteunndragelse",
 }

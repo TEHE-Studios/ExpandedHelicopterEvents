@@ -1,27 +1,27 @@
 Sandbox_CH = {
 
-    Sandbox_ExpandedHeli_EventSpiffocopter = "斯皮福",
-    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "斯皮福 (Spiffo) 多久慶祝他的生日。",
+    Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Spiffo頻繁慶祝他的生日。",
 
-    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone 奶油廠",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ 多久來拜訪一次？",
+    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Creameries",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "RJ經常去拜訪。",
 
     Sandbox_ExpandedHeli_EventIRS = "國稅局",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "您逃稅的頻率是多少。",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "您避免繳稅的頻率。",
 
     Sandbox_ExpandedHeli_EventUFO = "飛碟",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "您想相信的頻率是多少。",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "您想相信多麼頻繁。",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "桑迪·克勞斯",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "你想多久綁架一次桑迪·克勞斯（Sandy Claws）並用棍子毆打他。",
+    Sandbox_ExpandedHeli_EventSandyClaws = "沙質爪",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "您想綁架沙質爪，用棍子毆打他。",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "脫衣舞孃的襲擊",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "您想要度過愉快時光的頻率。",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "脫衣舞孃的攻擊",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "您想度過美好時光的頻率。",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "直升機（版權保護）",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "您想多久搭乘一次直升機，直升機。 （版權所有）",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter（版權所有）",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Helikopter，您想多麼頻繁。 （版權所有）",
 
     Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll（版權所有）",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "你多久就想跳舞一次。 （版權所有）",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "你只想跳舞多麼頻繁。 （版權所有）",
 
 }

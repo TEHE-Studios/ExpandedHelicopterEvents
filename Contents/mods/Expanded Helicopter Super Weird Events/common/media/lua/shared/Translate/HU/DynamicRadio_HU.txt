@@ -1,3 +1,3 @@
 DynamicRadio_HU = {
-	AEBS_buffcorrell = "igen, ami pompázik, az a te fiúd buffcorrell, és nézd meg újra, néhány szerzői joggal védett zenei borítóval, de ez nem csak egy csirkefogó, hacsak nem twitch streamer vagy. esk. esk. esk esk. leeeeeeeeeet's get reeeady és. megy."
+	AEBS_buffcorrell = "Igen, mi a poppin 'Ez az, hogy a fiú, a Buffcorrell, még egyszer, néhány szerzői joggal védett zenei borítóval, de nem nem, hanem egy csirke wang, hacsak nem vagy egy ráncos streamer. Esk. Esk. ESK ESK. A Leeeeeeeeet's Get Reeeady and. megy."
 }

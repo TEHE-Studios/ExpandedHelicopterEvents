@@ -1,27 +1,27 @@
 Sandbox_CS = {
 
     Sandbox_ExpandedHeli_EventSpiffocopter = "Spiffo",
-    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Jak Äasto Spiffo slavÃ­ narozeniny.",
+    Sandbox_ExpandedHeli_EventSpiffocopter_tooltip = "Jak èasté Spiffo slaví své narozeniny.",
 
-    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Creameries",
-    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Jak Äasto RJ pÅ™ichÃ¡zÃ­ na nÃ¡vÅ¡tÄ›vu.",
+    Sandbox_ExpandedHeli_EventTISCreamery = "Indiestone Creamleries",
+    Sandbox_ExpandedHeli_EventTISCreamery_tooltip = "Jak èasto pøichází RJ, aby navštívil.",
 
     Sandbox_ExpandedHeli_EventIRS = "IRS",
-    Sandbox_ExpandedHeli_EventIRS_tooltip = "Jak Äasto se vyhÃ½bÃ¡te placenÃ­ danÃ­.",
+    Sandbox_ExpandedHeli_EventIRS_tooltip = "Jak èasto se vyhıbáte placení daní.",
 
     Sandbox_ExpandedHeli_EventUFO = "UFO",
-    Sandbox_ExpandedHeli_EventUFO_tooltip = "Jak Äasto chcete vÄ›Å™it.",
+    Sandbox_ExpandedHeli_EventUFO_tooltip = "Jak èasto chcete vìøit.",
 
-    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy Claws",
-    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Jak Äasto chcete unÃ©st Sandy Claws a mlÃ¡tit ho holÃ­.",
+    Sandbox_ExpandedHeli_EventSandyClaws = "Sandy drápy",
+    Sandbox_ExpandedHeli_EventSandyClaws_tooltip = "Jak èasto chcete uloit píseèné drápy a porazit ho hùlkou.",
 
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Ãštok striptÃ©rÅ¯",
-    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Jak Äasto se chcete dobÅ™e bavit.",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers = "Útok striptér",
+    Sandbox_ExpandedHeli_EventAttackOfTheStrippers_tooltip = "Jak èasto se chcete dobøe bavit.",
 
-    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (chrÃ¡nÄ›nÃ© autorskÃ½m prÃ¡vem)",
-    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Jak Äasto chcete VRTULNÃK, HELIKOPTÃ‰R. (chrÃ¡nÄ›no autorskÃ½m prÃ¡vem)",
+    Sandbox_ExpandedHeli_EventHelikopter = "Helikopter (autorská práva)",
+    Sandbox_ExpandedHeli_EventHelikopter_tooltip = "Jak èasto chcete helikopter, helikopter. (Chránìna autorskımi právy)",
 
-    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (chrÃ¡nÄ›no autorskÃ½m prÃ¡vem)",
-    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Jak Äasto chcete jen tanÄit. (chrÃ¡nÄ›no autorskÃ½m prÃ¡vem)",
+    Sandbox_ExpandedHeli_EventBuffCorrell = "Buff Correll (chránìna autorskımi právy)",
+    Sandbox_ExpandedHeli_EventBuffCorrell_tooltip = "Jak èasto chcete jen tanèit. (Chránìna autorskımi právy)",
 
 }

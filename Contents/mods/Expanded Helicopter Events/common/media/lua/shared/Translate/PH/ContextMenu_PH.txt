@@ -1,9 +1,9 @@
 ContextMenu_PH = {
-    ContextMenu_DownHoodie = "Hood Down",
-    ContextMenu_VisorUp = "Nakataas ang visor",
-    ContextMenu_VisorDown = "Nakababa ang Visor",
-    ContextMenu_Tighten = "Higpitan",
-    ContextMenu_Untighten = "Alisin ang higpit",
+    ContextMenu_DownHoodie = "Hood down",
+    ContextMenu_VisorUp = "Visor Up",
+    ContextMenu_VisorDown = "Visor pababa",
+    ContextMenu_Tighten = "Masikip",
+    ContextMenu_Untighten = "Hindi makataong",
 
-    IGUI_VehiclePartHelicopterInterior = "Panloob ng Helicopter",
+    IGUI_VehiclePartHelicopterInterior = "Helicopter interior",
 }

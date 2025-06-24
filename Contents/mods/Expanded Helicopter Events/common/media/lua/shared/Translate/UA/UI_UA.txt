@@ -1,11 +1,11 @@
 UI_UA = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "Розширені вертолітні події"
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Розширені події вертольотів"
     UI_Config_sandBoxMovedText = "Параметри конфігурації можна знайти в параметрах пісочниці.",
     UI_Config_voiceTitle = "Голосові пакети",
 
-    UI_Config_resetEventsToolTip = "Скидання запланованих подій у разі надзвичайної ситуації:",
+    UI_Config_resetEventsToolTip = "Скидання запланованих подій у випадку надзвичайних ситуацій:",
     UI_Config_resetEvents = "Скинути події",
     UI_Config_eventMarkersOnToolTip1 = "Увімкніть це, щоб увімкнути маркери подій.",
-    UI_Config_eventMarkersOnToolTip2 = "Примітка. Маркери подій можна перетягувати.",
+    UI_Config_eventMarkersOnToolTip2 = "Примітка: Маркери подій можна перетягнути.",
     UI_Config_eventMarkersOn = "Маркери подій",
 }

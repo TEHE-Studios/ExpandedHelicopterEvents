@@ -1,11 +1,11 @@
-UI_EN = {
-    UI_ConfigMODID_ExpandedHelicopterEvents = "Expanded Helicopter Events"
-    UI_Config_sandBoxMovedText = "詳細設定はサンドボックスオプションにあります",
-    UI_Config_voiceTitle = "Voice Packs",
+UI_JP = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "ヘリコプターイベントの拡張"
+    UI_Config_sandBoxMovedText = "構成オプションは、サンドボックスオプションにあります。",
+    UI_Config_voiceTitle = "音声パック",
 
-    UI_Config_resetEventsToolTip = "スケジュールされたイベントのリセット(緊急用)",
-    UI_Config_resetEvents = "イベントのリセット",
-    UI_Config_eventMarkersOnToolTip1 = "イベントマーカーを有効にするにはこれをトグルしてください",
-    UI_Config_eventMarkersOnToolTip2 = "Note:イベントマーカーはドラッグすることができます",
+    UI_Config_resetEventsToolTip = "緊急時にスケジュールされたイベントをリセットします：",
+    UI_Config_resetEvents = "イベントをリセットします",
+    UI_Config_eventMarkersOnToolTip1 = "これをオンに切り替えて、イベントマーカーを有効にします。",
+    UI_Config_eventMarkersOnToolTip2 = "注：イベントマーカーはドラッグできます。",
     UI_Config_eventMarkersOn = "イベントマーカー",
 }

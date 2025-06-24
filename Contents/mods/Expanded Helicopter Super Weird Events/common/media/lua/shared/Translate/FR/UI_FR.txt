@@ -1,5 +1,5 @@
 UI_FR = {
-    UI_Intro1 = "CE SONT LES TEMPS DE LA FIN",
-    UI_Intro2 = "CEPENDANT, VOUS N'AVEZ PAS DÉCLARÉ LA TOTALITÉ DE VOTRE REVENU BRUT",
-    UI_Intro3 = "C'EST COMMENT VOUS AVEZ COMMIS UNE FRAUDE FISCALE",
+    UI_Intro1 = "Ce sont les temps finaux",
+    UI_Intro2 = "Cependant, vous n'avez pas déclaré l'intégralité de votre revenu brut",
+    UI_Intro3 = "C'est ainsi que vous avez engagé l'évasion fiscale",
 }

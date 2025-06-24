@@ -26,7 +26,7 @@ end
 EHE_Recipe.supplyResults = {}
 
 EHE_Recipe.supplyResults.FEMA_food = {
-	["EHE.EmergencyWaterRation"] = 4, ["EHE.MealReadytoEatEHE"] = 2, }
+	["Base.WaterRationCan_Box"] = 1, ["Base.CannedFruitCocktail_Box"] = 1, ["Base.CannedCornedBeef_Box"] = 1}
 
 EHE_Recipe.supplyResults.FEMA_medical = {
 	["Base.Hat_SurgicalMask"] = 6, ["Base.Gloves_Surgical"] = 6, ["Base.FirstAidKit"] = 1, }

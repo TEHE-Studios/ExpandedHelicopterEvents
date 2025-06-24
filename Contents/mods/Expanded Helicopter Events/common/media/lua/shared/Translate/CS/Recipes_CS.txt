@@ -1,3 +1,3 @@
 Recipe_CS = {
-    Recipe_Open_Supplies = "OtevÅ™ete ZÃ¡soby",
+    Recipe_Open_Supplies = "Otevøené zásoby",
 }
