@@ -1,126 +1,126 @@
 module Base
 {
 
-	    model HandFlare
+    model HandFlare
 	{
 		mesh = WorldItems/HandFlare,
 		texture = WorldItems/HandFlare,
 		scale = 0.02,
 	}
 
-    	model PAVFlyer
+    model PAVFlyer
 	{
 		mesh = WorldItems/SheetOfPaper,
 		texture = WorldItems/PAVPaper,
 		scale = 0.02,
 	}
 
-    	model QuarantineFlyer
+    model QuarantineFlyer
 	{
 		mesh = WorldItems/SheetOfPaper,
 		texture = WorldItems/QuarantinePaper,
 		scale = 0.02,
 	}
 
-    	model NoticeFlyer
+    model NoticeFlyer
 	{
 		mesh = WorldItems/SheetOfPaper,
 		texture = WorldItems/NoticePaper,
 		scale = 0.02,
 	}
 
-        model EmergencyFlyer
+    model EmergencyFlyer
 	{
 		mesh = WorldItems/SheetOfPaper,
 		texture = WorldItems/EmergencyPaper,
 		scale = 0.02,
 	}
 
-        model EvacuationFlyer
+    model EvacuationFlyer
 	{
 		mesh = WorldItems/SheetOfPaper,
 		texture = WorldItems/EvacuationPaper,
 		scale = 0.02,
 	}
 
-	     model SupplyBox
+    model SupplyBox
 	{
 		mesh = WorldItems/SupplyBox,
 		texture = WorldItems/SupplyBox,
 		scale = 1.0,
 	}
 		    
-		model SurvivorSupplyBox
+    model SurvivorSupplyBox
 	{
 		mesh = WorldItems/SupplyBox,
 		texture = WorldItems/SurvivorSupplyBox,
 		scale = 1.0,
 	}
 
-		model BanditBox
+    model BanditBox
 	{
 		mesh = WorldItems/SupplyBox,
-		texture = WorldItems/BanditBox,
+		texture = WorldItems/SurvivorSupplyBox,
 		scale = 1.0,
 	}
 
-		model Parachute
+    model Parachute
 	{
 		mesh = WorldItems/Parachute,
 		texture = WorldItems/Parachute,
 		scale = 1.0,
 	}
 
-		model UH60ElevatorGreen
+    model UH60ElevatorGreen
 	{
 		mesh = WorldItems/UH60Elevator,
 		texture = WorldItems/UH60Green,
 		scale = 1.0,
 	}
 
-		model UH60Elevator
+    model UH60Elevator
 	{
 		mesh = WorldItems/UH60Elevator,
 		texture = WorldItems/UH60Green,
 		scale = 1.0,
 	}
 
-		model UH60ElevatorDesert
+    model UH60ElevatorDesert
 	{
 		mesh = WorldItems/UH60Elevator,
 		texture = WorldItems/UH60Desert,
 		scale = 1.0,
 	}
 
-		model UH60WindowGreen
+    model UH60WindowGreen
 	{
 		mesh = WorldItems/UH60CrewWindow,
 		texture = WorldItems/UH60Green,
 		scale = 1.0,
 	}
 	
-	    model UH60WindowDesert
+    model UH60WindowDesert
 	{
 		mesh = WorldItems/UH60CrewWindow,
 		texture = WorldItems/UH60Desert,
 		scale = 1.0,
 	}
 
-		model UH60DoorGreen
+    model UH60DoorGreen
 	{
 		mesh = WorldItems/UH60Door,
 		texture = WorldItems/UH60Green,
 		scale = 1.0,
 	}
 
-		model UH60DoorMedevac
+    model UH60DoorMedevac
 	{
 		mesh = WorldItems/UH60Door,
 		texture = WorldItems/UH60Medevac,
 		scale = 1.0,
 	}
 
-		model UH60DoorDesert
+    model UH60DoorDesert
 	{
 		mesh = WorldItems/UH60Door,
 		texture = WorldItems/UH60Desert,

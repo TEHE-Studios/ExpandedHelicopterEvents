@@ -1,11 +1,10 @@
 module EHE
 {
-
 	item EmergencySupplyBox
 	{
 		DisplayCategory = Container,
 		Weight			=	6.3,
-		Icon			=	SupplyBox_fema,
+		Icon			=	EHE/supplyBox/fema,
 		DisplayName		=	Supply Box,
 		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
@@ -16,7 +15,7 @@ module EHE
 	{
 		DisplayCategory = Container,
 		Weight			=	6.3,
-		Icon			=	SupplyBox_blank,
+		Icon			=	EHE/supplyBox/blank,
 		DisplayName		=	Supply Box,
 		Tooltip = Tooltip_BanditBox,
 		WorldStaticModel = BanditBox,
@@ -27,7 +26,7 @@ module EHE
 	{
 		DisplayCategory = Container,
 		Weight			=	6.3,
-		Icon			=	SupplyBox_blank,
+		Icon			=	EHE/supplyBox/aid,
 		DisplayName		=	Supply Box,
 		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
