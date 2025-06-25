@@ -1,9 +1,11 @@
 [ ALERT_CONFIG ]
 link1 = Expanded Helicopter Events GitHub = https://github.com/TEHE-Studios/ExpandedHelicopterEvents,
+link2 = Chuck's Kofi = https://ko-fi.com/chuckleberryfinn,
+link3 = Shark's Kofi = https://ko-fi.com/sharkmods,
+link4 = Cytt's BuyMeACoffee = https://buymeacoffee.com/cytt,
 [ ------ ]
 
 [ B24 - Initial ]
 - Initial B42 update.
-- TR Translation by Vventos!
-- Missing Translations provided by github.com/Chuckleberry-Finn/pz-translator
+- Translations provided by github.com/Chuckleberry-Finn/pz-translator
 [ ------ ]
