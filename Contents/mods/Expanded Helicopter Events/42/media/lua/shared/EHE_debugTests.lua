@@ -13,17 +13,17 @@ CustomDebugPanel.TOGGLE_ALL_CRASH = false
 
 Events.OnGameBoot.Add(function()
 	if EHE_DebugTests then
-		EHE_DebugTests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
-		EHE_DebugTests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
 		EHE_DebugTests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
+		EHE_DebugTests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
 		EHE_DebugTests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
+
+		EHE_DebugTests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 
 		EHE_DebugTests["Launch"] = {}
 		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 			EHE_DebugTests["Launch"][presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
 		end
 
-		EHE_DebugTests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 		EHE_DebugTests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
 		EHE_DebugTests.TemporaryTest = CustomDebugPanel.TemporaryTest
 		EHE_DebugTests.checkSquare = CustomDebugPanel.checkSquare
@@ -246,36 +246,6 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 		print("--- TOTAL EVENTS: "..totalTimes)
 		print("======================================")
 	end
-end
-
-
---- Raise the dead
-function CustomDebugPanel.raiseTheDead()
-	local player = getSpecificPlayer(0)
-	local squaresInRange = isoRangeScan.getIsoRange(player, 15)
-	local reanimated=0
-
-	if not squaresInRange then
-		print("- Scanning for bodies: ERROR: found no squares to scan")
-	end
-
-	print("- Scanning for bodies: ".." #squaresInRange: "..#squaresInRange)
-	for sq=1, #squaresInRange do
-		---@type IsoGridSquare
-		local square = squaresInRange[sq]
-		local squareContents = square:getDeadBodys()
-
-		for i=0, squareContents:size()-1 do
-			---@type IsoDeadBody
-			local foundObj = squareContents:get(i)
-
-			if instanceof(foundObj, "IsoDeadBody") then
-				reanimated = reanimated+1
-				foundObj:reanimateNow()
-			end
-		end
-	end
-	print("-- Reanimated: "..reanimated)
 end
 
 
