@@ -1,6 +1,7 @@
 ---IsoPlayer are player entities but also NPCs (from mods)
 EHEIsoPlayers = {}
 
+local isoRangeScan = require "EHE_IsoRangeScan"
 
 ---@param playerObject IsoPlayer | IsoGameCharacter | IsoAnimal
 function addToEIP(playerObject)
@@ -215,7 +216,7 @@ function getOutsideSquareFromAbove_vehicle(square)
 	if not instanceof(square, "IsoGridSquare") then return end
 	local foundSquare
 	local aSqOutsideAbove = {}
-	for k,sq in pairs(getIsoRange(square, 2)) do
+	for k,sq in pairs(isoRangeScan.getIsoRange(square, 2)) do
 		local outsideSq = getOutsideSquareFromAbove(sq,true)
 		if outsideSq then table.insert(aSqOutsideAbove,outsideSq) end
 	end

@@ -1,5 +1,7 @@
 if isServer() then return end
 
+local isoRangeScan = require "EHE_IsoRangeScan"
+
 local eHelicopter_zombieAI = {}
 
 eHelicopter_zombieAI.outfitsToAI = {
