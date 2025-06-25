@@ -1,7 +1,6 @@
 require "EHE_weatherImpact"
 require "EHE_globalModData"
 require "EHE_util"
-require "EHE_easyConfigOptions"
 require "EHE_presets"
 require "EHE_mainVariables"
 
