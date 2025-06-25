@@ -19,35 +19,24 @@ EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 function EHE_DebugTestWindow:render()
 	ISPanel.render(self)
 
+	local GT = getGameTime()
+	local currentDay, currentHour = GT:getNightsSurvived(), GT:getHour()
+	local time = "currentDay: "..currentDay.." currentHour:"..currentHour
+
+	self:drawText(time, self.listbox.x+15, self.listbox.y-(self.listbox.fontHgt*1.33), 1,1,1,1, self.listbox.font)
+
 	local globalModData = getExpandedHeliEventsModData_Client()
 	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
 
-		local GT = getGameTime()
-		local currentDay, currentHour = GT:getNightsSurvived(), GT:getHour()
-		local textToDisplay = "currentDay: "..currentDay.." currentHour:"..currentHour.."\n"
-
-		for k,v in pairs(globalModData.EventsOnSchedule) do
-
-			textToDisplay = textToDisplay.."   \["..k.."\]"
-			if type(v)=="table" then
-				for kk,vv in pairs(v) do
-					textToDisplay = textToDisplay.."  "..kk..":"..tostring(vv)
-				end
-			else
-				textToDisplay = textToDisplay.." = "..v
+		if #self.listbox.items < #globalModData.EventsOnSchedule then
+			local nextUp = #self.listbox.items+1
+			local event = globalModData.EventsOnSchedule[nextUp]
+			local textToDisplay = "["..nextUp.."]"
+			for k,v in pairs(event) do
+				textToDisplay = textToDisplay.."  "..k..":"..tostring(v)
 			end
-			textToDisplay = textToDisplay.."\n"
+			self.listbox:addItem(textToDisplay, true)
 		end
-
-		local font = UIFont.AutoNormSmall
-		local tm = getTextManager()
-		local width = tm:MeasureStringX(font,textToDisplay.."   ")
-		local height = tm:MeasureStringY(font,textToDisplay.."   ")
-
-		self:drawRect(self.width+5, 0, width+20, height, 0.65, 0, 0, 0)
-		self:drawText(textToDisplay, self.width+15, 5, 1,1,1,1, UIFont.AutoNormSmall)
-	else
-		self:drawText("No Events On Schedule", self.width+10, 5, 1,1,1,1, UIFont.AutoNormSmall)
 	end
 end
 
@@ -74,15 +63,19 @@ function EHE_DebugTestWindow.OnOpenPanel()
 end
 
 
+function EHE_DebugTestWindow:drawScrollingListLine(y, item, alt)
+	self:drawText(item.text, 24, y+(item.height-self.fontHgt)/2, 0.9, 0.9, 0.9, 0.9, self.font)
+	y = y + item.height
+	return y
+end
+
+
 function EHE_DebugTestWindow:initialise()
 	ISPanel.initialise(self)
-	--self:instantiate()
 
 	local padding = 10
 	local yOffset = 4
-
 	local y = padding+5
-
 	local w = self.width/2-(padding*1.5)
 	local h = 18
 
@@ -99,16 +92,32 @@ function EHE_DebugTestWindow:initialise()
 			newX = padding
 			newY = y
 		end
-		EHE_DebugTestWindow.addButton(self, func, title, newX, newY, w, h)
+
+		if type(func) == "table" then
+			EHE_DebugTestWindow.addComboList(self, func, title, newX, newY, w, h)
+		else
+			EHE_DebugTestWindow.addButton(self, func, title, newX, newY, w, h)
+		end
 		y = newY+h+yOffset
 	end
 
-	local newWindowHeight = y + (padding*2) + h
-	self:setHeight( newWindowHeight )
+	local font = UIFont.AutoNormSmall
+	local fontHeight = getTextManager():getFontHeight(font)
 
-	EHE_DebugTestWindow.addButton(self, function() self:close() end, "Close", (self.width/2)-(w/2), newWindowHeight-padding-h, w, h)
+	self.listbox = ISScrollingListBox:new(padding, y+yOffset+(fontHeight*1.33), self.width-(padding*2), 300)
+	self.listbox:initialise()
+	self.listbox.backgroundColor.a = 0.0
+	self.listbox.font = font
+	self.listbox.fontHgt = fontHeight
+	self.listbox.itemheight = fontHeight
+	self.listbox.doDrawItem = EHE_DebugTestWindow.drawScrollingListLine
+	self:addChild(self.listbox)
 
+	local closeY = self.listbox.y + self.listbox.height + (padding*2)
 
+	EHE_DebugTestWindow.addButton(self, function() self:close() end, "Close", (self.width/2)-(w/2), closeY, w, h)
+
+	self:setHeight(closeY+h+padding)
 end
 
 
@@ -118,9 +127,27 @@ function EHE_DebugTestWindow.addButton(UIElement, setFunction, title, x, y, widt
 end
 
 
+function EHE_DebugTestWindow:comboSelected()
+	local selection = self:getSelected()
+	local optionData = self:getOptionData(selection)
+	optionData()
+end
+
+
+function EHE_DebugTestWindow.addComboList(UIElement, tableOfFunc, title, x, y, width, height)
+	local btnWidth = (width/2)-2
+	local combo = ISComboBox:new(x+btnWidth+4, y, btnWidth, height)
+	UIElement:addChild(combo)
+
+	for key,func in pairs(tableOfFunc) do combo:addOptionWithData(key, func) end
+
+	local btn = ISButton:new(x, y, btnWidth, height, title, combo, EHE_DebugTestWindow.comboSelected)
+	UIElement:addChild(btn)
+end
+
+
 function EHE_DebugTestWindow:new(x, y, width, height)
 	local o = {}
-	--o.data = {}
 	o = ISPanel:new(x, y, width, height)
 	setmetatable(o, self)
 	self.__index = self

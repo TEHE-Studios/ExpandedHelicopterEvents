@@ -6,15 +6,23 @@ require "EHE_util"
 local isoRangeScan = require "EHE_IsoRangeScan"
 require "EHE_mainVariables"
 
+CustomDebugPanel = CustomDebugPanel or {}
+CustomDebugPanel.TOGGLE_ALL_CRASH = false
+---TEST FUNCTIONS:
+
+
 Events.OnGameBoot.Add(function()
 	if EHE_DebugTests then
 		EHE_DebugTests["Test All Voice Lines"] = CustomDebugPanel.testAllLines
 		EHE_DebugTests["Raise The Dead"] = CustomDebugPanel.raiseTheDead
 		EHE_DebugTests["Toggle All Crash"] = CustomDebugPanel.ToggleAllCrash
 		EHE_DebugTests["Toggle Move HeliCloser"] = CustomDebugPanel.ToggleMoveHeliCloser
+
+		EHE_DebugTests["Launch"] = {}
 		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
-			EHE_DebugTests["Launch: "..presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
+			EHE_DebugTests["Launch"][presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
 		end
+
 		EHE_DebugTests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 		EHE_DebugTests.SandboxVarsDUMP = CustomDebugPanel.SandboxVarsDUMP
 		EHE_DebugTests.TemporaryTest = CustomDebugPanel.TemporaryTest
@@ -23,10 +31,6 @@ Events.OnGameBoot.Add(function()
 	end
 end)
 
-
-CustomDebugPanel = CustomDebugPanel or {}
-CustomDebugPanel.TOGGLE_ALL_CRASH = false
----TEST FUNCTIONS:
 
 function CustomDebugPanel.TemporaryTest()
 	local sq = getPlayer():getSquare()
