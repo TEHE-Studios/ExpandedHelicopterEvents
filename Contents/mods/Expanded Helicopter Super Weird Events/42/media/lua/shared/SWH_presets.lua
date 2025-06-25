@@ -222,7 +222,7 @@ eHelicopter_PRESETS["TISCreamery_Socks"] = {
 
 
 
-eHelicopter_PRESETS.samaritan_drop.dropPackages = {"MCSupplyDrop"}
+eHelicopter_PRESETS.samaritan_drop.dropPackages = {"SurvivorSupplyDrop","SurvivorSupplyDrop","SurvivorSupplyDrop","MCSupplyDrop"}
 
 
 eHelicopter_PRESETS["Helikopter"] = {
