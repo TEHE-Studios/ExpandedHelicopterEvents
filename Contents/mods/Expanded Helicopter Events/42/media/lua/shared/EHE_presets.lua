@@ -164,7 +164,7 @@ eHelicopter_PRESETS["jet"] = {
 	},
 	crashType = false,
 	shadow = false,
-	eventMarkerIcon = "media/ui/plane.png",
+	eventMarkerIcon = "media/ui/jet.png",
 	forScheduling = true,
 	schedulingFactor = 4,
 	eventSpawnWeight = 5,
