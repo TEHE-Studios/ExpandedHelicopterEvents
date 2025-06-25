@@ -21,12 +21,12 @@ description=[td]This sub-mod is not meant for a standard Zomboid experience! Ene
 description=[b]Back up your saves if you're uncertain![/b][/td]
 description=[/tr]
 description=[tr]
-description=[td][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/twitch_images/poster_s.png[/img][/td]
+description=[td][img]https://raw.githubusercontent.com/TEHE-Studios/ExpandedHelicopterEvents/main/images/integration_images/poster_s.png[/img][/td]
 description=[td]The mod is intended for streamers who would like their viewers to spawn events.
 description=The mod assigns events onto the 1-9 numpad keys - customizable through the options menu. After which you can tie numpad presses to your chosen streaming program.
 description=
 description=[h3]Recommended Streamdeck Program: [url=https://www.touch-portal.com][b]Touch-portal[/b][/url][/h3]
-description=Let us know if other programs allow for Twitch Event integration![/td]
+description=Let us know if other programs allow for Streamer Event integration![/td]
 description=[/tr]
 description=[/table]
 description=
