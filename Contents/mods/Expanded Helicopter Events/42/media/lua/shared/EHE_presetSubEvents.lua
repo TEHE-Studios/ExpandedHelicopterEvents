@@ -99,7 +99,7 @@ function subEvents.eHelicopter_dropCrewOff(heli)
 	--[[DEBUG]] print("SWH: DEBUG: eHelicopter_dropCrewOff: "..x..","..y)
 	--for k,v in pairs(heli.crew) do print(" -- k:"..tostring(k).." -- ("..tostring(v)..")") end
 
-	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crew.png", 750, x, y)
+	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crew.png", 750, x, y, heli.markerColor)
 	heli:spawnCrew(x, y, 0)
 	heli.addedFunctionsToEvents.OnHover = false
 end
