@@ -147,7 +147,7 @@ function EHE_EventMarker:render()
 
 		local aFromDist = 0.2 + (0.8*(1-(self.distanceToPoint/self.radius)))
 		local mColor = {r=self.markerColor.r, g=self.markerColor.g, b=self.markerColor.b, a=1}
-		local base = {r=0.22, g=0.22, b=0.22, a=1}
+		local base = {r=0.44, g=0.44, b=0.44, a=1}
 
 		local _color = colorBlend(mColor, base, aFromDist)
 
