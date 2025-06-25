@@ -1,5 +1,0 @@
-UI_CS = {
-    UI_Intro1 = "To jsou koncové èasy",
-    UI_Intro2 = "Nepodaøilo se vám však vyhlásit celý hrubý pøíjem",
-    UI_Intro3 = "Takto jste se dopustili daòových únikù",
-}

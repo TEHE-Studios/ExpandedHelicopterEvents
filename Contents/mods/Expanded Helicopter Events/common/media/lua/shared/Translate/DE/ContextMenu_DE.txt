@@ -1,9 +1,0 @@
-ContextMenu_DE = {
-    ContextMenu_DownHoodie = "Motorhaube nach unten",
-    ContextMenu_VisorUp = "Visier",
-    ContextMenu_VisorDown = "Visier runter",
-    ContextMenu_Tighten = "Anziehen",
-    ContextMenu_Untighten = "Entlang",
-
-    IGUI_VehiclePartHelicopterInterior = "Hubschrauber",
-}

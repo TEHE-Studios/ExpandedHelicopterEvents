@@ -1,3 +1,0 @@
-Recipe_TR = {
-    Recipe_Open_Supplies = "Açık malzemeler",
-}

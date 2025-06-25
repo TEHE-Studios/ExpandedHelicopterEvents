@@ -1,5 +1,0 @@
-UI_DA = {
-    UI_Intro1 = "Dette er sluttimes",
-    UI_Intro2 = "Men du undlod at erklære hele din bruttoindkomst",
-    UI_Intro3 = "Sådan begik du skatteunddragelse",
-}

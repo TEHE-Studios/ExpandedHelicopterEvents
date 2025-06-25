@@ -1,3 +1,0 @@
-DynamicRadio_RO = {
-	AEBS_buffcorrell = "Da, ce este poppin ', băiatul tău buffcorrell din nou, din nou, cu niște copertine de muzică protejată de drepturi de autor, dar nu este nu decât un fel de pui, cu excepția cazului în care ești un streamer twitch. ESK. ESK. ESK ESK. Leeeeeeeeeet a devenit reeady și. merge."
-}

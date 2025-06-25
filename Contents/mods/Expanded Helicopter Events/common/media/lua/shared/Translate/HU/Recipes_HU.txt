@@ -1,3 +1,0 @@
-Recipe_HU = {
-    Recipe_Open_Supplies = "Nyitott kellékek",
-}

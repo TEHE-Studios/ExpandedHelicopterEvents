@@ -1,9 +1,0 @@
-ContextMenu_PL = {
-    ContextMenu_DownHoodie = "Kaptur",
-    ContextMenu_VisorUp = "W górę",
-    ContextMenu_VisorDown = "Daszek w dół",
-    ContextMenu_Tighten = "Dokręcać",
-    ContextMenu_Untighten = "Nieprawidłowy",
-
-    IGUI_VehiclePartHelicopterInterior = "Wnętrze helikoptera",
-}

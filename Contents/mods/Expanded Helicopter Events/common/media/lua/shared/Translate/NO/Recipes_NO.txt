@@ -1,3 +1,0 @@
-Recipe_NO = {
-    Recipe_Open_Supplies = "Åpne forsyninger",
-}

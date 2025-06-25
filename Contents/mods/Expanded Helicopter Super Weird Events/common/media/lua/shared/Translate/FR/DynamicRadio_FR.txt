@@ -1,3 +1,0 @@
-DynamicRadio_FR = {
-	AEBS_buffcorrell = "Ouais, qu'est-ce que c'est que c'est votre garçon Buffcorrell à y retourner avec quelques couvertures musicales protégées par le droit d'auteur, mais ce n'est pas un thang mais un wang de poulet, à moins que vous ne soyez un streamer Twitch. Esk. Esk. Esk Esk. Leeeeeeeeeet Get Reeady et. aller."
-}

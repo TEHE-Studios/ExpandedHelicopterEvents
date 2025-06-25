@@ -1,3 +1,0 @@
-Recipe_JP = {
-    Recipe_Open_Supplies = "オープン用品",
-}

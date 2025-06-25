@@ -1,5 +1,0 @@
-UI_PL = {
-    UI_Intro1 = "To są czasy końcowe",
-    UI_Intro2 = "Jednak nie zadeklarowałeś całego swojego dochodu brutto",
-    UI_Intro3 = "W ten sposób popełniłeś uchylanie się od podatków",
-}

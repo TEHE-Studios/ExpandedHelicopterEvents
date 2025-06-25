@@ -1,9 +1,0 @@
-ContextMenu_HU = {
-    ContextMenu_DownHoodie = "Lepattan",
-    ContextMenu_VisorUp = "Szeme",
-    ContextMenu_VisorDown = "Szemét leplez",
-    ContextMenu_Tighten = "Meghúz",
-    ContextMenu_Untighten = "Kötelező",
-
-    IGUI_VehiclePartHelicopterInterior = "Helikopter belső tér",
-}

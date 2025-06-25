@@ -1,3 +1,0 @@
-DynamicRadio_TR = {
-	AEBS_buffcorrell = "Evet, Poppin 'Oğlunuz, telif hakkıyla korunan bazı müzik kapaklarıyla tekrar tekrar ona geri dönüyor, ancak bir twitch flaması değilseniz, bir tavuk wang değil, bir şey değil. Esk. Esk. ESK ESK. Leeeeeeeeeet'in reeeady ve. Gitmek."
-}

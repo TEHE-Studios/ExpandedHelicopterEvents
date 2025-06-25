@@ -1,3 +1,0 @@
-DynamicRadio_CA = {
-	AEBS_buffcorrell = "Sí, què és el que Poppin és el teu noi Buffcorrell, hi torna a tenir algunes fundes de música amb drets d'autor, però no és un thatg, sinó un wang de pollastre, tret que siguis un retret de Twitch. Esk. Esk. Esk Esk. Leeeeeeeeeet's Get Reeeady i. anar."
-}

@@ -1,3 +1,0 @@
-DynamicRadio_FI = {
-	AEBS_buffcorrell = "Joo, mikä on poppin 'se on sinun poikasi Buffcorrell takaisin siinä siinä taas siinä, että joillakin tekijänoikeuksilla varustetuilla musiikkikannoilla, mutta ei ole kuin thang, vaan kana -wang, ellet ole nykimöri. ESK. ESK. ESK ESK. Leeeeeeeeeet's Get Reeeady ja. mennä."
-}

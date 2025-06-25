@@ -1,5 +1,0 @@
-UI_PH = {
-    UI_Intro1 = "Ito ang mga end-time",
-    UI_Intro2 = "Gayunpaman nabigo kang ipahayag ang iyong buong kita ng gross",
-    UI_Intro3 = "Ito ay kung paano ka nakagawa ng pag -iwas sa buwis",
-}

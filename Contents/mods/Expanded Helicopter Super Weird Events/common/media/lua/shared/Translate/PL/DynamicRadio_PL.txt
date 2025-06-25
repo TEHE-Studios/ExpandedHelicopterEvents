@@ -1,3 +1,0 @@
-DynamicRadio_PL = {
-	AEBS_buffcorrell = "Tak, co to poppin 'to twój chłopiec Buffcorrell z powrotem do niego z pewnymi okładkami muzyki chronionymi prawem autorskim, ale nie ma nic, ale kurczaka, chyba że jesteś streamerem drgania. Esk. Esk. Esk Esk. Leeeeeeeeeet's Get Reeeady i. Iść."
-}

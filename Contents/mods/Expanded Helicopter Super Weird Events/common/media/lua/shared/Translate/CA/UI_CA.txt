@@ -1,5 +1,0 @@
-UI_CA = {
-    UI_Intro1 = "Aquests són els temps finals",
-    UI_Intro2 = "No obstant això, no heu declarat els vostres ingressos bruts",
-    UI_Intro3 = "Així és com heu comès evasió fiscal",
-}

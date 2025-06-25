@@ -1,3 +1,0 @@
-DynamicRadio_CS = {
-	AEBS_buffcorrell = "Jo, co je to poppin 'je to tvùj chlapec Bufforrell zpìt na to na tom znovu na tom s nìkterými hudbami chránìnými autorskými právy, ale není žádný thang, ale kuøecí wang, pokud nejste škubání. Esk. Esk. ESK ESK. Leeeeeeeeeet's Get Reeeady a. jít."
-}

@@ -1,3 +1,0 @@
-Recipe_PH = {
-    Recipe_Open_Supplies = "Bukas na mga gamit",
-}

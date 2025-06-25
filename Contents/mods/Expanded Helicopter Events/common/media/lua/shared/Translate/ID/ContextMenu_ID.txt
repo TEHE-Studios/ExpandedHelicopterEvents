@@ -1,9 +1,0 @@
-ContextMenu_ID = {
-    ContextMenu_DownHoodie = "Hood Down",
-    ContextMenu_VisorUp = "Visor Up",
-    ContextMenu_VisorDown = "Visor Down",
-    ContextMenu_Tighten = "Mengencangkan",
-    ContextMenu_Untighten = "Tak terhormat",
-
-    IGUI_VehiclePartHelicopterInterior = "Interior helikopter",
-}

@@ -1,9 +1,0 @@
-ContextMenu_ES = {
-    ContextMenu_DownHoodie = "Capucha",
-    ContextMenu_VisorUp = "Visera",
-    ContextMenu_VisorDown = "Visera",
-    ContextMenu_Tighten = "Apretar",
-    ContextMenu_Untighten = "Desanimar",
-
-    IGUI_VehiclePartHelicopterInterior = "Interior de helicóptero",
-}

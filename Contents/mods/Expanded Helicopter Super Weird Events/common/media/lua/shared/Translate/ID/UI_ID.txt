@@ -1,5 +1,0 @@
-UI_ID = {
-    UI_Intro1 = "Ini adalah akhir zaman",
-    UI_Intro2 = "Bagaimanapun Anda gagal menyatakan seluruh pendapatan kotor Anda",
-    UI_Intro3 = "Beginilah cara Anda melakukan penggelapan pajak",
-}

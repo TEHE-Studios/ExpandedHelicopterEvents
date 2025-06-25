@@ -1,3 +1,0 @@
-DynamicRadio_HU = {
-	AEBS_buffcorrell = "Igen, mi a poppin 'Ez az, hogy a fiú, a Buffcorrell, még egyszer, néhány szerzői joggal védett zenei borítóval, de nem nem, hanem egy csirke wang, hacsak nem vagy egy ráncos streamer. Esk. Esk. ESK ESK. A Leeeeeeeeet's Get Reeeady and. megy."
-}

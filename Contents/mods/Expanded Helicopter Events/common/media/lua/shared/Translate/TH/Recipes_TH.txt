@@ -1,3 +1,0 @@
-Recipe_TH = {
-    Recipe_Open_Supplies = "อุปกรณ์เปิด",
-}

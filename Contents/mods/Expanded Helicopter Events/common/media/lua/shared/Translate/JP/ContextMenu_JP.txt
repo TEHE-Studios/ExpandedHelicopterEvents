@@ -1,9 +1,0 @@
-ContextMenu_JP = {
-    ContextMenu_DownHoodie = "フードダウン",
-    ContextMenu_VisorUp = "バイザーアップ",
-    ContextMenu_VisorDown = "バイザーダウン",
-    ContextMenu_Tighten = "締めます",
-    ContextMenu_Untighten = "気を離さない",
-
-    IGUI_VehiclePartHelicopterInterior = "ヘリコプターインテリア",
-}

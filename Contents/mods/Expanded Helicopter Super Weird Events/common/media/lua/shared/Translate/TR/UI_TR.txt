@@ -1,5 +1,0 @@
-UI_TR = {
-    UI_Intro1 = "Bunlar son zamanlar",
-    UI_Intro2 = "Ancak tüm brüt gelirinizi beyan edemediniz",
-    UI_Intro3 = "Vergi kaçakçılığını böyle taahhüt ettiniz",
-}

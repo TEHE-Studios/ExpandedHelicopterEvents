@@ -1,3 +1,0 @@
-DynamicRadio_CN = {
-	AEBS_buffcorrell = "是的，Poppin是您的男孩Buffcorrell再次带着一些受版权保护的音乐封面回到它，但除非您是Twitch彩带，否则不是鸡肉。 ESK。 ESK。 ESK ESK。 leeeeeeeeet的reeeady和。去。"
-}

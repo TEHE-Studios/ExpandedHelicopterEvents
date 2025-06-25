@@ -1,3 +1,0 @@
-Recipe_NL = {
-    Recipe_Open_Supplies = "Open voorraden",
-}

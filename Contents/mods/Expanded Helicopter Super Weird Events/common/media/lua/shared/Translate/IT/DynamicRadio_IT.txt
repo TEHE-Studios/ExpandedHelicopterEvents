@@ -1,3 +1,0 @@
-DynamicRadio_IT = {
-	AEBS_buffcorrell = "Sì, cosa sta facendo il tuo ragazzo, è il tuo ragazzo Buffcorll di nuovo su di esso con alcune copertine di musica protetta da copyright, ma non è un gioco da ragazzi ma un wang di pollo, a meno che tu non sia uno streamer. Esk. Esk. esk esk. Leeeeeeeeeet è ready e. andare."
-}

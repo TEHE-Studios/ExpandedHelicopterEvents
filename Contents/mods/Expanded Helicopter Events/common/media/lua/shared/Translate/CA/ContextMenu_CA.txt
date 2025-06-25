@@ -1,9 +1,0 @@
-ContextMenu_CA = {
-    ContextMenu_DownHoodie = "Caputxa",
-    ContextMenu_VisorUp = "Visor",
-    ContextMenu_VisorDown = "Visora ??cap avall",
-    ContextMenu_Tighten = "Estirar",
-    ContextMenu_Untighten = "Desferdre",
-
-    IGUI_VehiclePartHelicopterInterior = "Interior helicòpter",
-}

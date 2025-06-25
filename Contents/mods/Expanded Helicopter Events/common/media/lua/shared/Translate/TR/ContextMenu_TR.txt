@@ -1,9 +1,0 @@
-ContextMenu_TR = {
-    ContextMenu_DownHoodie = "Kaplamak",
-    ContextMenu_VisorUp = "Vizör",
-    ContextMenu_VisorDown = "Vizör",
-    ContextMenu_Tighten = "Sıkmak",
-    ContextMenu_Untighten = "Zorlamak",
-
-    IGUI_VehiclePartHelicopterInterior = "Helikopter iç",
-}

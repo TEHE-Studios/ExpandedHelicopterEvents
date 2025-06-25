@@ -1,5 +1,0 @@
-UI_IT = {
-    UI_Intro1 = "Questi sono i tempi finali",
-    UI_Intro2 = "Comunque non sei riuscito a dichiarare il tuo intero reddito lordo",
-    UI_Intro3 = "Ecco come hai commesso l'evasione fiscale",
-}

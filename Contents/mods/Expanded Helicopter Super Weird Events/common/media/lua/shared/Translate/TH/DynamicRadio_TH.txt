@@ -1,3 +1,0 @@
-DynamicRadio_TH = {
-	AEBS_buffcorrell = "ใช่สิ่งที่ poppin 'มันคือ Boy Buffcorrell ของคุณกลับมาที่มันอีกครั้งพร้อมกับเพลงที่มีลิขสิทธิ์บางอย่าง แต่ไม่มีอะไรเลย แต่เป็นไก่วังเว้นแต่คุณจะเป็น Twitch Streamer Esk. Esk. Esk Esk Get reeeady และ ไป."
-}

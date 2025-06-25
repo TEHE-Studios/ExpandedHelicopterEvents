@@ -1,3 +1,0 @@
-DynamicRadio_PT = {
-	AEBS_buffcorrell = "Sim, o que está aparecendo, é o seu garoto de volta a ele novamente com algumas capas de música com direitos autorais, mas não é nada mais que uma wang de frango, a menos que você seja uma serpentina. Esk. Esk. Esk Esk. Leeeeeeeeet's Get Reeeady e. ir."
-}

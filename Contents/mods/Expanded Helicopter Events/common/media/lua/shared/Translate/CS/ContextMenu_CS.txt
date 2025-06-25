@@ -1,9 +1,0 @@
-ContextMenu_CS = {
-    ContextMenu_DownHoodie = "Hood Down",
-    ContextMenu_VisorUp = "Hledí",
-    ContextMenu_VisorDown = "Hledí",
-    ContextMenu_Tighten = "Utáhnìte",
-    ContextMenu_Untighten = "Unterickend",
-
-    IGUI_VehiclePartHelicopterInterior = "Interiér vrtulníku",
-}

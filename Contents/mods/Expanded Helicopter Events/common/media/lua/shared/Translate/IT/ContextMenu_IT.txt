@@ -1,9 +1,0 @@
-ContextMenu_IT = {
-    ContextMenu_DownHoodie = "Cappuccio giù",
-    ContextMenu_VisorUp = "Visor up",
-    ContextMenu_VisorDown = "Visiera giù",
-    ContextMenu_Tighten = "Stringere",
-    ContextMenu_Untighten = "Sconvolta",
-
-    IGUI_VehiclePartHelicopterInterior = "Interno in elicottero",
-}

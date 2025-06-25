@@ -1,9 +1,0 @@
-ContextMenu_PTBR = {
-    ContextMenu_DownHoodie = "Hood para baixo",
-    ContextMenu_VisorUp = "Viseira",
-    ContextMenu_VisorDown = "Viseira para baixo",
-    ContextMenu_Tighten = "Apertar",
-    ContextMenu_Untighten = "Não ligado",
-
-    IGUI_VehiclePartHelicopterInterior = "Interior de helicóptero",
-}

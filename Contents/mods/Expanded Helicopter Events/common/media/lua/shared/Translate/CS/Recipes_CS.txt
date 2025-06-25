@@ -1,3 +1,0 @@
-Recipe_CS = {
-    Recipe_Open_Supplies = "Otevøené zásoby",
-}

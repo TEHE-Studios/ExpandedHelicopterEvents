@@ -1,3 +1,0 @@
-Recipe_RO = {
-    Recipe_Open_Supplies = "Livrări deschise",
-}

@@ -1,3 +1,0 @@
-DynamicRadio_NL = {
-	AEBS_buffcorrell = "Ja, wat is Poppin 'Het is je jongen Buffcorrell er weer bij weer bij met een aantal auteursrechtelijke muziekcovers, maar is geen thang maar een kippenwang, tenzij je een twitch -streamer bent. Esk. Esk. Esk Esk. Leeeeeeeeet's Get Reeeady en. gaan."
-}

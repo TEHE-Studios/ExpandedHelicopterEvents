@@ -1,3 +1,0 @@
-DynamicRadio_NO = {
-	AEBS_buffcorrell = "Ja, hva er poppin 'det er gutten din buffcorrell tilbake på den på den igjen med noen opphavsrettsbeskyttede musikkomslag, men er ikke ikke than, men en kylling wang, med mindre du er en rykende streamer. Esk. Esk. Esk Esk. Leeeeeeeeeet blir reeeady og. gå."
-}

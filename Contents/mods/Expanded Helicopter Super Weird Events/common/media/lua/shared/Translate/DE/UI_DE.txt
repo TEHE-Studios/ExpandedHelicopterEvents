@@ -1,5 +1,0 @@
-UI_DE = {
-    UI_Intro1 = "Dies sind die Endzeiten",
-    UI_Intro2 = "Sie haben jedoch nicht Ihr gesamtes Bruttoeinkommen erklärt",
-    UI_Intro3 = "So haben Sie Steuerhinterziehung begangen",
-}

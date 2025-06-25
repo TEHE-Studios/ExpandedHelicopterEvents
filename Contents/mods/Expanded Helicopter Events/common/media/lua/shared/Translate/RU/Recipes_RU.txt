@@ -1,3 +1,0 @@
-Recipe_RU = {
-    Recipe_Open_Supplies = "Открытые припасы",
-}

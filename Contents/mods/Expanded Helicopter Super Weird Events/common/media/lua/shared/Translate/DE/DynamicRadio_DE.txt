@@ -1,3 +1,0 @@
-DynamicRadio_DE = {
-	AEBS_buffcorrell = "Ja, was ist Poppin 'Es ist dein Boy Buffcorrell wieder damit mit einigen urheberrechtlich geschützten Musikabdeckungen, aber kein Thang, sondern ein Hühnchen -Wang, es sei denn, du bist ein Twitch -Streamer. Esk. Esk. Esk Esk. Leeeeeeeeeet bekommt Reeady und. gehen."
-}

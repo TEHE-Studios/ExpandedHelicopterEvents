@@ -1,5 +1,0 @@
-UI_HU = {
-    UI_Intro1 = "Ezek a végső időpontok",
-    UI_Intro2 = "Ugyanakkor nem sikerült kijelenteni a teljes bruttó jövedelmét",
-    UI_Intro3 = "Így követte az adócsalást",
-}

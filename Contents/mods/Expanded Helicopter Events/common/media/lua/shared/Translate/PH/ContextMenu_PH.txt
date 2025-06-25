@@ -1,9 +1,0 @@
-ContextMenu_PH = {
-    ContextMenu_DownHoodie = "Hood down",
-    ContextMenu_VisorUp = "Visor Up",
-    ContextMenu_VisorDown = "Visor pababa",
-    ContextMenu_Tighten = "Masikip",
-    ContextMenu_Untighten = "Hindi makataong",
-
-    IGUI_VehiclePartHelicopterInterior = "Helicopter interior",
-}

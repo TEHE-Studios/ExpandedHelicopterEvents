@@ -1,3 +1,0 @@
-DynamicRadio_ES = {
-	AEBS_buffcorrell = "Sí, ¿qué es lo que está de nuevo? Esk. Esk. Esk esk. Leeeeeeeeeet's Get Reeeady y. ir."
-}

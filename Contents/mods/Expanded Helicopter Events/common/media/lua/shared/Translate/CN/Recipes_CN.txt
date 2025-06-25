@@ -1,3 +1,0 @@
-Recipe_CN = {
-    Recipe_Open_Supplies = "开放用品",
-}

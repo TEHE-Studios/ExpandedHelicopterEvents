@@ -1,5 +1,0 @@
-UI_RO = {
-    UI_Intro1 = "Acestea sunt cele finale",
-    UI_Intro2 = "Cu toate acestea, nu ați reușit să vă declarați întregul venit brut",
-    UI_Intro3 = "Așa ați comis evaziune fiscală",
-}

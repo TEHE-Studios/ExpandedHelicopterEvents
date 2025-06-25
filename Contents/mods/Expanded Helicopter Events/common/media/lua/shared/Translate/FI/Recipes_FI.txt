@@ -1,3 +1,0 @@
-Recipe_FI = {
-    Recipe_Open_Supplies = "Avoimet tarvikkeet",
-}
