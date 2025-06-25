@@ -71,7 +71,7 @@ eHelicopter_PRESETS["UFO"] = {
 }
 
 eHelicopter_PRESETS["UFO_noHoverBackEnd_DoNotUse"] = {
-	doNotListForTwitchIntegration = true,
+	doNotListForStreamerIntegration = true,
 	forScheduling = false,
 	crew = {"AlienTourist",100,0, "AlienTourist",10,0, "AlienTourist",5,0,},
 }

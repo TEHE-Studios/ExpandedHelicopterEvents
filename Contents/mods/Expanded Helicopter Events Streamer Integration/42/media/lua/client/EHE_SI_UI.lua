@@ -13,11 +13,7 @@ local SCHEDULER_ICON = {
 
 local SCHEDULER_ICONS = {}
 
-for famID,family in pairs(SCHEDULER_ICON) do
-    for colorID,texture in pairs(family) do
-        table.insert(SCHEDULER_ICONS, texture)
-    end
-end
+for famID,family in pairs(SCHEDULER_ICON) do for colorID,texture in pairs(family) do table.insert(SCHEDULER_ICONS, texture) end end
 
 
 ---@class schedulerButton
@@ -70,9 +66,9 @@ function schedulerButton:render()
                 end
 
                 for k,e in pairs(globalModData.EventsOnSchedule) do
-                    if (not e.triggered) and ((e.preset and e.twitchTarget and e.twitchTarget==pUsername and e.startDay and e.startTime) or getDebug()) then
+                    if (not e.triggered) and ((e.preset and e.streamerTarget and e.streamerTarget==pUsername and e.startDay and e.startTime) or getDebug()) then
                         newTooltip = (newTooltip or "").." - "..(e.preset).."  Day:"..e.startDay.." Time:"..e.startTime
-                        if getDebug() then newTooltip = newTooltip.." t:"..tostring(e.triggered)..(e.twitchTarget and " @"..tostring(e.twitchTarget) or "") end
+                        if getDebug() then newTooltip = newTooltip.." t:"..tostring(e.triggered)..(e.streamerTarget and " @"..tostring(e.streamerTarget) or "") end
                         newTooltip = newTooltip.."\n"
                     end
                 end
@@ -102,57 +98,3 @@ function schedulerButton:new(x, y, width, height, player)
     o:initialise()
     return o
 end
-
-
-
---[[
-local function drawDetailsTooltip(tooltip, tooltipStart, skillsRecord, x, y, fontType)
-    local lineHeight = getTextManager():getFontFromEnum(fontType):getLineHeight()
-    local fnt = {r=0.9, g=0.9, b=0.9, a=1}
-    tooltip:drawText(tooltipStart, x, (y+(15-lineHeight)/2), fnt.r, fnt.g, fnt.b, fnt.a, fontType)
-    if skillsRecord then
-        y=y+(lineHeight*1.5)
-        tooltip:drawText(skillsRecord, x+1, (y+(15-lineHeight)/2), fnt.r, fnt.g, fnt.b, fnt.a, fontType)
-    end
-end
-
-local fontDict = { ["Small"] = UIFont.NewSmall, ["Medium"] = UIFont.NewMedium, ["Large"] = UIFont.NewLarge, }
-local fontBounds = { ["Small"] = 28, ["Medium"] = 32, ["Large"] = 42, }
-
-local ISToolTipInv_render = ISToolTipInv.render
-function ISToolTipInv.render(self)
-    if not ISContextMenu.instance or not ISContextMenu.instance.visibleCheck then
-        local itemObj = self.item
-        if itemObj and itemObj:getType() == "SkillRecoveryJournal" then
-
-            local tooltipStart, skillsRecord = SRJ.generateTooltip(itemObj)
-
-            local font = getCore():getOptionTooltipFont()
-            local fontType = fontDict[font] or UIFont.Medium
-            local textWidth = math.max(getTextManager():MeasureStringX(fontType, tooltipStart),getTextManager():MeasureStringX(fontType, skillsRecord))
-            local textHeight = getTextManager():MeasureStringY(fontType, tooltipStart)
-
-            if skillsRecord then textHeight=textHeight+getTextManager():MeasureStringY(fontType, skillsRecord)+8 end
-
-            local journalTooltipWidth = textWidth+fontBounds[font]
-            ISToolTipInv_render_Override(self,journalTooltipWidth)
-
-            local tooltipY = self.tooltip:getHeight()-1
-
-            self:setX(self.tooltip:getX() - 11)
-            if self.x > 1 and self.y > 1 then
-                local yoff = tooltipY + 8
-                local bgColor = self.backgroundColor
-                local bdrColor = self.borderColor
-
-                self:drawRect(0, tooltipY, journalTooltipWidth, textHeight + 8, math.min(1,bgColor.a+0.4), bgColor.r, bgColor.g, bgColor.b)
-                self:drawRectBorder(0, tooltipY, journalTooltipWidth, textHeight + 8, bdrColor.a, bdrColor.r, bdrColor.g, bdrColor.b)
-                drawDetailsTooltip(self, tooltipStart, skillsRecord, 15, yoff, fontType)
-                yoff = yoff + 12
-            end
-        else
-            ISToolTipInv_render(self)
-        end
-    end
-end
---]]

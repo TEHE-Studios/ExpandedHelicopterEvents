@@ -1,14 +1,16 @@
 require "EHE_eventScheduler"
 
-local EHETI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
+local config = require "EHE_SI_config"
+
+local EHE_SI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
 function eHeliEvent_ScheduleNew(startDay, startTime, preset)
-	if eHelicopterSandbox.config.twitchIntegrationOnly == false then
-		EHETI_eHeliEvent_ScheduleNew(startDay, startTime, preset)
+	if config.checkValue("EHE_SI_IntegrationOnly") == false then
+		EHE_SI_eHeliEvent_ScheduleNew(startDay, startTime, preset)
 	end
 end
 
 
-local function twitch_MoveHeliCloser(heli, playerChar)
+local function integration_MoveHeliCloser(heli, playerChar)
 	if not heli then return end
 	print("EHE-TI: "..heli:heliToString().." moved closer to "..playerChar:getUsername()..".")
 	local min, max = eheBounds.threshold/2, eheBounds.threshold-1
@@ -31,27 +33,21 @@ function eHeliEvent_engage(ID)
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget
 
-	if eHeliEvent.twitchTarget then
+	if eHeliEvent.streamerTarget then
 		willFly = true
-		print(" --- EHE-TI: twitchTarget:"..eHeliEvent.twitchTarget)
 
 		local players = getActualPlayers()
 		for _,player in pairs(players) do
-			if player:getUsername() == eHeliEvent.twitchTarget then
+			if player:getUsername() == eHeliEvent.streamerTarget then
 				foundTarget = player
 			end
 		end
 		if not foundTarget then
-			print(" ---- EHE-TI: Cannot find "..eHeliEvent.twitchTarget..".")
 			eHeliEvent.triggered = true
 			willFly = false
 		end
 	else
-		if eHelicopterSandbox.config.twitchIntegrationOnly == true then
-			eHeliEvent.triggered = true
-			print(" ---- EHE-TI: "..eHeliEvent.preset.." event bypassed.")
-			return
-		end
+		if config.checkValue("EHE_SI_IntegrationOnly") == true then eHeliEvent.triggered = true return end
 
 		foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 		if SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
@@ -65,8 +61,8 @@ function eHeliEvent_engage(ID)
 		local heli = getFreeHelicopter(eHeliEvent.preset)
 		if heli then
 			eHeliEvent.triggered = true
-			heli:launch(foundTarget, (not not eHeliEvent.twitchTarget) )
-			if eHeliEvent.twitchTarget then twitch_MoveHeliCloser(heli, foundTarget) end
+			heli:launch(foundTarget, (not not eHeliEvent.streamerTarget) )
+			if eHeliEvent.streamerTarget then integration_MoveHeliCloser(heli, foundTarget) end
 		end
 	end
 
@@ -74,14 +70,14 @@ function eHeliEvent_engage(ID)
 end
 
 
-function eHeliEvent_new(startDay, startTime, preset, twitchTarget)
+function eHeliEvent_new(startDay, startTime, preset, SI_Target)
 	if (not startDay) or (not startTime) then return end
 
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
 
-	if twitchTarget then
-		newEvent["twitchTarget"] = twitchTarget
-		print(" ---- EHE-TI: Scheduled: "..tostring(preset).." d:"..tostring(startDay).." t: "..tostring(startTime).." tT:"..tostring(twitchTarget))
+	if SI_Target then
+		newEvent["streamerTarget"] = SI_Target
+		print(" ---- EHE-SI: Scheduled: "..tostring(preset).." d:"..tostring(startDay).." t: "..tostring(startTime).." tT:"..tostring(SI_Target))
 	end
 
 	local globalModData = getExpandedHeliEventsModData()

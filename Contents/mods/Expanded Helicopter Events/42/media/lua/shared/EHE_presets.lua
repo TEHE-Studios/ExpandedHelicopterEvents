@@ -172,7 +172,7 @@ eHelicopter_PRESETS["jet"] = {
 }
 
 eHelicopter_PRESETS["air_raid"] = {
-	doNotListForTwitchIntegration = true,
+	doNotListForStreamerIntegration = true,
 	crashType = false,
 	shadow = false,
 	speed = 0.65,
@@ -199,7 +199,7 @@ eHelicopter_PRESETS["air_raid"] = {
 
 eHelicopter_PRESETS["jet_bombing"] = {
 	inherit = {"jet"},
-	doNotListForTwitchIntegration = true,
+	doNotListForStreamerIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = subEvents.eHelicopter_jetBombing},
 
 	eventSoundEffects = {

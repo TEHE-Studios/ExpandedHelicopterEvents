@@ -1,13 +1,15 @@
 require "EHE_SI_scheduleOverrides"
 
+local config = require "EHE_SI_config"
+
 local function onCommand(_module, _command, _player, _event)
 
-    if _module == "twitchIntegration" then
+    if _module == "EHE_SI_Integration" then
         if getDebug() then print("Received command from " .. _player:getUsername() .." [".._module..".".._command.."]") end
         if _command == "scheduleEvent" then
 
             local appliedDayDelay, appliedHourDelay = 0, 0
-            local configDelayBetween = eHelicopterSandbox.config.twitchHoursDelayBetweenEvents or 0
+            local configDelayBetween = config and tonumber(config.checkValue("EHE_SI_HoursBetweenEvents")) or 0
 
             local tHoursDelayBetweenEvents = math.max(0, configDelayBetween)
             if tHoursDelayBetweenEvents>0 then
@@ -16,7 +18,7 @@ local function onCommand(_module, _command, _player, _event)
 
                 local globalModData = getExpandedHeliEventsModData()
                 for _,event in pairs(globalModData.EventsOnSchedule) do
-                    if (eHelicopter_PRESETS[event.preset]) and event.twitchTarget and event.twitchTarget==_event.twitchTarget then
+                    if (eHelicopter_PRESETS[event.preset]) and event.streamerTarget and event.streamerTarget==_event.streamerTarget then
                         if (event.startDay > latestEventDay) then
                             latestEventDay = event.startDay
                             latestEventHour = event.startTime
@@ -35,10 +37,10 @@ local function onCommand(_module, _command, _player, _event)
                 appliedHourDelay = latestEventHour+HoursDelayBetweenEvents
             end
 
-            local configTimeBefore = eHelicopterSandbox.config.twitchHoursBeforeEventsAllowed or 0
-            local tHoursBeforeEventsAllowed = math.max(0, configTimeBefore)
-            local DaysBeforeAllowed = math.floor(tHoursBeforeEventsAllowed/24)
-            local HoursBeforeAllowed = math.floor(tHoursBeforeEventsAllowed-(DaysBeforeAllowed*24))
+            local configTimeBefore = config and tonumber(config.checkValue("EHE_SI_HoursBeforeEvents")) or 0
+            local tHoursBeforeEvents = math.max(0, configTimeBefore)
+            local DaysBeforeAllowed = math.floor(tHoursBeforeEvents/24)
+            local HoursBeforeAllowed = math.floor(tHoursBeforeEvents-(DaysBeforeAllowed*24))
 
             local GT = getGameTime()
             local currentDay = GT:getNightsSurvived()
@@ -69,12 +71,13 @@ local function onCommand(_module, _command, _player, _event)
                 end
             end
 
-            local presetID = twitchIntegrationPresets[_event.presetConfigNum]
+            if _event.presetID=="RANDOM" then _event.presetID = config.allowedPresets[ZombRand(#config.allowedPresets+1)] end
 
-            if presetID=="RANDOM" then presetID = twitchIntegrationPresets[ZombRand(2,#twitchIntegrationPresets)] end
-            print("-- scheduleEvent: _event.twitchKey:".._event.twitchKey.."  presetConfig:"..tostring(_event.presetConfigNum).."  presetID:"..tostring(presetID).. " cD:"..currentDay.." cH:"..currentHour)
-            if not presetID or presetID=="NONE" then return end
-            eHeliEvent_new(startDay, startTime, presetID, _event.twitchTarget)
+            print("-- scheduleEvent: KP:".._event.EHE_SI_Key.."  presetConfig:"..tostring(_event.presetID).."  presetID:"..tostring(_event.presetID).. " cD:"..currentDay.." cH:"..currentHour)
+
+            if not _event.presetID or _event.presetID=="NONE" then return end
+
+            eHeliEvent_new(startDay, startTime, _event.presetID, _event.streamerTarget)
         end
     end
 end

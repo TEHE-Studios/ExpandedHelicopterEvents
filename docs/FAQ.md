@@ -47,4 +47,4 @@ Assigned to each event, and controls how likely it is the scheduler will assign 
 The events in the scheduler change depending on how far along in the scheduler's duration you are. "Continue Scheduling" being toggled on means events continue to appear in their 'final stages' forever- this means different things for different events. Some events also have their own cut off period based on their preset. In order for these events to continue to appear you need to toggle off _Continue Scheduling Late-Game Only_.
 
 **Can I spawn events as an admin?**  
-Yes, if you launch the game with `-debug` in launch options, you can find debug tests for events in the menu. This is a temporary approach before something more concrete comes out. You can also use the Twitch-Integration sub-mod to launch events. In both cases you cannot control whom the events target.
+Yes, if you launch the game with `-debug` in launch options, you can find debug tests for events in the menu. This is a temporary approach before something more concrete comes out. You can also use the Streamer-Integration sub-mod to launch events. In both cases you cannot control whom the events target.
