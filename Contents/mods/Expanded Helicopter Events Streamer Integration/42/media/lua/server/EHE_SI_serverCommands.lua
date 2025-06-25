@@ -1,4 +1,4 @@
-require "EHE_TI_scheduleOverrides"
+require "EHE_SI_scheduleOverrides"
 
 local function onCommand(_module, _command, _player, _event)
 

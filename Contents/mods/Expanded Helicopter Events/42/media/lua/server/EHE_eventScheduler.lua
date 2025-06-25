@@ -81,21 +81,6 @@ end
 function eHeliEvents_OnGameStart()
 	local globalModData = getExpandedHeliEventsModData()
 	eHeliEvents_setEventsForScheduling()
-	--if eHelicopterSandbox.config.resetEvents == true, reset
-	if eHelicopterSandbox.config.resetEvents == true then
-		EasyConfig_Chucked.loadConfig()
-		globalModData.EventsOnSchedule = {}
-		globalModData.DaysBeforeApoc = false
-		globalModData.DayOfLastCrash = false
-		local spawnerList = EHE_spawner.getOrSetPendingSpawnsList()
-		spawnerList = {}
-		local EHE = EasyConfig_Chucked.mods["ExpandedHelicopterEvents"]
-		local resetEvents = EHE.menu["resetEvents"]
-		resetEvents.selectedValue = "false"
-		resetEvents.selectedLabel = "false"
-		EHE.config.resetEvents = false
-		EasyConfig_Chucked.saveConfig()
-	end
 	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysSinceApoc()
 	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or getGameTime():getNightsSurvived()
 	--if no EventsOnSchedule found make it an empty list

@@ -1,5 +1,5 @@
-name=Expanded Helicopter Events: Twitch Integration
-id=EHETwitchIntegration
+name=Expanded Helicopter Events: Streamer Integration
+id=ExpandedHelicopterEvents_StreamerIntegration
 description=This mod utilizes the numpad keys 1-9 to activate helicopter events - intended for streamers.
 poster=poster.png
 require=\ExpandedHelicopterEvents

@@ -328,11 +328,9 @@ function CustomDebugPanel.testAllLines()
 	end
 
 	for voiceID,voiceData in pairs(eHelicopter_announcers) do
-		if eHelicopterSandbox.config[voiceID] == true then
-			for lineID,lineData in pairs(voiceData["Lines"]) do
-				table.insert(testAllLines.ALL_LINES, lineData[2])
-				table.insert(testAllLines.DELAYS, lineData[1])
-			end
+		for lineID,lineData in pairs(voiceData["Lines"]) do
+			table.insert(testAllLines.ALL_LINES, lineData[2])
+			table.insert(testAllLines.DELAYS, lineData[1])
 		end
 	end
 	table.insert(testAllLines.ALL_LINES, "eHeli_machine_gun_fire_single")

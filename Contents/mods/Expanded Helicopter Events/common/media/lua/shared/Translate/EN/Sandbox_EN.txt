@@ -53,4 +53,7 @@ Sandbox_EN = {
 
     Sandbox_ExpandedHeli_CrashChanceMulti = "Crash Chance Multiplier",
     Sandbox_ExpandedHeli_CrashChanceMulti_tooltip = "This is multiplied against crash chance, 0 will prevent crashes all together.",
+
+    Sandbox_ExpandedHeli_EventMarkers = "Event Markers",
+    Sandbox_ExpandedHeli_EventMarkers_tooltip = "Toggle Event Markers Entirely",
 }

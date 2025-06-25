@@ -11,7 +11,7 @@ function eHelicopter:chooseVoice(specificVoice)
 		specificVoice = false
 	else
 		for voiceID,voiceData in pairs(eHelicopter_announcers) do
-			if (not voiceData["LeaveOutOfRandomSelection"]) and (eHelicopterSandbox.config[voiceID] == true) then
+			if not voiceData["LeaveOutOfRandomSelection"] then
 				table.insert(voiceSelectionOptions,voiceID)
 			end
 		end
