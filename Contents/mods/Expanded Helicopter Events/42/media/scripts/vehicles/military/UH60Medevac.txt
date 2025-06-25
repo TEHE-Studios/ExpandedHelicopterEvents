@@ -25,7 +25,7 @@ module Base
 
 		skin
 		{
-			texture = Vehicles/EHE/Vehicle_UH60Medevac,
+			texture = vehicles/civilian/Vehicle_UH60Medevac,
 		}
 
 		textureMask = Vehicle_UH60_mask,

@@ -25,7 +25,7 @@ module Base
 
 		skin
 		{
-			texture = Vehicles/SWH/Vehicle_UFORedneck,
+			texture = vehicles/SWH/Vehicle_UFORedneck,
 		}
 
 		textureMask = Vehicle_UFO_mask,

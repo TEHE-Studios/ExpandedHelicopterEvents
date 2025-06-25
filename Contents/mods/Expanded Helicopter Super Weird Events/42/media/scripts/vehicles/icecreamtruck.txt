@@ -27,7 +27,7 @@ module Base
 
 		skin
 		{
-			texture = Vehicles/SWH/vehicle_icecream,
+			texture = vehicles/SWH/vehicle_icecream,
 		}
 
 		template = PassengerSeat2,
