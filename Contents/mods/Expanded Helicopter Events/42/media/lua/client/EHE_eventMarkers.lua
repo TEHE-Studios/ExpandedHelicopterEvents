@@ -1,13 +1,21 @@
 require "ISUI/ISUIElement"
 require "EHE_util"
 
---[[ Base code derived from: Sound Direction Indicator -- Nolan Ritchie ]]--
 
 EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 
 EHE_EventMarker.iconSize = 96
 EHE_EventMarker.clickableSize = 45
 EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
+
+EHE_EventMarker.textureIsoPointer = getTexture("media/ui/eventPointer.png")
+EHE_EventMarker.textureBG = getTexture("media/ui/eventMarkerBase.png")
+
+EHE_EventMarker.textureCoopNum = {
+	getTexture("media/ui/coop1.png"),
+	getTexture("media/ui/coop2.png"),
+	getTexture("media/ui/coop3.png"),
+	getTexture("media/ui/coop4.png")}
 
 function EHE_EventMarker:initialise()
 	ISUIElement.initialise(self)
@@ -114,19 +122,16 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 end
 
 
-function EHE_EventMarker:setDistance(dist)
-	self.distanceToPoint = dist
-end
-function EHE_EventMarker:setAngleFromPoint(posX,posY)
-	if(posX and posY) then
-		local radians = math.atan2(posY - self.player:getY(), posX - self.player:getX()) + math.pi
-		local degrees = ((radians * 180 / math.pi + 270) + 45) % 360
+function EHE_EventMarker:setDistance(dist) self.distanceToPoint = dist end
 
+function EHE_EventMarker:setAngleFromPoint(posX, posY)
+	if posX and posY and self.player then
+		local dx = posX - self.player:getX()
+		local dy = posY - self.player:getY()
+		local radians = math.atan2(dy, dx)
+		local degrees = (math.deg(radians) + 360) % 360
 		self.angle = degrees
-		self.posY = posX
-		self.posY = posY
 	end
-
 end
 
 
@@ -175,20 +180,36 @@ function EHE_EventMarker:render()
 
 		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, _color.r, _color.g, _color.b)
 
-		local textureForPoint = self.texturePoint
-		local distanceOverRadius = self.distanceToPoint/self.radius
+		local tex = self.textureIsoPointer
+		if tex then
+			local angle = math.rad(self.angle or 0)
+			local distFraction = math.min(1, self.distanceToPoint / self.radius)
+			local stretch = 0.1 + (1.4 * distFraction)
 
-		if distanceOverRadius <= (8/EHE_EventMarker.maxRange) then
-			textureForPoint = self.texturePointClose
-		elseif distanceOverRadius <= (125/EHE_EventMarker.maxRange) then
-			--no change
-		elseif distanceOverRadius <= (375/EHE_EventMarker.maxRange) then
-			textureForPoint = self.texturePointMedium
-		else
-			textureForPoint = self.texturePointFar
+			local width = tex:getWidth() * stretch
+			local height = tex:getHeight()
+
+			local hw = width / 2
+			local hh = height / 2
+
+			local cosA = math.cos(angle)
+			local sinA = math.sin(angle)
+
+			local x1 = self.x + centerX - cosA * hw + sinA * hh
+			local y1 = self.y + centerY - sinA * hw - cosA * hh
+
+			local x2 = self.x + centerX + cosA * hw + sinA * hh
+			local y2 = self.y + centerY + sinA * hw - cosA * hh
+
+			local x3 = self.x + centerX + cosA * hw - sinA * hh
+			local y3 = self.y + centerY + sinA * hw + cosA * hh
+
+			local x4 = self.x + centerX - cosA * hw - sinA * hh
+			local y4 = self.y + centerY - sinA * hw + cosA * hh
+			---deeper call from renderer allows for skewing/stretching/rotating
+			getRenderer():render(tex, x1, y1, x2, y2, x3, y3, x4, y4, 1, 1, 1, 1, nil)																						---chuck
 		end
 
-		self:DrawTextureAngle(textureForPoint, centerX, centerY, self.angle)
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
 
 		if self.player and getNumActivePlayers()>1 then
@@ -254,16 +275,7 @@ function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screen
 	o.bConsumeMouseEvents = false
 	o.joypadFocused = false
 	o.translation = nil
-	o.texturePoint = getTexture("media/ui/eventMarker.png")
-	o.texturePointClose = getTexture("media/ui/eventMarker_close.png")
-	o.texturePointMedium = getTexture("media/ui/eventMarker_medium.png")
-	o.texturePointFar = getTexture("media/ui/eventMarker_far.png")
-	o.textureBG = getTexture("media/ui/eventMarkerBase.png")
-	o.textureCoopNum = {
-		getTexture("media/ui/coop1.png"),
-		getTexture("media/ui/coop2.png"),
-		getTexture("media/ui/coop3.png"),
-		getTexture("media/ui/coop4.png")}
+
 	if icon then
 		o.textureIcon = getTexture(icon)
 	end
