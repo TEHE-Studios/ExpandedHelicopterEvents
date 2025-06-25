@@ -207,7 +207,7 @@ function EHE_EventMarker:render()
 			local x4 = self.x + centerX - cosA * hw - sinA * hh
 			local y4 = self.y + centerY - sinA * hw + cosA * hh
 			---deeper call from renderer allows for skewing/stretching/rotating
-			getRenderer():render(tex, x1, y1, x2, y2, x3, y3, x4, y4, 1, 1, 1, 1, nil)																						---chuck
+			getRenderer():render(tex, x1, y1, x2, y2, x3, y3, x4, y4, _color.r, _color.g, _color.b, 1, nil)																						---chuck
 		end
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
