@@ -19,6 +19,12 @@ option ExpandedHeli.ContinueSchedulingEvents
 	valueTranslation = ExpandedHeli_ContScheduling,
 }
 
+option ExpandedHeli.EventMarkers
+{
+	type = boolean, default = true,
+	page = ExpandedHeli, translation = ExpandedHeli_EventMarkers,
+}
+
 option ExpandedHeli.WeatherImpactsEvents
 {
 	type = boolean, default = true,
