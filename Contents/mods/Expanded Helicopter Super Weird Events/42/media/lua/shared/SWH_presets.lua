@@ -53,7 +53,7 @@ eHelicopter_PRESETS["UFO"] = {
 	hoverOnTargetDuration = {1000,1225},
 	speed = 10,
 	topSpeedFactor = 2,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
 	scrapItems = false,
 	scrapVehicles = false,
 	addedCrashChance = 33,
@@ -85,7 +85,7 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 
 eHelicopter_PRESETS["UFOTourists"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
 	crew = {"AlienTourist",100,0,
 			"AlienTourist",75,0,
 			"AlienTourist",30,0,
@@ -95,7 +95,7 @@ eHelicopter_PRESETS["UFOTourists"] = {
 
 eHelicopter_PRESETS["UFORednecks"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
 	crashType = {"UFORedneck"},
 	crew = {"AlienRedneck",100,0,
 			"AlienRedneck",75,0,
@@ -109,7 +109,7 @@ eHelicopter_PRESETS["UFORednecks"] = {
 
 eHelicopter_PRESETS["UFOFratBoys"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
 	crew = {"AlienBeefo",100,0,
 			"AlienBeefo",75,0,
 			"AlienBeefo",30,0,
