@@ -168,7 +168,10 @@ local function eHelicopter_dropTrash(heli)
         --more likely to drop the same thing
         table.insert(trashItems, trashType)
 
-        EHE_spawner.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+        sendClientCommand("SpawnerAPI", "spawn", {
+            funcType="item", spawnThis=trashType, x=heliX, y=heliY, z=0,
+            extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
+
     end
 end
 

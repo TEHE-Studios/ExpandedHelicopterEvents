@@ -62,7 +62,10 @@ function subEvents.eHelicopter_dropSupplies(heli)
 	for _,SuppliesType in pairs(SuppliesItems) do
 		heliY = heliY+ZombRand(-3,3)
 		heliX = heliX+ZombRand(-3,3)
-		EHE_spawner.spawnItem(SuppliesType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+
+		sendClientCommand("SpawnerAPI", "spawn", {
+			funcType="item", spawnThis=SuppliesType, x=heliX, y=heliY, z=0,
+			extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 	end
 end
 
@@ -123,7 +126,10 @@ function subEvents.eHelicopter_dropTrash(heli)
 	for _,trashType in pairs(trashItems) do
 		heliY = heliY+ZombRand(-3,3)
 		heliX = heliX+ZombRand(-3,3)
-		EHE_spawner.spawnItem(trashType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+
+		sendClientCommand("SpawnerAPI", "spawn", {
+			funcType="item", spawnThis=trashType, x=heliX, y=heliY, z=0,
+			extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 	end
 end
 

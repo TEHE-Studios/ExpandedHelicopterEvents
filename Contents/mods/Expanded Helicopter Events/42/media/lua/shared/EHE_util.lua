@@ -1,32 +1,19 @@
 ---IsoPlayer are player entities but also NPCs (from mods)
 EHEIsoPlayers = {}
 
+
 ---@param playerObject IsoPlayer | IsoGameCharacter | IsoAnimal
 function addToEIP(playerObject)
 	if not playerObject then return end
-
-	if playerObject:getX() < 1 or playerObject:getY() < 1 then
-		local nameForDebug = playerObject:isAnimal() and tostring(playerObject) or playerObject:getFullName()
-		print(" - EHE: WARN: IsoPlayers can't add; IsoPlayer x/y less than 1: ", nameForDebug)
-		return
-	end
+	if playerObject:getX() < 1 or playerObject:getY() < 1 then return end
 	if playerObject:isDead() then return end
-
-	if not EHEIsoPlayers[playerObject] then
-		local nameForDebug = playerObject:isAnimal() and tostring(playerObject) or playerObject:getFullName()
-		print(" -- EHE: IsoPlayers adding:"..nameForDebug)
-		EHEIsoPlayers[playerObject] = true
-	end
+	if not EHEIsoPlayers[playerObject] then EHEIsoPlayers[playerObject] = true end
 end
+
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
-function removeFromEIP(playerObject)
-	if EHEIsoPlayers[playerObject] then
-		local nameForDebug = playerObject:isAnimal() and tostring(playerObject) or playerObject:getFullName()
-		print(" -- EHE: IsoPlayers removing:"..nameForDebug)
-		EHEIsoPlayers[playerObject] = nil
-	end
-end
+function removeFromEIP(playerObject) if EHEIsoPlayers[playerObject] then EHEIsoPlayers[playerObject] = nil end end
+
 
 function getActualPlayers()
 	local players = {}
@@ -311,6 +298,8 @@ end
 ---@param vehicle BaseVehicle
 function applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		EHE_spawner.spawnItem("EHE.EHE_Parachute", vehicle:getX(), vehicle:getY(), 0, nil, nil, "getOutsideSquareFromAbove")
+		sendClientCommand("SpawnerAPI", "spawn", {
+			funcType="item", spawnThis="EHE.EHE_Parachute", x=vehicle:getX(), y=vehicle:getY(), z=0,
+			extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 	end
 end

@@ -5,3 +5,4 @@ poster=poster.png
 versionMin=42.0
 icon=icon.png
 author=Shark & Chuckleberry Finn
+require=\TargetSquareOnLoad,

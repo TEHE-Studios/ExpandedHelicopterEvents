@@ -1,4 +1,3 @@
-require "EHE_spawner"
 require "EHE_shadowSystem"
 require "EHE_eventMarkerHandler"
 require "EHE_util"

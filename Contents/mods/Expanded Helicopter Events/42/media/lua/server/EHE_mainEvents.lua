@@ -54,7 +54,9 @@ function eHelicopter:crash()
 				end
 			end
 
-			EHE_spawner.spawnVehicle(vehicleType, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+			sendClientCommand("SpawnerAPI", "spawn", {
+				funcType="vehicle", spawnThis=vehicleType, x=heliX, y=heliY, z=0,
+				extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove_vehicle" })
 
 			self.crashType = false
 			self.state = "crashed"
@@ -139,7 +141,9 @@ function eHelicopter:spawnCrew(x, y, z)
 				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 			end
 
-			EHE_spawner.spawnZombie(outfitID, x, y, 0, onSpawnCrewEvents, femaleChance, "getOutsideSquareFromAbove")
+			sendClientCommand("SpawnerAPI", "spawn", {
+				funcType="zombie", spawnThis=outfitID, x=x, y=y, z=0,
+				extraFunctions=onSpawnCrewEvents, extraParam=femaleChance, processSquare="getOutsideSquareFromAbove" })
 
 		end
 	end
@@ -201,7 +205,10 @@ function eHelicopter:dropItem(type, fuzz)
 		heliY = heliY+ZombRand(min,max)
 	end
 
-	EHE_spawner.spawnItem(type, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+	sendClientCommand("SpawnerAPI", "spawn", {
+		funcType="item", spawnThis=type, x=heliX, y=heliY, z=0,
+		extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
+
 end
 
 
@@ -251,7 +258,11 @@ function eHelicopter:dropCarePackage(fuzz)
 				table.insert(extraFunctions, eventFunction)
 			end
 		end
-		EHE_spawner.spawnVehicle(carePackage, heliX, heliY, 0, extraFunctions, nil, "getOutsideSquareFromAbove_vehicle")
+
+		sendClientCommand("SpawnerAPI", "spawn", {
+			funcType="vehicle", spawnThis=carePackage, x=heliX, y=heliY, z=0,
+			extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove_vehicle" })
+
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
 		addSound(nil, heliX, heliY, 0, 200, 150)
@@ -290,7 +301,9 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				EHE_spawner.spawnItem(partType, heliX, heliY, 0, {"ageInventoryItem"}, nil, "getOutsideSquareFromAbove")
+				sendClientCommand("SpawnerAPI", "spawn", {
+					funcType="item", spawnThis=partType, x=heliX, y=heliY, z=0,
+					extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 			end
 		end
 	end
@@ -317,7 +330,10 @@ function eHelicopter:dropScrap(fuzz)
 					heliY = heliY+ZombRand(minY,maxY)
 				end
 
-				EHE_spawner.spawnVehicle(partType, heliX, heliY, 0, nil, nil, "getOutsideSquareFromAbove")
+				sendClientCommand("SpawnerAPI", "spawn", {
+					funcType="vehicle", spawnThis=partType, x=heliX, y=heliY, z=0,
+					processSquare="getOutsideSquareFromAbove_vehicle" })
+
 			end
 		end
 	end

@@ -7,6 +7,7 @@ require "EHE_spawner"
 require "EHE_shadowSystem"
 local eheFlareSystem = require "EHE_flares"
 
+
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
 	--serverside
@@ -26,18 +27,8 @@ local function onClientCommand(_module, _command, _player, _data)
 		end
 	end
 
-	if _module == "SpawnerAPI" then
-		if _command == "spawnZombie" then
-			--print("--spawnZombie")
-			--_dataA = player, _data = args
-			EHE_spawner.spawnZombie(_data.outfitID, _data.x, _data.y, _data.z, _data.extraFunctions, _data.femaleChance, _data.processSquare)
-		elseif _command == "spawnVehicle" then
-			--print("--spawnVehicle")
-			EHE_spawner.spawnVehicle(_data.vehicleType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
-		elseif _command == "spawnItem" then
-			--print("--spawnItem")
-			EHE_spawner.spawnItem(_data.itemType, _data.x, _data.y, _data.z, _data.extraFunctions, _data.extraParam, _data.processSquare)
-		end
+	if _module == "SpawnerAPI" and _command == "spawn" then
+		EHE_spawner.attemptToSpawn(_data.x, _data.y, _data.z, _data.funcType, _data.spawnThis, _data.extraFunctions, _data.extraParam, _data.processSquare)
 	end
 end
 Events.OnClientCommand.Add(onClientCommand)--/client/ to server
