@@ -32,43 +32,28 @@ end
 
 
 function EHE_EventMarker:onMouseUp(x, y)
-	if not self.moveWithMouse then
-		return
-	end
-	if not self:getIsVisible() then
-		return
-	end
+	if not self.moveWithMouse then return end
+	if not self:getIsVisible() then return end
 
 	self.moving = false
-	if ISMouseDrag.tabPanel then
-		ISMouseDrag.tabPanel:onMouseUp(x,y)
-	end
+	if ISMouseDrag.tabPanel then ISMouseDrag.tabPanel:onMouseUp(x,y) end
 
 	ISMouseDrag.dragView = nil
 end
+
 
 function EHE_EventMarker:onMouseUpOutside(x, y)
-	if not self.moveWithMouse then
-		return
-	end
-	if not self:getIsVisible() then
-		return
-	end
-
+	if not self.moveWithMouse then return end
+	if not self:getIsVisible() then return end
 	self.moving = false
 	ISMouseDrag.dragView = nil
 end
 
+
 function EHE_EventMarker:onMouseDown(x, y)
-	if not self.moveWithMouse then
-		return true
-	end
-	if not self:getIsVisible() then
-		return
-	end
-	if not self:isMouseOver() then
-		return -- this happens with setCapture(true)
-	end
+	if not self.moveWithMouse then return true end
+	if not self:getIsVisible() then return end
+	if not self:isMouseOver() then return end
 
 	self.downX = x
 	self.downY = y
@@ -76,10 +61,9 @@ function EHE_EventMarker:onMouseDown(x, y)
 	self:bringToTop()
 end
 
+
 function EHE_EventMarker:onMouseMoveOutside(dx, dy)
-	if not self.moveWithMouse then
-		return
-	end
+	if not self.moveWithMouse then return end
 	self.mouseOver = false
 
 	if self.moving then
@@ -94,16 +78,13 @@ function EHE_EventMarker:onMouseMoveOutside(dx, dy)
 		end
 
 		local p = self:getPlayer()
-		if p then
-			p:getModData()["EHE_eventMarkerPlacement"] = {self.x, self.y}
-		end
+		if p then p:getModData()["EHE_eventMarkerPlacement"] = {self.x, self.y} end
 	end
 end
 
+
 function EHE_EventMarker:onMouseMove(dx, dy)
-	if not self.moveWithMouse then
-		return
-	end
+	if not self.moveWithMouse then return end
 	self.mouseOver = true
 	if self.moving then
 		if self.parent then
@@ -115,14 +96,13 @@ function EHE_EventMarker:onMouseMove(dx, dy)
 			self:bringToTop()
 		end
 		local p = self:getPlayer()
-		if p then
-			p:getModData()["EHE_eventMarkerPlacement"] = {self.x, self.y}
-		end
+		if p then p:getModData()["EHE_eventMarkerPlacement"] = {self.x, self.y} end
 	end
 end
 
 
 function EHE_EventMarker:setDistance(dist) self.distanceToPoint = dist end
+
 
 function EHE_EventMarker:setAngleFromPoint(posX, posY)
 	if posX and posY and self.player then
@@ -135,20 +115,13 @@ function EHE_EventMarker:setAngleFromPoint(posX, posY)
 end
 
 
-function EHE_EventMarker:setAngle(value)
-	self.angle = value
-end
-
 function EHE_EventMarker:setDuration(value)
 	self.duration = value
-	if value <= 0 then
-		self:setVisible(false)
-	end
+	if value <= 0 then self:setVisible(false) end
 end
 
-function EHE_EventMarker:getDuration()
-	return self.duration
-end
+
+function EHE_EventMarker:getDuration() return self.duration end
 
 
 local function colorBlend(color, underLayer, fade)
@@ -221,16 +194,9 @@ function EHE_EventMarker:render()
 end
 
 
-function EHE_EventMarker:setEnabled(value)
-	self.enabled = value
-end
-
-function EHE_EventMarker:getEnabled()
-	return self.enabled
-end
-
-function EHE_EventMarker:prerender()
-end
+function EHE_EventMarker:setEnabled(value) self.enabled = value end
+function EHE_EventMarker:getEnabled() return self.enabled end
+function EHE_EventMarker:prerender() end
 
 function EHE_EventMarker:refresh()
 	self.opacity = 0
@@ -239,13 +205,11 @@ end
 
 
 ---@return IsoPlayer | IsoGameCharacter | IsoMovingObject | IsoObject
-function EHE_EventMarker:getPlayer()
-	return self.player
-end
+function EHE_EventMarker:getPlayer() return self.player end
 
 
 function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY, color)
-	--print(" --- marker new: eventID:"..eventID..": tex:"..icon.." d:"..duration.." x/y:"..posX..","..posY.." "..tostring(player).." screen:"..screenX..","..screenY)
+
 	local o = {}
 	o = ISUIElement:new(screenX, screenY, 1, 1)
 	setmetatable(o, self)
@@ -295,14 +259,12 @@ function EHE_EventMarker:update(posX,posY)
 		self.lastUpdateTime = timeStamp
 	end
 
-	--print(" ---- marker "..self.eventID.." update")
 	local dist
 	posX = posX or self.posX
 	posY = posY or self.posY
 
 	if posX and posY and self.player then
 		dist = IsoUtils.DistanceTo(posX, posY, self.player:getX(), self.player:getY())
-		--print(" ----- marker:"..self.eventID.." x("..x..") y("..y..") and player("..tostring(self.player)..") found : attempting to set dist("..dist..")")
 	end
 
 	if not self.radius then
@@ -327,12 +289,10 @@ function EHE_EventMarker:update(posX,posY)
 
 	self.radius = math.max(EHE_EventMarker.maxRange/3, math.min(self.radius,EHE_EventMarker.maxRange))
 
-	if self.duration > 0 then--and player:isOutside() then
-		--print(" ----- marker:"..self.eventID.." x("..posX..") y("..posY..") and dist("..tostring(dist)..") found : attempting to compare to radius("..self.radius..")")
+	if self.duration > 0 then
 		self.posX = posX
 		self.posY = posY
 		if dist and (dist <= self.radius) then
-			--print(" ------ marker "..self.eventID.." in range - visible")
 			self:setDistance(dist)
 			self:setAngleFromPoint(self.posX,self.posY)
 			self:setVisible(true)
@@ -340,7 +300,6 @@ function EHE_EventMarker:update(posX,posY)
 			self:setVisible(false)
 		end
 	else
-		--print(" ------ hiding marker "..self.eventID)
 		self:setVisible(false)
 	end
 end
