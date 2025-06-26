@@ -19,13 +19,10 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
 		end
 		local outsideSquare
 		if square then
-			outsideSquare = square--getOutsideSquareFromAbove(square) or square
+			outsideSquare = getOutsideSquareFromAbove(square) or square
 		end
 
-		if not texture or not x or not y or not z then
-			--print("-- clear shadow")
-			outsideSquare = nil
-		end
+		if not texture or not x or not y or not z then outsideSquare = nil end
 
 		---@type WorldMarkers.GridSquareMarker
 		local shadow = storedShadows["HELI"..ID]
