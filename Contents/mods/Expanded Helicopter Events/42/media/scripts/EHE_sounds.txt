@@ -101,10 +101,16 @@ module Base {
         
     sound eHeli30mmCannon {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire30mmCannon1.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
+        clip { file = media/sound/gunfire/30mmCannon1.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
         clip { file = media/sound/gunfire/30mmCannon2.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
         clip { file = media/sound/gunfire/30mmCannon3.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } }
 
+    sound eHeliLightRockets {
+        category = EHE: Main, loop = false, is3D = true,
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_1.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_2.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_3.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } }
+        
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/heli_newscaster.ogg, distanceMax = 100, reverbFactor = 0.1, volume = 0.5, } }
