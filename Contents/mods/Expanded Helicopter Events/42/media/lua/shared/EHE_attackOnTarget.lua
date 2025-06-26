@@ -92,15 +92,22 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
     elseif instanceof(targetHostile, "IsoZombie") then
         --Zombies receive damage directly because they don't have body parts or clothing protection
         targetHostile:addBlood(damage/100)
+
+        targetHostile:setVariable("usePhysicHitReaction", true)
+
         damage = (damage*3)/50
-        if not targetHostile:isStaggerBack() and not targetHostile:isbFalling() and not targetHostile:isOnFloor() then targetHostile:knockDown(ZombRand(2)==1 and true) end
-        targetHostile:setHealth(math.max(0,targetHostile:getHealth()-damage))
-        --print("  EHE:[hit-zombie]: damage:"..damage.." hp-after:"..targetHostile:getHealth())
-        if targetHostile:getHealth() <= 0 then
-            targetHostile:changeState(ZombieOnGroundState.instance())
-            targetHostile:setAttackedBy(getCell():getFakeZombieForHit())
-            targetHostile:becomeCorpse()
+        if not targetHostile:isStaggerBack() and not targetHostile:isbFalling() and not targetHostile:isOnFloor() then
+            targetHostile:knockDown(ZombRand(2)==1 and true)
         end
+
+        targetHostile:setAttackedBy(getCell():getFakeZombieForHit())
+        targetHostile:setHealth(math.max(0,targetHostile:getHealth()-damage))
+
+        --print("  EHE:[hit-zombie]: damage:"..damage.." hp-after:"..targetHostile:getHealth())
+        --if targetHostile:getHealth() <= 0 then
+            --targetHostile:changeState(ZombieOnGroundState.instance())
+            --targetHostile:becomeCorpse()
+        --end
     end
 
 
