@@ -17,8 +17,9 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
 
 	local shadow = storedShadows["HELI"..ID]
 	if not shadow then
-		storedShadows["HELI"..ID] = getTexture("media/textures/highlights/"..texture)
+		storedShadows["HELI"..ID] = getTexture("media/textures/highlights/"..texture..".png")
 		shadow = storedShadows["HELI"..ID]
+		print("texture: ", texture, "  shadow:", shadow)
 	end
 
 	storedShadowsUpdateTimes["HELI"..ID] = getTimeInMillis()
@@ -39,5 +40,7 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
 	print("screen:",getPlayerScreenWidth(0))
 	print("-cords:",sx1,",", sy1,",", sx2,",", sy2,",", sx3,",", sy3,",", sx4,",", sy4)
 
-	getRenderer():render(shadow, sx1, sy1, sx2, sy2, sx3, sy3, sx4, sy4, 1.0, 1.0, 1.0, 0.8, nil)
+	getRenderer():render(shadow, 250, 250, 350, 350, 450, 450, 550, 550, 1 , 1, 1, 1, nil)
+
+	getRenderer():render(shadow, sx1/2, sy1/2, sx2/2, sy2/2, sx3/2, sy3/2, sx4/2, sy4/2, 1.0, 1.0, 1.0, 0.8, nil)
 end
