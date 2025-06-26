@@ -29,6 +29,13 @@ function EHE_DebugTestWindow:render()
 	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
 
 		if #self.listbox.items < #globalModData.EventsOnSchedule then
+
+			local listHeight = math.min(10,#globalModData.EventsOnSchedule)*self.listbox.fontHgt
+			self.listbox:setHeight(listHeight)
+			local closeY = self.listbox.y + self.listbox.height + 20
+			self:setHeight(closeY+28)
+			self.Close:setY(closeY)
+
 			local nextUp = #self.listbox.items+1
 			local event = globalModData.EventsOnSchedule[nextUp]
 			local textToDisplay = "["..nextUp.."]"
@@ -74,7 +81,7 @@ function EHE_DebugTestWindow:initialise()
 	ISPanel.initialise(self)
 
 	local padding = 10
-	local yOffset = 4
+	local yOffset = 8
 	local y = padding+5
 	local w = self.width/2-(padding*1.5)
 	local h = 18
@@ -104,7 +111,13 @@ function EHE_DebugTestWindow:initialise()
 	local font = UIFont.AutoNormSmall
 	local fontHeight = getTextManager():getFontHeight(font)
 
-	self.listbox = ISScrollingListBox:new(padding, y+yOffset+(fontHeight*1.33), self.width-(padding*2), 300)
+	local height = fontHeight
+	local globalModData = getExpandedHeliEventsModData_Client()
+	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
+		height = #globalModData.EventsOnSchedule*height
+	end
+
+	self.listbox = ISScrollingListBox:new(padding, y+yOffset+(fontHeight*1.33), self.width-(padding*2), height)
 	self.listbox:initialise()
 	self.listbox.backgroundColor.a = 0.0
 	self.listbox.font = font
@@ -117,12 +130,13 @@ function EHE_DebugTestWindow:initialise()
 
 	EHE_DebugTestWindow.addButton(self, function() self:close() end, "Close", (self.width/2)-(w/2), closeY, w, h)
 
-	self:setHeight(closeY+h+padding)
+	self:setHeight(closeY+28)
 end
 
 
 function EHE_DebugTestWindow.addButton(UIElement, setFunction, title, x, y, width, height)
 	local btn = ISButton:new(x, y, width, height, title, nil, setFunction)
+	UIElement[title] = btn
 	UIElement:addChild(btn)
 end
 
