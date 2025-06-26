@@ -45,15 +45,11 @@ end
 Events.EHE_ClientModDataReady.Add(onClientModDataReady)
 
 
-
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
 	if not storedShadows then return end
 	for shadowID,_ in pairs(storedShadows) do
 		if storedShadowsUpdateTimes and storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
-			---@type WorldMarkers.GridSquareMarker
-			local shadow = storedShadows[shadowID]
-			shadow:setAlpha(0)
 			storedShadows[shadowID] = nil
 			storedShadowsUpdateTimes[shadowID] = nil
 		end
