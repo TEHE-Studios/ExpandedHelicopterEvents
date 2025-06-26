@@ -6,6 +6,8 @@ storedShadowsUpdateTimes = {}
 --eventShadowHandler:setShadowPos(self.ID, self.shadowTexture, currentSquare:getX(),currentSquare:getY(),currentSquare:getX(),currentSquare:getZ())
 
 function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
+	if 1 == 1 then return end ---disable
+
 	if isServer() then
 		sendServerCommand("eventShadowHandler", "setShadowPos", {ID=ID,texture=texture,x=x,y=y,z=z})
 		return

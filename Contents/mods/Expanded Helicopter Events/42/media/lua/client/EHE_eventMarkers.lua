@@ -138,25 +138,16 @@ local function colorBlend(color, underLayer, fade)
 end
 
 
-function EHE_EventMarker:setShadowPos(ID)
-	if not ID then return end
+function EHE_EventMarker:setShadowPos()
+	local x, y, z = self.posX, self.posY, 0
+	local sq = getSquare(x, y, 0)
+	if not sq then return end
 
-	local heli = ALL_HELICOPTERS[eventID]
+	local zoom = getCore():getZoom(0)
 
-	if not getSquare(x, y, 0) then return end
-
-	local shadow = storedShadows["HELI"..ID]
-	if not shadow then
-		storedShadows["HELI"..ID] = getTexture("media/textures/highlights/"..texture..".png")
-		shadow = storedShadows["HELI"..ID]
-		print("texture: ", texture, "  shadow:", shadow)
-	end
-
-	storedShadowsUpdateTimes["HELI"..ID] = getTimeInMillis()
-
-	local w, h = 10, 10
+	local w, h = 5, 5
 	local halfW, halfH = w / 2, h / 2
-
+	
 	local x1, y1 = x - halfW, y - halfH
 	local x2, y2 = x + halfW, y - halfH
 	local x3, y3 = x + halfW, y + halfH
@@ -167,13 +158,21 @@ function EHE_EventMarker:setShadowPos(ID)
 	local sx3, sy3 = ISCoordConversion.ToScreen(x3, y3, z)
 	local sx4, sy4 = ISCoordConversion.ToScreen(x4, y4, z)
 
-	print("screen:",getPlayerScreenWidth(0))
+	getRenderer():renderPoly(self.shadow, sx1/zoom, sy1/zoom, sx2/zoom, sy2/zoom, sx3/zoom, sy3/zoom, sx4/zoom, sy4/zoom, 0, 0, 1.0, 0.8)
+
+	local tx1, ty1 = ISCoordConversion.ToScreen(x - w / 2, y - h / 2, z)
+	getRenderer():renderRect(tx1/zoom, ty1/zoom, w/zoom, h/zoom, 1, 0, 0, 1)
+
+	print("screen:",getPlayerScreenWidth(0),"x",getPlayerScreenHeight(0))
+	print("zoom: ", getCore():getZoom(0))
 	print("-cords:",sx1,",", sy1,",", sx2,",", sy2,",", sx3,",", sy3,",", sx4,",", sy4)
+	print("-cords:",x1,",", y1,",", x2,",", y2,",", x3,",", y3,",", x4,",", y4)
+	print("player:",getPlayer():getX(),",",getPlayer():getY())
 
-	getRenderer():render(shadow, 250, 250, 350, 350, 450, 450, 550, 550, 1 , 1, 1, 1, nil)
-
-	getRenderer():render(shadow, sx1/2, sy1/2, sx2/2, sy2/2, sx3/2, sy3/2, sx4/2, sy4/2, 1.0, 1.0, 1.0, 0.8, nil)
+	--local marker = getWorldMarkers():addGridSquareMarker("helicopter_shadow", nil, sq, 1, 1, 1, true, 1)
 end
+
+function EHE_EventMarker:prerender() self:setShadowPos() end
 
 
 function EHE_EventMarker:render()
@@ -242,7 +241,6 @@ end
 
 function EHE_EventMarker:setEnabled(value) self.enabled = value end
 function EHE_EventMarker:getEnabled() return self.enabled end
-function EHE_EventMarker:prerender() end
 
 function EHE_EventMarker:refresh()
 	self.opacity = 0
@@ -254,7 +252,7 @@ end
 function EHE_EventMarker:getPlayer() return self.player end
 
 
-function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY, color)
+function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screenX, screenY, color, shadow)
 
 	local o = {}
 	o = ISUIElement:new(screenX, screenY, 1, 1)
@@ -265,6 +263,7 @@ function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screen
 	o.x = screenX
 	o.y = screenY
 	o.markerColor = color or {r=1,g=1,b=1}
+	o.shadow = shadow and getTexture("media/textures/highlights/"..shadow..".png") or getTexture("media/textures/highlights/helicopter_shadow.png")
 	o.posX = posX or 0
 	o.posY = posY or 0
 	o.width = EHE_EventMarker.clickableSize
@@ -285,11 +284,7 @@ function EHE_EventMarker:new(eventID, icon, duration, posX, posY, player, screen
 	o.bConsumeMouseEvents = false
 	o.joypadFocused = false
 	o.translation = nil
-
-	if icon then
-		o.textureIcon = getTexture(icon)
-	end
-
+	o.textureIcon = icon and getTexture(icon)
 	o:initialise()
 	return o
 end
