@@ -1,32 +1,41 @@
 require "EHE_util"
 
 eventShadowHandler = {}
-storedShadows = {}
-storedShadowsUpdateTimes = {}
---eventShadowHandler:setShadowPos(self.ID, self.shadowTexture, currentSquare:getX(),currentSquare:getY(),currentSquare:getX(),currentSquare:getZ())
+eventShadowHandler.storedShadows = {}
 
 function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
-	if 1 == 1 then return end ---disable
-
+	if not ID or not texture then return end
+	z=0
 	if isServer() then
 		sendServerCommand("eventShadowHandler", "setShadowPos", {ID=ID,texture=texture,x=x,y=y,z=z})
 		return
 	end
 
-	if not ID or not x or not y or not z or not texture then return end
+	local shadow = eventShadowHandler.storedShadows["HELI"..ID]
+	if not shadow then
+		print("made new shadow for: ", "HELI"..ID)
+		eventShadowHandler.storedShadows["HELI"..ID] = { texture = getTexture("media/textures/highlights/"..texture..".png") }
+	end
+	eventShadowHandler.storedShadows["HELI"..ID].x = x
+	eventShadowHandler.storedShadows["HELI"..ID].y = y
+	eventShadowHandler.storedShadows["HELI"..ID].z = z
+	eventShadowHandler.storedShadows["HELI"..ID].updateTime = getTimeInMillis()
+end
+
+
+function eventShadowHandler.render(ID)
+
+	local shadow = eventShadowHandler.storedShadows[ID]
+	if not shadow then return end
+
+	local x, y , z = shadow.x, shadow.y, shadow.z
+	local texture = shadow.texture
 
 	if not getSquare(x, y, 0) then return end
 
-	local shadow = storedShadows["HELI"..ID]
-	if not shadow then
-		storedShadows["HELI"..ID] = getTexture("media/textures/highlights/"..texture..".png")
-		shadow = storedShadows["HELI"..ID]
-		print("texture: ", texture, "  shadow:", shadow)
-	end
+	local zoom = getCore():getZoom(0)
 
-	storedShadowsUpdateTimes["HELI"..ID] = getTimeInMillis()
-
-	local w, h = 10, 10
+	local w, h = 9, 9
 	local halfW, halfH = w / 2, h / 2
 
 	local x1, y1 = x - halfW, y - halfH
@@ -39,10 +48,10 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
 	local sx3, sy3 = ISCoordConversion.ToScreen(x3, y3, z)
 	local sx4, sy4 = ISCoordConversion.ToScreen(x4, y4, z)
 
-	print("screen:",getPlayerScreenWidth(0))
-	print("-cords:",sx1,",", sy1,",", sx2,",", sy2,",", sx3,",", sy3,",", sx4,",", sy4)
+	getRenderer():renderPoly(texture, sx1/zoom, sy1/zoom, sx2/zoom, sy2/zoom, sx3/zoom, sy3/zoom, sx4/zoom, sy4/zoom, 1, 1, 1, 0.6)
 
-	getRenderer():render(shadow, 250, 250, 350, 350, 450, 450, 550, 550, 1 , 1, 1, 1, nil)
-
-	getRenderer():render(shadow, sx1/2, sy1/2, sx2/2, sy2/2, sx3/2, sy3/2, sx4/2, sy4/2, 1.0, 1.0, 1.0, 0.8, nil)
+	if getDebug() then
+		local tx1, ty1 = ISCoordConversion.ToScreen(x - w / 2, y - h / 2, z)
+		getRenderer():renderRect(tx1/zoom, ty1/zoom, w/zoom, h/zoom, 1, 0, 0, 1)
+	end
 end

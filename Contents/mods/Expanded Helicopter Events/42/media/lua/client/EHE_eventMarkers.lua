@@ -104,17 +104,6 @@ end
 function EHE_EventMarker:setDistance(dist) self.distanceToPoint = dist end
 
 
-function EHE_EventMarker:setAngleFromPoint(posX, posY)
-	if posX and posY and self.player then
-		local dx = posX - self.player:getX()
-		local dy = posY - self.player:getY()
-		local radians = math.atan2(dy, dx)
-		local degrees = (math.deg(radians) + 360) % 360
-		self.angle = degrees
-	end
-end
-
-
 function EHE_EventMarker:setDuration(value)
 	self.duration = value
 	if value <= 0 then self:setVisible(false) end
@@ -138,41 +127,20 @@ local function colorBlend(color, underLayer, fade)
 end
 
 
-function EHE_EventMarker:setShadowPos()
-	local x, y, z = self.posX, self.posY, 0
-	local sq = getSquare(x, y, 0)
-	if not sq then return end
+function EHE_EventMarker:setAngleFromPoint(posX, posY)
+	if posX and posY and self.player then
+		local px, py = self.player:getX(), self.player:getY()
+		local dx, dy = posX - px, posY - py
 
-	local zoom = getCore():getZoom(0)
+		--- isometric projection
+		local screen_dx = (dx - dy) * 0.5
+		local screen_dy = (dx + dy) * 0.25
 
-	local w, h = 5, 5
-	local halfW, halfH = w / 2, h / 2
-	
-	local x1, y1 = x - halfW, y - halfH
-	local x2, y2 = x + halfW, y - halfH
-	local x3, y3 = x + halfW, y + halfH
-	local x4, y4 = x - halfW, y + halfH
-
-	local sx1, sy1 = ISCoordConversion.ToScreen(x1, y1, z)
-	local sx2, sy2 = ISCoordConversion.ToScreen(x2, y2, z)
-	local sx3, sy3 = ISCoordConversion.ToScreen(x3, y3, z)
-	local sx4, sy4 = ISCoordConversion.ToScreen(x4, y4, z)
-
-	getRenderer():renderPoly(self.shadow, sx1/zoom, sy1/zoom, sx2/zoom, sy2/zoom, sx3/zoom, sy3/zoom, sx4/zoom, sy4/zoom, 0, 0, 1.0, 0.8)
-
-	local tx1, ty1 = ISCoordConversion.ToScreen(x - w / 2, y - h / 2, z)
-	getRenderer():renderRect(tx1/zoom, ty1/zoom, w/zoom, h/zoom, 1, 0, 0, 1)
-
-	print("screen:",getPlayerScreenWidth(0),"x",getPlayerScreenHeight(0))
-	print("zoom: ", getCore():getZoom(0))
-	print("-cords:",sx1,",", sy1,",", sx2,",", sy2,",", sx3,",", sy3,",", sx4,",", sy4)
-	print("-cords:",x1,",", y1,",", x2,",", y2,",", x3,",", y3,",", x4,",", y4)
-	print("player:",getPlayer():getX(),",",getPlayer():getY())
-
-	--local marker = getWorldMarkers():addGridSquareMarker("helicopter_shadow", nil, sq, 1, 1, 1, true, 1)
+		local radians = math.atan2(screen_dy, screen_dx)
+		local degrees = (math.deg(radians) + 360) % 360
+		self.angle = degrees
+	end
 end
-
-function EHE_EventMarker:prerender() self:setShadowPos() end
 
 
 function EHE_EventMarker:render()

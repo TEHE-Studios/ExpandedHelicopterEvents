@@ -47,15 +47,16 @@ Events.EHE_ClientModDataReady.Add(onClientModDataReady)
 
 function eventShadowHandler.updateForPlayer(player)
 	local currentTime = getTimeInMillis()
-	if not storedShadows then return end
-	for shadowID,_ in pairs(storedShadows) do
-		if storedShadowsUpdateTimes and storedShadowsUpdateTimes[shadowID]+5000 <= currentTime then
-			storedShadows[shadowID] = nil
-			storedShadowsUpdateTimes[shadowID] = nil
+	if not eventShadowHandler.storedShadows then return end
+	for shadowID,shadowData in pairs(eventShadowHandler.storedShadows) do
+		if shadowData.updateTime and shadowData.updateTime+5000 <= currentTime then
+			eventShadowHandler.storedShadows[shadowID] = nil
+		else
+			eventShadowHandler.render(shadowID)
 		end
 	end
 end
-Events.OnPlayerUpdate.Add(eventShadowHandler.updateForPlayer)
+Events.OnPreUIDraw.Add(eventShadowHandler.updateForPlayer)
 
 
 local clientSideEventSoundHandler = {}
