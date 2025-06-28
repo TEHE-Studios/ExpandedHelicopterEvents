@@ -6,6 +6,12 @@ link4 = Cytt's BuyMeACoffee = https://buymeacoffee.com/cytt,
 [ ------ ]
 
 [ B24 - Initial ]
-- Initial B42 update.
 - Translations provided by github.com/Chuckleberry-Finn/pz-translator
+- New and improved event markers!
+- Various New Events with Sounds!
+- Reworked/updated/refactored shadows, markers, logic!
+
+- Now includes the optional sub-mods:
+    Super Weird Edition
+    Streamer-Integration (formerly Twitch-Integration)
 [ ------ ]
