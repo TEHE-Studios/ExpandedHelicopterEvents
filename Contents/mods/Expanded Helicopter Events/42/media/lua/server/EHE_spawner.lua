@@ -5,19 +5,29 @@ require "EHE_mainVariables"
 require "EHE_util"
 require "EHE_presets"
 
-EHE_spawner = {}
+EHE_spawner = EHE_spawner or {}
 
-EHE_spawner.functionDictionary = {}
-function EHE_spawner.fetchFromDictionary(ID) return EHE_spawner.functionDictionary[ID] end
+
+EHE_spawner.functionDictionary = false--{}
+function EHE_spawner.fetchFromDictionary(ID)
+	if not EHE_spawner.functionDictionary then EHE_spawner.setDictionary() end
+
+	local func = EHE_spawner.functionDictionary[ID]
+	if not func then print("WARNING: ",ID," not found in EHE_spawner.functionDictionary.") end
+
+	return func
+end
 
 
 function EHE_spawner.setDictionary()
+	EHE_spawner.functionDictionary = {}
 	EHE_spawner.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
 	EHE_spawner.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
 	EHE_spawner.functionDictionary.applyFlaresToEvent = applyFlaresToEvent
 	EHE_spawner.functionDictionary.ageInventoryItem = ageInventoryItem
 	EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = applyDeathOrCrawlerToCrew
 	EHE_spawner.functionDictionary.applyParachuteToCarePackage = applyParachuteToCarePackage
+	EHE_spawner.functionDictionary.applyCrashDamageToWorld = applyCrashDamageToWorld
 
 	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 		local presetAddedFunc = presetVars["addedFunctionsToEvents"]
@@ -27,8 +37,8 @@ function EHE_spawner.setDictionary()
 			end
 		end
 	end
+	print("Expanded Helicopter Events: EHE_spawner.functionDictionary set.")
 end
-Events.OnGameBoot.Add(EHE_spawner.setDictionary)
 
 
 local targetSquareOnLoad = require "!_TargetSquare_OnLoad"
@@ -53,27 +63,6 @@ function EHE_spawner.attemptToSpawn(x, y, z, funcType, spawnThis, extraFunctions
 	end
 end
 
-
-function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, processSquare)
-	local currentSquare = sq
-	if currentSquare and processSquare then
-		local func = EHE_spawner.fetchFromDictionary(processSquare)
-		if func then currentSquare = func(currentSquare) end
-	end
-
-	local spawned
-
-	if funcType == "item" then spawned = currentSquare:AddWorldInventoryItem(spawnThis, 0, 0, 0) end
-
-	if funcType == "vehicle" then spawned = addVehicleDebug(spawnThis, IsoDirections.getRandom(), nil, currentSquare) end
-
-	if funcType == "zombie" then
-		local x, y, z = currentSquare:getX(), currentSquare:getY(), currentSquare:getZ()
-		spawned = addZombiesInOutfit(x, y, z, 1, spawnThis, extraParam)
-	end
-
-	if spawned and extraFunctions then EHE_spawner.processExtraFunctionsOnto(spawned,extraFunctions) end
-end
 
 
 ---@param spawned IsoObject | ArrayList

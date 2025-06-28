@@ -46,7 +46,7 @@ function eHelicopter:crash()
 
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
-			local extraFunctions = {"applyCrashOnVehicle"}
+			local extraFunctions = {"applyCrashOnVehicle","applyCrashDamageToWorld"}
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.currentPresetID.."OnCrash"--self.addedFunctionsToEvents["OnCrash"]
 				if eventFunction then
@@ -323,7 +323,6 @@ function eHelicopter:dropScrap(fuzz)
 	if self.scrapVehicles then
 		self:calcDebrisTrail(self.scrapVehicles, "vehicle",
 				{
-					extraFunctions = {"ageInventoryItem"},
 					processSquare = "getOutsideSquareFromAbove",
 				}, fuzz)
 		self.scrapVehicles = false

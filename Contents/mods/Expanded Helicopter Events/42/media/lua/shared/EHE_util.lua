@@ -286,4 +286,19 @@ function getOutsideSquareFromAbove(square)
 			return sq
 		end
 	end
+	return square
+end
+
+
+local isoRangeScan = require "EHE_IsoRangeScan"
+---@param square IsoGridSquare
+function applyCrashDamageToWorld(square)
+	print("applying crash damage to world")
+	local squares = isoRangeScan.getIsoRange(square, 15, 1)
+	for k,sq in pairs(squares) do
+		print("sq: ",sq:getX(),",",sq:getY(),",",sq:getZ())
+		IsoFireManager.StartFire(getCell(), sq, true, 100)
+		local point = getWorldMarkers():addGridSquareMarker(sq, 1, 0, 0, true, 1);
+	end
+	---drawCircleExplosion(this.getFireRange(), this, IsoTrap.ExplosionMode.Fire)
 end

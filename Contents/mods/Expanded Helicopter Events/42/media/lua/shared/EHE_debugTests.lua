@@ -33,11 +33,8 @@ end)
 
 
 function CustomDebugPanel.TemporaryTest()
-	local sq = getPlayer():getSquare()
-	local object = IsoObject.new(sq, "overlay_blood_wall_01_3")
-	--sq:AddTileObject(IsoObject.new(sq, "overlay_blood_wall_01_3"));
-	object:setSpriteModelName("SupplyBox")
-	print("OBJECT TEST ", object)
+	print("functionDictionary:")
+	for k,v in pairs(EHE_spawner.functionDictionary) do print(" - ",k,"=",v) end
 	--print("EHE: Checking vanilla helicopter. Adding items to WorldItemRemovalList.")
 	--print("getHelicopterDay: "..getGameTime():getHelicopterDay())
 	--print("getHelicopterStartHour: "..getGameTime():getHelicopterStartHour())
@@ -45,11 +42,11 @@ function CustomDebugPanel.TemporaryTest()
 	--print("getOptionByName: "..getSandboxOptions():getOptionByName("Helicopter"):getValue())
 	--print("SandboxVars.Helicopter: "..SandboxVars.Helicopter)
 	--print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
-
 	--print("SchedulerDuration: "..tostring(SandboxVars.ExpandedHeli.SchedulerDuration))
 	--print("ContinueScheduling: "..tostring(SandboxVars.ExpandedHeli.ContinueScheduling))
 	--print("ContinueSchedulingLateGameOnly: "..tostring(SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly))
 end
+
 
 function CustomDebugPanel.printEHEIsoPlayers()
 	print("EHEIsoPlayers: ")
@@ -57,6 +54,7 @@ function CustomDebugPanel.printEHEIsoPlayers()
 		print(" - "..playerObj:getFullName().." - "..playerObj:getUsername())
 	end
 end
+
 
 function CustomDebugPanel.SandboxVarsDUMP()
 	--SandboxVars
