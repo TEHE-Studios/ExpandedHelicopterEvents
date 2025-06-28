@@ -12,7 +12,6 @@ function EHE_spawner.fetchFromDictionary(ID) return EHE_spawner.functionDictiona
 
 
 function EHE_spawner.setDictionary()
-	EHE_spawner.functionDictionary.getOutsideSquareFromAbove_vehicle = getOutsideSquareFromAbove_vehicle
 	EHE_spawner.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
 	EHE_spawner.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
 	EHE_spawner.functionDictionary.applyFlaresToEvent = applyFlaresToEvent

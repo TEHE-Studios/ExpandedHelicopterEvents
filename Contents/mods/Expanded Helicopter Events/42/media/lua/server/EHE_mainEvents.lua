@@ -35,7 +35,7 @@ function eHelicopter:crash()
 		local square = getSquare(heliX, heliY, 0) or pseudoSquare:new(heliX, heliY, 0)
 		if square then
 			---@type IsoGridSquare
-			returned_sq = getOutsideSquareFromAbove_vehicle(square)
+			returned_sq = getOutsideSquareFromAbove(square)
 			if returned_sq then
 				heliX = returned_sq:getX()
 				heliY = returned_sq:getY()
@@ -56,7 +56,7 @@ function eHelicopter:crash()
 
 			sendClientCommand("SpawnerAPI", "spawn", {
 				funcType="vehicle", spawnThis=vehicleType, x=heliX, y=heliY, z=0,
-				extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove_vehicle" })
+				extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove" })
 
 			self.crashType = false
 			self.state = "crashed"
@@ -243,7 +243,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	local square = getSquare(heliX, heliY, 0) or pseudoSquare:new(heliX, heliY, 0)
 	if square then
 		---@type IsoGridSquare
-		returned_sq = getOutsideSquareFromAbove_vehicle(square)
+		returned_sq = getOutsideSquareFromAbove(square)
 		if returned_sq then
 			heliX = returned_sq:getX()
 			heliY = returned_sq:getY()
@@ -261,7 +261,7 @@ function eHelicopter:dropCarePackage(fuzz)
 
 		sendClientCommand("SpawnerAPI", "spawn", {
 			funcType="vehicle", spawnThis=carePackage, x=heliX, y=heliY, z=0,
-			extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove_vehicle" })
+			extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove" })
 
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
@@ -273,71 +273,55 @@ function eHelicopter:dropCarePackage(fuzz)
 end
 
 
+function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
+
+	local baseX, baseY, _ = self:getXYZAsInt()
+	if not baseX or not baseY then return end
+
+	local angle = ZombRandFloat(0, math.pi * 2)
+	local dx = math.cos(angle)
+	local dy = math.sin(angle)
+
+	for i = 1, #list, 2 do
+		local item = list[i]
+		local count = type(list[i+1]) == "number" and list[i+1] or 1
+
+		for j = 1, count do
+			local step = j + ZombRand(fuzz or 0)  -- add fuzz to spacing
+			local offsetX = math.floor(dx * step + ZombRand(-1, 2))
+			local offsetY = math.floor(dy * step + ZombRand(-1, 2))
+
+			sendClientCommand("SpawnerAPI", "spawn", {
+				funcType = funcType,
+				spawnThis = item,
+				x = baseX + offsetX,
+				y = baseY + offsetY,
+				z = 0,
+				extraFunctions = extraData and extraData.extraFunctions,
+				processSquare = extraData and extraData.processSquare
+			})
+		end
+	end
+end
+
+
 ---Heli drop scrap
 function eHelicopter:dropScrap(fuzz)
-	fuzz = fuzz or 0
-
-	local heliX, heliY, _ = self:getXYZAsInt()
-
-	for key,partType in pairs(self.scrapItems) do
-		if type(partType) == "string" then
-
-			local iterations = self.scrapItems[key+1]
-			if type(iterations) ~= "number" then
-				iterations = 1
-			end
-
-			for i=1, iterations do
-				if heliX and heliY then
-					local minX, maxX = 2, 3+fuzz
-					if ZombRand(101) <= 50 then
-						minX, maxX = -2, 0-(3+fuzz)
-					end
-					heliX = heliX+ZombRand(minX,maxX)
-					local minY, maxY = 2, 3+fuzz
-					if ZombRand(101) <= 50 then
-						minY, maxY = -2, 0-(3+fuzz)
-					end
-					heliY = heliY+ZombRand(minY,maxY)
-				end
-
-				sendClientCommand("SpawnerAPI", "spawn", {
-					funcType="item", spawnThis=partType, x=heliX, y=heliY, z=0,
-					extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
-			end
-		end
+	if self.scrapItems then
+		self:calcDebrisTrail(self.scrapItems, "item",
+				{
+					extraFunctions = {"ageInventoryItem"},
+					processSquare = "getOutsideSquareFromAbove",
+				}, fuzz)
+		self.scrapItems = false
 	end
 
-	for key,partType in pairs(self.scrapVehicles) do
-		if type(partType) == "string" then
-
-			local iterations = self.scrapVehicles[key+1]
-			if type(iterations) ~= "number" then
-				iterations = 1
-			end
-
-			for i=1, iterations do
-				if heliX and heliY then
-					local minX, maxX = 2, 3+fuzz
-					if ZombRand(101) <= 50 then
-						minX, maxX = -2, 0-(3+fuzz)
-					end
-					heliX = heliX+ZombRand(minX,maxX)
-					local minY, maxY = 2, 3+fuzz
-					if ZombRand(101) <= 50 then
-						minY, maxY = -2, 0-(3+fuzz)
-					end
-					heliY = heliY+ZombRand(minY,maxY)
-				end
-
-				sendClientCommand("SpawnerAPI", "spawn", {
-					funcType="vehicle", spawnThis=partType, x=heliX, y=heliY, z=0,
-					processSquare="getOutsideSquareFromAbove_vehicle" })
-
-			end
-		end
+	if self.scrapVehicles then
+		self:calcDebrisTrail(self.scrapVehicles, "vehicle",
+				{
+					extraFunctions = {"ageInventoryItem"},
+					processSquare = "getOutsideSquareFromAbove",
+				}, fuzz)
+		self.scrapVehicles = false
 	end
-
-	self.scrapItems = false
-	self.scrapVehicles = false
 end
