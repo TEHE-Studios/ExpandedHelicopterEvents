@@ -294,11 +294,11 @@ local isoRangeScan = require "EHE_IsoRangeScan"
 ---@param square IsoGridSquare
 function applyCrashDamageToWorld(square)
 	print("applying crash damage to world")
-	local squares = isoRangeScan.getIsoRange(square, 15, 1)
+	local squares = isoRangeScan.getIsoRange(square, 5)
 	for k,sq in pairs(squares) do
-		print("sq: ",sq:getX(),",",sq:getY(),",",sq:getZ())
-		IsoFireManager.StartFire(getCell(), sq, true, 100)
-		local point = getWorldMarkers():addGridSquareMarker(sq, 1, 0, 0, true, 1);
+		local s = getOutsideSquareFromAbove(sq) or sq
+		IsoFireManager.StartFire(getCell(), s, true, 150)
+		local point = getWorldMarkers():addGridSquareMarker(s, 1, 0, 0, true, 1)
 	end
 	---drawCircleExplosion(this.getFireRange(), this, IsoTrap.ExplosionMode.Fire)
 end
