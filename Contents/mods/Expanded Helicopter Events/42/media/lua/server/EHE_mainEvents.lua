@@ -274,32 +274,36 @@ end
 
 
 function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
-
-	local baseX, baseY, _ = self:getXYZAsInt()
+	local baseX, baseY, baseZ = self:getXYZAsInt()
 	if not baseX or not baseY then return end
 
 	local angle = ZombRandFloat(0, math.pi * 2)
 	local dx = math.cos(angle)
 	local dy = math.sin(angle)
 
-	for i = 1, #list, 2 do
-		local item = list[i]
-		local count = type(list[i+1]) == "number" and list[i+1] or 1
+	for key,partType in pairs(list) do
+		if type(partType) == "string" then
 
-		for j = 1, count do
-			local step = j + ZombRand(fuzz or 0)  -- add fuzz to spacing
-			local offsetX = math.floor(dx * step + ZombRand(-1, 2))
-			local offsetY = math.floor(dy * step + ZombRand(-1, 2))
+			local item = partType
 
-			sendClientCommand("SpawnerAPI", "spawn", {
-				funcType = funcType,
-				spawnThis = item,
-				x = baseX + offsetX,
-				y = baseY + offsetY,
-				z = 0,
-				extraFunctions = extraData and extraData.extraFunctions,
-				processSquare = extraData and extraData.processSquare
-			})
+			local iterations = list[key+1]
+			if type(iterations) ~= "number" then iterations = 1 end
+
+			for j = 1, iterations do
+				local step = j + ZombRand(fuzz or 0)  -- add fuzz to spacing
+				local offsetX = math.floor(dx * step + ZombRand(-1, 2))
+				local offsetY = math.floor(dy * step + ZombRand(-1, 2))
+
+				sendClientCommand("SpawnerAPI", "spawn", {
+					funcType = funcType,
+					spawnThis = item,
+					x = baseX + offsetX,
+					y = baseY + offsetY,
+					z = 0,
+					extraFunctions = extraData and extraData.extraFunctions,
+					processSquare = extraData and extraData.processSquare
+				})
+			end
 		end
 	end
 end
