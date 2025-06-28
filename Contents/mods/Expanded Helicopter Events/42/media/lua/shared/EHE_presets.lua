@@ -236,7 +236,6 @@ eHelicopter_PRESETS["news_chopper"] = {
 
 eHelicopter_PRESETS["news_chopper_hover"] = {
 	inherit = {"news_chopper"},
-	speed = 0.1,
 	hoverOnTargetDuration = {750,1200},
 }
 
