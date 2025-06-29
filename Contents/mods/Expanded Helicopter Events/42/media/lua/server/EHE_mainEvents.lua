@@ -62,17 +62,17 @@ function eHelicopter:crash()
 			self.state = "crashed"
 			--drop scrap and parts
 			if self.scrapItems or self.scrapVehicles then
-				self:dropScrap(6)
+				self:dropScrap(8)
 			end
 
 			--drop package on crash
 			if self.dropPackages then
-				self:dropCarePackage(2)
+				self:dropCarePackage(4)
 			end
 
 			--drop all items
 			if self.dropItems then
-				self:dropAllItems(4)
+				self:dropAllItems(5)
 			end
 
 			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
@@ -281,7 +281,7 @@ function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
 	local dx = math.cos(angle)
 	local dy = math.sin(angle)
 
-	local scatterRange = (fuzz or 1) * 2
+	fuzz = fuzz or 3
 
 	for key,partType in pairs(list) do
 		if type(partType) == "string" then
@@ -291,8 +291,8 @@ function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
 			local iterations = list[key+1]
 			if type(iterations) ~= "number" then iterations = 1 end
 
-			for j = 1, iterations do
-				local step = j + scatterRange + ZombRand(fuzz or 0)
+			for i = 1, iterations do
+				local step = i + ZombRand(fuzz, fuzz*3)
 				local offsetX = math.floor(dx * step + ZombRand(-1, 2))
 				local offsetY = math.floor(dy * step + ZombRand(-1, 2))
 
