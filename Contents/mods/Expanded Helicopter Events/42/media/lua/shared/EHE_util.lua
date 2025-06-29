@@ -301,8 +301,11 @@ function applyCrashDamageToWorld(square)
 			local tree = s:getTree()
 			if tree then tree:toppleTree() end
 
-			if s:checkHaveGrass() then s:removeGrass() end
-			
+			local floor = s:getFloor()
+			if (floor and floor:getSprite():getProperties():Val("grassFloor")) and s:checkHaveGrass() == true then
+				s:removeGrass()
+			end
+
 			local bendable = s:getBendable()
 			if bendable and BrokenFences.isBreakableObject(bendable) then bendable:destroyFence() end
 
