@@ -10,6 +10,14 @@ CustomDebugPanel = CustomDebugPanel or {}
 CustomDebugPanel.TOGGLE_ALL_CRASH = false
 ---TEST FUNCTIONS:
 
+CustomDebugPanel.colors = {
+	DEFAULT = {r=0, g=0, b=0, a=1.0},
+	DEFAULT_HIGHLIGHT = {r=0.3, g=0.3, b=0.3, a=1.0},
+	RED = {r=0.5, g=0.0, b=0.0, a=0.9},
+	GREEN = {r=0.0, g=0.5, b=0.0, a=0.9},
+	RED_HIGHLIGHT = {r=0.75, g=0.0, b=0.0, a=0.9},
+	GREEN_HIGHLIGHT = {r=0.0, g=0.75, b=0.0, a=0.9},
+}
 
 Events.OnGameBoot.Add(function()
 	if EHE_DebugTests then
@@ -33,8 +41,14 @@ end)
 
 
 function CustomDebugPanel.TemporaryTest()
-	print("functionDictionary:")
-	for k,v in pairs(EHE_spawner.functionDictionary) do print(" - ",k,"=",v) end
+
+	local sqs = isoRangeScan.getIsoRange(getPlayer():getSquare(), 4, 2)
+
+	for k,sq in pairs(sqs) do
+		local point = getWorldMarkers():addGridSquareMarker(sq, 1, 0, 0, true, 1)
+
+	end
+
 	--print("EHE: Checking vanilla helicopter. Adding items to WorldItemRemovalList.")
 	--print("getHelicopterDay: "..getGameTime():getHelicopterDay())
 	--print("getHelicopterStartHour: "..getGameTime():getHelicopterStartHour())
@@ -134,23 +148,30 @@ function CustomDebugPanel.ZombRandTest(imax)
 end
 
 
-function CustomDebugPanel.ToggleAllCrash()
+function CustomDebugPanel:ToggleAllCrash()
 	if CustomDebugPanel.TOGGLE_ALL_CRASH == true then
 		CustomDebugPanel.TOGGLE_ALL_CRASH = false
+		self.backgroundColor = CustomDebugPanel.colors.DEFAULT
+		self.backgroundColorMouseOver = CustomDebugPanel.colors.DEFAULT_HIGHLIGHT
 	else
 		CustomDebugPanel.TOGGLE_ALL_CRASH = true
+		self.backgroundColor = CustomDebugPanel.colors.GREEN
+		self.backgroundColorMouseOver = CustomDebugPanel.colors.GREEN_HIGHLIGHT
 	end
-	print("EHE: DEBUG: TOGGLE_ALL_CRASH = "..tostring(CustomDebugPanel.TOGGLE_ALL_CRASH))
 end
 
 
-function CustomDebugPanel.ToggleMoveHeliCloser()
+function CustomDebugPanel:ToggleMoveHeliCloser()
 	if CustomDebugPanel.MOVE_HELI_TEST_CLOSER == true then
 		CustomDebugPanel.MOVE_HELI_TEST_CLOSER = false
+
+		self.backgroundColor = {r=0, g=0, b=0, a=1.0}
+
 	else
 		CustomDebugPanel.MOVE_HELI_TEST_CLOSER = true
+
+		self.backgroundColor = {r=0, g=139, b=0, a=1.0}
 	end
-	print("EHE: DEBUG: MOVE_HELI_TEST_CLOSER = "..tostring(CustomDebugPanel.MOVE_HELI_TEST_CLOSER))
 end
 
 

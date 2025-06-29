@@ -136,6 +136,7 @@ end
 
 function EHE_DebugTestWindow.addButton(UIElement, setFunction, title, x, y, width, height)
 	local btn = ISButton:new(x, y, width, height, title, nil, setFunction)
+	btn.target = btn
 	UIElement[title] = btn
 	UIElement:addChild(btn)
 end
