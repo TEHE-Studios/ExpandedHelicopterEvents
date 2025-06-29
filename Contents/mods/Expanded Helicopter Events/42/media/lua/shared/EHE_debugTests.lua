@@ -42,23 +42,6 @@ end)
 
 function CustomDebugPanel.TemporaryTest()
 
-	local sqs = isoRangeScan.getIsoRange(getPlayer():getSquare(), 4, 2)
-
-	for k,sq in pairs(sqs) do
-		local point = getWorldMarkers():addGridSquareMarker(sq, 1, 0, 0, true, 1)
-
-	end
-
-	--print("EHE: Checking vanilla helicopter. Adding items to WorldItemRemovalList.")
-	--print("getHelicopterDay: "..getGameTime():getHelicopterDay())
-	--print("getHelicopterStartHour: "..getGameTime():getHelicopterStartHour())
-	--print("getHelicopterEndHour: "..getGameTime():getHelicopterEndHour())
-	--print("getOptionByName: "..getSandboxOptions():getOptionByName("Helicopter"):getValue())
-	--print("SandboxVars.Helicopter: "..SandboxVars.Helicopter)
-	--print("SandboxVars.WorldItemRemovalList: "..SandboxVars.WorldItemRemovalList)
-	--print("SchedulerDuration: "..tostring(SandboxVars.ExpandedHeli.SchedulerDuration))
-	--print("ContinueScheduling: "..tostring(SandboxVars.ExpandedHeli.ContinueScheduling))
-	--print("ContinueSchedulingLateGameOnly: "..tostring(SandboxVars.ExpandedHeli.ContinueSchedulingLateGameOnly))
 end
 
 
