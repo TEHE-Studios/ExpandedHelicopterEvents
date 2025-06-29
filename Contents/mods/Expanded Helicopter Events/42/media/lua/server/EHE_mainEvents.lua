@@ -281,6 +281,8 @@ function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
 	local dx = math.cos(angle)
 	local dy = math.sin(angle)
 
+	local scatterRange = (fuzz or 1) * 2
+
 	for key,partType in pairs(list) do
 		if type(partType) == "string" then
 
@@ -290,7 +292,7 @@ function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
 			if type(iterations) ~= "number" then iterations = 1 end
 
 			for j = 1, iterations do
-				local step = j + ZombRand(fuzz or 0)  -- add fuzz to spacing
+				local step = j + scatterRange + ZombRand(fuzz or 0)
 				local offsetX = math.floor(dx * step + ZombRand(-1, 2))
 				local offsetY = math.floor(dy * step + ZombRand(-1, 2))
 
