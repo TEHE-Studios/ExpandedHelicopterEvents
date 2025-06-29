@@ -298,7 +298,7 @@ function applyCrashDamageToWorld(square)
 	for k,sq in pairs(squares) do
 		local s = getOutsideSquareFromAbove(sq) or sq
 		if s then
-			if ZombRand(101) <= 33 then
+			if ZombRand(101) <= 55 then
 				IsoFireManager.StartFire(getCell(), s, true, ZombRand(200,450))
 			end
 
