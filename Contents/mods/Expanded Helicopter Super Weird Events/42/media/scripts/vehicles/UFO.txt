@@ -7,7 +7,20 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle UFO
+
+	vehicle UFORedneck
+    {
+		template! = UFO,
+		skin { texture = vehicles/SWH/Vehicle_UFORedneck, }
+    }
+
+    vehicle UFO
+    {
+        template! = UFO,
+        skin { texture = vehicles/SWH/Vehicle_UFO, }
+    }
+
+	template vehicle UFO
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -22,11 +35,6 @@ module Base
 		}
 
 		spawnOffsetY = 0.19392952,
-
-		skin
-		{
-			texture = vehicles/SWH/Vehicle_UFO,
-		}
 
 		textureMask = Vehicle_UFO_mask,
 		extents = 8.1852 2.0370 8.1111,

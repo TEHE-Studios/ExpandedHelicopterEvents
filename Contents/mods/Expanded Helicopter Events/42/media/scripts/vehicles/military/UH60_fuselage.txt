@@ -2,31 +2,44 @@ module Base
 {
 	model Vehicle_UH60Crash
 	{
-		mesh = vehicles/military/Vehicle_UH60Crash,
+		mesh = vehicles/Vehicle_UH60Crash,
 		shader = vehicle_norandom_multiuv,
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	vehicle UH60MedevacFuselage
+
+
+    vehicle UH60DesertFuselage
+    {
+        template! = UH60Fuselage,
+        skin { texture = vehicles/military/Vehicle_UH60Desert_Crash, }
+    }
+
+
+    vehicle UH60GreenFuselage
+    {
+        template! = UH60Fuselage,
+        skin { texture = vehicles/military/Vehicle_UH60Green_Crash, }
+    }
+
+
+    vehicle UH60MedevacFuselage
+    {
+        template! = UH60Fuselage,
+        skin { texture = vehicles/military/Vehicle_UH60Medevac_Crash, }
+    }
+
+
+	template vehicle UH60Fuselage
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
 		engineRepairLevel = 4,
 		playerDamageProtection = 0,
 
-		model
-		{
-			file = Vehicle_UH60Crash,
-			scale = 2.6900,
-			offset = 0.0000 -0.0223 0.3346,
-		}
+		model { file = Vehicle_UH60Crash, scale = 2.6900, offset = 0.0000 -0.0223 0.3346, }
 
 		spawnOffsetY = 0.19392952,
-
-		skin
-		{
-			texture = Vehicles/military/Vehicle_UH60Medevac_Crash,
-		}
 
 		textureMask = Vehicle_UH60_mask,
 		textureShadow = highlights/UH60crashshadow,
@@ -39,24 +52,13 @@ module Base
 		frontEndHealth = 550,
 		rearEndHealth = 150,
 
-		area TruckBed
-		{
-			xywh = 0.0000 0.6989 1.1375 1.6283,
-		}
+		area TruckBed { xywh = 0.0000 0.6989 1.1375 1.6283, }
 
 		part Seat*
 		{
 			category = nodisplay,
-
-			table install
-			{
-				skills = Mechanics:2,
-			}
-
-			table uninstall
-			{
-				skills = Mechanics:2,
-			}
+			table install { skills = Mechanics:2, }
+			table uninstall { skills = Mechanics:2, }
 		}
 
 		template = Trunk/part/TruckBedOpen,
@@ -64,11 +66,7 @@ module Base
 		part TruckBedOpen
 		{
 			category = nodisplay,
-
-			container
-			{
-				capacity = 300,
-			}
+			container { capacity = 300, }
 		}
 
 		template = Windshield/part/Windshield,

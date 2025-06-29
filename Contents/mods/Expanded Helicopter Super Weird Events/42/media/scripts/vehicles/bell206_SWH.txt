@@ -1,0 +1,27 @@
+module Base
+{
+	vehicle Bell206SpiffoFuselage
+	{
+		template! = Bell206Fuselage,
+		skin { texture = vehicles/SWH/Vehicle_Bell206SpiffoDamaged, }
+	}
+
+    vehicle Bell206SpiffoTail
+    {
+        template! = Bell206Tail,
+        skin { texture = vehicles/civilian/Vehicle_Bell206SpiffoDamaged, }
+    }
+
+	vehicle Bell206IRSFuselage
+	{
+		template! = Bell206Fuselage,
+		skin { texture = vehicles/SWH/Vehicle_Bell206IRSDamaged, }
+	}
+
+    vehicle Bell206IRSTail
+    {
+        template! = Bell206Tail,
+        skin { texture = vehicles/civilian/Vehicle_Bell206IRSDamaged, }
+    }
+
+}
