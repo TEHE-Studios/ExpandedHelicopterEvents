@@ -143,6 +143,39 @@ function EHE_EventMarker:setAngleFromPoint(posX, posY)
 end
 
 
+function EHE_EventMarker:calcPointer(offset, angle, stretch, tex, centerX, centerY)
+
+	local width = tex:getWidth() * stretch
+	local height = tex:getHeight()
+
+	local hw = width / 2
+	local hh = height / 2
+
+	local cosA = math.cos(angle)
+	local sinA = math.sin(angle)
+
+	local offsetX = math.cos(angle) * offset
+	local offsetY = math.sin(angle) * offset
+
+	local cx = self.x + centerX + offsetX
+	local cy = self.y + centerY + offsetY
+
+	local x1 = cx - cosA * hw + sinA * hh
+	local y1 = cy - sinA * hw - cosA * hh
+
+	local x2 = cx + cosA * hw + sinA * hh
+	local y2 = cy + sinA * hw - cosA * hh
+
+	local x3 = cx + cosA * hw - sinA * hh
+	local y3 = cy + sinA * hw + cosA * hh
+
+	local x4 = cx - cosA * hw - sinA * hh
+	local y4 = cy - sinA * hw + cosA * hh
+
+	return x1, y1, x2, y2, x3, y3, x4, y4
+end
+
+
 function EHE_EventMarker:render()
 	if self.visible and self.duration > 0 then--and self.distanceToPoint>4 then
 		self.setAngleFromPoint(self.posX,self.posY)
@@ -162,38 +195,19 @@ function EHE_EventMarker:render()
 		if tex then
 			local angle = math.rad(self.angle or 0)
 			local distFraction = math.min(1, self.distanceToPoint / self.radius)
+
 			local stretch = 0.1 + (1.2 * distFraction)
 
-			local width = tex:getWidth() * stretch
-			local height = tex:getHeight()
-
-			local hw = width / 2
-			local hh = height / 2
-
-			local cosA = math.cos(angle)
-			local sinA = math.sin(angle)
-
 			local offset = 24 + (8 * (distFraction*2))
-			local offsetX = math.cos(angle) * offset
-			local offsetY = math.sin(angle) * offset
+			local x1, y1, x2, y2, x3, y3, x4, y4 = self:calcPointer(offset, angle, stretch, tex, centerX, centerY)
 
-			local cx = self.x + centerX + offsetX
-			local cy = self.y + centerY + offsetY
-
-			local x1 = cx - cosA * hw + sinA * hh
-			local y1 = cy - sinA * hw - cosA * hh
-
-			local x2 = cx + cosA * hw + sinA * hh
-			local y2 = cy + sinA * hw - cosA * hh
-
-			local x3 = cx + cosA * hw - sinA * hh
-			local y3 = cy + sinA * hw + cosA * hh
-
-			local x4 = cx - cosA * hw - sinA * hh
-			local y4 = cy - sinA * hw + cosA * hh
+			local _offset = 29 + (8 * (distFraction*2))
+			local _x1, _y1, _x2, _y2, _x3, _y3, _x4, _y4 = self:calcPointer(_offset, angle, stretch*(1+(distFraction/3)), tex, centerX, centerY)
+			---deeper call from renderer allows for skewing/stretching/rotating
+			getRenderer():render(tex, x1, y1, _x2, _y2, _x3, _y3, x4, y4, 1, 1, 1, 1, nil)
 
 			---deeper call from renderer allows for skewing/stretching/rotating
-			getRenderer():render(tex, x1, y1, x2, y2, x3, y3, x4, y4, _color.r, _color.g, _color.b, 1, nil)																						---chuck
+			getRenderer():render(tex, x1, y1, x2, y2, x3, y3, x4, y4, _color.r, _color.g, _color.b, 1, nil)
 		end
 
 		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
