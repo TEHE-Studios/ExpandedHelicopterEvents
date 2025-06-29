@@ -164,13 +164,13 @@ end
 function CustomDebugPanel:ToggleMoveHeliCloser()
 	if CustomDebugPanel.MOVE_HELI_TEST_CLOSER == true then
 		CustomDebugPanel.MOVE_HELI_TEST_CLOSER = false
-
-		self.backgroundColor = {r=0, g=0, b=0, a=1.0}
+		self.backgroundColor = CustomDebugPanel.colors.DEFAULT
+		self.backgroundColorMouseOver = CustomDebugPanel.colors.DEFAULT_HIGHLIGHT
 
 	else
 		CustomDebugPanel.MOVE_HELI_TEST_CLOSER = true
-
-		self.backgroundColor = {r=0, g=139, b=0, a=1.0}
+		self.backgroundColor = CustomDebugPanel.colors.GREEN
+		self.backgroundColorMouseOver = CustomDebugPanel.colors.GREEN_HIGHLIGHT
 	end
 end
 
