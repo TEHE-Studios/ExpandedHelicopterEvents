@@ -180,11 +180,7 @@ end
 
 
 ---@param item InventoryItem
-function ageInventoryItem(item)
-	if item then
-		item:setAutoAge()
-	end
-end
+function ageInventoryItem(item) if item and instanceof(item, "InventoryItem") then item:setAutoAge() end end
 
 
 local flareSystem = require "EHE_flares"
@@ -305,7 +301,13 @@ function applyCrashDamageToWorld(square)
 			local tree = s:getTree()
 			if tree then tree:toppleTree() end
 
+			if s:checkHaveGrass() then s:removeGrass() end
+			
+			local bendable = s:getBendable()
+			if bendable and BrokenFences.isBreakableObject(bendable) then bendable:destroyFence() end
+
 			s:Burn()
+
 		end
 		--local point = getWorldMarkers():addGridSquareMarker(s, 1, 0, 0, true, 1)
 	end
