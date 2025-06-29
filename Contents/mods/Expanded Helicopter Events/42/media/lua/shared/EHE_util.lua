@@ -294,11 +294,11 @@ local isoRangeScan = require "EHE_IsoRangeScan"
 ---@param square IsoGridSquare
 function applyCrashDamageToWorld(square)
 	print("applying crash damage to world")
-	local squares = isoRangeScan.getIsoRange(square, 5, nil, true)
+	local squares = isoRangeScan.getIsoRange(square, 9, nil, true)
 	for k,sq in pairs(squares) do
 		local s = getOutsideSquareFromAbove(sq) or sq
 		if s then
-			if ZombRand(101) <= 44 then
+			if ZombRand(101) <= 33 then
 				IsoFireManager.StartFire(getCell(), s, true, ZombRand(200,450))
 			end
 
