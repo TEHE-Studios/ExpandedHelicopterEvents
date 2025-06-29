@@ -294,10 +294,19 @@ local isoRangeScan = require "EHE_IsoRangeScan"
 ---@param square IsoGridSquare
 function applyCrashDamageToWorld(square)
 	print("applying crash damage to world")
-	local squares = isoRangeScan.getIsoRange(square, 5)
+	local squares = isoRangeScan.getIsoRange(square, 5, nil, true)
 	for k,sq in pairs(squares) do
 		local s = getOutsideSquareFromAbove(sq) or sq
-		IsoFireManager.StartFire(getCell(), s, true, 150)
+		if s then
+			if ZombRand(101) <= 33 then
+				IsoFireManager.StartFire(getCell(), s, true, ZombRand(200,450))
+			end
+
+			local tree = s:getTree()
+			if tree then tree:toppleTree() end
+
+			s:Burn()
+		end
 		--local point = getWorldMarkers():addGridSquareMarker(s, 1, 0, 0, true, 1)
 	end
 	---drawCircleExplosion(this.getFireRange(), this, IsoTrap.ExplosionMode.Fire)
