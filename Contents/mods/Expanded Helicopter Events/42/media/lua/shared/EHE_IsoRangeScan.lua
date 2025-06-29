@@ -91,67 +91,56 @@ function isoRangeScan.getHumanoidsInFractalRange(center, range, fractalRange, lo
 end
 
 
+function isoRangeScan.isWithInRange(radius,center,square)
+	local dx = square:getX() - center:getX()
+	local dy = square:getY() - center:getY()
+	return (dx * dx + dy * dy) <= radius*radius
+end
+
+
 ---@param center IsoObject | IsoGridSquare
 ---@param range number tiles to scan from center, not including center. ex: range of 1 = 3x3
 ---@param fractalOffset number fractal offset - spreads out squares by this number
 ---@return table of IsoGridSquare
-function isoRangeScan.getIsoRange(center, range, fractalOffset)
-
-	if center and center~= false then center = isoRangeScan.recursiveGetSquare(center) end
+function isoRangeScan.getIsoRange(center, range, fractalOffset, circular)
+	if not center then return {} end
+	center = isoRangeScan.recursiveGetSquare(center)
 	if not center then return {} end
 
-	if not fractalOffset then fractalOffset = 1 else fractalOffset = (fractalOffset*2)+1 end
-
-	--true center
+	local spread = fractalOffset and (fractalOffset * 2 + 1) or 1
 	local centerX, centerY = center:getX(), center:getY()
-	--add center to squares at the start
-	local squares = {center}
+	local squares = { center }
 
-	--no point in running everything below, return squares
 	if range < 1 then return squares end
 
-	--create a ring of IsoGridSquare around center, i=1 skips center
-	for i=1, range do
+	local radius = (range * spread)
 
-		local fractalFactor = i*fractalOffset
-		--currentX and currentY have to pushed off center for the logic below to kick in
-		local currentX, currentY = centerX-fractalFactor, centerY+fractalFactor
-		-- ring refers to the path going around center, -1 to skip center
-		local expectedRingLength = (8*i)-1
+	for i = 1, range do
+		local fractalStep = i * spread
+		local x, y = centerX - fractalStep, centerY + fractalStep
+		local totalSteps = (8 * i) - 1
 
-		for _=0, expectedRingLength do
-			--if on top-row and not at the upper-right
-			if (currentY == centerY+fractalFactor) and (currentX < centerX+fractalFactor) then
-				--move-right
-				currentX = currentX+fractalOffset
-				--if on right-column and not the bottom-right
-			elseif (currentX == centerX+fractalFactor) and (currentY > centerY-fractalFactor) then
-				--move down
-				currentY = currentY-fractalOffset
-				--if on bottom-row and not on far-left
-			elseif (currentY == centerY-fractalFactor) and (currentX > centerX-fractalFactor) then
-				--move left
-				currentX = currentX-fractalOffset
-				--if on left-column and not on top-left
-			elseif (currentX == centerX-fractalFactor) and (currentY < centerY+fractalFactor) then
-				--move up
-				currentY = currentY+fractalOffset
+		for step = 1, totalSteps do
+			-- Spiral movement: right, down, left, up
+			if (y == centerY + fractalStep) and (x < centerX + fractalStep) then
+				x = x + spread
+			elseif (x == centerX + fractalStep) and (y > centerY - fractalStep) then
+				y = y - spread
+			elseif (y == centerY - fractalStep) and (x > centerX - fractalStep) then
+				x = x - spread
+			elseif (x == centerX - fractalStep) and (y < centerY + fractalStep) then
+				y = y + spread
 			end
 
-			---@type IsoGridSquare square
-			local square = getSquare(currentX, currentY, 0)
-			--[DEBUG]] getWorldMarkers():addGridSquareMarker(square, 0.8, fractalOffset-1, 0, false, 0.5)
-			if square then table.insert(squares, square) end
+			local square = getSquare(x, y, 0)
+			if square then
+				if not circular or isoRangeScan.isWithInRange(radius,center,square) then
+					table.insert(squares, square)
+				end
+			end
 		end
 	end
-	--[[DEBUG
-	print("---[ IsoRange ]---\n total "..#squares.."/"..((range*2)+1)^2)
-	for k,v in pairs(squares) do
-		---@type IsoGridSquare vSquare
-		local vSquare = v
-		print(" "..k..": "..centerX-vSquare:getX()..", "..centerY-vSquare:getY())
-	end
-	]]
+
 	return squares
 end
 
