@@ -42,6 +42,12 @@ module Base
         {
             rotate = 0.0000 -90.0000 0.0000,
         }
+
+		attachment muzzle
+		{
+			offset = 0.0000 0.1301 -0.0271,
+			rotate = -90.0000 0.0000 -180.0000,
+		}
     }
 
 }
