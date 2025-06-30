@@ -7,6 +7,8 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
+
+	
 	model Vehicle_IceCreamTruck
 	{
 		mesh = vehicles/Vehicle_IceCreamTruck,
@@ -14,65 +16,31 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
+
+
 	vehicle TISIceCreamTruck
 	{
 	    template! = StepVan,
 
-        model
-        {
-            file = Vehicles_StepVanSmashedFront,
-            scale = 1.8200,
-            offset = 0.0000 0.4725 0.0000,
-        }
-
-		skin
-		{
-			texture = vehicles/SWH/vehicle_icecream,
-		}
+        model { file = Vehicles_StepVanSmashedFront, scale = 1.8200, offset = 0.0000 0.4725 0.0000, }
+		skin { texture = vehicles/SWH/vehicle_icecream, }
 
 		template = PassengerSeat2,
 
         passenger FrontLeft
         {
-            position inside
-            {
-                offset = 0.1978 -0.1429 0.3352,
-                rotate = 0.0000 0.0000 0.0000,
-            }
-
-            position outside
-            {
-                offset = 0.6319 -0.5769 0.4231,
-                rotate = 0.0000 0.0000 0.0000,
-                area = SeatFrontLeft,
-            }
+            position inside { offset = 0.1978 -0.1429 0.3352, rotate = 0.0000 0.0000 0.0000, }
+            position outside { offset = 0.6319 -0.5769 0.4231, rotate = 0.0000 0.0000 0.0000, area = SeatFrontLeft,}
         }
 
         passenger FrontRight
         {
-            position inside
-            {
-                offset = -0.1978 -0.1429 0.3352,
-                rotate = 0.0000 0.0000 0.0000,
-            }
-
-            position outside
-            {
-                offset = -0.6319 -0.5769 0.4231,
-                rotate = 0.0000 0.0000 0.0000,
-                area = SeatFrontRight,
-            }
+            position inside { offset = -0.1978 -0.1429 0.3352, rotate = 0.0000 0.0000 0.0000, }
+            position outside { offset = -0.6319 -0.5769 0.4231, rotate = 0.0000 0.0000 0.0000, area = SeatFrontRight, }
         }
 
-        area SeatFrontLeft
-        {
-            xywh = 0.6813 0.4231 0.4725 0.4725,
-        }
-
-        area SeatFrontRight
-        {
-            xywh = -0.6813 0.4231 0.4725 0.4725,
-        }
+        area SeatFrontLeft { xywh = 0.6813 0.4231 0.4725 0.4725, }
+        area SeatFrontRight { xywh = -0.6813 0.4231 0.4725 0.4725, }
 
 	}
 	template vehicle StepVan
@@ -92,18 +60,8 @@ module Base
 		textureDamage2Shell = Vehicles/Veh_Damage2,
 		textureRust = Vehicles/Veh_Rust,
 
-	
-		lightbar
-		{
-			soundSiren = icecream,
-		}
-
-		sound
-		{
-			horn = VehicleHorn,
-			backSignal = VehicleBackUpBeeper,
-		}
-
+		lightbar { soundSiren = icecream, }
+		sound { horn = VehicleHorn, backSignal = VehicleBackUpBeeper, }
 
 		extents = 0.8901 0.9341 2.3297,
 		mass = 1160,

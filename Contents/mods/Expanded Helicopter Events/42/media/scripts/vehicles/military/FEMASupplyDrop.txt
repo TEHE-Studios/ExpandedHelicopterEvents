@@ -13,20 +13,10 @@ module Base
 		offRoadEfficiency = 0.8,
 		engineRepairLevel = 4,
 		playerDamageProtection = 0,
+        spawnOffsetY = 0.19392952,
 
-		model
-		{
-			file = Vehicle_FEMASupplyDrop,
-			scale = 1.4000,
-			offset = 0.0000 0.1143 -0.0143,
-		}
-
-		spawnOffsetY = 0.19392952,
-
-		skin
-		{
-			texture = vehicles/military/Vehicle_FEMASupplyDrop,
-		}
+		model { file = Vehicle_FEMASupplyDrop, scale = 1.4000, offset = 0.0000 0.1143 -0.0143, }
+		skin { texture = vehicles/military/Vehicle_FEMASupplyDrop, }
 
 		textureMask = Vehicle_FEMASupplyDrop_mask,
 		extents = 1.0286 0.4571 1.1286,
@@ -38,31 +28,11 @@ module Base
 		frontEndHealth = 150,
 		rearEndHealth = 150,
 
-		area TruckBed
-		{
-			xywh = 0.0000 0.0000 2.4714 2.5429,
-		}
-
+		area TruckBed { xywh = 0.0000 0.0000 2.4714 2.5429, }
 		template = Trunk/part/TruckBed,
+		part TruckBed { container { capacity = 300, } }
 
-		part TruckBed
-		{
-			container
-			{
-				capacity = 300,
-			}
-		}
-
-		attachment trailer
-		{
-			offset = 0.5071 -0.3357 0.0000,
-			rotate = 0.0000 0.0000 0.0000,
-		}
-
-		attachment trailerfront
-		{
-			offset = -0.5071 -0.3643 0.0000,
-			rotate = 0.0000 0.0000 0.0000,
-		}
+		attachment trailer { offset = 0.5071 -0.3357 0.0000, rotate = 0.0000 0.0000 0.0000, }
+		attachment trailerfront {offset = -0.5071 -0.3643 0.0000, rotate = 0.0000 0.0000 0.0000, }
 	}
 }
