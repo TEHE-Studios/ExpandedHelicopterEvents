@@ -14,7 +14,7 @@ module Base
         skin { texture = vehicles/civilian/Vehicle_SurvivorSupplyDrop, }
     }
 
-	temaplte vehicle SupplyDrop
+	template vehicle SupplyDrop
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
