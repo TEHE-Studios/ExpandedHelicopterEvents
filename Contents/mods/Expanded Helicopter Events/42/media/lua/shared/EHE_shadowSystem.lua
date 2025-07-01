@@ -13,7 +13,6 @@ function eventShadowHandler:setShadowPos(ID, texture, x, y, z)
 
 	local shadow = eventShadowHandler.storedShadows["HELI"..ID]
 	if not shadow then
-		print("made new shadow for: ", "HELI"..ID)
 		eventShadowHandler.storedShadows["HELI"..ID] = { texture = getTexture("media/textures/highlights/"..texture..".png") }
 	end
 	eventShadowHandler.storedShadows["HELI"..ID].x = x
