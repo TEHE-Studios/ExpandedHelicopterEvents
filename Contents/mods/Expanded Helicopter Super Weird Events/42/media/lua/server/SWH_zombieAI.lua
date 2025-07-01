@@ -6,10 +6,10 @@ local eHelicopter_zombieAI = {}
 
 eHelicopter_zombieAI.outfitsToAI = {
 
-	["AlienTourist"] = "gottaGoFast",
-	["AlienRedneck"] = "gottaGoFast",
-	["AlienSanta"] = "gottaGoFast",
-	["AlienBeefo"] = "gottaGoFast",
+	["AlienTourist"] = "aliens",
+	["AlienRedneck"] = "aliens",
+	["AlienSanta"] = "aliens",
+	["AlienBeefo"] = "aliens",
 
 	["SpiffoBoss"] = "nemesis",
 
@@ -44,16 +44,14 @@ function eHelicopter_zombieAI.onUpdate_fodder(zombie, apply)
 end
 
 
----@param zombie IsoZombie | IsoGameCharacter | IsoObject
+---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoMovingObject
 ---@param apply boolean
-function eHelicopter_zombieAI.onUpdate_gottaGoFast(zombie, apply)
-	if not zombie then return end
-
+function eHelicopter_zombieAI.onUpdate_aliens(zombie, apply)
+	if not zombie and not zombie:isDead() then return end
 	if apply then
-		--print("EHE:SWH:SZ:AI onApply: gottaGoFast")
 	else
 		zombie:setWalkType("sprint1")
-		if zombie:isCrawling() then zombie:toggleCrawling()end
+		if zombie:isCrawling() then zombie:toggleCrawling() end
 	end
 end
 
@@ -330,7 +328,7 @@ end
 
 ---@param zombie IsoObject | IsoGameCharacter | IsoZombie
 ---@param player IsoObject | IsoGameCharacter | IsoPlayer
-function eHelicopter_zombieAI.onDead_gottaGoFast(zombie, player, bodyPart, weapon)
+function eHelicopter_zombieAI.onDead_aliens(zombie, player, bodyPart, weapon)
 	if ZombRand(100) <= 25 then zombie:getInventory():AddItems("SWH.AlienPowerCells", ZombRand(1,4)) end
 	if ZombRand(1000) <= 1 then zombie:getInventory():AddItem("SWH.AlienBlaster") end
 end
