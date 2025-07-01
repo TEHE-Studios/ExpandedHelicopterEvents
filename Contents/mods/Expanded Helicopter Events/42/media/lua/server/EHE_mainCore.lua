@@ -681,7 +681,6 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		self.target = targetedObject
 	else
 		--sets target to a square near the player so that the heli doesn't necessarily head straight for the player
-		local targetOffset = 75
 		local targetOffset = ZombRand(15,25)
 		local tpX = targetedObject:getX()+ZombRand(0-targetOffset,targetOffset)
 		local tpY = targetedObject:getY()+ZombRand(0-targetOffset,targetOffset)
