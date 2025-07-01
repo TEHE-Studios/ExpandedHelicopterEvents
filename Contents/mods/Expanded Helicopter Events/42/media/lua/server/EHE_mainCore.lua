@@ -711,7 +711,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		if #self.hoverOnTargetDuration >= 2 then
 			self.hoverOnTargetDuration = ZombRand(self.hoverOnTargetDuration[1],self.hoverOnTargetDuration[2])
 		else
-			print("EHE: ERROR: "..self:heliToString().." -- hoverOnTargetDuration is table with less than 2 entries - nulling hover time.")
+			print(" -- EHE: ERROR: "..self:heliToString().." -- hoverOnTargetDuration is table with less than 2 entries - nulling hover time.")
 			self.hoverOnTargetDuration = false
 		end
 	end
