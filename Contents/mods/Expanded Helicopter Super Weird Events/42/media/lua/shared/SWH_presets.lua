@@ -51,9 +51,9 @@ eHelicopter_PRESETS["UFO"] = {
 	presetRandomSelection = {"UFOTourists",4,"UFORednecks",1,"UFOFratBoys",1,},
 	crashType = {"UFO"},
 	hoverOnTargetDuration = {1000,1225},
-	speed = 10,
+	speed = 6,
 	topSpeedFactor = 2,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
 	scrapItems = false,
 	scrapVehicles = false,
 	addedCrashChance = 33,
@@ -85,13 +85,13 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 
 eHelicopter_PRESETS["UFOTourists"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
 	crew = {"AlienTourist",100,0, "AlienTourist",75,0, "AlienTourist",30,0, "AlienTourist",15,0, "AlienTourist",5,0, },
 }
 
 eHelicopter_PRESETS["UFORednecks"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
 	crashType = {"UFORedneck"},
 	crew = {"AlienRedneck",100,0, "AlienRedneck",75,0, "AlienRedneck",30,0, "AlienRedneck",15,0, "AlienRedneck",5,0, },
 	eventSoundEffects = {
@@ -101,7 +101,7 @@ eHelicopter_PRESETS["UFORednecks"] = {
 
 eHelicopter_PRESETS["UFOFratBoys"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
 	crew = {"AlienBeefo",100,0, "AlienBeefo",75,0, "AlienBeefo",30,0, "AlienBeefo",15,0, "AlienBeefo",5,0, },
 	eventSoundEffects = {
 		["flightSound"] = { "AlienUFOFlight", "assBlastUSA" },
@@ -302,7 +302,7 @@ eHelicopter_PRESETS["BuffCorrell"] = {
 	crashType = false,
 	crew = {"EHESurvivorPilot", 100, 0},
 	speed = 0.8,
-	eventMarkerIcon = "media/ui/jet.png",
+	eventMarkerIcon = "media/ui/plane.png",
 	addedFunctionsToEvents = {["OnAttack"] = forceDance, ["OnLaunch"] = onLaunchClearDance,},
 
 	attackDelay = 1,
