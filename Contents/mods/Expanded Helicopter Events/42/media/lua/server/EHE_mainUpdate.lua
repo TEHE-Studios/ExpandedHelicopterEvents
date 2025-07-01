@@ -157,38 +157,41 @@ function eHelicopter:updateEvent()
 
 	local preventMovement = false
 
-	if (self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*2.5) then
+	if (self.state == "gotoTarget") and (distToTarget <= (thatIsCloseEnough)) then
 		self.state = "arrived"
 		if self.addedFunctionsToEvents then
 			local eventFunction = self.addedFunctionsToEvents["OnArrive"]
-			if eventFunction then eventFunction(self) end
+			if eventFunction then
+				eventFunction(self)
+			end
 		end
 	end
 
 	--if (self.state == "arrived" or self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*1.5) then
-	if self.state == "arrived" and (distToTarget <= thatIsCloseEnough*1.5) then
+	if self.state == "arrived" then
 		if self.hoverOnTargetDuration~=false and type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
-			eventSoundHandler:playEventSound(self, "hoverOverTarget", nil, true)
-
-			if self.addedFunctionsToEvents then
-				local eventFunction = self.addedFunctionsToEvents["OnHover"]
-				if eventFunction then
-					--[[DEBUG]] self:hoverAndFlyOverReport(" - HOVERING OVER TARGET :")
-					eventFunction(self)
+			if (distToTarget > math.max(1.6,thatIsCloseEnough/2)) then
+				self.state = "gotoTarget"
+			else
+				eventSoundHandler:playEventSound(self, "hoverOverTarget", nil, true)
+				if self.addedFunctionsToEvents then
+					local eventFunction = self.addedFunctionsToEvents["OnHover"]
+					if eventFunction then
+						eventFunction(self)
+					end
 				end
+				--[DEBUG]] if getDebug() then print("hovering near target: "..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
+
+				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(10*math.max(1, getGameSpeed())))
+				if self.hoverOnTargetDuration <= 0 then self.hoverOnTargetDuration = false end
+				preventMovement=true
 			end
-
-			--[DEBUG]] if getDebug() then print("hovering near target: "..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
-
-			self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(10*math.max(1, getGameSpeed())))
-			if self.hoverOnTargetDuration <= 0 then self.hoverOnTargetDuration = false end
-			preventMovement=true
 		else
 
 			local debugTargetText = " "..tostring(self.trueTarget)
 			if self.trueTarget then
 				if instanceof(self.trueTarget, "IsoPlayer") then debugTargetText = " ("..self.trueTarget:getFullName()..")" end
-				self:hoverAndFlyOverReport(" - FLEW OVER TARGET"..debugTargetText)
+				self:hoverAndFlyOverReport(" - FLEW-OVER: "..debugTargetText)
 			end
 
 			eventSoundHandler:playEventSound(self, "hoverOverTarget",nil, nil, true)
@@ -253,7 +256,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 	if thatIsCloseEnough and distToTarget then
 		--drop carpackage
-		local packageDropRange = ZombRand(50, 75)
+		local packageDropRange = ZombRand(75, 150)
 		local packageDropRateChance = ZombRand(101) <= ((distToTarget/packageDropRange)*100)+10
 		if self.dropPackages and packageDropRateChance and (distToTarget <= packageDropRange) then
 			local drop = self:dropCarePackage()
@@ -270,7 +273,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 		end
 
 		--drop items
-		local itemDropRange = math.min(225,thatIsCloseEnough*225)
+		local itemDropRange = math.min(225,ZombRand(175,thatIsCloseEnough*225))
 		if self.dropItems and (distToTarget <= itemDropRange) then
 			local dropChance = ((itemDropRange-distToTarget)/itemDropRange)*10
 			self:tryToDropItem(dropChance)

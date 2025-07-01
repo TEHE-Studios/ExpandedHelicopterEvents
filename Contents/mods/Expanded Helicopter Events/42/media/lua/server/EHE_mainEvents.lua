@@ -80,7 +80,7 @@ function eHelicopter:crash()
 
 			getWorldSoundManager():addSound(nil, heliX, heliY, 0, 175, 300, true, 0, 25)
 			eventSoundHandler:playEventSound(self, "crashEvent")
-			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 2600, heliX, heliY, self.markerColor)
+			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 3500, heliX, heliY, self.markerColor)
 
 			self:unlaunch()
 
@@ -266,7 +266,7 @@ function eHelicopter:dropCarePackage(fuzz)
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
 		addSound(nil, heliX, heliY, 0, 200, 150)
-		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 2000, heliX, heliY, self.markerColor)
+		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 4000, heliX, heliY, self.markerColor)
 		self.dropPackages = false
 		return true
 	end
