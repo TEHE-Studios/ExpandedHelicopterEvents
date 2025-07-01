@@ -269,7 +269,6 @@ end
 function getOutsideSquareFromAbove(square)
 	if not square or not instanceof(square, "IsoGridSquare") then return end
 	if isIsoGridSquareOutside(square) then
-		print("isIsoGridSquareOutside: ",square:getZ())
 		return square
 	end
 
@@ -278,7 +277,6 @@ function getOutsideSquareFromAbove(square)
 	for i=1, 7 do
 		local sq = getSquare(x, y, i)
 		if isIsoGridSquareOutside(sq) then
-			print("isIsoGridSquareOutside: ",square:getZ())
 			return sq
 		end
 	end
@@ -289,7 +287,6 @@ end
 local isoRangeScan = require "EHE_IsoRangeScan"
 ---@param square IsoGridSquare
 function applyCrashDamageToWorld(square)
-	print("applying crash damage to world")
 	local squares = isoRangeScan.getIsoRange(square, 9, nil, true)
 	for k,sq in pairs(squares) do
 		local s = getOutsideSquareFromAbove(sq) or sq
@@ -302,7 +299,6 @@ function applyCrashDamageToWorld(square)
 			if tree then tree:toppleTree() end
 
 			s:Burn()
-
 		end
 		--local point = getWorldMarkers():addGridSquareMarker(s, 1, 0, 0, true, 1)
 	end
