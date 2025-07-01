@@ -86,22 +86,14 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 eHelicopter_PRESETS["UFOTourists"] = {
 	inherit = {"UFO"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
-	crew = {"AlienTourist",100,0,
-			"AlienTourist",75,0,
-			"AlienTourist",30,0,
-			"AlienTourist",15,0,
-			"AlienTourist",5,0, },
+	crew = {"AlienTourist",100,0, "AlienTourist",75,0, "AlienTourist",30,0, "AlienTourist",15,0, "AlienTourist",5,0, },
 }
 
 eHelicopter_PRESETS["UFORednecks"] = {
 	inherit = {"UFO"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
 	crashType = {"UFORedneck"},
-	crew = {"AlienRedneck",100,0,
-			"AlienRedneck",75,0,
-			"AlienRedneck",30,0,
-			"AlienRedneck",15,0,
-			"AlienRedneck",5,0, },
+	crew = {"AlienRedneck",100,0, "AlienRedneck",75,0, "AlienRedneck",30,0, "AlienRedneck",15,0, "AlienRedneck",5,0, },
 	eventSoundEffects = {
 		["flightSound"] = "RedNeckAlienUFOFlight",
 	},
@@ -110,11 +102,7 @@ eHelicopter_PRESETS["UFORednecks"] = {
 eHelicopter_PRESETS["UFOFratBoys"] = {
 	inherit = {"UFO"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
-	crew = {"AlienBeefo",100,0,
-			"AlienBeefo",75,0,
-			"AlienBeefo",30,0,
-			"AlienBeefo",15,0,
-			"AlienBeefo",5,0, },
+	crew = {"AlienBeefo",100,0, "AlienBeefo",75,0, "AlienBeefo",30,0, "AlienBeefo",15,0, "AlienBeefo",5,0, },
 	eventSoundEffects = {
 		["flightSound"] = { "AlienUFOFlight", "assBlastUSA" },
 	},
