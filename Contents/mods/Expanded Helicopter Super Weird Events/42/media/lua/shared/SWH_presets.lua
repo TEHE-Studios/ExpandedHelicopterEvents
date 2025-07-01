@@ -53,7 +53,7 @@ eHelicopter_PRESETS["UFO"] = {
 	hoverOnTargetDuration = {1000,1225},
 	speed = 10,
 	topSpeedFactor = 2,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
 	scrapItems = false,
 	scrapVehicles = false,
 	addedCrashChance = 33,
