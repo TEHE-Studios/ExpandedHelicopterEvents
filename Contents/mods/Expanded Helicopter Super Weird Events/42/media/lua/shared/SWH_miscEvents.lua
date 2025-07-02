@@ -174,8 +174,8 @@ function eHelicopter_abductPlayer(heli, player)
 
         local tBD = targetPlayer:getBodyDamage()
         local ayo = tBD:getBodyPart(BodyPartType.Groin)
-        ayo:AddDamage(690)
-        ayo:setAdditionalPain(ayo:getAdditionalPain()+690)
+        ayo:AddDamage(150)
+        ayo:setAdditionalPain(ayo:getAdditionalPain()+150)
 
         local gifts = {"Chocolate_HeartBox","Roses","RubberHose","Gloves_Dish","Pillow_Heart"}
         local itemContainer = targetPlayer:getInventory()
