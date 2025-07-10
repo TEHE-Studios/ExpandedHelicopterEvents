@@ -303,7 +303,8 @@ eHelicopter_PRESETS["BuffCorrell"] = {
 	crew = {"EHESurvivorPilot", 100, 0},
 	speed = 0.8,
 	eventMarkerIcon = "media/ui/plane.png",
-	addedFunctionsToEvents = {["OnAttack"] = forceDance, ["OnLaunch"] = onLaunchClearDance,},
+	--addedFunctionsToEvents = {["OnAttack"] = forceDance},
+	---true actions dancing isn't on B42
 
 	attackDelay = 1,
 	attackDistance = 700,
