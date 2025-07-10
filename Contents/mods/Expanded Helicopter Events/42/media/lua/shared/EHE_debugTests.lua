@@ -36,6 +36,11 @@ Events.OnGameBoot.Add(function()
 		EHE_DebugTests.TemporaryTest = CustomDebugPanel.TemporaryTest
 		EHE_DebugTests.checkSquare = CustomDebugPanel.checkSquare
 		EHE_DebugTests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
+
+		EHE_DebugTests["Copy Scheudle to Clipboard"] = CustomDebugPanel.CopySchedule
+		--EHE_DebugTests["Toggle Triggered"] = CustomDebugPanel.ToggleHideTriggered
+
+
 	end
 end)
 
@@ -127,6 +132,37 @@ function CustomDebugPanel.ZombRandTest(imax)
 		output = output..k.." ("..v.." times)\n"
 	end
 	print(output)
+end
+
+
+function CustomDebugPanel:ToggleHideTriggered()
+	if CustomDebugPanel.TOGGLE_TRIGGERED_EVENTS == true then
+		CustomDebugPanel.TOGGLE_TRIGGERED_EVENTS = false
+		self.backgroundColor = CustomDebugPanel.colors.DEFAULT
+		self.backgroundColorMouseOver = CustomDebugPanel.colors.DEFAULT_HIGHLIGHT
+	else
+		CustomDebugPanel.TOGGLE_TRIGGERED_EVENTS = true
+		self.backgroundColor = CustomDebugPanel.colors.GREEN
+		self.backgroundColorMouseOver = CustomDebugPanel.colors.GREEN_HIGHLIGHT
+	end
+end
+
+
+function CustomDebugPanel:CopySchedule()
+	local finalText = "SCHEDULE:\n"
+	local globalModData = getExpandedHeliEventsModData_Client()
+	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
+		for i=1, #globalModData.EventsOnSchedule do
+			local event = globalModData.EventsOnSchedule[i]
+			finalText = finalText .. "["..i.."]"
+			for k,v in pairs(event) do
+				finalText = finalText.."  "..k..":"..tostring(v)
+			end
+			finalText = finalText .. "\n"
+		end
+	end
+	print(finalText)
+	Clipboard.setClipboard(finalText)
 end
 
 

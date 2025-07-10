@@ -38,11 +38,8 @@ function EHE_DebugTestWindow:render()
 
 			local nextUp = #self.listbox.items+1
 			local event = globalModData.EventsOnSchedule[nextUp]
-			local textToDisplay = "["..nextUp.."]"
-			for k,v in pairs(event) do
-				textToDisplay = textToDisplay.."  "..k..":"..tostring(v)
-			end
-			self.listbox:addItem(textToDisplay, true)
+
+			self.listbox:addItem("["..nextUp.."]", event)
 		end
 	end
 end
@@ -71,7 +68,9 @@ end
 
 
 function EHE_DebugTestWindow:drawScrollingListLine(y, item, alt)
-	self:drawText(item.text, 24, y+(item.height-self.fontHgt)/2, 0.9, 0.9, 0.9, 0.9, self.font)
+	local textToDisplay = item.text
+	for k,v in pairs(item.item) do textToDisplay = textToDisplay.."  "..k..":"..tostring(v) end
+	self:drawText(textToDisplay, 24, y+(item.height-self.fontHgt)/2, 0.9, 0.9, 0.9, 0.9, self.font)
 	y = y + item.height
 	return y
 end
