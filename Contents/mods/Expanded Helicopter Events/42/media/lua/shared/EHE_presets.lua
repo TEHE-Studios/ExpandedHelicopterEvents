@@ -387,6 +387,9 @@ eHelicopter_PRESETS["raider_heli_hostile"] = {
 	flightVolume = 1500,
 	crashType = false,
 	hostilePreference = "IsoPlayer",
+
+	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
+
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
 		["attackSingle"] = "eHeliAlternatingShots",

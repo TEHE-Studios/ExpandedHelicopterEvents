@@ -157,14 +157,27 @@ function eHelicopter:updateEvent()
 
 	local preventMovement = false
 
-	if (self.state == "gotoTarget") and (distToTarget <= (thatIsCloseEnough)) then
-		self.state = "arrived"
-		if self.addedFunctionsToEvents then
-			local eventFunction = self.addedFunctionsToEvents["OnArrive"]
-			if eventFunction then
-				eventFunction(self)
+	if (self.state == "gotoTarget") then
+
+		if (distToTarget <= (thatIsCloseEnough)) then
+			self.state = "arrived"
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.addedFunctionsToEvents["OnArrive"]
+				if eventFunction then
+					eventFunction(self)
+				end
 			end
 		end
+
+		if (distToTarget >= 30 and distToTarget <= 100) then
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.addedFunctionsToEvents["OnApproach"]
+				if eventFunction then
+					eventFunction(self)
+				end
+			end
+		end
+
 	end
 
 	--if (self.state == "arrived" or self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*1.5) then

@@ -76,7 +76,7 @@ function eHelicopter_dropAliensOff(heli)
     --for k,v in pairs(heli.crew) do print(" -- k:"..tostring(k).." -- ("..tostring(v)..")") end
 
     eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/aliens.png", 550, x, y, heli.markerColor)
-    heli:spawnCrew(x, y, 0)
+    heli:spawnDeadCrew(x, y, 0)
     heli.addedFunctionsToEvents.OnHover = false
 end
 
