@@ -27,7 +27,9 @@ function getFreeHelicopter(preset)
 	local heli
 
 	---Testing non-recycling
-	--for _,h in ipairs(ALL_HELICOPTERS) do
+
+	--for i=1, #ALL_HELICOPTERS do
+	--  local h = ALL_HELICOPTERS[i]
 	--	if h.state == "unLaunched" then
 	--		heli = h
 	--		break

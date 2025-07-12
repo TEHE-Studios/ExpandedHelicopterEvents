@@ -11,14 +11,13 @@ function paperContext.registerType(iType) paperContext.registeredTypes[iType] = 
 function paperContext.addInventoryItemContext(playerID, context, items)
     local playerObj = getSpecificPlayer(playerID)
 
-    for _, v in ipairs(items) do
-
+    for i=1, #items do
         ---@type InventoryItem
-        local item = v
+        local item = items[i]
         local stack
-        if not instanceof(v, "InventoryItem") then
-            stack = v
-            item = v.items[1]
+        if not instanceof(item, "InventoryItem") then
+            stack = item
+            item = item.items[1]
         end
 
         local isFlyer = paperContext.registeredTypes[item:getFullType()]

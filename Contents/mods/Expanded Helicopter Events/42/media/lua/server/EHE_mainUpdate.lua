@@ -311,9 +311,10 @@ function updateAllHelicopters()
 	lastUpdateAllHelicopters = lastUpdateAllHelicopters + getGameTime():getMultiplier()
 	if (lastUpdateAllHelicopters >= 5) then
 		lastUpdateAllHelicopters = 0
-		for _,helicopter in ipairs(ALL_HELICOPTERS) do
+
+		for i=1, #ALL_HELICOPTERS do
 			---@type eHelicopter heli
-			local heli = helicopter
+			local heli = ALL_HELICOPTERS[i]
 
 			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
 				if not heli.updateEvent then print("ERR: updateAllHelicopters: heli.update not accessible. heli:"..tostring(heli)) return end
