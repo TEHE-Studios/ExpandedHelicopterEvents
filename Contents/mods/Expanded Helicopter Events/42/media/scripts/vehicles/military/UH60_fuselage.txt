@@ -3,11 +3,10 @@ module Base
 	model Vehicle_UH60Crash
 	{
 		mesh = vehicles/Vehicle_UH60Crash,
-		shader = vehicle_norandom_multiuv,
+		shader = vehicle_norandom_multiuv_noreflect,
 		invertX = FALSE,
 		scale = 0.01,
 	}
-
 
     vehicle UH60DesertFuselage
     {
@@ -54,13 +53,6 @@ module Base
 
 		area TruckBed { xywh = 0.0000 0.6989 1.1375 1.6283, }
 
-		part Seat*
-		{
-			category = nodisplay,
-			table install { skills = Mechanics:2, }
-			table uninstall { skills = Mechanics:2, }
-		}
-
 		template = Trunk/part/TruckBedOpen,
 
 		part TruckBedOpen
@@ -69,8 +61,5 @@ module Base
 			container { capacity = 300, }
 		}
 
-		template = Windshield/part/Windshield,
-		template = Window/part/WindowFrontLeft,
-		template = Window/part/WindowFrontRight,
 	}
 }
