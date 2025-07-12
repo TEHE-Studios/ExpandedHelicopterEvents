@@ -1,3 +1,5 @@
+---true actions dancing isn't on B42
+--[[
 local activeMods = {}
 local activeModIDs = getActivatedMods()
 for i=1, activeModIDs:size() do
@@ -22,6 +24,11 @@ local OrdinaryDance = {
     "BobTA_Twist_One", "BobTA_Twist_Two", "BobTA_Uprock_Indian_Step", "BobTA_YMCA",}
 ---@param char IsoGameCharacter
 function forceDance(heli, char)
+
+    for k,v in pairs(activeMods) do
+        print("v:",v)
+    end
+
     if not activeMods["TrueActionsDancing"] then return end
 
     if instanceof(char, "IsoPlayer") then
@@ -37,7 +44,7 @@ function forceDance(heli, char)
         end
     end
 end
-
+--]]
 
 
 ---@param heli eHelicopter
@@ -69,7 +76,7 @@ function eHelicopter_dropAliensOff(heli)
     --for k,v in pairs(heli.crew) do print(" -- k:"..tostring(k).." -- ("..tostring(v)..")") end
 
     eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/aliens.png", 550, x, y, heli.markerColor)
-    heli:spawnCrew(x, y, 0)
+    heli:spawnDeadCrew(x, y, 0)
     heli.addedFunctionsToEvents.OnHover = false
 end
 

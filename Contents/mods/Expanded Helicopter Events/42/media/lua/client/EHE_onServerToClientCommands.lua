@@ -101,7 +101,9 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 
 							local loc = storedLooperEventsLocations[ID]
 							if not loc then
-								for _,helicopter in ipairs(ALL_HELICOPTERS) do
+
+								for i=1, #ALL_HELICOPTERS do
+									local helicopter = ALL_HELICOPTERS[i]
 									---@type eHelicopter heli
 									local heli = helicopter
 									if heli and heli.ID and heli.ID == ID then

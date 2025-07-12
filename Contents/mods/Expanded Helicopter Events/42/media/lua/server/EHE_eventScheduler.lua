@@ -190,10 +190,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			if (not eventIDsScheduled[presetID]) and presetSettings and eHelicopter then
 
 				local schedulingFactor = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
-				local flightHours = presetSettings.flightHours or eHelicopter.flightHours
 				local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
-				local dayAndHourInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay) and (currentHour >= flightHours[1]) and (currentHour <= flightHours[2]))
-
 				local specialDatesObserved = presetSettings.eventSpecialDates or eHelicopter.eventSpecialDates
 				local specialDatesInRange = false
 				if specialDatesObserved then
@@ -226,21 +223,24 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				--less frequent over time
 				probabilityDenominator = probabilityDenominator+(1000*(daysIntoApoc/SandboxVars.ExpandedHeli.SchedulerDuration))
 
+
 				local eventAvailable = false
 
-				if dayAndHourInRange then
-					eventAvailable = true
+				local dayInRange = ((daysIntoApoc >= startDay) and (daysIntoApoc <= cutOffDay))
 
-					--if (daysIn > startDay) AND (not ignoring never-end) AND (never-end is on)
-				elseif ((daysIntoApoc >= startDay) and (not presetSettings.ignoreContinueScheduling) and (continueScheduling==true and ( (not csLateGameOnly) or (csLateGameOnly and cutOffDay>=SandboxVars.ExpandedHeli.SchedulerDuration) )) ) then
+				local startDayValid = daysIntoApoc >= startDay
+				local notIgnore = not presetSettings.ignoreContinueScheduling
+				--Checks if continue schedule (late-game or otherwise) settings are valid
+				local contScheduleValid = ( continueScheduling==true and ( (not csLateGameOnly) or (csLateGameOnly and cutOffDay>=SandboxVars.ExpandedHeli.SchedulerDuration) ))
+
+				if dayInRange then
+					eventAvailable = true
+				elseif (startDayValid and notIgnore and contScheduleValid) then
 					eventAvailable = true
 				end
 
-				if (specialDatesObserved and (not specialDatesInRange)) then
-					eventAvailable = false
-				end
-
-				--[[DEBUG] print(" processing preset: "..presetID.." a:"..tostring(dayAndHourInRange).." b:"..tostring(SandboxVars.ExpandedHeli.csLateGameOnly==true).." c:"..chance)--]]
+				---override previous validity for special dates
+				if (specialDatesObserved and (not specialDatesInRange)) then eventAvailable = false end
 
 				if eventAvailable then
 					local weight = eHelicopter.eventSpawnWeight*freq
@@ -280,12 +280,11 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 			local latestStartDay
 
 			for i=1, iterations do
-				local dayOffset = {0,0,0,1,1,2}
+				local dayOffset = {0,0,0,1,1,2,2}
 				dayOffset = dayOffset[ZombRand(#dayOffset)+1]
 
 				local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
 				local startTime = ZombRand(flightHours[1],flightHours[2]+1)
-
 				if startTime > 24 then startTime = startTime-24 end
 
 				if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
@@ -297,7 +296,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 
 			if latestStartDay then
 				---Push vanilla event down the calendar.
-				local pushVanillaDay = math.max(GT:getHelicopterDay1(),latestStartDay+3)
+				local pushVanillaDay = math.max(GT:getHelicopterDay1(),latestStartDay+30)
 				GT:setHelicopterDay(pushVanillaDay)
 			end
 		end

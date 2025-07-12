@@ -157,14 +157,27 @@ function eHelicopter:updateEvent()
 
 	local preventMovement = false
 
-	if (self.state == "gotoTarget") and (distToTarget <= (thatIsCloseEnough)) then
-		self.state = "arrived"
-		if self.addedFunctionsToEvents then
-			local eventFunction = self.addedFunctionsToEvents["OnArrive"]
-			if eventFunction then
-				eventFunction(self)
+	if (self.state == "gotoTarget") then
+
+		if (distToTarget <= (thatIsCloseEnough)) then
+			self.state = "arrived"
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.addedFunctionsToEvents["OnArrive"]
+				if eventFunction then
+					eventFunction(self)
+				end
 			end
 		end
+
+		if (distToTarget >= 30 and distToTarget <= 100) then
+			if self.addedFunctionsToEvents then
+				local eventFunction = self.addedFunctionsToEvents["OnApproach"]
+				if eventFunction then
+					eventFunction(self)
+				end
+			end
+		end
+
 	end
 
 	--if (self.state == "arrived" or self.state == "gotoTarget") and (distToTarget <= thatIsCloseEnough*1.5) then
@@ -311,9 +324,10 @@ function updateAllHelicopters()
 	lastUpdateAllHelicopters = lastUpdateAllHelicopters + getGameTime():getMultiplier()
 	if (lastUpdateAllHelicopters >= 5) then
 		lastUpdateAllHelicopters = 0
-		for _,helicopter in ipairs(ALL_HELICOPTERS) do
+
+		for i=1, #ALL_HELICOPTERS do
 			---@type eHelicopter heli
-			local heli = helicopter
+			local heli = ALL_HELICOPTERS[i]
 
 			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
 				if not heli.updateEvent then print("ERR: updateAllHelicopters: heli.update not accessible. heli:"..tostring(heli)) return end

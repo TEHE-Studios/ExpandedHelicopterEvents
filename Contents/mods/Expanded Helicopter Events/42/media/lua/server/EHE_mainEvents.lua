@@ -76,7 +76,7 @@ function eHelicopter:crash()
 			end
 
 			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
-			self:spawnCrew()
+			self:spawnDeadCrew()
 
 			getWorldSoundManager():addSound(nil, heliX, heliY, 0, 175, 300, true, 0, 25)
 			eventSoundHandler:playEventSound(self, "crashEvent")
@@ -94,10 +94,8 @@ end
 
 
 ---Heli spawn crew
-function eHelicopter:spawnCrew(x, y, z)
-	if not self.crew then
-		return
-	end
+function eHelicopter:spawnDeadCrew(x, y, z)
+	if not self.crew then return end
 
 	local heliX, heliY, heliZ = self:getXYZAsInt()
 	x = x or heliX

@@ -9,7 +9,7 @@ EHE_EventMarker.clickableSize = 45
 EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
 
 EHE_EventMarker.textureIsoPointer = getTexture("media/ui/eventPointer.png")
-EHE_EventMarker.textureBG = getTexture("media/ui/eventMarkerBase.png")
+EHE_EventMarker.textureBG = getTexture("media/ui/eventPointerBase.png")
 
 EHE_EventMarker.textureCoopNum = {
 	getTexture("media/ui/coop1.png"),

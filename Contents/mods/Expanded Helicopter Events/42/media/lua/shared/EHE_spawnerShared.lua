@@ -21,5 +21,17 @@ function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, 
         spawned = addZombiesInOutfit(x, y, z, 1, spawnThis, extraParam)
     end
 
+    if funcType == "NPCs" then
+        print("SHAM")
+        local player = getPlayer()
+        local sq_above = getOutsideSquareFromAbove(sq)
+        if sq_above then
+            spawnThis.x = sq_above:getX()
+            spawnThis.y = sq_above:getY()
+            spawnThis.z = sq_above:getZ()
+        end
+        BanditServer.Spawner.Clan(player, spawnThis)
+    end
+
     if spawned and extraFunctions then EHE_spawner.processExtraFunctionsOnto(spawned,extraFunctions) end
 end
