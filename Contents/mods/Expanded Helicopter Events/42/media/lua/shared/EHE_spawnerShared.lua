@@ -22,7 +22,6 @@ function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, 
     end
 
     if funcType == "NPCs" then
-        print("SHAM")
         local player = getPlayer()
         local sq_above = getOutsideSquareFromAbove(sq)
         if sq_above then
