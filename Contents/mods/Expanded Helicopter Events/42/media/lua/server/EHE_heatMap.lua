@@ -38,8 +38,17 @@ end
 
 
 function heatMap.sortCellsByHeat()
-    if heatMap.cellsIDs and #heatMap.cellsIDs <= 0 then return end
-    table.sort(heatMap.cellsIDs, function(a,b) return heatMap.cells[a].heatLevel > heatMap.cells[b].heatLevel end)
+    if not heatMap.cellsIDs or #heatMap.cellsIDs == 0 then return end
+
+    table.sort(heatMap.cellsIDs, function(a, b)
+        local cellA = heatMap.cells[a]
+        local cellB = heatMap.cells[b]
+
+        local heatA = cellA and cellA.heatLevel or 0
+        local heatB = cellB and cellB.heatLevel or 0
+
+        return heatA > heatB
+    end)
 end
 
 
