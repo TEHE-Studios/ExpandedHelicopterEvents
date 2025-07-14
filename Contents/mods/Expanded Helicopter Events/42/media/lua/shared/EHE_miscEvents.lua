@@ -136,6 +136,7 @@ end
 --Walkers  c167d1e0-c077-4ee5-b353-88b374de193d
 --Wedding  e42fc351-dd10-4a0c-a154-b383cef3b987
 require "BanditServerSpawner.lua"
+
 function eHelicopter_spawnNPCs(heli)
 
 	if not heli or not heli.crew then return end
@@ -151,7 +152,7 @@ function eHelicopter_spawnNPCs(heli)
 	local args = {
 		x = x, y = y, z = z,
 		size = valid,
-		cid = "f3ad89be-9368-4df7-a63b-0c315a96f23b",
+		cid = "bbe0c8c9-1135-4ced-abd2-73807e166a1e",
 		program = "Bandit",--?
 		pid = nil,--player,
 
@@ -160,10 +161,8 @@ function eHelicopter_spawnNPCs(heli)
 	--[[
 	--- Paste this into console for printout of cids
 	BanditCustom.Load()
-	local clanData  = BanditCustom.ClanGetAllSorted()
-	for cid, clan in pairs(clanData) do
-		print(clan.general.name.."  "..cid)
-	end
+	local clanData, text = BanditCustom.ClanGetAllSorted(), "CLANS:\n"
+	for cid, clan in pairs(clanData) do text = text .. clan.general.name.."  "..cid) .. "\n" end
 	--]]
 
 	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/bandits.png", 250, x, y, heli.markerColor)
