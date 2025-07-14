@@ -168,8 +168,8 @@ function eHelicopter:updateEvent()
 				end
 			end
 		end
-
-		if (distToTarget >= 30 and distToTarget <= 100) then
+		
+		if (distToTarget >= (thatIsCloseEnough*1.5) and distToTarget <= (thatIsCloseEnough*6)) then
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnApproach"]
 				if eventFunction then
