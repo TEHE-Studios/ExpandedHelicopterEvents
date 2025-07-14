@@ -165,7 +165,7 @@ function eHelicopter_spawnNPCs(heli)
 	for cid, clan in pairs(clanData) do text = text .. clan.general.name.."  "..cid) .. "\n" end
 	--]]
 
-	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/bandits.png", 250, x, y, heli.markerColor)
+	eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/bandits.png", 750, x, y, heli.markerColor)
 
 	heli.crew = false
 	--- BanditServer.Spawner.Clan(player, args)
