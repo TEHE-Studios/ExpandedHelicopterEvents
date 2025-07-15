@@ -94,7 +94,7 @@ function eHelicopter_abductPlayer(heli, player)
         heli.addedFunctionsToEvents.OnHover = false
         abductees[targetPlayer] = true
 
-        local SleepHours = 8
+        local SleepHours = 4
 
         SleepHours = SleepHours + GameTime.getInstance():getTimeOfDay()
         if SleepHours >= 24 then SleepHours = SleepHours - 24 end
@@ -184,7 +184,7 @@ function eHelicopter_abductPlayer(heli, player)
         ayo:AddDamage(69)
         ayo:setAdditionalPain(ayo:getAdditionalPain()+69)
 
-        local gifts = {"Chocolate_HeartBox","Roses","RubberHose","Gloves_Dish","Pillow_Heart"}
+        local gifts = {"Chocolate_HeartBox","Roses","RubberHose","Gloves_Dish","Pillow_Heart","WaterBottle"}
         local itemContainer = targetPlayer:getInventory()
         for _,gift in pairs(gifts) do itemContainer:AddItems(gift, 1) end
 
