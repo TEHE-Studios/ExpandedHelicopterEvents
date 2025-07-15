@@ -1,19 +1,17 @@
 module SWH
 {
-    item AlienSkin
-	{
-	Type = Clothing,
-	ClothingItem = AlienMuscles,
-	CanHaveHoles = False,
-	BodyLocation= Jacket,
+    item AlienSkin {
+        Type = Clothing,
+        ClothingItem = AlienMuscles,
+        CanHaveHoles = False,
+        BodyLocation= Jacket,
 	}
 
-    item AlienSkin
-	{
-	Type = Clothing,
-	ClothingItem = AlienSkin,
-	CanHaveHoles = False,
-	BodyLocation=TankTop,
+    item AlienSkin {
+        Type = Clothing,
+        ClothingItem = AlienSkin,
+        CanHaveHoles = False,
+        BodyLocation=TankTop,
 	}
 
     item Shoes_AlienSneakers
@@ -83,24 +81,21 @@ module SWH
         BiteDefense = 100,
     }
 
-    item SpiffoSkin
-	{
-	Type = Clothing,
-	ClothingItem = SpiffoSkin,
-	BodyLocation=TankTop,
+    item SpiffoSkin {
+        Type = Clothing,
+        ClothingItem = SpiffoSkin,
+        BodyLocation=TankTop,
 	}
 
-    item SockConnoisseur
-	{
-	Type = Clothing,
-	ClothingItem = SockConnoisseur,
-	BodyLocation=TankTop,
+    item SockConnoisseur {
+        Type = Clothing,
+        ClothingItem = SockConnoisseur,
+        BodyLocation=TankTop,
 	}
 
-    item WhiteMale
-	{
-	Type = Clothing,
-	ClothingItem = WhiteMale,
-	BodyLocation=TankTop,
+    item WhiteMale {
+        Type = Clothing,
+        ClothingItem = WhiteMale,
+        BodyLocation=TankTop,
 	}
 }
