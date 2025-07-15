@@ -22,7 +22,7 @@ eHelicopter.addedCrashChance = 0
 eHelicopter.addedFunctionsToEvents = false --{ ["OnLaunch"] = false, ["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttackHit"] = false, ["OnAttack"] = false, ["OnSpawnCrew"] = false, ["OnArrived"] = false}
 eHelicopter.scrapVehicles = {"UH1HTail"} --{"Base.TYPE","Base.TYPE"}
 eHelicopter.scrapItems = {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10}
-eHelicopter.crew = {"AirCrew", 100}
+eHelicopter.crew = { {outfit="AirCrew"} }
 eHelicopter.formationIDs = {}
 eHelicopter.dropItems = false
 eHelicopter.dropPackages = false

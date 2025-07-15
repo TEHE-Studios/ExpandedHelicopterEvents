@@ -113,36 +113,31 @@ function eHelicopter:spawnDeadCrew(x, y, z)
 		end
 	end
 
-	for key,outfitID in pairs(self.crew) do
+	for i=1, #self.crew do
 
-		--The chance this type of zombie is spawned
-		local chance = self.crew[key+1]
-		--If the next entry in the list is a number consider it to be a chance, otherwise use 100%
-		if type(chance) ~= "number" then
-			chance = 100
-		end
+		local crewMember = self.crew[i]
 
-		--NOTE: This is the chance the zombie will be female - 100% = female, 0% = male
-		local femaleChance = self.crew[key+2]
-		--If the next entry in the list is a number consider it to be a chance, otherwise use 50%
-		if type(femaleChance) ~= "number" then
-			femaleChance = 50
-		end
+		local outfit = crewMember and crewMember.outfit
+		if not outfit then
+			print("ERROR: not crew-outfit found for: ", self:heliToString() or "UNKNOWN HELI EVENT")
+		else
 
-		--assume all strings to be outfidID and roll chance/100
-		if (type(outfitID) == "string") and (ZombRand(101) <= chance) then
+			local chance = crewMember and crewMember.spawn or 100
+			local femaleChance = crewMember and crewMember.female or 50
 
-			--fuzz up the location
-			local fuzzNums = {-5,-4,-3,-3,3,3,4,5}
-			if x and y then
-				x = x+fuzzNums[ZombRand(#fuzzNums)+1]
-				y = y+fuzzNums[ZombRand(#fuzzNums)+1]
+			if (ZombRand(101) <= chance) then
+
+				local fuzzNums = {-5,-4,-3,-3,3,3,4,5}
+				if x and y then
+					x = x+fuzzNums[ZombRand(#fuzzNums)+1]
+					y = y+fuzzNums[ZombRand(#fuzzNums)+1]
+				end
+
+				sendClientCommand("SpawnerAPI", "spawn", {
+					funcType="zombie", spawnThis=outfit, x=x, y=y, z=0,
+					extraFunctions=onSpawnCrewEvents, extraParam=femaleChance, processSquare="getOutsideSquareFromAbove" })
+
 			end
-
-			sendClientCommand("SpawnerAPI", "spawn", {
-				funcType="zombie", spawnThis=outfitID, x=x, y=y, z=0,
-				extraFunctions=onSpawnCrewEvents, extraParam=femaleChance, processSquare="getOutsideSquareFromAbove" })
-
 		end
 	end
 	self.crew = false

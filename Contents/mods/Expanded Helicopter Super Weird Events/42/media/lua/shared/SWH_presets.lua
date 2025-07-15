@@ -26,9 +26,11 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	dropPackages = {"SpiffoBurger"},
 	announcerVoice = "Spiffo",
 	dropItems = {["SWH.SpiffoInvite"]=250},
-	crew = {"SpiffoBoss",100,0,
-			"SpiffoBoss",10,0,
-			"SpiffoBoss",1,0,},
+	crew = {
+		{ outfit="SpiffoBoss", female=0 },
+		{ outfit="SpiffoBoss", spawn=10, female=0 },
+		{ outfit="SpiffoBoss", spawn=1, female=0 },
+	},
 	forScheduling = true,
 	eventSpawnWeight = 1,
 	markerColor = {r=0.96,g=0.21,b=0.78},
@@ -73,7 +75,11 @@ eHelicopter_PRESETS["UFO"] = {
 eHelicopter_PRESETS["UFO_noHoverBackEnd_DoNotUse"] = {
 	doNotListForStreamerIntegration = true,
 	forScheduling = false,
-	crew = {"AlienTourist",100,0, "AlienTourist",10,0, "AlienTourist",5,0,},
+	crew = {
+		{ outfit="AlienTourist", female=0 },
+		{ outfit="AlienTourist", spawn=10, female=0 },
+		{ outfit="AlienTourist", spawn=5, female=0 },
+	},
 }
 eHelicopter_PRESETS["UFO_noHover"] = {
 	inherit = {"UFO", "UFO_noHoverBackEnd_DoNotUse"},
@@ -86,14 +92,27 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 eHelicopter_PRESETS["UFOTourists"] = {
 	inherit = {"UFO"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
-	crew = {"AlienTourist",100,0, "AlienTourist",75,0, "AlienTourist",30,0, "AlienTourist",15,0, "AlienTourist",5,0, },
+	crew = {
+		{ outfit="AlienTourist", female=0 },
+		{ outfit="AlienTourist", spawn=75, female=0 },
+		{ outfit="AlienTourist", spawn=30, female=0 },
+		{ outfit="AlienTourist", spawn=15, female=0 },
+		{ outfit="AlienTourist", spawn=5, female=0 },
+	},
 }
 
 eHelicopter_PRESETS["UFORednecks"] = {
 	inherit = {"UFO"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
 	crashType = {"UFORedneck"},
-	crew = {"AlienRedneck",100,0, "AlienRedneck",75,0, "AlienRedneck",30,0, "AlienRedneck",15,0, "AlienRedneck",5,0, },
+	crew = {
+		{ outfit="AlienTourist", female=0 },
+		{ outfit="AlienTourist", spawn=75, female=0 },
+		{ outfit="AlienTourist", spawn=30, female=0 },
+		{ outfit="AlienTourist", spawn=15, female=0 },
+		{ outfit="AlienTourist", spawn=5, female=0 },
+	},
+
 	eventSoundEffects = {
 		["flightSound"] = "RedNeckAlienUFOFlight",
 	},
@@ -102,7 +121,13 @@ eHelicopter_PRESETS["UFORednecks"] = {
 eHelicopter_PRESETS["UFOFratBoys"] = {
 	inherit = {"UFO"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
-	crew = {"AlienBeefo",100,0, "AlienBeefo",75,0, "AlienBeefo",30,0, "AlienBeefo",15,0, "AlienBeefo",5,0, },
+	crew = {
+		{ outfit="AlienTourist", female=0 },
+		{ outfit="AlienTourist", spawn=75, female=0 },
+		{ outfit="AlienTourist", spawn=30, female=0 },
+		{ outfit="AlienTourist", spawn=15, female=0 },
+		{ outfit="AlienTourist", spawn=5, female=0 },
+	},
 	eventSoundEffects = {
 		["flightSound"] = { "AlienUFOFlight", "assBlastUSA" },
 	},
@@ -151,34 +176,67 @@ eHelicopter_PRESETS["IRS_noHover"] = {
 eHelicopter_PRESETS["IRS_Wave1"] = {
 	inherit = {"IRS"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
-	crew = {"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
-			"TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0,},
+	crew = {
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+	},
 }
 
 eHelicopter_PRESETS["IRS_Wave2"] = {
 	inherit = {"IRS"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
-	crew = {"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
-			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
-			"TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0,
-			"TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0,},
+
+	crew = {
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+	},
 }
 
 eHelicopter_PRESETS["IRS_Wave3"] = {
 	inherit = {"IRS"},
 	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
-	crew = {"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
-			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
-			"TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0, "TaxMan",100,0,
-			"TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0,
-			"TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0,
-			"TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0, "TaxMan",50,0,},
+
+	crew = {
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
+
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+		{ outfit="TaxMan", spawn=50, female=0 }, { outfit="TaxMan", spawn=50, female=0 },
+	},
 }
 
 
-
 eHelicopter_PRESETS["TISCreamery"] = {
-	presetRandomSelection = {"TISCreamery_RJ",2,"TISCreamery_Socks",1},
+	presetRandomSelection = {"TISCreamery_Licks",2,"TISCreamery_Socks",1},
 	crashType = {"TISIceCreamTruck"},
 	hoverOnTargetDuration = {1000,1125},
 	eventSoundEffects = {
@@ -193,19 +251,23 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	eventCutOffDayFactor = 1,
 }
 
-eHelicopter_PRESETS["TISCreamery_RJ"] = {
+eHelicopter_PRESETS["TISCreamery_Lick"] = {
 	inherit = {"TISCreamery"},
-	crew = {"RobertJohnson",100,0,
-			"RobertJohnson",100,0,
-			"RobertJohnson",75,0,
-			"RobertJohnson",50,0,
-			"RobertJohnson",25,0,
-			"RobertJohnson",25,0, },
+	crew = {
+		{ outfit="SWH_IceCream", spawn=100, female=0 },
+		{ outfit="SWH_IceCream", spawn=100, female=0 },
+		{ outfit="SWH_IceCream", spawn=75, female=0 },
+		{ outfit="SWH_IceCream", spawn=50, female=0 },
+		{ outfit="SWH_IceCream", spawn=25, female=0 },
+		{ outfit="SWH_IceCream", spawn=25, female=0 },
+	},
 }
 
 eHelicopter_PRESETS["TISCreamery_Socks"] = {
 	inherit = {"TISCreamery"},
-	crew = {"SockConnoisseur",100,0,},
+	crew = {
+		{ outfit="SockConnoisseur", female=0 },
+	},
 }
 
 
@@ -233,7 +295,9 @@ eHelicopter_PRESETS["SandyClaws"] = {
 	crashType = {"UH1HSantaFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
 	scrapVehicles = {"UH1HSantaTail"},
-	crew = {"AlienSanta"},
+	crew = {
+		{outfit="AlienSanta", female=0}
+	},
 	hoverOnTargetDuration = {1250,1500},
 	attackDelay = 1700,
 	attackSpread = 4,
@@ -262,23 +326,25 @@ eHelicopter_PRESETS["SandyClaws_noHover"] = {
 
 eHelicopter_PRESETS["AttackOfTheStrippers"] = {
 	speed = 2.5,
-	crew = {"CowboyStripper",100,0,
-			"CowboyStripper",100,0,
-			"CowboyStripper",100,0,
-			"CowboyStripper",100,0,
-			"CowboyStripper",100,0,
-			"CowboyStripper",50,0,
-			"CowboyStripper",50,0,
-			"CowboyStripper",50,0,
-			"FiremanStripper",100,0,
-			"FiremanStripper",100,0,
-			"FiremanStripper",100,0,
-			"FiremanStripper",100,0,
-			"FiremanStripper",100,0,
-			"FiremanStripper",50,0,
-			"FiremanStripper",50,0,
-			"FiremanStripper",50,0,
-},
+	crew = {
+		{ outfit="CowboyStripper", female=0 },
+		{ outfit="CowboyStripper", female=0 },
+		{ outfit="CowboyStripper", female=0 },
+		{ outfit="CowboyStripper", female=0 },
+		{ outfit="CowboyStripper", female=0 },
+		{ outfit="CowboyStripper", spawn=50, female=0 },
+		{ outfit="CowboyStripper", spawn=50, female=0 },
+		{ outfit="CowboyStripper", spawn=50, female=0 },
+		{ outfit="FiremanStripper", female=0 },
+		{ outfit="FiremanStripper", female=0 },
+		{ outfit="FiremanStripper", female=0 },
+		{ outfit="FiremanStripper", female=0 },
+		{ outfit="FiremanStripper", female=0 },
+		{ outfit="FiremanStripper", spawn=50, female=0 },
+		{ outfit="FiremanStripper", spawn=50, female=0 },
+		{ outfit="FiremanStripper", spawn=50, female=0 },
+	},
+
 	hoverOnTargetDuration = {1250,1500},
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "assBlastUSA" },
@@ -300,7 +366,9 @@ eHelicopter_PRESETS["AttackOfTheStrippers_noHover"] = {
 
 eHelicopter_PRESETS["BuffCorrell"] = {
 	crashType = false,
-	crew = {"EHESurvivorPilot", 100, 0},
+	crew = {
+		{ outfit="EHESurvivorPilot", female=0 }
+	},
 	speed = 0.8,
 	eventMarkerIcon = "media/ui/plane.png",
 	--addedFunctionsToEvents = {["OnAttack"] = forceDance},

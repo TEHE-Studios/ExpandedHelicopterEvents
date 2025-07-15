@@ -82,20 +82,10 @@
 	</files>
 
 	<files>
-	<path>media/clothing/clothingItems/ARRJAY.xml</path>
-	<guid>84d0c776-2718-478c-9447-ff9506504382</guid>
-	</files>
-
-	<files>
 		<path>media/clothing/clothingItems/SockConnoisseur.xml</path>
 		<guid>e9a59924-ca77-4ccb-a810-5420a5d5b10c</guid>
 	</files>
 
-	<files>
-	<path>media/clothing/clothingItems/TShirt_RJ.xml</path>
-	<guid>09003465-24fe-4648-8a34-19326b679d31</guid>
-	</files>
-	
 	<files>
 	<path>media/clothing/clothingItems/Hat_SpiffoWarHelmet.xml</path>
 	<guid>996fe619-9bb4-4725-86e4-32211147d2df</guid>

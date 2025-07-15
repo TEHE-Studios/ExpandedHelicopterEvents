@@ -144,14 +144,11 @@ function eHelicopter_spawnNPCs(heli)
 	z = 0
 
 	if not (BanditServer and BanditServer.Spawner and BanditServer.Spawner.Clan) then self:spawnDeadCrew(x, y, z) return end
-
-	local valid = 0
-	for i=0, #heli.crew do if type(heli.crew[i]) == "string" then valid = valid + 1 end end
-	if valid <=0 then return end
+	if not #heli.crew or #heli.crew <=0 then return end
 
 	local args = {
 		x = x, y = y, z = z,
-		size = valid,
+		size = #heli.crew,
 		cid = "bbe0c8c9-1135-4ced-abd2-73807e166a1e",
 		program = "Bandit",--?
 		pid = nil,--player,

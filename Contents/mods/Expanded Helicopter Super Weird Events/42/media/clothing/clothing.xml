@@ -172,31 +172,54 @@
 		<itemGUID>6b01e5b3-860d-4361-b43f-7b8ea152f1bf</itemGUID>
 		    </m_items>
 </m_MaleOutfits>
+
+
 <m_MaleOutfits>
-		<m_Name>RobertJohnson</m_Name>
-		<m_Guid>26d1f965-6b1f-402d-ae42-49fc2488e26a</m_Guid>
-		<m_Top>false</m_Top>
-		<m_Pants>false</m_Pants>
-		<m_AllowTopTint>false</m_AllowTopTint>
-		<m_items> <!-- RJ Skin -->
-			<itemGUID>84d0c776-2718-478c-9447-ff9506504382</itemGUID>
-		</m_items>	
-			<m_items> <!-- Glasses -->
-			<itemGUID>825f5380-d6ef-4cf8-8d77-d3a115724f4a</itemGUID>
-		</m_items>		
-			<m_items> <!-- RJ's Favorite Shirt -->
-		<itemGUID>09003465-24fe-4648-8a34-19326b679d31</itemGUID>
-		    </m_items>
-			<m_items> <!-- Denim Jeans -->
-		<itemGUID>229b23f6-8e8f-4f16-837b-4fe950c48bfc</itemGUID>
-		    </m_items>
-			<m_items> <!-- Socks -->
+	<m_Name>SWH_IceCream</m_Name> <!-- Vanilla Cook_Icecream - needs a separate outfitID for AI -->
+	<m_Guid>afb3529f-1227-4ed8-95d1-03ce6ec408c5</m_Guid>
+	<m_items>
+		<itemGUID>83e43ee3-7f3a-45e9-a0fc-acb9e61e38c3</itemGUID>
+	</m_items>
+	<m_items>
+		<probability>0.5</probability>
+		<itemGUID>99b1ff28-3884-4ca3-b827-7fdab685c7a6</itemGUID>
+	</m_items>
+	<m_items>
 		<itemGUID>ebea15c8-99b3-4e20-905b-d22cf82b8217</itemGUID>
-		    </m_items>
-			<m_items> <!-- Black Shoes -->
-		<itemGUID>593bea3d-c127-4574-ac1e-2197dc56e486</itemGUID>
-		    </m_items>
+	</m_items>
+	<m_items>
+		<itemGUID>6fed6e2b-3a72-4bac-aac5-09585984493d</itemGUID>
+	</m_items>
+	<m_items>
+		<probability>0.2</probability>
+		<itemGUID>d6bc2f73-c1f4-4ffc-9a32-4a30cee343cc</itemGUID>
+	</m_items>
+	<m_items>
+		<probability>0.1</probability>
+		<itemGUID>6d702d88-4ca0-4bcb-9aee-d88f2be29e69</itemGUID>
+	</m_items>
+	<m_items>
+		<probability>0.3</probability>
+		<itemGUID>4cbb081e-0e9a-4248-bec1-0aa226e082e1</itemGUID>
+		<subItems>
+			<itemGUID>e4b3135f-a541-4870-a7b9-2ba6f730bc5c</itemGUID>
+		</subItems>
+	</m_items>
+	<m_items>
+		<probability>0.3</probability>
+		<itemGUID>5fc22466-2942-4ba1-8c33-2a8528b73021</itemGUID>
+		<subItems>
+			<itemGUID>ce1a8520-7120-432e-8a3a-aa7b3094f0bb</itemGUID>
+		</subItems>
+		<subItems>
+			<itemGUID>c7cc655b-284a-4087-85a6-d7c116385fb0</itemGUID>
+		</subItems>
+		<subItems>
+			<itemGUID>0383956a-3fbd-4001-9749-69e2ba70b134</itemGUID>
+		</subItems>
+	</m_items>
 </m_MaleOutfits>
+
 
 <m_MaleOutfits>
 	<m_Name>SockConnoisseur</m_Name>

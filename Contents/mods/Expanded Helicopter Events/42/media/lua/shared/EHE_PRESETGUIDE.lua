@@ -55,12 +55,11 @@ if 1==1 then return end ---Remove this Line to get started.
 ---@field scrapVehicles table table of additional `BaseVehicle` to act as extra large pieces, default: {"UH1HTail"} --{"Base.TYPE","Base.TYPE"}
 ---@field scrapItems table table of additional `InventoryItem` to act as extra small pieces, default: {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10}
 
----@field crew table list of IDs and chances (similar to how loot distribution is handled)
----The format ias ID, spawnChance, isFemaleChance
----Example: crew = {"pilot", 100, 50, "crew", 75, 50, "crew", 50, 50}
----The number after the ID is assumed for spawn chance, if there is no number found 100% is used.
----If there is a number after the spawnChance it it assumed for the isFemaleChance, if no number 50% is used.
----default: {"AirCrew", 100}
+---@field crew table nested-table of IDs and chances
+---The format is {outfitID, spawnChance, isFemaleChance}
+---Example: crew = { {outfit="pilot", spawn=100, female=50} {outfit="crew", spawn=75, female=50} {outfit="crew", spawn=50, female=50} }
+---Spawn defaults to 100%, female defaults to 50%.
+---default: {outfit="AirCrew"}
 
 ---@field formation table table of IDs to generate follower helis, default: {}
 ---@field dropItems table|boolean table of items IDs or false to disable
@@ -184,7 +183,13 @@ eHelicopter_PRESETS["raiders"] = {
     scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
     scrapVehicles = {"UH60GreenTail"},
     addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropTrash},
-    crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
+    crew = {
+        { outfit="EHERaiderPilot", spawn=100, female=0, },
+        { outfit="EHERaider", spawn=100, female=0, },
+        { outfit="EHERaider", spawn=100, female=0, },
+        { outfit="EHERaider", spawn=100, female=0, },
+        { outfit="EHERaiderLeader", spawn=75, female=0 }
+    },
     forScheduling = true,
     eventCutOffDayFactor = 1,
     eventStartDayFactor = 0.48,

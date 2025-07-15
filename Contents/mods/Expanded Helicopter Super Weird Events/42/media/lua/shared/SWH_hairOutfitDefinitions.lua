@@ -20,9 +20,6 @@ table.insert(HairOutfitDefinitions.haircutOutfitDefinition, alienBeefo)
 local taxman = { outfit = "TaxMan", haircut = "Buzzcut:50;Short:50", beard = "None:100" }
 table.insert(HairOutfitDefinitions.haircutOutfitDefinition, taxman)
 
-local RJ = { outfit = "RobertJohnson", haircut = "Short:100", beard = "None:100", haircutColor = "0.16,0.08,0.02:100" }
-table.insert(HairOutfitDefinitions.haircutOutfitDefinition, RJ)
-
 local SockConnoisseur = { outfit = "SockConnoisseur", haircut = "Short:100", beard = "None:100", haircutColor = "0.16,0.08,0.02:100" }
 table.insert(HairOutfitDefinitions.haircutOutfitDefinition, SockConnoisseur)
 

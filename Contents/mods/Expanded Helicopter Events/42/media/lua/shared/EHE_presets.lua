@@ -5,7 +5,11 @@ local subEvents = require("EHE_presetSubEvents.lua")
 eHelicopter_PRESETS["military"] = {
 	announcerVoice = true,
 	forScheduling = true,
-	crew = {"EHE_HelicopterPilot", "EHE_Soldier", 75, "EHE_Soldier", 50},
+	crew = {
+		{ outfit="EHE_HelicopterPilot" },
+		{ outfit="EHE_Soldier", spawn=75 },
+		{ outfit="EHE_Soldier", spawn=50 },
+	},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
@@ -140,15 +144,16 @@ eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropCrewOff},
-	crew = 
-    {"EHE_Soldier",100,0,
-    "EHE_Soldier",100,0,
-    "EHE_Soldier",100,0,
-    "EHE_Soldier",100,0,
-	"EHE_Soldier",100,0,
-	"EHE_Soldier",100,0, 
-	"EHE_Soldier",100,0,
-	"EHE_Soldier",100,0,},
+	crew = {
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+		{ outfit="EHE_Soldier", female=0 },
+	},
 	radioChatter = "AEBS_SupplyDrop",
 	eventStartDayFactor = 0.034,
 	eventCutOffDayFactor = 0.2145,
@@ -223,7 +228,11 @@ eHelicopter_PRESETS["news_chopper"] = {
 		["flightSound"] = { "eHelicopter", "eHeli_newscaster" },
 	},
 	speed = 1,
-	crew = {"EHECivilianPilot", "EHENewsReporterVest", "EHENewsReporterVest", 40},
+	crew = {
+		{ outfit="EHECivilianPilot", },
+		{ outfit="EHENewsReporterVest", },
+		{ outfit="EHENewsReporterVest", spawn = 40 },
+	},
 	crashType = {"Bell206LBMWFuselage"},
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206LBMWTail"},
@@ -247,7 +256,11 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 eHelicopter_PRESETS["police"] = {
 	presetRandomSelection = {"police_heli_emergency",3, "police_heli_hovering",2, "police_heli_firing",2, "police_heli_fleeing",2},
 	crashType = {"Bell206PoliceFuselage"},
-	crew = {"EHEPolicePilot", "EHEPoliceOfficer", "EHEPoliceOfficer", 75},
+	crew = {
+		{ outfit="EHEPolicePilot" },
+		{ outfit="EHEPoliceOfficer" },
+		{ outfit="EHEPoliceOfficer", spawn=75 },
+	},
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206PoliceTail"},
 	announcerVoice = "Police",
@@ -306,7 +319,9 @@ eHelicopter_PRESETS["police_heli_fleeing"] = {
 
 eHelicopter_PRESETS["survivor_smallplane"] = {
 	crashType = false,
-	crew = {"EHESurvivorPilot", 100, 0},
+	crew = {
+		{ outfit="EHESurvivorPilot", female=0 },
+	},
 	speed = 0.7,
 	eventMarkerIcon = "media/ui/plane.png",
 	eventSoundEffects = {
@@ -321,7 +336,9 @@ eHelicopter_PRESETS["survivor_smallplane"] = {
 
 eHelicopter_PRESETS["samaritan_drop"] = {
 	crashType = false,
-	crew = {"EHESurvivorPilot", 100, 0},
+	crew = {
+		{ outfit="EHESurvivorPilot", female = 0 }
+	},
 	dropPackages = {"SurvivorSupplyDrop"},
 	speed = 1.0,
 	eventMarkerIcon = "media/ui/plane.png",
@@ -339,7 +356,11 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 eHelicopter_PRESETS["survivor_heli"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
-	crew = {"EHESurvivorPilot", 100, 0, "EHESurvivor", 100, 0, "EHESurvivor", 75, 0},
+	crew = {
+		{ outfit="EHESurvivorPilot", 0 },
+		{ outfit="EHESurvivor", 0 },
+		{ outfit="EHESurvivor", spawn=75, female=0 },
+	},
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
 	},
@@ -358,7 +379,13 @@ eHelicopter_PRESETS["raiders"] = {
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
-	crew = {"EHERaiderPilot", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaider", 100, 0, "EHERaiderLeader", 75, 0},
+	crew = {
+		{ outfit = "EHERaiderPilot", female = 0 },
+		{ outfit = "EHERaider", female = 0 },
+		{ outfit = "EHERaider", female = 0 },
+		{ outfit = "EHERaider", female = 0 },
+		{ outfit = "EHERaiderLeader", spawn = 75, female = 0 },
+	},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.48, b=0.27},
 	eventCutOffDayFactor = 1,

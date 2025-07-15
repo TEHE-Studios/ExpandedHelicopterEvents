@@ -13,7 +13,7 @@ eHelicopter_zombieAI.outfitsToAI = {
 
 	["SpiffoBoss"] = "nemesis",
 
-	["RobertJohnson"] = "licking",
+	["SWH_IceCream"] = "licking",
 	["SockConnoisseur"] = "sockThief",
 
 	["TaxMan"] = "fodder",
