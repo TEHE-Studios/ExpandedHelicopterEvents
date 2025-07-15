@@ -1,9 +1,0 @@
-module SWH
-{
-    item ARRJAY
-	{
-	Type = Clothing,
-	ClothingItem = ARRJAY,
-	BodyLocation=TankTop,
-	}
-}

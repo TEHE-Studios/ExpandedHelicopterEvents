@@ -1,9 +1,0 @@
-module SWH
-{
-    item SockConnoisseur
-	{
-	Type = Clothing,
-	ClothingItem = SockConnoisseur,
-	BodyLocation=TankTop,
-	}
-}

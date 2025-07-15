@@ -1,0 +1,106 @@
+module SWH
+{
+    item AlienSkin
+	{
+	Type = Clothing,
+	ClothingItem = AlienMuscles,
+	CanHaveHoles = False,
+	BodyLocation= Jacket,
+	}
+
+    item AlienSkin
+	{
+	Type = Clothing,
+	ClothingItem = AlienSkin,
+	CanHaveHoles = False,
+	BodyLocation=TankTop,
+	}
+
+    item Shoes_AlienSneakers
+    {
+        Type = Clothing,
+        DisplayName = Strange Sneakers,
+        DisplayCategory = Clothing,
+        ClothingItem = Shoes_RedTrainers,
+        BodyLocation = Shoes,
+        BloodLocation = Shoes,
+        Icon = ShoesRunningRed,
+        StompPower = 2.0,
+        ConditionLowerChanceOneIn = 13,
+        ConditionMax = 20,
+        RunSpeedModifier = 2.0,
+        RemoveOnBroken = false,
+        ScratchDefense = 10,
+        Insulation = 0.55,
+        WindResistance = 0.35,
+        WorldStaticModel = Shoes_Ground,
+    }
+
+		item Hat_SpiffoWarHelmet
+	{
+		Type = Clothing,
+		ClothingItem = Hat_SpiffoWarHelmet,
+        DisplayName = Spiffo War Helmet,
+        DisplayCategory = ProtectiveGear,
+		BodyLocation = FullHat,
+		Icon = SpiffoHead,
+		CanHaveHoles = false,
+		ChanceToFall = 1,
+        BloodLocation = Head,
+        Insulation = 0.75,
+        WindResistance = 0.75,
+        WaterResistance = 0.75,
+        BulletDefense = 30,
+        ScratchDefense = 30,
+        BiteDefense = 30,
+    }
+
+      item SpiffoWarSuit
+    {
+        Type = Clothing,
+        ClothingItem = SpiffoWarSuit,
+        BodyLocation = FullSuit,
+        BloodLocation = Trousers;Jumper,
+        Icon = SpiffoSuit,
+        CanHaveHoles = False,
+        RunSpeedModifier = 0.7,
+        ScratchDefense = 10,
+        Insulation = 0.85,
+        WindResistance = 0.6,
+        BulletDefense = 100,
+        ScratchDefense = 100,
+        BiteDefense = 100,
+    }
+
+    item SpiffoWarTail
+    {
+        Type = Clothing,
+        ClothingItem = SpiffoWarTail,
+        BodyLocation = Tail,
+        Icon = SpiffoTail,
+        BulletDefense = 100,
+        ScratchDefense = 100,
+        BiteDefense = 100,
+    }
+
+    item SpiffoSkin
+	{
+	Type = Clothing,
+	ClothingItem = SpiffoSkin,
+	BodyLocation=TankTop,
+	}
+
+    item SockConnoisseur
+	{
+	Type = Clothing,
+	ClothingItem = SockConnoisseur,
+	BodyLocation=TankTop,
+	}
+
+    item WhiteMale
+	{
+	Type = Clothing,
+	ClothingItem = WhiteMale,
+	BodyLocation=TankTop,
+	}
+}
