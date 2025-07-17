@@ -22,12 +22,12 @@ eHelicopter_PRESETS["military"] = {
 		["military_UH1H_patrol"] = 0,
 		["military_UH1H_patrol_emergency"] = 0.0066,
 		["military_RQ2Pioneer_loiter"] = 0.0070,
-		["military_OH58_recon_hover"] = 0.0070,
+		["military_OH58A_recon_hover"] = 0.0070,
 		["military_UH1H_patrol_quarantine"] = 0.0165,
 		["military_UH1H_attack_undead_evac"] = 0.033,
 		["military_UH1H_attack_undead"] = 0.066,
 		["military_RQ2Pioneer_lateflyover"] = 0.070,
-		["military_OH58_attack_zombies"] = 0.077,
+		["military_OH58D_attack_zombies"] = 0.077,
 		["military_cargo"] = 0.1900,
 		["military_UH1H_attack_all"] = 0.2145,
 	}
@@ -83,7 +83,7 @@ eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	formationIDs = {"military_UH1H_patrol_emergency", 25, {20,25}, "military_UH1H_patrol_emergency", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["military_OH58_recon_hover"] = {
+eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	speed = 1.5,
@@ -126,7 +126,7 @@ eHelicopter_PRESETS["military_cargo"] = {
 	},
 }
 
-eHelicopter_PRESETS["military_OH58_attack_zombies"] = {
+eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	crashType = false,
@@ -296,7 +296,7 @@ eHelicopter_PRESETS["police_Bell206_KY_firing"] = {
 	hoverOnTargetDuration = {375,575},
 }
 
-eHelicopter_PRESETS["police_Bell206_hovering"] = {
+eHelicopter_PRESETS["police_Bell206_KY_hovering"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -411,7 +411,7 @@ eHelicopter_PRESETS["deserters_UH1H_passive"] = {
 	flightVolume = 1500,
 	crashType = false,
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive", "eHeliCrewLaughingAndDrinking" },
+		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive"},
 	},
 }
 
@@ -423,7 +423,7 @@ eHelicopter_PRESETS["deserters_UH1H_hostile"] = {
 	attackSpread = 5,
 	attackHitChance = 7,
 	attackDamage = 70,
-	flightVolume = 1500,
+	flightVolume = 3500,
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 
@@ -433,5 +433,16 @@ eHelicopter_PRESETS["deserters_UH1H_hostile"] = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
+	},
+}
+
+eHelicopter_PRESETS["deserters_UH1H_diversion"] = {
+	inherit = {"deserters"},
+	hoverOnTargetDuration = {650,1500},
+	speed = 1.5,
+	flightVolume = 3500,
+	crashType = false,
+	eventSoundEffects = {
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile"},
 	},
 }
