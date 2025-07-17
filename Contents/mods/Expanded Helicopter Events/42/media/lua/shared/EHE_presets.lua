@@ -18,39 +18,39 @@ eHelicopter_PRESETS["military"] = {
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
-		["military_pioneerdrone_earlyflyover"] = 0,
-		["military_patrol"] = 0,
-		["military_patrol_emergency"] = 0.0066,
-		["military_pioneerdrone_loiter"] = 0.0070,
-		["military_recon_hover"] = 0.0070,
-		["military_patrol_quarantine"] = 0.0165,
-		["military_attack_undead_evac"] = 0.033,
-		["military_attack_undead"] = 0.066,
-		["military_pioneerdrone_lateflyover"] = 0.070,
-		["military_attackhelicopter_zombies"] = 0.077,
+		["military_RQ2Pioneer_earlyflyover"] = 0,
+		["military_UH1H_patrol"] = 0,
+		["military_UH1H_patrol_emergency"] = 0.0066,
+		["military_RQ2Pioneer_loiter"] = 0.0070,
+		["military_OH58_recon_hover"] = 0.0070,
+		["military_UH1H_patrol_quarantine"] = 0.0165,
+		["military_UH1H_attack_undead_evac"] = 0.033,
+		["military_UH1H_attack_undead"] = 0.066,
+		["military_RQ2Pioneer_lateflyover"] = 0.070,
+		["military_OH58_attack_zombies"] = 0.077,
 		["military_cargo"] = 0.1900,
-		["military_attack_all"] = 0.2145,
+		["military_UH1H_attack_all"] = 0.2145,
 	}
 }
 
-eHelicopter_PRESETS["military_pioneerdrone_earlyflyover"] = {
+eHelicopter_PRESETS["military_RQ2Pioneer_earlyflyover"] = {
 	speed = 1.0,
 	shadow = false,
 	flightVolume = 10,
 	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
+		["flightSound"] = "ePioneer"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	forScheduling = true,
 	crashType = false,
 }
 
-eHelicopter_PRESETS["military_pioneerdrone_loiter"] = {
+eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
 	speed = 0.5,
 	shadow = false,
 	flightVolume = 25,
 	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
+		["flightSound"] = "ePioneer"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	hoverOnTargetDuration = {1000,1500},
@@ -59,31 +59,31 @@ eHelicopter_PRESETS["military_pioneerdrone_loiter"] = {
 }
 
 -- add in drone crash
-eHelicopter_PRESETS["military_pioneerdrone_lateflyover"] = {
+eHelicopter_PRESETS["military_RQ2Pioneer_lateflyover"] = {
 	speed = 1.0,
 	shadow = false,
 	flightVolume = 25,
 	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
+		["flightSound"] = "ePioneer"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	forScheduling = true,
 	crashType = false,
 }
 
-eHelicopter_PRESETS["military_patrol"] = {
+eHelicopter_PRESETS["military_UH1H_patrol"] = {
 	inherit = {"military"},
 }
 
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
-eHelicopter_PRESETS["military_patrol_emergency"] = {
+eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	inherit = {"military"},
 	dropItems = {["EHE.EmergencyFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
-	formationIDs = {"military_patrol_emergency", 25, {20,25}, "military_patrol_emergency", 10, {20,25}},
+	formationIDs = {"military_UH1H_patrol_emergency", 25, {20,25}, "military_UH1H_patrol_emergency", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["military_recon_hover"] = {
+eHelicopter_PRESETS["military_OH58_recon_hover"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	speed = 1.5,
@@ -91,28 +91,28 @@ eHelicopter_PRESETS["military_recon_hover"] = {
 	hoverOnTargetDuration = {200,400},
 }
 
-eHelicopter_PRESETS["military_patrol_quarantine"] = {
+eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
 	inherit = {"military"},
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
-	formationIDs = {"military_patrol_quarantine", 25, {20,25}, "military_patrol_quarantine", 10, {20,25}},
+	formationIDs = {"military_UH1H_patrol_quarantine", 25, {20,25}, "military_UH1H_patrol_quarantine", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["military_attack_undead_evac"] = {
+eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 	announcerVoice = false,
 	inherit = {"military"},
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
-	formationIDs = {"military_attack_undead_evac", 25, {20,25}, "military_attack_undead_evac", 10, {20,25}},
+	formationIDs = {"military_UH1H_attack_undead_evac", 25, {20,25}, "military_UH1H_attack_undead_evac", 10, {20,25}},
 }
 
-eHelicopter_PRESETS["military_attack_undead"] = {
+eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
-	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
+	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
 
 eHelicopter_PRESETS["military_cargo"] = {
@@ -126,7 +126,7 @@ eHelicopter_PRESETS["military_cargo"] = {
 	},
 }
 
-eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
+eHelicopter_PRESETS["military_OH58_attack_zombies"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	crashType = false,
@@ -143,10 +143,10 @@ eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
 	},
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
-	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
+	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
 
-eHelicopter_PRESETS["military_attack_all"] = {
+eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	markerColor = {r=1.00, g=0.28, b=0.28},
@@ -252,7 +252,7 @@ eHelicopter_PRESETS["news_chopper_fleeing"] = {
 }
 
 eHelicopter_PRESETS["police"] = {
-	presetRandomSelection = {"police_heli_emergency",3, "police_heli_hovering",2, "police_heli_firing",2, "police_heli_fleeing",2},
+	presetRandomSelection = {"police_Bell206_KY_emergency",3, "police_Bell206_KY_hovering",2, "police_Bell206_KY_firing",2, "police_Bell206_KY_fleeing",2, "police_Bell206_TN_fleeing",2, "police_Bell206_OH_fleeing",2},
 	crashType = {"Bell206PoliceFuselage"},
 	crew = {
 		{ outfit="EHEPolicePilot" },
@@ -272,7 +272,7 @@ eHelicopter_PRESETS["police"] = {
 	radioChatter = "AEBS_UnauthorizedEntryPolice",
 }
 
-eHelicopter_PRESETS["police_heli_emergency"] = {
+eHelicopter_PRESETS["police_Bell206_KY_emergency"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -280,7 +280,7 @@ eHelicopter_PRESETS["police_heli_emergency"] = {
 	},
 }
 
-eHelicopter_PRESETS["police_heli_firing"] = {
+eHelicopter_PRESETS["police_Bell206_KY_firing"] = {
 	inherit = {"police"},
 	attackDelay = 1700,
 	attackSpread = 4,
@@ -296,7 +296,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	hoverOnTargetDuration = {375,575},
 }
 
-eHelicopter_PRESETS["police_heli_hovering"] = {
+eHelicopter_PRESETS["police_Bell206_hovering"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -305,7 +305,7 @@ eHelicopter_PRESETS["police_heli_hovering"] = {
 	hoverOnTargetDuration = {800,1000},
 }
 
-eHelicopter_PRESETS["police_heli_fleeing"] = {
+eHelicopter_PRESETS["police_Bell206_KY_fleeing"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -313,7 +313,23 @@ eHelicopter_PRESETS["police_heli_fleeing"] = {
 	},
 }
 
-eHelicopter_PRESETS["survivor_smallplane"] = {
+eHelicopter_PRESETS["police_Bell206_TN_fleeing"] = {
+	inherit = {"police"},
+	speed = 1.5,
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+}
+
+eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
+	inherit = {"police"},
+	speed = 1.5,
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+}
+
+eHelicopter_PRESETS["survivor_Cessna172"] = {
 	crashType = false,
 	crew = {
 		{ outfit="EHESurvivorPilot", female=0 },
@@ -349,7 +365,7 @@ eHelicopter_PRESETS["samaritan_drop"] = {
 	radioChatter = "AEBS_SamaritanDrop"
 }
 
-eHelicopter_PRESETS["survivor_heli"] = {
+eHelicopter_PRESETS["survivor_bell206"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
@@ -369,28 +385,28 @@ eHelicopter_PRESETS["survivor_heli"] = {
 	radioChatter = "AEBS_SurvivorHeli",
 }
 
-eHelicopter_PRESETS["raiders"] = {
-	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_hostile",1},
+eHelicopter_PRESETS["deserters"] = {
+	presetRandomSelection = {"deserters_UH1H_passive",3,"deserters_UH1H_hostile",1},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
 	crew = {
-		{ outfit = "EHERaiderPilot", female = 0 },
-		{ outfit = "EHERaider", female = 0 },
-		{ outfit = "EHERaider", female = 0 },
-		{ outfit = "EHERaider", female = 0 },
-		{ outfit = "EHERaiderLeader", spawn = 75, female = 0 },
+		{ outfit = "EHEDeserterPilot", female = 0 },
+		{ outfit = "EHEDeserter", female = 0 },
+		{ outfit = "EHEDeserter", female = 0 },
+		{ outfit = "EHEDeserter", female = 0 },
+		{ outfit = "EHEDeserterLeader", spawn = 75, female = 0 },
 	},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.48, b=0.27},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
-	radioChatter = "AEBS_Raiders",
+	radioChatter = "AEBS_deserters",
 }
 
-eHelicopter_PRESETS["raider_heli_passive"] = {
-	inherit = {"raiders"},
+eHelicopter_PRESETS["deserters_UH1H_passive"] = {
+	inherit = {"deserters"},
 	speed = 0.5,
 	flightVolume = 1500,
 	crashType = false,
@@ -399,8 +415,8 @@ eHelicopter_PRESETS["raider_heli_passive"] = {
 	},
 }
 
-eHelicopter_PRESETS["raider_heli_hostile"] = {
-	inherit = {"raiders"},
+eHelicopter_PRESETS["deserters_UH1H_hostile"] = {
+	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
 	attackDelay = 650,
