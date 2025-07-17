@@ -386,7 +386,7 @@ eHelicopter_PRESETS["survivor_bell206"] = {
 }
 
 eHelicopter_PRESETS["deserters"] = {
-	presetRandomSelection = {"deserters_UH1H_passive",3,"deserters_UH1H_hostile",1},
+	presetRandomSelection = {"deserters_UH1H_passive",3,"deserters_UH1H_hostile",2,"deserters_UH1H_scoutingparty",3,"deserters_UH1H_diversion",4,},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
@@ -405,9 +405,21 @@ eHelicopter_PRESETS["deserters"] = {
 	radioChatter = "AEBS_deserters",
 }
 
+eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
+	inherit = {"deserters"},
+	speed = 1.5,
+	flightVolume = 1500,
+	crashType = false,
+	eventSoundEffects = {
+		["flightSound"] = { "eMiliHeli" },
+	},
+
+	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
+}
+
 eHelicopter_PRESETS["deserters_UH1H_passive"] = {
 	inherit = {"deserters"},
-	speed = 0.5,
+	speed = 1.5,
 	flightVolume = 1500,
 	crashType = false,
 	eventSoundEffects = {
@@ -415,7 +427,7 @@ eHelicopter_PRESETS["deserters_UH1H_passive"] = {
 	},
 }
 
-eHelicopter_PRESETS["deserters_UH1H_hostile"] = {
+eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
 	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
@@ -430,7 +442,7 @@ eHelicopter_PRESETS["deserters_UH1H_hostile"] = {
 	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
 
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile"},
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
 	},
@@ -443,6 +455,6 @@ eHelicopter_PRESETS["deserters_UH1H_diversion"] = {
 	flightVolume = 3500,
 	crashType = false,
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile"},
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking"},
 	},
 }
