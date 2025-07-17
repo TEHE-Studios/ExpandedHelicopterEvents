@@ -18,16 +18,57 @@ eHelicopter_PRESETS["military"] = {
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
+		["military_pioneerdrone_earlyflyover"] = 0,
 		["military_patrol"] = 0,
 		["military_patrol_emergency"] = 0.0066,
+		["military_pioneerdrone_loiter"] = 0.0070,
 		["military_recon_hover"] = 0.0070,
 		["military_patrol_quarantine"] = 0.0165,
 		["military_attack_undead_evac"] = 0.033,
 		["military_attack_undead"] = 0.066,
+		["military_pioneerdrone_lateflyover"] = 0.070,
 		["military_attackhelicopter_zombies"] = 0.077,
 		["military_cargo"] = 0.1900,
 		["military_attack_all"] = 0.2145,
 	}
+}
+
+eHelicopter_PRESETS["military_pioneerdrone_earlyflyover"] = {
+	speed = 1.0,
+	shadow = false,
+	flightVolume = 10,
+	eventSoundEffects = {
+		["flightSound"] = "ePioneerDrone"
+	},
+	eventMarkerIcon = "media/ui/plane.png",
+	forScheduling = true,
+	crashType = false,
+}
+
+eHelicopter_PRESETS["military_pioneerdrone_loiter"] = {
+	speed = 0.5,
+	shadow = false,
+	flightVolume = 25,
+	eventSoundEffects = {
+		["flightSound"] = "ePioneerDrone"
+	},
+	eventMarkerIcon = "media/ui/plane.png",
+	hoverOnTargetDuration = {1000,1500},
+	forScheduling = true,
+	crashType = false,
+}
+
+-- add in drone crash
+eHelicopter_PRESETS["military_pioneerdrone_lateflyover"] = {
+	speed = 1.0,
+	shadow = false,
+	flightVolume = 25,
+	eventSoundEffects = {
+		["flightSound"] = "ePioneerDrone"
+	},
+	eventMarkerIcon = "media/ui/plane.png",
+	forScheduling = true,
+	crashType = false,
 }
 
 eHelicopter_PRESETS["military_patrol"] = {
@@ -117,48 +158,6 @@ eHelicopter_PRESETS["military_attack_all"] = {
 	radioChatter = "AEBS_HostileMilitary",
 }
 
-eHelicopter_PRESETS["speedball_drop"] = {
-	inherit = {"military"},
-	announcerVoice = false,
-	forScheduling = true,
-	crashType = {"UH60MedevacFuselage"},
-	hoverOnTargetDuration = 800,
-	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropSupplies},
-	speed = 0.9,
-	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
-	scrapVehicles = {"UH60GreenTail"},
-	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
-	radioChatter = "AEBS_SupplyDrop",
-	eventStartDayFactor = 0.034,
-	eventCutOffDayFactor = 0.2145,
-}
-
-eHelicopter_PRESETS["speedball_drop_hotLZ"] = {
-	inherit = {"military"},
-	announcerVoice = false,
-	forScheduling = true,
-	crashType = {"UH60MedevacFuselage"},
-	hoverOnTargetDuration = 800,
-	speed = 0.9,
-	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorMedevac", 1, "Base.ScrapMetal", 5},
-	scrapVehicles = {"UH60GreenTail"},
-	formationIDs = {"military_patrol", 25, {12,17}, "military_patrol", 10, {12,17}},
-	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropCrewOff},
-	crew = {
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-		{ outfit="EHE_Soldier", female=0 },
-	},
-	radioChatter = "AEBS_SupplyDrop",
-	eventStartDayFactor = 0.034,
-	eventCutOffDayFactor = 0.2145,
-}
-
 eHelicopter_PRESETS["jet"] = {
 	speed = 15,
 	topSpeedFactor = 2,
@@ -221,7 +220,6 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	radioChatter = "AEBS_JetBombing",
 }
 
-
 eHelicopter_PRESETS["news_chopper"] = {
 	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
 	eventSoundEffects = {
@@ -280,7 +278,6 @@ eHelicopter_PRESETS["police_heli_emergency"] = {
 	eventSoundEffects = {
 		["flightSound"] = { "eHelicopter", "eHeliPoliceSiren" },
 	},
-
 }
 
 eHelicopter_PRESETS["police_heli_firing"] = {
@@ -289,7 +286,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	attackSpread = 4,
 	speed = 0.7,
 	attackHitChance = 95,
-	attackDamage = 12,
+	attackDamage = 80,
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
 		["attackSingle"] = "eHeliAlternatingShots",
@@ -314,7 +311,6 @@ eHelicopter_PRESETS["police_heli_fleeing"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
 	},
-
 }
 
 eHelicopter_PRESETS["survivor_smallplane"] = {

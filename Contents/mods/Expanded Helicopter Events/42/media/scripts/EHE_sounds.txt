@@ -16,6 +16,10 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/Cessna.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
+    sound ePioneerDrone {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/helicopter_and_planes/pioneerdrone.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
+
     sound eMiliHeli {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/militaryheli_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
