@@ -3,7 +3,7 @@ require "EHE_util"
 local isoRangeScan = require "EHE_IsoRangeScan"
 local flareSystem = require "EHE_flares"
 local eventSoundHandler = require "EHE_sounds"
-local pseudoSquare = require "EHE_psuedoSquare"
+local pseudoSquare = require "EHE_pseudoSquare"
 
 
 ALL_HELICOPTERS = {}
