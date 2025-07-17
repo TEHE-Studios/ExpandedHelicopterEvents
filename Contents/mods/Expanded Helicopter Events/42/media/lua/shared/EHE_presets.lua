@@ -28,7 +28,7 @@ eHelicopter_PRESETS["military"] = {
 		["military_UH1H_attack_undead"] = 0.066,
 		["military_RQ2Pioneer_lateflyover"] = 0.070,
 		["military_OH58D_attack_zombies"] = 0.077,
-		["military_cargo"] = 0.1900,
+		["military_CH47"] = 0.1900,
 		["military_UH1H_attack_all"] = 0.2145,
 	}
 }
@@ -38,7 +38,7 @@ eHelicopter_PRESETS["military_RQ2Pioneer_earlyflyover"] = {
 	shadow = false,
 	flightVolume = 10,
 	eventSoundEffects = {
-		["flightSound"] = "ePioneer"
+		["flightSound"] = "ePioneerDrone"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	forScheduling = true,
@@ -50,7 +50,7 @@ eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
 	shadow = false,
 	flightVolume = 25,
 	eventSoundEffects = {
-		["flightSound"] = "ePioneer"
+		["flightSound"] = "ePioneerDrone"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	hoverOnTargetDuration = {1000,1500},
@@ -64,7 +64,7 @@ eHelicopter_PRESETS["military_RQ2Pioneer_lateflyover"] = {
 	shadow = false,
 	flightVolume = 25,
 	eventSoundEffects = {
-		["flightSound"] = "ePioneer"
+		["flightSound"] = "ePioneerDrone"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	forScheduling = true,
@@ -115,7 +115,7 @@ eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
 
-eHelicopter_PRESETS["military_cargo"] = {
+eHelicopter_PRESETS["military_CH47"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	crashType = false,
@@ -220,8 +220,8 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	radioChatter = "AEBS_JetBombing",
 }
 
-eHelicopter_PRESETS["news_chopper"] = {
-	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
+eHelicopter_PRESETS["news_Bell206"] = {
+	presetRandomSelection = {"news_Bell206_hover", 1, "news_Bell206_fleeing", 2, },
 	eventSoundEffects = {
 		["flightSound"] = { "eHelicopter", "eHeli_newscaster" },
 	},
@@ -241,13 +241,13 @@ eHelicopter_PRESETS["news_chopper"] = {
 	radioChatter = "AEBS_UnauthorizedEntryNews",
 }
 
-eHelicopter_PRESETS["news_chopper_hover"] = {
-	inherit = {"news_chopper"},
+eHelicopter_PRESETS["news_Bell206_hover"] = {
+	inherit = {"news_Bell206"},
 	hoverOnTargetDuration = {750,1200},
 }
 
-eHelicopter_PRESETS["news_chopper_fleeing"] = {
-	inherit = {"news_chopper"},
+eHelicopter_PRESETS["news_Bell206_fleeing"] = {
+	inherit = {"news_Bell206"},
 	speed = 1.6,
 }
 
