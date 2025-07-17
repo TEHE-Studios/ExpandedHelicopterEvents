@@ -5,7 +5,7 @@ require "EHE_util"
 --Heli goes down
 
 local eventSoundHandler = require "EHE_sounds"
-local pseudoSquare = require "EHE_psuedoSquare"
+local pseudoSquare = require "EHE_pseudoSquare"
 
 
 function eHelicopter:crash()

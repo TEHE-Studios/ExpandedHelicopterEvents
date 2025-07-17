@@ -4,7 +4,7 @@ require "EHE_shadowSystem"
 
 local eventSoundHandler = require "EHE_sounds"
 local heatMap = require "EHE_heatMap"
-local pseudoSquare = require "EHE_psuedoSquare"
+local pseudoSquare = require "EHE_pseudoSquare"
 
 
 function eHelicopter:updateEvent()
