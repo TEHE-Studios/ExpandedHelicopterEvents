@@ -332,7 +332,7 @@ eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
 eHelicopter_PRESETS["survivor_Cessna172"] = {
 	crashType = false,
 	crew = {
-		{ outfit="EHESurvivorPilot", female=0 },
+		{ outfit="EHE_SurvivorPilot", female=0 },
 	},
 	speed = 0.7,
 	eventMarkerIcon = "media/ui/plane.png",
@@ -346,32 +346,13 @@ eHelicopter_PRESETS["survivor_Cessna172"] = {
 	eventSpawnWeight = 3,
 }
 
-eHelicopter_PRESETS["samaritan_drop"] = {
-	crashType = false,
-	crew = {
-		{ outfit="EHESurvivorPilot", female = 0 }
-	},
-	dropPackages = {"SurvivorSupplyDrop"},
-	speed = 1.0,
-	eventMarkerIcon = "media/ui/plane.png",
-	eventSoundEffects = {
-		["flightSound"] = "eLargePropPlane",
-	},
-	forScheduling = true,
-	markerColor = {r=0.37, g=1.00, b=0.27},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
-	eventSpawnWeight = 3,
-	radioChatter = "AEBS_SamaritanDrop"
-}
-
 eHelicopter_PRESETS["survivor_bell206"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
-		{ outfit="EHESurvivorPilot", 0 },
-		{ outfit="EHESurvivor", 0 },
-		{ outfit="EHESurvivor", spawn=75, female=0 },
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn=75, female=0 },
 	},
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
@@ -384,6 +365,54 @@ eHelicopter_PRESETS["survivor_bell206"] = {
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorHeli",
 }
+-- add cessna model
+eHelicopter_PRESETS["strangers"] = {
+	presetRandomSelection = {"strangers_flyover_search",3, "strangers_flyover_drop",1,},
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH60GreenTail"},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
+	crew = {
+		{ outfit = "EHE_StrangerPilot", female = 0 },
+		{ outfit = "EHE_Stranger", female = 0 },
+		{ outfit = "EHE_Stranger", female = 0 },
+	},
+	forScheduling = true,
+    markerColor = {r=0.813, g=0.813, b=0.813}
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+}
+
+eHelicopter_PRESETS["strangers_flyover_search"] = {
+	inherit = {"strangers"},
+	crashType = false,
+	crew = {
+		{ outfit="EHE_SurvivorPilot", female = 0 }
+	},
+	dropPackages = {"SurvivorSupplyDrop"},
+	speed = 1.0,
+	eventMarkerIcon = "media/ui/plane.png",
+	eventSoundEffects = {
+		["flightSound"] = "eSmallPropPlane",
+	},
+	forScheduling = true,
+	radioChatter = "AEBS_StrangersSearch",
+}
+
+eHelicopter_PRESETS["strangers_flyover_drop"] = {
+	inherit = {"strangers"},
+	crashType = false,
+	crew = {
+		{ outfit="EHE_SurvivorPilot", female = 0 }
+	},
+	speed = 0.3,
+	eventMarkerIcon = "media/ui/plane.png",
+	eventSoundEffects = {
+		["flightSound"] = "eSmallPropPlane",
+	},
+	forScheduling = true,
+	radioChatter = "AEBS_StrangersDrop",
+}
 
 eHelicopter_PRESETS["deserters"] = {
 	presetRandomSelection = {"deserters_UH1H_passive",3,"deserters_UH1H_hostile",2,"deserters_UH1H_scoutingparty",3,"deserters_UH1H_diversion",4,},
@@ -392,11 +421,11 @@ eHelicopter_PRESETS["deserters"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
 	crew = {
-		{ outfit = "EHEDeserterPilot", female = 0 },
-		{ outfit = "EHEDeserter", female = 0 },
-		{ outfit = "EHEDeserter", female = 0 },
-		{ outfit = "EHEDeserter", female = 0 },
-		{ outfit = "EHEDeserterLeader", spawn = 75, female = 0 },
+		{ outfit = "EHE_DeserterPilot", female = 0 },
+		{ outfit = "EHE_Deserter", female = 0 },
+		{ outfit = "EHE_Deserter", female = 0 },
+		{ outfit = "EHE_Deserter", female = 0 },
+		{ outfit = "EHE_DeserterLeader", spawn = 75, female = 0 },
 	},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.48, b=0.27},
