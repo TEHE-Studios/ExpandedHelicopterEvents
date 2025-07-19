@@ -40,6 +40,10 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/siren.ogg, distanceMax = 5100, reverbFactor = 0.1, volume = 0.035, } }
 
+    sound eCH47Panic {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/crashes_bombs_misc/ch47panic.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 10, } }
+    
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/banjo-romp-Caffeine_Creek_Band.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
