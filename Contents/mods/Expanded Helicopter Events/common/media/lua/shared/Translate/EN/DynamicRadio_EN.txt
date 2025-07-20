@@ -11,4 +11,6 @@ DynamicRadio_EN = {
     AEBS_AirRaid = "Warlord to all stations. Breaking contact, Steady Bulwark active. Strikes on Lima Delta targets. Disengage. Out."
     AEBS_PurgeMilitary = "Warlord to all. Phase One Steady Bulwark. Lima Delta control in progress. Stay clear. Out."
     AEBS_HostileMilitary = "Warlord to all. Phase Three Steady Bulwark. Free fire zone. Compromised targets engaged. Stay clear. Out."
+    AEBS_MilitaryLeaving = "Stronghold, Havoc 6. It's done. We've been gutted. Crawling to a new hole. Comms when we make it. Out."
+    AEBS_DesertersStarting = "Saber 1, Blackbeard. Booty's secured and ready to roll. Meet us at the agreed position when you are done. We'll make it work. Over."
     }

@@ -22,14 +22,18 @@ eHelicopter_PRESETS["military"] = {
 		["military_UH1H_patrol"] = 0,
 		["military_UH1H_patrol_emergency"] = 0.0066,
 		["military_RQ2Pioneer_loiter"] = 0.0070,
-		["military_OH58A_recon_hover"] = 0.0070,
+		["military_OH58A_recon_hover"] = 0.0100,
 		["military_UH1H_patrol_quarantine"] = 0.0165,
 		["military_UH1H_attack_undead_evac"] = 0.033,
 		["military_UH1H_attack_undead"] = 0.066,
 		["military_RQ2Pioneer_lateflyover"] = 0.070,
 		["military_OH58D_attack_zombies"] = 0.077,
-		["military_CH47_evacbad"] = 0.1900,
+		["military_CH47_evac"] = 0.1900,
+		["military_CH47_evac_chaotic"] = 0.1900,
 		["military_UH1H_attack_all"] = 0.2145,
+		["military_OH58D_attack_all"] = 0.2330,
+		["military_UH1H_command_evac"] = 0.2360,
+		["military_UH1H_deserters"] = 0.2450,
 	}
 }
 -- Smarter way to keep tabs on people without helicopters, will keep tabs on the player
@@ -44,7 +48,6 @@ eHelicopter_PRESETS["military_RQ2Pioneer_earlyflyover"] = {
 	forScheduling = true,
 	crashType = false,
 }
-
 eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
 	speed = 0.5,
 	shadow = false,
@@ -57,7 +60,6 @@ eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
 	forScheduling = true,
 	crashType = false,
 }
-
 -- todo: add in drone crash
 eHelicopter_PRESETS["military_RQ2Pioneer_lateflyover"] = {
 	speed = 1.0,
@@ -74,7 +76,6 @@ eHelicopter_PRESETS["military_RQ2Pioneer_lateflyover"] = {
 eHelicopter_PRESETS["military_UH1H_patrol"] = {
 	inherit = {"military"},
 }
-
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	inherit = {"military"},
@@ -114,8 +115,45 @@ eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	radioChatter = "AEBS_PurgeMilitary",
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
--- Evacuation chopper (crash currently disabled waiting for assets)
-eHelicopter_PRESETS["military_CH47_evacbad"] = {
+-- Last evacuations passing through (waiting for assets)
+eHelicopter_PRESETS["military_CH47_evac"] = {
+	inherit = {"military"},
+	crew = {
+		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
+		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
+		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+	},
+	crashType = {"UH60GreenFuselage"},
+	crashType = false,
+	announcerVoice = false,
+	scrapItems = {"Base.ScrapMetal", 10},
+	eventSoundEffects = {
+		["flightSound"] = {"eMiliHeliCargo"}
+	},
+}
+-- Someone turns into a zombie onboard and they accidentally shoot the wrong person. Chaos ensues. People fall out. (waiting for assets)
+eHelicopter_PRESETS["military_CH47_evac_chaotic"] = {
 	inherit = {"military"},
 	crew = {
 		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
@@ -151,6 +189,18 @@ eHelicopter_PRESETS["military_CH47_evacbad"] = {
 		["flightSound"] = {"eMiliHeliCargo", "eCH47Panic"}
 	},
 }
+-- UH-1H strafing everything it sees
+eHelicopter_PRESETS["military_UH1H_attack_all"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	markerColor = {r=1.00, g=0.28, b=0.28},
+	hostilePreference = "IsoGameCharacter",
+	hostilePredicate = subEvents.hostilePredicateCivilian,
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH60GreenTail"},
+	radioChatter = "AEBS_HostileMilitary",
+}
 -- Kiowa attacking zombies
 eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	inherit = {"military"},
@@ -168,7 +218,7 @@ eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 		["flightSound"] = { "eMiliHeli"},
 	},
 	hostilePreference = "IsoZombie",
-	radioChatter = "AEBS_PurgeMilitary",
+	radioChatter = "AEBS_HostileMilitary",
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
 -- Kiowa attacking everything
@@ -188,20 +238,21 @@ eHelicopter_PRESETS["military_OH58D_attack_all"] = {
 		["flightSound"] = { "eMiliHeli"},
 	},
 	hostilePreference = "IsoGameCharacter",
-	radioChatter = "AEBS_PurgeMilitary",
+	radioChatter = "AEBS_HostileMilitary",
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
--- UH-1H strafing everything it sees
-eHelicopter_PRESETS["military_UH1H_attack_all"] = {
+-- Commanders are leaving, could fall out of the sky leaving something.
+eHelicopter_PRESETS["military_UH1H_command_evac"] = {
 	inherit = {"military"},
+	radioChatter = "AEBS_MilitaryLeaving",
 	announcerVoice = false,
-	markerColor = {r=1.00, g=0.28, b=0.28},
-	hostilePreference = "IsoGameCharacter",
-	hostilePredicate = subEvents.hostilePredicateCivilian,
-	crashType = {"UH60GreenFuselage"},
-	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
-	scrapVehicles = {"UH60GreenTail"},
-	radioChatter = "AEBS_HostileMilitary",
+}
+-- Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events.
+eHelicopter_PRESETS["military_UH1H_deserters"] = {
+	inherit = {"military"},
+	crashType = false,
+	announcerVoice = false,
+	radioChatter = "AEBS_DesertersStarting",
 }
 -- Passing jet, mostly stirs up activity
 eHelicopter_PRESETS["jet"] = {
@@ -363,7 +414,7 @@ eHelicopter_PRESETS["police_Bell206_KY_hovering"] = {
 	},
 	hoverOnTargetDuration = {800,1000},
 }
--- Added for variety
+
 eHelicopter_PRESETS["police_Bell206_KY_fleeing"] = {
 	inherit = {"police"},
 	speed = 1.5,
@@ -371,7 +422,7 @@ eHelicopter_PRESETS["police_Bell206_KY_fleeing"] = {
 		["flightSound"] = "eHelicopter",
 	},
 }
-
+-- For variety
 eHelicopter_PRESETS["police_Bell206_TN_fleeing"] = {
 	inherit = {"police"},
 	speed = 1.5,
