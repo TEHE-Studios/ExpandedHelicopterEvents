@@ -37,7 +37,7 @@ Events.OnGameBoot.Add(function()
 		EHE_DebugTests.checkSquare = CustomDebugPanel.checkSquare
 		EHE_DebugTests.printEHEIsoPlayers = CustomDebugPanel.printEHEIsoPlayers
 
-		EHE_DebugTests["Copy Scheudle to Clipboard"] = CustomDebugPanel.CopySchedule
+		EHE_DebugTests["Copy Schedule to Clipboard"] = CustomDebugPanel.CopySchedule
 		--EHE_DebugTests["Toggle Triggered"] = CustomDebugPanel.ToggleHideTriggered
 
 
