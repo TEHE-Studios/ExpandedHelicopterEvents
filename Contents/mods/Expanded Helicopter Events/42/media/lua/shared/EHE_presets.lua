@@ -11,41 +11,45 @@ eHelicopter_PRESETS["military"] = {
 		{ outfit="EHE_Soldier", spawn=50 },
 	},
 	crashType = {"UH60GreenFuselage"},
-	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
+	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
-	eventSpawnWeight = 20,
+	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
-		["military_pioneerdrone_earlyflyover"] = 0,
-		["military_patrol"] = 0,
-		["military_patrol_emergency"] = 0.0066,
-		["military_pioneerdrone_loiter"] = 0.0070,
-		["military_recon_hover"] = 0.0070,
-		["military_patrol_quarantine"] = 0.0165,
-		["military_attack_undead_evac"] = 0.033,
-		["military_attack_undead"] = 0.066,
-		["military_pioneerdrone_lateflyover"] = 0.070,
-		["military_attackhelicopter_zombies"] = 0.077,
-		["military_cargo"] = 0.1900,
-		["military_attack_all"] = 0.2145,
+		["military_RQ2Pioneer_flyover"] = 0,
+		["military_UH1H_patrol"] = 0,
+		["military_UH1H_patrol_emergency"] = 0.0066,
+		["military_RQ2Pioneer_loiter"] = 0.0070,
+		["military_OH58A_recon_hover"] = 0.0100,
+		["military_UH1H_patrol_quarantine"] = 0.0165,
+		["military_UH1H_attack_undead_evac"] = 0.033,
+		["military_UH1H_attack_undead"] = 0.066,
+		["military_OH58D_attack_zombies"] = 0.077,
+		["military_CH47_evac"] = 0.1900,
+		["military_CH47_evac_chaotic"] = 0.1900,
+		["military_UH1H_attack_all"] = 0.2145,
+		["military_OH58D_attack_all"] = 0.2330,
+		["military_UH1H_command_evac"] = 0.2360,
+		["military_UH1H_deserters"] = 0.2450,
 	}
 }
-
-eHelicopter_PRESETS["military_pioneerdrone_earlyflyover"] = {
+-- Smarter way to keep tabs on people without helicopters, will keep tabs on the player
+eHelicopter_PRESETS["military_RQ2Pioneer_flyover"] = {
 	speed = 1.0,
 	shadow = false,
 	flightVolume = 10,
+	
 	eventSoundEffects = {
 		["flightSound"] = "ePioneerDrone"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
+	eventSpawnWeight = 1,
 	forScheduling = true,
 	crashType = false,
 }
-
-eHelicopter_PRESETS["military_pioneerdrone_loiter"] = {
+eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
 	speed = 0.5,
 	shadow = false,
 	flightVolume = 25,
@@ -54,79 +58,142 @@ eHelicopter_PRESETS["military_pioneerdrone_loiter"] = {
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	hoverOnTargetDuration = {1000,1500},
+	eventSpawnWeight = 1,
 	forScheduling = true,
 	crashType = false,
 }
 
--- add in drone crash
-eHelicopter_PRESETS["military_pioneerdrone_lateflyover"] = {
-	speed = 1.0,
-	shadow = false,
-	flightVolume = 25,
-	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
-	},
-	eventMarkerIcon = "media/ui/plane.png",
-	forScheduling = true,
-	crashType = false,
-}
-
-eHelicopter_PRESETS["military_patrol"] = {
+-- Basic fly over
+eHelicopter_PRESETS["military_UH1H_patrol"] = {
 	inherit = {"military"},
 }
-
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
-eHelicopter_PRESETS["military_patrol_emergency"] = {
+eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	inherit = {"military"},
 	dropItems = {["EHE.EmergencyFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
-	formationIDs = {"military_patrol_emergency", 25, {20,25}, "military_patrol_emergency", 10, {20,25}},
+	formationIDs = {"military_UH1H_patrol_emergency", 25, {20,25}, "military_UH1H_patrol_emergency", 10, {20,25}},
 }
-
-eHelicopter_PRESETS["military_recon_hover"] = {
+-- Basically the earlier version of the news helicopter
+eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	speed = 1.5,
 	crashType = false,
 	hoverOnTargetDuration = {200,400},
 }
-
-eHelicopter_PRESETS["military_patrol_quarantine"] = {
+-- Later stage announcement and flyer helicopter
+eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
 	inherit = {"military"},
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
-	formationIDs = {"military_patrol_quarantine", 25, {20,25}, "military_patrol_quarantine", 10, {20,25}},
+	formationIDs = {"military_UH1H_patrol_quarantine", 25, {20,25}, "military_UH1H_patrol_quarantine", 10, {20,25}},
 }
-
-eHelicopter_PRESETS["military_attack_undead_evac"] = {
+-- Making passes to strafe and throwing out flyers
+eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 	announcerVoice = false,
 	inherit = {"military"},
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
 	dropItems = {["EHE.EvacuationFlyer"]=250},
-	formationIDs = {"military_attack_undead_evac", 25, {20,25}, "military_attack_undead_evac", 10, {20,25}},
+	formationIDs = {"military_UH1H_attack_undead_evac", 25, {20,25}, "military_UH1H_attack_undead_evac", 10, {20,25}},
 }
-
-eHelicopter_PRESETS["military_attack_undead"] = {
+-- Making passes to strafe zombies
+eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
-	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
+	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
-
-eHelicopter_PRESETS["military_cargo"] = {
+-- Last evacuations passing through (waiting for assets)
+eHelicopter_PRESETS["military_CH47_evac"] = {
 	inherit = {"military"},
-	announcerVoice = false,
-	crashType = false,
+	crew = {
+		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
+		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
+		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+	},
 	crashType = {"UH60GreenFuselage"},
-	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	crashType = false,
+	announcerVoice = false,
+	scrapItems = {"Base.ScrapMetal", 10},
 	eventSoundEffects = {
-		["flightSound"] = "eMiliHeliCargo",
+		["flightSound"] = {"eMiliHeliCargo"}
 	},
 }
-
-eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
+-- Someone turns into a zombie onboard and they accidentally shoot the wrong person. Chaos ensues. People fall out. (waiting for assets)
+eHelicopter_PRESETS["military_CH47_evac_chaotic"] = {
+	inherit = {"military"},
+	crew = {
+		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
+		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
+		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 },
+	},
+	crashType = {"UH60GreenFuselage"},
+	crashType = false,
+	announcerVoice = false,
+	scrapItems = {"Base.ScrapMetal", 10},
+	eventSoundEffects = {
+		["flightSound"] = {"eMiliHeliCargo", "eCH47Panic"}
+	},
+}
+-- UH-1H strafing everything it sees
+eHelicopter_PRESETS["military_UH1H_attack_all"] = {
+	inherit = {"military"},
+	announcerVoice = false,
+	markerColor = {r=1.00, g=0.28, b=0.28},
+	hostilePreference = "IsoGameCharacter",
+	hostilePredicate = subEvents.hostilePredicateCivilian,
+	crashType = {"UH60GreenFuselage"},
+	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
+	scrapVehicles = {"UH60GreenTail"},
+	radioChatter = "AEBS_HostileMilitary",
+}
+-- Kiowa attacking zombies
+eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	inherit = {"military"},
 	announcerVoice = false,
 	crashType = false,
@@ -142,22 +209,43 @@ eHelicopter_PRESETS["military_attackhelicopter_zombies"] = {
 		["flightSound"] = { "eMiliHeli"},
 	},
 	hostilePreference = "IsoZombie",
-	radioChatter = "AEBS_PurgeMilitary",
-	formationIDs = {"military_attack_undead", 25, {12,17}, "military_attack_undead", 10, {12,17}},
+	radioChatter = "AEBS_HostileMilitary",
+	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
-
-eHelicopter_PRESETS["military_attack_all"] = {
+-- Kiowa attacking everything
+eHelicopter_PRESETS["military_OH58D_attack_all"] = {
 	inherit = {"military"},
 	announcerVoice = false,
-	markerColor = {r=1.00, g=0.28, b=0.28},
+	crashType = false,
+	speed = 0.3,
+	attackDelay = 44,
+	attackSpread = 5,
+	attackSplash = 2,
+	attackHitChance = 70,
+	attackDamage = 100,
+	eventSoundEffects = {
+		["attackSingle"] = "eHeli30mmCannon",
+		["attackLooped"] = "eHeli30mmCannon",
+		["flightSound"] = { "eMiliHeli"},
+	},
 	hostilePreference = "IsoGameCharacter",
-	hostilePredicate = subEvents.hostilePredicateCivilian,
-	crashType = {"UH60GreenFuselage"},
-	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
-	scrapVehicles = {"UH60GreenTail"},
 	radioChatter = "AEBS_HostileMilitary",
+	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
-
+-- Commanders are leaving, could fall out of the sky leaving something.
+eHelicopter_PRESETS["military_UH1H_command_evac"] = {
+	inherit = {"military"},
+	radioChatter = "AEBS_MilitaryLeaving",
+	announcerVoice = false,
+}
+-- Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events.
+eHelicopter_PRESETS["military_UH1H_deserters"] = {
+	inherit = {"military"},
+	crashType = false,
+	announcerVoice = false,
+	radioChatter = "AEBS_DesertersStarting",
+}
+-- Passing jet, mostly stirs up activity
 eHelicopter_PRESETS["jet"] = {
 	speed = 15,
 	topSpeedFactor = 2,
@@ -174,7 +262,7 @@ eHelicopter_PRESETS["jet"] = {
 	eventSpawnWeight = 5,
 	radioChatter = "AEBS_JetPass",
 }
-
+-- Shift over to hostile events, player should flee and hide
 eHelicopter_PRESETS["air_raid"] = {
 	doNotListForStreamerIntegration = true,
 	crashType = false,
@@ -200,8 +288,8 @@ eHelicopter_PRESETS["air_raid"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_AirRaid",
 }
-
-eHelicopter_PRESETS["jet_bombing"] = {
+-- The player has been warned to flee, up to them now
+eHelicopter_PRESETS["jet_bombing_cluster"] = {
 	inherit = {"jet"},
 	doNotListForStreamerIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = subEvents.eHelicopter_jetBombing},
@@ -220,19 +308,38 @@ eHelicopter_PRESETS["jet_bombing"] = {
 	radioChatter = "AEBS_JetBombing",
 }
 
-eHelicopter_PRESETS["news_chopper"] = {
-	presetRandomSelection = {"news_chopper_hover", 1, "news_chopper_fleeing", 2, },
+eHelicopter_PRESETS["jet_bombing_napalm"] = {
+	inherit = {"jet"},
+	doNotListForStreamerIntegration = true,
+	addedFunctionsToEvents = {["OnLaunch"] = subEvents.eHelicopter_jetBombing},
+
+	eventSoundEffects = {
+		["flightSound"] = "eJetFlight",
+		["soundAtEventOrigin"] = "eCarpetBomb",
+	},
+
+	flightHours = {12, 12},
+	eventSpawnWeight = 50,
+	schedulingFactor = 99999,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.067,
+	ignoreContinueScheduling = true,
+	radioChatter = "AEBS_JetBombing",
+}
+-- [ News here to emulate the vanilla helicopter ]
+eHelicopter_PRESETS["news_Bell206"] = {
+	presetRandomSelection = {"news_Bell206_hover", 1},
 	eventSoundEffects = {
 		["flightSound"] = { "eHelicopter", "eHeli_newscaster" },
 	},
 	speed = 1,
 	crew = {
-		{ outfit="EHECivilianPilot", },
-		{ outfit="EHENewsReporterVest", },
-		{ outfit="EHENewsReporterVest", spawn = 40 },
+		{ outfit="EHE_CivilianPilot", },
+		{ outfit="EHE_NewsReporter", },
+		{ outfit="EHE_NewsReporter", spawn = 40 },
 	},
 	crashType = {"Bell206LBMWFuselage"},
-	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206LBMWTail"},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.85, b=0.20},
@@ -241,25 +348,19 @@ eHelicopter_PRESETS["news_chopper"] = {
 	radioChatter = "AEBS_UnauthorizedEntryNews",
 }
 
-eHelicopter_PRESETS["news_chopper_hover"] = {
-	inherit = {"news_chopper"},
+eHelicopter_PRESETS["news_Bell206_hover"] = {
+	inherit = {"news_Bell206"},
 	hoverOnTargetDuration = {750,1200},
 }
-
-eHelicopter_PRESETS["news_chopper_fleeing"] = {
-	inherit = {"news_chopper"},
-	speed = 1.6,
-}
-
+-- [ KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse ]
 eHelicopter_PRESETS["police"] = {
-	presetRandomSelection = {"police_heli_emergency",3, "police_heli_hovering",2, "police_heli_firing",2, "police_heli_fleeing",2},
-	crashType = {"Bell206PoliceFuselage"},
+	presetRandomSelection = {"police_Bell206_KY_emergency",3, "police_Bell206_KY_hovering",2, "police_Bell206_KY_firing",2, "police_Bell206_KY_fleeing",2, "police_Bell206_TN_fleeing",2, "police_Bell206_OH_fleeing",2},
 	crew = {
 		{ outfit="EHEPolicePilot" },
 		{ outfit="EHEPoliceOfficer" },
 		{ outfit="EHEPoliceOfficer", spawn=75 },
 	},
-	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
+	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206PoliceTail"},
 	announcerVoice = "Police",
 	eventSoundEffects = {
@@ -269,10 +370,11 @@ eHelicopter_PRESETS["police"] = {
 	markerColor = {r=0.28, g=0.28, b=1.00},
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
+	eventSpawnWeight = 10,
 	radioChatter = "AEBS_UnauthorizedEntryPolice",
 }
 
-eHelicopter_PRESETS["police_heli_emergency"] = {
+eHelicopter_PRESETS["police_Bell206_KY_emergency"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -280,7 +382,7 @@ eHelicopter_PRESETS["police_heli_emergency"] = {
 	},
 }
 
-eHelicopter_PRESETS["police_heli_firing"] = {
+eHelicopter_PRESETS["police_Bell206_KY_firing"] = {
 	inherit = {"police"},
 	attackDelay = 1700,
 	attackSpread = 4,
@@ -296,7 +398,7 @@ eHelicopter_PRESETS["police_heli_firing"] = {
 	hoverOnTargetDuration = {375,575},
 }
 
-eHelicopter_PRESETS["police_heli_hovering"] = {
+eHelicopter_PRESETS["police_Bell206_KY_hovering"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -305,7 +407,15 @@ eHelicopter_PRESETS["police_heli_hovering"] = {
 	hoverOnTargetDuration = {800,1000},
 }
 
-eHelicopter_PRESETS["police_heli_fleeing"] = {
+eHelicopter_PRESETS["police_Bell206_KY_fleeing"] = {
+	inherit = {"police"},
+	speed = 1.5,
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+}
+-- For variety
+eHelicopter_PRESETS["police_Bell206_TN_fleeing"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -313,10 +423,89 @@ eHelicopter_PRESETS["police_heli_fleeing"] = {
 	},
 }
 
-eHelicopter_PRESETS["survivor_smallplane"] = {
-	crashType = false,
+eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
+	inherit = {"police"},
+	speed = 1.5,
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+}
+-- [ Early apocalypse survivors after civilization collapses ]
+eHelicopter_PRESETS["survivors"] = {
+	presetRandomSelection = {"survivors_Bell206_police",1, "survivors_Bell206_news",1, "survivors_Bell206_wealthy",1,},
 	crew = {
-		{ outfit="EHESurvivorPilot", female=0 },
+		{ outfit = "EHE_StrangerPilot", female = 0 },
+		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
+	},
+	forScheduling = true,
+    markerColor = {r=0.813, g=0.813, b=0.813},
+	eventSpawnWeight = 5,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+}
+-- Staying within Kentucky for these cops
+eHelicopter_PRESETS["survivors_cops_Bell206"] = {
+	speed = 2.0,
+	crashType = {"Bell206SurvivalistFuselage"},
+	crew = {
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
+	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapItems = {"Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206SurvivalistTail"},
+	forScheduling = true,
+	crashType = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorCops",
+}
+-- Fleeing reporters
+eHelicopter_PRESETS["survivors_news_Bell206"] = {
+	speed = 2.0,
+	crashType = {"Bell206SurvivalistFuselage"},
+	crew = {
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
+	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapItems = {"Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206SurvivalistTail"},
+	forScheduling = true,
+	crashType = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorNews",
+}
+-- Naive richlords fleeing
+eHelicopter_PRESETS["survivors_wealthy_Bell206"] = {
+	speed = 2.0,
+	crashType = {"Bell206SurvivalistFuselage"},
+	crew = {
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
+	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
+	scrapVehicles = {"Bell206SurvivalistTail"},
+	forScheduling = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorWealthy",
+}
+-- Taking off from nearby small airfields to ditch traffic
+eHelicopter_PRESETS["survivors_Cessna172"] = {
+	crew = {
+		{ outfit="EHE_SurvivorPilot", female = 0 },
 	},
 	speed = 0.7,
 	eventMarkerIcon = "media/ui/plane.png",
@@ -329,93 +518,95 @@ eHelicopter_PRESETS["survivor_smallplane"] = {
 	eventStartDayFactor = 0.48,
 	eventSpawnWeight = 3,
 }
-
-eHelicopter_PRESETS["samaritan_drop"] = {
-	crashType = false,
+-- Using the chaos to move drugs
+eHelicopter_PRESETS["survivors_Cessna172_cocainecowboys"] = {
 	crew = {
-		{ outfit="EHESurvivorPilot", female = 0 }
+		{ outfit="EHE_SurvivorPilot", female = 0 },
 	},
-	dropPackages = {"SurvivorSupplyDrop"},
-	speed = 1.0,
+	speed = 0.7,
 	eventMarkerIcon = "media/ui/plane.png",
 	eventSoundEffects = {
-		["flightSound"] = "eLargePropPlane",
+		["flightSound"] = "eSmallPropPlane",
 	},
+	scrapItems = {"Base.ScrapMetal", 10, "Base.Briefcase", 4,"Base.SuspiciousPackage",20},
 	forScheduling = true,
 	markerColor = {r=0.37, g=1.00, b=0.27},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
+	eventStartDayFactor = 0.067,
+	eventCutOffDayFactor = 0.22,
 	eventSpawnWeight = 3,
-	radioChatter = "AEBS_SamaritanDrop"
 }
-
-eHelicopter_PRESETS["survivor_heli"] = {
-	speed = 2.0,
-	crashType = {"Bell206SurvivalistFuselage"},
-	crew = {
-		{ outfit="EHESurvivorPilot", 0 },
-		{ outfit="EHESurvivor", 0 },
-		{ outfit="EHESurvivor", spawn=75, female=0 },
-	},
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade1", 2, "EHE.Bell206RotorBlade2", 2,  "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
-	scrapVehicles = {"Bell206SurvivalistTail"},
-	forScheduling = true,
-	crashType = false,
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
-	radioChatter = "AEBS_SurvivorHeli",
-}
-
-eHelicopter_PRESETS["raiders"] = {
-	presetRandomSelection = {"raider_heli_passive",3,"raider_heli_hostile",1},
+-- [ Former soldiers turned profiteers. Logically should only be using a single helicopter. ]
+eHelicopter_PRESETS["deserters"] = {
+	presetRandomSelection = {"deserters_UH1H_passive",3,"deserters_UH1H_hostile",2,"deserters_UH1H_scoutingparty",3,"deserters_UH1H_diversion",4,},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
 	crew = {
-		{ outfit = "EHERaiderPilot", female = 0 },
-		{ outfit = "EHERaider", female = 0 },
-		{ outfit = "EHERaider", female = 0 },
-		{ outfit = "EHERaider", female = 0 },
-		{ outfit = "EHERaiderLeader", spawn = 75, female = 0 },
+		{ outfit = "EHE_DeserterPilot", female = 0 },
+		{ outfit = "EHE_Deserter", female = 0 },
+		{ outfit = "EHE_Deserter", female = 0 },
+		{ outfit = "EHE_Deserter", female = 0 },
+		{ outfit = "EHE_DeserterLeader", spawn = 75, female = 0 },
 	},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.48, b=0.27},
 	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
-	radioChatter = "AEBS_Raiders",
+	eventStartDayFactor = 0.80,
+	eventCutOffDayFactor = 1.00,
+	radioChatter = "AEBS_deserters",
 }
-
-eHelicopter_PRESETS["raider_heli_passive"] = {
-	inherit = {"raiders"},
-	speed = 0.5,
+-- Looking around and dropping off people, not strictly hostile
+eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
+	inherit = {"deserters"},
+	speed = 1.5,
 	flightVolume = 1500,
 	crashType = false,
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive", "eHeliCrewLaughingAndDrinking" },
+		["flightSound"] = { "eMiliHeli" },
+	},
+
+	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
+}
+-- Basic flyover pulling zombies around
+eHelicopter_PRESETS["deserters_UH1H_passive"] = {
+	inherit = {"deserters"},
+	speed = 1.5,
+	flightVolume = 1500,
+	crashType = true,
+	eventSoundEffects = {
+		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive"},
 	},
 }
-
-eHelicopter_PRESETS["raider_heli_hostile"] = {
-	inherit = {"raiders"},
+-- Specifically targeting the player and dropping off a landing party
+eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
+	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
 	attackDelay = 650,
 	attackSpread = 5,
 	attackHitChance = 7,
 	attackDamage = 70,
-	flightVolume = 1500,
+	flightVolume = 3500,
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 
 	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
 
 	eventSoundEffects = {
-		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking" },
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile"},
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
+	},
+}
+-- pulling around zombies around far more dramatically and taking potshots
+eHelicopter_PRESETS["deserters_UH1H_diversion"] = {
+	inherit = {"deserters"},
+	hoverOnTargetDuration = {650,1500},
+	speed = 1.5,
+	flightVolume = 3500,
+	crashType = false,
+	eventSoundEffects = {
+		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking"},
 	},
 }

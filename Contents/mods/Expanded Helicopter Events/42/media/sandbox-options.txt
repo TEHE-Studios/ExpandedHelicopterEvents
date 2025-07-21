@@ -71,17 +71,10 @@ option ExpandedHeli.Frequency_military
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
-option ExpandedHeli.Frequency_FEMA_drop
+option ExpandedHeli.Frequency_Resupply_drop
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_EventFEMA,
-	valueTranslation = ExpandedHeli_Frequency,
-}
-
-option ExpandedHeli.Frequency_samaritan_drop
-{
-	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_EventSamaritan,
+	page = ExpandedHeli, translation = ExpandedHeli_EventResupply,
 	valueTranslation = ExpandedHeli_Frequency,
 }
  
@@ -92,10 +85,10 @@ option ExpandedHeli.Frequency_survivor_heli
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
-option ExpandedHeli.Frequency_raiders
+option ExpandedHeli.Frequency_deserters
 {
 	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_EventRaider,
+	page = ExpandedHeli, translation = ExpandedHeli_EventDeserter,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
