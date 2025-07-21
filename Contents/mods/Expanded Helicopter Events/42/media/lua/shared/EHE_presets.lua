@@ -13,12 +13,12 @@ eHelicopter_PRESETS["military"] = {
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
-	eventSpawnWeight = 20,
+	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
-		["military_RQ2Pioneer_earlyflyover"] = 0,
+		["military_RQ2Pioneer_flyover"] = 0,
 		["military_UH1H_patrol"] = 0,
 		["military_UH1H_patrol_emergency"] = 0.0066,
 		["military_RQ2Pioneer_loiter"] = 0.0070,
@@ -26,7 +26,6 @@ eHelicopter_PRESETS["military"] = {
 		["military_UH1H_patrol_quarantine"] = 0.0165,
 		["military_UH1H_attack_undead_evac"] = 0.033,
 		["military_UH1H_attack_undead"] = 0.066,
-		["military_RQ2Pioneer_lateflyover"] = 0.070,
 		["military_OH58D_attack_zombies"] = 0.077,
 		["military_CH47_evac"] = 0.1900,
 		["military_CH47_evac_chaotic"] = 0.1900,
@@ -37,14 +36,16 @@ eHelicopter_PRESETS["military"] = {
 	}
 }
 -- Smarter way to keep tabs on people without helicopters, will keep tabs on the player
-eHelicopter_PRESETS["military_RQ2Pioneer_earlyflyover"] = {
+eHelicopter_PRESETS["military_RQ2Pioneer_flyover"] = {
 	speed = 1.0,
 	shadow = false,
 	flightVolume = 10,
+	
 	eventSoundEffects = {
 		["flightSound"] = "ePioneerDrone"
 	},
 	eventMarkerIcon = "media/ui/plane.png",
+	eventSpawnWeight = 1,
 	forScheduling = true,
 	crashType = false,
 }
@@ -57,21 +58,11 @@ eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	hoverOnTargetDuration = {1000,1500},
+	eventSpawnWeight = 1,
 	forScheduling = true,
 	crashType = false,
 }
--- todo: add in drone crash
-eHelicopter_PRESETS["military_RQ2Pioneer_lateflyover"] = {
-	speed = 1.0,
-	shadow = false,
-	flightVolume = 25,
-	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
-	},
-	eventMarkerIcon = "media/ui/plane.png",
-	forScheduling = true,
-	crashType = false,
-}
+
 -- Basic fly over
 eHelicopter_PRESETS["military_UH1H_patrol"] = {
 	inherit = {"military"},
@@ -379,6 +370,7 @@ eHelicopter_PRESETS["police"] = {
 	markerColor = {r=0.28, g=0.28, b=1.00},
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
+	eventSpawnWeight = 10,
 	radioChatter = "AEBS_UnauthorizedEntryPolice",
 }
 
@@ -439,19 +431,20 @@ eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
 	},
 }
 -- [ Early apocalypse survivors after civilization collapses ]
-eHelicopter_PRESETS["survivorsEarly"] = {
-	presetRandomSelection = {"survivorsEarly_Bell206_police",1, "survivorsEarly_Bell206_news",1, "survivorsEarly_Bell206_wealthy",1,},
+eHelicopter_PRESETS["survivors"] = {
+	presetRandomSelection = {"survivors_Bell206_police",1, "survivors_Bell206_news",1, "survivors_Bell206_wealthy",1,},
 	crew = {
 		{ outfit = "EHE_StrangerPilot", female = 0 },
 		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
 	},
 	forScheduling = true,
     markerColor = {r=0.813, g=0.813, b=0.813},
+	eventSpawnWeight = 5,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 }
 -- Staying within Kentucky for these cops
-eHelicopter_PRESETS["survivorsEarly_cops_Bell206"] = {
+eHelicopter_PRESETS["survivors_cops_Bell206"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
@@ -471,7 +464,7 @@ eHelicopter_PRESETS["survivorsEarly_cops_Bell206"] = {
 	radioChatter = "AEBS_SurvivorCops",
 }
 -- Fleeing reporters
-eHelicopter_PRESETS["survivorsEarly_news_Bell206"] = {
+eHelicopter_PRESETS["survivors_news_Bell206"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
@@ -491,7 +484,7 @@ eHelicopter_PRESETS["survivorsEarly_news_Bell206"] = {
 	radioChatter = "AEBS_SurvivorNews",
 }
 -- Naive richlords fleeing
-eHelicopter_PRESETS["survivorsEarly_wealthy_Bell206"] = {
+eHelicopter_PRESETS["survivors_wealthy_Bell206"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
@@ -510,7 +503,7 @@ eHelicopter_PRESETS["survivorsEarly_wealthy_Bell206"] = {
 	radioChatter = "AEBS_SurvivorWealthy",
 }
 -- Taking off from nearby small airfields to ditch traffic
-eHelicopter_PRESETS["survivorsEarly_Cessna172"] = {
+eHelicopter_PRESETS["survivors_Cessna172"] = {
 	crew = {
 		{ outfit="EHE_SurvivorPilot", female = 0 },
 	},
@@ -526,7 +519,7 @@ eHelicopter_PRESETS["survivorsEarly_Cessna172"] = {
 	eventSpawnWeight = 3,
 }
 -- Using the chaos to move drugs
-eHelicopter_PRESETS["survivorsEarly_Cessna172_cocainecowboys"] = {
+eHelicopter_PRESETS["survivors_Cessna172_cocainecowboys"] = {
 	crew = {
 		{ outfit="EHE_SurvivorPilot", female = 0 },
 	},
@@ -541,47 +534,6 @@ eHelicopter_PRESETS["survivorsEarly_Cessna172_cocainecowboys"] = {
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
 	eventSpawnWeight = 3,
-}
--- [ Out of state and organized, not specifically hostile but nor are they exactly friendly. At odds with the Deserters. ]
-eHelicopter_PRESETS["strangers"] = {
-	presetRandomSelection = {"strangers_flyover_search",3, "strangers_flyover_drop",1,},
-	crew = {
-		{ outfit = "EHE_StrangerPilot", female = 0 },
-		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
-	},
-	forScheduling = true,
-    markerColor = {r=0.813, g=0.813, b=0.813},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
-}
--- Basic flyover
-eHelicopter_PRESETS["strangers_flyover_search"] = {
-	inherit = {"strangers"},
-	crashType = false,
-	crew = {
-		{ outfit="EHE_SurvivorPilot", female = 0 }
-	},
-	speed = 1.0,
-	eventMarkerIcon = "media/ui/plane.png",
-	eventSoundEffects = {
-		["flightSound"] = "eSmallPropPlane",
-	},
-	forScheduling = true,
-	radioChatter = "AEBS_StrangersSearch",
-}
--- Dumping supplies to scouts on the ground
-eHelicopter_PRESETS["strangers_flyover_drop"] = {
-	inherit = {"strangers"},
-	crashType = false,
-	speed = 0.3,
-	-- replace with a new package
-	dropPackages = {"SurvivorSupplyDrop"},
-	eventMarkerIcon = "media/ui/plane.png",
-	eventSoundEffects = {
-		["flightSound"] = "eSmallPropPlane",
-	},
-	forScheduling = true,
-	radioChatter = "AEBS_StrangersDrop",
 }
 -- [ Former soldiers turned profiteers. Logically should only be using a single helicopter. ]
 eHelicopter_PRESETS["deserters"] = {
@@ -600,7 +552,8 @@ eHelicopter_PRESETS["deserters"] = {
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.48, b=0.27},
 	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
+	eventStartDayFactor = 0.80,
+	eventCutOffDayFactor = 1.00,
 	radioChatter = "AEBS_deserters",
 }
 -- Looking around and dropping off people, not strictly hostile
