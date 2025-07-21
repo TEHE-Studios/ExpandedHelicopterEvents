@@ -50,7 +50,7 @@ if 1==1 then return end ---Remove this Line to get started.
 ---OnDrop has the additional argument : vehicle (BaseVehicle)
 ---OnCrash has the additional argument of: currentSquare (IsoGridSquare)
 ---OnAttack has the additional argument of: targetHostile (IsoObject|IsoMovingObject|IsoGameCharacter|IsoPlayer|IsoZombie)
----{ ["OnDrop"] = false, ["OnLaunch"] = false, ["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false, ["OnSpawnCrew"] = false, ["OnArrived"] = false}
+---{ ["OnDrop"] = false, ["OnLaunch"] = false, ["OnCrash"] = false, ["OnHover"] = false, ["OnFlyaway"] = false, ["OnAttack"] = false, ["OnSpawnCrew"] = false, ["OnArrived"] = false, ["OnApproach"] = false, }
 
 ---@field scrapVehicles table table of additional `BaseVehicle` to act as extra large pieces, default: {"UH1HTail"} --{"Base.TYPE","Base.TYPE"}
 ---@field scrapItems table table of additional `InventoryItem` to act as extra small pieces, default: {"EHE.UH1HHalfSkirt", "EHE.UH1HRotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10}
