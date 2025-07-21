@@ -18,10 +18,8 @@ eHelicopter_PRESETS["military"] = {
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
-		["military_RQ2Pioneer_flyover"] = 0,
 		["military_UH1H_patrol"] = 0,
 		["military_UH1H_patrol_emergency"] = 0.0066,
-		["military_RQ2Pioneer_loiter"] = 0.0070,
 		["military_OH58A_recon_hover"] = 0.0100,
 		["military_UH1H_patrol_quarantine"] = 0.0165,
 		["military_UH1H_attack_undead_evac"] = 0.033,
@@ -35,34 +33,6 @@ eHelicopter_PRESETS["military"] = {
 		["military_UH1H_deserters"] = 0.2450,
 	}
 }
--- Smarter way to keep tabs on people without helicopters, will keep tabs on the player
-eHelicopter_PRESETS["military_RQ2Pioneer_flyover"] = {
-	speed = 1.0,
-	shadow = false,
-	flightVolume = 10,
-	
-	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
-	},
-	eventMarkerIcon = "media/ui/plane.png",
-	eventSpawnWeight = 1,
-	forScheduling = true,
-	crashType = false,
-}
-eHelicopter_PRESETS["military_RQ2Pioneer_loiter"] = {
-	speed = 0.5,
-	shadow = false,
-	flightVolume = 25,
-	eventSoundEffects = {
-		["flightSound"] = "ePioneerDrone"
-	},
-	eventMarkerIcon = "media/ui/plane.png",
-	hoverOnTargetDuration = {1000,1500},
-	eventSpawnWeight = 1,
-	forScheduling = true,
-	crashType = false,
-}
-
 -- Basic fly over
 eHelicopter_PRESETS["military_UH1H_patrol"] = {
 	inherit = {"military"},
@@ -245,22 +215,45 @@ eHelicopter_PRESETS["military_UH1H_deserters"] = {
 	announcerVoice = false,
 	radioChatter = "AEBS_DesertersStarting",
 }
--- Passing jet, mostly stirs up activity
-eHelicopter_PRESETS["jet"] = {
-	speed = 15,
-	topSpeedFactor = 2,
-	flightVolume = 25,
-	targetIntensityThreshold = false,
-	eventSoundEffects = {
-		["flightSound"] = "eJetFlight"
-	},
-	crashType = false,
-	shadow = false,
-	eventMarkerIcon = "media/ui/jet.png",
+-- [ Keep tabs on people without helicopters, each successive spotting of the player will add heat to the system ]
+eHelicopter_PRESETS["drones"] = {
+	announcerVoice = false,
 	forScheduling = true,
-	schedulingFactor = 4,
-	eventSpawnWeight = 5,
-	radioChatter = "AEBS_JetPass",
+	crashType = false,
+	eventSpawnWeight = 30,
+	schedulingFactor = 1.5,
+	markerColor = {r=0.37, g=1.00, b=0.27},
+	radioChatter = "AEBS_Drone",
+	presetProgression = {
+		["drone_RQ2Pioneer_flyover"] = 0,
+		["drone_RQ2Pioneer_loiter"] = 0.0070,
+	}
+}
+eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
+	speed = 1.0,
+	shadow = false,
+	flightVolume = 10,
+	
+	eventSoundEffects = {
+		["flightSound"] = "ePioneerDrone"
+	},
+	eventMarkerIcon = "media/ui/plane.png",
+	eventSpawnWeight = 1,
+	forScheduling = true,
+	crashType = false,
+}
+eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
+	speed = 0.5,
+	shadow = false,
+	flightVolume = 25,
+	eventSoundEffects = {
+		["flightSound"] = "ePioneerDrone"
+	},
+	eventMarkerIcon = "media/ui/plane.png",
+	hoverOnTargetDuration = {1000,1500},
+	eventSpawnWeight = 1,
+	forScheduling = true,
+	crashType = false,
 }
 -- Shift over to hostile events, player should flee and hide
 eHelicopter_PRESETS["air_raid"] = {
@@ -288,6 +281,38 @@ eHelicopter_PRESETS["air_raid"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_AirRaid",
 }
+-- [ Jets get progressively more aggressive as the military falters ]
+eHelicopter_PRESETS["jets"] = {
+	announcerVoice = false,
+	forScheduling = true,
+	crashType = false,
+	eventSpawnWeight = 30,
+	schedulingFactor = 1.5,
+	markerColor = {r=0.37, g=1.00, b=0.27},
+	radioChatter = "AEBS_Drone",
+	presetProgression = {
+		["jet_pass"] = 0,
+		["jet_bombing_cluster"] = 0.0070,
+		["jet_bombing_napalm"] = 0.0070,
+	}
+}
+-- Passing jet, mostly stirs up activity
+eHelicopter_PRESETS["jet_pass"] = {
+	speed = 15,
+	topSpeedFactor = 2,
+	flightVolume = 25,
+	targetIntensityThreshold = false,
+	eventSoundEffects = {
+		["flightSound"] = "eJetFlight"
+	},
+	crashType = false,
+	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
+	forScheduling = true,
+	schedulingFactor = 4,
+	eventSpawnWeight = 5,
+	radioChatter = "AEBS_JetPass",
+}
 -- The player has been warned to flee, up to them now
 eHelicopter_PRESETS["jet_bombing_cluster"] = {
 	inherit = {"jet"},
@@ -307,7 +332,6 @@ eHelicopter_PRESETS["jet_bombing_cluster"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_JetBombing",
 }
-
 eHelicopter_PRESETS["jet_bombing_napalm"] = {
 	inherit = {"jet"},
 	doNotListForStreamerIntegration = true,
@@ -432,7 +456,7 @@ eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
 }
 -- [ Early apocalypse survivors after civilization collapses ]
 eHelicopter_PRESETS["survivors"] = {
-	presetRandomSelection = {"survivors_Bell206_police",1, "survivors_Bell206_news",1, "survivors_Bell206_wealthy",1,},
+	presetRandomSelection = {"survivors_Bell206_police",1, "survivors_Bell206_news",1, "survivors_Bell206_wealthy",1, "survivors_Cessna172",1},
 	crew = {
 		{ outfit = "EHE_StrangerPilot", female = 0 },
 		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
@@ -483,7 +507,7 @@ eHelicopter_PRESETS["survivors_news_Bell206"] = {
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
 }
--- Naive richlords fleeing
+-- Richlords fleeing
 eHelicopter_PRESETS["survivors_wealthy_Bell206"] = {
 	speed = 2.0,
 	crashType = {"Bell206SurvivalistFuselage"},
@@ -500,7 +524,6 @@ eHelicopter_PRESETS["survivors_wealthy_Bell206"] = {
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
-	radioChatter = "AEBS_SurvivorWealthy",
 }
 -- Taking off from nearby small airfields to ditch traffic
 eHelicopter_PRESETS["survivors_Cessna172"] = {
@@ -516,23 +539,6 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
-	eventSpawnWeight = 3,
-}
--- Using the chaos to move drugs
-eHelicopter_PRESETS["survivors_Cessna172_cocainecowboys"] = {
-	crew = {
-		{ outfit="EHE_SurvivorPilot", female = 0 },
-	},
-	speed = 0.7,
-	eventMarkerIcon = "media/ui/plane.png",
-	eventSoundEffects = {
-		["flightSound"] = "eSmallPropPlane",
-	},
-	scrapItems = {"Base.ScrapMetal", 10, "Base.Briefcase", 4,"Base.SuspiciousPackage",20},
-	forScheduling = true,
-	markerColor = {r=0.37, g=1.00, b=0.27},
-	eventStartDayFactor = 0.067,
-	eventCutOffDayFactor = 0.22,
 	eventSpawnWeight = 3,
 }
 -- [ Former soldiers turned profiteers. Logically should only be using a single helicopter. ]
