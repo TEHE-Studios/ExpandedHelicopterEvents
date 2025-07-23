@@ -163,18 +163,14 @@ function eHelicopter:updateEvent()
 			self.state = "arrived"
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnArrive"]
-				if eventFunction then
-					eventFunction(self)
-				end
+				if eventFunction then eventFunction(self, self.target) end
 			end
 		end
 
 		if (distToTarget >= (thatIsCloseEnough*1.5) and distToTarget <= (thatIsCloseEnough*10)) then
 			if self.addedFunctionsToEvents then
 				local eventFunction = self.addedFunctionsToEvents["OnApproach"]
-				if eventFunction then
-					eventFunction(self)
-				end
+				if eventFunction then eventFunction(self, self.target) end
 			end
 		end
 
@@ -189,9 +185,7 @@ function eHelicopter:updateEvent()
 				eventSoundHandler:playEventSound(self, "hoverOverTarget", nil, true)
 				if self.addedFunctionsToEvents then
 					local eventFunction = self.addedFunctionsToEvents["OnHover"]
-					if eventFunction then
-						eventFunction(self)
-					end
+					if eventFunction then eventFunction(self, self.target) end
 				end
 				--[DEBUG]] if getDebug() then print("hovering near target: "..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 
