@@ -243,6 +243,7 @@ eHelicopter_PRESETS["drones"] = {
 	}
 }
 eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
+	inherit = {"drones"},
 	speed = 1.0,
 	shadow = false,
 	flightVolume = 10,
@@ -256,6 +257,7 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	crashType = false,
 }
 eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
+	inherit = {"drones"},
 	speed = 0.5,
 	shadow = false,
 	flightVolume = 25,
