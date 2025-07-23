@@ -45,10 +45,10 @@ function forceDance(heli, char)
     end
 end
 --]]
-
+local swhSubEvents = {}
 
 ---@param heli eHelicopter
-function eHelicopter_dropAliensOff(heli)
+function swhSubEvents.dropAliensOff(heli)
     if not heli then return end
 
     local x, y, z = heli:getXYZAsInt()
@@ -83,7 +83,7 @@ end
 
 local abductees = {}
 ---@param heli eHelicopter
-function eHelicopter_abductPlayer(heli, player)
+function swhSubEvents.abductPlayer(heli, player)
 
     local targetPlayer = player or heli and heli.target
     if not targetPlayer then return end
@@ -198,3 +198,5 @@ function eHelicopter_abductPlayer(heli, player)
         abductees[targetPlayer] = nil
     end
 end
+
+return swhSubEvents

@@ -31,10 +31,12 @@ eHelicopter_PRESETS["military_friendly"] = {
 		["military_UH1H_deserters"] = 0.2450,
 	}
 }
+
 -- Basic fly over
 eHelicopter_PRESETS["military_UH1H_patrol"] = {
 	inherit = {"military_friendly"},
 }
+
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	inherit = {"military_friendly"},
@@ -42,6 +44,7 @@ eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_emergency", 25, {20,25}, "military_UH1H_patrol_emergency", 10, {20,25}},
 }
+
 -- Basically the earlier version of the news helicopter
 eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
 	inherit = {"military_friendly"},
@@ -50,6 +53,7 @@ eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
 	crashType = false,
 	hoverOnTargetDuration = {200,400},
 }
+
 -- Later stage announcement and flyer helicopter
 eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
 	inherit = {"military_friendly"},
@@ -57,6 +61,7 @@ eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_quarantine", 25, {20,25}, "military_UH1H_patrol_quarantine", 10, {20,25}},
 }
+
 -- Making passes to strafe and throwing out flyers
 eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 	announcerVoice = false,
@@ -66,6 +71,7 @@ eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 	dropItems = {["EHE.EvacuationFlyer"]=250},
 	formationIDs = {"military_UH1H_attack_undead_evac", 25, {20,25}, "military_UH1H_attack_undead_evac", 10, {20,25}},
 }
+
 -- Making passes to strafe zombies
 eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	inherit = {"military_friendly"},
@@ -74,6 +80,7 @@ eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	radioChatter = "AEBS_PurgeMilitary",
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
+
 -- Kiowa attacking zombies
 eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	inherit = {"military_friendly"},
@@ -94,6 +101,7 @@ eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	radioChatter = "AEBS_PurgeMilitary",
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
+
 -- Last evacuations passing through (waiting for assets)
 eHelicopter_PRESETS["military_CH47_evac"] = {
 	inherit = {"military_friendly"},
@@ -102,25 +110,17 @@ eHelicopter_PRESETS["military_CH47_evac"] = {
 		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
 		{ outfit="EHE_Soldier", spawn=100, female=0 },
 		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="Evacuee", spawn=100, female=50 }, { outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 }, { outfit="Evacuee", spawn=100, female=50 },
 		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 }, { outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 }, { outfit="Evacuee", spawn=90, female=50 },
 		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 }, { outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 }, { outfit="Evacuee", spawn=80, female=50 },
 		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 }, { outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 }, { outfit="Evacuee", spawn=70, female=50 },
 		{ outfit="Evacuee", spawn=70, female=50 },
 	},
 	crashType = {"UH60GreenFuselage"},
@@ -139,25 +139,17 @@ eHelicopter_PRESETS["military_CH47_evac_chaotic"] = {
 		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
 		{ outfit="EHE_Soldier", spawn=100, female=0 },
 		{ outfit="EHE_Soldier", spawn=100, female=0 },
+		{ outfit="Evacuee", spawn=100, female=50 }, { outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=100, female=50 }, { outfit="Evacuee", spawn=100, female=50 },
 		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 }, { outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=90, female=50 }, { outfit="Evacuee", spawn=90, female=50 },
 		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 }, { outfit="Evacuee", spawn=80, female=50 },
+		{ outfit="Evacuee", spawn=80, female=50 }, { outfit="Evacuee", spawn=80, female=50 },
 		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 }, { outfit="Evacuee", spawn=70, female=50 },
+		{ outfit="Evacuee", spawn=70, female=50 }, { outfit="Evacuee", spawn=70, female=50 },
 		{ outfit="Evacuee", spawn=70, female=50 },
 	},
 	crashType = {"UH60GreenFuselage"},
@@ -195,6 +187,7 @@ eHelicopter_PRESETS["military_hostile"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
+	addedFunctionsToEvents = {["OnAttack"] = subEvents.militaryChangeColor},
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	presetProgression = {
@@ -253,7 +246,7 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	speed = 1.0,
 	shadow = false,
 	flightVolume = 10,
-	
+
 	eventSoundEffects = {
 		["flightSound"] = "ePioneerDrone"
 	},
@@ -337,7 +330,7 @@ eHelicopter_PRESETS["jet_pass"] = {
 eHelicopter_PRESETS["jet_bombing_cluster"] = {
 	inherit = {"jet"},
 	doNotListForStreamerIntegration = true,
-	addedFunctionsToEvents = {["OnLaunch"] = subEvents.eHelicopter_jetBombing},
+	addedFunctionsToEvents = {["OnLaunch"] = subEvents.jetBombing},
 
 	eventSoundEffects = {
 		["flightSound"] = "eJetFlight",
@@ -355,7 +348,7 @@ eHelicopter_PRESETS["jet_bombing_cluster"] = {
 eHelicopter_PRESETS["jet_bombing_napalm"] = {
 	inherit = {"jet"},
 	doNotListForStreamerIntegration = true,
-	addedFunctionsToEvents = {["OnLaunch"] = subEvents.eHelicopter_jetBombing},
+	addedFunctionsToEvents = {["OnLaunch"] = subEvents.jetBombing},
 
 	eventSoundEffects = {
 		["flightSound"] = "eJetFlight",
@@ -567,7 +560,7 @@ eHelicopter_PRESETS["deserters"] = {
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
-	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.eHelicopter_dropTrash},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropTrash},
 	crew = {
 		{ outfit = "EHE_DeserterPilot", female = 0 },
 		{ outfit = "EHE_Deserter", female = 0 },
@@ -592,7 +585,7 @@ eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
 		["flightSound"] = { "eMiliHeli" },
 	},
 
-	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spawnNPCs},
 }
 -- Basic flyover pulling zombies around
 eHelicopter_PRESETS["deserters_UH1H_friendly"] = {
@@ -617,7 +610,7 @@ eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
 	crashType = false,
 	hostilePreference = "IsoPlayer",
 
-	addedFunctionsToEvents = {["OnApproach"] = eHelicopter_spawnNPCs},
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spawnNPCs},
 
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile"},

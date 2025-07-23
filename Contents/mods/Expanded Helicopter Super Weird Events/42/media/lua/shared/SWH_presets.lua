@@ -1,15 +1,9 @@
-require "EHE_presets"
-require "SWH00_Events"
+require "EHE_presets.lua"
 
----Preset list, only include variables being changed.
----variables can be found in Main Variables file, at the top, fields = variables
+local subEvents = require("EHE_presetSubEvents.lua")
+local SWH_subEvents = require("SWH_presetSubEvents.lua")
+
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
---[[
-eHelicopter_PRESETS["id_name"] = {
-		variable = {values}
-	}
-]]
-
 
 eHelicopter_PRESETS["Spiffocopter"] = {
 	presetProgression = {
@@ -44,7 +38,7 @@ eHelicopter_PRESETS["Spiffocopter_inviteOnly"] = {
 
 eHelicopter_PRESETS["Spiffocopter_partyTime"] = {
 	inherit = {"Spiffocopter"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 }
 
 
@@ -55,7 +49,7 @@ eHelicopter_PRESETS["UFO"] = {
 	hoverOnTargetDuration = {1000,1225},
 	speed = 6,
 	topSpeedFactor = 2,
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = SWH_subEvents.dropAliensOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	scrapItems = false,
 	scrapVehicles = false,
 	addedCrashChance = 33,
@@ -91,7 +85,7 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 
 eHelicopter_PRESETS["UFOTourists"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
+	addedFunctionsToEvents = {["OnFlyaway"] = SWH_subEvents.dropAliensOff,["OnSpawnCrew"] = subEvents.crewSeek,["OnHover"] = SWH_subEvents.abductPlayer},
 	crew = {
 		{ outfit="AlienTourist", female=0 },
 		{ outfit="AlienTourist", spawn=75, female=0 },
@@ -103,7 +97,7 @@ eHelicopter_PRESETS["UFOTourists"] = {
 
 eHelicopter_PRESETS["UFORednecks"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
+	addedFunctionsToEvents = {["OnFlyaway"] = SWH_subEvents.dropAliensOff,["OnSpawnCrew"] = subEvents.crewSeek,["OnHover"] = SWH_subEvents.abductPlayer},
 	crashType = {"UFORedneck"},
 	crew = {
 		{ outfit="AlienTourist", female=0 },
@@ -120,7 +114,7 @@ eHelicopter_PRESETS["UFORednecks"] = {
 
 eHelicopter_PRESETS["UFOFratBoys"] = {
 	inherit = {"UFO"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropAliensOff,["OnSpawnCrew"] = eHelicopter_crewSeek,["OnHover"]=eHelicopter_abductPlayer},
+	addedFunctionsToEvents = {["OnFlyaway"] = SWH_subEvents.dropAliensOff,["OnSpawnCrew"] = subEvents.crewSeek,["OnHover"] = SWH_subEvents.abductPlayer},
 	crew = {
 		{ outfit="AlienTourist", female=0 },
 		{ outfit="AlienTourist", spawn=75, female=0 },
@@ -158,7 +152,7 @@ eHelicopter_PRESETS["IRS"] = {
 		["attackLooped"] = "eHeli_bolt_action_fire_single",
 		["flightSound"] = "eHelicopter",
 	},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	announcerVoice = "IRS",
 	forScheduling = true,
 	eventSpawnWeight = 4,
@@ -175,7 +169,7 @@ eHelicopter_PRESETS["IRS_noHover"] = {
 
 eHelicopter_PRESETS["IRS_Wave1"] = {
 	inherit = {"IRS"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	crew = {
 		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
 		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
@@ -188,7 +182,7 @@ eHelicopter_PRESETS["IRS_Wave1"] = {
 
 eHelicopter_PRESETS["IRS_Wave2"] = {
 	inherit = {"IRS"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 
 	crew = {
 		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
@@ -209,7 +203,7 @@ eHelicopter_PRESETS["IRS_Wave2"] = {
 
 eHelicopter_PRESETS["IRS_Wave3"] = {
 	inherit = {"IRS"},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 
 	crew = {
 		{ outfit="TaxMan", female=0 }, { outfit="TaxMan", female=0 },
@@ -242,7 +236,7 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	eventSoundEffects = {
 		["flightSound"] = "IceCreamFlyBy",
 	},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	scrapAndParts = false,
 	forScheduling = true,
 	eventSpawnWeight = 2,
@@ -310,7 +304,7 @@ eHelicopter_PRESETS["SandyClaws"] = {
 		["attackSingle"] = "eHeliM16GunfireSingle",
 		["attackLooped"] = "eHeliM16GunfireSingle",
 	},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventSpawnWeight = 3,
@@ -349,7 +343,7 @@ eHelicopter_PRESETS["AttackOfTheStrippers"] = {
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "assBlastUSA" },
 	},
-	addedFunctionsToEvents = {["OnFlyaway"] = eHelicopter_dropCrewOff,["OnSpawnCrew"] = eHelicopter_crewSeek,},
+	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	forScheduling = true,
 	markerColor = {r=0.96,g=0.21,b=0.78},
 	eventCutOffDayFactor = 1,
