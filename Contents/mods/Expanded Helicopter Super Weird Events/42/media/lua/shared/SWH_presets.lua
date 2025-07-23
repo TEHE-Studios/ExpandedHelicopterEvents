@@ -265,8 +265,8 @@ eHelicopter_PRESETS["TISCreamery_Socks"] = {
 }
 
 
-
-eHelicopter_PRESETS.samaritan_drop.dropPackages = {"SurvivorSupplyDrop","SurvivorSupplyDrop","SurvivorSupplyDrop","MCSupplyDrop"}
+---TODO: RE-ADD MINECRAFT CRATE?
+--eHelicopter_PRESETS.samaritan_drop.dropPackages = {"SurvivorSupplyDrop","SurvivorSupplyDrop","SurvivorSupplyDrop","MCSupplyDrop"}
 
 
 eHelicopter_PRESETS["Helikopter"] = {
