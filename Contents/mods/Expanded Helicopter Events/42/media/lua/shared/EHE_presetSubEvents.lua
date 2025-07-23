@@ -1,6 +1,8 @@
 require "EHE_eventMarkerHandler"
 require "EHE_spawner"
 
+local heatMap = require "EHE_heatMap"
+
 local subEvents = {}
 
 function subEvents.eHelicopter_jetBombing(heli)
@@ -173,6 +175,14 @@ end
 function subEvents.militaryChangeColor(heli)
 	heli.markerColor = {r=1.00, g=0.28, b=0.28}
 	heli.addedFunctionsToEvents.OnAttack = false
+end
+
+
+function subEvents.spottedPlayerOnApproach(heli, target)
+	if instanceof(target, "IsoPlayer") then
+		heatMap.registerEventByObject(target, 100, "EventSpottedPlayer")
+		heli.addedFunctionsToEvents.OnApproach = false
+	end
 end
 
 

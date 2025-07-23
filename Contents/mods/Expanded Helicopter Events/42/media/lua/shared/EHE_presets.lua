@@ -240,7 +240,8 @@ eHelicopter_PRESETS["drones"] = {
 	presetProgression = {
 		["drone_RQ2Pioneer_flyover"] = 0,
 		["drone_RQ2Pioneer_loiter"] = 0.0070,
-	}
+	},
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 }
 eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	inherit = {"drones"},
@@ -309,7 +310,8 @@ eHelicopter_PRESETS["jets"] = {
 		["jet_pass"] = 0,
 		["jet_bombing_cluster"] = 0.0070,
 		["jet_bombing_napalm"] = 0.0070,
-	}
+	},
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 }
 -- Passing jet, mostly stirs up activity
 eHelicopter_PRESETS["jet_pass"] = {
@@ -327,6 +329,7 @@ eHelicopter_PRESETS["jet_pass"] = {
 	schedulingFactor = 4,
 	eventSpawnWeight = 5,
 	radioChatter = "AEBS_JetPass",
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 }
 -- The player has been warned to flee, up to them now
 eHelicopter_PRESETS["jet_bombing_cluster"] = {
@@ -385,6 +388,7 @@ eHelicopter_PRESETS["news_Bell206"] = {
 	eventStartDayFactor = 0.067,
 	eventCutOffDayFactor = 0.22,
 	radioChatter = "AEBS_UnauthorizedEntryNews",
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},---Because they're LIVE.
 }
 
 eHelicopter_PRESETS["news_Bell206_hover"] = {
