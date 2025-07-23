@@ -330,7 +330,7 @@ eHelicopter_PRESETS["jet_pass"] = {
 }
 -- The player has been warned to flee, up to them now
 eHelicopter_PRESETS["jet_bombing_cluster"] = {
-	inherit = {"jet"},
+	inherit = {"jets"},
 	doNotListForStreamerIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = subEvents.jetBombing},
 
@@ -348,7 +348,7 @@ eHelicopter_PRESETS["jet_bombing_cluster"] = {
 	radioChatter = "AEBS_JetBombing",
 }
 eHelicopter_PRESETS["jet_bombing_napalm"] = {
-	inherit = {"jet"},
+	inherit = {"jets"},
 	doNotListForStreamerIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = subEvents.jetBombing},
 
