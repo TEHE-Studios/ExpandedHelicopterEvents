@@ -2,6 +2,7 @@ eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
 local subEvents = require("EHE_presetSubEvents.lua")
 
+-- The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and move over to disintegrating
 eHelicopter_PRESETS["military_friendly"] = {
 	announcerVoice = true,
 	forScheduling = true,
@@ -92,6 +93,8 @@ eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	attackSplash = 2,
 	attackHitChance = 70,
 	attackDamage = 100,
+	-- Attack helicopters stop operating around the time the military falls apart completely
+	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
 		["attackSingle"] = "eHeli30mmCannon",
 		["attackLooped"] = "eHeli30mmCannon",
@@ -172,6 +175,7 @@ eHelicopter_PRESETS["military_UH1H_deserters"] = {
 	radioChatter = "AEBS_DesertersStarting",
 }
 
+-- [ The military will now begin shooting anyone they see ]
 eHelicopter_PRESETS["military_hostile"] = {
 	announcerVoice = true,
 	forScheduling = true,
@@ -185,6 +189,8 @@ eHelicopter_PRESETS["military_hostile"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
+	-- Starts after the air raid siren
+	eventStartDayFactor = 0.067,
 	addedFunctionsToEvents = {["OnAttack"] = subEvents.militaryChangeColor},
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
@@ -200,6 +206,7 @@ eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	markerColor = {r=1.00, g=0.28, b=0.28},
 	hostilePreference = "IsoGameCharacter",
 	hostilePredicate = subEvents.hostilePredicateCivilian,
+	eventStartDayFactor = 0.067,
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
@@ -216,6 +223,9 @@ eHelicopter_PRESETS["military_OH58D_attack_all"] = {
 	attackSplash = 2,
 	attackHitChance = 70,
 	attackDamage = 100,
+	eventStartDayFactor = 0.067,
+	-- Attack helicopters stop operating around the time the military falls apart completely
+	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
 		["attackSingle"] = "eHeli30mmCannon",
 		["attackLooped"] = "eHeli30mmCannon",
