@@ -550,6 +550,23 @@ eHelicopter_PRESETS["survivors_wealthy_Bell206"] = {
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 }
+-- Friendly now ex-soldiers trying to find safety, contrast to the deserters
+eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
+	speed = 2.0,
+	crashType = {"Bell206SurvivalistFuselage"},
+	crew = {
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
+	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapVehicles = {"Bell206SurvivalistTail"},
+	forScheduling = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+}
 -- Taking off from nearby small airfields to ditch traffic
 eHelicopter_PRESETS["survivors_Cessna172"] = {
 	crew = {
