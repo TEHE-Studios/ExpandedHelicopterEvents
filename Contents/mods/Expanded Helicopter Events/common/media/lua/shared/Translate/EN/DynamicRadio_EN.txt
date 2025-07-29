@@ -1,8 +1,9 @@
 DynamicRadio_EN = {
     AEBS_SupplyDrop = "Skyhawk to all stations. Supply drop en route. ETA five mikes. Out."
-    AEBS_Raiders = "Any station, if you can hear this, consider this your warning. Over."
-    AEBS_SurvivorHeli = "We are low on supplies... <bzzt> is anyone out there? Please respond if you can hear this... <bzzt> over."
-    AEBS_StrangerDrop = "<bzzt>... arrived in the area, we see your counter sign. Prepare for resupply."
+    AEBS_Deserters = "Any station, if you can hear this, consider this your warning. Over."
+    AEBS_SurvivorMilitary = "We are low on supplies... <bzzt> is anyone out there? Please respond if you can hear this... <bzzt> over."
+    AEBS_SurvivorCops = "We are low on supplies... <bzzt> is anyone out there? Please respond if you can hear this... <bzzt> over.
+    AEBS_SurvivorNews = "We are low on supplies... <bzzt> is anyone out there? Please respond if you can hear this... <bzzt> over."
     AEBS_UnauthorizedEntryPolice = "Overwatch to all stations. Unauthorized law enforcement aircraft observed. No clearance. Maintain separation. Out."
     AEBS_UnauthorizedEntryNews = "Overwatch to all stations. Unauthorized civilian aircraft in airspace. No clearance. Stay clear. Out."
     AEBS_JetBombing = "Raptor 3 to all stations. Strike packages inbound. Lima Delta targets. TOT three mikes. Clear hot. Out."
@@ -13,4 +14,5 @@ DynamicRadio_EN = {
     AEBS_HostileMilitary = "Warlord to all. Phase Three Steady Bulwark. Free fire zone. Compromised targets engaged. Stay clear. Out."
     AEBS_MilitaryLeaving = "Stronghold, Havoc 6. It's done. We've been gutted. Crawling to a new hole. Comms when we make it. Out."
     AEBS_DesertersStarting = "Saber 1, Blackbeard. Booty's secured and ready to roll. Meet us at the agreed position when you are done. We'll make it work. Over."
+
     }

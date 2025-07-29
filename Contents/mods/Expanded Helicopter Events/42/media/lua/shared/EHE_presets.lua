@@ -2,7 +2,7 @@ eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
 local subEvents = require("EHE_presetSubEvents.lua")
 
--- The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and move over to disintegrating
+-- The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and disintegrate
 eHelicopter_PRESETS["military_friendly"] = {
 	announcerVoice = true,
 	forScheduling = true,
@@ -560,12 +560,13 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
+		["flightSound"] = "eMiliHeli",
 	},
 	scrapVehicles = {"Bell206SurvivalistTail"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorSoldiers",
 }
 -- Taking off from nearby small airfields to ditch traffic
 eHelicopter_PRESETS["survivors_Cessna172"] = {
@@ -602,7 +603,7 @@ eHelicopter_PRESETS["deserters"] = {
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.80,
 	eventCutOffDayFactor = 1.00,
-	radioChatter = "AEBS_deserters",
+	radioChatter = "AEBS_Deserters",
 }
 -- Looking around and dropping off people, not strictly hostile
 eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
