@@ -2,34 +2,55 @@ module Base
 {
 	model Vehicle_Bell206Fuselage
 	{
-		mesh = vehicles/Vehicle_Bell206Fuselage,
-		shader = vehicle_norandom_multiuv,
+		mesh = vehicles/Vehicle_Bell206Crash3,
+		shader = vehicle_norandom_multiuv_noreflect,
 		invertX = FALSE,
 		scale = 0.01,
 	}
 
 
-	vehicle Bell206SurvivalistFuselage
+	vehicle Bell206Fuselage_N720HP
 	{
 		template! = Bell206Fuselage,
-		skin { texture = vehicles/civilian/Vehicle_Bell206SurvivalistDamaged, }
+		skin { texture = vehicles/civilian/N120LH, }
 	}
 
-
-	vehicle Bell206PoliceFuselage
+	vehicle Bell206Fuselage_N5740A
 	{
 		template! = Bell206Fuselage,
-		skin { texture = vehicles/civilian/Vehicle_Bell206PoliceDamaged, }
+		skin { texture = vehicles/civilian/N120LH, }
 	}
 
-
-	vehicle Bell206LBMWFuselage
+	vehicle Bell206Fuselage_N120LH
 	{
 		template! = Bell206Fuselage,
-		skin { texture = vehicles/civilian/Vehicle_Bell206LBMWDamaged, }
+		skin { texture = vehicles/civilian/N120LH, }
 	}
 
+	vehicle Bell206Fuselage_N5740A
+	{
+		template! = Bell206Fuselage,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
 
+	vehicle Bell206Fuselage_N177TV
+	{
+		template! = Bell206Fuselage,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Fuselage_N3KY
+	{
+		template! = Bell206Fuselage,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Fuselage_N95SP
+	{
+		template! = Bell206Fuselage,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+	
 	template vehicle Bell206Fuselage
 	{
 		mechanicType = 1,
@@ -41,7 +62,7 @@ module Base
 
         model { file = Vehicle_Bell206Fuselage, scale = 3.1100, offset = 0.1125 -0.0032 0.2894, }
 
-		textureMask = Vehicle_Bell206_mask,
+		textureMask = BellMask,
 		textureShadow = highlights/vehicleShadowHelicopterFuselage,
 
 		mass = 1500,

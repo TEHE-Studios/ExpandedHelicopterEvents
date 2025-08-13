@@ -2,33 +2,48 @@ module Base
 {
 	model Vehicle_Bell206Tail
 	{
-		mesh = vehicles/Vehicle_Bell206Tail,
-		shader = vehicle_norandom_multiuv,
+		mesh = vehicles/Vehicle_Bell206Crash3tail,
+		shader = vehicle_norandom_multiuv_noreflect,
 		invertX = FALSE,
 		scale = 0.01,
 	}
 
 
-    vehicle Bell206LBMWTail
+    vehicle Bell206Tail_N720HP
     {
         template! = Bell206Tail,
-        skin { texture = vehicles/civilian/Vehicle_Bell206LBMWDamaged, }
+        skin { texture = vehicles/civilian/N120LH, }
     }
 
-
-    vehicle Bell206PoliceTail
+    vehicle Bell206Tail_N5740A
     {
         template! = Bell206Tail,
-        skin { texture = vehicles/civilian/Vehicle_Bell206PoliceDamaged, }
+        skin { texture = vehicles/civilian/N120LH, }
     }
 
-
-    vehicle Bell206SurvivalistTail
+    vehicle Bell206Tail_N120LH
     {
         template! = Bell206Tail,
-        skin { texture = vehicles/civilian/Vehicle_Bell206SurvivalistDamaged, }
+        skin { texture = vehicles/civilian/N120LH, }
     }
 
+    vehicle Bell206Tail_N177TV
+    {
+        template! = Bell206Tail,
+        skin { texture = vehicles/civilian/N120LH, }
+    }
+
+    vehicle Bell206Tail_N3KY
+    {
+        template! = Bell206Tail,
+        skin { texture = vehicles/civilian/N120LH, }
+    }
+
+    vehicle Bell206Tail_N95SP
+    {
+        template! = Bell206Tail,
+        skin { texture = vehicles/civilian/N120LH, }
+    }
 
 	template vehicle Bell206Tail
 	{
@@ -41,7 +56,7 @@ module Base
 
 		spawnOffsetY = 0.19392952,
 
-		textureMask = Vehicle_Bell206LBMW_mask,
+		textureMask = BellMask,
 		extents = 0.3923 0.4630 1.2090,
 		mass = 300,
 		physicsChassisShape = 0.3859 0.4630 1.2283,

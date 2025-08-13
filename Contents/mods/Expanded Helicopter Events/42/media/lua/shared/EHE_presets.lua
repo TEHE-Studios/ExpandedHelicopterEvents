@@ -405,7 +405,7 @@ eHelicopter_PRESETS["news_Bell206_hover"] = {
 }
 -- [ KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse ]
 eHelicopter_PRESETS["police"] = {
-	presetRandomSelection = {"police_Bell206_KY_emergency",3, "police_Bell206_KY_hovering",2, "police_Bell206_KY_firing",2, "police_Bell206_KY_fleeing",2, "police_Bell206_TN_fleeing",2, "police_Bell206_OH_fleeing",2},
+	presetRandomSelection = {"police_Bell206_emergency",3, "police_Bell206_hovering",2, "police_Bell206_firing",2, "police_Bell206_fleeing",2,"police_Bell206_fleeing",2},
 	crew = {
 		{ outfit="EHEPolicePilot" },
 		{ outfit="EHEPoliceOfficer" },
@@ -433,7 +433,7 @@ eHelicopter_PRESETS["police_Bell206_KY_emergency"] = {
 	},
 }
 
-eHelicopter_PRESETS["police_Bell206_KY_firing"] = {
+eHelicopter_PRESETS["police_Bell206_firing"] = {
 	inherit = {"police"},
 	attackDelay = 1700,
 	attackSpread = 4,
@@ -449,7 +449,7 @@ eHelicopter_PRESETS["police_Bell206_KY_firing"] = {
 	hoverOnTargetDuration = {375,575},
 }
 
-eHelicopter_PRESETS["police_Bell206_KY_hovering"] = {
+eHelicopter_PRESETS["police_Bell206_hovering"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -458,23 +458,7 @@ eHelicopter_PRESETS["police_Bell206_KY_hovering"] = {
 	hoverOnTargetDuration = {800,1000},
 }
 
-eHelicopter_PRESETS["police_Bell206_KY_fleeing"] = {
-	inherit = {"police"},
-	speed = 1.5,
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-}
--- For variety
-eHelicopter_PRESETS["police_Bell206_TN_fleeing"] = {
-	inherit = {"police"},
-	speed = 1.5,
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-}
-
-eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
+eHelicopter_PRESETS["police_Bell206_fleeing"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -483,7 +467,7 @@ eHelicopter_PRESETS["police_Bell206_OH_fleeing"] = {
 }
 -- [ Early apocalypse survivors after civilization collapses ]
 eHelicopter_PRESETS["survivors"] = {
-	presetRandomSelection = {"survivors_Bell206_police",1, "survivors_Bell206_news",1, "survivors_Bell206_wealthy",1, "survivors_Cessna172",1},
+	presetRandomSelection = {"survivors_Bell206_N720HP",1, "survivors_Bell206_N177TV",1, "survivors_Bell206_N3KY",1, "survivors_Cessna172",1},
 	crew = {
 		{ outfit = "EHE_StrangerPilot", female = 0 },
 		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
@@ -494,10 +478,10 @@ eHelicopter_PRESETS["survivors"] = {
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 }
--- Staying within Kentucky for these cops
-eHelicopter_PRESETS["survivors_cops_Bell206"] = {
+-- Cops from Tennessee
+eHelicopter_PRESETS["survivors_Bell206_N720HP"] = {
 	speed = 2.0,
-	crashType = {"Bell206SurvivalistFuselage"},
+	crashType = {"Bell206Fuselage_N720HP"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
@@ -507,16 +491,36 @@ eHelicopter_PRESETS["survivors_cops_Bell206"] = {
 		["flightSound"] = "eHelicopter",
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
-	scrapVehicles = {"Bell206SurvivalistTail"},
+	scrapVehicles = {"Bell206Tail_N720HP"},
+	forScheduling = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorCops",
+}
+
+-- Cops from Indiana
+eHelicopter_PRESETS["survivors_Bell206_N95SP"] = {
+	speed = 2.0,
+	crashType = {"Bell206Fuselage_N95SP"},
+	crew = {
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
+	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapItems = {"Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206Tail_N95SP"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorCops",
 }
 -- Fleeing reporters
-eHelicopter_PRESETS["survivors_news_Bell206"] = {
+eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
 	speed = 2.0,
-	crashType = {"Bell206SurvivalistFuselage"},
+	crashType = {"Bell206Fuselage_N177TV"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
@@ -526,16 +530,35 @@ eHelicopter_PRESETS["survivors_news_Bell206"] = {
 		["flightSound"] = "eHelicopter",
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
-	scrapVehicles = {"Bell206SurvivalistTail"},
+	scrapVehicles = {"Bell206Tail_N177TV"},
+	forScheduling = true,
+	eventCutOffDayFactor = 1,
+	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorNews",
+}
+-- Fleeing reporters
+eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
+	speed = 2.0,
+	crashType = {"Bell206Fuselage_N5740A"},
+	crew = {
+		{ outfit="EHE_SurvivorPilot", 0 },
+		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
+	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
+	scrapItems = {"Base.ScrapMetal", 10},
+	scrapVehicles = {"Bell206Tail_N5740A"},
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
 }
 -- Richlords fleeing
-eHelicopter_PRESETS["survivors_wealthy_Bell206"] = {
+eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
 	speed = 2.0,
-	crashType = {"Bell206SurvivalistFuselage"},
+	crashType = {"Bell206Fuselage_N120LH"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
