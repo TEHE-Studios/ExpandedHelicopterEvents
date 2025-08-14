@@ -1,0 +1,405 @@
+module Base
+{
+
+
+	model Vehicle_Bell206Crash1
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	
+	model Vehicle_Bell206Crash2
+	{
+		mesh = vehicles/Vehicle_Bell206Crash2,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+
+	model Vehicle_Bell206Crash4
+	{
+		mesh = vehicles/Vehicle_Bell206Crash3,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+
+	vehicle Bell206Intact1_N720HP
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact1_N5740A
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact1_N120LH
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact1_N5740A
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact1_N177TV
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact1_N3KY
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact1_N95SP
+	{
+		template! = Bell206Intact1,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N720HP
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N5740A
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N120LH
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N5740A
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N177TV
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N3KY
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact2_N95SP
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N720HP
+	{
+		template! = Bell206Intact2,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N5740A
+	{
+		template! = Bell206Intact4,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N120LH
+	{
+		template! = Bell206Intact4,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N5740A
+	{
+		template! = Bell206Intact4,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N177TV
+	{
+		template! = Bell206Intact4,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N3KY
+	{
+		template! = Bell206Intact4,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+
+	vehicle Bell206Intact4_N95SP
+	{
+		template! = Bell206Intact4,
+		skin { texture = vehicles/civilian/N120LH, }
+	}
+	
+	template vehicle Bell206Crash1
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		spawnOffsetY = 0.0000,
+
+        model { file = Vehicle_Bell206Crash1, scale = 3.1100, offset = 0.1125 -0.0032 0.2894, }
+
+		textureMask = BellMask,
+		textureShadow = highlights/vehicleShadowHelicopterFuselage,
+
+		mass = 1500,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 4,
+		template = PassengerSeat4,
+
+		passenger FrontLeft
+		{
+			position inside { offset = 0.1608 0.3859 0.1029, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = 0.7235 0.0000 0.1029, rotate = 0.0000 0.0000 0.0000, area = SeatFrontLeft, }
+		}
+
+		passenger FrontRight
+		{
+			position inside { offset = -0.1608 0.3859 0.1029, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = -0.7235 0.0000 0.1029, rotate = 0.0000 0.0000 0.0000, area = SeatFrontRight, }
+		}
+
+		passenger RearLeft
+		{
+			position inside { offset = 0.1608 0.3859 -0.3215, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = 0.7235 0.0000 -0.2572, rotate = 0.0000 0.0000 0.0000, area = SeatRearLeft, }
+		}
+
+		passenger RearRight
+		{
+			position inside { offset = -0.1608 0.3859 -0.3215, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = -0.7235 0.0000 -0.2572, rotate = 0.0000 0.0000 0.0000, area = SeatRearRight, }
+		}
+
+		area SeatFrontLeft { xywh = 0.6174 0.6559 0.4823 0.4823, }
+		area SeatFrontRight { xywh = -0.6174 0.6559 0.4823 0.4823, }
+		area SeatRearLeft { xywh = 0.6174 0.1736 0.4823 0.4823, }
+		area SeatRearRight { xywh = -0.6174 0.1736 0.4823 0.4823, }
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+		template = Seat/part/SeatRearLeft,
+		template = Seat/part/SeatRearRight,
+
+		part Seat*
+		{
+			table install { skills = Mechanics:2, }
+			table uninstall { skills = Mechanics:2, }
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+			lua { update = Vehicles.Update.PassengerCompartment, }
+		}
+
+		template = Windshield/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRearLeft,
+		template = Door/part/DoorRearRight,
+
+		
+	}
+
+	template vehicle Bell206Crash2
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		spawnOffsetY = 0.0000,
+
+        model { file = Vehicle_Bell206Crash2, scale = 3.1100, offset = 0.1125 -0.0032 0.2894, }
+
+		textureMask = BellMask,
+		textureShadow = highlights/vehicleShadowHelicopterFuselage,
+
+		mass = 1500,
+
+		extents = 0.7524 1.0482 2.0064,
+		physicsChassisShape = 0.7524 0.9968 2.0450,
+		centerOfMassOffset = -0.0482 0.5145 0.1833,
+		shadowExtents = 0.5820 1.7364,
+		shadowOffset = 0.0362 0.2798,
+
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 4,
+		template = PassengerSeat4,
+
+		passenger FrontLeft
+		{
+			position inside { offset = 0.1608 0.3859 0.1029, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = 0.7235 0.0000 0.1029, rotate = 0.0000 0.0000 0.0000, area = SeatFrontLeft, }
+		}
+
+		passenger FrontRight
+		{
+			position inside { offset = -0.1608 0.3859 0.1029, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = -0.7235 0.0000 0.1029, rotate = 0.0000 0.0000 0.0000, area = SeatFrontRight, }
+		}
+
+		passenger RearLeft
+		{
+			position inside { offset = 0.1608 0.3859 -0.3215, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = 0.7235 0.0000 -0.2572, rotate = 0.0000 0.0000 0.0000, area = SeatRearLeft, }
+		}
+
+		passenger RearRight
+		{
+			position inside { offset = -0.1608 0.3859 -0.3215, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = -0.7235 0.0000 -0.2572, rotate = 0.0000 0.0000 0.0000, area = SeatRearRight, }
+		}
+
+		area SeatFrontLeft { xywh = 0.6174 0.6559 0.4823 0.4823, }
+		area SeatFrontRight { xywh = -0.6174 0.6559 0.4823 0.4823, }
+		area SeatRearLeft { xywh = 0.6174 0.1736 0.4823 0.4823, }
+		area SeatRearRight { xywh = -0.6174 0.1736 0.4823 0.4823, }
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+		template = Seat/part/SeatRearLeft,
+		template = Seat/part/SeatRearRight,
+
+		part Seat*
+		{
+			table install { skills = Mechanics:2, }
+			table uninstall { skills = Mechanics:2, }
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+			lua { update = Vehicles.Update.PassengerCompartment, }
+		}
+
+		template = Windshield/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRearLeft,
+		template = Door/part/DoorRearRight,
+
+		
+	}
+
+	template vehicle Bell206Crash4
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		spawnOffsetY = 0.0000,
+
+        model { file = Vehicle_Bell206Crash4, scale = 3.1100, offset = 0.1125 -0.0032 0.2894, }
+
+		textureMask = BellMask,
+		textureShadow = highlights/vehicleShadowHelicopterFuselage,
+
+		mass = 1500,
+
+		extents = 0.7524 1.0482 2.0064,
+		physicsChassisShape = 0.7524 0.9968 2.0450,
+		centerOfMassOffset = -0.0482 0.5145 0.1833,
+		shadowExtents = 0.5820 1.7364,
+		shadowOffset = 0.0362 0.2798,
+
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+		seats = 4,
+		template = PassengerSeat4,
+
+		passenger FrontLeft
+		{
+			position inside { offset = 0.1608 0.3859 0.1029, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = 0.7235 0.0000 0.1029, rotate = 0.0000 0.0000 0.0000, area = SeatFrontLeft, }
+		}
+
+		passenger FrontRight
+		{
+			position inside { offset = -0.1608 0.3859 0.1029, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = -0.7235 0.0000 0.1029, rotate = 0.0000 0.0000 0.0000, area = SeatFrontRight, }
+		}
+
+		passenger RearLeft
+		{
+			position inside { offset = 0.1608 0.3859 -0.3215, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = 0.7235 0.0000 -0.2572, rotate = 0.0000 0.0000 0.0000, area = SeatRearLeft, }
+		}
+
+		passenger RearRight
+		{
+			position inside { offset = -0.1608 0.3859 -0.3215, rotate = 0.0000 0.0000 0.0000, }
+			position outside { offset = -0.7235 0.0000 -0.2572, rotate = 0.0000 0.0000 0.0000, area = SeatRearRight, }
+		}
+
+		area SeatFrontLeft { xywh = 0.6174 0.6559 0.4823 0.4823, }
+		area SeatFrontRight { xywh = -0.6174 0.6559 0.4823 0.4823, }
+		area SeatRearLeft { xywh = 0.6174 0.1736 0.4823 0.4823, }
+		area SeatRearRight { xywh = -0.6174 0.1736 0.4823 0.4823, }
+
+		template = Seat/part/SeatFrontLeft,
+		template = Seat/part/SeatFrontRight,
+		template = Seat/part/SeatRearLeft,
+		template = Seat/part/SeatRearRight,
+
+		part Seat*
+		{
+			table install { skills = Mechanics:2, }
+			table uninstall { skills = Mechanics:2, }
+		}
+
+		part PassengerCompartment
+		{
+			category = nodisplay,
+			lua { update = Vehicles.Update.PassengerCompartment, }
+		}
+
+		template = Windshield/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
+		template = Door/part/DoorFrontLeft,
+		template = Door/part/DoorFrontRight,
+		template = Door/part/DoorRearLeft,
+		template = Door/part/DoorRearRight,
+
+		
+	}
+}

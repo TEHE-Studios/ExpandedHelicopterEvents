@@ -1,0 +1,129 @@
+module Base
+{
+	model Vehicle_Bell206Crash1
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Vehicle_Bell206Crash2
+	{
+		mesh = vehicles/Vehicle_Bell206Crash2,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Vehicle_Bell206Crash4
+	{
+		mesh = vehicles/Vehicle_Bell206Crash4,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle Bell206Crash1
+	{
+		model
+		{
+			file = Vehicle_Bell206Crash1,
+			scale = 87.7900,
+			offset = -0.0001 0.0013 0.0212,
+		}
+
+		spawnOffsetY = 0.24999994,
+
+		skin
+		{
+			texture = vehicles/civilian/N120LH,
+		}
+
+		extents = 0.0159 0.0221 0.1027,
+		mass = 500,
+		centerOfMassOffset = 0.0000 0.0110 -0.0012,
+		shadowExtents = -0.0160 -0.1027,
+		shadowOffset = 0.0000 -0.0012,
+		physicsChassisShape = 0.0159 0.0221 0.1027,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.3352 -1.1648,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.3626 1.1374,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	vehicle Bell206Crash2
+	{
+		model
+		{
+			file = Vehicle_Bell206Crash2,
+			scale = 87.7900,
+			offset = -0.0024 0.0000 0.0243,
+		}
+
+		spawnOffsetY = 0.24999994,
+
+		skin
+		{
+			texture = vehicles/civilian/N120LH,
+		}
+
+		extents = 0.0159 0.0221 0.1094,
+		mass = 500,
+		centerOfMassOffset = 0.0000 0.0110 0.0000,
+		shadowExtents = -0.0160 -0.1093,
+		shadowOffset = 0.0000 0.0000,
+		physicsChassisShape = 0.0159 0.0221 0.1094,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.3352 -1.1648,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.3626 1.1374,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	vehicle Bell206Crash4
+	{
+		model
+		{
+			file = Vehicle_Bell206Crash4,
+			scale = 87.7900,
+			offset = -0.0011 0.0013 0.0248,
+		}
+
+		spawnOffsetY = 0.24999994,
+
+		skin
+		{
+			texture = vehicles/civilian/N120LH,
+		}
+
+		extents = 0.0159 0.0221 0.1071,
+		mass = 500,
+		centerOfMassOffset = 0.0000 0.0110 0.0002,
+		shadowExtents = -0.0160 -0.1071,
+		shadowOffset = 0.0000 0.0002,
+		physicsChassisShape = 0.0159 0.0221 0.1071,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.3352 -1.1648,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.3626 1.1374,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+}

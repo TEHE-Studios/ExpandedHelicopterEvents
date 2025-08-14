@@ -1,0 +1,87 @@
+module Base
+{
+	model Vehicle_Bell206Fuselage
+	{
+		mesh = vehicles/Vehicle_Bell206Crash3,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Vehicle_Bell206Tail
+	{
+		mesh = vehicles/Vehicle_Bell206Crash3tail,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle Bell206Fuselage
+	{
+		model
+		{
+			file = Vehicle_Bell206Fuselage,
+			scale = 87.7900,
+			offset = -0.0011 0.0013 0.0011,
+		}
+
+		spawnOffsetY = 0.24999994,
+
+		skin
+		{
+			texture = vehicles/civilian/N120LH,
+		}
+
+		extents = 0.0159 0.0221 0.0615,
+		mass = 500,
+		centerOfMassOffset = 0.0000 0.0110 0.0000,
+		shadowExtents = -0.0160 -0.0607,
+		shadowOffset = 0.0000 0.0000,
+		physicsChassisShape = 0.0159 0.0221 0.0606,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.3352 -1.1648,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.3626 1.1374,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+	vehicle Bell206Tail
+	{
+		model
+		{
+			file = Vehicle_Bell206Tail,
+			scale = 87.7900,
+			offset = -0.0011 0.0012 0.0000,
+		}
+
+		spawnOffsetY = 0.24999994,
+
+		skin
+		{
+			texture = vehicles/civilian/N120LH,
+		}
+
+		extents = 0.0160 0.0221 0.0549,
+		mass = 500,
+		centerOfMassOffset = 0.0000 0.0111 0.0000,
+		shadowExtents = -0.0160 -0.0549,
+		shadowOffset = 0.0000 0.0000,
+		physicsChassisShape = 0.0160 0.0221 0.0549,
+
+		attachment trailer
+		{
+			offset = 0.0000 -0.3352 -1.1648,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -0.3626 1.1374,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+	}
+}
