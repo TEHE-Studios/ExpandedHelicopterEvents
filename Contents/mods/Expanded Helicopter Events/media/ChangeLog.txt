@@ -64,3 +64,8 @@ HOTFIX 1:
 - Most likely fixed the audio sound stuck issue. :D
 -- Added new logic for sounds in network using attenuation.
 [ ------ ]
+
+[ 8/20/25 ]
+- New License terms.
+- Event markers tweak.
+[ ------ ]

@@ -117,16 +117,19 @@ end
 function EHE_EventMarker:setDistance(dist)
 	self.distanceToPoint = dist
 end
-function EHE_EventMarker:setAngleFromPoint(posX,posY)
-	if(posX and posY) then
-		local radians = math.atan2(posY - self.player:getY(), posX - self.player:getX()) + math.pi
-		local degrees = ((radians * 180 / math.pi + 270) + 45) % 360
 
+function EHE_EventMarker:setAngleFromPoint(posX, posY)
+	if posX and posY and self.player then
+		local px, py = self.player:getX(), self.player:getY()
+		local dx, dy = posX - px, posY - py
+		local screen_dx = (dx - dy) * 0.5
+		local screen_dy = (dx + dy) * 0.25
+		local radians = math.atan2(screen_dy, screen_dx)
+		local degrees = (math.deg(radians) + 360) % 360
 		self.angle = degrees
 		self.posY = posX
 		self.posY = posY
 	end
-
 end
 
 
