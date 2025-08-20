@@ -10,6 +10,7 @@ link4 = Cytt's BuyMeACoffee = https://buymeacoffee.com/cytt,
 - New and improved event markers!
 - Various New Events with Sounds!
 - Reworked/updated/refactored shadows, markers, logic!
+- New License.
 
 - Now includes the optional sub-mods:
     Super Weird Edition
