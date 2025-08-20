@@ -1,9 +1,9 @@
-## TEHE-Studios License
-## Copyright © 2025 TEHE-Studios (Chuckleberry Finn, Cytt, Shark)
+TEHE-Studios License
+Copyright © 2025 TEHE-Studios (Chuckleberry Finn, Cytt, Shark)
 
-### This mod (including but not limited to its code, textures, models, sounds, music, animations, and any other bundled assets) is provided solely for personal, non-commercial use within Project Zomboid.
+This mod (including but not limited to its code, textures, models, sounds, music, animations, and any other bundled assets) is provided solely for personal, non-commercial use within Project Zomboid.
 
-## You may:
+You may:
 
     Create and distribute/publish patches, translations, or addons, provided that you:
 
@@ -13,7 +13,7 @@
 
         3. Your release includes clear credit to the original author(s) and a link to the official download page of the original mod.
 
-## You may not:
+You may not:
 
     1. Redistribute this mod, in whole or in part, including any of its files, assets, or code, on any platform or service without prior written permission from the author.
 
@@ -25,7 +25,7 @@
 
     5. Use this mod, or any part of it, in the training, fine-tuning, or evaluation of machine learning, artificial intelligence, or neural network models, whether commercial or non-commercial.
 
-## Reservation of Rights:
+Reservation of Rights:
 All rights not expressly granted herein are reserved by the author.
 
-### Disclaimer: License prior to 8/20/25 was GNU AFFERO GENERAL PUBLIC LICENSE (Version 3, 19 November 2007)
+Disclaimer: License prior to 8/20/25 was GNU AFFERO GENERAL PUBLIC LICENSE (Version 3, 19 November 2007)
