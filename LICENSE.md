@@ -31,4 +31,4 @@ All rights not expressly granted herein are reserved by the author.
 
 
 #### Disclaimer:
-License prior to August 20th, 2025 was GNU AFFERO GENERAL PUBLIC LICENSE (Version 3, 19 November 2007)
+Prior to August 20th, 2025 the license in use was GNU AFFERO GENERAL PUBLIC LICENSE (Version 3, 19 November 2007)
