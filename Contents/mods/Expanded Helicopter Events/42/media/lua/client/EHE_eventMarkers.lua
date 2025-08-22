@@ -6,9 +6,13 @@ EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 
 EHE_EventMarker.iconSize = 96
 EHE_EventMarker.clickableSize = 45
+
 EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
 
 EHE_EventMarker.textureIsoPointer = getTexture("media/ui/eventPointer.png")
+EHE_EventMarker.textureIsoPointer:setWidth(EHE_EventMarker.iconSize/2)
+EHE_EventMarker.textureIsoPointer:setHeight(EHE_EventMarker.iconSize/2)
+
 EHE_EventMarker.textureBG = getTexture("media/ui/eventPointerBase.png")
 
 EHE_EventMarker.textureCoopNum = {
@@ -189,7 +193,7 @@ function EHE_EventMarker:render()
 
 		local _color = colorBlend(mColor, base, aFromDist)
 
-		self:drawTexture(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, _color.r, _color.g, _color.b)
+		self:drawTextureScaled(self.textureBG, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, 1, _color.r, _color.g, _color.b)
 
 		local tex = self.textureIsoPointer
 		if tex then
@@ -210,10 +214,10 @@ function EHE_EventMarker:render()
 			getRenderer():render(tex, x1, y1, x2, y2, x3, y3, x4, y4, _color.r, _color.g, _color.b, 1, nil)
 		end
 
-		self:drawTexture(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
+		self:drawTextureScaled(self.textureIcon, centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, 1, 1, 1, 1)
 
 		if self.player and getNumActivePlayers()>1 then
-			self:drawTexture(self.textureCoopNum[self.player:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), 1, 1, 1, 1)
+			self:drawTextureScaled(self.textureCoopNum[self.player:getPlayerNum()+1], centerX-(EHE_EventMarker.iconSize/2), centerY-(EHE_EventMarker.iconSize/2), EHE_EventMarker.iconSize, EHE_EventMarker.iconSize, 1, 1, 1, 1)
 		end
 
 		ISUIElement.render(self)
