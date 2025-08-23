@@ -10,9 +10,7 @@ local eventSoundHandler = {}
 function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveEmitter, stopSound, delay, backupSoundEventID)
 
 	local soundEffect = heli.eventSoundEffects[soundEvent] or eHelicopter.eventSoundEffects[soundEvent] or soundEvent
-	if backupSoundEventID then
-		soundEvent = backupSoundEventID
-	end
+	if backupSoundEventID then soundEvent = backupSoundEventID end
 
 	if soundEffect and type(soundEffect)=="table" then
 		for _,sound in pairs(soundEffect) do
