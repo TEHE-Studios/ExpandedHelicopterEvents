@@ -10,8 +10,8 @@ EHE_EventMarker.clickableSize = 45
 EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
 
 EHE_EventMarker.textureIsoPointer = getTexture("media/ui/eventPointer.png")
-EHE_EventMarker.textureIsoPointer:setWidth(EHE_EventMarker.iconSize/4)
-EHE_EventMarker.textureIsoPointer:setHeight(EHE_EventMarker.iconSize/4)
+EHE_EventMarker.textureIsoPointer:setWidth(EHE_EventMarker.iconSize/2)
+EHE_EventMarker.textureIsoPointer:setHeight(EHE_EventMarker.iconSize/2)
 
 EHE_EventMarker.textureBG = getTexture("media/ui/eventPointerBase.png")
 
