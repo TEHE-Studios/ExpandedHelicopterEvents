@@ -10,8 +10,7 @@ EHE_EventMarker.clickableSize = 45
 EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
 
 EHE_EventMarker.textureIsoPointer = getTexture("media/ui/eventPointer.png")
-EHE_EventMarker.textureIsoPointer:setWidth(EHE_EventMarker.textureIsoPointer:getWidth()/2)
-EHE_EventMarker.textureIsoPointer:setHeight(EHE_EventMarker.textureIsoPointer:getHeight()/2)
+EHE_EventMarker.textureIsoPointerResized = false
 
 EHE_EventMarker.textureBG = getTexture("media/ui/eventPointerBase.png")
 
@@ -197,6 +196,13 @@ function EHE_EventMarker:render()
 
 		local tex = self.textureIsoPointer
 		if tex then
+
+			if not self.textureIsoPointerResized then
+				self.textureIsoPointerResized = true
+				tex:setWidth(self.iconSize/2)
+				tex:setHeight(self.iconSize/2)
+			end
+
 			local angle = math.rad(self.angle or 0)
 			local distFraction = math.min(1, self.distanceToPoint / self.radius)
 
