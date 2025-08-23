@@ -1,8 +1,6 @@
 require "EHE_eventMarkerHandler"
 require "EHE_spawner"
 
-local heatMap = require "EHE_heatMap"
-
 local subEvents = {}
 
 function subEvents.eHelicopter_jetBombing(heli)
@@ -180,7 +178,8 @@ end
 
 function subEvents.spottedPlayerOnApproach(heli, target)
 	if instanceof(target, "IsoPlayer") then
-		heatMap.registerEventByObject(target, 100, "EventSpottedPlayer")
+		sendClientCommand(target,"heatMapEHE", "registerEventByObject", { intensity=100 })
+		---heatMap.registerEventByObject(target, 100, "EventSpottedPlayer")
 		heli.addedFunctionsToEvents.OnApproach = false
 	end
 end

@@ -6,7 +6,7 @@ Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 require "EHE_spawner"
 require "EHE_shadowSystem"
 local eheFlareSystem = require "EHE_flares"
-
+local heatMap = require "EHE_heatMap"
 
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
@@ -18,6 +18,10 @@ local function onClientCommand(_module, _command, _player, _data)
 		end
 	end
 
+	if _module == "heatMapEHE" then
+		heatMap.registerEventByObject(_player, _data.intensity, "EventSpottedPlayer")
+	end
+	
 	if _module == "flare" then
 		if _command == "activate" then
 			eheFlareSystem.activateFlare(_data.flare, _data.duration, _data.loc)
