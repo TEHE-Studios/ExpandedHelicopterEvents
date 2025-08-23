@@ -123,11 +123,23 @@ function eHelicopter:updateEvent()
 
 	self:setTargetPos()
 	local distToTarget = self:getDistanceToIsoObject(self.target)
-	local crashDist = ZombRand(75,200)
-	if self.crashing and distToTarget and (distToTarget <= crashDist) and (ZombRand(10)>0) then
-		if self:crash() then
-			--[[DEBUG]] print(" - EHE: crash: dist:"..math.floor(distToTarget).." ("..crashDist..")")
-			return
+
+
+	if self.crashing and distToTarget then
+		self.crashDist = self.crashDist or ZombRand(100,200)
+
+		if (distToTarget <= self.crashDist*1.75) then
+			if not self.cutFlightSound then
+				self.cutFlightSound = true
+				eventSoundHandler:playEventSound(self,"flightSound", nil, false, true)
+			end
+
+			if (distToTarget <= self.crashDist) then
+				if self:crash() then
+					--[[DEBUG]] print(" - EHE: crash: dist:"..math.floor(distToTarget).." ("..self.crashDist..")")
+					return
+				end
+			end
 		end
 	end
 
