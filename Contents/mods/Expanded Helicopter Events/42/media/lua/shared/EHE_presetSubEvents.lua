@@ -295,7 +295,7 @@ function subEvents.spawnNPCs(heli)
 	local x, y, z = heli:getXYZAsInt()
 	z = 0
 
-	if not (BanditServer and BanditServer.Spawner and BanditServer.Spawner.Clan) then self:spawnDeadCrew(x, y, z) return end
+	if not (BanditServer and BanditServer.Spawner and BanditServer.Spawner.Clan) then heli:spawnDeadCrew(x, y, z) return end
 	if not #heli.crew or #heli.crew <=0 then return end
 
 	local args = {
