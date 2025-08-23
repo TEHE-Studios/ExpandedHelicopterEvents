@@ -10,18 +10,15 @@ local eventSoundHandler = {}
 function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveEmitter, stopSound, delay, backupSoundEventID)
 
 	local soundEffect = heli.eventSoundEffects[soundEvent] or eHelicopter.eventSoundEffects[soundEvent] or soundEvent
+
 	if backupSoundEventID then soundEvent = backupSoundEventID end
 
 	if soundEffect and type(soundEffect)=="table" then
-		for _,sound in pairs(soundEffect) do
-			eventSoundHandler:playEventSound(heli, sound, otherLocation, saveEmitter, stopSound, delay, soundEvent)
-		end
+		for _,sound in pairs(soundEffect) do eventSoundHandler:playEventSound(heli, sound, otherLocation, saveEmitter, stopSound, delay, soundEvent) end
 		return
 	end
 
-	if not soundEffect or soundEffect=="IGNORE" then
-		return
-	end
+	if not soundEffect or soundEffect=="IGNORE" then return end
 
 	if delay then
 		table.insert(heli.delayedEventSounds, { ["soundEvent"]=soundEvent, ["otherLocation"]=otherLocation,
@@ -29,9 +26,7 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 		return
 	end
 
-	if type(soundEffect)=="table" then
-		soundEffect = soundEffect[ZombRand(1,#soundEffect+1)]
-	end
+	if type(soundEffect)=="table" then soundEffect = soundEffect[ZombRand(#soundEffect)+1] end
 
 	local oL = (otherLocation~=nil)
 
@@ -78,11 +73,11 @@ function eventSoundHandler:playEventSound(heli, soundEvent, otherLocation, saveE
 					heli.heldEventSoundEffectEmitters[soundEvent] = soundEmitter
 				end
 			end
+		end
 
-			if soundEmitter and not soundEmitter:isPlaying(soundEffect) then
-				local x, y, z = otherLocation:getX(), otherLocation:getY(), otherLocation:getZ()
-				soundEmitter:playSound(soundEffect, x, y, z)
-			end
+		if soundEmitter and not soundEmitter:isPlaying(soundEffect) then
+			local x, y, z = otherLocation:getX(), otherLocation:getY(), otherLocation:getZ()
+			soundEmitter:playSound(soundEffect, x, y, z)
 		end
 	end
 end
