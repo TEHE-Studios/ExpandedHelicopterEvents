@@ -69,3 +69,7 @@ HOTFIX 1:
 - New License terms.
 - Event markers tweak.
 [ ------ ]
+
+[ 10/12/25 ]
+- Markers use UI position instead of the player's.
+[ ------ ]
