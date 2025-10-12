@@ -118,13 +118,14 @@ function EHE_EventMarker:setDistance(dist)
 	self.distanceToPoint = dist
 end
 
+
 function EHE_EventMarker:setAngleFromPoint(posX, posY)
 	if posX and posY and self.player then
 
 		--local px, py = self.player:getX(), self.player:getY()
-		local uiX = screenToIsoY(self.player:getPlayerNum(),self:getX(),self:getY(),0)
+		local uiX = screenToIsoX(self.player:getPlayerNum(),self:getX(),self:getY(),0)
 		local uiY = screenToIsoY(self.player:getPlayerNum(),self:getX(),self:getY(),0)
-		
+
 		local dx, dy = posX - uiX, posY - uiY
 		local screen_dx = (dx - dy) * 0.5
 		local screen_dy = (dx + dy) * 0.25
