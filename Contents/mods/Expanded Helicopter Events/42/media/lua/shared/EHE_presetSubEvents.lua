@@ -17,6 +17,17 @@ function subEvents.eHelicopter_jetBombing(heli)
 end
 
 
+function subEvents.hostilePredicateCow(target)
+	if not target then return end
+	---@type IsoPlayer|IsoGameCharacter
+	local player = target
+	if player and player:isAnimal() and player:getAnimalType()=="cow" then
+		return true
+	end
+	return false
+end
+
+
 function subEvents.hostilePredicateCivilian(target)
 	if not target then return end
 	local nonCivScore = 0
