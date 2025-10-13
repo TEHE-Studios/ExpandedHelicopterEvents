@@ -23,6 +23,7 @@ eHelicopter_PRESETS["military_friendly"] = {
 		["military_UH1H_patrol_emergency"] = 0.0066,
 		["military_OH58A_recon_hover"] = 0.0100,
 		["military_UH1H_patrol_quarantine"] = 0.0165,
+		["military_OH58D_attack_cows"] = 0.022,
 		["military_UH1H_attack_undead_evac"] = 0.033,
 		["military_UH1H_attack_undead"] = 0.066,
 		["military_OH58D_attack_zombies"] = 0.077,
@@ -61,6 +62,30 @@ eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_quarantine", 25, {20,25}, "military_UH1H_patrol_quarantine", 10, {20,25}},
+}
+
+-- Kiowa attacking zombies
+eHelicopter_PRESETS["military_OH58D_attack_cows"] = {
+	inherit = {"military_friendly"},
+	announcerVoice = false,
+	crashType = false,
+	speed = 0.3,
+	attackDelay = 44,
+	attackSpread = 5,
+	attackSplash = 2,
+	attackHitChance = 70,
+	attackDamage = 100,
+	-- Attack helicopters stop operating around the time the military falls apart completely
+	eventCutOffDayFactor = 0.2360,
+	eventSoundEffects = {
+		["attackSingle"] = "eHeli30mmCannon",
+		["attackLooped"] = "eHeli30mmCannon",
+		["flightSound"] = { "eMiliHeli"},
+	},
+	hostilePreference = "IsoPlayer",
+	hostilePredicate = subEvents.hostilePredicateCow,
+	radioChatter = "AEBS_PurgeMilitary",
+	formationIDs = {"military_OH58D_attack_cows", 25, {12,17}, "military_OH58D_attack_cows", 10, {12,17}},
 }
 
 -- Making passes to strafe and throwing out flyers
