@@ -326,18 +326,23 @@ function eHelicopter:findAlternativeTarget(character)
 	end
 	local newTargets = {}
 	local fractalCenters = isoRangeScan.getIsoRange(character, 1, 50)
+	local cellChecked = {}
 
 	for _,square in pairs(fractalCenters) do
 		---@type IsoCell
 		local cellOfFC = square:getCell()
 		if cellOfFC then
-			---target zombies instead
-			if #newTargets <= 0 then
-				local zombies = cellOfFC:getZombieList()
-				if zombies then
-					local zombiesSize = zombies:size()-1
-					if zombiesSize > 0 then
-						table.insert(newTargets,zombies:get(ZombRand(zombiesSize)))
+			local cellID = cellOfFC and cellOfFC:getWorldX().."_"..cellOfFC:getWorldY()
+			if (not cellChecked[cellID]) then
+				cellChecked[cellID] = true
+				---target zombies instead
+				if #newTargets <= 0 then
+					local zombies = cellOfFC:getZombieList()
+					if zombies then
+						local zombiesSize = zombies:size()-1
+						if zombiesSize > 0 then
+							table.insert(newTargets,zombies:get(ZombRand(zombiesSize)))
+						end
 					end
 				end
 			end
@@ -476,7 +481,7 @@ function eHelicopter:findTarget(range, DEBUGID)
 	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightedTargetList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
-	--[[DEBUG] if getDebug() then
+	--[[DEBUG if getDebug() then
 		local DEBUGallTargets = {}
 		for _,target in pairs(weightPlayersList) do
 			if instanceof(target, "IsoPlayer") then
