@@ -44,7 +44,7 @@ eHelicopter_PRESETS["Spiffocopter_partyTime"] = {
 
 
 eHelicopter_PRESETS["UFO"] = {
-	presetRandomSelection = {"UFOTourists",4,"UFORednecks",1,"UFOFratBoys",1,},
+	presetRandomSelection = {"UFOTourists",4,"UFORednecks",1,"UFOFratBoys",1,"UFO_stealCow",1},
 	crashType = {"UFO"},
 	hoverOnTargetDuration = {1000,1225},
 	speed = 6,
@@ -75,11 +75,27 @@ eHelicopter_PRESETS["UFO_noHoverBackEnd_DoNotUse"] = {
 		{ outfit="AlienTourist", spawn=5, female=0 },
 	},
 }
+
 eHelicopter_PRESETS["UFO_noHover"] = {
 	inherit = {"UFO", "UFO_noHoverBackEnd_DoNotUse"},
 	presetRandomSelection = {"UFOTourists",4,"UFORednecks",1,"UFOFratBoys",1,},
 	hoverOnTargetDuration = false,
 	forScheduling = false,
+}
+
+eHelicopter_PRESETS["UFO_stealCow"] = {
+	inherit = {"UFO"},
+	hoverOnTargetDuration = true,
+	hostilePreference = "IsoPlayer",
+	hostilePredicate = subEvents.hostilePredicateCow,
+	addedFunctionsToEvents = {["OnAttack"] = SWH_subEvents.abductCow},
+	forScheduling = false,
+
+	eventSoundEffects = {
+		["attackSingle"] = "alienShot",
+		["attackLooped"] = "alienShot",
+		["flightSound"] = { "AlienUFOFlight" },
+	},
 }
 
 
