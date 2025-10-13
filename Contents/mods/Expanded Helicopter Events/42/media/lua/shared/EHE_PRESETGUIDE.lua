@@ -61,7 +61,7 @@ if 1==1 then return end ---Remove this Line to get started.
 ---Spawn defaults to 100%, female defaults to 50%.
 ---default: {outfit="AirCrew"}
 
----@field formation table table of IDs to generate follower helis, default: {}
+---@field formationIDs table table of IDs to generate follower helis, default: {}
 ---@field dropItems table|boolean table of items IDs or false to disable
 ---@field dropPackages table|boolean table of vehicle IDs or false to disable
 
