@@ -44,6 +44,8 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         targetHostile = getZombieByID(targetID)
     elseif targetType=="IsoPlayer" then
         targetHostile = getPlayerByOnlineID(targetID)
+    elseif targetType == "IsoAnimal" then
+        targetHostile = getAnimal(targetID)
     end
 
     if not targetHostile then
