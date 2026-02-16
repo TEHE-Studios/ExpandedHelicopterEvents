@@ -151,6 +151,28 @@ local function applyLootBoxLoot()
         }
     }
 
+    VehicleDistributions.FEMASupplyDrop = {
+        rolls = 50,
+        items ={
+            "EHE.EmergencySupplyBox", 2,
+            "EHE.EmergencySupplyBox", 1,
+            "EHE.EmergencySupplyBox", 2,
+        }
+    }
+
+    VehicleDistributions.SurvivorSupplyDrop = {
+        rolls = 50,
+        items ={
+            "EHE.SurvivorSupplyBox", 1,
+            "EHE.SurvivorSupplyBox", 2,
+            "EHE.SurvivorSupplyBox", 1,
+            "EHE.SurvivorSupplyBox", 1,
+            "EHE.SurvivorSupplyBox", 1,
+            "EHE.SurvivorSupplyBox", 1,
+            "EHE.SurvivorSupplyBox", 1,
+        }
+    }
+
     -- UH-60A tables
     VehicleDistributions.UH60Cargo = { TruckBedOpen = VehicleDistributions.UH60; }
     VehicleDistributions.UH60MedevacCargo = { TruckBedOpen =  VehicleDistributions.UH60Medevac; }
@@ -174,6 +196,10 @@ local function applyLootBoxLoot()
         SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
     }
 
+    --Supply Drop
+    VehicleDistributions.FEMASupplyDrop = { TruckBed = VehicleDistributions.FEMASupplyDrop; }
+    VehicleDistributions.SurvivorSupplyDrop = { TruckBed = VehicleDistributions.SurvivorSupplyDrop; }
+
     --Distribution
     distributionTable["UH60GreenFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
     distributionTable["UH60DesertFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
@@ -182,6 +208,10 @@ local function applyLootBoxLoot()
     distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
     distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
     distributionTable["Bell206BlackFuselage"] = { Normal = VehicleDistributions.Bell206Black; }
+
+    -- Supply Drops
+    distributionTable["FEMASupplyDrop"] = { Normal = VehicleDistributions.FEMASupplyDrop; }
+    distributionTable["SurvivorSupplyDrop"] = { Normal = VehicleDistributions.SurvivorSupplyDrop; }
 
 end
 
