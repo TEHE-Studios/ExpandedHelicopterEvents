@@ -16,7 +16,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 	if willFly then
 		--table of radio lines to send out - given keys to prevent repetitive lines
 		local linesGoingOut = {}
-		WeatherChannel.AddFuzz(c, _bc, 6);
+		WeatherChannel.AddFuzz(c, _bc, 6)
 
 		local globalModData = getExpandedHeliEventsModData()
 		if globalModData.EventsOnSchedule then
@@ -24,24 +24,24 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 				if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
 					--pulls event's info to see if more lines can be added
 					local presetID = event.preset
-					local radioChatter = eHelicopter.radioChatter
-					if eHelicopter_PRESETS[presetID] and eHelicopter_PRESETS[presetID].radioChatter then
-						radioChatter = eHelicopter_PRESETS[presetID].radioChatter
+
+					if eHelicopter_PRESETS[presetID] then
+
+						local radioChatter = eHelicopter_PRESETS[presetID].radioChatter or eHelicopter.radioChatter
+						local lineColor = eHelicopter_PRESETS[presetID].markerColor or { r=1.0, g=1.0, b=1.0 }
+
+						linesGoingOut.presetID = {
+							line=getRadioText(radioChatter),
+							color=lineColor,
+						}
 					end
-
-					--local isRadioText = getRadioText(radioChatter)
-					--if isRadioText == radioChatter then
-					--	isRadioText = getText(radioChatter)
-					--end
-
-					linesGoingOut.presetID = getRadioText(radioChatter)
 				end
 			end
 		end
 		
-		for _,line in pairs(linesGoingOut) do
-			_bc:AddRadioLine(RadioLine.new(line, c.r, c.g, c.b))
+		for _,data in pairs(linesGoingOut) do
+			_bc:AddRadioLine(RadioLine.new(data.line, data.color.r, data.color.g, data.color.b))
 		end
-		WeatherChannel.AddFuzz(c, _bc);
+		WeatherChannel.AddFuzz(c, _bc)
 	end
 end
