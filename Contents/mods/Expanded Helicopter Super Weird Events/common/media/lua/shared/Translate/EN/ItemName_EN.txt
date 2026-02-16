@@ -1,0 +1,7 @@
+ItemName_EN = {
+    ItemName_SWH.TenFortyForm = "IRS 1040 Form",
+    ItemName_SWH.SpiffoInvite = "Strange Invitation",
+    ItemName_SWH.StrangeNewspaper = "Strange Newspaper",
+    ItemName_SWH.SWH_SpiffoBox = "Spiffo Box",
+    ItemName_SWH.SWH_IceCreamBox = "Icream Box",
+}
