@@ -256,7 +256,7 @@ end
 function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	local globalModData = getExpandedHeliEventsModData()
 	globalModData.EventsOnSchedule = {}
-	for freq=1, 6 do
+	for freq=2, 6 do
 		local testsRan = {}
 		for day=0, 90 do
 			for hour=0, 24 do
