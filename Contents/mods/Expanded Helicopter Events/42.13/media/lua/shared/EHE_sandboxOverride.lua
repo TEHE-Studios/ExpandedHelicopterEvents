@@ -1,7 +1,7 @@
 --Overrides vanilla helicopter frequency on game boot
 local function HelicopterSandboxOptions(EVENT)
 	EVENT = EVENT or "ERROR-NoEventID"
-	local text = "----------------------------\nEHE: ("..EVENT..")  Disabling vanilla helicopter. Adding items to WorldItemRemovalList."
+	local text = "----------------------------\nEHE: ("..EVENT..")  Disabling vanilla helicopter."
 	SandboxVars.Helicopter = 1
 
 	local gameTime = getGameTime()
@@ -12,10 +12,13 @@ local function HelicopterSandboxOptions(EVENT)
 	gameTime:setHelicopterStartHour(0)
 	gameTime:setHelicopterEndHour(0)
 
-	local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
-	for k,type in pairs(typesForRemovalList) do
-		if not string.find(SandboxVars.WorldItemRemovalList, type) then
-			SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
+	if SandboxVars.ItemRemovalListBlacklistToggle == false then
+		text = text .. "  Adding items to WorldItemRemovalList."
+		local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
+		for k,type in pairs(typesForRemovalList) do
+			if not string.find(SandboxVars.WorldItemRemovalList, type) then
+				SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
+			end
 		end
 	end
 
