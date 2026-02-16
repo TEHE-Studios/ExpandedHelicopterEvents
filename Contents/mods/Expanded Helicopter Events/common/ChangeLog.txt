@@ -5,11 +5,13 @@ link3 = Shark's Kofi = https://ko-fi.com/sharkmods,
 link4 = Cytt's BuyMeACoffee = https://buymeacoffee.com/cytt,
 [ ------ ]
 
-[ B24 - Initial ]
+[ B24! ]
 - Translations provided by github.com/Chuckleberry-Finn/pz-translator
 - New and improved event markers!
 - Various New Events with Sounds!
 - Reworked/updated/refactored shadows, markers, logic!
+- AEBS radio chatter now uses color coding to mathc events.
+  Radio chatter also includes dynamic callsigns to help indicate what is and isn't friendly.
 - New License.
 
 - Now includes the optional sub-mods:
