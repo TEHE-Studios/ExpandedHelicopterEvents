@@ -135,36 +135,13 @@ VehicleDistributions.MCSupplyDrop = {
     rolls = 64,
     items ={
         "Base.Dirtbag", 1000,
-
-        "EHE.SurvivorMedicalSupplyBox", 1,
-        "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
-        "EHE.SurvivorCanningSupplyBox", 1,
-        "EHE.SurvivorSeedSupplyBox", 1,
-
-        "EHE.SurvivorMedicalSupplyBox", 1,
-        "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
-        "EHE.SurvivorCanningSupplyBox", 1,
-        "EHE.SurvivorSeedSupplyBox", 1,
-
-        "EHE.SurvivorMedicalSupplyBox", 1,
-        "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
-        "EHE.SurvivorCanningSupplyBox", 1,
-        "EHE.SurvivorSeedSupplyBox", 1,
-
-        "EHE.SurvivorMedicalSupplyBox", 1,
-        "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
-        "EHE.SurvivorCanningSupplyBox", 1,
-        "EHE.SurvivorSeedSupplyBox", 1,
-
-        "EHE.SurvivorMedicalSupplyBox", 1,
-        "EHE.SurvivorFoodSupplyBox", 1,
-        "EHE.SurvivorHuntingSupplyBox", 1,
-        "EHE.SurvivorCanningSupplyBox", 1,
-        "EHE.SurvivorSeedSupplyBox", 1,
+        "EHE.SurvivorSupplyBox", 1,
+        "EHE.SurvivorSupplyBox", 2,
+        "EHE.SurvivorSupplyBox", 1,
+        "EHE.SurvivorSupplyBox", 1,
+        "EHE.SurvivorSupplyBox", 1,
+        "EHE.SurvivorSupplyBox", 1,
+        "EHE.SurvivorSupplyBox", 1,
     }
 }
 
