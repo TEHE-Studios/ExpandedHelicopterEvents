@@ -4,8 +4,7 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
-		DisplayName = Evacuation Flyer,
+		ItemType = base:map,
 		Icon = EHE/Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
 		Map = EHE_warningflyer,
@@ -17,8 +16,7 @@ module EHE
     {
         DisplayCategory = Literature,
         Weight = 0.1,
-        Type = Map,
-        DisplayName = Prevention Flyer,
+        ItemType = base:map,
         Icon = EHE/FlyerPav,
         Tooltip = Tooltip_FlyerCDC,
         Map = EHE_preventionflyer,
@@ -30,8 +28,7 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
-		DisplayName = Emergency Flyer,
+		ItemType = base:map,
 		Icon = EHE/Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
 		Map = EHE_emergencyflyer,
@@ -43,8 +40,7 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
-		DisplayName = Quarantine Flyer,
+		ItemType = base:map,
 		Icon = EHE/Flyer,
 		Tooltip = Tooltip_FlyerMilitary,
 		Map = EHE_quarantineflyer,
@@ -55,8 +51,7 @@ module EHE
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
-		DisplayName = Notice Flyer,
+		ItemType = base:map,
 		Icon = EHE/Flyer,
 		Tooltip = Tooltip_CivilDefense,
 		Map = EHE_noticeflyer,

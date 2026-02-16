@@ -37,13 +37,17 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
         return
     end
 
+    print("heliAttack: ",damage, ", ", targetType)
+
     ---@type IsoGameCharacter|IsoZombie|IsoPlayer|IsoMovingObject
     local targetHostile
 
     if targetType=="IsoZombie" and targetID then
         targetHostile = getZombieByID(targetID)
+
     elseif targetType=="IsoPlayer" then
         targetHostile = getPlayerByOnlineID(targetID)
+
     elseif targetType == "IsoAnimal" then
         targetHostile = getAnimal(targetID)
     end

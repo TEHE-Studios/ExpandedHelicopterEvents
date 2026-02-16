@@ -5,7 +5,7 @@ module SWH
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
+		ItemType = base:map,
 		DisplayName = IRS 1040 Form,
 		Icon = 1040,
 		/*Tooltip = Tooltip_FlyerMilitary,*/
@@ -18,7 +18,7 @@ module SWH
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
+		ItemType = base:map,
 		DisplayName = Invitation,
 		Icon = spiffoinvite,
 		/*Tooltip = Tooltip_FlyerMilitary,*/
@@ -32,7 +32,7 @@ module SWH
 	{
 		DisplayCategory = Literature,
 		Weight = 0.1,
-		Type = Map,
+		ItemType = base:map,
 		DisplayName = Strange Newspaper,
 		Icon = StrangeNewspaper,
 		/*Tooltip = Tooltip_FlyerMilitary,*/

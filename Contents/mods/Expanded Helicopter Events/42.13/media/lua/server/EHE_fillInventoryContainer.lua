@@ -43,14 +43,6 @@ function fillInventoryContainer.roll(inventoryContainer, player)
 		lootZombieIntensity = 0
 	end
 
-	local bLucky = false
-	local bUnlucky = false
-
-	if player then
-		bLucky = player:HasTrait("Lucky")
-		bUnlucky = player:HasTrait("Unlucky")
-	end
-
 	if itemContainerDistribution.rolls <= 0 then
 		return
 	end
@@ -60,14 +52,6 @@ function fillInventoryContainer.roll(inventoryContainer, player)
 			if type(v) == "string" then
 				local type = v
 				local chance = itemContainerDistribution.items[k+1]
-
-				if bLucky then
-					chance = chance*1.1
-				end
-
-				if bUnlucky then
-					chance = chance*0.9
-				end
 
 				local lootModifier = ItemPickerJava.getLootModifier(type)
 

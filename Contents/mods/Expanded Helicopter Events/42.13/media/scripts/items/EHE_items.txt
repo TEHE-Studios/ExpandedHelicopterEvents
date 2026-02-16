@@ -1,0 +1,221 @@
+module EHE
+{
+
+	item SignalFlare
+	{
+		DisplayCategory = Tool,
+		Weight = 0.3,
+		ItemType = base:normal,
+		WorldStaticModel = HandFlare,
+		Tooltip = Tooltip_SignalFlare,
+		Icon = EHE/SignalFlare,
+		Tags = EHESignalFlare,
+	}
+
+
+	item HandFlare
+	{
+		DisplayCategory = Tool,
+		Weight = 0.3,
+		ItemType = base:normal,
+		WorldStaticModel = HandFlare,
+		Tooltip = Tooltip_HandFlare,
+		Icon = EHE/SignalFlare,
+		Tags = EHEFlare,
+	}
+
+
+	item FlareCharge
+	{
+		DisplayCategory = Junk,
+		Weight = 0.0,
+		ItemType = base:normal,
+		Tags = EHEFlare,
+		/*WorldStaticModel = ,
+		Tooltip = ,*/
+	}
+
+
+	item EHE_Parachute
+	{
+		DisplayCategory = Junk,
+		Weight = 10,
+		ItemType = base:normal,
+		WorldStaticModel = Parachute,
+	    Tooltip = Tooltip_Parachute,
+	    Icon = EHE/Parachute,
+	}
+
+
+    item UH60Elevator
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		ItemType = base:normal,
+		WorldStaticModel = UH60Elevator,
+	    Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = EHE/heliPart/UH60Elevator,
+		Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.SmallSheetMetal=3,
+	}
+
+	item UH60WindowGreen
+	{
+		DisplayCategory = Junk,
+		Weight = 15,
+		ItemType = base:normal,
+		WorldStaticModel = UH60WindowGreen,
+	    Icon = EHE/heliPart/UH60Window,
+	    Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.MetalBar,
+	}
+
+
+	item UH60WindowDesert
+	{
+		DisplayCategory = Junk,
+		Weight = 15,
+		ItemType = base:normal,
+		WorldStaticModel = UH60WindowDesert,
+	    Icon = EHE/heliPart/UH60Window,
+	    Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.MetalBar,
+	}
+
+
+	item UH60DoorGreen
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		ItemType = base:normal,
+		WorldStaticModel = UH60DoorGreen,
+	    Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = EHE/heliPart/UH60Door,
+		Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.SmallSheetMetal=3,
+	}
+
+
+	item UH60DoorMedevac
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		ItemType = base:normal,
+		WorldStaticModel = UH60DoorMedevac,
+	    Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = EHE/heliPart/UH60Door,
+		Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.SmallSheetMetal=3,
+	}
+
+
+	item UH60DoorDesert
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		ItemType = base:normal,
+		WorldStaticModel = UH60DoorDesert,
+	    Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = EHE/heliPart/UH60Door,
+		Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.SmallSheetMetal=3,
+	}
+
+	item UH60ElevatorDesert
+	{
+		DisplayCategory = Junk,
+		Weight = 25,
+		ItemType = base:normal,
+		WorldStaticModel = UH60ElevatorDesert,
+	    Tooltip = Tooltip_dismantle_helicopterpart,
+		Icon = EHE/heliPart/UH60Elevator,
+		Tags = EHE_heliPartMetal,
+		EHE_dismantleResult = Base.SmallSheetMetal=3,
+	}
+
+    item Bell206RotorBlade1
+    {
+        DisplayCategory = Junk,
+        Weight = 15,
+        ItemType = base:normal,
+        WorldStaticModel = Bell206RotorBlade1,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/Rotorblade1,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.SmallSheetMetal=3,
+    }
+
+    item Bell206RotorBlade2
+    {
+        DisplayCategory = Junk,
+        Weight = 15,
+        ItemType = base:normal,
+        WorldStaticModel = Bell206RotorBlade2,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/Rotorblade2,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.SmallSheetMetal=3,
+    }
+
+    item Bell206TailBlade
+    {
+        DisplayCategory = Junk,
+        Weight = 10,
+        ItemType = base:normal,
+        WorldStaticModel = Bell206TailBlade,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/206tailblade,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.SmallSheetMetal,
+    }
+
+    item Bell206HalfSkirt
+    {
+        DisplayCategory = Junk,
+        Weight = 10,
+        ItemType = base:normal,
+        WorldStaticModel = Bell206HalfSkirt,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/206halfskirt,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.MetalBar=4,
+    }
+
+    item UH1HRotorBlade1
+    {
+        DisplayCategory = Junk,
+        Weight = 15,
+        ItemType = base:normal,
+        WorldStaticModel = UH1HRotorBlade1,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/Rotorblade1,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.SmallSheetMetal=3,
+    }
+
+    item UH1HRotorBlade2
+    {
+        DisplayCategory = Junk,
+        Weight = 15,
+        ItemType = base:normal,
+        WorldStaticModel = UH1HRotorBlade2,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/Rotorblade2,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.SmallSheetMetal=3,
+    }
+
+    item UH1HHalfSkirt2
+    {
+        DisplayCategory = Junk,
+        Weight = 10,
+        ItemType = base:normal,
+        WorldStaticModel = UH1HHalfSkirt,
+        Tooltip = Tooltip_dismantle_helicopterpart,
+        Icon = EHE/heliPart/206halfskirt,
+        Tags = EHE_heliPartMetal,
+        EHE_dismantleResult = Base.MetalBar=4,
+    }
+
+}
+

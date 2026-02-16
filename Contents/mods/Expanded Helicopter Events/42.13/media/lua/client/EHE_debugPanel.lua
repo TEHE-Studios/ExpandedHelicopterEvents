@@ -69,7 +69,12 @@ end
 
 function EHE_DebugTestWindow:drawScrollingListLine(y, item, alt)
 	local textToDisplay = item.text
-	for k,v in pairs(item.item) do textToDisplay = textToDisplay.."  "..k..":"..tostring(v) end
+
+	if item.item and type(item.item) == "table" then
+		for k,v in pairs(item.item) do textToDisplay = textToDisplay.."  "..k..":"..tostring(v) end
+	else
+		textToDisplay = textToDisplay .. "ERROR (NIL or NOT A TABLE)"
+	end
 	self:drawText(textToDisplay, 24, y+(item.height-self.fontHgt)/2, 0.9, 0.9, 0.9, 0.9, self.font)
 	y = y + item.height
 	return y

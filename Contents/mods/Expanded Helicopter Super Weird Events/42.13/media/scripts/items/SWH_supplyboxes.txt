@@ -6,7 +6,7 @@ module SWH
         DisplayCategory = Container,
         Weight = 6.3,
         Icon = EHE/supplyBox/default,
-        DisplayName = Spiffo Box,
+        ItemType = base:normal,
         WorldStaticModel = SpiffoBox_WorldItem,
         Tags = EHESupplyBox,
 	}
@@ -16,7 +16,7 @@ module SWH
 		DisplayCategory = Container,
 		Weight = 6.3,
 		Icon = EHE/supplyBox/default,
-		DisplayName = Half-Frozen Box,
+		ItemType = base:normal,
 		WorldStaticModel = IceCreamBox_WorldItem,
 		Tags = EHESupplyBox,
 	}
