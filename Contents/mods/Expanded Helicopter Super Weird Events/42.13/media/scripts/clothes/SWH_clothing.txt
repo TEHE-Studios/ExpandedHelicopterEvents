@@ -1,14 +1,14 @@
 module SWH
 {
     item AlienSkin {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = AlienMuscles,
         CanHaveHoles = False,
         BodyLocation= Jacket,
 	}
 
     item AlienSkin {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = AlienSkin,
         CanHaveHoles = False,
         BodyLocation=TankTop,
@@ -16,7 +16,7 @@ module SWH
 
     item Shoes_AlienSneakers
     {
-        Type = Clothing,
+        ItemType = base:clothing,
         DisplayName = Strange Sneakers,
         DisplayCategory = Clothing,
         ClothingItem = Shoes_RedTrainers,
@@ -36,7 +36,7 @@ module SWH
 
 		item Hat_SpiffoWarHelmet
 	{
-		Type = Clothing,
+		ItemType = base:clothing,
 		ClothingItem = Hat_SpiffoWarHelmet,
         DisplayName = Spiffo War Helmet,
         DisplayCategory = ProtectiveGear,
@@ -55,7 +55,7 @@ module SWH
 
       item SpiffoWarSuit
     {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = SpiffoWarSuit,
         BodyLocation = FullSuit,
         BloodLocation = Trousers;Jumper,
@@ -72,7 +72,7 @@ module SWH
 
     item SpiffoWarTail
     {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = SpiffoWarTail,
         BodyLocation = Tail,
         Icon = SpiffoTail,
@@ -82,19 +82,19 @@ module SWH
     }
 
     item SpiffoSkin {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = SpiffoSkin,
         BodyLocation=TankTop,
 	}
 
     item SockConnoisseur {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = SockConnoisseur,
         BodyLocation=TankTop,
 	}
 
     item WhiteMale {
-        Type = Clothing,
+        ItemType = base:clothing,
         ClothingItem = WhiteMale,
         BodyLocation=TankTop,
 	}
