@@ -43,6 +43,8 @@ eHelicopter_PRESETS["military_UH1H_patrol"] = {
 eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	inherit = {"military_friendly"},
 	dropItems = {["EHE.EmergencyFlyer"]=250},
+	dropPackages = {"FEMASupplyDrop"},
+	radioChatter = "AEBS_SupplyDrop",
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_emergency", 25, {20,25}, "military_UH1H_patrol_emergency", 10, {20,25}},
 }
@@ -450,7 +452,7 @@ eHelicopter_PRESETS["police"] = {
 	radioChatter = "AEBS_UnauthorizedEntryPolice",
 }
 
-eHelicopter_PRESETS["police_Bell206_KY_emergency"] = {
+eHelicopter_PRESETS["police_Bell206_emergency"] = {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
@@ -490,9 +492,21 @@ eHelicopter_PRESETS["police_Bell206_fleeing"] = {
 		["flightSound"] = "eHelicopter",
 	},
 }
+
+
 -- [ Early apocalypse survivors after civilization collapses ]
 eHelicopter_PRESETS["survivors"] = {
-	presetRandomSelection = {"survivors_Bell206_N720HP",1, "survivors_Bell206_N177TV",1, "survivors_Bell206_N3KY",1, "survivors_Cessna172",1},
+	presetRandomSelection = {
+		"survivors_Bell206_N720HP",1,
+		"survivors_Bell206_N177TV",1,
+		"survivors_Bell206_N95SP",1,
+		"survivors_Cessna172",1,
+		"survivors_soldiers_UH1H",1,
+		"survivors_Bell206_N120LH",1,
+		"survivors_Bell206_N5740A",1,
+	},
+	---survivors_Bell206_N3KY is not a preset
+
 	crew = {
 		{ outfit = "EHE_StrangerPilot", female = 0 },
 		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
@@ -500,9 +514,12 @@ eHelicopter_PRESETS["survivors"] = {
 	forScheduling = true,
     markerColor = {r=0.813, g=0.813, b=0.813},
 	eventSpawnWeight = 5,
+	dropPackages = {"SurvivorSupplyDrop"},
+	radioChatter = "AEBS_SurvivorCivilian",
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 }
+
 -- Cops from Tennessee
 eHelicopter_PRESETS["survivors_Bell206_N720HP"] = {
 	speed = 2.0,
@@ -542,6 +559,7 @@ eHelicopter_PRESETS["survivors_Bell206_N95SP"] = {
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorCops",
 }
+
 -- Fleeing reporters
 eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
 	speed = 2.0,
@@ -561,7 +579,9 @@ eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
 }
+
 -- Fleeing reporters
+---REPEAT?
 eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
 	speed = 2.0,
 	crashType = {"Bell206Fuselage_N5740A"},
@@ -580,6 +600,7 @@ eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
 }
+
 -- Richlords fleeing
 eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
 	speed = 2.0,
@@ -595,8 +616,10 @@ eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
 	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
 	scrapVehicles = {"Bell206SurvivalistTail"},
 	forScheduling = true,
+	dropPackages = false,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
+	radioChatter = "AEBS_SurvivorRich",
 }
 -- Friendly now ex-soldiers trying to find safety, contrast to the deserters
 eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
@@ -614,6 +637,7 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
+	dropPackages = false,
 	radioChatter = "AEBS_SurvivorSoldiers",
 }
 -- Taking off from nearby small airfields to ditch traffic
@@ -634,7 +658,13 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 }
 -- [ Former soldiers turned profiteers. Logically should only be using a single helicopter. ]
 eHelicopter_PRESETS["deserters"] = {
-	presetRandomSelection = {"deserters_UH1H_friendly",3,"deserters_UH1H_hostile",2,"deserters_UH1H_scoutingparty",3,"deserters_UH1H_diversion",4,},
+	presetRandomSelection = {
+		"deserters_UH1H_friendly",3,
+		"deserters_UH1H_hostile",2,
+		"deserters_UH1H_raidingparty",3,
+		"deserters_UH1H_scoutingparty",3,
+		"deserters_UH1H_diversion",4,
+	},
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
 	scrapVehicles = {"UH60GreenTail"},
