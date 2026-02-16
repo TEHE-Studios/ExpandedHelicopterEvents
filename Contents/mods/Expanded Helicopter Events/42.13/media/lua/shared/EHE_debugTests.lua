@@ -283,6 +283,7 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 		print("--- TOTAL EVENTS: "..totalTimes)
 		print("======================================")
 	end
+	globalModData.EventsOnSchedule = {}
 end
 
 
