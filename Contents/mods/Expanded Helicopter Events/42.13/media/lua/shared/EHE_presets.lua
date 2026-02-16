@@ -653,6 +653,7 @@ eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
 	radioChatter = "AEBS_SurvivorRich",
 	callsigns = {"November-One-Two-Zero-Lima-Hotel", "One-Two-Zero", "Executive Flight"},
 }
+
 -- Friendly now ex-soldiers trying to find safety, contrast to the deserters
 eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 	speed = 2.0,
@@ -673,6 +674,7 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 	radioChatter = "AEBS_SurvivorSoldiers",
 	callsigns = {"Echo-Three", "Delta-Seven", "Bravo-Two", "Alpha-Nine"},
 }
+
 -- Taking off from nearby small airfields to ditch traffic
 eHelicopter_PRESETS["survivors_Cessna172"] = {
 	crew = {
@@ -690,6 +692,7 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 	eventSpawnWeight = 3,
 	callsigns = {"November-Four-Seven-Two-Charlie", "Cessna-One-Seven-Two", "Four-Seven-Two", "Small Bird"},
 }
+
 -- [ Former soldiers turned profiteers. Logically should only be using a single helicopter. ]
 eHelicopter_PRESETS["deserters"] = {
 	presetRandomSelection = {
@@ -718,6 +721,7 @@ eHelicopter_PRESETS["deserters"] = {
 	radioChatter = "AEBS_Deserters",
 	callsigns = {"Blackbeard", "Cutlass", "Marauder", "Rogue", "Raider", "Vulture", "Jackal", "Joker", "Abuser"},
 }
+
 -- Looking around and dropping off people, not strictly hostile
 eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
 	inherit = {"deserters"},
@@ -730,6 +734,7 @@ eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
 
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spawnNPCs},
 }
+
 -- Basic flyover pulling zombies around
 eHelicopter_PRESETS["deserters_UH1H_friendly"] = {
 	inherit = {"deserters"},
@@ -739,6 +744,7 @@ eHelicopter_PRESETS["deserters_UH1H_friendly"] = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive"},
 	},
 }
+
 -- Specifically targeting the player and dropping off a landing party
 eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
 	inherit = {"deserters"},
@@ -760,6 +766,7 @@ eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
 		["attackLooped"] = "eHeliAlternatingShots",
 	},
 }
+
 -- pulling around zombies around far more dramatically and taking potshots
 eHelicopter_PRESETS["deserters_UH1H_diversion"] = {
 	inherit = {"deserters"},
