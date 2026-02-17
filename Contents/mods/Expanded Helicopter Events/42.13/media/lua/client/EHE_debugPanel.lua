@@ -20,7 +20,7 @@ function EHE_DebugTestWindow:render()
 	ISPanel.render(self)
 
 	local GT = getGameTime()
-	local currentDay, currentHour = GT:getNightsSurvived(), GT:getHour()
+	local currentDay, currentHour = EHE_getWorldAgeDays(), GT:getHour()
 	local time = "currentDay: "..currentDay.." currentHour:"..currentHour
 
 	self:drawText(time, self.listbox.x+15, self.listbox.y-(self.listbox.fontHgt*1.33), 1,1,1,1, self.listbox.font)

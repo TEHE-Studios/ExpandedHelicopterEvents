@@ -631,11 +631,11 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
 	if applyEnvironmentalCrashChance then
 		local _, weatherImpact = eHeliEvent_weatherImpact()
-		local daysIntoApoc = globalModData.DaysBeforeApoc+getGameTime():getNightsSurvived()
+		local daysIntoApoc = globalModData.DaysBeforeApoc+EHE_getWorldAgeDays()
 		local apocImpact = (daysIntoApoc/cutOffDay)/20
 		local dayOfLastCrash = globalModData.DayOfLastCrash
 		local crashDayCap = 28
-		local daysSinceCrashImpact = ((getGameTime():getNightsSurvived()-dayOfLastCrash)/crashDayCap)/2
+		local daysSinceCrashImpact = ((EHE_getWorldAgeDays()-dayOfLastCrash)/crashDayCap)/2
 
 		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
 		crashChance = math.min(100,math.floor(crashChance))
@@ -745,7 +745,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	local GT = getGameTime()
-	local DAY = GT:getNightsSurvived()
+	local DAY = EHE_getWorldAgeDays()
 	local HOUR = GT:getHour()
 
 	HOUR = HOUR+2
@@ -762,7 +762,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	print(" -- EHE: LAUNCH: "..self:heliToString()..
-			" day:"..getGameTime():getNightsSurvived()..
+			" day:"..EHE_getWorldAgeDays()..
 			" hour:"..getGameTime():getHour()..
 			" crashing:"..tostring(self.crashing))
 end
@@ -793,7 +793,7 @@ end
 function eHelicopter:unlaunch()
 	if self.state == "unLaunched" then return end
 
-	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..getGameTime():getNightsSurvived().." hour:"..getGameTime():getHour())
+	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..EHE_getWorldAgeDays().." hour:"..getGameTime():getHour())
 
 	self:updatePosition(-10000, -10000)
 	eventSoundHandler:stopAllHeldEventSounds(self)

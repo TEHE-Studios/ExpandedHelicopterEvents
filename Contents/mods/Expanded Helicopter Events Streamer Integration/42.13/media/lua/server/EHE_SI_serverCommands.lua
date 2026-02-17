@@ -43,7 +43,7 @@ local function onCommand(_module, _command, _player, _event)
             local HoursBeforeAllowed = math.floor(tHoursBeforeEvents-(DaysBeforeAllowed*24))
 
             local GT = getGameTime()
-            local currentDay = GT:getNightsSurvived()
+            local currentDay = EHE_getWorldAgeDays()
             local currentHour = GT:getHour()
 
             local startDay, startTime = 0, 0

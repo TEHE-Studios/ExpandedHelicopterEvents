@@ -21,7 +21,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		local globalModData = getExpandedHeliEventsModData()
 		if globalModData.EventsOnSchedule then
 			for _,event in pairs(globalModData.EventsOnSchedule) do
-				if (not event.triggered) and (event.startDay <= getGameTime():getNightsSurvived()) then
+				if (not event.triggered) and (event.startDay <= EHE_getWorldAgeDays()) then
 					--pulls event's info to see if more lines can be added
 					local presetID = event.preset
 

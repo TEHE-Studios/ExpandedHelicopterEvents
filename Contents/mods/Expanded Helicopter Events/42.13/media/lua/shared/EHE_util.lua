@@ -14,6 +14,11 @@ end
 function removeFromEIP(playerObject) if EHEIsoPlayers[playerObject] then EHEIsoPlayers[playerObject] = nil end end
 
 
+function EHE_getWorldAgeDays()
+	return (getGameTime():getWorldAgeHours()/24)
+end
+
+
 function getActualPlayers()
 	local players = {}
 

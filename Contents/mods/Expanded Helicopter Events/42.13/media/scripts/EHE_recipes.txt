@@ -54,7 +54,7 @@ module EHE
         Time = 30,
         Tags = InHandCraft,
         OnCreate = EHE_Recipe.onFlareLight,
-        OnCanPerform:EHE_Recipe.onCanLightFlare,
+        OnTest = EHE_Recipe.onCanLightFlare,
         inputs
         {
             item 1 tags[EHESignalFlare;EHEFlare] flags[Prop1],

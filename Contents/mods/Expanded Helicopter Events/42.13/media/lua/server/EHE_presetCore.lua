@@ -78,7 +78,7 @@ function eHelicopter:progressionSelectPreset(preset)
 	if pp then
 
 		local globalModData = getExpandedHeliEventsModData()
-		local DaysSinceApoc = globalModData.DaysBeforeApoc+getGameTime():getNightsSurvived()
+		local DaysSinceApoc = globalModData.DaysBeforeApoc+EHE_getWorldAgeDays()
 		local startDay, cutOffDay = fetchStartDayAndCutOffDay(preset)
 		local DaysOverCutOff = DaysSinceApoc/cutOffDay
 		local presetIDTmp

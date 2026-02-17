@@ -81,7 +81,7 @@ function eHeliEvents_OnGameStart()
 	local globalModData = getExpandedHeliEventsModData()
 	eHeliEvents_setEventsForScheduling()
 	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysSinceApoc()
-	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or getGameTime():getNightsSurvived()
+	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or EHE_getWorldAgeDays()
 	--if no EventsOnSchedule found make it an empty list
 	if not globalModData.EventsOnSchedule then
 		globalModData.EventsOnSchedule = {}
@@ -157,17 +157,17 @@ function eHeliEvent_determineContinuation()
 end
 
 
-function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
+function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 	local GT = getGameTime()
-	nightsSurvived = nightsSurvived or GT:getNightsSurvived()
+	currentDay = currentDay or EHE_getWorldAgeDays()
 	currentHour = currentHour or GT:getHour()
 	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
 	local globalModData = getExpandedHeliEventsModData()
-	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+nightsSurvived
+	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+currentDay
 
 	local eventIDsScheduled = {}
 	for k,v in pairs(globalModData.EventsOnSchedule) do
-		if not v.triggered and v.startDay == nightsSurvived then
+		if not v.triggered and v.startDay == currentDay then
 			eventIDsScheduled[v.preset] = true
 		end
 	end
@@ -283,7 +283,7 @@ function eHeliEvent_ScheduleNew(nightsSurvived,currentHour,freqOverride,noPrint)
 				local dayOffset = {0,0,0,1,1,2,2}
 				dayOffset = dayOffset[ZombRand(#dayOffset)+1]
 
-				local nextStartDay = math.min(nightsSurvived+dayOffset, cutOffDay)
+				local nextStartDay = math.min(currentDay+dayOffset, cutOffDay)
 				local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 				if startTime > 24 then startTime = startTime-24 end
 
@@ -309,7 +309,7 @@ function eHeliEvent_Loop()
 
 	local GT = getGameTime()
 	local globalModData = getExpandedHeliEventsModData()
-	local DAY = GT:getNightsSurvived()
+	local DAY = EHE_getWorldAgeDays()
 	local HOUR = GT:getHour()
 	local events = globalModData.EventsOnSchedule
 

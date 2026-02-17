@@ -146,7 +146,7 @@ function eHelicopter:updateEvent()
 
 	if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
 		local GT = getGameTime()
-		local DAY = GT:getNightsSurvived()
+		local DAY = EHE_getWorldAgeDays()
 		local HOUR = GT:getHour()
 		local unlaunchDay = self.forceUnlaunchTime[1]
 		local unlaunchHour = self.forceUnlaunchTime[2]

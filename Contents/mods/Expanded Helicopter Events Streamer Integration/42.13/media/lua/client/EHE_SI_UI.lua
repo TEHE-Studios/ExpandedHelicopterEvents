@@ -61,7 +61,7 @@ function schedulerButton:render()
 
                 if getDebug() then
                     local GT = getGameTime()
-                    local currentDay, currentHour = GT:getNightsSurvived(), GT:getHour()
+                    local currentDay, currentHour = EHE_getWorldAgeDays(), GT:getHour()
                     newTooltip = "currentDay: "..currentDay.." currentHour:"..currentHour.."\n"
                 end
 

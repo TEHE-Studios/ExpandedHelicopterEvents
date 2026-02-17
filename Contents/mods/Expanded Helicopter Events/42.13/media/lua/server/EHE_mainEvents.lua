@@ -75,7 +75,7 @@ function eHelicopter:crash()
 				self:dropAllItems(5)
 			end
 
-			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..getGameTime():getNightsSurvived())
+			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..EHE_getWorldAgeDays())
 			self:spawnDeadCrew()
 
 			getWorldSoundManager():addSound(nil, heliX, heliY, 0, 175, 300, true, 0, 25)
@@ -85,7 +85,7 @@ function eHelicopter:crash()
 			self:unlaunch()
 
 			local globalModData = getExpandedHeliEventsModData()
-			globalModData.DayOfLastCrash = math.max(1,getGameTime():getNightsSurvived())
+			globalModData.DayOfLastCrash = math.max(1,EHE_getWorldAgeDays())
 			return true
 		end
 	end

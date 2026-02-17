@@ -5,9 +5,9 @@ local function HelicopterSandboxOptions(EVENT)
 	SandboxVars.Helicopter = 1
 
 	local gameTime = getGameTime()
-	local nightsSurvived = gameTime:getNightsSurvived()
+	local daysIn = EHE_getWorldAgeDays()
 	local currentHelicopterDay = gameTime:getHelicopterDay1()
-	local later = math.max(nightsSurvived, currentHelicopterDay) + 30
+	local later = math.max(daysIn, currentHelicopterDay) + 30
 	gameTime:setHelicopterDay(later)
 	gameTime:setHelicopterStartHour(0)
 	gameTime:setHelicopterEndHour(0)
@@ -30,7 +30,7 @@ local function HelicopterSandboxOptions(EVENT)
 
 	if getDebug() or isServer() then text = text.."\n    DEBUG: Vanilla Helicopter: ("..heliValue..")  day:"..day.." startHr:"..startHr.." endHr"..endHr end
 
-	text = text.."\n    Current Day:"..gameTime:getNightsSurvived().." Hour:"..gameTime:getHour()
+	text = text.."\n    Current Day:"..EHE_getWorldAgeDays().." Hour:"..gameTime:getHour()
 	text = text.."\n    EHE-Sandbox Options:"
 	for k,v in pairs(SandboxVars.ExpandedHeli) do text = text.."\n       "..tostring(k).." = "..tostring(v) end
 

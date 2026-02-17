@@ -97,8 +97,7 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
 
     elseif instanceof(targetHostile, "IsoZombie") then
         --Zombies receive damage directly because they don't have body parts or clothing protection
-        targetHostile:addBlood(damage/100)
-
+        targetHostile:splatBloodFloor()
         targetHostile:setVariable("usePhysicHitReaction", true)
 
         damage = (damage*3)/50
