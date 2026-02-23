@@ -724,7 +724,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	if self.announcerVoice ~= false then
-		announcerCore:chooseVoice(self.announcerVoice)
+		announcerCore.chooseVoice(self)
 	end
 
 	self.state = "gotoTarget"

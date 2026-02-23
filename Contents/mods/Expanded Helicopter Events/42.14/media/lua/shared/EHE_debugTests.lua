@@ -324,6 +324,8 @@ testAllLines.ALL_LINES = {}
 testAllLines.DELAYS = {}
 testAllLines.lastDemoTime = 0
 
+local announcerCore = require "EHE_announcersCore"
+
 function CustomDebugPanel.testAllLines()
 	if #testAllLines.ALL_LINES > 0 then
 		testAllLines.ALL_LINES = {}
@@ -335,7 +337,7 @@ function CustomDebugPanel.testAllLines()
 		return
 	end
 
-	for voiceID,voiceData in pairs(eHelicopter_announcers) do
+	for voiceID,voiceData in pairs(announcerCore.announcers) do
 		for lineID,lineData in pairs(voiceData["Lines"]) do
 			table.insert(testAllLines.ALL_LINES, lineData[2])
 			table.insert(testAllLines.DELAYS, lineData[1])
