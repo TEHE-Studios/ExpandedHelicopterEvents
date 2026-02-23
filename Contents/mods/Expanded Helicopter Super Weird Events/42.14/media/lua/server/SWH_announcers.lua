@@ -1,20 +1,6 @@
-require "EHE_announcers"
+local announcerCore = require "EHE_announcersCore"
 
-eHelicopter_announcers = eHelicopter_announcers or {}
-
---[[
-
-eHelicopter_announcers["name of announcer"] = {
-	 ["Lines"] = {
-		 ["lineID1"] = {0, "variation1"",
-		 -- For the sake of organization It is recommended you write out some of the spoken audio for "LineID"
-		 -- The first entry within each line is the delay added as it is spoken, the second is the sound file
-		 -- File names have to match scripted sounds found in sounds_EHE.txt for those scripts to be loaded
-	 } }
-
-]]
-
-eHelicopter_announcers["Spiffo"] = {
+announcerCore:registerVoice("Spiffo", {
 	["LeaveOutOfRandomSelection"] = true,
 	["Lines"] = {
 		["Spiffo1"] = {7500, "Spiffo1"},
@@ -39,9 +25,9 @@ eHelicopter_announcers["Spiffo"] = {
 		["Spiffo20"] = {4500, "Spiffo20"},
 		["Spiffo21"] = {4000, "Spiffo21"},
 		["Spiffo22"] = {4000, "Spiffo22"},
-	} }
+	}})
 
-eHelicopter_announcers["IRS"] = {
+announcerCore:registerVoice("IRS", {
 	["LeaveOutOfRandomSelection"] = true,
 	["Lines"] = {
 		["IRS1"] = {6550, "IRS1"},
@@ -54,16 +40,16 @@ eHelicopter_announcers["IRS"] = {
 		["IRS8"] = {7500, "IRS8"},
 		["IRS9"] = {13500, "IRS9"},
 		["IRS10"] = {11000, "IRS10"},
-	} }
+	}})
 
-eHelicopter_announcers["Aliens"] = {
+announcerCore:registerVoice("Aliens", {
 	["LeaveOutOfRandomSelection"] = true,
 	["Lines"] = {
 		["AlienAck"] = {10500, "AlienAck"},
-	} }
+	}})
 
-eHelicopter_announcers["FratAliens"] = {
+announcerCore:registerVoice("FratAliens", {
 	["LeaveOutOfRandomSelection"] = true,
 	["Lines"] = {
 		["AlienFratAck"] = {10500, "AlienFratAck"},
-	} }
+	}})

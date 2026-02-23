@@ -5,7 +5,7 @@ require "EHE_shadowSystem"
 local eventSoundHandler = require "EHE_sounds"
 local heatMap = require "EHE_heatMap"
 local pseudoSquare = require "EHE_pseudoSquare"
-
+local announcerCore = require "EHE_announcersCore"
 
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end
@@ -235,7 +235,7 @@ function eHelicopter:updateEvent()
 		eventMarkerHandler.setOrUpdate("HELI"..self.ID, self.eventMarkerIcon, 101, hX, hY, self.markerColor)
 	end
 
-	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then self:announce() end
+	if self.announcerVoice and (not self.crashing) and distToTarget and (distToTarget <= thatIsCloseEnough*1000) then announcerCore.announce(self) end
 
 	self:updateSubFunctions(thatIsCloseEnough, distToTarget, timeStampMS)
 	for heli,offsets in pairs(self.formationFollowingHelis) do

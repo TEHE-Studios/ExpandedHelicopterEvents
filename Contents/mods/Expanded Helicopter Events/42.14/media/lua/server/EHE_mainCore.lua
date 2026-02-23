@@ -4,7 +4,7 @@ local isoRangeScan = require "EHE_IsoRangeScan"
 local flareSystem = require "EHE_flares"
 local eventSoundHandler = require "EHE_sounds"
 local pseudoSquare = require "EHE_pseudoSquare"
-
+local announcerCore = require "EHE_announcersCore"
 
 ALL_HELICOPTERS = {}
 
@@ -724,7 +724,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	if self.announcerVoice ~= false then
-		self:chooseVoice(self.announcerVoice)
+		announcerCore.chooseVoice(self)
 	end
 
 	self.state = "gotoTarget"
