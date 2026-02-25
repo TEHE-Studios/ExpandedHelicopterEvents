@@ -1,49 +1,43 @@
 module Base
 {
-	model SC_UH1HGunshipWreck
+	model SC_UH1HVariant2
 	{
-		mesh = vehicles/UH1HCrash1|base_mesh,
+		mesh = vehicles/UH1HCrash2|base_mesh,
 		shader = vehicle_norandom_multiuv_noreflect,
 		invertX = FALSE,
 		scale = 1,
 	}
-	model UH1HGunshipWreckCockpitWindshield
+	model UH1HVariant2CockpitWindshield
 	{
-		mesh = vehicles/UH1HCrash1|CockpitWindshield_obj,
+		mesh = vehicles/UH1HCrash2|Windshield_obj,
 		shader = vehicle,
 		scale = 1,
 	}
-	model UH1HGunshipWreckCockpitWindows
+	model UH1HVariant2FrontWindows
 	{
-		mesh = vehicles/UH1HCrash1|CockpitWindows_obj,
+		mesh = vehicles/UH1HCrash2|FrontWindows_obj,
 		shader = vehicle,
 		scale = 1,
 	}
-	model UH1HGunshipWreckCabinWindowsRight
+	model UH1HVariant2FrontDoors
 	{
-		mesh = vehicles/UH1HCrash1|CabinWindowsRight_obj,
+		mesh = vehicles/UH1HCrash2|FrontDoors_obj,
 		shader = vehicle,
 		scale = 1,
 	}
-	model UH1HGunshipWreckCabinWindowsLeft
+	model UH1HVariant2RearDoorsOne
 	{
-		mesh = vehicles/UH1HCrash1|CabinWindowsLeft_obj,
+		mesh = vehicles/UH1HCrash2|RearDoorsOne_obj,
 		shader = vehicle,
 		scale = 1,
 	}
-	model UH1HGunshipWreckLAU61
+	model UH1HVariant2RearDoorsOne
 	{
-		mesh = vehicles/UH1HCrash1|LAU61_obj,
-		shader = vehicle_noreflect,
+		mesh = vehicles/UH1HCrash2|RearWindowsOne_obj,
+		shader = vehicle,
 		scale = 1,
 	}
-	model UH1HGunshipWreckM23
-	{
-		mesh = vehicles/UH1HCrash1|M23_obj,
-		shader = vehicle_noreflect,
-		scale = 1,
-	}
-	vehicle SC_UH1HGunshipWreck
+	vehicle SC_UH1HVariant2
     {
         mechanicType = 2,
         offRoadEfficiency = 1.1,
@@ -52,7 +46,7 @@ module Base
 
         model
         {
-            file = SC_UH1HGunshipWreck,
+            file = SC_UH1HVariant2,
             scale = 0.9300,
             offset = 0.0000 -0.0108 2.5699,
         }
@@ -103,7 +97,7 @@ module Base
         rearEndHealth = 1000,
         seats = 1,
 
-        template = Window/part/Windshield,
+		template = Windshield/part/Windshield,
         template = Window/part/WindowFrontLeft,
         template = Window/part/WindowFrontRight,
         template = Window/part/WindowRearLeft,
@@ -111,9 +105,9 @@ module Base
 
         part Windshield
         {
-            model UH1HGunshipWreckCockpitWindshield
+            model UH1HVariant2CockpitWindshield
             {
-                file = UH1HGunshipWreckCockpitWindshield,
+                file = UH1HVariant2CockpitWindshield,
                 offset = 0.0000 0.0000 0.0000,
                 rotate = 0.0000 0.0000 0.0000,
             }
@@ -146,9 +140,9 @@ module Base
 
         part WindowFrontLeft
         {
-            model UH1HGunshipWreckCockpitWindowsLeft
+            model UH1HVariant2FrontWindowsLeft
             {
-                file = UH1HGunshipWreckCockpitWindows,
+                file = UH1HVariant2FrontWindows,
                 offset = 0.0000 0.0000 0.0000,
                 rotate = 0.0000 0.0000 0.0000,
             }
@@ -181,9 +175,9 @@ module Base
 
         part WindowRearLeft
         {
-            model UH1HGunshipWreckCabinWindowsLeft
+            model UH1HVariant2RearDoorsOne
             {
-                file = UH1HGunshipWreckCabinWindowsLeft,
+                file = UH1HVariant2RearDoorsOne,
                 offset = 0.0000 0.0000 0.0000,
                 rotate = 0.0000 0.0000 0.0000,
             }
@@ -216,9 +210,9 @@ module Base
 
         part WindowRearRight
         {
-            model UH1HGunshipWreckCabinWindows,
+            model UH1HVariant2CabinWindows,
             {
-                file = UH1HGunshipWreckCabinWindowsRight,
+                file = UH1HVariant2FrontDoors,
                 offset = 0.0000 0.0000 0.0000,
                 rotate = 0.0000 0.0000 0.0000,
             }
