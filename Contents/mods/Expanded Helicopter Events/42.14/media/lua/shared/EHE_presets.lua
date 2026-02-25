@@ -11,7 +11,7 @@ eHelicopter_PRESETS["military_friendly"] = {
 		{ outfit="EHE_Soldier", spawn=75 },
 		{ outfit="EHE_Soldier", spawn=50 },
 	},
-	crashType = {"UH60GreenFuselage"},
+	crashType = {"SC_UH1H"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 30,

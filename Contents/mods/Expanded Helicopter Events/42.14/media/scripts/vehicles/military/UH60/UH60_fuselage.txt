@@ -8,6 +8,12 @@ module Base
 		scale = 0.01,
 	}
 
+    vehicle SC_UH60
+    {
+        template! = UH60Fuselage,
+        skin { texture = vehicles/military/Vehicle_UH60Desert_Crash, }
+    }
+
     vehicle UH60DesertFuselage
     {
         template! = UH60Fuselage,
