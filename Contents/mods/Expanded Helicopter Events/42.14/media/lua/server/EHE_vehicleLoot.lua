@@ -20,15 +20,6 @@ local function applyLootBoxLoot()
             "FirstAidKit_Military", 10,
             "CanteenMilitaryFull", 10,
             "FlashLight_Anglehead_Army", 10,
-            
-            -- MEA --
-            "MEA.ANPRC112", 10,
-            
-            -- AZ --
-            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
-            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
-            "AuthenticZClothing.AuthenticSmokeBomb", 10,
-
         }
     }
 
@@ -46,15 +37,6 @@ local function applyLootBoxLoot()
             "Base.WalkieTalkie5", 3,
             "FirstAidKit_Military", 10,
             "CanteenMilitaryFull", 10,
-            
-            -- MEA --
-            "MEA.ANPRC112", 10,
-            
-            -- AZ --
-            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
-            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
-            "AuthenticZClothing.AuthenticSmokeBomb", 10,
-
         }
     }
 
@@ -63,33 +45,17 @@ local function applyLootBoxLoot()
         items ={
             "Vest_BulletPolice", 9,
             "556Clip", 3,
-            "556Clip", 3,
-            "556Clip", 3,
-            "556Carton", 3,
-            "556Carton", 3,
-            "556Carton", 3,
-            "556Carton", 3,
             "556Carton", 3,
             "Pistol", 5,
-            "Pistol", 5,
-            "Pistol", 5,
             "9mmClip", 3,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
             "Bullets9mm", 3,
             "HolsterSimple", 3,
             "Base.WalkieTalkie3", 3,
             "AssaultRifle2", 10,
-            "AssaultRifle2", 3,
             "Shotgun", 10,
             "Shotgun", 3,
             "FirstAidKit", 3,
             "x2Scope", 0.7,
-            "Hat_SPHPolice", 10,
             "AmmoStraps", 10,
             "AmmoStrap_Bullets", 10,
 
@@ -100,27 +66,13 @@ local function applyLootBoxLoot()
         rolls = 3,
         items ={
             "Pistol", 5,
-            "Pistol", 5,
-            "Pistol", 5,
             "9mmClip", 3,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
             "Bullets9mm", 3,
             "FirstAidKit", 5,
             "Shotgun", 5,
-            "Shotgun", 3,
-            "ShotgunShellsCarton", 7,
             "ShotgunShellsCarton", 7,
             "ShotgunShellsCarton", 7,
             "CameraExpensive", 7,
-            "CameraExpensive", 7,
-
-            -- AZ --
-            "AuthenticZClothing.CameraDSLR", 3,
         }
     }
 
@@ -128,12 +80,7 @@ local function applyLootBoxLoot()
         rolls = 3,
         items ={
             "Pistol", 5,
-            "Pistol", 5,
             "9mmClip", 3,
-            "9mmClip", 3,
-            "9mmClip", 3,
-            "Bullets9mm", 3,
-            "Bullets9mm", 3,
             "Bullets9mm", 3,
             "HuntingKnife", 3,
             "AmmoStraps", 10,
@@ -142,34 +89,20 @@ local function applyLootBoxLoot()
             "Shotgun", 7,
             "FirstAidKit", 5,
             "Bag_Duffelbag", 7,
-
-            -- AZ --
-            "AuthenticZClothing.Authentic_MilitaryFlashlightGreen", 10,
-            "AuthenticZClothing.AuthenticCanteenForestGreen", 10,
-            "AuthenticZClothing.AuthenticSmokeBomb", 10,
-
         }
     }
 
     VehicleDistributions.FEMASupplyDrop = {
         rolls = 50,
         items ={
-            "EHE.EmergencySupplyBox", 2,
-            "EHE.EmergencySupplyBox", 1,
-            "EHE.EmergencySupplyBox", 2,
+            "EHE.EmergencySupplyBox", 10,
         }
     }
 
     VehicleDistributions.SurvivorSupplyDrop = {
         rolls = 50,
         items ={
-            "EHE.SurvivorSupplyBox", 1,
-            "EHE.SurvivorSupplyBox", 2,
-            "EHE.SurvivorSupplyBox", 1,
-            "EHE.SurvivorSupplyBox", 1,
-            "EHE.SurvivorSupplyBox", 1,
-            "EHE.SurvivorSupplyBox", 1,
-            "EHE.SurvivorSupplyBox", 1,
+            "EHE.SurvivorSupplyBox", 10,
         }
     }
 
