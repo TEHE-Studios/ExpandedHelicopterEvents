@@ -328,6 +328,7 @@ eHelicopter_PRESETS["jets"] = {
 	radioChatter = "AEBS_Drone",
 	presetProgression = {
 		["jet_pass"] = 0,
+		["jet_pass_louder"] = 0.0070,
 		["jet_bombing_cluster"] = 0.0070,
 		["jet_bombing_napalm"] = 0.0070,
 	},
@@ -349,6 +350,25 @@ eHelicopter_PRESETS["jet_pass"] = {
 	forScheduling = true,
 	schedulingFactor = 4,
 	eventSpawnWeight = 5,
+	radioChatter = "AEBS_JetPass",
+	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
+	callsigns = {"Raptor", "Eagle", "Falcon", "Hawk", "Talon"},
+}
+-- Passing jet, but louder to kick up activity along with the bombing
+eHelicopter_PRESETS["jet_pass_louder"] = {
+	speed = 15,
+	topSpeedFactor = 2,
+	flightVolume = 100,
+	targetIntensityThreshold = false,
+	eventSoundEffects = {
+		["flightSound"] = "eJetFlight"
+	},
+	crashType = false,
+	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
+	forScheduling = true,
+	schedulingFactor = 4,
+	eventSpawnWeight = 30,
 	radioChatter = "AEBS_JetPass",
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Eagle", "Falcon", "Hawk", "Talon"},
@@ -658,7 +678,7 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 	callsigns = {"November-Four-Seven-Two-Charlie", "Cessna-One-Seven-Two", "Four-Seven-Two", "Small Bird"},
 }
 
--- [ Former soldiers turned profiteers. Logically should only be using a single helicopter. ]
+-- Former soldiers turned profiteers. Logically should only be using a single helicopter.
 eHelicopter_PRESETS["deserters"] = {
 	presetRandomSelection = {
 		"deserters_UH1H_friendly",3,
