@@ -32,7 +32,6 @@ eHelicopter_PRESETS["military_nonhostile"] = {
 		["military_UH1H_attack_cows"] = 0.022,
 		["military_UH1H_attack_undead_evac"] = 0.033,
 		["military_UH1H_attack_undead"] = 0.066,
-		["military_UH1H_attack_zombies"] = 0.077,
 		["military_CH47_evac"] = 0.1900,
 		["military_UH1H_command_evac"] = 0.2360,
 		["military_UH1H_deserters"] = 0.2450,
@@ -115,25 +114,6 @@ eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Thunder", "Lightning", "Storm", "Hammer", "Anvil", "Steel"},
-	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
-}
-
--- Kiowa attacking zombies
-eHelicopter_PRESETS["military_UH1H_attack_zombies"] = {
-	inherit = {"military_nonhostile"},
-	announcerVoice = false,
-	crashType = false,
-	speed = 0.3,
-	-- Attack helicopters stop operating around the time the military falls apart completely
-	eventCutOffDayFactor = 0.2360,
-	eventSoundEffects = {
-		["attackSingle"] = "eHeli30mmCannon",
-		["attackLooped"] = "eHeli30mmCannon",
-		["flightSound"] = { "eMiliHeli"},
-	},
-	hostilePreference = "IsoZombie",
-	radioChatter = "AEBS_PurgeMilitary",
-	callsigns = {"Reaper", "Viper", "Talon", "Sabre", "Cobra", "Hunter"},
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
 
