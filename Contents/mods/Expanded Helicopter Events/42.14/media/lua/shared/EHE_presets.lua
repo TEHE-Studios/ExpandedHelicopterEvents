@@ -3,7 +3,7 @@ eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 local subEvents = require("EHE_presetSubEvents.lua")
 
 -- The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and disintegrate
-eHelicopter_PRESETS["military_friendly"] = {
+eHelicopter_PRESETS["military_nonhostile"] = {
 	announcerVoice = true,
 	forScheduling = true,
 	crew = {
@@ -29,10 +29,10 @@ eHelicopter_PRESETS["military_friendly"] = {
 		["military_UH1H_patrol_emergency"] = 0.0066,
 		["military_OH58A_recon_hover"] = 0.0100,
 		["military_UH1H_patrol_quarantine"] = 0.0165,
-		["military_OH58D_attack_cows"] = 0.022,
+		["military_UH1H_attack_cows"] = 0.022,
 		["military_UH1H_attack_undead_evac"] = 0.033,
 		["military_UH1H_attack_undead"] = 0.066,
-		["military_OH58D_attack_zombies"] = 0.077,
+		["military_UH1H_attack_zombies"] = 0.077,
 		["military_CH47_evac"] = 0.1900,
 		["military_UH1H_command_evac"] = 0.2360,
 		["military_UH1H_deserters"] = 0.2450,
@@ -41,13 +41,13 @@ eHelicopter_PRESETS["military_friendly"] = {
 
 -- Basic fly over
 eHelicopter_PRESETS["military_UH1H_patrol"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	callsigns = {"Eagle", "Falcon", "Hawk", "Raven", "Condor", "Vulture"},
 }
 
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
 eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	dropItems = {["EHE.EmergencyFlyer"]=250},
 	dropPackages = {"FEMASupplyDrop"},
 	radioChatter = "AEBS_SupplyDrop",
@@ -58,7 +58,7 @@ eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 
 -- Basically the earlier version of the news helicopter
 eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	speed = 1.5,
 	crashType = false,
@@ -68,7 +68,7 @@ eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
 
 -- Later stage announcement and flyer helicopter
 eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_quarantine", 25, {20,25}, "military_UH1H_patrol_quarantine", 10, {20,25}},
@@ -76,8 +76,8 @@ eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
 }
 
 -- Kiowa attacking zombies
-eHelicopter_PRESETS["military_OH58D_attack_cows"] = {
-	inherit = {"military_friendly"},
+eHelicopter_PRESETS["military_UH1H_attack_cows"] = {
+	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	crashType = false,
 	speed = 0.3,
@@ -88,17 +88,19 @@ eHelicopter_PRESETS["military_OH58D_attack_cows"] = {
 		["attackLooped"] = "eHeli30mmCannon",
 		["flightSound"] = { "eMiliHeli"},
 	},
+	-- Taking their time to shoot cattle
+	hoverOnTargetDuration = {1150,2500},
 	hostilePreference = "IsoPlayer",
 	hostilePredicate = subEvents.hostilePredicateCow,
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Reaper", "Viper", "Talon", "Sabre", "Cobra", "Wasp"},
-	formationIDs = {"military_OH58D_attack_cows", 25, {12,17}, "military_OH58D_attack_cows", 10, {12,17}},
+	formationIDs = {"military_UH1H_attack_cows", 25, {12,17}, "military_UH1H_attack_cows", 10, {12,17}},
 }
 
 -- Making passes to strafe and throwing out flyers
 eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 	announcerVoice = false,
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Dustoff", "Lifeline", "Rescue", "Angel", "Mercy"},
@@ -108,7 +110,7 @@ eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 
 -- Making passes to strafe zombies
 eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
@@ -117,8 +119,8 @@ eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
 }
 
 -- Kiowa attacking zombies
-eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
-	inherit = {"military_friendly"},
+eHelicopter_PRESETS["military_UH1H_attack_zombies"] = {
+	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	crashType = false,
 	speed = 0.3,
@@ -137,7 +139,7 @@ eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 
 -- Last evacuations passing through (waiting for assets)
 eHelicopter_PRESETS["military_CH47_evac"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	crew = {
 		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
 		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
@@ -166,14 +168,14 @@ eHelicopter_PRESETS["military_CH47_evac"] = {
 }
 -- Commanders are leaving, could fall out of the sky leaving something.
 eHelicopter_PRESETS["military_UH1H_command_evac"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	radioChatter = "AEBS_MilitaryLeaving",
 	announcerVoice = false,
 	callsigns = {"Stronghold", "Command", "Fortress", "Citadel", "Bastion"},
 }
 -- Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events.
 eHelicopter_PRESETS["military_UH1H_deserters"] = {
-	inherit = {"military_friendly"},
+	inherit = {"military_nonhostile"},
 	crashType = false,
 	announcerVoice = false,
 	radioChatter = "AEBS_DesertersStarting",
@@ -206,7 +208,7 @@ eHelicopter_PRESETS["military_hostile"] = {
 	callsigns = {"Warlord", "Purge", "Cleanser", "Exterminator", "Reaper", "Executioner"},
 	presetProgression = {
 		["military_UH1H_attack_all"] = 0.2145,
-		["military_OH58D_attack_all"] = 0.2330,
+		["military_UH1H_attack_all"] = 0.2330,
 	}
 }
 -- UH-1H strafing everything it sees
@@ -224,7 +226,7 @@ eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	callsigns = {"Warlord", "Executioner", "Purge", "Reaper", "Cleanser", "Terminator"},
 }
 -- Kiowa attacking everything
-eHelicopter_PRESETS["military_OH58D_attack_all"] = {
+eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	inherit = {"military_hostile"},
 	announcerVoice = false,
 	crashType = false,
@@ -390,7 +392,7 @@ eHelicopter_PRESETS["jet_bombing_napalm"] = {
 	radioChatter = "AEBS_JetBombing",
 	callsigns = {"Raptor", "Firestorm", "Inferno", "Phoenix", "Scorcher"},
 }
--- [ News here to emulate the vanilla helicopter ]
+-- News here to emulate the vanilla helicopter
 eHelicopter_PRESETS["news_Bell206"] = {
 	presetRandomSelection = {"news_Bell206_hover", 1},
 	eventSoundEffects = {
