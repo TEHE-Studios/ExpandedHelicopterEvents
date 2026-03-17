@@ -16,6 +16,11 @@ eHelicopter_PRESETS["military_friendly"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
+	attackDelay = 5,
+	attackSpread = 5,
+	attackSplash = 2,
+	attackHitChance = 70,
+	attackDamage = 100,
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	callsigns = {"Warlord", "Havoc", "Guardian", "Eagle", "Falcon", "Thunder", "Overlord", "Vanguard", "Sentinel"},
@@ -76,11 +81,6 @@ eHelicopter_PRESETS["military_OH58D_attack_cows"] = {
 	announcerVoice = false,
 	crashType = false,
 	speed = 0.3,
-	attackDelay = 44,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
@@ -122,11 +122,6 @@ eHelicopter_PRESETS["military_OH58D_attack_zombies"] = {
 	announcerVoice = false,
 	crashType = false,
 	speed = 0.3,
-	attackDelay = 44,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
@@ -184,7 +179,7 @@ eHelicopter_PRESETS["military_UH1H_deserters"] = {
 	radioChatter = "AEBS_DesertersStarting",
 	callsigns = {"Saber", "Blackbeard", "Rogue", "Ghost", "Shadow"},
 }
--- [ The military will now begin shooting anyone they see ]
+-- The military will now begin shooting anyone they see
 eHelicopter_PRESETS["military_hostile"] = {
 	announcerVoice = true,
 	forScheduling = true,
@@ -198,6 +193,11 @@ eHelicopter_PRESETS["military_hostile"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
+	attackDelay = 5,
+	attackSpread = 5,
+	attackSplash = 2,
+	attackHitChance = 70,
+	attackDamage = 100,
 	-- Starts after the air raid siren
 	eventStartDayFactor = 0.067,
 	addedFunctionsToEvents = {["OnAttack"] = subEvents.militaryChangeColor},
@@ -229,11 +229,6 @@ eHelicopter_PRESETS["military_OH58D_attack_all"] = {
 	announcerVoice = false,
 	crashType = false,
 	speed = 0.3,
-	attackDelay = 44,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
 	eventStartDayFactor = 0.067,
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
@@ -248,7 +243,7 @@ eHelicopter_PRESETS["military_OH58D_attack_all"] = {
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
 }
 
--- [ Keep tabs on people without helicopters, each successive spotting of the player will add heat to the system ]
+-- Keep tabs on people without helicopters, each successive spotting of the player will add heat to the system
 eHelicopter_PRESETS["drones"] = {
 	announcerVoice = false,
 	forScheduling = true,
@@ -320,7 +315,7 @@ eHelicopter_PRESETS["air_raid"] = {
 	radioChatter = "AEBS_AirRaid",
 	callsigns = {"Warlord", "Command", "Central", "Control"},
 }
--- [ Jets get progressively more aggressive as the military falters ]
+-- Jets get progressively more aggressive as the military falters
 eHelicopter_PRESETS["jets"] = {
 	announcerVoice = false,
 	forScheduling = true,
@@ -423,7 +418,7 @@ eHelicopter_PRESETS["news_Bell206_hover"] = {
 	inherit = {"news_Bell206"},
 	hoverOnTargetDuration = {750,1200},
 }
--- [ KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse ]
+-- KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse
 eHelicopter_PRESETS["police"] = {
 	presetRandomSelection = {"police_Bell206_emergency",3, "police_Bell206_hovering",2, "police_Bell206_firing",2, "police_Bell206_fleeing",2,"police_Bell206_fleeing",2},
 	crew = {
@@ -488,7 +483,7 @@ eHelicopter_PRESETS["police_Bell206_fleeing"] = {
 }
 
 
--- [ Early apocalypse survivors after civilization collapses ]
+-- Early apocalypse survivors after civilization collapses
 eHelicopter_PRESETS["survivors"] = {
 	presetRandomSelection = {
 		"survivors_Bell206_N720HP",1,
