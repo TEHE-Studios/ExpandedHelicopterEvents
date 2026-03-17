@@ -29,7 +29,6 @@ eHelicopter_PRESETS["military_friendly"] = {
 		["military_UH1H_attack_undead"] = 0.066,
 		["military_OH58D_attack_zombies"] = 0.077,
 		["military_CH47_evac"] = 0.1900,
-		["military_CH47_evac_chaotic"] = 0.1900,
 		["military_UH1H_command_evac"] = 0.2360,
 		["military_UH1H_deserters"] = 0.2450,
 	}
@@ -170,36 +169,6 @@ eHelicopter_PRESETS["military_CH47_evac"] = {
 	},
 	callsigns = {"Dustoff", "Lifeline", "Exodus", "Haven", "Salvation"},
 }
--- Someone turns into a zombie onboard and they accidentally shoot the wrong person. Chaos ensues. People fall out. (waiting for assets)
-eHelicopter_PRESETS["military_CH47_evac_chaotic"] = {
-	inherit = {"military_friendly"},
-	crew = {
-		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
-		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
-		{ outfit="EHE_Soldier", spawn=100, female=0 },
-		{ outfit="EHE_Soldier", spawn=100, female=0 },
-		{ outfit="Evacuee", spawn=100, female=50 }, { outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 }, { outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=100, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 }, { outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 }, { outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=90, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 }, { outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 }, { outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=80, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 }, { outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 }, { outfit="Evacuee", spawn=70, female=50 },
-		{ outfit="Evacuee", spawn=70, female=50 },
-	},
-	crashType = false,
-	announcerVoice = false,
-	scrapItems = {"Base.ScrapMetal", 10},
-	eventSoundEffects = {
-		["flightSound"] = {"eMiliHeliCargo", "eCH47Panic"}
-	},
-	callsigns = {"Dustoff", "Lifeline", "Exodus", "Haven", "Salvation"},
-}
-
 -- Commanders are leaving, could fall out of the sky leaving something.
 eHelicopter_PRESETS["military_UH1H_command_evac"] = {
 	inherit = {"military_friendly"},
@@ -215,7 +184,6 @@ eHelicopter_PRESETS["military_UH1H_deserters"] = {
 	radioChatter = "AEBS_DesertersStarting",
 	callsigns = {"Saber", "Blackbeard", "Rogue", "Ghost", "Shadow"},
 }
-
 -- [ The military will now begin shooting anyone they see ]
 eHelicopter_PRESETS["military_hostile"] = {
 	announcerVoice = true,
