@@ -5,7 +5,7 @@ link3 = Shark's Kofi = https://ko-fi.com/sharkmods,
 link4 = Cytt's BuyMeACoffee = https://buymeacoffee.com/cytt,
 [ ------ ]
 
-[ B24! ]
+[ B42! ]
 - Translations provided by github.com/Chuckleberry-Finn/pz-translator
 - New and improved event markers!
 - Various New Events with Sounds!
