@@ -18,7 +18,7 @@ module Base {
 
     sound ePioneerDrone {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/helicopter_and_planes/pioneerdrone.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/helicopter_and_planes/pioneerdrone.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eMiliHeli {
         category = EHE: Main, loop = true, is3D = true,
@@ -40,10 +40,6 @@ module Base {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/crashes_bombs_misc/siren.ogg, distanceMax = 5100, reverbFactor = 0.1, volume = 0.035, } }
 
-    sound eCH47Panic {
-        category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/ch47panic.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 10, } }
-    
     sound eHeliMusicPassive {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/music/banjo-romp-Caffeine_Creek_Band.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
@@ -92,34 +88,26 @@ module Base {
 
     sound eHeli_machine_gun_fire_single {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_fire_single.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0,} }
+        clip { file = media/sound/gunfire/heli_fire_single.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.5,} }
 
     sound eHeli_machine_gun_fire_looped {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_fire_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 2.0, } }
+        clip { file = media/sound/gunfire/heli_fire_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eHeli_bolt_action_fire_single {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_stormyRifleFire.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 1.0,} }
+        clip { file = media/sound/gunfire/heli_stormyRifleFire.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.5,} }
 
     sound eHeliAlternatingShots {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/M16GunfireSingle.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/gunfire/M16GunfireBurst.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/gunfire/M16GunfireSingle.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, }
+        clip { file = media/sound/gunfire/M16GunfireBurst.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } }
         
     sound eHeliLightRockets {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/LightRocket_1.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
-        clip { file = media/sound/crashes_bombs_misc/LightRocket_2.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } 
-        clip { file = media/sound/crashes_bombs_misc/LightRocket_3.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } }
-
-    sound eHeliMinigunFire {
-        category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/minigun_loop.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } }
-
-    sound eHeliMinigunStop {
-        category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/minigun_stop.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 2.5, } }
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_1.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_2.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_3.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
