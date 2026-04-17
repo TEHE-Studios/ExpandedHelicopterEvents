@@ -3,6 +3,6 @@ id=ExpandedHelicopterEvents_StreamerIntegration
 description=This mod utilizes the numpad keys 1-9 to activate helicopter events - intended for streamers.
 poster=poster.png
 require=\ExpandedHelicopterEvents
-versionMin=42.0
+versionMin=42.15
 icon=icon.png
 author=Shark & Chuckleberry Finn
