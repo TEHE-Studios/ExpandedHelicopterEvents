@@ -1,3 +1,0 @@
-ContextMenu_EN = {
-    IGUI_VehiclePartHelicopterInterior = "Helicopter Interior",
-}
