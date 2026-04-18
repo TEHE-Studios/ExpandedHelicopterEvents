@@ -253,7 +253,6 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	},
 	eventMarkerIcon = "media/ui/plane.png",
 	eventSpawnWeight = 1,
-	forScheduling = true,
 	crashType = false,
 	callsigns = {"Eye", "Overwatch", "Scout", "Watchdog"},
 }
@@ -268,7 +267,6 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
 	eventMarkerIcon = "media/ui/plane.png",
 	hoverOnTargetDuration = {1000,1500},
 	eventSpawnWeight = 1,
-	forScheduling = true,
 	crashType = false,
 	callsigns = {"Shadow", "Sentinel", "Stalker", "Watcher"},
 }
@@ -329,7 +327,6 @@ eHelicopter_PRESETS["jet_pass"] = {
 	crashType = false,
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
-	forScheduling = true,
 	schedulingFactor = 4,
 	eventSpawnWeight = 5,
 	radioChatter = "AEBS_JetPass",
@@ -348,7 +345,6 @@ eHelicopter_PRESETS["jet_pass_louder"] = {
 	crashType = false,
 	shadow = false,
 	eventMarkerIcon = "media/ui/jet.png",
-	forScheduling = true,
 	schedulingFactor = 4,
 	eventSpawnWeight = 30,
 	radioChatter = "AEBS_JetPass",
@@ -396,7 +392,8 @@ eHelicopter_PRESETS["jet_bombing_napalm"] = {
 }
 -- News here to emulate the vanilla helicopter
 eHelicopter_PRESETS["news_Bell206"] = {
-	presetRandomSelection = {"news_Bell206_hover", 1},
+	--presetRandomSelection = {"news_Bell206_hover", 1},
+	hoverOnTargetDuration = {750,1200},
 	eventSoundEffects = {
 		["flightSound"] = { "eHelicopter", "eHeli_newscaster" },
 	},
@@ -418,10 +415,7 @@ eHelicopter_PRESETS["news_Bell206"] = {
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},---Because they're LIVE.
 }
 
-eHelicopter_PRESETS["news_Bell206_hover"] = {
-	inherit = {"news_Bell206"},
-	hoverOnTargetDuration = {750,1200},
-}
+
 -- KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse
 eHelicopter_PRESETS["police"] = {
 	presetRandomSelection = {"police_Bell206_emergency",3, "police_Bell206_hovering",2, "police_Bell206_firing",2, "police_Bell206_fleeing",2,"police_Bell206_fleeing",2},
@@ -528,7 +522,6 @@ eHelicopter_PRESETS["survivors_Bell206_N720HP"] = {
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N720HP"},
-	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorCops",
@@ -549,7 +542,6 @@ eHelicopter_PRESETS["survivors_Bell206_N95SP"] = {
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N95SP"},
-	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorCops",
@@ -570,7 +562,6 @@ eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N177TV"},
-	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
@@ -592,7 +583,6 @@ eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N5740A"},
-	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
@@ -613,7 +603,6 @@ eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
 	},
 	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
 	scrapVehicles = {"Bell206SurvivalistTail"},
-	forScheduling = true,
 	dropPackages = false,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
@@ -634,7 +623,6 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 		["flightSound"] = "eMiliHeli",
 	},
 	scrapVehicles = {"Bell206SurvivalistTail"},
-	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	dropPackages = false,
@@ -652,7 +640,6 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eSmallPropPlane",
 	},
-	forScheduling = true,
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
@@ -664,8 +651,7 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 eHelicopter_PRESETS["deserters"] = {
 	presetRandomSelection = {
 		"deserters_UH1H_friendly",3,
-		"deserters_UH1H_hostile",2,
-		"deserters_UH1H_raidingparty",3,
+		"deserters_UH1H_raidingparty",4,
 		"deserters_UH1H_scoutingparty",3,
 		"deserters_UH1H_diversion",4,
 	},

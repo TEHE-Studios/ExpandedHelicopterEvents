@@ -286,12 +286,13 @@ eHelicopter_PRESETS.survivors.dropPackages = {"SurvivorSupplyDrop","SurvivorSupp
 
 
 eHelicopter_PRESETS["Helikopter"] = {
-	inherit = {"raider_heli_harasser"},
+	inherit = {"military_UH1H_attack_all"},
 	forScheduling = true,
 	markerColor = {r=0.96,g=0.21,b=0.78},
 	eventCutOffDayFactor = 1,
 	eventSpawnWeight = 1,
 	eventStartDayFactor = 0.044,
+	callsigns = {"Helikopter"},
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "Helikopter" },
 		["attackSingle"] = "eHeliM16GunfireSingle",

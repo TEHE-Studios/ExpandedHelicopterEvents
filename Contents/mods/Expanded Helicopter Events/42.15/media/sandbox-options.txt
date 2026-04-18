@@ -57,7 +57,7 @@ option ExpandedHeli.Frequency_police
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
-option ExpandedHeli.Frequency_news_chopper
+option ExpandedHeli.Frequency_news_Bell206
 {
 	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventNews,

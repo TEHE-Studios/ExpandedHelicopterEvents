@@ -374,44 +374,6 @@ const EHE_DATA = {
             }
           ],
           "progressionIsRandom": false
-        },
-        {
-          "id": "drone_RQ2Pioneer_flyover",
-          "label": "drone_RQ2Pioneer_flyover",
-          "description": "",
-          "startFactor": 0.0,
-          "cutoffFactor": 0.34,
-          "spawnWeight": 1,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#40e8e0",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "drone_RQ2Pioneer_loiter",
-          "label": "drone_RQ2Pioneer_loiter",
-          "description": "",
-          "startFactor": 0.0,
-          "cutoffFactor": 0.34,
-          "spawnWeight": 1,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#40e8e0",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
         }
       ]
     },
@@ -469,48 +431,6 @@ const EHE_DATA = {
             }
           ],
           "progressionIsRandom": false
-        },
-        {
-          "id": "jet_pass",
-          "label": "jet_pass",
-          "description": "Passing jet, mostly stirs up activity",
-          "startFactor": 0.0,
-          "cutoffFactor": 0.34,
-          "spawnWeight": 5,
-          "schedulingFactor": 4.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": "jet",
-          "color": "#8080ff",
-          "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_jet sandbox var does not match preset ID 'jet_pass' \u2014 freq control may not apply."
-          ],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "jet_pass_louder",
-          "label": "jet_pass_louder",
-          "description": "Passing jet, but louder to kick up activity along with the bombing",
-          "startFactor": 0.0,
-          "cutoffFactor": 0.34,
-          "spawnWeight": 30,
-          "schedulingFactor": 4.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": "jet",
-          "color": "#8080ff",
-          "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_jet sandbox var does not match preset ID 'jet_pass_louder' \u2014 freq control may not apply."
-          ],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
         }
       ]
     },
@@ -533,21 +453,12 @@ const EHE_DATA = {
           "color": "#ffd833",
           "source": "EHE_presets.lua",
           "notes": [
-            "Frequency_news_chopper sandbox var does not match preset ID 'news_Bell206' \u2014 freq control may not apply.",
-            "presetRandomSelection has only one entry \u2014 always resolves to 'news_Bell206_hover'."
+            "Frequency_news_chopper sandbox var does not match preset ID 'news_Bell206' \u2014 freq control may not apply."
           ],
           "bugNotes": [],
           "isSub": false,
-          "progression": [
-            {
-              "id": "news_Bell206_hover",
-              "weight": 1,
-              "color": "#ffd833",
-              "label": "News Bell206 Hover",
-              "note": "Because they're LIVE."
-            }
-          ],
-          "progressionIsRandom": true
+          "progression": null,
+          "progressionIsRandom": false
         },
         {
           "id": "police",
@@ -681,139 +592,6 @@ const EHE_DATA = {
             }
           ],
           "progressionIsRandom": true
-        },
-        {
-          "id": "survivors_Bell206_N720HP",
-          "label": "survivors_Bell206_N720HP",
-          "description": "Cops from Tennessee",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 10,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#a8a8a8",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "survivors_Bell206_N95SP",
-          "label": "survivors_Bell206_N95SP",
-          "description": "Cops from Indiana",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 10,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#a8a8a8",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "survivors_Bell206_N177TV",
-          "label": "survivors_Bell206_N177TV",
-          "description": "Fleeing reporters",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 10,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#a8a8a8",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "survivors_Bell206_N5740A",
-          "label": "survivors_Bell206_N5740A",
-          "description": "REPEAT?",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 10,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#a8a8a8",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "survivors_Bell206_N120LH",
-          "label": "survivors_Bell206_N120LH",
-          "description": "Richlords fleeing",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 10,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#a8a8a8",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "survivors_soldiers_UH1H",
-          "label": "survivors_soldiers_UH1H",
-          "description": "Friendly now ex-soldiers trying to find safety, contrast to the deserters",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 10,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#a8a8a8",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
-        },
-        {
-          "id": "survivors_Cessna172",
-          "label": "survivors_Cessna172",
-          "description": "Taking off from nearby small airfields to ditch traffic",
-          "startFactor": 0.48,
-          "cutoffFactor": 1.0,
-          "spawnWeight": 3,
-          "schedulingFactor": 1.0,
-          "ignoreContinueScheduling": false,
-          "isOneTime": false,
-          "freqSandboxKey": null,
-          "color": "#5eff44",
-          "source": "EHE_presets.lua",
-          "notes": [],
-          "bugNotes": [],
-          "isSub": true,
-          "progression": null,
-          "progressionIsRandom": false
         }
       ]
     },
@@ -847,23 +625,16 @@ const EHE_DATA = {
               "note": "Basic flyover pulling zombies around"
             },
             {
-              "id": "deserters_UH1H_hostile",
-              "weight": 2,
-              "color": "#cf6b43",
-              "label": "Deserters Uh1H Hostile",
-              "note": ""
-            },
-            {
               "id": "deserters_UH1H_raidingparty",
-              "weight": 3,
-              "color": "#9f5d42",
+              "weight": 4,
+              "color": "#bf6642",
               "label": "Deserters Uh1H Raidingparty",
               "note": "Specifically targeting the player and dropping off a landing party"
             },
             {
               "id": "deserters_UH1H_scoutingparty",
               "weight": 3,
-              "color": "#6f4e41",
+              "color": "#7f5341",
               "label": "Deserters Uh1H Scoutingparty",
               "note": "Looking around and dropping off people, not strictly hostile"
             },
@@ -1203,14 +974,6 @@ const EHE_DATA = {
     {
       "type": "warn",
       "msg": "jets: Frequency_jet sandbox var does not match preset ID 'jets' \u2014 freq control may not apply."
-    },
-    {
-      "type": "warn",
-      "msg": "jet_pass: Frequency_jet sandbox var does not match preset ID 'jet_pass' \u2014 freq control may not apply."
-    },
-    {
-      "type": "warn",
-      "msg": "jet_pass_louder: Frequency_jet sandbox var does not match preset ID 'jet_pass_louder' \u2014 freq control may not apply."
     },
     {
       "type": "warn",
