@@ -258,8 +258,8 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	globalModData.EventsOnSchedule = {}
 	for freq=2, 6 do
 		local testsRan = {}
-		for day=0, 90 do
-			for hour=0, 24 do
+		for day=0, 89 do
+			for hour=0, 23 do
 				eHeliEvent_ScheduleNew(day,hour,freq,true)
 				for k,v in pairs(globalModData.EventsOnSchedule) do
 					if v.triggered then
