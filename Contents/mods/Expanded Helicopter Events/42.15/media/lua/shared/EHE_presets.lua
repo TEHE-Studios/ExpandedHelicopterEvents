@@ -188,9 +188,10 @@ eHelicopter_PRESETS["military_hostile"] = {
 	callsigns = {"Warlord", "Purge", "Cleanser", "Exterminator", "Reaper", "Executioner"},
 	presetProgression = {
 		["military_UH1H_attack_all"] = 0.2145,
-		["military_UH1H_attack_all"] = 0.2330,
+		["military_kiowa_attack_all"] = 0.2330,
 	}
 }
+
 -- UH-1H strafing everything it sees
 eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	inherit = {"military_hostile"},
@@ -205,8 +206,9 @@ eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	radioChatter = "AEBS_HostileMilitary",
 	callsigns = {"Warlord", "Executioner", "Purge", "Reaper", "Cleanser", "Terminator"},
 }
+
 -- Kiowa attacking everything
-eHelicopter_PRESETS["military_UH1H_attack_all"] = {
+eHelicopter_PRESETS["military_kiowa_attack_all"] = {
 	inherit = {"military_hostile"},
 	announcerVoice = false,
 	crashType = false,
@@ -308,9 +310,9 @@ eHelicopter_PRESETS["jets"] = {
 	radioChatter = "AEBS_Drone",
 	presetProgression = {
 		["jet_pass"] = 0,
-		["jet_pass_louder"] = 0.0070,
-		["jet_bombing_cluster"] = 0.0070,
-		["jet_bombing_napalm"] = 0.0070,
+		["jet_pass_louder"] = 0.071,
+		["jet_bombing_cluster"] = 0.0072,
+		["jet_bombing_napalm"] = 0.0073,
 	},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Viper", "Eagle", "Hornet", "Talon", "Bandit", "Striker"},
