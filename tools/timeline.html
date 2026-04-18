@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EHE Timeline Visualizer · B42</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap');
+:root {
+  --bg:#0b0c10;--bg2:#12141a;--bg3:#1a1d25;--panel:#161820;--border:#2a2d3a;
+  --border2:#3a3e50;--text:#cdd2e0;--text-dim:#6a7090;--text-muted:#45485a;
+  --accent:#4fa3e0;--accent2:#3e8ac4;--warn:#e0a030;--danger:#e04040;
+  --mono:'Share Tech Mono',monospace;--sans:'Barlow Condensed',sans-serif;
+  --body:'Barlow',sans-serif;--row-h:30px;--label-w:230px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:13px;
+  display:flex;flex-direction:column;height:100vh;overflow:hidden;}
+header{background:var(--panel);border-bottom:1px solid var(--border);padding:10px 18px;
+  display:flex;align-items:center;gap:14px;flex-shrink:0;}
+header h1{font-family:var(--sans);font-weight:700;font-size:20px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--accent);white-space:nowrap;}
+.badge{font-family:var(--mono);font-size:10px;background:var(--bg3);border:1px solid var(--border2);
+  color:var(--text-dim);padding:2px 7px;border-radius:3px;letter-spacing:.05em;white-space:nowrap;}
+.badge.warn{border-color:var(--warn);color:var(--warn);}
+header .spacer{flex:1;}
+.app-body{display:flex;flex:1;overflow:hidden;}
+#sidebar{width:264px;min-width:264px;background:var(--panel);border-right:1px solid var(--border);
+  overflow-y:auto;display:flex;flex-direction:column;}
+.cs{border-bottom:1px solid var(--border);padding:12px 14px;}
+.cs-title{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-dim);margin-bottom:9px;}
+.cr{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
+.cr:last-child{margin-bottom:0;}
+.cl{font-size:12px;color:var(--text);min-width:115px;flex-shrink:0;}
+.cv{font-family:var(--mono);font-size:11px;color:var(--accent);min-width:34px;text-align:right;}
+input[type=range]{-webkit-appearance:none;flex:1;height:4px;background:var(--border2);
+  border-radius:2px;outline:none;cursor:pointer;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;
+  border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg);}
+select{background:var(--bg3);border:1px solid var(--border2);color:var(--text);
+  font-family:var(--body);font-size:11px;padding:3px 6px;border-radius:3px;cursor:pointer;flex:1;}
+.tr{display:flex;align-items:center;gap:8px;margin-bottom:6px;}
+.tr label{font-size:12px;cursor:pointer;user-select:none;}
+input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:pointer;}
+.frow{display:flex;align-items:center;gap:6px;margin-bottom:5px;}
+.frow:last-child{margin-bottom:0;}
+.fdot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.flbl{font-size:11px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.fwarn{font-size:9px;color:var(--warn);font-family:var(--mono);flex-shrink:0;}
+.li{display:flex;align-items:center;gap:7px;margin-bottom:5px;font-size:11px;color:var(--text-dim);}
+.ls{width:20px;height:8px;border-radius:2px;flex-shrink:0;}
+#main{flex:1;overflow:auto;display:flex;flex-direction:column;}
+.tl-top{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);
+  display:flex;align-items:stretch;}
+.tl-lh{width:var(--label-w);min-width:var(--label-w);flex-shrink:0;background:var(--bg2);
+  border-right:1px solid var(--border);display:flex;align-items:center;padding:0 10px;height:36px;}
+.tl-lh span{font-family:var(--sans);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);}
+.tl-aw{flex:1;position:relative;height:36px;overflow:hidden;}
+#axis-canvas{position:absolute;top:0;left:0;width:100%;height:100%;}
+.tl-body{display:flex;flex-direction:column;flex:1;}
+.gh{display:flex;align-items:center;background:var(--bg3);border-bottom:1px solid var(--border);
+  cursor:pointer;user-select:none;position:sticky;top:36px;z-index:40;}
+.gh:hover{background:#1e2130;}
+.ghl{width:var(--label-w);min-width:var(--label-w);font-family:var(--sans);font-size:11px;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;color:var(--text-dim);
+  border-right:1px solid var(--border);display:flex;align-items:center;gap:6px;}
+.gt{font-size:9px;transition:transform .15s;}
+.gh.collapsed .gt{transform:rotate(-90deg);}
+.ght{flex:1;height:28px;position:relative;overflow:hidden;}
+.preset-row{display:flex;align-items:stretch;border-bottom:1px solid var(--border);min-height:var(--row-h);}
+.preset-row:hover{background:rgba(255,255,255,.015);}
+.preset-row.sub .rl{padding-left:22px;}
+.rl{width:var(--label-w);min-width:var(--label-w);border-right:1px solid var(--border);
+  padding:0 8px;display:flex;align-items:center;gap:5px;background:var(--bg2);cursor:default;flex-shrink:0;}
+.rid{font-family:var(--mono);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
+.rbadge{font-size:8px;font-family:var(--sans);letter-spacing:.05em;padding:1px 4px;border-radius:2px;
+  background:var(--bg3);border:1px solid var(--border2);color:var(--text-muted);white-space:nowrap;flex-shrink:0;}
+.rbadge.rw{border-color:var(--warn);color:var(--warn);}
+.rbadge.rs{border-color:var(--accent);color:var(--accent);}
+.rt{flex:1;position:relative;min-height:var(--row-h);}
+.eb{position:absolute;top:5px;height:calc(var(--row-h) - 10px);border-radius:3px;cursor:pointer;
+  transition:filter .12s;overflow:hidden;display:flex;}
+.eb:hover{filter:brightness(1.3);z-index:10;}
+.eb.off{opacity:.1;pointer-events:none;}
+.ps{height:100%;border-right:1px solid rgba(0,0,0,.3);flex-shrink:0;cursor:pointer;position:absolute;top:0;}
+.ps:last-child{border-right:none;}
+.ps:hover{filter:brightness(1.15);}
+#tooltip{display:none;position:fixed;background:var(--bg2);border:1px solid var(--border2);
+  border-left:3px solid var(--accent);padding:10px 13px;border-radius:4px;max-width:320px;min-width:220px;
+  pointer-events:none;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.6);font-size:12px;line-height:1.5;}
+.tt-id{font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:5px;}
+.tt-r{display:flex;gap:8px;margin-bottom:3px;}
+.tt-k{color:var(--text-dim);min-width:90px;flex-shrink:0;font-size:11px;}
+.tt-v{color:var(--text);font-family:var(--mono);font-size:11px;}
+.tt-hr{border:none;border-top:1px solid var(--border);margin:5px 0;}
+.tt-w{color:var(--warn);font-size:10px;margin-top:3px;}
+.tt-n{color:var(--text-dim);font-size:10px;margin-top:3px;font-style:italic;}
+#issues{border-top:1px solid var(--border);background:var(--panel);padding:5px 14px;
+  display:flex;align-items:center;gap:12px;font-size:11px;flex-shrink:0;flex-wrap:wrap;min-height:28px;}
+.it{display:flex;align-items:center;gap:5px;}
+::-webkit-scrollbar{width:6px;height:6px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+::-webkit-scrollbar-thumb:hover{background:var(--accent2);}
+.src-tag{font-size:9px;font-family:var(--mono);color:var(--text-muted);flex-shrink:0;}
+</style>
+</head>
+<body>
+<header>
+  <h1>EHE Timeline Visualizer</h1>
+  <span class="badge">B42.16+</span>
+  <span class="badge" id="hdr-dur">SchedulerDuration: 90d</span>
+  <span class="badge warn" id="hdr-issues" style="display:none"></span>
+  <div class="spacer"></div>
+  <span style="font-size:11px;color:var(--text-muted);font-family:var(--mono);" id="hdr-total"></span>
+</header>
+<div class="app-body">
+<div id="sidebar">
+  <div class="cs">
+    <div class="cs-title">Sandbox Settings</div>
+    <div class="cr"><span class="cl">Scheduler Duration</span>
+      <input type="range" id="c-dur" min="10" max="365" value="90" step="5">
+      <span class="cv" id="v-dur">90d</span></div>
+    <div class="cr"><span class="cl">Start Day Offset</span>
+      <input type="range" id="c-sd" min="0" max="50" value="0" step="1">
+      <span class="cv" id="v-sd">0d</span></div>
+    <div class="tr" style="margin-top:6px;">
+      <input type="checkbox" id="c-cont" checked>
+      <label for="c-cont">Continue Scheduling (post-cutoff)</label></div>
+    <div class="tr">
+      <input type="checkbox" id="c-air" checked>
+      <label for="c-air">Air Raid Siren Event enabled</label></div>
+  </div>
+  <div class="cs">
+    <div class="cs-title">Event Frequency</div>
+    <div style="font-size:10px;color:var(--text-muted);margin-bottom:8px;">
+      Sandbox key → preset ID mapping. <span style="color:var(--warn);">⚠ = key mismatch.</span>
+    </div>
+    <div id="freq-ctrls"></div>
+  </div>
+  <div class="cs">
+    <div class="cs-title">Display</div>
+    <div class="tr"><input type="checkbox" id="o-dens" checked><label for="o-dens">Probability density</label></div>
+    <div class="tr"><input type="checkbox" id="o-prog" checked><label for="o-prog">Progression segments</label></div>
+    <div class="tr"><input type="checkbox" id="o-cont"><label for="o-cont">Continue-schedule zone</label></div>
+    <div class="tr"><input type="checkbox" id="o-sub" checked><label for="o-sub">Sub-variants</label></div>
+  </div>
+  <div class="cs">
+    <div class="cs-title">Legend</div>
+    <div id="legend"></div>
+    <div style="margin-top:8px;font-size:10px;color:var(--text-muted);line-height:1.7;">
+      <div>Bar = eligible spawn window</div>
+      <div>Segments = active progression stage</div>
+      <div style="color:var(--accent);">│ Blue line = SchedulerDuration end</div>
+    </div>
+  </div>
+</div>
+<div id="main">
+  <div class="tl-top">
+    <div class="tl-lh"><span>Preset ID</span></div>
+    <div class="tl-aw"><canvas id="axis-canvas"></canvas></div>
+  </div>
+  <div class="tl-body" id="tl-body"></div>
+</div>
+</div>
+<div id="issues"></div>
+<div id="tooltip"></div>
+
+<script>
+// ── GENERATED DATA ────────────────────────────────────────────────────
+const EHE_DATA = {
+  "groups": [
+    {
+      "id": "special",
+      "label": "SPECIAL EVENTS",
+      "color": "#e06030",
+      "presets": [
+        {
+          "id": "air_raid",
+          "label": "air_raid",
+          "description": "Shift over to hostile events, player should flee and hide",
+          "startFactor": 0.067,
+          "cutoffFactor": 0.067,
+          "spawnWeight": 50,
+          "schedulingFactor": 99999.0,
+          "ignoreContinueScheduling": true,
+          "isOneTime": true,
+          "freqSandboxKey": null,
+          "color": "#e06030",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": null,
+          "progressionIsRandom": false,
+          "flightHours": [
+            11,
+            11
+          ]
+        }
+      ]
+    },
+    {
+      "id": "military",
+      "label": "MILITARY",
+      "color": "#4fc35a",
+      "presets": [
+        {
+          "id": "military_nonhostile",
+          "label": "military_nonhostile",
+          "description": "The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and disintegrate",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 30,
+          "schedulingFactor": 1.5,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "military",
+          "color": "#5eff44",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_military sandbox var does not match preset ID 'military_nonhostile' \u2014 freq control may not apply."
+          ],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "military_UH1H_patrol",
+              "factor": 0.0,
+              "color": "#5eff44",
+              "label": "Military Uh1H Patrol",
+              "note": "Basic fly over"
+            },
+            {
+              "id": "military_UH1H_patrol_emergency",
+              "factor": 0.0066,
+              "color": "#6ce43e",
+              "label": "Military Uh1H Patrol Emergency",
+              "note": "EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer"
+            },
+            {
+              "id": "military_OH58A_recon_hover",
+              "factor": 0.01,
+              "color": "#7ac938",
+              "label": "Military Oh58A Recon Hover",
+              "note": "Basically the earlier version of the news helicopter"
+            },
+            {
+              "id": "military_UH1H_patrol_quarantine",
+              "factor": 0.0165,
+              "color": "#88af32",
+              "label": "Military Uh1H Patrol Quarantine",
+              "note": "Later stage announcement and flyer helicopter"
+            },
+            {
+              "id": "military_UH1H_attack_cows",
+              "factor": 0.022,
+              "color": "#96942c",
+              "label": "Military Uh1H Attack Cows",
+              "note": "Kiowa attacking zombies"
+            },
+            {
+              "id": "military_UH1H_attack_undead_evac",
+              "factor": 0.033,
+              "color": "#a47a27",
+              "label": "Military Uh1H Attack Undead Evac",
+              "note": "Making passes to strafe and throwing out flyers"
+            },
+            {
+              "id": "military_UH1H_attack_undead",
+              "factor": 0.066,
+              "color": "#b25f21",
+              "label": "Military Uh1H Attack Undead",
+              "note": "Making passes to strafe zombies"
+            },
+            {
+              "id": "military_CH47_evac",
+              "factor": 0.19,
+              "color": "#c0451b",
+              "label": "Military Ch47 Evac",
+              "note": "Last evacuations passing through (waiting for assets)"
+            },
+            {
+              "id": "military_UH1H_command_evac",
+              "factor": 0.236,
+              "color": "#ce2a15",
+              "label": "Military Uh1H Command Evac",
+              "note": "Commanders are leaving, could fall out of the sky leaving something."
+            },
+            {
+              "id": "military_UH1H_deserters",
+              "factor": 0.245,
+              "color": "#dd1010",
+              "label": "Military Uh1H Deserters",
+              "note": "Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events."
+            }
+          ],
+          "progressionIsRandom": false
+        },
+        {
+          "id": "military_hostile",
+          "label": "military_hostile",
+          "description": "The military will now begin shooting anyone they see",
+          "startFactor": 0.067,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 30,
+          "schedulingFactor": 1.5,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "military",
+          "color": "#5eff44",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_military sandbox var does not match preset ID 'military_hostile' \u2014 freq control may not apply."
+          ],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "military_UH1H_attack_all",
+              "factor": 0.2145,
+              "color": "#ff4747",
+              "label": "Military Uh1H Attack All",
+              "note": "UH-1H strafing everything it sees"
+            },
+            {
+              "id": "military_kiowa_attack_all",
+              "factor": 0.233,
+              "color": "#dd1010",
+              "label": "Military Kiowa Attack All",
+              "note": "Kiowa attacking everything"
+            }
+          ],
+          "progressionIsRandom": false
+        }
+      ]
+    },
+    {
+      "id": "drones",
+      "label": "DRONES",
+      "color": "#40e8e0",
+      "presets": [
+        {
+          "id": "drones",
+          "label": "drones",
+          "description": "Keep tabs on people without helicopters, each successive spotting of the player will add heat to the system",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 30,
+          "schedulingFactor": 1.5,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#5eff44",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "drone_RQ2Pioneer_flyover",
+              "factor": 0.0,
+              "color": "#5eff44",
+              "label": "Drone Rq2Pioneer Flyover",
+              "note": ""
+            },
+            {
+              "id": "drone_RQ2Pioneer_loiter",
+              "factor": 0.007,
+              "color": "#2030a0",
+              "label": "Drone Rq2Pioneer Loiter",
+              "note": ""
+            }
+          ],
+          "progressionIsRandom": false
+        },
+        {
+          "id": "drone_RQ2Pioneer_flyover",
+          "label": "drone_RQ2Pioneer_flyover",
+          "description": "",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 1,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#40e8e0",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "drone_RQ2Pioneer_loiter",
+          "label": "drone_RQ2Pioneer_loiter",
+          "description": "",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 1,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#40e8e0",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        }
+      ]
+    },
+    {
+      "id": "jets",
+      "label": "JETS",
+      "color": "#8080ff",
+      "presets": [
+        {
+          "id": "jets",
+          "label": "jets",
+          "description": "Jets get progressively more aggressive as the military falters",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 30,
+          "schedulingFactor": 1.5,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "jet",
+          "color": "#5eff44",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_jet sandbox var does not match preset ID 'jets' \u2014 freq control may not apply."
+          ],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "jet_pass",
+              "factor": 0.0,
+              "color": "#5eff44",
+              "label": "Jet Pass",
+              "note": "Passing jet, mostly stirs up activity"
+            },
+            {
+              "id": "jet_bombing_cluster",
+              "factor": 0.0072,
+              "color": "#49ba62",
+              "label": "Jet Bombing Cluster",
+              "note": "The player has been warned to flee, up to them now"
+            },
+            {
+              "id": "jet_bombing_napalm",
+              "factor": 0.0073,
+              "color": "#347581",
+              "label": "Jet Bombing Napalm",
+              "note": ""
+            },
+            {
+              "id": "jet_pass_louder",
+              "factor": 0.071,
+              "color": "#2030a0",
+              "label": "Jet Pass Louder",
+              "note": "Passing jet, but louder to kick up activity along with the bombing"
+            }
+          ],
+          "progressionIsRandom": false
+        },
+        {
+          "id": "jet_pass",
+          "label": "jet_pass",
+          "description": "Passing jet, mostly stirs up activity",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 5,
+          "schedulingFactor": 4.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "jet",
+          "color": "#8080ff",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_jet sandbox var does not match preset ID 'jet_pass' \u2014 freq control may not apply."
+          ],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "jet_pass_louder",
+          "label": "jet_pass_louder",
+          "description": "Passing jet, but louder to kick up activity along with the bombing",
+          "startFactor": 0.0,
+          "cutoffFactor": 0.34,
+          "spawnWeight": 30,
+          "schedulingFactor": 4.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "jet",
+          "color": "#8080ff",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_jet sandbox var does not match preset ID 'jet_pass_louder' \u2014 freq control may not apply."
+          ],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        }
+      ]
+    },
+    {
+      "id": "early",
+      "label": "EARLY GAME (CIVILIAN)",
+      "color": "#e0c020",
+      "presets": [
+        {
+          "id": "news_Bell206",
+          "label": "news_Bell206",
+          "description": "News here to emulate the vanilla helicopter",
+          "startFactor": 0.067,
+          "cutoffFactor": 0.22,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "news_chopper",
+          "color": "#ffd833",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_news_chopper sandbox var does not match preset ID 'news_Bell206' \u2014 freq control may not apply.",
+            "presetRandomSelection has only one entry \u2014 always resolves to 'news_Bell206_hover'."
+          ],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "news_Bell206_hover",
+              "weight": 1,
+              "color": "#ffd833",
+              "label": "News Bell206 Hover",
+              "note": "Because they're LIVE."
+            }
+          ],
+          "progressionIsRandom": true
+        },
+        {
+          "id": "police",
+          "label": "police",
+          "description": "KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse",
+          "startFactor": 0.067,
+          "cutoffFactor": 0.22,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "police",
+          "color": "#4747ff",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "police_Bell206_emergency",
+              "weight": 3,
+              "color": "#4747ff",
+              "label": "Police Bell206 Emergency",
+              "note": ""
+            },
+            {
+              "id": "police_Bell206_hovering",
+              "weight": 2,
+              "color": "#4545cf",
+              "label": "Police Bell206 Hovering",
+              "note": ""
+            },
+            {
+              "id": "police_Bell206_firing",
+              "weight": 2,
+              "color": "#43439f",
+              "label": "Police Bell206 Firing",
+              "note": ""
+            },
+            {
+              "id": "police_Bell206_fleeing",
+              "weight": 2,
+              "color": "#41416f",
+              "label": "Police Bell206 Fleeing",
+              "note": ""
+            },
+            {
+              "id": "police_Bell206_fleeing",
+              "weight": 2,
+              "color": "#404040",
+              "label": "Police Bell206 Fleeing",
+              "note": ""
+            }
+          ],
+          "progressionIsRandom": true
+        }
+      ]
+    },
+    {
+      "id": "survivors",
+      "label": "SURVIVORS",
+      "color": "#a8a8a8",
+      "presets": [
+        {
+          "id": "survivors",
+          "label": "survivors",
+          "description": "Early apocalypse survivors after civilization collapses",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 5,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "survivor_heli",
+          "color": "#cfcfcf",
+          "source": "EHE_presets.lua",
+          "notes": [
+            "Frequency_survivor_heli sandbox var does not match preset ID 'survivors' \u2014 freq control may not apply."
+          ],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "survivors_Bell206_N720HP",
+              "weight": 1,
+              "color": "#cfcfcf",
+              "label": "Survivors Bell206 N720Hp",
+              "note": "Cops from Tennessee"
+            },
+            {
+              "id": "survivors_Bell206_N177TV",
+              "weight": 1,
+              "color": "#b7b7b7",
+              "label": "Survivors Bell206 N177Tv",
+              "note": "Fleeing reporters"
+            },
+            {
+              "id": "survivors_Bell206_N95SP",
+              "weight": 1,
+              "color": "#9f9f9f",
+              "label": "Survivors Bell206 N95Sp",
+              "note": "Cops from Indiana"
+            },
+            {
+              "id": "survivors_Cessna172",
+              "weight": 1,
+              "color": "#5eff44",
+              "label": "Survivors Cessna172",
+              "note": "Taking off from nearby small airfields to ditch traffic"
+            },
+            {
+              "id": "survivors_soldiers_UH1H",
+              "weight": 1,
+              "color": "#6f6f6f",
+              "label": "Survivors Soldiers Uh1H",
+              "note": "Friendly now ex-soldiers trying to find safety, contrast to the deserters"
+            },
+            {
+              "id": "survivors_Bell206_N120LH",
+              "weight": 1,
+              "color": "#575757",
+              "label": "Survivors Bell206 N120Lh",
+              "note": "Richlords fleeing"
+            },
+            {
+              "id": "survivors_Bell206_N5740A",
+              "weight": 1,
+              "color": "#404040",
+              "label": "Survivors Bell206 N5740A",
+              "note": "REPEAT?"
+            }
+          ],
+          "progressionIsRandom": true
+        },
+        {
+          "id": "survivors_Bell206_N720HP",
+          "label": "survivors_Bell206_N720HP",
+          "description": "Cops from Tennessee",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#a8a8a8",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "survivors_Bell206_N95SP",
+          "label": "survivors_Bell206_N95SP",
+          "description": "Cops from Indiana",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#a8a8a8",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "survivors_Bell206_N177TV",
+          "label": "survivors_Bell206_N177TV",
+          "description": "Fleeing reporters",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#a8a8a8",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "survivors_Bell206_N5740A",
+          "label": "survivors_Bell206_N5740A",
+          "description": "REPEAT?",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#a8a8a8",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "survivors_Bell206_N120LH",
+          "label": "survivors_Bell206_N120LH",
+          "description": "Richlords fleeing",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#a8a8a8",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "survivors_soldiers_UH1H",
+          "label": "survivors_soldiers_UH1H",
+          "description": "Friendly now ex-soldiers trying to find safety, contrast to the deserters",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#a8a8a8",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "survivors_Cessna172",
+          "label": "survivors_Cessna172",
+          "description": "Taking off from nearby small airfields to ditch traffic",
+          "startFactor": 0.48,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 3,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#5eff44",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": true,
+          "progression": null,
+          "progressionIsRandom": false
+        }
+      ]
+    },
+    {
+      "id": "late",
+      "label": "LATE GAME",
+      "color": "#e08030",
+      "presets": [
+        {
+          "id": "deserters",
+          "label": "deserters",
+          "description": "Former soldiers turned profiteers. Logically should only be using a single helicopter.",
+          "startFactor": 0.8,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": "deserters",
+          "color": "#ff7a44",
+          "source": "EHE_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "deserters_UH1H_friendly",
+              "weight": 3,
+              "color": "#ff7a44",
+              "label": "Deserters Uh1H Friendly",
+              "note": "Basic flyover pulling zombies around"
+            },
+            {
+              "id": "deserters_UH1H_hostile",
+              "weight": 2,
+              "color": "#cf6b43",
+              "label": "Deserters Uh1H Hostile",
+              "note": ""
+            },
+            {
+              "id": "deserters_UH1H_raidingparty",
+              "weight": 3,
+              "color": "#9f5d42",
+              "label": "Deserters Uh1H Raidingparty",
+              "note": "Specifically targeting the player and dropping off a landing party"
+            },
+            {
+              "id": "deserters_UH1H_scoutingparty",
+              "weight": 3,
+              "color": "#6f4e41",
+              "label": "Deserters Uh1H Scoutingparty",
+              "note": "Looking around and dropping off people, not strictly hostile"
+            },
+            {
+              "id": "deserters_UH1H_diversion",
+              "weight": 4,
+              "color": "#404040",
+              "label": "Deserters Uh1H Diversion",
+              "note": "pulling around zombies around far more dramatically and taking potshots"
+            }
+          ],
+          "progressionIsRandom": true
+        }
+      ]
+    },
+    {
+      "id": "swh",
+      "label": "SUPER WEIRD HELIS",
+      "color": "#c060e0",
+      "presets": [
+        {
+          "id": "Spiffocopter",
+          "label": "Spiffocopter",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 1,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "Spiffocopter_inviteOnly",
+              "factor": 0.0,
+              "color": "#f435c6",
+              "label": "Spiffocopter Inviteonly",
+              "note": ""
+            },
+            {
+              "id": "Spiffocopter_partyTime",
+              "factor": 0.05,
+              "color": "#2030a0",
+              "label": "Spiffocopter Partytime",
+              "note": ""
+            }
+          ],
+          "progressionIsRandom": false
+        },
+        {
+          "id": "UFO",
+          "label": "UFO",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 2,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "UFOTourists",
+              "weight": 4,
+              "color": "#f435c6",
+              "label": "Ufotourists",
+              "note": ""
+            },
+            {
+              "id": "UFORednecks",
+              "weight": 1,
+              "color": "#b83899",
+              "label": "Uforednecks",
+              "note": ""
+            },
+            {
+              "id": "UFOFratBoys",
+              "weight": 1,
+              "color": "#7c3c6c",
+              "label": "Ufofratboys",
+              "note": ""
+            },
+            {
+              "id": "UFO_stealCow",
+              "weight": 1,
+              "color": "#404040",
+              "label": "Ufo Stealcow",
+              "note": ""
+            }
+          ],
+          "progressionIsRandom": true,
+          "flightHours": [
+            20,
+            27
+          ]
+        },
+        {
+          "id": "IRS",
+          "label": "IRS",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 4,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "IRS_Wave1",
+              "factor": 0.0,
+              "color": "#f435c6",
+              "label": "Irs Wave1",
+              "note": ""
+            },
+            {
+              "id": "IRS_Wave2",
+              "factor": 0.2,
+              "color": "#8a32b3",
+              "label": "Irs Wave2",
+              "note": ""
+            },
+            {
+              "id": "IRS_Wave3",
+              "factor": 0.5,
+              "color": "#2030a0",
+              "label": "Irs Wave3",
+              "note": ""
+            }
+          ],
+          "progressionIsRandom": false
+        },
+        {
+          "id": "TISCreamery",
+          "label": "TISCreamery",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 2,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": [
+            {
+              "id": "TISCreamery_Licks",
+              "weight": 2,
+              "color": "#f435c6",
+              "label": "Tiscreamery Licks",
+              "note": ""
+            },
+            {
+              "id": "TISCreamery_Socks",
+              "weight": 1,
+              "color": "#404040",
+              "label": "Tiscreamery Socks",
+              "note": ""
+            }
+          ],
+          "progressionIsRandom": true
+        },
+        {
+          "id": "Helikopter",
+          "label": "Helikopter",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 1,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "SandyClaws",
+          "label": "SandyClaws",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 3,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "AttackOfTheStrippers",
+          "label": "AttackOfTheStrippers",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 2,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": null,
+          "progressionIsRandom": false
+        },
+        {
+          "id": "BuffCorrell",
+          "label": "BuffCorrell",
+          "description": "",
+          "startFactor": 0.044,
+          "cutoffFactor": 1.0,
+          "spawnWeight": 2,
+          "schedulingFactor": 1.0,
+          "ignoreContinueScheduling": false,
+          "isOneTime": false,
+          "freqSandboxKey": null,
+          "color": "#f435c6",
+          "source": "SWH_presets.lua",
+          "notes": [],
+          "bugNotes": [],
+          "isSub": false,
+          "progression": null,
+          "progressionIsRandom": false
+        }
+      ]
+    }
+  ],
+  "sandboxFreqVars": [
+    {
+      "key": "military",
+      "label": "Military",
+      "affectsIDs": [
+        "military_nonhostile",
+        "military_hostile"
+      ],
+      "hasMatch": false
+    },
+    {
+      "key": "police",
+      "label": "Police",
+      "affectsIDs": [
+        "police"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "news_chopper",
+      "label": "News Chopper",
+      "affectsIDs": [
+        "news_Bell206"
+      ],
+      "hasMatch": false
+    },
+    {
+      "key": "jet",
+      "label": "Jets",
+      "affectsIDs": [
+        "jets",
+        "jet_pass",
+        "jet_pass_louder"
+      ],
+      "hasMatch": false
+    },
+    {
+      "key": "Resupply_drop",
+      "label": "Resupply Drop",
+      "affectsIDs": [],
+      "hasMatch": false
+    },
+    {
+      "key": "survivor_heli",
+      "label": "Survivor Heli",
+      "affectsIDs": [
+        "survivors"
+      ],
+      "hasMatch": false
+    },
+    {
+      "key": "deserters",
+      "label": "Deserters",
+      "affectsIDs": [
+        "deserters"
+      ],
+      "hasMatch": true
+    }
+  ],
+  "issues": [
+    {
+      "type": "bug",
+      "msg": "military_hostile: duplicate presetProgression key \u2014 [military_UH1H_attack_all]=0.2145 silently overwritten by =0.2330"
+    },
+    {
+      "type": "info",
+      "msg": "news_Bell206: presetRandomSelection has one entry \u2014 always resolves to news_Bell206_hover"
+    },
+    {
+      "type": "warn",
+      "msg": "military_nonhostile: Frequency_military sandbox var does not match preset ID 'military_nonhostile' \u2014 freq control may not apply."
+    },
+    {
+      "type": "warn",
+      "msg": "military_hostile: Frequency_military sandbox var does not match preset ID 'military_hostile' \u2014 freq control may not apply."
+    },
+    {
+      "type": "warn",
+      "msg": "jets: Frequency_jet sandbox var does not match preset ID 'jets' \u2014 freq control may not apply."
+    },
+    {
+      "type": "warn",
+      "msg": "jet_pass: Frequency_jet sandbox var does not match preset ID 'jet_pass' \u2014 freq control may not apply."
+    },
+    {
+      "type": "warn",
+      "msg": "jet_pass_louder: Frequency_jet sandbox var does not match preset ID 'jet_pass_louder' \u2014 freq control may not apply."
+    },
+    {
+      "type": "warn",
+      "msg": "news_Bell206: Frequency_news_chopper sandbox var does not match preset ID 'news_Bell206' \u2014 freq control may not apply."
+    },
+    {
+      "type": "warn",
+      "msg": "survivors: Frequency_survivor_heli sandbox var does not match preset ID 'survivors' \u2014 freq control may not apply."
+    }
+  ]
+};
+
+// ── FREQ ENUM ─────────────────────────────────────────────────────────
+const FREQ_ENUM = [
+  {val:1,label:'Never',    fc:0 },
+  {val:2,label:'Rarely',   fc:1 },
+  {val:3,label:'Sometimes',fc:2 },
+  {val:4,label:'Often',    fc:3 },
+  {val:5,label:'Very Often',fc:4},
+  {val:6,label:'Insane',   fc:50},
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────
+const S = {
+  dur:90, startDay:0,
+  cont:true, airRaid:true,
+  freq:{}, density:true, prog:true, contBar:false, subs:true,
+};
+EHE_DATA.sandboxFreqVars.forEach(v=>{ S.freq[v.key]=3; });
+
+// ── MATH ──────────────────────────────────────────────────────────────
+function computeDays(sf,cf,dur,sd0){
+  let sd=Math.floor(sf*dur+.5); sd=Math.max(sd,sd0);
+  let cod=Math.floor(cf*(sd+dur)+.5);
+  return {sd,cod};
+}
+function freqCalc(key,def=2){
+  if(!key)return def;
+  const v=S.freq[key]??3;
+  if(v===1)return 0;
+  const fc=v-1; return fc===5?50:fc;
+}
+function relProb(preset,day){
+  const {sd,cod}=computeDays(preset.startFactor,preset.cutoffFactor,S.dur,S.startDay);
+  if(day<sd||day>cod)return 0;
+  const freq=freqCalc(preset.freqSandboxKey,2);
+  if(freq===0)return 0;
+  const sf=preset.schedulingFactor??1;
+  const w=(preset.spawnWeight??10)*freq;
+  const denom=(10-freq)*2500+1000*(day/S.dur);
+  const num=Math.floor(freq*sf+.5);
+  return w*num/Math.max(denom,1);
+}
+function maxProb(preset){
+  const {sd,cod}=computeDays(preset.startFactor,preset.cutoffFactor,S.dur,S.startDay);
+  if(sd>=cod)return .0001;
+  let mx=0;
+  for(let i=0;i<=20;i++){
+    const d=sd+(cod-sd)*(i/20);
+    mx=Math.max(mx,relProb(preset,d));
+  }
+  return mx||.0001;
+}
+function totalDays(){
+  let mx=S.dur;
+  for(const g of EHE_DATA.groups)for(const p of g.presets){
+    const {cod}=computeDays(p.startFactor,p.cutoffFactor,S.dur,S.startDay);
+    mx=Math.max(mx,cod);
+  }
+  return mx;
+}
+function isActive(p){
+  if(p.id==='air_raid'&&!S.airRaid)return false;
+  return freqCalc(p.freqSandboxKey,2)>0;
+}
+
+// ── TOOLTIP ───────────────────────────────────────────────────────────
+const TT=document.getElementById('tooltip');
+function showTT(html,x,y,color){
+  TT.innerHTML=html; TT.style.display='block';
+  TT.style.borderLeftColor=color||'var(--accent)';
+  let tx=x+16,ty=y-10;
+  const r=TT.getBoundingClientRect();
+  if(tx+r.width>window.innerWidth-10)tx=x-r.width-10;
+  if(ty+r.height>window.innerHeight-10)ty=window.innerHeight-r.height-10;
+  TT.style.left=tx+'px'; TT.style.top=ty+'px';
+}
+function hideTT(){TT.style.display='none';}
+
+function ttHtml(preset,groupColor,seg){
+  const {sd,cod}=computeDays(preset.startFactor,preset.cutoffFactor,S.dur,S.startDay);
+  const freq=freqCalc(preset.freqSandboxKey,2);
+  const freqLbl=FREQ_ENUM.find(f=>f.fc===freq)?.label??`calc:${freq}`;
+  let h=`<div class="tt-id">${seg?'↳ '+seg.id:preset.id}</div>`;
+  if(preset.description)h+=`<div style="color:var(--text-dim);font-size:11px;margin-bottom:5px;">${preset.description}</div>`;
+  if(seg){
+    const segDay=(seg.factor*cod).toFixed(1);
+    h+=`<div class="tt-r"><span class="tt-k">Stage</span><span class="tt-v">${seg.label}</span></div>`;
+    h+=`<div class="tt-r"><span class="tt-k">Active from</span><span class="tt-v">day ${segDay} (${(seg.factor*100).toFixed(2)}%)</span></div>`;
+    if(seg.note)h+=`<div class="tt-n">ℹ ${seg.note}</div>`;
+    h+='<hr class="tt-hr">';
+  }
+  h+=`<div class="tt-r"><span class="tt-k">Start Day</span><span class="tt-v">day ${sd} (×${preset.startFactor})</span></div>`;
+  h+=`<div class="tt-r"><span class="tt-k">Cutoff Day</span><span class="tt-v">day ${cod} (×${preset.cutoffFactor})</span></div>`;
+  h+=`<div class="tt-r"><span class="tt-k">Window</span><span class="tt-v">${cod-sd}d</span></div>`;
+  h+=`<div class="tt-r"><span class="tt-k">SpawnWeight</span><span class="tt-v">${preset.spawnWeight}×freq</span></div>`;
+  h+=`<div class="tt-r"><span class="tt-k">SchedFactor</span><span class="tt-v">${preset.schedulingFactor}</span></div>`;
+  const sv=EHE_DATA.sandboxFreqVars.find(v=>v.key===preset.freqSandboxKey);
+  if(preset.freqSandboxKey){
+    const ok=sv&&sv.hasMatch?'✓':'⚠';
+    h+=`<div class="tt-r"><span class="tt-k">Freq var</span><span class="tt-v">Frequency_${preset.freqSandboxKey} ${ok} (${freqLbl})</span></div>`;
+  } else {
+    h+=`<div class="tt-r"><span class="tt-k">Freq var</span><span class="tt-v" style="color:var(--text-muted)">none — default freq</span></div>`;
+  }
+  const fh=preset.flightHours;
+  h+=`<div class="tt-r"><span class="tt-k">Flight hrs</span><span class="tt-v">${fh?fh[0]+':00–'+fh[1]+':00':'05:00–22:00 (default)'}</span></div>`;
+  if(preset.source)h+=`<div class="tt-r"><span class="tt-k">Source</span><span class="tt-v">${preset.source}</span></div>`;
+  if(preset.ignoreContinueScheduling)h+=`<div class="tt-w">⚠ ignoreContinueScheduling — will NOT continue past cutoff.</div>`;
+  if(preset.isOneTime)h+=`<div class="tt-w">⚠ One-time event (schedulingFactor=${preset.schedulingFactor})</div>`;
+  if(preset.progressionIsRandom&&preset.progression)h+=`<div class="tt-n">ℹ Random selection from ${preset.progression.length} variants.</div>`;
+  for(const n of (preset.bugNotes||[]))h+=`<div class="tt-w">🐛 ${n}</div>`;
+  for(const n of (preset.notes||[]))h+=`<div class="tt-n">📎 ${n}</div>`;
+  return h;
+}
+
+// ── RENDER ────────────────────────────────────────────────────────────
+function drawAxis(td){
+  const cv=document.getElementById('axis-canvas');
+  const p=cv.parentElement;
+  cv.width=p.offsetWidth; cv.height=p.offsetHeight;
+  const ctx=cv.getContext('2d');
+  const W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  const ppd=W/td;
+  let iv=1;
+  for(const c of [1,2,5,10,15,20,25,30,50,60,90,100,180,365]){
+    if(c*ppd>=45){iv=c;break;}
+  }
+  // scheduler end line
+  const sx=(S.dur/td)*W;
+  ctx.fillStyle='rgba(79,163,224,.45)';
+  ctx.fillRect(sx-1,0,2,H);
+  ctx.font='10px "Share Tech Mono"';
+  ctx.fillStyle='rgba(79,163,224,.8)';
+  ctx.textAlign='right';
+  ctx.fillText(`d${S.dur}`,sx-3,12);
+  ctx.textAlign='center';
+  for(let d=0;d<=td;d+=iv){
+    const x=(d/td)*W;
+    const major=(d%(iv*5)===0);
+    ctx.fillStyle=major?'#5a6080':'#3a3e55';
+    ctx.fillRect(x,H-(major?10:5),1,major?10:5);
+    if(major||ppd*iv>30){
+      ctx.fillStyle='#6a7090';
+      ctx.fillText(`d${d}`,x,H-12);
+    }
+  }
+}
+
+function bgStyle(td){
+  const main=document.getElementById('main');
+  const lw=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--label-w'))||230;
+  const pw=Math.max(main.offsetWidth-lw-2,100);
+  const ppd=pw/td;
+  const ip=Math.max(ppd*10,15);
+  return `repeating-linear-gradient(90deg,transparent 0px,transparent ${ip-1}px,rgba(255,255,255,.025) ${ip-1}px,rgba(255,255,255,.025) ${ip}px)`;
+}
+
+function schedLine(td){
+  const d=document.createElement('div');
+  d.style.cssText=`position:absolute;top:0;left:${S.dur/td*100}%;width:2px;height:100%;background:rgba(79,163,224,.2);pointer-events:none;`;
+  return d;
+}
+
+function buildBar(preset,group,td,track){
+  const {sd,cod}=computeDays(preset.startFactor,preset.cutoffFactor,S.dur,S.startDay);
+  const active=isActive(preset);
+  if(cod<=sd)return;
+  const lp=(sd/td)*100, wp=((cod-sd)/td)*100;
+  const bar=document.createElement('div');
+  bar.className='eb'+(active?'':' off');
+  bar.style.left=lp+'%';
+  bar.style.width=Math.max(wp,.1)+'%';
+  bar.style.background=group.color+'55';
+  bar.style.border=`1px solid ${group.color}88`;
+
+  if(S.prog&&preset.progression&&!preset.progressionIsRandom){
+    const segs=preset.progression;
+    segs.forEach((seg,i)=>{
+      const nextF=i<segs.length-1?segs[i+1].factor:1;
+      const segSD=seg.factor*cod, segED=nextF*cod;
+      const dur2=cod-sd;
+      const sl=dur2>0?((segSD-sd)/dur2)*100:0;
+      const sw=dur2>0?((segED-segSD)/dur2)*100:.2;
+      const el=document.createElement('div');
+      el.className='ps';
+      el.style.cssText=`left:${sl}%;width:${Math.max(sw,.15)}%;background:${seg.color};`;
+      el.addEventListener('mousemove',e=>{e.stopPropagation();showTT(ttHtml(preset,group.color,seg),e.clientX,e.clientY,seg.color);});
+      el.addEventListener('mouseleave',hideTT);
+      bar.appendChild(el);
+    });
+  } else if(S.prog&&preset.progression&&preset.progressionIsRandom){
+    const segs=preset.progression;
+    const n=segs.length;
+    segs.forEach((seg,i)=>{
+      const el=document.createElement('div');
+      el.className='ps';
+      el.style.cssText=`left:${(i/n)*100}%;width:${100/n}%;background:${seg.color};opacity:.9;`;
+      el.addEventListener('mousemove',e=>{e.stopPropagation();showTT(ttHtml(preset,group.color,seg),e.clientX,e.clientY,seg.color);});
+      el.addEventListener('mouseleave',hideTT);
+      bar.appendChild(el);
+    });
+  } else {
+    bar.style.background=group.color+'aa';
+  }
+
+  // density canvas
+  if(S.density&&active){
+    const cv=document.createElement('canvas');
+    cv.width=200;cv.height=1;
+    const ctx=cv.getContext('2d');
+    const mx=maxProb(preset);
+    for(let i=0;i<200;i++){
+      const d=sd+(cod-sd)*(i/200);
+      const norm=Math.min(relProb(preset,d)/mx,1);
+      ctx.fillStyle=`rgba(255,255,255,${norm})`;
+      ctx.fillRect(i,0,1,1);
+    }
+    cv.style.cssText='position:absolute;top:0;left:0;right:0;bottom:0;width:100%;height:100%;image-rendering:pixelated;opacity:.35;mix-blend-mode:overlay;pointer-events:none;';
+    bar.appendChild(cv);
+  }
+
+  // continue zone
+  if(S.contBar&&S.cont&&!preset.ignoreContinueScheduling&&active){
+    const cz=document.createElement('div');
+    const cStart=cod/td*100;
+    const cW=(S.dur*0.4/td)*100;
+    cz.style.cssText=`position:absolute;top:5px;height:calc(100% - 10px);left:${cStart}%;width:${cW}%;border-radius:0 3px 3px 0;border:1px dashed ${group.color};opacity:.18;pointer-events:none;`;
+    track.appendChild(cz);
+  }
+
+  bar.addEventListener('mousemove',e=>{
+    if(e.target===bar)showTT(ttHtml(preset,group.color,null),e.clientX,e.clientY,group.color);
+  });
+  bar.addEventListener('mouseleave',hideTT);
+  track.appendChild(bar);
+}
+
+function render(){
+  const td=totalDays();
+  const bg=bgStyle(td);
+
+  document.getElementById('hdr-dur').textContent=`SchedulerDuration: ${S.dur}d`;
+  document.getElementById('hdr-total').textContent=`Timeline: ${td}d`;
+
+  const body=document.getElementById('tl-body');
+  body.innerHTML='';
+  drawAxis(td);
+
+  for(const group of EHE_DATA.groups){
+    const gh=document.createElement('div');
+    gh.className='gh';
+    gh.dataset.gid=group.id;
+
+    const ghl=document.createElement('div');
+    ghl.className='ghl';
+    ghl.style.color=group.color;
+    const gt=document.createElement('span');
+    gt.className='gt'; gt.textContent='▼';
+    ghl.appendChild(gt);
+    ghl.appendChild(document.createTextNode(' '+group.label));
+    gh.appendChild(ghl);
+
+    const ght=document.createElement('div');
+    ght.className='ght';
+    ght.style.background=bg;
+
+    // Summary bar
+    const tops=group.presets.filter(p=>!p.isSub);
+    if(tops.length){
+      const mns=Math.min(...tops.map(p=>computeDays(p.startFactor,p.cutoffFactor,S.dur,S.startDay).sd));
+      const mxc=Math.max(...tops.map(p=>computeDays(p.startFactor,p.cutoffFactor,S.dur,S.startDay).cod));
+      const sb=document.createElement('div');
+      sb.style.cssText=`position:absolute;top:6px;height:16px;border-radius:2px;opacity:.35;background:${group.color};left:${mns/td*100}%;width:${(mxc-mns)/td*100}%;`;
+      ght.appendChild(sb);
+    }
+    ght.appendChild(schedLine(td));
+    gh.appendChild(ght);
+    body.appendChild(gh);
+
+    const rc=document.createElement('div');
+    rc.dataset.grows=group.id;
+    gh.addEventListener('click',()=>{
+      const c=gh.classList.toggle('collapsed');
+      rc.style.display=c?'none':'';
+    });
+
+    for(const preset of group.presets){
+      if(preset.isSub&&!S.subs)continue;
+      const row=document.createElement('div');
+      row.className='preset-row'+(preset.isSub?' sub':'');
+
+      const rl=document.createElement('div');
+      rl.className='rl';
+      const rid=document.createElement('span');
+      rid.className='rid'; rid.title=preset.id; rid.textContent=preset.id;
+      rl.appendChild(rid);
+      if(preset.source&&preset.source!==EHE_DATA.groups[0]?.presets[0]?.source){
+        const st=document.createElement('span');
+        st.className='src-tag'; st.textContent=preset.source.replace('.lua','');
+        rl.appendChild(st);
+      }
+      if(preset.isOneTime){
+        const b=document.createElement('span');b.className='rbadge rs';b.textContent='1×';rl.appendChild(b);
+      }
+      if(preset.ignoreContinueScheduling){
+        const b=document.createElement('span');b.className='rbadge rw';b.textContent='no-cont';rl.appendChild(b);
+      }
+      const sv=EHE_DATA.sandboxFreqVars.find(v=>v.key===preset.freqSandboxKey);
+      if(sv&&!sv.hasMatch){
+        const b=document.createElement('span');b.className='rbadge rw';b.textContent='⚠freq';rl.appendChild(b);
+      }
+      row.appendChild(rl);
+
+      const rt=document.createElement('div');
+      rt.className='rt';
+      rt.style.background=bg;
+      rt.appendChild(schedLine(td));
+      buildBar(preset,group,td,rt);
+      row.appendChild(rt);
+      rc.appendChild(row);
+    }
+    body.appendChild(rc);
+  }
+}
+
+// ── CONTROLS ──────────────────────────────────────────────────────────
+function buildFreqCtrls(){
+  const el=document.getElementById('freq-ctrls');
+  el.innerHTML=EHE_DATA.sandboxFreqVars.map(sv=>{
+    const groupColor=EHE_DATA.groups.find(g=>sv.affectsIDs.some(id=>g.presets.some(p=>p.id===id)))?.color||'#808080';
+    const warnTag=!sv.hasMatch?`<span class="fwarn">⚠ ID mismatch</span>`:'';
+    const noPreset=sv.affectsIDs.length===0?`<span class="fwarn">⚠ no preset</span>`:'';
+    return `<div class="frow">
+      <div class="fdot" style="background:${groupColor}"></div>
+      <span class="flbl" title="${sv.affectsIDs.join(', ')}">${sv.label}</span>
+      ${warnTag}${noPreset}
+      <select id="f-${sv.key}" data-key="${sv.key}">
+        ${FREQ_ENUM.map(f=>`<option value="${f.val}"${f.val===3?' selected':''}>${f.label}</option>`).join('')}
+      </select></div>`;
+  }).join('');
+  el.querySelectorAll('select').forEach(s=>{
+    s.addEventListener('change',()=>{ S.freq[s.dataset.key]=parseInt(s.value); render(); });
+  });
+}
+
+function buildLegend(){
+  const el=document.getElementById('legend');
+  el.innerHTML=EHE_DATA.groups.map(g=>`
+    <div class="li">
+      <div class="ls" style="background:${g.color}aa;border:1px solid ${g.color}88;"></div>
+      <span>${g.label}</span>
+    </div>`).join('');
+}
+
+function buildIssues(){
+  const el=document.getElementById('issues');
+  const issues=EHE_DATA.issues;
+  const warns=issues.filter(i=>i.type==='warn').length;
+  const bugs=issues.filter(i=>i.type==='bug').length;
+  const hdr=document.getElementById('hdr-issues');
+  if(warns+bugs>0){
+    hdr.style.display='';
+    hdr.textContent=`${warns} ⚠  ${bugs} 🐛`;
+  }
+  el.innerHTML=`
+    <span style="font-family:var(--sans);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);">QA Notes</span>
+    ${issues.map(i=>`<span class="it" style="color:${i.type==='bug'?'var(--danger)':i.type==='warn'?'var(--warn)':'var(--text-dim)'};font-size:10px;font-family:var(--mono);">${i.msg}</span>`).join('')}
+  `;
+}
+
+function wire(id,cb){const el=document.getElementById(id);if(el)el.addEventListener('input',cb);}
+function wireChk(id,cb){const el=document.getElementById(id);if(el)el.addEventListener('change',cb);}
+
+wire('c-dur', e=>{ S.dur=parseInt(e.target.value); document.getElementById('v-dur').textContent=S.dur+'d'; render(); });
+wire('c-sd',  e=>{ S.startDay=parseInt(e.target.value); document.getElementById('v-sd').textContent=S.startDay+'d'; render(); });
+wireChk('c-cont', e=>{ S.cont=e.target.checked; render(); });
+wireChk('c-air',  e=>{ S.airRaid=e.target.checked; render(); });
+wireChk('o-dens', e=>{ S.density=e.target.checked; render(); });
+wireChk('o-prog', e=>{ S.prog=e.target.checked; render(); });
+wireChk('o-cont', e=>{ S.contBar=e.target.checked; render(); });
+wireChk('o-sub',  e=>{ S.subs=e.target.checked; render(); });
+
+let rt; window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(render,120); });
+
+buildFreqCtrls();
+buildLegend();
+buildIssues();
+render();
+</script>
+</body>
+</html>

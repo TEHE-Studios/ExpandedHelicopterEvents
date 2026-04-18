@@ -1,0 +1,75 @@
+name: EHE QA
+
+on:
+  push:
+    branches: [main, dev]
+    paths:
+      - "Contents/mods/**/*.lua"
+      - "Contents/mods/**/*.txt"
+      - "Contents/mods/**/*.xml"
+      - "tools/generate.py"
+      - "tools/validate.py"
+  pull_request:
+    paths:
+      - "Contents/mods/**/*.lua"
+      - "Contents/mods/**/*.txt"
+      - "Contents/mods/**/*.xml"
+      - "tools/generate.py"
+      - "tools/validate.py"
+
+jobs:
+  qa:
+    name: Validate & Generate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # ── Validate ────────────────────────────────────────────────────
+      - name: Validate preset files
+        run: cd tools && python validate.py
+
+      # ── Generate ────────────────────────────────────────────────────
+      # Runs even if validate failed so we always get an artifact to inspect.
+      - name: Generate timeline.html
+        if: always()
+        run: cd tools && python generate.py
+
+      # ── Artifact ────────────────────────────────────────────────────
+      - name: Upload timeline artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: timeline-${{ github.sha }}
+          path: tools/timeline.html
+          retention-days: 30
+
+      # ── Auto-commit on main ─────────────────────────────────────────
+      # Regenerates timeline.html and (if fixtures are stale) re-snapshots.
+      # Only fires on direct pushes to main, never on PRs.
+      - name: Commit generated files
+        if: >
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Update fixtures if new schedulable presets were added
+          cd tools
+          python validate.py --update-fixtures || true
+          cd ..
+
+          git add tools/timeline.html tools/fixtures/presets.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: regenerate timeline + fixtures [skip ci]"
+            git push
+          fi
