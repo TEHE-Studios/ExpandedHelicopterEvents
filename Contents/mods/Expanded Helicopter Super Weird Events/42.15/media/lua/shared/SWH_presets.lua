@@ -261,7 +261,7 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	eventCutOffDayFactor = 1,
 }
 
-eHelicopter_PRESETS["TISCreamery_Lick"] = {
+eHelicopter_PRESETS["TISCreamery_Licks"] = {
 	inherit = {"TISCreamery"},
 	crew = {
 		{ outfit="SWH_IceCream", spawn=100, female=0 },

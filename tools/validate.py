@@ -20,7 +20,6 @@ from pathlib import Path
 # Reuse parser + data from generate.py
 sys.path.insert(0, str(Path(__file__).parent))
 from pathlib import Path as _Path
-import json
 
 SCRIPT_DIR = _Path(__file__).parent
 
@@ -531,7 +530,7 @@ def extract_formation_preset_ids(raw):
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# CHECKS 12-15  (vehicle IDs, outfit IDs, formationIDs, snapshots)
+# CHECKS 12-14  (vehicle IDs, outfit IDs, formationIDs)
 # ═══════════════════════════════════════════════════════════════════════
 
 def check_vehicle_ids(all_presets):
@@ -668,117 +667,6 @@ def check_formation_ids(all_presets):
     return results
 
 
-# ── Snapshot fixtures ──────────────────────────────────────────────────
-
-FIXTURE_PATH = SCRIPT_DIR / "fixtures" / "presets.json"
-
-SNAPSHOT_FIELDS = [
-    "eventStartDayFactor",
-    "eventCutOffDayFactor",
-    "eventSpawnWeight",
-    "schedulingFactor",
-    "forScheduling",
-    "ignoreContinueScheduling",
-]
-
-
-def build_snapshot(all_presets):
-    """Build a fixture dict from the current parsed presets."""
-    schedulable = {pid: d for pid, d in all_presets.items()
-                   if d.get("forScheduling")}
-    fixture = {}
-    for pid in sorted(schedulable):
-        d = schedulable[pid]
-        entry = {}
-        for field in SNAPSHOT_FIELDS:
-            val = d.get(field, DEFAULTS.get(field))
-            if val is not None:
-                entry[field] = val
-        pp = d.get("presetProgression")
-        pr = d.get("presetRandomSelection")
-        if isinstance(pp, dict):
-            entry["_progressionCount"] = len(pp)
-        if isinstance(pr, (list, dict)):
-            entry["_randomSelectionCount"] = len(parse_random_selection(pr))
-        fixture[pid] = entry
-    return fixture
-
-
-def update_fixtures(all_presets):
-    """Write current preset values to the fixture file."""
-    FIXTURE_PATH.parent.mkdir(parents=True, exist_ok=True)
-    fixture = build_snapshot(all_presets)
-    FIXTURE_PATH.write_text(
-        json.dumps(fixture, indent=2) + "\n",
-        encoding="utf-8"
-    )
-    print(PASS(f"  Fixtures written: {FIXTURE_PATH.resolve()}"))
-    print(f"  {len(fixture)} schedulable presets recorded.")
-
-
-def check_snapshot_fixtures(all_presets):
-    """
-    Compare current preset values against stored fixture expectations.
-    Any field drift (changed factor, weight, etc.) is an ERROR.
-    New/removed presets are WARNINGs so they prompt a conscious --update-fixtures.
-    """
-    results = []
-
-    if not FIXTURE_PATH.exists():
-        results.append(warned(
-            "Snapshot fixtures",
-            f"No fixture file at tools/fixtures/presets.json — "
-            f"run 'python validate.py --update-fixtures' to generate it"
-        ))
-        return results
-
-    try:
-        expected = json.loads(FIXTURE_PATH.read_text(encoding="utf-8"))
-    except Exception as e:
-        results.append(errord("Snapshot fixtures", f"Could not read fixture file: {e}"))
-        return results
-
-    actual = build_snapshot(all_presets)
-
-    drifted  = []
-    new_pids = [pid for pid in actual   if pid not in expected]
-    rem_pids = [pid for pid in expected if pid not in actual]
-
-    for pid, exp_vals in expected.items():
-        if pid not in actual:
-            continue
-        act_vals = actual[pid]
-        for field, exp_val in exp_vals.items():
-            act_val = act_vals.get(field)
-            if act_val != exp_val:
-                drifted.append((pid, field, exp_val, act_val))
-
-    if drifted:
-        for pid, field, exp, act in drifted:
-            results.append(errord(
-                "Snapshot drift",
-                f"'{field}' changed: expected {exp!r} → got {act!r} "
-                "(run --update-fixtures if this change is intentional)",
-                pid
-            ))
-    else:
-        results.append(passed("Snapshot fixtures",
-            f"All {len(expected)} fixture entries match current values"))
-
-    for pid in new_pids:
-        results.append(warned(
-            "Snapshot new preset",
-            f"'{pid}' is now schedulable but not in fixtures "
-            "— run --update-fixtures to add it"
-        ))
-    for pid in rem_pids:
-        results.append(warned(
-            "Snapshot removed",
-            f"'{pid}' was in fixtures but is no longer schedulable "
-            "(deleted, renamed, or forScheduling changed?)"
-        ))
-
-    return results
 
 # ═══════════════════════════════════════════════════════════════════════
 # RUNNER
@@ -800,11 +688,10 @@ CHECKS = [
     (check_unreferenced_schedulable,    False),
     (check_vehicle_ids,                 False),
     (check_outfit_ids,                  False),
-    (check_snapshot_fixtures,           False),
 ]
 
 
-def run(preset_paths, update_fixtures_flag=False):
+def run(preset_paths):
     print(BOLD("\nEHE Preset Validator"))
     print("=" * 44)
 
@@ -834,10 +721,6 @@ def run(preset_paths, update_fixtures_flag=False):
     print(f"  Schedulable   : {len(schedulable)}")
     print(f"  Sources       : {', '.join(raw_texts.keys()) or 'none'}")
     print()
-
-    if update_fixtures_flag:
-        update_fixtures(all_presets)
-        return 0
 
     all_results = []
     for fn, needs_raw in CHECKS:
@@ -899,10 +782,6 @@ def main():
         help="Preset Lua files to validate (relative to tools/ directory). "
              "Defaults to EHE_presets.lua and SWH_presets.lua."
     )
-    parser.add_argument(
-        "--update-fixtures", action="store_true",
-        help="Regenerate tools/fixtures/presets.json from current preset values."
-    )
     args = parser.parse_args()
 
     if args.presets:
@@ -911,7 +790,7 @@ def main():
     else:
         paths = resolve_default_paths()
 
-    sys.exit(run(paths, update_fixtures_flag=args.update_fixtures))
+    sys.exit(run(paths))
 
 
 if __name__ == "__main__":

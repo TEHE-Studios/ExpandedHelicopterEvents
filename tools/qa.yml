@@ -51,25 +51,18 @@ jobs:
           retention-days: 30
 
       # ── Auto-commit on main ─────────────────────────────────────────
-      # Regenerates timeline.html and (if fixtures are stale) re-snapshots.
-      # Only fires on direct pushes to main, never on PRs.
-      - name: Commit generated files
+      # Regenerates timeline.html on direct pushes to main, never on PRs.
+      - name: Commit generated timeline
         if: >
           github.event_name == 'push' &&
           github.ref == 'refs/heads/main'
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Update fixtures if new schedulable presets were added
-          cd tools
-          python validate.py --update-fixtures || true
-          cd ..
-
-          git add tools/timeline.html tools/fixtures/presets.json
+          git add tools/timeline.html
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: regenerate timeline + fixtures [skip ci]"
+            git commit -m "chore: regenerate timeline.html [skip ci]"
             git push
           fi

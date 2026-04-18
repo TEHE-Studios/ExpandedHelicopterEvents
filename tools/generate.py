@@ -15,6 +15,7 @@ import re
 import json
 import math
 import argparse
+import sys
 import textwrap
 from pathlib import Path
 
@@ -37,22 +38,13 @@ def resolve_default_paths():
     """
     Expand DEFAULT_PRESET_GLOBS against the filesystem.
     Returns an ordered list of resolved Path objects, deduplicated.
-    Falls back to a flat layout (pre-B42 / non-standard) if nothing matches.
+    Returns an empty list if nothing matches (caller handles the error).
     """
     found = []
     for pattern in DEFAULT_PRESET_GLOBS:
         for m in sorted(SCRIPT_DIR.glob(pattern)):
             if m not in found:
                 found.append(m)
-
-    if not found:
-        # Fallback: flat layout without a mods/version sub-directory
-        fallback = [
-            SCRIPT_DIR / "../Contents/media/lua/shared/EHE_presets.lua",
-            SCRIPT_DIR / "../Contents/media/lua/shared/SWH_presets.lua",
-        ]
-        found = [p.resolve() for p in fallback if p.exists()]
-
     return found
 
 # ── GLOBAL DEFAULTS (from EHE_mainVariables.lua) ───────────────────────
@@ -66,15 +58,15 @@ DEFAULTS = {
 
 # ── SANDBOX FREQUENCY VARS ─────────────────────────────────────────────
 # Maps sandbox key → which preset IDs it actually controls.
-# hasMatch = True means preset ID == key (direct match, confirmed working)
+# hasMatch is computed at runtime — True when the key matches an actual parsed preset ID.
 SANDBOX_FREQ_VARS = [
-    {"key": "military",      "label": "Military",       "affectsIDs": ["military_nonhostile", "military_hostile"], "hasMatch": False},
-    {"key": "police",        "label": "Police",          "affectsIDs": ["police"],                                  "hasMatch": True},
-    {"key": "news_chopper",  "label": "News Chopper",    "affectsIDs": ["news_Bell206"],                            "hasMatch": False},
-    {"key": "jet",           "label": "Jets",            "affectsIDs": ["jets", "jet_pass", "jet_pass_louder"],     "hasMatch": False},
-    {"key": "Resupply_drop", "label": "Resupply Drop",   "affectsIDs": [],                                          "hasMatch": False},
-    {"key": "survivor_heli", "label": "Survivor Heli",   "affectsIDs": ["survivors"],                               "hasMatch": False},
-    {"key": "deserters",     "label": "Deserters",       "affectsIDs": ["deserters"],                               "hasMatch": True},
+    {"key": "military",      "label": "Military",       "affectsIDs": ["military_nonhostile", "military_hostile"]},
+    {"key": "police",        "label": "Police",          "affectsIDs": ["police"]},
+    {"key": "news_chopper",  "label": "News Chopper",    "affectsIDs": ["news_Bell206"]},
+    {"key": "jet",           "label": "Jets",            "affectsIDs": ["jets", "jet_pass", "jet_pass_louder"]},
+    {"key": "Resupply_drop", "label": "Resupply Drop",   "affectsIDs": []},
+    {"key": "survivor_heli", "label": "Survivor Heli",   "affectsIDs": ["survivors"]},
+    {"key": "deserters",     "label": "Deserters",       "affectsIDs": ["deserters"]},
 ]
 
 # ── GROUP DEFINITIONS ──────────────────────────────────────────────────
@@ -104,11 +96,9 @@ GROUP_META = {
     "other":     {"label": "OTHER",                "color": "#808080"},
 }
 
-# ── KNOWN ISSUES (static, from code analysis) ─────────────────────────
-STATIC_ISSUES = [
-    {"type": "bug",  "msg": "military_hostile: duplicate presetProgression key — [military_UH1H_attack_all]=0.2145 silently overwritten by =0.2330"},
-    {"type": "info", "msg": "news_Bell206: presetRandomSelection has one entry — always resolves to news_Bell206_hover"},
-]
+# Module-level store for raw source text, populated by main() before
+# build_groups() is called, so build_preset_entry() can do raw-text checks.
+_raw_source_texts = {}  # filename -> raw text
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -396,12 +386,32 @@ def build_preset_entry(pid, data, all_presets, group_color):
     if isinstance(raw_prog, dict) and raw_prog:
         items = parse_progression(raw_prog)
 
-        # Detect duplicate keys (Lua tables silently drop earlier ones)
-        # We can check by seeing if len(raw_prog) < the original item count before dedup
-        # Since we parse Lua faithfully (last write wins), we just note if factors collide
-        factors = [x["factor"] for x in items]
-        if len(factors) != len(set(factors)):
-            bug_notes.append("Duplicate factor values in presetProgression — some stages may be unreachable.")
+        # Detect duplicate keys via raw text — Lua silently drops earlier entries,
+        # so our parser only sees the last value and factor collisions are invisible.
+        # Scan the raw source text for repeated ["key"] = entries in this preset's block.
+        src = data.get("_source", "")
+        raw_src_text = _raw_source_texts.get(src, "")
+        if raw_src_text:
+            import re as _re
+            # Find this preset's presetProgression block in the raw text
+            pat = _re.compile(
+                rf'eHelicopter_PRESETS\["{_re.escape(pid)}"\].*?presetProgression\s*=\s*\{{([^}}]+)\}}',
+                _re.DOTALL
+            )
+            pm = pat.search(raw_src_text)
+            if pm:
+                block = pm.group(1)
+                keys_found = _re.findall(r'\["([^"]+)"\]\s*=', block)
+                seen_keys = {}
+                for k in keys_found:
+                    if k in seen_keys:
+                        bug_notes.append(
+                            f'Duplicate key in presetProgression: ["{k}"] '
+                            f'appears twice — earlier entry (={seen_keys[k]}) silently overwritten'
+                        )
+                    else:
+                        val_m = _re.search(rf'\["{_re.escape(k)}"\]\s*=\s*([^,\n}}]+)', block)
+                        seen_keys[k] = val_m.group(1).strip() if val_m else "?"
 
         # Assign colors to each segment
         n = len(items)
@@ -489,7 +499,12 @@ def build_groups(all_presets):
             seen_groups.append(gid)
 
     groups = []
-    issues = list(STATIC_ISSUES)
+    # Compute hasMatch dynamically: True if the sandbox key == an actual preset ID
+    all_preset_ids = set(all_presets.keys())
+    for sv in SANDBOX_FREQ_VARS:
+        sv["hasMatch"] = sv["key"] in all_preset_ids
+
+    issues = []
 
     for gid in seen_groups:
         if gid not in grouped:
@@ -1146,6 +1161,11 @@ def main():
         parsed = parse_preset_file(abs_path)
         # Later files extend earlier ones (sub-mods add to the same table)
         all_presets.update(parsed)
+        # Store raw text so build_preset_entry can do raw-text duplicate checks
+        try:
+            _raw_source_texts[abs_path.name] = abs_path.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
 
     print(f"\nTotal presets parsed: {len(all_presets)}")
     schedulable = [pid for pid, d in all_presets.items() if d.get("forScheduling") is True]
