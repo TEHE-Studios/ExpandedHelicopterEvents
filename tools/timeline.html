@@ -104,6 +104,18 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent2);}
 .src-tag{font-size:9px;font-family:var(--mono);color:var(--text-muted);flex-shrink:0;}
+.sim-count{
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  padding:1px 5px;border-radius:3px;pointer-events:none;
+  background:rgba(0,0,0,.55);z-index:5;white-space:nowrap;letter-spacing:.03em;
+}
+.gh-count{
+  font-family:var(--mono);font-size:10px;font-weight:700;
+  padding:1px 6px;border-radius:3px;background:rgba(0,0,0,.4);
+  margin-left:auto;margin-right:8px;white-space:nowrap;flex-shrink:0;
+}
+.sim-note{font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.5;}
 </style>
 </head>
 <body>
@@ -145,6 +157,17 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
     <div class="tr"><input type="checkbox" id="o-prog" checked><label for="o-prog">Progression segments</label></div>
     <div class="tr"><input type="checkbox" id="o-cont"><label for="o-cont">Continue-schedule zone</label></div>
     <div class="tr"><input type="checkbox" id="o-sub" checked><label for="o-sub">Sub-variants</label></div>
+    <div class="tr"><input type="checkbox" id="o-sim" checked><label for="o-sim">Show event counts</label></div>
+  </div>
+  <div class="cs">
+    <div class="cs-title">Simulation</div>
+    <div class="cr"><span class="cl">Runs (avg of)</span>
+      <input type="range" id="c-runs" min="10" max="500" value="100" step="10">
+      <span class="cv" id="v-runs">100</span></div>
+    <div class="sim-note">
+      Mirrors the Lua scheduler: 24 ticks/day (once per in-game hour),
+      global weight=10, insane=10× events. Count = avg fired per playthrough.
+    </div>
   </div>
   <div class="cs">
     <div class="cs-title">Legend</div>
@@ -975,7 +998,26 @@ const EHE_DATA = {
       "type": "warn",
       "msg": "survivors: Frequency_survivor_heli sandbox var does not match preset ID 'survivors' \u2014 freq control may not apply."
     }
-  ]
+  ],
+  "initialSimCounts": {
+    "SandyClaws": 3.85,
+    "TISCreamery": 2.65,
+    "BuffCorrell": 2.64,
+    "Helikopter": 1.39,
+    "military_hostile": 54.53,
+    "Spiffocopter": 1.14,
+    "military_nonhostile": 57.58,
+    "UFO": 2.59,
+    "AttackOfTheStrippers": 2.56,
+    "drones": 58.48,
+    "air_raid": 1.0,
+    "news_Bell206": 12.6,
+    "survivors": 3.42,
+    "jets": 57.49,
+    "deserters": 1.16,
+    "IRS": 5.03,
+    "police": 5.53
+  }
 };
 
 // ── FREQ ENUM ─────────────────────────────────────────────────────────
@@ -993,7 +1035,10 @@ const S = {
   dur:90, startDay:0,
   cont:true, airRaid:true,
   freq:{}, density:true, prog:true, contBar:false, subs:true,
+  showSim:true, simRuns:100,
 };
+// Initial counts from Lua simulation embedded at HTML build time.
+let _simCache = EHE_DATA.initialSimCounts || {};
 EHE_DATA.sandboxFreqVars.forEach(v=>{ S.freq[v.key]=3; });
 
 // ── MATH ──────────────────────────────────────────────────────────────
@@ -1029,17 +1074,115 @@ function maxProb(preset){
   }
   return mx||.0001;
 }
+const TIMELINE_PAD = 0.08; // 8% right padding so bars never touch the edge
 function totalDays(){
   let mx=S.dur;
   for(const g of EHE_DATA.groups)for(const p of g.presets){
     const {cod}=computeDays(p.startFactor,p.cutoffFactor,S.dur,S.startDay);
     mx=Math.max(mx,cod);
   }
-  return mx;
+  return Math.ceil(mx*(1+TIMELINE_PAD));
 }
 function isActive(p){
   if(p.id==='air_raid'&&!S.airRaid)return false;
   return freqCalc(p.freqSandboxKey,2)>0;
+}
+
+// ── SIMULATION ────────────────────────────────────────────────────────
+// Mirrors EHE_eventScheduler.lua: each day the scheduler builds a weighted
+// pool of eligible preset IDs, then picks one at random to schedule.
+// ZombRand(n) returns 0..n-1; the check is ZombRand(denom) <= numer.
+function runSimulation(){
+  const numRuns = S.simRuns;
+  const counts  = {};
+
+  // Build a lookup: presetId -> raw sandbox freq value (1-6)
+  // Used to detect insane mode (rawFreq==6 → schedules 10 events per pick)
+  const rawFreqOf = {};
+  for(const group of EHE_DATA.groups)
+    for(const p of group.presets)
+      rawFreqOf[p.id] = p.freqSandboxKey ? (S.freq[p.freqSandboxKey] ?? 3) : 3;
+
+  // Only top-level schedulable presets
+  const schedulable = [];
+  for(const group of EHE_DATA.groups)
+    for(const preset of group.presets)
+      if(!preset.isSub) schedulable.push(preset);
+
+  // ── Key facts from EHE_eventScheduler.lua ─────────────────────────────
+  // 1. eHeliEvent_OnHour fires on OnTick but only when the in-game hour
+  //    changes → the scheduler runs ONCE PER IN-GAME HOUR = 24×/day.
+  // 2. Weight uses eHelicopter.eventSpawnWeight (global default = 10),
+  //    NOT the preset's own eventSpawnWeight field — that field is never
+  //    read during pool-building.
+  // 3. Insane (raw sandbox value == 6, fc = 50): denominator becomes
+  //    (10-50)*2500 = -100000 (negative), which in practice means all
+  //    slots always pass. Additionally, the selected preset is scheduled
+  //    10 times instead of 1.
+  const GLOBAL_WT = 10;  // eHelicopter.eventSpawnWeight
+
+  for(let run=0; run<numRuns; run++){
+    // 24 ticks per day (one per in-game hour)
+    const totalTicks = Math.ceil(S.dur * 24);
+    for(let tick=0; tick<totalTicks; tick++){
+      const day = tick / 24;
+      const options = [];
+
+      for(const preset of schedulable){
+        if(!isActive(preset)) continue;
+
+        const {sd,cod}=computeDays(preset.startFactor,preset.cutoffFactor,S.dur,S.startDay);
+        const dayInRange = day>=sd && day<=cod;
+        const startValid = day>=sd;
+        const notIgnore  = !preset.ignoreContinueScheduling;
+        const contValid  = S.cont && notIgnore;
+
+        const available = dayInRange || (startValid && contValid);
+        if(!available) continue;
+
+        const freq = freqCalc(preset.freqSandboxKey, 2);
+        if(freq===0) continue;
+
+        const sf = preset.schedulingFactor ?? 1;
+        // (presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight) * freq
+        const wt = (preset.spawnWeight ?? GLOBAL_WT) * freq;
+
+        if(freq >= 50){
+          // Insane: negative denominator → all slots always pass
+          for(let i=0; i<wt; i++) options.push(preset.id);
+        } else {
+          // denom grows over time, making events slightly less frequent later
+          const denom = Math.max(1, (10-freq)*2500 + 1000*(day/Math.max(S.dur,1)));
+          const numer = Math.floor(freq*sf + 0.5);
+          for(let i=0; i<wt; i++){
+            if(Math.floor(Math.random()*denom) <= numer) options.push(preset.id);
+          }
+        }
+      }
+
+      if(options.length>0){
+        const picked = options[Math.floor(Math.random()*options.length)];
+        // Insane mode schedules 10 events per selection instead of 1
+        const isInsane = rawFreqOf[picked] === 6;
+        counts[picked] = (counts[picked]||0) + (isInsane ? 10 : 1);
+      }
+    }
+  }
+
+  const avg = {};
+  for(const [id,total] of Object.entries(counts)) avg[id] = total/numRuns;
+  _simCache = avg;
+  return avg;
+}
+
+function simCountColor(n){
+  // colour-coded by expected events per playthrough
+  if(n<=0)   return '#555';
+  if(n<1)    return '#705030';
+  if(n<5)    return '#a08020';
+  if(n<15)   return '#70b030';
+  if(n<40)   return '#40c060';
+  return '#20d080';
 }
 
 // ── TOOLTIP ───────────────────────────────────────────────────────────
@@ -1057,9 +1200,11 @@ function hideTT(){TT.style.display='none';}
 
 function ttHtml(preset,groupColor,seg){
   const {sd,cod}=computeDays(preset.startFactor,preset.cutoffFactor,S.dur,S.startDay);
+  const simCount = _simCache[preset.id];
   const freq=freqCalc(preset.freqSandboxKey,2);
   const freqLbl=FREQ_ENUM.find(f=>f.fc===freq)?.label??`calc:${freq}`;
   let h=`<div class="tt-id">${seg?'↳ '+seg.id:preset.id}</div>`;
+  if(simCount!=null)h+=`<div class="tt-r"><span class="tt-k">Avg events</span><span class="tt-v" style="color:${simCountColor(simCount)};">${simCount.toFixed(1)} per playthrough · ${S.simRuns} runs · 24 ticks/day</span></div>`;
   if(preset.description)h+=`<div style="color:var(--text-dim);font-size:11px;margin-bottom:5px;">${preset.description}</div>`;
   if(seg){
     const segDay=(seg.factor*cod).toFixed(1);
@@ -1081,7 +1226,8 @@ function ttHtml(preset,groupColor,seg){
     h+=`<div class="tt-r"><span class="tt-k">Freq var</span><span class="tt-v" style="color:var(--text-muted)">none — default freq</span></div>`;
   }
   const fh=preset.flightHours;
-  h+=`<div class="tt-r"><span class="tt-k">Flight hrs</span><span class="tt-v">${fh?fh[0]+':00–'+fh[1]+':00':'05:00–22:00 (default)'}</span></div>`;
+  function fmtHour(h){ const w=h>24?h-24:h; return (w<10?'0':'')+w+':00'+(h>24?' (+1d)':''); }
+  h+=`<div class="tt-r"><span class="tt-k">Flight hrs</span><span class="tt-v">${fh?fmtHour(fh[0])+' – '+fmtHour(fh[1]):'05:00 – 22:00 (default)'}</span></div>`;
   if(preset.source)h+=`<div class="tt-r"><span class="tt-k">Source</span><span class="tt-v">${preset.source}</span></div>`;
   if(preset.ignoreContinueScheduling)h+=`<div class="tt-w">⚠ ignoreContinueScheduling — will NOT continue past cutoff.</div>`;
   if(preset.isOneTime)h+=`<div class="tt-w">⚠ One-time event (schedulingFactor=${preset.schedulingFactor})</div>`;
@@ -1211,10 +1357,25 @@ function buildBar(preset,group,td,track){
     if(e.target===bar)showTT(ttHtml(preset,group.color,null),e.clientX,e.clientY,group.color);
   });
   bar.addEventListener('mouseleave',hideTT);
+
+  // Event count badge
+  if(S.showSim && active){
+    const n = _simCache[preset.id];
+    const badge = document.createElement('div');
+    badge.className = 'sim-count';
+    const display = n==null ? '…' : n<0.1 ? '~0' : n.toFixed(1);
+    badge.textContent = display;
+    badge.style.color = n==null ? 'var(--text-muted)' : simCountColor(n);
+    bar.appendChild(badge);
+  }
+
   track.appendChild(bar);
 }
 
 function render(){
+  // Re-run the Monte Carlo simulation whenever settings change
+  if(S.showSim) runSimulation();
+
   const td=totalDays();
   const bg=bgStyle(td);
 
@@ -1237,6 +1398,17 @@ function render(){
     gt.className='gt'; gt.textContent='▼';
     ghl.appendChild(gt);
     ghl.appendChild(document.createTextNode(' '+group.label));
+    // Group total badge
+    if(S.showSim){
+      const groupTotal = group.presets
+        .filter(p=>!p.isSub)
+        .reduce((s,p)=>s+(_simCache[p.id]??0), 0);
+      const gb = document.createElement('span');
+      gb.className='gh-count';
+      gb.textContent = groupTotal<0.1 ? '~0 events' : groupTotal.toFixed(1)+' events';
+      gb.style.color = simCountColor(groupTotal/Math.max(group.presets.filter(p=>!p.isSub).length,1));
+      ghl.appendChild(gb);
+    }
     gh.appendChild(ghl);
 
     const ght=document.createElement('div');
@@ -1358,6 +1530,12 @@ wireChk('o-dens', e=>{ S.density=e.target.checked; render(); });
 wireChk('o-prog', e=>{ S.prog=e.target.checked; render(); });
 wireChk('o-cont', e=>{ S.contBar=e.target.checked; render(); });
 wireChk('o-sub',  e=>{ S.subs=e.target.checked; render(); });
+wireChk('o-sim',  e=>{ S.showSim=e.target.checked; render(); });
+wire('c-runs', e=>{
+  S.simRuns=parseInt(e.target.value);
+  document.getElementById('v-runs').textContent=S.simRuns;
+  render();
+});
 
 let rt; window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(render,120); });
 

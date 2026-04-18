@@ -347,11 +347,15 @@ def check_scheduling_fields(all_presets):
                 field_errors.append((pid, f"{field}={v} — must be ≥ 0"))
 
         # flightHours sanity
+        # Values > 24 are intentional: the scheduler wraps them with
+        #   `if startTime > 24 then startTime = startTime - 24 end`
+        # so e.g. {20, 27} = 20:00–midnight or 01:00–03:00 next day (overnight).
+        # Max useful value is 47 (= 24+23, still a single wrap).
         fh = data.get("flightHours")
         if isinstance(fh, list) and len(fh) >= 2:
             h0, h1 = fh[0], fh[1]
-            if not (0 <= h0 <= 24 and 0 <= h1 <= 24):
-                field_errors.append((pid, f"flightHours=[{h0},{h1}] — hours should be 0–24"))
+            if not (0 <= h0 <= 47 and 0 <= h1 <= 47):
+                field_errors.append((pid, f"flightHours=[{h0},{h1}] — hours should be 0–47 (>24 wraps to next day)"))
             if h0 > h1:
                 field_errors.append((pid, f"flightHours=[{h0},{h1}] — start > end"))
 
