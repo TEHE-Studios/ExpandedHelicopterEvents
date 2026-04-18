@@ -243,7 +243,7 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 				if (specialDatesObserved and (not specialDatesInRange)) then eventAvailable = false end
 
 				if eventAvailable then
-					local weight = eHelicopter.eventSpawnWeight*freq
+					local weight = (presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight) * freq
 					local probabilityNumerator = math.floor((freq*schedulingFactor) + 0.5 )
 
 					for i=1, weight do
