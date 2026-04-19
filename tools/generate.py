@@ -96,30 +96,15 @@ SANDBOX_FREQ_VARS = [
 
 # ── GROUP DEFINITIONS ──────────────────────────────────────────────────
 # Order matters for display. Each rule: (id_prefix_or_exact, group_id)
-GROUP_RULES = [
-    ("air_raid",          "special"),
-    ("military_nonhostile","military"),
-    ("military_hostile",  "military"),
-    ("military_",         "military"),
-    ("drone",             "drones"),
-    ("jet",               "jets"),
-    ("news_",             "early"),
-    ("police",            "early"),
-    ("survivors",         "survivors"),
-    ("deserters",         "late"),
+SOURCE_COLORS = [
+    "#4fc35a",  # first file  (green)
+    "#c060e0",  # second file (purple)
+    "#40e8e0",  # third file  (teal)
+    "#e06030",  # fourth file (orange)
+    "#8080ff",  # fifth file  (blue)
+    "#e0c020",  # sixth file  (yellow)
+    "#a8a8a8",  # fallback    (grey)
 ]
-
-GROUP_META = {
-    "military":  {"label": "MILITARY",            "color": "#4fc35a"},
-    "drones":    {"label": "DRONES",               "color": "#40e8e0"},
-    "jets":      {"label": "JETS",                 "color": "#8080ff"},
-    "special":   {"label": "SPECIAL EVENTS",       "color": "#e06030"},
-    "early":     {"label": "EARLY GAME (CIVILIAN)","color": "#e0c020"},
-    "survivors": {"label": "SURVIVORS",            "color": "#a8a8a8"},
-    "late":      {"label": "LATE GAME",            "color": "#e08030"},
-    "swh":       {"label": "SUPER WEIRD HELIS",    "color": "#c060e0"},
-    "other":     {"label": "OTHER",                "color": "#808080"},
-}
 
 # Module-level store for raw source text, populated by main() before
 # build_groups() is called, so build_preset_entry() can do raw-text checks.
@@ -311,13 +296,7 @@ def lua_color_to_hex(color):
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
-def infer_group(preset_id, source=""):
-    if source.startswith("SWH_"):
-        return "swh"
-    for prefix, gid in GROUP_RULES:
-        if preset_id == prefix or preset_id.startswith(prefix):
-            return gid
-    return "other"
+# infer_group removed -- grouping is now by source file, not by prefix rules.
 
 
 def get_freq_key(preset_id):
@@ -501,27 +480,21 @@ def build_preset_entry(pid, data, all_presets, group_color):
 def build_groups(all_presets):
     """
     Take all parsed presets, filter to forScheduling=true,
-    organize into groups, and build sub-variant rows.
+    group by source file, and build sub-variant rows.
     """
     schedulable = {
         pid: d for pid, d in all_presets.items()
         if d.get("forScheduling") is True
     }
 
-    # Organize by group
+    # Group by source file -- the only real grouping that exists
+    source_order = []
     grouped = {}
     for pid, data in schedulable.items():
-        gid = infer_group(pid, all_presets[pid].get("_source", ""))
-        grouped.setdefault(gid, []).append(pid)
-
-    # Determine group order
-    seen_groups = []
-    for _, gid in GROUP_RULES:
-        if gid not in seen_groups:
-            seen_groups.append(gid)
-    for gid in grouped:
-        if gid not in seen_groups:
-            seen_groups.append(gid)
+        src = data.get("_source", "unknown")
+        if src not in source_order:
+            source_order.append(src)
+        grouped.setdefault(src, []).append(pid)
 
     groups = []
     # Compute hasMatch dynamically: True if the sandbox key == an actual preset ID
@@ -531,12 +504,11 @@ def build_groups(all_presets):
 
     issues = []
 
-    for gid in seen_groups:
-        if gid not in grouped:
-            continue
-
-        meta  = GROUP_META.get(gid, {"label": gid.upper(), "color": "#808080"})
-        pids  = grouped[gid]
+    for i, src in enumerate(source_order):
+        pids  = grouped[src]
+        color = SOURCE_COLORS[i % len(SOURCE_COLORS)]
+        label = src.replace(".lua", "")
+        meta  = {"label": label, "color": color}
 
         # Sort: parent presets first (no isSub), then subs
         # Heuristic: presets that appear in other presets' progressions/random are sub-presets
@@ -571,7 +543,7 @@ def build_groups(all_presets):
                     issues.append({"type": "warn", "msg": f"{pid}: {note}"})
 
         groups.append({
-            "id":      gid,
+            "id":      src,
             "label":   meta["label"],
             "color":   meta["color"],
             "presets": preset_rows,
@@ -645,18 +617,8 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
 .tl-aw{flex:1;position:relative;height:36px;overflow:hidden;}
 #axis-canvas{position:absolute;top:0;left:0;width:100%;height:100%;}
 .tl-body{display:flex;flex-direction:column;flex:1;}
-.gh{display:flex;align-items:center;background:var(--bg3);border-bottom:1px solid var(--border);
-  cursor:pointer;user-select:none;position:sticky;top:36px;z-index:40;}
-.gh:hover{background:#1e2130;}
-.ghl{width:var(--label-w);min-width:var(--label-w);font-family:var(--sans);font-size:11px;
-  font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;color:var(--text-dim);
-  border-right:1px solid var(--border);display:flex;align-items:center;gap:6px;}
-.gt{font-size:9px;transition:transform .15s;}
-.gh.collapsed .gt{transform:rotate(-90deg);}
-.ght{flex:1;height:28px;position:relative;overflow:hidden;}
 .preset-row{display:flex;align-items:stretch;border-bottom:1px solid var(--border);min-height:var(--row-h);}
 .preset-row:hover{background:rgba(255,255,255,.015);}
-.preset-row.sub .rl{padding-left:22px;}
 .rl{width:var(--label-w);min-width:var(--label-w);border-right:1px solid var(--border);
   padding:0 8px;display:flex;align-items:center;gap:5px;background:var(--bg2);cursor:default;flex-shrink:0;}
 .rid{font-family:var(--mono);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text);}
@@ -696,11 +658,7 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
   padding:1px 5px;border-radius:3px;pointer-events:none;
   background:rgba(0,0,0,.55);z-index:5;white-space:nowrap;letter-spacing:.03em;
 }
-.gh-count{
-  font-family:var(--mono);font-size:10px;font-weight:700;
-  padding:1px 6px;border-radius:3px;background:rgba(0,0,0,.4);
-  margin-left:auto;margin-right:8px;white-space:nowrap;flex-shrink:0;
-}
+
 .sim-note{font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.5;}
 </style>
 </head>
@@ -742,7 +700,6 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
     <div class="tr"><input type="checkbox" id="o-dens" checked><label for="o-dens">Probability density</label></div>
     <div class="tr"><input type="checkbox" id="o-prog" checked><label for="o-prog">Progression segments</label></div>
     <div class="tr"><input type="checkbox" id="o-cont"><label for="o-cont">Continue-schedule zone</label></div>
-    <div class="tr"><input type="checkbox" id="o-sub" checked><label for="o-sub">Sub-variants</label></div>
     <div class="tr"><input type="checkbox" id="o-sim" checked><label for="o-sim">Show event counts</label></div>
   </div>
   <div class="cs">
@@ -761,6 +718,7 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
     <div style="margin-top:8px;font-size:10px;color:var(--text-muted);line-height:1.7;">
       <div>Bar = eligible spawn window</div>
       <div>Segments = active progression stage</div>
+      <div>Badge = avg events / playthrough</div>
       <div style="color:var(--accent);">│ Blue line = SchedulerDuration end</div>
     </div>
   </div>
@@ -794,7 +752,7 @@ const FREQ_ENUM = [
 const S = {
   dur:90, startDay:0,
   cont:true, airRaid:true,
-  freq:{}, density:true, prog:true, contBar:false, subs:true,
+  freq:{}, density:true, prog:true, contBar:false,
   showSim:true, simRuns:100,
 };
 // Initial counts from Lua simulation embedded at HTML build time.
@@ -1133,7 +1091,6 @@ function buildBar(preset,group,td,track){
 }
 
 function render(){
-  // Re-run the Monte Carlo simulation whenever settings change
   if(S.showSim) runSimulation();
 
   const td=totalDays();
@@ -1146,91 +1103,58 @@ function render(){
   body.innerHTML='';
   drawAxis(td);
 
-  for(const group of EHE_DATA.groups){
-    const gh=document.createElement('div');
-    gh.className='gh';
-    gh.dataset.gid=group.id;
+  // Collect schedulable (non-sub) presets across all groups, sorted by start day
+  const rows=[];
+  for(const group of EHE_DATA.groups)
+    for(const preset of group.presets)
+      if(!preset.isSub) rows.push({preset,group});
 
-    const ghl=document.createElement('div');
-    ghl.className='ghl';
-    ghl.style.color=group.color;
-    const gt=document.createElement('span');
-    gt.className='gt'; gt.textContent='▼';
-    ghl.appendChild(gt);
-    ghl.appendChild(document.createTextNode(' '+group.label));
-    // Group total badge
-    if(S.showSim){
-      const groupTotal = group.presets
-        .filter(p=>!p.isSub)
-        .reduce((s,p)=>s+(_simCache[p.id]??0), 0);
-      const gb = document.createElement('span');
-      gb.className='gh-count';
-      gb.textContent = groupTotal<0.1 ? '~0 events' : groupTotal.toFixed(1)+' events';
-      gb.style.color = simCountColor(groupTotal/Math.max(group.presets.filter(p=>!p.isSub).length,1));
-      ghl.appendChild(gb);
+  rows.sort((a,b)=>{
+    const sdA=computeDays(a.preset.startFactor,a.preset.cutoffFactor,S.dur,S.startDay).sd;
+    const sdB=computeDays(b.preset.startFactor,b.preset.cutoffFactor,S.dur,S.startDay).sd;
+    return sdA-sdB;
+  });
+
+  for(const {preset,group} of rows){
+    const row=document.createElement('div');
+    row.className='preset-row';
+
+    const rl=document.createElement('div');
+    rl.className='rl';
+
+    // Colour dot replacing group header
+    const dot=document.createElement('span');
+    dot.style.cssText=`display:inline-block;width:7px;height:7px;border-radius:50%;background:${group.color};margin-right:7px;flex-shrink:0;`;
+    rl.appendChild(dot);
+
+    const rid=document.createElement('span');
+    rid.className='rid'; rid.title=preset.id; rid.textContent=preset.id;
+    rl.appendChild(rid);
+
+    if(preset.source&&preset.source!==EHE_DATA.groups[0]?.presets[0]?.source){
+      const st=document.createElement('span');
+      st.className='src-tag'; st.textContent=preset.source.replace('.lua','');
+      rl.appendChild(st);
     }
-    gh.appendChild(ghl);
-
-    const ght=document.createElement('div');
-    ght.className='ght';
-    ght.style.background=bg;
-
-    // Summary bar
-    const tops=group.presets.filter(p=>!p.isSub);
-    if(tops.length){
-      const mns=Math.min(...tops.map(p=>computeDays(p.startFactor,p.cutoffFactor,S.dur,S.startDay).sd));
-      const mxc=Math.max(...tops.map(p=>computeDays(p.startFactor,p.cutoffFactor,S.dur,S.startDay).cod));
-      const sb=document.createElement('div');
-      sb.style.cssText=`position:absolute;top:6px;height:16px;border-radius:2px;opacity:.35;background:${group.color};left:${mns/td*100}%;width:${(mxc-mns)/td*100}%;`;
-      ght.appendChild(sb);
+    if(preset.isOneTime){
+      const b=document.createElement('span');b.className='rbadge rs';b.textContent='1×';rl.appendChild(b);
     }
-    ght.appendChild(schedLine(td));
-    gh.appendChild(ght);
-    body.appendChild(gh);
-
-    const rc=document.createElement('div');
-    rc.dataset.grows=group.id;
-    gh.addEventListener('click',()=>{
-      const c=gh.classList.toggle('collapsed');
-      rc.style.display=c?'none':'';
-    });
-
-    for(const preset of group.presets){
-      if(preset.isSub&&!S.subs)continue;
-      const row=document.createElement('div');
-      row.className='preset-row'+(preset.isSub?' sub':'');
-
-      const rl=document.createElement('div');
-      rl.className='rl';
-      const rid=document.createElement('span');
-      rid.className='rid'; rid.title=preset.id; rid.textContent=preset.id;
-      rl.appendChild(rid);
-      if(preset.source&&preset.source!==EHE_DATA.groups[0]?.presets[0]?.source){
-        const st=document.createElement('span');
-        st.className='src-tag'; st.textContent=preset.source.replace('.lua','');
-        rl.appendChild(st);
-      }
-      if(preset.isOneTime){
-        const b=document.createElement('span');b.className='rbadge rs';b.textContent='1×';rl.appendChild(b);
-      }
-      if(preset.ignoreContinueScheduling){
-        const b=document.createElement('span');b.className='rbadge rw';b.textContent='no-cont';rl.appendChild(b);
-      }
-      const sv=EHE_DATA.sandboxFreqVars.find(v=>v.key===preset.freqSandboxKey);
-      if(sv&&!sv.hasMatch){
-        const b=document.createElement('span');b.className='rbadge rw';b.textContent='⚠freq';rl.appendChild(b);
-      }
-      row.appendChild(rl);
-
-      const rt=document.createElement('div');
-      rt.className='rt';
-      rt.style.background=bg;
-      rt.appendChild(schedLine(td));
-      buildBar(preset,group,td,rt);
-      row.appendChild(rt);
-      rc.appendChild(row);
+    if(preset.ignoreContinueScheduling){
+      const b=document.createElement('span');b.className='rbadge rw';b.textContent='no-cont';rl.appendChild(b);
     }
-    body.appendChild(rc);
+    const sv=EHE_DATA.sandboxFreqVars.find(v=>v.key===preset.freqSandboxKey);
+    if(sv&&!sv.hasMatch){
+      const b=document.createElement('span');b.className='rbadge rw';b.textContent='⚠freq';rl.appendChild(b);
+    }
+    row.appendChild(rl);
+
+    const rt=document.createElement('div');
+    rt.className='rt';
+    rt.style.background=bg;
+    rt.appendChild(schedLine(td));
+    buildBar(preset,group,td,rt);
+    row.appendChild(rt);
+    body.appendChild(row);
   }
 }
 
@@ -1256,9 +1180,10 @@ function buildFreqCtrls(){
 
 function buildLegend(){
   const el=document.getElementById('legend');
+  // Dots match the per-row source indicators
   el.innerHTML=EHE_DATA.groups.map(g=>`
     <div class="li">
-      <div class="ls" style="background:${g.color}aa;border:1px solid ${g.color}88;"></div>
+      <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${g.color};margin-right:7px;flex-shrink:0;"></span>
       <span>${g.label}</span>
     </div>`).join('');
 }
@@ -1289,7 +1214,6 @@ wireChk('c-air',  e=>{ S.airRaid=e.target.checked; render(); });
 wireChk('o-dens', e=>{ S.density=e.target.checked; render(); });
 wireChk('o-prog', e=>{ S.prog=e.target.checked; render(); });
 wireChk('o-cont', e=>{ S.contBar=e.target.checked; render(); });
-wireChk('o-sub',  e=>{ S.subs=e.target.checked; render(); });
 wireChk('o-sim',  e=>{ S.showSim=e.target.checked; render(); });
 wire('c-runs', e=>{
   S.simRuns=parseInt(e.target.value);
