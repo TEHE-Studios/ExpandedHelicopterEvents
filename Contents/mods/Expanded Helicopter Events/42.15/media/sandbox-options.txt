@@ -78,14 +78,7 @@ option ExpandedHeli.Frequency_military_hostile
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
-option ExpandedHeli.Frequency_Resupply_drop
-{
-	type = enum, numValues = 6, default = 3,
-	page = ExpandedHeli, translation = ExpandedHeli_EventResupply,
-	valueTranslation = ExpandedHeli_Frequency,
-}
- 
-option ExpandedHeli.Frequency_survivor_heli
+option ExpandedHeli.Frequency_survivors
 {
 	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventSurvivor,
@@ -99,3 +92,9 @@ option ExpandedHeli.Frequency_deserters
 	valueTranslation = ExpandedHeli_Frequency,
 }
 
+option ExpandedHeli.Frequency_drones
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventDrones,
+	valueTranslation = ExpandedHeli_Frequency,
+}
