@@ -1,9 +1,10 @@
 ---IsoPlayer are player entities but also NPCs (from mods)
 EHEIsoPlayers = {}
 
----@param playerObject IsoPlayer | IsoGameCharacter | IsoAnimal
+---@param playerObject IsoPlayer | IsoGameCharacter
 function addToEIP(playerObject)
 	if not playerObject then return end
+	if instanceof(playerObject, "IsoAnimal") then return end
 	if playerObject:getX() < 1 or playerObject:getY() < 1 then return end
 	if playerObject:isDead() then return end
 	if not EHEIsoPlayers[playerObject] then EHEIsoPlayers[playerObject] = true end
@@ -20,28 +21,23 @@ end
 
 
 function getActualPlayers()
-	local players = {}
+	local seen = {}
+	local list = {}
 
-	local playersOnline = getOnlinePlayers()
-	if playersOnline then
-		for i=0, playersOnline:size()-1 do
-			local player = playersOnline:get(i)
-			players[player] = true
+	local online = getOnlinePlayers()
+	if online then
+		for i = 0, online:size()-1 do
+			local p = online:get(i)
+			if p and not seen[p] then seen[p] = true; list[#list+1] = p end
 		end
 	end
 
-	for playerIndex=0, getNumActivePlayers()-1 do
-		players[getSpecificPlayer(playerIndex)] = true
+	for i = 0, getNumActivePlayers()-1 do
+		local p = getSpecificPlayer(i)
+		if p and not seen[p] then seen[p] = true; list[#list+1] = p end
 	end
 
-	local cleanedPlayerList = {}
-	--print("--getActualPlayers: ")
-	for playerObj,_ in pairs(players) do
-		--print(" --"..playerObj:getUsername())
-		table.insert(cleanedPlayerList, playerObj)
-	end
-
-	return cleanedPlayerList
+	return list
 end
 
 function addActualPlayersToEIP()

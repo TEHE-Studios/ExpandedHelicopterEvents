@@ -391,9 +391,40 @@ function eHelicopter:findTarget(range, DEBUGID)
 		end
 	end
 
-	if #targetPool <= 0 then
-		addActualPlayersToEIP()
-		for player,_ in pairs(EHEIsoPlayers) do if player then table.insert(targetPool, player) end end
+	local hp = self.hostilePreference
+
+	if hp == "IsoAnimal" then
+		local objList = getCell():getObjectList()
+		if objList then
+			for n = 0, objList:size()-1 do
+				local obj = objList:get(n)
+				if obj and instanceof(obj, "IsoAnimal") and not obj:isDead() then
+					table.insert(targetPool, obj)
+				end
+			end
+		end
+
+	elseif hp == "IsoZombie" then
+		local zombieList = getCell():getZombieList()
+		if zombieList then
+			for n = 0, zombieList:size()-1 do
+				local z = zombieList:get(n)
+				if z and not z:isDead() then
+					table.insert(targetPool, z)
+				end
+			end
+		end
+	end
+
+	if #targetPool <= 0 and hp ~= "IsoZombie" and hp ~= "IsoAnimal" then
+		for _, player in pairs(getActualPlayers()) do
+			if player and not player:isDead() then
+				table.insert(targetPool, player)
+			end
+		end
+		for npc,_ in pairs(EHEIsoPlayers) do
+			if npc and not npc:isDead() then table.insert(targetPool, npc) end
+		end
 	end
 	
 	for _,flare in pairs(flareSystem.activeObjects) do
@@ -627,7 +658,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	end
 
 	local crashChance = self.addedCrashChance
-	if applyEnvironmentalCrashChance == nil then applyEnvironmentalCrashChance = true end
+	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
 
 	if applyEnvironmentalCrashChance then
 		local _, weatherImpact = eHeliEvent_weatherImpact()

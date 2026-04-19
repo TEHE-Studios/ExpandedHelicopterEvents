@@ -6,6 +6,7 @@ local heatMap = {}
 heatMap.events = {}
 heatMap.cells = {} --heatLevel, centerX, centerY
 heatMap.cellsIDs = {}
+heatMap.dirty = false
 
 function heatMap.initModData(isNewGame)
 
@@ -39,16 +40,17 @@ end
 
 function heatMap.sortCellsByHeat()
     if not heatMap.cellsIDs or #heatMap.cellsIDs == 0 then return end
+    if not heatMap.dirty then return end
 
     table.sort(heatMap.cellsIDs, function(a, b)
         local cellA = heatMap.cells[a]
         local cellB = heatMap.cells[b]
-
         local heatA = cellA and cellA.heatLevel or 0
         local heatB = cellB and cellB.heatLevel or 0
-
         return heatA > heatB
     end)
+
+    heatMap.dirty = false
 end
 
 
@@ -65,57 +67,62 @@ function heatMap.calibrateCell(cellID, eventData)
 
     cellData.heatLevel = cellData.heatLevel+eventData.intensity
     cellData.eventCount = cellData.eventCount+1
+    heatMap.dirty = true
 end
 
 
 function heatMap.coolOff()
-    for key,e in pairs(heatMap.events) do
-        if e and e.timeStamp+(e.intensity*1000) < getTimeInMillis() then
-
+    local now = getTimeInMillis()
+    local i = 1
+    while i <= #heatMap.events do
+        local e = heatMap.events[i]
+        if e and e.timeStamp + (e.intensity * 1000) < now then
             if heatMap.cells[e.cellID] then
-
                 local cellData = heatMap.cells[e.cellID]
-                cellData.heatLevel = cellData.heatLevel-e.intensity
-                cellData.eventCount = cellData.eventCount-1
+                cellData.heatLevel = cellData.heatLevel - e.intensity
+                cellData.eventCount = cellData.eventCount - 1
 
                 if cellData.eventCount <= 0 or cellData.heatLevel <= 0 then
                     heatMap.cells[e.cellID] = nil
-                    for n,cellID in pairs(heatMap.cellsIDs) do
-                        if cellID == e.cellID then
-                            heatMap.cellsIDs[n] = nil
+                    -- Swap-remove to avoid nil holes in the sequential cellsIDs array
+                    for n = #heatMap.cellsIDs, 1, -1 do
+                        if heatMap.cellsIDs[n] == e.cellID then
+                            heatMap.cellsIDs[n] = heatMap.cellsIDs[#heatMap.cellsIDs]
+                            heatMap.cellsIDs[#heatMap.cellsIDs] = nil
+                            break
                         end
                     end
+                    heatMap.dirty = true
                 end
             end
-            heatMap.events[key] = nil
+            heatMap.events[i] = heatMap.events[#heatMap.events]
+            heatMap.events[#heatMap.events] = nil
+        else
+            i = i + 1
         end
     end
-    if getDebug() then heatMap.sortCellsByHeat() end
+    if getDebug() then heatMap.dirty = true; heatMap.sortCellsByHeat() end
 end
 
 
 
 function heatMap.adjustByZone(x, y)
-    local square = getSquare(x, y, 0)
+    local zone = getZone(math.floor(x), math.floor(y), 0)
 
     local intensity = 0.7
-    if square then
-        local zone = square:getZone()
-
-        local zoneType = zone and zone:getType()
-        if zoneType then
-            if (zoneType == "DeepForest") then intensity = 0.3
-            elseif (zoneType == "Forest" or zoneType == "Vegitation") then intensity = 0.4
-            elseif (zoneType == "FarmLand") then intensity = 0.5
-            elseif (zoneType == "Farm") then intensity = 0.6
-            elseif (zoneType == "TrailerPark" or zoneType == "Nav") then intensity = 0.9
-            elseif (zoneType == "TownZone") then intensity = 1
-            end
+    local zoneType = zone and zone:getType()
+    if zoneType then
+        if     zoneType == "DeepForest"                       then intensity = 0.3
+        elseif zoneType == "Forest" or zoneType == "Vegitation" then intensity = 0.4
+        elseif zoneType == "FarmLand"                         then intensity = 0.5
+        elseif zoneType == "Farm"                             then intensity = 0.6
+        elseif zoneType == "TrailerPark" or zoneType == "Nav" then intensity = 0.9
+        elseif zoneType == "TownZone"                         then intensity = 1.0
         end
-
-        local zombieIntensity = zone and zone:getZombieDensity()
-        if zombieIntensity then intensity = intensity + (zombieIntensity/100) end
     end
+
+    local zombieIntensity = zone and zone:getZombieDensity()
+    if zombieIntensity then intensity = intensity + (zombieIntensity / 100) end
 
     return intensity
 end
@@ -135,6 +142,7 @@ function heatMap.registerEventByXY(x, y, intensity, type, timeStamp)
     if not heatMap.cells[cellID] then
         table.insert(heatMap.cellsIDs, cellID)
         heatMap.cells[cellID] = {heatLevel=intensity, centerX=math.floor(x), centerY=math.floor(y), eventCount=0}
+        heatMap.dirty = true
     end
 
     local eventData = {cellID=cellID, x=x, y=y, intensity=intensity, type=type, timeStamp=timeStamp}
@@ -192,6 +200,7 @@ end
 local onceEveryList, soManyTicks = {}, 100
 ---@param player IsoPlayer|IsoGameCharacter|IsoMovingObject|IsoObject
 function heatMap.OnPlayerMove(player)
+    if instanceof(player, "IsoAnimal") then return end
     if not player:isOutside() then return end
     onceEveryList[player] = onceEveryList[player] or soManyTicks
     onceEveryList[player] = onceEveryList[player]-1
