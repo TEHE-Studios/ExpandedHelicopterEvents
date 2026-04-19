@@ -37,7 +37,10 @@ function eHeliEvent_engage(ID)
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 
-	if SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
+	local engageRawFreq = SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]
+	local engageFC = engageRawFreq and (engageRawFreq-1) or 2
+	if engageFC == 5 then engageFC = 50 end
+	if engageFC == 0 then
 		willFly = false
 		eHeliEvent.triggered = true
 	end
@@ -269,7 +272,9 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 		if selectedPresetID and (selectedPresetID ~= false) then
 
 			local freq = SandboxVars.ExpandedHeli["Frequency_"..selectedPresetID]
-			local insane = (freqOverride or freq) == 6
+			local insaneFC = freqOverride or (freq and (freq-1) or 2)
+			if insaneFC == 5 then insaneFC = 50 end
+			local insane = (insaneFC == 50)
 
 			local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
@@ -287,7 +292,7 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 				local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 				if startTime > 24 then startTime = startTime-24 end
 
-				if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
+				if not noPrint then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
 
 				latestStartDay = math.max(nextStartDay, (latestStartDay or 0))
 

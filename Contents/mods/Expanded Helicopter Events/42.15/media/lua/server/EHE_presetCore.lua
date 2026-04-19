@@ -44,7 +44,7 @@ function eHelicopter:randomSelectPreset(preset)
 	local selection = preset.presetRandomSelection
 	local pool = {}
 
-	for key,entry in pairs(selection) do
+	for key,entry in ipairs(selection) do
 		if type(entry) == "string" then
 			local id = entry
 			local iterations = 1
@@ -80,6 +80,7 @@ function eHelicopter:progressionSelectPreset(preset)
 		local globalModData = getExpandedHeliEventsModData()
 		local DaysSinceApoc = globalModData.DaysBeforeApoc+EHE_getWorldAgeDays()
 		local startDay, cutOffDay = fetchStartDayAndCutOffDay(preset)
+		if not cutOffDay or cutOffDay <= 0 then return end
 		local DaysOverCutOff = DaysSinceApoc/cutOffDay
 		local presetIDTmp
 		--run through presetProgression list

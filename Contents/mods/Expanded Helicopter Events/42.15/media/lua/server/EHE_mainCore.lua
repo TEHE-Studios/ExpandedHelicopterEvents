@@ -627,7 +627,7 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	end
 
 	local crashChance = self.addedCrashChance
-	applyEnvironmentalCrashChance = applyEnvironmentalCrashChance or true
+	if applyEnvironmentalCrashChance == nil then applyEnvironmentalCrashChance = true end
 
 	if applyEnvironmentalCrashChance then
 		local _, weatherImpact = eHeliEvent_weatherImpact()

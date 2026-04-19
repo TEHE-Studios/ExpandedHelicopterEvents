@@ -569,7 +569,6 @@ eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
 }
 
 -- Fleeing reporters
----REPEAT?
 eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
 	speed = 2.0,
 	crashType = {"Bell206Fuselage_N5740A"},
@@ -668,7 +667,6 @@ eHelicopter_PRESETS["deserters"] = {
 	},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.48, b=0.27},
-	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.80,
 	eventCutOffDayFactor = 1.00,
 	radioChatter = "AEBS_Deserters",

@@ -30,9 +30,9 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 						local radioChatter = eHelicopter_PRESETS[presetID].radioChatter or eHelicopter.radioChatter
 						local lineColor = eHelicopter_PRESETS[presetID].markerColor or { r=1.0, g=1.0, b=1.0 }
 						local callSigns = eHelicopter_PRESETS[presetID].callsigns
-						local callsign = callSigns and callSigns[ZombRand(1,#callSigns)] or "flight"
+						local callsign = callSigns and callSigns[ZombRand(#callSigns)+1] or "flight"
 
-						linesGoingOut.presetID = {
+						linesGoingOut[presetID] = {
 
 							line = string.format(getRadioText(radioChatter), callsign),
 							color = lineColor,
