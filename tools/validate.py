@@ -27,10 +27,11 @@ from generate import (
     parse_preset_file,
     parse_random_selection,
     parse_progression,
-    SANDBOX_FREQ_VARS,
+    load_sandbox_freq_vars,
     resolve_default_paths,
     DEFAULTS,
 )
+import generate as _generate
 
 # ── ANSI colours (disabled on Windows/CI if NO_COLOR set) ─────────────
 import os
@@ -273,7 +274,7 @@ def check_freq_sandbox_vars(all_presets):
     all_ids = set(all_presets.keys())
 
     mismatches = []
-    for sv in SANDBOX_FREQ_VARS:
+    for sv in _generate.SANDBOX_FREQ_VARS:
         key = sv["key"]
         exact_match = key in all_ids
         if not exact_match and sv["affectsIDs"]:
@@ -719,6 +720,9 @@ def run(preset_paths):
     if not all_presets:
         print(ERR("\nNo presets loaded — check file paths."))
         return 1
+
+    # Load SANDBOX_FREQ_VARS from disk so freq-key checks use live data
+    _generate.SANDBOX_FREQ_VARS = load_sandbox_freq_vars()
 
     schedulable = [pid for pid, d in all_presets.items() if d.get("forScheduling")]
     print(f"\n  Total presets : {len(all_presets)}")

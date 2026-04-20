@@ -81,18 +81,41 @@ DEFAULTS = {
     "ignoreContinueScheduling": False,
 }
 
-# ── SANDBOX FREQUENCY VARS ─────────────────────────────────────────────
-# Maps sandbox key → which preset IDs it actually controls.
-# hasMatch is computed at runtime — True when the key matches an actual parsed preset ID.
-SANDBOX_FREQ_VARS = [
-    {"key": "military",      "label": "Military",       "affectsIDs": ["military_nonhostile", "military_hostile"]},
-    {"key": "police",        "label": "Police",          "affectsIDs": ["police"]},
-    {"key": "news_chopper",  "label": "News Chopper",    "affectsIDs": ["news_Bell206"]},
-    {"key": "jet",           "label": "Jets",            "affectsIDs": ["jets", "jet_pass", "jet_pass_louder"]},
-    {"key": "Resupply_drop", "label": "Resupply Drop",   "affectsIDs": []},
-    {"key": "survivor_heli", "label": "Survivor Heli",   "affectsIDs": ["survivors"]},
-    {"key": "deserters",     "label": "Deserters",       "affectsIDs": ["deserters"]},
+# ── SANDBOX FREQUENCY VARS ──────────────────────────────────────────────────────────
+# Populated at runtime by load_sandbox_freq_vars() in main().
+SANDBOX_FREQ_VARS = []
+
+SANDBOX_FILE_GLOBS = [
+    "../Contents/mods/*/*/media/sandbox-options.txt",
+    "../Contents/mods/*/sandbox-options.txt",
 ]
+
+
+def load_sandbox_freq_vars():
+    import re as _re
+    found_files = []
+    for pattern in SANDBOX_FILE_GLOBS:
+        for m in sorted(SCRIPT_DIR.glob(pattern)):
+            if m not in found_files:
+                found_files.append(m)
+    if not found_files:
+        return []
+    vars_seen = {}
+    order = []
+    for path in found_files:
+        text = path.read_text(encoding='utf-8', errors='replace')
+        for m in _re.finditer(
+            r'option\s+\w+\.Frequency_(\w+)\s*\{[^}]*type\s*=\s*enum',
+            text, _re.DOTALL
+        ):
+            key = m.group(1)
+            if key not in vars_seen:
+                label = key.replace('_', ' ').replace('-', ' ').title()
+                vars_seen[key] = {"key": key, "label": label, "affectsIDs": [key]}
+                order.append(key)
+        print(f"  Loaded sandbox options from: {path.name} ({len(order)} freq vars)")
+    return [vars_seen[k] for k in order]
+
 
 # ── GROUP DEFINITIONS ──────────────────────────────────────────────────
 # Order matters for display. Each rule: (id_prefix_or_exact, group_id)
@@ -1376,6 +1399,10 @@ def main():
     schedulable = [pid for pid, d in all_presets.items() if d.get("forScheduling") is True]
     print(f"Schedulable (forScheduling=true): {len(schedulable)}")
 
+    global SANDBOX_FREQ_VARS
+    SANDBOX_FREQ_VARS = load_sandbox_freq_vars()
+    if not SANDBOX_FREQ_VARS:
+        print("  [INFO] No sandbox-options.txt found -- frequency controls will be empty.")
     groups, issues = build_groups(all_presets)
 
     # Run Lua-based simulation for default sandbox settings

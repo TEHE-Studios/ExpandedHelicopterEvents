@@ -9,6 +9,7 @@ on:
       - "Contents/mods/**/*.xml"
       - "tools/generate.py"
       - "tools/validate.py"
+      - "tools/simulate.py"
   pull_request:
     paths:
       - "Contents/mods/**/*.lua"
@@ -16,6 +17,7 @@ on:
       - "Contents/mods/**/*.xml"
       - "tools/generate.py"
       - "tools/validate.py"
+      - "tools/simulate.py"
 
 jobs:
   qa:

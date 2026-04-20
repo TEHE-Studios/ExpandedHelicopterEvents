@@ -111,14 +111,12 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
   position:relative !important;
   top:auto !important; left:auto !important;
   width:100% !important;
-  flex:1;
+  /* flex-grow set inline per-variant to reflect selection weight */
+  flex-grow:1;
+  flex-shrink:0;
   min-height:0;
   border-right:none;
   border-bottom:1px solid rgba(0,0,0,.2);
-  display:flex;
-  align-items:center;
-  padding:0 4px;
-  box-sizing:border-box;
 }
 .ps.rand:last-child{border-bottom:none;}
 
@@ -217,12 +215,10 @@ const EHE_DATA = {
           "schedulingFactor": 1.5,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": "military",
+          "freqSandboxKey": "military_nonhostile",
           "color": "#5eff44",
           "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_military sandbox var does not match preset ID 'military_nonhostile' \u2014 freq control may not apply."
-          ],
+          "notes": [],
           "bugNotes": [],
           "isSub": false,
           "progression": [
@@ -309,7 +305,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.5,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "drones",
           "color": "#5eff44",
           "source": "EHE_presets.lua",
           "notes": [],
@@ -343,12 +339,10 @@ const EHE_DATA = {
           "schedulingFactor": 1.5,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": "jet",
+          "freqSandboxKey": "jets",
           "color": "#5eff44",
           "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_jet sandbox var does not match preset ID 'jets' \u2014 freq control may not apply."
-          ],
+          "notes": [],
           "bugNotes": [],
           "isSub": false,
           "progression": [
@@ -393,12 +387,10 @@ const EHE_DATA = {
           "schedulingFactor": 1.5,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": "military",
+          "freqSandboxKey": "military_hostile",
           "color": "#5eff44",
           "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_military sandbox var does not match preset ID 'military_hostile' \u2014 freq control may not apply."
-          ],
+          "notes": [],
           "bugNotes": [],
           "isSub": false,
           "progression": [
@@ -452,12 +444,10 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": "news_chopper",
+          "freqSandboxKey": "news_Bell206",
           "color": "#ffd833",
           "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_news_chopper sandbox var does not match preset ID 'news_Bell206' \u2014 freq control may not apply."
-          ],
+          "notes": [],
           "bugNotes": [],
           "isSub": false,
           "progression": null,
@@ -528,12 +518,10 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": "survivor_heli",
+          "freqSandboxKey": "survivors",
           "color": "#cfcfcf",
           "source": "EHE_presets.lua",
-          "notes": [
-            "Frequency_survivor_heli sandbox var does not match preset ID 'survivors' \u2014 freq control may not apply."
-          ],
+          "notes": [],
           "bugNotes": [],
           "isSub": false,
           "progression": [
@@ -654,7 +642,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "Spiffocopter",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -688,7 +676,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "UFO",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -740,7 +728,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "IRS",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -781,7 +769,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "TISCreamery",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -815,7 +803,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "Helikopter",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -834,7 +822,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "SandyClaws",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -853,7 +841,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "AttackOfTheStrippers",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -872,7 +860,7 @@ const EHE_DATA = {
           "schedulingFactor": 1.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
-          "freqSandboxKey": null,
+          "freqSandboxKey": "BuffCorrell",
           "color": "#f435c6",
           "source": "SWH_presets.lua",
           "notes": [],
@@ -886,13 +874,12 @@ const EHE_DATA = {
   ],
   "sandboxFreqVars": [
     {
-      "key": "military",
-      "label": "Military",
+      "key": "jets",
+      "label": "Jets",
       "affectsIDs": [
-        "military_nonhostile",
-        "military_hostile"
+        "jets"
       ],
-      "hasMatch": false
+      "hasMatch": true
     },
     {
       "key": "police",
@@ -903,36 +890,36 @@ const EHE_DATA = {
       "hasMatch": true
     },
     {
-      "key": "news_chopper",
-      "label": "News Chopper",
+      "key": "news_Bell206",
+      "label": "News Bell206",
       "affectsIDs": [
         "news_Bell206"
       ],
-      "hasMatch": false
+      "hasMatch": true
     },
     {
-      "key": "jet",
-      "label": "Jets",
+      "key": "military_nonhostile",
+      "label": "Military Nonhostile",
       "affectsIDs": [
-        "jets",
-        "jet_pass",
-        "jet_pass_louder"
+        "military_nonhostile"
       ],
-      "hasMatch": false
+      "hasMatch": true
     },
     {
-      "key": "Resupply_drop",
-      "label": "Resupply Drop",
-      "affectsIDs": [],
-      "hasMatch": false
+      "key": "military_hostile",
+      "label": "Military Hostile",
+      "affectsIDs": [
+        "military_hostile"
+      ],
+      "hasMatch": true
     },
     {
-      "key": "survivor_heli",
-      "label": "Survivor Heli",
+      "key": "survivors",
+      "label": "Survivors",
       "affectsIDs": [
         "survivors"
       ],
-      "hasMatch": false
+      "hasMatch": true
     },
     {
       "key": "deserters",
@@ -941,48 +928,99 @@ const EHE_DATA = {
         "deserters"
       ],
       "hasMatch": true
+    },
+    {
+      "key": "drones",
+      "label": "Drones",
+      "affectsIDs": [
+        "drones"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "IRS",
+      "label": "Irs",
+      "affectsIDs": [
+        "IRS"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "Spiffocopter",
+      "label": "Spiffocopter",
+      "affectsIDs": [
+        "Spiffocopter"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "TISCreamery",
+      "label": "Tiscreamery",
+      "affectsIDs": [
+        "TISCreamery"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "UFO",
+      "label": "Ufo",
+      "affectsIDs": [
+        "UFO"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "SandyClaws",
+      "label": "Sandyclaws",
+      "affectsIDs": [
+        "SandyClaws"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "AttackOfTheStrippers",
+      "label": "Attackofthestrippers",
+      "affectsIDs": [
+        "AttackOfTheStrippers"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "Helikopter",
+      "label": "Helikopter",
+      "affectsIDs": [
+        "Helikopter"
+      ],
+      "hasMatch": true
+    },
+    {
+      "key": "BuffCorrell",
+      "label": "Buffcorrell",
+      "affectsIDs": [
+        "BuffCorrell"
+      ],
+      "hasMatch": true
     }
   ],
-  "issues": [
-    {
-      "type": "warn",
-      "msg": "military_nonhostile: Frequency_military sandbox var does not match preset ID 'military_nonhostile' \u2014 freq control may not apply."
-    },
-    {
-      "type": "warn",
-      "msg": "jets: Frequency_jet sandbox var does not match preset ID 'jets' \u2014 freq control may not apply."
-    },
-    {
-      "type": "warn",
-      "msg": "military_hostile: Frequency_military sandbox var does not match preset ID 'military_hostile' \u2014 freq control may not apply."
-    },
-    {
-      "type": "warn",
-      "msg": "news_Bell206: Frequency_news_chopper sandbox var does not match preset ID 'news_Bell206' \u2014 freq control may not apply."
-    },
-    {
-      "type": "warn",
-      "msg": "survivors: Frequency_survivor_heli sandbox var does not match preset ID 'survivors' \u2014 freq control may not apply."
-    }
-  ],
+  "issues": [],
   "initialSimCounts": {
-    "BuffCorrell": 2.47,
-    "Helikopter": 1.39,
-    "police": 4.86,
-    "Spiffocopter": 1.22,
+    "military_nonhostile": 57.21,
+    "drones": 56.93,
+    "news_Bell206": 12.56,
+    "police": 5.44,
+    "survivors": 3.2,
+    "AttackOfTheStrippers": 2.45,
+    "deserters": 1.13,
+    "BuffCorrell": 2.45,
+    "TISCreamery": 2.78,
+    "UFO": 2.71,
+    "Spiffocopter": 1.21,
+    "SandyClaws": 3.87,
+    "military_hostile": 53.74,
     "air_raid": 1.0,
-    "IRS": 4.61,
-    "survivors": 3.26,
-    "deserters": 1.09,
-    "drones": 58.07,
-    "SandyClaws": 3.94,
-    "UFO": 2.5,
-    "news_Bell206": 12.63,
-    "AttackOfTheStrippers": 2.61,
-    "military_hostile": 53.25,
-    "TISCreamery": 2.69,
-    "jets": 57.19,
-    "military_nonhostile": 59.2
+    "Helikopter": 1.39,
+    "jets": 56.45,
+    "IRS": 5.32
   }
 };
 
@@ -1341,12 +1379,13 @@ function buildBar(preset,group,td,track){
     });
   } else if(S.prog&&preset.progression&&preset.progressionIsRandom){
     const segs=preset.progression;
-    // Vertical stacking — all variants share the normal bar height equally via flex:1
+    // Vertical stacking — strip height proportional to selection weight
     bar.classList.add('rand-container');
     segs.forEach((seg,i)=>{
       const el=document.createElement('div');
       el.className='ps rand';
       el.style.background=seg.color+'bb';
+      el.style.flexGrow=String(seg.weight??1);
       el.addEventListener('mousemove',e=>{e.stopPropagation();showTT(ttHtml(preset,group.color,seg),e.clientX,e.clientY,seg.color);});
       el.addEventListener('mouseleave',hideTT);
       bar.appendChild(el);
