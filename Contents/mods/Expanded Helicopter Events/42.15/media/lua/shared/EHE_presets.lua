@@ -89,7 +89,7 @@ eHelicopter_PRESETS["military_UH1H_attack_cows"] = {
 	},
 	-- Taking their time to shoot cattle
 	hoverOnTargetDuration = {1150,2500},
-	hostilePreference = "IsoPlayer",
+	hostilePreference = "IsoAnimal",
 	hostilePredicate = subEvents.hostilePredicateCow,
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Reaper", "Viper", "Talon", "Sabre", "Cobra", "Wasp"},

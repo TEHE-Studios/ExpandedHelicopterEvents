@@ -199,11 +199,11 @@ function swhSubEvents.abductPlayer(heli, player)
     end
 end
 
----@param cow IsoPlayer|IsoAnimal
+---@param cow IsoAnimal
 function swhSubEvents.abductCow(heli, cow)
 
     if not cow then return end
-    if cow and (not instanceof(cow, "IsoPlayer")) then return end
+    if not instanceof(cow, "IsoAnimal") then return end
 
     if cow then
         heli.addedFunctionsToEvents.OnAttack = false

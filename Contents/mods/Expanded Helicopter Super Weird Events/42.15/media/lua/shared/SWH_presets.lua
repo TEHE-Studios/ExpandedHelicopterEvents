@@ -86,7 +86,7 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 eHelicopter_PRESETS["UFO_stealCow"] = {
 	inherit = {"UFO"},
 	hoverOnTargetDuration = true,
-	hostilePreference = "IsoPlayer",
+	hostilePreference = "IsoAnimal",
 	hostilePredicate = subEvents.hostilePredicateCow,
 	addedFunctionsToEvents = {["OnAttack"] = SWH_subEvents.abductCow},
 	forScheduling = false,
