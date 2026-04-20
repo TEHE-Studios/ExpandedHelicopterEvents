@@ -95,11 +95,33 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
 ::-webkit-scrollbar-thumb:hover{background:var(--accent2);}
 .src-tag{font-size:9px;font-family:var(--mono);color:var(--text-muted);flex-shrink:0;}
 .sim-count{
-  position:absolute;right:4px;top:50%;transform:translateY(-50%);
   font-family:var(--mono);font-size:10px;font-weight:700;
-  padding:1px 5px;border-radius:3px;pointer-events:none;
-  background:rgba(0,0,0,.55);z-index:5;white-space:nowrap;letter-spacing:.03em;
+  margin-left:auto;padding:1px 5px;border-radius:3px;
+  background:rgba(0,0,0,.35);white-space:nowrap;letter-spacing:.03em;flex-shrink:0;
 }
+/* Random-selection segments: dashed outline instead of solid fill */
+/* random-selection: vertical strips scaled to fit normal bar height */
+.eb.rand-container{
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  padding:0;
+}
+.ps.rand{
+  position:relative !important;
+  top:auto !important; left:auto !important;
+  width:100% !important;
+  flex:1;
+  min-height:0;
+  border-right:none;
+  border-bottom:1px solid rgba(0,0,0,.2);
+  display:flex;
+  align-items:center;
+  padding:0 4px;
+  box-sizing:border-box;
+}
+.ps.rand:last-child{border-bottom:none;}
+
 
 .sim-note{font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.5;}
 </style>
@@ -944,23 +966,23 @@ const EHE_DATA = {
     }
   ],
   "initialSimCounts": {
-    "news_Bell206": 12.09,
-    "BuffCorrell": 2.55,
-    "military_nonhostile": 59.04,
-    "drones": 57.42,
-    "police": 5.42,
-    "UFO": 2.39,
-    "military_hostile": 54.09,
-    "Helikopter": 1.21,
-    "survivors": 3.34,
-    "AttackOfTheStrippers": 2.53,
-    "deserters": 1.11,
+    "BuffCorrell": 2.47,
+    "Helikopter": 1.39,
+    "police": 4.86,
+    "Spiffocopter": 1.22,
     "air_raid": 1.0,
-    "SandyClaws": 3.77,
-    "TISCreamery": 2.77,
-    "jets": 57.84,
-    "Spiffocopter": 1.13,
-    "IRS": 4.91
+    "IRS": 4.61,
+    "survivors": 3.26,
+    "deserters": 1.09,
+    "drones": 58.07,
+    "SandyClaws": 3.94,
+    "UFO": 2.5,
+    "news_Bell206": 12.63,
+    "AttackOfTheStrippers": 2.61,
+    "military_hostile": 53.25,
+    "TISCreamery": 2.69,
+    "jets": 57.19,
+    "military_nonhostile": 59.2
   }
 };
 
@@ -1108,7 +1130,29 @@ function runSimulation(){
         const picked = options[Math.floor(Math.random()*options.length)];
         // Insane mode schedules 10 events per selection instead of 1
         const isInsane = rawFreqOf[picked] === 6;
-        counts[picked] = (counts[picked]||0) + (isInsane ? 10 : 1);
+        const n = isInsane ? 10 : 1;
+
+        // Resolve which progression stage is active on this day.
+        // progressionSelectPreset is deterministic: highest pCutOff <= DaysOverCutOff.
+        // _simCache keys are "presetId" for non-progression or "presetId::segId" for stages.
+        const pickedPreset = EHE_DATA.groups.flatMap(g=>g.presets).find(p=>p.id===picked);
+        if(pickedPreset && pickedPreset.progression && !pickedPreset.progressionIsRandom){
+          const {sd:psd, cod:pcod} = computeDays(
+            pickedPreset.startFactor, pickedPreset.cutoffFactor, S.dur, S.startDay);
+          const daysOverCutOff = pcod > 0 ? day / pcod : 0;
+          let activeSegId = null;
+          let bestFactor = -1;
+          for(const seg of pickedPreset.progression){
+            if(seg.factor <= daysOverCutOff && seg.factor > bestFactor){
+              bestFactor = seg.factor;
+              activeSegId = seg.id;
+            }
+          }
+          const key = activeSegId ? picked+'::'+activeSegId : picked;
+          counts[key] = (counts[key]||0) + n;
+        } else {
+          counts[picked] = (counts[picked]||0) + n;
+        }
       }
     }
   }
@@ -1148,7 +1192,43 @@ function ttHtml(preset,groupColor,seg){
   const freq=freqCalc(preset.freqSandboxKey,2);
   const freqLbl=FREQ_ENUM.find(f=>f.fc===freq)?.label??`calc:${freq}`;
   let h=`<div class="tt-id">${seg?'↳ '+seg.id:preset.id}</div>`;
-  if(simCount!=null)h+=`<div class="tt-r"><span class="tt-k">Avg events</span><span class="tt-v" style="color:${simCountColor(simCount)};">${simCount.toFixed(1)} per playthrough · ${S.simRuns} runs · 24 ticks/day</span></div>`;
+  // For a progression segment, look up the per-segment key; otherwise use parent total
+  const displayCount = seg
+    ? (_simCache[preset.id+'::'+seg.id] ?? null)
+    : simCount;
+  if(displayCount!=null)h+=`<div class="tt-r"><span class="tt-k">Avg events</span><span class="tt-v" style="color:${simCountColor(displayCount)};">${displayCount.toFixed(1)} per playthrough · ${S.simRuns} runs</span></div>`;
+
+  // Per-variant breakdown when hovering the parent bar (not a specific segment)
+  if(!seg && preset.progression && preset.progression.length>0){
+    const isRand = preset.progressionIsRandom;
+    const typeLabel = isRand ? 'random selection' : 'progression';
+    h+=`<div class="tt-r" style="margin-top:4px;"><span class="tt-k" style="color:var(--text-muted);">${typeLabel}</span><span class="tt-v" style="color:var(--text-muted);">${preset.progression.length} variant${preset.progression.length!==1?'s':''}</span></div>`;
+    if(isRand){
+      // Each firing picks exactly one variant. Distribute parent total by selection weight.
+      const totalWeight = preset.progression.reduce((s,v)=>s+(v.weight??1),0);
+      const parentTotal = _simCache[preset.id] ?? null;
+      for(const s of preset.progression){
+        const share = totalWeight>0 ? (s.weight??1)/totalWeight : 1/preset.progression.length;
+        const c = parentTotal!=null ? parentTotal*share : null;
+        const bar2 = c!=null && c>=0.05
+          ? `<span style="color:${simCountColor(c)};font-family:var(--mono);">${c.toFixed(2)}</span>`
+          : `<span style="color:var(--text-muted)">—</span>`;
+        const dot2 = `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${s.color||'#888'};margin-right:5px;flex-shrink:0;"></span>`;
+        const wTag = (s.weight??1)!==1 ? ` <span style="color:var(--text-muted);font-size:9px;">(w:${s.weight??1})</span>` : '';
+        h+=`<div class="tt-r" style="padding-left:8px;">${dot2}<span class="tt-k">${s.id}</span>${wTag}<span class="tt-v">${bar2}</span></div>`;
+      }
+    } else {
+      for(const s of preset.progression){
+        const key = preset.id+'::'+s.id;
+        const c = _simCache[key];
+        const bar2 = c!=null && c>=0.05
+          ? `<span style="color:${simCountColor(c)};font-family:var(--mono);">${c.toFixed(1)}</span>`
+          : `<span style="color:var(--text-muted)">—</span>`;
+        const dot2 = `<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${s.color||'#888'};margin-right:5px;flex-shrink:0;"></span>`;
+        h+=`<div class="tt-r" style="padding-left:8px;">${dot2}<span class="tt-k">${s.id}</span><span class="tt-v">${bar2}</span></div>`;
+      }
+    }
+  }
   if(preset.description)h+=`<div style="color:var(--text-dim);font-size:11px;margin-bottom:5px;">${preset.description}</div>`;
   if(seg){
     const segDay=(seg.factor*cod).toFixed(1);
@@ -1236,11 +1316,13 @@ function buildBar(preset,group,td,track){
   if(cod<=sd)return;
   const lp=(sd/td)*100, wp=((cod-sd)/td)*100;
   const bar=document.createElement('div');
+  // Use the preset's own markerColor for the bar; fall back to source-file colour
+  const barColor = preset.color || group.color;
   bar.className='eb'+(active?'':' off');
   bar.style.left=lp+'%';
   bar.style.width=Math.max(wp,.1)+'%';
-  bar.style.background=group.color+'55';
-  bar.style.border=`1px solid ${group.color}88`;
+  bar.style.background=barColor+'55';
+  bar.style.border=`1px solid ${barColor}88`;
 
   if(S.prog&&preset.progression&&!preset.progressionIsRandom){
     const segs=preset.progression;
@@ -1259,17 +1341,18 @@ function buildBar(preset,group,td,track){
     });
   } else if(S.prog&&preset.progression&&preset.progressionIsRandom){
     const segs=preset.progression;
-    const n=segs.length;
+    // Vertical stacking — all variants share the normal bar height equally via flex:1
+    bar.classList.add('rand-container');
     segs.forEach((seg,i)=>{
       const el=document.createElement('div');
-      el.className='ps';
-      el.style.cssText=`left:${(i/n)*100}%;width:${100/n}%;background:${seg.color};opacity:.9;`;
+      el.className='ps rand';
+      el.style.background=seg.color+'bb';
       el.addEventListener('mousemove',e=>{e.stopPropagation();showTT(ttHtml(preset,group.color,seg),e.clientX,e.clientY,seg.color);});
       el.addEventListener('mouseleave',hideTT);
       bar.appendChild(el);
     });
   } else {
-    bar.style.background=group.color+'aa';
+    bar.style.background=barColor+'aa';
   }
 
   // density canvas
@@ -1298,20 +1381,11 @@ function buildBar(preset,group,td,track){
   }
 
   bar.addEventListener('mousemove',e=>{
-    if(e.target===bar)showTT(ttHtml(preset,group.color,null),e.clientX,e.clientY,group.color);
+    if(e.target===bar)showTT(ttHtml(preset,barColor,null),e.clientX,e.clientY,barColor);
   });
   bar.addEventListener('mouseleave',hideTT);
 
-  // Event count badge
-  if(S.showSim && active){
-    const n = _simCache[preset.id];
-    const badge = document.createElement('div');
-    badge.className = 'sim-count';
-    const display = n==null ? '…' : n<0.1 ? '~0' : n.toFixed(1);
-    badge.textContent = display;
-    badge.style.color = n==null ? 'var(--text-muted)' : simCountColor(n);
-    bar.appendChild(badge);
-  }
+  // (count badge is now in the label column, not on the bar)
 
   track.appendChild(bar);
 }
@@ -1356,6 +1430,30 @@ function render(){
     const rid=document.createElement('span');
     rid.className='rid'; rid.title=preset.id; rid.textContent=preset.id;
     rl.appendChild(rid);
+
+    // Tooltip on the whole label area
+    rl.style.cursor='help';
+    rl.addEventListener('mousemove',e=>{
+      const barColor=preset.color||group.color;
+      showTT(ttHtml(preset,barColor,null),e.clientX,e.clientY,barColor);
+    });
+    rl.addEventListener('mouseleave',hideTT);
+
+    // Total-count badge in the label — summed across progression stages
+    if(S.showSim){
+      let total = _simCache[preset.id] ?? 0;
+      if(preset.progression && !preset.progressionIsRandom){
+        for(const seg of preset.progression)
+          total += _simCache[preset.id+'::'+seg.id] ?? 0;
+      }
+      if(total >= 0.05){
+        const cb = document.createElement('span');
+        cb.className = 'sim-count';
+        cb.textContent = total.toFixed(1);
+        cb.style.color = simCountColor(total);
+        rl.appendChild(cb);
+      }
+    }
 
     if(preset.source&&preset.source!==EHE_DATA.groups[0]?.presets[0]?.source){
       const st=document.createElement('span');
