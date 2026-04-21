@@ -37,10 +37,7 @@ function eHeliEvent_engage(ID)
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 
-	local engageRawFreq = SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]
-	local engageFC = engageRawFreq and (engageRawFreq-1) or 2
-	if engageFC == 5 then engageFC = 50 end
-	if engageFC == 0 then
+	if SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
 		willFly = false
 		eHeliEvent.triggered = true
 	end
@@ -192,7 +189,8 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 			local presetSettings = eHelicopter_PRESETS[presetID]
 			if (not eventIDsScheduled[presetID]) and presetSettings and eHelicopter then
 
-				local schedulingFactor = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
+				local sfRaw = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
+				local schedulingFactor = type(sfRaw)=="table" and (sfRaw[1] or 1) or (sfRaw or 1)
 				local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
 				local specialDatesObserved = presetSettings.eventSpecialDates or eHelicopter.eventSpecialDates
 				local specialDatesInRange = false
@@ -246,8 +244,29 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 				if (specialDatesObserved and (not specialDatesInRange)) then eventAvailable = false end
 
 				if eventAvailable then
-					local weight = (presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight) * freq
-					local probabilityNumerator = math.floor((freq*schedulingFactor) + 0.5 )
+					local wRaw = presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight
+					local baseWeight  = type(wRaw)=="table" and (wRaw[1] or 10)  or (wRaw  or 10)
+					local wDropOff    = type(wRaw)=="table" and wRaw[2]          or nil
+					local wMin        = type(wRaw)=="table" and (wRaw[3] or 1)   or 1
+
+					local sfDropOff   = type(sfRaw)=="table" and sfRaw[2]        or nil
+					local sfMin       = type(sfRaw)=="table" and (sfRaw[3] or 1) or 1
+
+					local progress = (cutOffDay > startDay)
+						and math.max(0, math.min(1, (daysIntoApoc-startDay)/(cutOffDay-startDay)))
+						or 0
+
+					if sfDropOff then
+						schedulingFactor = math.max(schedulingFactor - schedulingFactor*sfDropOff*progress, sfMin)
+					end
+
+					local probabilityNumerator = math.floor((freq*schedulingFactor) + 0.5)
+
+					local weight = baseWeight
+					if wDropOff then
+						weight = math.max(baseWeight - baseWeight*wDropOff*progress, wMin)
+					end
+					weight = math.floor(weight * freq + 0.5)
 
 					for i=1, weight do
 						if (ZombRand(probabilityDenominator) <= probabilityNumerator) then
@@ -272,9 +291,7 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 		if selectedPresetID and (selectedPresetID ~= false) then
 
 			local freq = SandboxVars.ExpandedHeli["Frequency_"..selectedPresetID]
-			local insaneFC = freqOverride or (freq and (freq-1) or 2)
-			if insaneFC == 5 then insaneFC = 50 end
-			local insane = (insaneFC == 50)
+			local insane = (freqOverride or freq) == 6
 
 			local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
@@ -292,7 +309,7 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 				local startTime = ZombRand(flightHours[1],flightHours[2]+1)
 				if startTime > 24 then startTime = startTime-24 end
 
-				if not noPrint then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
+				if not noPrint==true then print(" -Scheduled: "..selectedPresetID.." [Day:"..nextStartDay.." Time:"..startTime.."]") end
 
 				latestStartDay = math.max(nextStartDay, (latestStartDay or 0))
 

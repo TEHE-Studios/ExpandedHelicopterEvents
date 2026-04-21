@@ -1,6 +1,8 @@
 eHelicopter = {}
 ---CHECK THE PRESETGUIDE FILE IN /SHARED/ FOR MORE INFORMATION
 eHelicopter.forScheduling = false
+-- eventSpawnWeight and schedulingFactor accept {base, dropOff, minimum} for window-based tapering
+-- e.g. schedulingFactor = {50, 0.9, 1.5}  means: start at 50, drop 90% to floor 1.5 by cutOffDay
 eHelicopter.schedulingFactor = 1
 eHelicopter.eventSpawnWeight = 10
 eHelicopter.eventStartDayFactor = 0
