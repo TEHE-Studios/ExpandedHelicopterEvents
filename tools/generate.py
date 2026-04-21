@@ -381,8 +381,25 @@ def build_preset_entry(pid, data, all_presets, group_color):
 
     start_factor  = float(f("eventStartDayFactor",  0))
     cutoff_factor = float(f("eventCutOffDayFactor",  0.34))
-    spawn_weight  = int(f("eventSpawnWeight",         10))
-    sched_factor  = float(f("schedulingFactor",        1))
+    _wraw = f("eventSpawnWeight", 10)
+    if isinstance(_wraw, list):
+        spawn_weight   = int(_wraw[0])   if len(_wraw)>0 else 10
+        weight_dropoff = float(_wraw[1]) if len(_wraw)>1 else None
+        weight_min     = float(_wraw[2]) if len(_wraw)>2 else 1
+    else:
+        spawn_weight   = int(_wraw) if _wraw is not None else 10
+        weight_dropoff = None
+        weight_min     = 1
+
+    _sfraw = f("schedulingFactor", 1)
+    if isinstance(_sfraw, list):
+        sched_factor   = float(_sfraw[0]) if len(_sfraw)>0 else 1
+        sf_dropoff     = float(_sfraw[1]) if len(_sfraw)>1 else None
+        sf_min         = float(_sfraw[2]) if len(_sfraw)>2 else 1
+    else:
+        sched_factor   = float(_sfraw) if _sfraw is not None else 1
+        sf_dropoff     = None
+        sf_min         = 1
     ignore_cont   = bool(f("ignoreContinueScheduling", False))
     for_sched     = bool(f("forScheduling",            False))
     marker_color  = f("markerColor")
@@ -483,6 +500,10 @@ def build_preset_entry(pid, data, all_presets, group_color):
         "isOneTime":              is_one_time,
         "freqSandboxKey":         freq_key,
         "color":                  color,
+        "weightDropOff":          weight_dropoff,
+        "weightMinimum":          weight_min,
+        "sfDropOff":              sf_dropoff,
+        "sfMinimum":              sf_min,
         "source":                 data.get("_source", ""),
         "notes":                  notes,
         "bugNotes":               bug_notes,
@@ -817,8 +838,14 @@ function relProb(preset,day){
   if(day<sd||day>cod)return 0;
   const freq=freqCalc(preset.freqSandboxKey,2);
   if(freq===0)return 0;
-  const sf=preset.schedulingFactor??1;
-  const w=(preset.spawnWeight??10)*freq;
+  const progress=(cod>sd)?Math.max(0,Math.min(1,(day-sd)/(cod-sd))):0;
+  let sf=preset.schedulingFactor??1;
+  if(preset.sfDropOff!=null)
+    sf=Math.max(sf-sf*preset.sfDropOff*progress, preset.sfMinimum??1);
+  let w=(preset.spawnWeight??10);
+  if(preset.weightDropOff!=null)
+    w=Math.max(w-w*preset.weightDropOff*progress, preset.weightMinimum??1);
+  w=w*freq;
   const denom=(10-freq)*2500+1000*(day/S.dur);
   const num=Math.floor(freq*sf+.5);
   return w*num/Math.max(denom,1);
@@ -1218,7 +1245,7 @@ function render(){
 
     // Colour dot replacing group header
     const dot=document.createElement('span');
-    dot.style.cssText=`display:inline-block;width:7px;height:7px;border-radius:50%;background:${group.color};margin-right:7px;flex-shrink:0;`;
+    dot.style.cssText=`display:inline-block;width:7px;height:7px;border-radius:50%;background:${preset.color||group.color};margin-right:7px;flex-shrink:0;`;
     rl.appendChild(dot);
 
     const rid=document.createElement('span');

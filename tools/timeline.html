@@ -218,6 +218,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "military_nonhostile",
           "color": "#5eff44",
+          "weightDropOff": 0.85,
+          "weightMinimum": 5.0,
+          "sfDropOff": 0.9,
+          "sfMinimum": 1.5,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -308,6 +312,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "drones",
           "color": "#5eff44",
+          "weightDropOff": 0.85,
+          "weightMinimum": 5.0,
+          "sfDropOff": 0.9,
+          "sfMinimum": 1.5,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -342,6 +350,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "jets",
           "color": "#5eff44",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -355,25 +367,25 @@ const EHE_DATA = {
               "note": "Passing jet, mostly stirs up activity"
             },
             {
-              "id": "jet_pass_louder",
-              "factor": 0.02,
-              "color": "#5eff44",
-              "label": "Jet Pass Louder",
-              "note": "Passing jet, but louder to kick up activity along with the bombing"
-            },
-            {
               "id": "jet_bombing_cluster",
-              "factor": 0.7,
+              "factor": 0.0072,
               "color": "#5eff44",
               "label": "Jet Bombing Cluster",
               "note": "The player has been warned to flee, up to them now"
             },
             {
               "id": "jet_bombing_napalm",
-              "factor": 0.98,
+              "factor": 0.0073,
               "color": "#5eff44",
               "label": "Jet Bombing Napalm",
               "note": ""
+            },
+            {
+              "id": "jet_pass_louder",
+              "factor": 0.071,
+              "color": "#5eff44",
+              "label": "Jet Pass Louder",
+              "note": "Passing jet, but louder to kick up activity along with the bombing"
             }
           ],
           "progressionIsRandom": false
@@ -390,6 +402,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "military_hostile",
           "color": "#5eff44",
+          "weightDropOff": 0.85,
+          "weightMinimum": 5.0,
+          "sfDropOff": 0.9,
+          "sfMinimum": 1.5,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -424,6 +440,10 @@ const EHE_DATA = {
           "isOneTime": true,
           "freqSandboxKey": null,
           "color": "#4fc35a",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -447,6 +467,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "news_Bell206",
           "color": "#ffd833",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -466,6 +490,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "police",
           "color": "#4747ff",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -521,6 +549,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "survivors",
           "color": "#cfcfcf",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -590,6 +622,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "deserters",
           "color": "#ff7a44",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -645,6 +681,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "Spiffocopter",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -679,6 +719,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "UFO",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -731,6 +775,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "IRS",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -772,6 +820,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "TISCreamery",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -806,6 +858,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "Helikopter",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -825,6 +881,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "SandyClaws",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -844,6 +904,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "AttackOfTheStrippers",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -863,6 +927,10 @@ const EHE_DATA = {
           "isOneTime": false,
           "freqSandboxKey": "BuffCorrell",
           "color": "#f435c6",
+          "weightDropOff": null,
+          "weightMinimum": 1,
+          "sfDropOff": null,
+          "sfMinimum": 1,
           "source": "SWH_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -1004,25 +1072,7 @@ const EHE_DATA = {
     }
   ],
   "issues": [],
-  "initialSimCounts": {
-    "SandyClaws": 4.38,
-    "BuffCorrell": 2.68,
-    "Spiffocopter": 1.23,
-    "military_nonhostile": 57.03,
-    "survivors": 3.74,
-    "police": 5.47,
-    "air_raid": 1.0,
-    "TISCreamery": 2.65,
-    "UFO": 2.69,
-    "news_Bell206": 12.44,
-    "drones": 59.01,
-    "AttackOfTheStrippers": 2.61,
-    "Helikopter": 1.3,
-    "IRS": 5.06,
-    "military_hostile": 52.98,
-    "deserters": 1.16,
-    "jets": 58.38
-  }
+  "initialSimCounts": {}
 };
 
 // ── FREQ ENUM ─────────────────────────────────────────────────────────
@@ -1063,8 +1113,14 @@ function relProb(preset,day){
   if(day<sd||day>cod)return 0;
   const freq=freqCalc(preset.freqSandboxKey,2);
   if(freq===0)return 0;
-  const sf=preset.schedulingFactor??1;
-  const w=(preset.spawnWeight??10)*freq;
+  const progress=(cod>sd)?Math.max(0,Math.min(1,(day-sd)/(cod-sd))):0;
+  let sf=preset.schedulingFactor??1;
+  if(preset.sfDropOff!=null)
+    sf=Math.max(sf-sf*preset.sfDropOff*progress, preset.sfMinimum??1);
+  let w=(preset.spawnWeight??10);
+  if(preset.weightDropOff!=null)
+    w=Math.max(w-w*preset.weightDropOff*progress, preset.weightMinimum??1);
+  w=w*freq;
   const denom=(10-freq)*2500+1000*(day/S.dur);
   const num=Math.floor(freq*sf+.5);
   return w*num/Math.max(denom,1);
@@ -1464,7 +1520,7 @@ function render(){
 
     // Colour dot replacing group header
     const dot=document.createElement('span');
-    dot.style.cssText=`display:inline-block;width:7px;height:7px;border-radius:50%;background:${group.color};margin-right:7px;flex-shrink:0;`;
+    dot.style.cssText=`display:inline-block;width:7px;height:7px;border-radius:50%;background:${preset.color||group.color};margin-right:7px;flex-shrink:0;`;
     rl.appendChild(dot);
 
     const rid=document.createElement('span');
