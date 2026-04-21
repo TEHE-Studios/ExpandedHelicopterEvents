@@ -448,9 +448,7 @@ def build_preset_entry(pid, data, all_presets, group_color):
             if isinstance(child_color_raw, dict):
                 item["color"] = lua_color_to_hex(child_color_raw)
             else:
-                t = idx / max(n - 1, 1)
-                item["color"] = interpolate_color(color, "#dd1010", t) if "military" in pid else \
-                                 interpolate_color(color, "#2030a0", t)
+                item["color"] = color  # inherit parent markerColor
             item["label"] = item["id"].replace("_", " ").title()
             item["note"]  = child.get("_description", "")
 
@@ -467,8 +465,7 @@ def build_preset_entry(pid, data, all_presets, group_color):
             if isinstance(child_color_raw, dict):
                 item["color"] = lua_color_to_hex(child_color_raw)
             else:
-                t = idx / max(n - 1, 1)
-                item["color"] = interpolate_color(color, "#404040", t)
+                item["color"] = color  # inherit parent markerColor
             item["label"] = item["id"].replace("_", " ").title()
             item["note"]  = child.get("_description", "")
         progression = items
@@ -654,7 +651,8 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
   transition:filter .12s;overflow:hidden;display:flex;}
 .eb:hover{filter:brightness(1.3);z-index:10;}
 .eb.off{opacity:.1;pointer-events:none;}
-.ps{height:100%;border-right:1px solid rgba(0,0,0,.3);flex-shrink:0;cursor:pointer;position:absolute;top:0;}
+.ps{height:100%;border-right:none;flex-shrink:0;cursor:pointer;position:absolute;top:0;}
+.ps::after{content:'';position:absolute;right:0;top:0;bottom:0;width:2px;background:repeating-linear-gradient(to bottom,var(--bg) 0px,var(--bg) 2px,transparent 2px,transparent 4px);pointer-events:none;}
 .ps:last-child{border-right:none;}
 .ps:hover{filter:brightness(1.15);}
 #tooltip{display:none;position:fixed;background:var(--bg2);border:1px solid var(--border2);

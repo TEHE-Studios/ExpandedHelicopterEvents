@@ -73,7 +73,8 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
   transition:filter .12s;overflow:hidden;display:flex;}
 .eb:hover{filter:brightness(1.3);z-index:10;}
 .eb.off{opacity:.1;pointer-events:none;}
-.ps{height:100%;border-right:1px solid rgba(0,0,0,.3);flex-shrink:0;cursor:pointer;position:absolute;top:0;}
+.ps{height:100%;border-right:none;flex-shrink:0;cursor:pointer;position:absolute;top:0;}
+.ps::after{content:'';position:absolute;right:0;top:0;bottom:0;width:2px;background:repeating-linear-gradient(to bottom,var(--bg) 0px,var(--bg) 2px,transparent 2px,transparent 4px);pointer-events:none;}
 .ps:last-child{border-right:none;}
 .ps:hover{filter:brightness(1.15);}
 #tooltip{display:none;position:fixed;background:var(--bg2);border:1px solid var(--border2);
@@ -231,64 +232,64 @@ const EHE_DATA = {
             },
             {
               "id": "military_UH1H_patrol_emergency",
-              "factor": 0.0066,
-              "color": "#6ce43e",
+              "factor": 0.0161,
+              "color": "#5eff44",
               "label": "Military Uh1H Patrol Emergency",
               "note": "EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer"
             },
             {
               "id": "military_OH58A_recon_hover",
-              "factor": 0.01,
-              "color": "#7ac938",
+              "factor": 0.0323,
+              "color": "#5eff44",
               "label": "Military Oh58A Recon Hover",
               "note": "Basically the earlier version of the news helicopter"
             },
             {
               "id": "military_UH1H_patrol_quarantine",
-              "factor": 0.0165,
-              "color": "#88af32",
+              "factor": 0.0645,
+              "color": "#5eff44",
               "label": "Military Uh1H Patrol Quarantine",
               "note": "Later stage announcement and flyer helicopter"
             },
             {
               "id": "military_UH1H_attack_cows",
-              "factor": 0.022,
-              "color": "#96942c",
+              "factor": 0.0968,
+              "color": "#5eff44",
               "label": "Military Uh1H Attack Cows",
               "note": "Kiowa attacking zombies"
             },
             {
               "id": "military_UH1H_attack_undead_evac",
-              "factor": 0.033,
-              "color": "#a47a27",
+              "factor": 0.1613,
+              "color": "#5eff44",
               "label": "Military Uh1H Attack Undead Evac",
               "note": "Making passes to strafe and throwing out flyers"
             },
             {
               "id": "military_UH1H_attack_undead",
-              "factor": 0.066,
-              "color": "#b25f21",
+              "factor": 0.2258,
+              "color": "#5eff44",
               "label": "Military Uh1H Attack Undead",
               "note": "Making passes to strafe zombies"
             },
             {
               "id": "military_CH47_evac",
-              "factor": 0.19,
-              "color": "#c0451b",
+              "factor": 0.3226,
+              "color": "#5eff44",
               "label": "Military Ch47 Evac",
               "note": "Last evacuations passing through (waiting for assets)"
             },
             {
               "id": "military_UH1H_command_evac",
-              "factor": 0.236,
-              "color": "#ce2a15",
+              "factor": 0.4194,
+              "color": "#5eff44",
               "label": "Military Uh1H Command Evac",
               "note": "Commanders are leaving, could fall out of the sky leaving something."
             },
             {
               "id": "military_UH1H_deserters",
-              "factor": 0.245,
-              "color": "#dd1010",
+              "factor": 0.4516,
+              "color": "#5eff44",
               "label": "Military Uh1H Deserters",
               "note": "Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events."
             }
@@ -322,7 +323,7 @@ const EHE_DATA = {
             {
               "id": "drone_RQ2Pioneer_loiter",
               "factor": 0.007,
-              "color": "#2030a0",
+              "color": "#5eff44",
               "label": "Drone Rq2Pioneer Loiter",
               "note": ""
             }
@@ -356,21 +357,21 @@ const EHE_DATA = {
             {
               "id": "jet_bombing_cluster",
               "factor": 0.0072,
-              "color": "#49ba62",
+              "color": "#5eff44",
               "label": "Jet Bombing Cluster",
               "note": "The player has been warned to flee, up to them now"
             },
             {
               "id": "jet_bombing_napalm",
               "factor": 0.0073,
-              "color": "#347581",
+              "color": "#5eff44",
               "label": "Jet Bombing Napalm",
               "note": ""
             },
             {
               "id": "jet_pass_louder",
               "factor": 0.071,
-              "color": "#2030a0",
+              "color": "#5eff44",
               "label": "Jet Pass Louder",
               "note": "Passing jet, but louder to kick up activity along with the bombing"
             }
@@ -396,15 +397,15 @@ const EHE_DATA = {
           "progression": [
             {
               "id": "military_UH1H_attack_all",
-              "factor": 0.2145,
+              "factor": 0.2121,
               "color": "#ff4747",
               "label": "Military Uh1H Attack All",
               "note": "UH-1H strafing everything it sees"
             },
             {
               "id": "military_kiowa_attack_all",
-              "factor": 0.233,
-              "color": "#dd1010",
+              "factor": 0.303,
+              "color": "#5eff44",
               "label": "Military Kiowa Attack All",
               "note": "Kiowa attacking everything"
             }
@@ -480,28 +481,28 @@ const EHE_DATA = {
             {
               "id": "police_Bell206_hovering",
               "weight": 2,
-              "color": "#4545cf",
+              "color": "#4747ff",
               "label": "Police Bell206 Hovering",
               "note": ""
             },
             {
               "id": "police_Bell206_firing",
               "weight": 2,
-              "color": "#43439f",
+              "color": "#4747ff",
               "label": "Police Bell206 Firing",
               "note": ""
             },
             {
               "id": "police_Bell206_fleeing",
               "weight": 2,
-              "color": "#41416f",
+              "color": "#4747ff",
               "label": "Police Bell206 Fleeing",
               "note": ""
             },
             {
               "id": "police_Bell206_fleeing",
               "weight": 2,
-              "color": "#404040",
+              "color": "#4747ff",
               "label": "Police Bell206 Fleeing",
               "note": ""
             }
@@ -535,42 +536,42 @@ const EHE_DATA = {
             {
               "id": "survivors_Bell206_N177TV",
               "weight": 1,
-              "color": "#b7b7b7",
+              "color": "#cfcfcf",
               "label": "Survivors Bell206 N177Tv",
               "note": "Fleeing reporters"
             },
             {
               "id": "survivors_Bell206_N95SP",
               "weight": 1,
-              "color": "#9f9f9f",
+              "color": "#cfcfcf",
               "label": "Survivors Bell206 N95Sp",
               "note": "Cops from Indiana"
             },
             {
               "id": "survivors_Cessna172",
               "weight": 1,
-              "color": "#5eff44",
+              "color": "#cfcfcf",
               "label": "Survivors Cessna172",
               "note": "Taking off from nearby small airfields to ditch traffic"
             },
             {
               "id": "survivors_soldiers_UH1H",
               "weight": 1,
-              "color": "#6f6f6f",
+              "color": "#cfcfcf",
               "label": "Survivors Soldiers Uh1H",
               "note": "Friendly now ex-soldiers trying to find safety, contrast to the deserters"
             },
             {
               "id": "survivors_Bell206_N120LH",
               "weight": 1,
-              "color": "#575757",
+              "color": "#cfcfcf",
               "label": "Survivors Bell206 N120Lh",
               "note": "Richlords fleeing"
             },
             {
               "id": "survivors_Bell206_N5740A",
               "weight": 1,
-              "color": "#404040",
+              "color": "#cfcfcf",
               "label": "Survivors Bell206 N5740A",
               "note": "Fleeing reporters"
             }
@@ -604,21 +605,21 @@ const EHE_DATA = {
             {
               "id": "deserters_UH1H_raidingparty",
               "weight": 4,
-              "color": "#bf6642",
+              "color": "#ff7a44",
               "label": "Deserters Uh1H Raidingparty",
               "note": "Specifically targeting the player and dropping off a landing party"
             },
             {
               "id": "deserters_UH1H_scoutingparty",
               "weight": 3,
-              "color": "#7f5341",
+              "color": "#ff7a44",
               "label": "Deserters Uh1H Scoutingparty",
               "note": "Looking around and dropping off people, not strictly hostile"
             },
             {
               "id": "deserters_UH1H_diversion",
               "weight": 4,
-              "color": "#404040",
+              "color": "#ff7a44",
               "label": "Deserters Uh1H Diversion",
               "note": "pulling around zombies around far more dramatically and taking potshots"
             }
@@ -636,7 +637,7 @@ const EHE_DATA = {
           "id": "Spiffocopter",
           "label": "Spiffocopter",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 1,
           "schedulingFactor": 1.0,
@@ -658,8 +659,8 @@ const EHE_DATA = {
             },
             {
               "id": "Spiffocopter_partyTime",
-              "factor": 0.05,
-              "color": "#2030a0",
+              "factor": 0.1,
+              "color": "#f435c6",
               "label": "Spiffocopter Partytime",
               "note": ""
             }
@@ -670,7 +671,7 @@ const EHE_DATA = {
           "id": "UFO",
           "label": "UFO",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 2,
           "schedulingFactor": 1.0,
@@ -693,21 +694,21 @@ const EHE_DATA = {
             {
               "id": "UFORednecks",
               "weight": 1,
-              "color": "#b83899",
+              "color": "#f435c6",
               "label": "Uforednecks",
               "note": ""
             },
             {
               "id": "UFOFratBoys",
               "weight": 1,
-              "color": "#7c3c6c",
+              "color": "#f435c6",
               "label": "Ufofratboys",
               "note": ""
             },
             {
               "id": "UFO_stealCow",
               "weight": 1,
-              "color": "#404040",
+              "color": "#f435c6",
               "label": "Ufo Stealcow",
               "note": ""
             }
@@ -722,7 +723,7 @@ const EHE_DATA = {
           "id": "IRS",
           "label": "IRS",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 4,
           "schedulingFactor": 1.0,
@@ -745,14 +746,14 @@ const EHE_DATA = {
             {
               "id": "IRS_Wave2",
               "factor": 0.2,
-              "color": "#8a32b3",
+              "color": "#f435c6",
               "label": "Irs Wave2",
               "note": ""
             },
             {
               "id": "IRS_Wave3",
               "factor": 0.5,
-              "color": "#2030a0",
+              "color": "#f435c6",
               "label": "Irs Wave3",
               "note": ""
             }
@@ -763,7 +764,7 @@ const EHE_DATA = {
           "id": "TISCreamery",
           "label": "TISCreamery",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 2,
           "schedulingFactor": 1.0,
@@ -786,7 +787,7 @@ const EHE_DATA = {
             {
               "id": "TISCreamery_Socks",
               "weight": 1,
-              "color": "#404040",
+              "color": "#f435c6",
               "label": "Tiscreamery Socks",
               "note": ""
             }
@@ -797,7 +798,7 @@ const EHE_DATA = {
           "id": "Helikopter",
           "label": "Helikopter",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 1,
           "schedulingFactor": 1.0,
@@ -816,7 +817,7 @@ const EHE_DATA = {
           "id": "SandyClaws",
           "label": "SandyClaws",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 3,
           "schedulingFactor": 1.0,
@@ -835,7 +836,7 @@ const EHE_DATA = {
           "id": "AttackOfTheStrippers",
           "label": "AttackOfTheStrippers",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 2,
           "schedulingFactor": 1.0,
@@ -854,7 +855,7 @@ const EHE_DATA = {
           "id": "BuffCorrell",
           "label": "BuffCorrell",
           "description": "",
-          "startFactor": 0.044,
+          "startFactor": 0.0,
           "cutoffFactor": 1.0,
           "spawnWeight": 2,
           "schedulingFactor": 1.0,
@@ -1004,23 +1005,23 @@ const EHE_DATA = {
   ],
   "issues": [],
   "initialSimCounts": {
-    "military_nonhostile": 57.21,
-    "drones": 56.93,
-    "news_Bell206": 12.56,
-    "police": 5.44,
-    "survivors": 3.2,
-    "AttackOfTheStrippers": 2.45,
-    "deserters": 1.13,
-    "BuffCorrell": 2.45,
-    "TISCreamery": 2.78,
-    "UFO": 2.71,
-    "Spiffocopter": 1.21,
-    "SandyClaws": 3.87,
-    "military_hostile": 53.74,
+    "deserters": 0.92,
+    "TISCreamery": 2.5,
+    "BuffCorrell": 3.12,
+    "military_nonhostile": 59.14,
     "air_raid": 1.0,
-    "Helikopter": 1.39,
-    "jets": 56.45,
-    "IRS": 5.32
+    "SandyClaws": 3.8,
+    "AttackOfTheStrippers": 2.99,
+    "Spiffocopter": 1.41,
+    "news_Bell206": 12.12,
+    "IRS": 5.48,
+    "police": 5.38,
+    "drones": 58.43,
+    "survivors": 3.55,
+    "Helikopter": 1.27,
+    "military_hostile": 53.5,
+    "jets": 56.49,
+    "UFO": 2.72
   }
 };
 
