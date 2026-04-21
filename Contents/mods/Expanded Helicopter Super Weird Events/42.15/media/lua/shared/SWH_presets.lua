@@ -8,7 +8,7 @@ eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 eHelicopter_PRESETS["Spiffocopter"] = {
 	presetProgression = {
 		["Spiffocopter_inviteOnly"] = 0,
-		["Spiffocopter_partyTime"] = 0.05,
+		["Spiffocopter_partyTime"] = 0.1,
 	},
 	crashType = {"Bell206SpiffoFuselage"},
 	hoverOnTargetDuration = {1000,1225},
@@ -28,7 +28,7 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 	forScheduling = true,
 	eventSpawnWeight = 1,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventCutOffDayFactor = 1,
 }
 
@@ -62,7 +62,7 @@ eHelicopter_PRESETS["UFO"] = {
 	forScheduling = true,
 	eventSpawnWeight = 2,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventCutOffDayFactor = 1,
 }
 
@@ -173,7 +173,7 @@ eHelicopter_PRESETS["IRS"] = {
 	forScheduling = true,
 	eventSpawnWeight = 4,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventCutOffDayFactor = 1,
 }
 
@@ -257,7 +257,7 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	forScheduling = true,
 	eventSpawnWeight = 2,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventCutOffDayFactor = 1,
 }
 
@@ -291,7 +291,7 @@ eHelicopter_PRESETS["Helikopter"] = {
 	markerColor = {r=0.96,g=0.21,b=0.78},
 	eventCutOffDayFactor = 1,
 	eventSpawnWeight = 1,
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	callsigns = {"Helikopter"},
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "Helikopter" },
@@ -325,7 +325,7 @@ eHelicopter_PRESETS["SandyClaws"] = {
 	forScheduling = true,
 	eventCutOffDayFactor = 1,
 	eventSpawnWeight = 3,
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventSpecialDates = { systemDates = {{12}}, inGameDates = {{12,20}, {12,25}}}
 }
 eHelicopter_PRESETS["SandyClaws_noHover"] = {
@@ -365,7 +365,7 @@ eHelicopter_PRESETS["AttackOfTheStrippers"] = {
 	markerColor = {r=0.96,g=0.21,b=0.78},
 	eventCutOffDayFactor = 1,
 	eventSpawnWeight = 2,
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventSpecialDates = { systemDates = {{12}}, inGameDates = {{12,20}, {12,31}}}
 }
 eHelicopter_PRESETS["AttackOfTheStrippers_noHover"] = {
@@ -402,7 +402,7 @@ eHelicopter_PRESETS["BuffCorrell"] = {
 	forScheduling = true,
 	markerColor = {r=0.96,g=0.21,b=0.78},
 	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.044,
+	eventStartDayFactor = 0,
 	eventSpawnWeight = 2,
 	radioChatter = "AEBS_buffcorrell"
 } 

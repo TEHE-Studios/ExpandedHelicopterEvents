@@ -26,15 +26,15 @@ eHelicopter_PRESETS["military_nonhostile"] = {
 	callsigns = {"Warlord", "Havoc", "Guardian", "Eagle", "Falcon", "Thunder", "Overlord", "Vanguard", "Sentinel"},
 	presetProgression = {
 		["military_UH1H_patrol"] = 0,
-		["military_UH1H_patrol_emergency"] = 0.0066,
-		["military_OH58A_recon_hover"] = 0.0100,
-		["military_UH1H_patrol_quarantine"] = 0.0165,
-		["military_UH1H_attack_cows"] = 0.022,
-		["military_UH1H_attack_undead_evac"] = 0.033,
-		["military_UH1H_attack_undead"] = 0.066,
-		["military_CH47_evac"] = 0.1900,
-		["military_UH1H_command_evac"] = 0.2360,
-		["military_UH1H_deserters"] = 0.2450,
+		["military_UH1H_patrol_emergency"] = 0.0161,
+		["military_OH58A_recon_hover"] = 0.0323,
+		["military_UH1H_patrol_quarantine"] = 0.0645,
+		["military_UH1H_attack_cows"] = 0.0968,
+		["military_UH1H_attack_undead_evac"] = 0.1613,
+		["military_UH1H_attack_undead"] = 0.2258,
+		["military_CH47_evac"] = 0.3226,
+		["military_UH1H_command_evac"] = 0.4194,
+		["military_UH1H_deserters"] = 0.4516,
 	}
 }
 
@@ -187,8 +187,8 @@ eHelicopter_PRESETS["military_hostile"] = {
 	radioChatter = "AEBS_Military",
 	callsigns = {"Warlord", "Purge", "Cleanser", "Exterminator", "Reaper", "Executioner"},
 	presetProgression = {
-		["military_UH1H_attack_all"] = 0.2145,
-		["military_kiowa_attack_all"] = 0.2330,
+		["military_UH1H_attack_all"] = 0.2121,
+		["military_kiowa_attack_all"] = 0.3030,
 	}
 }
 
@@ -308,9 +308,9 @@ eHelicopter_PRESETS["jets"] = {
 	radioChatter = "AEBS_Drone",
 	presetProgression = {
 		["jet_pass"] = 0,
-		["jet_pass_louder"] = 0.071,
-		["jet_bombing_cluster"] = 0.0072,
-		["jet_bombing_napalm"] = 0.0073,
+		["jet_pass_louder"] = 0.02,
+		["jet_bombing_cluster"] = 0.70,
+		["jet_bombing_napalm"] = 0.98,
 	},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Viper", "Eagle", "Hornet", "Talon", "Bandit", "Striker"},
@@ -639,7 +639,7 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eSmallPropPlane",
 	},
-	markerColor = {r=0.37, g=1.00, b=0.27},
+	markerColor = {r=0.813, g=0.813, b=0.813},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	eventSpawnWeight = 3,
