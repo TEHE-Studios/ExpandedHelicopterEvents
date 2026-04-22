@@ -180,9 +180,7 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 
 		eHeliEvents_setEventsForScheduling()
 
-		if #eventsForScheduling <= 0 then
-			return
-		end
+		if #eventsForScheduling <= 0 then return end
 
 		for k,presetID in pairs(eventsForScheduling) do
 
@@ -245,12 +243,12 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 
 				if eventAvailable then
 					local wRaw = presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight
-					local baseWeight  = type(wRaw)=="table" and (wRaw[1] or 10)  or (wRaw  or 10)
-					local wDropOff    = type(wRaw)=="table" and wRaw[2]          or nil
-					local wMin        = type(wRaw)=="table" and (wRaw[3] or 1)   or 1
+					local baseWeight = type(wRaw)=="table" and (wRaw[1] or 10) or (wRaw or 10)
+					local wDropOff = type(wRaw)=="table" and wRaw[2] or nil
+					local wMin = type(wRaw)=="table" and (wRaw[3] or 1) or 1
 
-					local sfDropOff   = type(sfRaw)=="table" and sfRaw[2]        or nil
-					local sfMin       = type(sfRaw)=="table" and (sfRaw[3] or 1) or 1
+					local sfDropOff = type(sfRaw)=="table" and sfRaw[2] or nil
+					local sfMin = type(sfRaw)=="table" and (sfRaw[3] or 1) or 1
 
 					local progress = (cutOffDay > startDay)
 						and math.max(0, math.min(1, (daysIntoApoc-startDay)/(cutOffDay-startDay)))
