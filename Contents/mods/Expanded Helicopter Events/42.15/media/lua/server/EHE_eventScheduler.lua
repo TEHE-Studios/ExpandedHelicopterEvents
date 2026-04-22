@@ -76,43 +76,16 @@ function eHeliEvents_setEventsForScheduling()
 end
 
 
----Pre-fills the event schedule for a range of apoc days.
----One scheduling pass per day; events may land on that day or 1-2 days ahead.
----@param fromApocDay number start of range in apoc days (inclusive)
----@param toApocDay number end of range in apoc days (inclusive)
-function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
-	local globalModData = getExpandedHeliEventsModData()
-	local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
-	local startApocDay = math.max(fromApocDay, daysBeforeApoc + EHE_getWorldAgeDays())
-
-	for apocDay = startApocDay, toApocDay do
-		local worldDay = apocDay - daysBeforeApoc
-		eHeliEvent_ScheduleNew(worldDay, 12, nil, true)
-	end
-
-	globalModData.scheduledUpToApocDay = toApocDay
-	triggerEvent("EHE_ServerModDataReady", false)
-	print("[EHE] Schedule pre-filled: apoc days "..fromApocDay.." to "..toApocDay)
-end
-
-
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
 	local globalModData = getExpandedHeliEventsModData()
 	eHeliEvents_setEventsForScheduling()
 	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysSinceApoc()
 	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or EHE_getWorldAgeDays()
+	--if no EventsOnSchedule found make it an empty list
 	if not globalModData.EventsOnSchedule then
 		globalModData.EventsOnSchedule = {}
 	end
-
-	if not globalModData.scheduledUpToApocDay then
-		local startDay = SandboxVars.ExpandedHeli.StartDay or 0
-		local dur = SandboxVars.ExpandedHeli.SchedulerDuration or 90
-		local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
-		eHeliEvents_prefillSchedule(daysBeforeApoc + startDay, daysBeforeApoc + startDay + dur)
-	end
-
 	triggerEvent("EHE_ServerModDataReady", false)
 end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
@@ -186,33 +159,10 @@ end
 
 function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 	local GT = getGameTime()
-	local globalModData = getExpandedHeliEventsModData()
-	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
-
-	if not currentDay then
-		local scheduledUpTo = globalModData.scheduledUpToApocDay
-		if scheduledUpTo then
-			local dur = SandboxVars.ExpandedHeli.SchedulerDuration or 90
-			local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
-
-			local lastEventApocDay = daysBeforeApoc
-			for _,v in pairs(globalModData.EventsOnSchedule) do
-				if not v.triggered then
-					local apocDay = daysBeforeApoc + v.startDay
-					if apocDay > lastEventApocDay then lastEventApocDay = apocDay end
-				end
-			end
-
-			local daysIntoApoc = daysBeforeApoc + EHE_getWorldAgeDays()
-			if lastEventApocDay <= daysIntoApoc + (dur * 0.5) then
-				eHeliEvents_prefillSchedule(scheduledUpTo + 1, scheduledUpTo + dur)
-			end
-			return
-		end
-	end
-
 	currentDay = currentDay or EHE_getWorldAgeDays()
 	currentHour = currentHour or GT:getHour()
+	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
+	local globalModData = getExpandedHeliEventsModData()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+currentDay
 
 	local eventIDsScheduled = {}
