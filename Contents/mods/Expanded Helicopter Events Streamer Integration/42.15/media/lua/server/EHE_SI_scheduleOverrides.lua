@@ -3,9 +3,11 @@ require "EHE_eventScheduler"
 local config = require "EHE_SI_config"
 
 local EHE_SI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
-function eHeliEvent_ScheduleNew(startDay, startTime, preset)
+function eHeliEvent_ScheduleNew(...)
+
+	print("EHE_SI_IntegrationOnly: ", config.checkValue("EHE_SI_IntegrationOnly"))
 	if config.checkValue("EHE_SI_IntegrationOnly") == false then
-		EHE_SI_eHeliEvent_ScheduleNew(startDay, startTime, preset)
+		EHE_SI_eHeliEvent_ScheduleNew(...)
 	end
 end
 
@@ -83,5 +85,5 @@ function eHeliEvent_new(startDay, startTime, preset, SI_Target)
 	local globalModData = getExpandedHeliEventsModData()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
 	triggerEvent("EHE_ServerModDataReady", false)
-	eHeliEvent_Loop()
+	if SI_Target then eHeliEvent_Loop() end
 end
