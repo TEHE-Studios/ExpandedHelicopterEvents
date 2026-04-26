@@ -1,6 +1,10 @@
 LuaEventManager.AddEvent("EHE_ServerModDataReady")
 
-local function onServerModDataReady(isNewGame) sendServerCommand("EHE_ServerModData", "severModData_received", {}) end
+local function onServerModDataReady(isNewGame)
+	-- To force sending updated data to player clients
+	ModData.transmit("ExpandedHelicopterEvents")
+	sendServerCommand("EHE_ServerModData", "serverModData_received", {})
+end
 Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
 require "EHE_spawner"
