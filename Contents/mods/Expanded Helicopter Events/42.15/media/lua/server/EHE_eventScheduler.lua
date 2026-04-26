@@ -336,7 +336,8 @@ function eHeliEvent_Loop()
 	for k,v in pairs(events) do
 
 		if v.triggered or (not eHelicopter_PRESETS[v.preset]) then
-		elseif (v.startDay <= DAY) and (v.startTime == HOUR) then
+		--If an event has stalled and the time it was supposed to trigger has passed, this should trigger it
+		elseif (v.startDay < DAY) or (v.startDay == DAY and v.startTime == HOUR) then
 			if eHelicopter_PRESETS[v.preset] then
 				print(" \[EHE\]: SCHEDULED-LAUNCH INFO:  ["..k.."] - day:"..tostring(v.startDay).." time:"..tostring(v.startTime).." id:"..tostring(v.preset).." done:"..tostring(v.triggered))
 				eHeliEvent_engage(k)
@@ -348,6 +349,10 @@ end
 
 local currentHour = -1
 function eHeliEvent_OnHour()
+
+	--This should prevent the scheduler from crashing (and thus ending up not working) after a server is booted
+	local globalModData = getExpandedHeliEventsModData()
+	if not globalModData then return end
 
 	local GT = getGameTime()
 	local HOUR = GT:getHour()
