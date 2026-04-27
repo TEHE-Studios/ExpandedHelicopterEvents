@@ -4,7 +4,6 @@ require "EHE_util"
 require "EHE_presets"
 require "EHE_mainVariables"
 
----Inserts a new eHeliEvent (table) to the "EventsOnSchedule" table
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
 ---@param preset string Name of preset found in PRESETS
@@ -76,16 +75,41 @@ function eHeliEvents_setEventsForScheduling()
 end
 
 
+---@param fromApocDay number start of range in apoc days (inclusive)
+---@param toApocDay number end of range in apoc days (inclusive)
+function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
+	local globalModData = getExpandedHeliEventsModData()
+	local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
+	local startApocDay = math.max(math.floor(fromApocDay), math.floor(daysBeforeApoc + EHE_getWorldAgeDays()))
+
+	for apocDay = startApocDay, toApocDay do
+		eHeliEvent_ScheduleNew(apocDay - daysBeforeApoc, 12, nil, true)
+	end
+
+	globalModData.lastDayScheduled = toApocDay
+	triggerEvent("EHE_ServerModDataReady", false)
+end
+
+
 ---Handles setting up the event scheduler
 function eHeliEvents_OnGameStart()
 	local globalModData = getExpandedHeliEventsModData()
 	eHeliEvents_setEventsForScheduling()
 	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysSinceApoc()
 	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or EHE_getWorldAgeDays()
-	--if no EventsOnSchedule found make it an empty list
 	if not globalModData.EventsOnSchedule then
 		globalModData.EventsOnSchedule = {}
 	end
+
+	local startDay = SandboxVars.ExpandedHeli.StartDay or 0
+	local dur = SandboxVars.ExpandedHeli.SchedulerDuration or 90
+	local dBA = math.floor(globalModData.DaysBeforeApoc or 0)
+	local targetEnd = dBA + startDay + dur
+
+	if (globalModData.lastDayScheduled or 0) < targetEnd then
+		eHeliEvents_prefillSchedule(dBA + startDay, targetEnd)
+	end
+
 	triggerEvent("EHE_ServerModDataReady", false)
 end
 Events.OnGameStart.Add(eHeliEvents_OnGameStart)
@@ -159,10 +183,24 @@ end
 
 function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 	local GT = getGameTime()
+	local globalModData = getExpandedHeliEventsModData()
+	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
+
+	if not currentDay then
+		local lastDay = globalModData.lastDayScheduled
+		if lastDay then
+			local dur = SandboxVars.ExpandedHeli.SchedulerDuration or 90
+			local dBA = globalModData.DaysBeforeApoc or 0
+			local daysIntoApoc = dBA + EHE_getWorldAgeDays()
+			if continueScheduling and daysIntoApoc >= (lastDay - dur * 0.5) then
+				eHeliEvents_prefillSchedule(lastDay + 1, lastDay + dur)
+			end
+			return
+		end
+	end
+
 	currentDay = currentDay or EHE_getWorldAgeDays()
 	currentHour = currentHour or GT:getHour()
-	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
-	local globalModData = getExpandedHeliEventsModData()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0)+currentDay
 
 	local eventIDsScheduled = {}
@@ -250,9 +288,7 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 					local sfDropOff = type(sfRaw)=="table" and sfRaw[2] or nil
 					local sfMin = type(sfRaw)=="table" and (sfRaw[3] or 1) or 1
 
-					local progress = (cutOffDay > startDay)
-						and math.max(0, math.min(1, (daysIntoApoc-startDay)/(cutOffDay-startDay)))
-						or 0
+					local progress = (cutOffDay > startDay) and math.max(0, math.min(1, (daysIntoApoc-startDay)/(cutOffDay-startDay))) or 0
 
 					if sfDropOff then
 						schedulingFactor = math.max(schedulingFactor - schedulingFactor*sfDropOff*progress, sfMin)
@@ -290,13 +326,10 @@ function eHeliEvent_ScheduleNew(currentDay,currentHour,freqOverride,noPrint)
 
 			local freq = SandboxVars.ExpandedHeli["Frequency_"..selectedPresetID]
 			local insane = (freqOverride or freq) == 6
-
 			local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
 			local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
 			local startDay, cutOffDay = fetchStartDayAndCutOffDay(selectedPreset)
-
 			local iterations = insane and 10 or 1
-
 			local latestStartDay
 
 			for i=1, iterations do
