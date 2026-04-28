@@ -51,7 +51,8 @@ function eHeliEvent_engage(ID)
 	local willFly,_ = util.weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 
-	if SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1 then
+	local frequencyDisabled = SandboxVars.ExpandedHeli["Frequency_"..eHeliEvent.preset]==1
+	if frequencyDisabled then
 		willFly = false
 		eHeliEvent.triggered = true
 	end
@@ -66,6 +67,18 @@ function eHeliEvent_engage(ID)
 			triggerEvent("EHE_ServerModDataReady", false)
 		else
 			print("[EHE] engage: no free helicopter available")
+		end
+	elseif not willFly and not frequencyDisabled then
+		local selectedPreset = eHelicopter_PRESETS[eHeliEvent.preset]
+		local flightHours = (selectedPreset and selectedPreset.flightHours) or eHelicopter.flightHours
+		local rawNewTime = eHeliEvent.startTime + 3
+
+		if rawNewTime <= flightHours[2] then
+			print("[EHE] engage: weather blocked - pushing startTime "..eHeliEvent.startTime.." -> "..wrappedNewTime.." (raw "..rawNewTime.." within flightHours ceiling "..flightHours[2]..")")
+			eHeliEvent.startTime = wrappedNewTime
+			triggerEvent("EHE_ServerModDataReady", false)
+		else
+			print("[EHE] engage: weather blocked - raw push "..rawNewTime.." exceeds flightHours ceiling "..flightHours[2].."; event will expire")
 		end
 	end
 end
