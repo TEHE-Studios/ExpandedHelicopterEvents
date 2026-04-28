@@ -80,7 +80,11 @@ DEFAULTS = {}
 SANDBOX_FREQ_VARS = []
 
 MAIN_VARIABLES_GLOBS = [
+    "../Contents/mods/*/*/media/lua/server/EHE_mainVariables.lua",
     "../Contents/mods/*/*/media/lua/shared/EHE_mainVariables.lua",
+    "../Contents/mods/*/*/media/lua/client/EHE_mainVariables.lua",
+    "../Contents/mods/*/media/lua/server/EHE_mainVariables.lua",
+    "../Contents/mods/*/media/lua/shared/EHE_mainVariables.lua",
 ]
 
 SANDBOX_FILE_GLOBS = [
@@ -88,25 +92,164 @@ SANDBOX_FILE_GLOBS = [
     "../Contents/mods/*/sandbox-options.txt",
 ]
 
+TRANSLATE_FILE_GLOBS = [
+    "../Contents/mods/*/*/media/lua/shared/Translate/EN/*.txt",
+    "../Contents/mods/*/*/media/lua/shared/Translate/EN.txt",
+    "../Contents/mods/*/media/lua/shared/Translate/EN/*.txt",
+]
+
+# Fallback labels used when no translation file is found.
+_FREQ_LABEL_FALLBACK = {
+    1: "Never",
+    2: "Rarely",
+    3: "Sometimes",
+    4: "Often",
+    5: "Very Often",
+    6: "Insane",
+}
+
+
+def load_freq_enum_labels(value_translation_key="ExpandedHeli_Frequency"):
+    """
+    Parse the frequency enum labels from translation files.
+    Looks for lines like:
+        ExpandedHeli_Frequency_1 = "Never",
+        ExpandedHeli_Frequency_2 = "Uncommon",
+        ...
+    Returns a dict {1: "Never", 2: "Uncommon", ...}.
+    Falls back to _FREQ_LABEL_FALLBACK if nothing is found.
+    """
+    labels = {}
+    pat = re.compile(
+        rf'{re.escape(value_translation_key)}_(\d+)\s*=\s*"([^"]+)"'
+    )
+    found_files = []
+    for pattern in TRANSLATE_FILE_GLOBS:
+        for m in sorted(SCRIPT_DIR.glob(pattern)):
+            if m not in found_files:
+                found_files.append(m)
+    for path in found_files:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            continue
+        for m in pat.finditer(text):
+            idx = int(m.group(1))
+            labels[idx] = m.group(2)
+    if labels:
+        print(f"  Loaded {len(labels)} frequency labels from translation files.")
+        return labels
+    return dict(_FREQ_LABEL_FALLBACK)
+
+
+def _parse_lua_value(s):
+    """
+    Parse a single Lua scalar or table literal from string s.
+    Returns a Python value, or the raw string if unparseable.
+    """
+    s = s.strip().rstrip(",")
+    if s == "true":  return True
+    if s == "false": return False
+    if s == "nil":   return None
+    if (s.startswith('"') and s.endswith('"')) or \
+       (s.startswith("'") and s.endswith("'")):
+        return s[1:-1]
+    if s.startswith("{") and s.endswith("}"):
+        inner = s[1:-1].strip()
+        if not inner:
+            return {}
+        # Named fields: {r=1,g=0,b=0}
+        if re.match(r'\w+\s*=', inner):
+            result = {}
+            for m in re.finditer(r'(\w+)\s*=\s*([^,}]+)', inner):
+                result[m.group(1)] = _parse_lua_value(m.group(2))
+            return result
+        # Array: {1, 2, 3} or {"a","b"}
+        parts = [p.strip() for p in inner.split(",") if p.strip()]
+        return [_parse_lua_value(p) for p in parts]
+    try:
+        if "." in s:
+            return float(s)
+        return int(s)
+    except ValueError:
+        return s
+
 
 def load_main_variable_defaults():
-    """Read eHelicopter default fields from EHE_mainVariables.lua."""
+    """
+    Read eHelicopter default fields from EHE_mainVariables.lua.
+    Handles both table-literal style ({ key = val }) and
+    dot-assignment style (eHelicopter.key = val), including multi-line values.
+    """
+    found_files = []
     for pattern in MAIN_VARIABLES_GLOBS:
         for path in sorted(SCRIPT_DIR.glob(pattern)):
-            try:
-                text = path.read_text(encoding="utf-8", errors="replace")
-            except Exception:
+            if path not in found_files:
+                found_files.append(path)
+
+    for path in found_files:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            continue
+
+        result = {}
+
+        # Strategy 1: dot-assignment  eHelicopter.key = value
+        # Values may span multiple lines (nested tables), so we scan
+        # character-by-character from the `=` to find the complete value.
+        skip_keys = {"variableBackUp", "initialVars", "temporaryVariables"}
+        header_pat = re.compile(r'^eHelicopter\.(\w+)\s*=\s*', re.MULTILINE)
+        for hm in header_pat.finditer(text):
+            key = hm.group(1)
+            if key in skip_keys:
                 continue
-            m = re.search(r'\beHelicopter\s*=\s*\{', text)
-            if not m:
-                continue
-            try:
-                table, _ = parse_table(text, m.end() - 1)
-            except Exception:
-                continue
-            if isinstance(table, dict):
-                print(f"  Loaded eHelicopter defaults from: {path.name}")
-                return {k: v for k, v in table.items() if not k.startswith("_")}
+            val_start = hm.end()
+            # Collect the full value: track brace/bracket depth and string state
+            pos   = val_start
+            depth = 0
+            n     = len(text)
+            in_str, str_char = False, None
+            while pos < n:
+                ch = text[pos]
+                if in_str:
+                    if ch == "\\" :
+                        pos += 2
+                        continue
+                    if ch == str_char:
+                        in_str = False
+                elif ch in ('"', "'"):
+                    in_str, str_char = True, ch
+                elif ch in ("{", "["):
+                    depth += 1
+                elif ch in ("}", "]"):
+                    depth -= 1
+                    if depth < 0:
+                        break
+                elif ch in (",", "\n") and depth == 0:
+                    break
+                pos += 1
+            val_str = text[val_start:pos].strip()
+            # Strip trailing line comment
+            val_str = re.sub(r'\s*--[^\n]*$', '', val_str, flags=re.MULTILINE).strip()
+            if val_str:
+                result[key] = _parse_lua_value(val_str)
+
+        # Strategy 2: table-literal fallback  eHelicopter = { ... }
+        if not result:
+            tm = re.search(r'\beHelicopter\s*=\s*\{', text)
+            if tm:
+                try:
+                    table, _ = parse_table(text, tm.end() - 1)
+                    if isinstance(table, dict):
+                        result = table
+                except Exception:
+                    pass
+
+        if result:
+            print(f"  Loaded {len(result)} eHelicopter defaults from: {path.name}")
+            return {k: v for k, v in result.items() if not k.startswith("_")}
+
     return {}
 
 
@@ -116,7 +259,7 @@ def refresh_defaults():
     if loaded:
         DEFAULTS.update(loaded)
     else:
-        print("  [WARN] EHE_mainVariables.lua not found — DEFAULTS will be empty.")
+        print("  [WARN] EHE_mainVariables.lua not found or yielded no defaults — DEFAULTS will be empty.")
 
 
 def load_sandbox_defaults():
@@ -182,6 +325,25 @@ def load_sandbox_freq_vars():
                 order.append(key)
         print(f"  Loaded sandbox options from: {path.name} ({len(order)} freq vars)")
     return [vars_seen[k] for k in order]
+
+
+def build_freq_affects(all_presets):
+    """
+    Extend affectsIDs for frequency vars using the optional frequencyKey field.
+    Presets that declare frequencyKey = "someKey" are appended to that sandbox
+    var's affectsIDs list. Presets without frequencyKey rely on the direct key
+    match already seeded in load_sandbox_freq_vars (affectsIDs starts as [key]).
+    """
+    key_to_sv = {sv["key"]: sv for sv in SANDBOX_FREQ_VARS}
+    for pid, data in all_presets.items():
+        if not data.get("forScheduling"):
+            continue
+        freq_key = data.get("frequencyKey")
+        if not freq_key:
+            continue
+        sv = key_to_sv.get(freq_key)
+        if sv and pid not in sv["affectsIDs"]:
+            sv["affectsIDs"].append(pid)
 
 
 # ── GROUP DEFINITIONS ──────────────────────────────────────────────────
@@ -868,14 +1030,7 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
 /*PRESETS_DATA*/
 
 // ── FREQ ENUM ─────────────────────────────────────────────────────────
-const FREQ_ENUM = [
-  {val:1,label:'Never',    fc:0 },
-  {val:2,label:'Rarely',   fc:1 },
-  {val:3,label:'Sometimes',fc:2 },
-  {val:4,label:'Often',    fc:3 },
-  {val:5,label:'Very Often',fc:4},
-  {val:6,label:'Insane',   fc:50},
-];
+/*FREQ_ENUM*/
 
 // ── STATE ─────────────────────────────────────────────────────────────
 const S = {
@@ -1456,12 +1611,16 @@ def main():
         help="Additional preset Lua files to include (relative to tools/ directory)."
     )
     parser.add_argument(
+        "--runs", type=int, default=100, metavar="N",
+        help="Number of simulation runs for initial counts (default: 100)."
+    )
+    parser.add_argument(
         "--out", default=str(OUTPUT_FILE), metavar="FILE",
         help="Output HTML path (default: tools/timeline.html)."
     )
     parser.add_argument(
-        "--runs", type=int, default=100, metavar="N",
-        help="Number of simulation runs for initial counts (default: 100)."
+        "--skip-sim", action="store_true",
+        help="Skip the Lua simulation step (generates HTML with JS-only simulation)."
     )
     args = parser.parse_args()
 
@@ -1498,10 +1657,11 @@ def main():
     SANDBOX_FREQ_VARS = load_sandbox_freq_vars()
     if not SANDBOX_FREQ_VARS:
         print("  [INFO] No sandbox-options.txt found — frequency controls will be empty.")
+    build_freq_affects(all_presets)
     groups, issues = build_groups(all_presets)
 
     initial_sim_counts = {}
-    if _LUA_SIM_AVAILABLE:
+    if _LUA_SIM_AVAILABLE and not args.skip_sim:
         print(f"\nRunning Lua simulation for initial counts ({args.runs} runs)...")
         sb = load_sandbox_defaults()
         default_sandbox = {k: v for k, v in sb.items() if k.startswith("Frequency_")}
@@ -1516,6 +1676,8 @@ def main():
             print(f"  Done. Total avg events/playthrough: {total:.1f}")
         except Exception as e:
             print(f"  [WARN] Lua simulation failed: {e}")
+    elif args.skip_sim:
+        print("\n[INFO] --skip-sim set — skipping Lua simulation.")
     else:
         print("\n[INFO] simulate.py / lupa not available — HTML will use JS simulation only.")
 
@@ -1528,7 +1690,17 @@ def main():
 
     data_js = "const EHE_DATA = " + json.dumps(data, indent=2) + ";"
 
-    html_out = HTML_TEMPLATE.replace("/*PRESETS_DATA*/", data_js)
+    freq_labels = load_freq_enum_labels()
+    fc_values = {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 50}
+    freq_enum_js = "const FREQ_ENUM = [\n" + ",\n".join(
+        f"  {{val:{v},label:{json.dumps(freq_labels.get(v, str(v)))},fc:{fc_values.get(v, v-1)}}}"
+        for v in sorted(fc_values)
+    ) + "\n];"
+
+    html_out = (HTML_TEMPLATE
+        .replace("/*PRESETS_DATA*/", data_js)
+        .replace("/*FREQ_ENUM*/", freq_enum_js)
+    )
 
     out_path = Path(args.out)
     out_path.write_text(html_out, encoding="utf-8")

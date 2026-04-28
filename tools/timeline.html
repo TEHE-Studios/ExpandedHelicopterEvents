@@ -212,15 +212,15 @@ const EHE_DATA = {
           "description": "The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and disintegrate",
           "startFactor": 0.0,
           "cutoffFactor": 0.34,
-          "spawnWeight": 30,
-          "schedulingFactor": 8.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 2.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
           "freqSandboxKey": "military_nonhostile",
           "color": "#5eff44",
           "weightDropOff": 0.85,
           "weightMinimum": 5.0,
-          "sfDropOff": 0.9,
+          "sfDropOff": 0.7,
           "sfMinimum": 1.5,
           "source": "EHE_presets.lua",
           "notes": [],
@@ -298,7 +298,11 @@ const EHE_DATA = {
               "note": "Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events."
             }
           ],
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "drones",
@@ -306,16 +310,16 @@ const EHE_DATA = {
           "description": "Keep tabs on people without helicopters, each successive spotting of the player will add heat to the system",
           "startFactor": 0.0,
           "cutoffFactor": 0.34,
-          "spawnWeight": 30,
-          "schedulingFactor": 8.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 3.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
           "freqSandboxKey": "drones",
           "color": "#5eff44",
           "weightDropOff": 0.85,
           "weightMinimum": 5.0,
-          "sfDropOff": 0.9,
-          "sfMinimum": 1.5,
+          "sfDropOff": 0.7,
+          "sfMinimum": 1.0,
           "source": "EHE_presets.lua",
           "notes": [],
           "bugNotes": [],
@@ -336,7 +340,11 @@ const EHE_DATA = {
               "note": ""
             }
           ],
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "jets",
@@ -344,7 +352,7 @@ const EHE_DATA = {
           "description": "Jets get progressively more aggressive as the military falters",
           "startFactor": 0.0,
           "cutoffFactor": 0.34,
-          "spawnWeight": 30,
+          "spawnWeight": 20,
           "schedulingFactor": 1.5,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
@@ -388,7 +396,11 @@ const EHE_DATA = {
               "note": "Passing jet, but louder to kick up activity along with the bombing"
             }
           ],
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "military_hostile",
@@ -396,15 +408,15 @@ const EHE_DATA = {
           "description": "The military will now begin shooting anyone they see",
           "startFactor": 0.067,
           "cutoffFactor": 0.34,
-          "spawnWeight": 30,
-          "schedulingFactor": 8.0,
+          "spawnWeight": 10,
+          "schedulingFactor": 2.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
           "freqSandboxKey": "military_hostile",
           "color": "#5eff44",
           "weightDropOff": 0.85,
           "weightMinimum": 5.0,
-          "sfDropOff": 0.9,
+          "sfDropOff": 0.7,
           "sfMinimum": 1.5,
           "source": "EHE_presets.lua",
           "notes": [],
@@ -426,7 +438,11 @@ const EHE_DATA = {
               "note": "Kiowa attacking everything"
             }
           ],
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "air_raid",
@@ -439,7 +455,7 @@ const EHE_DATA = {
           "ignoreContinueScheduling": true,
           "isOneTime": true,
           "freqSandboxKey": null,
-          "color": "#4fc35a",
+          "color": "#ffffff",
           "weightDropOff": null,
           "weightMinimum": 1,
           "sfDropOff": null,
@@ -476,7 +492,11 @@ const EHE_DATA = {
           "bugNotes": [],
           "isSub": false,
           "progression": null,
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "police",
@@ -484,7 +504,7 @@ const EHE_DATA = {
           "description": "KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse",
           "startFactor": 0.067,
           "cutoffFactor": 0.22,
-          "spawnWeight": 10,
+          "spawnWeight": 6,
           "schedulingFactor": 3.0,
           "ignoreContinueScheduling": false,
           "isOneTime": false,
@@ -492,7 +512,7 @@ const EHE_DATA = {
           "color": "#4747ff",
           "weightDropOff": null,
           "weightMinimum": 1,
-          "sfDropOff": 0.9,
+          "sfDropOff": 0.6,
           "sfMinimum": 1.0,
           "source": "EHE_presets.lua",
           "notes": [],
@@ -535,7 +555,11 @@ const EHE_DATA = {
               "note": ""
             }
           ],
-          "progressionIsRandom": true
+          "progressionIsRandom": true,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "survivors",
@@ -608,7 +632,11 @@ const EHE_DATA = {
               "note": "Fleeing reporters"
             }
           ],
-          "progressionIsRandom": true
+          "progressionIsRandom": true,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "deserters",
@@ -660,7 +688,11 @@ const EHE_DATA = {
               "note": "pulling around zombies around far more dramatically and taking potshots"
             }
           ],
-          "progressionIsRandom": true
+          "progressionIsRandom": true,
+          "flightHours": [
+            5,
+            22
+          ]
         }
       ]
     },
@@ -705,7 +737,11 @@ const EHE_DATA = {
               "note": ""
             }
           ],
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "UFO",
@@ -806,7 +842,11 @@ const EHE_DATA = {
               "note": ""
             }
           ],
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "TISCreamery",
@@ -844,7 +884,11 @@ const EHE_DATA = {
               "note": ""
             }
           ],
-          "progressionIsRandom": true
+          "progressionIsRandom": true,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "Helikopter",
@@ -867,7 +911,11 @@ const EHE_DATA = {
           "bugNotes": [],
           "isSub": false,
           "progression": null,
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "SandyClaws",
@@ -890,7 +938,11 @@ const EHE_DATA = {
           "bugNotes": [],
           "isSub": false,
           "progression": null,
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "AttackOfTheStrippers",
@@ -913,7 +965,11 @@ const EHE_DATA = {
           "bugNotes": [],
           "isSub": false,
           "progression": null,
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         },
         {
           "id": "BuffCorrell",
@@ -936,7 +992,11 @@ const EHE_DATA = {
           "bugNotes": [],
           "isSub": false,
           "progression": null,
-          "progressionIsRandom": false
+          "progressionIsRandom": false,
+          "flightHours": [
+            5,
+            22
+          ]
         }
       ]
     }
@@ -1077,12 +1137,12 @@ const EHE_DATA = {
 
 // ── FREQ ENUM ─────────────────────────────────────────────────────────
 const FREQ_ENUM = [
-  {val:1,label:'Never',    fc:0 },
-  {val:2,label:'Rarely',   fc:1 },
-  {val:3,label:'Sometimes',fc:2 },
-  {val:4,label:'Often',    fc:3 },
-  {val:5,label:'Very Often',fc:4},
-  {val:6,label:'Insane',   fc:50},
+  {val:1,label:"Never",fc:0},
+  {val:2,label:"Rarely",fc:1},
+  {val:3,label:"Sometimes",fc:2},
+  {val:4,label:"Often",fc:3},
+  {val:5,label:"Very Often",fc:4},
+  {val:6,label:"Insane",fc:50}
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────

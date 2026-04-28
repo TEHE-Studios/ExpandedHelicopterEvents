@@ -129,7 +129,10 @@ local function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
 	print("[EHE] prefillSchedule: filling apocDays "..startApocDay.." to "..toApocDay)
 
 	for apocDay = startApocDay, toApocDay do
-		eHeliEvent_ScheduleNew(apocDay - daysBeforeApoc, 12, nil, true)
+		local simDay = apocDay - daysBeforeApoc
+		for hr = 1, 24 do
+			eHeliEvent_ScheduleNew(simDay, hr, nil, true)
+		end
 	end
 
 	triggerEvent("EHE_ServerModDataReady", false)
@@ -230,6 +233,19 @@ local function eHeliEvent_determineContinuation()
 end
 
 
+function eHeliEvent_FreqDictionary(freqID)
+	local freqIDtoActual = {
+		[1] = 0, -- Never
+		[2] = 1, -- Rare
+		[3] = 2, -- Uncommon
+		[4] = 3, -- Common
+		[5] = 4, -- Frequent
+		[6] = 50, -- Insane
+	}
+	return freqIDtoActual[freqID] or 2
+end
+
+
 function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 	local gameTime = getGameTime()
 	local globalModData = modData.get()
@@ -277,10 +293,7 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 
 	eHeliEvents_setEventsForScheduling()
 
-	if #eventsForScheduling <= 0 then
-		print("[EHE] ScheduleNew: no schedulable events found")
-		return
-	end
+	if #eventsForScheduling <= 0 then print("[EHE] ScheduleNew: no schedulable events found") return end
 
 	for _, presetID in pairs(eventsForScheduling) do
 
@@ -308,12 +321,9 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 				end
 			end
 
-			local freq = 3
-			local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
-			if presetFreq then
-				freq = presetFreq-1
-				if freq == 5 then freq = 50 end
-			end
+
+			local presetFreqID = SandboxVars.ExpandedHeli["Frequency_"..presetID]
+			local freq = eHeliEvent_FreqDictionary(presetFreqID)
 
 			freq = freqOverride or freq
 

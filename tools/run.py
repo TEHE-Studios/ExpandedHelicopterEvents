@@ -7,6 +7,7 @@ Usage (from tools/ directory):
     python run.py
     python run.py --runs 200
     python run.py --skip-validate
+    python run.py --skip-sim
     python run.py --no-open
 """
 
@@ -56,6 +57,10 @@ def main():
         help="Don't open the browser after generating."
     )
     parser.add_argument(
+        "--skip-sim", action="store_true",
+        help="Skip the Lua simulation step in generate.py."
+    )
+    parser.add_argument(
         "--runs", type=int, default=100, metavar="N",
         help="Number of simulation runs for generate.py (default: 100)."
     )
@@ -87,7 +92,8 @@ def main():
         print("  Skipped.")
 
     # ── Step 2: Generate ──────────────────────────────────────────────
-    generate_cmd = [str(GENERATE), "--runs", str(args.runs)] + preset_args
+    skip_sim_args = ["--skip-sim"] if args.skip_sim else []
+    generate_cmd = [str(GENERATE), "--runs", str(args.runs)] + skip_sim_args + preset_args
     generate_ok  = run_step("2 / 3  GENERATE", generate_cmd)
 
     if not generate_ok:
