@@ -1456,12 +1456,16 @@ def main():
         help="Additional preset Lua files to include (relative to tools/ directory)."
     )
     parser.add_argument(
+        "--runs", type=int, default=100, metavar="N",
+        help="Number of simulation runs for initial counts (default: 100)."
+    )
+    parser.add_argument(
         "--out", default=str(OUTPUT_FILE), metavar="FILE",
         help="Output HTML path (default: tools/timeline.html)."
     )
     parser.add_argument(
-        "--runs", type=int, default=100, metavar="N",
-        help="Number of simulation runs for initial counts (default: 100)."
+        "--skip-sim", action="store_true",
+        help="Skip the Lua simulation step (generates HTML with JS-only simulation)."
     )
     args = parser.parse_args()
 
@@ -1501,7 +1505,7 @@ def main():
     groups, issues = build_groups(all_presets)
 
     initial_sim_counts = {}
-    if _LUA_SIM_AVAILABLE:
+    if _LUA_SIM_AVAILABLE and not args.skip_sim:
         print(f"\nRunning Lua simulation for initial counts ({args.runs} runs)...")
         sb = load_sandbox_defaults()
         default_sandbox = {k: v for k, v in sb.items() if k.startswith("Frequency_")}
@@ -1516,6 +1520,8 @@ def main():
             print(f"  Done. Total avg events/playthrough: {total:.1f}")
         except Exception as e:
             print(f"  [WARN] Lua simulation failed: {e}")
+    elif args.skip_sim:
+        print("\n[INFO] --skip-sim set — skipping Lua simulation.")
     else:
         print("\n[INFO] simulate.py / lupa not available — HTML will use JS simulation only.")
 

@@ -65,12 +65,59 @@ def find_server_files():
     return found
 
 
+def _lua_skip_over(text, pos):
+    """
+    From `pos`, skip one Lua token that should not be inspected for keywords:
+    a string literal (short or long), a block comment, or a line comment.
+    Returns new pos if something was skipped, else None.
+    """
+    n = len(text)
+
+    # Line comment
+    if text[pos:pos+2] == '--':
+        # Check for block comment  --[=*[
+        bracket = re.match(r'--\[(?P<eq>=*)\[', text[pos:])
+        if bracket:
+            level = len(bracket.group('eq'))
+            close = f']{" =" * level}]'.replace(' =', '=')  # ]=*]
+            close = ']' + '=' * level + ']'
+            end = text.find(close, pos + len(bracket.group(0)))
+            return (end + len(close)) if end >= 0 else n
+        else:
+            end = text.find('\n', pos)
+            return (end + 1) if end >= 0 else n
+
+    # Long string  [=*[...]=*]
+    ls = re.match(r'\[(?P<eq>=*)\[', text[pos:])
+    if ls:
+        level = len(ls.group('eq'))
+        close = ']' + '=' * level + ']'
+        end = text.find(close, pos + len(ls.group(0)))
+        return (end + len(close)) if end >= 0 else n
+
+    # Short string
+    if text[pos] in ('"', "'"):
+        q = text[pos]
+        j = pos + 1
+        while j < n:
+            if text[j] == '\\':
+                j += 2
+                continue
+            if text[j] == q:
+                return j + 1
+            j += 1
+        return n
+
+    return None
+
+
 def extract_function(lua_text, func_name):
     """
     Pull a top-level function out of Lua source.
-    Handles nested function bodies by counting `function`/`end` tokens.
+    Handles nested function bodies by counting function/end tokens,
+    correctly skipping string literals and block comments so keywords
+    inside them don't corrupt the depth counter.
     """
-    # Find the function header
     header_pat = re.compile(
         rf'^function\s+{re.escape(func_name)}\s*\(',
         re.MULTILINE
@@ -81,42 +128,48 @@ def extract_function(lua_text, func_name):
 
     start = m.start()
     pos   = m.end()
-    depth = 1  # we are inside the function's opening `function`
+    depth = 1
 
     text = lua_text
     n    = len(text)
 
-    # Walk forward counting function/end pairs
     while pos < n and depth > 0:
-        # Skip strings and comments first (rough but sufficient for well-formed Lua)
-        if text[pos:pos+2] == '--':
-            end = text.find('\n', pos)
-            pos = end + 1 if end >= 0 else n
+        skipped = _lua_skip_over(text, pos)
+        if skipped is not None:
+            pos = skipped
             continue
-        if text[pos:pos+7] in ('functio',):
-            pass  # fall through to keyword check below
 
-        # Keyword boundaries
-        # Depth rules (Lua block structure):
-        #   openers:  function / do / if / repeat  → +1
-        #   closers:  end / until                  → -1
-        #   neutral:  then / else / elseif / for / while / local → 0
-        # (then is part of `if cond then`, not a block opener itself)
         kw_m = re.match(r'\b(function|do|if|repeat|then|else|elseif|end|until)\b', text[pos:])
         if kw_m:
             kw = kw_m.group(1)
             if kw in ('function', 'do', 'if', 'repeat'):
                 depth += 1
-            elif kw in ('end',):
+            elif kw in ('end', 'until'):
                 depth -= 1
-            elif kw == 'until':
-                depth -= 1
-            # then / else / elseif: no depth change
             pos += kw_m.end()
         else:
             pos += 1
 
     return text[start:pos].strip()
+
+
+def lua_error_context(lua_source, error_msg, context=5):
+    """
+    Parse a Lua error like '[string "<python>"]:104: ...' and print
+    the lines around the offending line to aid debugging.
+    """
+    m = re.search(r':(\d+):', error_msg)
+    if not m:
+        return
+    line_no = int(m.group(1))
+    lines = lua_source.splitlines()
+    lo = max(0, line_no - context - 1)
+    hi = min(len(lines), line_no + context)
+    print(f"\n  Lua source around line {line_no}:")
+    for i, ln in enumerate(lines[lo:hi], start=lo + 1):
+        marker = ">>>" if i == line_no else "   "
+        print(f"  {marker} {i:4d}  {ln}")
+    print()
 
 
 def _to_lua_val(v):
@@ -153,14 +206,13 @@ def build_lua_environment(all_presets, sandbox, heli_defaults):
         sdf = data.get("eventStartDayFactor",  heli_defaults.get("eventStartDayFactor", 0))
         cdf = data.get("eventCutOffDayFactor", heli_defaults.get("eventCutOffDayFactor", 0.34))
         ic  = "true" if data.get("ignoreContinueScheduling") else "false"
-        fs  = "true"
         preset_lines.append(
             f'eHelicopter_PRESETS["{pid}"] = {{'
-            f' forScheduling={fs},'
-            f' schedulingFactor={sf},'
-            f' eventSpawnWeight={sw},'
-            f' eventStartDayFactor={sdf},'
-            f' eventCutOffDayFactor={cdf},'
+            f' forScheduling=true,'
+            f' schedulingFactor={_to_lua_val(sf)},'
+            f' eventSpawnWeight={_to_lua_val(sw)},'
+            f' eventStartDayFactor={_to_lua_val(sdf)},'
+            f' eventCutOffDayFactor={_to_lua_val(cdf)},'
             f' ignoreContinueScheduling={ic}'
             f' }}'
         )
@@ -248,11 +300,11 @@ Events = setmetatable({{}}, {{
 }})
 
 -- globalModData stub — tracks scheduled events for same-day deduplication
-local _modData = {{
+modData = {{
     DaysBeforeApoc  = 0,
     EventsOnSchedule = {{}}
 }}
-function getExpandedHeliEventsModData() return _modData end
+function getExpandedHeliEventsModData() return modData end
 
 -- eHeliEvent_new stub — intercepts scheduling, records to count table
 -- (defined after _counts is set up in the runner)
@@ -261,7 +313,7 @@ function eHeliEvent_new(startDay, startTime, preset)
         _counts[preset] = (_counts[preset] or 0) + 1
     end
     -- Also store in schedule for same-day dedup
-    table.insert(_modData.EventsOnSchedule, {{
+    table.insert(modData.EventsOnSchedule, {{
         startDay = startDay, startTime = startTime,
         preset = preset, triggered = false
     }})
@@ -380,7 +432,8 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
         for k,presetID in pairs(eventsForScheduling) do
             local presetSettings = eHelicopter_PRESETS[presetID]
             if (not eventIDsScheduled[presetID]) and presetSettings and eHelicopter then
-                local schedulingFactor = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
+                local rawSF = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
+                local schedulingFactor = (type(rawSF)=="table") and rawSF[1] or rawSF
                 local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
                 local freq = 3
                 local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
@@ -403,7 +456,8 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
                     eventAvailable = true
                 end
                 if eventAvailable then
-                    local weight = (presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight) * freq
+                    local rawW = presetSettings.eventSpawnWeight or eHelicopter.eventSpawnWeight
+                    local weight = (type(rawW)=="table") and rawW[1] or rawW
                     local probabilityNumerator = math.floor((freq*schedulingFactor) + 0.5)
                     for i=1, weight do
                         if (ZombRand(probabilityDenominator) <= probabilityNumerator) then
@@ -463,32 +517,27 @@ def run_simulation(preset_paths, sandbox, num_runs=100, verbose=False):
         "eHeliEvent_ScheduleNew",
     ] if k in funcs)
 
-    # The simulation runner in Lua — called once per run from Python
     runner_lua = f"""
 function run_one_playthrough()
-    -- Reset state for this playthrough
-    _modData = {{ DaysBeforeApoc=0, EventsOnSchedule={{}} }}
-    eventsForScheduling = nil  -- force rebuild with current SandboxVars
+    modData = {{ DaysBeforeApoc=0, EventsOnSchedule={{}} }}
+    eventsForScheduling = nil
 
     local counts = {{}}
-    _counts = counts  -- eHeliEvent_new stub writes here
+    _counts = counts
 
-    -- Mirrors CustomDebugPanel.eHeliEvents_SchedulerUnitTest: for hour=0, 23
-    -- (24 ticks/day, hours 0–23, matching eHeliEvent_OnHour in-game behavior)
     local total_ticks = math.ceil({duration} * 24)
     for tick = 0, total_ticks - 1 do
         local day  = math.floor(tick / 24)
         local hour = tick % 24
 
-        -- Clear same-day dedup at the start of each new day
         if hour == 0 then
             local still_pending = {{}}
-            for _, v in pairs(_modData.EventsOnSchedule) do
+            for _, v in pairs(modData.EventsOnSchedule) do
                 if v.startDay ~= day then
                     table.insert(still_pending, v)
                 end
             end
-            _modData.EventsOnSchedule = still_pending
+            modData.EventsOnSchedule = still_pending
         end
 
         eHeliEvent_ScheduleNew(day, hour, nil, true)
@@ -506,13 +555,14 @@ end
         lua.execute(full_lua)
     except Exception as e:
         print(f"  ERROR: Lua setup failed: {e}")
+        lua_error_context(full_lua, str(e))
         raise
 
     # ── Pre-flight: run a quick smoke test with forced selections
     # before the real simulation to catch any remaining stub gaps cleanly.
     smoke_test_lua = """
 function _smoke_test()
-    _modData = {DaysBeforeApoc=0, EventsOnSchedule={}}
+    modData = {DaysBeforeApoc=0, EventsOnSchedule={}}
     eventsForScheduling = nil
     _counts = {}
     local errors = {}
