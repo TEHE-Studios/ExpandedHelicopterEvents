@@ -1,4 +1,4 @@
-require "EHE_util"
+local util = require "EHE_util"
 local config = require "EHE_SI_config"
 
 local keyPress = {}
@@ -14,7 +14,7 @@ function keyPress.OnKeyPressed(key)
 
 	local EHE_SI_Key = EHE_SI_Keys[getKeyName(key)]
 	if EHE_SI_Key then
-		local players = getActualPlayers()
+		local players = util.getActualPlayers()
 		---@type IsoGameCharacter|IsoPlayer|IsoMovingObject|IsoObject
 		local playerChar = players[ZombRand(#players)+1]
 

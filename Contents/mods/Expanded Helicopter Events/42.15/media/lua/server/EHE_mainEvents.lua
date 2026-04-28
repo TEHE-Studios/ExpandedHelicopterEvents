@@ -1,7 +1,7 @@
 require "EHE_mainCore"
 require "EHE_mainVariables"
 require "EHE_spawner"
-require "EHE_util"
+local util = require "EHE_util"
 --Heli goes down
 
 local eventSoundHandler = require "EHE_sounds"
@@ -75,7 +75,7 @@ function eHelicopter:crash()
 				self:dropAllItems(5)
 			end
 
-			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..EHE_getWorldAgeDays())
+			--[[DEBUG]] print("---- EHE: CRASH EVENT: "..self:heliToString(true)..":"..vehicleType.." day:" ..util.getWorldAgeDays())
 			self:spawnDeadCrew()
 
 			getWorldSoundManager():addSound(nil, heliX, heliY, 0, 175, 300, true, 0, 25)
@@ -85,7 +85,7 @@ function eHelicopter:crash()
 			self:unlaunch()
 
 			local globalModData = getExpandedHeliEventsModData()
-			globalModData.DayOfLastCrash = math.max(1,EHE_getWorldAgeDays())
+			globalModData.DayOfLastCrash = math.max(1,util.getWorldAgeDays())
 			return true
 		end
 	end

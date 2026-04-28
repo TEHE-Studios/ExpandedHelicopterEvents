@@ -1,6 +1,7 @@
 --require "ISUI/ISUIElement"
 require "ISUI/ISButton"
 require "ExpandedHelicopter12c_EHEGlobalModDataCLIENT"
+local util = require "EHE_util"
 
 local SCHEDULER_ICON = {
     TWITCH =    { COLOR = getTexture("media/textures/scheduleButtons/t_color.png"),
@@ -61,7 +62,7 @@ function schedulerButton:render()
 
                 if getDebug() then
                     local GT = getGameTime()
-                    local currentDay, currentHour = EHE_getWorldAgeDays(), GT:getHour()
+                    local currentDay, currentHour = util.getWorldAgeDays(), GT:getHour()
                     newTooltip = "currentDay: "..currentDay.." currentHour:"..currentHour.."\n"
                 end
 

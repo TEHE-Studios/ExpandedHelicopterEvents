@@ -1,3 +1,5 @@
+local util = require "EHE_util"
+
 --Overrides vanilla helicopter frequency on game boot
 local function HelicopterSandboxOptions(EVENT)
 	EVENT = EVENT or "ERROR-NoEventID"
@@ -5,7 +7,7 @@ local function HelicopterSandboxOptions(EVENT)
 	SandboxVars.Helicopter = 1
 
 	local gameTime = getGameTime()
-	local daysIn = EHE_getWorldAgeDays()
+	local daysIn = util.getWorldAgeDays()
 	local currentHelicopterDay = gameTime:getHelicopterDay1()
 	local later = math.max(daysIn, currentHelicopterDay) + 30
 	gameTime:setHelicopterDay(later)
@@ -30,7 +32,7 @@ local function HelicopterSandboxOptions(EVENT)
 
 	if getDebug() or isServer() then text = text.."\n    DEBUG: Vanilla Helicopter: ("..heliValue..")  day:"..day.." startHr:"..startHr.." endHr"..endHr end
 
-	text = text.."\n    Current Day:"..EHE_getWorldAgeDays().." Hour:"..gameTime:getHour()
+	text = text.."\n    Current Day:"..util.getWorldAgeDays().." Hour:"..gameTime:getHour()
 	text = text.."\n    EHE-Sandbox Options:"
 	for k,v in pairs(SandboxVars.ExpandedHeli) do text = text.."\n       "..tostring(k).." = "..tostring(v) end
 

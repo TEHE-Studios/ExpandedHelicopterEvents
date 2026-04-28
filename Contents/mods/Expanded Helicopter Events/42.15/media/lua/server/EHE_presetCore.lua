@@ -1,3 +1,5 @@
+local util = require "EHE_util"
+
 ---@param table table
 function eHelicopter.recursiveTableCopy(table)
 	local tmpTable = {}
@@ -78,7 +80,7 @@ function eHelicopter:progressionSelectPreset(preset)
 	if pp then
 
 		local globalModData = getExpandedHeliEventsModData()
-		local DaysSinceApoc = globalModData.DaysBeforeApoc+EHE_getWorldAgeDays()
+		local DaysSinceApoc = globalModData.DaysBeforeApoc+util.getWorldAgeDays()
 		local startDay, cutOffDay = fetchStartDayAndCutOffDay(preset)
 		if not cutOffDay or cutOffDay <= 0 then return end
 		local DaysOverCutOff = DaysSinceApoc/cutOffDay

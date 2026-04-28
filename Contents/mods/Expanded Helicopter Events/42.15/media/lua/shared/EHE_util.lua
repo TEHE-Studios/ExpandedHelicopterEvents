@@ -1,26 +1,28 @@
+local util = {}
+
 ---IsoPlayer are player entities but also NPCs (from mods)
-EHEIsoPlayers = {}
+util.EHEIsoPlayers = {}
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
-function addToEIP(playerObject)
+function util.addToEIP(playerObject)
 	if not playerObject then return end
 	if instanceof(playerObject, "IsoAnimal") then return end
 	if playerObject:getX() < 1 or playerObject:getY() < 1 then return end
 	if playerObject:isDead() then return end
-	if not EHEIsoPlayers[playerObject] then EHEIsoPlayers[playerObject] = true end
+	if not util.EHEIsoPlayers[playerObject] then util.EHEIsoPlayers[playerObject] = true end
 end
 
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
-function removeFromEIP(playerObject) if EHEIsoPlayers[playerObject] then EHEIsoPlayers[playerObject] = nil end end
+function util.removeFromEIP(playerObject) if util.EHEIsoPlayers[playerObject] then util.EHEIsoPlayers[playerObject] = nil end end
 
 
-function EHE_getWorldAgeDays()
+function util.getWorldAgeDays()
 	return (getGameTime():getWorldAgeHours()/24)
 end
 
 
-function getActualPlayers()
+function util.getActualPlayers()
 	local seen = {}
 	local list = {}
 
@@ -40,74 +42,71 @@ function getActualPlayers()
 	return list
 end
 
-function addActualPlayersToEIP()
-	local playersOnline = getActualPlayers()
-	for _,playerObj in pairs(playersOnline) do addToEIP(playerObj) end
+function util.addActualPlayersToEIP()
+	local playersOnline = util.getActualPlayers()
+	for _,playerObj in pairs(playersOnline) do util.addToEIP(playerObj) end
 end
 
-Events.OnCreateLivingCharacter.Add(addToEIP)
-Events.OnCharacterDeath.Add(removeFromEIP)
 
-
-eheBounds = {}
-eheBounds.MAX_X = false
-eheBounds.MIN_X = false
-eheBounds.MAX_Y = false
-eheBounds.MIN_Y = false
-eheBounds.threshold = 1000
+util.eheBounds = {}
+util.eheBounds.MAX_X = false
+util.eheBounds.MIN_X = false
+util.eheBounds.MAX_Y = false
+util.eheBounds.MIN_Y = false
+util.eheBounds.threshold = 1000
 
 ---Sets a min/max X/Y around all the players
-function setDynamicGlobalXY()
+function util.setDynamicGlobalXY()
 
-	addActualPlayersToEIP()
+	util.addActualPlayersToEIP()
 
-	eheBounds.MAX_X = false
-	eheBounds.MIN_X = false
-	eheBounds.MAX_Y = false
-	eheBounds.MIN_Y = false
+	util.eheBounds.MAX_X = false
+	util.eheBounds.MIN_X = false
+	util.eheBounds.MAX_Y = false
+	util.eheBounds.MIN_Y = false
 
-	for character,value in pairs(EHEIsoPlayers) do
+	for character,value in pairs(util.EHEIsoPlayers) do
 		---@type IsoGameCharacter p
 		local p = character
 
 		local pX = p:getX()
 		local pY = p:getY()
 
-		if not eheBounds.MIN_X then
-			eheBounds.MIN_X = pX-eheBounds.threshold
+		if not util.eheBounds.MIN_X then
+			util.eheBounds.MIN_X = pX-util.eheBounds.threshold
 		else
-			eheBounds.MIN_X = math.min(eheBounds.MIN_X, pX-eheBounds.threshold)
+			util.eheBounds.MIN_X = math.min(util.eheBounds.MIN_X, pX-util.eheBounds.threshold)
 		end
 
-		if not eheBounds.MAX_X then
-			eheBounds.MAX_X = pX+eheBounds.threshold
+		if not util.eheBounds.MAX_X then
+			util.eheBounds.MAX_X = pX+util.eheBounds.threshold
 		else
-			eheBounds.MAX_X = math.max(eheBounds.MAX_X, pX+eheBounds.threshold)
+			util.eheBounds.MAX_X = math.max(util.eheBounds.MAX_X, pX+util.eheBounds.threshold)
 		end
 
-		if not eheBounds.MIN_Y then
-			eheBounds.MIN_Y = pY-eheBounds.threshold
+		if not util.eheBounds.MIN_Y then
+			util.eheBounds.MIN_Y = pY-util.eheBounds.threshold
 		else
-			eheBounds.MIN_Y = math.min(eheBounds.MIN_Y, pY-eheBounds.threshold)
+			util.eheBounds.MIN_Y = math.min(util.eheBounds.MIN_Y, pY-util.eheBounds.threshold)
 		end
 
-		if not eheBounds.MAX_Y then
-			eheBounds.MAX_Y = pY+eheBounds.threshold
+		if not util.eheBounds.MAX_Y then
+			util.eheBounds.MAX_Y = pY+util.eheBounds.threshold
 		else
-			eheBounds.MAX_Y = math.max(eheBounds.MAX_Y, pY+eheBounds.threshold)
+			util.eheBounds.MAX_Y = math.max(util.eheBounds.MAX_Y, pY+util.eheBounds.threshold)
 		end
 	end
 
-	if (not eheBounds.MIN_X) or (not eheBounds.MAX_X) or (not eheBounds.MIN_Y) or (not eheBounds.MAX_Y) then
-		--[[DEBUG]] print(" - EHE:ERROR: ".." X:"..tostring(eheBounds.MIN_X).."-"..tostring(eheBounds.MAX_X)..", Y:"..tostring(eheBounds.MIN_X).."-"..tostring(eheBounds.MIN_X))
+	if (not util.eheBounds.MIN_X) or (not util.eheBounds.MAX_X) or (not util.eheBounds.MIN_Y) or (not util.eheBounds.MAX_Y) then
+		--[[DEBUG]] print(" - EHE:ERROR: ".." X:"..tostring(util.eheBounds.MIN_X).."-"..tostring(util.eheBounds.MAX_X)..", Y:"..tostring(util.eheBounds.MIN_X).."-"..tostring(util.eheBounds.MIN_X))
 		return
 	end
 
-	eheBounds.MAX_X = math.floor(eheBounds.MAX_X)
-	eheBounds.MIN_X = math.floor(eheBounds.MIN_X)
-	eheBounds.MAX_Y = math.floor(eheBounds.MAX_Y)
-	eheBounds.MIN_Y = math.floor(eheBounds.MIN_Y)
-	print(" -- EHE:XY: ".." MIN_X:"..eheBounds.MIN_X.." MAX_X:"..eheBounds.MAX_X.." MIN_Y:"..eheBounds.MIN_Y.." MAX_Y:"..eheBounds.MAX_Y)
+	util.eheBounds.MAX_X = math.floor(util.eheBounds.MAX_X)
+	util.eheBounds.MIN_X = math.floor(util.eheBounds.MIN_X)
+	util.eheBounds.MAX_Y = math.floor(util.eheBounds.MAX_Y)
+	util.eheBounds.MIN_Y = math.floor(util.eheBounds.MIN_Y)
+	print(" -- EHE:XY: ".." MIN_X:"..util.eheBounds.MIN_X.." MAX_X:"..util.eheBounds.MAX_X.." MIN_Y:"..util.eheBounds.MIN_Y.." MAX_Y:"..util.eheBounds.MAX_Y)
 end
 
 
@@ -115,7 +114,7 @@ end
 --tostring output of a Vector3: "Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
 ---@param ShmectorTree Vector3
 ---@return float x of ShmectorTree
-function Vector3GetX(ShmectorTree)
+function util.Vector3GetX(ShmectorTree)
 	if not ShmectorTree then
 		return ""
 	end
@@ -129,7 +128,7 @@ end
 
 ---@param ShmectorTree Vector3
 ---@return float y of ShmectorTree
-function Vector3GetY(ShmectorTree)
+function util.Vector3GetY(ShmectorTree)
 	if not ShmectorTree then
 		return ""
 	end
@@ -143,7 +142,7 @@ end
 
 ---Check how many days it has been since the start of the apocalypse; corrects for sandbox option "Months since Apoc"
 ---@return number Days since start of in-game apocalypse
-function eHeli_getDaysSinceApoc()
+function util.getDaysSinceApoc()
 
 	local monthsAfterApo = getSandboxOptions():getTimeSinceApo()-1
 	--no months to count, go away
@@ -181,12 +180,12 @@ end
 
 
 ---@param item InventoryItem
-function ageInventoryItem(item) if item and instanceof(item, "InventoryItem") then item:setAutoAge() end end
+function util.ageInventoryItem(item) if item and instanceof(item, "InventoryItem") then item:setAutoAge() end end
 
 
 local flareSystem = require "EHE_flares"
 ---@param vehicle BaseVehicle
-function applyFlaresToEvent(vehicle)
+function util.applyFlaresToEvent(vehicle)
 	if not vehicle then return end
 
 	local x, y, z = vehicle:getX(), vehicle:getY(), vehicle:getZ()
@@ -206,7 +205,7 @@ end
 
 
 ---@param vehicle BaseVehicle
-function applyCrashOnVehicle(vehicle)
+function util.applyCrashOnVehicle(vehicle)
 	if not vehicle then
 		return
 	end
@@ -227,7 +226,7 @@ end
 
 
 ---@param arrayOfZombies ArrayList
-function applyDeathOrCrawlerToCrew(arrayOfZombies)
+function util.applyDeathOrCrawlerToCrew(arrayOfZombies)
 	if arrayOfZombies and arrayOfZombies:size()>0 then
 		local zombie = arrayOfZombies:get(0)
 		--33% to be dead on arrival
@@ -247,7 +246,7 @@ end
 
 
 ---@param vehicle BaseVehicle
-function applyParachuteToCarePackage(vehicle)
+function util.applyParachuteToCarePackage(vehicle)
 	if vehicle then
 		sendClientCommand("SpawnerAPI", "spawn", {
 			funcType="item", spawnThis="EHE.EHE_Parachute", x=vehicle:getX(), y=vehicle:getY(), z=0,
@@ -256,7 +255,7 @@ function applyParachuteToCarePackage(vehicle)
 end
 
 
-function isIsoGridSquareOutside(square)
+function util.isIsoGridSquareOutside(square)
 	if square and square:isOutside() and not square:isSolidTrans() and square:getRoomID()==-1 then
 		return true
 	end
@@ -267,19 +266,15 @@ end
 --This attempts to get the outside (roof or ground) IsoGridSquare to any X/Y coordinate
 ---@param square IsoGridSquare
 ---@return IsoGridSquare
-function getOutsideSquareFromAbove(square)
+function util.getOutsideSquareFromAbove(square)
 	if not square or not instanceof(square, "IsoGridSquare") then return end
-	if isIsoGridSquareOutside(square) then
-		return square
-	end
+	if util.isIsoGridSquareOutside(square) then return square end
 
 	local x, y = square:getX(), square:getY()
 
 	for i=1, 7 do
 		local sq = getSquare(x, y, i)
-		if isIsoGridSquareOutside(sq) then
-			return sq
-		end
+		if util.isIsoGridSquareOutside(sq) then return sq end
 	end
 	return square
 end
@@ -287,10 +282,10 @@ end
 
 local isoRangeScan = require "EHE_IsoRangeScan"
 ---@param square IsoGridSquare
-function applyCrashDamageToWorld(square)
+function util.applyCrashDamageToWorld(square)
 	local squares = isoRangeScan.getIsoRange(square, 9, nil, true)
 	for k,sq in pairs(squares) do
-		local s = getOutsideSquareFromAbove(sq) or sq
+		local s = util.getOutsideSquareFromAbove(sq) or sq
 		if s then
 			if ZombRand(101) <= 22 then
 				IsoFireManager.StartFire(getCell(), s, true, ZombRand(200,450))
@@ -305,3 +300,5 @@ function applyCrashDamageToWorld(square)
 	end
 	---drawCircleExplosion(this.getFireRange(), this, IsoTrap.ExplosionMode.Fire)
 end
+
+return util

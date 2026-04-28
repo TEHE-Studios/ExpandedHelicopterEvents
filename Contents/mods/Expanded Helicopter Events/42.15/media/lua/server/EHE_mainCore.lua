@@ -1,10 +1,10 @@
 require "EHE_weatherImpact"
-require "EHE_util"
 local isoRangeScan = require "EHE_IsoRangeScan"
 local flareSystem = require "EHE_flares"
 local eventSoundHandler = require "EHE_sounds"
 local pseudoSquare = require "EHE_pseudoSquare"
 local announcerCore = require "EHE_announcersCore"
+local util = require "EHE_util"
 
 ALL_HELICOPTERS = {}
 
@@ -662,11 +662,11 @@ function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 
 	if applyEnvironmentalCrashChance then
 		local _, weatherImpact = eHeliEvent_weatherImpact()
-		local daysIntoApoc = globalModData.DaysBeforeApoc+EHE_getWorldAgeDays()
+		local daysIntoApoc = globalModData.DaysBeforeApoc+util.getWorldAgeDays()
 		local apocImpact = (daysIntoApoc/cutOffDay)/20
 		local dayOfLastCrash = globalModData.DayOfLastCrash
 		local crashDayCap = 28
-		local daysSinceCrashImpact = ((EHE_getWorldAgeDays()-dayOfLastCrash)/crashDayCap)/2
+		local daysSinceCrashImpact = ((util.getWorldAgeDays()-dayOfLastCrash)/crashDayCap)/2
 
 		crashChance = self.addedCrashChance+((weatherImpact+apocImpact+daysSinceCrashImpact)*100)
 		crashChance = math.min(100,math.floor(crashChance))
@@ -776,7 +776,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	local GT = getGameTime()
-	local DAY = EHE_getWorldAgeDays()
+	local DAY = util.getWorldAgeDays()
 	local HOUR = GT:getHour()
 
 	HOUR = HOUR+2
@@ -793,7 +793,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 	end
 
 	print(" -- EHE: LAUNCH: "..self:heliToString()..
-			" day:"..EHE_getWorldAgeDays()..
+			" day:"..util.getWorldAgeDays()..
 			" hour:"..getGameTime():getHour()..
 			" crashing:"..tostring(self.crashing))
 end
@@ -824,7 +824,7 @@ end
 function eHelicopter:unlaunch()
 	if self.state == "unLaunched" then return end
 
-	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..EHE_getWorldAgeDays().." hour:"..getGameTime():getHour())
+	print(" ---- UN-LAUNCH: "..self:heliToString(true).." day:"..util.getWorldAgeDays().." hour:"..getGameTime():getHour())
 
 	self:updatePosition(-10000, -10000)
 	eventSoundHandler:stopAllHeldEventSounds(self)

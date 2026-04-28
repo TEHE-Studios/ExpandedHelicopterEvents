@@ -2,7 +2,7 @@ if isClient() then return end
 
 require "EHE_globalModData"
 require "EHE_mainVariables"
-require "EHE_util"
+local util = require "EHE_util"
 require "EHE_presets"
 
 EHE_spawner = EHE_spawner or {}
@@ -21,13 +21,13 @@ end
 
 function EHE_spawner.setDictionary()
 	EHE_spawner.functionDictionary = {}
-	EHE_spawner.functionDictionary.getOutsideSquareFromAbove = getOutsideSquareFromAbove
-	EHE_spawner.functionDictionary.applyCrashOnVehicle = applyCrashOnVehicle
-	EHE_spawner.functionDictionary.applyFlaresToEvent = applyFlaresToEvent
-	EHE_spawner.functionDictionary.ageInventoryItem = ageInventoryItem
-	EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = applyDeathOrCrawlerToCrew
-	EHE_spawner.functionDictionary.applyParachuteToCarePackage = applyParachuteToCarePackage
-	EHE_spawner.functionDictionary.applyCrashDamageToWorld = applyCrashDamageToWorld
+	EHE_spawner.functionDictionary.getOutsideSquareFromAbove = util.getOutsideSquareFromAbove
+	EHE_spawner.functionDictionary.applyCrashOnVehicle = util.applyCrashOnVehicle
+	EHE_spawner.functionDictionary.applyFlaresToEvent = util.applyFlaresToEvent
+	EHE_spawner.functionDictionary.ageInventoryItem = util.ageInventoryItem
+	EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = util.applyDeathOrCrawlerToCrew
+	EHE_spawner.functionDictionary.applyParachuteToCarePackage = util.applyParachuteToCarePackage
+	EHE_spawner.functionDictionary.applyCrashDamageToWorld = util.applyCrashDamageToWorld
 
 	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 		local presetAddedFunc = presetVars["addedFunctionsToEvents"]

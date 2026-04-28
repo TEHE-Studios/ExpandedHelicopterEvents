@@ -1,6 +1,7 @@
 require "EHE_SI_scheduleOverrides"
 
 local config = require "EHE_SI_config"
+local util = require "EHE_util"
 
 local function onCommand(_module, _command, _player, _event)
 
@@ -43,7 +44,7 @@ local function onCommand(_module, _command, _player, _event)
             local HoursBeforeAllowed = math.floor(tHoursBeforeEvents-(DaysBeforeAllowed*24))
 
             local GT = getGameTime()
-            local currentDay = EHE_getWorldAgeDays()
+            local currentDay = util.getWorldAgeDays()
             local currentHour = GT:getHour()
 
             local startDay, startTime = 0, 0

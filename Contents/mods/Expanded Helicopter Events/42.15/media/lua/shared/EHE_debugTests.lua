@@ -27,6 +27,8 @@ Events.OnGameBoot.Add(function()
 
 		EHE_DebugTests["Scheduler Unit Test [LAG]"] = CustomDebugPanel.eHeliEvents_SchedulerUnitTest
 
+		EHE_DebugTests["ClearGlobalModData"] = CustomDebugPanel.ClearGlobalModData
+
 		EHE_DebugTests["Launch"] = {}
 		for presetID,presetVars in pairs(eHelicopter_PRESETS) do
 			EHE_DebugTests["Launch"][presetID] = (function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end)
@@ -57,6 +59,17 @@ function CustomDebugPanel.printEHEIsoPlayers()
 end
 
 
+
+function CustomDebugPanel.ClearGlobalModData()
+	print(" - ClearGlobalModData:")
+	local globalModData = getExpandedHeliEventsModData()
+	for k in pairs(globalModData) do
+		globalModData[k] = nil
+	end
+	triggerEvent("EHE_ServerModDataReady", false)
+end
+
+
 function CustomDebugPanel.SandboxVarsDUMP()
 	--SandboxVars
 	print(" - SandboxVars:")
@@ -68,8 +81,8 @@ function CustomDebugPanel.SandboxVarsDUMP()
 		local optionTableName = tostring(option:getTableName())
 		print(" --- "..optionName.. " ("..optionTableName..")")
 	end
-
 end
+
 
 function CustomDebugPanel.RTP_indent(n) local text = "" for i=0, n do text = text.."   " end return text end
 function CustomDebugPanel.RecursiveTablePrint(object,nesting,every_other)
@@ -255,18 +268,23 @@ end
 
 function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 	local globalModData = getExpandedHeliEventsModData()
+	local savedEvents = globalModData.EventsOnSchedule
+	local savedLastDay = globalModData.lastDayScheduled
+
 	globalModData.EventsOnSchedule = {}
+	globalModData.lastDayScheduled = nil
+
 	for freq=2, 6 do
 		local testsRan = {}
+		globalModData.EventsOnSchedule = {}
 		for day=0, 89 do
 			for hour=0, 23 do
-				eHeliEvent_ScheduleNew(day,hour,freq,true)
+				eHeliEvent_ScheduleNew(day, hour, freq, true)
 				for k,v in pairs(globalModData.EventsOnSchedule) do
 					if v.triggered then
 						globalModData.EventsOnSchedule[k] = nil
 					elseif (v.startDay <= day) and (v.startTime == hour) then
-						testsRan[v.preset] = testsRan[v.preset] or 0
-						testsRan[v.preset] = testsRan[v.preset]+1
+						testsRan[v.preset] = (testsRan[v.preset] or 0) + 1
 						globalModData.EventsOnSchedule[k].triggered = true
 					end
 				end
@@ -275,15 +293,17 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 		print("======================================")
 		print("HeliEvents_SchedulerUnitTest: FREQ: "..getText("Sandbox_ExpandedHeli_Frequency_option"..freq))
 		print("--------------------------------------")
-		local totalTimes= 0
+		local totalTimes = 0
 		for preset,times in pairs(testsRan) do
-			totalTimes = totalTimes+times
+			totalTimes = totalTimes + times
 			print("-preset:"..preset.."  x"..times)
 		end
 		print("--- TOTAL EVENTS: "..totalTimes)
 		print("======================================")
 	end
-	globalModData.EventsOnSchedule = {}
+
+	globalModData.EventsOnSchedule = savedEvents
+	globalModData.lastDayScheduled = savedLastDay
 end
 
 

@@ -6,6 +6,7 @@ local eventSoundHandler = require "EHE_sounds"
 local heatMap = require "EHE_heatMap"
 local pseudoSquare = require "EHE_pseudoSquare"
 local announcerCore = require "EHE_announcersCore"
+local util = require "EHE_util"
 
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end
@@ -146,7 +147,7 @@ function eHelicopter:updateEvent()
 
 	if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
 		local GT = getGameTime()
-		local DAY = EHE_getWorldAgeDays()
+		local DAY = util.getWorldAgeDays()
 		local HOUR = GT:getHour()
 		local unlaunchDay = self.forceUnlaunchTime[1]
 		local unlaunchHour = self.forceUnlaunchTime[2]

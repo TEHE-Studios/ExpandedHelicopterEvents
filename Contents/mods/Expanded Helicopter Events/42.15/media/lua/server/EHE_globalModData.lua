@@ -2,7 +2,7 @@
 
 require "EHE_onClientToServerCommands"
 require "EHE_weatherImpact"
-require "EHE_util"
+local util = require "EHE_util"
 
 local ExpandedHeliEventsModData
 
@@ -10,8 +10,8 @@ local function initExpandedHeliEventsModData(isNewGame)
 	local modData = ModData.getOrCreate("ExpandedHelicopterEvents")
 
 	if not modData.EventsOnSchedule then modData.EventsOnSchedule = {} end
-	if not modData.DayOfLastCrash then modData.DayOfLastCrash = EHE_getWorldAgeDays() end
-	if not modData.DaysBeforeApoc then modData.DaysBeforeApoc = eHeli_getDaysSinceApoc() end
+	if not modData.DayOfLastCrash then modData.DayOfLastCrash = util.getWorldAgeDays() end
+	if not modData.DaysBeforeApoc then modData.DaysBeforeApoc = util.getDaysSinceApoc() end
 
 	ExpandedHeliEventsModData = modData
 

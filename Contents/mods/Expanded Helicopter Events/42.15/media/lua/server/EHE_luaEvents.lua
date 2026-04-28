@@ -7,3 +7,7 @@ Events.OnZombieDead.Add(heatMap.OnZombieDead)
 Events.OnPlayerMove.Add(heatMap.OnPlayerMove)
 Events.OnPlayerDeath.Add(heatMap.OnPlayerDeath)
 Events.OnWeaponSwing.Add(heatMap.OnWeaponSwing)
+
+local util = require "EHE_util"
+Events.OnCreateLivingCharacter.Add(util.addToEIP)
+Events.OnCharacterDeath.Add(util.removeFromEIP)

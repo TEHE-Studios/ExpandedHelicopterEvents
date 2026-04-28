@@ -5,7 +5,7 @@ local config = require "EHE_SI_config"
 local EHE_SI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
 function eHeliEvent_ScheduleNew(...)
 
-	print("EHE_SI_IntegrationOnly: ", config.checkValue("EHE_SI_IntegrationOnly"))
+	--print("EHE_SI_IntegrationOnly: ", config.checkValue("EHE_SI_IntegrationOnly"))
 	if config.checkValue("EHE_SI_IntegrationOnly") == false then
 		EHE_SI_eHeliEvent_ScheduleNew(...)
 	end

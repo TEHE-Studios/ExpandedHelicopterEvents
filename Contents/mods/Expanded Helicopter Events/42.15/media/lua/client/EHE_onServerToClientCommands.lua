@@ -1,6 +1,6 @@
 require "EHE_shadowSystem"
 require "EHE_eventMarkerHandler"
-require "EHE_util"
+local util = require "EHE_util"
 
 
 local function copyAgainst(tableA,tableB)
@@ -71,7 +71,7 @@ storedLooperEventsUpdateTimes = {}
 function clientSideEventSoundHandler.attenuateEmitterToPlayer(player, emitter, x, y, z, maxDistance)
 	
 	local pX, pY, pZ = player:getX(), player:getY(), player:getZ()
-	maxDistance = maxDistance or (eheBounds.threshold * 0.8)
+	maxDistance = maxDistance or (util.eheBounds.threshold * 0.8)
 	local euclideanDist = math.sqrt((x - pX)^2 + (y - pY)^2 + (z - pZ)^2)
 	local volume = math.max(0, 1 - (euclideanDist / maxDistance))
 

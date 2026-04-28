@@ -1,5 +1,6 @@
 require "radio/ISWeatherChannel"
 require "EHE_weatherImpact"
+local util = require "EHE_util"
 
 --- "loadThisAfter" was added to fix issues with Save Our Station
 Events.OnGameBoot.Add(function() Translator.loadFiles() end)
@@ -21,7 +22,7 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 		local globalModData = getExpandedHeliEventsModData()
 		if globalModData.EventsOnSchedule then
 			for _,event in pairs(globalModData.EventsOnSchedule) do
-				if (not event.triggered) and (event.startDay <= EHE_getWorldAgeDays()) then
+				if (not event.triggered) and (event.startDay <= util.getWorldAgeDays()) then
 					--pulls event's info to see if more lines can be added
 					local presetID = event.preset
 

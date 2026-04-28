@@ -1,8 +1,24 @@
 require "EHE_weatherImpact"
 require "EHE_globalModData"
-require "EHE_util"
+local util = require "EHE_util"
 require "EHE_presets"
 require "EHE_mainVariables"
+
+
+if not isClient() then Events.OnTick.Add(eHeliEvent_OnHour) end
+
+--- Could look into utilizing the fact that days are tracked in float
+local lastTickHour = -1
+function eHeliEvent_OnHour()
+	local gameTime = getGameTime()
+	local currentHour = gameTime:getHour()
+	if currentHour ~= lastTickHour then
+		lastTickHour = currentHour
+		eHeliEvent_ScheduleNew()
+		eHeliEvent_Loop()
+	end
+end
+
 
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
@@ -31,6 +47,7 @@ function eHeliEvent_engage(ID)
 		return
 	end
 
+
 	local willFly,_ = eHeliEvent_weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
 
@@ -46,11 +63,11 @@ function eHeliEvent_engage(ID)
 		if heli then
 			eHeliEvent.triggered = true
 			heli:launch(foundTarget)
+			triggerEvent("EHE_ServerModDataReady", false)
 		else
 			print("[EHE] engage: no free helicopter available")
 		end
 	end
-	triggerEvent("EHE_ServerModDataReady", false)
 end
 
 
@@ -59,7 +76,6 @@ function eHeliEvents_setEventsForScheduling()
 	if not eventsForScheduling then
 		eventsForScheduling = {}
 		for presetID, presetVars in pairs(eHelicopter_PRESETS) do
-
 			local forScheduling = presetVars.forScheduling
 
 			if forScheduling then
@@ -68,12 +84,24 @@ function eHeliEvents_setEventsForScheduling()
 				if presetFreq and presetFreq==1 then forScheduling = false end
 			end
 
-			if forScheduling then
-				table.insert(eventsForScheduling, presetID)
-			end
+			if forScheduling then table.insert(eventsForScheduling, presetID) end
 		end
 		print("[EHE] eventsForScheduling built: "..#eventsForScheduling.." presets")
 	end
+end
+
+
+function eHeliEvents_getLastScheduledApocDay()
+	local globalModData = getExpandedHeliEventsModData()
+	local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
+	local lastEventDay = nil
+	for _, event in pairs(globalModData.EventsOnSchedule) do
+		local apocDay = daysBeforeApoc + event.startDay
+		if not lastEventDay or apocDay > lastEventDay then
+			lastEventDay = apocDay
+		end
+	end
+	return lastEventDay
 end
 
 
@@ -82,7 +110,7 @@ end
 function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
 	local globalModData = getExpandedHeliEventsModData()
 	local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
-	local startApocDay = math.max(math.floor(fromApocDay), math.floor(daysBeforeApoc + EHE_getWorldAgeDays()))
+	local startApocDay = math.max(math.floor(fromApocDay), math.floor(daysBeforeApoc + util.getWorldAgeDays()))
 
 	print("[EHE] prefillSchedule: filling apocDays "..startApocDay.." to "..toApocDay)
 
@@ -90,9 +118,8 @@ function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
 		eHeliEvent_ScheduleNew(apocDay - daysBeforeApoc, 12, nil, true)
 	end
 
-	globalModData.lastDayScheduled = toApocDay
 	triggerEvent("EHE_ServerModDataReady", false)
-	print("[EHE] prefillSchedule: complete. lastDayScheduled="..toApocDay)
+	print("[EHE] prefillSchedule: complete. toApocDay="..toApocDay)
 end
 
 
@@ -100,7 +127,7 @@ function eHeliEvents_OnGameStart()
 	local globalModData = getExpandedHeliEventsModData()
 	eHeliEvents_setEventsForScheduling()
 	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or eHeli_getDaysSinceApoc()
-	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or EHE_getWorldAgeDays()
+	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or util.getWorldAgeDays()
 	if not globalModData.EventsOnSchedule then
 		globalModData.EventsOnSchedule = {}
 	end
@@ -109,11 +136,11 @@ function eHeliEvents_OnGameStart()
 	local duration = SandboxVars.ExpandedHeli.SchedulerDuration or 90
 	local daysBeforeApoc = math.floor(globalModData.DaysBeforeApoc or 0)
 	local targetEnd = daysBeforeApoc + startDay + duration
-	local lastDayScheduled = globalModData.lastDayScheduled or 0
+	local lastScheduledApocDay = eHeliEvents_getLastScheduledApocDay() or 0
 
-	print("[EHE] OnGameStart: lastDayScheduled="..lastDayScheduled.." targetEnd="..targetEnd.." worldAge="..tostring(EHE_getWorldAgeDays()))
+	print("[EHE] OnGameStart: lastScheduledApocDay="..lastScheduledApocDay.." targetEnd="..targetEnd.." worldAge="..tostring(util.getWorldAgeDays()))
 
-	if lastDayScheduled < targetEnd then
+	if lastScheduledApocDay < targetEnd then
 		print("[EHE] OnGameStart: schedule incomplete, prefilling")
 		eHeliEvents_prefillSchedule(daysBeforeApoc + startDay, targetEnd)
 	else
@@ -195,22 +222,25 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
 
 	if not currentDay then
-		local lastDayScheduled = globalModData.lastDayScheduled
-		if lastDayScheduled then
+		local lastScheduledApocDay = eHeliEvents_getLastScheduledApocDay()
+		if lastScheduledApocDay then
 			local duration = SandboxVars.ExpandedHeli.SchedulerDuration or 90
 			local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
-			local daysIntoApoc = daysBeforeApoc + EHE_getWorldAgeDays()
-			local extensionThreshold = lastDayScheduled - duration * 0.5
-			print("[EHE] ScheduleNew hourly: daysIntoApoc="..string.format("%.1f",daysIntoApoc).." lastDayScheduled="..lastDayScheduled.." threshold="..extensionThreshold.." continueScheduling="..tostring(continueScheduling))
+			local startDay = SandboxVars.ExpandedHeli.StartDay or 0
+			local daysIntoApoc = daysBeforeApoc + util.getWorldAgeDays()
+			local schedulerEndApocDay = daysBeforeApoc + startDay + duration
+			local referenceDay = math.max(lastScheduledApocDay, schedulerEndApocDay)
+			local extensionThreshold = referenceDay - duration * 0.5
+			print("[EHE] ScheduleNew hourly: daysIntoApoc="..string.format("%.1f",daysIntoApoc).." lastScheduledApocDay="..lastScheduledApocDay.." referenceDay="..referenceDay.." threshold="..extensionThreshold.." continueScheduling="..tostring(continueScheduling))
 			if continueScheduling and daysIntoApoc >= extensionThreshold then
 				print("[EHE] ScheduleNew: extending schedule by "..duration.." days")
-				eHeliEvents_prefillSchedule(lastDayScheduled + 1, lastDayScheduled + duration)
+				eHeliEvents_prefillSchedule(lastScheduledApocDay + 1, lastScheduledApocDay + duration)
 			end
 			return
 		end
 	end
 
-	currentDay = currentDay or EHE_getWorldAgeDays()
+	currentDay = currentDay or util.getWorldAgeDays()
 	currentHour = currentHour or gameTime:getHour()
 	local daysIntoApoc = (globalModData.DaysBeforeApoc or 0) + currentDay
 
@@ -373,7 +403,7 @@ function eHeliEvent_Loop()
 
 	local gameTime = getGameTime()
 	local globalModData = getExpandedHeliEventsModData()
-	local worldDay = EHE_getWorldAgeDays()
+	local worldDay = util.getWorldAgeDays()
 	local currentHour = gameTime:getHour()
 	local events = globalModData.EventsOnSchedule
 
@@ -387,22 +417,4 @@ function eHeliEvent_Loop()
 			end
 		end
 	end
-end
-
-
-local lastTickHour = -1
-function eHeliEvent_OnHour()
-
-	local gameTime = getGameTime()
-	local currentHour = gameTime:getHour()
-
-	if currentHour ~= lastTickHour then
-		lastTickHour = currentHour
-		eHeliEvent_ScheduleNew()
-		eHeliEvent_Loop()
-	end
-end
-
-if not isClient() then
-	Events.OnTick.Add(eHeliEvent_OnHour)
 end

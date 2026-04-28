@@ -1,5 +1,5 @@
 require "ISUI/ISUIElement"
-require "EHE_util"
+local util = require "EHE_util"
 
 
 EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
@@ -7,7 +7,7 @@ EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")
 EHE_EventMarker.iconSize = 96
 EHE_EventMarker.clickableSize = 45
 
-EHE_EventMarker.maxRange = (eheBounds.threshold * 0.75)
+EHE_EventMarker.maxRange = (util.eheBounds.threshold * 0.75)
 
 EHE_EventMarker.textureIsoPointer = getTexture("media/ui/eventPointer.png")
 EHE_EventMarker.textureIsoPointerResized = false

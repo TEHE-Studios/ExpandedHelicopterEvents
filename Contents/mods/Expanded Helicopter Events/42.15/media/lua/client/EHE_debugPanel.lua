@@ -11,6 +11,7 @@ Events.OnGameBoot.Add(function()
 end)
 --]]
 require "DebugUIs/DebugMenu/ISDebugMenu"
+local util = require "EHE_util"
 
 EHE_DebugTests = EHE_DebugTests or {}
 
@@ -20,7 +21,7 @@ function EHE_DebugTestWindow:render()
 	ISPanel.render(self)
 
 	local GT = getGameTime()
-	local currentDay, currentHour = EHE_getWorldAgeDays(), GT:getHour()
+	local currentDay, currentHour = util.getWorldAgeDays(), GT:getHour()
 	local time = "currentDay: "..currentDay.." currentHour:"..currentHour
 
 	self:drawText(time, self.listbox.x+15, self.listbox.y-(self.listbox.fontHgt*1.33), 1,1,1,1, self.listbox.font)
