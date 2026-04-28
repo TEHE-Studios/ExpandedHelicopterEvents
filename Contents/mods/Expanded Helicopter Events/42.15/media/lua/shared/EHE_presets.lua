@@ -146,6 +146,7 @@ eHelicopter_PRESETS["military_CH47_evac"] = {
 	},
 	callsigns = {"Dustoff", "Lifeline", "Exodus", "Haven", "Salvation"},
 }
+
 -- Commanders are leaving, could fall out of the sky leaving something.
 eHelicopter_PRESETS["military_UH1H_command_evac"] = {
 	inherit = {"military_nonhostile"},
@@ -153,6 +154,7 @@ eHelicopter_PRESETS["military_UH1H_command_evac"] = {
 	announcerVoice = false,
 	callsigns = {"Stronghold", "Command", "Fortress", "Citadel", "Bastion"},
 }
+
 -- Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events.
 eHelicopter_PRESETS["military_UH1H_deserters"] = {
 	inherit = {"military_nonhostile"},
@@ -161,6 +163,7 @@ eHelicopter_PRESETS["military_UH1H_deserters"] = {
 	radioChatter = "AEBS_DesertersStarting",
 	callsigns = {"Saber", "Blackbeard", "Rogue", "Ghost", "Shadow"},
 }
+
 -- The military will now begin shooting anyone they see
 eHelicopter_PRESETS["military_hostile"] = {
 	announcerVoice = true,
@@ -243,6 +246,7 @@ eHelicopter_PRESETS["drones"] = {
 	},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 }
+
 eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	inherit = {"drones"},
 	speed = 1.0,
@@ -256,6 +260,7 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	crashType = false,
 	callsigns = {"Eye", "Overwatch", "Scout", "Watchdog"},
 }
+
 eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
 	inherit = {"drones"},
 	speed = 0.5,
@@ -270,6 +275,7 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
 	crashType = false,
 	callsigns = {"Shadow", "Sentinel", "Stalker", "Watcher"},
 }
+
 -- Shift over to hostile events, player should flee and hide
 eHelicopter_PRESETS["air_raid"] = {
 	doNotListForStreamerIntegration = true,
@@ -297,11 +303,14 @@ eHelicopter_PRESETS["air_raid"] = {
 	radioChatter = "AEBS_AirRaid",
 	callsigns = {"Warlord", "Command", "Central", "Control"},
 }
+
 -- Jets get progressively more aggressive as the military falters
 eHelicopter_PRESETS["jets"] = {
 	announcerVoice = false,
 	forScheduling = true,
 	crashType = false,
+	shadow = false,
+	eventMarkerIcon = "media/ui/jet.png",
 	eventSpawnWeight = 30,
 	schedulingFactor = 1.5,
 	markerColor = {r=0.37, g=1.00, b=0.27},
@@ -315,6 +324,7 @@ eHelicopter_PRESETS["jets"] = {
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Viper", "Eagle", "Hornet", "Talon", "Bandit", "Striker"},
 }
+
 -- Passing jet, mostly stirs up activity
 eHelicopter_PRESETS["jet_pass"] = {
 	speed = 15,
