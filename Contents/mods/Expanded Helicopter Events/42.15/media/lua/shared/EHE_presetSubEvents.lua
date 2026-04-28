@@ -1,3 +1,4 @@
+local util = require "EHE_util"
 require "EHE_eventMarkerHandler"
 require "EHE_spawner"
 
@@ -213,7 +214,7 @@ function subEvents.crewSeek(crew)
 		return
 	end
 
-	for character,_ in pairs(EHEIsoPlayers) do
+	for character,_ in pairs(util.isoPlayers) do
 		if (not choice) or (choice and character and (location:DistTo(choice) < location:DistTo(character)) ) then
 			choice = character
 		end

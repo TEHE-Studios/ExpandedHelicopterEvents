@@ -1,3 +1,6 @@
+local eHelicopter = require "EHE_mainVariables"
+local modData = require "EHE_globalModData"
+local mainCore = require "EHE_mainCore"
 local util = require "EHE_util"
 
 ---@param table table
@@ -79,9 +82,9 @@ function eHelicopter:progressionSelectPreset(preset)
 	local pp = preset.presetProgression
 	if pp then
 
-		local globalModData = getExpandedHeliEventsModData()
+		local globalModData = modData.get()
 		local DaysSinceApoc = globalModData.DaysBeforeApoc+util.getWorldAgeDays()
-		local startDay, cutOffDay = fetchStartDayAndCutOffDay(preset)
+		local startDay, cutOffDay = mainCore.fetchStartDayAndCutOffDay(preset)
 		if not cutOffDay or cutOffDay <= 0 then return end
 		local DaysOverCutOff = DaysSinceApoc/cutOffDay
 		local presetIDTmp

@@ -2,6 +2,7 @@
 require "ISUI/ISButton"
 require "ExpandedHelicopter12c_EHEGlobalModDataCLIENT"
 local util = require "EHE_util"
+local clientCommands = require "EHE_onServerToClientCommands"
 
 local SCHEDULER_ICON = {
     TWITCH =    { COLOR = getTexture("media/textures/scheduleButtons/t_color.png"),
@@ -56,7 +57,7 @@ function schedulerButton:render()
             local playerChar = getPlayer()
             local pUsername = playerChar:getUsername()
 
-            local globalModData = getExpandedHeliEventsModData_Client()
+            local globalModData = clientCommands.get()
             if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
                 local newTooltip
 

@@ -1,8 +1,10 @@
 if isClient() and not getDebug() then return end
 
 require "EHE_debugPanel"
-require "EHE_weatherImpact"
-require "EHE_util"
+local util = require "EHE_util"
+local modData = require "EHE_globalModData"
+local clientCommands = require "EHE_onServerToClientCommands"
+local mainCore = require "EHE_mainCore"
 local isoRangeScan = require "EHE_IsoRangeScan"
 require "EHE_mainVariables"
 
@@ -52,8 +54,8 @@ end
 
 
 function CustomDebugPanel.printEHEIsoPlayers()
-	print("EHEIsoPlayers: ")
-	for playerObj,v in pairs(EHEIsoPlayers) do
+	print("util.isoPlayers: ")
+	for playerObj,v in pairs(util.isoPlayers) do
 		print(" - "..playerObj:getFullName().." - "..playerObj:getUsername())
 	end
 end
@@ -62,7 +64,7 @@ end
 
 function CustomDebugPanel.ClearGlobalModData()
 	print(" - ClearGlobalModData:")
-	local globalModData = getExpandedHeliEventsModData()
+	local globalModData = modData.get()
 	for k in pairs(globalModData) do
 		globalModData[k] = nil
 	end
@@ -120,7 +122,6 @@ function CustomDebugPanel.checkSquare()
 	local zones = getWorld():getMetaGrid():getZonesAt(square:getX(), square:getY(), 0)
 	if zones then
 		for i = zones:size(),1,-1 do
-			---@type IsoMetaGrid.Zone
 			local zone = zones:get(i-1)
 			if zone then
 
@@ -163,7 +164,7 @@ end
 
 function CustomDebugPanel:CopySchedule()
 	local finalText = "SCHEDULE:\n"
-	local globalModData = getExpandedHeliEventsModData_Client()
+	local globalModData = clientCommands.get()
 	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
 		for i=1, #globalModData.EventsOnSchedule do
 			local event = globalModData.EventsOnSchedule[i]
@@ -206,48 +207,11 @@ function CustomDebugPanel:ToggleMoveHeliCloser()
 end
 
 
-function CustomDebugPanel.moveHeliCloser(heli)
-	if not heli or not heli.target then
-		return
-	end
-	--move closer
-	local tpX = heli.target:getX()
-	local tpY = heli.target:getY()
-
-	local offsetX = ZombRand(150, 300)
-	if ZombRand(101) <= 50 then
-		offsetX = 0-offsetX
-	end
-
-	local offsetY = ZombRand(150, 300)
-	if ZombRand(101) <= 50 then
-		offsetY = 0-offsetY
-	end
-	
-	heli.currentPosition:set(tpX+offsetX, tpY+offsetY, heli.height)
-end
-
-
 --- Test launch heli
 function CustomDebugPanel.launchHeliTest(presetID, player, moveCloser, crashIt)
-
 	moveCloser = moveCloser or CustomDebugPanel.MOVE_HELI_TEST_CLOSER
 	crashIt = crashIt or CustomDebugPanel.TOGGLE_ALL_CRASH
-
-	if isClient() then
-		sendClientCommand("CustomDebugPanel", "launchHeliTest", {presetID=presetID,moveCloser=moveCloser,crashIt=crashIt})
-	else
-		--print("launchHeliTest: isClient():"..tostring(isClient())..", isServer():"..tostring(isServer()))
-		---@type eHelicopter heli
-		local heli = getFreeHelicopter(presetID)
-		print("- EHE: DEBUG: launchHeliTest: "..tostring(presetID))
-		heli:launch(player)
-		if moveCloser == true then CustomDebugPanel.moveHeliCloser(heli) end
-		if crashIt == true then
-			heli.crashing = true
-			heli:crash()
-		end
-	end
+	sendClientCommand("CustomDebugPanel", "launchHeliTest", {presetID=presetID,moveCloser=moveCloser,crashIt=crashIt})
 end
 
 
@@ -260,14 +224,14 @@ function CustomDebugPanel.CheckWeather()
 	print("--- CM:getSnowIntensity: "..CM:getSnowIntensity())
 	print("--- CM:getIsThunderStorming:(b) "..tostring(CM:getIsThunderStorming()))
 
-	local willFly, impactOnFlightSafety = eHeliEvent_weatherImpact()
+	local willFly, impactOnFlightSafety = util.weatherImpact()
 	local willFlyCall = "--- willFly: "..tostring(willFly).."   % to crash: "..impactOnFlightSafety*100
 	print(willFlyCall)
 end
 
 
 function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
-	local globalModData = getExpandedHeliEventsModData()
+	local globalModData = modData.get()
 	local savedEvents = globalModData.EventsOnSchedule
 	local savedLastDay = globalModData.lastDayScheduled
 

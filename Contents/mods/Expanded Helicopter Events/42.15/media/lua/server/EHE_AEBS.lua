@@ -1,5 +1,6 @@
 require "radio/ISWeatherChannel"
-require "EHE_weatherImpact"
+local eHelicopter = require "EHE_mainVariables"
+local modData = require "EHE_globalModData"
 local util = require "EHE_util"
 
 --- "loadThisAfter" was added to fix issues with Save Our Station
@@ -13,13 +14,13 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 	
 	local c = { r=1.0, g=1.0, b=1.0 }
 	--check if flights would be prevented due to weather
-	local willFly,_ = eHeliEvent_weatherImpact()
+	local willFly,_ = util.weatherImpact()
 	if willFly then
 		--table of radio lines to send out - given keys to prevent repetitive lines
 		local linesGoingOut = {}
 		WeatherChannel.AddFuzz(c, _bc, 6)
 
-		local globalModData = getExpandedHeliEventsModData()
+		local globalModData = modData.get()
 		if globalModData.EventsOnSchedule then
 			for _,event in pairs(globalModData.EventsOnSchedule) do
 				if (not event.triggered) and (event.startDay <= util.getWorldAgeDays()) then

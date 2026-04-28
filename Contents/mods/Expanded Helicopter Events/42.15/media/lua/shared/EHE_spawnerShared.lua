@@ -1,3 +1,4 @@
+local util = require "EHE_util"
 EHE_spawner = EHE_spawner or {}
 
 function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, processSquare)
@@ -23,7 +24,7 @@ function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, 
 
     if funcType == "NPCs" then
         local player = getPlayer()
-        local sq_above = getOutsideSquareFromAbove(sq)
+        local sq_above = util.getOutsideSquareFromAbove(sq)
         if sq_above then
             spawnThis.x = sq_above:getX()
             spawnThis.y = sq_above:getY()

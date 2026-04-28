@@ -1,4 +1,4 @@
-require "EHE_mainVariables"
+local eHelicopter = require "EHE_mainVariables"
 
 local eventSoundHandler = {}
 

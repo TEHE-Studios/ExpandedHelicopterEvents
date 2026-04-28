@@ -1,7 +1,31 @@
 local util = {}
 
+---Calculates if a flight should go out and the weather impact on flight safety
+---@return boolean, number returns two values: willFly, impactOnFlightSafety
+function util.weatherImpact()
+	local CM = getClimateManager()
+
+	local willFly = true
+	local impactOnFlightSafety = 0
+
+	local wind = CM:getWindIntensity()/2
+	local fog = CM:getFogIntensity()/2
+	local rain = CM:getRainIntensity()/3
+	local snow = CM:getSnowIntensity()/2
+	local thunder = CM:getIsThunderStorming()
+
+	if (wind+rain+snow > 1.1) or (fog > 0.33) or (thunder == true) then willFly = false end
+
+	impactOnFlightSafety = math.floor(((wind+rain+snow+fog)/6)+0.5)
+
+	if SandboxVars.ExpandedHeli.WeatherImpactsEvents == false then return true, 0 end
+
+	return willFly, impactOnFlightSafety
+end
+
+
 ---IsoPlayer are player entities but also NPCs (from mods)
-util.EHEIsoPlayers = {}
+util.isoPlayers = {}
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
 function util.addToEIP(playerObject)
@@ -9,12 +33,12 @@ function util.addToEIP(playerObject)
 	if instanceof(playerObject, "IsoAnimal") then return end
 	if playerObject:getX() < 1 or playerObject:getY() < 1 then return end
 	if playerObject:isDead() then return end
-	if not util.EHEIsoPlayers[playerObject] then util.EHEIsoPlayers[playerObject] = true end
+	if not util.isoPlayers[playerObject] then util.isoPlayers[playerObject] = true end
 end
 
 
 ---@param playerObject IsoPlayer | IsoGameCharacter
-function util.removeFromEIP(playerObject) if util.EHEIsoPlayers[playerObject] then util.EHEIsoPlayers[playerObject] = nil end end
+function util.removeFromEIP(playerObject) if util.isoPlayers[playerObject] then util.isoPlayers[playerObject] = nil end end
 
 
 function util.getWorldAgeDays()
@@ -65,7 +89,7 @@ function util.setDynamicGlobalXY()
 	util.eheBounds.MAX_Y = false
 	util.eheBounds.MIN_Y = false
 
-	for character,value in pairs(util.EHEIsoPlayers) do
+	for character,value in pairs(util.isoPlayers) do
 		---@type IsoGameCharacter p
 		local p = character
 
@@ -98,7 +122,7 @@ function util.setDynamicGlobalXY()
 	end
 
 	if (not util.eheBounds.MIN_X) or (not util.eheBounds.MAX_X) or (not util.eheBounds.MIN_Y) or (not util.eheBounds.MAX_Y) then
-		--[[DEBUG]] print(" - EHE:ERROR: ".." X:"..tostring(util.eheBounds.MIN_X).."-"..tostring(util.eheBounds.MAX_X)..", Y:"..tostring(util.eheBounds.MIN_X).."-"..tostring(util.eheBounds.MIN_X))
+		--[[DEBUG]] print(" - EHE:ERROR: ".." X:"..tostring(util.eheBounds.MIN_X).."-"..tostring(util.eheBounds.MAX_X)..", Y:"..tostring(util.eheBounds.MIN_Y).."-"..tostring(util.eheBounds.MAX_Y))
 		return
 	end
 
@@ -113,7 +137,7 @@ end
 ---These is the equivalent of getters for Vector3
 --tostring output of a Vector3: "Vector2 (X: %f, Y: %f) (L: %f, D:%f)"
 ---@param ShmectorTree Vector3
----@return float x of ShmectorTree
+---@return number x of ShmectorTree
 function util.Vector3GetX(ShmectorTree)
 	if not ShmectorTree then
 		return ""
@@ -127,7 +151,7 @@ end
 
 
 ---@param ShmectorTree Vector3
----@return float y of ShmectorTree
+---@return number y of ShmectorTree
 function util.Vector3GetY(ShmectorTree)
 	if not ShmectorTree then
 		return ""

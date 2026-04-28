@@ -7,6 +7,7 @@ require "EHE_spawner"
 require "EHE_shadowSystem"
 local eheFlareSystem = require "EHE_flares"
 local heatMap = require "EHE_heatMap"
+local mainCore = require "EHE_mainCore"
 
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
@@ -14,7 +15,28 @@ local function onClientCommand(_module, _command, _player, _data)
 
 	if _module == "CustomDebugPanel" then
 		if _command == "launchHeliTest" then
-			CustomDebugPanel.launchHeliTest(_data.presetID, _player, _data.moveCloser, _data.crashIt)
+			---@type eHelicopter heli
+			local heli = mainCore.getFreeHelicopter(_data.presetID)
+			print("- EHE: DEBUG: launchHeliTest: "..tostring(_data.presetID))
+			heli:launch(_player)
+			if _data.moveCloser == true then
+				if not heli or not heli.target then return end
+				--move closer
+				local tpX = heli.target:getX()
+				local tpY = heli.target:getY()
+
+				local offsetX = ZombRand(150, 300)
+				if ZombRand(101) <= 50 then offsetX = 0-offsetX end
+
+				local offsetY = ZombRand(150, 300)
+				if ZombRand(101) <= 50 then offsetY = 0-offsetY end
+				heli.currentPosition:set(tpX+offsetX, tpY+offsetY, heli.height)
+			end
+
+			if _data.crashIt == true then
+				heli.crashing = true
+				heli:crash()
+			end
 		end
 	end
 

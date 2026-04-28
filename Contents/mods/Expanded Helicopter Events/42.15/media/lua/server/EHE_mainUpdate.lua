@@ -1,5 +1,5 @@
-require "EHE_mainCore"
-require "EHE_mainVariables"
+local mainCore = require "EHE_heliCore"
+local eHelicopter = require "EHE_mainVariables"
 require "EHE_shadowSystem"
 
 local eventSoundHandler = require "EHE_sounds"
@@ -253,7 +253,7 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 	local currentSquare = self:getIsoGridSquare()
 	if not currentSquare then return end
 	--Wake up (Wake up) / Grab a brush and put a little make-up
-	for character,value in pairs(EHEIsoPlayers) do
+	for character,value in pairs(util.isoPlayers) do
 		---@type IsoGameCharacter p
 		local p = character
 		if p:getSleepingTabletEffect() < 2000 then
@@ -326,15 +326,15 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 end
 
 
-lastUpdateAllHelicopters = 0
-function updateAllHelicopters()
+local lastUpdateAllHelicopters = 0
+local function updateAllHelicopters()
 	lastUpdateAllHelicopters = lastUpdateAllHelicopters + getGameTime():getMultiplier()
 	if (lastUpdateAllHelicopters >= 5) then
 		lastUpdateAllHelicopters = 0
 
-		for i=1, #ALL_HELICOPTERS do
+		for i=1, #mainCore.ALL_HELICOPTERS do
 			---@type eHelicopter heli
-			local heli = ALL_HELICOPTERS[i]
+			local heli = mainCore.ALL_HELICOPTERS[i]
 
 			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
 				if not heli.updateEvent then print("ERR: updateAllHelicopters: heli.update not accessible. heli:"..tostring(heli)) return end

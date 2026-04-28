@@ -1,4 +1,5 @@
 require "EHE_SI_scheduleOverrides"
+local modData = require "EHE_globalModData"
 
 local config = require "EHE_SI_config"
 local util = require "EHE_util"
@@ -17,7 +18,7 @@ local function onCommand(_module, _command, _player, _event)
                 local latestEventDay = 0
                 local latestEventHour = 0
 
-                local globalModData = getExpandedHeliEventsModData()
+                local globalModData = modData.get()
                 for _,event in pairs(globalModData.EventsOnSchedule) do
                     if (eHelicopter_PRESETS[event.preset]) and event.streamerTarget and event.streamerTarget==_event.streamerTarget then
                         if (event.startDay > latestEventDay) then

@@ -12,6 +12,7 @@ end)
 --]]
 require "DebugUIs/DebugMenu/ISDebugMenu"
 local util = require "EHE_util"
+local clientCommands = require "EHE_onServerToClientCommands"
 
 EHE_DebugTests = EHE_DebugTests or {}
 
@@ -26,7 +27,7 @@ function EHE_DebugTestWindow:render()
 
 	self:drawText(time, self.listbox.x+15, self.listbox.y-(self.listbox.fontHgt*1.33), 1,1,1,1, self.listbox.font)
 
-	local globalModData = getExpandedHeliEventsModData_Client()
+	local globalModData = clientCommands.get()
 	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
 
 		if #self.listbox.items < #globalModData.EventsOnSchedule then
@@ -117,7 +118,7 @@ function EHE_DebugTestWindow:initialise()
 	local fontHeight = getTextManager():getFontHeight(font)
 
 	local height = fontHeight
-	local globalModData = getExpandedHeliEventsModData_Client()
+	local globalModData = clientCommands.get()
 	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule>0 then
 		height = #globalModData.EventsOnSchedule*height
 	end

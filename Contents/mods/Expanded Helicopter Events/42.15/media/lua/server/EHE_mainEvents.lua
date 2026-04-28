@@ -1,7 +1,8 @@
-require "EHE_mainCore"
-require "EHE_mainVariables"
+require "EHE_heliCore"
+local eHelicopter = require "EHE_mainVariables"
 require "EHE_spawner"
 local util = require "EHE_util"
+local modData = require "EHE_globalModData"
 --Heli goes down
 
 local eventSoundHandler = require "EHE_sounds"
@@ -35,7 +36,7 @@ function eHelicopter:crash()
 		local square = getSquare(heliX, heliY, 0) or pseudoSquare:new(heliX, heliY, 0)
 		if square then
 			---@type IsoGridSquare
-			returned_sq = getOutsideSquareFromAbove(square)
+			returned_sq = util.getOutsideSquareFromAbove(square)
 			if returned_sq then
 				heliX = returned_sq:getX()
 				heliY = returned_sq:getY()
@@ -84,7 +85,7 @@ function eHelicopter:crash()
 
 			self:unlaunch()
 
-			local globalModData = getExpandedHeliEventsModData()
+			local globalModData = modData.get()
 			globalModData.DayOfLastCrash = math.max(1,util.getWorldAgeDays())
 			return true
 		end
@@ -236,7 +237,7 @@ function eHelicopter:dropCarePackage(fuzz)
 	local square = getSquare(heliX, heliY, 0) or pseudoSquare:new(heliX, heliY, 0)
 	if square then
 		---@type IsoGridSquare
-		returned_sq = getOutsideSquareFromAbove(square)
+		returned_sq = util.getOutsideSquareFromAbove(square)
 		if returned_sq then
 			heliX = returned_sq:getX()
 			heliY = returned_sq:getY()

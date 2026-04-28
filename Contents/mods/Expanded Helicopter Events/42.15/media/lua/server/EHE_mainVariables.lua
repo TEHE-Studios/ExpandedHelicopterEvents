@@ -1,4 +1,6 @@
-eHelicopter = {}
+local util = require "EHE_util"
+
+local eHelicopter = {}
 ---CHECK THE PRESETGUIDE FILE IN /SHARED/ FOR MORE INFORMATION
 eHelicopter.forScheduling = false
 -- eventSpawnWeight and schedulingFactor accept {base, dropOff, minimum} for window-based tapering
@@ -69,7 +71,7 @@ eHelicopter.attackDamage = 10
 ---NOTE: Any variable which is by default `nil` can't be loaded over - consider making it false if you need it
 ---@param listToSaveTo table
 ---@param checkIfNotIn table
-function eHelicopter_variableBackUp(listToSaveTo, checkIfNotIn)--, debugID)
+function eHelicopter.variableBackUp(listToSaveTo, checkIfNotIn)--, debugID)
 	for k,v in pairs(eHelicopter) do
 		if ((not checkIfNotIn) or (checkIfNotIn[k] == nil)) then
 			--[DEBUG]] print("EHE: "..debugID..": "..k.." = ".."("..type(v)..") "..tostring(v))
@@ -90,8 +92,8 @@ function eHelicopter_variableBackUp(listToSaveTo, checkIfNotIn)--, debugID)
 end
 
 --store "initial" vars to reference when loading presets
-eHelicopter_initialVars = {}
-eHelicopter_variableBackUp(eHelicopter_initialVars, nil, "initialVars")
+eHelicopter.initialVars = {}
+eHelicopter.variableBackUp(eHelicopter.initialVars, nil, "initialVars")
 
 --the below variables are to be considered "temporary"
 ---@field forceUnlaunchTime table|boolean table of day,hour | false when not set
@@ -148,8 +150,8 @@ eHelicopter.currentPresetID = "<none>"
 eHelicopter.masterPresetID = false--"<none>"
 
 --This stores the above "temporary" variables for resetting eHelicopters later
-eHelicopter_temporaryVariables = {}
-eHelicopter_variableBackUp(eHelicopter_temporaryVariables, eHelicopter_initialVars, "temporaryVariables")
+eHelicopter.temporaryVariables = {}
+eHelicopter.variableBackUp(eHelicopter.temporaryVariables, eHelicopter.initialVars, "temporaryVariables")
 
 --ID must not be reset ever
 ---@field ID number
@@ -200,7 +202,8 @@ function eHelicopter:Report(aiming, dampen)
 	---@type eHelicopter heli
 	local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." "
 	print(" > "..self:heliToString(true))
-	print("   TARGET: (x:"..Vector3GetX(self.targetPosition)..", y:"..Vector3GetY(self.targetPosition)..")")
+	print("   TARGET: (x:"..util.Vector3GetX(self.targetPosition)..", y:"..util.Vector3GetY(self.targetPosition)..")")
 	print("   (dist: "..self:getDistanceToVector(self.target).."  "..report)
 	print("-----------------------------------------------------------------")
 end
+return eHelicopter

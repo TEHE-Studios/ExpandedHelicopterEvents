@@ -1,3 +1,4 @@
+local eHelicopter = require "EHE_mainVariables"
 local isoRangeScan = require "EHE_IsoRangeScan"
 local eventSoundHandler = require "EHE_sounds"
 

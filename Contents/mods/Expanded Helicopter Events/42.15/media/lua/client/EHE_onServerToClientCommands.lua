@@ -2,6 +2,8 @@ require "EHE_shadowSystem"
 require "EHE_eventMarkerHandler"
 local util = require "EHE_util"
 
+local clientCommands = {}
+
 
 local function copyAgainst(tableA,tableB)
 	if not tableA or not tableB then return end
@@ -20,7 +22,8 @@ local function receiveGlobalModData(name, data)
 end
 Events.OnReceiveGlobalModData.Add(receiveGlobalModData)
 
-function getExpandedHeliEventsModData_Client()
+---@return table
+function clientCommands.get()
 	triggerEvent("EHE_ServerModDataReady", false)
 	return ExpandedHeliEventsModData
 end
@@ -39,8 +42,7 @@ end
 Events.OnInitGlobalModData.Add(initGlobalModData)
 
 local function onClientModDataReady()
-	if not isClient() then copyAgainst(getExpandedHeliEventsModData(), ExpandedHeliEventsModData)
-	else ModData.request("ExpandedHelicopterEvents") end
+	ModData.request("ExpandedHelicopterEvents")
 end
 Events.EHE_ClientModDataReady.Add(onClientModDataReady)
 
@@ -60,10 +62,10 @@ Events.OnPreUIDraw.Add(eventShadowHandler.updateForPlayer)
 
 
 local clientSideEventSoundHandler = {}
-storedLooperEvents = {}
-storedLooperEventsLocations = {}
-storedLooperEventsSoundEffects = {}
-storedLooperEventsUpdateTimes = {}
+local storedLooperEvents = {}
+local storedLooperEventsLocations = {}
+local storedLooperEventsSoundEffects = {}
+local storedLooperEventsUpdateTimes = {}
 
 
 ---@param emitter BaseSoundEmitter | FMODSoundEmitter
@@ -299,3 +301,5 @@ local function onServerCommand(_module, _command, _data)
 
 end
 Events.OnServerCommand.Add(onServerCommand)--/server/ to client
+
+return clientCommands
