@@ -5,14 +5,24 @@ link3 = Shark's Kofi = https://ko-fi.com/sharkmods,
 link4 = Cytt's BuyMeACoffee = https://buymeacoffee.com/cytt,
 [ ------ ]
 
-[ B42! ]
+[ B42!? ]
 - Translations provided by github.com/Chuckleberry-Finn/pz-translator
 - New and improved event markers!
 - Various New Events with Sounds!
-- Reworked/updated/refactored shadows, markers, logic!
 - AEBS radio chatter now uses color coding to match events.
-  Radio chatter also includes dynamic callsigns to help indicate what is and isn't friendly.
-- New License.
+  - Radio chatter also includes dynamic callsigns to help indicate what is and isn't friendly.
+- Scheduler will reattempt to launch scuttled flights within 3 hours.
+ - This should avoid pockets of no events (and a sudden wave of them) when there's bad weather for just part of the day.
+- B42 Specific: Refactored the targeting system to allow targeting animals. :(
+
+Under the Hood Stuff: (Stuff that's more technical and not experienced but worth mentioning)
+- New License for the Github repo.
+- Reworked/Refactored many systems to use modules instead of flooding the global table.
+- Cleaned up the Debug UI to make checking the scheduler easier.
+- Refactored the scheduler to fill a "window-of-days" rather than fire day by day.
+  - The window of days is whatever the 'scheduler-duration' is set to, default is 90 days.
+  - Upon reaching 50% of the current window a new window is scheduled ontop.
+  - This approach makes the overall experience more consistent as well as making debugging easier simply as there are events on the schedule rather than not.
 
 - Now includes the optional sub-mods:
     Super Weird Edition
