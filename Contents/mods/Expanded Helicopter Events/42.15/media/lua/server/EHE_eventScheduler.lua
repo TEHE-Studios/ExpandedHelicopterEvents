@@ -74,6 +74,7 @@ function eHeliEvent_engage(ID)
 		local rawNewTime = eHeliEvent.startTime + 3
 
 		if rawNewTime <= flightHours[2] then
+			local wrappedNewTime = rawNewTime > 24 and (rawNewTime - 24) or rawNewTime
 			print("[EHE] engage: weather blocked - pushing startTime "..eHeliEvent.startTime.." -> "..wrappedNewTime.." (raw "..rawNewTime.." within flightHours ceiling "..flightHours[2]..")")
 			eHeliEvent.startTime = wrappedNewTime
 			triggerEvent("EHE_ServerModDataReady", false)
