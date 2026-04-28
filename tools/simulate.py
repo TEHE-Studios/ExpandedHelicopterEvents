@@ -44,18 +44,7 @@ _ensure_lupa()
 from lupa import LuaRuntime
 
 sys.path.insert(0, str(Path(__file__).parent))
-from generate import parse_preset_file, resolve_default_paths
-
-# ── Global defaults (EHE_mainVariables.lua) ───────────────────────────
-EHELICOPTER_DEFAULTS = {
-    "schedulingFactor":      1,
-    "eventSpawnWeight":      10,
-    "eventStartDayFactor":   0,
-    "eventCutOffDayFactor":  0.34,
-    "ignoreContinueScheduling": False,
-    "eventSpecialDates":     False,
-    "forScheduling":         False,
-}
+from generate import parse_preset_file, resolve_default_paths, load_main_variable_defaults, load_sandbox_defaults
 
 # ── Glob patterns for Lua server files ────────────────────────────────
 SCRIPT_DIR = Path(__file__).parent
@@ -130,12 +119,25 @@ def extract_function(lua_text, func_name):
     return text[start:pos].strip()
 
 
-def build_lua_environment(all_presets, sandbox):
+def _to_lua_val(v):
+    if isinstance(v, bool):
+        return "true" if v else "false"
+    if isinstance(v, list):
+        return "{" + ", ".join(_to_lua_val(x) for x in v) + "}"
+    if isinstance(v, dict):
+        pairs = ", ".join(f"{k}={_to_lua_val(vv)}" for k, vv in v.items())
+        return "{" + pairs + "}"
+    if isinstance(v, float):
+        return repr(v)
+    return str(v)
+
+
+def build_lua_environment(all_presets, sandbox, heli_defaults):
     """
     Construct the full Lua source that the simulation will execute.
     Includes:
       - PZ API stubs (ZombRand, SandboxVars, getGameTime, etc.)
-      - eHelicopter global with defaults
+      - eHelicopter global built from heli_defaults (read from EHE_mainVariables.lua)
       - eHelicopter_PRESETS table populated from parsed Python data
       - The actual scheduler functions extracted from Lua files
       - A simulation runner that records counts
@@ -146,12 +148,12 @@ def build_lua_environment(all_presets, sandbox):
     for pid, data in all_presets.items():
         if not data.get("forScheduling"):
             continue
-        sf  = data.get("schedulingFactor",   EHELICOPTER_DEFAULTS["schedulingFactor"])
-        sw  = data.get("eventSpawnWeight",    EHELICOPTER_DEFAULTS["eventSpawnWeight"])
-        sdf = data.get("eventStartDayFactor", EHELICOPTER_DEFAULTS["eventStartDayFactor"])
-        cdf = data.get("eventCutOffDayFactor",EHELICOPTER_DEFAULTS["eventCutOffDayFactor"])
+        sf  = data.get("schedulingFactor",    heli_defaults.get("schedulingFactor",    1))
+        sw  = data.get("eventSpawnWeight",     heli_defaults.get("eventSpawnWeight",    10))
+        sdf = data.get("eventStartDayFactor",  heli_defaults.get("eventStartDayFactor", 0))
+        cdf = data.get("eventCutOffDayFactor", heli_defaults.get("eventCutOffDayFactor", 0.34))
         ic  = "true" if data.get("ignoreContinueScheduling") else "false"
-        fs  = "true"  # forScheduling is True (we already filtered above)
+        fs  = "true"
         preset_lines.append(
             f'eHelicopter_PRESETS["{pid}"] = {{'
             f' forScheduling={fs},'
@@ -171,10 +173,18 @@ def build_lua_environment(all_presets, sandbox):
         if k.startswith("Frequency_"):
             freq_lines.append(f'  ["{k}"] = {v},')
 
-    continue_val = 2 if sv.get("ContinueScheduling", True) else 1
+    continue_val = sv.get("ContinueSchedulingEvents", 1)
     air_raid     = "true" if sv.get("AirRaidSirenEvent", True) else "false"
     duration     = sv.get("SchedulerDuration", 90)
     start_day    = sv.get("StartDay", 0)
+
+    # ── eHelicopter Lua table from runtime-loaded defaults ─────────────
+    heli_field_lines = "\n".join(
+        f"    {k} = {_to_lua_val(v)},"
+        for k, v in heli_defaults.items()
+    )
+    if not heli_field_lines:
+        heli_field_lines = "    schedulingFactor = 1, eventSpawnWeight = 10,"
 
     stubs = f"""
 -- ── PZ API stubs ──────────────────────────────────────────────────────
@@ -202,16 +212,9 @@ SandboxVars = {{
     }}
 }}
 
--- eHelicopter global defaults
+-- eHelicopter global defaults (loaded at runtime from EHE_mainVariables.lua)
 eHelicopter = {{
-    schedulingFactor      = 1,
-    eventSpawnWeight      = 10,
-    eventStartDayFactor   = 0,
-    eventCutOffDayFactor  = 0.34,
-    ignoreContinueScheduling = false,
-    eventSpecialDates     = false,
-    forScheduling         = false,
-    flightHours           = {{5, 22}},
+{heli_field_lines}
 }}
 
 -- Stub GameTime — covers every method called anywhere in the scheduler
@@ -434,7 +437,6 @@ def run_simulation(preset_paths, sandbox, num_runs=100, verbose=False):
     """
     duration = sandbox.get("SchedulerDuration", 90)
 
-    # Load preset data
     all_presets = {}
     for p in preset_paths:
         all_presets.update(parse_preset_file(p))
@@ -444,14 +446,16 @@ def run_simulation(preset_paths, sandbox, num_runs=100, verbose=False):
         print("  No schedulable presets found.")
         return {}
 
-    # Locate actual Lua server files
     server_files = find_server_files()
 
     print(f"\nExtracting Lua functions...")
     funcs = load_scheduler_functions(server_files)
 
-    # Build the Lua environment
-    env_lua = build_lua_environment(all_presets, sandbox)
+    heli_defaults = load_main_variable_defaults()
+    if not heli_defaults:
+        print("  [WARN] EHE_mainVariables.lua not found — eHelicopter defaults will be minimal.")
+
+    env_lua = build_lua_environment(all_presets, sandbox, heli_defaults)
     func_lua = "\n\n".join(funcs[k] for k in [
         "fetchStartDayAndCutOffDay",
         "eHeliEvent_determineContinuation",
@@ -593,16 +597,16 @@ def main():
     for p in paths:
         print(f"  Preset file: {p}")
 
-    # Build sandbox
-    sandbox = {
-        "SchedulerDuration":      args.duration,
-        "StartDay":               args.start_day,
-        "ContinueSchedulingEvents": 1 if args.no_continue else 2,
-        "AirRaidSirenEvent":      True,
-        # defaults — 3 = Sometimes
-        "Frequency_police":       3,
-        "Frequency_deserters":    3,
-    }
+    # Build sandbox from sandbox-options.txt defaults, then apply CLI overrides
+    sb = load_sandbox_defaults()
+    sandbox = {k: v for k, v in sb.items() if k.startswith("Frequency_")}
+    sandbox["SchedulerDuration"] = args.duration
+    sandbox["StartDay"]          = args.start_day
+    sandbox["AirRaidSirenEvent"] = sb.get("AirRaidSirenEvent", True)
+    if args.no_continue:
+        sandbox["ContinueSchedulingEvents"] = 1
+    else:
+        sandbox["ContinueSchedulingEvents"] = sb.get("ContinueSchedulingEvents", 1)
     if args.freq:
         for pair in args.freq:
             k, v = pair.split("=", 1)

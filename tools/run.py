@@ -87,7 +87,7 @@ def main():
         print("  Skipped.")
 
     # ── Step 2: Generate ──────────────────────────────────────────────
-    generate_cmd = [str(GENERATE)] + preset_args
+    generate_cmd = [str(GENERATE), "--runs", str(args.runs)] + preset_args
     generate_ok  = run_step("2 / 3  GENERATE", generate_cmd)
 
     if not generate_ok:

@@ -29,6 +29,7 @@ from generate import (
     parse_progression,
     load_sandbox_freq_vars,
     resolve_default_paths,
+    refresh_defaults,
     DEFAULTS,
 )
 import generate as _generate
@@ -232,9 +233,9 @@ def check_spawn_windows(all_presets):
     for pid, data in all_presets.items():
         if not data.get("forScheduling"):
             continue
-        sf  = float(data.get("eventStartDayFactor",  DEFAULTS["eventStartDayFactor"]))
-        cf  = float(data.get("eventCutOffDayFactor",  DEFAULTS["eventCutOffDayFactor"]))
-        sched_f = float(data.get("schedulingFactor", DEFAULTS["schedulingFactor"]))
+        sf  = float(data.get("eventStartDayFactor",  DEFAULTS.get("eventStartDayFactor",  0)))
+        cf  = float(data.get("eventCutOffDayFactor",  DEFAULTS.get("eventCutOffDayFactor",  0.34)))
+        sched_f = float(data.get("schedulingFactor", DEFAULTS.get("schedulingFactor", 1)))
 
         sd  = round(sf * dur + 0.5)
         cod = round(cf * (sd + dur) + 0.5)
@@ -332,12 +333,11 @@ def check_scheduling_fields(all_presets):
             continue
 
         # eventSpawnWeight must be > 0
-        w = data.get("eventSpawnWeight", DEFAULTS["eventSpawnWeight"])
+        w = data.get("eventSpawnWeight", DEFAULTS.get("eventSpawnWeight", 10))
         if isinstance(w, (int, float)) and w <= 0:
             field_errors.append((pid, f"eventSpawnWeight={w} — must be > 0"))
 
-        # schedulingFactor must be > 0
-        sf = data.get("schedulingFactor", DEFAULTS["schedulingFactor"])
+        sf = data.get("schedulingFactor", DEFAULTS.get("schedulingFactor", 1))
         if isinstance(sf, (int, float)) and sf <= 0:
             field_errors.append((pid, f"schedulingFactor={sf} — must be > 0"))
 
@@ -425,7 +425,7 @@ def check_unreferenced_schedulable(all_presets):
     dual = []
     for pid, data in all_presets.items():
         if data.get("forScheduling") and pid in all_children:
-            sched_f = float(data.get("schedulingFactor", DEFAULTS["schedulingFactor"]))
+            sched_f = float(data.get("schedulingFactor", DEFAULTS.get("schedulingFactor", 1)))
             if sched_f >= 99990:
                 # Expected — one-time events are scheduled both ways intentionally
                 pass
@@ -699,6 +699,8 @@ CHECKS = [
 def run(preset_paths):
     print(BOLD("\nEHE Preset Validator"))
     print("=" * 44)
+
+    refresh_defaults()
 
     # Load presets
     all_presets = {}

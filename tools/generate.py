@@ -72,23 +72,90 @@ def resolve_default_paths():
                 found.append(m)
     return found
 
-# ── GLOBAL DEFAULTS (from EHE_mainVariables.lua) ───────────────────────
-DEFAULTS = {
-    "schedulingFactor":      1,
-    "eventSpawnWeight":      10,
-    "eventStartDayFactor":   0,
-    "eventCutOffDayFactor":  0.34,
-    "ignoreContinueScheduling": False,
-}
+# ── GLOBAL DEFAULTS (populated at runtime from EHE_mainVariables.lua) ──
+DEFAULTS = {}
 
-# ── SANDBOX FREQUENCY VARS ──────────────────────────────────────────────────────────
+# ── SANDBOX FREQUENCY VARS ─────────────────────────────────────────────
 # Populated at runtime by load_sandbox_freq_vars() in main().
 SANDBOX_FREQ_VARS = []
+
+MAIN_VARIABLES_GLOBS = [
+    "../Contents/mods/*/*/media/lua/shared/EHE_mainVariables.lua",
+]
 
 SANDBOX_FILE_GLOBS = [
     "../Contents/mods/*/*/media/sandbox-options.txt",
     "../Contents/mods/*/sandbox-options.txt",
 ]
+
+
+def load_main_variable_defaults():
+    """Read eHelicopter default fields from EHE_mainVariables.lua."""
+    for pattern in MAIN_VARIABLES_GLOBS:
+        for path in sorted(SCRIPT_DIR.glob(pattern)):
+            try:
+                text = path.read_text(encoding="utf-8", errors="replace")
+            except Exception:
+                continue
+            m = re.search(r'\beHelicopter\s*=\s*\{', text)
+            if not m:
+                continue
+            try:
+                table, _ = parse_table(text, m.end() - 1)
+            except Exception:
+                continue
+            if isinstance(table, dict):
+                print(f"  Loaded eHelicopter defaults from: {path.name}")
+                return {k: v for k, v in table.items() if not k.startswith("_")}
+    return {}
+
+
+def refresh_defaults():
+    """Populate DEFAULTS from EHE_mainVariables.lua. Call before build_groups()."""
+    loaded = load_main_variable_defaults()
+    if loaded:
+        DEFAULTS.update(loaded)
+    else:
+        print("  [WARN] EHE_mainVariables.lua not found — DEFAULTS will be empty.")
+
+
+def load_sandbox_defaults():
+    """Parse default values for every option in sandbox-options.txt files."""
+    found_files = []
+    for pattern in SANDBOX_FILE_GLOBS:
+        for m in sorted(SCRIPT_DIR.glob(pattern)):
+            if m not in found_files:
+                found_files.append(m)
+    defaults = {}
+    for path in found_files:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            continue
+        for m in re.finditer(r'option\s+\w+\.(\w+)\s*\{([^}]*)\}', text, re.DOTALL):
+            key = m.group(1)
+            body = m.group(2)
+            dm = re.search(r'\bdefault\s*=\s*([^\s,\n]+)', body)
+            tm = re.search(r'\btype\s*=\s*(\w+)', body)
+            if not dm:
+                continue
+            raw = dm.group(1)
+            typ = tm.group(1).lower() if tm else "integer"
+            if raw == "true":
+                defaults[key] = True
+            elif raw == "false":
+                defaults[key] = False
+            elif typ in ("integer", "enum"):
+                try:
+                    defaults[key] = int(raw)
+                except ValueError:
+                    pass
+            elif typ == "double":
+                try:
+                    defaults[key] = float(raw)
+                except ValueError:
+                    pass
+    return defaults
 
 
 def load_sandbox_freq_vars():
@@ -1392,13 +1459,18 @@ def main():
         "--out", default=str(OUTPUT_FILE), metavar="FILE",
         help="Output HTML path (default: tools/timeline.html)."
     )
+    parser.add_argument(
+        "--runs", type=int, default=100, metavar="N",
+        help="Number of simulation runs for initial counts (default: 100)."
+    )
     args = parser.parse_args()
 
     print("EHE Timeline Generator")
     print("=" * 40)
 
+    refresh_defaults()
+
     if args.presets:
-        # Explicit paths given — resolve relative to tools/
         paths = [(SCRIPT_DIR / p).resolve() for p in args.presets]
     else:
         paths = resolve_default_paths()
@@ -1412,9 +1484,7 @@ def main():
     for abs_path in paths:
         print(f"Parsing: {abs_path}")
         parsed = parse_preset_file(abs_path)
-        # Later files extend earlier ones (sub-mods add to the same table)
         all_presets.update(parsed)
-        # Store raw text so build_preset_entry can do raw-text duplicate checks
         try:
             _raw_source_texts[abs_path.name] = abs_path.read_text(encoding="utf-8", errors="replace")
         except Exception:
@@ -1427,20 +1497,20 @@ def main():
     global SANDBOX_FREQ_VARS
     SANDBOX_FREQ_VARS = load_sandbox_freq_vars()
     if not SANDBOX_FREQ_VARS:
-        print("  [INFO] No sandbox-options.txt found -- frequency controls will be empty.")
+        print("  [INFO] No sandbox-options.txt found — frequency controls will be empty.")
     groups, issues = build_groups(all_presets)
 
-    # Run Lua-based simulation for default sandbox settings
     initial_sim_counts = {}
     if _LUA_SIM_AVAILABLE:
-        print("\nRunning Lua simulation for initial counts (100 runs)...")
-        default_sandbox = {
-            "SchedulerDuration": 90, "StartDay": 0,
-            "ContinueSchedulingEvents": 2, "AirRaidSirenEvent": True,
-            "Frequency_police": 3, "Frequency_deserters": 3,
-        }
+        print(f"\nRunning Lua simulation for initial counts ({args.runs} runs)...")
+        sb = load_sandbox_defaults()
+        default_sandbox = {k: v for k, v in sb.items() if k.startswith("Frequency_")}
+        default_sandbox["SchedulerDuration"] = sb.get("SchedulerDuration", 90)
+        default_sandbox["StartDay"] = sb.get("StartDay", 0)
+        default_sandbox["ContinueSchedulingEvents"] = sb.get("ContinueSchedulingEvents", 1)
+        default_sandbox["AirRaidSirenEvent"] = sb.get("AirRaidSirenEvent", True)
         try:
-            raw = _lua_simulate(list(paths), default_sandbox, num_runs=100)
+            raw = _lua_simulate(list(paths), default_sandbox, num_runs=args.runs)
             initial_sim_counts = {k: round(v, 2) for k, v in raw.items()}
             total = sum(initial_sim_counts.values())
             print(f"  Done. Total avg events/playthrough: {total:.1f}")
