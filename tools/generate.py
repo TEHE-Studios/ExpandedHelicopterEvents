@@ -80,7 +80,11 @@ DEFAULTS = {}
 SANDBOX_FREQ_VARS = []
 
 MAIN_VARIABLES_GLOBS = [
+    "../Contents/mods/*/*/media/lua/server/EHE_mainVariables.lua",
     "../Contents/mods/*/*/media/lua/shared/EHE_mainVariables.lua",
+    "../Contents/mods/*/*/media/lua/client/EHE_mainVariables.lua",
+    "../Contents/mods/*/media/lua/server/EHE_mainVariables.lua",
+    "../Contents/mods/*/media/lua/shared/EHE_mainVariables.lua",
 ]
 
 SANDBOX_FILE_GLOBS = [
@@ -138,24 +142,114 @@ def load_freq_enum_labels(value_translation_key="ExpandedHeli_Frequency"):
     return dict(_FREQ_LABEL_FALLBACK)
 
 
+def _parse_lua_value(s):
+    """
+    Parse a single Lua scalar or table literal from string s.
+    Returns a Python value, or the raw string if unparseable.
+    """
+    s = s.strip().rstrip(",")
+    if s == "true":  return True
+    if s == "false": return False
+    if s == "nil":   return None
+    if (s.startswith('"') and s.endswith('"')) or \
+       (s.startswith("'") and s.endswith("'")):
+        return s[1:-1]
+    if s.startswith("{") and s.endswith("}"):
+        inner = s[1:-1].strip()
+        if not inner:
+            return {}
+        # Named fields: {r=1,g=0,b=0}
+        if re.match(r'\w+\s*=', inner):
+            result = {}
+            for m in re.finditer(r'(\w+)\s*=\s*([^,}]+)', inner):
+                result[m.group(1)] = _parse_lua_value(m.group(2))
+            return result
+        # Array: {1, 2, 3} or {"a","b"}
+        parts = [p.strip() for p in inner.split(",") if p.strip()]
+        return [_parse_lua_value(p) for p in parts]
+    try:
+        if "." in s:
+            return float(s)
+        return int(s)
+    except ValueError:
+        return s
+
+
 def load_main_variable_defaults():
-    """Read eHelicopter default fields from EHE_mainVariables.lua."""
+    """
+    Read eHelicopter default fields from EHE_mainVariables.lua.
+    Handles both table-literal style ({ key = val }) and
+    dot-assignment style (eHelicopter.key = val), including multi-line values.
+    """
+    found_files = []
     for pattern in MAIN_VARIABLES_GLOBS:
         for path in sorted(SCRIPT_DIR.glob(pattern)):
-            try:
-                text = path.read_text(encoding="utf-8", errors="replace")
-            except Exception:
+            if path not in found_files:
+                found_files.append(path)
+
+    for path in found_files:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            continue
+
+        result = {}
+
+        # Strategy 1: dot-assignment  eHelicopter.key = value
+        # Values may span multiple lines (nested tables), so we scan
+        # character-by-character from the `=` to find the complete value.
+        skip_keys = {"variableBackUp", "initialVars", "temporaryVariables"}
+        header_pat = re.compile(r'^eHelicopter\.(\w+)\s*=\s*', re.MULTILINE)
+        for hm in header_pat.finditer(text):
+            key = hm.group(1)
+            if key in skip_keys:
                 continue
-            m = re.search(r'\beHelicopter\s*=\s*\{', text)
-            if not m:
-                continue
-            try:
-                table, _ = parse_table(text, m.end() - 1)
-            except Exception:
-                continue
-            if isinstance(table, dict):
-                print(f"  Loaded eHelicopter defaults from: {path.name}")
-                return {k: v for k, v in table.items() if not k.startswith("_")}
+            val_start = hm.end()
+            # Collect the full value: track brace/bracket depth and string state
+            pos   = val_start
+            depth = 0
+            n     = len(text)
+            in_str, str_char = False, None
+            while pos < n:
+                ch = text[pos]
+                if in_str:
+                    if ch == "\\" :
+                        pos += 2
+                        continue
+                    if ch == str_char:
+                        in_str = False
+                elif ch in ('"', "'"):
+                    in_str, str_char = True, ch
+                elif ch in ("{", "["):
+                    depth += 1
+                elif ch in ("}", "]"):
+                    depth -= 1
+                    if depth < 0:
+                        break
+                elif ch in (",", "\n") and depth == 0:
+                    break
+                pos += 1
+            val_str = text[val_start:pos].strip()
+            # Strip trailing line comment
+            val_str = re.sub(r'\s*--[^\n]*$', '', val_str, flags=re.MULTILINE).strip()
+            if val_str:
+                result[key] = _parse_lua_value(val_str)
+
+        # Strategy 2: table-literal fallback  eHelicopter = { ... }
+        if not result:
+            tm = re.search(r'\beHelicopter\s*=\s*\{', text)
+            if tm:
+                try:
+                    table, _ = parse_table(text, tm.end() - 1)
+                    if isinstance(table, dict):
+                        result = table
+                except Exception:
+                    pass
+
+        if result:
+            print(f"  Loaded {len(result)} eHelicopter defaults from: {path.name}")
+            return {k: v for k, v in result.items() if not k.startswith("_")}
+
     return {}
 
 
@@ -165,7 +259,7 @@ def refresh_defaults():
     if loaded:
         DEFAULTS.update(loaded)
     else:
-        print("  [WARN] EHE_mainVariables.lua not found — DEFAULTS will be empty.")
+        print("  [WARN] EHE_mainVariables.lua not found or yielded no defaults — DEFAULTS will be empty.")
 
 
 def load_sandbox_defaults():

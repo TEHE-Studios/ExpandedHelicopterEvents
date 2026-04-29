@@ -175,6 +175,9 @@ def lua_error_context(lua_source, error_msg, context=5):
 def _to_lua_val(v):
     if isinstance(v, bool):
         return "true" if v else "false"
+    if isinstance(v, str):
+        escaped = v.replace("\\", "\\\\").replace('"', '\\"')
+        return f'"{escaped}"'
     if isinstance(v, list):
         return "{" + ", ".join(_to_lua_val(x) for x in v) + "}"
     if isinstance(v, dict):
@@ -569,7 +572,16 @@ function run_one_playthrough()
 end
 """
 
-    full_lua = env_lua + "\n\n" + func_lua + "\n\n" + runner_lua
+    full_lua = (
+        env_lua
+        + "\n\n" + func_lua
+        # Re-assert the modData getter after extracted functions in case any
+        # file-scope upvalue or B42 refactor shadowed/renamed it.
+        + "\n\nfunction getExpandedHeliEventsModData() return modData end"
+        + "\ngetEHEModData = getExpandedHeliEventsModData"
+        + "\nEHE_getModData = getExpandedHeliEventsModData"
+        + "\n\n" + runner_lua
+    )
 
     # Set up Lua runtime
     lua = LuaRuntime(unpack_returned_tuples=False)
