@@ -129,7 +129,10 @@ local function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
 	print("[EHE] prefillSchedule: filling apocDays "..startApocDay.." to "..toApocDay)
 
 	for apocDay = startApocDay, toApocDay do
-		eHeliEvent_ScheduleNew(apocDay - daysBeforeApoc, 12, nil, true)
+		local simDay = apocDay - daysBeforeApoc
+		for hr = 1, 24 do
+			eHeliEvent_ScheduleNew(simDay, hr, nil, true)
+		end
 	end
 
 	triggerEvent("EHE_ServerModDataReady", false)
@@ -233,10 +236,10 @@ end
 function eHeliEvent_FreqDictionary(freqID)
 	local freqIDtoActual = {
 		[1] = 0, -- Never
-		[2] = 2, -- Rare
-		[3] = 4, -- Uncommon
-		[4] = 6, -- Common
-		[5] = 8, -- Frequent
+		[2] = 1, -- Rare
+		[3] = 2, -- Uncommon
+		[4] = 3, -- Common
+		[5] = 4, -- Frequent
 		[6] = 50, -- Insane
 	}
 	return freqIDtoActual[freqID] or 2
