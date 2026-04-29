@@ -88,6 +88,55 @@ SANDBOX_FILE_GLOBS = [
     "../Contents/mods/*/sandbox-options.txt",
 ]
 
+TRANSLATE_FILE_GLOBS = [
+    "../Contents/mods/*/*/media/lua/shared/Translate/EN/*.txt",
+    "../Contents/mods/*/*/media/lua/shared/Translate/EN.txt",
+    "../Contents/mods/*/media/lua/shared/Translate/EN/*.txt",
+]
+
+# Fallback labels used when no translation file is found.
+_FREQ_LABEL_FALLBACK = {
+    1: "Never",
+    2: "Rarely",
+    3: "Sometimes",
+    4: "Often",
+    5: "Very Often",
+    6: "Insane",
+}
+
+
+def load_freq_enum_labels(value_translation_key="ExpandedHeli_Frequency"):
+    """
+    Parse the frequency enum labels from translation files.
+    Looks for lines like:
+        ExpandedHeli_Frequency_1 = "Never",
+        ExpandedHeli_Frequency_2 = "Uncommon",
+        ...
+    Returns a dict {1: "Never", 2: "Uncommon", ...}.
+    Falls back to _FREQ_LABEL_FALLBACK if nothing is found.
+    """
+    labels = {}
+    pat = re.compile(
+        rf'{re.escape(value_translation_key)}_(\d+)\s*=\s*"([^"]+)"'
+    )
+    found_files = []
+    for pattern in TRANSLATE_FILE_GLOBS:
+        for m in sorted(SCRIPT_DIR.glob(pattern)):
+            if m not in found_files:
+                found_files.append(m)
+    for path in found_files:
+        try:
+            text = path.read_text(encoding="utf-8", errors="replace")
+        except Exception:
+            continue
+        for m in pat.finditer(text):
+            idx = int(m.group(1))
+            labels[idx] = m.group(2)
+    if labels:
+        print(f"  Loaded {len(labels)} frequency labels from translation files.")
+        return labels
+    return dict(_FREQ_LABEL_FALLBACK)
+
 
 def load_main_variable_defaults():
     """Read eHelicopter default fields from EHE_mainVariables.lua."""
@@ -182,6 +231,25 @@ def load_sandbox_freq_vars():
                 order.append(key)
         print(f"  Loaded sandbox options from: {path.name} ({len(order)} freq vars)")
     return [vars_seen[k] for k in order]
+
+
+def build_freq_affects(all_presets):
+    """
+    Extend affectsIDs for frequency vars using the optional frequencyKey field.
+    Presets that declare frequencyKey = "someKey" are appended to that sandbox
+    var's affectsIDs list. Presets without frequencyKey rely on the direct key
+    match already seeded in load_sandbox_freq_vars (affectsIDs starts as [key]).
+    """
+    key_to_sv = {sv["key"]: sv for sv in SANDBOX_FREQ_VARS}
+    for pid, data in all_presets.items():
+        if not data.get("forScheduling"):
+            continue
+        freq_key = data.get("frequencyKey")
+        if not freq_key:
+            continue
+        sv = key_to_sv.get(freq_key)
+        if sv and pid not in sv["affectsIDs"]:
+            sv["affectsIDs"].append(pid)
 
 
 # ── GROUP DEFINITIONS ──────────────────────────────────────────────────
@@ -868,14 +936,7 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
 /*PRESETS_DATA*/
 
 // ── FREQ ENUM ─────────────────────────────────────────────────────────
-const FREQ_ENUM = [
-  {val:1,label:'Never',    fc:0 },
-  {val:2,label:'Rarely',   fc:1 },
-  {val:3,label:'Sometimes',fc:2 },
-  {val:4,label:'Often',    fc:3 },
-  {val:5,label:'Very Often',fc:4},
-  {val:6,label:'Insane',   fc:50},
-];
+/*FREQ_ENUM*/
 
 // ── STATE ─────────────────────────────────────────────────────────────
 const S = {
@@ -1502,6 +1563,7 @@ def main():
     SANDBOX_FREQ_VARS = load_sandbox_freq_vars()
     if not SANDBOX_FREQ_VARS:
         print("  [INFO] No sandbox-options.txt found — frequency controls will be empty.")
+    build_freq_affects(all_presets)
     groups, issues = build_groups(all_presets)
 
     initial_sim_counts = {}
@@ -1534,7 +1596,17 @@ def main():
 
     data_js = "const EHE_DATA = " + json.dumps(data, indent=2) + ";"
 
-    html_out = HTML_TEMPLATE.replace("/*PRESETS_DATA*/", data_js)
+    freq_labels = load_freq_enum_labels()
+    fc_values = {1: 0, 2: 1, 3: 2, 4: 3, 5: 4, 6: 50}
+    freq_enum_js = "const FREQ_ENUM = [\n" + ",\n".join(
+        f"  {{val:{v},label:{json.dumps(freq_labels.get(v, str(v)))},fc:{fc_values.get(v, v-1)}}}"
+        for v in sorted(fc_values)
+    ) + "\n];"
+
+    html_out = (HTML_TEMPLATE
+        .replace("/*PRESETS_DATA*/", data_js)
+        .replace("/*FREQ_ENUM*/", freq_enum_js)
+    )
 
     out_path = Path(args.out)
     out_path.write_text(html_out, encoding="utf-8")

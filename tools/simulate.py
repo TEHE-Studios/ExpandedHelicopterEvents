@@ -299,11 +299,29 @@ Events = setmetatable({{}}, {{
     end
 }})
 
--- globalModData stub — tracks scheduled events for same-day deduplication
-modData = {{
-    DaysBeforeApoc  = 0,
-    EventsOnSchedule = {{}}
-}}
+-- modData stub — plain table with Java HashMap-style proxy methods.
+-- B42.16 scheduler code may call modData:get(key) / modData:put(key,val).
+-- Colon calls desugar to modData.get(modData, key), so we check arg type
+-- to distinguish colon (table first arg) from dot (string first arg) calls.
+function _make_modData()
+    local d = {{ DaysBeforeApoc=0, EventsOnSchedule={{}} }}
+    setmetatable(d, {{ __index = function(t, k)
+        if k == "get" then return function(self_or_key, key)
+            if type(self_or_key) == "table" then return self_or_key[key]
+            else return t[self_or_key] end
+        end end
+        if k == "put" then return function(self_or_key, key, val)
+            if type(self_or_key) == "table" then self_or_key[key] = val
+            else t[self_or_key] = key end
+        end end
+        if k == "containsKey" then return function(self_or_key, key)
+            if type(self_or_key) == "table" then return self_or_key[key] ~= nil
+            else return t[self_or_key] ~= nil end
+        end end
+    end }})
+    return d
+end
+modData = _make_modData()
 function getExpandedHeliEventsModData() return modData end
 
 -- eHeliEvent_new stub — intercepts scheduling, records to count table
@@ -401,7 +419,8 @@ function eHeliEvents_setEventsForScheduling()
                 if SandboxVars.ExpandedHeli.AirRaidSirenEvent==false and presetID=="air_raid" then
                     forScheduling = false
                 end
-                local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
+                local freqKey = presetVars.frequencyKey or presetID
+                local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..freqKey]
                 if presetFreq and presetFreq==1 then forScheduling = false end
             end
             if forScheduling then table.insert(eventsForScheduling, presetID) end
@@ -435,8 +454,9 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
                 local rawSF = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
                 local schedulingFactor = (type(rawSF)=="table") and rawSF[1] or rawSF
                 local startDay, cutOffDay = fetchStartDayAndCutOffDay(presetSettings)
+                local freqKey = presetSettings.frequencyKey or presetID
                 local freq = 3
-                local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..presetID]
+                local presetFreq = SandboxVars.ExpandedHeli["Frequency_"..freqKey]
                 if presetFreq then
                     freq = presetFreq-1
                     if freq == 5 then freq = 50 end
@@ -469,7 +489,9 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
         end
         local selectedPresetID = options[ZombRand(#options)+1]
         if selectedPresetID and (selectedPresetID ~= false) then
-            local freq = SandboxVars.ExpandedHeli["Frequency_"..selectedPresetID]
+            local selectedSettings = eHelicopter_PRESETS[selectedPresetID]
+            local selectedFreqKey = (selectedSettings and selectedSettings.frequencyKey) or selectedPresetID
+            local freq = SandboxVars.ExpandedHeli["Frequency_"..selectedFreqKey]
             local insane = (freqOverride or freq) == 6
             local iterations = insane and 10 or 1
             for i=1, iterations do
@@ -519,7 +541,7 @@ def run_simulation(preset_paths, sandbox, num_runs=100, verbose=False):
 
     runner_lua = f"""
 function run_one_playthrough()
-    modData = {{ DaysBeforeApoc=0, EventsOnSchedule={{}} }}
+    modData = _make_modData()
     eventsForScheduling = nil
 
     local counts = {{}}
@@ -562,7 +584,7 @@ end
     # before the real simulation to catch any remaining stub gaps cleanly.
     smoke_test_lua = """
 function _smoke_test()
-    modData = {DaysBeforeApoc=0, EventsOnSchedule={}}
+    modData = _make_modData()
     eventsForScheduling = nil
     _counts = {}
     local errors = {}

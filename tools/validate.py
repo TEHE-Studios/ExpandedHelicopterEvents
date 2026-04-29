@@ -28,6 +28,7 @@ from generate import (
     parse_random_selection,
     parse_progression,
     load_sandbox_freq_vars,
+    build_freq_affects,
     resolve_default_paths,
     refresh_defaults,
     DEFAULTS,
@@ -219,26 +220,38 @@ def check_inherit_cycles(all_presets):
     return results
 
 
+def _scalar(v, default):
+    """Return the first element if v is a list, else v itself, else default."""
+    if isinstance(v, list):
+        return v[0] if v else default
+    return v if v is not None else default
+
+
 def check_spawn_windows(all_presets):
     """
     For forScheduling=true presets, the effective startDay should be ≤ cutOffDay.
     Also warn on zero-width windows (start == cutoff) for non-one-time events.
     """
     results = []
-    dur = 90  # default SchedulerDuration for static analysis
+    dur = 90
 
-    bad_windows = []
+    bad_windows  = []
     zero_windows = []
 
     for pid, data in all_presets.items():
         if not data.get("forScheduling"):
             continue
-        sf  = float(data.get("eventStartDayFactor",  DEFAULTS.get("eventStartDayFactor",  0)))
-        cf  = float(data.get("eventCutOffDayFactor",  DEFAULTS.get("eventCutOffDayFactor",  0.34)))
-        sched_f = float(data.get("schedulingFactor", DEFAULTS.get("schedulingFactor", 1)))
+        sf      = float(_scalar(data.get("eventStartDayFactor"),  DEFAULTS.get("eventStartDayFactor",  0)))
+        cf      = float(_scalar(data.get("eventCutOffDayFactor"), DEFAULTS.get("eventCutOffDayFactor", 0.34)))
+        sched_f = float(_scalar(data.get("schedulingFactor"),     DEFAULTS.get("schedulingFactor",     1)))
 
         sd  = round(sf * dur + 0.5)
         cod = round(cf * (sd + dur) + 0.5)
+
+        if sd > cod:
+            bad_windows.append((pid, sd, cod))
+        elif sd == cod and sched_f < 99990:
+            zero_windows.append((pid, sd, cod))
 
         if sd > cod:
             bad_windows.append((pid, sd, cod))
@@ -267,34 +280,32 @@ def check_spawn_windows(all_presets):
 
 def check_freq_sandbox_vars(all_presets):
     """
-    The scheduler uses SandboxVars.ExpandedHeli["Frequency_"..presetID] directly.
-    Warn when sandbox-options.txt defines a Frequency_ var whose key doesn't match
-    any actual preset ID.
+    Each Frequency_ sandbox var should match at least one preset ID directly
+    (the scheduler does "Frequency_"..presetID). Vars with no matching preset
+    are orphaned — the sandbox option has no in-game effect.
     """
     results = []
     all_ids = set(all_presets.keys())
+    orphaned = []
+    matched  = []
 
-    mismatches = []
     for sv in _generate.SANDBOX_FREQ_VARS:
-        key = sv["key"]
-        exact_match = key in all_ids
-        if not exact_match and sv["affectsIDs"]:
-            mismatches.append((f"Frequency_{key}", sv["affectsIDs"]))
-        if not exact_match and not sv["affectsIDs"]:
-            results.append(warned(
-                "Freq var orphan",
-                f"Frequency_{key} defined in sandbox-options.txt but no matching preset ID found"
-            ))
+        if sv["key"] in all_ids:
+            matched.append(sv["key"])
+        else:
+            orphaned.append(sv["key"])
 
-    if mismatches:
-        for var, intended in mismatches:
-            results.append(warned(
-                "Freq var mismatch",
-                f"{var} does not match any preset ID — "
-                f"intended for: {', '.join(intended[:3])}{'…' if len(intended)>3 else ''}"
-            ))
-    else:
-        results.append(passed("Freq var mapping", "All Frequency_ sandbox vars match a preset ID"))
+    if matched:
+        results.append(passed(
+            "Freq var mapping",
+            f"{len(matched)} Frequency_ var(s) matched to preset IDs"
+        ))
+    for key in orphaned:
+        results.append(warned(
+            "Freq var orphan",
+            f"Frequency_{key} in sandbox-options.txt has no matching preset ID — "
+            f"this option has no effect"
+        ))
 
     return results
 
@@ -725,6 +736,7 @@ def run(preset_paths):
 
     # Load SANDBOX_FREQ_VARS from disk so freq-key checks use live data
     _generate.SANDBOX_FREQ_VARS = load_sandbox_freq_vars()
+    build_freq_affects(all_presets)
 
     schedulable = [pid for pid, d in all_presets.items() if d.get("forScheduling")]
     print(f"\n  Total presets : {len(all_presets)}")
