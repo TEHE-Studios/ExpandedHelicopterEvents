@@ -5,6 +5,7 @@ local util = require("EHE_util.lua")
 local presetCore = require("EHE_presetCore.lua")
 
 --- "loadThisAfter" was added to fix issues with Save Our Station
+--TODO: CHECK IF THIS IS STILL NEEDED? SOS MIGHT NOT EVEN BE ON B42
 Events.OnGameBoot.Add(function() Translator.loadFiles() end)
 
 ---stores and adds on to functions found in /media/lua/server/radio/ISWeatherChannel.lua
