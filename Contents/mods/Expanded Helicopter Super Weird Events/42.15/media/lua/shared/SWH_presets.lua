@@ -12,6 +12,7 @@ eHelicopter_PRESETS["superWeirdEvents"] = {
 	eventSpawnWeight = 5,
 	eventStartDayFactor = 0,
 	eventCutOffDayFactor = 1,
+	markerColor = {r=0.96,g=0.21,b=0.78},
 }
 
 eHelicopter_PRESETS["superWeirdEventsCopyrighted"] = {
@@ -45,7 +46,6 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 		{ outfit="SpiffoBoss", spawn=10, female=0 },
 		{ outfit="SpiffoBoss", spawn=1, female=0 },
 	},
-	markerColor = {r=0.96,g=0.21,b=0.78},
 }
 
 eHelicopter_PRESETS["Spiffocopter_inviteOnly"] = {
@@ -75,7 +75,6 @@ eHelicopter_PRESETS["UFO"] = {
 	eventSoundEffects = {
 		["flightSound"] = "AlienUFOFlight"
 	},
-	markerColor = {r=0.96,g=0.21,b=0.78},
 }
 
 eHelicopter_PRESETS["UFO_noHoverBackEnd_DoNotUse"] = {
@@ -179,7 +178,6 @@ eHelicopter_PRESETS["IRS"] = {
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	announcerVoice = "IRS",
-	markerColor = {r=0.96,g=0.21,b=0.78},
 }
 
 eHelicopter_PRESETS["IRS_noHover"] = {
@@ -258,7 +256,6 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	scrapAndParts = false,
-	markerColor = {r=0.96,g=0.21,b=0.78},
 }
 
 eHelicopter_PRESETS["TISCreamery_Licks"] = {
@@ -287,7 +284,6 @@ eHelicopter_PRESETS.survivors.dropPackages = {"SurvivorSupplyDrop","SurvivorSupp
 
 eHelicopter_PRESETS["Helikopter"] = {
 	inherit = {"military_UH1H_attack_all"},
-	markerColor = {r=0.96,g=0.21,b=0.78},
 	callsigns = {"Helikopter"},
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "Helikopter" },
@@ -308,7 +304,6 @@ eHelicopter_PRESETS["SandyClaws"] = {
 	hoverOnTargetDuration = {1250,1500},
 	attackDelay = 1700,
 	attackSpread = 4,
-	markerColor = {r=0.96,g=0.21,b=0.78},
 	attackHitChance = 55,
 	attackDamage = 10,
 	hostilePreference = "IsoPlayer",
@@ -353,7 +348,6 @@ eHelicopter_PRESETS["AttackOfTheStrippers"] = {
 		["flightSound"] = { "eMiliHeli", "assBlastUSA" },
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
-	markerColor = {r=0.96,g=0.21,b=0.78},
 	eventSpecialDates = { systemDates = {{12}}, inGameDates = {{12,20}, {12,31}}}
 }
 eHelicopter_PRESETS["AttackOfTheStrippers_noHover"] = {
@@ -386,6 +380,5 @@ eHelicopter_PRESETS["BuffCorrell"] = {
 		["flightSound"] = { "ePropPlane", "buffcorrell" },
 	},
 
-	markerColor = {r=0.96,g=0.21,b=0.78},
 	radioChatter = "AEBS_buffcorrell"
 } 
