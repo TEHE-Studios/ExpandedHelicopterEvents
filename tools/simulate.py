@@ -65,6 +65,154 @@ def find_server_files():
     return found
 
 
+# ── Exact port of zombie.iso.weather.SimplexNoise (Java) ─────────────────────
+# Only the 2D noise() variant is needed for weather generation.
+_SN_P = [
+    151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,
+    8,99,37,240,21,10,23,190,6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,
+    35,11,32,57,177,33,88,237,149,56,87,174,20,125,136,171,168,68,175,74,165,71,
+    134,139,48,27,166,77,146,158,231,83,111,229,122,60,211,133,230,220,105,92,41,
+    55,46,245,40,244,102,143,54,65,25,63,161,1,216,80,73,209,76,132,187,208,89,18,
+    169,200,196,135,130,116,188,159,86,164,100,109,198,173,186,3,64,52,217,226,250,
+    124,123,5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,182,189,
+    28,42,223,183,170,213,119,248,152,2,44,154,163,70,221,153,101,155,167,43,172,9,
+    129,22,39,253,19,98,108,110,79,113,224,232,178,185,112,104,218,246,97,228,251,
+    34,242,193,238,210,144,12,191,179,162,241,81,51,145,235,249,14,239,107,49,192,
+    214,31,181,199,106,157,184,84,204,176,115,121,50,45,127,4,150,254,138,236,205,
+    93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180,
+]
+_SN_PERM     = [_SN_P[i & 0xFF] for i in range(512)]
+_SN_PERM12   = [v % 12 for v in _SN_PERM]
+_SN_GRAD3 = [
+    (1,1,0),(-1,1,0),(1,-1,0),(-1,-1,0),
+    (1,0,1),(-1,0,1),(1,0,-1),(-1,0,-1),
+    (0,1,1),(0,-1,1),(0,1,-1),(0,-1,-1),
+]
+_SN_F2 = 0.5 * (3.0 ** 0.5 - 1.0)
+_SN_G2 = (3.0 - 3.0 ** 0.5) / 6.0
+
+
+def _sn_fastfloor(x):
+    xi = int(x)
+    return xi - 1 if x < xi else xi
+
+
+def simplex_noise_2d(xin, yin):
+    """
+    Exact Python port of SimplexNoise.noise(double xin, double yin) from Java.
+    Returns a float in approximately [-1, 1].
+    The offsets (xin, yin) map to the game's (simplexOffset, worldAgeHours/freqMod).
+    """
+    s  = (xin + yin) * _SN_F2
+    i  = _sn_fastfloor(xin + s)
+    j  = _sn_fastfloor(yin + s)
+    t  = (i + j) * _SN_G2
+    x0 = xin - (i - t)
+    y0 = yin - (j - t)
+    if x0 > y0:
+        i1, j1 = 1, 0
+    else:
+        i1, j1 = 0, 1
+    x1 = x0 - i1 + _SN_G2
+    y1 = y0 - j1 + _SN_G2
+    x2 = x0 - 1.0 + 2.0 * _SN_G2
+    y2 = y0 - 1.0 + 2.0 * _SN_G2
+    ii  = i & 0xFF
+    jj  = j & 0xFF
+    gi0 = _SN_PERM12[ii   + _SN_PERM[jj]]
+    gi1 = _SN_PERM12[ii+i1+ _SN_PERM[jj+j1]]
+    gi2 = _SN_PERM12[ii+1 + _SN_PERM[jj+1]]
+    g0  = _SN_GRAD3[gi0]
+    g1  = _SN_GRAD3[gi1]
+    g2  = _SN_GRAD3[gi2]
+    t0  = 0.5 - x0*x0 - y0*y0
+    n0  = 0.0 if t0 < 0 else (t0*t0)*(t0*t0) * (g0[0]*x0 + g0[1]*y0)
+    t1  = 0.5 - x1*x1 - y1*y1
+    n1  = 0.0 if t1 < 0 else (t1*t1)*(t1*t1) * (g1[0]*x1 + g1[1]*y1)
+    t2  = 0.5 - x2*x2 - y2*y2
+    n2  = 0.0 if t2 < 0 else (t2*t2)*(t2*t2) * (g2[0]*x2 + g2[1]*y2)
+    return 70.0 * (n0 + n1 + n2)
+
+
+def generate_run_weather(duration, seed):
+    """
+    Generate per-day weather using the exact same algorithm as ClimateManager/ClimateValues.
+
+    The game initialises:
+        simplexOffsetA = Rand.Next(0, 8000)       -- drives airmass & wind
+        simplexOffsetC = Rand.Next(0, -8000)      -- drives humidity/precipitation
+        airMassNoiseFrequencyMod = 166.0           -- sandbox rain=3 (default Normal)
+
+    Wind intensity (ClimateValues lines 283-287):
+        noiseWindBase = SimplexNoise.noise(worldAgeHours / 40.0, offsetA)
+        windBase      = (noiseWindBase + 1) * 0.5
+        airMassTemperature = SimplexNoise.noise(offsetA, (worldAgeHours - 48) / freqMod)
+        windMod       = 1 - (airMassTemperature + 1) * 0.5
+        windIntensity = windBase * windMod * 0.65         (windMod2 ≈ 1 at noon)
+        windspeedKph  = windIntensity * 120.0             (ClimateManager.getWindspeedKph)
+
+    Precipitation (simplified from WeatherPeriod):
+        humidity = ((noiseHumidity+1)/2) * tempOffset
+        rain when humidity > 0.48 (approximate WeatherPeriod threshold)
+
+    Fog (ClimateValues lines 200-235):
+        20% daily probability; intensity sampled from seededRandom
+
+    Each run gets unique offsets derived from `seed`.
+    """
+    rng       = random.Random(seed)
+    offsetA   = rng.uniform(0,    8000)
+    offsetB   = rng.uniform(8000, 16000)
+    offsetC   = rng.uniform(-8000, 0)
+    freqMod   = 166.0
+
+    days = {}
+    for day in range(int(duration) + 10):
+        h = day * 24.0 + 12.0  # sample at solar noon, matching the game's day-tick update
+
+        # Air mass temperature: drives cold/warm fronts and snow threshold
+        air_mass_temp = simplex_noise_2d(offsetA, (h - 48.0) / freqMod)     # [-1, 1]
+
+        # Humidity noise: drives precipitation
+        noise_humidity = simplex_noise_2d(offsetC, h / freqMod)             # [-1, 1]
+
+        # Wind (ClimateValues lines 283-287)
+        noise_wind_base = simplex_noise_2d(h / 40.0, offsetA)               # [-1, 1]
+        wind_base       = (noise_wind_base + 1.0) * 0.5                     # [0, 1]
+        wind_mod        = 1.0 - (air_mass_temp + 1.0) * 0.5                 # cold=1, warm=0
+        wind_intensity  = max(0.0, min(1.0, wind_base * wind_mod * 0.65))
+        wind_kph        = wind_intensity * 120.0
+
+        # Temperature (°C). Game adds season mean (~15°C for KY spring/summer).
+        # Without tracking season progression, 15°C is the neutral baseline.
+        SEASON_MEAN  = 15.0
+        base_temp    = SEASON_MEAN + air_mass_temp * 8.0
+        is_snow      = base_temp < 0.0
+
+        # Humidity → precipitation (WeatherPeriod threshold ≈ 0.48)
+        temp_offset     = max(0.0, min(1.0, 1.0 - (45.0 - base_temp) / 90.0))
+        humidity        = ((noise_humidity + 1.0) * 0.5) * temp_offset
+        is_raining      = humidity > 0.48
+        precip_intensity = max(0.0, min(1.0, (humidity - 0.48) / 0.52)) if is_raining else 0.0
+
+        # Thunderstorm: heavy rain + moderate wind
+        thunder = is_raining and precip_intensity > 0.65 and wind_intensity > 0.30
+
+        # Fog: 20% daily probability (ClimateValues line 202: r < 200 out of 1000)
+        fog_r       = rng.random()
+        has_fog     = fog_r < 0.20
+        fog_strength = rng.random() if has_fog and fog_r >= 0.025 else (1.0 if has_fog else 0.0)
+
+        days[day] = {
+            "windKph":       round(wind_kph, 1),
+            "precipitation": round(precip_intensity, 3),
+            "fog":           round(fog_strength if has_fog else 0.0, 3),
+            "thunder":       thunder,
+            "isSnow":        is_snow,
+        }
+    return days
+
+
 def _lua_skip_over(text, pos):
     """
     From `pos`, skip one Lua token that should not be inspected for keywords:
@@ -188,15 +336,15 @@ def _to_lua_val(v):
     return str(v)
 
 
-def build_lua_environment(all_presets, sandbox, heli_defaults):
+def build_lua_environment(all_presets, sandbox, heli_defaults, weather_days=None):
     """
     Construct the full Lua source that the simulation will execute.
     Includes:
-      - PZ API stubs (ZombRand, SandboxVars, getGameTime, etc.)
+      - require() override so EHE_util and other internal modules resolve safely
+      - PZ API stubs (ZombRand, SandboxVars, getGameTime, ClimateManager, etc.)
+      - Per-run weather data table (varies between runs)
       - eHelicopter global built from heli_defaults (read from EHE_mainVariables.lua)
       - eHelicopter_PRESETS table populated from parsed Python data
-      - The actual scheduler functions extracted from Lua files
-      - A simulation runner that records counts
     """
 
     # ── Preset table ──────────────────────────────────────────────────
@@ -241,158 +389,207 @@ def build_lua_environment(all_presets, sandbox, heli_defaults):
     if not heli_field_lines:
         heli_field_lines = "    schedulingFactor = 1, eventSpawnWeight = 10,"
 
+    # ── Weather data table ─────────────────────────────────────────────
+    weather_entries = []
+    for day, w in sorted((weather_days or {}).items()):
+        weather_entries.append(
+            f'  [{day}] = {{ windKph={w["windKph"]}, precipitation={w["precipitation"]},'
+            f' fog={w["fog"]}, thunder={"true" if w["thunder"] else "false"},'
+            f' isSnow={"true" if w["isSnow"] else "false"} }},'
+        )
+    weather_lua = "\n".join(weather_entries)
+
     stubs = f"""
+-- ── require() override ────────────────────────────────────────────────
+local _sim_req = {{}}
+_sim_req["EHE_util"] = {{
+    getModData                   = function() return modData end,
+    getExpandedHeliEventsModData = function() return modData end,
+    print = function(...) end, log = function(...) end,
+}}
+function require(modname)
+    if _sim_req[modname] then return _sim_req[modname] end
+    local proxy = setmetatable({{}}, {{ __index = function(_, _k) return function(...) end end }})
+    _sim_req[modname] = proxy
+    return proxy
+end
+
 -- ── PZ API stubs ──────────────────────────────────────────────────────
 
 math.randomseed(os.time())
 
--- ZombRand(n): returns integer in [0, n-1].
--- With negative n (insane mode denom), treat as always passing by returning 0.
 function ZombRand(n)
-    -- n may be a float (denom is computed with floats); floor it
     n = math.floor(n)
-    -- n<=0 means insane-mode negative denominator → always pass (return 0)
     if not n or n <= 0 then return 0 end
     return math.random(0, n - 1)
 end
 
--- Sandbox settings
+-- Per-run weather (windKph, precipitation, fog, thunder, isSnow) keyed by day.
+_SIM_WEATHER = {{
+{weather_lua}
+}}
+_SIM_CURRENT_DAY  = 0
+_SIM_CURRENT_HOUR = 0
+function _getWeather(day)
+    return _SIM_WEATHER[day] or {{ windKph=20, precipitation=0, fog=0, thunder=false, isSnow=false }}
+end
+
+ClimateManager = {{
+    getInstance = function()
+        return {{
+            getWindspeedKph           = function(self) return _getWeather(_SIM_CURRENT_DAY).windKph end,
+            getWindIntensity          = function(self) return _getWeather(_SIM_CURRENT_DAY).windKph / 120.0 end,
+            getPrecipitationIntensity = function(self) return _getWeather(_SIM_CURRENT_DAY).precipitation end,
+            getFogIntensity           = function(self) return _getWeather(_SIM_CURRENT_DAY).fog end,
+            isRaining  = function(self) local w=_getWeather(_SIM_CURRENT_DAY) return w.precipitation>0 and not w.isSnow end,
+            isSnowing  = function(self) local w=_getWeather(_SIM_CURRENT_DAY) return w.precipitation>0 and w.isSnow end,
+            getThunderStorm = function(self) return {{ isActive=function() return _getWeather(_SIM_CURRENT_DAY).thunder end }} end,
+            getTemperature  = function(self) return 15 end,
+            getAirTemperatureForCharacter = function(self, ch, wc) return 15 end,
+        }}
+    end
+}}
+
 SandboxVars = {{
     ExpandedHeli = {{
-        SchedulerDuration = {duration},
-        StartDay          = {start_day},
+        SchedulerDuration        = {duration},
+        StartDay                 = {start_day},
         ContinueSchedulingEvents = {continue_val},
-        AirRaidSirenEvent = {air_raid},
+        AirRaidSirenEvent        = {air_raid},
         {chr(10).join(freq_lines)}
     }}
 }}
 
--- eHelicopter global defaults (loaded at runtime from EHE_mainVariables.lua)
 eHelicopter = {{
 {heli_field_lines}
 }}
 
--- Stub GameTime — covers every method called anywhere in the scheduler
 local _vanillaHeliDay = 9999
 function getGameTime()
     return {{
-        getHour             = function(self) return 0 end,
+        getHour             = function(self) return _SIM_CURRENT_HOUR end,
         getMonth            = function(self) return 1 end,
-        getDay              = function(self) return 1 end,
+        getDay              = function(self) return _SIM_CURRENT_DAY end,
         getHelicopterDay    = function(self) return _vanillaHeliDay end,
         getHelicopterDay1   = function(self) return _vanillaHeliDay end,
         setHelicopterDay    = function(self, v) _vanillaHeliDay = v end,
-        getHelicopterStartHour = function(self) return 0 end,
-        setHelicopterStartHour = function(self, v) end,
-        getHelicopterEndHour   = function(self) return 0 end,
-        setHelicopterEndHour   = function(self, v) end,
+        getHelicopterStartHour  = function(self) return 0 end,
+        setHelicopterStartHour  = function(self, v) end,
+        getHelicopterEndHour    = function(self) return 0 end,
+        setHelicopterEndHour    = function(self, v) end,
     }}
 end
-function EHE_getWorldAgeDays() return 0 end
+function EHE_getWorldAgeDays() return _SIM_CURRENT_DAY end
 function triggerEvent(...) end
 function isServer() return true end
 function isClient() return false end
 function getDebug() return false end
--- Events must be a table that absorbs any .X.Add(fn) access pattern
 Events = setmetatable({{}}, {{
     __index = function(t, k)
-        return setmetatable({{}}, {{
-            __index = function(t2, k2) return function(...) end end
-        }})
+        return setmetatable({{}}, {{ __index = function(t2, k2) return function(...) end end }})
     end
 }})
 
--- modData stub — plain table with Java HashMap-style proxy methods.
--- B42.16 scheduler code may call modData:get(key) / modData:put(key,val).
--- Colon calls desugar to modData.get(modData, key), so we check arg type
--- to distinguish colon (table first arg) from dot (string first arg) calls.
 function _make_modData()
     local d = {{ DaysBeforeApoc=0, EventsOnSchedule={{}} }}
     setmetatable(d, {{ __index = function(t, k)
-        if k == "get" then return function(self_or_key, key)
-            if type(self_or_key) == "table" then return self_or_key[key]
-            else return t[self_or_key] end
-        end end
-        if k == "put" then return function(self_or_key, key, val)
-            if type(self_or_key) == "table" then self_or_key[key] = val
-            else t[self_or_key] = key end
-        end end
-        if k == "containsKey" then return function(self_or_key, key)
-            if type(self_or_key) == "table" then return self_or_key[key] ~= nil
-            else return t[self_or_key] ~= nil end
-        end end
+        if k == "get" then return function(s, key)
+            if type(s)=="table" then return s[key] else return t[s] end end end
+        if k == "put" then return function(s, key, val)
+            if type(s)=="table" then s[key]=val else t[s]=key end end end
+        if k == "containsKey" then return function(s, key)
+            if type(s)=="table" then return s[key]~=nil else return t[s]~=nil end end end
     end }})
     return d
 end
 modData = _make_modData()
 function getExpandedHeliEventsModData() return modData end
+getEHEModData  = getExpandedHeliEventsModData
+EHE_getModData = getExpandedHeliEventsModData
 
--- eHeliEvent_new stub — intercepts scheduling, records to count table
--- (defined after _counts is set up in the runner)
 function eHeliEvent_new(startDay, startTime, preset)
-    if _counts and preset then
-        _counts[preset] = (_counts[preset] or 0) + 1
-    end
-    -- Also store in schedule for same-day dedup
+    if _counts and preset then _counts[preset] = (_counts[preset] or 0) + 1 end
     table.insert(modData.EventsOnSchedule, {{
-        startDay = startDay, startTime = startTime,
-        preset = preset, triggered = false
+        startDay=startDay, startTime=startTime, preset=preset, triggered=false
     }})
 end
 
--- eHeliEvent_processSchedulerDates: special date gates — skipped in simulation
 function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
-    return false  -- treat all special date gates as inactive
+    return false
 end
 
--- Preset table
 {presets_lua}
 
--- eventsForScheduling module-level cache (reset each run)
 eventsForScheduling = nil
 """
 
     return stubs
 
 
+
 def sanitize_lua(code):
-    # Lua 5.5 is strict about escape sequences.
-    # \[ and \] appear in PZ print statements but are not valid Lua escapes.
-    # They are silently accepted by older runtimes but error in Lua 5.5.
     return code.replace("\\[", "[").replace("\\]", "]")
+
+
+def _strip_file_level_statements(text):
+    """
+    Pre-process a Lua source file for execution in a bare Lua environment.
+    Rewrites top-level statements that reference unavailable PZ APIs:
+      - Events.OnX.Add(fn)  → commented out
+      - LuaEventManager.*   → commented out
+      - file-level return X → commented out
+    Leaves require() calls intact — our require-override stub handles those.
+    """
+    out = []
+    for line in text.splitlines():
+        s = line.lstrip()
+        if (s.startswith("Events.") or
+                s.startswith("LuaEventManager.") or
+                re.match(r'^return\s+\w+\s*(?:--.*)?$', s)):
+            out.append("-- SIM_STRIPPED: " + line)
+        else:
+            out.append(line)
+    return "\n".join(out)
+
+
+def load_full_scheduler_source(server_files):
+    """
+    Load EHE_mainCore.lua and EHE_eventScheduler.lua as complete source texts,
+    returning a single Lua string that can be executed after the stubs.
+
+    Crucially, this preserves all file-scope locals (upvalues), so extracted
+    functions like eHeliEvent_ScheduleNew see the correct closures.
+    """
+    parts = []
+    for name in ("EHE_mainCore.lua", "EHE_eventScheduler.lua"):
+        path = server_files.get(name)
+        if path and path.exists():
+            raw = path.read_text(encoding="utf-8", errors="replace")
+            processed = sanitize_lua(_strip_file_level_statements(raw))
+            parts.append(f"-- ===== {name} =====\n" + processed)
+            print(f"  Loaded full source: {name}")
+
+    if not parts:
+        return None
+    return "\n\n".join(parts)
 
 
 def load_scheduler_functions(server_files):
     """
-    Extract the three functions we need from the actual Lua source files.
-    Falls back to embedded copies if the files aren't found.
+    Load scheduler logic, preferring whole-file loading (which preserves upvalues)
+    over individual function extraction.
+    Returns a dict with key 'full_source' if whole-file loading succeeded,
+    or individual function keys for fallback embedded copies.
     """
+    full_source = load_full_scheduler_source(server_files)
+    if full_source:
+        return {"full_source": full_source}
+
+    # ── Fallback: embedded copies ──────────────────────────────────────
+    print("  [fallback] Using all embedded function copies.")
     funcs = {}
 
-    mc_path = server_files.get("EHE_mainCore.lua")
-    sc_path = server_files.get("EHE_eventScheduler.lua")
-
-    if mc_path and mc_path.exists():
-        text = mc_path.read_text(encoding="utf-8", errors="replace")
-        f = extract_function(text, "fetchStartDayAndCutOffDay")
-        if f:
-            funcs["fetchStartDayAndCutOffDay"] = sanitize_lua(f)
-            print(f"  Extracted fetchStartDayAndCutOffDay from {mc_path.name}")
-
-    if sc_path and sc_path.exists():
-        text = sc_path.read_text(encoding="utf-8", errors="replace")
-        for name in ("eHeliEvent_determineContinuation",
-                     "eHeliEvents_setEventsForScheduling",
-                     "eHeliEvent_ScheduleNew"):
-            f = extract_function(text, name)
-            if f:
-                funcs[name] = sanitize_lua(f)
-                print(f"  Extracted {name} from {sc_path.name}")
-
-    # ── Fallback embedded copies (from project source) ─────────────────
-    if "fetchStartDayAndCutOffDay" not in funcs:
-        print("  [fallback] fetchStartDayAndCutOffDay (embedded)")
-        funcs["fetchStartDayAndCutOffDay"] = """
+    funcs["fetchStartDayAndCutOffDay"] = """
 function fetchStartDayAndCutOffDay(HelicopterOrPreset)
     local startDayFactor = HelicopterOrPreset.eventStartDayFactor or eHelicopter.eventStartDayFactor
     local startDay = math.floor((startDayFactor*SandboxVars.ExpandedHeli.SchedulerDuration)+0.5)
@@ -402,17 +599,13 @@ function fetchStartDayAndCutOffDay(HelicopterOrPreset)
     return startDay, cutOffDay
 end"""
 
-    if "eHeliEvent_determineContinuation" not in funcs:
-        print("  [fallback] eHeliEvent_determineContinuation (embedded)")
-        funcs["eHeliEvent_determineContinuation"] = """
+    funcs["eHeliEvent_determineContinuation"] = """
 function eHeliEvent_determineContinuation()
     local continue = SandboxVars.ExpandedHeli.ContinueSchedulingEvents
     return continue>1, continue>=3
 end"""
 
-    if "eHeliEvents_setEventsForScheduling" not in funcs:
-        print("  [fallback] eHeliEvents_setEventsForScheduling (embedded)")
-        funcs["eHeliEvents_setEventsForScheduling"] = """
+    funcs["eHeliEvents_setEventsForScheduling"] = """
 function eHeliEvents_setEventsForScheduling()
     if not eventsForScheduling then
         eventsForScheduling = {}
@@ -431,9 +624,7 @@ function eHeliEvents_setEventsForScheduling()
     end
 end"""
 
-    if "eHeliEvent_ScheduleNew" not in funcs:
-        print("  [fallback] eHeliEvent_ScheduleNew (embedded)")
-        funcs["eHeliEvent_ScheduleNew"] = """
+    funcs["eHeliEvent_ScheduleNew"] = """
 function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
     local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
     local globalModData = getExpandedHeliEventsModData()
@@ -527,23 +718,40 @@ def run_simulation(preset_paths, sandbox, num_runs=100, verbose=False):
 
     server_files = find_server_files()
 
-    print(f"\nExtracting Lua functions...")
+    print(f"\nLoading Lua scheduler source...")
     funcs = load_scheduler_functions(server_files)
+    is_full_source = "full_source" in funcs
 
     heli_defaults = load_main_variable_defaults()
     if not heli_defaults:
         print("  [WARN] EHE_mainVariables.lua not found — eHelicopter defaults will be minimal.")
 
-    env_lua = build_lua_environment(all_presets, sandbox, heli_defaults)
-    func_lua = "\n\n".join(funcs[k] for k in [
-        "fetchStartDayAndCutOffDay",
-        "eHeliEvent_determineContinuation",
-        "eHeliEvents_setEventsForScheduling",
-        "eHeliEvent_ScheduleNew",
-    ] if k in funcs)
+    # Build the seed-0 weather for the shared environment and smoke test.
+    # Each real run gets its own weather generated inline in the runner.
+    seed0_weather = generate_run_weather(duration, seed=0)
+    env_lua = build_lua_environment(all_presets, sandbox, heli_defaults, weather_days=seed0_weather)
+
+    if is_full_source:
+        scheduler_lua = (
+            funcs["full_source"]
+            # Re-assert our stubs AFTER the file so any file-scope overrides
+            # of getExpandedHeliEventsModData are replaced by ours.
+            + "\n\nfunction getExpandedHeliEventsModData() return modData end"
+            + "\ngetEHEModData  = getExpandedHeliEventsModData"
+            + "\nEHE_getModData = getExpandedHeliEventsModData"
+        )
+    else:
+        scheduler_lua = "\n\n".join(funcs[k] for k in [
+            "fetchStartDayAndCutOffDay",
+            "eHeliEvent_determineContinuation",
+            "eHeliEvents_setEventsForScheduling",
+            "eHeliEvent_ScheduleNew",
+        ] if k in funcs)
 
     runner_lua = f"""
-function run_one_playthrough()
+function run_one_playthrough(run_seed)
+    -- Rebuild per-run weather in Lua from a Python-generated JSON blob.
+    -- The actual weather table was already embedded for this run index.
     modData = _make_modData()
     eventsForScheduling = nil
 
@@ -554,6 +762,9 @@ function run_one_playthrough()
     for tick = 0, total_ticks - 1 do
         local day  = math.floor(tick / 24)
         local hour = tick % 24
+
+        _SIM_CURRENT_DAY  = day
+        _SIM_CURRENT_HOUR = hour
 
         if hour == 0 then
             local still_pending = {{}}
@@ -574,12 +785,7 @@ end
 
     full_lua = (
         env_lua
-        + "\n\n" + func_lua
-        # Re-assert the modData getter after extracted functions in case any
-        # file-scope upvalue or B42 refactor shadowed/renamed it.
-        + "\n\nfunction getExpandedHeliEventsModData() return modData end"
-        + "\ngetEHEModData = getExpandedHeliEventsModData"
-        + "\nEHE_getModData = getExpandedHeliEventsModData"
+        + "\n\n" + scheduler_lua
         + "\n\n" + runner_lua
     )
 
@@ -628,13 +834,26 @@ end
     totals  = {}
 
     print(f"\nRunning {num_runs} simulations ({duration}d × 24 ticks/day = "
-          f"{duration*24:,} ticks/run)...")
+          f"{duration*24:,} ticks/run, unique weather per run)...")
 
     for i in range(num_runs):
         if verbose and (i+1) % 10 == 0:
             print(f"  Run {i+1}/{num_runs}")
+
+        # Generate a unique weather profile for this run and push it into Lua.
+        run_weather = generate_run_weather(duration, seed=i + 1)
+        weather_tbl = lua.table()
+        for day, w in run_weather.items():
+            day_tbl = lua.table()
+            day_tbl["windKph"]       = w["windKph"]
+            day_tbl["precipitation"] = w["precipitation"]
+            day_tbl["fog"]           = w["fog"]
+            day_tbl["thunder"]       = w["thunder"]
+            day_tbl["isSnow"]        = w["isSnow"]
+            weather_tbl[day]         = day_tbl
+        lua.globals()._SIM_WEATHER = weather_tbl
+
         result = run_one()
-        # Convert Lua table to Python dict
         for k in result:
             v = result[k]
             totals[k] = totals.get(k, 0) + (v or 0)
