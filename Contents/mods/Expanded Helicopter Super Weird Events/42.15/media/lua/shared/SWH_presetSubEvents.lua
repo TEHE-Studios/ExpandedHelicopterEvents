@@ -45,6 +45,8 @@ function forceDance(heli, char)
     end
 end
 --]]
+local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
+
 local swhSubEvents = {}
 
 ---@param heli eHelicopter

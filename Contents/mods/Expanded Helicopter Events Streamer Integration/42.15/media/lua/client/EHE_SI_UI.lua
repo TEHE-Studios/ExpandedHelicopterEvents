@@ -1,6 +1,6 @@
 --require("ISUI/ISUIElement.lua")
 require("ISUI/ISButton.lua")
-require("ExpandedHelicopter12c_EHEGlobalModDataCLIENT.lua")
+require("EHE_globalModData.lua")
 local util = require("EHE_util.lua")
 local clientCommands = require("EHE_onServerToClientCommands.lua")
 

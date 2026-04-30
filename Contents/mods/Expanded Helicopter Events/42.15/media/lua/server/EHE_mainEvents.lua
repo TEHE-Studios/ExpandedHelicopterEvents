@@ -1,6 +1,7 @@
 require("EHE_heliCore.lua")
-local eHelicopter = require("EHE_mainVariables.lua")
 require("EHE_spawner.lua")
+
+local eHelicopter = require("EHE_mainVariables.lua")
 local util = require("EHE_util.lua")
 local modData = require("EHE_globalModData.lua")
 --Heli goes down
@@ -8,6 +9,7 @@ local modData = require("EHE_globalModData.lua")
 local eventSoundHandler = require("EHE_sounds.lua")
 local pseudoSquare = require("EHE_pseudoSquare.lua")
 local presetCore = require("EHE_presetCore.lua")
+local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
 
 function eHelicopter:crash()
 

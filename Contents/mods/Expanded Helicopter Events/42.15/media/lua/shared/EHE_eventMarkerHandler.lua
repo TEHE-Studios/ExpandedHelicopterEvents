@@ -1,7 +1,4 @@
-require("EHE_eventMarkers.lua")
-require("EHE_util.lua")
-
-eventMarkerHandler = {}
+local eventMarkerHandler = {}
 eventMarkerHandler.markers = {} --[player] = {["id"]=marker}
 eventMarkerHandler.expirations = {} --[player] = {["id]=time}
 
@@ -52,3 +49,5 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, col
 		end
 	end
 end
+
+return eventMarkerHandler

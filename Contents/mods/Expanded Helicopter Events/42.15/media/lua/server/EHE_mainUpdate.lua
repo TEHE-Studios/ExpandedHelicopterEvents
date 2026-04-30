@@ -1,12 +1,13 @@
 local mainCore = require("EHE_heliCore.lua")
 local eHelicopter = require("EHE_mainVariables.lua")
 require("EHE_shadowSystem.lua")
-
+local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
 local eventSoundHandler = require("EHE_sounds.lua")
 local heatMap = require("EHE_heatMap.lua")
 local pseudoSquare = require("EHE_pseudoSquare.lua")
 local announcerCore = require("EHE_announcersCore.lua")
 local util = require("EHE_util.lua")
+
 
 function eHelicopter:updateEvent()
 	if self.state == "following" or self.state == "unLaunched" then return end

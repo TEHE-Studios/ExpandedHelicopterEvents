@@ -1,7 +1,8 @@
-local eHelicopter = require("EHE_mainVariables.lua")
-local modData = require("EHE_globalModData.lua")
-local mainCore = require("EHE_mainCore.lua")
 local util = require("EHE_util.lua")
+
+local eHelicopter = isServer() and require("EHE_mainVariables.lua")
+local modData = isServer() and require("EHE_globalModData.lua")
+local mainCore = isServer() and require("EHE_mainCore.lua")
 
 local presetCore = {}
 
@@ -93,6 +94,7 @@ end
 
 
 function presetCore:progressionSelectPreset(preset)
+
 	local pp = preset.presetProgression
 	if pp then
 
@@ -181,16 +183,12 @@ end
 ---@param ID string
 function presetCore:loadPreset(ID)
 
-	if not ID then
-		return
-	end
+	if not ID then return end
 
 	local preset = presetCore.PRESETS[ID]
 	local masterID = ID
 
-	if not preset then
-		return
-	end
+	if not preset then return end
 
 	--eventSoundHandler:stopAllHeldEventSounds(self)
 	--[DEBUG]] print("\n------------[loadPreset:"..ID.."]------------")

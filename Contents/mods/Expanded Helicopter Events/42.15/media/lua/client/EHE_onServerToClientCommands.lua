@@ -1,5 +1,5 @@
 require("EHE_shadowSystem.lua")
-require("EHE_eventMarkerHandler.lua")
+local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
 local util = require("EHE_util.lua")
 
 local clientCommands = {}

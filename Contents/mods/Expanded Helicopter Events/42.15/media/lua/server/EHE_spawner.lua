@@ -1,7 +1,5 @@
 if isClient() then return end
 
-require("EHE_globalModData.lua")
-local eHelicopter = require("EHE_mainVariables.lua")
 local util = require("EHE_util.lua")
 local presetCore = require("EHE_presetCore.lua")
 

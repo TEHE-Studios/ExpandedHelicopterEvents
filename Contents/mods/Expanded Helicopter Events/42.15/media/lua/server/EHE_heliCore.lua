@@ -9,6 +9,7 @@ local heatMap = require("EHE_heatMap.lua")
 local eHelicopter = require("EHE_mainVariables.lua")
 local mainCore = require("EHE_mainCore.lua")
 local presetCore = require("EHE_presetCore.lua")
+local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
 
 ---Do not call this function directly for new helicopters; use: getFreeHelicopter instead
 function eHelicopter:new()

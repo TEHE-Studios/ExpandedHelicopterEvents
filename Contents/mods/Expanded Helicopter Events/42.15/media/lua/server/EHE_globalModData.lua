@@ -1,10 +1,5 @@
----Credit to Konijima (Konijima#9279) for clearing up networking :thumbsup:
-
-require("EHE_onClientToServerCommands.lua")
 local util = require("EHE_util.lua")
-
 local modData = {}
-
 local ExpandedHeliEventsModData
 
 local function initExpandedHeliEventsModData(isNewGame)
