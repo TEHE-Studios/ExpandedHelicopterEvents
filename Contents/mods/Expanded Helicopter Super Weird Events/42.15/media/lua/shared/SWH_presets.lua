@@ -5,6 +5,26 @@ local SWH_subEvents = require("SWH_presetSubEvents.lua")
 
 eHelicopter_PRESETS = eHelicopter_PRESETS or {}
 
+
+eHelicopter_PRESETS["superWeirdEvents"] = {
+	presetRandomSelection = {"Spiffocopter",2,"UFO",3,"IRS",3,"TISCreamery",3,"AttackOfTheStrippers",1,"SandyClaws",1},
+	forScheduling = true,
+	eventSpawnWeight = 5,
+	eventStartDayFactor = 0,
+	eventCutOffDayFactor = 1,
+}
+
+eHelicopter_PRESETS["superWeirdEventsCopyrighted"] = {
+	inherit = {"superWeirdEvents"},
+	presetRandomSelection = {"BuffCorrell",1,"Helikopter",1},
+	forScheduling = true,
+	eventSpawnWeight = 5,
+	eventStartDayFactor = 0,
+	eventCutOffDayFactor = 1,
+}
+
+
+
 eHelicopter_PRESETS["Spiffocopter"] = {
 	presetProgression = {
 		["Spiffocopter_inviteOnly"] = 0,
@@ -25,11 +45,7 @@ eHelicopter_PRESETS["Spiffocopter"] = {
 		{ outfit="SpiffoBoss", spawn=10, female=0 },
 		{ outfit="SpiffoBoss", spawn=1, female=0 },
 	},
-	forScheduling = true,
-	eventSpawnWeight = 1,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0,
-	eventCutOffDayFactor = 1,
 }
 
 eHelicopter_PRESETS["Spiffocopter_inviteOnly"] = {
@@ -59,16 +75,11 @@ eHelicopter_PRESETS["UFO"] = {
 	eventSoundEffects = {
 		["flightSound"] = "AlienUFOFlight"
 	},
-	forScheduling = true,
-	eventSpawnWeight = 2,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0,
-	eventCutOffDayFactor = 1,
 }
 
 eHelicopter_PRESETS["UFO_noHoverBackEnd_DoNotUse"] = {
 	doNotListForStreamerIntegration = true,
-	forScheduling = false,
 	crew = {
 		{ outfit="AlienTourist", female=0 },
 		{ outfit="AlienTourist", spawn=10, female=0 },
@@ -80,7 +91,6 @@ eHelicopter_PRESETS["UFO_noHover"] = {
 	inherit = {"UFO", "UFO_noHoverBackEnd_DoNotUse"},
 	presetRandomSelection = {"UFOTourists",4,"UFORednecks",1,"UFOFratBoys",1,},
 	hoverOnTargetDuration = false,
-	forScheduling = false,
 }
 
 eHelicopter_PRESETS["UFO_stealCow"] = {
@@ -89,7 +99,6 @@ eHelicopter_PRESETS["UFO_stealCow"] = {
 	hostilePreference = "IsoAnimal",
 	hostilePredicate = subEvents.hostilePredicateCow,
 	addedFunctionsToEvents = {["OnAttack"] = SWH_subEvents.abductCow},
-	forScheduling = false,
 
 	eventSoundEffects = {
 		["attackSingle"] = "alienShot",
@@ -170,17 +179,12 @@ eHelicopter_PRESETS["IRS"] = {
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	announcerVoice = "IRS",
-	forScheduling = true,
-	eventSpawnWeight = 4,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0,
-	eventCutOffDayFactor = 1,
 }
 
 eHelicopter_PRESETS["IRS_noHover"] = {
 	inherit = {"IRS"},
 	hoverOnTargetDuration = false,
-	forScheduling = false,
 }
 
 eHelicopter_PRESETS["IRS_Wave1"] = {
@@ -254,11 +258,7 @@ eHelicopter_PRESETS["TISCreamery"] = {
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	scrapAndParts = false,
-	forScheduling = true,
-	eventSpawnWeight = 2,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventStartDayFactor = 0,
-	eventCutOffDayFactor = 1,
 }
 
 eHelicopter_PRESETS["TISCreamery_Licks"] = {
@@ -287,11 +287,7 @@ eHelicopter_PRESETS.survivors.dropPackages = {"SurvivorSupplyDrop","SurvivorSupp
 
 eHelicopter_PRESETS["Helikopter"] = {
 	inherit = {"military_UH1H_attack_all"},
-	forScheduling = true,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventCutOffDayFactor = 1,
-	eventSpawnWeight = 1,
-	eventStartDayFactor = 0,
 	callsigns = {"Helikopter"},
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "Helikopter" },
@@ -322,16 +318,12 @@ eHelicopter_PRESETS["SandyClaws"] = {
 		["attackLooped"] = "eHeliM16GunfireSingle",
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
-	forScheduling = true,
-	eventCutOffDayFactor = 1,
-	eventSpawnWeight = 3,
-	eventStartDayFactor = 0,
+	eventSpawnWeight = 5,
 	eventSpecialDates = { systemDates = {{12}}, inGameDates = {{12,20}, {12,25}}}
 }
 eHelicopter_PRESETS["SandyClaws_noHover"] = {
 	inherit = {"SandyClaws"},
 	hoverOnTargetDuration = false,
-	forScheduling = false,
 }
 
 
@@ -361,17 +353,12 @@ eHelicopter_PRESETS["AttackOfTheStrippers"] = {
 		["flightSound"] = { "eMiliHeli", "assBlastUSA" },
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
-	forScheduling = true,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventCutOffDayFactor = 1,
-	eventSpawnWeight = 2,
-	eventStartDayFactor = 0,
 	eventSpecialDates = { systemDates = {{12}}, inGameDates = {{12,20}, {12,31}}}
 }
 eHelicopter_PRESETS["AttackOfTheStrippers_noHover"] = {
 	inherit = {"AttackOfTheStrippers"},
 	hoverOnTargetDuration = false,
-	forScheduling = false,
 }
 
 
@@ -399,10 +386,6 @@ eHelicopter_PRESETS["BuffCorrell"] = {
 		["flightSound"] = { "ePropPlane", "buffcorrell" },
 	},
 
-	forScheduling = true,
 	markerColor = {r=0.96,g=0.21,b=0.78},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0,
-	eventSpawnWeight = 2,
 	radioChatter = "AEBS_buffcorrell"
 } 

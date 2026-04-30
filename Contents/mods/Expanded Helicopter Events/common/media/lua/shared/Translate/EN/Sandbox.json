@@ -24,6 +24,8 @@
     "Sandbox_ExpandedHeli_EventSurvivor_tooltip": "How frequent survivor events occur.<br>Survivors will occasionally fly around scouting for supplies. Occurs later in the apocalypse.",
     "Sandbox_ExpandedHeli_EventDeserter": "Deserters",
     "Sandbox_ExpandedHeli_EventDeserter_tooltip": "How frequent deserter events occur.<br>Remnant army deserters will search for supplies and hone in on survivors for some entertainment. Occurs later in the apocalypse.",
+    "Sandbox_ExpandedHeli_EventDrones": "Drones",
+    "Sandbox_ExpandedHeli_EventDrones_tooltip": "How frequent drone events occur.",
     "Sandbox_ExpandedHeli_EventSamaritan": "Strangers",
     "Sandbox_ExpandedHeli_EventSamaritan_tooltip": "How frequent mysterious stranger events occur.<br>Mysterious strangers will linger in the area and resupply their scouts. Occurs later in the apocalypse.",
     "Sandbox_ExpandedHeli_StartDay": "Start Day",

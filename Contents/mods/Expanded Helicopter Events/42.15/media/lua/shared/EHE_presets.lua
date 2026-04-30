@@ -509,120 +509,96 @@ eHelicopter_PRESETS["survivors"] = {
 		{ outfit = "EHE_StrangerPilot", female = 0 },
 		{ outfit = "EHE_Stranger", spawn = 50, female = 0 },
 	},
+	eventSoundEffects = {
+		["flightSound"] = "eHelicopter",
+	},
 	forScheduling = true,
+	speed = 2.0,
     markerColor = {r=0.813, g=0.813, b=0.813},
-	eventSpawnWeight = 5,
+	eventSpawnWeight = 7,
 	dropPackages = {"SurvivorSupplyDrop"},
 	radioChatter = "AEBS_SurvivorCivilian",
 	callsigns = {"Refugee", "Survivor", "Wanderer", "Nomad"},
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
+	scrapItems = {"Base.ScrapMetal", 10},
 }
 
 -- Cops from Tennessee
 eHelicopter_PRESETS["survivors_Bell206_N720HP"] = {
-	speed = 2.0,
+	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N720HP"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N720HP"},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorCops",
 	callsigns = {"November-Seven-Two-Zero-Hotel-Papa", "Seven-Two-Zero", "Tennessee Bird"},
 }
 
 -- Cops from Indiana
 eHelicopter_PRESETS["survivors_Bell206_N95SP"] = {
-	speed = 2.0,
+	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N95SP"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N95SP"},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorCops",
 	callsigns = {"November-Nine-Five-Sierra-Papa", "Niner-Five", "Indiana Bird"},
 }
 
 -- Fleeing reporters
 eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
-	speed = 2.0,
+	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N177TV"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N177TV"},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
 	callsigns = {"November-One-Seven-Seven-Tango-Victor", "One-Seven-Seven", "News Bird"},
 }
 
 -- Fleeing reporters
 eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
-	speed = 2.0,
+	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N5740A"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
-	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N5740A"},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorNews",
 	callsigns = {"November-Five-Seven-Four-Zero-Alpha", "Five-Seven-Four-Zero", "News Hawk"},
 }
 
 -- Richlords fleeing
 eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
-	speed = 2.0,
+	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N120LH"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	eventSoundEffects = {
-		["flightSound"] = "eHelicopter",
-	},
 	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
 	scrapVehicles = {"Bell206SurvivalistTail"},
 	dropPackages = false,
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
 	radioChatter = "AEBS_SurvivorRich",
 	callsigns = {"November-One-Two-Zero-Lima-Hotel", "One-Two-Zero", "Executive Flight"},
 }
 
 -- Friendly now ex-soldiers trying to find safety, contrast to the deserters
 eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
-	speed = 2.0,
+	inherit = {"survivors"},
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
@@ -633,8 +609,6 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 		["flightSound"] = "eMiliHeli",
 	},
 	scrapVehicles = {"Bell206SurvivalistTail"},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorSoldiers",
 	callsigns = {"Echo-Three", "Delta-Seven", "Bravo-Two", "Alpha-Nine"},
@@ -642,6 +616,7 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 
 -- Taking off from nearby small airfields to ditch traffic
 eHelicopter_PRESETS["survivors_Cessna172"] = {
+	inherit = {"survivors"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", female = 0 },
 	},
@@ -650,10 +625,6 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 	eventSoundEffects = {
 		["flightSound"] = "eSmallPropPlane",
 	},
-	markerColor = {r=0.813, g=0.813, b=0.813},
-	eventCutOffDayFactor = 1,
-	eventStartDayFactor = 0.48,
-	eventSpawnWeight = 3,
 	callsigns = {"November-Four-Seven-Two-Charlie", "Cessna-One-Seven-Two", "Four-Seven-Two", "Small Bird"},
 }
 
