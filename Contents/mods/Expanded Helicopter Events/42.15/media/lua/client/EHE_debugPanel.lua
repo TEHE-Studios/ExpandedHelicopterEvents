@@ -1,21 +1,244 @@
 if isClient() and not getDebug() then return end
+if isServer() then return end
 
----Global test list to add onto.
---[[ EXAMPLE
-Events.OnGameBoot.Add(function()
-	--`LABEL TEXT` represents what will be placed on the button.
-	--`FUNCTION` represents a function. Arguments are optional.
-	EHE_DebugTests["LABEL TEXT"] = FUNCTION
-	EHE_DebugTests["LABEL TEXT"] = FUNCTION
-	EHE_DebugTests["LABEL TEXT"] = FUNCTION
-end)
---]]
 require("DebugUIs/DebugMenu/ISDebugMenu.lua")
 local util = require("EHE_util.lua")
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
 local clientCommands = require("EHE_onServerToClientCommands.lua")
 
 EHE_DebugTests = EHE_DebugTests or {}
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
+
+EHE_DebugTestWindow.TOGGLE_ALL_CRASH = false
+EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER = false
+EHE_DebugTestWindow.TOGGLE_SHOW_DONE = false
+
+EHE_DebugTestWindow.colors = {
+	DEFAULT = {r=0, g=0, b=0, a=1.0},
+	DEFAULT_HIGHLIGHT = {r=0.3, g=0.3, b=0.3, a=1.0},
+	RED = {r=0.5, g=0.0, b=0.0, a=0.9},
+	GREEN = {r=0.0, g=0.5, b=0.0, a=0.9},
+	RED_HIGHLIGHT = {r=0.75, g=0.0, b=0.0, a=0.9},
+	GREEN_HIGHLIGHT = {r=0.0, g=0.75, b=0.0, a=0.9},
+}
+
+
+function EHE_DebugTestWindow:ToggleShowDone()
+	if EHE_DebugTestWindow.TOGGLE_SHOW_DONE == true then
+		EHE_DebugTestWindow.TOGGLE_SHOW_DONE = false
+		self.backgroundColor = EHE_DebugTestWindow.colors.DEFAULT
+		self.backgroundColorMouseOver = EHE_DebugTestWindow.colors.DEFAULT_HIGHLIGHT
+	else
+		EHE_DebugTestWindow.TOGGLE_SHOW_DONE = true
+		self.backgroundColor = EHE_DebugTestWindow.colors.GREEN
+		self.backgroundColorMouseOver = EHE_DebugTestWindow.colors.GREEN_HIGHLIGHT
+	end
+	self.parent._dirty = true
+end
+
+function EHE_DebugTestWindow:ToggleAllCrash()
+	if EHE_DebugTestWindow.TOGGLE_ALL_CRASH == true then
+		EHE_DebugTestWindow.TOGGLE_ALL_CRASH = false
+		self.backgroundColor = EHE_DebugTestWindow.colors.DEFAULT
+		self.backgroundColorMouseOver = EHE_DebugTestWindow.colors.DEFAULT_HIGHLIGHT
+	else
+		EHE_DebugTestWindow.TOGGLE_ALL_CRASH = true
+		self.backgroundColor = EHE_DebugTestWindow.colors.GREEN
+		self.backgroundColorMouseOver = EHE_DebugTestWindow.colors.GREEN_HIGHLIGHT
+	end
+end
+
+function EHE_DebugTestWindow:ToggleMoveHeliCloser()
+	if EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER == true then
+		EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER = false
+		self.backgroundColor = EHE_DebugTestWindow.colors.DEFAULT
+		self.backgroundColorMouseOver = EHE_DebugTestWindow.colors.DEFAULT_HIGHLIGHT
+	else
+		EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER = true
+		self.backgroundColor = EHE_DebugTestWindow.colors.GREEN
+		self.backgroundColorMouseOver = EHE_DebugTestWindow.colors.GREEN_HIGHLIGHT
+	end
+end
+
+
+function EHE_DebugTestWindow.TemporaryTest()
+end
+
+function EHE_DebugTestWindow.printEHEIsoPlayers()
+	print("util.isoPlayers: ")
+	for playerObj, _ in pairs(util.isoPlayers) do
+		print(" - "..playerObj:getFullName().." - "..playerObj:getUsername())
+	end
+end
+
+function EHE_DebugTestWindow.SandboxVarsDUMP()
+	print(" - SandboxVars:")
+	local optionsSize = getSandboxOptions():getNumOptions()
+	for i = 1, optionsSize do
+		local option = getSandboxOptions():getOptionByIndex(i-1)
+		print(" --- "..tostring(option:getShortName()).." ("..tostring(option:getTableName())..")")
+	end
+end
+
+function EHE_DebugTestWindow.RTP_indent(n)
+	local text = ""
+	for i = 0, n do text = text.."   " end
+	return text
+end
+
+function EHE_DebugTestWindow.RecursiveTablePrint(object, nesting, every_other)
+	nesting = nesting or 0
+	local text = ""..EHE_DebugTestWindow.RTP_indent(nesting)
+	if type(object) == "table" then
+		local s = "{ \n"
+		for k, v in pairs(object) do
+			local items_print = k == "items"
+			if type(k) ~= "number" then k = '"'..k..'"' end
+			if (not every_other) or (every_other and (not (k % 2 == 0))) then
+				s = s..EHE_DebugTestWindow.RTP_indent(nesting+1)
+			end
+			s = s.."["..k.."] = "..EHE_DebugTestWindow.RecursiveTablePrint(v, nesting+1, items_print)..", "
+			if (not every_other) or (every_other and (k % 2 == 0)) then s = s.."\n" end
+		end
+		text = s.."\n"..EHE_DebugTestWindow.RTP_indent(nesting).."}"
+	else
+		text = tostring(object)
+	end
+	return text
+end
+
+function EHE_DebugTestWindow.checkSquare()
+	local player = getSpecificPlayer(0)
+	local square = player:getSquare()
+	if not square then print("square is null") return end
+	print("square:isOutside() : ", square:isOutside())
+	print("square:isSolidFloor() : ", square:isSolidFloor())
+	print("square:getRoomID()==-1 : ", square:getRoomID()==-1)
+	print("square:isSolid() : ", square:isSolid())
+	print("square:isSolidTrans() : ", square:isSolidTrans())
+	print("square:getZoneType() : ", square:getZoneType())
+
+	local zonePrint = ""
+	local zones = getWorld():getMetaGrid():getZonesAt(square:getX(), square:getY(), 0)
+	if zones then
+		for i = zones:size(), 1, -1 do
+			local zone = zones:get(i-1)
+			if zone then
+				zonePrint = zonePrint..zone:getType().."("..zone:getOriginalName()..")"..", ".."(d:"..zone:getZombieDensity()..")"
+			end
+		end
+	end
+	print("ZONE SCAN: ", zonePrint)
+end
+
+function EHE_DebugTestWindow.ZombRandTest(imax)
+	local results = {}
+	for i = 1, imax do
+		local testRand = (ZombRand(13)+1)/10
+		results[tostring(testRand)] = (results[tostring(testRand)] or 0) + 1
+	end
+	print("ZombRand:")
+	local output = ""
+	for k, v in pairs(results) do output = output..k.." ("..v.." times)\n" end
+	print(output)
+end
+
+function EHE_DebugTestWindow:CopySchedule()
+	local finalText = "SCHEDULE:\n"
+	local globalModData = clientCommands.get()
+	if globalModData and globalModData.EventsOnSchedule and #globalModData.EventsOnSchedule > 0 then
+		for i = 1, #globalModData.EventsOnSchedule do
+			local event = globalModData.EventsOnSchedule[i]
+			finalText = finalText.."["..i.."]"
+			for k, v in pairs(event) do finalText = finalText.."  "..k..":"..tostring(v) end
+			finalText = finalText.."\n"
+		end
+	end
+	print(finalText)
+	Clipboard.setClipboard(finalText)
+end
+
+function EHE_DebugTestWindow.launchHeliTest(presetID, player, moveCloser, crashIt)
+	moveCloser = moveCloser or EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER
+	crashIt = crashIt or EHE_DebugTestWindow.TOGGLE_ALL_CRASH
+	sendClientCommand("CustomDebugPanel", "launchHeliTest", {presetID=presetID, moveCloser=moveCloser, crashIt=crashIt})
+end
+
+function EHE_DebugTestWindow.CheckWeather()
+	local CM = getClimateManager()
+	print("--- CM:getWindIntensity: "..CM:getWindIntensity())
+	print("--- CM:getFogIntensity: "..CM:getFogIntensity())
+	print("--- CM:getRainIntensity: "..CM:getRainIntensity())
+	print("--- CM:getSnowIntensity: "..CM:getSnowIntensity())
+	print("--- CM:getIsThunderStorming:(b) "..tostring(CM:getIsThunderStorming()))
+	local willFly, impactOnFlightSafety = util.weatherImpact()
+	print("--- willFly: "..tostring(willFly).."   % to crash: "..impactOnFlightSafety*100)
+end
+
+function EHE_DebugTestWindow.ClearGlobalModData()
+	sendClientCommand("CustomDebugPanel", "clearGlobalModData", {})
+end
+
+function EHE_DebugTestWindow.eHeliEvents_SchedulerUnitTest()
+	sendClientCommand("CustomDebugPanel", "schedulerUnitTest", {})
+end
+
+function EHE_DebugTestWindow.getHumanoidsInFractalRange()
+	local player = getSpecificPlayer(0)
+	local fractalObjectsFound = isoRangeScan.getHumanoidsInFractalRange(player, 1, 2, "IsoZombie")
+	print("-----[ getHumanoidsInFractalRange ]-----")
+	for fractalIndex = 1, #fractalObjectsFound do
+		print(" "..fractalIndex..":  hostile count:"..#fractalObjectsFound[fractalIndex])
+	end
+end
+
+function EHE_DebugTestWindow.getHumanoidsInRange()
+	local player = getSpecificPlayer(0)
+	local objectsFound = isoRangeScan.getHumanoidsInRange(player, 1, "IsoZombie")
+	print("-----[ getHumanoidsInRange ]-----")
+	print(" objectsFound: ".." count: "..#objectsFound)
+	for i = 1, #objectsFound do
+		print(" "..i..":  "..tostring(objectsFound[i]:getClass()))
+	end
+end
+
+
+local testAllLines = {ALL_LINES={}, DELAYS={}, lastDemoTime=0}
+
+function EHE_DebugTestWindow.testAllLines()
+	if #testAllLines.ALL_LINES > 0 then
+		testAllLines.ALL_LINES = {}
+		testAllLines.DELAYS = {}
+		testAllLines.lastDemoTime = 0
+		getPlayer():Say("Cancelling testAllLines")
+		return
+	end
+	sendClientCommand("CustomDebugPanel", "getAnnouncerLines", {})
+end
+
+function EHE_DebugTestWindow.testAllLinesLOOP()
+	if #testAllLines.ALL_LINES > 0 and testAllLines.lastDemoTime < getTimeInMillis() then
+		local line = testAllLines.ALL_LINES[1]
+		local delay = testAllLines.DELAYS[1]
+		testAllLines.lastDemoTime = getTimeInMillis() + delay
+		getWorld():getFreeEmitter():playSound(line)
+		getPlayer():Say(line)
+		table.remove(testAllLines.ALL_LINES, 1)
+		table.remove(testAllLines.DELAYS, 1)
+	end
+end
+Events.OnTick.Add(EHE_DebugTestWindow.testAllLinesLOOP)
+
+local function onServerCommand(_module, _command, _data)
+	if _module ~= "CustomDebugPanel" then return end
+	if _command == "announcerLines" then
+		testAllLines.ALL_LINES = _data.lines or {}
+		testAllLines.DELAYS = _data.delays or {}
+		testAllLines.lastDemoTime = 0
+	end
+end
+Events.OnServerCommand.Add(onServerCommand)
+
 
 local COLOR_NORMAL = {r=0.90, g=0.90, b=0.90, a=0.90}
 local COLOR_TRIGGERED = {r=0.62, g=0.15, b=0.15, a=0.88}
@@ -68,7 +291,7 @@ function EHE_DebugTestWindow:render()
 	self.listbox.items = {}
 	self.listbox.selected = 1
 
-	local sorted = buildSortedEntries(events, CustomDebugPanel.TOGGLE_SHOW_DONE == true)
+	local sorted = buildSortedEntries(events, EHE_DebugTestWindow.TOGGLE_SHOW_DONE == true)
 	for _, entry in ipairs(sorted) do
 		self.listbox:addItem("[" .. entry.idx .. "]", entry.ev)
 	end
