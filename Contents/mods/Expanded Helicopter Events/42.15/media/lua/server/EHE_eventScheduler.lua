@@ -441,3 +441,5 @@ function eHeliScheduler.ScheduleNew(currentDay, currentHour, freqOverride, noPri
 		end
 	end
 end
+
+return eHeliScheduler
