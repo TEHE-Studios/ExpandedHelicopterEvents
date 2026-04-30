@@ -1,4 +1,4 @@
-local util = require "EHE_util"
+local util = require("EHE_util.lua")
 EHE_spawner = EHE_spawner or {}
 
 function EHE_spawner.spawn(sq, funcType, spawnThis, extraFunctions, extraParam, processSquare)

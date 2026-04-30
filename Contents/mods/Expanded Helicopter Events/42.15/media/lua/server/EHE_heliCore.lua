@@ -1,14 +1,14 @@
-local isoRangeScan = require "EHE_IsoRangeScan"
-local flareSystem = require "EHE_flares"
-local eventSoundHandler = require "EHE_sounds"
-local pseudoSquare = require "EHE_pseudoSquare"
-local announcerCore = require "EHE_announcersCore"
-local util = require "EHE_util"
-local modData = require "EHE_globalModData"
-local heatMap = require "EHE_heatMap"
-local eHelicopter = require "EHE_mainVariables"
-local mainCore = require "EHE_mainCore"
-
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
+local flareSystem = require("EHE_flares.lua")
+local eventSoundHandler = require("EHE_sounds.lua")
+local pseudoSquare = require("EHE_pseudoSquare.lua")
+local announcerCore = require("EHE_announcersCore.lua")
+local util = require("EHE_util.lua")
+local modData = require("EHE_globalModData.lua")
+local heatMap = require("EHE_heatMap.lua")
+local eHelicopter = require("EHE_mainVariables.lua")
+local mainCore = require("EHE_mainCore.lua")
+local presetCore = require("EHE_presetCore.lua")
 
 ---Do not call this function directly for new helicopters; use: getFreeHelicopter instead
 function eHelicopter:new()
@@ -566,7 +566,7 @@ function eHelicopter:formationInit()
 	--parse formationIDs for formation info, strings are IDs, following numbers are assumed values -- use false for skipped values
 	for key,value in pairs(self.formationIDs) do
 
-		if (type(value) == "string") and eHelicopter_PRESETS[value] then
+		if (type(value) == "string") and presetCore.PRESETS[value] then
 
 			--The chance this extra heli is spawned
 			local chance = self.formationIDs[key+1] or 100

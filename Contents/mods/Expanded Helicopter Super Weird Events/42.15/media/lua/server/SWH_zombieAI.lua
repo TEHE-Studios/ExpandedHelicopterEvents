@@ -1,6 +1,6 @@
 if isServer() then return end
 
-local isoRangeScan = require "EHE_IsoRangeScan"
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
 
 local eHelicopter_zombieAI = {}
 

@@ -10,9 +10,9 @@ Events.OnGameBoot.Add(function()
 	EHE_DebugTests["LABEL TEXT"] = FUNCTION
 end)
 --]]
-require "DebugUIs/DebugMenu/ISDebugMenu"
-local util = require "EHE_util"
-local clientCommands = require "EHE_onServerToClientCommands"
+require("DebugUIs/DebugMenu/ISDebugMenu.lua")
+local util = require("EHE_util.lua")
+local clientCommands = require("EHE_onServerToClientCommands.lua")
 
 EHE_DebugTests = EHE_DebugTests or {}
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
@@ -223,7 +223,7 @@ function EHE_DebugTestWindow:new(x, y, width, height)
 end
 
 
-require "DebugUIs/DebugMenu/ISDebugMenu"
+require("DebugUIs/DebugMenu/ISDebugMenu.lua")
 local ISDebugMenu_setupButtons = ISDebugMenu.setupButtons
 function ISDebugMenu:setupButtons()
 	self:addButtonInfo("EHE Debug Tests", function() EHE_DebugTestWindow.OnOpenPanel() end, "MAIN")

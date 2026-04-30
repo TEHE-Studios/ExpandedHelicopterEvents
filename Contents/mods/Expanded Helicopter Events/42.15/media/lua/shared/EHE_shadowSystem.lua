@@ -1,4 +1,4 @@
-require "EHE_util"
+require("EHE_util.lua")
 
 eventShadowHandler = {}
 eventShadowHandler.storedShadows = {}

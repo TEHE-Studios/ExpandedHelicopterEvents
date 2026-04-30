@@ -1,5 +1,5 @@
-local eheFlareSystem = require "EHE_flares.lua"
-local ehefillInventoryContainer = require "EHE_fillInventoryContainer.lua"
+local eheFlareSystem = require("EHE_flares.lua")
+local ehefillInventoryContainer = require("EHE_fillInventoryContainer.lua")
 
 EHE_Recipe = EHE_Recipe or {}
 

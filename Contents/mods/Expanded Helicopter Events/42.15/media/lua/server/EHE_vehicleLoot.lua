@@ -1,4 +1,4 @@
-require "Vehicles/VehicleDistributions.lua"
+require("Vehicles/VehicleDistributions.lua")
 
 local function applyLootBoxLoot()
 

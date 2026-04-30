@@ -1,4 +1,4 @@
-require "Camping/camping_fuel.lua"
+require("Camping/camping_fuel.lua")
 
 -- The value is the number of hours of fuel added to a fire.
 campingFuelType.NoticeFlyer = 5/60.0

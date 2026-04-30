@@ -1,5 +1,5 @@
-local util = require "EHE_util"
-local config = require "EHE_SI_config"
+local util = require("EHE_util.lua")
+local config = require("EHE_SI_config.lua")
 
 local keyPress = {}
 

@@ -1,5 +1,5 @@
-require "Camping/camping_fuel.lua"
-require "EHE_camping.lua"
+require("Camping/camping_fuel.lua")
+require("EHE_camping.lua")
 
 -- The value is the number of hours of fuel added to a fire.
 campingFuelType.TenFortyForm = 5/60.0

@@ -1,4 +1,4 @@
-local util = require "EHE_util"
+local util = require("EHE_util.lua")
 
 local eHelicopter = {}
 ---CHECK THE PRESETGUIDE FILE IN /SHARED/ FOR MORE INFORMATION

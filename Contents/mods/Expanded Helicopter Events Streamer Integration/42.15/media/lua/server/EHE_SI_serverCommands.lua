@@ -1,8 +1,9 @@
-require "EHE_SI_scheduleOverrides"
-local modData = require "EHE_globalModData"
-
-local config = require "EHE_SI_config"
-local util = require "EHE_util"
+require("EHE_SI_scheduleOverrides.lua")
+local modData = require("EHE_globalModData.lua")
+local config = require("EHE_SI_config.lua")
+local util = require("EHE_util.lua")
+local presetCore = require("EHE_presetCore.lua")
+local eHeliScheduler = require("EHE_eventScheduler.lua")
 
 local function onCommand(_module, _command, _player, _event)
 
@@ -20,7 +21,7 @@ local function onCommand(_module, _command, _player, _event)
 
                 local globalModData = modData.get()
                 for _,event in pairs(globalModData.EventsOnSchedule) do
-                    if (eHelicopter_PRESETS[event.preset]) and event.streamerTarget and event.streamerTarget==_event.streamerTarget then
+                    if (presetCore.PRESETS[event.preset]) and event.streamerTarget and event.streamerTarget==_event.streamerTarget then
                         if (event.startDay > latestEventDay) then
                             latestEventDay = event.startDay
                             latestEventHour = event.startTime
@@ -79,7 +80,7 @@ local function onCommand(_module, _command, _player, _event)
 
             if not _event.presetID or _event.presetID=="NONE" then return end
 
-            eHeliEvent_new(startDay, startTime, _event.presetID, _event.streamerTarget)
+            eHeliScheduler.new(startDay, startTime, _event.presetID, _event.streamerTarget)
         end
     end
 end

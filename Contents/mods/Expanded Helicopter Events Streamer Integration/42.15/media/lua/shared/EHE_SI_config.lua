@@ -1,4 +1,4 @@
-require "EHE_presets"
+local presetCore = require("EHE_presetCore.lua")
 
 local config = {}
 
@@ -15,7 +15,7 @@ config.allowedPresets = nil
 function config.fetchAllowedPresets()
 	if config.allowedPresets then return config.allowedPresets end
 	config.allowedPresets = {}
-	for presetID,presetVariables in pairs(eHelicopter_PRESETS) do
+	for presetID,presetVariables in pairs(presetCore.PRESETS) do
 		if presetVariables.doNotListForStreamerIntegration~=true then
 			table.insert(config.allowedPresets, presetID)
 		end

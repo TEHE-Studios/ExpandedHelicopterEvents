@@ -1,13 +1,13 @@
-require "EHE_heliCore"
-local eHelicopter = require "EHE_mainVariables"
-require "EHE_spawner"
-local util = require "EHE_util"
-local modData = require "EHE_globalModData"
+require("EHE_heliCore.lua")
+local eHelicopter = require("EHE_mainVariables.lua")
+require("EHE_spawner.lua")
+local util = require("EHE_util.lua")
+local modData = require("EHE_globalModData.lua")
 --Heli goes down
 
-local eventSoundHandler = require "EHE_sounds"
-local pseudoSquare = require "EHE_pseudoSquare"
-
+local eventSoundHandler = require("EHE_sounds.lua")
+local pseudoSquare = require("EHE_pseudoSquare.lua")
+local presetCore = require("EHE_presetCore.lua")
 
 function eHelicopter:crash()
 
@@ -104,7 +104,7 @@ function eHelicopter:spawnDeadCrew(x, y, z)
 	z = z or heliZ
 
 	local onSpawnCrewEvents = {"applyDeathOrCrawlerToCrew"}
-	local preset = eHelicopter_PRESETS[self.currentPresetID]
+	local preset = presetCore.PRESETS[self.currentPresetID]
 	if preset then
 		local presetFuncs = preset.addedFunctionsToEvents
 		if presetFuncs then

@@ -1,5 +1,5 @@
-local config = require "EHE_SI_config"
+local config = require("EHE_SI_config.lua")
 Events.OnGameBoot.Add(config.apply)
 
-local keyPress = require "EHE_SI_keyPress.lua"
+local keyPress = require("EHE_SI_keyPress.lua")
 Events.OnKeyPressed.Add(keyPress.OnKeyPressed)

@@ -1,4 +1,4 @@
-local util = require "EHE_util"
+local util = require("EHE_util.lua")
 
 --Overrides vanilla helicopter frequency on game boot
 local function HelicopterSandboxOptions(EVENT)

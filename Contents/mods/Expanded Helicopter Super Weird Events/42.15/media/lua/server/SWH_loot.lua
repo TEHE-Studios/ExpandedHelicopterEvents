@@ -1,4 +1,4 @@
-require "Vehicles/VehicleDistributions.lua"
+require("Vehicles/VehicleDistributions.lua")
 
 -- pull the vehicle distributions into a local table
 local distributionTable = VehicleDistributions[1]

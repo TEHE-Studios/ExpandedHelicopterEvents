@@ -1,9 +1,9 @@
 if isClient() then return end
 
-require "EHE_globalModData"
-require "EHE_mainVariables"
-local util = require "EHE_util"
-require "EHE_presets"
+require("EHE_globalModData.lua")
+local eHelicopter = require("EHE_mainVariables.lua")
+local util = require("EHE_util.lua")
+local presetCore = require("EHE_presetCore.lua")
 
 EHE_spawner = EHE_spawner or {}
 
@@ -29,7 +29,7 @@ function EHE_spawner.setDictionary()
 	EHE_spawner.functionDictionary.applyParachuteToCarePackage = util.applyParachuteToCarePackage
 	EHE_spawner.functionDictionary.applyCrashDamageToWorld = util.applyCrashDamageToWorld
 
-	for presetID,presetVars in pairs(eHelicopter_PRESETS) do
+	for presetID,presetVars in pairs(presetCore.PRESETS) do
 		local presetAddedFunc = presetVars["addedFunctionsToEvents"]
 		if presetAddedFunc then
 			for eventID,func in pairs(presetAddedFunc) do
@@ -41,7 +41,7 @@ function EHE_spawner.setDictionary()
 end
 
 
-local targetSquareOnLoad = require "!_TargetSquare_OnLoad"
+local targetSquareOnLoad = require("!_TargetSquare_OnLoad.lua")
 function EHE_spawner.addCommand()
 	targetSquareOnLoad.instance.OnLoadCommands.spawn = function(square, myCommand)
 		EHE_spawner.spawn(square, myCommand.funcType, myCommand.spawnThis, myCommand.extraFunctions, myCommand.extraParam, myCommand.processSquare) end

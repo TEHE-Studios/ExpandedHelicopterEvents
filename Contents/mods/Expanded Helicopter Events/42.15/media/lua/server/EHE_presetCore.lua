@@ -1,15 +1,29 @@
-local eHelicopter = require "EHE_mainVariables"
-local modData = require "EHE_globalModData"
-local mainCore = require "EHE_mainCore"
-local util = require "EHE_util"
+local eHelicopter = require("EHE_mainVariables.lua")
+local modData = require("EHE_globalModData.lua")
+local mainCore = require("EHE_mainCore.lua")
+local util = require("EHE_util.lua")
+
+local presetCore = {}
+
+presetCore.PRESETS = {}
+
+function presetCore.registerPreset(ID,table)
+	presetCore.PRESETS[ID] = table
+end
+
+function presetCore.alterSpecificParameter(ID,param,value)
+	if not presetCore.PRESETS[ID] then print("ERROR: preset ", ID, "not found - attempted to set", param, "to ", tostring(value)) return end
+	if not presetCore.PRESETS[ID][param] then print("ERROR: param ", param, " for preset ", ID, "not found - attempted to set to ", tostring(value)) return end
+	presetCore.PRESETS[ID][param] = value
+end
 
 ---@param table table
-function eHelicopter.recursiveTableCopy(table)
+function presetCore.recursiveTableCopy(table)
 	local tmpTable = {}
 
 	for k,v in pairs(table) do
 		if type(v) == "table" then
-			tmpTable[k] = eHelicopter.recursiveTableCopy(v)
+			tmpTable[k] = presetCore.recursiveTableCopy(v)
 		else
 			tmpTable[k] = v
 		end
@@ -21,7 +35,7 @@ end
 
 
 ---@param tableToLoadFrom table
-function eHelicopter:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
+function presetCore:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
 	if not tableToLoadFrom then return end
 	--[DEBUG]] print("-- loadVarsFrom: "..DEBUG_ID)
 	--[DEBUG]] local debugPrint = ""
@@ -34,7 +48,7 @@ function eHelicopter:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
 			--tables needs to be copied piece by piece to avoid direct references links
 			if type(newValue) == "table" then
 				--[DEBUG]] debugPrint = debugPrint..("--- "..var.." is a table (#"..#newValue.."); generating copy:\n")
-				self[var] = eHelicopter.recursiveTableCopy(newValue)
+				self[var] = presetCore.recursiveTableCopy(newValue)
 			else
 				--[DEBUG]] debugPrint = debugPrint..("-- "..var..": "..tostring(newValue).."\n")
 				self[var] = newValue
@@ -45,7 +59,7 @@ function eHelicopter:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
 end
 
 
-function eHelicopter:randomSelectPreset(preset)
+function presetCore:randomSelectPreset(preset)
 	local selection = preset.presetRandomSelection
 	local pool = {}
 
@@ -74,11 +88,11 @@ function eHelicopter:randomSelectPreset(preset)
 
 	print(" -- randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
 
-	return eHelicopter_PRESETS[choice]
+	return presetCore.PRESETS[choice]
 end
 
 
-function eHelicopter:progressionSelectPreset(preset)
+function presetCore:progressionSelectPreset(preset)
 	local pp = preset.presetProgression
 	if pp then
 
@@ -101,13 +115,13 @@ function eHelicopter:progressionSelectPreset(preset)
 		end
 		if presetIDTmp then
 			print(" -- progressionSelectPreset:  selection: "..presetIDTmp)
-			return eHelicopter_PRESETS[presetIDTmp]
+			return presetCore.PRESETS[presetIDTmp]
 		end
 	end
 end
 
 
-function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
+function presetCore:recursivePresetCheck(preset, iteration, recursiveID)
 	iteration = iteration or 0
 	--Load preset vars
 	self:loadVarsFrom(preset, "presetLoad:"..tostring(recursiveID))
@@ -120,7 +134,7 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 			preset = randSelect
 
 			local presetID
-			for id,vars in pairs(eHelicopter_PRESETS) do
+			for id,vars in pairs(presetCore.PRESETS) do
 				if vars == preset then
 					presetID = id
 				end
@@ -136,7 +150,7 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 		else
 			preset = progressSelect
 			local presetID
-			for id,vars in pairs(eHelicopter_PRESETS) do
+			for id,vars in pairs(presetCore.PRESETS) do
 				if vars == preset then
 					presetID = id
 				end
@@ -149,7 +163,7 @@ function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
 
 	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
 		local presetID
-		for id,vars in pairs(eHelicopter_PRESETS) do
+		for id,vars in pairs(presetCore.PRESETS) do
 			if vars == preset then
 				presetID = id
 			end
@@ -165,13 +179,13 @@ end
 
 
 ---@param ID string
-function eHelicopter:loadPreset(ID)
+function presetCore:loadPreset(ID)
 
 	if not ID then
 		return
 	end
 
-	local preset = eHelicopter_PRESETS[ID]
+	local preset = presetCore.PRESETS[ID]
 	local masterID = ID
 
 	if not preset then
@@ -180,10 +194,10 @@ function eHelicopter:loadPreset(ID)
 
 	--eventSoundHandler:stopAllHeldEventSounds(self)
 	--[DEBUG]] print("\n------------[loadPreset:"..ID.."]------------")
-	self:loadVarsFrom(eHelicopter_initialVars, "initialVars")
+	self:loadVarsFrom(eHelicopter.initialVars, "initialVars")
 	if preset.inherit then
 		for k,inheritedPresetID in pairs(preset.inherit) do
-			local presetFound = eHelicopter_PRESETS[inheritedPresetID]
+			local presetFound = presetCore.PRESETS[inheritedPresetID]
 			if presetFound then
 				self:loadVarsFrom(presetFound, "presetInherited")
 			end
@@ -191,8 +205,8 @@ function eHelicopter:loadPreset(ID)
 	end
 	preset = self:recursivePresetCheck(preset, nil, masterID)
 	--reset other vars not included with initialVars
-	self:loadVarsFrom(eHelicopter_temporaryVariables, "temporaryVars")
-	for id,vars in pairs(eHelicopter_PRESETS) do
+	self:loadVarsFrom(eHelicopter.temporaryVariables, "temporaryVars")
+	for id,vars in pairs(presetCore.PRESETS) do
 		if vars == preset then
 			ID = id
 		end
@@ -207,3 +221,5 @@ function eHelicopter:loadPreset(ID)
 	print("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=")
 	--]]
 end
+
+return presetCore

@@ -1,5 +1,5 @@
-local flareSystem = require "EHE_flares"
---local heatMap = require "ExpandedHelicopter_HeatMap" --/server/
+local flareSystem = require("EHE_flares.lua")
+--local heatMap = require("ExpandedHelicopter_HeatMap.lua") --/server/
 
 local heatMap = {}
 

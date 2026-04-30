@@ -1,6 +1,6 @@
-local util = require "EHE_util"
-require "EHE_eventMarkerHandler"
-require "EHE_spawner"
+local util = require("EHE_util.lua")
+require("EHE_eventMarkerHandler.lua")
+require("EHE_spawner.lua")
 
 local subEvents = {}
 
@@ -298,7 +298,7 @@ end
 --Waiters  7da39ab5-9ddc-4590-8009-f4c148bc5dd6
 --Walkers  c167d1e0-c077-4ee5-b353-88b374de193d
 --Wedding  e42fc351-dd10-4a0c-a154-b383cef3b987
-require "BanditServerSpawner.lua"
+require("BanditServerSpawner.lua")
 
 function subEvents.spawnNPCs(heli)
 

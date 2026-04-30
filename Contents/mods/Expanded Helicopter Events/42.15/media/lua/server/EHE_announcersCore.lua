@@ -1,4 +1,4 @@
-local eventSoundHandler = require "EHE_sounds"
+local eventSoundHandler = require("EHE_sounds.lua")
 
 local announcerCore = {}
 

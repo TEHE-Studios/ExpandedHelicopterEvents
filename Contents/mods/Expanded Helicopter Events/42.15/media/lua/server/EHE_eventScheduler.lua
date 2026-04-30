@@ -1,29 +1,49 @@
-local eHelicopter = require "EHE_mainVariables"
-local modData = require "EHE_globalModData"
-local util = require "EHE_util"
-local mainCore = require "EHE_heliCore"
-require "EHE_presets"
+local eHelicopter = require("EHE_mainVariables.lua")
+local modData = require("EHE_globalModData.lua")
+local util = require("EHE_util.lua")
+local mainCore = require("EHE_heliCore.lua")
+local presetCore = require("EHE_presetCore.lua")
+
+local eHeliScheduler = {}
 
 
 --- Could look into utilizing the fact that days are tracked in float
-local lastTickHour = -1
-local function eHeliEvent_OnHour()
+eHeliScheduler.lastTickHour = -1
+function eHeliScheduler.OnHour()
 	local gameTime = getGameTime()
 	local currentHour = gameTime:getHour()
-	if currentHour ~= lastTickHour then
-		lastTickHour = currentHour
-		eHeliEvent_ScheduleNew()
-		eHeliEvent_Loop()
+	if currentHour ~= eHeliScheduler.lastTickHour then
+		eHeliScheduler.lastTickHour = currentHour
+		eHeliScheduler.ScheduleNew()
+		eHeliScheduler.Loop()
 	end
 end
 
-if not isClient() then Events.OnTick.Add(eHeliEvent_OnHour) end
+
+-- parses through scheduled events and engages them
+function eHeliScheduler.Loop()
+	local gameTime = getGameTime()
+	local globalModData = modData.get()
+	local worldDay = util.getWorldAgeDays()
+	local currentHour = gameTime:getHour()
+	local events = globalModData.EventsOnSchedule
+
+	for eventID, event in pairs(events) do
+		if event.triggered or (not presetCore.PRESETS[event.preset]) then
+		elseif (event.startDay <= worldDay) and (event.startTime == currentHour) then
+			if presetCore.PRESETS[event.preset] then
+				print(" \[EHE\]: SCHEDULED-LAUNCH INFO:  ["..eventID.."] - day:"..tostring(event.startDay).." time:"..tostring(event.startTime).." id:"..tostring(event.preset).." done:"..tostring(event.triggered))
+				eHeliScheduler.engage(eventID)
+			end
+		end
+	end
+end
 
 
 ---@param startDay number Day scheduled for start of this event
 ---@param startTime number Hour scheduled for the start of this event
 ---@param preset string Name of preset found in PRESETS
-function eHeliEvent_new(startDay, startTime, preset)
+function eHeliScheduler.new(startDay, startTime, preset)
 	if (not startDay) or (not startTime) then return end
 
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
@@ -35,7 +55,7 @@ end
 
 
 ---@param ID number position in "EventsOnSchedule"
-function eHeliEvent_engage(ID)
+function eHeliScheduler.engage(ID)
 
 	local globalModData = modData.get()
 	local eHeliEvent = globalModData.EventsOnSchedule[ID]
@@ -46,7 +66,6 @@ function eHeliEvent_engage(ID)
 		triggerEvent("EHE_ServerModDataReady", false)
 		return
 	end
-
 
 	local willFly,_ = util.weatherImpact()
 	local foundTarget = eHelicopter:findTarget(nil, "eHeliEvent_engage")
@@ -69,7 +88,7 @@ function eHeliEvent_engage(ID)
 			print("[EHE] engage: no free helicopter available")
 		end
 	elseif not willFly and not frequencyDisabled then
-		local selectedPreset = eHelicopter_PRESETS[eHeliEvent.preset]
+		local selectedPreset = presetCore.PRESETS[eHeliEvent.preset]
 		local flightHours = (selectedPreset and selectedPreset.flightHours) or eHelicopter.flightHours
 		local rawNewTime = eHeliEvent.startTime + 3
 
@@ -85,11 +104,12 @@ function eHeliEvent_engage(ID)
 end
 
 
-local eventsForScheduling
-local function eHeliEvents_setEventsForScheduling()
-	if not eventsForScheduling then
-		eventsForScheduling = {}
-		for presetID, presetVars in pairs(eHelicopter_PRESETS) do
+eHeliScheduler.eventsForScheduling = nil
+
+function eHeliScheduler.setEventsForScheduling()
+	if not eHeliScheduler.eventsForScheduling then
+		eHeliScheduler.eventsForScheduling = {}
+		for presetID, presetVars in pairs(presetCore.PRESETS) do
 			local forScheduling = presetVars.forScheduling
 
 			if forScheduling then
@@ -98,14 +118,14 @@ local function eHeliEvents_setEventsForScheduling()
 				if presetFreq and presetFreq==1 then forScheduling = false end
 			end
 
-			if forScheduling then table.insert(eventsForScheduling, presetID) end
+			if forScheduling then table.insert(eHeliScheduler.eventsForScheduling, presetID) end
 		end
-		print("[EHE] eventsForScheduling built: "..#eventsForScheduling.." presets")
+		print("[EHE] eventsForScheduling built: "..#eHeliScheduler.eventsForScheduling.." presets")
 	end
 end
 
 
-local function eHeliEvents_getLastScheduledApocDay()
+function eHeliScheduler.getLastScheduledApocDay()
 	local globalModData = modData.get()
 	local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
 	local lastEventDay = nil
@@ -121,7 +141,7 @@ end
 
 ---@param fromApocDay number start of range in apoc days (inclusive)
 ---@param toApocDay number end of range in apoc days (inclusive)
-local function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
+function eHeliScheduler.prefillSchedule(fromApocDay, toApocDay)
 	local globalModData = modData.get()
 	local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
 	local startApocDay = math.max(math.floor(fromApocDay), math.floor(daysBeforeApoc + util.getWorldAgeDays()))
@@ -131,7 +151,7 @@ local function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
 	for apocDay = startApocDay, toApocDay do
 		local simDay = apocDay - daysBeforeApoc
 		for hr = 1, 24 do
-			eHeliEvent_ScheduleNew(simDay, hr, nil, true)
+			eHeliScheduler.ScheduleNew(simDay, hr, nil, true)
 		end
 	end
 
@@ -140,9 +160,9 @@ local function eHeliEvents_prefillSchedule(fromApocDay, toApocDay)
 end
 
 
-local function eHeliEvents_OnGameStart()
+function eHeliScheduler.OnGameStart()
 	local globalModData = modData.get()
-	eHeliEvents_setEventsForScheduling()
+	eHeliScheduler.setEventsForScheduling()
 	globalModData.DaysBeforeApoc = globalModData.DaysBeforeApoc or util.getDaysSinceApoc()
 	globalModData.DayOfLastCrash = globalModData.DayOfLastCrash or util.getWorldAgeDays()
 	if not globalModData.EventsOnSchedule then
@@ -153,25 +173,25 @@ local function eHeliEvents_OnGameStart()
 	local duration = SandboxVars.ExpandedHeli.SchedulerDuration or 90
 	local daysBeforeApoc = math.floor(globalModData.DaysBeforeApoc or 0)
 	local targetEnd = daysBeforeApoc + startDay + duration
-	local lastScheduledApocDay = eHeliEvents_getLastScheduledApocDay() or 0
+	local lastScheduledApocDay = eHeliScheduler.getLastScheduledApocDay() or 0
 
 	print("[EHE] OnGameStart: lastScheduledApocDay="..lastScheduledApocDay.." targetEnd="..targetEnd.." worldAge="..tostring(util.getWorldAgeDays()))
 
 	if lastScheduledApocDay < targetEnd then
 		print("[EHE] OnGameStart: schedule incomplete, prefilling")
-		eHeliEvents_prefillSchedule(daysBeforeApoc + startDay, targetEnd)
+		eHeliScheduler.prefillSchedule(daysBeforeApoc + startDay, targetEnd)
 	else
 		print("[EHE] OnGameStart: schedule up to date")
 	end
 
 	triggerEvent("EHE_ServerModDataReady", false)
 end
-Events.OnGameStart.Add(eHeliEvents_OnGameStart)
+
 
 
 ---@param targetDate table table of numbers: 1=month, 2=day
 ---@param expectedDates table table of dates (like above)
-local function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
+function eHeliScheduler.processSchedulerDates(targetDate, expectedDates)
 
 	if (type(targetDate)~="table") or (type(expectedDates)~="table") or (#targetDate<=0) or (#expectedDates<=0) then
 		return false
@@ -209,7 +229,7 @@ local function eHeliEvent_processSchedulerDates(targetDate, expectedDates)
 end
 
 
-local function eHeliEvent_determineContinuation()
+function eHeliScheduler.determineContinuation()
 	local continueMode = SandboxVars.ExpandedHeli.ContinueSchedulingEvents
 	-- 1=No, 2=All, 3=Late-Game
 
@@ -233,7 +253,7 @@ local function eHeliEvent_determineContinuation()
 end
 
 
-function eHeliEvent_FreqDictionary(freqID)
+function eHeliScheduler.FreqDictionary(freqID)
 	local freqIDtoActual = {
 		[1] = 0, -- Never
 		[2] = 1, -- Rare
@@ -246,13 +266,13 @@ function eHeliEvent_FreqDictionary(freqID)
 end
 
 
-function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
+function eHeliScheduler.ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 	local gameTime = getGameTime()
 	local globalModData = modData.get()
-	local continueScheduling, csLateGameOnly = eHeliEvent_determineContinuation()
+	local continueScheduling, csLateGameOnly = eHeliScheduler.determineContinuation()
 
 	if not currentDay then
-		local lastScheduledApocDay = eHeliEvents_getLastScheduledApocDay()
+		local lastScheduledApocDay = eHeliScheduler.getLastScheduledApocDay()
 		if lastScheduledApocDay then
 			local duration = SandboxVars.ExpandedHeli.SchedulerDuration or 90
 			local daysBeforeApoc = globalModData.DaysBeforeApoc or 0
@@ -264,7 +284,7 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 			print("[EHE] ScheduleNew hourly: daysIntoApoc="..string.format("%.1f",daysIntoApoc).." lastScheduledApocDay="..lastScheduledApocDay.." referenceDay="..referenceDay.." threshold="..extensionThreshold.." continueScheduling="..tostring(continueScheduling))
 			if continueScheduling and daysIntoApoc >= extensionThreshold then
 				print("[EHE] ScheduleNew: extending schedule by "..duration.." days")
-				eHeliEvents_prefillSchedule(lastScheduledApocDay + 1, lastScheduledApocDay + duration)
+				eHeliScheduler.prefillSchedule(lastScheduledApocDay + 1, lastScheduledApocDay + duration)
 			end
 			return
 		end
@@ -291,13 +311,13 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 
 	local options = {}
 
-	eHeliEvents_setEventsForScheduling()
+	eHeliScheduler.setEventsForScheduling()
 
-	if #eventsForScheduling <= 0 then print("[EHE] ScheduleNew: no schedulable events found") return end
+	if #eHeliScheduler.eventsForScheduling <= 0 then print("[EHE] ScheduleNew: no schedulable events found") return end
 
-	for _, presetID in pairs(eventsForScheduling) do
+	for _, presetID in pairs(eHeliScheduler.eventsForScheduling) do
 
-		local presetSettings = eHelicopter_PRESETS[presetID]
+		local presetSettings = presetCore.PRESETS[presetID]
 		if (not eventIDsScheduled[presetID]) and presetSettings and eHelicopter then
 
 			local sfRaw = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
@@ -308,14 +328,14 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 			if specialDatesObserved then
 				if specialDatesObserved.inGameDates then
 					local currentInGameDate = {gameTime:getMonth(), gameTime:getDay()}
-					if eHeliEvent_processSchedulerDates(currentInGameDate, specialDatesObserved.inGameDates) == true then
+					if eHeliScheduler.processSchedulerDates(currentInGameDate, specialDatesObserved.inGameDates) == true then
 						specialDatesInRange = true
 					end
 				end
 				if specialDatesObserved.systemDates then
 					local osDate = os.date("*t")
 					local currentSystemDate = {osDate.month, osDate.day}
-					if eHeliEvent_processSchedulerDates(currentSystemDate, specialDatesObserved.systemDates) == true then
+					if eHeliScheduler.processSchedulerDates(currentSystemDate, specialDatesObserved.systemDates) == true then
 						specialDatesInRange = true
 					end
 				end
@@ -323,7 +343,7 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 
 
 			local presetFreqID = SandboxVars.ExpandedHeli["Frequency_"..presetID]
-			local freq = eHeliEvent_FreqDictionary(presetFreqID)
+			local freq = eHeliScheduler.FreqDictionary(presetFreqID)
 
 			freq = freqOverride or freq
 
@@ -394,7 +414,7 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 
 		local selectedFreq = SandboxVars.ExpandedHeli["Frequency_"..selectedPresetID]
 		local insane = (freqOverride or selectedFreq) == 6
-		local selectedPreset = eHelicopter_PRESETS[selectedPresetID]
+		local selectedPreset = presetCore.PRESETS[selectedPresetID]
 		local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
 		local startDay, cutOffDay = mainCore.fetchStartDayAndCutOffDay(selectedPreset)
 		local iterations = insane and 10 or 1
@@ -412,33 +432,12 @@ function eHeliEvent_ScheduleNew(currentDay, currentHour, freqOverride, noPrint)
 
 			latestStartDay = math.max(nextStartDay, (latestStartDay or 0))
 
-			eHeliEvent_new(nextStartDay, startTime, selectedPresetID)
+			eHeliScheduler.new(nextStartDay, startTime, selectedPresetID)
 		end
 
 		if latestStartDay then
 			local pushVanillaDay = math.max(gameTime:getHelicopterDay1(), latestStartDay+30)
 			gameTime:setHelicopterDay(pushVanillaDay)
-		end
-	end
-end
-
-
-function eHeliEvent_Loop()
-
-	local gameTime = getGameTime()
-	local globalModData = modData.get()
-	local worldDay = util.getWorldAgeDays()
-	local currentHour = gameTime:getHour()
-	local events = globalModData.EventsOnSchedule
-
-	for eventID, event in pairs(events) do
-
-		if event.triggered or (not eHelicopter_PRESETS[event.preset]) then
-		elseif (event.startDay <= worldDay) and (event.startTime == currentHour) then
-			if eHelicopter_PRESETS[event.preset] then
-				print(" \[EHE\]: SCHEDULED-LAUNCH INFO:  ["..eventID.."] - day:"..tostring(event.startDay).." time:"..tostring(event.startTime).." id:"..tostring(event.preset).." done:"..tostring(event.triggered))
-				eHeliEvent_engage(eventID)
-			end
 		end
 	end
 end

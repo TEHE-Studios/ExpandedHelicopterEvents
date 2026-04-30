@@ -1,4 +1,4 @@
-require "EHE_recipeFunctions"
+require("EHE_recipeFunctions.lua")
 
 EHE_Recipe.supplyResults.spiffoBurgers = { ["Base.MeatPatty"] = 50, }
 EHE_Recipe.supplyResults.spiffoMerch = { ["Base.Tshirt_SpiffoDECAL"] = 10, ["Base.Spiffo"] = 6, }

@@ -3,11 +3,11 @@ LuaEventManager.AddEvent("EHE_ServerModDataReady")
 local function onServerModDataReady(isNewGame) sendServerCommand("EHE_ServerModData", "severModData_received", {}) end
 Events.EHE_ServerModDataReady.Add(onServerModDataReady)
 
-require "EHE_spawner"
-require "EHE_shadowSystem"
-local eheFlareSystem = require "EHE_flares"
-local heatMap = require "EHE_heatMap"
-local mainCore = require "EHE_mainCore"
+require("EHE_spawner.lua")
+require("EHE_shadowSystem.lua")
+local eheFlareSystem = require("EHE_flares.lua")
+local heatMap = require("EHE_heatMap.lua")
+local mainCore = require("EHE_mainCore.lua")
 
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)

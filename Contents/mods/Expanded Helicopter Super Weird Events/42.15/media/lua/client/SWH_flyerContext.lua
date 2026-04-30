@@ -1,4 +1,4 @@
-local paperContext = require "EHE_flyersContextMenu"
+local paperContext = require("EHE_flyersContextMenu.lua")
 
 paperContext.registerType("SWH.TenFortyForm")
 paperContext.registerType("SWH.SpiffoInvite")

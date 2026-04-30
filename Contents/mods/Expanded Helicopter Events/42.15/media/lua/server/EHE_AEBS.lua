@@ -1,7 +1,8 @@
-require "radio/ISWeatherChannel"
-local eHelicopter = require "EHE_mainVariables"
-local modData = require "EHE_globalModData"
-local util = require "EHE_util"
+require("radio/ISWeatherChannel.lua")
+local eHelicopter = require("EHE_mainVariables.lua")
+local modData = require("EHE_globalModData.lua")
+local util = require("EHE_util.lua")
+local presetCore = require("EHE_presetCore.lua")
 
 --- "loadThisAfter" was added to fix issues with Save Our Station
 Events.OnGameBoot.Add(function() Translator.loadFiles() end)
@@ -26,16 +27,15 @@ function WeatherChannel.FillBroadcast(_gametime, _bc)
 				if (not event.triggered) and (event.startDay <= util.getWorldAgeDays()) then
 					--pulls event's info to see if more lines can be added
 					local presetID = event.preset
+					local preset = presetCore.PRESETS[presetID]
+					if preset then
 
-					if eHelicopter_PRESETS[presetID] then
-
-						local radioChatter = eHelicopter_PRESETS[presetID].radioChatter or eHelicopter.radioChatter
-						local lineColor = eHelicopter_PRESETS[presetID].markerColor or { r=1.0, g=1.0, b=1.0 }
-						local callSigns = eHelicopter_PRESETS[presetID].callsigns
+						local radioChatter = preset.radioChatter or eHelicopter.radioChatter
+						local lineColor = preset.markerColor or { r=1.0, g=1.0, b=1.0 }
+						local callSigns = preset.callsigns
 						local callsign = callSigns and callSigns[ZombRand(#callSigns)+1] or "flight"
 
 						linesGoingOut[presetID] = {
-
 							line = string.format(getRadioText(radioChatter), callsign),
 							color = lineColor,
 						}

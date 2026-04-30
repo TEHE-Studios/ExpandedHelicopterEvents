@@ -1,12 +1,14 @@
 if isClient() and not getDebug() then return end
 
-require "EHE_debugPanel"
-local util = require "EHE_util"
-local modData = require "EHE_globalModData"
-local clientCommands = require "EHE_onServerToClientCommands"
-local isoRangeScan = require "EHE_IsoRangeScan"
-local announcerCore = require "EHE_announcersCore"
-require "EHE_mainVariables"
+require("EHE_debugPanel.lua")
+local util = require("EHE_util.lua")
+local modData = require("EHE_globalModData.lua")
+local clientCommands = require("EHE_onServerToClientCommands.lua")
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
+local announcerCore = require("EHE_announcersCore.lua")
+local presetCore = require("EHE_presetCore.lua")
+local eHelicopter = require("EHE_mainVariables.lua")
+local eHeliScheduler = require("EHE_eventScheduler.lua")
 
 CustomDebugPanel = CustomDebugPanel or {}
 CustomDebugPanel.TOGGLE_ALL_CRASH = false
@@ -36,7 +38,7 @@ Events.OnGameBoot.Add(function()
 	EHE_DebugTests["Show Done Events"] = CustomDebugPanel.ToggleShowDone
 
 	EHE_DebugTests["Launch"] = {}
-	for presetID, _ in pairs(eHelicopter_PRESETS) do
+	for presetID, _ in pairs(presetCore.PRESETS) do
 		EHE_DebugTests["Launch"][presetID] = function() CustomDebugPanel.launchHeliTest(presetID, getPlayer()) end
 	end
 end)
@@ -226,7 +228,7 @@ function CustomDebugPanel.eHeliEvents_SchedulerUnitTest()
 		globalModData.EventsOnSchedule = {}
 		for day = 0, 89 do
 			for hour = 0, 23 do
-				eHeliEvent_ScheduleNew(day, hour, freq, true)
+				eHeliScheduler.ScheduleNew(day, hour, freq, true)
 				for k, v in pairs(globalModData.EventsOnSchedule) do
 					if v.triggered then
 						globalModData.EventsOnSchedule[k] = nil

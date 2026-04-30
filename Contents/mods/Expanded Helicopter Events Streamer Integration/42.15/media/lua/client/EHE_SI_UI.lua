@@ -1,8 +1,8 @@
---require "ISUI/ISUIElement"
-require "ISUI/ISButton"
-require "ExpandedHelicopter12c_EHEGlobalModDataCLIENT"
-local util = require "EHE_util"
-local clientCommands = require "EHE_onServerToClientCommands"
+--require("ISUI/ISUIElement.lua")
+require("ISUI/ISButton.lua")
+require("ExpandedHelicopter12c_EHEGlobalModDataCLIENT.lua")
+local util = require("EHE_util.lua")
+local clientCommands = require("EHE_onServerToClientCommands.lua")
 
 local SCHEDULER_ICON = {
     TWITCH =    { COLOR = getTexture("media/textures/scheduleButtons/t_color.png"),

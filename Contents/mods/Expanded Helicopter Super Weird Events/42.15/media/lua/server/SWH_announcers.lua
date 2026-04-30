@@ -1,4 +1,4 @@
-local announcerCore = require "EHE_announcersCore"
+local announcerCore = require("EHE_announcersCore.lua")
 
 announcerCore:registerVoice("Spiffo", {
 	["LeaveOutOfRandomSelection"] = true,

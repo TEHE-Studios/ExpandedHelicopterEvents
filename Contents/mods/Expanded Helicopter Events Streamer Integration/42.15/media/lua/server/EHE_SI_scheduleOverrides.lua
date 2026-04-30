@@ -1,13 +1,14 @@
-require "EHE_eventScheduler"
-local eHelicopter = require "EHE_mainVariables"
-local util = require "EHE_util"
-local mainCore = require "EHE_heliCore"
-local modData = require "EHE_globalModData"
+local eHelicopter = require("EHE_mainVariables.lua")
+local util = require("EHE_util.lua")
+local mainCore = require("EHE_heliCore.lua")
+local modData = require("EHE_globalModData.lua")
 
-local config = require "EHE_SI_config"
+local config = require("EHE_SI_config.lua")
 
-local EHE_SI_eHeliEvent_ScheduleNew = eHeliEvent_ScheduleNew
-function eHeliEvent_ScheduleNew(...)
+local eHeliScheduler = require("EHE_eventScheduler.lua")
+
+local EHE_SI_eHeliEvent_ScheduleNew = eHeliScheduler.ScheduleNew
+function eHeliScheduler.ScheduleNew(...)
 
 	--print("EHE_SI_IntegrationOnly: ", config.checkValue("EHE_SI_IntegrationOnly"))
 	if config.checkValue("EHE_SI_IntegrationOnly") == false then
@@ -30,7 +31,7 @@ end
 
 --Engages specific eHeliEvent based on ID
 ---@param ID number position in "EventsOnSchedule"
-function eHeliEvent_engage(ID)
+function eHeliScheduler.engage(ID)
 
 	local globalModData = modData.get()
 	local eHeliEvent = globalModData.EventsOnSchedule[ID]
@@ -76,7 +77,7 @@ function eHeliEvent_engage(ID)
 end
 
 
-function eHeliEvent_new(startDay, startTime, preset, SI_Target)
+function eHeliScheduler.new(startDay, startTime, preset, SI_Target)
 	if (not startDay) or (not startTime) then return end
 
 	local newEvent = {["startDay"] = startDay, ["startTime"] = startTime, ["preset"] = preset, ["triggered"] = false}
@@ -89,5 +90,5 @@ function eHeliEvent_new(startDay, startTime, preset, SI_Target)
 	local globalModData = modData.get()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
 	triggerEvent("EHE_ServerModDataReady", false)
-	if SI_Target then eHeliEvent_Loop() end
+	if SI_Target then eHeliScheduler.Loop() end
 end

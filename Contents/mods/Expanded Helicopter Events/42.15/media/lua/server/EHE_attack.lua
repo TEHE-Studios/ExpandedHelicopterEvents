@@ -1,6 +1,6 @@
-local eHelicopter = require "EHE_mainVariables"
-local isoRangeScan = require "EHE_IsoRangeScan"
-local eventSoundHandler = require "EHE_sounds"
+local eHelicopter = require("EHE_mainVariables.lua")
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
+local eventSoundHandler = require("EHE_sounds.lua")
 
 local function compressTableOfNils(table)
 	local n = #table

@@ -1,5 +1,5 @@
-require "ISUI/ISUIElement"
-local util = require "EHE_util"
+require("ISUI/ISUIElement.lua")
+local util = require("EHE_util.lua")
 
 
 EHE_EventMarker = ISUIElement:derive("EHE_EventMarker")

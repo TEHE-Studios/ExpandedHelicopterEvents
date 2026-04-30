@@ -207,7 +207,7 @@ end
 function util.ageInventoryItem(item) if item and instanceof(item, "InventoryItem") then item:setAutoAge() end end
 
 
-local flareSystem = require "EHE_flares"
+local flareSystem = require("EHE_flares.lua")
 ---@param vehicle BaseVehicle
 function util.applyFlaresToEvent(vehicle)
 	if not vehicle then return end
@@ -304,7 +304,7 @@ function util.getOutsideSquareFromAbove(square)
 end
 
 
-local isoRangeScan = require "EHE_IsoRangeScan"
+local isoRangeScan = require("EHE_IsoRangeScan.lua")
 ---@param square IsoGridSquare
 function util.applyCrashDamageToWorld(square)
 	local squares = isoRangeScan.getIsoRange(square, 9, nil, true)

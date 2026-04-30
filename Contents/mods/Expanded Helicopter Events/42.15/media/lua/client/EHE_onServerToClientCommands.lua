@@ -1,6 +1,6 @@
-require "EHE_shadowSystem"
-require "EHE_eventMarkerHandler"
-local util = require "EHE_util"
+require("EHE_shadowSystem.lua")
+require("EHE_eventMarkerHandler.lua")
+local util = require("EHE_util.lua")
 
 local clientCommands = {}
 
@@ -228,7 +228,7 @@ end
 Events.OnPlayerUpdate.Add(eventMarkerHandler.updateForPlayer)
 
 
-local eheFlareSystem = require "EHE_flares"
+local eheFlareSystem = require("EHE_flares.lua")
 -- sendServerCommand(module, command, player, args) end -- to client
 local function onServerCommand(_module, _command, _data)
 

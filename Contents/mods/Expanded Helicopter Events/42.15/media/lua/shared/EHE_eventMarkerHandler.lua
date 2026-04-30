@@ -1,5 +1,5 @@
-require "EHE_eventMarkers"
-require "EHE_util"
+require("EHE_eventMarkers.lua")
+require("EHE_util.lua")
 
 eventMarkerHandler = {}
 eventMarkerHandler.markers = {} --[player] = {["id"]=marker}

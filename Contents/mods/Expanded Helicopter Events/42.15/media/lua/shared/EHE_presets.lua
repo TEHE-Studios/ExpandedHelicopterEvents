@@ -1,9 +1,8 @@
-eHelicopter_PRESETS = eHelicopter_PRESETS or {}
-
+local presetCore = require("EHE_presetCore.lua")
 local subEvents = require("EHE_presetSubEvents.lua")
 
 -- The military will warn the public, drop flyers, perform some evacuations, engage zombies, and later falter and disintegrate
-eHelicopter_PRESETS["military_nonhostile"] = {
+presetCore.registerPreset("military_nonhostile",{
 	announcerVoice = true,
 	forScheduling = true,
 	crew = {
@@ -36,16 +35,16 @@ eHelicopter_PRESETS["military_nonhostile"] = {
 		["military_UH1H_command_evac"] = 0.4194,
 		["military_UH1H_deserters"] = 0.4516,
 	}
-}
+})
 
 -- Basic fly over
-eHelicopter_PRESETS["military_UH1H_patrol"] = {
+presetCore.registerPreset("military_UH1H_patrol", {
 	inherit = {"military_nonhostile"},
 	callsigns = {"Eagle", "Falcon", "Hawk", "Raven", "Condor", "Vulture"},
-}
+})
 
 -- EmergencyFlyer QuarantineFlyer EvacuationFlyer NoticeFlyer PreventionFlyer
-eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
+presetCore.registerPreset("military_UH1H_patrol_emergency", {
 	inherit = {"military_nonhostile"},
 	dropItems = {["EHE.EmergencyFlyer"]=250},
 	dropPackages = {"FEMASupplyDrop"},
@@ -53,29 +52,29 @@ eHelicopter_PRESETS["military_UH1H_patrol_emergency"] = {
 	callsigns = {"Lifeline", "Guardian", "Samaritan", "Mercy", "Angel"},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_emergency", 25, {20,25}, "military_UH1H_patrol_emergency", 10, {20,25}},
-}
+})
 
 -- Basically the earlier version of the news helicopter
-eHelicopter_PRESETS["military_OH58A_recon_hover"] = {
+presetCore.registerPreset("military_OH58A_recon_hover", {
 	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	speed = 1.5,
 	crashType = false,
 	hoverOnTargetDuration = {200,400},
 	callsigns = {"Eye", "Shadow", "Watchdog", "Scout", "Lookout", "Overwatch"},
-}
+})
 
 -- Later stage announcement and flyer helicopter
-eHelicopter_PRESETS["military_UH1H_patrol_quarantine"] = {
+presetCore.registerPreset("military_UH1H_patrol_quarantine", {
 	inherit = {"military_nonhostile"},
 	dropItems = {["EHE.QuarantineFlyer"]=250},
 	announcerVoice = "FlyerChoppers",
 	formationIDs = {"military_UH1H_patrol_quarantine", 25, {20,25}, "military_UH1H_patrol_quarantine", 10, {20,25}},
 	callsigns = {"Quarantine", "Lockdown", "Containment", "Barrier", "Sentry"},
-}
+})
 
 -- Kiowa attacking zombies
-eHelicopter_PRESETS["military_UH1H_attack_cows"] = {
+presetCore.registerPreset("military_UH1H_attack_cows", {
 	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	crashType = false,
@@ -94,10 +93,10 @@ eHelicopter_PRESETS["military_UH1H_attack_cows"] = {
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Reaper", "Viper", "Talon", "Sabre", "Cobra", "Wasp"},
 	formationIDs = {"military_UH1H_attack_cows", 25, {12,17}, "military_UH1H_attack_cows", 10, {12,17}},
-}
+})
 
 -- Making passes to strafe and throwing out flyers
-eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
+presetCore.registerPreset("military_UH1H_attack_undead_evac", {
 	announcerVoice = false,
 	inherit = {"military_nonhostile"},
 	hostilePreference = "IsoZombie",
@@ -105,20 +104,20 @@ eHelicopter_PRESETS["military_UH1H_attack_undead_evac"] = {
 	callsigns = {"Dustoff", "Lifeline", "Rescue", "Angel", "Mercy"},
 	dropItems = {["EHE.EvacuationFlyer"]=250},
 	formationIDs = {"military_UH1H_attack_undead_evac", 25, {20,25}, "military_UH1H_attack_undead_evac", 10, {20,25}},
-}
+})
 
 -- Making passes to strafe zombies
-eHelicopter_PRESETS["military_UH1H_attack_undead"] = {
+presetCore.registerPreset("military_UH1H_attack_undead", {
 	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Thunder", "Lightning", "Storm", "Hammer", "Anvil", "Steel"},
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
-}
+})
 
 -- Last evacuations passing through (waiting for assets)
-eHelicopter_PRESETS["military_CH47_evac"] = {
+presetCore.registerPreset("military_CH47_evac", {
 	inherit = {"military_nonhostile"},
 	crew = {
 		{ outfit="EHE_HelicopterPilot", spawn=100, female=0 },
@@ -145,27 +144,27 @@ eHelicopter_PRESETS["military_CH47_evac"] = {
 		["flightSound"] = {"eMiliHeliCargo"}
 	},
 	callsigns = {"Dustoff", "Lifeline", "Exodus", "Haven", "Salvation"},
-}
+})
 
 -- Commanders are leaving, could fall out of the sky leaving something.
-eHelicopter_PRESETS["military_UH1H_command_evac"] = {
+presetCore.registerPreset("military_UH1H_command_evac", {
 	inherit = {"military_nonhostile"},
 	radioChatter = "AEBS_MilitaryLeaving",
 	announcerVoice = false,
 	callsigns = {"Stronghold", "Command", "Fortress", "Citadel", "Bastion"},
-}
+})
 
 -- Soldiers are now deserting, not specifically interested in the player. Setting up the late apocalypse faction and events.
-eHelicopter_PRESETS["military_UH1H_deserters"] = {
+presetCore.registerPreset("military_UH1H_deserters", {
 	inherit = {"military_nonhostile"},
 	crashType = false,
 	announcerVoice = false,
 	radioChatter = "AEBS_DesertersStarting",
 	callsigns = {"Saber", "Blackbeard", "Rogue", "Ghost", "Shadow"},
-}
+})
 
 -- The military will now begin shooting anyone they see
-eHelicopter_PRESETS["military_hostile"] = {
+presetCore.registerPreset("military_hostile", {
 	announcerVoice = true,
 	forScheduling = true,
 	crew = {
@@ -193,10 +192,10 @@ eHelicopter_PRESETS["military_hostile"] = {
 		["military_UH1H_attack_all"] = 0.2121,
 		["military_kiowa_attack_all"] = 0.3030,
 	}
-}
+})
 
 -- UH-1H strafing everything it sees
-eHelicopter_PRESETS["military_UH1H_attack_all"] = {
+presetCore.registerPreset("military_UH1H_attack_all", {
 	inherit = {"military_hostile"},
 	announcerVoice = false,
 	markerColor = {r=1.00, g=0.28, b=0.28},
@@ -208,10 +207,10 @@ eHelicopter_PRESETS["military_UH1H_attack_all"] = {
 	scrapVehicles = {"UH60GreenTail"},
 	radioChatter = "AEBS_HostileMilitary",
 	callsigns = {"Warlord", "Executioner", "Purge", "Reaper", "Cleanser", "Terminator"},
-}
+})
 
 -- Kiowa attacking everything
-eHelicopter_PRESETS["military_kiowa_attack_all"] = {
+presetCore.registerPreset("military_kiowa_attack_all", {
 	inherit = {"military_hostile"},
 	announcerVoice = false,
 	crashType = false,
@@ -228,10 +227,10 @@ eHelicopter_PRESETS["military_kiowa_attack_all"] = {
 	radioChatter = "AEBS_HostileMilitary",
 	callsigns = {"Reaper", "Executioner", "Hunter", "Predator", "Viper", "Scorpion"},
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
-}
+})
 
 -- Keep tabs on people without helicopters, each successive spotting of the player will add heat to the system
-eHelicopter_PRESETS["drones"] = {
+presetCore.registerPreset("drones", {
 	announcerVoice = false,
 	forScheduling = true,
 	crashType = false,
@@ -245,9 +244,9 @@ eHelicopter_PRESETS["drones"] = {
 		["drone_RQ2Pioneer_loiter"] = 0.0070,
 	},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
-}
+})
 
-eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
+presetCore.registerPreset("drone_RQ2Pioneer_flyover", {
 	inherit = {"drones"},
 	speed = 1.0,
 	shadow = false,
@@ -259,9 +258,9 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_flyover"] = {
 	eventSpawnWeight = 1,
 	crashType = false,
 	callsigns = {"Eye", "Overwatch", "Scout", "Watchdog"},
-}
+})
 
-eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
+presetCore.registerPreset("drone_RQ2Pioneer_loiter", {
 	inherit = {"drones"},
 	speed = 0.5,
 	shadow = false,
@@ -274,10 +273,10 @@ eHelicopter_PRESETS["drone_RQ2Pioneer_loiter"] = {
 	eventSpawnWeight = 1,
 	crashType = false,
 	callsigns = {"Shadow", "Sentinel", "Stalker", "Watcher"},
-}
+})
 
 -- Shift over to hostile events, player should flee and hide
-eHelicopter_PRESETS["air_raid"] = {
+presetCore.registerPreset("air_raid", {
 	doNotListForStreamerIntegration = true,
 	crashType = false,
 	shadow = false,
@@ -302,10 +301,10 @@ eHelicopter_PRESETS["air_raid"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_AirRaid",
 	callsigns = {"Warlord", "Command", "Central", "Control"},
-}
+})
 
 -- Jets get progressively more aggressive as the military falters
-eHelicopter_PRESETS["jets"] = {
+presetCore.registerPreset("jets", {
 	announcerVoice = false,
 	forScheduling = true,
 	crashType = false,
@@ -323,10 +322,10 @@ eHelicopter_PRESETS["jets"] = {
 	},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Viper", "Eagle", "Hornet", "Talon", "Bandit", "Striker"},
-}
+})
 
 -- Passing jet, mostly stirs up activity
-eHelicopter_PRESETS["jet_pass"] = {
+presetCore.registerPreset("jet_pass", {
 	speed = 15,
 	topSpeedFactor = 2,
 	flightVolume = 25,
@@ -342,9 +341,10 @@ eHelicopter_PRESETS["jet_pass"] = {
 	radioChatter = "AEBS_JetPass",
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Eagle", "Falcon", "Hawk", "Talon"},
-}
+})
+
 -- Passing jet, but louder to kick up activity along with the bombing
-eHelicopter_PRESETS["jet_pass_louder"] = {
+presetCore.registerPreset("jet_pass_louder", {
 	speed = 15,
 	topSpeedFactor = 2,
 	flightVolume = 100,
@@ -360,9 +360,10 @@ eHelicopter_PRESETS["jet_pass_louder"] = {
 	radioChatter = "AEBS_JetPass",
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Eagle", "Falcon", "Hawk", "Talon"},
-}
+})
+
 -- The player has been warned to flee, up to them now
-eHelicopter_PRESETS["jet_bombing_cluster"] = {
+presetCore.registerPreset("jet_bombing_cluster", {
 	inherit = {"jets"},
 	doNotListForStreamerIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = subEvents.jetBombing},
@@ -380,8 +381,9 @@ eHelicopter_PRESETS["jet_bombing_cluster"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_JetBombing",
 	callsigns = {"Raptor", "Viper", "Striker", "Bomber", "Thunder"},
-}
-eHelicopter_PRESETS["jet_bombing_napalm"] = {
+})
+
+presetCore.registerPreset("jet_bombing_napalm", {
 	inherit = {"jets"},
 	doNotListForStreamerIntegration = true,
 	addedFunctionsToEvents = {["OnLaunch"] = subEvents.jetBombing},
@@ -399,9 +401,10 @@ eHelicopter_PRESETS["jet_bombing_napalm"] = {
 	ignoreContinueScheduling = true,
 	radioChatter = "AEBS_JetBombing",
 	callsigns = {"Raptor", "Firestorm", "Inferno", "Phoenix", "Scorcher"},
-}
+})
+
 -- News here to emulate the vanilla helicopter
-eHelicopter_PRESETS["news_Bell206"] = {
+presetCore.registerPreset("news_Bell206", {
 	--presetRandomSelection = {"news_Bell206_hover", 1},
 	hoverOnTargetDuration = {750,1200},
 	eventSoundEffects = {
@@ -423,11 +426,11 @@ eHelicopter_PRESETS["news_Bell206"] = {
 	radioChatter = "AEBS_UnauthorizedEntryNews",
 	callsigns = {"Sky News", "News Bird", "Eye in the Sky", "Channel 5", "Sky Eye", "News Hawk"},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},---Because they're LIVE.
-}
+})
 
 
 -- KY State Police mostly, other cops fleeing their states thrown in for variety later in the apocalypse
-eHelicopter_PRESETS["police"] = {
+presetCore.registerPreset("police", {
 	presetRandomSelection = {"police_Bell206_emergency",3, "police_Bell206_hovering",2, "police_Bell206_firing",2, "police_Bell206_fleeing",2,"police_Bell206_fleeing",2},
 	crew = {
 		{ outfit="EHEPolicePilot" },
@@ -448,17 +451,17 @@ eHelicopter_PRESETS["police"] = {
 	schedulingFactor = {3, 0.6, 1.0},
 	radioChatter = "AEBS_UnauthorizedEntryPolice",
 	callsigns = {"Air-1", "Air-2", "Metro", "Guardian", "Sky Patrol", "Police Bird"},
-}
+})
 
-eHelicopter_PRESETS["police_Bell206_emergency"] = {
+presetCore.registerPreset("police_Bell206_emergency", {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
 		["flightSound"] = { "eHelicopter", "eHeliPoliceSiren" },
 	},
-}
+})
 
-eHelicopter_PRESETS["police_Bell206_firing"] = {
+presetCore.registerPreset("police_Bell206_firing", {
 	inherit = {"police"},
 	attackDelay = 1700,
 	attackSpread = 4,
@@ -472,28 +475,28 @@ eHelicopter_PRESETS["police_Bell206_firing"] = {
 		["flightSound"] = { "eHelicopter", "eHeliPoliceWarning" },
 	},
 	hoverOnTargetDuration = {375,575},
-}
+})
 
-eHelicopter_PRESETS["police_Bell206_hovering"] = {
+presetCore.registerPreset("police_Bell206_hovering", {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
 	},
 	hoverOnTargetDuration = {800,1000},
-}
+})
 
-eHelicopter_PRESETS["police_Bell206_fleeing"] = {
+presetCore.registerPreset("police_Bell206_fleeing", {
 	inherit = {"police"},
 	speed = 1.5,
 	eventSoundEffects = {
 		["flightSound"] = "eHelicopter",
 	},
-}
+})
 
 
 -- Early apocalypse survivors after civilization collapses
-eHelicopter_PRESETS["survivors"] = {
+presetCore.registerPreset("survivors", {
 	presetRandomSelection = {
 		"survivors_Bell206_N720HP",1,
 		"survivors_Bell206_N177TV",1,
@@ -522,10 +525,10 @@ eHelicopter_PRESETS["survivors"] = {
 	eventCutOffDayFactor = 1,
 	eventStartDayFactor = 0.48,
 	scrapItems = {"Base.ScrapMetal", 10},
-}
+})
 
 -- Cops from Tennessee
-eHelicopter_PRESETS["survivors_Bell206_N720HP"] = {
+presetCore.registerPreset("survivors_Bell206_N720HP", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N720HP"},
 	crew = {
@@ -536,10 +539,10 @@ eHelicopter_PRESETS["survivors_Bell206_N720HP"] = {
 	scrapVehicles = {"Bell206Tail_N720HP"},
 	radioChatter = "AEBS_SurvivorCops",
 	callsigns = {"November-Seven-Two-Zero-Hotel-Papa", "Seven-Two-Zero", "Tennessee Bird"},
-}
+})
 
 -- Cops from Indiana
-eHelicopter_PRESETS["survivors_Bell206_N95SP"] = {
+presetCore.registerPreset("survivors_Bell206_N95SP", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N95SP"},
 	crew = {
@@ -550,10 +553,10 @@ eHelicopter_PRESETS["survivors_Bell206_N95SP"] = {
 	scrapVehicles = {"Bell206Tail_N95SP"},
 	radioChatter = "AEBS_SurvivorCops",
 	callsigns = {"November-Nine-Five-Sierra-Papa", "Niner-Five", "Indiana Bird"},
-}
+})
 
 -- Fleeing reporters
-eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
+presetCore.registerPreset("survivors_Bell206_N177TV", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N177TV"},
 	crew = {
@@ -564,10 +567,10 @@ eHelicopter_PRESETS["survivors_Bell206_N177TV"] = {
 	scrapVehicles = {"Bell206Tail_N177TV"},
 	radioChatter = "AEBS_SurvivorNews",
 	callsigns = {"November-One-Seven-Seven-Tango-Victor", "One-Seven-Seven", "News Bird"},
-}
+})
 
 -- Fleeing reporters
-eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
+presetCore.registerPreset("survivors_Bell206_N5740A", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N5740A"},
 	crew = {
@@ -578,10 +581,10 @@ eHelicopter_PRESETS["survivors_Bell206_N5740A"] = {
 	scrapVehicles = {"Bell206Tail_N5740A"},
 	radioChatter = "AEBS_SurvivorNews",
 	callsigns = {"November-Five-Seven-Four-Zero-Alpha", "Five-Seven-Four-Zero", "News Hawk"},
-}
+})
 
 -- Richlords fleeing
-eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
+presetCore.registerPreset("survivors_Bell206_N120LH", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N120LH"},
 	crew = {
@@ -594,10 +597,10 @@ eHelicopter_PRESETS["survivors_Bell206_N120LH"] = {
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorRich",
 	callsigns = {"November-One-Two-Zero-Lima-Hotel", "One-Two-Zero", "Executive Flight"},
-}
+})
 
 -- Friendly now ex-soldiers trying to find safety, contrast to the deserters
-eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
+presetCore.registerPreset("survivors_soldiers_UH1H", {
 	inherit = {"survivors"},
 	crashType = {"Bell206SurvivalistFuselage"},
 	crew = {
@@ -612,10 +615,10 @@ eHelicopter_PRESETS["survivors_soldiers_UH1H"] = {
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorSoldiers",
 	callsigns = {"Echo-Three", "Delta-Seven", "Bravo-Two", "Alpha-Nine"},
-}
+})
 
 -- Taking off from nearby small airfields to ditch traffic
-eHelicopter_PRESETS["survivors_Cessna172"] = {
+presetCore.registerPreset("survivors_Cessna172", {
 	inherit = {"survivors"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", female = 0 },
@@ -626,10 +629,10 @@ eHelicopter_PRESETS["survivors_Cessna172"] = {
 		["flightSound"] = "eSmallPropPlane",
 	},
 	callsigns = {"November-Four-Seven-Two-Charlie", "Cessna-One-Seven-Two", "Four-Seven-Two", "Small Bird"},
-}
+})
 
 -- Former soldiers turned profiteers. Logically should only be using a single helicopter.
-eHelicopter_PRESETS["deserters"] = {
+presetCore.registerPreset("deserters", {
 	presetRandomSelection = {
 		"deserters_UH1H_friendly",3,
 		"deserters_UH1H_raidingparty",4,
@@ -653,10 +656,10 @@ eHelicopter_PRESETS["deserters"] = {
 	eventCutOffDayFactor = 1.00,
 	radioChatter = "AEBS_Deserters",
 	callsigns = {"Blackbeard", "Cutlass", "Marauder", "Rogue", "Raider", "Vulture", "Jackal", "Joker", "Abuser"},
-}
+})
 
 -- Looking around and dropping off people, not strictly hostile
-eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
+presetCore.registerPreset("deserters_UH1H_scoutingparty", {
 	inherit = {"deserters"},
 	speed = 1.5,
 	flightVolume = 1500,
@@ -666,20 +669,20 @@ eHelicopter_PRESETS["deserters_UH1H_scoutingparty"] = {
 	},
 
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spawnNPCs},
-}
+})
 
 -- Basic flyover pulling zombies around
-eHelicopter_PRESETS["deserters_UH1H_friendly"] = {
+presetCore.registerPreset("deserters_UH1H_friendly", {
 	inherit = {"deserters"},
 	speed = 1.5,
 	flightVolume = 1500,
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicPassive"},
 	},
-}
+})
 
 -- Specifically targeting the player and dropping off a landing party
-eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
+presetCore.registerPreset("deserters_UH1H_raidingparty", {
 	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
@@ -698,10 +701,10 @@ eHelicopter_PRESETS["deserters_UH1H_raidingparty"] = {
 		["attackSingle"] = "eHeliAlternatingShots",
 		["attackLooped"] = "eHeliAlternatingShots",
 	},
-}
+})
 
 -- pulling around zombies around far more dramatically and taking potshots
-eHelicopter_PRESETS["deserters_UH1H_diversion"] = {
+presetCore.registerPreset("deserters_UH1H_diversion", {
 	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
@@ -710,4 +713,4 @@ eHelicopter_PRESETS["deserters_UH1H_diversion"] = {
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking"},
 	},
-}
+})
