@@ -40,9 +40,11 @@ def _try_install_lupa():
 try:
     _try_install_lupa()
     from simulate import run_simulation as _lua_simulate
+    from simulate import compute_average_weather as _compute_avg_weather
     _LUA_SIM_AVAILABLE = True
 except ImportError:
     _LUA_SIM_AVAILABLE = False
+    _compute_avg_weather = None
 
 SCRIPT_DIR  = Path(__file__).parent
 OUTPUT_FILE = SCRIPT_DIR / "timeline.html"
@@ -492,7 +494,9 @@ def parse_table(s, i):
 
 def parse_preset_file(path):
     """
-    Read a Lua file and extract all eHelicopter_PRESETS["id"] = {...} blocks.
+    Read a Lua file and extract preset definitions. Supports both syntaxes:
+      B42.16+:  presetCore.registerPreset("id", { ... })
+      Legacy:   eHelicopter_PRESETS["id"] = { ... }
     Returns dict of {preset_id: {fields...}}.
     """
     try:
@@ -501,16 +505,25 @@ def parse_preset_file(path):
         print(f"  [SKIP] Not found: {path}")
         return {}
 
-    presets = {}
-    pattern = re.compile(
+    # Collect (text_pos, preset_id, body_start_pos) from both syntaxes.
+    all_matches = []
+
+    for m in re.finditer(
+        r'presetCore\.registerPreset\(\s*"([^"]+)"\s*,\s*\{',
+        text, re.MULTILINE
+    ):
+        all_matches.append((m.start(), m.group(1), m.end() - 1))
+
+    for m in re.finditer(
         r'eHelicopter_PRESETS\["([^"]+)"\]\s*=\s*\{',
-        re.MULTILINE,
-    )
+        text, re.MULTILINE
+    ):
+        all_matches.append((m.start(), m.group(1), m.end() - 1))
 
-    for m in pattern.finditer(text):
-        preset_id = m.group(1)
-        body_start = m.end() - 1  # point back at opening {
+    all_matches.sort(key=lambda x: x[0])
 
+    presets = {}
+    for text_pos, preset_id, body_start in all_matches:
         try:
             data, _ = parse_table(text, body_start)
         except Exception as e:
@@ -520,8 +533,7 @@ def parse_preset_file(path):
         if not isinstance(data, dict):
             data = {}
 
-        # Grab the nearest comment above this definition
-        preceding = text[max(0, m.start() - 300) : m.start()]
+        preceding = text[max(0, text_pos - 300) : text_pos]
         comment_matches = re.findall(r"--\s*([^\n\-][^\n]*)", preceding)
         description = comment_matches[-1].strip() if comment_matches else ""
 
@@ -604,6 +616,42 @@ def interpolate_color(hex_start, hex_end, t):
     return f"#{r:02x}{g:02x}{b:02x}"
 
 
+def resolve_color(pid, all_presets, group_color, _visited=None):
+    """
+    Return the hex color for a preset, walking its inherit chain until a
+    markerColor is found. Falls back to group_color if none exists anywhere
+    in the chain.
+    """
+    if _visited is None:
+        _visited = set()
+    if pid in _visited:
+        return group_color
+    _visited.add(pid)
+
+    data = all_presets.get(pid, {})
+    mc = data.get("markerColor")
+    if isinstance(mc, dict):
+        c = lua_color_to_hex(mc)
+        if c:
+            return c
+
+    inherit_raw = data.get("inherit")
+    if isinstance(inherit_raw, list):
+        parents = inherit_raw
+    elif isinstance(inherit_raw, dict):
+        parents = list(inherit_raw.values())
+    else:
+        parents = []
+
+    for parent_id in parents:
+        if isinstance(parent_id, str):
+            c = resolve_color(parent_id, all_presets, group_color, _visited)
+            if c != group_color:
+                return c
+
+    return group_color
+
+
 def build_preset_entry(pid, data, all_presets, group_color):
     """Build a single preset dict for the JS data structure."""
     f   = lambda key, default=None: data.get(key, DEFAULTS.get(key, default))
@@ -635,7 +683,7 @@ def build_preset_entry(pid, data, all_presets, group_color):
     flight_hours  = f("flightHours")
     description   = data.get("_description", "")
 
-    color = lua_color_to_hex(marker_color) if isinstance(marker_color, dict) else group_color
+    color = resolve_color(pid, all_presets, group_color)
 
     # Notes / warnings
     notes = []
@@ -690,11 +738,7 @@ def build_preset_entry(pid, data, all_presets, group_color):
         n = len(items)
         for idx, item in enumerate(items):
             child = all_presets.get(item["id"], {})
-            child_color_raw = child.get("markerColor")
-            if isinstance(child_color_raw, dict):
-                item["color"] = lua_color_to_hex(child_color_raw)
-            else:
-                item["color"] = color  # inherit parent markerColor
+            item["color"] = resolve_color(item["id"], all_presets, color)
             item["label"] = item["id"].replace("_", " ").title()
             item["note"]  = child.get("_description", "")
 
@@ -707,11 +751,7 @@ def build_preset_entry(pid, data, all_presets, group_color):
             notes.append(f"presetRandomSelection has only one entry — always resolves to '{items[0]['id']}'.")
         for idx, item in enumerate(items):
             child = all_presets.get(item["id"], {})
-            child_color_raw = child.get("markerColor")
-            if isinstance(child_color_raw, dict):
-                item["color"] = lua_color_to_hex(child_color_raw)
-            else:
-                item["color"] = color  # inherit parent markerColor
+            item["color"] = resolve_color(item["id"], all_presets, color)
             item["label"] = item["id"].replace("_", " ").title()
             item["note"]  = child.get("_description", "")
         progression = items
@@ -855,13 +895,18 @@ header .spacer{flex:1;}
 .app-body{display:flex;flex:1;overflow:hidden;}
 #sidebar{width:264px;min-width:264px;background:var(--panel);border-right:1px solid var(--border);
   overflow-y:auto;display:flex;flex-direction:column;}
-.cs{border-bottom:1px solid var(--border);padding:12px 14px;}
+.cs{border-bottom:1px solid var(--border);padding:12px 14px 12px 14px;padding-right:16px;}
 .cs-title{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.1em;
   text-transform:uppercase;color:var(--text-dim);margin-bottom:9px;}
 .cr{display:flex;align-items:center;gap:8px;margin-bottom:7px;}
 .cr:last-child{margin-bottom:0;}
 .cl{font-size:12px;color:var(--text);min-width:115px;flex-shrink:0;}
-.cv{font-family:var(--mono);font-size:11px;color:var(--accent);min-width:34px;text-align:right;}
+input[type=number]{background:var(--bg3);border:1px solid var(--border2);color:var(--text);
+  font-family:var(--mono);font-size:11px;padding:3px 6px;border-radius:3px;width:62px;
+  text-align:right;outline:none;-moz-appearance:textfield;}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+input[type=number]:focus{border-color:var(--accent);}
 input[type=range]{-webkit-appearance:none;flex:1;height:4px;background:var(--border2);
   border-radius:2px;outline:none;cursor:pointer;}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;height:13px;
@@ -951,6 +996,36 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
 
 
 .sim-note{font-size:10px;color:var(--text-muted);margin-top:6px;line-height:1.5;}
+.tab-bar{display:flex;gap:0;border-bottom:1px solid var(--border);background:var(--panel);flex-shrink:0;}
+.tab-btn{background:none;border:none;color:var(--text-dim);font-family:var(--sans);font-size:12px;
+  font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:8px 18px;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .15s,border-color .15s;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
+.tab-panel{display:none;flex:1;overflow:auto;flex-direction:column;}
+.tab-panel.active{display:flex;}
+#panel-heatmap{flex-direction:column;overflow:auto;}
+.hm-wrap{display:flex;flex:1;overflow:auto;}
+.hm-labels{width:var(--label-w);min-width:var(--label-w);flex-shrink:0;background:var(--bg2);
+  border-right:1px solid var(--border);overflow:hidden;}
+.hm-label-row{height:14px;display:flex;align-items:center;padding:0 8px;gap:5px;}
+.hm-label-row span{font-family:var(--mono);font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-dim);}
+.hm-canvas-wrap{flex:1;overflow:auto;position:relative;}
+#hm-axis-canvas{display:block;height:26px;width:100%;background:var(--bg);}
+#hm-canvas{display:block;}
+#panel-weather{flex-direction:column;padding:16px 20px;gap:16px;overflow:auto;}
+.wx-title{font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;}
+.wx-canvas-wrap{position:relative;width:100%;background:var(--bg2);border:1px solid var(--border);
+  border-radius:4px;overflow:hidden;}
+#wx-canvas{display:block;width:100%;}
+.wx-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px;}
+.wx-li{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text-dim);}
+.wx-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.wx-stats{display:flex;gap:24px;flex-wrap:wrap;margin-top:4px;}
+.wx-stat{font-family:var(--mono);font-size:11px;color:var(--text-dim);}
+.wx-stat span{color:var(--text);}
+.wx-note{font-size:10px;color:var(--text-muted);margin-top:4px;}
 </style>
 </head>
 <body>
@@ -967,11 +1042,9 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
   <div class="cs">
     <div class="cs-title">Sandbox Settings</div>
     <div class="cr"><span class="cl">Scheduler Duration</span>
-      <input type="range" id="c-dur" min="10" max="365" value="90" step="5">
-      <span class="cv" id="v-dur">90d</span></div>
+      <input type="number" id="c-dur" min="10" max="999" value="90" step="1"><span style="font-size:11px;color:var(--text-dim);margin-left:4px;">d</span></div>
     <div class="cr"><span class="cl">Start Day Offset</span>
-      <input type="range" id="c-sd" min="0" max="50" value="0" step="1">
-      <span class="cv" id="v-sd">0d</span></div>
+      <input type="number" id="c-sd" min="0" max="999" value="0" step="1"><span style="font-size:11px;color:var(--text-dim);margin-left:4px;">d</span></div>
     <div class="tr" style="margin-top:6px;">
       <input type="checkbox" id="c-cont" checked>
       <label for="c-cont">Continue Scheduling (post-cutoff)</label></div>
@@ -987,17 +1060,9 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
     <div id="freq-ctrls"></div>
   </div>
   <div class="cs">
-    <div class="cs-title">Display</div>
-    <div class="tr"><input type="checkbox" id="o-dens" checked><label for="o-dens">Probability density</label></div>
-    <div class="tr"><input type="checkbox" id="o-prog" checked><label for="o-prog">Progression segments</label></div>
-    <div class="tr"><input type="checkbox" id="o-cont"><label for="o-cont">Continue-schedule zone</label></div>
-    <div class="tr"><input type="checkbox" id="o-sim" checked><label for="o-sim">Show event counts</label></div>
-  </div>
-  <div class="cs">
     <div class="cs-title">Simulation</div>
     <div class="cr"><span class="cl">Runs (avg of)</span>
-      <input type="range" id="c-runs" min="10" max="500" value="100" step="10">
-      <span class="cv" id="v-runs">100</span></div>
+      <input type="number" id="c-runs" min="10" max="2000" value="100" step="10"></div>
     <div class="sim-note">
       Mirrors the Lua scheduler: 24 ticks/day (once per in-game hour),
       global weight=10, insane=10× events. Count = avg fired per playthrough.
@@ -1015,11 +1080,41 @@ input[type=checkbox]{accent-color:var(--accent);width:13px;height:13px;cursor:po
   </div>
 </div>
 <div id="main">
-  <div class="tl-top">
-    <div class="tl-lh"><span>Preset ID</span></div>
-    <div class="tl-aw"><canvas id="axis-canvas"></canvas></div>
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="timeline" onclick="switchTab('timeline')">Timeline</button>
+    <button class="tab-btn" data-tab="heatmap" onclick="switchTab('heatmap')">Heatmap</button>
+    <button class="tab-btn" data-tab="weather" onclick="switchTab('weather')">Weather</button>
   </div>
-  <div class="tl-body" id="tl-body"></div>
+  <div id="panel-timeline" class="tab-panel active">
+    <div class="tl-top">
+      <div class="tl-lh"><span>Preset ID</span></div>
+      <div class="tl-aw"><canvas id="axis-canvas"></canvas></div>
+    </div>
+    <div class="tl-body" id="tl-body"></div>
+  </div>
+  <div id="panel-heatmap" class="tab-panel">
+    <div class="hm-canvas-wrap">
+      <canvas id="hm-axis-canvas"></canvas>
+      <div class="hm-wrap">
+        <div class="hm-labels" id="hm-labels"></div>
+        <canvas id="hm-canvas"></canvas>
+      </div>
+    </div>
+  </div>
+  <div id="panel-weather" class="tab-panel">
+    <div>
+      <div class="wx-title">Average Weather Phenomena · per day across simulation runs</div>
+      <div class="wx-canvas-wrap"><canvas id="wx-canvas" height="180"></canvas></div>
+      <div class="wx-legend">
+        <div class="wx-li"><div class="wx-dot" style="background:#4a90d4;opacity:.8;"></div>Precipitation</div>
+        <div class="wx-li"><div class="wx-dot" style="background:#7a8090;opacity:.8;"></div>Wind (norm.)</div>
+        <div class="wx-li"><div class="wx-dot" style="background:#c8a000;opacity:.9;"></div>Fog</div>
+        <div class="wx-li"><div class="wx-dot" style="background:#e05020;opacity:.9;"></div>Thunder prob.</div>
+      </div>
+      <div class="wx-stats" id="wx-stats"></div>
+      <div class="wx-note" id="wx-note"></div>
+    </div>
+  </div>
 </div>
 </div>
 <div id="issues"></div>
@@ -1523,17 +1618,20 @@ function render(){
     row.appendChild(rt);
     body.appendChild(row);
   }
+  if(_activeTab==='heatmap') renderHeatmap();
+  if(_activeTab==='weather') renderWeather();
 }
 
 // ── CONTROLS ──────────────────────────────────────────────────────────
 function buildFreqCtrls(){
   const el=document.getElementById('freq-ctrls');
   el.innerHTML=EHE_DATA.sandboxFreqVars.map(sv=>{
-    const groupColor=EHE_DATA.groups.find(g=>sv.affectsIDs.some(id=>g.presets.some(p=>p.id===id)))?.color||'#808080';
+    const allPresets=EHE_DATA.groups.flatMap(g=>g.presets);
+    const dotColor=allPresets.find(p=>sv.affectsIDs.includes(p.id))?.color||'#808080';
     const warnTag=!sv.hasMatch?`<span class="fwarn">⚠ ID mismatch</span>`:'';
     const noPreset=sv.affectsIDs.length===0?`<span class="fwarn">⚠ no preset</span>`:'';
     return `<div class="frow">
-      <div class="fdot" style="background:${groupColor}"></div>
+      <div class="fdot" style="background:${dotColor}"></div>
       <span class="flbl" title="${sv.affectsIDs.join(', ')}">${sv.label}</span>
       ${warnTag}${noPreset}
       <select id="f-${sv.key}" data-key="${sv.key}">
@@ -1571,24 +1669,257 @@ function buildIssues(){
   `;
 }
 
-function wire(id,cb){const el=document.getElementById(id);if(el)el.addEventListener('input',cb);}
+function wire(id,cb){const el=document.getElementById(id);if(el){el.addEventListener('input',cb);el.addEventListener('change',cb);}}
 function wireChk(id,cb){const el=document.getElementById(id);if(el)el.addEventListener('change',cb);}
 
-wire('c-dur', e=>{ S.dur=parseInt(e.target.value); document.getElementById('v-dur').textContent=S.dur+'d'; render(); });
-wire('c-sd',  e=>{ S.startDay=parseInt(e.target.value); document.getElementById('v-sd').textContent=S.startDay+'d'; render(); });
+wire('c-dur',  e=>{ const v=parseInt(e.target.value); if(v>=10&&v<=999){S.dur=v;render();} });
+wire('c-sd',   e=>{ const v=parseInt(e.target.value); if(v>=0&&v<=999){S.startDay=v;render();} });
 wireChk('c-cont', e=>{ S.cont=e.target.checked; render(); });
 wireChk('c-air',  e=>{ S.airRaid=e.target.checked; render(); });
-wireChk('o-dens', e=>{ S.density=e.target.checked; render(); });
-wireChk('o-prog', e=>{ S.prog=e.target.checked; render(); });
-wireChk('o-cont', e=>{ S.contBar=e.target.checked; render(); });
-wireChk('o-sim',  e=>{ S.showSim=e.target.checked; render(); });
-wire('c-runs', e=>{
-  S.simRuns=parseInt(e.target.value);
-  document.getElementById('v-runs').textContent=S.simRuns;
-  render();
-});
+wire('c-runs', e=>{ const v=parseInt(e.target.value); if(v>=10){S.simRuns=v;render();} });
 
-let rt; window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(render,120); });
+let rt; window.addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>{render();if(_activeTab==='heatmap')renderHeatmap();if(_activeTab==='weather')renderWeather();},120); });
+
+// ── GENERATED WEATHER DATA ────────────────────────────────────────────
+/*WEATHER_DATA*/
+
+// ── TAB SWITCHING ─────────────────────────────────────────────────────
+let _activeTab = 'timeline';
+function switchTab(tab) {
+  _activeTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tab-panel').forEach(p => {
+    const id = p.id.replace('panel-', '');
+    p.classList.toggle('active', id === tab);
+  });
+  if (tab === 'heatmap') renderHeatmap();
+  if (tab === 'weather') renderWeather();
+}
+
+// ── HEATMAP (SCALED DIAMONDS) ─────────────────────────────────────────
+function renderHeatmap() {
+  const axCv  = document.getElementById('hm-axis-canvas');
+  const hmCv  = document.getElementById('hm-canvas');
+  const labels = document.getElementById('hm-labels');
+  if (!axCv || !hmCv || !labels) return;
+
+  const rows = [];
+  for (const group of EHE_DATA.groups)
+    for (const preset of group.presets)
+      if (!preset.isSub) rows.push({preset, group});
+
+  rows.sort((a, b) => {
+    const sdA = computeDays(a.preset.startFactor, a.preset.cutoffFactor, S.dur, S.startDay).sd;
+    const sdB = computeDays(b.preset.startFactor, b.preset.cutoffFactor, S.dur, S.startDay).sd;
+    return sdA - sdB;
+  });
+
+  const td       = totalDays();
+  const CELL_H   = 14;
+  const CELL_W   = 10;
+  const lw       = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--label-w')) || 230;
+  const wrapW    = (hmCv.parentElement.offsetWidth || 800);
+  const numCols  = Math.max(Math.floor(wrapW / CELL_W), 10);
+  const canvasW  = numCols * CELL_W;
+  const canvasH  = rows.length * CELL_H;
+
+  axCv.width  = lw + canvasW;
+  axCv.height = 26;
+  hmCv.width  = canvasW;
+  hmCv.height = canvasH;
+
+  // Build label rows
+  labels.innerHTML = '';
+  labels.style.height = canvasH + 'px';
+  for (const {preset, group} of rows) {
+    const div = document.createElement('div');
+    div.className = 'hm-label-row';
+    div.style.height = CELL_H + 'px';
+    const dot = document.createElement('span');
+    dot.style.cssText = `display:inline-block;width:6px;height:6px;border-radius:50%;background:${preset.color||group.color};flex-shrink:0;`;
+    const lbl = document.createElement('span');
+    lbl.textContent = preset.id;
+    div.appendChild(dot);
+    div.appendChild(lbl);
+    labels.appendChild(div);
+  }
+
+  // Draw axis
+  const axCtx = axCv.getContext('2d');
+  axCtx.clearRect(0, 0, axCv.width, axCv.height);
+  axCtx.font = '9px "Share Tech Mono"';
+  axCtx.fillStyle = '#5a6080';
+  const dayStep = td / numCols;
+  let prevLabel = -999;
+  for (let ci = 0; ci < numCols; ci++) {
+    const day = Math.round(ci * dayStep);
+    const x   = lw + ci * CELL_W + CELL_W / 2;
+    if (day % 10 === 0 && day - prevLabel > 8) {
+      axCtx.fillStyle = '#5a6080';
+      axCtx.fillRect(x - 0.5, 18, 1, 5);
+      axCtx.fillStyle = '#6a7090';
+      axCtx.textAlign = 'center';
+      axCtx.fillText('d' + day, x, 14);
+      prevLabel = day;
+    }
+  }
+  // scheduler end line on axis
+  const sx = lw + (S.dur / td) * canvasW;
+  axCtx.fillStyle = 'rgba(79,163,224,.6)';
+  axCtx.fillRect(sx - 1, 0, 2, 26);
+
+  // Draw diamonds
+  const ctx = hmCv.getContext('2d');
+  ctx.clearRect(0, 0, canvasW, canvasH);
+
+  // Scheduler-end line on heatmap
+  ctx.fillStyle = 'rgba(79,163,224,.12)';
+  ctx.fillRect(sx - lw - 1, 0, 2, canvasH);
+
+  for (let ri = 0; ri < rows.length; ri++) {
+    const {preset, group} = rows[ri];
+    if (!isActive(preset)) continue;
+
+    const color  = preset.color || group.color;
+    const maxP   = maxProb(preset);
+    const cy     = ri * CELL_H + CELL_H / 2;
+
+    for (let ci = 0; ci < numCols; ci++) {
+      const day  = ci * dayStep;
+      const p    = relProb(preset, day);
+      const norm = maxP > 0 ? p / maxP : 0;
+      if (norm < 0.015) continue;
+
+      const cx   = ci * CELL_W + CELL_W / 2;
+      const half = Math.max(1, norm * CELL_H * 0.46);
+
+      // Parse hex color for alpha compositing
+      const alpha = Math.round(40 + norm * 215);
+      ctx.fillStyle = color + alpha.toString(16).padStart(2, '0');
+      ctx.beginPath();
+      ctx.moveTo(cx,        cy - half);
+      ctx.lineTo(cx + half, cy);
+      ctx.lineTo(cx,        cy + half);
+      ctx.lineTo(cx - half, cy);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+}
+
+// ── WEATHER CHART ─────────────────────────────────────────────────────
+function renderWeather() {
+  const cv = document.getElementById('wx-canvas');
+  if (!cv) return;
+  if (!EHE_WEATHER || !EHE_WEATHER.length) {
+    document.getElementById('wx-note').textContent =
+      'No weather data — re-run generate.py without --skip-sim to embed weather averages.';
+    return;
+  }
+
+  const parent = cv.parentElement;
+  const W      = parent.offsetWidth || 800;
+  const H      = 180;
+  cv.width     = W;
+  cv.height    = H;
+
+  const maxDay = Math.min(S.dur, EHE_WEATHER.length - 1);
+  const PAD    = { l: 36, r: 16, t: 12, b: 22 };
+  const cw     = W - PAD.l - PAD.r;
+  const ch     = H - PAD.t - PAD.b;
+
+  const ctx = cv.getContext('2d');
+  ctx.clearRect(0, 0, W, H);
+
+  function dayX(d) { return PAD.l + (d / maxDay) * cw; }
+  function valY(v) { return PAD.t + ch - v * ch; }
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,.04)';
+  ctx.lineWidth   = 1;
+  for (let v = 0; v <= 1; v += 0.25) {
+    ctx.beginPath(); ctx.moveTo(PAD.l, valY(v)); ctx.lineTo(PAD.l + cw, valY(v)); ctx.stroke();
+  }
+  for (let d = 0; d <= maxDay; d += 10) {
+    ctx.beginPath(); ctx.moveTo(dayX(d), PAD.t); ctx.lineTo(dayX(d), PAD.t + ch); ctx.stroke();
+  }
+
+  // Scheduler end line
+  const sx = dayX(S.dur);
+  ctx.strokeStyle = 'rgba(79,163,224,.4)';
+  ctx.lineWidth   = 1.5;
+  ctx.setLineDash([4, 3]);
+  ctx.beginPath(); ctx.moveTo(sx, PAD.t); ctx.lineTo(sx, PAD.t + ch); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Y axis labels
+  ctx.font      = '9px "Share Tech Mono"';
+  ctx.fillStyle = '#5a6080';
+  ctx.textAlign = 'right';
+  ['0%', '25%', '50%', '75%', '100%'].forEach((lbl, i) => {
+    ctx.fillText(lbl, PAD.l - 4, valY(i * 0.25) + 3);
+  });
+
+  // X axis labels
+  ctx.textAlign = 'center';
+  for (let d = 0; d <= maxDay; d += Math.ceil(maxDay / 9 / 5) * 5) {
+    ctx.fillText('d' + d, dayX(d), H - 6);
+  }
+
+  function drawArea(key, color, alpha) {
+    ctx.beginPath();
+    ctx.moveTo(dayX(0), valY(0));
+    for (let d = 0; d <= maxDay; d++) {
+      const w = EHE_WEATHER[d];
+      if (!w) continue;
+      d === 0
+        ? ctx.moveTo(dayX(d), valY(w[key] || 0))
+        : ctx.lineTo(dayX(d), valY(w[key] || 0));
+    }
+    ctx.lineTo(dayX(maxDay), valY(0));
+    ctx.closePath();
+    ctx.fillStyle = color + Math.round(alpha).toString(16).padStart(2, '0');
+    ctx.fill();
+  }
+
+  function drawLine(key, color, lw2) {
+    ctx.beginPath();
+    let first = true;
+    for (let d = 0; d <= maxDay; d++) {
+      const w = EHE_WEATHER[d];
+      if (!w) continue;
+      const v = w[key] || 0;
+      if (first) { ctx.moveTo(dayX(d), valY(v)); first = false; }
+      else ctx.lineTo(dayX(d), valY(v));
+    }
+    ctx.strokeStyle = color;
+    ctx.lineWidth   = lw2;
+    ctx.stroke();
+  }
+
+  drawArea('windNorm',      '#7a8090', 100);
+  drawArea('precipitation', '#4a90d4', 140);
+  drawLine('fog',           '#c8a000cc', 1.5);
+  drawLine('thunderProb',   '#e05020bb', 1.5);
+
+  // Summary stats
+  let sumRain = 0, sumFog = 0, sumThunder = 0, sumWind = 0;
+  for (let d = 0; d <= maxDay; d++) {
+    const w = EHE_WEATHER[d] || {};
+    sumRain    += (w.precipitation || 0) > 0.01 ? 1 : 0;
+    sumFog     += (w.fog           || 0) > 0.05 ? 1 : 0;
+    sumThunder += (w.thunderProb   || 0) > 0.05 ? 1 : 0;
+    sumWind    += w.windNorm       || 0;
+  }
+  const n = maxDay + 1;
+  document.getElementById('wx-stats').innerHTML =
+    `<div class="wx-stat">Rain days: <span>${sumRain}</span>/${n}</div>` +
+    `<div class="wx-stat">Fog days: <span>${sumFog}</span>/${n}</div>` +
+    `<div class="wx-stat">Thunder days: <span>${sumThunder}</span>/${n}</div>` +
+    `<div class="wx-stat">Avg wind: <span>${Math.round(sumWind/n*120)}kph</span></div>`;
+  document.getElementById('wx-note').textContent =
+    `Averaged over ${EHE_WEATHER._runs||'?'} simulation runs · scheduler duration: ${S.dur}d`;
+}
 
 buildFreqCtrls();
 buildLegend();
@@ -1681,10 +2012,21 @@ def main():
     else:
         print("\n[INFO] simulate.py / lupa not available — HTML will use JS simulation only.")
 
+    weather_data = []
+    if _compute_avg_weather and not args.skip_sim:
+        sb = load_sandbox_defaults()
+        wx_dur = sb.get("SchedulerDuration", 90)
+        print(f"\nComputing average weather ({args.runs} runs, {wx_dur}d)...")
+        try:
+            weather_data = _compute_avg_weather(wx_dur, num_runs=min(args.runs, 80))
+            print(f"  Done. {len(weather_data)} days of weather data embedded.")
+        except Exception as e:
+            print(f"  [WARN] Weather computation failed: {e}")
+
     data = {
-        "groups":          groups,
-        "sandboxFreqVars": SANDBOX_FREQ_VARS,
-        "issues":          issues,
+        "groups":           groups,
+        "sandboxFreqVars":  SANDBOX_FREQ_VARS,
+        "issues":           issues,
         "initialSimCounts": initial_sim_counts,
     }
 
@@ -1697,9 +2039,20 @@ def main():
         for v in sorted(fc_values)
     ) + "\n];"
 
+    # Embed weather data. Attach _runs count as a non-index property via Object.assign.
+    if weather_data:
+        weather_js = (
+            "const EHE_WEATHER = Object.assign("
+            + json.dumps(weather_data, separators=(",", ":"))
+            + ", {_runs:" + str(min(args.runs, 80)) + "});"
+        )
+    else:
+        weather_js = "const EHE_WEATHER = [];"
+
     html_out = (HTML_TEMPLATE
         .replace("/*PRESETS_DATA*/", data_js)
         .replace("/*FREQ_ENUM*/", freq_enum_js)
+        .replace("/*WEATHER_DATA*/", weather_js)
     )
 
     out_path = Path(args.out)

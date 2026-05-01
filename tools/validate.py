@@ -253,11 +253,6 @@ def check_spawn_windows(all_presets):
         elif sd == cod and sched_f < 99990:
             zero_windows.append((pid, sd, cod))
 
-        if sd > cod:
-            bad_windows.append((pid, sd, cod))
-        elif sd == cod and sched_f < 99990:
-            zero_windows.append((pid, sd, cod))
-
     if bad_windows:
         for pid, sd, cod in bad_windows:
             results.append(errord(
