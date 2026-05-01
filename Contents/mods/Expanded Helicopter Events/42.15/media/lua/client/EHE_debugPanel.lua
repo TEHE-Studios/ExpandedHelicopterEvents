@@ -1,12 +1,41 @@
 if isClient() and not getDebug() then return end
 if isServer() then return end
 
-require("DebugUIs/DebugMenu/ISDebugMenu.lua")
 local util = require("EHE_util.lua")
 local isoRangeScan = require("EHE_IsoRangeScan.lua")
 local clientCommands = require("EHE_onServerToClientCommands.lua")
+local presetCore = require("EHE_presetCore.lua")
 
-EHE_DebugTests = EHE_DebugTests or {}
+require("DebugUIs/DebugMenu/ISDebugMenu.lua")
+local ISDebugMenu_setupButtons = ISDebugMenu.setupButtons
+function ISDebugMenu:setupButtons()
+	self:addButtonInfo("EHE Debug Tests", function() EHE_DebugTestWindow.OnOpenPanel() end, "MAIN")
+	ISDebugMenu_setupButtons(self)
+end
+
+
+function EHE_DebugTestWindow.populateTests()
+	EHE_DebugTestWindow.Tests["Toggle All Crash"] = EHE_DebugTestWindow.ToggleAllCrash
+	EHE_DebugTestWindow.Tests["Test All Voice Lines"] = EHE_DebugTestWindow.testAllLines
+	EHE_DebugTestWindow.Tests["Toggle Move HeliCloser"] = EHE_DebugTestWindow.ToggleMoveHeliCloser
+	EHE_DebugTestWindow.Tests["Scheduler Unit Test [LAG]"] = EHE_DebugTestWindow.eHeliEvents_SchedulerUnitTest
+	EHE_DebugTestWindow.Tests["ClearGlobalModData"] = EHE_DebugTestWindow.ClearGlobalModData
+	EHE_DebugTestWindow.Tests["Copy Schedule to Clipboard"] = EHE_DebugTestWindow.CopySchedule
+	EHE_DebugTestWindow.Tests.SandboxVarsDUMP = EHE_DebugTestWindow.SandboxVarsDUMP
+	EHE_DebugTestWindow.Tests.TemporaryTest = EHE_DebugTestWindow.TemporaryTest
+	EHE_DebugTestWindow.Tests.checkSquare = EHE_DebugTestWindow.checkSquare
+	EHE_DebugTestWindow.Tests.printEHEIsoPlayers = EHE_DebugTestWindow.printEHEIsoPlayers
+	EHE_DebugTestWindow.Tests["Show Done Events"] = EHE_DebugTestWindow.ToggleShowDone
+
+	EHE_DebugTestWindow.Tests["Launch"] = {}
+	for presetID, _ in pairs(presetCore.PRESETS) do
+		EHE_DebugTestWindow.Tests["Launch"][presetID] = function() EHE_DebugTestWindow.launchHeliTest(presetID, getPlayer()) end
+	end
+end
+Events.OnGameBoot.Add(EHE_DebugTestWindow.populateTests)
+
+
+EHE_DebugTestWindow.Tests = {}
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 
 EHE_DebugTestWindow.TOGGLE_ALL_CRASH = false
@@ -360,7 +389,7 @@ function EHE_DebugTestWindow:initialise()
 	local h = 18
 
 	local numeration = 0
-	for title, func in pairs(EHE_DebugTests) do
+	for title, func in pairs(EHE_DebugTestWindow.Tests) do
 		numeration = numeration + 1
 		local evenNumber = (numeration % 2 == 0)
 		local newX, newY
@@ -443,12 +472,4 @@ function EHE_DebugTestWindow:new(x, y, width, height)
 	o.anchorBottom = false
 	o.moveWithMouse = true
 	return o
-end
-
-
-require("DebugUIs/DebugMenu/ISDebugMenu.lua")
-local ISDebugMenu_setupButtons = ISDebugMenu.setupButtons
-function ISDebugMenu:setupButtons()
-	self:addButtonInfo("EHE Debug Tests", function() EHE_DebugTestWindow.OnOpenPanel() end, "MAIN")
-	ISDebugMenu_setupButtons(self)
 end

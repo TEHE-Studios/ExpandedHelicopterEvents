@@ -1,30 +1,5 @@
 if not getDebug() then return end
 
-require("EHE_debugPanel.lua")
-local presetCore = require("EHE_presetCore.lua")
-
-Events.OnGameBoot.Add(function()
-	if not EHE_DebugTests or not EHE_DebugTestWindow then return end
-
-	EHE_DebugTests["Toggle All Crash"] = EHE_DebugTestWindow.ToggleAllCrash
-	EHE_DebugTests["Test All Voice Lines"] = EHE_DebugTestWindow.testAllLines
-	EHE_DebugTests["Toggle Move HeliCloser"] = EHE_DebugTestWindow.ToggleMoveHeliCloser
-	EHE_DebugTests["Scheduler Unit Test [LAG]"] = EHE_DebugTestWindow.eHeliEvents_SchedulerUnitTest
-	EHE_DebugTests["ClearGlobalModData"] = EHE_DebugTestWindow.ClearGlobalModData
-	EHE_DebugTests["Copy Schedule to Clipboard"] = EHE_DebugTestWindow.CopySchedule
-	EHE_DebugTests.SandboxVarsDUMP = EHE_DebugTestWindow.SandboxVarsDUMP
-	EHE_DebugTests.TemporaryTest = EHE_DebugTestWindow.TemporaryTest
-	EHE_DebugTests.checkSquare = EHE_DebugTestWindow.checkSquare
-	EHE_DebugTests.printEHEIsoPlayers = EHE_DebugTestWindow.printEHEIsoPlayers
-	EHE_DebugTests["Show Done Events"] = EHE_DebugTestWindow.ToggleShowDone
-
-	EHE_DebugTests["Launch"] = {}
-	for presetID, _ in pairs(presetCore.PRESETS) do
-		EHE_DebugTests["Launch"][presetID] = function() EHE_DebugTestWindow.launchHeliTest(presetID, getPlayer()) end
-	end
-end)
-
-
 local function onClientCommand(_module, _command, _player, _data)
 	if _module ~= "CustomDebugPanel" then return end
 
