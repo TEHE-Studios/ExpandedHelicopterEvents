@@ -1,0 +1,367 @@
+module Base
+{
+	model Vehicle_Bell206Fuselage
+	{
+		mesh = vehicles/Vehicle_Bell206Crash3,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle Bell206Fuselage
+    {
+        neverSpawnKey = true,
+
+        model
+        {
+            file = Vehicle_Bell206Fuselage,
+            scale = 91.0600,
+            offset = -0.0014 0.0014 0.0000,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N720HP,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N574OA,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N120LH,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N177TV,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N3KY,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N95SP,
+        }
+
+        extents = 0.0178 0.0178 0.0600,
+        shadowExtents = 0.0185 0.0601,
+        physicsChassisShape = 0.0180 0.0178 0.0600,
+    }
+	model Vehicle_Bell206Tail
+	{
+		mesh = vehicles/Vehicle_Bell206Crash3tail,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle Bell206Tail
+    {
+        neverSpawnKey = true,
+
+        model
+        {
+            file = Vehicle_Bell206Tail,
+            scale = 91.0600,
+            offset = -0.0002 0.0014 0.0000,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N720HP,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N574OA,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N120LH,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N177TV,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N3KY,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N95SP,
+        }
+
+        extents = 0.0053 0.0178 0.0600,
+        shadowExtents = 0.0053 0.0601,
+        physicsChassisShape = 0.0053 0.0178 0.0600,
+    }
+	model Vehicle_Bell206Crash1
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|base_mesh,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Vehicle_Bell206Crash2
+	{
+		mesh = vehicles/Vehicle_Bell206Crash2|base_mesh,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Vehicle_Bell206Crash4
+	{
+		mesh = vehicles/Vehicle_Bell206Crash4|base_mesh,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	model Bell206Crash1Windshield
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|Windshield_obj,
+		shader = vehicle,
+		scale = 0.01,
+	}
+	model Bell206Crash1TopGlass
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|TopGlass_obj,
+		shader = vehicle,
+		scale = 0.01,
+	}
+	model Bell206Crash1DoorWindow
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|doorwindow,
+		shader = vehicle,
+		scale = 0.01,
+	}
+	model Bell206Crash1DoorWindow1
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|doorwindow1,
+		shader = vehicle,
+		scale = 0.01,
+	}
+	model Bell206Crash1DoorRearWindow
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|doorrearwindow,
+		shader = vehicle,
+		scale = 0.01,
+	}
+	model Bell206Crash1DoorRearWindow1
+	{
+		mesh = vehicles/Vehicle_Bell206Crash1|doorrearwindow1,
+		shader = vehicle,
+		scale = 0.01,
+	}
+	template vehicle Bell206CrashBase
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+		neverSpawnKey = true,
+
+		extents = 0.0178 0.0178 0.1050,
+		mass = 500,
+		centerOfMassOffset = 0.0000 0.0090 0.0000,
+		shadowExtents = 0.0181 0.1049,
+		shadowOffset = 0.0000 -0.0000,
+		physicsChassisShape = 0.0180 0.0178 0.1050,
+	}
+	vehicle Bell206Crash1
+    {
+        template! = Bell206CrashBase,
+
+        model
+        {
+            file = Vehicle_Bell206Crash1,
+            scale = 91.0600,
+            offset = -0.0014 0.0014 0.0235,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N720HP,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N574OA,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N120LH,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N177TV,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N3KY,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N95SP,
+        }
+
+        template = Window/part/Windshield,
+        template = Window/part/WindowFrontLeft,
+        template = Window/part/WindowFrontRight,
+        template = Window/part/WindowRearLeft,
+        template = Window/part/WindowRearRight,
+
+        part Windshield
+        {
+            model Bell206Crash1Windshield
+            {
+                file = Bell206Crash1Windshield,
+                offset = 0.0000 0.0000 0.0000,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+            table install { recipes = Intermediate Mechanics, }
+            table uninstall { recipes = Intermediate Mechanics, }
+            table partVariation { chances = { default = 50, } }
+            lua { create = Vehicles.Create.Default, }
+            category = nodisplay,
+        }
+
+        part WindowFrontLeft
+        {
+            model Bell206Crash1TopGlass
+            {
+                file = Bell206Crash1TopGlass,
+                offset = 0.0000 0.0000 0.0000,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+            table install { recipes = Intermediate Mechanics, }
+            table uninstall { recipes = Intermediate Mechanics, }
+            table partVariation { chances = { default = 50, } }
+            lua { create = Vehicles.Create.Default, }
+            category = nodisplay,
+        }
+
+        part WindowFrontRight
+        {
+            model Bell206Crash1DoorWindow
+            {
+                file = Bell206Crash1DoorWindow,
+                offset = 0.0000 0.0000 0.0000,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+            table install { recipes = Intermediate Mechanics, }
+            table uninstall { recipes = Intermediate Mechanics, }
+            table partVariation { chances = { default = 50, } }
+            lua { create = Vehicles.Create.Default, }
+            category = nodisplay,
+        }
+
+        part WindowRearLeft
+        {
+            model Bell206Crash1DoorRearWindow
+            {
+                file = Bell206Crash1DoorRearWindow,
+                offset = 0.0000 0.0000 0.0000,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+            table install { recipes = Intermediate Mechanics, }
+            table uninstall { recipes = Intermediate Mechanics, }
+            table partVariation { chances = { default = 50, } }
+            lua { create = Vehicles.Create.Default, }
+            category = nodisplay,
+        }
+
+        part WindowRearRight
+        {
+            model Bell206Crash1DoorRearWindow1
+            {
+                file = Bell206Crash1DoorRearWindow1,
+                offset = 0.0000 0.0000 0.0000,
+                rotate = 0.0000 0.0000 0.0000,
+            }
+            table install { recipes = Intermediate Mechanics, }
+            table uninstall { recipes = Intermediate Mechanics, }
+            table partVariation { chances = { default = 50, } }
+            lua { create = Vehicles.Create.Default, }
+            category = nodisplay,
+        }
+    }
+	vehicle Bell206Crash2
+    {
+        template! = Bell206CrashBase,
+
+        model
+        {
+            file = Vehicle_Bell206Crash2,
+            scale = 91.0600,
+            offset = -0.0014 0.0000 0.0231,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N720HP,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N574OA,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N120LH,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N177TV,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N3KY,
+        }
+
+        skin
+        {
+            texture = vehicles/civilian/N95SP,
+        }
+
+        extents = 0.0178 0.0178 0.1050,
+        physicsChassisShape = 0.0180 0.0178 0.1050,
+        centerOfMassOffset = 0.0000 0.0090 0.0000,
+        shadowExtents = 0.0181 0.1049,
+        shadowOffset = 0.0000 -0.0000,
+    }
+	vehicle Bell206Crash4
+    {
+        template! = Bell206CrashBase,
+
+        model
+        {
+            file = Vehicle_Bell206Crash4,
+            scale = 91.0600,
+            offset = -0.0014 0.0014 0.0000,
+        }
+
+        skin { texture = vehicles/civilian/N720HP, }
+        skin { texture = vehicles/civilian/N574OA, }
+        skin { texture = vehicles/civilian/N120LH, }
+        skin { texture = vehicles/civilian/N177TV, }
+        skin { texture = vehicles/civilian/N3KY, }
+        skin { texture = vehicles/civilian/N95SP, }
+
+    }
+}
