@@ -14,6 +14,23 @@ function ISDebugMenu:setupButtons()
 end
 
 
+EHE_DebugTestWindow.Tests = {}
+EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
+
+EHE_DebugTestWindow.TOGGLE_ALL_CRASH = false
+EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER = false
+EHE_DebugTestWindow.TOGGLE_SHOW_DONE = false
+
+EHE_DebugTestWindow.colors = {
+	DEFAULT = {r=0, g=0, b=0, a=1.0},
+	DEFAULT_HIGHLIGHT = {r=0.3, g=0.3, b=0.3, a=1.0},
+	RED = {r=0.5, g=0.0, b=0.0, a=0.9},
+	GREEN = {r=0.0, g=0.5, b=0.0, a=0.9},
+	RED_HIGHLIGHT = {r=0.75, g=0.0, b=0.0, a=0.9},
+	GREEN_HIGHLIGHT = {r=0.0, g=0.75, b=0.0, a=0.9},
+}
+
+
 function EHE_DebugTestWindow.populateTests()
 	EHE_DebugTestWindow.Tests["Toggle All Crash"] = EHE_DebugTestWindow.ToggleAllCrash
 	EHE_DebugTestWindow.Tests["Test All Voice Lines"] = EHE_DebugTestWindow.testAllLines
@@ -33,23 +50,6 @@ function EHE_DebugTestWindow.populateTests()
 	end
 end
 Events.OnGameBoot.Add(EHE_DebugTestWindow.populateTests)
-
-
-EHE_DebugTestWindow.Tests = {}
-EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
-
-EHE_DebugTestWindow.TOGGLE_ALL_CRASH = false
-EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER = false
-EHE_DebugTestWindow.TOGGLE_SHOW_DONE = false
-
-EHE_DebugTestWindow.colors = {
-	DEFAULT = {r=0, g=0, b=0, a=1.0},
-	DEFAULT_HIGHLIGHT = {r=0.3, g=0.3, b=0.3, a=1.0},
-	RED = {r=0.5, g=0.0, b=0.0, a=0.9},
-	GREEN = {r=0.0, g=0.5, b=0.0, a=0.9},
-	RED_HIGHLIGHT = {r=0.75, g=0.0, b=0.0, a=0.9},
-	GREEN_HIGHLIGHT = {r=0.0, g=0.75, b=0.0, a=0.9},
-}
 
 
 function EHE_DebugTestWindow:ToggleShowDone()
