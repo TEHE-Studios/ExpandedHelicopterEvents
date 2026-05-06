@@ -601,7 +601,7 @@ module Base
 	vehicle UH1HTail
 	{
 		template! = UH1HTailBase,
-		skin { texture = vehicles/military/Vehicle_UH1H_Army, }
+		skin { texture = vehicles/military/UH1H_Army, }
 	}
 	vehicle UH1HCrash1
 	{
