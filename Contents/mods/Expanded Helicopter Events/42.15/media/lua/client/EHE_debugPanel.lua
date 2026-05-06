@@ -14,9 +14,9 @@ function ISDebugMenu:setupButtons()
 end
 
 
-EHE_DebugTestWindow.Tests = {}
 EHE_DebugTestWindow = ISPanel:derive("EHE_DebugTestWindow")
 
+EHE_DebugTestWindow.Tests = {}
 EHE_DebugTestWindow.TOGGLE_ALL_CRASH = false
 EHE_DebugTestWindow.MOVE_HELI_TEST_CLOSER = false
 EHE_DebugTestWindow.TOGGLE_SHOW_DONE = false
