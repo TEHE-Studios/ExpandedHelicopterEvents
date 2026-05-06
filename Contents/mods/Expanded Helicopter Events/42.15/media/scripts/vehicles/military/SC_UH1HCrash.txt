@@ -603,11 +603,6 @@ module Base
 		template! = UH1HTailBase,
 		skin { texture = vehicles/military/Vehicle_UH1H_Army, }
 	}
-	vehicle UH60GreenTail
-	{
-		template! = UH1HTailBase,
-		skin { texture = vehicles/military/Vehicle_UH60Green_Crash, }
-	}
 	vehicle UH1HCrash1
 	{
 		template! = UH1HFuselageBase,

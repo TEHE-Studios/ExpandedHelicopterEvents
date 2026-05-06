@@ -10,6 +10,10 @@ module Base
     {
         template! = Bell206Tail,
         skin { texture = vehicles/civilian/Vehicle_Bell206SpiffoDamaged, }
+        part EHE_meta
+        {
+            table EHE { metalKg = 12, }
+        }
     }
 
 	vehicle Bell206IRSFuselage
@@ -22,6 +26,10 @@ module Base
     {
         template! = Bell206Tail,
         skin { texture = vehicles/civilian/Vehicle_Bell206IRSDamaged, }
+        part EHE_meta
+        {
+            table EHE { metalKg = 12, }
+        }
     }
 
 }

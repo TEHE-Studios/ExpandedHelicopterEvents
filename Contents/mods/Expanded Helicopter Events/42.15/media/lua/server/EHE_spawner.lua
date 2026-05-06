@@ -1,77 +1,109 @@
 if isClient() then return end
 
-local util = require("EHE_util.lua")
-local presetCore = require("EHE_presetCore.lua")
+local util             = require("EHE_util.lua")
+local presetCore       = require("EHE_presetCore.lua")
+local crashPartBuilder = require("EHE_crashPartBuilder.lua")
 
 EHE_spawner = EHE_spawner or {}
 
 
-EHE_spawner.functionDictionary = false--{}
+EHE_spawner.functionDictionary = false
 function EHE_spawner.fetchFromDictionary(ID)
-	if not EHE_spawner.functionDictionary then EHE_spawner.setDictionary() end
+    if not EHE_spawner.functionDictionary then EHE_spawner.setDictionary() end
 
-	local func = EHE_spawner.functionDictionary[ID]
-	if not func then print("WARNING: ",ID," not found in EHE_spawner.functionDictionary.") end
+    local func = EHE_spawner.functionDictionary[ID]
+    if not func then print("WARNING: ",ID," not found in EHE_spawner.functionDictionary.") end
 
-	return func
+    return func
 end
 
 
 function EHE_spawner.setDictionary()
-	EHE_spawner.functionDictionary = {}
-	EHE_spawner.functionDictionary.getOutsideSquareFromAbove = util.getOutsideSquareFromAbove
-	EHE_spawner.functionDictionary.applyCrashOnVehicle = util.applyCrashOnVehicle
-	EHE_spawner.functionDictionary.applyFlaresToEvent = util.applyFlaresToEvent
-	EHE_spawner.functionDictionary.ageInventoryItem = util.ageInventoryItem
-	EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = util.applyDeathOrCrawlerToCrew
-	EHE_spawner.functionDictionary.applyParachuteToCarePackage = util.applyParachuteToCarePackage
-	EHE_spawner.functionDictionary.applyCrashDamageToWorld = util.applyCrashDamageToWorld
+    EHE_spawner.functionDictionary = {}
+    EHE_spawner.functionDictionary.getOutsideSquareFromAbove = util.getOutsideSquareFromAbove
+    EHE_spawner.functionDictionary.applyCrashOnVehicle = util.applyCrashOnVehicle
+    EHE_spawner.functionDictionary.applyFlaresToEvent = util.applyFlaresToEvent
+    EHE_spawner.functionDictionary.ageInventoryItem = util.ageInventoryItem
+    EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = util.applyDeathOrCrawlerToCrew
+    EHE_spawner.functionDictionary.applyParachuteToCarePackage = util.applyParachuteToCarePackage
+    EHE_spawner.functionDictionary.applyCrashDamageToWorld = util.applyCrashDamageToWorld
 
-	for presetID,presetVars in pairs(presetCore.PRESETS) do
-		local presetAddedFunc = presetVars["addedFunctionsToEvents"]
-		if presetAddedFunc then
-			for eventID,func in pairs(presetAddedFunc) do
-				EHE_spawner.functionDictionary[presetID..eventID] = func
-			end
-		end
-	end
-	print("Expanded Helicopter Events: EHE_spawner.functionDictionary set.")
+    EHE_spawner.functionDictionary.applyVehicleMetalKg = function(vehicle)
+        local scriptName = vehicle:getScript():getScriptObjectName()
+        local metalKg = crashPartBuilder.getMetalKg(scriptName)
+        if metalKg then
+            vehicle:getModData().EHE_metalKg = metalKg
+        end
+    end
+
+    for presetID,presetVars in pairs(presetCore.PRESETS) do
+        local presetAddedFunc = presetVars["addedFunctionsToEvents"]
+        if presetAddedFunc then
+            for eventID,func in pairs(presetAddedFunc) do
+                EHE_spawner.functionDictionary[presetID..eventID] = func
+            end
+        end
+    end
+
+    for presetID, presetVars in pairs(presetCore.PRESETS) do
+        if presetVars.crashType and type(presetVars.crashType) == "table" then
+            local allCrashParts = {}
+            local hasAny = false
+            for _, vehicleName in ipairs(presetVars.crashType) do
+                local parts = crashPartBuilder.build(vehicleName)
+                if parts then
+                    allCrashParts[vehicleName] = parts
+                    hasAny = true
+                end
+            end
+            if hasAny then
+                EHE_spawner.functionDictionary[presetID .. "OnCrash"] = function(vehicle)
+                    local scriptName = vehicle:getScript():getScriptObjectName()
+                    local crashParts = allCrashParts[scriptName]
+                    if crashParts then
+                        util.applyModularCrashParts(vehicle, crashParts)
+                    end
+                end
+            end
+        end
+    end
+
+    print("Expanded Helicopter Events: EHE_spawner.functionDictionary set.")
 end
 
 
 local targetSquareOnLoad = require("!_TargetSquare_OnLoad.lua")
 function EHE_spawner.addCommand()
-	targetSquareOnLoad.instance.OnLoadCommands.spawn = function(square, myCommand)
-		EHE_spawner.spawn(square, myCommand.funcType, myCommand.spawnThis, myCommand.extraFunctions, myCommand.extraParam, myCommand.processSquare) end
+    targetSquareOnLoad.instance.OnLoadCommands.spawn = function(square, myCommand)
+        EHE_spawner.spawn(square, myCommand.funcType, myCommand.spawnThis, myCommand.extraFunctions, myCommand.extraParam, myCommand.processSquare) end
 end
 Events.OnSGlobalObjectSystemInit.Add(EHE_spawner.addCommand)
 
 
 function EHE_spawner.attemptToSpawn(x, y, z, funcType, spawnThis, extraFunctions, extraParam, processSquare)
-	if not funcType or not spawnThis then return end
+    if not funcType or not spawnThis then return end
 
-	local currentSquare = getSquare(x,y,z)
+    local currentSquare = getSquare(x,y,z)
 
-	if not currentSquare then
-		targetSquareOnLoad.instance.addCommand(x,y,z, { command="spawn", funcType=funcType, spawnThis=spawnThis,
-				  extraFunctions=extraFunctions, extraParam=extraParam, processSquare=processSquare })
-		return
-	else
-		EHE_spawner.spawn(currentSquare, funcType, spawnThis, extraFunctions, extraParam, processSquare)
-	end
+    if not currentSquare then
+        targetSquareOnLoad.instance.addCommand(x,y,z, { command="spawn", funcType=funcType, spawnThis=spawnThis,
+                  extraFunctions=extraFunctions, extraParam=extraParam, processSquare=processSquare })
+        return
+    else
+        EHE_spawner.spawn(currentSquare, funcType, spawnThis, extraFunctions, extraParam, processSquare)
+    end
 end
-
 
 
 ---@param spawned IsoObject | ArrayList
 ---@param functions table table of functions
 function EHE_spawner.processExtraFunctionsOnto(spawned,functions)
-	if spawned and functions and (type(functions)=="table") then
-		for k,funcID in pairs(functions) do
-			local func = EHE_spawner.fetchFromDictionary(funcID)
-			if func then
-				func(spawned)
-			end
-		end
-	end
+    if spawned and functions and (type(functions)=="table") then
+        for k,funcID in pairs(functions) do
+            local func = EHE_spawner.fetchFromDictionary(funcID)
+            if func then
+                func(spawned)
+            end
+        end
+    end
 end

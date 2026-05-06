@@ -66,5 +66,11 @@ module Base
 		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
+
+		part EHE_meta
+		{
+			category = nodisplay,
+			table EHE { metalKg = 25, }
+		}
 	}
 }

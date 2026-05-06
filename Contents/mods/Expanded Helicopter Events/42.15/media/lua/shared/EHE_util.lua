@@ -325,4 +325,57 @@ function util.applyCrashDamageToWorld(square)
 	---drawCircleExplosion(this.getFireRange(), this, IsoTrap.ExplosionMode.Fire)
 end
 
+
+function util.getVehiclePartByName(vehicle, partName)
+    for i = 0, vehicle:getPartCount() - 1 do
+        local part = vehicle:getPartByIndex(i)
+        if part and part:getId() == partName then
+            return part
+        end
+    end
+    return nil
+end
+
+
+function util.applyModularCrashParts(vehicle, crashParts)
+    if not vehicle or not crashParts then return end
+    local vx = vehicle:getX()
+    local vy = vehicle:getY()
+
+    for _, entry in ipairs(crashParts) do
+        if ZombRand(100) < entry.chance then
+            local part = util.getVehiclePartByName(vehicle, entry.part)
+            if part then
+                part:setCondition(0)
+            end
+            local angle = ZombRandFloat(0, math.pi * 2)
+            if entry.scrapItem then
+                local dist = ZombRand(3, 9)
+                sendClientCommand("SpawnerAPI", "spawn", {
+                    funcType = "item",
+                    spawnThis = entry.scrapItem,
+                    x = math.floor(vx + math.cos(angle) * dist),
+                    y = math.floor(vy + math.sin(angle) * dist),
+                    z = 0,
+                    extraFunctions = {"ageInventoryItem"},
+                    processSquare = "getOutsideSquareFromAbove",
+                })
+            end
+            if entry.scrapVehicle then
+                local dist = ZombRand(5, 12)
+                sendClientCommand("SpawnerAPI", "spawn", {
+                    funcType = "vehicle",
+                    spawnThis = entry.scrapVehicle,
+                    x = math.floor(vx + math.cos(angle) * dist),
+                    y = math.floor(vy + math.sin(angle) * dist),
+                    z = 0,
+                    extraFunctions = {"applyVehicleMetalKg"},
+                    processSquare = "getOutsideSquareFromAbove",
+                })
+            end
+        end
+    end
+end
+
+
 return util

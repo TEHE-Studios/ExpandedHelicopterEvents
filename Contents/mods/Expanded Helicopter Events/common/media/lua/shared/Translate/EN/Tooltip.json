@@ -1,5 +1,5 @@
 {
-    "Tooltip_dismantle_helicopterpart": "Use of a blowtorch and welding mask will yield metal.",
+    "Tooltip_dismantle_helicopterpart": "Cut apart with a blowtorch and welding mask. Metal yield scales with part weight.",
     "Tooltip_open_boxes_barehanded": "Would be faster to open with something sharp.",
     "Tooltip_Parachute": "Can be torn up to make ripped cloth.",
     "Tooltip_EnergyBar": "An energy bar packaged for survival kits. Manufactured by PT&D.",
@@ -7,5 +7,8 @@
     "Tooltip_FlyerMilitary": "Looks like a notice flyer from the military.",
     "Tooltip_CivilDefense": "Looks like a civil defense flyer.",
     "Tooltip_SignalFlare": "Signalling flare. Do not fire indoors.",
-    "Tooltip_HandFlare": "Flare. Do not fire indoors."
+    "Tooltip_HandFlare": "Flare. Do not fire indoors.",
+    "Tooltip_EHE_NeedWeldingSkill": "Requires Metal Welding level %1.",
+    "Tooltip_EHE_NeedTorch": "Requires a blowtorch with fuel.",
+    "Tooltip_EHE_NeedMask": "Requires a welding mask."
 }

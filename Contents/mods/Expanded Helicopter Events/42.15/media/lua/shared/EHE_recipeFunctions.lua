@@ -1,25 +1,23 @@
 local eheFlareSystem = require("EHE_flares.lua")
 local ehefillInventoryContainer = require("EHE_fillInventoryContainer.lua")
+local vehicleDismantle = require("EHE_vehicleDismantle.lua")
 
 EHE_Recipe = EHE_Recipe or {}
 
+local METAL_EFFICIENCY = 0.65
+
 function EHE_Recipe.dismantleHeliPart(craftRecipeData, character)
-	local items = craftRecipeData:getAllConsumedItems()
-	local itemContainer = character:getInventory()
-	for i=0,items:size() - 1 do
-		---@type InventoryItem
-		local item = items:get(i)
-		if item then
-			local i_md = item:getModData().EHE_dismantleResult
-			if i_md then
-				for entry in i_md:gmatch("[^;]+") do
-					local itm, qty = entry:match("([^=]+)=?(%d*)")
-					qty = tonumber(qty) or 1
-					itemContainer:AddItems(itm, qty)
-				end
-			end
-		end
-	end
+    local items = craftRecipeData:getAllConsumedItems()
+    local inv   = character:getInventory()
+    for i = 0, items:size() - 1 do
+        local item = items:get(i)
+        if item then
+            local metalKg = item:getModData().EHE_metalKg or (item:getWeight() * METAL_EFFICIENCY)
+            local bars, sheets = vehicleDismantle.metalToItems(metalKg)
+            if bars   > 0 then inv:AddItems("Base.MetalBar",        bars)   end
+            if sheets > 0 then inv:AddItems("Base.SmallSheetMetal", sheets) end
+        end
+    end
 end
 
 

@@ -50,11 +50,10 @@ function eHelicopter:crash()
 			local vehicleType = self.crashType[ZombRand(1,#self.crashType+1)]
 
 			local extraFunctions = {"applyCrashOnVehicle","applyCrashDamageToWorld"}
-			if self.addedFunctionsToEvents then
-				local eventFunction = self.currentPresetID.."OnCrash"--self.addedFunctionsToEvents["OnCrash"]
-				if eventFunction then
-					table.insert(extraFunctions, eventFunction)
-				end
+			if not EHE_spawner.functionDictionary then EHE_spawner.setDictionary() end
+			local onCrashID = self.currentPresetID .. "OnCrash"
+			if EHE_spawner.functionDictionary[onCrashID] then
+				table.insert(extraFunctions, onCrashID)
 			end
 
 			sendClientCommand("SpawnerAPI", "spawn", {
@@ -321,6 +320,7 @@ function eHelicopter:dropScrap(fuzz)
 	if self.scrapVehicles then
 		self:calcDebrisTrail(self.scrapVehicles, "vehicle",
 				{
+					extraFunctions = {"applyVehicleMetalKg"},
 					processSquare = "getOutsideSquareFromAbove",
 				}, fuzz)
 		self.scrapVehicles = false

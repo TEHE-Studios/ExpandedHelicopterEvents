@@ -10,5 +10,9 @@ module Base
     {
         template! = UH60Tail,
         skin { texture = vehicles/SWH/Vehicle_UH1HSantaDamaged, }
+        part EHE_meta
+        {
+            table EHE { metalKg = 20, }
+        }
     }
 }
