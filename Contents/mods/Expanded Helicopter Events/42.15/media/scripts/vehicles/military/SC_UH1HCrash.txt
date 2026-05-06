@@ -147,7 +147,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -182,7 +182,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -217,7 +217,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -252,7 +252,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -287,7 +287,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -373,7 +373,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -408,7 +408,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -443,7 +443,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -478,7 +478,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -513,7 +513,7 @@ module Base
 
             lua
             {
-                create = Vehicles.Create.SCKCO_VehiclePartVariation,
+                create = Vehicles.Create.Default,
             }
 
             category = nodisplay,
@@ -687,6 +687,36 @@ module Base
 			offset = 0.0000 -4.0909 14.0909,
 			rotate = 0.0000 0.0000 0.0000,
 			zoffset = 1.0000,
+		}
+
+		part RotorBlade1
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade1, }
+			}
+		}
+
+		part RotorBlade2
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade2, }
+			}
+		}
+
+		part HalfSkirt
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 40, }
+				scatter = { item = EHE.UH1HHalfSkirt2, }
+			}
 		}
 	}
 	template vehicle UH1HTailBase

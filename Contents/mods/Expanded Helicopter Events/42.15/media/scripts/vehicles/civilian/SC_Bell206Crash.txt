@@ -158,6 +158,46 @@ module Base
 		shadowExtents = 0.0181 0.1049,
 		shadowOffset = 0.0000 -0.0000,
 		physicsChassisShape = 0.0180 0.0178 0.1050,
+
+		part RotorBlade1
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.Bell206RotorBlade1, }
+			}
+		}
+
+		part RotorBlade2
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.Bell206RotorBlade2, }
+			}
+		}
+
+		part TailBlade
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 50, }
+				scatter = { item = EHE.Bell206TailBlade, }
+			}
+		}
+
+		part HalfSkirt
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 40, }
+				scatter = { item = EHE.Bell206HalfSkirt, }
+			}
+		}
 	}
 	vehicle Bell206Crash1
     {
