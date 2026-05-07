@@ -2,34 +2,33 @@ module Base
 {
 	vehicle Bell206SpiffoFuselage
 	{
-		template! = Bell206Fuselage,
+		template! = Bell206FuselageBase,
 		skin { texture = vehicles/SWH/Vehicle_Bell206SpiffoDamaged, }
 	}
 
-    vehicle Bell206SpiffoTail
-    {
-        template! = Bell206Tail,
-        skin { texture = vehicles/civilian/Vehicle_Bell206SpiffoDamaged, }
-        part EHE_meta
-        {
-            table EHE { metalKg = 12, }
-        }
-    }
+	vehicle Bell206SpiffoTail
+	{
+		template! = Bell206TailBase,
+		skin { texture = vehicles/civilian/Vehicle_Bell206SpiffoDamaged, }
+		part EHE_meta
+		{
+			table EHE { metalKg = 12, }
+		}
+	}
 
 	vehicle Bell206IRSFuselage
 	{
-		template! = Bell206Fuselage,
+		template! = Bell206FuselageBase,
 		skin { texture = vehicles/SWH/Vehicle_Bell206IRSDamaged, }
 	}
 
-    vehicle Bell206IRSTail
-    {
-        template! = Bell206Tail,
-        skin { texture = vehicles/civilian/Vehicle_Bell206IRSDamaged, }
-        part EHE_meta
-        {
-            table EHE { metalKg = 12, }
-        }
-    }
-
+	vehicle Bell206IRSTail
+	{
+		template! = Bell206TailBase,
+		skin { texture = vehicles/civilian/Vehicle_Bell206IRSDamaged, }
+		part EHE_meta
+		{
+			table EHE { metalKg = 12, }
+		}
+	}
 }
