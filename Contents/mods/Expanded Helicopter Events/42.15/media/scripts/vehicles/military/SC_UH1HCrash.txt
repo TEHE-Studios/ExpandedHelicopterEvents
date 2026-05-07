@@ -87,13 +87,13 @@ module Base
 		invertX = FALSE,
 		scale = 1,
 	}
-	model Vehicle_UH1HTail
+	/* model Vehicle_UH1HTail
 	{
 		mesh = vehicles/Vehicle_UH1HTail,
 		shader = vehicle_norandom_multiuv_noreflect,
 		invertX = FALSE,
 		scale = 0.01,
-	}
+	} */
 	model Vehicle_UH1HCrash1
 	{
 		mesh = vehicles/UH1HCrash1,
@@ -598,11 +598,11 @@ module Base
             zoffset = 1.0000,
         }
     }
-	vehicle UH1HTail
+	/* vehicle UH1HTail
 	{
 		template! = UH1HTailBase,
-		skin { texture = vehicles/military/UH1H_Army, }
-	}
+		skin { texture = vehicles/military/Vehicle_UH1H_Army, }
+	} */
 	vehicle UH1HCrash1
 	{
 		template! = UH1HFuselageBase,
@@ -719,7 +719,7 @@ module Base
 			}
 		}
 	}
-	template vehicle UH1HTailBase
+	/* template vehicle UH1HTailBase
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -755,7 +755,7 @@ module Base
 		wheelFriction = 4.0f,
 		frontEndHealth = 150,
 		rearEndHealth = 150,
-	}
+	} */
 	template vehicle UH1HFuselageBase
 	{
 		mechanicType = 1,
