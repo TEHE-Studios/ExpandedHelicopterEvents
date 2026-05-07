@@ -1,22 +1,5 @@
 module Base
 {
-	model Vehicle_IceCreamTruck
-	{
-		mesh = vehicles/Vehicle_IceCreamTruck,
-		shader = vehicle_multiuv,
-		invertX = FALSE,
-		scale = 0.01,
-	}
-
-	
-	model Vehicle_IceCreamTruck
-	{
-		mesh = vehicles/Vehicle_IceCreamTruck,
-		shader = vehicle_norandom_multiuv,
-		invertX = FALSE,
-		scale = 0.01,
-	}
-
 
 	vehicle TISIceCreamTruck
 	{
