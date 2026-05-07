@@ -9,7 +9,7 @@ module Base
 	vehicle Bell206SpiffoTail
 	{
 		template! = Bell206TailBase,
-		skin { texture = vehicles/civilian/Vehicle_Bell206SpiffoDamaged, }
+		skin { texture = vehicles/SWH/Vehicle_Bell206SpiffoDamaged, }
 		part EHE_meta
 		{
 			table EHE { metalKg = 12, }
@@ -25,7 +25,7 @@ module Base
 	vehicle Bell206IRSTail
 	{
 		template! = Bell206TailBase,
-		skin { texture = vehicles/civilian/Vehicle_Bell206IRSDamaged, }
+		skin { texture = vehicles/SWH/Vehicle_Bell206IRSDamaged, }
 		part EHE_meta
 		{
 			table EHE { metalKg = 12, }
