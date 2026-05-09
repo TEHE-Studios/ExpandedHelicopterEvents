@@ -1,4 +1,4 @@
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliVariables.lua")
 
 local eventSoundHandler = {}
 

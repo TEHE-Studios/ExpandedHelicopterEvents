@@ -747,7 +747,7 @@ def run_simulation(preset_paths, sandbox, num_runs=100, verbose=False):
 
     heli_defaults = load_main_variable_defaults()
     if not heli_defaults:
-        print("  [WARN] EHE_mainVariables.lua not found — eHelicopter defaults will be minimal.")
+        print("  [WARN] EHE_heliVariables.lua not found — eHelicopter defaults will be minimal.")
 
     seed0_weather = generate_run_weather(duration, seed=0)
     env_lua = build_lua_environment(all_presets, sandbox, heli_defaults, weather_days=seed0_weather)

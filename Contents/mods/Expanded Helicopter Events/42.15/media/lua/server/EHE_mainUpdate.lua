@@ -1,5 +1,4 @@
-local mainCore = require("EHE_heliCore.lua")
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliCore.lua")
 require("EHE_shadowSystem.lua")
 local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
 local eventSoundHandler = require("EHE_sounds.lua")
@@ -333,9 +332,9 @@ local function updateAllHelicopters()
 	if (lastUpdateAllHelicopters >= 5) then
 		lastUpdateAllHelicopters = 0
 
-		for i=1, #mainCore.ALL_HELICOPTERS do
+		for i=1, #eHelicopter.ALL_HELICOPTERS do
 			---@type eHelicopter heli
-			local heli = mainCore.ALL_HELICOPTERS[i]
+			local heli = eHelicopter.ALL_HELICOPTERS[i]
 
 			if heli and heli.state and (not (heli.state == "unLaunched")) and (not (heli.state == "following")) then
 				if not heli.updateEvent then print("ERR: updateAllHelicopters: heli.update not accessible. heli:"..tostring(heli)) return end

@@ -7,7 +7,7 @@ require("EHE_spawner.lua")
 require("EHE_shadowSystem.lua")
 local eheFlareSystem   = require("EHE_flares.lua")
 local heatMap          = require("EHE_heatMap.lua")
-local mainCore         = require("EHE_mainCore.lua")
+local mainCore         = require("EHE_heliCore.lua")
 local vehicleDismantle = require("EHE_vehicleDismantle.lua")
 
 --sendClientCommand(player, module, command, args) end -- to server

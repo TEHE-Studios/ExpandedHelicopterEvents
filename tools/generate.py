@@ -74,7 +74,7 @@ def resolve_default_paths():
                 found.append(m)
     return found
 
-# ── GLOBAL DEFAULTS (populated at runtime from EHE_mainVariables.lua) ──
+# ── GLOBAL DEFAULTS (populated at runtime from EHE_heliVariables.lua) ──
 DEFAULTS = {}
 
 # ── SANDBOX FREQUENCY VARS ─────────────────────────────────────────────
@@ -82,11 +82,11 @@ DEFAULTS = {}
 SANDBOX_FREQ_VARS = []
 
 MAIN_VARIABLES_GLOBS = [
-    "../Contents/mods/*/*/media/lua/server/EHE_mainVariables.lua",
-    "../Contents/mods/*/*/media/lua/shared/EHE_mainVariables.lua",
-    "../Contents/mods/*/*/media/lua/client/EHE_mainVariables.lua",
-    "../Contents/mods/*/media/lua/server/EHE_mainVariables.lua",
-    "../Contents/mods/*/media/lua/shared/EHE_mainVariables.lua",
+    "../Contents/mods/*/*/media/lua/server/EHE_heliVariables.lua",
+    "../Contents/mods/*/*/media/lua/shared/EHE_heliVariables.lua",
+    "../Contents/mods/*/*/media/lua/client/EHE_heliVariables.lua",
+    "../Contents/mods/*/media/lua/server/EHE_heliVariables.lua",
+    "../Contents/mods/*/media/lua/shared/EHE_heliVariables.lua",
 ]
 
 SANDBOX_FILE_GLOBS = [
@@ -179,7 +179,7 @@ def _parse_lua_value(s):
 
 def load_main_variable_defaults():
     """
-    Read eHelicopter default fields from EHE_mainVariables.lua.
+    Read eHelicopter default fields from EHE_heliVariables.lua.
     Handles both table-literal style ({ key = val }) and
     dot-assignment style (eHelicopter.key = val), including multi-line values.
     """
@@ -256,12 +256,12 @@ def load_main_variable_defaults():
 
 
 def refresh_defaults():
-    """Populate DEFAULTS from EHE_mainVariables.lua. Call before build_groups()."""
+    """Populate DEFAULTS from EHE_heliVariables.lua. Call before build_groups()."""
     loaded = load_main_variable_defaults()
     if loaded:
         DEFAULTS.update(loaded)
     else:
-        print("  [WARN] EHE_mainVariables.lua not found or yielded no defaults — DEFAULTS will be empty.")
+        print("  [WARN] EHE_heliVariables.lua not found or yielded no defaults — DEFAULTS will be empty.")
 
 
 def load_sandbox_defaults():

@@ -1,4 +1,4 @@
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliVariables.lua")
 local isoRangeScan = require("EHE_IsoRangeScan.lua")
 local eventSoundHandler = require("EHE_sounds.lua")
 

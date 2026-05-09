@@ -1,7 +1,7 @@
 require("EHE_heliCore.lua")
 require("EHE_spawner.lua")
 
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliVariables.lua")
 local util = require("EHE_util.lua")
 local modData = require("EHE_globalModData.lua")
 --Heli goes down

@@ -1,7 +1,6 @@
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliCore.lua")
 local modData = require("EHE_globalModData.lua")
 local util = require("EHE_util.lua")
-local mainCore = require("EHE_heliCore.lua")
 local presetCore = require("EHE_presetCore.lua")
 
 local eHeliScheduler = {}
@@ -79,7 +78,7 @@ function eHeliScheduler.engage(ID)
 	print("[EHE] engage: preset="..tostring(eHeliEvent.preset).." willFly="..tostring(willFly).." foundTarget="..tostring(foundTarget~=nil))
 
 	if willFly and foundTarget then
-		local heli = mainCore.getFreeHelicopter(eHeliEvent.preset)
+		local heli = eHelicopter.getFreeHelicopter(eHeliEvent.preset)
 		if heli then
 			eHeliEvent.triggered = true
 			heli:launch(foundTarget)
@@ -322,7 +321,7 @@ function eHeliScheduler.ScheduleNew(currentDay, currentHour, freqOverride, noPri
 
 			local sfRaw = presetSettings.schedulingFactor or eHelicopter.schedulingFactor
 			local schedulingFactor = type(sfRaw)=="table" and (sfRaw[1] or 1) or (sfRaw or 1)
-			local startDay, cutOffDay = mainCore.fetchStartDayAndCutOffDay(presetSettings)
+			local startDay, cutOffDay = eHelicopter.fetchStartDayAndCutOffDay(presetSettings)
 			local specialDatesObserved = presetSettings.eventSpecialDates or eHelicopter.eventSpecialDates
 			local specialDatesInRange = false
 			if specialDatesObserved then
@@ -416,7 +415,7 @@ function eHeliScheduler.ScheduleNew(currentDay, currentHour, freqOverride, noPri
 		local insane = (freqOverride or selectedFreq) == 6
 		local selectedPreset = presetCore.PRESETS[selectedPresetID]
 		local flightHours = selectedPreset.flightHours or eHelicopter.flightHours
-		local startDay, cutOffDay = mainCore.fetchStartDayAndCutOffDay(selectedPreset)
+		local startDay, cutOffDay = eHelicopter.fetchStartDayAndCutOffDay(selectedPreset)
 		local iterations = insane and 10 or 1
 		local latestStartDay
 

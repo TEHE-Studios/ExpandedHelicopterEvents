@@ -1,6 +1,5 @@
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliCore.lua")
 local util = require("EHE_util.lua")
-local mainCore = require("EHE_heliCore.lua")
 local modData = require("EHE_globalModData.lua")
 
 local config = require("EHE_SI_config.lua")
@@ -65,7 +64,7 @@ function eHeliScheduler.engage(ID)
 
 	if willFly and foundTarget then
 		---@type eHelicopter
-		local heli = mainCore.getFreeHelicopter(eHeliEvent.preset)
+		local heli = eHelicopter.getFreeHelicopter(eHeliEvent.preset)
 		if heli then
 			eHeliEvent.triggered = true
 			heli:launch(foundTarget, (not not eHeliEvent.streamerTarget) )

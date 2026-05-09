@@ -1,5 +1,5 @@
 require("radio/ISWeatherChannel.lua")
-local eHelicopter = require("EHE_mainVariables.lua")
+local eHelicopter = require("EHE_heliVariables.lua")
 local modData = require("EHE_globalModData.lua")
 local util = require("EHE_util.lua")
 local presetCore = require("EHE_presetCore.lua")

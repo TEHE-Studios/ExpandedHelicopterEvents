@@ -6,21 +6,230 @@ local announcerCore = require("EHE_announcersCore.lua")
 local util = require("EHE_util.lua")
 local modData = require("EHE_globalModData.lua")
 local heatMap = require("EHE_heatMap.lua")
-local eHelicopter = require("EHE_mainVariables.lua")
-local mainCore = require("EHE_mainCore.lua")
 local presetCore = require("EHE_presetCore.lua")
 local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
+local eHelicopter = require("EHE_heliVariables.lua")
 
----Do not call this function directly for new helicopters; use: getFreeHelicopter instead
-function eHelicopter:new()
+eHelicopter.ALL_HELICOPTERS = {}
 
-	local o = {}
-	setmetatable(o, self)
-	self.__index = self
-	table.insert(mainCore.ALL_HELICOPTERS, o)
-	o.ID = #mainCore.ALL_HELICOPTERS
+local function copyTable(t)
+	local copy = {}
+	for k, v in pairs(t) do copy[k] = v end
+	return copy
+end
 
-	return o
+function eHelicopter.getFreeHelicopter(preset)
+	local heli = setmetatable({}, {__index = eHelicopter})
+	for k, v in pairs(eHelicopter.initialVars) do
+		heli[k] = type(v) == "table" and copyTable(v) or v
+	end
+	for k, v in pairs(eHelicopter.temporaryVariables) do
+		heli[k] = type(v) == "table" and copyTable(v) or v
+	end
+	table.insert(eHelicopter.ALL_HELICOPTERS, heli)
+	heli.ID = #eHelicopter.ALL_HELICOPTERS
+	if preset then
+		heli:loadPreset(preset)
+	end
+	return heli
+end
+
+
+---@param tableToLoadFrom table
+function eHelicopter:loadVarsFrom(tableToLoadFrom, DEBUG_ID)
+	if not tableToLoadFrom then return end
+	for var, value in pairs(tableToLoadFrom) do
+		local ignore = ((var=="presetProgression") or (var=="presetRandomSelection") or (var=="inherit"))
+		if not ignore then
+			if type(value) == "table" then
+				self[var] = presetCore.recursiveTableCopy(value)
+			else
+				self[var] = value
+			end
+		end
+	end
+end
+
+
+function eHelicopter:randomSelectPreset(preset)
+	local selection = preset.presetRandomSelection
+	local pool = {}
+
+	for key, entry in ipairs(selection) do
+		if type(entry) == "string" then
+			local id = entry
+			local iterations = 1
+			local next = selection[key+1]
+			if type(next) == "number" then
+				iterations = next
+			end
+			for i=1, iterations do
+				table.insert(pool, id)
+			end
+		end
+	end
+
+	local choice = pool[ZombRand(#pool)+1]
+
+	if not choice then
+		print(" -- ERR: No choice selected in randomSelectPreset")
+		return preset
+	end
+
+	print(" -- randomSelectPreset:   pool size: "..#pool.."   choice: "..choice)
+	return presetCore.PRESETS[choice]
+end
+
+
+function eHelicopter:progressionSelectPreset(preset)
+	local pp = preset.presetProgression
+	if not pp then return end
+
+	local globalModData = modData.get()
+	local DaysSinceApoc = globalModData.DaysBeforeApoc + util.getWorldAgeDays()
+	local startDay, cutOffDay = eHelicopter.fetchStartDayAndCutOffDay(preset)
+	if not cutOffDay or cutOffDay <= 0 then return end
+
+	local DaysOverCutOff = DaysSinceApoc / cutOffDay
+	local presetIDTmp
+	for pID, pCutOff in pairs(pp) do
+		if pCutOff <= DaysOverCutOff then
+			if (not presetIDTmp) or (pCutOff > pp[presetIDTmp]) then
+				presetIDTmp = pID
+			end
+		end
+	end
+
+	if presetIDTmp then
+		print(" -- progressionSelectPreset:  selection: "..presetIDTmp)
+		return presetCore.PRESETS[presetIDTmp]
+	end
+end
+
+
+function eHelicopter:recursivePresetCheck(preset, iteration, recursiveID)
+	iteration = iteration or 0
+	self:loadVarsFrom(preset, "presetLoad:"..tostring(recursiveID))
+
+	if preset.presetRandomSelection then
+		local randSelect = self:randomSelectPreset(preset)
+		if not randSelect then
+			print("ERROR: Preset:",preset," failed `randomSelectPreset`.")
+		else
+			preset = randSelect
+			local presetID
+			for id, vars in pairs(presetCore.PRESETS) do
+				if vars == preset then presetID = id end
+			end
+			self:loadVarsFrom(preset, "-- presetRand:"..tostring(presetID))
+		end
+	end
+
+	if preset.presetProgression then
+		local progressSelect = self:progressionSelectPreset(preset)
+		if not progressSelect then
+			print("ERROR: Preset:",preset," failed `progressionSelectPreset`.")
+		else
+			preset = progressSelect
+			local presetID
+			for id, vars in pairs(presetCore.PRESETS) do
+				if vars == preset then presetID = id end
+			end
+			self:loadVarsFrom(preset, "-- presetProg:"..tostring(presetID))
+		end
+	end
+
+	if not preset then print("ERROR: recursivePresetCheck failed : preset became nil.") return end
+
+	if (preset.presetProgression or preset.presetRandomSelection) and (iteration < 4) then
+		local presetID
+		for id, vars in pairs(presetCore.PRESETS) do
+			if vars == preset then presetID = id end
+		end
+		return self:recursivePresetCheck(preset, iteration+1, presetID)
+	end
+
+	if iteration > 0 then print("-- EHE: ERR: progression/selection: high recursive iteration: "..tostring(iteration)) end
+
+	return preset
+end
+
+
+---@param ID string
+function eHelicopter:loadPreset(ID)
+	if not ID then return end
+
+	local preset = presetCore.PRESETS[ID]
+	local masterID = ID
+
+	if not preset then return end
+
+	self:loadVarsFrom(eHelicopter.initialVars, "initialVars")
+	if preset.inherit then
+		for k, inheritedPresetID in pairs(preset.inherit) do
+			local presetFound = presetCore.PRESETS[inheritedPresetID]
+			if presetFound then
+				self:loadVarsFrom(presetFound, "presetInherited")
+			end
+		end
+	end
+	preset = self:recursivePresetCheck(preset, nil, masterID)
+	self:loadVarsFrom(eHelicopter.temporaryVariables, "temporaryVars")
+	for id, vars in pairs(presetCore.PRESETS) do
+		if vars == preset then ID = id end
+	end
+	self.currentPresetID = ID
+	self.masterPresetID = masterID
+end
+
+
+---returns heli's ID and preset; optionally: returns location's x and y
+---@param location boolean return x and y coords with ID and preset
+function eHelicopter:heliToString(location)
+
+	local selfIDPresetState = self.ID.." ("..self.currentPresetID..") ["..tostring(self.state).."]"
+	local returnString = "HELI "
+
+	if self==eHelicopter then
+		returnString = returnString.." SYSTEM"
+	else
+		returnString = returnString..selfIDPresetState
+	end
+
+	if location then
+		local h_x, h_y, _ = self:getXYZAsInt()
+		if h_x and h_y then
+			returnString = returnString.." (x:"..h_x..", y:"..h_y..")"
+		else
+			returnString = returnString.." (x:?, y:?)"
+		end
+	end
+	return returnString
+end
+
+
+function eHelicopter:hoverAndFlyOverReport(STATE)
+	if self.trueTarget and self.trueTarget:getClass() and self.target and self.target:getClass() then
+
+		local additionalDebug = ""
+		if getDebug() then
+			if self.trueTarget then additionalDebug = " tT:"..self.trueTarget:getClass():getSimpleName() end
+			if self.target then additionalDebug = additionalDebug.." t:"..self.target:getClass():getSimpleName() end
+		end
+
+		print(" - "..self:heliToString(true).." "..STATE..additionalDebug)
+	end
+end
+
+
+--- Debug: Reports helicopter's useful variables -- note: this will flood your output
+function eHelicopter:Report(aiming, dampen)
+	---@type eHelicopter heli
+	local report = " a:"..tostring(aiming).." d:"..tostring(dampen).." "
+	print(" > "..self:heliToString(true))
+	print("   TARGET: (x:"..util.Vector3GetX(self.targetPosition)..", y:"..util.Vector3GetY(self.targetPosition)..")")
+	print("   (dist: "..self:getDistanceToVector(self.target).."  "..report)
+	print("-----------------------------------------------------------------")
 end
 
 
@@ -598,7 +807,7 @@ function eHelicopter:formationInit()
 					heliY = 0-heliY
 				end
 				
-				local newHeli = mainCore.getFreeHelicopter(value)
+				local newHeli = eHelicopter.getFreeHelicopter(value)
 				newHeli.state = "following"
 				newHeli.currentPosition = newHeli.currentPosition or Vector3.new()
 				newHeli.currentPosition:set(h_x, h_y, newHeli.height)
@@ -615,7 +824,7 @@ end
 function eHelicopter:applyCrashChance(applyEnvironmentalCrashChance)
 	local globalModData = modData.get()
 	--increase crash chance as the apocalypse goes on
-	local startDay, cutOffDay = mainCore.fetchStartDayAndCutOffDay(self)
+	local startDay, cutOffDay = eHelicopter.fetchStartDayAndCutOffDay(self)
 	local eventFrequency = SandboxVars.ExpandedHeli["Frequency_"..self.masterPresetID] or 2
 
 	--[DEBUG]] print("EHE: DEBUG: Crash Chance Freq: "..self.masterPresetID)
@@ -816,5 +1025,4 @@ function eHelicopter:unlaunch()
 end
 
 
-
-return mainCore
+return eHelicopter
