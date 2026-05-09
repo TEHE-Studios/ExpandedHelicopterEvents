@@ -10,7 +10,7 @@ presetCore.registerPreset("military_nonhostile",{
 		{ outfit="EHE_Soldier", spawn=75 },
 		{ outfit="EHE_Soldier", spawn=50 },
 	},
-	crashType = {"SC_UH1H"},
+	crashType = {"SC_UH1HVariant1", "SC_UH1HVariant2", "SC_UH1HVariant3"},
 	scrapItems = {"EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 5},
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = {10, 0.85, 5},
@@ -416,9 +416,9 @@ presetCore.registerPreset("news_Bell206", {
 		{ outfit="EHE_NewsReporter", },
 		{ outfit="EHE_NewsReporter", spawn = 40 },
 	},
-	crashType = {"Bell206LBMWFuselage"},
+	crashType = {"Bell206Fuselage_N177TV"},
 	scrapItems = {"Base.ScrapMetal", 10},
-	scrapVehicles = {"Bell206LBMWTail"},
+	scrapVehicles = {"Bell206Tail_N177TV"},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.85, b=0.20},
 	eventStartDayFactor = 0.067,
@@ -438,7 +438,7 @@ presetCore.registerPreset("police", {
 		{ outfit="EHEPoliceOfficer", spawn=75 },
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
-	scrapVehicles = {"Bell206PoliceTail"},
+	scrapVehicles = {"Bell206Tail_N720HP"},
 	announcerVoice = "Police",
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_PoliceSpotted",
@@ -593,7 +593,7 @@ presetCore.registerPreset("survivors_Bell206_N120LH", {
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
-	scrapVehicles = {"Bell206SurvivalistTail"},
+	scrapVehicles = {"Bell206Tail_N120LH"},
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorRich",
 	callsigns = {"November-One-Two-Zero-Lima-Hotel", "One-Two-Zero", "Executive Flight"},
@@ -602,7 +602,7 @@ presetCore.registerPreset("survivors_Bell206_N120LH", {
 -- Friendly now ex-soldiers trying to find safety, contrast to the deserters
 presetCore.registerPreset("survivors_soldiers_UH1H", {
 	inherit = {"survivors"},
-	crashType = {"Bell206SurvivalistFuselage"},
+	crashType = {"Bell206Fuselage_N3KY"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
@@ -611,7 +611,7 @@ presetCore.registerPreset("survivors_soldiers_UH1H", {
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
 	},
-	scrapVehicles = {"Bell206SurvivalistTail"},
+	scrapVehicles = {"Bell206Tail_N3KY"},
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorSoldiers",
 	callsigns = {"Echo-Three", "Delta-Seven", "Bravo-Two", "Alpha-Nine"},
