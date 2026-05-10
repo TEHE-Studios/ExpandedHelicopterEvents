@@ -417,8 +417,8 @@ presetCore.registerPreset("news_Bell206", {
 		{ outfit="EHE_NewsReporter", spawn = 40 },
 	},
 	crashType = {"Bell206Fuselage_N177TV"},
-	scrapItems = {"Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206Tail_N177TV"},
+	scrapItems = {"Base.ScrapMetal", 10},
 	forScheduling = true,
 	markerColor = {r=1.00, g=0.85, b=0.20},
 	eventStartDayFactor = 0.067,
@@ -438,7 +438,8 @@ presetCore.registerPreset("police", {
 		{ outfit="EHEPoliceOfficer", spawn=75 },
 	},
 	scrapItems = {"Base.ScrapMetal", 10},
-	scrapVehicles = {"Bell206Tail_N720HP"},
+	crashType = {"Bell206Fuselage_N3KY"},
+	scrapVehicles = {"Bell206Tail_N3KY"},
 	announcerVoice = "Police",
 	eventSoundEffects = {
 		["foundTarget"] = "eHeli_PoliceSpotted",
@@ -531,12 +532,12 @@ presetCore.registerPreset("survivors", {
 presetCore.registerPreset("survivors_Bell206_N720HP", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N720HP"},
+	scrapVehicles = {"Bell206Tail_N720HP"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	scrapVehicles = {"Bell206Tail_N720HP"},
 	radioChatter = "AEBS_SurvivorCops",
 	callsigns = {"November-Seven-Two-Zero-Hotel-Papa", "Seven-Two-Zero", "Tennessee Bird"},
 })
@@ -545,12 +546,12 @@ presetCore.registerPreset("survivors_Bell206_N720HP", {
 presetCore.registerPreset("survivors_Bell206_N95SP", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N95SP"},
+	scrapVehicles = {"Bell206Tail_N95SP"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	scrapVehicles = {"Bell206Tail_N95SP"},
 	radioChatter = "AEBS_SurvivorCops",
 	callsigns = {"November-Nine-Five-Sierra-Papa", "Niner-Five", "Indiana Bird"},
 })
@@ -559,12 +560,12 @@ presetCore.registerPreset("survivors_Bell206_N95SP", {
 presetCore.registerPreset("survivors_Bell206_N177TV", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N177TV"},
+	scrapVehicles = {"Bell206Tail_N177TV"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	scrapVehicles = {"Bell206Tail_N177TV"},
 	radioChatter = "AEBS_SurvivorNews",
 	callsigns = {"November-One-Seven-Seven-Tango-Victor", "One-Seven-Seven", "News Bird"},
 })
@@ -572,13 +573,13 @@ presetCore.registerPreset("survivors_Bell206_N177TV", {
 -- Fleeing reporters
 presetCore.registerPreset("survivors_Bell206_N5740A", {
 	inherit = {"survivors"},
-	crashType = {"Bell206Fuselage_N5740A"},
+	crashType = {"Bell206Fuselage_N574OA"},
+	scrapVehicles = {"Bell206Tail_N574OA"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
-	scrapVehicles = {"Bell206Tail_N5740A"},
 	radioChatter = "AEBS_SurvivorNews",
 	callsigns = {"November-Five-Seven-Four-Zero-Alpha", "Five-Seven-Four-Zero", "News Hawk"},
 })
@@ -587,13 +588,13 @@ presetCore.registerPreset("survivors_Bell206_N5740A", {
 presetCore.registerPreset("survivors_Bell206_N120LH", {
 	inherit = {"survivors"},
 	crashType = {"Bell206Fuselage_N120LH"},
+	scrapVehicles = {"Bell206Tail_N120LH"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
-	scrapVehicles = {"Bell206Tail_N120LH"},
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorRich",
 	callsigns = {"November-One-Two-Zero-Lima-Hotel", "One-Two-Zero", "Executive Flight"},
@@ -602,7 +603,8 @@ presetCore.registerPreset("survivors_Bell206_N120LH", {
 -- Friendly now ex-soldiers trying to find safety, contrast to the deserters
 presetCore.registerPreset("survivors_soldiers_UH1H", {
 	inherit = {"survivors"},
-	crashType = {"Bell206Fuselage_N3KY"},
+	crashType = {"Bell206Fuselage_N720HP"},
+	scrapVehicles = {"Bell206Tail_N720HP"},
 	crew = {
 		{ outfit="EHE_SurvivorPilot", 0 },
 		{ outfit="EHE_Survivor", 0 },
@@ -611,7 +613,6 @@ presetCore.registerPreset("survivors_soldiers_UH1H", {
 	eventSoundEffects = {
 		["flightSound"] = "eMiliHeli",
 	},
-	scrapVehicles = {"Bell206Tail_N3KY"},
 	dropPackages = false,
 	radioChatter = "AEBS_SurvivorSoldiers",
 	callsigns = {"Echo-Three", "Delta-Seven", "Bravo-Two", "Alpha-Nine"},
@@ -620,6 +621,8 @@ presetCore.registerPreset("survivors_soldiers_UH1H", {
 -- Taking off from nearby small airfields to ditch traffic
 presetCore.registerPreset("survivors_Cessna172", {
 	inherit = {"survivors"},
+	crashType = false,
+	scrapVehicles = false,
 	crew = {
 		{ outfit="EHE_SurvivorPilot", female = 0 },
 	},
