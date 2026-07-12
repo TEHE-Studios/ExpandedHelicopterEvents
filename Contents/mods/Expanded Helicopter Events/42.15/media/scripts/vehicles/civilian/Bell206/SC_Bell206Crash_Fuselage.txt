@@ -7,6 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
+
 	template vehicle Bell206FuselageBase
 	{
 		neverSpawnKey = true,
@@ -18,49 +19,16 @@ module Base
 			offset = -0.0014 0.0014 0.0000,
 		}
 
+		centerOfMassOffset = 0.0000 0.0089 0.0000,
 		extents = 0.0178 0.0178 0.0600,
 		shadowExtents = 0.0185 0.0601,
 		physicsChassisShape = 0.0180 0.0178 0.0600,
 	}
+
 	vehicle Bell206Fuselage_N720HP { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N720HP, } }
 	vehicle Bell206Fuselage_N574OA { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N574OA, } }
 	vehicle Bell206Fuselage_N120LH { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N120LH, } }
 	vehicle Bell206Fuselage_N177TV { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N177TV, } }
 	vehicle Bell206Fuselage_N3KY { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N3KY, } }
 	vehicle Bell206Fuselage_N95SP { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N95SP, } }
-
-	model Vehicle_Bell206Tail
-	{
-		mesh = vehicles/Vehicle_Bell206Crash3tail,
-		shader = vehicle_norandom_multiuv_noreflect,
-		invertX = FALSE,
-		scale = 0.01,
-	}
-	template vehicle Bell206TailBase
-	{
-		neverSpawnKey = true,
-
-		model
-		{
-			file = Vehicle_Bell206Tail,
-			scale = 91.0600,
-			offset = -0.0002 0.0014 0.0000,
-		}
-
-		extents = 0.0053 0.0178 0.0600,
-		shadowExtents = 0.0053 0.0601,
-		physicsChassisShape = 0.0053 0.0178 0.0600,
-
-		part EHE_meta
-		{
-			category = nodisplay,
-			table EHE { metalKg = 15, }
-		}
-	}
-	vehicle Bell206Tail_N720HP { template! = Bell206TailBase, skin { texture = vehicles/civilian/N720HP, } }
-	vehicle Bell206Tail_N574OA { template! = Bell206TailBase, skin { texture = vehicles/civilian/N574OA, } }
-	vehicle Bell206Tail_N120LH { template! = Bell206TailBase, skin { texture = vehicles/civilian/N120LH, } }
-	vehicle Bell206Tail_N177TV { template! = Bell206TailBase, skin { texture = vehicles/civilian/N177TV, } }
-	vehicle Bell206Tail_N3KY { template! = Bell206TailBase, skin { texture = vehicles/civilian/N3KY, } }
-	vehicle Bell206Tail_N95SP { template! = Bell206TailBase, skin { texture = vehicles/civilian/N95SP, } }
 }

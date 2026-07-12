@@ -1,0 +1,939 @@
+module Base
+{
+	model SC_UH1HVariant1
+	{
+		mesh = vehicles/UH1HCrash1|base_mesh,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 1,
+	}
+	model UH1HVariant1CockpitWindshield
+	{
+		mesh = vehicles/UH1HCrash1|CockpitWindshield_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model UH1HVariant1CockpitWindows
+	{
+		mesh = vehicles/UH1HCrash1|CockpitWindows_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model UH1HVariant1CabinWindowsRight
+	{
+		mesh = vehicles/UH1HCrash1|CabinWindowsRight_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model UH1HVariant1CabinWindowsLeft
+	{
+		mesh = vehicles/UH1HCrash1|CabinWindowsLeft_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model SC_UH1HVariant2
+	{
+		mesh = vehicles/UH1HCrash2|base_mesh,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 1,
+	}
+	model UH1HVariant2CockpitWindshield
+	{
+		mesh = vehicles/UH1HCrash2|Windshield_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model UH1HVariant2FrontWindows
+	{
+		mesh = vehicles/UH1HCrash2|FrontWindows_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model UH1HVariant2RearWindowsOne
+	{
+		mesh = vehicles/UH1HCrash2|RearWindowsOne_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model UH1HVariant2RearCrewSeat
+	{
+		mesh = vehicles/UH1HCrash2|RearCrewSeat_obj,
+		shader = vehicle,
+		scale = 1,
+	}
+	model SC_UH1HVariant3
+	{
+		mesh = vehicles/UH1HCrash3|base_mesh,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 1,
+	}
+	template vehicle UH1HAirframe1
+	{
+		mechanicType = 2,
+		offRoadEfficiency = 1.1,
+		engineRepairLevel = 4,
+		playerDamageProtection = 1.3,
+
+		sound
+		{
+			engine = VehicleEngineSUV,
+			engineStart = VehicleEngineSUV,
+			engineTurnOff = VehicleEngineSUV,
+			ignitionFail = VehicleIgnitionFailSUV,
+		}
+
+		extents = 3.0108 2.1720 10.4516,
+		mass = 1000,
+		physicsChassisShape = 3.0108 2.1720 10.0000,
+		centerOfMassOffset = 0.0000 1.1290 0.0000,
+		shadowExtents = 2.9984 10.4669,
+		shadowOffset = 0.0000 0.0728,
+		engineForce = 15000,
+		engineQuality = 80,
+		engineLoudness = 20,
+		maxSpeed = 1f,
+		brakingForce = 5,
+		stoppingMovementForce = 4.0f,
+		rollInfluence = 0.50f,
+		steeringIncrement = 0.04,
+		steeringClamp = 0.3,
+		suspensionStiffness = 70,
+		suspensionCompression = 9.00,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 100,
+		suspensionRestLength = 10.0f,
+		wheelFriction = 5.0f,
+		frontEndHealth = 1800,
+		rearEndHealth = 1000,
+		seats = 1,
+
+		physics box
+		{
+			offset = 0.0000 1.0860 2.3788,
+			extents = 2.2151 1.3441 4.9785,
+			rotate = -7.0000 0.0000 0.0000,
+		}
+
+		physics box
+		{
+			offset = 0.0000 0.7969 -1.7849,
+			extents = 0.7634 0.5484 7.8925,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailer
+		{
+			offset = 0.0000 -3.2727 -17.8182,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = -1.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -4.0909 14.0909,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = 1.0000,
+		}
+
+		part RotorBlade1
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade1, }
+			}
+		}
+
+		part RotorBlade2
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade2, }
+			}
+		}
+
+		part HalfSkirt
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 40, }
+				scatter = { item = EHE.UH1HHalfSkirt2, }
+			}
+		}
+
+		model
+		{
+			file = SC_UH1HVariant1,
+			scale = 0.9300,
+			offset = 0.0000 -0.0108 2.5699,
+		}
+
+		template = Window/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
+
+		part Windshield
+		{
+			model UH1HVariant1CockpitWindshield
+			{
+				file = UH1HVariant1CockpitWindshield,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowFrontLeft
+		{
+			model UH1HVariant1CockpitWindowsLeft
+			{
+				file = UH1HVariant1CockpitWindows,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowFrontRight
+		{
+			model UH1HVariant1CockpitWindowsRight
+			{
+				file = UH1HVariant1CockpitWindows,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowRearLeft
+		{
+			model UH1HVariant1CabinWindowsLeft
+			{
+				file = UH1HVariant1CabinWindowsLeft,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowRearRight
+		{
+			model UH1HVariant1CabinWindowsRight
+			{
+				file = UH1HVariant1CabinWindowsRight,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+	}
+	template vehicle UH1HAirframe2
+	{
+		mechanicType = 2,
+		offRoadEfficiency = 1.1,
+		engineRepairLevel = 4,
+		playerDamageProtection = 1.3,
+
+		sound
+		{
+			engine = VehicleEngineSUV,
+			engineStart = VehicleEngineSUV,
+			engineTurnOff = VehicleEngineSUV,
+			ignitionFail = VehicleIgnitionFailSUV,
+		}
+
+		extents = 3.0108 2.1720 10.4516,
+		mass = 1000,
+		physicsChassisShape = 3.0108 2.1720 10.0000,
+		centerOfMassOffset = 0.0000 1.1290 0.0000,
+		shadowExtents = 2.9984 10.4669,
+		shadowOffset = 0.0000 0.0728,
+		engineForce = 15000,
+		engineQuality = 80,
+		engineLoudness = 20,
+		maxSpeed = 1f,
+		brakingForce = 5,
+		stoppingMovementForce = 4.0f,
+		rollInfluence = 0.50f,
+		steeringIncrement = 0.04,
+		steeringClamp = 0.3,
+		suspensionStiffness = 70,
+		suspensionCompression = 9.00,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 100,
+		suspensionRestLength = 10.0f,
+		wheelFriction = 5.0f,
+		frontEndHealth = 1800,
+		rearEndHealth = 1000,
+		seats = 1,
+
+		physics box
+		{
+			offset = 0.0000 1.0860 2.3788,
+			extents = 2.2151 1.3441 4.9785,
+			rotate = -7.0000 0.0000 0.0000,
+		}
+
+		physics box
+		{
+			offset = 0.0000 0.7969 -1.7849,
+			extents = 0.7634 0.5484 7.8925,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailer
+		{
+			offset = 0.0000 -3.2727 -17.8182,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = -1.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -4.0909 14.0909,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = 1.0000,
+		}
+
+		part RotorBlade1
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade1, }
+			}
+		}
+
+		part RotorBlade2
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade2, }
+			}
+		}
+
+		part HalfSkirt
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 40, }
+				scatter = { item = EHE.UH1HHalfSkirt2, }
+			}
+		}
+
+		model
+		{
+			file = SC_UH1HVariant2,
+			scale = 0.9300,
+			offset = 0.0000 -0.0108 2.5699,
+		}
+
+		template = Window/part/Windshield,
+		template = Window/part/WindowFrontLeft,
+		template = Window/part/WindowFrontRight,
+		template = Window/part/WindowRearLeft,
+		template = Window/part/WindowRearRight,
+
+		part Windshield
+		{
+			model UH1HVariant2CockpitWindshield
+			{
+				file = UH1HVariant2CockpitWindshield,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowFrontLeft
+		{
+			model UH1HVariant2FrontWindowsLeft
+			{
+				file = UH1HVariant2FrontWindows,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowFrontRight
+		{
+			model UH1HVariant2FrontWindowsRight
+			{
+				file = UH1HVariant2FrontWindows,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowRearLeft
+		{
+			model UH1HVariant2RearWindowsLeft
+			{
+				file = UH1HVariant2RearWindowsOne,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part WindowRearRight
+		{
+			model UH1HVariant2RearWindowsRight
+			{
+				file = UH1HVariant2RearWindowsOne,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 50,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+
+		part RearCrewSeat
+		{
+			model UH1HVariant2RearCrewSeat
+			{
+				file = UH1HVariant2RearCrewSeat,
+				offset = 0.0000 0.0000 0.0000,
+				rotate = 0.0000 0.0000 0.0000,
+			}
+
+			itemType = EHE.UH1HRearCrewSeat,
+
+			table install
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table uninstall
+			{
+				recipes = Intermediate Mechanics,
+			}
+
+			table partVariation
+			{
+				chances =
+				{
+					default = 100,
+				}
+			}
+
+			lua
+			{
+				create = Vehicles.Create.Default,
+			}
+
+			category = nodisplay,
+		}
+	}
+	template vehicle UH1HAirframe3
+	{
+		mechanicType = 2,
+		offRoadEfficiency = 1.1,
+		engineRepairLevel = 4,
+		playerDamageProtection = 1.3,
+
+		sound
+		{
+			engine = VehicleEngineSUV,
+			engineStart = VehicleEngineSUV,
+			engineTurnOff = VehicleEngineSUV,
+			ignitionFail = VehicleIgnitionFailSUV,
+		}
+
+		extents = 3.0108 2.1720 10.4516,
+		mass = 1000,
+		physicsChassisShape = 3.0108 2.1720 10.0000,
+		centerOfMassOffset = 0.0000 1.1290 0.0000,
+		shadowExtents = 2.9984 10.4669,
+		shadowOffset = 0.0000 0.0728,
+		engineForce = 15000,
+		engineQuality = 80,
+		engineLoudness = 20,
+		maxSpeed = 1f,
+		brakingForce = 5,
+		stoppingMovementForce = 4.0f,
+		rollInfluence = 0.50f,
+		steeringIncrement = 0.04,
+		steeringClamp = 0.3,
+		suspensionStiffness = 70,
+		suspensionCompression = 9.00,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 100,
+		suspensionRestLength = 10.0f,
+		wheelFriction = 5.0f,
+		frontEndHealth = 1800,
+		rearEndHealth = 1000,
+		seats = 1,
+
+		physics box
+		{
+			offset = 0.0000 1.0860 2.3788,
+			extents = 2.2151 1.3441 4.9785,
+			rotate = -7.0000 0.0000 0.0000,
+		}
+
+		physics box
+		{
+			offset = 0.0000 0.7969 -1.7849,
+			extents = 0.7634 0.5484 7.8925,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailer
+		{
+			offset = 0.0000 -3.2727 -17.8182,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = -1.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = 0.0000 -4.0909 14.0909,
+			rotate = 0.0000 0.0000 0.0000,
+			zoffset = 1.0000,
+		}
+
+		part RotorBlade1
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade1, }
+			}
+		}
+
+		part RotorBlade2
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 65, }
+				scatter = { item = EHE.UH1HRotorBlade2, }
+			}
+		}
+
+		part HalfSkirt
+		{
+			category = nodisplay,
+			table partVariation
+			{
+				chances = { default = 40, }
+				scatter = { item = EHE.UH1HHalfSkirt2, }
+			}
+		}
+
+		model
+		{
+			file = SC_UH1HVariant3,
+			scale = 0.9300,
+			offset = 0.0000 0.1340 2.5699,
+		}
+	}
+	vehicle SC_UH1HVariant1
+	{
+		template! = UH1HAirframe1,
+
+		skin
+		{
+			texture = vehicles/military/UH1H_Army,
+		}
+
+		textureRust = vehicles/military/UH1H_Army,
+		textureMask = vehicles/military/UH1H_Army,
+		textureLights = vehicles/military/UH1H_Army,
+		textureDamage1Shell = vehicles/military/UH1H_Army,
+		textureDamage2Shell = vehicles/military/UH1H_Army,
+		textureDamage1Overlay = vehicles/military/UH1H_Army,
+		textureDamage2Overlay = vehicles/military/UH1H_Army,
+	}
+	vehicle SC_UH1HVariant1_Medevac
+	{
+		template! = UH1HAirframe1,
+
+		skin
+		{
+			texture = vehicles/military/UH1H_Medevac,
+		}
+
+		textureRust = vehicles/military/UH1H_Medevac,
+		textureMask = vehicles/military/UH1H_Medevac,
+		textureLights = vehicles/military/UH1H_Medevac,
+		textureDamage1Shell = vehicles/military/UH1H_Medevac,
+		textureDamage2Shell = vehicles/military/UH1H_Medevac,
+		textureDamage1Overlay = vehicles/military/UH1H_Medevac,
+		textureDamage2Overlay = vehicles/military/UH1H_Medevac,
+	}
+	vehicle SC_UH1HVariant1_TennesseePolice
+	{
+		template! = UH1HAirframe1,
+
+		skin
+		{
+			texture = vehicles/civilian/UH1H_N750HP,
+		}
+
+		textureRust = vehicles/civilian/UH1H_N750HP,
+		textureMask = vehicles/civilian/UH1H_N750HP,
+		textureLights = vehicles/civilian/UH1H_N750HP,
+		textureDamage1Shell = vehicles/civilian/UH1H_N750HP,
+		textureDamage2Shell = vehicles/civilian/UH1H_N750HP,
+		textureDamage1Overlay = vehicles/civilian/UH1H_N750HP,
+		textureDamage2Overlay = vehicles/civilian/UH1H_N750HP,
+	}
+	vehicle SC_UH1HVariant2
+	{
+		template! = UH1HAirframe2,
+
+		skin
+		{
+			texture = vehicles/military/UH1H_Army,
+		}
+
+		textureRust = vehicles/military/UH1H_Army,
+		textureMask = vehicles/military/UH1H_Army,
+		textureLights = vehicles/military/UH1H_Army,
+		textureDamage1Shell = vehicles/military/UH1H_Army,
+		textureDamage2Shell = vehicles/military/UH1H_Army,
+		textureDamage1Overlay = vehicles/military/UH1H_Army,
+		textureDamage2Overlay = vehicles/military/UH1H_Army,
+	}
+	vehicle SC_UH1HVariant2_Medevac
+	{
+		template! = UH1HAirframe2,
+
+		skin
+		{
+			texture = vehicles/military/UH1H_Medevac,
+		}
+
+		textureRust = vehicles/military/UH1H_Medevac,
+		textureMask = vehicles/military/UH1H_Medevac,
+		textureLights = vehicles/military/UH1H_Medevac,
+		textureDamage1Shell = vehicles/military/UH1H_Medevac,
+		textureDamage2Shell = vehicles/military/UH1H_Medevac,
+		textureDamage1Overlay = vehicles/military/UH1H_Medevac,
+		textureDamage2Overlay = vehicles/military/UH1H_Medevac,
+	}
+	vehicle SC_UH1HVariant2_TennesseePolice
+	{
+		template! = UH1HAirframe2,
+
+		skin
+		{
+			texture = vehicles/civilian/UH1H_N750HP,
+		}
+
+		textureRust = vehicles/civilian/UH1H_N750HP,
+		textureMask = vehicles/civilian/UH1H_N750HP,
+		textureLights = vehicles/civilian/UH1H_N750HP,
+		textureDamage1Shell = vehicles/civilian/UH1H_N750HP,
+		textureDamage2Shell = vehicles/civilian/UH1H_N750HP,
+		textureDamage1Overlay = vehicles/civilian/UH1H_N750HP,
+		textureDamage2Overlay = vehicles/civilian/UH1H_N750HP,
+	}
+	vehicle SC_UH1HVariant3
+	{
+		template! = UH1HAirframe3,
+
+		skin
+		{
+			texture = vehicles/military/UH1H_Army,
+		}
+
+		textureRust = vehicles/military/UH1H_Army,
+		textureMask = vehicles/military/UH1H_Army,
+		textureLights = vehicles/military/UH1H_Army,
+		textureDamage1Shell = vehicles/military/UH1H_Army,
+		textureDamage2Shell = vehicles/military/UH1H_Army,
+		textureDamage1Overlay = vehicles/military/UH1H_Army,
+		textureDamage2Overlay = vehicles/military/UH1H_Army,
+	}
+	vehicle SC_UH1HVariant3_Medevac
+	{
+		template! = UH1HAirframe3,
+
+		skin
+		{
+			texture = vehicles/military/UH1H_Medevac,
+		}
+
+		textureRust = vehicles/military/UH1H_Medevac,
+		textureMask = vehicles/military/UH1H_Medevac,
+		textureLights = vehicles/military/UH1H_Medevac,
+		textureDamage1Shell = vehicles/military/UH1H_Medevac,
+		textureDamage2Shell = vehicles/military/UH1H_Medevac,
+		textureDamage1Overlay = vehicles/military/UH1H_Medevac,
+		textureDamage2Overlay = vehicles/military/UH1H_Medevac,
+	}
+	vehicle SC_UH1HVariant3_TennesseePolice
+	{
+		template! = UH1HAirframe3,
+
+		skin
+		{
+			texture = vehicles/civilian/UH1H_N750HP,
+		}
+
+		textureRust = vehicles/civilian/UH1H_N750HP,
+		textureMask = vehicles/civilian/UH1H_N750HP,
+		textureLights = vehicles/civilian/UH1H_N750HP,
+		textureDamage1Shell = vehicles/civilian/UH1H_N750HP,
+		textureDamage2Shell = vehicles/civilian/UH1H_N750HP,
+		textureDamage1Overlay = vehicles/civilian/UH1H_N750HP,
+		textureDamage2Overlay = vehicles/civilian/UH1H_N750HP,
+	}
+}

@@ -8,28 +8,6 @@ module Base
 		scale = 0.01,
 	}
 
-
-    vehicle UH60DesertTail
-    {
-        template! = UH60Tail,
-        skin { texture = vehicles/military/Vehicle_UH60Desert_Crash, }
-    }
-
-
-    vehicle UH60GreenTail
-    {
-        template! = UH60Tail,
-        skin { texture = vehicles/military/Vehicle_UH60Green_Crash, }
-    }
-
-
-    vehicle UH60MedevacTail
-    {
-        template! = UH60Tail,
-        skin { texture = vehicles/military/Vehicle_UH60Medevac_Crash, }
-    }
-
-
 	template vehicle UH60Tail
 	{
 		mechanicType = 1,
@@ -37,7 +15,7 @@ module Base
 		engineRepairLevel = 4,
 		playerDamageProtection = 0,
 
-		model { file = Vehicle_UH60Tail, scale = 3.6900, offset = 0.0407 0.1068 0.0591,}
+		model { file = Vehicle_UH60Tail, scale = 3.6900, offset = 0.0407 0.1068 0.0591, }
 
 		spawnOffsetY = 0.19392952,
 
@@ -72,5 +50,23 @@ module Base
 			category = nodisplay,
 			table EHE { metalKg = 25, }
 		}
+	}
+
+	vehicle UH60DesertTail
+	{
+		template! = UH60Tail,
+		skin { texture = vehicles/military/Vehicle_UH60Desert_Crash, }
+	}
+
+	vehicle UH60GreenTail
+	{
+		template! = UH60Tail,
+		skin { texture = vehicles/military/Vehicle_UH60Green_Crash, }
+	}
+
+	vehicle UH60MedevacTail
+	{
+		template! = UH60Tail,
+		skin { texture = vehicles/military/Vehicle_UH60Medevac_Crash, }
 	}
 }
