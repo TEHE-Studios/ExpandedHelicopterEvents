@@ -34,11 +34,11 @@ module Base {
 
     sound buffcorrell {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/buffcorrellKelisMilkshake.ogg, distanceMax = 750, volume = 2.0 }
-        clip { file = media/sound/buffcorrellAHATakeOnMe.ogg, distanceMax = 750, volume = 2.0 }
-        clip { file = media/sound/buffcorrellCranberriesZombie.ogg, distanceMax = 750, volume = 2.0 }
-        clip { file = media/sound/buffcorrellEvanescenceWakeMeUpInside.ogg, distanceMax = 750, volume = 2.0 }
-        clip { file = media/sound/buffcorrellFriendsThemeSong.ogg, distanceMax = 750, volume = 2.0 } }
+        clip { file = media/sound/buffcorrellKelisMilkshake.ogg, distanceMax = 750, volume = 2.0, }
+        clip { file = media/sound/buffcorrellAHATakeOnMe.ogg, distanceMax = 750, volume = 2.0, }
+        clip { file = media/sound/buffcorrellCranberriesZombie.ogg, distanceMax = 750, volume = 2.0, }
+        clip { file = media/sound/buffcorrellEvanescenceWakeMeUpInside.ogg, distanceMax = 750, volume = 2.0, }
+        clip { file = media/sound/buffcorrellFriendsThemeSong.ogg, distanceMax = 750, volume = 2.0, } }
 
     sound JangleBalls {
        category = Vehicle, loop = true, is3D = true,
@@ -58,8 +58,8 @@ module Base {
 
 
 	sound airraid {
-	    category = Vehicle, loop = true, clip
-		{ file = media/sound/airraid.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
+	    category = Vehicle, loop = true,
+        clip { file = media/sound/airraid.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
 
 
 	sound ZombieLick {
@@ -229,5 +229,12 @@ module Base {
         category = EHE-Weird: Voice Lines, loop = false, is3D = true,
         clip { file = media/sound/Spiffo22.ogg, distanceMax = 500, volume = 3.0, reverbFactor = 0.1, } }
 
+    sound alienreload {
+	    category = Weapon, loop = false, is3D = true,
+        clip { file = media/sound/alienreload.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
+    
+    sound alienshot {
+	    category = Weapon, loop = false, is3D = true,
+        clip { file = media/sound/alienshot.ogg, distanceMin = 10, distanceMax = 20, reverbMaxRange = 10, reverbFactor = 0.1, } }
       
  }

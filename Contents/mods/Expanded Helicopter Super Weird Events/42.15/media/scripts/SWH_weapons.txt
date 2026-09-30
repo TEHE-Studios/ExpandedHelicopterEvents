@@ -58,7 +58,7 @@ module SWH
         InsertAmmoSound = alienreload,
         EjectAmmoSound = alienreload,
         RackSound = alienreload,
-        AmmoType = SWH.AlienPowerCells,
+        AmmoType = swh:alien_power_cells,
         WeaponReloadType = revolver,
         JamGunChance = 0,
         haveChamber = FALSE,

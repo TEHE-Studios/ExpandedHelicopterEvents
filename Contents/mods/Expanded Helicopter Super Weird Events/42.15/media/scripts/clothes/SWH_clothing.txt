@@ -3,6 +3,7 @@ module SWH {
      {
         ItemType = base:clothing,
         ClothingItem = AlienMuscles,
+        DisplayCategory = Clothing,
         CanHaveHoles = False,
         BodyLocation = Jacket,
     }
@@ -11,6 +12,7 @@ module SWH {
     {
         ItemType = base:clothing,
         ClothingItem = AlienSkin,
+        DisplayCategory = Clothing,
         CanHaveHoles = False,
         BodyLocation = TankTop,
     }
@@ -56,12 +58,12 @@ module SWH {
     {
         ItemType = base:clothing,
         ClothingItem = SpiffoWarSuit,
+        DisplayCategory = ProtectiveGear,
         BodyLocation = FullSuit,
         BloodLocation = Trousers;Jumper,
         Icon = SpiffoSuit,
         CanHaveHoles = False,
         RunSpeedModifier = 0.7,
-        ScratchDefense  = 10,
         Insulation = 0.85,
         WindResistance = 0.6,
         BulletDefense = 100,
@@ -73,6 +75,7 @@ module SWH {
     {
         ItemType = base:clothing,
         ClothingItem = SpiffoWarTail,
+        DisplayCategory = ProtectiveGear,
         BodyLocation = Tail,
         Icon = SpiffoTail,
         BulletDefense = 100,
@@ -84,6 +87,7 @@ module SWH {
     {
         ItemType = base:clothing,
         ClothingItem = SpiffoSkin,
+        DisplayCategory = Clothing,
         BodyLocation = TankTop,
     }
 
@@ -91,6 +95,7 @@ module SWH {
     {
         ItemType = base:clothing,
         ClothingItem = SockConnoisseur,
+        DisplayCategory = Clothing,
         BodyLocation = TankTop,
     }
 
@@ -98,6 +103,7 @@ module SWH {
     {
         ItemType = base:clothing,
         ClothingItem = WhiteMale,
+        DisplayCategory = Clothing,
         BodyLocation = TankTop,
     }
 }
