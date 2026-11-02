@@ -96,6 +96,11 @@ function EHE_spawner.attemptToSpawn(x, y, z, funcType, spawnThis, extraFunctions
 end
 
 
+function EHE_spawner.request(data)
+    EHE_spawner.attemptToSpawn(data.x, data.y, data.z, data.funcType, data.spawnThis, data.extraFunctions, data.extraParam, data.processSquare)
+end
+
+
 ---@param spawned IsoObject | ArrayList
 ---@param functions table table of functions
 ---@param extraParam any forwarded to each function as a second argument

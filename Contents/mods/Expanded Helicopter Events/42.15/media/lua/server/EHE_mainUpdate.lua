@@ -24,10 +24,7 @@ function eHelicopter:updateEvent()
 		end
 
 		if (not self.target) or (not self.trueTarget) or hotterTargetAvailable then
-			if (not self.target) then print(" - EHE: ERR: "..self:heliToString().." no target in updateEvent()") end
-			if (not self.trueTarget) then print(" - EHE: ERR: "..self:heliToString().." no trueTarget in updateEvent()") end
 
-			--[[DEBUG]] print(" - EHE: ERR: "..self:heliToString().." -no target + arrived")
 
 			self.trueTarget = self:findTarget(self.attackDistance*4, "update")
 			self.target = self.trueTarget
@@ -76,7 +73,7 @@ function eHelicopter:updateEvent()
 				--50% chance to offset y
 				if ZombRand(1,101) <= 50 then
 					--pick from randOffset, 50% negative or positive
-					tx = tx+randOffset[ZombRand(1,#randOffset+1)]
+					ty = ty+randOffset[ZombRand(1,#randOffset+1)]
 				end
 				--set target to square from calculated offset
 				local square = getSquare(tx,ty,0) or pseudoSquare:new(tx, ty, 0)
@@ -100,7 +97,6 @@ function eHelicopter:updateEvent()
 
 		if self.state == "arrived" and self.hoverOnTargetDuration and (self.timeSinceLastSeenTarget+self.searchForTargetDuration < timeStampMS) then
 			local newTarget = self:findTarget(self.attackDistance*4, "retrackTarget")
-			--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -looking for new target")
 
 			if newTarget and (not instanceof(newTarget, "IsoGridSquare")) then
 				--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -found new target: "..tostring(newTarget))
@@ -110,13 +106,11 @@ function eHelicopter:updateEvent()
 			--look again later
 			local timeInterval = self.searchForTargetDuration/5
 			--Remove this time from hover-time
-			--[[DEBUG]] print(" -- EHE: "..self:heliToString().."  -NO new target: ")
 			if type(self.hoverOnTargetDuration)=="number" and self.hoverOnTargetDuration>0 then
 				self.hoverOnTargetDuration = self.hoverOnTargetDuration-math.max(10,(timeInterval/100))
 				if self.hoverOnTargetDuration <= 0 then
 					self.hoverOnTargetDuration = false
 				end
-				--[[DEBUG]] if getDebug() then print(" --- roaming - hover-time:"..tostring(self.hoverOnTargetDuration).." "..self:heliToString()) end
 			end
 			self.timeSinceLastSeenTarget = timeStampMS+timeInterval
 		end
@@ -145,27 +139,21 @@ function eHelicopter:updateEvent()
 	end
 
 
-	if self.forceUnlaunchTime and type(self.forceUnlaunchTime == "table") and #self.forceUnlaunchTime==2 then
-		local GT = getGameTime()
-		local DAY = util.getWorldAgeDays()
-		local HOUR = GT:getHour()
-		local unlaunchDay = self.forceUnlaunchTime[1]
-		local unlaunchHour = self.forceUnlaunchTime[2]
+	if type(self.forceUnlaunchTime) == "number" then
+		local worldAgeHours = getGameTime():getWorldAgeHours()
 
 		if self.state ~= "goHome" then
-			if unlaunchDay<=DAY and unlaunchHour<=HOUR then
-				--[[DEBUG]] print(" - EHE: "..self:heliToString().." Forced Go-Home Time: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
+			if self.forceUnlaunchTime <= worldAgeHours then
+				--[[DEBUG]] print(" - EHE: "..self:heliToString().." Forced Go-Home Time: "..self.forceUnlaunchTime)
 				self:goHome()
 			end
 		elseif self.state == "goHome" then
-			if unlaunchDay<=DAY and unlaunchHour+4<=HOUR then
-				--[[DEBUG]] print(" - EHE: "..self:heliToString().." ERR: Forcing Unlaunch: Day:"..unlaunchDay.." Hour:"..unlaunchHour)
+			if self.forceUnlaunchTime+4 <= worldAgeHours then
+				--[[DEBUG]] print(" - EHE: "..self:heliToString().." ERR: Forcing Unlaunch: "..self.forceUnlaunchTime)
 				self:unlaunch()
 				return
 			end
 		end
-	else
-		--[[DEBUG]] print(" - EHE: ERR: "..self:heliToString().." `actualLaunchedTime` not set properly: ("..tostring(self.actualLaunchedTime)..")")
 	end
 
 	local preventMovement = false
@@ -265,10 +253,19 @@ function eHelicopter:updateSubFunctions(thatIsCloseEnough, distToTarget, timeSta
 
 			if self:getDistanceToIsoObject(p) < distanceImpact then
 				if isServer() then
-					sendServerCommand("flyOver", "wakeUp", {})
+					sendServerCommand(p, "flyOver", "wakeUp", {})
 				else
 					p:forceAwake()
 				end
+			end
+		end
+
+		if (not isServer()) and (not self.stoppedFastForward) and (not p:isAsleep()) and getGameSpeed() > 1 then
+			local hearingDistance = self.flightVolume
+			if not p:isOutside() then hearingDistance = hearingDistance/2 end
+			if self:getDistanceToIsoObject(p) < hearingDistance then
+				setGameSpeed(1)
+				self.stoppedFastForward = true
 			end
 		end
 	end

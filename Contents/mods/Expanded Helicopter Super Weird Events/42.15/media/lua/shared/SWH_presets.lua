@@ -25,6 +25,7 @@ presetCore.registerPreset("superWeirdEventsCopyrighted", {
 
 
 presetCore.registerPreset("Spiffocopter", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	presetProgression = {
 		["Spiffocopter_inviteOnly"] = 0,
 		["Spiffocopter_partyTime"] = 0.1,
@@ -58,6 +59,7 @@ presetCore.registerPreset("Spiffocopter_partyTime", {
 
 
 presetCore.registerPreset("UFO", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	presetRandomSelection = {"UFOTourists",4,"UFORednecks",1,"UFOFratBoys",1,"UFO_stealCow",1},
 	crashType = {"UFO"},
 	hoverOnTargetDuration = {1000,1225},
@@ -153,6 +155,7 @@ presetCore.registerPreset("UFOFratBoys", {
 
 
 presetCore.registerPreset("IRS", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	presetProgression = {
 		["IRS_Wave1"] = 0,
 		["IRS_Wave2"] = 0.2,
@@ -246,6 +249,7 @@ presetCore.registerPreset("IRS_Wave3", {
 
 
 presetCore.registerPreset("TISCreamery", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	presetRandomSelection = {"TISCreamery_Licks",2,"TISCreamery_Socks",1},
 	crashType = {"TISIceCreamTruck"},
 	hoverOnTargetDuration = {1000,1125},
@@ -282,6 +286,7 @@ presetCore.alterSpecificParameter("survivors","dropPackages",
 
 
 presetCore.registerPreset("Helikopter", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	inherit = {"military_UH1H_attack_all"},
 	callsigns = {"Helikopter"},
 	eventSoundEffects = {
@@ -293,6 +298,7 @@ presetCore.registerPreset("Helikopter", {
 
 
 presetCore.registerPreset("SandyClaws", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	speed = 2,
 	crashType = {"UH1HSantaFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10,},
@@ -322,6 +328,7 @@ presetCore.registerPreset("SandyClaws_noHover", {
 
 
 presetCore.registerPreset("AttackOfTheStrippers", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	speed = 2.5,
 	crew = {
 		{ outfit="CowboyStripper", female=0 },
@@ -356,6 +363,7 @@ presetCore.registerPreset("AttackOfTheStrippers_noHover", {
 
 
 presetCore.registerPreset("BuffCorrell", {
+	markerColor = {r=0.96,g=0.21,b=0.78},
 	crashType = false,
 	crew = {
 		{ outfit="EHESurvivorPilot", female=0 }

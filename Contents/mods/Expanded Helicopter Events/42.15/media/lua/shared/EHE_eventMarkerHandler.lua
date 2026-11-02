@@ -1,12 +1,14 @@
 local eventMarkerHandler = {}
 eventMarkerHandler.markers = {} --[player] = {["id"]=marker}
 eventMarkerHandler.expirations = {} --[player] = {["id]=time}
+eventMarkerHandler.persistent = {} --[player] = {["id"]=realTimeMS or -1}
+eventMarkerHandler.reachedDistance = 15
 
-function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, color)
+function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, color, persist)
 	if SandboxVars.ExpandedHeli.EventMarkers == false then return end
 
 	if isServer() then
-		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", {eventID=eventID, icon=icon, duration=duration, posX=posX, posY=posY, color=color})
+		sendServerCommand("eventMarkerHandler", "setOrUpdateMarker", {eventID=eventID, icon=icon, duration=duration, posX=posX, posY=posY, color=color, persist=persist})
 	else
 		for p=1, getNumActivePlayers() do
 			local player = getSpecificPlayer(p-1)
@@ -14,15 +16,21 @@ function eventMarkerHandler.setOrUpdate(eventID, icon, duration, posX, posY, col
 
 				eventMarkerHandler.markers[player] = eventMarkerHandler.markers[player] or {}
 				eventMarkerHandler.expirations[player] = eventMarkerHandler.expirations[player] or {}
+				eventMarkerHandler.persistent[player] = eventMarkerHandler.persistent[player] or {}
 
 				local marker = eventMarkerHandler.markers[player][eventID]
 				eventMarkerHandler.expirations[player][eventID] = getGametimeTimestamp()+duration
+
+				if persist and not eventMarkerHandler.persistent[player][eventID] then
+					local minutes = SandboxVars.ExpandedHeli.EventMarkerPersistence or 0
+					eventMarkerHandler.persistent[player][eventID] = (minutes > 0) and (getTimeInMillis()+(minutes*60000)) or -1
+				end
 
 				if not marker and duration>0 then
 					if EHE_EventMarker then
 
 						local dist = IsoUtils.DistanceTo(posX, posY, player:getX(), player:getY())
-						if dist and (dist <= EHE_EventMarker.maxRange) then
+						if dist and (persist or (dist <= EHE_EventMarker.maxRange)) then
 
 							local oldX
 							local oldY

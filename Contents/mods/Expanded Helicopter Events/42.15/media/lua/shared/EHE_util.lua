@@ -263,7 +263,7 @@ end
 ---@param vehicle BaseVehicle
 function util.applyParachuteToCarePackage(vehicle)
 	if vehicle then
-		sendClientCommand("SpawnerAPI", "spawn", {
+		EHE_spawner.request({
 			funcType="item", spawnThis="EHE.EHE_Parachute", x=vehicle:getX(), y=vehicle:getY(), z=0,
 			extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 	end
@@ -317,11 +317,51 @@ function util.applyCrashDamageToWorld(square)
 end
 
 
-util.crashFloorSprites = {default = "blends_natural_01_0"}
+util.crashFloorSprites = {default = "blends_natural_01_80"}
+util.crashCrackSprites = {"d_streetcracks_1_16","d_streetcracks_1_17","d_streetcracks_1_18","d_streetcracks_1_19","d_streetcracks_1_20","d_streetcracks_1_21","d_streetcracks_1_22","d_streetcracks_1_23"}
+util.crashKeepFloorSprites = {
+	["blends_natural_01_0"]=true, ["blends_natural_01_5"]=true, ["blends_natural_01_6"]=true, ["blends_natural_01_7"]=true, ["floors_exterior_natural_01_24"]=true,
+	["blends_street_01_48"]=true, ["blends_street_01_53"]=true, ["blends_street_01_54"]=true, ["blends_street_01_55"]=true, ["floors_exterior_natural_01_13"]=true,
+}
 util.crashSmearLength = 14
 util.crashSmearTailLength = 2
 util.crashSmearWidth = 4
 util.crashSmearFloorCoreWidth = 1.6
+
+---@param sq IsoGridSquare
+function util.applyCrashGround(sq)
+	local floor = sq:getFloor()
+	if not floor or sq:isWaterSquare() then return end
+	local spriteName = floor:getSprite() and floor:getSprite():getName()
+	if not spriteName then return end
+
+	if (luautils.stringStarts(spriteName, "blends_street") or luautils.stringStarts(spriteName, "floors_exterior_street")) and not util.crashKeepFloorSprites[spriteName] then
+		floor:AttachExistingAnim(getSprite(util.crashCrackSprites[ZombRand(#util.crashCrackSprites)+1]), 0, 0, false, 0, false, 0.0)
+		floor:transmitUpdatedSpriteToClients()
+		return
+	end
+
+	for i=sq:getObjects():size(),1,-1 do
+		local o = sq:getObjects():get(i-1)
+		if o:getSprite() and (
+				o:getSprite():getProperties():has(IsoFlagType.canBeRemoved) or
+				(o:getSprite():getProperties():has(IsoFlagType.vegitation) and o:getType() ~= IsoObjectType.tree) or
+				(o:getSprite():getName() and luautils.stringStarts(o:getSprite():getName(), "blends_grassoverlays"))) then
+			sq:transmitRemoveItemFromSquare(o)
+		end
+	end
+
+	if util.crashKeepFloorSprites[spriteName] or spriteName == util.crashFloorSprites.default then return end
+
+	local floorData = floor:getModData()
+	if not floorData.shovelledSprites and ISNaturalFloor then floorData.shovelledSprites = ISNaturalFloor.getFloorSpriteNames(sq) end
+	floorData.pouredFloor = "dirt"
+	floor:setSprite(getSprite(util.crashFloorSprites.default))
+	floor:RemoveAttachedAnims()
+	floor:transmitUpdatedSpriteToClients()
+	floor:transmitModData()
+end
+
 
 function util.applyCrashStructuralDamage(vehicle, extraParam)
 	local impactSquare = isoRangeScan.recursiveGetSquare(vehicle)
@@ -361,18 +401,9 @@ function util.applyCrashStructuralDamage(vehicle, extraParam)
 			local tree = sq:getTree()
 			if tree and ZombRand(101) <= destroyChance then tree:toppleTree() end
 
-			local floor = sq:getFloor()
-			if floor then
-				local floorSwaps = absAcross <= util.crashSmearFloorCoreWidth
-				if not floorSwaps and absAcross <= util.crashSmearWidth then
-					local floorEdgeChance = 100*(1-((absAcross-util.crashSmearFloorCoreWidth)/(util.crashSmearWidth-util.crashSmearFloorCoreWidth)))
-					floorSwaps = ZombRand(101) <= floorEdgeChance
-				end
-				if floorSwaps then
-					floor:setSpriteFromName(util.crashFloorSprites.default)
-					floor:transmitUpdatedSprite()
-				end
-			end
+			local alongFactor = (along >= 0) and (along/util.crashSmearLength) or (-along/util.crashSmearTailLength)
+			local halfWidth = util.crashSmearFloorCoreWidth + ((util.crashSmearWidth-util.crashSmearFloorCoreWidth)*(1-(alongFactor*alongFactor)))
+			if absAcross <= halfWidth then util.applyCrashGround(sq) end
 		end
 	end
 
@@ -420,7 +451,7 @@ function util.applyModularCrashParts(vehicle, crashParts)
             local angle = ZombRandFloat(0, math.pi * 2)
             if entry.scrapItem then
                 local dist = ZombRand(3, 9)
-                sendClientCommand("SpawnerAPI", "spawn", {
+                EHE_spawner.request({
                     funcType = "item",
                     spawnThis = entry.scrapItem,
                     x = math.floor(vx + math.cos(angle) * dist),
@@ -432,7 +463,7 @@ function util.applyModularCrashParts(vehicle, crashParts)
             end
             if entry.scrapVehicle then
                 local dist = ZombRand(5, 12)
-                sendClientCommand("SpawnerAPI", "spawn", {
+                EHE_spawner.request({
                     funcType = "vehicle",
                     spawnThis = entry.scrapVehicle,
                     x = math.floor(vx + math.cos(angle) * dist),

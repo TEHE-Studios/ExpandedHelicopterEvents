@@ -11,7 +11,7 @@ module EHE
 		/*Tooltip:Tooltip_open_boxes_barehanded,*/
 		inputs
 		{
-			item 1 tags[EHESupplyBox],
+			item 1 tags[ehe:supply_box],
 		}
 	}
 
@@ -44,7 +44,7 @@ module EHE
         {
             item 2 [Base.BlowTorch],
             item 1 tags[WeldingMask] mode:keep,
-            item 1 tags[EHE_heliPartMetal],
+            item 1 tags[ehe:heli_part_metal],
         }
     }
 
@@ -57,7 +57,7 @@ module EHE
         OnTest = EHE_Recipe.onCanLightFlare,
         inputs
         {
-            item 1 tags[EHESignalFlare;EHEFlare] flags[Prop1],
+            item 1 tags[ehe:signal_flare;ehe:flare] mode:keep flags[Prop1],
         }
     }
 }

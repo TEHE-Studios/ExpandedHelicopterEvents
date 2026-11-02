@@ -10,4 +10,5 @@ Events.OnWeaponSwing.Add(heatMap.OnWeaponSwing)
 
 local eHeliScheduler = require("EHE_eventScheduler.lua")
 if not isClient() then Events.OnTick.Add(eHeliScheduler.OnHour) end
-Events.OnGameStart.Add(eHeliScheduler.OnGameStart)
+if not isClient() then Events.OnGameStart.Add(eHeliScheduler.OnGameStart) end
+if isServer() then Events.OnServerStarted.Add(eHeliScheduler.OnGameStart) end

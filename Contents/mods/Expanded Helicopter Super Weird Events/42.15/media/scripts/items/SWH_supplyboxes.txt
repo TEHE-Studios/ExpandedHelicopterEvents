@@ -8,7 +8,7 @@ module SWH
         Icon = EHE/supplyBox/default,
         ItemType = base:normal,
         WorldStaticModel = SpiffoBox_WorldItem,
-        Tags = EHESupplyBox,
+        Tags = ehe:supply_box,
 	}
 
 	item SWH_IceCreamBox
@@ -18,7 +18,7 @@ module SWH
 		Icon = EHE/supplyBox/default,
 		ItemType = base:normal,
 		WorldStaticModel = IceCreamBox_WorldItem,
-		Tags = EHESupplyBox,
+		Tags = ehe:supply_box,
 	}
 
 }

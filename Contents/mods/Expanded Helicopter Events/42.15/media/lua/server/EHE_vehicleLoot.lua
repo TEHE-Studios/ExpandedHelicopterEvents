@@ -19,7 +19,7 @@ local function applyLootBoxLoot()
             "Base.WalkieTalkie5", 3,
             "FirstAidKit_Military", 10,
             "CanteenMilitaryFull", 10,
-            "FlashLight_Anglehead_Army", 10,
+            "FlashLight_AngleHead_Army", 10,
         }
     }
 
@@ -88,7 +88,7 @@ local function applyLootBoxLoot()
             "AssaultRifle2", 7,
             "Shotgun", 7,
             "FirstAidKit", 5,
-            "Bag_Duffelbag", 7,
+            "Bag_DuffelBag", 7,
         }
     }
 
@@ -124,7 +124,7 @@ local function applyLootBoxLoot()
     }
 
     VehicleDistributions.Bell206Survivalist = {
-        SeatFrontRight =  VehicleDistributions.Bell20SurvivalistSeat;
+        SeatFrontRight =  VehicleDistributions.Bell206SurvivalistSeat;
         SeatRearLeft =  VehicleDistributions.Bell206SurvivalistSeat;
         SeatRearRight =  VehicleDistributions.Bell206SurvivalistSeat;
     }

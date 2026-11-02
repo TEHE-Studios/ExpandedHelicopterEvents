@@ -303,17 +303,14 @@ function EHE_EventMarker:update(posX,posY)
 		dist = IsoUtils.DistanceTo(posX, posY, self.player:getX(), self.player:getY())
 	end
 
-	if getDebug() then print("EHE: marker update: "..tostring(self.eventID).." posX:"..tostring(posX).." posY:"..tostring(posY).." dist:"..tostring(dist).." prevDist:"..tostring(self.distanceToPoint)) end
 
-	if not self.radius then
-		self.radius = EHE_EventMarker.maxRange*0.83
-	end
+	self.radius = EHE_EventMarker.maxRange*0.83
 
 	if(self.player:hasTrait(CharacterTrait.EAGLE_EYED)) then self.radius = (self.radius * 1.2)
 	elseif(self.player:hasTrait(CharacterTrait.SHORT_SIGHTED)) then self.radius = (self.radius * 0.8) end
 
 	local HOUR = getGameTime():getHour()
-	if HOUR < 6 and HOUR > 22 then
+	if HOUR < 6 or HOUR > 22 then
 		if self.player:hasTrait(CharacterTrait.NIGHT_VISION) then
 			self.radius = self.radius*1.1
 		else

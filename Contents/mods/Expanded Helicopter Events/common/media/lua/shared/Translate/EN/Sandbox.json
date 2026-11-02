@@ -42,5 +42,7 @@
     "Sandbox_ExpandedHeli_CrashChanceMulti": "Crash Chance Multiplier",
     "Sandbox_ExpandedHeli_CrashChanceMulti_tooltip": "This is multiplied against crash chance, 0 will prevent crashes all together.",
     "Sandbox_ExpandedHeli_EventMarkers": "Event Markers",
-    "Sandbox_ExpandedHeli_EventMarkers_tooltip": "Toggle Event Markers Entirely"
+    "Sandbox_ExpandedHeli_EventMarkers_tooltip": "Toggle Event Markers Entirely",
+    "Sandbox_ExpandedHeli_EventMarkerPersistence": "Crash/Drop Marker Persistence",
+    "Sandbox_ExpandedHeli_EventMarkerPersistence_tooltip": "Real-time minutes crash and supply drop markers remain after the event. Markers are removed early once a player reaches the site. 0 keeps markers until reached."
 }

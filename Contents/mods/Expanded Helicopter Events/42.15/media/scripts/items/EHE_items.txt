@@ -9,7 +9,7 @@ module EHE
 		WorldStaticModel = HandFlare,
 		Tooltip = Tooltip_SignalFlare,
 		Icon = EHE/SignalFlare,
-		Tags = EHESignalFlare,
+		Tags = ehe:signal_flare,
 	}
 
 	item HandFlare
@@ -20,7 +20,7 @@ module EHE
 		WorldStaticModel = HandFlare,
 		Tooltip = Tooltip_HandFlare,
 		Icon = EHE/SignalFlare,
-		Tags = EHEFlare,
+		Tags = ehe:flare,
 	}
 
 	item FlareCharge
@@ -28,7 +28,7 @@ module EHE
 		DisplayCategory = Junk,
 		Weight = 0.0,
 		ItemType = base:normal,
-		Tags = EHEFlare,
+		Tags = ehe:flare,
 	}
 
 	item EHE_Parachute
@@ -49,7 +49,7 @@ module EHE
 		WorldStaticModel = UH60Elevator,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Elevator,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH60WindowGreen
@@ -60,7 +60,7 @@ module EHE
 		WorldStaticModel = UH60WindowGreen,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Window,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH60WindowDesert
@@ -71,7 +71,7 @@ module EHE
 		WorldStaticModel = UH60WindowDesert,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Window,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH60DoorGreen
@@ -82,7 +82,7 @@ module EHE
 		WorldStaticModel = UH60DoorGreen,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Door,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH60DoorMedevac
@@ -93,7 +93,7 @@ module EHE
 		WorldStaticModel = UH60DoorMedevac,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Door,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH60DoorDesert
@@ -104,7 +104,7 @@ module EHE
 		WorldStaticModel = UH60DoorDesert,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Door,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH60ElevatorDesert
@@ -115,7 +115,7 @@ module EHE
 		WorldStaticModel = UH60ElevatorDesert,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/UH60Elevator,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item Bell206RotorBlade1
@@ -126,7 +126,7 @@ module EHE
 		WorldStaticModel = Bell206RotorBlade1,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/Rotorblade1,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item Bell206RotorBlade2
@@ -137,7 +137,7 @@ module EHE
 		WorldStaticModel = Bell206RotorBlade2,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/Rotorblade2,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item Bell206TailBlade
@@ -148,7 +148,7 @@ module EHE
 		WorldStaticModel = Bell206TailBlade,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/206tailblade,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item Bell206HalfSkirt
@@ -159,7 +159,7 @@ module EHE
 		WorldStaticModel = Bell206HalfSkirt,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/206halfskirt,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH1HRotorBlade1
@@ -170,7 +170,7 @@ module EHE
 		WorldStaticModel = UH1HRotorBlade1,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/Rotorblade1,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH1HRotorBlade2
@@ -181,7 +181,7 @@ module EHE
 		WorldStaticModel = UH1HRotorBlade2,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/Rotorblade2,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 	item UH1HHalfSkirt2
@@ -192,7 +192,7 @@ module EHE
 		WorldStaticModel = UH1HHalfSkirt,
 		Tooltip = Tooltip_dismantle_helicopterpart,
 		Icon = EHE/heliPart/206halfskirt,
-		Tags = EHE_heliPartMetal,
+		Tags = ehe:heli_part_metal,
 	}
 
 }

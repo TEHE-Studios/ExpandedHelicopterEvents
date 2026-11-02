@@ -524,7 +524,7 @@ function eHelicopter:findAlternativeTarget(character)
 				if #newTargets <= 0 then
 					local zombies = cellOfFC:getZombieList()
 					if zombies then
-						local zombiesSize = zombies:size()-1
+						local zombiesSize = zombies:size()
 						if zombiesSize > 0 then
 							table.insert(newTargets,zombies:get(ZombRand(zombiesSize)))
 						end
@@ -544,7 +544,7 @@ function eHelicopter:findAlternativeTarget(character)
 	local xOffset = ZombRand(55,80)
 	local yOffset = ZombRand(55,80)
 
-	if ZombRand(101) <= 50 then yOffset=0-yOffset end
+	if ZombRand(101) <= 50 then xOffset=0-xOffset end
 	if ZombRand(101) <= 50 then yOffset=0-yOffset end
 
 	local square = getSquare(x+xOffset, y+yOffset, 0) or pseudoSquare:new(x+xOffset, y+yOffset, 0)
@@ -585,13 +585,12 @@ function eHelicopter:findTarget(range, DEBUGID)
 	end
 
 	if hostilePreferenceIncludes("IsoAnimal") then
-		local objList = getCell():getObjectList()
-		if objList then
-			for n = 0, objList:size()-1 do
-				local obj = objList:get(n)
-				if obj and instanceof(obj, "IsoAnimal") and not obj:isDead() then
-					table.insert(targetPool, obj)
-				end
+		local animals = getCell():getAnimals()
+		local animalsSize = animals:size()
+		for n = 1, math.min(10, animalsSize) do
+			local animal = animals:get(ZombRand(animalsSize))
+			if animal and not animal:isDead() then
+				table.insert(targetPool, animal)
 			end
 		end
 	end
@@ -599,8 +598,9 @@ function eHelicopter:findTarget(range, DEBUGID)
 	if hostilePreferenceIncludes("IsoZombie") then
 		local zombieList = getCell():getZombieList()
 		if zombieList then
-			for n = 0, zombieList:size()-1 do
-				local z = zombieList:get(n)
+			local zombiesSize = zombieList:size()
+			for n = 1, math.min(10, zombiesSize) do
+				local z = zombieList:get(ZombRand(zombiesSize))
 				if z and not z:isDead() then
 					table.insert(targetPool, z)
 				end
@@ -635,7 +635,8 @@ function eHelicopter:findTarget(range, DEBUGID)
 			local pSquare
 
 			local hottestCell = heatMap.getHottestCell()
-			if (not hottestCell and instanceof(potentialTarget, "IsoPlayer")) or instanceof(potentialTarget, "IsoGridSquare") then
+			if (not hottestCell and instanceof(potentialTarget, "IsoPlayer")) or instanceof(potentialTarget, "IsoGridSquare")
+					or instanceof(potentialTarget, "IsoZombie") or instanceof(potentialTarget, "IsoAnimal") then
 				pSquare = getSquare(potentialTarget:getX(), potentialTarget:getY(), 0)
 			end
 
@@ -687,17 +688,12 @@ function eHelicopter:findTarget(range, DEBUGID)
 						local altTarget = self:findAlternativeTarget(pSquare)
 						if altTarget then
 							table.insert(weightedTargetList, altTarget)
-						else
-							print(" -- WARN: Unable to find altTarget.")
 						end
 					end
 				end
 			end
 		end
 	end
-
-	if DEBUGID then DEBUGID = "["..DEBUGID.."]: " end
-	local DEBUGallTargetsText = " -- "..DEBUGID.."HELI "..self:heliToString().." selecting targets <"..#weightedTargetList.."> x "
 
 	--really convoluted printout method that counts repeated targets accordingly
 	--[[DEBUG if getDebug() then
@@ -724,13 +720,11 @@ function eHelicopter:findTarget(range, DEBUGID)
 
 	end --]]
 
-	print(DEBUGallTargetsText)
 
 	local target
 	if #weightedTargetList then target = weightedTargetList[ZombRand(1, #weightedTargetList+1)] end
 
 	if not target then
-		print(" --- HELI "..self:heliToString().." - WARN: unable to find target...")
 		target = self:grabRandomSquareNearby(range)
 		if not target and self~=eHelicopter then
 			self:goHome()
@@ -955,17 +949,7 @@ function eHelicopter:launch(targetedObject,blockCrashing)
 		end
 	end
 
-	local GT = getGameTime()
-	local DAY = util.getWorldAgeDays()
-	local HOUR = GT:getHour()
-
-	HOUR = HOUR+2
-	if HOUR > 24 then
-		HOUR = HOUR-24
-		DAY = DAY+1
-	end
-
-	self.forceUnlaunchTime = {DAY, HOUR}
+	self.forceUnlaunchTime = getGameTime():getWorldAgeHours()+2
 
 	if self.addedFunctionsToEvents then
 		local eventFunction = self.addedFunctionsToEvents["OnLaunch"]

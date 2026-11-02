@@ -174,7 +174,7 @@ module Base
 			offset = 0.0000 -0.0108 2.5699,
 		}
 
-		template = Window/part/Windshield,
+		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,
 		template = Window/part/WindowRearLeft,
@@ -460,7 +460,7 @@ module Base
 			offset = 0.0000 -0.0108 2.5699,
 		}
 
-		template = Window/part/Windshield,
+		template = Windshield/part/Windshield,
 		template = Window/part/WindowFrontLeft,
 		template = Window/part/WindowFrontRight,
 		template = Window/part/WindowRearLeft,
@@ -649,8 +649,6 @@ module Base
 				offset = 0.0000 0.0000 0.0000,
 				rotate = 0.0000 0.0000 0.0000,
 			}
-
-			itemType = EHE.UH1HRearCrewSeat,
 
 			table install
 			{

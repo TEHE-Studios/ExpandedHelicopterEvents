@@ -102,19 +102,9 @@ function clientSideEventSoundHandler.updateForPlayer(player)
 						if not emitter:isPlaying(ref) then
 
 							local loc = storedLooperEventsLocations[ID]
-							if not loc then
-
-								for i=1, #ALL_HELICOPTERS do
-									local helicopter = ALL_HELICOPTERS[i]
-									---@type eHelicopter heli
-									local heli = helicopter
-									if heli and heli.ID and heli.ID == ID then
-										local ehX, ehY, ehZ = heli:getXYZAsInt()
-										loc = {x=ehX, y=ehY, z=ehZ}
-									end
-								end
+							if loc then
+								clientSideEventSoundHandler:handleLooperEvent(ID, {soundEffect=sound, x=loc.x, y=loc.y, z=loc.z}, "play")
 							end
-							clientSideEventSoundHandler:handleLooperEvent(ID, {soundEffect=sound, x=loc.x, y=loc.y, z=loc.z}, "play")
 						end
 					end
 				end
@@ -150,6 +140,7 @@ function clientSideEventSoundHandler:handleLooperEvent(reusableID, DATA, command
 		if not DATA then
 		else
 			if command == "play" then
+				if DATA.x and DATA.y then storedLooperEventsLocations[reusableID] = {x=DATA.x, y=DATA.y, z=DATA.z} end
 				local soundRef = storedLooperEventsSoundEffects[reusableID] and storedLooperEventsSoundEffects[reusableID][DATA.soundEffect]
 				if soundRef and soundEmitter:isPlaying(soundRef) then
 				else
@@ -205,6 +196,15 @@ end
 
 
 
+local function removeMarker(player, id, marker)
+	eventMarkerHandler.markers[player][id] = nil
+	eventMarkerHandler.expirations[player][id] = nil
+	if eventMarkerHandler.persistent[player] then eventMarkerHandler.persistent[player][id] = nil end
+	marker:setDuration(0)
+	marker:setEnabled(false)
+end
+
+
 function eventMarkerHandler.updateForPlayer(player)
 	local personalMarkers = eventMarkerHandler.markers[player]
 	if personalMarkers then
@@ -214,12 +214,14 @@ function eventMarkerHandler.updateForPlayer(player)
 			if marker and marker:getEnabled() then
 				local currentTime = getGametimeTimestamp()
 				local currentTimeMS = getTimeInMillis()
-				local expireTime = eventMarkerHandler.expirations[player][id]
-				if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then
-					eventMarkerHandler.markers[player][id] = nil
-					eventMarkerHandler.expirations[player][id] = nil
-					marker:setDuration(0)
-					marker:setEnabled(false)
+				local persistUntil = eventMarkerHandler.persistent[player] and eventMarkerHandler.persistent[player][id]
+				if persistUntil then
+					if marker.lastUpdateTime+1000 <= currentTimeMS then marker:update() end
+					local reached = IsoUtils.DistanceTo(marker.posX, marker.posY, player:getX(), player:getY()) <= eventMarkerHandler.reachedDistance
+					if reached or ((persistUntil > 0) and (persistUntil <= currentTimeMS)) then removeMarker(player, id, marker) end
+				else
+					local expireTime = eventMarkerHandler.expirations[player][id]
+					if (expireTime <= currentTime) and (marker.lastUpdateTime+100 <= currentTimeMS) then removeMarker(player, id, marker) end
 				end
 			end
 		end
@@ -292,7 +294,7 @@ local function onServerCommand(_module, _command, _data)
 
 
 	elseif _module == "eventMarkerHandler" and _command == "setOrUpdateMarker" then
-		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, _data.color)
+		eventMarkerHandler.setOrUpdate(_data.eventID, _data.icon, _data.duration, _data.posX, _data.posY, _data.color, _data.persist)
 
 
 	elseif _module == "eventShadowHandler" and _command == "setShadowPos" then

@@ -58,7 +58,7 @@ local function onCommand(_module, _command, _player, _event)
 
             for ID,dayHours in pairs(dayHoursSelection) do
 
-                if dayHours.h > 24 then
+                if dayHours.h >= 24 then
                     local dAdded = math.floor(dayHours.h/24)
                     dayHours.h = dayHours.h-(dAdded*24)
                     dayHours.d = dayHours.d+dAdded
@@ -74,7 +74,7 @@ local function onCommand(_module, _command, _player, _event)
                 end
             end
 
-            if _event.presetID=="RANDOM" then _event.presetID = config.allowedPresets[ZombRand(#config.allowedPresets+1)] end
+            if _event.presetID=="RANDOM" then _event.presetID = config.allowedPresets[ZombRand(#config.allowedPresets)+1] end
 
             print("-- scheduleEvent: KP:".._event.EHE_SI_Key.."  presetConfig:"..tostring(_event.presetID).."  presetID:"..tostring(_event.presetID).. " cD:"..currentDay.." cH:"..currentHour)
 

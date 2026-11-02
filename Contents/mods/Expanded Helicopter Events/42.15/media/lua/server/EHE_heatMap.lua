@@ -57,13 +57,13 @@ end
 function heatMap.calibrateCell(cellID, eventData)
     local cellData = heatMap.cells[cellID]
 
-    local intensityFactor = eventData.intensity/cellData.heatLevel
+    local intensityFactor = (cellData.heatLevel > 0) and (eventData.intensity/cellData.heatLevel) or 1
     local avgX, avgY = (cellData.centerX+eventData.x)/2, (cellData.centerY+eventData.y)/2
-    local xDiff, yDiff = math.abs(cellData.centerX-avgX), math.abs(cellData.centerX-avgY)
+    local xDiff, yDiff = math.abs(cellData.centerX-avgX), math.abs(cellData.centerY-avgY)
     local iX, iY = math.floor(xDiff*intensityFactor), math.floor(yDiff*intensityFactor)
 
     if cellData.centerX >= eventData.x then cellData.centerX = cellData.centerX-iX else cellData.centerX = cellData.centerX+iX end
-    if cellData.centerY >= eventData.y then cellData.centerY = cellData.centerY-iX else cellData.centerY = cellData.centerY+iY end
+    if cellData.centerY >= eventData.y then cellData.centerY = cellData.centerY-iY else cellData.centerY = cellData.centerY+iY end
 
     cellData.heatLevel = cellData.heatLevel+eventData.intensity
     cellData.eventCount = cellData.eventCount+1

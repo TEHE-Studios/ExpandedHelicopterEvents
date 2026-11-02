@@ -61,7 +61,7 @@ function eHelicopter:crash()
 				table.insert(extraFunctions, onCrashID)
 			end
 
-			sendClientCommand("SpawnerAPI", "spawn", {
+			EHE_spawner.request({
 				funcType="vehicle", spawnThis=vehicleType, x=heliX, y=heliY, z=0,
 				extraFunctions=extraFunctions, extraParam={headingX=headingX, headingY=headingY},
 				processSquare="getOutsideSquareFromAbove" })
@@ -88,7 +88,7 @@ function eHelicopter:crash()
 
 			getWorldSoundManager():addSound(nil, heliX, heliY, 0, 175, 300, true, 0, 25)
 			eventSoundHandler:playEventSound(self, "crashEvent")
-			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 3500, heliX, heliY, self.markerColor)
+			eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/crash.png", 3500, heliX, heliY, self.markerColor, true)
 
 			self:unlaunch()
 
@@ -141,7 +141,7 @@ function eHelicopter:spawnDeadCrew(x, y, z)
 					y = y+fuzzNums[ZombRand(#fuzzNums)+1]
 				end
 
-				sendClientCommand("SpawnerAPI", "spawn", {
+				EHE_spawner.request({
 					funcType="zombie", spawnThis=outfit, x=x, y=y, z=0,
 					extraFunctions=onSpawnCrewEvents, extraParam=femaleChance, processSquare="getOutsideSquareFromAbove" })
 
@@ -206,7 +206,7 @@ function eHelicopter:dropItem(type, fuzz)
 		heliY = heliY+ZombRand(min,max)
 	end
 
-	sendClientCommand("SpawnerAPI", "spawn", {
+	EHE_spawner.request({
 		funcType="item", spawnThis=type, x=heliX, y=heliY, z=0,
 		extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 
@@ -260,14 +260,14 @@ function eHelicopter:dropCarePackage(fuzz)
 			end
 		end
 
-		sendClientCommand("SpawnerAPI", "spawn", {
+		EHE_spawner.request({
 			funcType="vehicle", spawnThis=carePackage, x=heliX, y=heliY, z=0,
 			extraFunctions=extraFunctions, processSquare="getOutsideSquareFromAbove" })
 
 		--[[DEBUG]] print("EHE: "..carePackage.." dropped: "..heliX..", "..heliY)
 		eventSoundHandler:playEventSound(self, "droppingPackage")
 		addSound(nil, heliX, heliY, 0, 200, 150)
-		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 4000, heliX, heliY, self.markerColor)
+		eventMarkerHandler.setOrUpdate(getRandomUUID(), "media/ui/airdrop.png", 4000, heliX, heliY, self.markerColor, true)
 		self.dropPackages = false
 		return true
 	end
@@ -297,7 +297,7 @@ function eHelicopter:calcDebrisTrail(list, funcType, extraData, fuzz)
 				local offsetX = math.floor(dx * step + ZombRand(-1, 2))
 				local offsetY = math.floor(dy * step + ZombRand(-1, 2))
 
-				sendClientCommand("SpawnerAPI", "spawn", {
+				EHE_spawner.request({
 					funcType = funcType,
 					spawnThis = item,
 					x = baseX + offsetX,
