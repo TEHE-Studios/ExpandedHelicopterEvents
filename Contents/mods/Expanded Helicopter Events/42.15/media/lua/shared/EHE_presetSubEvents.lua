@@ -44,9 +44,7 @@ function subEvents.hostilePredicateCivilian(target)
 				if string.match(string.lower(item:getFullType()),"army")
 						or string.match(string.lower(item:getFullType()),"military")
 						or string.match(string.lower(item:getFullType()),"riot")
-						or string.match(string.lower(item:getFullType()),"police")
-						or item:getTags():contains("Police")
-						or item:getTags():contains("Military") then
+						or string.match(string.lower(item:getFullType()),"police") then
 					nonCivScore = nonCivScore+1
 				end
 			end
@@ -76,7 +74,7 @@ function subEvents.eHelicopter_dropSupplies(heli)
 		heliY = heliY+ZombRand(-3,3)
 		heliX = heliX+ZombRand(-3,3)
 
-		sendClientCommand("SpawnerAPI", "spawn", {
+		EHE_spawner.request({
 			funcType="item", spawnThis=SuppliesType, x=heliX, y=heliY, z=0,
 			extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 	end
@@ -121,10 +119,10 @@ end
 function subEvents.eHelicopter_dropTrash(heli)
 
 	local heliX, heliY, _ = heli:getXYZAsInt()
-	local trashItems = {"WhiskeyEmpty","SmashedBottle","BeerEmpty","BeerEmpty"}
+	local trashItems = {"SmashedBottle","BeerEmpty","BeerEmpty"}
 
 	local moreTrashItems = {"SmashedBottle","SmashedBottle","SmashedBottle","SmashedBottle",
-							"MayonnaiseEmpty","Pop3Empty","Pop2Empty","Pop3Empty","WhiskeyEmpty",
+							"MayonnaiseEmpty","Pop3Empty","Pop2Empty","Pop3Empty",
 							"BeerCanEmpty","BeerCanEmpty","BeerCanEmpty","BeerCanEmpty","BeerEmpty"}
 	local iterations = 10
 	for i=1, iterations do
@@ -140,7 +138,7 @@ function subEvents.eHelicopter_dropTrash(heli)
 		heliY = heliY+ZombRand(-3,3)
 		heliX = heliX+ZombRand(-3,3)
 
-		sendClientCommand("SpawnerAPI", "spawn", {
+		EHE_spawner.request({
 			funcType="item", spawnThis=trashType, x=heliX, y=heliY, z=0,
 			extraFunctions={"ageInventoryItem"}, processSquare="getOutsideSquareFromAbove" })
 	end
@@ -335,7 +333,7 @@ function subEvents.spawnNPCs(heli)
 
 	heli.crew = false
 	--- BanditServer.Spawner.Clan(player, args)
-	sendClientCommand("SpawnerAPI", "spawn", { funcType="NPCs", spawnThis=args, x=x, y=y, z=z, })
+	EHE_spawner.request({ funcType="NPCs", spawnThis=args, x=x, y=y, z=z, })
 end
 
 

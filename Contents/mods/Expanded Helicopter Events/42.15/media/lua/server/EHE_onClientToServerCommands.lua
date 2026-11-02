@@ -8,13 +8,13 @@ require("EHE_shadowSystem.lua")
 local eheFlareSystem   = require("EHE_flares.lua")
 local heatMap          = require("EHE_heatMap.lua")
 local mainCore         = require("EHE_heliCore.lua")
-local vehicleDismantle = require("EHE_vehicleDismantle.lua")
 
 --sendClientCommand(player, module, command, args) end -- to server
 local function onClientCommand(_module, _command, _player, _data)
 	--serverside
 
 	if _module == "CustomDebugPanel" then
+		if not checkPermissions(_player, Capability.UseDebugContextMenu) then return end
 		if _command == "launchHeliTest" then
 			---@type eHelicopter heli
 			local heli = mainCore.getFreeHelicopter(_data.presetID)
@@ -51,24 +51,6 @@ local function onClientCommand(_module, _command, _player, _data)
 
 		elseif _command == "validate" then
 			eheFlareSystem.validateFlare(_data.flare, _data.timestamp, _data.loc)
-		end
-	end
-
-	if _module == "SpawnerAPI" and _command == "spawn" then
-		EHE_spawner.attemptToSpawn(_data.x, _data.y, _data.z, _data.funcType, _data.spawnThis, _data.extraFunctions, _data.extraParam, _data.processSquare)
-	end
-
-	if _module == "EHE_vehicleDismantle" and _command == "dismantle" then
-		local vehicle = getVehicleManager():getVehicleByID(_data.vehicleId)
-		if vehicle then
-			local metalKg = vehicle:getModData().EHE_metalKg or 0
-			vehicle:permanentlyRemove()
-			if metalKg > 0 then
-				local bars, sheets = vehicleDismantle.metalToItems(metalKg)
-				local inv = _player:getInventory()
-				if bars   > 0 then inv:AddItems("Base.MetalBar",        bars)   end
-				if sheets > 0 then inv:AddItems("Base.SmallSheetMetal", sheets) end
-			end
 		end
 	end
 end

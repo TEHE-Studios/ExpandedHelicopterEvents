@@ -320,8 +320,8 @@ presetCore.registerPreset("jets", {
 	presetProgression = {
 		["jet_pass"] = 0,
 		["jet_pass_louder"] = 0.071,
-		["jet_bombing_cluster"] = 0.0072,
-		["jet_bombing_napalm"] = 0.0073,
+		["jet_bombing_cluster"] = 0.2,
+		["jet_bombing_napalm"] = 0.4,
 	},
 	addedFunctionsToEvents = {["OnApproach"] = subEvents.spottedPlayerOnApproach},
 	callsigns = {"Raptor", "Viper", "Eagle", "Hornet", "Talon", "Bandit", "Striker"},

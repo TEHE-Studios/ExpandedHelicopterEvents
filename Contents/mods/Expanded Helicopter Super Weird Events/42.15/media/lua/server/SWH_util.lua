@@ -1,1 +1,1 @@
-Events.OnGameBoot.Add(print("Super-Weird Helicopter Events: AUG_03_23"))
+Events.OnGameBoot.Add(function() print("Super-Weird Helicopter Events: NOV_02_26") end)

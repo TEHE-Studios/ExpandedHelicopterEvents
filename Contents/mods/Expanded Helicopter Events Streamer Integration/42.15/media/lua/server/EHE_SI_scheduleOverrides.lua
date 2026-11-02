@@ -88,6 +88,6 @@ function eHeliScheduler.new(startDay, startTime, preset, SI_Target)
 
 	local globalModData = modData.get()
 	table.insert(globalModData.EventsOnSchedule, newEvent)
-	triggerEvent("EHE_ServerModDataReady", false)
+	if not eHeliScheduler.prefilling then triggerEvent("EHE_ServerModDataReady", false) end
 	if SI_Target then eHeliScheduler.Loop() end
 end

@@ -4,6 +4,8 @@ local util = require("EHE_util.lua")
 local function HelicopterSandboxOptions(EVENT)
 	EVENT = EVENT or "ERROR-NoEventID"
 	local text = "----------------------------\nEHE: ("..EVENT..")  Disabling vanilla helicopter."
+	local sandboxOptions = getSandboxOptions()
+	sandboxOptions:getOptionByName("Helicopter"):setValue(1)
 	SandboxVars.Helicopter = 1
 
 	local gameTime = getGameTime()
@@ -17,15 +19,17 @@ local function HelicopterSandboxOptions(EVENT)
 	if SandboxVars.ItemRemovalListBlacklistToggle == false then
 		text = text .. "  Adding items to WorldItemRemovalList."
 		local typesForRemovalList = {"EHE.EvacuationFlyer","EHE.EmergencyFlyer","EHE.QuarantineFlyer","EHE.PreventionFlyer","EHE.NoticeFlyer"}
+		local removalList = sandboxOptions:getOptionByName("WorldItemRemovalList")
 		for k,type in pairs(typesForRemovalList) do
-			if not string.find(SandboxVars.WorldItemRemovalList, type) then
-				SandboxVars.WorldItemRemovalList = SandboxVars.WorldItemRemovalList..","..type
+			if not string.find(removalList:getValue(), type, 1, true) then
+				removalList:setValue(removalList:getValue()..","..type)
 			end
 		end
+		SandboxVars.WorldItemRemovalList = removalList:getValue()
 	end
 
 	local core = getCore()
-	text = text.."\n    GAME-MODE: "..(isIngameState() and "Main-Menu" or core:getGameMode()).."  "..core:getVersion()..(getDebug() and " (DEBUG)" or "")
+	text = text.."\n    GAME-MODE: "..(isIngameState() and "Main-Menu" or tostring(core:getGameMode())).."  "..core:getVersion()..(getDebug() and " (DEBUG)" or "")
 
 	local heliValue = SandboxVars.Helicopter
 	local day, startHr, endHr = gameTime:getHelicopterDay(), gameTime:getHelicopterStartHour(), gameTime:getHelicopterEndHour()
@@ -41,4 +45,4 @@ end
 
 --Events.OnGameStart.Add(function() HelicopterSandboxOptions("OnGameStart") end)
 Events.OnLoad.Add(function() HelicopterSandboxOptions("OnLoad") end)
-if isServer() then Events.OnGameBoot.Add(function() HelicopterSandboxOptions("OnGameBoot") end) end
+if isServer() then Events.OnServerStarted.Add(function() HelicopterSandboxOptions("OnServerStarted") end) end

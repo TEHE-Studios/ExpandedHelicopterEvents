@@ -297,7 +297,7 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 				local targetType = tostring(targetHostile):match("^(.-)%{")
 				local targetOnlineID = targetHostile:getOnlineID()
-				heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetOnlineID)
+				heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetOnlineID, targetHostile)
 				--[DEBUG]] hitReport = hitReport .. "  [HIT] dmg:"..(damage/100).." hp:"..preHealth.." > "..targetHostile:getHealth()
 			end
 		end

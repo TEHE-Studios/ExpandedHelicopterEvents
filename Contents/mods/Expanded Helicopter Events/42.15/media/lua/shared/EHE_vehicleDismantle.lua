@@ -1,3 +1,5 @@
+require "Vehicles/TimedActions/ISRemoveBurntVehicle"
+
 EHE_vehicleDismantle = EHE_vehicleDismantle or {}
 
 function EHE_vehicleDismantle.metalToItems(metalKg)
@@ -6,110 +8,68 @@ function EHE_vehicleDismantle.metalToItems(metalKg)
     return bars, sheets
 end
 
-if isClient() then return EHE_vehicleDismantle end
+EHE_vehicleDismantle.SKILL_REQ = 2
 
-local SKILL_REQ = 2
-
-local function hasTorch(player)
-    for i = 0, player:getInventory():getItems():size() - 1 do
-        local item = player:getInventory():getItems():get(i)
-        if item:getType() == "BlowTorch" and item:getCurrentAmmo() > 0 then
-            return item
-        end
-    end
+function EHE_vehicleDismantle.predicateBlowTorch(item)
+    return (item ~= nil) and (item:hasTag(ItemTag.BLOW_TORCH) or item:getType() == "BlowTorch") and (item:getCurrentUses() > 0)
 end
 
-local function hasMask(player)
-    local inv = player:getInventory()
-    return inv:getFirstTaggedItem("WeldingMask") or inv:getFirstTaggedItem("WeldingMask_equipped")
+function EHE_vehicleDismantle.predicateWeldingMask(item)
+    return item:hasTag(ItemTag.WELDING_MASK) or item:getType() == "WeldingMask"
 end
 
-local function isEligibleVehicle(vehicle)
-    return vehicle:getModData().EHE_metalKg ~= nil
+function EHE_vehicleDismantle.isEligibleVehicle(vehicle)
+    return vehicle and vehicle:getModData().EHE_metalKg ~= nil
 end
 
-local function meetsSkill(player)
-    return player:getPerkLevel(Perks.MetalWelding) >= SKILL_REQ
+function EHE_vehicleDismantle.meetsSkill(player)
+    return player:getPerkLevel(Perks.MetalWelding) >= EHE_vehicleDismantle.SKILL_REQ
 end
 
 
-EHE_DismantleVehicleAction = ISBaseTimedAction:derive("EHE_DismantleVehicleAction")
-
-function EHE_DismantleVehicleAction:new(player, vehicle)
-    local o = ISBaseTimedAction.new(self, player)
-    o.vehicle  = vehicle
-    o.torch    = hasTorch(player)
-    local metalKg = vehicle:getModData().EHE_metalKg or 0
-    o.maxTime  = math.max(600, math.floor(metalKg * 80))
-    return o
-end
+EHE_DismantleVehicleAction = ISRemoveBurntVehicle:derive("EHE_DismantleVehicleAction")
 
 function EHE_DismantleVehicleAction:isValid()
-    if not self.vehicle or not isEligibleVehicle(self.vehicle) then return false end
-    if not hasTorch(self.character) then return false end
-    if not hasMask(self.character)  then return false end
-    if not meetsSkill(self.character) then return false end
-    return true
+    if not EHE_vehicleDismantle.predicateBlowTorch(self.character:getPrimaryHandItem()) then return false end
+    return self.vehicle and not self.vehicle:isRemovedFromWorld()
 end
 
 function EHE_DismantleVehicleAction:update()
-    self.character:setMetabolicTarget(Metabolics.HeavyWork)
+    ISRemoveBurntVehicle.update(self)
+    self.item:setJobType(getText("ContextMenu_EHE_DismantleWreck"))
 end
 
-function EHE_DismantleVehicleAction:perform()
-    local torch = hasTorch(self.character)
-    if torch then
-        local drain = math.min(torch:getCurrentAmmo(), math.floor((self.vehicle:getModData().EHE_metalKg or 5) * 0.4))
-        torch:setCurrentAmmo(torch:getCurrentAmmo() - drain)
-    end
-    sendClientCommand(self.character, "EHE_vehicleDismantle", "dismantle", {
-        vehicleId = self.vehicle:getId(),
-    })
-    self.character:getXp():AddXP(Perks.MetalWelding, math.floor((self.vehicle:getModData().EHE_metalKg or 0) * 2))
-    ISBaseTimedAction.perform(self)
+function EHE_DismantleVehicleAction:complete()
+    local torch = self.character and self.character:getPrimaryHandItem()
+    if not EHE_vehicleDismantle.predicateBlowTorch(torch) or not EHE_vehicleDismantle.meetsSkill(self.character) then return false end
+    if not EHE_vehicleDismantle.isEligibleVehicle(self.vehicle) then return false end
+
+    local metalKg = self.vehicle:getModData().EHE_metalKg or 0
+    local bars, sheets = EHE_vehicleDismantle.metalToItems(metalKg)
+    for i=1, bars do Actions.addOrDropItem(self.character, instanceItem("Base.MetalBar")) end
+    for i=1, sheets do Actions.addOrDropItem(self.character, instanceItem("Base.SmallSheetMetal")) end
+
+    local drain = math.min(torch:getCurrentUses(), math.floor(metalKg * 0.4))
+    for i=1, drain do torch:Use(false, false, true) end
+
+    addXp(self.character, Perks.MetalWelding, math.floor(metalKg * 2))
+    self.vehicle:permanentlyRemove()
+    return true
 end
 
-function EHE_DismantleVehicleAction:stop()
-    ISBaseTimedAction.stop(self)
+function EHE_DismantleVehicleAction:getDuration()
+    if self.vehicle == nil then return 0 end
+    if self.character:isMechanicsCheat() or self.character:isTimedActionInstant() then return 10 end
+    return math.max(600, math.floor((self.vehicle:getModData().EHE_metalKg or 0) * 80))
 end
 
-
-local function onFillWorldObjectContextMenu(playerIndex, context, worldobjects, test)
-    local player = getSpecificPlayer(playerIndex)
-    if not player then return end
-
-    for _, obj in ipairs(worldobjects) do
-        if instanceof(obj, "BaseVehicle") and isEligibleVehicle(obj) then
-            if test then return true end
-
-            local option = context:addOption(getText("ContextMenu_EHE_DismantleWreck"), worldobjects, nil)
-            local subMenu = ISContextMenu:getNew(context)
-            context:addSubMenu(option, subMenu)
-
-            if not meetsSkill(player) then
-                option.notAvailable = true
-                option.toolTip = ISToolTip:new()
-                option.toolTip.description = getText("Tooltip_EHE_NeedWeldingSkill", SKILL_REQ)
-            elseif not hasTorch(player) then
-                option.notAvailable = true
-                option.toolTip = ISToolTip:new()
-                option.toolTip.description = getText("Tooltip_EHE_NeedTorch")
-            elseif not hasMask(player) then
-                option.notAvailable = true
-                option.toolTip = ISToolTip:new()
-                option.toolTip.description = getText("Tooltip_EHE_NeedMask")
-            else
-                local metalKg = obj:getModData().EHE_metalKg
-                local bars, sheets = EHE_vehicleDismantle.metalToItems(metalKg)
-                option.toolTip = ISToolTip:new()
-                option.toolTip.description = string.format("~%d metal bars, ~%d sheet metal", bars, sheets)
-                subMenu:addOption(getText("ContextMenu_EHE_DismantleWreck"), worldobjects,
-                    function() ISTimedActionQueue.add(EHE_DismantleVehicleAction:new(player, obj)) end)
-            end
-        end
-    end
+function EHE_DismantleVehicleAction:new(character, vehicle)
+    local o = ISBaseTimedAction.new(self, character)
+    if EHE_vehicleDismantle.isEligibleVehicle(vehicle) then o.vehicle = vehicle end
+    o.stopOnWalk = false
+    o.stopOnRun = false
+    o.maxTime = o:getDuration()
+    return o
 end
-
-Events.OnFillWorldObjectContextMenu.Add(onFillWorldObjectContextMenu)
 
 return EHE_vehicleDismantle

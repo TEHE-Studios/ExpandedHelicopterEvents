@@ -30,19 +30,19 @@ local function getZombieByID(ID)
 end
 
 
-function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID)
+function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, targetObject)
 
     if isServer() then
         sendServerCommand("helicopterEvent", "attack", {damage=damage, targetType=targetType, targetID=targetID})
         return
     end
 
-    print("heliAttack: ",damage, ", ", targetType)
 
     ---@type IsoGameCharacter|IsoZombie|IsoPlayer|IsoMovingObject
-    local targetHostile
+    local targetHostile = targetObject
 
-    if targetType=="IsoZombie" and targetID then
+    if targetHostile then
+    elseif targetType=="IsoZombie" and targetID then
         targetHostile = getZombieByID(targetID)
 
     elseif targetType=="IsoPlayer" then

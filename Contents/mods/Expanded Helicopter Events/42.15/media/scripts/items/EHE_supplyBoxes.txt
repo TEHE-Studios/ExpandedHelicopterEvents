@@ -8,7 +8,7 @@ module EHE
 		ItemType = base:normal,
 		Tooltip = Tooltip_SupplyBox,
 		WorldStaticModel = SupplyBox,
-		Tags = EHESupplyBox,
+		Tags = ehe:supply_box,
 	}
 
 	item BanditStashBox
@@ -19,7 +19,7 @@ module EHE
 		ItemType = base:normal,
 		Tooltip = Tooltip_BanditBox,
 		WorldStaticModel = BanditBox,
-		Tags = EHESupplyBox,
+		Tags = ehe:supply_box,
 	}
 
 	item SurvivorSupplyBox
@@ -30,6 +30,6 @@ module EHE
 		ItemType = base:normal,
 		Tooltip = Tooltip_SamaritanBox,
 		WorldStaticModel = SurvivorSupplyBox,
-		Tags = EHESupplyBox,
+		Tags = ehe:supply_box,
 	}
 }

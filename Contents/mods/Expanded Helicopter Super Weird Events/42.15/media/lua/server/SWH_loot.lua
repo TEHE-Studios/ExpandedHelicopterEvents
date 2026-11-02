@@ -119,8 +119,8 @@ VehicleDistributions.TISTrunk = {
         "SWH.SWH_IceCreamBox", 10,
         "SWH.SWH_IceCreamBox", 10,
         "SWH.SWH_IceCreamBox", 10,
-        "Base.SWH_IceCreamBox", 10,
-        "Base.SWH_IceCreamBox", 10,
+        "SWH.SWH_IceCreamBox", 10,
+        "SWH.SWH_IceCreamBox", 10,
     }
 }
 

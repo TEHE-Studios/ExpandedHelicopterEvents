@@ -243,7 +243,7 @@ EHE_Recipe = EHE_Recipe or {}
 function EHE_Recipe.onFlareLight(craftRecipeData, character)
     local flare
 
-    local items = craftRecipeData:getAllConsumedItems()
+    local items = craftRecipeData:getAllKeepInputItems()
     for i=0,items:size() - 1 do
         ---@type InventoryItem
         local item = items:get(i)
@@ -252,13 +252,11 @@ function EHE_Recipe.onFlareLight(craftRecipeData, character)
             item:setName(getText("IGUI_Lit").." "..item:getScriptItem():getDisplayName())
 
         elseif eheFlareSystem.flareTypes[item:getFullType()]=="EHESignalFlare" then
-            item:setCondition(0)
-            item:setName(getText("IGUI_Spent").." "..item:getScriptItem():getDisplayName())
-            character:getInventory():DoRemoveItem(item)
+            local inv = character:getInventory()
+            inv:Remove(item)
+            sendRemoveItemFromContainer(inv, item)
 
-            local flareCharge = "EHE.FlareCharge"
-            character:getSquare():AddWorldInventoryItem(flareCharge, 0, 0, 0)
-            flareCharge:getWorldItem():transmitCompleteItemToServer()
+            flare = character:getSquare():AddWorldInventoryItem("EHE.FlareCharge", 0, 0, 0)
 
             if not character:isOutside() then
                 local pSquare = getSquare(character:getX()+ZombRand(-2,2), character:getY()+ZombRand(-2,2), 0)
@@ -269,14 +267,19 @@ function EHE_Recipe.onFlareLight(craftRecipeData, character)
         end
     end
 
+    if not flare then return end
     flare:getModData()["flareLit"] = true
+    if not flare:getWorldItem() then
+        syncItemFields(character, flare)
+        syncItemModData(character, flare)
+    end
     eheFlareSystem.activateFlare(flare, eheFlareSystem.Duration)
 end
 
 
----@param player IsoGameCharacter | IsoPlayer
 ---@param item InventoryItem
-function EHE_Recipe.onCanLightFlare(recipe, player, item)
+---@param player IsoGameCharacter | IsoPlayer
+function EHE_Recipe.onCanLightFlare(item, player)
     if item and (not item:isBroken()) and (not item:getModData()["flareLit"]) then
         return true
     end

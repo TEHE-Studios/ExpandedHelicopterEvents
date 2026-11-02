@@ -25,6 +25,12 @@ option ExpandedHeli.EventMarkers
 	page = ExpandedHeli, translation = ExpandedHeli_EventMarkers,
 }
 
+option ExpandedHeli.EventMarkerPersistence
+{
+	type = integer, min = 0, max = 30, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventMarkerPersistence,
+}
+
 option ExpandedHeli.WeatherImpactsEvents
 {
 	type = boolean, default = true,

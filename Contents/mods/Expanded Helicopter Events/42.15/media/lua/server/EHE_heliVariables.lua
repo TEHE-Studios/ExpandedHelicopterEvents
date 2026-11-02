@@ -94,7 +94,7 @@ vars.initialVars = {}
 vars.variableBackUp(vars.initialVars, nil, "initialVars")
 
 --the below variables are to be considered "temporary"
----@field forceUnlaunchTime table|boolean table of day,hour | false when not set
+---@field forceUnlaunchTime number|boolean world age hours | false when not set
 vars.forceUnlaunchTime = false
 ---@field height number
 vars.height = 7
@@ -102,6 +102,8 @@ vars.height = 7
 vars.state = false
 ---@field crashing
 vars.crashing = false
+---@field stoppedFastForward boolean
+vars.stoppedFastForward = false
 ---@field timeUntilCanAnnounce number
 vars.timeUntilCanAnnounce = -1
 ---@field preflightDistance number

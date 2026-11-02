@@ -6,16 +6,33 @@ EHE_Recipe = EHE_Recipe or {}
 
 local METAL_EFFICIENCY = 0.65
 
+function EHE_Recipe.getTag(id) return ItemTag.get(ResourceLocation.of(id)) end
+
+
+function EHE_Recipe.createItems(itemType, qty)
+    local items = ArrayList.new()
+    for i=1, qty do
+        local item = instanceItem(itemType)
+        if item then items:add(item) end
+    end
+    return items
+end
+
+
+function EHE_Recipe.giveItems(character, items)
+    for i=0, items:size()-1 do Actions.addOrDropItem(character, items:get(i)) end
+end
+
+
 function EHE_Recipe.dismantleHeliPart(craftRecipeData, character)
     local items = craftRecipeData:getAllConsumedItems()
-    local inv   = character:getInventory()
     for i = 0, items:size() - 1 do
         local item = items:get(i)
-        if item then
+        if item and item:hasTag(EHE_Recipe.getTag("ehe:heli_part_metal")) then
             local metalKg = item:getModData().EHE_metalKg or (item:getWeight() * METAL_EFFICIENCY)
             local bars, sheets = vehicleDismantle.metalToItems(metalKg)
-            if bars   > 0 then inv:AddItems("Base.MetalBar",        bars)   end
-            if sheets > 0 then inv:AddItems("Base.SmallSheetMetal", sheets) end
+            if bars   > 0 then EHE_Recipe.giveItems(character, EHE_Recipe.createItems("Base.MetalBar", bars)) end
+            if sheets > 0 then EHE_Recipe.giveItems(character, EHE_Recipe.createItems("Base.SmallSheetMetal", sheets)) end
         end
     end
 end
@@ -50,10 +67,10 @@ EHE_Recipe.supplyResults.survivor_toilet = {
 	["Base.ToiletPaper"] = 10, }
 
 EHE_Recipe.supplyResults.survivor_fishing = {
-	["Base.FishingRod"] = 3, ["Base.FishingLine"] = 3, ["Base.FishingTackle"] = 3, ["Base.FishingNet"] = 4, }
+	["Base.FishingRod"] = 3, ["Base.FishingLine"] = 3, ["Base.FishingHookBox"] = 3, ["Base.FishingNet"] = 4, }
 
 EHE_Recipe.supplyResults.survivor_canning = {
-	["Base.BoxOfJars"] = 2, ["Base.Sugar"] = 1, ["Base.Vinegar"] = 1, }
+	["Base.BoxOfJars"] = 2, ["Base.Sugar"] = 1, ["Base.Vinegar_Jug"] = 1, }
 
 
 EHE_Recipe.boxToResults = {}
@@ -70,6 +87,7 @@ EHE_Recipe.boxToAdditionalFunc["EHE.SurvivorSupplyBox"] = "fillBags"
 
 
 function EHE_Recipe.fillBags(items, character)
+	if items:size() <= 0 then return end
 	local first = items:get(0)
 	if not instanceof(first, "InventoryContainer") then return end
 
@@ -82,7 +100,6 @@ end
 
 function EHE_Recipe.openSupplyBox(craftRecipeData, character)
 	local items = craftRecipeData:getAllConsumedItems()
-	local itemContainer = character:getInventory()
 	for i=0,items:size() - 1 do
 		---@type InventoryItem
 		local box = items:get(i)
@@ -93,12 +110,15 @@ function EHE_Recipe.openSupplyBox(craftRecipeData, character)
 			--- we can use a giant if chain like a forefathers' intended o7
 
 			local boxToResults = EHE_Recipe.boxToResults[i_type]
-			local results = boxToResults and EHE_Recipe.supplyResults[results]
+			local results = boxToResults and EHE_Recipe.supplyResults[boxToResults[ZombRand(#boxToResults)+1]]
 
-			for itm,qty in pairs(results) do
-				local itms = itemContainer:AddItems(itm, qty)
+			if results then
 				local addFunc = EHE_Recipe.boxToAdditionalFunc[i_type]
-				if addFunc then addFunc(itms) end
+				for itm,qty in pairs(results) do
+					local itms = EHE_Recipe.createItems(itm, qty)
+					if addFunc and EHE_Recipe[addFunc] then EHE_Recipe[addFunc](itms, character) end
+					EHE_Recipe.giveItems(character, itms)
+				end
 			end
 		end
 	end
@@ -116,11 +136,9 @@ function EHE_Recipe.modifyItemScripts()
 		---@type Item
 		local itemScript = allItems:get(i)
 		local itemFullName = itemScript:getFullName()
-		local tags = itemScript:getTags()
-
-		if tags:contains("EHESignalFlare") then
+		if itemScript:hasTag(EHE_Recipe.getTag("ehe:signal_flare")) then
 			eheFlareSystem.addFlareType(itemFullName, "EHESignalFlare")
-		elseif tags:contains("EHEFlare") then
+		elseif itemScript:hasTag(EHE_Recipe.getTag("ehe:flare")) then
 			eheFlareSystem.addFlareType(itemFullName, "EHEFlare")
 		end
 	end
