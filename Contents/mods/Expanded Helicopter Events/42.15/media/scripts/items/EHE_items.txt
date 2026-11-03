@@ -28,6 +28,8 @@ module EHE
 		DisplayCategory = Junk,
 		Weight = 0.0,
 		ItemType = base:normal,
+		WorldStaticModel = HandFlare,
+		Icon = EHE/SignalFlare,
 		Tags = ehe:flare,
 	}
 
