@@ -1,0 +1,8 @@
+Recipe_CS = {
+    Recipe_Cut_up_Parachute = "Rozstříhat padák",
+    Recipe_Dismantle_Helicopter_Skirt = "Rozebrat kapotáž vrtulníku",
+    Recipe_Dismantle_Main_Rotor_Blade = "Rozebrat list hlavního rotoru",
+    Recipe_Dismantle_Tail_Rotor_Blade = "Rozebrat list ocasního rotoru",
+    Recipe_Open_Supplies = "Otevřít zásoby",
+    Recipe_Unseal_Water_Ration = "Rozbalit příděl vody",
+}

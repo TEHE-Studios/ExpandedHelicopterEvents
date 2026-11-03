@@ -1,0 +1,180 @@
+module EHE
+{
+
+		item Hat_SPHPolice
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = Police SPH-3 Pilot Helmet,
+		ClothingItem = Hat_SPHPolice,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetPolice,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHPoliceVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		ClothingExtraSubmenu = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHPolice,
+    }
+
+		item Hat_SPHPoliceVISORUP
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = Police SPH-3 Pilot Helmet (Up),
+		ClothingItem = Hat_SPHPoliceVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetPolice,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHPolice,
+        ClothingItemExtraOption = VisorDown,
+		ClothingExtraSubmenu = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHPolice,
+    }
+
+		item Hat_SPHMilitary
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = Military SPH-3 Pilot Helmet,
+		ClothingItem = Hat_SPHMilitary,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetMilitary,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHMilitaryVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		ClothingExtraSubmenu = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHMilitary,
+    }
+
+		item Hat_SPHMilitaryVISORUP
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = Military SPH-3 Pilot Helmet (Up),
+		ClothingItem = Hat_SPHMilitaryVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetMilitary,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHMilitary,
+        ClothingItemExtraOption = VisorDown,
+		ClothingExtraSubmenu = VisorUp,
+		BiteDefense = 100,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHMilitary,
+    }
+
+	    item Hat_SPHBlack
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = Black SPH-3 Pilot Helmet,
+		ClothingItem = Hat_SPHBlack,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetBlack,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHBlackVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		ClothingExtraSubmenu = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHBlack,
+    }
+
+		item Hat_SPHBlackVISORUP
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = Black SPH-3 Pilot Helmet (Up),
+		ClothingItem = Hat_SPHBlackVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetBlack,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHBlack,
+        ClothingItemExtraOption = VisorDown,
+		ClothingExtraSubmenu = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHBlack,
+    }
+
+		item Hat_SPHCivilian
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = SPH-3 Pilot Helmet,
+		ClothingItem = Hat_SPHCivilian,
+		BodyLocation = Hat,
+		IconsForTexture = HelicopterHelmetCivilian;HelicopterHelmetCivilianRed,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHCivilianVISORUP,
+        ClothingItemExtraOption = VisorUp,
+		ClothingExtraSubmenu = VisorDown,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHCivilian,
+    }
+
+		item Hat_SPHCivilianVISORUP
+	{
+		DisplayCategory = Clothing,
+		Type = Clothing,
+		DisplayName = SPH-3 Pilot Helmet (Up),
+		ClothingItem = Hat_SPHCivilianVISORUP,
+		BodyLocation = Hat,
+		Icon = HelicopterHelmetCivilian,
+		CanHaveHoles = false,
+		BloodLocation = FullHelmet,
+		ClothingItemExtra = EHE.Hat_SPHCivilian,
+        ClothingItemExtraOption = VisorDown,
+		ClothingExtraSubmenu = VisorUp,
+		BiteDefense = 100,
+		ScratchDefense = 100,
+		ChanceToFall = 30,
+		Insulation = 0,
+		WaterResistance = 0.40,
+        Weight = 1.5,
+		Tooltip = Tooltip_SPHCivilian,
+    }
+}

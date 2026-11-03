@@ -1,0 +1,3 @@
+Recipe_PTBR = {
+    Recipe_Open_Supplies = "Abrir Suprimentos",
+}

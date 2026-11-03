@@ -1,0 +1,15 @@
+DynamicRadio_CN = {
+    AEBS_SupplyDrop = "补给箱已投放。"
+    AEBS_Raiders = "如果你能听到这个，就去——"
+    AEBS_SurvivorHeli = "掠夺者出发。"
+    AEBS_SamaritanDrop = "我们正在为还活着的人带来物资。"
+    AEBS_UnauthorizedEntryPolice = "未经授权的空中活动，流氓执法。"
+    AEBS_UnauthorizedEntryNews = "未经授权的空中活动、媒体侵入。"
+    AEBS_JetBombing = "清除入站的有效负载。"
+    AEBS_JetPass = "喷气式飞机通行证入境。"
+    AEBS_AirRaid = "留在家中并寻求庇护"
+    AEBS_HostileMilitary = "检测到空气活动。军事特种作战正在进行中。祝你好运。"
+    AEBS_PurgeMilitary = "检测到空气活动。感染人群控制行动正在进行中。"
+    AEBS_PurgeCattle = "检测到空气活动。动物扑杀行动正在进行中。"
+    AEBS_Military = "检测到空气活动。疏散行动正在进行中。"
+}

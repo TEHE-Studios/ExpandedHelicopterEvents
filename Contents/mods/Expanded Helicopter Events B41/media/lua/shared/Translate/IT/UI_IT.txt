@@ -1,0 +1,11 @@
+UI_IT = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Expanded Helicopter Events"
+    UI_Config_sandBoxMovedText = "Le opzioni di configurazione possono essere trovate nelle opzioni Sandbox.",
+    UI_Config_voiceTitle = "Pacchetti voce",
+
+    UI_Config_resetEventsToolTip = "Ripristina gli eventi programmati in caso di emergenza:",
+    UI_Config_resetEvents = "Ripristina eventi",
+    UI_Config_eventMarkersOnToolTip1 = "Attiva questa opzione per abilitare i marcatori evento.",
+    UI_Config_eventMarkersOnToolTip2 = "Nota: i marcatori degli eventi possono essere trascinati.",
+    UI_Config_eventMarkersOn = "Marcatori evento",
+}

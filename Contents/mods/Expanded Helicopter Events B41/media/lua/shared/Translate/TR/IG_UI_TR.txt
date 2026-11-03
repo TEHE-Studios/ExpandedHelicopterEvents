@@ -1,0 +1,29 @@
+IG_UI_TR = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Enkaz Halinde UH-60A (Gövde)",
+    IGUI_VehicleNameUH60GreenTail = "Harap UH-60A (Kuyruk)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Çöl",
+    IGUI_VehicleNameUH60DesertFuselage = "Enkaz Halinde UH-60A Çöl (Gövde)",
+    IGUI_VehicleNameUH60DesertTail = "Enkaz Halinde UH-60A Çöl (Kuyruk)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Enkaz Halinde UH-60A Medevac (Gövde)",
+    IGUI_VehicleNameUH60MedevacTail = "Enkaz Halinde UH-60A Medevac (Kuyruk)",
+
+    IGUI_VehicleNameBell206LBMW = "Haber Helikopteri",
+    IGUI_VehicleNameBell206LBMWFuselage = "Haber Helikopteri (Gövde)",
+    IGUI_VehicleNameBell206LBMWTail = "Haber Helikopteri (Kuyruk)",
+
+    IGUI_VehicleNameBell206Police = "Polis Helikopteri",
+    IGUI_VehicleNameBell206PoliceFuselage = "Polis Helikopteri (Gövde)",
+    IGUI_VehicleNameBell206PoliceTail = "Polis Helikopteri (Kuyruk)",
+
+    IGUI_VehicleNameBell206Survivalist = "Sivil Helikopter",
+
+    IGUI_VehicleNameFEMASupplyDrop = "Acil Durum İkmal Desteği",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan İkmal Desteği",
+
+    IGUI_Spent = "Harcandı",
+    IGUI_Lit = "Aydınlık",
+}

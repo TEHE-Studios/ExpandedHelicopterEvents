@@ -1,0 +1,52 @@
+Sandbox_CN = {
+    Sandbox_ExpandedHeli = "直升机事件扩展",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "无"
+    Sandbox_ExpandedHeli_Frequency_option2 = "稀少",
+    Sandbox_ExpandedHeli_Frequency_option3 = "偶尔",
+    Sandbox_ExpandedHeli_Frequency_option4 = "普通",
+    Sandbox_ExpandedHeli_Frequency_option5 = "频繁",
+    Sandbox_ExpandedHeli_Frequency_option6 = "疯狂",
+
+    Sandbox_ExpandedHeli_EventJet = "喷气式飞机",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "喷气式飞机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventNews = "新闻直升机",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "新闻直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventPolice = "警方直升机",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "警方直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventMilitary = "军方直升机",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "军方直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA 空投援助",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA 空投援助事件发生的频率。\nFEMA 将在灾难发生初期进行空投援助。",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "幸存者直升机",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "幸存者直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventRaider = "劫掠直升机",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "劫掠直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "撒马利坦协会直升机",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "撒马利坦协会直升机出现的频率。",
+
+    Sandbox_ExpandedHeli_StartDay = "起始日期",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "直升机事件将会有几率出现的起始日期。(默认: 0)",
+    Sandbox_ExpandedHeli_StartDay_help = "这就是比赛当天发生的事件。您需要考虑“世界末日几个月”的设置。"
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "调度程序持续时间",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "计划程序从开始日起将运行多长时间。\n计划程序将调整事件进程以适应此持续时间。",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "这是调度程序将运行的天数。"
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "永远继续安排",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "打开此选项，以便调度程序将生成超过持续时间限制的事件。活动仍将根据持续时间分阶段进行，但活动永远不会停止安排。",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "继续安排：仅限后期比赛活动",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "当“永远继续调度”打开时，打开此开关会使调度程序仅使用后期游戏事件。",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "天气会影响活动",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "天气是否会阻止事件发生，或导致事件发生。",
+
+}

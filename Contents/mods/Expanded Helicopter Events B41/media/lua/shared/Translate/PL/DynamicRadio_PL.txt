@@ -1,0 +1,15 @@
+DynamicRadio_PL = {
+    AEBS_SupplyDrop = "Pakiet dostaw przychodzący."
+    AEBS_Raiders = "Jeśli to słyszysz, zdobądź-"
+    AEBS_SurvivorHeli = "Poszukiwacz łupów wyrusza."
+    AEBS_SamaritanDrop = "Każdemu, kto jeszcze żyje, niesiemy zaopatrzenie."
+    AEBS_UnauthorizedEntryPolice = "Nieuprawniona działalność lotnicza, nieuczciwe organy ścigania."
+    AEBS_UnauthorizedEntryNews = "Nieuprawniona działalność lotnicza, intruz mediów."
+    AEBS_JetBombing = "Ładunek przychodzących do czyszczenia."
+    AEBS_JetPass = "Przychodzący odrzutowiec."
+    AEBS_AirRaid = "POZOSTAŃ W DOMU I SZUKAJ Schronienia"
+    AEBS_HostileMilitary = "Wykryto aktywność powietrza. Trwają wojskowe operacje specjalne. Życzenia powodzenia."
+    AEBS_PurgeMilitary = "Wykryto aktywność powietrza. Trwają operacje kontroli zakażonego tłumu."
+    AEBS_PurgeCattle = "Wykryto aktywność powietrza. Trwają akcje uboju zwierząt."
+    AEBS_Military = "Wykryto aktywność powietrza. Trwa akcja ewakuacyjna."
+}

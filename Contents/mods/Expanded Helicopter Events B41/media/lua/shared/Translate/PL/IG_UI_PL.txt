@@ -1,0 +1,29 @@
+IG_UI_PL = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Rozbity UH-60A (kadłub)",
+    IGUI_VehicleNameUH60GreenTail = "Rozbity UH-60A (ogon)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Pustynia",
+    IGUI_VehicleNameUH60DesertFuselage = "Rozbita pustynia UH-60A (kadłub)",
+    IGUI_VehicleNameUH60DesertTail = "Rozbity pustynia UH-60A (ogon)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Rozbity UH-60A Medevac (kadłub)",
+    IGUI_VehicleNameUH60MedevacTail = "Rozbity UH-60A Medevac (ogon)",
+
+    IGUI_VehicleNameBell206LBMW = "Helikopter Reporterďż˝w",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Helikopter Bandytďż˝w (Kadďż˝ub samolotu)",
+    IGUI_VehicleNameBell206LBMWTail = "Helikopter Bandytďż˝w (Ogon)",
+
+    IGUI_VehicleNameBell206Police = "Policyjny Helikopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Policyjny Helikopter (Kadďż˝ub samolotu)",
+    IGUI_VehicleNameBell206PoliceTail = "Policyjny Helikopter (Ogon)",
+
+    IGUI_VehicleNameBell206Survivalist = "Cywilny Helikopter",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Awaryjny zrzut zaopatrzenia",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Dobroczynny zrzut zaopatrzenia",
+
+    IGUI_Spent = "Zużyty",
+    IGUI_Lit = "Oświetlony",
+}

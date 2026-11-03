@@ -1,0 +1,29 @@
+IG_UI_CS = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Havarovanďż˝ UH-60A (trup)",
+    IGUI_VehicleNameUH60GreenTail = "Havarovanďż˝ UH-60A (ocas)",
+
+    IGUI_VehicleNameUH60Desert = "Pouďż˝tnďż˝ UH-60A",
+    IGUI_VehicleNameUH60DesertFuselage = "Havarovanďż˝ pouďż˝tnďż˝ UH-60A (trup)",
+    IGUI_VehicleNameUH60DesertTail = "Havarovanďż˝ pouďż˝tnďż˝ UH-60A (ocas)",
+
+    IGUI_VehicleNameUH60Medevac = "Zdravotnickďż˝ UH-60A",
+    IGUI_VehicleNameUH60MedevacFuselage = "Havarovanďż˝ zdravotnickďż˝ UH-60A (trup)",
+    IGUI_VehicleNameUH60MedevacTail = "Havarovanďż˝ zdravotnickďż˝ UH-60A (ocas)",
+
+    IGUI_VehicleNameBell206LBMW = "Zpravodajskďż˝ vrtulnďż˝k",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Zpravodajskďż˝ vrtulnďż˝k (trup)",
+    IGUI_VehicleNameBell206LBMWTail = "Zpravodajskďż˝ vrtulnďż˝k (ocas)",
+
+    IGUI_VehicleNameBell206Police = "Policejnďż˝ vrtulnďż˝k",
+    IGUI_VehicleNameBell206PoliceFuselage = "Policejnďż˝ vrtulnďż˝k (trup)",
+    IGUI_VehicleNameBell206PoliceTail = "Policejnďż˝ vrtulnďż˝k (ocas)",
+
+    IGUI_VehicleNameBell206Survivalist = "Civilnďż˝ vrtulnďż˝k",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Shozenďż˝ nouzovďż˝ zďż˝soby",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritďż˝nskďż˝ dodďż˝vka zďż˝sob",
+
+    IGUI_Spent = "Utraceno",
+    IGUI_Lit = "Lit",
+}

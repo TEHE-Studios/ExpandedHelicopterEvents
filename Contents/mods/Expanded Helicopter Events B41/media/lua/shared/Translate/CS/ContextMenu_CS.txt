@@ -1,0 +1,9 @@
+ContextMenu_CS = {
+    ContextMenu_DownHoodie = "Kapuce dolů",
+    ContextMenu_VisorUp = "Stínítko nahoru",
+    ContextMenu_VisorDown = "Stínítko dolů",
+    ContextMenu_Tighten = "Utáhnout",
+    ContextMenu_Untighten = "Povolit",
+
+    IGUI_VehiclePartHelicopterInterior = "Interiér vrtulníku",
+}

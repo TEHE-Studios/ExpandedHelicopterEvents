@@ -1,0 +1,52 @@
+Sandbox_IT = {
+    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Mai"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Rara",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Insolita",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Comune",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Frequente",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Folle",
+
+    Sandbox_ExpandedHeli_EventJet = "Jet",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "La frequenza con cui si verificano gli eventi dei jet.\n I jet volano vicino ai giocatori causando il movimento dell'orda.",
+
+    Sandbox_ExpandedHeli_EventNews = "Notiziario",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "La frequenza con cui si verificano gli eventi del notiziario.\n Gli elicotteri del notiziario si concentrano su qualsiasi cittadino che trovano e lo seguono per un breve periodo.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Polizia",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "La frequenza con cui si verificano gli eventi della polizia.\n La polizia prenderà  in mano la situazione e scorterà i cittadini mentre spara agli zombi.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militare",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "La frequenza con cui si verificano gli eventi militari.\n L'esercito procede per fasi: avverte i cittadini, elimina i non morti e infine epura tutto ciò che si muove.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Consegne di soccorso FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "La frequenza con cui la FEMA effettua le consegne degli aiuti.\n La FEMA effettuerà le consegne di soccorso nelle prime fasi dell'apocalisse.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Sopravvissuti",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "La frequenza con cui si verificano gli eventi dei sopravvissuti.\n I sopravvissuti voleranno solo durante le missioni di esplorazione causando il movimento dell'orda.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Predatori",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "La frequenza con cui si verificano gli eventi dei predatori.\n I predatori si concentrano sui sopravvissuti per tormentarli e divertirsi un po'.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritani",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "La frequenza con cui si verificano gli eventi dei samaritani.\n I samaritani consegnano i rifornimenti per aiutare i sopravvissuti.",
+
+    Sandbox_ExpandedHeli_StartDay = "Giorno d'inizio",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Il giorno a cui il programma di pianificazione inizierà ad assegnare gli eventi.",
+    Sandbox_ExpandedHeli_StartDay_help = "Questo è il giorno in cui si verificano gli eventi del gioco. È necessario tenere conto delle impostazioni "mesi nell'apocalisse"."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Durata di pianificazione",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Per quanto tempo il programma di pianificazione funzionerà a partire dal giorno di inizio.\n il programma regolerà la progressione degli eventi in base a questa durata.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Questo è il numero di giorni in cui il programma di pianificazione opererà."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Continuare a pianificare per sempre",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Attivare questa opzione per far sì che il programma di pianificazione generi eventi oltre il limite di durata. Gli eventi continueranno a passare attraverso le fasi in base alla durata, ma non smetteranno mai di essere programmati.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continuare a pianificare: Solo eventi di gioco avanzato",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Quando si attiva "Continuare a pianificare per sempre", questa opzione fa si' che il programma di pianificazione utilizzi solo gli eventi di gioco avanzato.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Clima influenza gli eventi",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Se le condizioni meteorologiche impediranno gli eventi o li faranno crollare.",
+
+}

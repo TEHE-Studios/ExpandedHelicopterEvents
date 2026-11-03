@@ -1,0 +1,104 @@
+module EHE
+{
+
+	item EmergencyFoodSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_fema,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SupplyBox,
+		WorldStaticModel = SupplyBox,
+	}
+
+		item EmergencyMedicalSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_aid,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SupplyBox,
+		WorldStaticModel = SupplyBox,
+	}
+
+		item EmergencySurvivalSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_fema,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SupplyBox,
+		WorldStaticModel = SupplyBox,
+	}
+
+		item BanditStashBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_BanditBox,
+		WorldStaticModel = BanditBox,
+	}
+
+		item SurvivorFoodSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorMedicalSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorFishingSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorSeedSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorCanningSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+		item SurvivorToiletSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight			=	6.3,
+		Icon			=	SupplyBox_blank,
+		DisplayName		=	Supply Box,
+		Tooltip = Tooltip_SamaritanBox,
+		WorldStaticModel = SurvivorSupplyBox,
+	}
+
+}

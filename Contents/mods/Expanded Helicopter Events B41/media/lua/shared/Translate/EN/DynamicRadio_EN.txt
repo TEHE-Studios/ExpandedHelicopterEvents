@@ -1,0 +1,15 @@
+DynamicRadio_EN = {
+    AEBS_SupplyDrop = "Supply package inbound."
+    AEBS_Raiders = "If you can hear this, get f-"
+    AEBS_SurvivorHeli = "Loot runner heading out."
+    AEBS_SamaritanDrop = "To anyone still alive, we are bringing supplies."
+    AEBS_UnauthorizedEntryPolice = "Unauthorized air activity, rogue law enforcement."
+    AEBS_UnauthorizedEntryNews = "Unauthorized air activity, media trespasser."
+    AEBS_JetBombing = "Payload for purge inbound."
+    AEBS_JetPass = "Jet pass inbound."
+    AEBS_AirRaid = "REMAIN IN DOORS AND SEEK SHELTER"
+    AEBS_HostileMilitary = "Air Activity Detected. Military Special Operations Underway. Godspeed."
+    AEBS_PurgeMilitary = "Air Activity Detected. Infected Crowd Control Operations Underway."
+    AEBS_PurgeCattle = "Air Activity Detected. Animal Culling Operations Underway."
+    AEBS_Military = "Air Activity Detected. Evacuation Operations Underway."
+}

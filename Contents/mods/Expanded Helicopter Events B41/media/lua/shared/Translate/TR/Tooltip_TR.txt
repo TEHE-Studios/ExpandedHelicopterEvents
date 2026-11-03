@@ -1,0 +1,26 @@
+Tooltip_TR = {
+    Tooltip_dismantle_helicopterpart = "Bir kaynak aleti ve kaynak maskesini kullanmak metal elde etmenizi sağlar.",
+    Tooltip_open_boxes_barehanded = "Keskin bir şeyle açmak daha hızlı olur.",
+    Tooltip_Parachute = "Yırtılmış kumaş yapmak için parçalanabilir.",
+    Tooltip_EnergyBar = "Hayatta kalma kitleri için paketlenmiş bir enerji barı. PT&D tarafından üretilmiştir.",
+    Tooltip_SurvivalVest = "Askeri pilotlar için standart hayatta kalma yeleği.",
+    Tooltip_SurvivalVestBlack = "Polis arama ve kurtarma için standart hayatta kalma yeleği.",
+    Tooltip_SPHMilitary = "Askeri helikopterler için standart miğfer.",
+    Tooltip_SPHBlack = "Siyah renkli askeri helikopter miğferi.",
+    Tooltip_SPHPolice = "Polis hava kanatları tarafından kullanılan helikopter miğferi.",
+    Tooltip_SPHCivilian = "Sivil pilotlar tarafından kullanılan helikopter miğferi.",
+
+    Tooltip_FlyerCDC = "Bir sağlık uyarısı el ilanına benziyor.",
+    Tooltip_FlyerMilitary = "Askeriyeden bir duyuru el ilanına benziyor.",
+    Tooltip_CivilDefense = "Bir sivil savunma el ilanına benziyor.",
+
+    Tooltip_WaterSealed = "ABD Hükümeti tarafından dağıtılan mühürlü su rasyonu.",
+    Tooltip_WaterUnsealed = "ABD Hükümeti tarafından dağıtılan mühürsüz su rasyonu.",
+
+    Tooltip_SupplyBox = "ABD Hükümeti tarafından verilen malzeme kutusu.",
+    Tooltip_SamaritanBox = "Gizemli bir samaritandan gelen malzeme kutusu.",
+    Tooltip_BanditBox = "Kişisel gizli kutu. Üzerinde 'MY SHIT, DONT TOUCH!' yazıyor.",
+
+    Tooltip_SignalFlare = "İşaret fişeği. İçeride ateş etmeyin.",
+    Tooltip_HandFlare = "Fişek. İçeride ateş etmeyin."
+}

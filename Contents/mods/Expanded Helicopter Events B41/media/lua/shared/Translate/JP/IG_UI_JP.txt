@@ -1,0 +1,29 @@
+IG_UI_JP = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "破損した UH-60A (機体部)",
+    IGUI_VehicleNameUH60GreenTail = "破損した UH-60A (尾部)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A 砂漠迷彩",
+    IGUI_VehicleNameUH60DesertFuselage = "破損した UH-60A 砂漠迷彩 (機体部)",
+    IGUI_VehicleNameUH60DesertTail = "破損した UH-60A 砂漠迷彩 (尾部)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A 救助用ヘリ",
+    IGUI_VehicleNameUH60MedevacFuselage = "破損した UH-60A 救助用ヘリ (機体部)",
+    IGUI_VehicleNameUH60MedevacTail = "破損した UH-60A 救助用ヘリ (尾部)",
+
+    IGUI_VehicleNameBell206LBMW = "Bell 206 報道用ヘリ",    
+    IGUI_VehicleNameBell206LBMWFuselage = "Bell 206 報道用ヘリ (機体部)",
+    IGUI_VehicleNameBell206LBMWTail = "Bell 206 報道用ヘリ (尾部)",
+
+    IGUI_VehicleNameBell206Police = "Bell 206 警察用ヘリ",
+    IGUI_VehicleNameBell206PoliceFuselage = "Bell 206 警察用ヘリ (機体部)",
+    IGUI_VehicleNameBell206PoliceTail = "Bell 206 警察用ヘリ (尾部)",
+
+    IGUI_VehicleNameBell206Survivalist = "Bell 206 民間用ヘリ",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "FEMA救援物資",
+    IGUI_VehicleNameSurvivorSupplyDrop = "サマリタン協会の救援物資",
+
+    IGUI_Spent = "Spent",
+    IGUI_Lit = "Lit",
+}

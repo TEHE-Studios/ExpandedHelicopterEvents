@@ -1,0 +1,26 @@
+Tooltip_CS = {
+    Tooltip_dismantle_helicopterpart = "Při použití svářečky a svářečské masky lze získat kov.",
+    Tooltip_open_boxes_barehanded = "Bylo by rychlejší otevřít ji něčím ostrým.",
+    Tooltip_Parachute = "Lze roztrhat a vytvořit roztrhanou látku.",
+    Tooltip_EnergyBar = "Energetická tyčinka balená do balíčků pro přežití. Výrobce: PT&D.",
+    Tooltip_SurvivalVest = "Standardní vesta pro vojenské piloty.",
+    Tooltip_SurvivalVestBlack = "Standardní vesta pro policejní pátrací a záchranné složky.",
+    Tooltip_SPHMilitary = "Standardní vojenská přilba pro vrtulníky."
+    Tooltip_SPHBlack = "Standardní vojenská vrtulníková přilba v černé barvě.",
+    Tooltip_SPHPolice = "Vrtulníková přilba používaná policejním letectvem.",
+    Tooltip_SPHCivilian = "Přilba pro vrtulníky používaná civilními piloty.",
+
+    Tooltip_FlyerCDC = "Vypadá to jako leták se zdravotním doporučením.",
+    Tooltip_FlyerMilitary = "Vypadá to jako leták od armády.",
+    Tooltip_CivilDefense = "Vypadá jako leták civilní obrany.",
+
+    Tooltip_WaterSealed = "Zapečetěné příděly vody distribuované vládou USA."
+    Tooltip_WaterUnsealed = "Otevřený příděl vody distribuovaný vládou Spojených států amerických." 
+
+    Tooltip_SupplyBox = "Krabice se zásobami od vlády USA."
+    Tooltip_SamaritanBox = "Krabice se zásobami od skupiny záhadných samaritánů.",
+    Tooltip_BanditBox = "Osobní schránka. Píše se na ní: MÝ VĚCI, NEŠMATEJ NA TO!",
+
+    Tooltip_SignalFlare = "Vojenská signální světlice. Nestřílejte uvnitř budov.",
+    Tooltip_HandFlare = "Světlice. Nepalte uvnitř."
+}

@@ -1,0 +1,3 @@
+Recipe_EN = {
+    Recipe_Open_Supplies = "Open Supplies",
+}

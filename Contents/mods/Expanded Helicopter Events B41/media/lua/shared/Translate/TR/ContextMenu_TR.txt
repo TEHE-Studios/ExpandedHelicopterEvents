@@ -1,0 +1,9 @@
+ContextMenu_TR = {
+    ContextMenu_DownHoodie = "Kapşon Kapalı",
+    ContextMenu_VisorUp = "Kaskın Camı Açık",
+    ContextMenu_VisorDown = "Kaskın Camı Kapalı",
+    ContextMenu_Tighten = "Sık",
+    ContextMenu_Untighten = "Gevşet",
+
+    IGUI_VehiclePartHelicopterInterior = "Helikopterin İçi",
+}

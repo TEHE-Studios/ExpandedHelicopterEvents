@@ -1,0 +1,13 @@
+module EHE
+{		
+    /* How to really mothball stuff, change its type and remove all params
+    	item ITEM_TYPE { Type = Normal, OBSOLETE = true, }
+    */
+
+    item Hat_PressHelmet { Type = Normal, OBSOLETE = true, }
+	item Hat_SurvivalistHelmet { Type = Normal, OBSOLETE = true, }
+    item Vest_BulletPress { Type = Normal, OBSOLETE = true, }
+    item Vest_PilotSurvivalVestTightened { Type = Normal, OBSOLETE = true, }
+    item Vest_BlackPilotSurvivalVest { Type = Normal, OBSOLETE = true, }
+    item Vest_BlackPilotSurvivalVestTightened { Type = Normal, OBSOLETE = true, }
+}

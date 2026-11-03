@@ -1,0 +1,15 @@
+DynamicRadio_CS = {
+    AEBS_SupplyDrop = "Příchozí dodávka zásob."
+    AEBS_Raiders = "Pokud to slyšíte, jděte do..."
+    AEBS_SurvivorHeli = "Lovec s kořistí míří ven."
+    AEBS_SamaritanDrop = "Všem, kdo jsou ještě naživu, přinášíme zásoby."
+    AEBS_UnauthorizedEntryPolice = "Nepovolená letecká činnost, nepovolené prosazování pořádku."
+    AEBS_UnauthorizedEntryNews = "Nepovolená letecká činnost, narušení vzdušného prostoru médii."
+    AEBS_JetBombing = "Příchozí bombardování oblasti."
+    AEBS_JetPass = "Průlet proudového letounu."
+    AEBS_AirRaid = "ZŮSTAŇTE UVNITŘ A HLEDEJTE ÚKRYT"
+    AEBS_HostileMilitary = "Zjištěna aktivita vzduchu. Vojenské speciální operace probíhají. Pozdrav na rozloučenou."
+    AEBS_PurgeMilitary = "Zjištěna aktivita vzduchu. Probíhají operace kontroly nakaženého davu."
+    AEBS_PurgeCattle = "Zjištěna aktivita vzduchu. Utrácení zvířat probíhá."
+    AEBS_Military = "Zjištěna aktivita vzduchu. Evakuační operace probíhají."
+}

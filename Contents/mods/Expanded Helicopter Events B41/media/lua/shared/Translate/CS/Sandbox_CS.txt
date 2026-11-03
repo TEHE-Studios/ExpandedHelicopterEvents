@@ -1,0 +1,52 @@
+Sandbox_CS = {
+    Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Nikdy"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Vzácně",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Občas",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Časté",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Velmi časté",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Šílené",
+
+    Sandbox_ExpandedHeli_EventJet = "Tryskáče",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak často dochází k událostem s tryskáči.\n Tryskáče prolétávají kolem hráčů a způsobují pohyb hord zombie.",
+
+    Sandbox_ExpandedHeli_EventNews = "Zpravodajství",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Jak často dochází ke zpravodajským událostem.\n Zpravodajské vrtulníky se zaměří na každého občana, kterého najdou, a krátce ho sledují.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Policie",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak často dochází k policejním událostem.\n Policie vezme věci do svých rukou a bude doprovázet občany, zatímco bude střílet na zombie.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Armáda",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak často dochází k vojenským událostem.\n Vojsko bude postupovat po etapách: varovat občany, likvidovat nemrtvé a nakonec likvidovat vše, co se hýbe.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Pomoc agentury FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Jak často dochází k předávání pomoci FEMA.\n FEMA bude provádět shazování zásob na počátku apokalypsy.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Přeživší",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak často dochází k událostem s přeživšími.\n Přeživší prolétají pouze při průzkumných misích, které způsobují pohyb zombie.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Nájezdníci",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak často dochází k událostem s nájezdníky.\n Nájezdníci se soustředí na přeživší, aby je pro pobavení potrápili.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritáni",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak často dochází k samaritánským akcím.\n Samaritáni předávají zásoby na pomoc přeživším.",
+
+    Sandbox_ExpandedHeli_StartDay = "Počáteční den",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Den, od kterého plánovač začíná přiřazovat události.",
+    Sandbox_ExpandedHeli_StartDay_help = "V tento den se odehrávají události ve hře. Budete muset započítat nastavení „měsíců do apokalypsy“."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Doba trvání plánovače",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Jak dlouho poběží plánovač od počátečního dne.\n Plánovač upraví průběh události tak, aby odpovídal této délce.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "To je počet dní, po které bude plánovač fungovat."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Pokračujte v plánování navždy",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Zapněte toto, aby plánovač vytvořil události, které překročily limit trvání. Události budou stále procházet fázemi podle doby trvání, ale události se nikdy nepřestanou plánovat.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Pokračovat v plánování: Pouze pozdní herní události",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Když je zapnuto \"Pokračovat v plánování navždy\", toto přepnutí způsobí, že plánovač bude používat pouze události pozdní hry.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Počasí ovlivní události",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Zda počasí zabrání událostem, nebo způsobí jejich havárii.",
+
+}

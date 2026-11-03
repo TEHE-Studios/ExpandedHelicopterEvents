@@ -1,0 +1,26 @@
+Tooltip_DE = {
+    Tooltip_dismantle_helicopterpart = "Mit einer Lötlampe und einer Schweißmaske erhält man Metall.",
+    Tooltip_open_boxes_barehanded = "Mit etwas Scharfem wäre es schneller zu öffnen.",
+    Tooltip_Parachute = "Kann zu zerrissenem Stoff zerrissen werden.",
+    Tooltip_EnergyBar = "Ein Energieriegel, verpackt für Survival-Kits. Hergestellt von PT&D.",
+    Tooltip_SurvivalVest = "Standard-Überlebensweste für Militärpiloten.",
+    Tooltip_SurvivalVestBlack = "Standard-Überlebensweste für Such- und Rettungseinsätze der Polizei.",
+    Tooltip_SPHMilitary = "Militärhubschrauberhelm in Standardausführung."
+    Tooltip_SPHBlack = "Militärhubschrauberhelm in Standardausführung in Schwarz.",
+    Tooltip_SPHPolice = "Hubschrauberhelm, der von den Luftgeschwadern der Polizei verwendet wird.",
+    Tooltip_SPHCivilian = "Hubschrauberhelm, der von zivilen Piloten verwendet wird.",
+
+    Tooltip_FlyerCDC = "Sieht aus wie ein Gesundheitsratgeber-Flyer.",
+    Tooltip_FlyerMilitary = "Sieht aus wie ein Flugblatt des Militärs.",
+    Tooltip_CivilDefense = "Sieht aus wie ein Zivilschutzflyer.",
+
+    Tooltip_WaterSealed = "Von der US-Regierung verteilte versiegelte Wasserration."
+    Tooltip_WaterUnsealed = "Von der US-Regierung verteilte unversiegelte Wasserration." 
+
+    Tooltip_SupplyBox = "Versorgungsbox der US-Regierung."
+    Tooltip_SamaritanBox = "Versorgungskiste einer Gruppe mysteriöser Samariter.",
+    Tooltip_BanditBox = "Persönliche Aufbewahrungsbox. Aufschrift: „MEINE SCHEISSE, NICHT ANFASSEN!",
+
+    Tooltip_SignalFlare = "Signalfackel. Feuern Sie nicht in Innenräumen.",
+    Tooltip_HandFlare = "Fackel. Feuern Sie nicht in Innenräumen."
+}

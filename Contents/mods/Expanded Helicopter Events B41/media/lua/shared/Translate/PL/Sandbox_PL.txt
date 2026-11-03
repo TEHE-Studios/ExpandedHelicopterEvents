@@ -1,0 +1,52 @@
+Sandbox_PL = {
+    Sandbox_ExpandedHeli = "Rozszerzone wydarzenia śmigłowcowe",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "nigdy"
+    Sandbox_ExpandedHeli_Frequency_option2 = "bardzo rzadko",
+    Sandbox_ExpandedHeli_Frequency_option3 = "rzadko",
+    Sandbox_ExpandedHeli_Frequency_option4 = "normalnie",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Często",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Szalenie często",
+
+    Sandbox_ExpandedHeli_EventJet = "Odrzutowce",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Jak często występują zdarzenia z odrzutowcami.\n Odrzutowce przelatują nad graczami, powodując ruchy hord.",
+
+    Sandbox_ExpandedHeli_EventNews = "Reporteży",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Częstotliwość wydarzeń związanych z wiadomościami.\n Śmigłowce reporterów skupią się na każdym znalezionym obywatelu i będą za nim podążać przez krótki czas.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Policja",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Jak często zdarzają się zdarzenia policyjne.\n Policja weźmie sprawy w swoje ręce i będzie eskortować obywateli podczas strzelania do zombie.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Wojsko",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Jak często mają miejsce wydarzenia wojskowe.\n Wojsko będzie przechodzić etapy: ostrzeganie obywateli,\n dostarczanie zapasów, oczyszczanie nieumarłych, oczyszczanie wszystkiego, co się rusza.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Zrzuty pomocy FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Jak często zdarzają się przypadki zrzutów pomocy FEMA.\n FEMA będzie przeprowadzać zrzuty pomocy na początku apokalipsy.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Ocaleni",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Jak często występują zdarzenia ocalałych.\n Ocaleni będą latać tylko podczas misji zwiadowczych, powodując ruch hordy.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Bandyci",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Jak często mają miejsce zdarzenia najeźdźców.\n Najeźdźcy będą dręczyć ocalałych dla rozrywki.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samarytanie",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Jak często zdarzają się wydarzenia samarytańskie.\n Samarytanie przywożą zapasy, aby pomóc ocalałym.",
+
+    Sandbox_ExpandedHeli_StartDay = "Dzień startowy",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Dzień od którego zaczną się przypisywać zdarzenia.",
+    Sandbox_ExpandedHeli_StartDay_help = "To właśnie w tym dniu mają miejsce wydarzenia w grze. Będziesz musiał wziąć pod uwagę ustawienia „miesięcy apokalipsy”."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Czas trwania harmonogramu",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Jak długo będzie działać program planujący od dnia rozpoczęcia.\n Program planujący dostosuje postęp wydarzenia, aby dopasować go do tego czasu trwania.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Jest to liczba dni, przez które harmonogram będzie działał."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Kontynuuj planowanie na zawsze",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Włącz tę opcję, aby harmonogram wyświetlał zdarzenia, które przekroczyły limit czasu trwania. Wydarzenia będą nadal przechodzić etapy w zależności od czasu trwania, ale nigdy nie przestaną być zaplanowane.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Kontynuuj planowanie: tylko wydarzenia w późnej fazie gry",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Gdy opcja „Kontynuuj planowanie na zawsze” jest włączona, włączenie tej opcji powoduje, że harmonogram korzysta tylko z wydarzeń z późnej fazy gry.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Pogoda będzie miała wpływ na wydarzenia",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Czy pogoda zapobiegnie wydarzeniom, czy też spowoduje ich katastrofę.",
+
+}

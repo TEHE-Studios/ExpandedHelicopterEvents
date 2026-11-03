@@ -1,0 +1,49 @@
+Sandbox_EN = {
+	Sandbox_ExpandedHeli = "Expanded Helicopter Events",
+
+	Sandbox_ExpandedHeli_Frequency_option1 = "無し"
+	Sandbox_ExpandedHeli_Frequency_option2 = "少ない",
+	Sandbox_ExpandedHeli_Frequency_option3 = "やや少ない",
+	Sandbox_ExpandedHeli_Frequency_option4 = "普通",
+	Sandbox_ExpandedHeli_Frequency_option5 = "やや多い",
+	Sandbox_ExpandedHeli_Frequency_option6 = "多い",
+
+    Sandbox_ExpandedHeli_EventJet = "ジェット機",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "ジェット機の出現頻度 \n ジェット機はゾンビの移動を引き起こす",
+
+    Sandbox_ExpandedHeli_EventNews = "報道用ヘリ",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "報道用ヘリの出現頻度 \n 報道ヘリはプレイヤーを探し短時間追跡します",
+
+    Sandbox_ExpandedHeli_EventPolice = "警察用ヘリ",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "警察用ヘリの出現頻度 \n 警察がゾンビに発砲しプレイヤーを護衛します",
+
+    Sandbox_ExpandedHeli_EventMilitary = "軍用ヘリ",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "軍用ヘリの出現頻度 \n プレイヤーへの警告、ゾンビへの発砲を経て最終的に動く者を粛清します クソ",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA 救援物資支援",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "FEMA 救援物資支援の出現頻度 \n FEMAは黙示録の初期段階から救援物資支援を開始する.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "生存者ヘリ",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "生存者ヘリの出現頻度 \n 生存者たちのヘリコプターは、偵察任務のためにのみ飛行し、群れの移動を引き起こします",
+
+    Sandbox_ExpandedHeli_EventRaider = "襲撃者ヘリ",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "襲撃者ヘリの出現頻度 \n 襲撃者たちは、娯楽で生存者たちを苦しめるためにプレイヤーを狙います",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "サマリタン協会ヘリ",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "サマリタン協会ヘリの出現頻度 \n サマリタン協会は生存者救援のために物資投下を行います",
+
+	Sandbox_ExpandedHeli_StartDay = "イベント開始日",
+	Sandbox_ExpandedHeli_StartDay_tooltip = "スケジューラーがイベントを割り当てる開始日です。",
+	Sandbox_ExpandedHeli_StartDay_help = "ゲーム内のイベントが発生する日です。 "アポカリプスの何ヶ月目"の設定を考慮する必要があります。"
+
+	Sandbox_ExpandedHeli_SchedulerDuration = "スケジューラーの期間",
+	Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "開始日からスケジューラーが実行される期間です。\n スケジューラーは、この期間にイベントの進行状況を調整します。",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "スケジューラーが動作する日数です。"
+
+	Sandbox_ExpandedHeli_ContinueScheduling = "スケジューリングを無期限に続ける",
+	Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "このトグルをオンにすると、スケジューラーは期間制限を超えてイベントを生成します。イベントは期間に従って段階的に進行しますが、スケジュールが終了することはありません。",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "スケジューリングを続ける：ゲーム後期イベントのみ",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "「スケジューリングを無期限に続ける」がオンになっている場合、このトグルをオンにすると、スケジューラーはゲーム後期のイベントのみを使用します。",
+
+}

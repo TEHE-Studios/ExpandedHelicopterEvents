@@ -1,0 +1,68 @@
+module Base
+{
+	model Vehicle_SurvivorSupplyDrop
+	{
+		mesh = vehicles/Vehicle_SurvivorSupplyDrop,
+		shader = vehicle_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle SurvivorSupplyDrop
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_SurvivorSupplyDrop,
+			scale = 1.4000,
+			offset = 0.0000 0.1170 -0.0117,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_SurvivorSupplyDrop,
+		}
+
+		textureMask = Vehicle_SurvivorSupplyDrop_mask,
+		extents = 0.9864 0.4561 1.0942,
+		mass = 700,
+		physicsChassisShape = 0.9864 0.4561 1.0942,
+		centerOfMassOffset = 0.0000 0.2281 -0.0117,
+		shadowExtents = 0.9855 1.0987,
+		shadowOffset = 0.0000 -0.0117,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+
+		area TruckBed
+		{
+			xywh = 0.0000 0.0000 2.4678 2.5380,
+		}
+
+		attachment trailer
+		{
+			offset = 0.5071 -0.3357 0.0000,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		attachment trailerfront
+		{
+			offset = -0.5071 -0.3643 0.0000,
+			rotate = 0.0000 0.0000 0.0000,
+		}
+
+		template = Trunk/part/TruckBed,
+
+		part TruckBed
+		{
+			container
+			{
+				capacity = 300,
+			}
+		}
+	}
+}

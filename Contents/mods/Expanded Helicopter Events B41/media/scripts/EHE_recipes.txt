@@ -1,0 +1,441 @@
+module EHE
+{
+
+       recipe Open Supplies
+    {
+       EmergencyFoodSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:NoticeFlyer,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.FOOD,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+           recipe Open Supplies
+        {
+           EmergencyFoodSupplyBox,
+           Result:NoticeFlyer,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.FOOD,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+	   recipe Open Supplies
+    {
+       EmergencyMedicalSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:PreventionFlyer,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.MEDICAL,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+           recipe Open Supplies
+        {
+           EmergencyMedicalSupplyBox,
+           Result:PreventionFlyer,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.MEDICAL,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+	   recipe Open Supplies
+    {
+       EmergencySurvivalSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:NoticeFlyer,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVAL,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+           recipe Open Supplies
+        {
+           EmergencySurvivalSupplyBox,
+           Result:NoticeFlyer,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVAL,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       BanditStashBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Spiffo,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.STASHBOX,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+           recipe Open Supplies
+        {
+           BanditStashBox,
+           Result:EmergencyFlyer,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.STASHBOX,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorMedicalSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Scalpel,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVORMEDICAL,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+           recipe Open Supplies
+        {
+           SurvivorMedicalSupplyBox,
+           Result:Scalpel,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVORMEDICAL,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorFoodSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:CannedTomato,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVORFOOD,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+           recipe Open Supplies
+        {
+           SurvivorFoodSupplyBox,
+           Result:CannedTomato,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVORFOOD,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorFishingSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:FishingLine,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVORFISHING,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorFishingSupplyBox,
+           Result:FishingLine,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVORFISHING,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorCanningSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Vinegar,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVORCANNING,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorCanningSupplyBox,
+           Result:Vinegar,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVORCANNING,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorToiletSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:ToiletPaper,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVORTOILET,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorToiletSupplyBox,
+           Result:ToiletPaper,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVORTOILET,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Open Supplies
+    {
+       SurvivorSeedSupplyBox,
+       keep [EHE_Recipe.CanOpenBoxes],
+       Result:Fertilizer,
+       CanBeDoneFromFloor:true,
+       OnCreate:EHE_Recipe.SURVIVORSEEDS,
+       Time:70.0,
+       Sound:crashes_bombs_misc/OpenBox,
+    }
+            recipe Open Supplies
+        {
+           SurvivorSeedSupplyBox,
+           Result:Fertilizer,
+           CanBeDoneFromFloor:true,
+           OnCreate:EHE_Recipe.SURVIVORSEEDS,
+           Tooltip:Tooltip_open_boxes_barehanded,
+           Time:210.0,
+           Sound:crashes_bombs_misc/OpenBox,
+        }
+
+
+       recipe Unseal Water Ration
+    {
+       EmergencyWaterRation,
+       Result:EmergencyWaterRationOpen=1,
+       Time:45.0,
+    }
+
+
+       recipe Cut up Parachute
+    {
+       EHE_Parachute,
+       Result:RippedSheets=60,
+       CanBeDoneFromFloor:true,
+       AnimNode:RipSheets,
+       Time:550.0,
+       Sound:ClothesRipping,
+    }
+
+
+    	recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		Bell206RotorBlade1,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+    	recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		Bell206RotorBlade2,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Tail Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		Bell206TailBlade,
+		Result:SmallSheetMetal,
+		CanBeDoneFromFloor:true,
+		Time:150,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH1HRotorBlade1,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle UH-60 Window
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60WindowDesert,
+		Result:MetalBar,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Window
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60WindowGreen,
+		Result:MetalBar,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle UH-60 Door
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60DoorDesert,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Door
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60DoorMedevac,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Door
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60DoorGreen,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle UH-60 Elevator
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60ElevatorDesert,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle UH-60 Elevator
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH60Elevator,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+        recipe Dismantle Main Rotor Blade
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH1HRotorBlade2,
+		Result:SmallSheetMetal=3,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Helicopter Skirt
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		Bell206HalfSkirt,
+		Result:MetalBar=4,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+        recipe Dismantle Helicopter Skirt
+	{
+		Category:Welding,
+		keep WeldingMask,
+		BlowTorch=2,
+		UH1HHalfSkirt2,
+		Result:MetalBar=4,
+		CanBeDoneFromFloor:true,
+		Time:350,
+		AnimNode:Disassemble,
+	}
+
+
+       recipe Light Flare
+    {
+       keep SignalFlare,
+       Result:FlareCharge,
+       OnCreate:EHE_Recipe.onFlareLight,
+       /*OnTest:,*/
+       OnCanPerform:EHE_Recipe.onCanLightFlare,
+       Time:30.0,
+       Sound:gunfire/FlareShot,
+    }
+
+       recipe Light Flare
+    {
+       keep HandFlare,
+       Result:HandFlare,
+       RemoveResultItem:true,
+       OnCreate:EHE_Recipe.onFlareLight,
+       /*OnTest:,*/
+       OnCanPerform:EHE_Recipe.onCanLightFlare,
+       Time:30.0,
+       Sound:gunfire/FlareShot,
+    }
+
+
+}

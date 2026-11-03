@@ -1,0 +1,52 @@
+Sandbox_PTBR = {
+    Sandbox_ExpandedHeli = "Eventos de HelicÃ³ptero Expandidos",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Nunca"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Raro",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Incomum",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Comum",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Frequente",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Insano",
+
+    Sandbox_ExpandedHeli_EventJet = "Jatos",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "QuÃ£o frequetemente eventos do Jato ocorrem.\n Jatos sobrevoam o jogador causando movimento da horda.",
+
+    Sandbox_ExpandedHeli_EventNews = "Imprensa",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "QuÃ£o frequetemente eventos da imprensa ocorrem.\n HelicÃ³pteros da imprensa irÃ£o se concentrar em qualquer cidadÃ£o que encontrarem e segui-los por um curto perÃ­odo de tempo.",
+
+    Sandbox_ExpandedHeli_EventPolice = "PolÃ­cia",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "QuÃ£o frequetemente eventos da PolÃ­cia ocorrem.\n A polÃ­cia tomarÃ¡ controle da situaÃ§Ã£o e escoltarÃ¡ os cidadÃ£os enquanto atira nos zumbis.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "ExÃ©rcito",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "QuÃ£o frequetemente eventos do ExÃ©rcito ocorrem.\n As forÃ§as armadas passarÃ£o por fases: avisar os cidadÃ£os, expurgar os mortos-vivos e, por fim, expurgar tudo o que se move.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Carga de Suprimentos AÃ©reos da FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "QuÃ£o frequetemente os eventos da carga de suprimentos aÃ©reos da FEMA ocorrem.\n A FEMA realizarÃ¡ lanÃ§amentos aÃ©reos no inÃ­cio do apocalipse.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Sobreviventes",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "QuÃ£o frequetemente eventos dos sobreviventes ocorrem.\n Sobreviventes vÃ£o sobrevoar apenas durante operaÃ§Ãµes de patrulha, causando movimento da horda.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Invasores",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "QuÃ£o frequetemente eventos dos invasores ocorrem.\n Os invasores vÃ£o sobrevoar os sobreviventes para atormentalos por entretenimento.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samaritanos",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "QuÃ£o frequetemente eventos dos samaritanos ocorrem.\n Os samaritanos vÃ£o jogar suprimentos para ajudar o sobrevivente.",
+
+    Sandbox_ExpandedHeli_StartDay = "Dia Inicial",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "O dia que o agendador vai comeÃ§ar a agendar eventos.",
+    Sandbox_ExpandedHeli_StartDay_help = "Isso Ã© a partir de que dia os eventos comeÃ§arÃ£o. VocÃª precisarÃ¡ levar em consideraÃ§Ã£o as configuraÃ§Ãµes de "meses no apocalipse."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "DuraÃ§Ã£o do Agendador",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Quanto tempo o agendador irÃ¡ funcionar a partir do dia de inÃ­cio.\n O agendador vai ajustar a progressÃ£o de eventos comforme essa duraÃ§Ã£o.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Isso sÃ£o quantos dias o agendador vai operar."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Continue Agendando para Sempre",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Ative isso para que o agendador gere eventos apÃ³s o limite de duraÃ§Ã£o. Os eventos ainda progridirÃ£o por estÃ¡gios de acordo com as etapas, mas os eventos nunca pararÃ£o de ser agendados.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Continue Agendando: Apenas Eventos de EstÃ¡gio Tardio",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Quando \"Continue Agendando para Sempre\" estÃ¡ ligado, com isso ligado o agendador somente utilizarÃ¡ eventos de estÃ¡gio tardio.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "O clima afetará os eventos",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Se o clima impedirá eventos ou causará seu acidente.",
+
+}

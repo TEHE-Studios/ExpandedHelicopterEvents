@@ -1,0 +1,9 @@
+ContextMenu_CN = {
+    ContextMenu_DownHoodie = "Hood Down",
+    ContextMenu_VisorUp = "Visor Up",
+    ContextMenu_VisorDown = "Visor Down",
+    ContextMenu_Tighten = "Tighten",
+    ContextMenu_Untighten = "Untighten",
+
+    IGUI_VehiclePartHelicopterInterior = "直升机内饰",
+}

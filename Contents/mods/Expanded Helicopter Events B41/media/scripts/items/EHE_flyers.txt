@@ -1,0 +1,65 @@
+module EHE
+{
+        item EvacuationFlyer
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = Evacuation Flyer,
+		Icon = Flyer,
+		Tooltip = Tooltip_FlyerMilitary,
+		Map = EHE_warningflyer,
+		WorldStaticModel = EvacuationFlyer,
+	}
+
+
+	    item PreventionFlyer
+    {
+        DisplayCategory = Literature,
+        Weight = 0.1,
+        Type = Map,
+        DisplayName = Prevention Flyer,
+        Icon = FlyerPav,
+        Tooltip = Tooltip_FlyerCDC,
+        Map = EHE_preventionflyer,
+        WorldStaticModel = PAVFlyer,
+    }
+
+
+	    item EmergencyFlyer
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = Emergency Flyer,
+		Icon = Flyer,
+		Tooltip = Tooltip_FlyerMilitary,
+		Map = EHE_emergencyflyer,
+		WorldStaticModel = EmergencyFlyer,
+	}
+
+
+		item QuarantineFlyer
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = Quarantine Flyer,
+		Icon = Flyer,
+		Tooltip = Tooltip_FlyerMilitary,
+		Map = EHE_quarantineflyer,
+		WorldStaticModel = EmergencyFlyer,
+	}
+
+		item NoticeFlyer
+	{
+		DisplayCategory = Literature,
+		Weight = 0.1,
+		Type = Map,
+		DisplayName = Notice Flyer,
+		Icon = Flyer,
+		Tooltip = Tooltip_CivilDefense,
+		Map = EHE_noticeflyer,
+		WorldStaticModel = NoticeFlyer,
+	}
+}

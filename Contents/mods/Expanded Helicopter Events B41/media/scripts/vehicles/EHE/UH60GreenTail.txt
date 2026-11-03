@@ -1,0 +1,57 @@
+module Base
+{
+	model Vehicle_UH60Tail
+	{
+		mesh = vehicles/Vehicle_UH60Tail,
+		shader = vehicle_norandom_multiuv,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+	vehicle UH60GreenTail
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model
+		{
+			file = Vehicle_UH60Tail,
+			scale = 3.6900,
+			offset = 0.0407 0.1068 0.0591,
+		}
+
+		spawnOffsetY = 0.19392952,
+
+		skin
+		{
+			texture = Vehicles/EHE/Vehicle_UH60Green_Crash,
+		}
+
+		textureMask = Vehicle_UH60_mask,
+		textureShadow = highlights/tailshadow,
+				extents = 0.7524 0.3560 0.5957,
+		mass = 200,
+		physicsChassisShape = 0.7524 0.3338 0.6082,
+		centerOfMassOffset = 0.0000 0.1719 0.0032,
+		shadowExtents = 0.7524 0.5957,
+		shadowOffset = 0.0000 0.0032,
+		engineForce = 3600,
+		engineQuality = 60,
+		engineLoudness = 55,
+		maxSpeed = 70f,
+		brakingForce = 1,
+		stoppingMovementForce = 2.0f,
+		rollInfluence = 1.0f,
+		steeringIncrement = 0.03,
+		steeringClamp = 0.3,
+		suspensionStiffness = 40,
+		suspensionCompression = 2.83,
+		suspensionDamping = 2.88,
+		maxSuspensionTravelCm = 10,
+		suspensionRestLength = 0.2,
+		wheelFriction = 4.0f,
+		frontEndHealth = 150,
+		rearEndHealth = 150,
+	}
+}

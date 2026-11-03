@@ -1,0 +1,29 @@
+IG_UI_EN = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "Wrecked UH-60A (Fuselage)",
+    IGUI_VehicleNameUH60GreenTail = "Wrecked UH-60A (Tail)",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A Desert",
+    IGUI_VehicleNameUH60DesertFuselage = "Wrecked UH-60A Desert (Fuselage)",
+    IGUI_VehicleNameUH60DesertTail = "Wrecked UH-60A Desert (Tail)",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A Medevac",
+    IGUI_VehicleNameUH60MedevacFuselage = "Wrecked UH-60A Medevac (Fuselage)",
+    IGUI_VehicleNameUH60MedevacTail = "Wrecked UH-60A Medevac (Tail)",
+
+    IGUI_VehicleNameBell206LBMW = "News Helicopter",    
+    IGUI_VehicleNameBell206LBMWFuselage = "News Helicopter (Fuselage)",
+    IGUI_VehicleNameBell206LBMWTail = "News Helicopter (Tail)",
+
+    IGUI_VehicleNameBell206Police = "Police Helicopter",
+    IGUI_VehicleNameBell206PoliceFuselage = "Police Helicopter (Fuselage)",
+    IGUI_VehicleNameBell206PoliceTail = "Police Helicopter (Tail)",
+
+    IGUI_VehicleNameBell206Survivalist = "Civilian Helicopter",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "Emergency Supply Drop",
+    IGUI_VehicleNameSurvivorSupplyDrop = "Samaritan Supply Drop",
+
+    IGUI_Spent = "Spent",
+    IGUI_Lit = "Lit",
+}

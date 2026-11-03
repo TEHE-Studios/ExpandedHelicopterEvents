@@ -1,0 +1,26 @@
+Tooltip_IT = {
+    Tooltip_dismantle_helicopterpart = "L'uso di una Torcia al propano e di una Maschera da saldatore produrrà del metallo.",
+    Tooltip_open_boxes_barehanded = "Sarebbe più veloce da aprire con qualcosa di affilato.",
+    Tooltip_Parachute = "PuÃ² essere strappato per ottenere degli stracci.",
+    Tooltip_EnergyBar = "Una barretta energetica confezionata per i kit di sopravvivenza. Prodotta da PT&D.",
+    Tooltip_SurvivalVest = "Gilet di sopravvivenza standard per i piloti militari.",
+    Tooltip_SurvivalVestBlack = "Gilet di sopravvivenza standard per la ricerca e il soccorso della polizia.",
+    Tooltip_SPHMilitary = "Casco da elicottero militare in dotazione standard."
+    Tooltip_SPHBlack = "Casco da elicottero militare in dotazione standard, di colore nero.",
+    Tooltip_SPHPolice = "Casco da elicottero utilizzato dai reparti aerei della polizia.",
+    Tooltip_SPHCivilian = "Casco da elicottero utilizzato da piloti civili.",
+
+    Tooltip_FlyerCDC = "Sembra un volantino di avviso sanitario.",
+    Tooltip_FlyerMilitary = "Sembra un volantino di avviso dell'esercito.",
+    Tooltip_CivilDefense = "Sembra un volantino della protezione civile.",
+
+    Tooltip_WaterSealed = "Razione d'acqua sigillata distribuita dal governo degli Stati Uniti."
+    Tooltip_WaterUnsealed = "Razione d'acqua aperta distribuita dal governo degli Stati Uniti." 
+
+    Tooltip_SupplyBox = "Cassa di rifornimenti del governo degli Stati Uniti."
+    Tooltip_SamaritanBox = "Cassa di rifornimenti da un gruppo di misteriosi samaritani.",
+    Tooltip_BanditBox = "Cassa di scorta personale. C'è scritto "LA MIA MERDA, NON TOCCARLA!",
+
+    Tooltip_SignalFlare = "Bengala di segnalazione. Non usare in ambienti chiusi.",
+    Tooltip_HandFlare = "Bengala. Non usare in ambienti chiusi."
+}

@@ -1,0 +1,29 @@
+IG_UI_CN = {
+    IGUI_VehicleNameUH60Green = "UH-60A",
+    IGUI_VehicleNameUH60GreenFuselage = "失事的 UH-60A（机身）",
+    IGUI_VehicleNameUH60GreenTail = "失事 UH-60A（尾部）",
+
+    IGUI_VehicleNameUH60Desert = "UH-60A 沙漠",
+    IGUI_VehicleNameUH60DesertFuselage = "失事的 UH-60A 沙漠（机身）",
+    IGUI_VehicleNameUH60DesertTail = "失事的 UH-60A 沙漠（尾部）",
+
+    IGUI_VehicleNameUH60Medevac = "UH-60A 医疗后送",
+    IGUI_VehicleNameUH60MedevacFuselage = "失事的 UH-60A 医疗后送（机身）",
+    IGUI_VehicleNameUH60MedevacTail = "失事 UH-60A 医疗后送（尾部）",
+
+    IGUI_VehicleNameBell206LBMW = "贝尔206新闻直升机",    
+    IGUI_VehicleNameBell206LBMWFuselage = "贝尔206新闻直升机(机身)",
+    IGUI_VehicleNameBell206LBMWTail = "贝尔206新闻直升机(机尾)",
+
+    IGUI_VehicleNameBell206Police = "贝尔206警用直升机",
+    IGUI_VehicleNameBell206PoliceFuselage = "贝尔206警用直升机(机身)",
+    IGUI_VehicleNameBell206PoliceTail = "贝尔206警用直升机(机尾)",
+
+    IGUI_VehicleNameBell206Survivalist = "贝尔206幸存者直升机",
+    
+    IGUI_VehicleNameFEMASupplyDrop = "应急物资空投箱",
+    IGUI_VehicleNameSurvivorSupplyDrop = "撒马利坦协会物资空投箱",
+
+    IGUI_Spent = "花费",
+    IGUI_Lit = "点燃",
+}

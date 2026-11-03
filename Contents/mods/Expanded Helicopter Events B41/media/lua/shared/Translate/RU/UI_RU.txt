@@ -1,0 +1,11 @@
+UI_RU = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "Расширенные вертолетные мероприятия"
+    UI_Config_sandBoxMovedText = "Параметры конфигурации можно найти в параметрах песочницы.",
+    UI_Config_voiceTitle = "Голосовые пакеты",
+
+    UI_Config_resetEventsToolTip = "Сброс запланированных событий в случае возникновения чрезвычайной ситуации:",
+    UI_Config_resetEvents = "Сбросить события",
+    UI_Config_eventMarkersOnToolTip1 = "Включите эту опцию, чтобы включить маркеры событий.",
+    UI_Config_eventMarkersOnToolTip2 = "Примечание. Маркеры событий можно перетаскивать.",
+    UI_Config_eventMarkersOn = "Маркеры событий",
+}

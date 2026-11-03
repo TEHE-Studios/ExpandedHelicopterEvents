@@ -1,0 +1,11 @@
+UI_CN = {
+    UI_ConfigMODID_ExpandedHelicopterEvents = "扩大直升机活动"
+    UI_Config_sandBoxMovedText = "配置选项可以在沙箱选项中找到。",
+    UI_Config_voiceTitle = "语音包",
+
+    UI_Config_resetEventsToolTip = "在紧急情况下重置已安排的事件：",
+    UI_Config_resetEvents = "重置事件",
+    UI_Config_eventMarkersOnToolTip1 = "打开此选项以启用事件标记。",
+    UI_Config_eventMarkersOnToolTip2 = "注意：可以拖动事件标记。",
+    UI_Config_eventMarkersOn = "事件标记",
+}

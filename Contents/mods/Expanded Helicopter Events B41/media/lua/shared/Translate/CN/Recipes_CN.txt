@@ -1,0 +1,3 @@
+Recipe_CN = {
+    Recipe_Open_Supplies = "打开补给箱",
+}

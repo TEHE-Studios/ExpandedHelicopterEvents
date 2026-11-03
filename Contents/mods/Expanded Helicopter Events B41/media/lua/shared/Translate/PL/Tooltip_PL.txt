@@ -1,0 +1,26 @@
+Tooltip_PL = {
+    Tooltip_dismantle_helicopterpart = "Użycie palnika i maski spawalniczej spowoduje powstanie metalu.",
+    Tooltip_open_boxes_barehanded = "Szybciej byłoby otworzyć coś ostrego.",
+    Tooltip_Parachute = "Można go podrzeć, aby zrobić podartą szmatkę.",
+    Tooltip_EnergyBar = "Baton energetyczny pakowany do zestawów survivalowych. Wyprodukowane przez PT&D.",
+    Tooltip_SurvivalVest = "Standardowa kamizelka ratunkowa dla pilotów wojskowych.",
+    Tooltip_SurvivalVestBlack = "Standardowa kamizelka ratunkowa do policyjnego poszukiwania i ratownictwa.",
+    Tooltip_SPHMilitary = "Standardowy hełm wojskowy."
+    Tooltip_SPHBlack = "Standardowy hełm wojskowy w kolorze czarnym.",
+    Tooltip_SPHPolice = "Hełm używany przez pilotów policji.",
+    Tooltip_SPHCivilian = "Hełm używany przez pilotów cywilnych.",
+
+    Tooltip_FlyerCDC = "Wygląda na ulotkę informacyjną dotyczącą zdrowia.",
+    Tooltip_FlyerMilitary = "Wygląda na ulotkę wojskową.",
+    Tooltip_CivilDefense = "Wygląda jak ulotka obrony cywilnej.",
+
+    Tooltip_WaterSealed = "Zamknięta Racja Wody rozprowadzana przez rząd USA."
+    Tooltip_WaterUnsealed = "Nieuszczelniona racja wody rozprowadzana przez rząd USA." 
+
+    Tooltip_SupplyBox = "Pudełko z zaopatrzeniem od rządu USA."
+    Tooltip_SamaritanBox = "Pudełko z zaopatrzeniem od grupy tajemniczych samarytan.",
+    Tooltip_BanditBox = "Osobista skrytka. Czyta „MOJE GÓWNO, NIE DOTYKAJ",
+
+    Tooltip_SignalFlare = "Wojskowa flara sygnalizacyjna. Nie strzelaj w pomieszczeniu.",
+    Tooltip_HandFlare = "Migotać. Nie strzelać w pomieszczeniu."
+}

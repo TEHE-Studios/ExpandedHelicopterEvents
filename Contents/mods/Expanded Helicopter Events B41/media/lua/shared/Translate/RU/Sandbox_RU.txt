@@ -1,0 +1,52 @@
+Sandbox_RU = {
+    Sandbox_ExpandedHeli = "EXPANDED HELICOPTER EVENTS",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Никогда"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Очень редко",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Редко",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Часто",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Очень часто",
+    Sandbox_ExpandedHeli_Frequency_option6 = "БЕЗУМИЕ",
+
+    Sandbox_ExpandedHeli_EventJet = "Реакт. самолеты",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventNews = "Журналисты",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Полиция",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Военные",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "Поставки помощи FEMA",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Как часто происходят события по доставке помощи FEMA.\n FEMA будет проводить доставку помощи на ранних этапах апокалипсиса.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Выжившие",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Рейдеры",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Самаритяне",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Частота данных событий.",
+
+    Sandbox_ExpandedHeli_StartDay = "Стартовый день",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "День, когда начнут появляться различные события. \nПримечание: некоторые события начинаются позже этого дня.",
+    Sandbox_ExpandedHeli_StartDay_help = "Именно в этот день происходят игровые события. Вам нужно будет учесть настройки «месяцы до апокалипсиса»."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Продолжительность планировщика",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Как долго будет работать планировщик с первого дня.\n Планировщик будет корректировать ход событий в соответствии с этой продолжительностью.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Именно столько дней будет работать планировщик."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Продолжать планировать навсегда",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Включите эту опцию, чтобы планировщик создавал события, продолжительность которых превысила лимит. События по-прежнему будут проходить этапы в зависимости от продолжительности, но планирование событий никогда не прекратится.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Продолжить планирование: только события поздней игры",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Когда опция «Продолжить планирование навсегда» включена, планировщик использует только события поздней игры.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Погода повлияет на события",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Помешает ли погода событиям или станет причиной их краха.",
+
+}

@@ -1,0 +1,52 @@
+Sandbox_DE = {
+    Sandbox_ExpandedHeli = "Erweiterte Hubschrauber-Events",
+
+    Sandbox_ExpandedHeli_Frequency_option1 = "Niemals"
+    Sandbox_ExpandedHeli_Frequency_option2 = "Selten",
+    Sandbox_ExpandedHeli_Frequency_option3 = "Ungewöhnlich",
+    Sandbox_ExpandedHeli_Frequency_option4 = "Gemeinsam",
+    Sandbox_ExpandedHeli_Frequency_option5 = "Häufig",
+    Sandbox_ExpandedHeli_Frequency_option6 = "Verrückt",
+
+    Sandbox_ExpandedHeli_EventJet = "Jets",
+    Sandbox_ExpandedHeli_EventJet_tooltip = "Wie häufig Jet-Ereignisse auftreten.\n Jets fliegen an Spielern vorbei und verursachen Hordenbewegungen.",
+
+    Sandbox_ExpandedHeli_EventNews = "Nachricht",
+    Sandbox_ExpandedHeli_EventNews_tooltip = "Wie häufig Nachrichtenereignisse auftreten.\n Nachrichten-Chopper nehmen sich jeden Bürger vor, den sie finden, und verfolgen ihn für kurze Zeit.",
+
+    Sandbox_ExpandedHeli_EventPolice = "Polizei",
+    Sandbox_ExpandedHeli_EventPolice_tooltip = "Wie häufig es zu Polizeieinsätzen kommt.\n Die Polizei wird die Sache selbst in die Hand nehmen und die Bürger herumführen, während sie auf Zombies schießt.",
+
+    Sandbox_ExpandedHeli_EventMilitary = "Militär",
+    Sandbox_ExpandedHeli_EventMilitary_tooltip = "Wie häufig militärische Ereignisse stattfinden.\n Das Militär durchläuft mehrere Phasen: Bürger warnen, Untote beseitigen und schließlich alles beseitigen, was sich bewegt.",
+
+    Sandbox_ExpandedHeli_EventFEMA = "FEMA-Hilfslieferungen",
+    Sandbox_ExpandedHeli_EventFEMA_tooltip = "Wie häufig FEMA-Hilfslieferungen stattfinden.\n Die FEMA wird zu Beginn der Apokalypse Hilfslieferungen durchführen.",
+
+    Sandbox_ExpandedHeli_EventSurvivor = "Überlebende",
+    Sandbox_ExpandedHeli_EventSurvivor_tooltip = "Wie häufig Überlebensereignisse auftreten.\n Überlebende fliegen nur bei Erkundungsmissionen vorbei, was zu Hordenbewegungen führt.",
+
+    Sandbox_ExpandedHeli_EventRaider = "Räuber",
+    Sandbox_ExpandedHeli_EventRaider_tooltip = "Wie häufig Raider-Ereignisse auftreten.\n Raider werden sich auf Überlebende konzentrieren, um sie zur Unterhaltung zu quälen.",
+
+    Sandbox_ExpandedHeli_EventSamaritan = "Samariter",
+    Sandbox_ExpandedHeli_EventSamaritan_tooltip = "Wie häufig es zu Samariterereignissen kommt.\n Samariter werden Vorräte abgeben, um Überlebenden zu helfen.",
+
+    Sandbox_ExpandedHeli_StartDay = "Starttag",
+    Sandbox_ExpandedHeli_StartDay_tooltip = "Der Tag, an dem der Planer mit der Zuweisung von Ereignissen beginnt.",
+    Sandbox_ExpandedHeli_StartDay_help = "Dies ist der Tag, an dem das Spiel beginnt. Sie müssen die Einstellungen für „Monate bis zur Apokalypse“ berücksichtigen."
+
+    Sandbox_ExpandedHeli_SchedulerDuration = "Scheduler-Dauer",
+    Sandbox_ExpandedHeli_SchedulerDuration_tooltip = "Wie lange läuft der Planer ab dem Starttag?\n Der Planer passt den Ereignisverlauf an diese Dauer an.",
+    Sandbox_ExpandedHeli_SchedulerDuration_help = "Dies ist die Anzahl der Tage, die der Planer in Betrieb sein wird."
+
+    Sandbox_ExpandedHeli_ContinueScheduling = "Planen Sie für immer weiter",
+    Sandbox_ExpandedHeli_ContinueScheduling_tooltip = "Schalten Sie diese Option ein, damit der Planer Ereignisse hervorruft, die das Dauerlimit überschreiten. Die Ereignisse durchlaufen weiterhin Phasen entsprechend der Dauer, die Planung der Ereignisse wird jedoch nie aufhören.",
+
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly = "Fortsetzung der Planung: Nur Late-Game-Events",
+    Sandbox_ExpandedHeli_ContinueSchedulingLateGameOnly_tooltip = "Wenn die Option „Planung für immer fortsetzen“ aktiviert ist, verwendet diese Option, dass der Planer nur Ereignisse aus der späten Spielphase verwendet.",
+
+    Sandbox_ExpandedHeli_WeatherImpactsEvents = "Das Wetter wird sich auf Ereignisse auswirken",
+    Sandbox_ExpandedHeli_WeatherImpactsEvents_tooltip = "Ob das Wetter Ereignisse verhindern oder ihren Absturz verursachen wird.",
+
+}
