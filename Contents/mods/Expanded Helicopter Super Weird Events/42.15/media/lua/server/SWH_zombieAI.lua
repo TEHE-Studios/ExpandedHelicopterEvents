@@ -161,6 +161,9 @@ end
 
 
 eHelicopter_zombieAI.nemesisFireDmgTracker = {}
+eHelicopter_zombieAI.nemesisCarSpeeds = {}
+eHelicopter_zombieAI.nemesisCollisionPos = Vector2.new()
+eHelicopter_zombieAI.nemesisSpotTimes = {}
 ---@param zombie IsoZombie | IsoGameCharacter | IsoObject | IsoMovingObject
 ---@param apply boolean
 function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
@@ -181,6 +184,9 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 		--zombie:setHealth(100)
 		--zombie:setAttackedBy(getCell():getFakeZombieForHit())
 
+		zombie:setStaggerTimeMod(0)
+		zombie:setBecomeCrawler(false)
+
 		local currentFireDamage = eHelicopter_zombieAI.nemesisFireDmgTracker[zombie] or 0
 		if zombie:isOnFire() then
 			currentFireDamage = currentFireDamage+1
@@ -195,28 +201,38 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 			return
 		end
 
-		local nearbyCars = isoRangeScan.getVehiclesInRange(zombie, 6)
+		local nearbyCars = isoRangeScan.getVehiclesInRange(zombie, 8)
 		for _,car in pairs(nearbyCars) do
 			---@type BaseVehicle
-			local carDist = zombie:DistTo(car)
-			if (carDist <= 3) or car:isCharacterAdjacentTo(zombie) then
+			local carSpeed = car:getCurrentAbsoluteSpeedKmHour()
+			local approachSpeed = math.max(carSpeed, eHelicopter_zombieAI.nemesisCarSpeeds[car] or 0)
+			eHelicopter_zombieAI.nemesisCarSpeeds[car] = carSpeed
+
+			local target = zombie:getTarget()
+			local attackingCar = zombie:isAttacking() and target and instanceof(target, "IsoGameCharacter") and target:getVehicle() == car
+			local touching = car:testCollisionWithCharacter(zombie, 0.3, eHelicopter_zombieAI.nemesisCollisionPos) or (attackingCar and car:isCharacterAdjacentTo(zombie))
+
+			local carOnTop = zombie:isOnFloor() or car:isInBounds(zombie:getX(), zombie:getY())
+
+			if touching and (carOnTop or car:getUpVectorDot() > 0.8) then
 				zombie:getModData()["pushedCars"] = zombie:getModData()["pushedCars"] or {}
 				local pushedCarRecord = zombie:getModData()["pushedCars"][car]
 				if not pushedCarRecord or (pushedCarRecord < getTimestampMs()) then
 
-					local pushForce = 300
-					local liftFactor = 0.75
+					local pushForce = 250
+					local liftFactor = 1
+					local flipSpeed = 64
+					local minimumNudge = 0.02
 
+					local speedFactor = math.max(minimumNudge, math.min(1, approachSpeed/flipSpeed))
+					if carOnTop or attackingCar or carSpeed < 1 then speedFactor = 1 end
+
+					local carDist = zombie:DistTo(car)
 					local dx, dy = car:getX()-zombie:getX(), car:getY()-zombie:getY()
 					if carDist > 0 then dx, dy = dx/carDist, dy/carDist else dx, dy = 1, 0 end
 
-					local force = car:getFudgedMass()*pushForce
-					local impulse = Vector3f.new(dx*force, force*liftFactor, dy*force)
-					local relPos = Vector3f.new(-dx, -0.5, -dy)
-
-					car:addImpulse(impulse, relPos)
-					car:setPhysicsActive(true)
-					zombie:getModData()["pushedCars"][car] = getTimestampMs()+1000
+					car:applyImpulseGeneric(zombie:getX(), zombie:getY(), zombie:getZ(), dx, dy, liftFactor, car:getFudgedMass()*pushForce*speedFactor)
+					zombie:getModData()["pushedCars"][car] = getTimestampMs()+(speedFactor >= 1 and 5000 or 1000)
 				end
 			end
 		end
@@ -267,8 +283,12 @@ function eHelicopter_zombieAI.onUpdate_nemesis(zombie, apply)
 			end
 			zombie:getModData()["foreverTarget"] = choice
 		end
-		if (not zombie:getTarget()) and foreverTarget then
-			zombie:spotted(foreverTarget, true)
+		if (not zombie:getTarget()) and foreverTarget and (not zombie:isOnFloor()) then
+			local nextSpot = eHelicopter_zombieAI.nemesisSpotTimes[zombie]
+			if (not nextSpot) or (nextSpot < getTimestampMs()) then
+				eHelicopter_zombieAI.nemesisSpotTimes[zombie] = getTimestampMs()+2000
+				zombie:spotted(foreverTarget, true)
+			end
 		end
 
 	end
