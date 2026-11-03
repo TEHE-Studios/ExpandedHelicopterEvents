@@ -31,13 +31,6 @@ description=[/tr]
 description=[/table]
 description=
 description=
-description=[h2]For a more varied looting experience, try these integrated mods:[/h2]
-description=[table][tr]
-description=[th][h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2335368829][b]Authentic Z[/b][/url][/h2]  [/th]
-description=[th][h2][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2256623447][b]Firearms B41[/b][/url][/h2]  [/th]
-description=[/tr][/table]
-description=
-description=
 description=[h1][b]If you're having an issue or encountering errors:[/b][/h1]
 description=[h3]First, resubscribe to this mod, and any related mod.[/h3]
 description=[i](This will force a download of the latest version.)[/i]
@@ -56,5 +49,5 @@ description=
 description=
 description=[h3]Copyright 2026 shark, Chuckleberry Finn, and TEHE Studios. This item is not authorized for posting on Steam, except under the Steam account named shark, and/or Chuckleberry Finn.[/h3]
 description=
-tags=Build 41;Clothing/Armor;Framework;Items;Military;Models;Realistic
+tags=Build 41;Build 42;Framework
 visibility=public
