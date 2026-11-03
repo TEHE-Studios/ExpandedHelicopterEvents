@@ -186,11 +186,6 @@ function swhSubEvents.abductPlayer(heli, player)
             end
         end
 
-        local tBD = targetPlayer:getBodyDamage()
-        local ayo = tBD:getBodyPart(BodyPartType.Groin)
-        ayo:AddDamage(69)
-        ayo:setAdditionalPain(ayo:getAdditionalPain()+69)
-
         local gifts = {"Chocolate_HeartBox","Roses","RubberHose","Gloves_Dish","Pillow_Heart","WaterBottle"}
         local itemContainer = targetPlayer:getInventory()
         for _,gift in pairs(gifts) do itemContainer:AddItems(gift, 1) end
@@ -201,10 +196,19 @@ function swhSubEvents.abductPlayer(heli, player)
         end
 
         if JoypadState.players[tNum+1] then setJoypadFocus(tNum, nil) end
-
-        abductees[targetPlayer] = nil
     end
 end
+
+
+function swhSubEvents.onAbducteeWakeUp(player)
+    if not abductees[player] or player:isAsleep() then return end
+    abductees[player] = nil
+
+    local ayo = player:getBodyDamage():getBodyPart(BodyPartType.Groin)
+    ayo:AddDamage(69)
+    ayo:setAdditionalPain(ayo:getAdditionalPain()+69)
+end
+Events.OnPlayerUpdate.Add(swhSubEvents.onAbducteeWakeUp)
 
 ---@param cow IsoAnimal
 function swhSubEvents.abductCow(heli, cow)
