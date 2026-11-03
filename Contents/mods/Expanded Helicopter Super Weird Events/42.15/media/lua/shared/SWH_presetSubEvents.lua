@@ -84,6 +84,7 @@ end
 
 
 local abductees = {}
+local tallestBuildings
 ---@param heli eHelicopter
 function swhSubEvents.abductPlayer(heli, player)
 
@@ -113,30 +114,34 @@ function swhSubEvents.abductPlayer(heli, player)
         UIManager.setFadeBeforeUI(tNum, true)
         UIManager.FadeOut(tNum, 0.5)
 
-        local buildings = getWorld():getMetaGrid():getBuildings()
-        local top5 = {}
-        local count = 0
+        if not tallestBuildings then
+            local buildings = getWorld():getMetaGrid():getBuildings()
+            local top5 = {}
+            local count = 0
 
-        for b = 0, buildings:size() - 1 do
-            ---@type BuildingDef
-            local building = buildings:get(b)
-            if building then
-                local level = building:getMaxLevel()
-                if count < 5 or level > top5[count].level then
-                    local inserted = false
-                    for i = 1, count do
-                        if level > top5[i].level then
-                            for j = math.min(count, 4), i, -1 do top5[j + 1] = top5[j] end
-                            top5[i] = { building = building, level = level }
-                            inserted = true
-                            break
+            for b = 0, buildings:size() - 1 do
+                ---@type BuildingDef
+                local building = buildings:get(b)
+                if building then
+                    local level = building:getMaxLevel()
+                    if count < 5 or level > top5[count].level then
+                        local inserted = false
+                        for i = 1, count do
+                            if level > top5[i].level then
+                                for j = math.min(count, 4), i, -1 do top5[j + 1] = top5[j] end
+                                top5[i] = { building = building, level = level }
+                                inserted = true
+                                break
+                            end
                         end
+                        if not inserted and count < 5 then top5[count + 1] = { building = building, level = level } end
+                        if count < 5 then count = count + 1 end
                     end
-                    if not inserted and count < 5 then top5[count + 1] = { building = building, level = level } end
-                    if count < 5 then count = count + 1 end
                 end
             end
+            tallestBuildings = top5
         end
+        local top5 = tallestBuildings
 
         local rand = ZombRand(#top5)+1
         local randTop = top5[rand]
