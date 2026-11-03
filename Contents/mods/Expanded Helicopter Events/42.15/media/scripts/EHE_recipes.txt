@@ -2,16 +2,16 @@ module EHE
 {
 	craftRecipe OpenSupplies
 	{
-        timedAction = Making,
-		Time = 70,
+		timedAction = UnPackBox,
+		Time = 100,
 		OnCreate = EHE_Recipe.openSupplyBox,
-		Tags = CanBeDoneInDark;RightClickOnly,
-		CanWalk = true,
-		/*Sound:crashes_bombs_misc/OpenBox,*/
-		/*Tooltip:Tooltip_open_boxes_barehanded,*/
+		Tags = InHandCraft;CanBeDoneInDark,
+		category = Packing,
+		recipeGroup = OpenBox,
 		inputs
 		{
-			item 1 tags[ehe:supply_box],
+			item 1 tags[ehe:supply_box] flags[Prop1;AllowFavorite;InheritFavorite],
+			item 1 tags[base:scissors;base:sharpknife] mode:keep flags[Prop2;IsNotDull;MayDegradeLight],
 		}
 	}
 
@@ -20,10 +20,11 @@ module EHE
         timedAction = RipClothing,
         Time = 550,
         AllowBatchCraft = False,
-        Tags = CanBeDoneInDark,
+        Tags = InHandCraft;CanBeDoneInDark,
         inputs
         {
-            item 1 [EHE.EHE_Parachute],
+            item 1 [EHE.EHE_Parachute] flags[Prop1],
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[Prop2;IsNotDull;MayDegradeLight],
         }
         outputs
         {
@@ -42,7 +43,7 @@ module EHE
         OnCreate = EHE_Recipe.dismantleHeliPart,
         inputs
         {
-            item 2 [Base.BlowTorch],
+            item 2 [Base.BlowTorch] flags[Prop1],
             item 1 tags[WeldingMask] mode:keep,
             item 1 tags[ehe:heli_part_metal],
         }
