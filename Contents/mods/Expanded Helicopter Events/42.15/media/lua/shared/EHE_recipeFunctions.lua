@@ -73,10 +73,30 @@ EHE_Recipe.supplyResults.survivor_canning = {
 	["Base.BoxOfJars"] = 2, ["Base.Sugar"] = 1, ["Base.Vinegar_Jug"] = 1, }
 
 
+EHE_Recipe.supplyResults.airlift_food = {
+	["Base.DriedBlackBeans"] = 2, ["Base.DriedLentils"] = 2, ["Base.DriedSplitPeas"] = 2, ["Base.Rice"] = 2,
+	["Base.OatsRaw"] = 2, ["Base.CannedMilk_Box"] = 1, ["Base.WaterRationCan_Box"] = 1, }
+
+EHE_Recipe.supplyResults.airlift_farming = {
+	["Base.Fertilizer"] = 2, ["Base.GardenHoe"] = 1, ["Base.HandFork"] = 1, ["Base.WateredCan"] = 1,
+	["Base.CornBagSeed"] = 3, ["Base.WheatBagSeed"] = 3, ["Base.PotatoBagSeed2"] = 3, ["Base.CarrotBagSeed2"] = 3, }
+
+EHE_Recipe.supplyResults.airlift_metalworking = {
+	["Base.SheetMetal"] = 2, ["Base.SmallSheetMetal"] = 6, ["Base.MetalBar"] = 4, ["Base.WeldingRods"] = 2, ["Base.BlowTorch"] = 1, }
+
+EHE_Recipe.supplyResults.airlift_construction = {
+	["Base.NailsBox"] = 2, ["Base.ScrewsBox"] = 2, ["Base.Hammer"] = 1, ["Base.Saw"] = 1,
+	["Base.DuctTape"] = 2, ["Base.Glue"] = 2, ["Base.Rope"] = 2, }
+
+EHE_Recipe.supplyResults.airlift_medical = {
+	["Base.FirstAidKit_Military"] = 1, ["Base.AntibioticsBox"] = 1, ["Base.BandageBox"] = 2, ["Base.PillsVitamins"] = 2, ["Base.Disinfectant"] = 1, }
+
+
 EHE_Recipe.boxToResults = {}
 
 EHE_Recipe.boxToResults["EHE.EmergencySupplyBox"] = { "FEMA_food", "FEMA_medical", "FEMA_survival" }
 EHE_Recipe.boxToResults["EHE.BanditStashBox"] = { "banditStash" }
+EHE_Recipe.boxToResults["EHE.AirliftSupplyBox"] = { "airlift_food", "airlift_farming", "airlift_metalworking", "airlift_construction", "airlift_medical" }
 EHE_Recipe.boxToResults["EHE.SurvivorSupplyBox"] = { "survivor_medical", "survivor_food", "survivor_seeds", "survivor_toilet", "survivor_fishing", "survivor_canning"}
 
 

@@ -19,7 +19,7 @@
     "Sandbox_ExpandedHeli_EventMilitaryHostile": "Military Hostile",
     "Sandbox_ExpandedHeli_EventMilitaryHostile_tooltip": "How frequent hostile military events occur.<br>The military will progress through stages: warn citizens, purge the undead, then ultimately purge anything that moves.",
     "Sandbox_ExpandedHeli_EventResupply": "Resupply Drops",
-    "Sandbox_ExpandedHeli_EventResupply_tooltip": "How frequent resupply drops will occur.<br>The military will conduct resupply drops to their forces early on in the apocalypse.",
+    "Sandbox_ExpandedHeli_EventResupply_tooltip": "How frequent late-game resupply flights occur.<br>What remains of the government keeps holdouts alive with cargo plane drops of food, seeds, tools and building materials. Occurs later in the apocalypse.",
     "Sandbox_ExpandedHeli_EventSurvivor": "Survivors",
     "Sandbox_ExpandedHeli_EventSurvivor_tooltip": "How frequent survivor events occur.<br>Survivors will occasionally fly around scouting for supplies. Occurs later in the apocalypse.",
     "Sandbox_ExpandedHeli_EventDeserter": "Deserters",
@@ -44,5 +44,7 @@
     "Sandbox_ExpandedHeli_EventMarkers": "Event Markers",
     "Sandbox_ExpandedHeli_EventMarkers_tooltip": "Toggle Event Markers Entirely",
     "Sandbox_ExpandedHeli_EventMarkerPersistence": "Crash/Drop Marker Persistence",
-    "Sandbox_ExpandedHeli_EventMarkerPersistence_tooltip": "Real-time minutes crash and supply drop markers remain after the event. Markers are removed early once a player reaches the site. 0 keeps markers until reached."
+    "Sandbox_ExpandedHeli_EventMarkerPersistence_tooltip": "Real-time minutes crash and supply drop markers remain after the event. Markers are removed early once a player reaches the site. 0 keeps markers until reached.",
+    "Sandbox_ExpandedHeli_WorldStories": "World Stories",
+    "Sandbox_ExpandedHeli_WorldStories_tooltip": "How many sites of past helicopter activity are hidden around the map when the world is first loaded.<br>Includes old crashes, supply drops, scattered flyers, and abandoned helicopters with their crew's camp or the aftermath of a fight. 0 disables."
 }

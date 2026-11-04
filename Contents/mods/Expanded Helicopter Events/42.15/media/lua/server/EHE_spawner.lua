@@ -25,6 +25,7 @@ function EHE_spawner.setDictionary()
     EHE_spawner.functionDictionary.applyFlaresToEvent = util.applyFlaresToEvent
     EHE_spawner.functionDictionary.ageInventoryItem = util.ageInventoryItem
     EHE_spawner.functionDictionary.applyDeathOrCrawlerToCrew = util.applyDeathOrCrawlerToCrew
+    EHE_spawner.functionDictionary.applyDeathToCrew = util.applyDeathToCrew
     EHE_spawner.functionDictionary.applyParachuteToCarePackage = util.applyParachuteToCarePackage
     EHE_spawner.functionDictionary.applyCrashDamageToWorld = util.applyCrashDamageToWorld
     EHE_spawner.functionDictionary.applyCrashStructuralDamage = util.applyCrashStructuralDamage

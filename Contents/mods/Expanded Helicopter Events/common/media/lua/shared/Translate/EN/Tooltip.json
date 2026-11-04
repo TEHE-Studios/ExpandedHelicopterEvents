@@ -10,5 +10,9 @@
     "Tooltip_HandFlare": "Flare. Do not fire indoors.",
     "Tooltip_EHE_NeedWeldingSkill": "Requires Metal Welding level %1.",
     "Tooltip_EHE_NeedTorch": "Requires a blowtorch with fuel.",
-    "Tooltip_EHE_NeedMask": "Requires a welding mask."
+    "Tooltip_EHE_NeedMask": "Requires a welding mask.",
+    "Tooltip_SupplyBox": "A sealed government supply box.",
+    "Tooltip_SamaritanBox": "A supply box packed by fellow survivors.",
+    "Tooltip_BanditBox": "Someone's stash, taped shut.",
+    "Tooltip_AirliftBox": "A sealed crate stencilled for reconstruction efforts."
 }

@@ -260,6 +260,14 @@ function util.applyDeathOrCrawlerToCrew(arrayOfZombies)
 end
 
 
+---@param arrayOfZombies ArrayList
+function util.applyDeathToCrew(arrayOfZombies)
+	if arrayOfZombies then
+		for i=0, arrayOfZombies:size()-1 do arrayOfZombies:get(i):setHealth(0) end
+	end
+end
+
+
 ---@param vehicle BaseVehicle
 function util.applyParachuteToCarePackage(vehicle)
 	if vehicle then

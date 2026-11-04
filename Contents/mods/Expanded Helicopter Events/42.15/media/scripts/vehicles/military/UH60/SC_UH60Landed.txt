@@ -1,0 +1,67 @@
+module Base
+{
+	model Vehicle_UH60
+	{
+		mesh = vehicles/Vehicle_UH60,
+		shader = vehicle_norandom_multiuv_noreflect,
+		invertX = FALSE,
+		scale = 0.01,
+	}
+
+	template vehicle UH60Landed
+	{
+		mechanicType = 1,
+		offRoadEfficiency = 0.8,
+		engineRepairLevel = 4,
+		playerDamageProtection = 0,
+
+		model { file = Vehicle_UH60, scale = 3.4000, offset = 0.0000 0.0000 0.8800, }
+
+		spawnOffsetY = 0.19392952,
+
+		textureMask = Vehicle_UH60_mask,
+		textureShadow = highlights/vehicleShadowUH60,
+		extents = 1.0000 1.4000 6.6000,
+		mass = 1500,
+		physicsChassisShape = 1.0000 1.4000 6.6000,
+		centerOfMassOffset = 0.0000 0.7000 0.0000,
+		shadowExtents = 4.6000 6.8000,
+		shadowOffset = 0.0000 0.0000,
+		frontEndDurability = 550,
+		rearEndDurability = 550,
+
+		area TruckBed { xywh = 0.0000 0.5000 1.6000 2.0000, }
+
+		template = Trunk/part/TruckBedOpen,
+
+		part TruckBedOpen
+		{
+			category = nodisplay,
+			container { capacity = 300, }
+		}
+
+		part EHE_meta
+		{
+			category = nodisplay,
+			table EHE { metalKg = 120, }
+		}
+	}
+
+	vehicle UH60Green
+	{
+		template! = UH60Landed,
+		skin { texture = vehicles/military/Vehicle_UH60Green, }
+	}
+
+	vehicle UH60Desert
+	{
+		template! = UH60Landed,
+		skin { texture = vehicles/military/Vehicle_UH60Desert, }
+	}
+
+	vehicle UH60Medevac
+	{
+		template! = UH60Landed,
+		skin { texture = vehicles/military/Vehicle_UH60Medevac, }
+	}
+}

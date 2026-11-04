@@ -22,6 +22,17 @@ module EHE
 		Tags = ehe:supply_box,
 	}
 
+	item AirliftSupplyBox
+	{
+		DisplayCategory = Container,
+		Weight = 6.3,
+		Icon = EHE/supplyBox/default,
+		ItemType = base:normal,
+		Tooltip = Tooltip_AirliftBox,
+		WorldStaticModel = SupplyBox,
+		Tags = ehe:supply_box,
+	}
+
 	item SurvivorSupplyBox
 	{
 		DisplayCategory = Container,

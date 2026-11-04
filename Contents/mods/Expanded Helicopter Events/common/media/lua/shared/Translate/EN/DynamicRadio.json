@@ -16,5 +16,6 @@
     "AEBS_SurvivorSoldiers": "This is %s. We've gone dark, separated from command. If anyone friendly is listening, we're trying to make it out. Over.",
     "AEBS_SurvivorCivilian": "%s, if anyone can hear this, we're getting out while we still can. Dropping what supplies we have. Stay alive. Over.",
     "AEBS_Deserters": "%s to any station, if you can hear this, consider this your warning. Over.",
-    "AEBS_SupplyDrop": "%s to all stations. Supply drop en route. ETA five mikes. Out."
+    "AEBS_SupplyDrop": "%s to all stations. Supply drop en route. ETA five mikes. Out.",
+    "AEBS_Airlift": "%s to any station. Resupply run inbound with whatever we could load. Watch the sky. Out."
 }
