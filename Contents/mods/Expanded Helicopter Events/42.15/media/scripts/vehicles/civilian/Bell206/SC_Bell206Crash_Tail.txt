@@ -7,7 +7,6 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-
 	template vehicle Bell206TailBase
 	{
 		neverSpawnKey = true,
@@ -21,8 +20,10 @@ module Base
 
 		centerOfMassOffset = 0.0000 0.0089 0.0000,
 		extents = 0.0053 0.0178 0.0483,
-		shadowExtents = 0.0053 0.0601,
+		shadowExtents = 0.06337 0.06337,
+		shadowOffset = 0.00082 -0.00101,
 		physicsChassisShape = 0.0053 0.0178 0.0483,
+		textureShadow = highlights/Bell206Crash3tail_shadow,
 
 		part EHE_meta
 		{
@@ -30,7 +31,6 @@ module Base
 			table EHE { metalKg = 15, }
 		}
 	}
-
 	vehicle Bell206Tail_N720HP { template! = Bell206TailBase, skin { texture = vehicles/civilian/N720HP, } }
 	vehicle Bell206Tail_N574OA { template! = Bell206TailBase, skin { texture = vehicles/civilian/N574OA, } }
 	vehicle Bell206Tail_N120LH { template! = Bell206TailBase, skin { texture = vehicles/civilian/N120LH, } }

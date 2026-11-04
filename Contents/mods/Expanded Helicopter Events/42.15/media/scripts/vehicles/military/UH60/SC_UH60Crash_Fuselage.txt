@@ -25,8 +25,8 @@ module Base
 		mass = 200,
 		physicsChassisShape = 0.8253 1.1599 3.8216,
 		centerOfMassOffset = 0.0000 0.5799 0.0000,
-		shadowExtents = 2.2854 3.8308,
-		shadowOffset = 0.0000 0.0003,
+		shadowExtents = 2.48358 4.96717,
+		shadowOffset = -0.11179 -0.06341,
 		frontEndDurability = 550,
 		rearEndDurability = 150,
 

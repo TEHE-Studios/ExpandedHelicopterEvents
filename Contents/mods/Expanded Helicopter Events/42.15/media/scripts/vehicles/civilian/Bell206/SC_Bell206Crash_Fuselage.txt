@@ -7,7 +7,6 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-
 	template vehicle Bell206FuselageBase
 	{
 		neverSpawnKey = true,
@@ -21,10 +20,11 @@ module Base
 
 		centerOfMassOffset = 0.0000 0.0089 0.0000,
 		extents = 0.0178 0.0178 0.0600,
-		shadowExtents = 0.0185 0.0601,
+		shadowExtents = 0.06539 0.13077,
+		shadowOffset = -0.00038 0.02036,
 		physicsChassisShape = 0.0180 0.0178 0.0600,
+		textureShadow = highlights/Bell206Crash3_shadow,
 	}
-
 	vehicle Bell206Fuselage_N720HP { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N720HP, } }
 	vehicle Bell206Fuselage_N574OA { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N574OA, } }
 	vehicle Bell206Fuselage_N120LH { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N120LH, } }
