@@ -23,7 +23,7 @@ module Base
 		shadowExtents = 0.06337 0.06337,
 		shadowOffset = 0.00082 -0.00101,
 		physicsChassisShape = 0.0053 0.0178 0.0483,
-		textureShadow = highlights/Bell206Crash3tail_shadow,
+		textureShadow = highlights/Vehicle_Bell206Crash3tail_shadow,
 
 		part EHE_meta
 		{

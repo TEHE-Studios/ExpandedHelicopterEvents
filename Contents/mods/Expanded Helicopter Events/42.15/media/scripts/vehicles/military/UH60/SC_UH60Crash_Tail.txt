@@ -20,7 +20,7 @@ module Base
 		spawnOffsetY = 0.19392952,
 
 		textureMask = Vehicle_UH60_mask,
-		textureShadow = highlights/tailshadow,
+		textureShadow = highlights/Vehicle_UH60Tail_shadow,
 		extents = 0.7524 0.3560 0.5957,
 		mass = 200,
 		physicsChassisShape = 0.7524 0.3338 0.6082,

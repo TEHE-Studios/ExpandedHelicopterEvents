@@ -23,7 +23,7 @@ module Base
 		shadowExtents = 0.06539 0.13077,
 		shadowOffset = -0.00038 0.02036,
 		physicsChassisShape = 0.0180 0.0178 0.0600,
-		textureShadow = highlights/Bell206Crash3_shadow,
+		textureShadow = highlights/Vehicle_Bell206Crash3_shadow,
 	}
 	vehicle Bell206Fuselage_N720HP { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N720HP, } }
 	vehicle Bell206Fuselage_N574OA { template! = Bell206FuselageBase, skin { texture = vehicles/civilian/N574OA, } }
