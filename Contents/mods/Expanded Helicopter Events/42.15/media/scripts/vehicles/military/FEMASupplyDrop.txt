@@ -7,7 +7,7 @@ module Base
 		invertX = FALSE,
 		scale = 0.01,
 	}
-	template vehicle SupplyDropBase
+	vehicle FEMASupplyDrop
 	{
 		mechanicType = 1,
 		offRoadEfficiency = 0.8,
@@ -34,15 +34,5 @@ module Base
 
 		attachment trailer { offset = 0.5071 -0.3357 0.0000, rotate = 0.0000 0.0000 0.0000, }
 		attachment trailerfront {offset = -0.5071 -0.3643 0.0000, rotate = 0.0000 0.0000 0.0000, }
-	}
-
-	vehicle FEMASupplyDrop
-	{
-		template! = SupplyDropBase,
-	}
-
-	vehicle AirliftSupplyDrop
-	{
-		template! = SupplyDropBase,
 	}
 }
