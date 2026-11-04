@@ -10,8 +10,8 @@ module EHE
 		recipeGroup = OpenBox,
 		inputs
 		{
-			item 1 tags[ehe:supply_box] flags[Prop1;AllowFavorite;InheritFavorite],
-			item 1 tags[base:scissors;base:sharpknife] mode:keep flags[Prop2;IsNotDull;MayDegradeLight],
+			item 1 tags[ehe:supply_box] flags[Prop2;AllowFavorite;InheritFavorite],
+			item 1 tags[base:scissors;base:sharpknife] mode:keep flags[Prop1;IsNotDull;MayDegradeLight],
 		}
 	}
 
@@ -23,8 +23,8 @@ module EHE
         Tags = InHandCraft;CanBeDoneInDark,
         inputs
         {
-            item 1 [EHE.EHE_Parachute] flags[Prop1],
-            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[Prop2;IsNotDull;MayDegradeLight],
+            item 1 [EHE.EHE_Parachute] flags[Prop2],
+            item 1 tags[base:scissors;base:sharpknife] mode:keep flags[Prop1;IsNotDull;MayDegradeLight],
         }
         outputs
         {
