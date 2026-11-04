@@ -99,6 +99,13 @@ local function applyLootBoxLoot()
         }
     }
 
+    VehicleDistributions.AirliftSupplyDrop = {
+        rolls = 50,
+        items ={
+            "EHE.AirliftSupplyBox", 10,
+        }
+    }
+
     VehicleDistributions.SurvivorSupplyDrop = {
         rolls = 50,
         items ={
@@ -132,11 +139,15 @@ local function applyLootBoxLoot()
     --Supply Drop
     VehicleDistributions.FEMASupplyDrop = { TruckBed = VehicleDistributions.FEMASupplyDrop; }
     VehicleDistributions.SurvivorSupplyDrop = { TruckBed = VehicleDistributions.SurvivorSupplyDrop; }
+    VehicleDistributions.AirliftSupplyDrop = { TruckBed = VehicleDistributions.AirliftSupplyDrop; }
 
     --Distribution
     distributionTable["UH60GreenFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
     distributionTable["UH60DesertFuselage"] = { Normal = VehicleDistributions.UH60Cargo; }
     distributionTable["UH60MedevacFuselage"] = { Normal = VehicleDistributions.UH60MedevacCargo; }
+    distributionTable["UH60Green"] = { Normal = VehicleDistributions.UH60Cargo; }
+    distributionTable["UH60Desert"] = { Normal = VehicleDistributions.UH60Cargo; }
+    distributionTable["UH60Medevac"] = { Normal = VehicleDistributions.UH60MedevacCargo; }
     distributionTable["Bell206PoliceFuselage"] = { Normal = VehicleDistributions.Bell206Police; }
     distributionTable["Bell206LBMWFuselage"] = { Normal = VehicleDistributions.Bell206News; }
     distributionTable["Bell206SurvivalistFuselage"] = { Normal = VehicleDistributions.Bell206Survivalist; }
@@ -145,6 +156,7 @@ local function applyLootBoxLoot()
     -- Supply Drops
     distributionTable["FEMASupplyDrop"] = { Normal = VehicleDistributions.FEMASupplyDrop; }
     distributionTable["SurvivorSupplyDrop"] = { Normal = VehicleDistributions.SurvivorSupplyDrop; }
+    distributionTable["AirliftSupplyDrop"] = { Normal = VehicleDistributions.AirliftSupplyDrop; }
 
 end
 

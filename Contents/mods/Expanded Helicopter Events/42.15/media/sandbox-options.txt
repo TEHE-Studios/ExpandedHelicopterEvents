@@ -49,6 +49,12 @@ option ExpandedHeli.AirRaidSirenEvent
 	page = ExpandedHeli, translation = ExpandedHeli_AirRaidSirenEvent,
 }
 
+option ExpandedHeli.WorldStories
+{
+	type = integer, min = 0, max = 500, default = 40,
+	page = ExpandedHeli, translation = ExpandedHeli_WorldStories,
+}
+
 option ExpandedHeli.Frequency_jets
 {
 	type = enum, numValues = 6, default = 3,
@@ -95,6 +101,13 @@ option ExpandedHeli.Frequency_deserters
 {
 	type = enum, numValues = 6, default = 3,
 	page = ExpandedHeli, translation = ExpandedHeli_EventDeserter,
+	valueTranslation = ExpandedHeli_Frequency,
+}
+
+option ExpandedHeli.Frequency_resupply
+{
+	type = enum, numValues = 6, default = 3,
+	page = ExpandedHeli, translation = ExpandedHeli_EventResupply,
 	valueTranslation = ExpandedHeli_Frequency,
 }
 

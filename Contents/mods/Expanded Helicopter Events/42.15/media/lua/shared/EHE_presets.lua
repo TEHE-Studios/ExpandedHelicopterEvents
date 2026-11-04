@@ -534,8 +534,8 @@ presetCore.registerPreset("survivors_Bell206_N720HP", {
 	crashType = {"Bell206Fuselage_N720HP"},
 	scrapVehicles = {"Bell206Tail_N720HP"},
 	crew = {
-		{ outfit="EHE_SurvivorPilot", 0 },
-		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_SurvivorPilot", female = 0 },
+		{ outfit="EHE_Survivor", female = 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	radioChatter = "AEBS_SurvivorCops",
@@ -548,8 +548,8 @@ presetCore.registerPreset("survivors_Bell206_N95SP", {
 	crashType = {"Bell206Fuselage_N95SP"},
 	scrapVehicles = {"Bell206Tail_N95SP"},
 	crew = {
-		{ outfit="EHE_SurvivorPilot", 0 },
-		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_SurvivorPilot", female = 0 },
+		{ outfit="EHE_Survivor", female = 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	radioChatter = "AEBS_SurvivorCops",
@@ -562,8 +562,8 @@ presetCore.registerPreset("survivors_Bell206_N177TV", {
 	crashType = {"Bell206Fuselage_N177TV"},
 	scrapVehicles = {"Bell206Tail_N177TV"},
 	crew = {
-		{ outfit="EHE_SurvivorPilot", 0 },
-		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_SurvivorPilot", female = 0 },
+		{ outfit="EHE_Survivor", female = 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	radioChatter = "AEBS_SurvivorNews",
@@ -576,8 +576,8 @@ presetCore.registerPreset("survivors_Bell206_N5740A", {
 	crashType = {"Bell206Fuselage_N574OA"},
 	scrapVehicles = {"Bell206Tail_N574OA"},
 	crew = {
-		{ outfit="EHE_SurvivorPilot", 0 },
-		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_SurvivorPilot", female = 0 },
+		{ outfit="EHE_Survivor", female = 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	radioChatter = "AEBS_SurvivorNews",
@@ -590,8 +590,8 @@ presetCore.registerPreset("survivors_Bell206_N120LH", {
 	crashType = {"Bell206Fuselage_N120LH"},
 	scrapVehicles = {"Bell206Tail_N120LH"},
 	crew = {
-		{ outfit="EHE_SurvivorPilot", 0 },
-		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_SurvivorPilot", female = 0 },
+		{ outfit="EHE_Survivor", female = 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	scrapItems = {"Base.ScrapMetal", 10, "Base.MoneyBundle", 50, "Base.Money", 10, "Base.Briefcase_Money", 5, "Base.Briefcase", 3},
@@ -606,8 +606,8 @@ presetCore.registerPreset("survivors_soldiers_UH1H", {
 	crashType = {"Bell206Fuselage_N720HP"},
 	scrapVehicles = {"Bell206Tail_N720HP"},
 	crew = {
-		{ outfit="EHE_SurvivorPilot", 0 },
-		{ outfit="EHE_Survivor", 0 },
+		{ outfit="EHE_SurvivorPilot", female = 0 },
+		{ outfit="EHE_Survivor", female = 0 },
 		{ outfit="EHE_Survivor", spawn = 75, female = 0 },
 	},
 	eventSoundEffects = {
@@ -632,6 +632,33 @@ presetCore.registerPreset("survivors_Cessna172", {
 		["flightSound"] = "eSmallPropPlane",
 	},
 	callsigns = {"November-Four-Seven-Two-Charlie", "Cessna-One-Seven-Two", "Four-Seven-Two", "Small Bird"},
+})
+
+-- What remains of the government keeping holdouts alive with cargo drops late into the apocalypse
+presetCore.registerPreset("resupply", {
+	forScheduling = true,
+	announcerVoice = false,
+	crashType = false,
+	scrapItems = false,
+	scrapVehicles = false,
+	crew = false,
+	shadow = false,
+	targetIntensityThreshold = false,
+	flightHours = {8, 18},
+	eventSpawnWeight = 4,
+	schedulingFactor = 1,
+	eventStartDayFactor = 0.5,
+	eventCutOffDayFactor = 1,
+	markerColor = {r=0.85, g=0.75, b=0.35},
+	eventMarkerIcon = "media/ui/plane.png",
+	speed = 1.5,
+	flightVolume = 50,
+	eventSoundEffects = {
+		["flightSound"] = "eLargePropPlane",
+	},
+	dropPackages = {"AirliftSupplyDrop"},
+	radioChatter = "AEBS_Airlift",
+	callsigns = {"Lifeline", "Providence", "Atlas", "Pelican", "Shepherd"},
 })
 
 -- Former soldiers turned profiteers. Logically should only be using a single helicopter.
