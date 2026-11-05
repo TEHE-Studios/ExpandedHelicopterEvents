@@ -64,7 +64,7 @@ function eHelicopter:crash()
 			EHE_spawner.request({
 				funcType="vehicle", spawnThis=vehicleType, x=heliX, y=heliY, z=0,
 				extraFunctions=extraFunctions, extraParam={headingX=headingX, headingY=headingY},
-				processSquare="getOutsideSquareFromAbove" })
+				processSquare="getCrashSquare" })
 
 			self.crashType = false
 			self.state = "crashed"

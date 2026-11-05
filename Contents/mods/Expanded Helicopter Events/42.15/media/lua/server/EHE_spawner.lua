@@ -21,6 +21,7 @@ end
 function EHE_spawner.setDictionary()
     EHE_spawner.functionDictionary = {}
     EHE_spawner.functionDictionary.getOutsideSquareFromAbove = util.getOutsideSquareFromAbove
+    EHE_spawner.functionDictionary.getCrashSquare = util.getCrashSquare
     EHE_spawner.functionDictionary.applyCrashOnVehicle = util.applyCrashOnVehicle
     EHE_spawner.functionDictionary.applyFlaresToEvent = util.applyFlaresToEvent
     EHE_spawner.functionDictionary.ageInventoryItem = util.ageInventoryItem

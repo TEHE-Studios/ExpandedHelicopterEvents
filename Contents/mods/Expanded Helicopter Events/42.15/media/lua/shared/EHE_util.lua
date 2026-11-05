@@ -303,6 +303,31 @@ function util.getOutsideSquareFromAbove(square)
 end
 
 
+util.crashRoofHoleRadius = 2.5
+
+---@param square IsoGridSquare
+---@return IsoGridSquare
+function util.getCrashSquare(square)
+	if not square or not instanceof(square, "IsoGridSquare") then return end
+	local ground = getSquare(square:getX(), square:getY(), 0) or square
+	if util.isIsoGridSquareOutside(ground) then return ground end
+
+	local roof = getSquare(ground:getX(), ground:getY(), 1)
+	if not util.isIsoGridSquareOutside(roof) then return util.getOutsideSquareFromAbove(ground) end
+
+	local range = math.ceil(util.crashRoofHoleRadius)
+	for dx=-range, range do
+		for dy=-range, range do
+			if (dx*dx)+(dy*dy) <= util.crashRoofHoleRadius*util.crashRoofHoleRadius then
+				local sq = getSquare(ground:getX()+dx, ground:getY()+dy, 1)
+				if sq then util.destroySquareObjects(sq, 100, true) end
+			end
+		end
+	end
+	return ground
+end
+
+
 local isoRangeScan = require("EHE_IsoRangeScan.lua")
 ---@param square IsoGridSquare
 function util.applyCrashDamageToWorld(square)
@@ -423,7 +448,7 @@ function util.dropCrashScrap(sq, o)
 		end
 	end
 
-	if (not dropped) and (o:isWallN() or o:isWallW() or o:getType() == IsoObjectType.wall) then
+	if (not dropped) and (o:isWall() or props:has(IsoFlagType.WallNW) or o:getType() == IsoObjectType.wall) then
 		local spriteName = string.lower((o:getSprite() and o:getSprite():getName()) or "")
 		local debris = util.crashWallDefaultDebris
 		for _,entry in ipairs(util.crashWallDebris) do
@@ -431,6 +456,37 @@ function util.dropCrashScrap(sq, o)
 		end
 		for i=1, ZombRand(1, 3) do
 			dropSquare:AddWorldInventoryItem(debris, ZombRandFloat(0.1, 0.9), ZombRandFloat(0.1, 0.9), 0)
+		end
+	end
+end
+
+
+---@param sq IsoGridSquare
+---@param north boolean north wall destroyed
+---@param west boolean west wall destroyed
+function util.removeWallAttachments(sq, north, west)
+	local faces = {}
+	if north then
+		table.insert(faces, {sq, IsoFlagType.attachedN})
+		table.insert(faces, {sq:getAdjacentSquare(IsoDirections.N), IsoFlagType.attachedS})
+	end
+	if west then
+		table.insert(faces, {sq, IsoFlagType.attachedW})
+		table.insert(faces, {sq:getAdjacentSquare(IsoDirections.W), IsoFlagType.attachedE})
+	end
+
+	for _,face in ipairs(faces) do
+		local faceSquare, flag = face[1], face[2]
+		if faceSquare then
+			local objects = faceSquare:getObjects()
+			for i=objects:size(),1,-1 do
+				local o = objects:get(i-1)
+				if o:getProperties() and o:getProperties():has(flag) then
+					if o:getContainer() then o:dumpContentsInSquare() end
+					util.dropCrashScrap(faceSquare, o)
+					faceSquare:transmitRemoveItemFromSquare(o)
+				end
+			end
 		end
 	end
 end
@@ -450,9 +506,13 @@ function util.destroySquareObjects(sq, chance, includeFloor)
 			if instanceof(o, "IsoThumpable") or instanceof(o, "IsoDoor") then
 				o:destroy()
 			else
+				local corner = o:getProperties() and o:getProperties():has(IsoFlagType.WallNW)
+				local wallN = o:isWallN() or corner
+				local wallW = o:isWallW() or corner
 				if o:getContainer() then o:dumpContentsInSquare() end
 				util.dropCrashScrap(sq, o)
 				sq:transmitRemoveItemFromSquare(o)
+				if wallN or wallW then util.removeWallAttachments(sq, wallN, wallW) end
 			end
 		end
 	end

@@ -3,13 +3,13 @@ module Base
     vehicle UH1HSantaFuselage
     {
         template! = UH60Fuselage,
-        skin { texture = vehicles/SWH/Vehicle_UH1HSantaDamaged, }
+        skin { texture = vehicles/SWH/Vehicle_UH1HSanta, }
     }
 
     vehicle UH1HSantaTail
     {
         template! = UH60Tail,
-        skin { texture = vehicles/SWH/Vehicle_UH1HSantaDamaged, }
+        skin { texture = vehicles/SWH/Vehicle_UH1HSanta, }
         part EHE_meta
         {
             table EHE { metalKg = 20, }
