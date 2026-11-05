@@ -2,6 +2,20 @@ require("EHE_presets.lua")
 local subEvents = require("EHE_presetSubEvents.lua")
 local SWH_subEvents = require("SWH_presetSubEvents.lua")
 local presetCore = require("EHE_presetCore.lua")
+local weaponStats = require("EHE_weaponStats.lua")
+
+weaponStats.register("SWH_AlienShot", { fireSound = "alienShot", loopedSound = "alienShot" })
+
+weaponStats.register("SWH_IRSRifle", { base = "Base.HuntingRifle", spread = 4 })
+
+weaponStats.register("SWH_HelikopterM16", { base = "Base.AssaultRifle", spread = 5, splash = 2 })
+
+weaponStats.register("SWH_SantaM16", { base = "Base.AssaultRifle", spread = 4 })
+
+weaponStats.register("SWH_Buffcorrell", {
+	minDamage = 0, maxDamage = 0, hitChance = 100, delay = 1,
+	fireSound = "IGNORE", loopedSound = "IGNORE", impactSound = "IGNORE",
+})
 
 
 presetCore.registerPreset("superWeirdEvents", {
@@ -98,10 +112,9 @@ presetCore.registerPreset("UFO_stealCow", {
 	hostilePreference = "IsoAnimal",
 	hostilePredicate = subEvents.hostilePredicateCow,
 	addedFunctionsToEvents = {["OnAttack"] = SWH_subEvents.abductCow},
+	weaponArray = {"SWH_AlienShot"},
 
 	eventSoundEffects = {
-		["attackSingle"] = "alienShot",
-		["attackLooped"] = "alienShot",
 		["flightSound"] = { "AlienUFOFlight" },
 	},
 })
@@ -165,16 +178,11 @@ presetCore.registerPreset("IRS", {
 	crashType = {"Bell206IRSFuselage"},
 	scrapItems = {"EHE.Bell206HalfSkirt", "EHE.Bell206RotorBlade", 2, "EHE.Bell206TailBlade", 2, "Base.ScrapMetal", 10},
 	scrapVehicles = {"Bell206IRSTail"},
-	attackDelay = 1000,
-	attackSpread = 4,
+	weaponArray = {"SWH_IRSRifle"},
 	speed = 0.9,
-	attackHitChance = 65,
-	attackDamage = 12,
 	hostilePreference = "IsoPlayer",
 	dropItems = {["SWH.TenFortyForm"]=400},
 	eventSoundEffects = {
-		["attackSingle"] = "eHeli_bolt_action_fire_single",
-		["attackLooped"] = "eHeli_bolt_action_fire_single",
 		["flightSound"] = "eHelicopter",
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
@@ -289,10 +297,9 @@ presetCore.registerPreset("Helikopter", {
 	markerColor = {r=0.96,g=0.21,b=0.78},
 	inherit = {"military_UH1H_attack_all"},
 	callsigns = {"Helikopter"},
+	weaponArray = {"SWH_HelikopterM16", 3, "EHE_Hydra70", 1},
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "Helikopter" },
-		["attackSingle"] = "eHeliM16GunfireSingle",
-		["attackLooped"] = "eHeliM16GunfireSingle",
 	}
 })
 
@@ -307,15 +314,10 @@ presetCore.registerPreset("SandyClaws", {
 		{outfit="AlienSanta", female=0}
 	},
 	hoverOnTargetDuration = {1250,1500},
-	attackDelay = 1700,
-	attackSpread = 4,
-	attackHitChance = 55,
-	attackDamage = 10,
+	weaponArray = {"SWH_SantaM16"},
 	hostilePreference = "IsoPlayer",
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "JangleBalls" },
-		["attackSingle"] = "eHeliM16GunfireSingle",
-		["attackLooped"] = "eHeliM16GunfireSingle",
 	},
 	addedFunctionsToEvents = {["OnFlyaway"] = subEvents.dropCrewOff,["OnSpawnCrew"] = subEvents.crewSeek,},
 	eventSpawnWeight = 5,
@@ -373,17 +375,12 @@ presetCore.registerPreset("BuffCorrell", {
 	--addedFunctionsToEvents = {["OnAttack"] = forceDance},
 	---true actions dancing isn't on B42
 
-	attackDelay = 1,
+	weaponArray = {"SWH_Buffcorrell"},
 	attackDistance = 700,
-	attackHitChance = 100,
-	attackDamage = 0,
 	hostilePreference = "IsoPlayer",
 	--hostilePreference = "IsoGameCharacter",
 
 	eventSoundEffects = {
-		["attackSingle"] = "IGNORE",
-		["attackLooped"] = "IGNORE",
-		["attackImpacts"] = "IGNORE",
 		["flightSound"] = { "ePropPlane", "buffcorrell" },
 	},
 

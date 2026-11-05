@@ -68,8 +68,10 @@ function heliEventAttackHitOnIsoGameCharacter(damage, targetType, targetID, targ
         damage = damage*2
     end
 
-    targetHostile:addHole(clothingBP)
-    targetHostile:addBlood(clothingBP, true, true, true)
+    if targetHostile:getHumanVisual() then
+        targetHostile:addHole(clothingBP)
+        targetHostile:addBlood(clothingBP, true, true, true)
+    end
 
     if instanceof(targetHostile, "IsoAnimal") then
         targetHostile:splatBloodFloor()

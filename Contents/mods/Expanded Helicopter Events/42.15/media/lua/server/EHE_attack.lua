@@ -1,6 +1,8 @@
 local eHelicopter = require("EHE_heliVariables.lua")
 local isoRangeScan = require("EHE_IsoRangeScan.lua")
 local eventSoundHandler = require("EHE_sounds.lua")
+local util = require("EHE_util.lua")
+local weaponStats = require("EHE_weaponStats.lua")
 
 local function compressTableOfNils(table)
 	local n = #table
@@ -25,9 +27,12 @@ function eHelicopter:lookForHostiles(targetType)
 	local selfSquare = self:getIsoGridSquare()
 	if not selfSquare then return end
 
+	if not self.currentWeapon then self.currentWeapon = weaponStats.pick(self.weaponArray, self.weaponCooldowns) end
+	local weapon = self.currentWeapon
+
 	local timeStamp = getTimeInMillis()
 	--too soon to attack again OR will overlap with an announcement
-	if (self.lastAttackTime+self.attackDelay >= timeStamp) then return end
+	if (self.lastAttackTime+weapon.delay >= timeStamp) or (self.reloadingUntil > timeStamp) then return end
 
 	--store numeration (length) of self.hostilesToFireOn
 	local n = #self.hostilesToFireOn
@@ -47,9 +52,9 @@ function eHelicopter:lookForHostiles(targetType)
 	compressTableOfNils(self.hostilesToFireOn)
 
 	if self.lastScanTime <= timeStamp then
-		self.lastScanTime = timeStamp+(self.attackDelay*2)
+		self.lastScanTime = timeStamp+(weapon.delay*2)
 		--keep an eye out for new targets
-		local scanningForTargets = self:attackScan(selfSquare, targetType)
+		local scanningForTargets = self:attackScan(selfSquare, targetType, weapon)
 		--if no more targets or newly scanned targets are greater size change target
 		if (#self.hostilesToFireOn <=0) or (#scanningForTargets > self.hostilesToFireOnIndex) then
 			--set targets
@@ -70,11 +75,11 @@ function eHelicopter:lookForHostiles(targetType)
 		--remove target
 		self.hostilesToFireOn[1] = nil
 
-		if self.attackSplash > 0 then
+		if (weapon.splash > 0) and (not weapon.explosive) then
 			for k,otherHostile in pairs(self.hostilesToFireOn) do
-				if otherHostile then
+				if otherHostile and (self.reloadingUntil <= getTimeInMillis()) then
 					local dist = IsoUtils.DistanceTo(hX, hY, otherHostile:getX(), otherHostile:getY())
-					if dist <= self.attackSplash then
+					if dist <= weapon.splash then
 						local randDelay = ZombRand(1,4)
 						self:fireOn(otherHostile, randDelay)
 						self.hostilesToFireOn[k] = nil
@@ -85,6 +90,7 @@ function eHelicopter:lookForHostiles(targetType)
 			compressTableOfNils(self.hostilesToFireOn)
 		end
 
+		self.currentWeapon = false
 	end
 end
 
@@ -116,6 +122,13 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 	self.lastAttackTime = getTimeInMillis()
 
+	local weapon = self.currentWeapon or weaponStats.pick(self.weaponArray, self.weaponCooldowns)
+	self:useRound(weapon)
+	if weapon.explosive then
+		self:fireExplosive(weapon, targetHostile:getSquare())
+		return
+	end
+
 	local timesFiredOnSpecificHostile = 0
 	table.insert(self.hostilesAlreadyFiredOn, targetHostile)
 	for _,v in pairs(self.hostilesAlreadyFiredOn) do
@@ -126,9 +139,9 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 	if not soundDelay then
 		--fireSound
-		local eventSound = "attackSingle"
+		local eventSound = weapon.fireSound
 		if self.hostilesToFireOnIndex > 1 then
-			eventSound = "attackLooped"
+			eventSound = weapon.loopedSound
 		end
 		--determine location of helicopter
 		eventSoundHandler:playEventSound(self, eventSound, nil, nil, nil, soundDelay)
@@ -137,10 +150,10 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 	local ehX, ehY, _ = self:getXYZAsInt()
 	--virtual sound event to attract zombies
-	getWorldSoundManager():addSound(nil, ehX, ehY, 0, 75, 30, true, 15, 10)
+	getWorldSoundManager():addSound(nil, ehX, ehY, 0, weapon.soundRadius, 30, true, 15, 10)
 
-	local chance = self.attackHitChance
-	local damage = (ZombRand(10,16) * self.attackDamage)/10
+	local chance = weapon.hitChance
+	local damage = (weapon.minDamage+((ZombRand(0,101)/100)*(weapon.maxDamage-weapon.minDamage)))*weapon.projectileCount*weaponStats.damageScale
 
 	---@type BaseVehicle
 	local targetVehicle
@@ -239,7 +252,7 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 	end
 
 	if HIT then
-		if self.attackDamage>0 then
+		if weapon.maxDamage>0 then
 			if instanceof(targetHostile, "BaseVehicle") then
 				local targetZones = {"tires","tires","tires","tires","GasTank","Engine","random"}
 
@@ -319,19 +332,83 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 	end
 
 	--fireImpacts
-	eventSoundHandler:playEventSound(self, "attackImpacts", targetHostile:getSquare(), nil, nil, soundDelay)
+	eventSoundHandler:playEventSound(self, weapon.impactSound, targetHostile:getSquare(), nil, nil, soundDelay)
+end
+
+
+---@param weapon table resolved weaponStats
+function eHelicopter:useRound(weapon)
+	if weapon.magazine <= 0 then return end
+	local rounds = (self.weaponRounds[weapon.ID] or weapon.magazine)-1
+	if rounds <= 0 then
+		rounds = weapon.magazine
+		self.reloadingUntil = getTimeInMillis()+weapon.reloadDelay
+		if weapon.reloadSound then eventSoundHandler:playEventSound(self, weapon.reloadSound) end
+	end
+	self.weaponRounds[weapon.ID] = rounds
+end
+
+
+---@param weapon table resolved weaponStats
+---@param targetSquare IsoGridSquare
+function eHelicopter:fireExplosive(weapon, targetSquare)
+	if not targetSquare then return end
+
+	local x = targetSquare:getX()+ZombRand(-weapon.scatter, weapon.scatter+1)
+	local y = targetSquare:getY()+ZombRand(-weapon.scatter, weapon.scatter+1)
+	local z = targetSquare:getZ()
+	local impactSquare = getSquare(x, y, z) or targetSquare
+	local blastRadius = weapon.blastRadius
+
+	eventSoundHandler:playEventSound(self, weapon.fireSound)
+	eventSoundHandler:playEventSound(self, weapon.impactSound, impactSquare)
+	getWorldSoundManager():addSound(nil, x, y, z, weapon.soundRadius, 100, true, 15, 10)
+
+	if weapon.firePower > 0 then IsoFireManager.explode(getCell(), impactSquare, weapon.firePower) end
+
+	local squares = isoRangeScan.getIsoRange(impactSquare, 1)
+	for k,sq in pairs(squares) do
+		local window = sq:getWindow()
+		if window and (not window:isSmashed()) then window:smashWindow() end
+		if sq == impactSquare or ZombRand(100) < 40 then util.applyCrashGround(sq) end
+	end
+
+	local maxDamage = weapon.maxDamage*weapon.projectileCount*weaponStats.damageScale
+	local hostiles = isoRangeScan.getHumanoidsInRange(impactSquare, blastRadius, "IsoGameCharacter")
+	for i=1, #hostiles do
+		local hostile = hostiles[i]
+		local falloff = 1-(impactSquare:DistTo(hostile)/(blastRadius+1))
+		if falloff > 0 then
+			local damage = (maxDamage*falloff*ZombRand(8,13))/10
+			local targetType = tostring(hostile):match("^(.-)%{")
+			heliEventAttackHitOnIsoGameCharacter(damage, targetType, hostile:getOnlineID(), hostile)
+		end
+	end
+
+	local vehicles = isoRangeScan.getVehiclesInRange(impactSquare, blastRadius+1)
+	for i=1, #vehicles do
+		local vehicle = vehicles[i]
+		for p=1, 3 do
+			local part = returnValidPartById(vehicle, vehicleParts[ZombRand(#vehicleParts)+1])
+			if part then
+				part:damage(maxDamage/3)
+				vehicle:transmitPartCondition(part)
+			end
+		end
+	end
 end
 
 
 ---@param targetType string|table IsoZombie, IsoPlayer, IsoAnimal, IsoGameCharacter, or an array of any combination
 ---@return table
-function eHelicopter:attackScan(location, targetType)
+function eHelicopter:attackScan(location, targetType, weapon)
 
 	if not location then
 		return {}
 	end
 
-	local fractalObjectsFound = isoRangeScan.getHumanoidsInFractalRange(location, self.attackScope, self.attackSpread, targetType, self.hostilePredicate)
+	weapon = weapon or self.currentWeapon or weaponStats.get("EHE_Default")
+	local fractalObjectsFound = isoRangeScan.getHumanoidsInFractalRange(location, weapon.scope, weapon.spread, targetType, self.hostilePredicate)
 	local objectsToFireOn = {}
 
 	for fractalIndex=1, #fractalObjectsFound do

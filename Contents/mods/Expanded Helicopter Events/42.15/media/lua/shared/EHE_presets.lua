@@ -15,11 +15,7 @@ presetCore.registerPreset("military_nonhostile",{
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = {10, 0.85, 5},
 	schedulingFactor = {2, 0.7, 1.5},
-	attackDelay = 5,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
+	weaponArray = {"EHE_M60"},
 	markerColor = {r=0.37, g=1.00, b=0.27},
 	radioChatter = "AEBS_Military",
 	callsigns = {"Warlord", "Havoc", "Guardian", "Eagle", "Falcon", "Thunder", "Overlord", "Vanguard", "Sentinel"},
@@ -82,8 +78,6 @@ presetCore.registerPreset("military_UH1H_attack_cows", {
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
-		["attackSingle"] = "heli_fire_single",
-		["attackLooped"] = "heli_fire_looped",
 		["flightSound"] = { "eMiliHeli"},
 	},
 	-- Taking their time to shoot cattle
@@ -111,6 +105,7 @@ presetCore.registerPreset("military_UH1H_attack_undead", {
 	inherit = {"military_nonhostile"},
 	announcerVoice = false,
 	hostilePreference = "IsoZombie",
+	weaponArray = {"EHE_M60", 6, "EHE_Hydra70", 1},
 	radioChatter = "AEBS_PurgeMilitary",
 	callsigns = {"Thunder", "Lightning", "Storm", "Hammer", "Anvil", "Steel"},
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
@@ -177,11 +172,7 @@ presetCore.registerPreset("military_hostile", {
 	scrapVehicles = {"UH60GreenTail"},
 	eventSpawnWeight = {10, 0.85, 5},
 	schedulingFactor = {2, 0.7, 1.5},
-	attackDelay = 5,
-	attackSpread = 5,
-	attackSplash = 2,
-	attackHitChance = 70,
-	attackDamage = 100,
+	weaponArray = {"EHE_M60"},
 	-- Starts after the air raid siren
 	eventStartDayFactor = 0.067,
 	addedFunctionsToEvents = {["OnAttack"] = subEvents.militaryChangeColor},
@@ -201,6 +192,7 @@ presetCore.registerPreset("military_UH1H_attack_all", {
 	markerColor = {r=1.00, g=0.28, b=0.28},
 	hostilePreference = "IsoGameCharacter",
 	hostilePredicate = subEvents.hostilePredicateCivilian,
+	weaponArray = {"EHE_M60", 3, "EHE_Hydra70", 1},
 	eventStartDayFactor = 0.067,
 	crashType = {"UH60GreenFuselage"},
 	scrapItems = {"EHE.UH1HHalfSkirt2", 2, "EHE.UH60Elevator", 1, "EHE.UH60WindowGreen", 1, "EHE.UH60DoorGreen", 1, "Base.ScrapMetal", 10},
@@ -219,11 +211,10 @@ presetCore.registerPreset("military_kiowa_attack_all", {
 	-- Attack helicopters stop operating around the time the military falls apart completely
 	eventCutOffDayFactor = 0.2360,
 	eventSoundEffects = {
-		["attackSingle"] = "heli_fire_single",
-		["attackLooped"] = "heli_fire_looped",
 		["flightSound"] = { "eMiliHeli"},
 	},
 	hostilePreference = "IsoGameCharacter",
+	weaponArray = {"EHE_M60", 3, "EHE_Hydra70", 2},
 	radioChatter = "AEBS_HostileMilitary",
 	callsigns = {"Reaper", "Executioner", "Hunter", "Predator", "Viper", "Scorpion"},
 	formationIDs = {"military_UH1H_attack_undead", 25, {12,17}, "military_UH1H_attack_undead", 10, {12,17}},
@@ -464,15 +455,10 @@ presetCore.registerPreset("police_Bell206_emergency", {
 
 presetCore.registerPreset("police_Bell206_firing", {
 	inherit = {"police"},
-	attackDelay = 1700,
-	attackSpread = 4,
+	weaponArray = {"EHE_PoliceRifles"},
 	speed = 0.7,
-	attackHitChance = 95,
-	attackDamage = 80,
 	hostilePreference = "IsoZombie",
 	eventSoundEffects = {
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
 		["flightSound"] = { "eHelicopter", "eHeliPoliceWarning" },
 	},
 	hoverOnTargetDuration = {375,575},
@@ -716,10 +702,7 @@ presetCore.registerPreset("deserters_UH1H_raidingparty", {
 	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
-	attackDelay = 650,
-	attackSpread = 5,
-	attackHitChance = 7,
-	attackDamage = 70,
+	weaponArray = {"EHE_DeserterRifles"},
 	flightVolume = 700,
 	crashType = false,
 	hostilePreference = "IsoPlayer",
@@ -728,8 +711,6 @@ presetCore.registerPreset("deserters_UH1H_raidingparty", {
 
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile"},
-		["attackSingle"] = "eHeliAlternatingShots",
-		["attackLooped"] = "eHeliAlternatingShots",
 	},
 })
 

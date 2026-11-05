@@ -38,9 +38,6 @@ vars.eventSoundEffects = {
 	["attackingSound"]="IGNORE",
 	["soundAtEventOrigin"]="IGNORE",
 	--
-	["attackSingle"] = "eHeli_machine_gun_fire_single",
-	["attackLooped"] = "eHeli_machine_gun_fire_looped",
-	["attackImpacts"] = "eHeli_fire_impact",
 	["flightSound"] = "eMiliHeli",--LOOP
 	["crashEvent"] = "eHelicopterCrash",
 }
@@ -55,12 +52,8 @@ vars.topSpeedFactor = 1.5
 vars.flightVolume = 75
 vars.hostilePreference = false
 vars.hostilePredicate = false
-vars.attackDelay = 60
-vars.attackScope = 1
-vars.attackSpread = 3
-vars.attackSplash = 0
-vars.attackHitChance = 85
-vars.attackDamage = 10
+---weapon IDs (item scripts or EHE_weaponStats templates) each optionally followed by a weight
+vars.weaponArray = {"EHE_Default"}
 
 ---// UNDER THE HOOD STUFF //---
 
@@ -134,6 +127,14 @@ vars.lastMovement = false
 vars.currentPosition = false
 ---@field lastAttackTime number
 vars.lastAttackTime = -1
+---@field weaponCooldowns table weapon ID = timestamp when available again
+vars.weaponCooldowns = {}
+---@field currentWeapon table resolved weaponStats for the current attack pass
+vars.currentWeapon = false
+---@field weaponRounds table weapon ID = rounds left before reloading
+vars.weaponRounds = {}
+---@field reloadingUntil number timestamp when reloading is done
+vars.reloadingUntil = 0
 ---@field hostilesToFireOnIndex number
 vars.hostilesToFireOnIndex = 0
 ---@field hostilesToFireOn table

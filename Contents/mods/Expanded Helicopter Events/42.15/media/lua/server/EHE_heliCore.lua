@@ -9,6 +9,7 @@ local heatMap = require("EHE_heatMap.lua")
 local presetCore = require("EHE_presetCore.lua")
 local eventMarkerHandler = require("EHE_eventMarkerHandler.lua")
 local eHelicopter = require("EHE_heliVariables.lua")
+local weaponStats = require("EHE_weaponStats.lua")
 
 eHelicopter.ALL_HELICOPTERS = {}
 
@@ -886,7 +887,7 @@ end
 ---@param targetedObject IsoGridSquare | IsoMovingObject | IsoPlayer | IsoGameCharacter random player if blank
 function eHelicopter:launch(targetedObject,blockCrashing)
 
-	if not self.attackDistance then self.attackDistance = ((self.attackScope*2)+1)*((self.attackSpread*2)+1) end
+	if not self.attackDistance then self.attackDistance = weaponStats.reach(self.weaponArray) end
 
 	if not targetedObject then
 		targetedObject = self:findTarget(nil, "launch")

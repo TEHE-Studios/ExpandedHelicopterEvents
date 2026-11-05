@@ -335,6 +335,9 @@ util.crashSmearLength = 14
 util.crashSmearTailLength = 2
 util.crashSmearWidth = 4
 util.crashSmearFloorCoreWidth = 1.6
+util.crashApproachLength = 16
+util.crashApproachSlope = 0.3
+util.crashApproachWidth = 1
 
 ---@param sq IsoGridSquare
 function util.applyCrashGround(sq)
@@ -368,6 +371,41 @@ function util.applyCrashGround(sq)
 	floor:RemoveAttachedAnims()
 	floor:transmitUpdatedSpriteToClients()
 	floor:transmitModData()
+end
+
+
+---@param sq IsoGridSquare
+---@param core boolean
+function util.applyCrashImpactToSquare(sq, core)
+	local objects = sq:getObjects()
+	for i=objects:size(),1,-1 do
+		local o = objects:get(i-1)
+		if instanceof(o, "IsoWindow") then
+			if not o:isSmashed() then o:smashWindow() end
+		elseif instanceof(o, "IsoDoor") or (instanceof(o, "IsoThumpable") and o:isDoor()) then
+			if ZombRand(100) < 60 then o:destroy() end
+		elseif core and (o:isWallN() or o:isWallW() or o:getType() == IsoObjectType.wall) and ZombRand(100) < 50 then
+			sq:transmitRemoveItemFromSquare(o)
+		end
+	end
+	if ZombRand(100) < 30 then sq:Burn(false) end
+end
+
+
+function util.applyCrashApproachDamage(impactSquare, headingX, headingY)
+	local acrossX, acrossY = -headingY, headingX
+	for d=1, util.crashApproachLength do
+		local z = math.floor(d*util.crashApproachSlope)
+		local centerX, centerY = impactSquare:getX()-(headingX*d), impactSquare:getY()-(headingY*d)
+		for across=-util.crashApproachWidth, util.crashApproachWidth do
+			local x = math.floor(centerX+(acrossX*across)+0.5)
+			local y = math.floor(centerY+(acrossY*across)+0.5)
+			for zz=math.max(0, z-1), math.min(7, z) do
+				local sq = getSquare(x, y, zz)
+				if sq then util.applyCrashImpactToSquare(sq, across == 0) end
+			end
+		end
+	end
 end
 
 
@@ -414,6 +452,8 @@ function util.applyCrashStructuralDamage(vehicle, extraParam)
 			if absAcross <= halfWidth then util.applyCrashGround(sq) end
 		end
 	end
+
+	util.applyCrashApproachDamage(impactSquare, headingX, headingY)
 
 	local nearbyVehicles = isoRangeScan.getVehiclesInRange(impactSquare, scanRadius)
 	for i=1, #nearbyVehicles do
