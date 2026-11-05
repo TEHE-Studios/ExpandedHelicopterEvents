@@ -66,14 +66,33 @@ function eHelicopter:lookForHostiles(targetType)
 	--if there are hostiles identified
 	if #self.hostilesToFireOn > 0 then
 
-		--just grab the first target
 		---@type IsoObject|IsoMovingObject|IsoGameCharacter hostile
-		local hostile = self.hostilesToFireOn[1]
+		local hostileIndex, clusterSquare, threat = self:selectTarget(weapon)
+		if not hostileIndex then
+			--not enough of a threat for this weapon, hand off to one that will take it
+			self.weaponCooldowns[weapon.ID] = nil
+			weapon = weaponStats.pick(self.weaponArray, self.weaponCooldowns, threat)
+			self.currentWeapon = weapon or false
+			if not weapon then return end
+			hostileIndex, clusterSquare = self:selectTarget(weapon)
+			if not hostileIndex then return end
+		end
+
+		if weapon.explosive then
+			self.lastAttackTime = timeStamp
+			self:useRound(weapon)
+			self:fireExplosive(weapon, clusterSquare)
+			self.currentWeapon = false
+			return
+		end
+
+		local hostile = self.hostilesToFireOn[hostileIndex]
 		self:fireOn(hostile)
 
 		local hX, hY = hostile:getX(), hostile:getY()
 		--remove target
-		self.hostilesToFireOn[1] = nil
+		self.hostilesToFireOn[hostileIndex] = nil
+		compressTableOfNils(self.hostilesToFireOn)
 
 		if (weapon.splash > 0) and (not weapon.explosive) then
 			for k,otherHostile in pairs(self.hostilesToFireOn) do
@@ -333,6 +352,34 @@ function eHelicopter:fireOn(targetHostile, soundDelay)
 
 	--fireImpacts
 	eventSoundHandler:playEventSound(self, weapon.impactSound, targetHostile:getSquare(), nil, nil, soundDelay)
+end
+
+
+---Weapons with a minThreat seek out the densest group of hostiles within their blast or splash, weighted by weaponStats.threat
+---Weapons without one take the first target
+---@param weapon table resolved weaponStats
+---@return number|nil index of the target in hostilesToFireOn, IsoGridSquare|nil center of the group, number threat of the best group found
+function eHelicopter:selectTarget(weapon)
+	if weapon.minThreat <= 0 then return 1, self.hostilesToFireOn[1]:getSquare(), 0 end
+
+	local radius = (weapon.explosive and weapon.blastRadius or weapon.splash)+1
+	local bestThreat, bestX, bestY, bestIndex = 0
+	for index,hostile in ipairs(self.hostilesToFireOn) do
+		local threat, sumX, sumY, count = 0, 0, 0, 0
+		for _,other in ipairs(self.hostilesToFireOn) do
+			if IsoUtils.DistanceTo(hostile:getX(), hostile:getY(), other:getX(), other:getY()) <= radius then
+				local otherType = tostring(other):match("^(.-)%{")
+				threat = threat+(weaponStats.threat[otherType] or 1)
+				sumX, sumY, count = sumX+other:getX(), sumY+other:getY(), count+1
+			end
+		end
+		if threat > bestThreat then
+			bestThreat, bestX, bestY, bestIndex = threat, sumX/count, sumY/count, index
+		end
+	end
+	if (not bestIndex) or (bestThreat < weapon.minThreat) then return nil, nil, bestThreat end
+	local bestHostile = self.hostilesToFireOn[bestIndex]
+	return bestIndex, getSquare(math.floor(bestX), math.floor(bestY), bestHostile:getZ()) or bestHostile:getSquare(), bestThreat
 end
 
 

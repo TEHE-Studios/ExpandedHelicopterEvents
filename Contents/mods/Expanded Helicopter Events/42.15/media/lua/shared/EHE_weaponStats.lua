@@ -24,7 +24,14 @@ weaponStats.defaults = {
 	magazine = 0,
 	reloadDelay = 0,
 	reloadSound = false,
+	minThreat = 0,
 }
+
+---threat each target type adds to a cluster, anything else counts as 1
+weaponStats.threat = { IsoPlayer = 2 }
+
+---minThreat given to script weapons that can fire automatic
+weaponStats.autoMinThreat = 2
 
 ---ms added between shots for bolt and pump actions
 weaponStats.rackDelay = 600
@@ -62,6 +69,8 @@ function weaponStats.fromScript(ID)
 
 	local blastRadius = math.max(weapon:getExplosionRange(), weapon:getFireRange())
 	local magazine = weapon:getMaxAmmo()
+	local fireModes = weapon:getFireModePossibilities()
+	local automatic = fireModes and fireModes:contains("Auto")
 	local reloadDelay = weapon:getMagazineType() and (weapon:getReloadTime()*100) or (weapon:getReloadTime()*40*magazine)
 
 	return weaponStats.fillDefaults({
@@ -72,6 +81,7 @@ function weaponStats.fromScript(ID)
 		magazine = magazine,
 		reloadDelay = reloadDelay,
 		reloadSound = weapon:getInsertAmmoSound(),
+		minThreat = automatic and weaponStats.autoMinThreat or 0,
 		projectileCount = math.max(1, weapon:getProjectileCount()),
 		fireSound = weapon:getSwingSound(),
 		loopedSound = weapon:getSwingSound(),
@@ -103,8 +113,9 @@ end
 
 ---@param weaponArray table|string single ID, or IDs each optionally followed by a weight
 ---@param cooldowns table|nil ID = timestamp when available again
+---@param maxThreat number|nil only pick weapons whose minThreat is at or below this, returns nil if there are none
 ---@return table stats, falls back to EHE_Default
-function weaponStats.pick(weaponArray, cooldowns)
+function weaponStats.pick(weaponArray, cooldowns, maxThreat)
 	if type(weaponArray) == "string" then weaponArray = {weaponArray} end
 
 	local now = getTimeInMillis()
@@ -113,13 +124,16 @@ function weaponStats.pick(weaponArray, cooldowns)
 		if type(entry) == "string" then
 			local weight = weaponArray[key+1]
 			if type(weight) ~= "number" then weight = 1 end
-			if (not cooldowns) or (not cooldowns[entry]) or (cooldowns[entry] <= now) then
+			local stats = maxThreat and weaponStats.get(entry)
+			local allowed = (not maxThreat) or (stats and stats.minThreat <= maxThreat)
+			if allowed and ((not cooldowns) or (not cooldowns[entry]) or (cooldowns[entry] <= now)) then
 				for i=1, weight do table.insert(pool, entry) end
 			end
 		end
 	end
 
 	local ID = (#pool > 0) and pool[ZombRand(#pool)+1]
+	if maxThreat and not ID then return end
 	local stats = ID and weaponStats.get(ID)
 	if not stats then return weaponStats.get("EHE_Default") end
 	if cooldowns and stats.cooldown > 0 then cooldowns[ID] = now+stats.cooldown end
@@ -145,7 +159,7 @@ weaponStats.register("EHE_Default", {})
 weaponStats.register("EHE_M60", {
 	minDamage = 6, maxDamage = 9, hitChance = 70,
 	delay = 110, spread = 5, splash = 2,
-	magazine = 100, reloadDelay = 6000,
+	magazine = 100, reloadDelay = 6000, minThreat = 3,
 })
 
 weaponStats.register("EHE_PoliceRifles", {
@@ -164,7 +178,7 @@ weaponStats.register("EHE_Hydra70", {
 	minDamage = 6, maxDamage = 9, hitChance = 100,
 	delay = 1000, spread = 5,
 	fireSound = "eHeliLightRockets", impactSound = "eBomb", soundRadius = 150,
-	explosive = true, scatter = 2, blastRadius = 2, firePower = 6, cooldown = 6000,
+	explosive = true, scatter = 2, blastRadius = 2, firePower = 6, cooldown = 6000, minThreat = 4,
 })
 
 
