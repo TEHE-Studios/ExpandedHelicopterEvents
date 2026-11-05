@@ -325,7 +325,7 @@ function util.applyCrashDamageToWorld(square)
 end
 
 
-util.crashFloorSprites = {default = "blends_natural_01_80"}
+util.crashFloorSprites = {default = "blends_natural_01_64"}
 util.crashCrackSprites = {"d_streetcracks_1_16","d_streetcracks_1_17","d_streetcracks_1_18","d_streetcracks_1_19","d_streetcracks_1_20","d_streetcracks_1_21","d_streetcracks_1_22","d_streetcracks_1_23"}
 util.crashKeepFloorSprites = {
 	["blends_natural_01_0"]=true, ["blends_natural_01_5"]=true, ["blends_natural_01_6"]=true, ["blends_natural_01_7"]=true, ["floors_exterior_natural_01_24"]=true,
@@ -338,17 +338,34 @@ util.crashSmearFloorCoreWidth = 1.6
 util.crashApproachLength = 16
 util.crashApproachSlope = 0.3
 util.crashApproachWidth = 1
+util.crashCollapseLevels = 2
+---percent of vanilla scrap yield (ISMoveableDefinitions) that destroyed tiles leave behind
+util.crashScrapYield = 50
+---walls without material properties drop debris by sprite name, anything unmatched leaves stone rubble
+util.crashWallDebris = { {"wood", "Base.UnusableWood"}, {"log", "Base.UnusableWood"}, {"metal", "Base.UnusableMetal"} }
+util.crashWallDefaultDebris = "Base.Stone2"
 
 ---@param sq IsoGridSquare
-function util.applyCrashGround(sq)
+---@param sq IsoGridSquare
+---@param core boolean heavy damage: natural ground is dug out and indoor floors are torn up to the subfloor, otherwise grass is only flattened
+function util.applyCrashGround(sq, core)
 	local floor = sq:getFloor()
 	if not floor or sq:isWaterSquare() then return end
 	local spriteName = floor:getSprite() and floor:getSprite():getName()
 	if not spriteName then return end
 
-	if (luautils.stringStarts(spriteName, "blends_street") or luautils.stringStarts(spriteName, "floors_exterior_street")) and not util.crashKeepFloorSprites[spriteName] then
-		floor:AttachExistingAnim(getSprite(util.crashCrackSprites[ZombRand(#util.crashCrackSprites)+1]), 0, 0, false, 0, false, 0.0)
-		floor:transmitUpdatedSpriteToClients()
+	if not luautils.stringStarts(spriteName, "blends_natural") then
+		if sq:getRoom() then
+			local replaceSprites = core and ISMoveableDefinitions and ISMoveableDefinitions:getInstance().floorReplaceSprites
+			local sprite = replaceSprites and (#replaceSprites > 0) and getSprite(replaceSprites[ZombRand(#replaceSprites)+1])
+			if sprite then
+				floor:setSprite(sprite)
+				floor:transmitUpdatedSpriteToClients()
+			end
+		elseif not util.crashKeepFloorSprites[spriteName] then
+			floor:AttachExistingAnim(getSprite(util.crashCrackSprites[ZombRand(#util.crashCrackSprites)+1]), 0, 0, false, 0, false, 0.0)
+			floor:transmitUpdatedSpriteToClients()
+		end
 		return
 	end
 
@@ -362,11 +379,11 @@ function util.applyCrashGround(sq)
 		end
 	end
 
-	if util.crashKeepFloorSprites[spriteName] or spriteName == util.crashFloorSprites.default then return end
+	sq:removeGrass()
 
-	local floorData = floor:getModData()
-	if not floorData.shovelledSprites and ISNaturalFloor then floorData.shovelledSprites = ISNaturalFloor.getFloorSpriteNames(sq) end
-	floorData.pouredFloor = "dirt"
+	if (not core) or util.crashKeepFloorSprites[spriteName] or spriteName == util.crashFloorSprites.default then return end
+
+	floor:getModData().shovelled = true
 	floor:setSprite(getSprite(util.crashFloorSprites.default))
 	floor:RemoveAttachedAnims()
 	floor:transmitUpdatedSpriteToClients()
@@ -374,18 +391,88 @@ function util.applyCrashGround(sq)
 end
 
 
+---Drops debris for a destroyed tile using the vanilla scrap definitions for its materials, falling to the ground below
 ---@param sq IsoGridSquare
----@param core boolean
-function util.applyCrashImpactToSquare(sq, core)
+---@param o IsoObject
+function util.dropCrashScrap(sq, o)
+	local props = o:getProperties()
+	if not props or not ISMoveableDefinitions then return end
+	local definitions = ISMoveableDefinitions:getInstance()
+	local dropSquare = getSquare(sq:getX(), sq:getY(), 0) or sq
+	local dropped = false
+
+	for _,materialKey in ipairs({"Material", "Material2", "Material3"}) do
+		local scrapDef = props:has(materialKey) and definitions.getScrapDefinition(props:get(materialKey))
+		if scrapDef then
+			local added = false
+			for _,returnItems in ipairs({scrapDef.returnItems or {}, scrapDef.returnItemsStatic or {}}) do
+				for _,entry in ipairs(returnItems) do
+					local chance = (entry.chancePerRoll/100)*util.crashScrapYield
+					for n=1, entry.maxAmount do
+						if ZombRandFloat(0, 101) < chance then
+							dropSquare:AddWorldInventoryItem(entry.returnItem, ZombRandFloat(0.1, 0.9), ZombRandFloat(0.1, 0.9), 0)
+							added = true
+						end
+					end
+				end
+			end
+			if (not added) and scrapDef.unusableItem then
+				dropSquare:AddWorldInventoryItem(scrapDef.unusableItem, ZombRandFloat(0.1, 0.9), ZombRandFloat(0.1, 0.9), 0)
+			end
+			dropped = true
+		end
+	end
+
+	if (not dropped) and (o:isWallN() or o:isWallW() or o:getType() == IsoObjectType.wall) then
+		local spriteName = string.lower((o:getSprite() and o:getSprite():getName()) or "")
+		local debris = util.crashWallDefaultDebris
+		for _,entry in ipairs(util.crashWallDebris) do
+			if string.find(spriteName, entry[1], 1, true) then debris = entry[2] break end
+		end
+		for i=1, ZombRand(1, 3) do
+			dropSquare:AddWorldInventoryItem(debris, ZombRandFloat(0.1, 0.9), ZombRandFloat(0.1, 0.9), 0)
+		end
+	end
+end
+
+
+---Removes walls, furniture, fixtures and other tiles; containers drop their contents first
+---@param sq IsoGridSquare
+---@param chance number percent per object
+---@param includeFloor boolean also knock out the floor/roof (only used above ground level)
+function util.destroySquareObjects(sq, chance, includeFloor)
 	local objects = sq:getObjects()
 	for i=objects:size(),1,-1 do
 		local o = objects:get(i-1)
-		if instanceof(o, "IsoWindow") then
-			if not o:isSmashed() then o:smashWindow() end
-		elseif instanceof(o, "IsoDoor") or (instanceof(o, "IsoThumpable") and o:isDoor()) then
-			if ZombRand(100) < 60 then o:destroy() end
-		elseif core and (o:isWallN() or o:isWallW() or o:getType() == IsoObjectType.wall) and ZombRand(100) < 50 then
-			sq:transmitRemoveItemFromSquare(o)
+		local keep = instanceof(o, "IsoWorldInventoryObject") or instanceof(o, "IsoTree") or ((not includeFloor) and o:isFloor())
+		if (not keep) and ZombRand(100) < chance then
+			if instanceof(o, "IsoWindow") and (not o:isSmashed()) then o:smashWindow() end
+			if instanceof(o, "IsoThumpable") or instanceof(o, "IsoDoor") then
+				o:destroy()
+			else
+				if o:getContainer() then o:dumpContentsInSquare() end
+				util.dropCrashScrap(sq, o)
+				sq:transmitRemoveItemFromSquare(o)
+			end
+		end
+	end
+end
+
+
+---@param sq IsoGridSquare
+---@param core boolean
+function util.applyCrashImpactToSquare(sq, core)
+	if core then
+		util.destroySquareObjects(sq, 50, sq:getZ() > 0)
+	else
+		local objects = sq:getObjects()
+		for i=objects:size(),1,-1 do
+			local o = objects:get(i-1)
+			if instanceof(o, "IsoWindow") then
+				if not o:isSmashed() then o:smashWindow() end
+			elseif instanceof(o, "IsoDoor") or (instanceof(o, "IsoThumpable") and o:isDoor()) then
+				if ZombRand(100) < 60 then o:destroy() end
+			end
 		end
 	end
 	if ZombRand(100) < 30 then sq:Burn(false) end
@@ -434,14 +521,10 @@ function util.applyCrashStructuralDamage(vehicle, extraParam)
 		if along >= -util.crashSmearTailLength and along <= util.crashSmearLength then
 			local destroyChance = math.max(0, 100-(absAcross*(100/util.crashSmearWidth)))
 
-			local specialObjects = sq:getSpecialObjects()
-			for i=0, specialObjects:size()-1 do
-				local specialObject = specialObjects:get(i)
-				if instanceof(specialObject, "IsoThumpable") then
-					if ZombRand(101) <= destroyChance then specialObject:destroy() end
-				elseif specialObject:getProperties():has(IsoFlagType.solid) then
-					if ZombRand(101) <= destroyChance then sq:transmitRemoveItemFromSquare(specialObject) end
-				end
+			util.destroySquareObjects(sq, destroyChance, false)
+			for z=1, util.crashCollapseLevels do
+				local above = getSquare(sq:getX(), sq:getY(), sq:getZ()+z)
+				if above then util.destroySquareObjects(above, destroyChance*(1-(z/(util.crashCollapseLevels+1))), true) end
 			end
 
 			local tree = sq:getTree()
@@ -449,7 +532,7 @@ function util.applyCrashStructuralDamage(vehicle, extraParam)
 
 			local alongFactor = (along >= 0) and (along/util.crashSmearLength) or (-along/util.crashSmearTailLength)
 			local halfWidth = util.crashSmearFloorCoreWidth + ((util.crashSmearWidth-util.crashSmearFloorCoreWidth)*(1-(alongFactor*alongFactor)))
-			if absAcross <= halfWidth then util.applyCrashGround(sq) end
+			if absAcross <= halfWidth then util.applyCrashGround(sq, absAcross <= util.crashSmearFloorCoreWidth) end
 		end
 	end
 

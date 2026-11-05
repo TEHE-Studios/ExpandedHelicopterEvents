@@ -417,7 +417,7 @@ function eHelicopter:fireExplosive(weapon, targetSquare)
 	for k,sq in pairs(squares) do
 		local window = sq:getWindow()
 		if window and (not window:isSmashed()) then window:smashWindow() end
-		if sq == impactSquare or ZombRand(100) < 40 then util.applyCrashGround(sq) end
+		if sq == impactSquare or ZombRand(100) < 40 then util.applyCrashGround(sq, sq == impactSquare) end
 	end
 
 	local maxDamage = weapon.maxDamage*weapon.projectileCount*weaponStats.damageScale
