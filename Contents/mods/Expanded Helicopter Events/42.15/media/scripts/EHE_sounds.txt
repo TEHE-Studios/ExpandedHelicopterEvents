@@ -10,15 +10,15 @@ module Base {
 
     sound eLargePropPlane {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/helicopter_and_planes/propplane.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/helicopter_and_planes/propplane_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound eSmallPropPlane {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/helicopter_and_planes/cessna.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/helicopter_and_planes/propplane_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
 
     sound ePioneerDrone {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/helicopter_and_planes/pioneerdrone.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.5, } }
+        clip { file = media/sound/helicopter_and_planes/pioneerdrone_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eMiliHeli {
         category = EHE: Main, loop = true, is3D = true,
@@ -27,6 +27,10 @@ module Base {
     sound eMiliHeliCargo {
         category = EHE: Main, loop = true, is3D = true,
         clip { file = media/sound/helicopter_and_planes/heavyheli_mono_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
+    
+    sound eMiliHeliDistant {
+        category = EHE: Main, loop = true, is3D = true,
+        clip { file = media/sound/helicopter_and_planes/militaryheli_distant_loop.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 1.0, } }
     
     sound eHeliPoliceWarning {
         category = EHE: Main, loop = true, is3D = true,
@@ -48,8 +52,6 @@ module Base {
 
     sound eHeliMusicAggressive {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/music/SevenTwentyBeercules.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7,}
-        clip { file = media/sound/music/SevenTwentyTheSpark.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/HeliMusicAggressive.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7,}
         clip { file = media/sound/music/EntryOfTheGladiators.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, }
         clip { file = media/sound/music/CanCanMusic.ogg, distanceMax = 800, reverbFactor = 0.1, volume = 0.7, } }
