@@ -173,14 +173,21 @@ weaponStats.register("EHE_DeserterRifles", {
 	delay = 650, spread = 5,
 	fireSound = "eHeliAlternatingShots", loopedSound = "eHeliAlternatingShots",
 })
--- Unguided rockets -- for small groups
+-- Grenades -- for small groups
+weaponStats.register("EHE_M2O3", {
+	minDamage = 6, maxDamage = 9, hitChance = 100,
+	delay = 800, spread = 2,
+	fireSound = "eHeliGrenadeLauncher", impactSound = "eBomb", soundRadius = 150,
+	explosive = true, scatter = 2, blastRadius = 10, firePower = 10, cooldown = 800, minThreat = 5,
+})
+-- Unguided rockets -- for hordes
 weaponStats.register("EHE_Hydra70", {
 	minDamage = 6, maxDamage = 9, hitChance = 100,
-	delay = 50, spread = 5,
+	delay = 800, spread = 5,
 	fireSound = "eHeliLightRockets", impactSound = "eBomb", soundRadius = 150,
 	explosive = true, scatter = 2, blastRadius = 10, firePower = 10, cooldown = 800, minThreat = 5,
 })
--- Laser guided bomb - for large groups
+-- Laser guided bomb - for precision
 weaponStats.register("EHE_GBU12", {
 	minDamage = 6, maxDamage = 9, hitChance = 100,
 	delay = 1000, spread = 5,
