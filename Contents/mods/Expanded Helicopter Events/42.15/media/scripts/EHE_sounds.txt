@@ -56,11 +56,11 @@ module Base {
 
     sound eHeliCrewLaughingAndDrinking {
         category = EHE: Main, loop = true, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/HeliLaughingDrinking.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 0.7, } }
+        clip { file = media/sound/crashes_bombs_misc/HeliLaughingDrinking.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 0.2, } }
 
      sound eHeliDumpTrash {
          category = EHE: Main, loop = false, is3D = true,
-         clip { file = media/sound/crashes_bombs_misc/dumpingTrash.ogg, distanceMax = 80, reverbFactor = 0.1, volume = 0.5, } }
+         clip { file = media/sound/crashes_bombs_misc/dumpingTrash.ogg, distanceMax = 80, reverbFactor = 0.1, volume = 0.01, } }
 
     sound eHeliMusicHostile {
         category = EHE: Main, loop = true, is3D = true,
