@@ -88,26 +88,27 @@ module Base {
 
     sound eHeli_machine_gun_fire_single {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_fire_single.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.5,} }
+        clip { file = media/sound/gunfire/M60Shot.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.3,} }
 
     sound eHeli_machine_gun_fire_looped {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_fire_loop.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.5, } }
+        clip { file = media/sound/gunfire/M60Shot.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.3, } }
 
     sound eHeli_bolt_action_fire_single {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_stormyRifleFire.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.5,} }
+        clip { file = media/sound/gunfire/heli_stormyRifleFire.ogg, distanceMax = 500, reverbFactor = 0.1, volume = 0.3,} }
 
     sound eHeliAlternatingShots {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/M16GunfireSingle.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, }
-        clip { file = media/sound/gunfire/M16GunfireBurst.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } }
+        clip { file = media/sound/gunfire/M16GunfireSingle.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.3, }
+        clip { file = media/sound/gunfire/M16GunfireBurst.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.3, } }
         
     sound eHeliLightRockets {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/crashes_bombs_misc/LightRocket_1.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
-        clip { file = media/sound/crashes_bombs_misc/LightRocket_2.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
-        clip { file = media/sound/crashes_bombs_misc/LightRocket_3.ogg, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } }
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_1.wav, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_2.wav, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_3.wav, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } 
+        clip { file = media/sound/crashes_bombs_misc/LightRocket_4.wav, distanceMax = 750, reverbFactor = 0.1, volume = 0.5, } }
 
     sound eHeli_newscaster {
         category = EHE: Main, loop = false, is3D = true,
@@ -115,9 +116,9 @@ module Base {
 
     sound eHeli_fire_impact {
         category = EHE: Main, loop = false, is3D = true,
-        clip { file = media/sound/gunfire/heli_fire_impact1.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/gunfire/heli_fire_impact2.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, }
-        clip { file = media/sound/gunfire/heli_fire_impact3.ogg, distanceMax = 300, reverbFactor = 0.1, volume = 1.0, } }
+        clip { file = media/sound/gunfire/BulletCrack_1.wav, distanceMax = 300, reverbFactor = 0.1, volume = 0.3, }
+        clip { file = media/sound/gunfire/BulletCrack_2.wav, distanceMax = 300, reverbFactor = 0.1, volume = 0.3, }
+        clip { file = media/sound/gunfire/BulletCrack_3.wav, distanceMax = 300, reverbFactor = 0.1, volume = 0.3, } }
 
     sound eHeli_lineM_1 {
         category = EHE: Voice Lines, loop = false, is3D = true,

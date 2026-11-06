@@ -173,13 +173,26 @@ weaponStats.register("EHE_DeserterRifles", {
 	delay = 650, spread = 5,
 	fireSound = "eHeliAlternatingShots", loopedSound = "eHeliAlternatingShots",
 })
-
+-- Unguided rockets -- for small groups
 weaponStats.register("EHE_Hydra70", {
+	minDamage = 6, maxDamage = 9, hitChance = 100,
+	delay = 50, spread = 5,
+	fireSound = "eHeliLightRockets", impactSound = "eBomb", soundRadius = 150,
+	explosive = true, scatter = 2, blastRadius = 10, firePower = 10, cooldown = 800, minThreat = 5,
+})
+-- Laser guided bomb - for large groups
+weaponStats.register("EHE_GBU12", {
 	minDamage = 6, maxDamage = 9, hitChance = 100,
 	delay = 1000, spread = 5,
 	fireSound = "eHeliLightRockets", impactSound = "eBomb", soundRadius = 150,
-	explosive = true, scatter = 2, blastRadius = 2, firePower = 6, cooldown = 6000, minThreat = 4,
+	explosive = true, scatter = 1, blastRadius = 300, firePower = 300, cooldown = 4000, minThreat = 2,
 })
-
+-- Napalm pods -- for areas
+weaponStats.register("EHE_Mk77", {
+	minDamage = 6, maxDamage = 9, hitChance = 100,
+	delay = 1000, spread = 5,
+	fireSound = "eHeliLightRockets", impactSound = "eBomb", soundRadius = 150,
+	explosive = true, scatter = 1, blastRadius = 300, firePower = 300, cooldown = 30, minThreat = 2,
+})
 
 return weaponStats
