@@ -719,7 +719,7 @@ presetCore.registerPreset("deserters_UH1H_diversion", {
 	inherit = {"deserters"},
 	hoverOnTargetDuration = {650,1500},
 	speed = 1.5,
-	flightVolume = 3500,
+	flightVolume = 1500,
 	crashType = false,
 	eventSoundEffects = {
 		["flightSound"] = { "eMiliHeli", "eHeliMusicHostile", "eHeliCrewLaughingAndDrinking"},
